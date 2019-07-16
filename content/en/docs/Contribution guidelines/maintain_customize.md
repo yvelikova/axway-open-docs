@@ -75,3 +75,14 @@ The Docsy theme is installed in this site's git repo as a git submodule. To upda
     git pull
     git submodule update --recursive
     ```
+
+## Customize the Docsy theme
+
+This section explains how to customize various elements of the Docsy theme.
+
+### Add code for Netlify CMS
+
+To add the required code for Netlify CMS to the `head` and end of the `body` sections of each page, follow [the Docsy instructions](https://docsydocs.netlify.com/docs/adding-content/lookandfeel/#add-code-to-head-or-before-body-end).
+
+### Change colors
+
