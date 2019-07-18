@@ -8,4 +8,4 @@ menu:
     weight: 20
 ---
 
-Welcome to the documentation for AMPLIFY API Management and AMPLIFY Central.
+Welcome to the amazing documentation for AMPLIFY API Management and AMPLIFY Central.
