@@ -1,6 +1,7 @@
 ---
 title: "API Gateway 7.7 Apache Cassandra Administrator Guide"
 linkTitle: "Administer Apache Cassandra"
+weight: 3
 date: 2019-06-05
 description: >
   This guide explains how to configure and manage the Apache Cassandra database for API Gateway and API Manager.
@@ -10,23 +11,3 @@ provides high service availability. It is required to store data for API
 Manager or API Gateway client registry. In addition, Cassandra is
 optional to store data for *Custom KPS table definitions and data* and
 *OAuth token stores* API Gateway components.
-
-## Deployment and high availability
-
-[Cassandra deployment architectures](cassandra_architecture)
-
-[Configure a highly available Cassandra cluster](cassandra_config)
-
-## Operations and best practices
-
-[Apache Cassandra best practices](cassandra_bestpractices)
-
-[Manage Apache Cassandra](cassandra_manage)
-
-[Apache Cassandra backup and restore](cassandra_bur)
-
-[Perform essential Apache Cassandra operations](cassandra_ops)
-
-## Reference
-
-[setup-cassandra script reference](cassandra_setup_script)
