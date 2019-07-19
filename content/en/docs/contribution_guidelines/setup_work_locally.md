@@ -44,3 +44,5 @@ Run the `hugo server` command in your site root.
 The website is now available locally at `http://localhost:1313/`. You can now add or edit Markdown files in the `content\en\docs\` directory and Hugo will automatically rebuild the site with the changes. 
 
 For more details on Hugo commands, see [Basic Usage](https://gohugo.io/getting-started/usage/).
+
+<!-- TODO Add recommendations for Markdown and markdown editors -->
