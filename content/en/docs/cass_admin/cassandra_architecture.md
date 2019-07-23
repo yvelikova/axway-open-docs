@@ -7,7 +7,7 @@ description: >
   This topic describes the Cassandra deployment architectures supported by API Gateway.
 ---
 
-The following table provides a summary:
+The following table provides a summary.
 
 |Deployment|Description|Use|
 |--- |--- |--- |
