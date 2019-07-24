@@ -1,7 +1,7 @@
 ---
-date: 2019-07-24
 title: "Axway-Open-Docs coming soon"
 linkTitle: "Axway-Open-Docs coming soon"
+date: 2019-07-24
 description: >
     Very soon you will be able to help make Axway documentation better together by contributing to the docs directly!
 author: Alex Earnshaw
