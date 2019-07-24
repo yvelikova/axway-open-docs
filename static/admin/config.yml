@@ -7,8 +7,8 @@ media_folder: "static/Images/uploads" # Media files will be stored in the repo u
 public_folder: "/Images/uploads" # The src attribute for uploaded media will begin with /Images/uploads
 
 collections: # A list of collections the CMS should be able to edit
-  - name: "cassdocs"
-    label: "Cassandra topics"
+  - name: "cassdoc"
+    label: "Cassandra administration page"
     folder: "content/en/docs/cass_admin"
     create: true
     fields:
@@ -16,8 +16,8 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "contribdocs"
-    label: "Contribution guidelines"
+  - name: "contribdoc"
+    label: "Contribution guidelines page"
     folder: "content/en/docs/contribution_guidelines"
     create: false
     fields:
@@ -25,9 +25,9 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}    
-  - name: "post" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Blog post" # Used in the UI, ie.: "New Post"
-    folder: "content/en/blog" # The path to the folder where the documents are stored
+  - name: "newspost" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "News post" # Used in the UI, ie.: "New Post"
+    folder: "content/en/blog/news" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string"}
@@ -36,3 +36,25 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Image", name: "image", widget: "image", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
+- name: "releasepost" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Release post" # Used in the UI, ie.: "New Post"
+    folder: "content/en/blog/releases" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}      
+- name: "friendspost" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Friends post" # Used in the UI, ie.: "New Post"
+    folder: "content/en/blog/releases" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}      
