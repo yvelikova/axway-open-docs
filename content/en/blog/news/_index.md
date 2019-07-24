@@ -1,8 +1,5 @@
-
 ---
-title: "News About Docsy"
+title: "News about Axway-Open-Docs"
 linkTitle: "News"
 weight: 20
 ---
-
-
