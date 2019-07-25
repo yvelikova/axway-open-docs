@@ -2,4 +2,4 @@ language: node_js
 install:
 - npm install -g markdownlint-cli
 script:
-- markdownlint content/**/*.md
+- markdownlint *.md
