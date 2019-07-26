@@ -1,7 +1,9 @@
 backend:
-  name: git-gateway
-  branch: master # Branch to update (optional; defaults to master)
-#publish_mode: editorial_workflow
+  name: github
+  repo: alexearnshaw/improve-the-docs # Path to your GitHub repository
+  fork_workflow: true
+
+publish_mode: editorial_workflow
 
 media_folder: "static/Images/uploads" # Media files will be stored in the repo under static/Images/uploads
 public_folder: "/Images/uploads" # The src attribute for uploaded media will begin with /Images/uploads
