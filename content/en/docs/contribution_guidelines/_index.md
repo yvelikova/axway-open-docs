@@ -1,6 +1,7 @@
 ---
 title: "Contribution Guidelines"
 linkTitle: "Contribution Guidelines"
+no_list: true
 weight: 9
 description: >
   How to contribute to Axway-Open-Docs
@@ -37,8 +38,7 @@ To edit a page and send a PR:
   + You can use the **Preview changes** tab to preview your changes in Git before creating the PR.
     ![Preview before creating PR](/Images/docbook/images/contributing/netlify_preview_beforecreating_PR.png)
 * Add a meaningful message to your commit and click to create the PR.
-  + You can preview you changes in the staging site by clicking the link on the Netlify preview box.
-
+  + You can preview your changes in the staging site by clicking the link on the Netlify preview box.
     ![Preview your PR](/Images/docbook/images/contributing/netlify_preview_PR.png)
 
   + This link redirects to the main page of the documentation. You must navigate to the page you've edited.
@@ -56,5 +56,5 @@ Not yet available.
 
 ## Additional resources
 
-* [How to use Markdown for writing Docs](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown)
-* [Forking a Git repository](https://help.github.com/en/articles/fork-a-repo)
+* [How to use Markdown for writing docs](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown)
+* [Fork a GitHub repository](https://help.github.com/en/articles/fork-a-repo)
