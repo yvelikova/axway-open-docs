@@ -34,10 +34,14 @@ To edit a page and send a PR:
 
 * Click **Edit this page** on the upper right corner of the page.
 * Make the changes in Git UI.
-  + You can use the **Preview changes** tab to preview your changes in Git before creaging the PR.
-* Add a meaningful message to your commit and create the PR.
-  + From the list of checks on your PR, you can click the **Deploy preview ready! Details** link (last item on the list) to preview you changes in the staging site.
-  + This link redirects to the documentation main page. You must navigate to the page you've edited.
+  + You can use the **Preview changes** tab to preview your changes in Git before creating the PR.
+
+    ![Preview before creating PR](/Images/docbook/images/install/netlify_preview_beforecreating_PR.png)
+* Add a meaningful message to your commit and click to create the PR.
+  + You can preview you changes in the staging site by clicking the link on the Netlify preview box.
+
+    ![Preview your PR](/Images/docbook/images/install/netlify_preview_PR.png)
+  + This link redirects to the main page of the documentation. You must navigate to the page you've edited.
   + This link opens in the same tab of your PR.
 
 ## Create an issue on GitHub
