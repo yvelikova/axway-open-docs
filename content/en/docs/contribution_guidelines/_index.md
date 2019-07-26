@@ -41,6 +41,7 @@ To edit a page and send a PR:
   + You can preview you changes in the staging site by clicking the link on the Netlify preview box.
 
     ![Preview your PR](/Images/docbook/images/install/netlify_preview_PR.png)
+
   + This link redirects to the main page of the documentation. You must navigate to the page you've edited.
   + This link opens in the same tab of your PR.
 
