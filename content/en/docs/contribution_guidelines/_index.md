@@ -3,10 +3,10 @@ title: "Contribution Guidelines"
 linkTitle: "Contribution Guidelines"
 weight: 9
 description: >
-  How to contribute to Axway open docs
+  How to contribute to Axway-Open-Docs
 ---
 
-All the Axway API and AMPLIFY Management documentation is written in Markdown, and it is stored in `/content/en/docs/`.
+All the documentation  on this website is written in Markdown, and it is stored in `/content/en/docs/`.
 
 We support the following contribution flows:
 
@@ -34,9 +34,9 @@ To edit a page and send a PR:
 
 * Click **Edit this page** on the upper right corner of the page.
 * Make the changes in Git UI.
-  + You can use the `Preview changes` tab to preview your changes in Git before creaging the PR.
+  + You can use the **Preview changes** tab to preview your changes in Git before creaging the PR.
 * Add a meaningful message to your commit and create the PR.
-  + From the list of checks on your PR, you can click the `Deploy preview ready! Details` link (last item on the list) to preview you changes in the staging site.
+  + From the list of checks on your PR, you can click the **Deploy preview ready! Details** link (last item on the list) to preview you changes in the staging site.
   + This link redirects to the documentation main page. You must navigate to the page you've edited.
   + This link opens in the same tab of your PR.
 
@@ -53,4 +53,4 @@ Not yet available.
 ## Additional resources
 
 * [How to use Markdown for writing Docs](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown)
-* [Cloning a Git repository](https://help.github.com/en/articles/cloning-a-repository)
+* [Forking a Git repository](https://help.github.com/en/articles/fork-a-repo)
