@@ -28,7 +28,6 @@ This documentation site uses the following tools:
 * Netlify CMS - Provides a WYSIWYG view of documentation pages.
 
 <!--- TODO Add info about TravisCI, linters, recommended editors --->
-<!--- TODO Add info about customizations already done --->
 
 ## Overview of config files
 
@@ -97,7 +96,10 @@ To change the background image on the home page (`content/en/_index.html`) add a
 For more details, see [the Docsy instructions](https://docsydocs.netlify.com/docs/adding-content/iconsimages/).
 
 <!-- TODO Change the favicon for the browser tab-->
-<!-- TODO Change the icon classes for buttons etc-->
+
+### Change icons
+
+To change a specific Font Awesome icon, locate an alternative icon on <https://fontawesome.com/> and replace the icon class in the code. The exact steps tdiffer depending on whether the icon is being used in a content page, a shortcode, a partial layout, and so on.
 
 ### Remove the About section
 
@@ -114,7 +116,7 @@ The right nav for each page or post shows **Edit this page** and other buttons.
 To change the text of a button:
 
 1. Create an override file `i18n/en.toml`
-2. Copy the field to override from `themes/docsy/i18n/en.toml` and edit the string value:
+2. Copy the field to override from `themes/docsy/i18n/en.toml` and edit the string value. For example, to change the Edit button from **Edit this page** to **Improve this page**:
 
 ```
 [post_edit_this]
