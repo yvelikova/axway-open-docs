@@ -28,7 +28,6 @@ This documentation site uses the following tools:
 * Netlify CMS - Provides a WYSIWYG view of documentation pages.
 
 <!--- TODO Add info about TravisCI, linters, recommended editors --->
-<!--- TODO Add info about customizations already done --->
 
 ## Overview of config files
 
@@ -80,9 +79,9 @@ The Docsy theme is installed in this site's git repo as a git submodule. To upda
 
 This section explains how to customize various elements of the Docsy theme.
 
-### Add code for Netlify CMS
+### Add code to head and body end of pages
 
-To add the required code for Netlify CMS to the `head` and end of the `body` sections of each page, create the files `layouts/partials/hooks/head-end.html` and `layouts/partials/hooks/body-end.html` and add the code in those files. For details, see [the Docsy instructions](https://docsydocs.netlify.com/docs/adding-content/lookandfeel/#add-code-to-head-or-before-body-end).
+To add code to the `head` and end of the `body` sections of each page (for example if using Netlify Identity with Netlify CMS), create the files `layouts/partials/hooks/head-end.html` and `layouts/partials/hooks/body-end.html` and add the code in those files. For details, see [the Docsy instructions](https://docsydocs.netlify.com/docs/adding-content/lookandfeel/#add-code-to-head-or-before-body-end).
 
 ### Change colors and fonts
 
@@ -96,6 +95,12 @@ To change the background image on the home page (`content/en/_index.html`) add a
 
 For more details, see [the Docsy instructions](https://docsydocs.netlify.com/docs/adding-content/iconsimages/).
 
+<!-- TODO Change the favicon for the browser tab-->
+
+### Change icons
+
+To change a specific Font Awesome icon, locate an alternative icon on <https://fontawesome.com/> and replace the icon class in the code. The exact steps tdiffer depending on whether the icon is being used in a content page, a shortcode, a partial layout, and so on.
+
 ### Remove the About section
 
 To remove the About section in the main navigation, delete the folder `content\en\about` and set the following parameter in `config.toml`:
@@ -103,3 +108,24 @@ To remove the About section in the main navigation, delete the folder `content\e
 ```
 footer_about_disable = true
 ```
+
+### Add or change buttons on right nav
+
+The right nav for each page or post shows **Edit this page** and other buttons.
+
+To change the text of a button:
+
+1. Create an override file `i18n/en.toml`
+2. Copy the field to override from `themes/docsy/i18n/en.toml` and edit the string value. For example, to change the Edit button from **Edit this page** to **Improve this page**:
+
+```
+[post_edit_this]
+other = "Improve this page"
+```
+
+To create a new buttton in the right nav:
+
+1. Create a new partial layout `layouts/partials/page-meta-links.html`
+2. Copy the content from `themes/docsy/layouts/partials/page-meta-links.html`
+3. Customize the code to implement a new button
+4. Add the button text string to `i18n/en.toml`
