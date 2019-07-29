@@ -1,7 +1,9 @@
 ---
-title: Contribution guidelines
-date: 2019-07-29T15:05:08.315Z
-description: |
+title: "Contribution guidelines"
+linkTitle: "Contribution guidelines"
+no_list: true
+weight: 9
+description: >
   How to contribute to Axway-Open-Docs
 ---
 
