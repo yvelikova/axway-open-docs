@@ -1,6 +1,6 @@
 ---
-title: "Contribution Guidelines"
-linkTitle: "Contribution Guidelines"
+title: "Contribution guidelines"
+linkTitle: "Contribution guidelines"
 no_list: true
 weight: 9
 description: >
