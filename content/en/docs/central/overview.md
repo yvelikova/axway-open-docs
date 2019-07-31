@@ -1,4 +1,4 @@
-{"title":"AMPLIFY Central overview","linkTitle":"AMPLIFY Central overview","date":"2019-07-30","description":"Deploy and secure your services in any environment (for example, cloud, on-premise, and so on) and govern your APIs through a central platform that allows you to integrate your services safely and easily with both internal and external consumers."}
+{"title":"AMPLIFY Central overview","linkTitle":"AMPLIFY Central overview","weight":"1","date":"2019-07-30","description":"Deploy and secure your services in any environment (for example, cloud, on-premise, and so on) and govern your APIs through a central platform that allows you to integrate your services safely and easily with both internal and external consumers."}
 
 *Estimated reading time: 2 minutes*
 

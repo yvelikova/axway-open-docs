@@ -1,13 +1,13 @@
-{"title":"Secure an API with JWT","linkTitle":"Secure an API with JWT","date":"2019-7-30","description":"*Estimated reading time: 6 minutes* "} ﻿
+{"title":"Secure an API with JWT","linkTitle":"Secure an API with JWT","weight":"4","date":"2019-07-30","description":"Learn how to secure your API using a JWT token."}
 
 *Estimated reading time: 6 minutes*
 
 Before you start
 ----------------
 
--   You will need a basic understanding of JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523))
--   You will need a user account for AMPLIFY Central
--   Import your API as an API proxy in AMPLIFY Central (see [Register an API](../new_users/quickstart.htm#Register))
+- You will need a basic understanding of JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523))
+- You will need a user account for AMPLIFY Central
+- Import your API as an API proxy in AMPLIFY Central (see [Register an API](../new_users/quickstart.htm#Register))
 
 Objectives
 ----------
@@ -19,64 +19,60 @@ Add JWT authentication to an API proxy
 
 Follow these steps to add JWT client authentication to your API proxy:
 
-1.  Select **API Proxies** in the left navigation bar, and click your API proxy in the list.
-2.  On the **Policies** tab change the client authentication policy to `JWT Token`.
-3.  On the **Deployments** tab deploy or update a runtime group with this revision of your API proxy.
+1. Select **API Proxies** in the left navigation bar, and click your API proxy in the list.
+2. On the **Policies** tab change the client authentication policy to `JWT Token`.
+3. On the **Deployments** tab deploy or update a runtime group with this revision of your API proxy.
 
 Watch the animation to learn how to do this in AMPLIFY Central UI.
 
-![Add JWT authentication](/Images/JWTaddproxyauth_animation.gif)
+![Add JWT authentication](/Images/central/JWTaddproxyauth_animation.gif)
 
 Manage access to an API proxy with JWT authentication
 -----------------------------------------------------
 
 To be able to test your API, create an app to manage client access to your API:
 
-1.  Select **Apps** in the left navigation bar, and create a new app.
-2.  On the **Identity Profiles** tab, in the **JWT Keys** section, add a new JWT key.
-3.  Enter a name for the key.
-4.  Paste your JWT public key into the **JWT Key** field.
-    -   You must create your own JWT token to secure an API with JWT.
-    -   The JWT token must be signed using the `RS256` algorithm.
-    -   There are many services that allow you to create a JWT token. See [Create a JWT token](#Create) for some examples, however, you can choose whichever service is best suited for your organization. These services provide you with both a public key and a private key. The public key is needed for this step.
-
-&gt;
-
-On the **APIs** tab, add a new API.
-
-Select your API proxy with JWT authentication, and select the runtime group you deployed it to.
+1. Select **Apps** in the left navigation bar, and create a new app.
+2. On the **Identity Profiles** tab, in the **JWT Keys** section, add a new JWT key.
+3. Enter a name for the key.
+4. Paste your JWT public key into the **JWT Key** field.
+    - You must create your own JWT token to secure an API with JWT.
+    - The JWT token must be signed using the `RS256` algorithm.
+    - There are many services that allow you to create a JWT token. See [Create a JWT token](#Create) for some examples, however, you can choose whichever service is best suited for your organization. These services provide you with both a public key and a private key. The public key is needed for this step.
+5. On the **APIs** tab, add a new API.
+6. Select your API proxy with JWT authentication, and select the runtime group you deployed it to.
 
 Test an API proxy with JWT authentication
 -----------------------------------------
 
 To test your API proxy in AMPLIFY Central:
 
-{{&lt; alert title="Tip" color="primary" &gt;}}You need to create a JWT token to test the API proxy, which is explained in [Create a JWT token](#Create).{{&lt; /alert &gt;}}
+{{< alert title="Tip" color="primary" >}}You need to create a JWT token to test the API proxy, which is explained in [Create a JWT token](#Create).{{< /alert >}}
 
-1.  Select **API Proxies** in the left navigation bar, and click your API proxy with JWT authentication in the list.
-2.  Click the **Test Methods** tab.
-3.  Use the **Application ID** and **JWT Key ID** on this screen to create the JWT token as detailed in [Create a JWT token](#Create).
-4.  Paste your JWT token in the **JWT Token** field.
-5.  Execute an API method. It should be successful and return a `200 OK` response.
+1. Select **API Proxies** in the left navigation bar, and click your API proxy with JWT authentication in the list.
+2. Click the **Test Methods** tab.
+3. Use the **Application ID** and **JWT Key ID** on this screen to create the JWT token as detailed in [Create a JWT token](#Create).
+4. Paste your JWT token in the **JWT Token** field.
+5. Execute an API method. It should be successful and return a `200 OK` response.
 
 Watch the animation to learn how to do this in AMPLIFY Central UI.
 
-![Test API with JWT](/Images/JWTtestapi_animation.gif)
+![Test API with JWT](/Images/central/JWTtestapi_animation.gif)
 
 Create a JWT token
 ------------------
 
 There are many libraries and methods for creating signed JWT tokens. The first step is to generate an RSA key pair. This section demonstrates generating the key pair and provides examples of the following signing methods:
 
--   Bash script using openssl and jq
--   Go binary
--   jwt.io
+- Bash script using openssl and jq
+- Go binary
+- jwt.io
 
 ### Generate a key pair
 
 This script creates an RSA key pair. The private component must be kept secret and is used for signing authentication tokens. The public component is added to the application in AMPLIFY Central. The public key is converted to a JWK and AMPLIFY Central uses it to validate the authentication tokens.
 
-``` {space="preserve"}
+```bash
 #!/usr/bin/env bash
 
 openssl genrsa -out sigjwt_private_no_passphrase.key 2048
@@ -86,7 +82,7 @@ export PUBLIC_KEY=`cat public.key | tr -d "\n"`
 
 Copy the sample above to a script called `createKeys.sh` and execute it with:
 
-``` {space="preserve"}
+```bash
 source ./createKeys.sh
 ```
 
@@ -94,7 +90,7 @@ source ./createKeys.sh
 
 This script uses openssl and jq to sign the private key created earlier.
 
-``` {space="preserve"}
+```bash
 #!/usr/bin/env bash
 set -o pipefail
 
@@ -139,12 +135,11 @@ sign() {
 }
 
 export JWT=`sign "$@"`
-    
 ```
 
 Copy the sample above to a script called `signJWT.sh` and execute with:
 
-``` {space="preserve"}
+```bash
  source ./signJWT.sh sigjwt_private_no_passphrase.key <paste_application_id_here> <paste_jwt_key_id_here>
 ```
 
@@ -152,7 +147,7 @@ Copy and paste the **Application ID** and **Key ID** from the API proxy in AMPLI
 
 This sets the signed token in an environment variable called `$JWT`. The JWT will look something like this:
 
-``` {space="preserve"}
+```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IkpyV1E1VF9rS3Zjdl9iYlMtcHkwa19fTWppYkE1VGNhT3NlYXNHMGk3MTAifQ.
 eyJpYXQiOjE1NjMzNjI5NjAsImV4cCI6MTU2MzM2Mjk2MSwic3ViIjoiZTRlM2UxZDI2YmI3YWEwYjAxNmJiODcxMWUwNjAwNjMiLCJ
 hdWQiOiJlNGUzZTFkMjZiYjdhYTBiMDE2YmI4NzExZTA2MDA2MyIsImlzcyI6ImU0ZTNlMWQyNmJiN2FhMGIwMTZiYjg3MTFlMDYwMDYzIn0.
@@ -165,7 +160,7 @@ diTEqhiOPQYhhcqn7nFQbUsKkA7Eqk7-iMGJ6suTYJRcDqFG4M1SDcoCTBgy4mVKGeXz74Zf1U-W_TUx
 
 Install the binary from the [jwt-go library](https://github.com/dgrijalva/jwt-go/):
 
-``` {space="preserve"}
+```bash
 export GOPATH=$(go env GOPATH)
 
 export PATH=$PATH:$(go env GOPATH)/bin:$(go env GOPATH)
@@ -174,7 +169,7 @@ go install github.com/dgrijalva/jwt-go/cmd/jwt
 
 This script uses the Go binary to sign the private key created earlier.
 
-``` {space="preserve"}
+```bash
 #!/bin/bash
 
 IAT=`date +%s`
@@ -190,7 +185,7 @@ echo $BEARER_TOKEN
 
 Copy the sample above to a script called `signPrvtKey.sh` and execute it with:
 
-``` {space="preserve"}
+```bash
  source ./signPrvtKey.sh
 ```
 
@@ -198,19 +193,20 @@ Copy the sample above to a script called `signPrvtKey.sh` and execute it with:
 
 This example uses [jwt.io](https://jwt.io/) to create a JWT token:
 
--   Use the default public key from jwt.io as the **JWT Key** for your app in AMPLIFY Central or create a public key as detailed in [Generate a key pair](#Generate).
--   To create the JWT token, you need the **Application ID** and **JWT Key ID** from the API proxy in AMPLIFY Central.
--   Use the generated JWT token from jwt.io as the **JWT Token** to test your API in AMPLIFY Central.
+- Use the default public key from jwt.io as the **JWT Key** for your app in AMPLIFY Central or create a public key as detailed in [Generate a key pair](#Generate).
+- To create the JWT token, you need the **Application ID** and **JWT Key ID** from the API proxy in AMPLIFY Central.
+- Use the generated JWT token from jwt.io as the **JWT Token** to test your API in AMPLIFY Central.
 
-{{&lt; alert title="Caution" color="warning" &gt;}} This method is for testing only as it requires you to share your private key with a third party website.{{&lt; /alert &gt;}}
+{{< alert title="Caution" color="warning" >}} This method is for testing only as it requires you to share your private key with a third party website.{{< /alert >}}
 
 To create a JWT token on jwt.io:
 
-1.  On the jwt.io website, click **Debugger**.
-2.  Select `RS256` for the algorithm.
-3.  A default key pair is now available under the Verify Signature section. Copy the public key for use in [Manage access to an API proxy with JWT authentication](#Manage).
-4.  Edit the Header section. Copy and paste the **JWT Key ID** from the **Test Methods** tab of the API proxy in AMPLIFY Central as the `kid` field. For example:
-5.  ``` {space="preserve"}
+1. On the jwt.io website, click **Debugger**.
+2. Select `RS256` for the algorithm.
+3. A default key pair is now available under the Verify Signature section. Copy the public key for use in [Manage access to an API proxy with JWT authentication](#Manage).
+4. Edit the Header section. Copy and paste the **JWT Key ID** from the **Test Methods** tab of the API proxy in AMPLIFY Central as the `kid` field. For example:
+
+    ```
     {
       "alg": "RS256",
       "kid": "paste_jwt_key_id_here",
@@ -218,28 +214,31 @@ To create a JWT token on jwt.io:
     }
     ```
 
-6.  Edit the Payload section.
-    -   Copy and paste the **Application ID** from the **Test Methods** tab of the API proxy in AMPLIFY Central as the `sub`, `aud`, and `iss` fields.
-    -   For the `iat` and `exp` fields, enter epoch values for when the token was issued at and when it expires.
-7.  For example:
-8.  ``` {space="preserve"}
-    {
-      "sub": "paste_app_id_here",
-      "aud": "paste_app_id_here",
-      "iss": "paste_app_id_here",
-      "iat": 1516239022,
-      "exp": 1564617600
-    }
-    ```
+5. Edit the Payload section.
+    - Copy and paste the **Application ID** from the **Test Methods** tab of the API proxy in AMPLIFY Central as the `sub`, `aud`, and `iss` fields. 
+    - For the `iat` and `exp` fields, enter epoch values for when the token was issued at and when it expires. For example:
 
-9.  Do not edit the Signature section. This is automatically generated by jwt.io.
-10. Copy the resulting Base64 encoded JWT token for use in [Test an API proxy with JWT authentication](#Test). It should include three long strings separated by periods. For example:
-11. eyJhbGciOiJSUzI1NiIsImtpZCI6Ik44SXdtMndBRW5mQnNfVTAxSVNKc05YX214MkM4VVI3WnJiVG9LV2RpTEEiLCJ0eXAiOiJKV1QifQ.
-        eyJzdWIiOiJlNGY2ZGM4YzZhZWI4NDcxMDE2YjAzNGM2MWYxMmI0YSIsImF1ZCI6ImU0ZjZkYzhjNmFlYjg0NzEwMTZiMDM0YzYxZjEyYjRh
-        IiwiaXNzIjoiZTRmNmRjOGM2YWViODQ3MTAxNmIwMzRjNjFmMTJiNGEiLCJpYXQiOjE1NTkwNzQzODcsImV4cCI6MTY1OTE2MDg4N30.
-        QwxqlkCKzUx7Qym5coj34GcecxkKg6uypmDv3e_EV2Qyk3eQ3j1DHVYHS9Qavj4Apv7B1UxVPzr6igk0R-BgPYqoTPA7d508
-        _8gymOJwE7HbKBiD6eAOuTHydU8Iq_XUYl605QUnaR3hZ8wX1EcMkqxT7jQlQnJOJmX9DIAc8vNyoGH2xjo_6xUM4JbrnSze9nodkh5xZjpVyppZAY_
-        4Fm5eJvbzYvwoA9ZUbLcupewoaNbcGK1QKJDrSP4ZZLik1oQ0y9rhhRjqPe9-xSILoqlpDvKLqxyRgi_BJUMdi1a00nhDNox1rW6SQzdRFnkHF_aQkjJeKFNdm8fw1UF6Jw
+        ```
+        {
+         "sub": "paste_app_id_here",
+         "aud": "paste_app_id_here",
+         "iss": "paste_app_id_here",
+         "iat": 1516239022,
+         "exp": 1564617600
+        }
+        ```
+
+6. Do not edit the Signature section. This is automatically generated by jwt.io.
+7. Copy the resulting Base64 encoded JWT token for use in [Test an API proxy with JWT authentication](#Test). It should include three long strings separated by periods. For example:
+
+    ```
+    eyJhbGciOiJSUzI1NiIsImtpZCI6Ik44SXdtMndBRW5mQnNfVTAxSVNKc05YX214MkM4VVI3WnJiVG9LV2RpTEEiLCJ0eXAiOiJKV1QifQ.
+    eyJzdWIiOiJlNGY2ZGM4YzZhZWI4NDcxMDE2YjAzNGM2MWYxMmI0YSIsImF1ZCI6ImU0ZjZkYzhjNmFlYjg0NzEwMTZiMDM0YzYxZjEyYjRh
+    IiwiaXNzIjoiZTRmNmRjOGM2YWViODQ3MTAxNmIwMzRjNjFmMTJiNGEiLCJpYXQiOjE1NTkwNzQzODcsImV4cCI6MTY1OTE2MDg4N30.
+    QwxqlkCKzUx7Qym5coj34GcecxkKg6uypmDv3e_EV2Qyk3eQ3j1DHVYHS9Qavj4Apv7B1UxVPzr6igk0R-BgPYqoTPA7d508
+    _8gymOJwE7HbKBiD6eAOuTHydU8Iq_XUYl605QUnaR3hZ8wX1EcMkqxT7jQlQnJOJmX9DIAc8vNyoGH2xjo_6xUM4JbrnSze9nodkh5xZjpVyppZAY_
+    4Fm5eJvbzYvwoA9ZUbLcupewoaNbcGK1QKJDrSP4ZZLik1oQ0y9rhhRjqPe9-xSILoqlpDvKLqxyRgi_BJUMdi1a00nhDNox1rW6SQzdRFnkHF_aQkjJeKFNdm8fw1UF6Jw
+    ```
 
 Review
 ------

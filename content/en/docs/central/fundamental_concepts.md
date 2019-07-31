@@ -1,4 +1,4 @@
-{"title":"Understand AMPLIFY Central concepts","linkTitle":"Understand AMPLIFY Central concepts","date":"2019-07-30","description":"Learn the fundamental concepts you will encounter in AMPLIFY Central."} ﻿
+{"title":"Understand AMPLIFY Central concepts","linkTitle":"Understand AMPLIFY Central concepts","weight":"2","date":"2019-07-30","description":"Learn the fundamental concepts you will encounter in AMPLIFY Central."} ﻿
 
 *Estimated reading time: 1 minute*
 
