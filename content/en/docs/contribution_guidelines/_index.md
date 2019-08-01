@@ -27,7 +27,7 @@ We'll contact you if we need further information regards to your PR.
 GitHub will send you an email notification for every update in your PR or issue.
 {{< /alert >}}
 
-When the review is finished, we'll merge your PR to this staging website first <https://improve-apim-docs.netlify.com/>, then to production <https://docs.axway.com>.
+When the review is finished, we'll merge your PR to this staging website first <https://axway-open-docs.netlify.com/>, then to production <https://docs.axway.com>.
 
 ## Edit a page on GitHub
 

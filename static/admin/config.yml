@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: alexearnshaw/improve-the-docs # Path to your GitHub repository
+  repo: alexearnshaw/axway-open-docs # Path to your GitHub repository
   fork_workflow: true
 
 publish_mode: editorial_workflow

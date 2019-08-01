@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 <!--This project is for documentation issues only. For product questions or issues, visit Axway Support at https://support.axway.com-->
-<!--Have you considered submitting the fix yourself using a pull request (PR)? Pull requests take priority over reported issues and are the quickest way to get doc changes published. See https://improve-apim-docs.netlify.com/docs/contribution_guidelines/ for more.-->
+<!--Have you considered submitting the fix yourself using a pull request (PR)? Pull requests take priority over reported issues and are the quickest way to get doc changes published. See https://axway-open-docs.netlify.com/docs/contribution_guidelines/ for more.-->
 
 ## Issue description
 
