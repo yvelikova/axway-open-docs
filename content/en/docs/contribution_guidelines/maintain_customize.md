@@ -44,7 +44,7 @@ The Docsy theme is installed in this site's git repo as a git submodule. To upda
 1. In Git CLI, navigate to the root of the local repo and checkout **master**. For example:
 
     ```
-    cd improve-the-docs
+    cd axway-open-docs
     git checkout master
     ```
 
