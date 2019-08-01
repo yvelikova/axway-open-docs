@@ -1,15 +1,12 @@
-{"title":"Single sign-on using SAML","linkTitle":"Single sign-on using SAML","weight":"15","date":"2019-07-30","description":"Single sign-on (SSO) is a session/user authentication process where a user enters one user name and password to access multiple applications. API Portal supports SAML-based SSO."} ﻿
-
-# Configure API Portal for single sign-on
+{"title":"Single sign-on concepts","linkTitle":"Single sign-on concepts","weight":"15","date":"2019-07-30","description":"Single sign-on (SSO) is a session/user authentication process where a user enters one user name and password to access multiple applications. API Portal supports SAML-based SSO."}
 
 API Portal supports single sign-on (SSO). This enables users to use the same login details for API Portal and other Axway platform products, such as API Manager or Decision Insight, and eliminates the need to log in multiple times to different web-based UIs.
 
 API Portal uses API Manager as the service provider in SSO, but they can be configured separately. This means that you can have SSO in just API Portal, in API Manager, or in both. API Portal SSO is controlled in the `service-provider-apiportal.xml` file, while API Manager SSO uses the `service-provider.xml`.
 
-{{&lt; alert title="Note" color="primary" &gt;}}SSO does not work when you have multiple API Managers configured with API Portal.{{&lt; /alert &gt;}}
-
-# Single sign-on using SAML
-Single sign-on (SSO) is a session/user authentication process where a user enters one user name and password to access multiple applications. API Portal supports SAML-based SSO.
+{{< alert title="Note" >}}
+SSO does not work when you have multiple API Managers configured with API Portal.
+{{< /alert>}}
 
 SSO concepts
 ------------

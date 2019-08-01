@@ -2,15 +2,15 @@
 
 This topic describes how to configure API Portal single sign-on (SSO).
 
-The configuration steps are as follows:
+<!-- The configuration steps are as follows:
 
 1.  [Set up a keystore](#Create)
 2.  [Create a service-provider-apiportal.xml file](#Step)
 3.  [Specify the IdP](#Provide)
 4.  [Configure SSO in Policy Studio](#Step2)
-5.  [Configure SAML endpoint URLs](#Configur3)
-
+5.  [Configure SAML endpoint URLs](#Configur3) 
 In addition, there is some additional configuration you must complete before the SSO is operational. See [Additional configuration in API Manager and API Gateway](#Addition).
+-->
 
 Prerequisites
 -------------
@@ -59,7 +59,9 @@ INSTALL_DIR/apigateway/samples/sso/keycloak/service-provider-apiportal.xml
 
 The sample file contains useful information what sections you must change to match your environment.
 
-{{&lt; alert title="Note" color="primary" &gt;}}Do not change any settings with paths containing `/sso`, unless otherwise instructed.{{&lt; /alert &gt;}}
+{{< alert title="Note" >}}
+Do not change any settings with paths containing `/sso`, unless otherwise instructed.
+{{< /alert >}}
 
 1.  To enable reverse proxying, check the following:
 2.  -   `excludeHostInEndpointURICheck` is set to `true`.
@@ -177,7 +179,7 @@ This implementation of SSO uses a cookie, which is created on the API Gateway se
 
 If the API Gateway is hidden behind a load balancer, you might need to change the cookie domain name because the client's browser is not aware of the internal API Gateway host name and therefore might not accept the cookie. For more details, see [Configure the SSO cookie domain name](/csh?context=1014&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/) .
 
-# Enable SSO in API Portal
+## Enable SSO in API Portal
 
 After configuring `service-provider-apiportal.xml` and the single sign-on (SSO) connection in Policy Studio, enable SSO in API Portal.
 
