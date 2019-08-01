@@ -1,28 +1,28 @@
-{"title":"Add your hybrid environment to AMPLIFY Central","linkTitle":"Add your hybrid environment to AMPLIFY Central","date":"2019-7-30","description":"*Estimated reading time: 8 minutes* "} ﻿
+{"title":"Add your hybrid environment to AMPLIFY Central","linkTitle":"Add your hybrid environment to AMPLIFY Central","weight":"9","date":"2019-07-30","description":"Learn how to add your private cloud hybrid environment to AMPLIFY Central, so that you can manage your microservices, and any related APIs they expose."}
 
 *Estimated reading time: 8 minutes*
 
-{{&lt; alert title="Note" color="primary" &gt;}}This feature is currently in **public beta** and not yet available for production use.{{&lt; /alert &gt;}}
+{{< alert title="Note" color="primary" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
 
 Before you start
 ----------------
 
--   Read [AMPLIFY Central hybrid environments overview](hybrid_overview.htm).
--   You will need a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](build_hybrid_env.htm).
--   You will need a basic understanding of OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523)).
--   You will need to be familiar with Kubernetes and Helm, including running Helm and kubectl commands.
--   You will need an administrator account for AMPLIFY Central.
+- Read [AMPLIFY Central hybrid environments overview](hybrid_overview.htm).
+- You will need a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](build_hybrid_env.htm).
+- You will need a basic understanding of OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523)).
+- You will need to be familiar with Kubernetes and Helm, including running Helm and kubectl commands.
+- You will need an administrator account for AMPLIFY Central.
 
 Objectives
 ----------
 
 Learn how to add your private cloud hybrid environment to AMPLIFY Central, so that you can manage your microservices, and any related APIs they expose, from AMPLIFY Central in AMPLIFY Central public cloud.
 
--   Add your environment to AMPLIFY Central and download the generated hybrid kit
--   Generate a key pair and secret for the domain edge gateway and deploy it into the Istio namespace
--   Generate key pairs and secrets for the Axway mesh agents and deploy them into the mesh agent namespace
--   Deploy the Axway proprietary service mesh layer into your environment
--   Create and test an API proxy for the API exposed by a demo microservice
+- Add your environment to AMPLIFY Central and download the generated hybrid kit
+- Generate a key pair and secret for the domain edge gateway and deploy it into the Istio namespace
+- Generate key pairs and secrets for the Axway mesh agents and deploy them into the mesh agent namespace
+- Deploy the Axway proprietary service mesh layer into your environment
+- Create and test an API proxy for the API exposed by a demo microservice
 
 Add your environment to AMPLIFY Central
 ---------------------------------------
@@ -31,13 +31,13 @@ Log in to AMPLIFY Central UI as an administrator, and create a new environment f
 
 Watch the animation to learn how to do this in AMPLIFY Central UI.
 
-{{&lt; alert title="Note" color="primary" &gt;}} You must specify the public FQDN of the private cluster (in this case your private cloud Kubernetes cluster) in the **Host** field when defining your hybrid environment in the AMPLIFY Central UI. You must use the same FQDN in [Generate a key pair and secret for the domain edge gateway](#Generate). {{&lt; /alert &gt;}}
+{{< alert title="Note" color="primary" >}} You must specify the public FQDN of the private cluster (in this case your private cloud Kubernetes cluster) in the **Host** field when defining your hybrid environment in the AMPLIFY Central UI. You must use the same FQDN in [Generate a key pair and secret for the domain edge gateway](#Generate). {{< /alert >}}
 
-![Add environment to AMPLIFY Central](/Images/add_env_animation_cropped.gif)
+![Add environment to AMPLIFY Central](/Images/central/add_env_animation_cropped.gif)
 
 Download the hybrid kit to your client system and unzip it to a unique directory. For example:
 
-``` {space="preserve"}
+```
 $ ls *.zip
 e4fd7216693f50360169492633ab0122-override.zip
 $ unzip e4fd7216693f50360169492633ab0122-override.zip -d e4fd7216693f50360169492633ab0122
@@ -51,41 +51,27 @@ Generate a key pair and secret for the domain edge gateway
 
 To expose an HTTPS endpoint of a service within your environment to external traffic, you need a public certificate and private key for the domain where your environment is hosted, and a TLS secret based on the key pair.
 
-1.  Create an X.509 certificate and key for your domain (for example, using [Let's Encrypt](https://letsencrypt.org/)).
-    -   The domain certificate must match the domain (FQDN) of your environment
-    -   The public key certificate must be PEM encoded and match the given private key
+1. Create an X.509 certificate and key for your domain (for example, using [Let's Encrypt](https://letsencrypt.org/)).
+    - The domain certificate must match the domain (FQDN) of your environment
+    - The public key certificate must be PEM encoded and match the given private key
+2. Create the Istio namespace. This is the namespace where Istio will be deployed.
+    Usage: `kubectl create namespace NAMESPACE_NAME`
+    {{< alert title="Note" color="primary" >}}The default value of `NAMESPACE_NAME` is `istio-system` and this value is used later when the helm upgrade deployment steps are executed in [Deploy the service mesh and Axway mesh agents](#Deploy). {{< /alert >}}
+    Example:
 
-    &gt;
-2.  Create the Istio namespace. This is the namespace where Istio will be deployed.
-3.  Usage: `kubectl create namespace NAMESPACE_NAME`
-4.  {{&lt; alert title="Note" color="primary" &gt;}}The default value of `NAMESPACE_NAME` is `istio-system` and this value is used later when the helm upgrade deployment steps are executed in [Deploy the service mesh and Axway mesh agents](#Deploy). {{&lt; /alert &gt;}}
-5.  Example:
-6.  ``` {space="preserve"}
-    $ kubectl create namespace istio-system
     ```
-
-    ``` {space="preserve"}
+    $ kubectl create namespace istio-system
     namespace/istio-system created
     ```
+3.  Create a Kubernetes TLS secret to hold the public certificate and private key, and deploy it into the Istio namespace.
+    Usage: `kubectl create secret tls SECRET_NAME -n NAMESPACE_NAME --key /PATH/TO/KEY/FILE --cert /PATH/TO/CERT/FILE`
+    {{< alert title="Note" color="primary" >}}`SECRET_NAME` must match the field `secretName` in the `istioOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit. The `secretName` in the Helm chart is generated from your domain name, for example, `kubernetes-cluster-example-certs` for the domain `kubernetes-cluster.example.com`.{{< /alert >}}
+    Example:
 
-7.  Create a Kubernetes TLS secret to hold the public certificate and private key, and deploy it into the Istio namespace.
-8.  Usage: `kubectl create secret tls SECRET_NAME -n NAMESPACE_NAME --key /PATH/TO/KEY/FILE --cert /PATH/TO/CERT/FILE`
-9.  {{&lt; alert title="Note" color="primary" &gt;}}`SECRET_NAME` must match the field `secretName` in the `istioOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit. The `secretName` in the Helm chart is generated from your domain name, for example, `kubernetes-cluster-example-certs` for the domain `kubernetes-cluster.example.com`.{{&lt; /alert &gt;}}
-10. Example:
-11. ``` {space="preserve"}
-    $ kubectl create secret tls kubernetes-cluster-example-certs -n istio-system 
-        --key kubernetes-cluster.example.com.key.pem --cert kubernetes-cluster.example.com.cert.pem
     ```
-
-    ``` {space="preserve"}
+    $ kubectl create secret tls kubernetes-cluster-example-certs -n istio-system --key kubernetes-cluster.example.com.key.pem --cert kubernetes-cluster.example.com.cert.pem
     secret/kubernetes-cluster-example-certs created
-    ```
-
-    ``` {space="preserve"}
     $ kubectl get secrets -n istio-system
-    ```
-
-    ``` {space="preserve"}
     NAME                               TYPE                                  DATA   AGE
     kubernetes-cluster-example-certs   kubernetes.io/tls                     2      4m
     default-token-jvw9m                kubernetes.io/service-account-token   3      27m
@@ -106,22 +92,22 @@ AMPLIFY Central uses the public key to authenticate signed JWT tokens from the a
 
 Use `openssl` to generate a public certificate and private key for the service discovery agent (SDA) . The following example uses the password `changeme`:
 
-``` {space="preserve"}
+```
 $ mkdir sdacerts
 $ cd sdacerts/
 $ echo -n "changeme" > password
 $ openssl genrsa -des3 -out private_key.pem -passout file:password 2048
 ```
 
-``` {space="preserve"}
+```
 Generating RSA private key...
 ```
 
-``` {space="preserve"}
+```
 $ openssl rsa -pubout -in  private_key.pem -passin file:password -out public_key.der -outform der && base64 public_key.der > public_key
 ```
 
-``` {space="preserve"}
+```
 writing RSA key
 ```
 
@@ -129,21 +115,21 @@ writing RSA key
 
 Use `openssl` to generate a public certificate and private key for the configuration synchronization agent (CSA):
 
-``` {space="preserve"}
+```
 $ mkdir csacerts
 $ cd csacerts/
 $ openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
 ```
 
-``` {space="preserve"}
+```
 ...
 ```
 
-``` {space="preserve"}
+```
 $ openssl rsa -pubout -in private_key.pem -out public_key.der -outform der && base64 public_key.der > public_key
 ```
 
-``` {space="preserve"}
+```
 writing RSA key
 ```
 
@@ -153,15 +139,15 @@ Create the namespace where the Axway mesh agents will be deployed.
 
 Usage: `kubectl create namespace NAMESPACE_NAME`
 
-{{&lt; alert title="Note" color="primary" &gt;}}The default value for `NAMESPACE_NAME` is `apic-control` and this value is used later when the helm upgrade deployment steps are executed in [Deploy the service mesh and Axway mesh agents](#Deploy). {{&lt; /alert &gt;}}
+{{< alert title="Note" color="primary" >}}The default value for `NAMESPACE_NAME` is `apic-control` and this value is used later when the helm upgrade deployment steps are executed in [Deploy the service mesh and Axway mesh agents](#Deploy). {{< /alert >}}
 
 Example:
 
-``` {space="preserve"}
+```
 $ kubectl create namespace apic-control
 ```
 
-``` {space="preserve"}
+```
 namespace/apic-control created
 ```
 
@@ -173,14 +159,14 @@ Create Kubernetes secrets to hold the mesh agents' public certificates and priva
 
 Usage: `kubectl create secret generic SECRET_NAME --namespace NAMESPACE_NAME  --from-file=publicKey=/PATH/TO/PUBLIC/KEY/FILE --from-file=privateKey=/PATH/TO/PRIVATE/KEY/FILE  --from-file=password=PASSWORD_FILE --from-literal=password=PASSWORD -o yaml`
 
-{{&lt; alert title="Note" color="primary" &gt;}} Each `SECRET_NAME` must match the corresponding SDA or CSA field `keysSecretName` in the `hybridOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit.\
+{{< alert title="Note" color="primary" >}} Each `SECRET_NAME` must match the corresponding SDA or CSA field `keysSecretName` in the `hybridOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit.\
 The SDA default value of `keysSecretName` is `sda-secrets`.\
 The CSA default value of `keysSecretName` is `csa-secrets`.\
-To change the secret store names, edit the `keysSecretName` values in the `hybridOverride.yaml` file before you execute the helm upgrade deployment steps.{{&lt; /alert &gt;}}
+To change the secret store names, edit the `keysSecretName` values in the `hybridOverride.yaml` file before you execute the helm upgrade deployment steps.{{< /alert >}}
 
 Example for SDA:
 
-``` {space="preserve"}
+```
 $ cd sdacerts/
 $ kubectl create secret generic sda-secrets --namespace apic-control 
 --from-file=publicKey=public_key --from-file=privateKey=private_key.pem 
@@ -189,7 +175,7 @@ $ kubectl create secret generic sda-secrets --namespace apic-control
 
 Example for CSA:
 
-``` {space="preserve"}
+```
 $ cd csacerts/
 $ kubectl create secret generic csa-secrets --namespace apic-control 
 --from-file=publicKey=public_key --from-file=privateKey=private_key.pem 
@@ -198,11 +184,11 @@ $ kubectl create secret generic csa-secrets --namespace apic-control
 
 Verify that the secrets are deployed in the `apic-control` namespace:
 
-``` {space="preserve"}
+```
 $ kubectl get secrets -n apic-control
 ```
 
-``` {space="preserve"}
+```
 NAME                  TYPE                                  DATA   AGE
 csa-secrets           Opaque                                3      29s
 default-token-f26bp   kubernetes.io/service-account-token   3      4m
@@ -222,18 +208,18 @@ After you have created the key pairs and secrets, deploy the Axway proprietary s
         Update Complete. ⎈ Happy Helming!⎈
 
 3.  Change to the directory where you unzipped the hybrid kit:
-4.  ``` {space="preserve"}
+4.  ```
     $ cd e4fd7216693f50360169492633ab0122/
     ```
 
 5.  Deploy Istio. This step can take several minutes to complete.
 6.  Usage: `helm upgrade --install --namespace NAMESPACE_NAME RELEASE CHART`
 7.  Example 1: Install istio-init
-8.  ``` {space="preserve"}
+8.  ```
     $ helm upgrade --install --namespace istio-system istio axway/istio-init
     ```
 
-    ``` {space="preserve"}
+    ```
     Release "istio-init" does not exist. Installing it now.
     NAME:   istio-init
     LAST DEPLOYED: Tue Mar  5 08:44:59 2019
@@ -271,11 +257,11 @@ After you have created the key pairs and secrets, deploy the Axway proprietary s
 
 9.  Usage: `helm upgrade --install --namespace NAMESPACE_NAME RELEASE CHART -f /PATH/TO/OVERRIDE/VALUES`
 10. Example 2: Install istio
-11. ``` {space="preserve"}
+11. ```
     $ helm upgrade --install --namespace istio-system istio axway/istio -f ./istioOverride.yaml
     ```
 
-    ``` {space="preserve"}
+    ```
     Release "istio" does not exist. Installing it now.
     NAME:   istio
     LAST DEPLOYED: Tue Mar  5 08:44:59 2019
@@ -291,12 +277,12 @@ After you have created the key pairs and secrets, deploy the Axway proprietary s
 16. Deploy the Axway mesh agents. This step can take several minutes to complete.
 17. Usage: `helm upgrade --install --namespace NAMESPACE_NAME RELEASE CHART -f /PATH/TO/OVERRIDE/VALUES [OPTIONS]`
 18. Example:
-19. ``` {space="preserve"}
+19. ```
     $ helm upgrade --install --namespace apic-control apic-hybrid axway/apicentral-hybrid -f ./hybridOverride.yaml 
         --set observer.enabled=true --set observer.filebeat.sslVerification=none
     ```
 
-    ``` {space="preserve"}
+    ```
     Release "apic-hybrid" does not exist. Installing it now.
     NAME:   apic-hybrid
     LAST DEPLOYED: Tue Mar  5 10:57:27 2019
@@ -304,15 +290,15 @@ After you have created the key pairs and secrets, deploy the Axway proprietary s
     STATUS: DEPLOYED
     ```
 
-20. {{&lt; alert title="Note" color="primary" &gt;}}The `observer.enabled` and `observer.filebeat.sslVerification` options are required to enable collection of API usage and API traffic metrics from your environment. {{&lt; /alert &gt;}}
+20. {{< alert title="Note" color="primary" >}}The `observer.enabled` and `observer.filebeat.sslVerification` options are required to enable collection of API usage and API traffic metrics from your environment. {{< /alert >}}
 21. Verify that the mesh agents are deployed in the `apic-control` namespace:
-22. ``` {space="preserve"}
+22. ```
     $ kubectl get services -n apic-control
     ```
 
 23. The output of this command should list the mesh agent services.
 24. Verify that the list demo service is deployed in the `apic-demo` namespace:
-25. ``` {space="preserve"}
+25. ```
     $ kubectl get services -n apic-demo
     ```
 
@@ -330,7 +316,7 @@ The list demo service is now deployed in your hybrid environment. You can create
 You can test the API proxy in AMPLIFY Central UI or using a REST client. The following example uses `curl` to send a `GET` request to the `/list` endpoint:
 
 1.  Example:
-2.  ``` {space="preserve"}
+2.  ```
     $ curl -is -X GET 'http://kubernetes-cluster.example.com:8080/listapi/list'
     HTTP/1.1 200 OK
     server: envoy
