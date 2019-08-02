@@ -1,4 +1,4 @@
-{"title":"Localize API Portal","linkTitle":"Localize API Portal","weight":"11","date":"2019-07-30","description":"You can localize the API Portal user interface to use another language or time and date formats than the default ones."} ﻿
+{"title":"Localize API Portal","linkTitle":"Localize API Portal","weight":"11","date":"2019-07-30","description":"You can localize the API Portal user interface to use another language or time and date formats than the default ones."}
 
 Change API Portal language
 ------------------
@@ -197,7 +197,7 @@ First, create a main menu that will be the default main menu for all languages. 
 3.  On the **Menu Details** tab, in **Menu Type**, enter a system identifier for the new main menu (for example, `mainmenuall`).
 4.  Click **Save & Close**.
 5.  To add a menu item to this main menu, click **Menus &gt; Main menu - All &gt; Add New Menu Item**.
-6.  ![Add menu item for Main menu -All](/Images/APIPortal/jai_mainmenuall_home.png)
+![Add menu item for Main menu -All](/Images/APIPortal/jai_mainmenuall_home.png)
 7.  Click **Save & Close**.
 
 ### Change the language of the original main menu to English
@@ -251,7 +251,7 @@ By default, API Portal uses the Purity III template style. After following this
 ### Duplicate the template style for the new language
 
 1.  In the JAI left navigation bar, click **Templates &gt; Styles**.
-2.  ![Joomla Templates Styles](/Images/APIPortal/joomla_templates_styles.png)
+[Joomla Templates Styles](/Images/APIPortal/joomla_templates_styles.png)
 3.  Click your template style (for example, `purity_III - Default`) to open it.
 4.  Click the arrow next to the **Save** button at the top left of the window, and select **Save as Copy**.
 5.  Edit the **Style Name** to indicate the language (for example, `purity_III - Default - French`).

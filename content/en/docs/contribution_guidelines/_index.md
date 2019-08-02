@@ -23,7 +23,7 @@ When you submit a PR, our team is notified and will respond as quickly as we can
 
 We'll contact you if we need further information regards to your PR.
 
-{{< alert title="Note" >}}
+{{< alert title="" >}}
 GitHub will send you an email notification for every update in your PR or issue.
 {{< /alert >}}
 

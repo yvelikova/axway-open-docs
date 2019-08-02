@@ -1,31 +1,15 @@
-{"title":"Customize API Catalog","linkTitle":"Customize API Catalog","weight":"3","date":"2019-07-30","description":"You can customize how APIs are displayed in the API Catalog view of API Portal, and you can customize what actions your API consumers can perform on APIs."} ﻿
-
-## Customize API Catalog
+{"title":"Customize API Catalog","linkTitle":"Customize API Catalog","weight":"3","date":"2019-07-30","description":""}
 
 You can customize how APIs are displayed in the API Catalog view of API Portal, and you can customize what actions your API consumers can perform on APIs.
 
-<!-- You can customize the following:
-
--   Display APIs in a list or tile view.
--   Show or hide the button that enables users to download API definitions. The default is shown.
--   Show or hide the button that enables users to download client SDKs. The default is hidden.
--   Hide APIs associated with specified tags.
--   Show only APIs associated with specified tags. For more details on tags, see [Group APIs with tags](customize_APICatalog_tags.htm).
--   Show or hide the button that enables users to try out an API. You can show the button for all users, for authenticated users only, or hide it completely. The default is shown for all users.
--   Display REST API details using the Swagger.io or AMPLIFY Swagger UI rendering tools. The default is AMPLIFY. SOAP APIs are always displayed using Swagger.io.
--   Display REST API details using a colorful or colorless scheme when using the AMPLIFY rendering tool. You can also change the method colors when using the colorful scheme.
-
-## Customize API Catalog settings
--->
 To change the API Catalog settings:
 
 1. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal_host>/administrator`).
-2. Click **Menus &gt; Main Menu**.
-3. Click **APIs**.
-4. Click the **API Catalog** tab.
-
-   ![Customize API catalog](./Images/APIPortal/jai_customize_api_catalog.png)
-5. Change the settings as required and click **Save & Close**.
+1. Click **Menus &gt; Main Menu**.
+1. Click **APIs**.
+1. Click the **API Catalog** tab.
+   ![Customize API catalog](/Images/APIPortal/jai_customize_api_catalog.png)
+1. Change the settings as required and click **Save & Close**.
 
 ## Customize source of API descriptions
 

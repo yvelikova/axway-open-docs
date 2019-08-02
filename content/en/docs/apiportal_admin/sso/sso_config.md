@@ -2,31 +2,17 @@
 
 This topic describes how to configure API Portal single sign-on (SSO).
 
-<!-- The configuration steps are as follows:
+## Prerequisites
 
-1.  [Set up a keystore](#Create)
-2.  [Create a service-provider-apiportal.xml file](#Step)
-3.  [Specify the IdP](#Provide)
-4.  [Configure SSO in Policy Studio](#Step2)
-5.  [Configure SAML endpoint URLs](#Configur3) 
-In addition, there is some additional configuration you must complete before the SSO is operational. See [Additional configuration in API Manager and API Gateway](#Addition).
--->
+- You must have a third-party IdP installed and running.
+- The IdP posts SAML assertions to API Portal. When configuring the IDP for a new API Portal client, you must set the post back addresses to API Portal.
+- You must always use fully qualified domain names (FQDNs) for the host name. Avoid using IP addresses or `localhost` in the configuration.
+- The following prerequisites apply to organizations in API Manager:
+  - Before a user can authenticate successfully using SSO, the API Portal organization associated with the SSO user must exist.
+  - An API Manager administrator user can add the organizations in advance.
+  - When configuring the file `service-provider-apiportal.xml`, ensure that the SSO user only ever belongs to one organization.
 
-Prerequisites
--------------
-
-To configure API Portal SSO:
-
--   You must have a third-party IdP installed and running.
--   The IdP posts SAML assertions to API Portal. When configuring the IDP for a new API Portal client, you must set the post back addresses to API Portal.
--   You must always use fully qualified domain names (FQDNs) for the host name. Avoid using IP addresses or `localhost` in the configuration.
--   The following prerequisites apply to organizations in API Manager:
-    -   Before a user can authenticate successfully using SSO, the API Portal organization associated with the SSO user must exist.
-    -   An API Manager administrator user can add the organizations in advance.
-    -   When configuring the file `service-provider-apiportal.xml`, ensure that the SSO user only ever belongs to one organization.
-
-Configuration files
--------------------
+## Configuration files
 
 To configure API Portal SSO, create the following files in your API Gateway instance folder (for example, `INSTALL_DIR/apigateway/groups/group-2/instance-1/conf`).
 
@@ -43,46 +29,47 @@ Your API Gateway installation includes sample files that may help you configure 
 
 For more details, see [Configuration files](/csh?context=1015&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/)
 
-Set up a keystore
------------------
+## Set up a keystore
 
 You must set up a keystore containing a key pair to your API Gateway instance. For more details, see [Set up a keystore](/csh?context=1005&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/) .
 
-Create a service-provider-apiportal.xml file
---------------------------------------------
+## Create a service-provider-apiportal.xml file
 
 To create a `service-provider-apiportal.xml` file to your API Gateway instance, you can use the following sample file included in the API Gateway installation:
 
-``` {space="preserve"}
+```
 INSTALL_DIR/apigateway/samples/sso/keycloak/service-provider-apiportal.xml
 ```
+      INSTALL_DIR/apigateway/samples/sso/keycloak/service-provider-apiportal.xml
 
 The sample file contains useful information what sections you must change to match your environment.
 
-{{< alert title="Note" >}}
+{{< alert title="" >}}
 Do not change any settings with paths containing `/sso`, unless otherwise instructed.
 {{< /alert >}}
 
-1.  To enable reverse proxying, check the following:
-2.  -   `excludeHostInEndpointURICheck` is set to `true`.
-    -   `relaxedEndpointURICheckHostDetails` is not present, or if present, is set to your API Portal host (`https://<FQDN>:<port>`).
+1. To enable reverse proxying, check the following:
 
-3.  In the `ServiceProvider` section, update the `keystore`, `keystorePassphrase`, and `keyAlias` fields with the correct values for your keystore:
-4.  For example, if you generated a keystore called `sso.jks` with a passphrase `abc123` and an alias called `ssokey`, the settings are as follows:
+- `excludeHostInEndpointURICheck` is set to `true`.
+- `relaxedEndpointURICheckHostDetails` is not present, or if present, is set to your API Portal host (`https://<FQDN>:<port>`).
 
-    ``` {space="preserve"}
-       <ServiceProvider
-          ...
-          keystore="conf/sso.jks"
-          keystorePassphrase="abc123"
-          keyAlias="ssokey"
-          ...
-       </ServiceProvider> 
-    ```
+1. In the `ServiceProvider` section, update the `keystore`, `keystorePassphrase`, and `keyAlias` fields with the correct values for your keystore:
 
-5.  In the `SamlIdentityProvider` section, update the `Mappings` section with the mapping of IdP attributes to API Manager attributes. For more information on the mapping syntax, see [Mapping syntax](API_Portal_sso_mapping.htm).
-6.  In the `SamlIdentityProvider` section, change references to `keycloak.int.acme.com:8443` to the FQDN and port of your IdP.
-7.  In the `SamlIdentityProvider` section, set the `metadataUrl` field as detailed in [Specify the IdP](#Provide), then save the configuration file.
+1. For example, if you generated a keystore called `sso.jks` with a passphrase `abc123` and an alias called `ssokey`, the settings are as follows:
+
+      <ServiceProvider
+         ...
+         keystore="conf/sso.jks"
+         keystorePassphrase="abc123"
+         keyAlias="ssokey"
+         ...
+      </ServiceProvider>
+
+1. In the `SamlIdentityProvider` section, update the `Mappings` section with the mapping of IdP attributes to API Manager attributes. For more information on the mapping syntax, see [Mapping syntax](API_Portal_sso_mapping.htm).
+
+1. In the `SamlIdentityProvider` section, change references to `keycloak.int.acme.com:8443` to the FQDN and port of your IdP.
+
+1. In the `SamlIdentityProvider` section, set the `metadataUrl` field as detailed in [Specify the IdP](#Provide), then save the configuration file.
 
 For more information on the elements in the `service-provider-apiportal.xml` configuration file, see [Configuration file elements](API_Portal_sso_config_file_ref.htm).
 
@@ -90,8 +77,8 @@ For more information on the elements in the `service-provider-apiportal.xml` con
 
 There are two ways you can specify the IdP:
 
--   [Specify the IdP by file](#Specify)
--   [Specify the IdP by URL](#Specify2)
+- [Specify the IdP by file](#Specify)
+- [Specify the IdP by URL](#Specify2)
 
 #### Specify the IdP by file
 
@@ -99,21 +86,21 @@ When the IdP is specified by file, the `idp.xml` file must exist in your API Gat
 
 To specify the IdP by file in `service-provider-apiportal.xml`, follow these steps:
 
-1.  In the `SamlIdentityProvider` section, set the `metadataUrl` field of to the value `./idp.xml`.
-2.  The following example shows a sample extract from the `service-provider-apiportal.xml` file for Keycloak. The `metadataUrl` refers to the file `idp.xml`:
-3.  ``` {space="preserve"}
+1. In the `SamlIdentityProvider` section, set the `metadataUrl` field of to the value `./idp.xml`.
+2. The following example shows a sample extract from the `service-provider-apiportal.xml` file for Keycloak. The `metadataUrl` refers to the file `idp.xml`:
+
        <SamlIdentityProvider
           entityId="https://keycloak.int.acme.com:8443/auth/realms/Axway"
           metadataUrl="./idp.xml"
           ...
        </SamlIdentityProvider>
-    ```
 
-4.  Create an `idp.xml` file to your API Gateway instance folder using the following templates:
-5.  -   For Shibbloteh, use the template provided in `INSTALL_DIR/apigateway/samples/sso/ShibbolethIDP/idp.xml`.
-    -   For Keycloak, enter the URL of the Keycloak realm you are configuring (for example,` https://<Keycloak FQDN>:<port>/auth/realms/<realm>`) to your browser, and use the shown content as the template for the `idp.xml`. You can also use an utility such as Wget to save the content as a file.
+3. Create an `idp.xml` file to your API Gateway instance folder using the following templates:
 
-    Replace the placeholders in the file with the details of your IdP.
+- For Shibbloteh, use the template provided in `INSTALL_DIR/apigateway/samples/sso/ShibbolethIDP/idp.xml`.
+- For Keycloak, enter the URL of the Keycloak realm you are configuring (for example,`https://<Keycloak FQDN>:<port>/auth/realms/<realm>`) to your browser, and use the shown content as the template for the `idp.xml`. You can also use an utility such as Wget to save the content as a file.
+
+Replace the placeholders in the file with the details of your IdP.
 
 For more details, see [Set up a keystore](/csh?context=1005&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/) .
 
@@ -125,47 +112,45 @@ To specify the IdP by URL in `service-provider-apiportal.xml`, in the `SamlIdent
 
 The following example shows an extract from a `service-provider-apiportal.xml` file for a Keycloak IdP. The `metadataUrl` refers to a URL.
 
-``` {space="preserve"}
-   <SamlIdentityProvider
-      entityId="https://keycloak.int.acme.com:8443/auth/realms/Axway"
-      metadataUrl="https://keycloak.int.acme.com:8443/auth/realms/Axway/protocol/saml/descriptor"
-      ...          
-   </SamlIdentityProvider>
-```
+      <SamlIdentityProvider
+         entityId="https://keycloak.int.acme.com:8443/auth/realms/Axway"
+         metadataUrl="https://keycloak.int.acme.com:8443/auth/realms/Axway/protocol/saml/descriptor"
+         ...          
+      </SamlIdentityProvider>
 
 A sample of a `service-provider-apiportal.xml` file that uses an IdP specified by URL is included in the `INSTALL_DIR/apigateway/samples/sso/keycloak` folder.
 
 When specifying an IdP by URL, you might need to set up a truststore JKS file:
 
--   `sso.jks` – Contains the key used by the SSO agent to sign requests. This key needs to go to the IdP.
--   `truststore.jks` – This is a separate truststore that is used for HTTPS communication between the SSO agent and the IdP while retrieving metadata online.
+- `sso.jks` – Contains the key used by the SSO agent to sign requests. This key needs to go to the IdP.
+- `truststore.jks` – This is a separate truststore that is used for HTTPS communication between the SSO agent and the IdP while retrieving metadata online.
 
-{{&lt; alert title="Tip" color="primary" &gt;}}You can use the same keystore for all of the operations.{{&lt; /alert &gt;}}
+{{< alert title="" color="info" >}}
+You can use the same keystore for all of the operations.
+{{< /alert >}}
 
-Configure SSO in Policy Studio
-------------------------------
+## Configure SSO in Policy Studio
 
 After configuring and saving `service-provider-apiportal.xml`, you must configure the SSO connection between your API Gateway and API Portal. This configuration is the same as when configuring API Manager SSO. For more details, see [Configure SSO in Policy Studio](/csh?context=1016&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/) .
 
-Configure SAML endpoint URLs
-----------------------------
+## Configure SAML endpoint URLs
 
 After configuring the SSO, you must define the SAML endpoint of API Portal in the IdP. This endpoint is the URL that receives SAML assertions from the IdP.
 
 In the following example, the IdP is Keycloak. Depeding on your IdP, the UI might be different, but you must define the endpoint URLs regardless of which IdP you use. For more details, see the documentation of your IdP.
 
-1.  Open your IdP client.
-2.  Locate and set the following:
-3.  -   **Assertion Consumer Service POST Binding URL**: `https://<API Portalhost FQDN>/api/portal/v1.3/sso/externallogin/post`
-    -   **logout-service-post-binding-url**: ` https://<API Portal host FQDN>/api/portal/v1.3/sso/externallogout/post`
-    -   **Logout Service Redirect Binding URL**: `https://<API Portal host FQDN>/api/portal/v1.3/sso/externallogout/post`
+1. Open your IdP client.
+2. Locate and set the following:
+
+- **Assertion Consumer Service POST Binding URL**: `https://<API Portalhost FQDN>/api/portal/v1.3/sso/externallogin/post`
+- **logout-service-post-binding-url**: `https://<API Portal host FQDN>/api/portal/v1.3/sso/externallogout/post`
+- **Logout Service Redirect Binding URL**: `https://<API Portal host FQDN>/api/portal/v1.3/sso/externallogout/post`
 
     ![An example screenshot on configuring the endpoints](/Images/APIPortal/FineGrainSAMLEndPointsAPIPortal.png)
 
 You must configure the endpoint URLs separately for both API Manager and API Portal. For more details, see [Configure API Manager SSO](/csh?context=1024&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/) .
 
-Additional configuration in API Manager and API Gateway
--------------------------------------------------------
+## Additional configuration in API Manager and API Gateway
 
 Because API Portal is dependent of API Manager and API Gateway, you must configure some things outside API Portal. These configurations are the same when configuring API Manager SSO, so if you have already configured API Manager SSO, or are planning to do so, you do not have to repeat them separately for API Portal.
 
@@ -183,17 +168,16 @@ If the API Gateway is hidden behind a load balancer, you might need to change th
 
 After configuring `service-provider-apiportal.xml` and the single sign-on (SSO) connection in Policy Studio, enable SSO in API Portal.
 
-1.  In the Joomla! Administrator Interface (JAI), click **Components &gt; API Portal &gt; Single-Sign-On**.
-2.  Click **Yes** to enable SSO login.
-3.  In **SSO Client Entity ID**, enter the `entityId` you defined for API Portal in `service-provider-apiportal.xml`.
-4.  In **SSO Whitelist**, enter the host name or IP address of your IdP to allow requests to the IdP (for example, `keycloak.lab.dubl.axway.int`). If you do not add your IdP to this field, all requests to your IdP will be rejected by API Portal.
-5.  Click **Save**.
+1. In the Joomla! Administrator Interface (JAI), click **Components &gt; API Portal &gt; Single-Sign-On**.
+1. Click **Yes** to enable SSO login.
+1. In **SSO Client Entity ID**, enter the `entityId` you defined for API Portal in `service-provider-apiportal.xml`.
+1. In **SSO Whitelist**, enter the host name or IP address of your IdP to allow requests to the IdP (for example, `keycloak.lab.dubl.axway.int`). If you do not add your IdP to this field, all requests to your IdP will be rejected by API Portal.
+1. Click **Save**.
 
-Change API Portal SSO login path
---------------------------------
+## Change API Portal SSO login path
 
 The default SSO login URL is `https://<FQDN>:<port>/sso`, where `<FQDN>` is the fully qualified domain name of the machine running API Portal, and `<port>` is the API Portal listening port. To modify the SSO login URL:
 
-1.  In JAI, click **Components &gt; API Portal &gt; Single-Sign-On**.
-2.  In **SSO Path**, replace the default value `/sso` with the new path (for example, `/newpath`results in a new SSO login URL of `https://<FQDN>:<port>/newpath`.
-3.  Click **Save**.
+1. In JAI, click **Components &gt; API Portal &gt; Single-Sign-On**.
+1. In **SSO Path**, replace the default value `/sso` with the new path (for example, `/newpath`results in a new SSO login URL of `https://<FQDN>:<port>/newpath`.
+1. Click **Save**.
