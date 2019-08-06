@@ -13,7 +13,7 @@ Use these steps if you encounter any problems with this solution:
 
 The Apache `error_log` file is located at `/var/log/apache2/`.
 
-You can also turn on Joomla error reporting on the **System &gt; Global Configuration &gt; Server** tab in the Joomla administrator UI, and set the error reporting to the desired level. However, use caution, because this may lead to warnings and errors on the API Portal pages. It is recommended that you do this only in critical situations, and not in production environment.
+You can also turn on Joomla error reporting on the **System > Global Configuration > Server** tab in the Joomla administrator UI, and set the error reporting to the desired level. However, use caution, because this may lead to warnings and errors on the API Portal pages. It is recommended that you do this only in critical situations, and not in production environment.
 
 API response class details missing
 ----------------------------------

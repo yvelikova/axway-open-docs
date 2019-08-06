@@ -1,16 +1,14 @@
-{"title":"Additional customizations","linkTitle":"Additional customizations","weight":"7","date":"2019-07-30","description":"This section describes how you can customize other features of your API Portal:"} ﻿version="1.0" encoding="utf-8"?
-# Additional customizations
+{"title":"Additional customizations","linkTitle":"Additional customizations","weight":"7","date":"2019-07-30","description":""}
 
 This section describes how you can customize other features of your API Portal.
 
-You can customize your sign up functionality by enabling reCaptcha, or you can configure API Portal with SMTP to enable sending user registration emails.
-
 Add reCaptcha to sign up
 ------------------------
+You can customize your sign up functionality by enabling reCaptcha, or you can configure API Portal with SMTP to enable sending user registration emails.
 
 reCaptcha is a free service you can add to the API Portal sign up page to prevent spam and abuse. The reCaptcha plugin is available in Joomla!.
 
-{{&lt; alert title="Note" color="primary" &gt;}}You must have a Google user name and password to add reCaptcha. For more details, see [reCaptcha documentation](https://www.google.com/recaptcha/intro/index.html).{{&lt; /alert &gt;}}
+{{< alert title="" color="primary" >}}You must have a Google user name and password to add reCaptcha. For more details, see [reCaptcha documentation](https://www.google.com/recaptcha/intro/index.html).{{< /alert >}}
 
 1.  Go to the [reCaptcha admin page](https://www.google.com/recaptcha/admin#list).
 2.  Give a label for your site (such as `API Portal`) label, enter the API Portal domain (here `localhost.localdomain`) in the **Domains** field, and select **Register**.
@@ -20,14 +18,14 @@ reCaptcha is a free service you can add to the API Portal sign up page to preve
     \
     ![reCaptcha screen that display how to add reCAPTCHA to the API Portal](/Images/APIPortal/recaptchasitekeysteps.png)
 5.  Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal_host>/administrator`).
-6.  Select **Extensions &gt; Plugins**.
+6.  Select **Extensions > Plugins**.
 7.  Click **Captcha - ReCaptcha**.
 8.  Enter the respective reCaptcha keys to the **Site key** and **Secret key** fields.
 9.  Set the **Status** of the plugin to `Enabled`, and click **Save & Close**.
-10. Click **System &gt; Global Configuration &gt; Users**.
+10. Click **System > Global Configuration > Users**.
 11. On the **User Options** tab, set the Captcha field to **Captcha - ReCaptcha**, and click **Save & Close**.
 
-To verify the change, go to API Portal home page, and click **Sign In &gt; Sign up**. The reCaptcha functionality is displayed on the sign up page.
+To verify the change, go to API Portal home page, and click **Sign In > Sign up**. The reCaptcha functionality is displayed on the sign up page.
 
 1.  ![API Portal sign up page, captcha is displayed](/Images/APIPortal/reCaptcahsigunp.png)
 
@@ -55,7 +53,7 @@ You can change the API Portal page users see when they first log in successfully
 
 To change this, follow these steps:
 
-1.  In the Joomla! Administrator Interface (JAI), click **Components &gt; API Portal &gt; Additional Settings**.
+1.  In the Joomla! Administrator Interface (JAI), click **Components > API Portal > Additional Settings**.
 2.  In the **Redirect after login** field, enter a menu link (for example, `/index.php?option=com_apiportal&view=home`) or a menu alias (for example, `/home`) to redirect the user to after successful login.
 3.  Click **Save**.
 
@@ -64,7 +62,7 @@ Enable ReCaptcha and user account locking
 
 You can customize API Portal user login to display a ReCaptcha and lock the user account after a number of failed login attempts:
 
-1.  In the JAI, click **Components &gt; API Portal &gt; Login Protection**.
+1.  In the JAI, click **Components > API Portal > Login Protection**.
 2.  Click **Yes** to enable login protection for API Portal.
 3.  Enter a value for the number of failed login attempts before a ReCaptcha is displayed.
 4.  Enter a value for the number of failed login attempts before the user account is locked.
@@ -84,12 +82,12 @@ You can add a customized message to the API Portal login page. You can use this 
 
 To enable this feature follow these steps:
 
-1.  In the JAI, click **Extensions &gt; Modules**.
+1.  In the JAI, click **Extensions > Modules**.
 2.  Click **New** to create a new module.
 3.  From the list of module types click **Custom**.
 4.  Enter a title for the message.
 5.  Use the text editor to enter the text for the message.
-6.  Select **Purity\_iii** &gt; **login-message-consent** from the **Position** list.
+6.  Select **Purity\_iii** > **login-message-consent** from the **Position** list.
 7.  Click **Save &** **Close**.
 8.  Go to the API Portal Sign In page, refresh the page, and verify that the banner is shown.
 
@@ -100,10 +98,10 @@ To ensure compliance with security polices, you can enforce password policies by
 
 To disable the **Enable password expiry** and **Days before passwords expire** settings, follow these steps in API Manager:
 
-1.  Click **Settings &gt; API Manager settings.**
+1.  Click **Settings > API Manager settings.**
 2.  Disable **Enable password expiry** and **Days before passwords expire** fields.
 
-{{&lt; alert title="Note" color="primary" &gt;}} If you disable **Enable password expiry**, which forces users to change password at first login, and a new user logs in after that, then this user will not be asked to change password if you decide to enable this setting again.{{&lt; /alert &gt;}}
+{{< alert title="Note" color="primary" >}} If you disable **Enable password expiry**, which forces users to change password at first login, and a new user logs in after that, then this user will not be asked to change password if you decide to enable this setting again.{{< /alert >}}
 
 # Customize applications
 
@@ -122,7 +120,7 @@ Customize application settings
 
 To change the settings:
 
-1.  In to the Joomla! Administrator Interface (JAI), click **Menus &gt; Main Menu**.
+1.  In to the Joomla! Administrator Interface (JAI), click **Menus > Main Menu**.
 2.  Click **Applications**.
 3.  Click the **Applications** tab.
 4.  ![](/Images/APIPortal/jai_customize_apps.png)
@@ -137,8 +135,8 @@ You can hide the list of users when sharing an application in API Portal. When t
 To change the settings:
 
 1.  Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal_host>/administrator`).
-2.  Click **Components &gt; Main Menu**.
-3.  Click **API Portal &gt; Additional Settings**.
+2.  Click **Components > Main Menu**.
+3.  Click **API Portal > Additional Settings**.
 4.  In the **Enable user listing** field, click **No** to hide the user listing, or click **Yes** to show it. The default is to hide the user listing.
 
 When the **Enable user listing** setting is set to **Yes**, an application developer can see the details (user name and email) of all other users that an application is shared with, and to share the application with another user they can select the user from a list of all users in the organization.
@@ -156,7 +154,7 @@ Override the name of the company
 
 You can display the name of your company in the API Portal standard footer.
 
-1.  In the Joomla! Administrator Interface (JAI), click **Extensions &gt; Languages &gt; Overrides**.
+1.  In the Joomla! Administrator Interface (JAI), click **Extensions > Languages > Overrides**.
 2.  Search for the `COM_APIPORTAL_FOOTER_COMPANY` constant and click to edit it.
 3.  In the **Text** field, replace `Axway` with the name of your company.
 4.  Click **Save**.
@@ -166,7 +164,7 @@ Add rich text to the standard footer
 
 You can customize your company's footer by adding more text to it.
 
-1.  In the JAI, click **Extensions &gt; Modules**.
+1.  In the JAI, click **Extensions > Modules**.
 2.  Click **New** to create a new module.
 3.  From the list of module types click **Custom**.
 4.  On the right sidebar, select 'Footer\[footer\]' from the **Position list**, and select 'Hide' on the **Show title** option.
@@ -190,7 +188,7 @@ In the case of multiple API Managers connected to API Portal:
 -   The **View Metrics** links in the API Catalog and Applications pages are hidden for items where the corresponding API Manager has monitoring disabled, and visible otherwise.
 -   The **Usage** tabs in the View Application and API pages are hidden for items where the corresponding API Manager has monitoring disabled, and visible otherwise.
 
-{{&lt; alert title="Note" color="primary" &gt;}}In the API Portal home page the **Manage and analyze** banner is visible regardless of whether monitoring is enabled or disabled in the connected API Manager. If monitoring is disabled, the Monitoring page will be empty. {{&lt; /alert &gt;}}
+{{< alert title="Note" color="primary" >}}In the API Portal home page the **Manage and analyze** banner is visible regardless of whether monitoring is enabled or disabled in the connected API Manager. If monitoring is disabled, the Monitoring page will be empty. {{< /alert >}}
 
 # Add a customized privacy policy
 
@@ -200,26 +198,26 @@ When you install API Portal, a default privacy policy article is automatically c
 
 API Portal also creates a privacy policy system group and a privacy policy category to enable the privacy policy feature.
 
-{{&lt; alert title="Caution" color="warning" &gt;}}You must not edit or delete the default privacy policy article, group, or category. {{&lt; /alert &gt;}}
+{{< alert title="Caution" color="warning" >}}You must not edit or delete the default privacy policy article, group, or category. {{< /alert >}}
 
 Create a new privacy policy
 ---------------------------
 
 You must create your customized privacy policy before enabling it in API Portal. Follow these steps in the Joomla! Administrator Interface (JAI):
 
-1.  Click **Content &gt; Articles &gt; New**
+1.  Click **Content > Articles > New**
 2.  Enter a meaningful name for your policy, and the text of the privacy policy.
 3.  Select `Privacy Policy` from the **Category** list.
 4.  Click **Save and Close.**
 
-{{&lt; alert title="Caution" color="warning" &gt;}}To meet GDPR compliance regulations, JAI does not allow you to edit a privacy policy. To update a policy you must create a new article on the privacy policy category.{{&lt; /alert &gt;}}
+{{< alert title="Caution" color="warning" >}}To meet GDPR compliance regulations, JAI does not allow you to edit a privacy policy. To update a policy you must create a new article on the privacy policy category.{{< /alert >}}
 
 Enable your new privacy policy
 ------------------------------
 
 Enable a policy article:
 
-1.  Click **Components &gt; API Portal &gt; Additional settings** and select the desired policy from the list in the **Privacy Policy** field.
+1.  Click **Components > API Portal > Additional settings** and select the desired policy from the list in the **Privacy Policy** field.
 2.  Click **Save**.
 
 This will display a dialog asking to new users to read and agree with the policy on sign up.

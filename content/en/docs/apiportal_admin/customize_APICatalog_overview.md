@@ -5,7 +5,7 @@ You can customize how APIs are displayed in the API Catalog view of API Portal, 
 To change the API Catalog settings:
 
 1. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal_host>/administrator`).
-1. Click **Menus &gt; Main Menu**.
+1. Click **Menus > Main Menu**.
 1. Click **APIs**.
 1. Click the **API Catalog** tab.
    ![Customize API catalog](/Images/APIPortal/jai_customize_api_catalog.png)
@@ -17,14 +17,14 @@ You can customize API Portal to show summaries instead of descriptions for APIs 
 
 To change the settings:
 
-1. In the Joomla! Administrator Interface (JAI), click **Components &gt; API Portal &gt; Additional Settings**.
+1. In the Joomla! Administrator Interface (JAI), click **Components > API Portal > Additional Settings**.
 2. In the **API Information Source** field, select `Description` or `Summary`.
 3. Click **Save**.
 
 ## Customize page title or summary
 You can customize the API Catalog page title, the summary text, or both.
 
-1. In JAI, click **Menus &gt; Main Menu**.
+1. In JAI, click **Menus > Main Menu**.
 2. Select **APIs**, and go to the **Page Display** tab.
 3. In **Masthead Title**, enter the new page title. If you leave this empty, the default title is used.
 4. In **Masthead Slogan**, enter the new summary. If you leave this empty, the default text is used.
@@ -38,15 +38,15 @@ For more details on adding tags to APIs, see the [API Manager User Guide](/bundl
 To create a dedicated API Catalog for a subset of tagged APIs, do the following:
 
 1. Log in to Joomla! Administrator Interface (JAI).
-2. Click **Menus &gt; Main Menu &gt; Add New Menu Item**.
-3. Enter a menu title for the new API Catalog.
-4. In **Menu Item Type**, click **Select &gt; API Portal &gt; API Catalog Page**.
-5. Set **Access** to the level you want, and ensure that **Status** is set to `Published`.
-6. In **Ordering**, select where in the main menu the new API Catalog appears. The menu item is placed after the item you select here.
-7. {{&lt; alert title="Tip" color="primary" &gt;}}To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.{{&lt; /alert &gt;}}
-8. On the **API Catalog** tab, in the **Only list APIs with tag**, enter the tags to include in this API Catalog.
-9. On the **Page Display** tab, change the page title and summary text if you want. For more details, see [Change the page title or summary](customize_APICatalog_view.htm#Change).
-10. Click **Save & Close**.
+1. Click **Menus > Main Menu > Add New Menu Item**.
+1. Enter a menu title for the new API Catalog.
+1. In **Menu Item Type**, click **Select > API Portal > API Catalog Page**.
+1. Set **Access** to the level you want, and ensure that **Status** is set to `Published`.
+1. In **Ordering**, select where in the main menu the new API Catalog appears. The menu item is placed after the item you select here.
+  To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.
+1. On the **API Catalog** tab, in the **Only list APIs with tag**, enter the tags to include in this API Catalog.
+1. On the **Page Display** tab, change the page title and summary text if you want. For more details, see [Change the page title or summary](customize_APICatalog_view.htm#Change).
+1.. Click **Save & Close**.
 
 Your themed API Catalog is now ready, and you can see it in your API Portal.
 

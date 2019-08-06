@@ -1,4 +1,4 @@
-{"title":"User groups mapping","linkTitle":"User groups mapping","weight":"21","date":"2019-07-30","description":"As an API Portal administrator you can map user roles from API Manager to Joomla! Administrator Interface (JAI) user groups (Roles), and provide these user groups with limited or full access to API Portal features. This allows for API Manager users to create contents, like for example, articles, categories, and menu items in JAI."} ﻿
+{"title":"User groups mapping","linkTitle":"User groups mapping","weight":"21","date":"2019-07-30","description":""}
 
 As an API Portal administrator you can map user roles from API Manager to Joomla! Administrator Interface (JAI) user groups (Roles), and provide these user groups with limited or full access to API Portal features. This allows for API Manager users to create contents, like for example, articles, categories, and menu items in JAI.
 
@@ -13,14 +13,14 @@ Joomla! provides a powerful level of access control and user groups management. 
 
 The mapping feature allows to give only view permission to a user group over the content produced by a component (for example, `com_content, com_menu, or com_apiportal`), and permissions for all user actions on the same components to another user group. In combination, API Portal user groups mapping and Joomla! give almost unlimited options for API Manager users to manage contents, menu items, and the look and feel of the API Portal.
 
-{{&lt; alert title="Caution" color="warning" &gt;}}The combined use of API Portal user groups mapping, the built-in Joomla! Access Control List (ACL), and the user groups feature require advanced knowledge and experience with Joomla!. Incorrect configuration may result in API Portal malfunctioning. {{&lt; /alert &gt;}}
+{{< alert title="" color="warning" >}}The combined use of API Portal user groups mapping, the built-in Joomla! Access Control List (ACL), and the user groups feature require advanced knowledge and experience with Joomla!. Incorrect configuration may result in API Portal malfunctioning. {{< /alert >}}
 
 For more details about Joomla! ACL and User Group management, see Joomla! official documentation.
 
 User groups mapping table
 -------------------------
 
-This section describes the user groups mapping table, available from **Components** &gt; **API Portal** &gt; **User Groups Mapping.**
+This section describes the user groups mapping table, available from **Components** > **API Portal** > **User Groups Mapping.**
 
 The table consists of five columns: **Roles**, **Org.Admin**, **Developer**, **Organizations**, **Email Pattern**.
 
