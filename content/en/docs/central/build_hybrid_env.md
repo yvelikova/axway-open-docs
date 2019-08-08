@@ -6,7 +6,7 @@
 
 ## Before you start
 
-- Read [AMPLIFY Central hybrid environments overview](hybrid_overview.htm).
+- Read [AMPLIFY Central mesh governance overview](hybrid_overview.htm).
 - You will need a basic knowledge of Amazon Web Services (AWS), Amazon EC2 instances, and associated tools.
 - You will need to be familiar with Kubernetes and Helm, including running Helm, kubectl, and kops commands.
 

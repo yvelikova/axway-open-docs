@@ -2,12 +2,12 @@
 
 *Estimated reading time: 8 minutes*
 
-{{< alert title="Note" color="primary" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
+{{< alert title="Note" color="secondary" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
 
 Before you start
 ----------------
 
-- Read [AMPLIFY Central hybrid environments overview](hybrid_overview.htm).
+- Read [AMPLIFY Central mesh governance overview](hybrid_overview.htm).
 - You will need a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](build_hybrid_env.htm).
 - You will need a basic understanding of OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523)).
 - You will need to be familiar with Kubernetes and Helm, including running Helm and kubectl commands.
