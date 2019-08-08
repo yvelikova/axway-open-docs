@@ -1,4 +1,6 @@
-{"title":"Customize API Portal look and feel","linkTitle":"Customize API Portal look and feel","weight":"1","date":"2019-07-30","description":"This section provides the basic information you need to get started with customizing your branded API Portal"}
+{"title":"Customize API Portal look and feel","linkTitle":"Customize API Portal look and feel","weight":"1","date":"2019-07-30","description":""}
+
+This section provides the basic information you need to get started with customizing your branded API Portal.
 
 For internally-facing API deployments, you can deploy API Portal "as is" using the out-of-the-box Axway branding. This type of deployment requires no customization.
 
@@ -8,9 +10,9 @@ For external-facing API deployments, you may want to customize API Portal to pr
 
 Customization can be performed at three levels:
 
--   **Customization through configuration**: Use the Joomla! Admin Interface (JAI) (https://&lt;API Portal host&gt;/administrator) to change CSS stylesheets, templates, and layouts. These types of customizations are can be upgraded and retained when you move to new version. The customization does not modify the API Portal source code and is supported by Axway.
+-   **Customization through configuration**: Use the Joomla! Admin Interface (JAI) (https://<API Portal host>/administrator) to change CSS stylesheets, templates, and layouts. These types of customizations are can be upgraded and retained when you move to new version. The customization does not modify the API Portal source code and is supported by Axway.
 -   **Customization through code**: API Portal is developed using the PHP scripting language and the source code is provided. This is how Joomla! applications are deployed. You can modify the PHP source code to customize API Portal, such as to change the functionality of pages and to extend by adding new pages.
--   {{&lt; alert title="Caution" color="warning" &gt;}} {{&lt; /alert &gt;}}
+
     <div class="indentTableNested">
 
     -   The customizations are lost when you upgrade. The source code is subject to frequent changes without notice; therefore, you must reintegrate customizations into the new API Portal code to avoid restoring a deprecated code along with the customizations.
@@ -20,7 +22,7 @@ Customization can be performed at three levels:
     </div>
 
 -   **Customization through the addition of Joomla! plug-ins**: The Joomla! CMS offers thousands of extensions that are available from their website. Axway is only responsible for the support to extensions that are delivered out of the box (EasyBlog and EasyDiscuss).
--   {{&lt; alert title="Caution" color="warning" &gt;}} If you submit a case to Axway Support and it is suspected that unsupported third-party extensions may be the root cause of the issue, you must reproduce the issue on a non-customized API Portal.{{&lt; /alert &gt;}}
+-   {{< alert title="" color="warning" >}} If you submit a case to Axway Support and it is suspected that unsupported third-party extensions may be the root cause of the issue, you must reproduce the issue on a non-customized API Portal.{{< /alert >}}
 
 ## Prerequisites
 
@@ -37,7 +39,7 @@ With ThemeMagic, you have an administrative interface for creating or modifying 
 
 ## Open ThemeMagic
 
-1.  Log in to the Joomla! Administrator Interface (JAI), and click **Extensions &gt; Templates**.
+1.  Log in to the Joomla! Administrator Interface (JAI), and click **Extensions > Templates**.
 2.  In Templates sidebar, select **Styles**, then select the style **Purity III - Default**.
 3.  ![Joomla user interface with Purity III selecting the styles](/Images/APIPortal/JoomlaThemeMagicStyles.png)
 
@@ -72,24 +74,22 @@ Theming variables are grouped into different levels:
 
 In addition, there are some other variables for fine-grain customization of the UI elements, if needed. Most of these variables are based on Basic Color variables.
 
-{{&lt; alert title="Note" color="primary" &gt;}}Variable names begin with the "@" character in Less language. In addition to variable values, you can also use Less expressions and functions to set the value of a theme variable.{{&lt; /alert &gt;}}
+{{< alert title="" color="primary" >}}Variable names begin with the "@" character in Less language. In addition to variable values, you can also use Less expressions and functions to set the value of a theme variable.{{< /alert >}}
 
 Use the new theme
 -----------------
 
-1.  In JAI, click **Extensions &gt; Templates**.
+1.  In JAI, click **Extensions > Templates**.
 2.  In the Templates sidebar, select **Styles**, then select the style **Purity III - Default**.
 3.  Select the **Theme** page, and select your new theme from the **Theme** drop-down menu:
 4.  ![API Portal sample screen on how to save a new theme in templates](/Images/APIPortal/portal_templates.png)
 
-5.  Click **Save**, then click **&lt;/&gt; Less to CSS**. This is the preferred option as it will only compile the theme you want to use.
+5.  Click **Save**, then click **</> Less to CSS**. This is the preferred option as it will only compile the theme you want to use.
 
 Configuration files
 -------------------
 
 API Portal includes files added to the Purity III template's folders and files that replace those belonging to the Purity III template. All paths are relative to the Purity III template's folder.
-
-{{&lt; alert title="Note" color="primary" &gt;}} {{&lt; /alert &gt;}}
 
 -   Before updating the Purity III template or T3 framework, back up the Purity III files API Portal replaces. After the update, restore or merge the backed up files.
 -   Before updating the API Portal plugin, if you have customized the Axway theme or any of the mentioned configuration files, back up the files to avoid losing your customizations. After the update, you may have to merge the backed up files.
@@ -115,15 +115,15 @@ This section describes how to change the API Portal site logo using the Joomla!
 
 ## Upload your image file
 
-1. In Joomla! Administrator Interface (JAI), click **Content &gt; Media**.
-2. Under **Media Folders**, click **com\_apiportal &gt; menu**.
+1. In Joomla! Administrator Interface (JAI), click **Content > Media**.
+2. Under **Media Folders**, click **com\_apiportal > menu**.
 3. Upload the image file you want to use, and select **Save**.
 
 ## Link the logo to your home page
 
 To configure the main menu to link your logo to the home page:
 
-1. In JAI, click **Menus &gt; Main Menu**. A list of menu items is displayed.
+1. In JAI, click **Menus > Main Menu**. A list of menu items is displayed.
 2. In the list of menu items, click **Home**. This is the first item where the logo is attached.
 3. Go to the **Link Type** tab, and in **Link Image**, click **Select**.
 4. In **Folder**, select the folder **com\_apiportal/menu**.
@@ -139,7 +139,7 @@ This section describes how you can customize a `404` page for your API Portal.
 
 Follow these steps create a new template for your new `404 `page.
 
-1. Log in to the Joomla! Administrator Interface (JAI), and click **Extensions &gt; Templates**.
+1. Log in to the Joomla! Administrator Interface (JAI), and click **Extensions > Templates**.
 2. Select **Templates** in the sidebar, and click the template **Purity\_III Details and Files**.
 3. Click **Copy Template**.
 4. Enter a name for the template and click **Copy Template**.
