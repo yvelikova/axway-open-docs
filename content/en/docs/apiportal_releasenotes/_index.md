@@ -1,12 +1,4 @@
-{"title":"API Portal 7.8 Release Notes","linkTitle":"API Portal 7.8 Release Notes","no_list":"true","date":"2019-08-08","description":""} ﻿
-
-- [Summary](#Summary)
-- [New features and enhancements](#New)
-- [Limitations of this release](#Limitati)
-- [Fixed issues](#Fixed)
-- [Known issues](#Known)
-- [Documentation](#Doc)
-- [Support services](#Support)
+{"title":"API Portal 7.8 Release Notes","linkTitle":"API Portal Release Notes","no_list":"true","date":"2019-08-08","description":""} ﻿
 
 Summary
 -------
@@ -108,7 +100,7 @@ To find all available documents for this product version:
 1. Go to <https://docs.axway.com/bundle>.
 1. In the left pane Filters list, select your product or product version.
 
-{{< alert title="" color="primary" >}}Customers with active support contracts need to log in to access restricted content.{{< /alert >}}
+Customers with active support contracts need to log in to access restricted content.
 
 The AMPLIFY API Management solution enables you to create, publish, promote, and manage Application Programming Interfaces (APIs) in a secure and scalable environment. For more information, see the .
 
