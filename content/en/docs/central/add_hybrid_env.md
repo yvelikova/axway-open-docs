@@ -2,12 +2,12 @@
 
 *Estimated reading time: 8 minutes*
 
-{{< alert title="Note" color="primary" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
+{{< alert title="Note" color="secondary" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
 
 Before you start
 ----------------
 
-- Read [AMPLIFY Central hybrid environments overview](hybrid_overview.htm).
+- Read [AMPLIFY Central mesh governance overview](hybrid_overview.htm).
 - You will need a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](build_hybrid_env.htm).
 - You will need a basic understanding of OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523)).
 - You will need to be familiar with Kubernetes and Helm, including running Helm and kubectl commands.
@@ -31,9 +31,9 @@ Log in to AMPLIFY Central UI as an administrator, and create a new environment f
 
 Watch the animation to learn how to do this in AMPLIFY Central UI.
 
-{{< alert title="Note" color="primary" >}} You must specify the public FQDN of the private cluster (in this case your private cloud Kubernetes cluster) in the **Host** field when defining your hybrid environment in the AMPLIFY Central UI. You must use the same FQDN in [Generate a key pair and secret for the domain edge gateway](#Generate). {{< /alert >}}
-
 ![Add environment to AMPLIFY Central](/Images/central/add_env_animation_cropped.gif)
+
+{{< alert title="Note" color="primary" >}} You must specify the public FQDN of the private cluster (in this case your private cloud Kubernetes cluster) in the **Host** field when defining your hybrid environment in the AMPLIFY Central UI. You must use the same FQDN in [Generate a key pair and secret for the domain edge gateway](#Generate). {{< /alert >}}
 
 Download the hybrid kit to your client system and unzip it to a unique directory. For example:
 
@@ -55,6 +55,7 @@ To expose an HTTPS endpoint of a service within your environment to external tra
     - The domain certificate must match the domain (FQDN) of your environment
     - The public key certificate must be PEM encoded and match the given private key
 2. Create the Istio namespace. This is the namespace where Istio will be deployed.
+
     Usage: `kubectl create namespace NAMESPACE_NAME`
     {{< alert title="Note" color="primary" >}}The default value of `NAMESPACE_NAME` is `istio-system` and this value is used later when the helm upgrade deployment steps are executed in [Deploy the service mesh and Axway mesh agents](#Deploy). {{< /alert >}}
     Example:
@@ -63,7 +64,9 @@ To expose an HTTPS endpoint of a service within your environment to external tra
     $ kubectl create namespace istio-system
     namespace/istio-system created
     ```
-3.  Create a Kubernetes TLS secret to hold the public certificate and private key, and deploy it into the Istio namespace.
+
+3. Create a Kubernetes TLS secret to hold the public certificate and private key, and deploy it into the Istio namespace.
+
     Usage: `kubectl create secret tls SECRET_NAME -n NAMESPACE_NAME --key /PATH/TO/KEY/FILE --cert /PATH/TO/CERT/FILE`
     {{< alert title="Note" color="primary" >}}`SECRET_NAME` must match the field `secretName` in the `istioOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit. The `secretName` in the Helm chart is generated from your domain name, for example, `kubernetes-cluster-example-certs` for the domain `kubernetes-cluster.example.com`.{{< /alert >}}
     Example:
@@ -97,17 +100,8 @@ $ mkdir sdacerts
 $ cd sdacerts/
 $ echo -n "changeme" > password
 $ openssl genrsa -des3 -out private_key.pem -passout file:password 2048
-```
-
-```
 Generating RSA private key...
-```
-
-```
 $ openssl rsa -pubout -in  private_key.pem -passin file:password -out public_key.der -outform der && base64 public_key.der > public_key
-```
-
-```
 writing RSA key
 ```
 
@@ -119,17 +113,8 @@ Use `openssl` to generate a public certificate and private key for the configura
 $ mkdir csacerts
 $ cd csacerts/
 $ openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
-```
-
-```
 ...
-```
-
-```
 $ openssl rsa -pubout -in private_key.pem -out public_key.der -outform der && base64 public_key.der > public_key
-```
-
-```
 writing RSA key
 ```
 
@@ -145,9 +130,6 @@ Example:
 
 ```
 $ kubectl create namespace apic-control
-```
-
-```
 namespace/apic-control created
 ```
 
@@ -168,27 +150,20 @@ Example for SDA:
 
 ```
 $ cd sdacerts/
-$ kubectl create secret generic sda-secrets --namespace apic-control 
---from-file=publicKey=public_key --from-file=privateKey=private_key.pem 
---from-file=password="password" -o yaml
+$ kubectl create secret generic sda-secrets --namespace apic-control --from-file=publicKey=public_key --from-file=privateKey=private_key.pem --from-file=password="password" -o yaml
 ```
 
 Example for CSA:
 
 ```
 $ cd csacerts/
-$ kubectl create secret generic csa-secrets --namespace apic-control 
---from-file=publicKey=public_key --from-file=privateKey=private_key.pem 
---from-literal=password="" -o yaml
+$ kubectl create secret generic csa-secrets --namespace apic-control --from-file=publicKey=public_key --from-file=privateKey=private_key.pem --from-literal=password="" -o yaml
 ```
 
 Verify that the secrets are deployed in the `apic-control` namespace:
 
 ```
 $ kubectl get secrets -n apic-control
-```
-
-```
 NAME                  TYPE                                  DATA   AGE
 csa-secrets           Opaque                                3      29s
 default-token-f26bp   kubernetes.io/service-account-token   3      4m
@@ -200,89 +175,96 @@ Deploy the service mesh and Axway mesh agents
 
 After you have created the key pairs and secrets, deploy the Axway proprietary service mesh into your environment:
 
-1.  To ensure that you have the latest Axway Helm charts, update your Helm repositories:
-2.  $ helm repo up
-        Hang tight while we grab the latest from your chart repositories...
-        ...Skip local chart repository
-        ...Successfully got an update from the "axway" chart repository
-        Update Complete. ⎈ Happy Helming!⎈
+1. To ensure that you have the latest Axway Helm charts, update your Helm repositories:
 
-3.  Change to the directory where you unzipped the hybrid kit:
-4.  ```
-    $ cd e4fd7216693f50360169492633ab0122/
+   ```
+   $ helm repo up
+   Hang tight while we grab the latest from your chart repositories...
+   ...Skip local chart repository
+   ...Successfully got an update from the "axway" chart repository
+   Update Complete. ⎈ Happy Helming!⎈
+   ```
+
+2. Change to the directory where you unzipped the hybrid kit:
+
+   ```
+   $ cd e4fd7216693f50360169492633ab0122/
+   ```
+
+3. Deploy Istio. This step can take several minutes to complete.
+
+    Usage: `helm upgrade --install --namespace NAMESPACE_NAME RELEASE CHART`
+
+    Example 1: Install istio-init
+   
+    ```
+      $ helm upgrade --install --namespace istio-system istio axway/istio-init
+      Release "istio-init" does not exist. Installing it now.
+      NAME:   istio-init
+      LAST DEPLOYED: Tue Mar  5 08:44:59 2019
+      NAMESPACE: istio-system
+      STATUS: DEPLOYED
+
+      RESOURCES:
+      ==> v1/ClusterRole
+      NAME                     AGE
+      istio-init-istio-system  0s
+
+      ==> v1/ClusterRoleBinding
+      NAME                                        AGE
+      istio-init-admin-role-binding-istio-system  0s
+
+      ==> v1/ConfigMap
+      NAME          DATA  AGE
+      istio-crd-10  1     0s
+      istio-crd-11  1     0s
+
+      ==> v1/Job
+      NAME               COMPLETIONS  DURATION  AGE
+      istio-init-crd-10  0/1          0s        0s
+      istio-init-crd-11  0/1          0s        0s
+
+      ==> v1/Pod(related)
+      NAME                     READY  STATUS             RESTARTS  AGE
+      istio-init-crd-10-bxrv8  0/1    ContainerCreating  0         0s
+      istio-init-crd-11-d49db  0/1    ContainerCreating  0         0s
+
+      ==> v1/ServiceAccount
+      NAME                        SECRETS  AGE
+      istio-init-service-account  1        0s
     ```
 
-5.  Deploy Istio. This step can take several minutes to complete.
-6.  Usage: `helm upgrade --install --namespace NAMESPACE_NAME RELEASE CHART`
-7.  Example 1: Install istio-init
-8.  ```
-    $ helm upgrade --install --namespace istio-system istio axway/istio-init
-    ```
+    Usage: `helm upgrade --install --namespace NAMESPACE_NAME RELEASE CHART -f /PATH/TO/OVERRIDE/VALUES`
+
+    Example 2: Install istio
 
     ```
-    Release "istio-init" does not exist. Installing it now.
-    NAME:   istio-init
-    LAST DEPLOYED: Tue Mar  5 08:44:59 2019
-    NAMESPACE: istio-system
-    STATUS: DEPLOYED
-
-    RESOURCES:
-    ==> v1/ClusterRole
-    NAME                     AGE
-    istio-init-istio-system  0s
-
-    ==> v1/ClusterRoleBinding
-    NAME                                        AGE
-    istio-init-admin-role-binding-istio-system  0s
-
-    ==> v1/ConfigMap
-    NAME          DATA  AGE
-    istio-crd-10  1     0s
-    istio-crd-11  1     0s
-
-    ==> v1/Job
-    NAME               COMPLETIONS  DURATION  AGE
-    istio-init-crd-10  0/1          0s        0s
-    istio-init-crd-11  0/1          0s        0s
-
-    ==> v1/Pod(related)
-    NAME                     READY  STATUS             RESTARTS  AGE
-    istio-init-crd-10-bxrv8  0/1    ContainerCreating  0         0s
-    istio-init-crd-11-d49db  0/1    ContainerCreating  0         0s
-
-    ==> v1/ServiceAccount
-    NAME                        SECRETS  AGE
-    istio-init-service-account  1        0s
+      $ helm upgrade --install --namespace istio-system istio axway/istio -f ./istioOverride.yaml
+      Release "istio" does not exist. Installing it now.
+      NAME:   istio
+      LAST DEPLOYED: Tue Mar  5 08:44:59 2019
+      NAMESPACE: istio-system
+      STATUS: DEPLOYED 
     ```
 
-9.  Usage: `helm upgrade --install --namespace NAMESPACE_NAME RELEASE CHART -f /PATH/TO/OVERRIDE/VALUES`
-10. Example 2: Install istio
-11. ```
-    $ helm upgrade --install --namespace istio-system istio axway/istio -f ./istioOverride.yaml
-    ```
+    This example uses the `istio` Helm chart from the `axway` Helm repository, with override values from the `istioOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit.
+
+4. Verify that Istio is deployed successfully:
 
     ```
-    Release "istio" does not exist. Installing it now.
-    NAME:   istio
-    LAST DEPLOYED: Tue Mar  5 08:44:59 2019
-    NAMESPACE: istio-system
-    STATUS: DEPLOYED 
+    $ kubectl get services -n istio-system
     ```
 
-12. This example uses the `istio` Helm chart from the `axway` Helm repository, with override values from the `istioOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit.
-13. Verify that Istio is deployed successfully:
-14. $ kubectl get services -n istio-system
+    The output of this command should list an domain edge gateway and a number of Istio services.
 
-15. The output of this command should list an domain edge gateway and a number of Istio services.
-16. Deploy the Axway mesh agents. This step can take several minutes to complete.
-17. Usage: `helm upgrade --install --namespace NAMESPACE_NAME RELEASE CHART -f /PATH/TO/OVERRIDE/VALUES [OPTIONS]`
-18. Example:
-19. ```
-    $ helm upgrade --install --namespace apic-control apic-hybrid axway/apicentral-hybrid -f ./hybridOverride.yaml 
-        --set observer.enabled=true --set observer.filebeat.sslVerification=none
-    ```
+5. Deploy the Axway mesh agents. This step can take several minutes to complete.
+
+    Usage: `helm upgrade --install --namespace NAMESPACE_NAME RELEASE CHART -f /PATH/TO/OVERRIDE/VALUES [OPTIONS]`
+
+    Example:
 
     ```
+    $ helm upgrade --install --namespace apic-control apic-hybrid axway/apicentral-hybrid -f ./hybridOverride.yaml --set observer.enabled=true --set observer.filebeat.sslVerification=none
     Release "apic-hybrid" does not exist. Installing it now.
     NAME:   apic-hybrid
     LAST DEPLOYED: Tue Mar  5 10:57:27 2019
@@ -290,51 +272,56 @@ After you have created the key pairs and secrets, deploy the Axway proprietary s
     STATUS: DEPLOYED
     ```
 
-20. {{< alert title="Note" color="primary" >}}The `observer.enabled` and `observer.filebeat.sslVerification` options are required to enable collection of API usage and API traffic metrics from your environment. {{< /alert >}}
-21. Verify that the mesh agents are deployed in the `apic-control` namespace:
-22. ```
+    {{< alert title="Note" color="primary" >}}The `observer.enabled` and `observer.filebeat.sslVerification` options are required to enable collection of API usage and API traffic metrics from your environment. {{< /alert >}}
+
+6. Verify that the mesh agents are deployed in the `apic-control` namespace:
+
+    ```
     $ kubectl get services -n apic-control
     ```
 
-23. The output of this command should list the mesh agent services.
-24. Verify that the list demo service is deployed in the `apic-demo` namespace:
-25. ```
+    The output of this command should list the mesh agent services.
+7. Verify that the list demo service is deployed in the `apic-demo` namespace:
+   
+    ```
     $ kubectl get services -n apic-demo
     ```
 
-26. The output of this command should list the demo list service.
-27. Verify that your environment is now connected in AMPLIFY Central UI:
-28. ![Connected environment in AMPLIFY Central](/Images/hybrid__env_connected.png)
+    The output of this command should list the demo list service.
+
+8. Verify that your environment is now connected in AMPLIFY Central UI:
+
+    ![Connected environment in AMPLIFY Central](/Images/central/hybrid__env_connected.png)
 
 Create and test an API proxy for the demo service
 -------------------------------------------------
 
 The list demo service is now deployed in your hybrid environment. You can create an API proxy for the API exposed by the demo service, in much the same way as you would for any other API. Watch the short animation to learn how.
 
-![Create a proxy for API exposed by microservice](/Images/hybrid_env_proxy_demo.gif)
+![Create a proxy for API exposed by microservice](/Images/central/hybrid_env_proxy_demo.gif)
 
 You can test the API proxy in AMPLIFY Central UI or using a REST client. The following example uses `curl` to send a `GET` request to the `/list` endpoint:
 
-1.  Example:
-2.  ```
-    $ curl -is -X GET 'http://kubernetes-cluster.example.com:8080/listapi/list'
-    HTTP/1.1 200 OK
-    server: envoy
-    request-id: c14a76d6-5ec6-4831-9650-e8a11258edbb
-    start-time: 1552319365217
-    content-type: application/json; charset=utf-8
-    response-time: 2
-    content-md5: 8e9f6888c977fa5494181d57aeb9d242
-    content-length: 152
-    etag: W/"98-umYiZYKr43H9eDmrYoXeehz5zHw"
-    vary: Accept-Encoding
-    date: Mon, 11 Mar 2019 15:49:24 GMT
-    x-envoy-upstream-service-time: 5
+Example:
+```
+$ curl -is -X GET 'http://kubernetes-cluster.example.com:8080/listapi/list'
+HTTP/1.1 200 OK
+server: envoy
+request-id: c14a76d6-5ec6-4831-9650-e8a11258edbb
+start-time: 1552319365217
+content-type: application/json; charset=utf-8
+response-time: 2
+content-md5: 8e9f6888c977fa5494181d57aeb9d242
+content-length: 152
+etag: W/"98-umYiZYKr43H9eDmrYoXeehz5zHw"
+vary: Accept-Encoding
+date: Mon, 11 Mar 2019 15:49:24 GMT
+x-envoy-upstream-service-time: 5
 
-    [{"id":1,"name":"dog","price":"20","store":"pet"},
-        {"id":2,"name":"cat","price":"30","store":"pet"},
-        {"id":3,"name":"monkey","price":"600","store":"zoo"}]
-    ```
+[{"id":1,"name":"dog","price":"20","store":"pet"},
+  {"id":2,"name":"cat","price":"30","store":"pet"},
+  {"id":3,"name":"monkey","price":"600","store":"zoo"}]
+```
 
 Review
 ------
