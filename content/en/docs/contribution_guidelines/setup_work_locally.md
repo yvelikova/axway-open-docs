@@ -19,7 +19,7 @@ If you are a maintainer of this documentation site, or a contributor who will be
 Clone the git repo. Don't forget to use `--recurse-submodules` or you won't pull down some of the code you need to generate a working site.
 
 ```
-git clone --recurse-submodules --depth 1 https://github.com/alexearnshaw/axway-open-docs.git
+git clone --recurse-submodules --depth 1 https://github.com/Axway/axway-open-docs.git
 ```
 
 ## Install Hugo
