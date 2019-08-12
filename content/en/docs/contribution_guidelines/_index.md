@@ -23,7 +23,7 @@ When you submit a PR, our team is notified and will respond as quickly as we can
 
 We'll contact you if we need further information regards to your PR.
 
-{{< alert title="" >}}
+{{< alert title="Note" >}}
 GitHub will send you an email notification for every update in your PR or issue.
 {{< /alert >}}
 
@@ -52,7 +52,32 @@ To create an issue just click **Create documentation issue** on the upper right 
 
 ## Edit with Netlify CMS
 
-Not yet available.
+Use the Netlify CMS editor-friendly user interface to easily edit the docs and get a real-time preview.
+
+{{< alert title="Note" >}}
+Edition with Netlify CMS requires a GitHub account.
+{{< /alert >}}
+
+To edit a page in Netlify CMS:
+
+* Click **Edit on Netlify CMS** on the upper right corner of the page.
+* Sign in to Netlify CMS using your GitHub account.
+
+    ![Login with GitHub](/Images/docbook/images/contributing/netlifycms_loginwithGitHub.png)
+* If this is the first time that you use this option, fork the repository.
+    ![Fork repository](/Images/docbook/images/contributing/netlifycms_forkrepo.png)
+* On the Netlify landing page, locate the page you want to make changes and click to edit it.
+* Make the updates and click **Save**.
+* You can preview the changes on the right side preview editor.
+* When you finish all the updates, change the status of the content to 'In review'.
+
+    ![Set status to Review](/Images/docbook/images/contributing/netlify_setstatustoreview.png)
+* The Content team will receive an automatic pull request for your contribution and will review it.
+
+{{< alert title="Warning" color="warning">}}
+Do not make any more changes to the page after changing its status to 'In review', as this will close the pull request automatically created for it.
+{{< /alert >}}
+
 
 ## Additional resources
 
