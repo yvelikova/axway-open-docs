@@ -2,3 +2,6 @@
 # Post (blog, articles etc.)
 [post_edit_cms]
 other = "Edit on Netlify CMS"
+
+[contribution_guidelines]
+other = "Contribution Guidelines"
