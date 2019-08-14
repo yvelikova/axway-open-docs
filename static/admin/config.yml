@@ -18,6 +18,24 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
+  - name: "apipadmin"
+    label: "API Portal administration page"
+    folder: "content/en/docs/apiportal_admin"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}     
+    - name: "central"
+    label: "AMPLIFY Central page"
+    folder: "content/en/docs/central"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"} 
   - name: "contribdoc"
     label: "Contribution guidelines page"
     folder: "content/en/docs/contribution_guidelines"
