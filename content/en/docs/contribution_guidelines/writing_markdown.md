@@ -24,6 +24,40 @@ The Blackfriday Markdown parser has some known issues with nested lists. To avoi
 * Always use 4 spaces to indent nested lists. Ensure that tabs are set to 4 spaces in your editor.
 * Do not specify a language for fenced code blocks within a nested list.
 
+### Code samples
+
+* Use 3 or more backticks to open and close a code sample block. You can specify a language after the first set of backticks to easily apply syntax highlighting.
+
+    For example:
+
+        ```md
+        # This is a H1
+
+        This is some text
+
+        ## This is a H2
+
+        This is more text
+        ```
+
+    Renders as:
+
+    ```md
+    # This is a H1
+
+    This is some text
+
+    ## This is a H2
+
+    This is more text
+    ```
+
+* Use single backticks to apply code or monospace formatting to `inline` text.
+
+{{% alert title="Caution" color="warning" %}}
+The Zoomin plugin used when publishing docs to production <https://docs.axway.com> is very sensitive to `<`, `>`, and `\` characters. Ensure that these characters are always enclosed in backticks to have them processed as code instead of as HTML tags.
+{{% /alert %}}
+
 ## Markdown extensions
 
  Hugo and Docsy provide some useful extensions to standard Markdown that you can use to simplify editing and formatting.
