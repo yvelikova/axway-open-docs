@@ -1,4 +1,9 @@
-{"title":"API Portal 7.8 Release Notes","linkTitle":"API Portal Release Notes","no_list":"true","date":"2019-08-08","description":""} ﻿
+---
+title:API Portal 7.8 Release Notes
+linkTitle:API Portal Release Notes
+no_list:true
+date:2019-08-08
+---
 
 Summary
 -------
