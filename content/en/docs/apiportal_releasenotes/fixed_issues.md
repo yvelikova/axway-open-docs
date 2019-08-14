@@ -1,8 +1,8 @@
 ---
-title:Fixed issues
-linkTitle:Fixed issues
-weight:5
-date:2019-08-08
+title: Fixed issues
+linkTitle: Fixed issues
+weight: 5
+date: 2019-08-08
 ---
 
 ### Fixed security vulnerabilities
