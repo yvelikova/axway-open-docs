@@ -22,6 +22,8 @@
 {{ $baseURL := (.Site.BaseURL) }}
 {{ $cmsURL := printf "%s/admin" $baseURL }}
 <a href="{{ $cmsURL }}" target="_blank"><i class="fas fa-columns fa-fw"></i> {{ T "post_edit_cms" }}</a>
+{{ $contributionURL := printf "%s/docs/contribution_guidelines/" $baseURL }}
+<a href="{{ $contributionURL }}" target="_blank"><i class="fas fa-tasks fa-fw"></i> {{ T "contribution_guidelines" }}</a>
 </div>
 {{ end }}
 {{ end }}
