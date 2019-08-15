@@ -1,4 +1,9 @@
-{"title":"Localize API Portal","linkTitle":"Localize API Portal","weight":"11","date":"2019-07-30","description":""}
+---
+title: Localize API Portal
+linkTitle: Localize API Portal
+weight: 11
+date: 2019-07-30
+---
 You can localize the API Portal user interface to use another language or time and date formats than the default ones.
 
 Change API Portal language

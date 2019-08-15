@@ -1,4 +1,9 @@
-{"title":"Troubleshoot API Portal","linkTitle":"Troubleshoot API Portal","weight":"23","date":"2019-07-30","description":""} 
+---
+title: Troubleshoot API Portal
+linkTitle: Troubleshoot API Portal
+weight: 23
+date: 2019-07-30
+---
 
 This section outlines the specifics of the solution troubleshooting steps, as well as some general troubleshooting approach recommendations.
 

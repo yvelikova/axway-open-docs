@@ -1,4 +1,9 @@
-{"title":"Additional customizations","linkTitle":"Additional customizations","weight":"7","date":"2019-07-30","description":""}
+---
+title: Additional customizations
+linkTitle: Additional customizations
+weight: 7
+date: 2019-07-30
+---
 
 This section describes how you can customize other features of your API Portal.
 

@@ -1,4 +1,9 @@
-{"title":"Customize API Catalog","linkTitle":"Customize API Catalog","weight":"3","date":"2019-07-30","description":""}
+---
+title: Customize API Catalog
+linkTitle: Customize API Catalog
+weight: 3
+date: 2019-07-30
+---
 
 ## Customize API Catalog
 

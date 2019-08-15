@@ -1,4 +1,10 @@
-{"title":"Get started with AMPLIFY Central","linkTitle":"Get started","weight":"2","date":"2019-07-30","description":"Learn how to register your first API in AMPLIFY Central."}
+---
+title: Get started with AMPLIFY Central
+linkTitle: Get started
+weight: 2
+date: 2019-07-30
+description: Learn how to register your first API in AMPLIFY Central.
+---
 
 *Estimated reading time: 2 minutes*
 

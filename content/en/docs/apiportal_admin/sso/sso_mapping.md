@@ -1,4 +1,9 @@
-{"title":"IdP Mapping syntax","linkTitle":"IdP Mapping syntax","weight":"19","date":"2019-07-30","description":""}
+---
+title: IdP Mapping syntax
+linkTitle: IdP Mapping syntax
+weight: 19
+date: 2019-07-30
+---
 
 The IdP sends information about the SSO user to the SP (in the case of API Portal, this is API Manager) using attributes. These attributes contain information about the user, such as the user's name, department, organization, email address, phone number, and so on.
 

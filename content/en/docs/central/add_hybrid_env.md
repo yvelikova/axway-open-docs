@@ -1,4 +1,10 @@
-{"title":"Add your hybrid environment to AMPLIFY Central","linkTitle":"Add your hybrid environment to AMPLIFY Central","weight":"9","date":"2019-07-30","description":"Learn how to add your private cloud hybrid environment to AMPLIFY Central, so that you can manage your microservices, and any related APIs they expose."}
+---
+title: Add your hybrid environment to AMPLIFY Central
+linkTitle: Add your hybrid environment to AMPLIFY Central
+weight: 9
+date: 2019-07-30
+description: Learn how to add your private cloud hybrid environment to AMPLIFY Central, so that you can manage your microservices, and any related APIs they expose.
+---
 
 *Estimated reading time: 8 minutes*
 

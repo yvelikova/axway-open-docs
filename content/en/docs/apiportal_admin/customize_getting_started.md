@@ -1,4 +1,9 @@
-{"title":"Customize API Portal look and feel","linkTitle":"Customize API Portal look and feel","weight":"1","date":"2019-07-30","description":"Get started with customizing your branded API Portal."}
+---
+title: Customize API Portal look and feel
+linkTitle: Customize API Portal look and feel
+weight: 1
+date: 2019-07-30
+---
 
 For internally-facing API deployments, you can deploy API Portal "as is" using the out-of-the-box Axway branding. This type of deployment requires no customization.
 

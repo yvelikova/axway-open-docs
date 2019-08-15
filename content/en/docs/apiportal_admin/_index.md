@@ -1,4 +1,9 @@
-{"title":"Administer API Portal","linkTitle":"Administer API Portal","no_list":"true","date":"2019-07-30","description":""}
+---
+title: Administer API Portal
+linkTitle: Administer API Portal
+no_list: true
+date: 2019-07-30
+---
 
 Axway API Portal is a self-service developer portal layered on both API Manager and API Gateway.
 
