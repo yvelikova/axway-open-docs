@@ -1,193 +1,68 @@
-{"title":"Deploy API Portal for high availability","linkTitle":"Deploy API Portal for high availability","date":"2019-08-09","description":"You can configure API Portal for high availability (HA) deployment to ensure that there is no single of point of failure in the system. This helps to eliminate any potential system downtime in production environments."} ﻿
+{"title":"Deploy API Portal for high availability","linkTitle":"Deploy for high availability","weight":"9","date":"2019-08-09","description":"You can configure API Portal for high availability (HA) deployment to ensure that there is no single of point of failure in the system. This helps to eliminate any potential system downtime in production environments."} 
 
 You can configure API Portal for high availability (HA) deployment to ensure that there is no single of point of failure in the system. This helps to eliminate any potential system downtime in production environments.
 
 API Portal supports HA deployment in both a single datacenter or multiple datacenters. In either case the deployment is always done in active-active mode that ensures data is constantly backed up when it is replicated between API Portal instances and datacenters.
 
--   [Deploy API Portal in a single datacenter](HA_single_datacenter_overview.htm)
--   [Deploy API Portal in multiple datacenters](HA_multi_datacenter_overview.htm)
+## API Portal HA in a single datacenter
 
-Data storage
-------------
+The HA deployment provides both high availability and horizontal scalability. To achieve a API Portal high-availability (HA) deployment, you must deploy at least two API Portal instances with a shared file system for data storage behind a load balancer.
 
-API Portal stores API Management data both in relational database management system (RDBMS) and as files on disk. The stored data includes, for example, configuration data and logs, all API Portal customizations, as well as articles and their related data posted in Joomla!, blog, or discussion forum.
+This section describes the infrastructure and the steps required for deploying API Portal HA configuration in a single datacenter.
 
-The following table describes where API Portal stores data. In RDBMS, `#_` stands for the table prefix of the DB schema. The default `INSTALL_DIR` is `/opt/axway/apiportal/htdoc`.
+### Deployment architecture
 
-Data type
+The load balancer performs Transmission Control Protocol (TCP) checks at the network level on both active API Portal instances. If either of the crucial services (Apache or MySQL) becomes unavailable in one instance, the load balancer redirects traffic to another available instance. When the failed instance returns to normal operation, the traffic is again evenly distributed between all instances.
 
-Storage location
+The following diagram illustrates the HA setup with two API Portal instances:
 
-**System**
+![Illustration of a reference architecture for API Portal HA in a single datacenter](/Images/APIPortal/API_Portal_sigle_dc_HA.png)
 
-API Manager settings (for example, IP address, certificates)
+A load balancer sits outside the external firewall and routes the traffic from the Internet and end users to the API Portal instances. The Apache web servers are located in the demilitarized zone (DMZ), and communicate with the shared file system and the database cluster located in the internal zone.
 
-RDBMS: `#_apiportal_configuration`
+The shared file system synchronizes static files (such as images uploaded by users) between the API Portal instances. The database cluster stores data (for example, configuration data) that API Portal queries as required. You must have at least three database nodes for HA.
 
-Files on disk: `INSTALL_DIR/administrator/components/com_apiportal/assets/cert`
+For more details on data storage in API Portal HA configuration, see [Data storage for high availability](ha_datastorage).
 
-Logs
+## API Portal HA in multiple datacenters
 
-Files on disk:
+You can distribute your environment across multiple datacenters to improve the availability, reliability and performance. If one datacenter fails, the others continue to operate, so there is no break in service. The active-active model ensures that data is continuously backed up when data is replicated between the datacenters. If you distribute your datacenters globally, you can provide a datacenter geographically close to your operations and your customers to diminish the latency in traffic.
 
--   Software installation: `/var/log/httpd/error_log`
--   `INSTALL_DIR/logs`
+This section describes the infrastructure and the steps required for deploying API Portal across multiple datacenters.
 
-Public API mode key file
+Deployment architecture
+-----------------------
 
-Files on disk: The custom path you specified for the encryption key at install time
+Deploying API Portal in multiple datacenters has two architecture options: with either shared file system or local data storage.
 
- 
+Using shared file system is the recommended option, because syncing static files between all API Portal instances provides more flexibility to enhance your API Portal later. However, when taking into account the limitations that using local data storage imposes, in some cases (for example, if you do not plan on using blogs or discussion forums in API Portal), using the local data storage may be a viable option.
 
-**Customization**
+{{< alert title="Note" color="primary" >}}It is not recommended to use separate databases for API Portal instances instead of the database clusters, because the benefits of the HA deployment are practically lost.{{< /alert >}}
 
-Theme Magic customizations
+For more details on what data API Portal stores and where, see [Data storage](HA_overview.htm#Data).
 
-Files on disk: `INSTALL_DIR/templates/purity_iii`
+### Multi-datacenter deployment with shared file system
 
-Stylesheets (CSS and LESS)
+The following diagram shows a reference architecture on API Portal multi-datacenter deployment with a shared file system:
 
-Files on disk: `INSTALL_DIR/templates/purity_iii/`
+![Illustration on the API Portal multi-datacenter reference architecture with shared file storage](/Images/APIPortal/API_Portal_multidc_NFS.png)
 
-Company logo
+The example deployment includes four API Portal instances deployed in two datacenters. An external loadbalancer sits outside the external firewall and routes the traffic from the Internet and end users to the datacenters.
 
-RDBMS: `#_menu`
+Each datacenter includes the same components deployed in active-active mode, and can handle all of the traffic load and scale in the same way. An internal load balancer distributes the traffic to the datacenter between the two API Portal instances. The Apache web servers are located in the demilitarized zone (DMZ) and communicate with the shared file system and the database cluster located in the internal zone.
 
-Files on disk: `INSTALL_DIR/components/com_apiportal/assets/img/menu/`
+The shared file system synchronizes static files (such as images uploaded by users) between all API Portal instances, both within the datacenter and between the datacenters over the network between the datacenters. The database cluster stores data (for example, configuration data) that API Portal queries as required.
 
-Menu entries and order
+The API Portal instances, the database nodes, and the shared file storage in each datacenter are all configured for HA. This means that you must have at least two API Portal instances and three database nodes per datacenter.
 
-RDBMS:
+### Multi-datacenter deployment with local data storage
 
--   `#_menu`
--   `#_menu_types`
+The following diagram shows a reference architecture on API Portal multi-datacenter deployment with a local data storage:
 
-Changes in the PHP code
+![Illustration on API Portal multi-datacenter deployment reference architecture with local data storage](/Images/APIPortal/API_Portal_multidc_no_NFS.png)
 
-Files on disk: `INSTALL_DIR/components/com_apiportal/views/`
+The setup is otherwise like with the shared file system, except that the local data storage is co-located with the Apache web server on each API Portal instance in the DMZ.
 
-ReCaptcha plug-in
+Because there is no shared file system, the attachments uploaded the content (Joomla! articles, blog posts, discussions forums) are not synchronized between the datacenters. The attachments are only accessible only from the datacenter and the API Portal instance where they were uploaded.
 
-RDBMS: `#_extensions`
-
-**Localization**
-
-Installed languages
-
-RDBMS: `#_extensions`
-
-Files on disk:
-
--   `INSTALL_DIR/language`
--   `INSTALL_DIR/administrator/language`
--   `INSTALL_DIR/administrator/manifests/packages`
-
-Language content
-
-RDBMS:
-
--   `#_menu`
--   `#_content`
--   `#_categories`
-
-**Articles and posts**
-
-Joomla! articles
-
-RDBMS:
-
--   `#_content`
--   `#_content_frontpage`
--   `#_content_rating`
--   `#_content_types`
--   `#_content_item_tag_map`
-
-Attachments uploaded to Joomla! content
-
-Files on disk: `INSTALL_DIR/images`
-
-Joomla! categories
-
-RDBMS: `#_categories`
-
-EasyBlog and EasyDiscuss settings and posts
-
-RDBMS:
-
--   Settings:
-    -   `#_easyblog_configs`
-    -   `#_discuss_configs`
--   Posts:
-    -   `#_easyblog_posts`
-    -   `#_discuss_posts`
-
-EasyBlog and EasyDiscuss attachments
-
-RDBMS:
-
--   `#_easyblog_media`
--   `#_discuss_posts_references`
-
-Files on disk:
-
--   `INSTALL_DIR/images/easyblog_*`
--   `INSTALL_DIR/media/com_easydiscuss`
-
-### Recommended API Portal data replication
-
-API Portal data between API Portal instances or datacenters is replicated either automatically or manually.
-
-Data can be replicated automatically using the following:
-
--   **RDBMS cluster**: The configured database cluster replicates data between all database nodes in the cluster. For a technical example, see this article about [database cluster setup](https://support.axway.com/en/articles/article-details/id/180417) on Axway Support.
--   **Shared file system solution**: A shared storage solution, like a cluster or shared network file system, synchronizes data across all instances. For a technical example, see this article about [shared file system](https://support.axway.com/en/articles/article-details/id/180405) on Axway Support.
-
-In the manual, or static data replication, you must use a promotion tool to promote data from one API Portal instance to another. For details, see this article about the [promotion tool](https://support.axway.com/en/articles/article-details/id/180277) on Axway Support.
-
-It is recommended to use automatic data replication whenever possible, and to configure RDBMS cluster for the databases and shared file system. For more details, see [Deployment architecture](#Deployme).
-
-The replication options depend on the data type and where it is stored, as shown in the following table:
-
-Data type
-
-Replication between datacenters
-
-**System**
-
-API Manager settings (IP, cert)
-
-Automatic, RDBMS cluster.
-
-Logs
-
-Not applicable (local file-based data only).
-
-**Customization**
-
-Theme Magic changes, stylesheets, company logo, changes in the PHP code
-
-Automatic (shared file system and RDBMS cluster) or static process (deployment process).
-
-Menu entries and order, reCaptcha plug-in
-
-Automatic (RDBMS cluster) or static process (deployment process).
-
-**Localization**
-
-Languages Installed
-
-Automatic (shared file system and RDBMS cluster) or static process (deployment process).
-
-Languages Content
-
-Automatic (RDBMS cluster) or static process (deployment process).
-
-**Articles and posts**
-
-Joomla! articles and categories, EasyBlog and EasyDiscussions settings and posts
-
-Automatic, RDBMS cluster.
-
-Attachments uploaded to articles, blog posts, or discussion forum
-
-Automatic, shared file system.
+Without the shared storage, if a user creates a blog post with an attachment and refreshes or reloads the page, the attachment might not be visible because the user was redirected to another API Portal instance. Similarly, other users might not see the attachments, because they are not in the same API Portal instance.

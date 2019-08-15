@@ -1,14 +1,10 @@
-{"title":"Configure API Portal for HA in single datacenter","linkTitle":"Configure API Portal for HA in single datacenter","date":"2019-08-09","description":"This topic describes how to deploy API Portal high availability (HA) in a single datacenter."} ﻿
+{"title":"Configure API Portal for HA in single datacenter","linkTitle":"Configure HA in single datacenter","date":"2019-08-09","description":"This topic describes the expected behavior in case of a failover in API Portal high-availability (HA) deployment in a single datacenter. The following scenarios are covered:"}
+
+## Configure API Portal for HA in single datacenter
 
 This topic describes how to deploy API Portal high availability (HA) in a single datacenter.
 
--   [Configure the database cluster](#Configur)
--   [Configure the shared file storage](#Configur2)
--   [Configure API Portal](#Configur3)
--   [Configure load balancer](#Configur4)
-
-Configure the database cluster
-------------------------------
+### Configure the database cluster
 
 You must configure a relational database management system (RDBMS) to store API Portal data.
 
@@ -25,7 +21,7 @@ The database cluster has the following requirements in a production environment:
 
 For more details on installing and configuring your database, see [MySQL documentation](https://dev.mysql.com/doc/refman/5.6/en/) or [MariaDB documentation](https://mariadb.com/kb/en/mariadb/documentation/).
 
-### Fine-tune database settings
+#### Fine-tune database settings
 
 You can use advanced settings to fine-tune the database and its performance:
 
@@ -35,17 +31,15 @@ You can use advanced settings to fine-tune the database and its performance:
 
 For more details on the database settings, see [MySQL documentation](https://dev.mysql.com/doc/refman/5.6/en/) or [MariaDB documentation](https://mariadb.com/kb/en/mariadb/documentation/).
 
-Configure the shared file storage
----------------------------------
+### Configure the shared file storage
 
 You must set up a shared file system between API Portal instances to keep them synchronized.
 
-Configure API Portal
---------------------
+### Configure API Portal
 
 After setting up the database cluster, install API Portal. For HA, you must have at least two API Portal instances.
 
-### Install API Portal for HA as a software installation
+#### Install API Portal for HA as a software installation
 
 For HA, install API Portal on the first node, and then install it on each of the other nodes.
 
@@ -66,13 +60,61 @@ Install API Portal on each of the other nodes as detailed in [Install API Porta
 
 Install the EasyBlog and EasyDiscuss components on each other node as detailed in [Install Joomla! components](../../../APIPortalInstallGuideTopics/install_software_install.htm#Install3).
 
-### Upgrade API Portal for HA as a software installation
+#### Upgrade API Portal for HA as a software installation
 
 For HA upgrade, upgrade API Portal and perform the post-upgrade steps on each node as detailed in [Upgrade API Portal software installation](../../../APIPortalInstallGuideTopics/Upgrade_software.htm).
 
-Configure load balancer
------------------------
+### Configure load balancer
 
 Configuring the load balancer may vary depending on the load balancer in question. Set up and configure the load balancer as instructed in the documentation of your load balancer.
 
 You must situate the load balancer between the two API Portal instances.
+
+## API Portal single datacenter failover scenarios
+
+This topic describes the expected behavior in case of a failover in API Portal high-availability (HA) deployment in a single datacenter. 
+
+### One API Portal instance is down
+
+In this scenario, one of the API Portal instances in the datacenter goes down:
+
+![Illustration of API Portal HA configuration with one instance down.](/Images/APIPortal/API_Portal_HA_failover_instance.png)
+
+The following applies on this scenario:
+
+-   The API Portal instance that is down can no longer handle requests.
+-   All requests are handled by the remaining API Portal instances.
+-   You must restart the API Portal instance that is down.
+
+### One database node is down
+
+In this scenario, one database node in a database cluster goes down:
+
+![Illlustration of API Portal HA configuration with one database node down](/Images/APIPortal/API_Portal_HA_failover_db.png)
+
+The following applies in this scenario:
+
+-   The database cluster tolerates the loss of a node in the cluster, and ensures 100% data consistency.
+-   You must restart the database node that is down, and connect it to the cluster to synchronize and start operation.
+
+{{< alert title="Note" color="primary" >}}When a database node has been down and absent from a cluster for a time, you must repair the node after re-integrating it into the cluster. By design, the database node eventually becomes consistent with the other nodes. {{< /alert >}}
+
+### The whole datacenter is down
+
+In this scenario, the whole datacenter goes down:
+
+![Illustration of API Portal HA setup when the datacenter is down](/Images/APIPortal/API_Portal_HA_failover_dc.png)
+
+The following applies in this scenario:
+
+-   No requests can be handled.
+-   Load balancer must properly handle failures.
+-   No data can be deployed until the system is back to normal.
+
+#### Restart the datacenter
+
+Restart the datacenter in the following sequence:
+
+1.  Restart the database nodes and reconfigure the cluster.
+2.  When all database nodes are running and synchronized, restart the API Portal instances.
+3.  Synchronize the shared file system on the API Portal instances.
