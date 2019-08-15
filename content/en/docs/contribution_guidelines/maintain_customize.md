@@ -136,17 +136,17 @@ A list of variables can be found in `axway-open-docs/layouts/shortcodes/variable
 
 Variables are called in markdown documentation files with the following:
 
-`{{< variables/variable_name >}}`
+`{{</*  variables/variable_name  */>}}`
 
 Where `variable_name` is the name of the HTML file that contains the variable value, without the `.html` extension.
 
 For example, 
 
-**"We love Axway Open Docs!"**
+*"We love Axway Open Docs!"*
 
 would be written in markdown as 
 
-**"We love {{< variables/company_name >}} Open Docs!"**
+*"We love {{</* variables/company_name */>}} Open Docs!"*
 
 Where `company_name` is stored in `axway-open-docs/layouts/shortcodes/variables` as a HTML file called `company_name.html` and simply contains `Axway`.
  
@@ -156,7 +156,7 @@ Variables are stored in the `axway-open-docs project` as HTML files.
 
 #### Using File explorer
 
-Navigate to `axway-open-docs/layouts/shortcodes/variables` and create a HTML file. Consider the file name carefully since the shortcode name will mirror that of the file but without the `.html` extension. For example, `axway-open-docs/layouts/shortcodes/variables/company_name.html` will be called with `{{< variables/company_name >}}` in the markdown file.
+Navigate to `axway-open-docs/layouts/shortcodes/variables` and create a HTML file. Consider the file name carefully since the shortcode name will mirror that of the file but without the `.html` extension. For example, `axway-open-docs/layouts/shortcodes/variables/company_name.html` will be called with `{{</* variables/company_name */>}}` in the markdown file.
 
 Once you've created the file, open it up with your favorite text editor and simply add the value of the variable into it. For example, `axway-open-docs/layouts/shortcodes/variables/company_name.html` simply contains `Axway`.
 
