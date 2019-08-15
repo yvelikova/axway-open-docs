@@ -147,9 +147,9 @@ Create Kubernetes secrets to hold the mesh agents' public certificates and priva
 
 Usage: `kubectl create secret generic SECRET_NAME --namespace NAMESPACE_NAME  --from-file=publicKey=/PATH/TO/PUBLIC/KEY/FILE --from-file=privateKey=/PATH/TO/PRIVATE/KEY/FILE  --from-file=password=PASSWORD_FILE --from-literal=password=PASSWORD -o yaml`
 
-{{< alert title="Note" color="primary" >}} Each `SECRET_NAME` must match the corresponding SDA or CSA field `keysSecretName` in the `hybridOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit.\
-The SDA default value of `keysSecretName` is `sda-secrets`.\
-The CSA default value of `keysSecretName` is `csa-secrets`.\
+{{< alert title="Note" color="primary" >}} Each `SECRET_NAME` must match the corresponding SDA or CSA field `keysSecretName` in the `hybridOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit.
+The SDA default value of `keysSecretName` is `sda-secrets`.
+The CSA default value of `keysSecretName` is `csa-secrets`.
 To change the secret store names, edit the `keysSecretName` values in the `hybridOverride.yaml` file before you execute the helm upgrade deployment steps.{{< /alert >}}
 
 Example for SDA:

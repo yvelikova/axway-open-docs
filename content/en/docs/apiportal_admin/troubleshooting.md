@@ -25,7 +25,7 @@ API response class details missing
 
 The following is an example of missing response class details. An `array[null]` value is displayed instead of details:
 
-![An example of an "array\[null\]" Response Class with missing details](/Images/APIPortal/troubleshooting1.png)
+![An example of an "array[null]" Response Class with missing details](/Images/APIPortal/troubleshooting1.png)
 
 The following is an example of the expected response class details:
 

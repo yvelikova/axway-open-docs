@@ -5,7 +5,7 @@ no_list: true
 date: 2019-07-30
 ---
 
-AxwayAPI Portal is a self-service developer portal layered on both API Manager and API Gateway.
+Axway API Portal is a self-service developer portal layered on both API Manager and API Gateway.
 
 With API Portal, you can enable both internal or external client application developers to browse, consume, build, and test APIs for use in their applications on their own. You can use several channels, such as FAQs, articles, forums or blogs, to provide more information for the developers and to encourage developer engagement. The look and feel of the web-based API Portal is fully customizable to match your brand and image.
 

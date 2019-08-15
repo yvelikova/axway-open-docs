@@ -19,8 +19,8 @@ reCaptcha is a free service you can add to the API Portal sign up page to preve
 2.  Give a label for your site (such as `API Portal`) label, enter the API Portal domain (here `localhost.localdomain`) in the **Domains** field, and select **Register**.
 3.  ![reCaptcha screen with register a new site with lable and domains displayed](/Images/APIPortal/reCatchalocalhostlocaldomain.png)
 
-4.  Select the domain, and review how to add the reCaptcha:\
-    \
+4.  Select the domain, and review how to add the reCaptcha:
+    
     ![reCaptcha screen that display how to add reCAPTCHA to the API Portal](/Images/APIPortal/recaptchasitekeysteps.png)
 5.  Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal_host>/administrator`).
 6.  Select **Extensions > Plugins**.
@@ -92,7 +92,7 @@ To enable this feature follow these steps:
 3.  From the list of module types click **Custom**.
 4.  Enter a title for the message.
 5.  Use the text editor to enter the text for the message.
-6.  Select **Purity\_iii** > **login-message-consent** from the **Position** list.
+6.  Select **Purity_iii** > **login-message-consent** from the **Position** list.
 7.  Click **Save &** **Close**.
 8.  Go to the API Portal Sign In page, refresh the page, and verify that the banner is shown.
 
@@ -172,7 +172,7 @@ You can customize your company's footer by adding more text to it.
 1.  In the JAI, click **Extensions > Modules**.
 2.  Click **New** to create a new module.
 3.  From the list of module types click **Custom**.
-4.  On the right sidebar, select 'Footer\[footer\]' from the **Position list**, and select 'Hide' on the **Show title** option.
+4.  On the right sidebar, select 'Footer[footer]' from the **Position list**, and select 'Hide' on the **Show title** option.
 5.  Use the text editor to enter the text.
 6.  Click **Save**.
 
