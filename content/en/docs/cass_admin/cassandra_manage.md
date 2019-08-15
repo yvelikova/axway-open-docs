@@ -108,10 +108,10 @@ tutorial, you must update the API Gateway Cassandra client configuration
 as follows:
 
 1.  Open the API Gateway group configuration in Policy Studio.
-2.  Select **Server Settings \> Cassandra \> Authentication**, and set
+2.  Select **Server Settings > Cassandra > Authentication**, and set
     the Cassandra username/password (default is
     `cassandra`/`cassandra`).
-3.  Select **Server Settings \> Cassandra \> Hosts**. Add an address for
+3.  Select **Server Settings > Cassandra > Hosts**. Add an address for
     the Cassandra node. You can enter an IP address or host name.
 4.  Deploy the configuration to the API Gateway group.
 

@@ -136,11 +136,11 @@ This section assumes that you have already set up a HA API Gateway environment. 
 
 In Policy Studio, open your API Gateway group configuration.
 
-1.  Select **Server Settings \> Cassandra \> Authentication**, and enter
+1.  Select **Server Settings > Cassandra > Authentication**, and enter
     the cassandra database user name and password.
-2.  Select **Server Settings \> Cassandra \> Hosts**, and add a host for
+2.  Select **Server Settings > Cassandra > Hosts**, and add a host for
     each Cassandra node in the cluster.
-3.  Select **Server Settings \> Cassandra \> Keyspace**, and set the
+3.  Select **Server Settings > Cassandra > Keyspace**, and set the
     **Initial replication factor** option to `3`.
 4.  Deploy the configuration to the group.
 
@@ -171,9 +171,9 @@ the following steps:
 #### Configure the API Gateway Cassandra client connection
 
 1.  In Policy Studio, open your API Gateway group configuration.
-2.  Select **Server Settings \> Cassandra \> Authentication**, and enter
+2.  Select **Server Settings > Cassandra > Authentication**, and enter
     your Cassandra user name and password (both default to `cassandra`).
-3.  Select **Server Settings \> Cassandra \> Hosts**, and add an address
+3.  Select **Server Settings > Cassandra > Hosts**, and add an address
     for each Cassandra node in the cluster (`ipA`, `ipB` and `ipC` in this example).
 
 {{% alert title="Tip" %}}
@@ -183,7 +183,7 @@ You can automate these steps by running the `updateCassandraSettings.py` script 
 #### Configure the API Gateway Cassandra consistency levels
 
 1.  Ensure that the **API Server** KPS collection has been created under
-    **Environment Configuration \> Key Property Stores**. This is
+    **Environment Configuration > Key Property Stores**. This is
     required to configure Cassandra consistency levels, and is created
     automatically if you installed the **Complete** setup type.
 
@@ -194,8 +194,7 @@ You can automate these steps by running the `updateCassandraSettings.py` script 
       - [Deploy OAuth configuration](/csh?context=400&product=prod-api-gateway-77) in the [API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/)
       - [Configure API Manager Cassandra client settings](#configure-api-manager-cassandra-client-settings)
 
-3.  Select **Environment Configuration \> Key Property Stores \> API
-    Server \> Data Sources \> Cassandra Storage**, and click **Edit**.
+3.  Select **Environment Configuration > Key Property Stores > API Server > Data Sources > Cassandra Storage**, and click **Edit**.
 
 4.  In the **Read Consistency Level** and **Write Consistency Level**
     fields, select
@@ -203,16 +202,14 @@ You can automate these steps by running the `updateCassandraSettings.py` script 
     ![](/Images/docbook/images/api_mgmt/api_mgmt_embedded_kps.png)
 
 1.  Repeat this step for each KPS collection using Cassandra (for
-    example, **Key Property Stores \> OAuth**, or **API Portal** for API
+    example, **Key Property Stores > OAuth**, or **API Portal** for API
     Manager). This also applies to any custom KPS collections that you
     have created.
 2.  If you are using OAuth and Cassandra, you must also configure quorum
-    consistency for all OAuth2 stores under **Libraries \> OAuth2
-    Stores**:
-      - **Access Token Stores \> OAuth Access Token Store**
-      - **Authorization Code Stores \> Authz Code Store**
-      - **Client Access Token Stores \> OAuth Client Access Token
-        Store**
+    consistency for all OAuth2 stores under **Libraries > OAuth2 Stores**:
+      - **Access Token Stores > OAuth Access Token Store**
+      - **Authorization Code Stores > Authz Code Store**
+      - **Client Access Token Stores > OAuth Client Access Token Store**
 
 {{% alert title="Note" %}}
 By default, OAuth uses EhCache instead of Cassandra. For more details on OAuth, see the [API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/).
@@ -246,8 +243,7 @@ startinstance -n "my_gw_server_1" -g "my_group"
 
 1.  Configure the Cassandra consistency levels for your KPS Collections.
     For details, see [Configure the API Gateway Cassandra consistency levels](#configure-the-api-gateway-cassandra-consistency-levels).
-2.  In the Policy Studio tree, select **Server Settings** \> **API
-    Manager** \> **Quota Settings**, and ensure that **Use Cassandra**
+2.  In the Policy Studio tree, select **Server Settings** > **API Manager** > **Quota Settings**, and ensure that **Use Cassandra**
     is selected.
 3.  Under **Cassandra consistency levels**, in both the **Read** and
     **Write** fields, select `QUORUM`:

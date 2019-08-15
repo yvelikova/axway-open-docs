@@ -245,9 +245,9 @@ To enable a language switcher, you need to have template styles for each languag
 
 By default, API Portal uses the Purity III template style. After following this process you will have the following template styles:
 
--   purity\_III - Default - English
--   purity\_III - Default - French
--   purity\_III - Default - All
+-   purity_III - Default - English
+-   purity_III - Default - French
+-   purity_III - Default - All
 
 ### Duplicate the template style for the new language
 
