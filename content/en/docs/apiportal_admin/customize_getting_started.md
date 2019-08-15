@@ -8,7 +8,7 @@ For external-facing API deployments, you may want to customize API Portal to pr
 
 Customization can be performed at three levels:
 
-- **Customization through configuration**: Use the Joomla! Admin Interface (JAI) (https://<API Portal host>/administrator) to change CSS stylesheets, templates, and layouts. These types of customizations are can be upgraded and retained when you move to new version. The customization does not modify the API Portal source code and is supported by Axway.
+- **Customization through configuration**: Use the Joomla! Admin Interface (JAI) (`https://<API Portal host>/administrator`) to change CSS stylesheets, templates, and layouts. These types of customizations are can be upgraded and retained when you move to new version. The customization does not modify the API Portal source code and is supported by Axway.
 - **Customization through code**: API Portal is developed using the PHP scripting language and the source code is provided. This is how Joomla! applications are deployed. You can modify the PHP source code to customize API Portal, such as to change the functionality of pages and to extend by adding new pages. This type of customization is only recommended for customers with Joomla! or PHP experience that need to deploy a highly tailored developer portal.
 
     {{< alert title="Caution" color="warning" >}}These customizations are lost when you upgrade. The source code is subject to frequent changes without notice; therefore, you must reintegrate customizations into the new API Portal code to avoid restoring a deprecated code along with the customizations.{{< /alert >}}
