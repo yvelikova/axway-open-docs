@@ -1,4 +1,9 @@
-{"title":"User groups mapping","linkTitle":"User groups mapping","weight":"21","date":"2019-07-30","description":""}
+---
+title: User groups mapping
+linkTitle: User groups mapping
+weight: 21
+date: 2019-07-30
+---
 
 As an API Portal administrator you can map user roles from API Manager to Joomla! Administrator Interface (JAI) user groups (Roles), and provide these user groups with limited or full access to API Portal features. This allows for API Manager users to create contents, like for example, articles, categories, and menu items in JAI.
 

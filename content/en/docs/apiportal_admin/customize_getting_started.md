@@ -1,4 +1,9 @@
-{"title":"Customize API Portal look and feel","linkTitle":"Customize API Portal look and feel","weight":"1","date":"2019-07-30","description":""}
+---
+title: Customize API Portal look and feel
+linkTitle: Customize API Portal look and feel
+weight: 1
+date: 2019-07-30
+---
 
 This section provides the basic information you need to get started with customizing your branded API Portal.
 

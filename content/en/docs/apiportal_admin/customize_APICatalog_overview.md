@@ -1,4 +1,9 @@
-{"title":"Customize API Catalog","linkTitle":"Customize API Catalog","weight":"3","date":"2019-07-30","description":""}
+---
+title: Customize API Catalog
+linkTitle: Customize API Catalog
+weight: 3
+date: 2019-07-30
+---
 
 You can customize how APIs are displayed in the API Catalog view of API Portal, and you can customize what actions your API consumers can perform on APIs.
 

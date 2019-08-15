@@ -1,4 +1,10 @@
-{"title":"Configure Public API mode","linkTitle":"Configure Public API mode","weight":"13","date":"2019-07-30","description":"This section describes how to configure APIs and applications to be exposed publicly in API Manager and how to enable Public API mode in Joomla! Administrator Interface (JAI)."} ﻿
+---
+title: Configure Public API mode
+linkTitle:Configure Public API mode
+weight: 13
+date: 2019-07-30
+description: This section describes how to configure APIs and applications to be exposed publicly in API Manager and how to enable Public API mode in Joomla! Administrator Interface (JAI).
+---
 
 Public API mode enables you to expose non-business critical APIs and their methods so that your API consumers can access them without creating a user account or logging in.
 

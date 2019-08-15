@@ -1,4 +1,9 @@
-{"title":"Configure API Portal SSO","linkTitle":"Configure API Portal SSO","weight":"17","date":"2019-07-30","description":""} 
+---
+title: Configure API Portal SSO
+linkTitle: Configure API Portal SSO
+weight: 17
+date: 2019-07-30
+---
 
 This topic describes how to configure API Portal single sign-on (SSO).
 

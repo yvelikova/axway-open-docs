@@ -1,4 +1,9 @@
-{"title":"Customize CSS styles","linkTitle":"Customize CSS styles","weight":"5","date":"2019-07-30","description":""} 
+---
+title: Customize CSS styles
+linkTitle: Customize CSS styles
+weight: 5
+date: 2019-07-30
+---
 
 This section describes how you can directly edit the files in local/less/themes/<your copy of axway theme> to customize your css styles. This folder contains all files related to your API Portal theme.
 

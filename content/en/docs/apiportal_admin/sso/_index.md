@@ -1,4 +1,10 @@
-{"title":"Single sign-on concepts","linkTitle":"Single sign-on concepts","weight":"15","date":"2019-07-30","no_list":"true","description":""}
+---
+title: Single sign-on concepts
+linkTitle: Single sign-on concepts
+weight: 15
+date: 2019-07-30
+no_list: true
+---
 
 Single sign-on (SSO) is a session/user authentication process where a user enters one user name and password to access multiple applications. API Portal supports SAML-based SSO.
 
