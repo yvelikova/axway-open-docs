@@ -44,15 +44,16 @@ When the review is finished, we'll merge your PR to this staging website first <
 To edit a page and send a PR:
 
 * Click **Edit this page** on the upper right corner of the page.
+* Fork the repository.
 * Make the changes in Git UI.
-  + You can use the **Preview changes** tab to preview your changes in Git before creating the PR.
+  * You can use the **Preview changes** tab to preview your changes in Git before creating the PR.
     ![Preview before creating PR](/images/contributing/netlify_preview_beforecreating_PR.png)
 * Add a meaningful message to your commit and click to create the PR.
-  + You can preview your changes in the staging site by clicking the link on the Netlify preview box.
+  * You can preview your changes in the staging site by clicking the link on the Netlify preview box.
     ![Preview your PR](/images/contributing/netlify_preview_PR.png)
 
-  + This link redirects to the main page of the documentation. You must navigate to the page you've edited.
-  + This link opens in the same tab of your PR.
+  * This link redirects to the main page of the documentation. You must navigate to the page you've edited.
+  * This link opens in the same tab of your PR.
 
 ## Create an issue on GitHub
 
@@ -72,11 +73,9 @@ To edit a page in Netlify CMS:
 * On the Netlify landing page, locate the page you want to change and click to edit it.
 * Make the updates and click **Save**.
 * You can preview the changes on the right side preview editor.
-
     ![WYSIWYG editor](/images/contributing/netlify_WYSIWYGeditor.png)
 
 * When you finish all the updates, change the status of the content to 'In review'.
-
     ![Set status to Review](/images/contributing/netlify_setstatustoreview.png)
 
 {{< alert title="Warning" color="warning">}}
