@@ -142,7 +142,7 @@ Where `variable_name` is the name of the HTML file that contains the variable va
 
 For example, 
 
-*"We love Axway Open Docs!"*
+*"We love {{< variables/company_name >}} Open Docs!"*
 
 would be written in markdown as 
 
@@ -152,7 +152,7 @@ Where `company_name` is stored in `axway-open-docs/layouts/shortcodes/variables`
  
 ### Creating variables
 
-Variables are stored in the `axway-open-docs project` as HTML files.
+Variables are stored in the `axway-open-docs` project as HTML files.
 
 #### Using File explorer
 
