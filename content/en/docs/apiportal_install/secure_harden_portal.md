@@ -1,9 +1,9 @@
-{"title":"Secure API Portal","linkTitle":"Secure API Portal","date":"2019-08-09","description":"Perform the following steps after installation to ensure that your API Portal environment is secure from internal and external threats: "} ﻿
+{"title":"Secure API Portal","linkTitle":"Secure API Portal","weight":"8","date":"2019-08-09","description":"Secure and harden your API Portal environment after installation."}
 
 Perform the following steps after installation to ensure that your API Portal environment is secure from internal and external threats:
 
 1.  Apply the latest service pack (SP) available for this version, as it might contain important security updates. For details, see [Update API Portal](install_service_pack.htm).
-2.  Search Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink} for any KB articles relating to this version, as these might contain valuable security recommendations.
+2.  Search Axway Support at [https://support.axway.com](https://support.axway.com/) for any KB articles relating to this version, as these might contain valuable security recommendations.
 3.  Change the default Joomla! administrator credentials for logging in to the Joomla! Administrator Interface (JAI) (`https://<API Portal host>/administrator`). Use a different user name and a strong password.
 4.  Complete all of the procedures detailed in the following sections.
 
@@ -23,22 +23,18 @@ Disable TLS 1.0 and TLS 1.1 on Apache
 
 On an API Portal software installation, the Apache web server has TLS versions 1.0 and 1.1 enabled in addition to the TSL 1.2 that API Portal uses. Because TLS 1.0 and 1.1 have security vulnerabilities, it is recommended to disable them.
 
-1.  To check which TLS versions are enabled, scan your API Portal port:
-2.  `sslscan <API Portal IP address>:<your https port>`
+1.  To check which TLS versions are enabled, scan your API Portal port: `sslscan <API Portal IP address>:<your https port>`
 
     By default, API Portal uses port `443` for secure connections.
 
-3.  To disable TLS 1.0. and 1.1, open the following file:
-4.  `/etc/httpd/conf.d/apiportal.conf`
+3.  To disable TLS 1.0. and 1.1, open the following file: `/etc/httpd/conf.d/apiportal.conf`
 5.  Add the following SSL protocol definition for the secure connection:
-6.  ``` {space="preserve"}
+
+    ```
     <VirtualHost *:443>
         SSLEngine on
         SSLCertificateFile "/etc/httpd/conf/server.crt"
         SSLCertificateKeyFile "/etc/httpd/conf/server.key"
-    ```
-
-    ``` {space="preserve"}
         SSLProtocol TLSv1.2
         Header always append X-Frame-Options SAMEORIGIN
          ...
@@ -55,8 +51,22 @@ To counter a session fixation vulnerability in Joomla!, it is recommended that y
 
 1.  Open the file `/etc/httpd/conf.d/security.conf`.
 2.  Add an access restriction directive for the `/administrator` location. Specify the internal IP address range that is allowed to access JAI. For example:
-3.  4.  To restart the web server configuration, enter the following:
-5.  `# /etc/init.d/apache2 reload`
+
+    ```
+    ServerTokens ProductOnly
+    ServerSignature Off
+        <Location /administrator>
+            Order deny,allow
+            deny from all
+            allow from 10.232.14.
+        </Location>
+    ```
+
+3.  To restart the web server configuration, enter the following:
+
+    ```
+    # /etc/init.d/apache2 reload
+    ```
 
 Limit the number of failed login attempts
 -----------------------------------------
@@ -69,7 +79,9 @@ To protect API Portal and Joomla! from brute force attacks, you can limit the nu
 4.  Enter a value for the number of failed login attempts before the user account is locked.
 5.  Enter a value in seconds for how long the user account is locked.
 6.  Click **Yes** to enable locking by IP address. When this setting is enabled login attempts are blocked from the same IP address for the lock time specified even if correct user credentials are entered.
-7.  You can enable user account locking and IP address locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts, `UserA` will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, `UserB`) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
+
+    You can enable user account locking and IP address locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts, `UserA` will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, `UserB`) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
+
 8.  Click **Save**.
 
 Add trusted OAuth hosts
@@ -108,10 +120,11 @@ Configure Apache
 
 ### Update apiportal.conf
 
-Add security headers to the `apiportal.conf` file (located in `/etc/httpd/conf.d/`.
+Add security headers to the `apiportal.conf` file (located in `/etc/httpd/conf.d/`).
 
 In the virtual host directive add the following headers:
 
+```
 Header always append X-Frame-Options SAMEORIGIN
 
 Header set X-XSS-Protection "1; mode=block"
@@ -119,6 +132,7 @@ Header set X-XSS-Protection "1; mode=block"
 Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains;"
 
 Header set X-Content-Type-Options nosniff
+```
 
 You should only use the HSTS header if you have configured SSL.
 
@@ -126,6 +140,7 @@ You should only use the HSTS header if you have configured SSL.
 
 Ensure that the `security.conf` file (also located in `/etc/httpd/conf.d/`) exists and that it contains the following directives:
 
+```
 ServerTokens ProductOnly
 
 ServerSignature Off
@@ -135,6 +150,7 @@ HostnameLookups Off
 TraceEnable off
 
 UseCanonicalName Off
+```
 
 ### Restart Apache
 
@@ -145,25 +161,29 @@ Configure PHP
 
 Find the location of your `php.ini` file. For example, run the command:
 
+```
 php –i | grep php.ini
+```
 
 In the resulting list of files, the `php.ini` listed as the `Loaded Configuration File` is the correct file to edit.
 
 Update the file with the following options:
 
-- expose\_php = 0
+```
+- expose_php = 0
 
-- display\_errors = 0
+- display_errors = 0
 
-- disable\_functions = exec,passthru,shell\_exec,system
+- disable_functions = exec,passthru,shell_exec,system
 
-- allow\_url\_include = 0
+- allow_url_include = 0
 
-- session.cookie\_httponly = 1
+- session.cookie_httponly = 1
 
-- session.cookie\_secure = On
+- session.cookie_secure = On
 
-- open\_basedir = “/opt/axway/apiportal/htdoc:/tmp”
+- open_basedir = “/opt/axway/apiportal/htdoc:/tmp”
+```
 
 You should only set `session.cookie_secure` to `On` if you have configured SSL.
 
@@ -180,11 +200,15 @@ Configure MySQL
 
 MySQL comes with a hardening script to check database server security and remove some default settings. You can run it with the command:
 
-mysql\_secure\_installation
+```
+mysql_secure_installation
+```
 
 If you do not need to access your database from another machine, bind the MySQL service on localhost only (of the host from which you are going to access it). For example, edit the configuration file `my.cnf` and set:
 
+```
 bind-address = 127.0.0.1
+```
 
 The user for API Portal should only have access to those databases that it needs to run.
 

@@ -1,4 +1,4 @@
-{"title":"Deploy API Portal for high availability","linkTitle":"Deploy for high availability","weight":"9","date":"2019-08-09","description":"You can configure API Portal for high availability (HA) deployment to ensure that there is no single of point of failure in the system. This helps to eliminate any potential system downtime in production environments."} 
+{"title":"Deploy API Portal for high availability","linkTitle":"Deploy API Portal for HA","no_list":"true","weight":"6","date":"2019-08-09","description":"Configure API Portal for high availability (HA) deployment in a single datacenter or multiple datacenters."} 
 
 You can configure API Portal for high availability (HA) deployment to ensure that there is no single of point of failure in the system. This helps to eliminate any potential system downtime in production environments.
 
@@ -10,7 +10,7 @@ The HA deployment provides both high availability and horizontal scalability. To
 
 This section describes the infrastructure and the steps required for deploying API Portal HA configuration in a single datacenter.
 
-### Deployment architecture
+### Deployment architecture single datacenter
 
 The load balancer performs Transmission Control Protocol (TCP) checks at the network level on both active API Portal instances. If either of the crucial services (Apache or MySQL) becomes unavailable in one instance, the load balancer redirects traffic to another available instance. When the failed instance returns to normal operation, the traffic is again evenly distributed between all instances.
 
@@ -30,8 +30,7 @@ You can distribute your environment across multiple datacenters to improve the a
 
 This section describes the infrastructure and the steps required for deploying API Portal across multiple datacenters.
 
-Deployment architecture
------------------------
+### Deployment architecture multiple datacenters
 
 Deploying API Portal in multiple datacenters has two architecture options: with either shared file system or local data storage.
 
@@ -41,7 +40,7 @@ Using shared file system is the recommended option, because syncing static files
 
 For more details on what data API Portal stores and where, see [Data storage](HA_overview.htm#Data).
 
-### Multi-datacenter deployment with shared file system
+#### Multi-datacenter deployment with shared file system
 
 The following diagram shows a reference architecture on API Portal multi-datacenter deployment with a shared file system:
 
@@ -55,7 +54,7 @@ The shared file system synchronizes static files (such as images uploaded by use
 
 The API Portal instances, the database nodes, and the shared file storage in each datacenter are all configured for HA. This means that you must have at least two API Portal instances and three database nodes per datacenter.
 
-### Multi-datacenter deployment with local data storage
+#### Multi-datacenter deployment with local data storage
 
 The following diagram shows a reference architecture on API Portal multi-datacenter deployment with a local data storage:
 

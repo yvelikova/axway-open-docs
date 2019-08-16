@@ -1,4 +1,4 @@
-{"title":"Troubleshooting API Portal in Docker","linkTitle":"Troubleshooting API Portal in Docker","date":"2019-08-09","description":"This topic describes problems you might encounter when running API Portal in Docker containers, and provides possible solutions."} ﻿
+{"title":"Troubleshooting API Portal in Docker","linkTitle":"Troubleshooting","weight":"4","date":"2019-08-09","description":"Troubleshoot problems you might encounter when running API Portal in Docker containers."}
 
 This topic describes problems you might encounter when running API Portal in Docker containers, and provides possible solutions.
 
@@ -6,8 +6,6 @@ API Portal UI does not load
 ---------------------------
 
 When you try to access API Portal from a browser you get the following message: `Error displaying the error page.`
-
- 
 
 Perform the following checks to try and identify the cause of the problem:
 
@@ -30,8 +28,6 @@ Apache does not start
 
 After the API Portal container is started, the Apache daemon is not started and you cannot access your API Portal.
 
- 
-
 1.  Verify that you have waited sufficient time for the container to start. When running the container for the first time it takes time to import the whole database schema. To check if this is the case, perform the following:
 
 -   Connect to the database container and check the database schema.
@@ -43,4 +39,3 @@ After the API Portal container is started, the Apache daemon is not started and
 
 -   If the files do not exist, either generate them using `/tmp/genssl.sh` script, or provide your own certificates.
 -   Restart the Apache daemon using the command `/usr/sbin/httpd -k restart`.
-

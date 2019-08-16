@@ -1,15 +1,8 @@
-{"title":"Install API Portal as software installation","linkTitle":"Install API Portal as software installation","weight":"9","date":"2019-08-09","description":"This section describes the prerequisites and steps to install API Portal as software installation on Red Hat Enterprise Linux (RHEL) or CentOS. "} ﻿
+{"title":"Install API Portal","linkTitle":"Install API Portal","weight":"5","date":"2019-08-09","description":"Install or uninstall API Portal on Red Hat Enterprise Linux (RHEL) or CentOS. "}
 
-This section describes the prerequisites and steps to install API Portal as software installation on Red Hat Enterprise Linux (RHEL) or CentOS.
+This section describes the steps to install or uninstall API Portal as software installation on Red Hat Enterprise Linux (RHEL) or CentOS.
 
 Before you start, check the [Installation prerequisites](install_software_prereqs.htm).
-
-The installation process has the following steps:
-
-1.  [Install API Portal dependencies](install_nodeps.htm)
-2.  [Install Redis cache](install_software_redis.htm)
-3.  [Configure the database server](install_software_configure_database.htm)
-4.  [Install API Portal software](install_software_install.htm#Install2)
 
 ## Install API Portal software
 
@@ -54,17 +47,17 @@ The installation process has the following steps:
     restorecon -R -v '/opt/axway/apiportal/htdoc'
     ```
 
-#### Configure API Portal to run with HTTP or HTTPS
+### Configure API Portal to run with HTTP or HTTPS
 
 This section describes the options to configure API Portal with HTTP or HTTPS.
 
-##### Run API Portal with HTTP
+#### Run API Portal with HTTP
 
 If you choose not to configure SSL/TLS, API Portal runs with plain HTTP.
 
 {{< alert title="Caution" color="warning" >}}This option increases the risk of security vulnerabilities. {{< /alert >}}
 
-##### Run API Portal with HTTPS
+#### Run API Portal with HTTPS
 
 If you choose to configure SSL/TLS, API Portal runs with HTTPS and you can choose one of the following options:
 

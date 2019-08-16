@@ -1,10 +1,10 @@
-{"title":"Run API Portal using ready-made Docker image","linkTitle":"Run API Portal using ready-made Docker image","date":"2019-08-09","description":"This topic describes how to use the ready-made API Portal Docker image to run in Docker containers. The image is ready out-of-the-box, so you do not have to build it using the `Dockerfile`."} ﻿
+{"title":"Run API Portal using ready-made Docker image","linkTitle":"Run using ready-made Docker image","weight":"2","date":"2019-08-09","description":"Use the ready-made API Portal Docker image to run in Docker containers."}
 
 This topic describes how to use the ready-made API Portal Docker image to run in Docker containers. The image is ready out-of-the-box, so you do not have to build it using the `Dockerfile`.
 
 Axway does not provide a ready-made Docker image for MySQL. You must have the MySQL Docker container running before you can load the ready-made API Portal Docker image and run the Docker container. For more details on MySQL image, see the [official MySQL Docker repository](https://hub.docker.com/_/mysql/).
 
-{{< alert title="Note" color="primary" >}}The ready-made API Portal Docker image is strictly for development environments only, and is not recommended for use in production environments. You must use the `Dockerfile` to build and run API Portal containers in production environments. For more details, see [Build and run API Portal using Dockerfile](docker_portal_deploy.htm).{{< /alert >}}
+{{< alert title="Caution" color="warning" >}}The ready-made API Portal Docker image is strictly for development environments only, and is not recommended for use in production environments. You must use the `Dockerfile` to build and run API Portal containers in production environments. For more details, see [Build and run API Portal using Dockerfile](docker_portal_deploy.htm).{{< /alert >}}
 
 Prerequisites
 -------------
@@ -29,14 +29,12 @@ Run a Docker container using the image
 1.  Download the API Portal Docker image from Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink}.
 2.  Upload the file to your Docker host machine.
 3.  Enter the following command to load the image:
-4.  $ docker load -i APIPortal_7.8_Docker_Image_linux-x86-64_<build number>.tar.gz
+    `$ docker load -i APIPortal_7.8_Docker_Image_linux-x86-64_<build number>.tar.gz`
 
 5.  Run the API Portal Docker container, for example:
-6.  ``` {space="preserve"}
-    $ docker run -it --name apiportal -e MYSQL_HOST=172.19.0.2 -e MYSQL_PORT=3306 
-    -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=joomla -e MYSQL_PASSWORD=XXXXX 
-    -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443
-    apiportal:7.8
+
+    ```
+    $ docker run -it --name apiportal -e MYSQL_HOST=172.19.0.2 -e MYSQL_PORT=3306 -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=joomla -e MYSQL_PASSWORD=XXXXX -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443 apiportal:7.8
     ```
 
 This example performs the following:

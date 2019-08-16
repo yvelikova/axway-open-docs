@@ -1,30 +1,67 @@
-{"title":"Upgrade API Portal software installation","linkTitle":"Upgrade API Portal software installation","date":"2019-08-09","description":"If you have an existing API Portal installation, you can upgrade that installation to a newer version without having to repeat the initial setup. "} ﻿
+{"title":"Upgrade API Portal","linkTitle":"Upgrade API Portal","weight":"20","date":"2019-08-09","description":"Upgrade your existing API Portal."}
+
+This section describes how to upgrade your existing API Portal to 7.8:
+
+This guide does not describe how to upgrade API Gateway. For information on upgrading API Gateway, see [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5) .
+
+## Upgrade prerequisites
+
+Before you upgrade, complete the following prerequisites. These prerequisites apply for all installations: software installation and Docker containers.
+
+-   If you intend to use the EasyBlog and EasyDiscuss plugins, you must install them before you start the upgrade. For more details, see [Install API Portal](requirements.htm) and the specific instructions for your installation type.
+-   Stop and back up the existing API Portal files and database. There is no option to roll back after you start the upgrade.
+    -   To back up an API Portal software installation, perform a file system backup and export the database.
+
+## Upgrade API Portal
 
 If you have an existing API Portal installation, you can upgrade that installation to a newer version without having to repeat the initial setup.
 
--   Upgrade to API Portal 7.8 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
+-   Upgrade to API Portal 7.8 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to 7.7.
 -   API Portal 7.8 is compatible with API Gateway and API Manager 7.8 only.
-
-Upgrade API Portal
-------------------
-
-{{< alert title="Note" color="primary" >}}Ensure that you check the [Upgrade prerequisites](upgrade_prereqs.htm) before you start the upgrade.{{< /alert >}}
 
 To upgrade your API Portal software installation, follow these steps:
 
-1.  Download the API Portal upgrade package from the Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink}
+1.  Download the API Portal upgrade package from the Axway Support at [https://support.axway.com](https://support.axway.com/)
 2.  Go to the the directory where you saved the upgrade package and extract it:
-3.  \# tar xpvzf <package>.tgz
+
+    ```
+    # tar xpvzf <package_name>.tgz
+    ```
+
 4.  Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal host>/administrator`).
 5.  Click **Components > Joomla! Update**, and go to the **Upload & Update** tab.
-6.  {{< alert title="Note" color="primary" >}}In case **Joomla! Update** is not visible in the menu, connect to your user database and execute the following query for API Portal database:{{< /alert >}} update s8f7h\_menu set menutype='main' where title like 'com\_joomlaupdate'
+
+    {{< alert title="Note" color="primary" >}}In case **Joomla! Update** is not visible in the menu, connect to your user database and execute the following query for API Portal database: `update s8f7h_menu set menutype='main' where title like 'com_joomlaupdate'`{{< /alert >}}
+
 7.  Browse to the extracted API Portal upgrade package, and select the included Joomla! upgrade package file (for example, `joomla-update-package-3.8.8-package.zip`).
 8.  Click **Upload & Install**, and follow the displayed instructions.
 9.  Enter the following to run the upgrade script:
-10. \# ./apiportal\_upgrade.sh
 
-Post-upgrade steps
-------------------
+    ```
+    # ./apiportal_upgrade.sh
+    ```
+
+## Unattended upgrade
+
+To upgrade the API Portal software in unattended or silent mode:
+
+1.  Download the upgrade package for your OS from Axway Support at [https://support.axway.com](https://support.axway.com/), and upload it to your host machine.
+2.  Log in to the host machine as the `root` user.
+3.  Extract the upgrade package:
+
+    ```
+    # tar xpvzf <package_name>.tgz
+    ```
+
+5.  Run the upgrade script with the appropriate arguments. For example:
+
+    ```
+    # ./apiportal_upgrade.sh
+    ```
+
+
+
+## Post-upgrade steps
 
 After the upgrade, perform the following tasks.
 
@@ -35,7 +72,9 @@ After upgrade, you must reinstall Easyblog and EasyDiscuss in JAI to update the 
 1.  Log in to the JAI.
 2.  Click **Components > EasyBlog**, and follow the instructions in the EasyBlog installer.
 3.  If prompted to select the installation method, select **Installation via Directory**, select the available package from the drop-down list, and follow the instructions in the installer to the finish.
-4.  {{< alert title="Note" color="primary" >}}Do not install any of the modules and plugins unless you plan to use them. To prevent installing any modules, click **Modules** and deselect **Select All**, then repeat the same for **Plugins**.{{< /alert >}}
+
+    Do not install any of the modules and plugins unless you plan to use them. To prevent installing any modules, click **Modules** and deselect **Select All**, then repeat the same for **Plugins**.
+
 5.  Click **Components > EasyDiscuss**, and repeat the component installation as described for EasyBlog.
 
 {{< alert title="Note" color="primary" >}} To resolve a known issue (caused by EasyBlog) with broken menu paths when creating new custom menus for your API Portal in JAI, you must rebuild the menu paths. In JAI, select **Menus > Main Menu** and click **Rebuild**. You only need to rebuild the menu paths once after installation or upgrade. {{< /alert >}}
@@ -66,7 +105,7 @@ After the upgrade, the blog is visible and accessible on the main menu on the AP
 
 During upgrade, the original `vhost` file is backed up to the following location:
 
--   **Software installation**: `/etc/httpd/conf.d/apiportal.conf.old`
+- `/etc/httpd/conf.d/apiportal.conf.old`
 
 A new `vhost` file is deployed at the same location.
 
@@ -76,7 +115,9 @@ If the you had any customizations in your `vhost` file and you want to preserve 
 
 If you are using the Public API mode in API Portal you must run a script to encrypt the Public API mode user password and specify a directory to store the encryption key.
 
-\# sh ./apiportal\_encryption.sh
+```
+# sh ./apiportal_encryption.sh
+```
 
 The directory is created along with a file. The last segment of the directory is the file name, for example: `/sample/directory/for/encryption/key` creates an empty file named "key" in the desired directory.
 

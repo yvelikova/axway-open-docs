@@ -1,4 +1,4 @@
-{"title":"Update API Portal","linkTitle":"Update API Portal","weight":"20","date":"2019-08-09","description":"Service packs and patches provide important security updates, fixes for known issues, and improved performance for API Portal and its components. "}
+{"title":"Update API Portal with a service pack or patch","linkTitle":"Update API Portal","weight":"6","date":"2019-08-09","description":"Apply a service pack or patch to API Portal. "}
 
 Service packs and patches provide important security updates, fixes for known issues, and improved performance for API Portal and its components.
 

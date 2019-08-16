@@ -1,4 +1,4 @@
-{"title":"Data storage for high availability","linkTitle":"Data storage for high availability","weight":"9","date":"2019-08-09","description":"API Portal stores API Management data both in relational database management system (RDBMS) and as files on disk. The stored data includes, for example, configuration data and logs, all API Portal customizations, as well as articles and their related data posted in Joomla!, blog, or discussion forum."} 
+{"title":"Data storage for high availability","linkTitle":"Data storage for HA","weight":"3","date":"2019-08-09","description":"Understand where API Portal stores API Management data."} 
 
 ## Data storage
 

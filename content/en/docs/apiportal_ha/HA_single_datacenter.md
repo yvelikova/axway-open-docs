@@ -1,6 +1,6 @@
-{"title":"Configure API Portal for HA in single datacenter","linkTitle":"Configure HA in single datacenter","date":"2019-08-09","description":"This topic describes the expected behavior in case of a failover in API Portal high-availability (HA) deployment in a single datacenter. The following scenarios are covered:"}
+{"title":"Configure single datacenter high availability","linkTitle":"Configure single datacenter HA","weight":"1","date":"2019-08-09","description":"Configure API Portal for high availability (HA) in a single datacenter."}
 
-## Configure API Portal for HA in single datacenter
+## Configure API Portal
 
 This topic describes how to deploy API Portal high availability (HA) in a single datacenter.
 
@@ -70,7 +70,7 @@ Configuring the load balancer may vary depending on the load balancer in questio
 
 You must situate the load balancer between the two API Portal instances.
 
-## API Portal single datacenter failover scenarios
+## Failover scenarios
 
 This topic describes the expected behavior in case of a failover in API Portal high-availability (HA) deployment in a single datacenter. 
 

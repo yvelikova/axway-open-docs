@@ -1,4 +1,4 @@
-{"title":"Connect API Portal to API Manager","linkTitle":"Connect API Portal to API Manager","date":"2019-08-09","description":"Connect API Portal to API Manager to leverage the user registry and API Catalog stored and managed in API Manager. "}
+{"title":"Connect API Portal to API Manager","linkTitle":"Connect API Portal to API Manager","weight":"7","date":"2019-08-09","description":"Connect API Portal to API Manager to leverage the user registry and API Catalog stored and managed in API Manager."}
 
 Before you can use API Portal, you must connect it to at least one API Manager. You can also connect API Portal to multiple API Managers to expose APIs centrally in one place.
 

@@ -1,4 +1,4 @@
-{"title":"Customize API Portal topology in Docker","linkTitle":"Customize API Portal topology in Docker","date":"2019-08-09","description":"This section describes how to create Docker data volumes for persistence, edit your `docker-compose.yml` file to customize your Docker-based API Portal topology to suit your environment, and deploy API Portal using `docker-compose up`. "} ﻿
+{"title":"Customize API Portal topology in Docker","linkTitle":"Customize API Portal topology","weight":"3","date":"2019-08-09","description":"customize your Docker-based API Portal topology to suit your environment"}
 
 This section describes how to create Docker data volumes for persistence, edit your `docker-compose.yml` file to customize your Docker-based API Portal topology to suit your environment, and deploy API Portal using `docker-compose up`.
 
@@ -99,7 +99,7 @@ To run API Portal you need to have at least two services:
 
 **Database service example**:
 
-``` {space="preserve"}
+```
   db:
        image: mysql:5.6
         networks:
@@ -112,7 +112,7 @@ To run API Portal you need to have at least two services:
 
 **API Portal service example**:
 
-``` {space="preserve"}
+```
   webapp:
     build: .
     depends_on:
@@ -147,7 +147,7 @@ After you have changed the `docker-compose.yml` file, perform the following to r
 
 Wait for the following message to be displayed:
 
-``` {space="preserve"}
+```
 "AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using <IP address>. 
 Set the 'ServerName' directive globally to suppress this message".
 ```
@@ -160,7 +160,7 @@ Before you can use API Portal, you must link it to your API Manager. For more d
 
 ### Environment variable settings
 
-``` {space="preserve"}
+```
 # required variables
 MYSQL_HOST=db
 MYSQL_PORT=3306

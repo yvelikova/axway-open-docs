@@ -1,13 +1,6 @@
-{"title":"Software installation prerequisites","date":"2019-08-09","description":"Before you start installing API Portal as a software installation, you must meet the following requirements."} ﻿
+{"title":"Software installation prerequisites","linkTitle":"Prerequisites","weight":"1","date":"2019-08-09","description":"Your system must meet these prerequisites before you can install API Portal."}
 
-Before you start installing API Portal as a software installation, you must meet the following requirements.
-
--   [Hardware requirements](#Hardware)
--   [Software requirements](#Software)
--   [Example of dependencies in a minimal OS installation](#Example)
-
-Hardware requirements
----------------------
+## Hardware requirements
 
 The minimum hardware requirements are:
 
@@ -17,8 +10,7 @@ The minimum hardware requirements are:
 
 {{< alert title="Note" color="primary" >}}Installing API Portal dependencies requires an Internet connection. Offline installation is not currently supported.{{< /alert >}}
 
-Software requirements
----------------------
+## Software requirements
 
 API Portal has the following requirements for software components.
 
@@ -31,7 +23,9 @@ You must have Red Hat Enterprise Linux (RHEL) 7 or CentOS 7 installed.
 You must have one of the following installed:
 
 -   MySQL 5.6 or later
--   {{< alert title="Note" color="primary" >}}API Portal does not officially support MySQL 8 as Joomla! does not support it. However, API Portal has been tested to work with MySQL 8 using a workaround. You must apply the workaround described at [Joomla! and MySQL 8](https://docs.joomla.org/Joomla_and_MySQL_8) before you install API Portal.{{< /alert >}}
+
+    {{< alert title="Note" color="primary" >}}API Portal does not officially support MySQL 8 as Joomla! does not support it. However, API Portal has been tested to work with MySQL 8 using a workaround. You must apply the workaround described at [Joomla! and MySQL 8](https://docs.joomla.org/Joomla_and_MySQL_8) before you install API Portal.{{< /alert >}}
+
 -   MariaDB 5.5.50 or later
 
 For details how to install a database using `yum`, see the following:
@@ -80,8 +74,7 @@ API Portal requires the following to be installed:
 
 {{< alert title="Note" color="primary" >}}The monitoring feature of API Portal, which enables your API consumers to monitor application and API usage, requires a connected API Manager with monitoring metrics enabled. {{< /alert >}}
 
-Examples of dependencies in a minimal OS installation
------------------------------------------------------
+## Examples of dependencies in a minimal OS installation
 
 The following are examples of the dependencies API Portal installs on a *minimal* RHEL 7.
 
@@ -144,4 +137,3 @@ If you are installing API Portal on an air-gapped server, or your environment o
 -   php-common
 -   openssl
 -   openssl-libs
-
