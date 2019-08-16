@@ -76,6 +76,7 @@ To edit a page in Netlify CMS:
     ![WYSIWYG editor](/images/contributing/netlify_WYSIWYGeditor.png)
 
 * When you finish all the updates, change the status of the content to 'In review'.
+
     ![Set status to Review](/images/contributing/netlify_setstatustoreview.png)
 
 {{< alert title="Warning" color="warning">}}
