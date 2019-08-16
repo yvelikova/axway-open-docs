@@ -70,7 +70,7 @@ To edit a page in Netlify CMS:
 * Click **Edit on Netlify CMS** on the upper right corner of the page.
 * Sign in to Netlify CMS using your GitHub account.
 * Click to fork the repository.
-* On the Netlify landing page, locate the page you want to change and click to edit it.
+* On the Netlify CMS landing page, locate the page you want to change and click to edit it.
 * Make the updates and click **Save**.
 * You can preview the changes on the right side preview editor.
     ![WYSIWYG editor](/images/contributing/netlify_WYSIWYGeditor.png)
