@@ -28,6 +28,15 @@ You need a [recent version](https://github.com/gohugoio/hugo/releases) of Hugo t
 
 For full installation instructions for each platform, see [Install Hugo](https://gohugo.io/getting-started/installing/).
 
+### Install Hugo on WSL Ubuntu Linux
+
+Download and unpack the Linux 64 bit deb package:
+
+```
+wget https://github.com/gohugoio/hugo/releases/download/v0.56.3/hugo_extended_0.56.3_Linux-64bit.deb
+sudo dpkg -i hugo_extended_0.56.3_Linux-64bit.deb
+```
+
 ## Install theme dependencies
 
 The theme uses `PostCSS` to generate the site resources the first time you run the server. Install it using `npm`:
@@ -41,8 +50,6 @@ npm install -D --save postcss-cli
 
 Run the `hugo server` command in your site root.
 
-The website is now available locally at `http://localhost:1313/`. You can now add or edit Markdown files in the `content\en\docs\` directory and Hugo will automatically rebuild the site with the changes. 
+The website is now available locally at `http://localhost:1313/`. You can now add or edit Markdown files in the `content\en\docs\` directory and Hugo will automatically rebuild the site with the changes.
 
 For more details on Hugo commands, see [Basic Usage](https://gohugo.io/getting-started/usage/).
-
-<!-- TODO Add recommendations for Markdown and markdown editors -->
