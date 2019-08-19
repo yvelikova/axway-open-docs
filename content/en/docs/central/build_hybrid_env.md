@@ -8,11 +8,11 @@ description: Learn how to build a basic Amazon EC2 private cloud hybrid environm
 
 *Estimated reading time: 3 minutes*
 
-{{< alert title="Note" color="secondary" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
+{{< alert title="Public beta" color="warning" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
 
 ## Before you start
 
-- Read [AMPLIFY Central mesh governance overview](hybrid_overview.htm).
+- Read [AMPLIFY Central mesh governance overview](/docs/central/hybrid_overview).
 - You will need a basic knowledge of Amazon Web Services (AWS), Amazon EC2 instances, and associated tools.
 - You will need to be familiar with Kubernetes and Helm, including running Helm, kubectl, and kops commands.
 
@@ -20,7 +20,7 @@ description: Learn how to build a basic Amazon EC2 private cloud hybrid environm
 
 Learn how to build a basic Amazon EC2 private cloud hybrid environment and add the required tools to enable you to access and manage it remotely from a client system.
 
-{{< alert title="Tip" color="primary" >}}For the latest Amazon EC2 build instructions, see the [Set up AMPLIFY Central mesh governance documentation on GitHub](https://github.com/Axway/Setup-Amplify-Mesh-Governance).{{< /alert >}}
+{{< alert title="Tip" color="" >}}For the latest Amazon EC2 build instructions, see the [Set up AMPLIFY Central mesh governance documentation on GitHub](https://github.com/Axway/Setup-Amplify-Mesh-Governance).{{< /alert >}}
 
 ## Minimum requirements
 
@@ -127,4 +127,4 @@ Your cluster kubernetes-cluster.example.com is ready
 
 ## Review and next steps
 
-You have learned how to build a basic Amazon EC2 hybrid environment and add the required tools to enable you to access and manage it from your client system. Next, read [Add your hybrid environment to AMPLIFY Central](add_hybrid_env.htm) to learn how to add your environment to AMPLIFY Central.
+You have learned how to build a basic Amazon EC2 hybrid environment and add the required tools to enable you to access and manage it from your client system. Next, read [Add your hybrid environment to AMPLIFY Central](/docs/central/add_hybrid_env) to learn how to add your environment to AMPLIFY Central.

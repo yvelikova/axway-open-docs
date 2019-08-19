@@ -11,8 +11,8 @@ description: Learn how to register your first API in AMPLIFY Central.
 Before you start
 ----------------
 
-- Read [AMPLIFY Central overview](overview.htm)
-- Read [Understand AMPLIFY Central concepts](fundamental_concepts.htm)
+- Read [AMPLIFY Central overview](/docs/central/overview)
+- Read [Understand AMPLIFY Central concepts](/docs/central/fundamental_concepts)
 - Sign up for a free trial of AMPLIFY Central at [AMPLIFY platform](https://platform.axway.com/)
 
 Objectives

@@ -8,13 +8,13 @@ description: Learn how to add your private cloud hybrid environment to AMPLIFY C
 
 *Estimated reading time: 8 minutes*
 
-{{< alert title="Note" color="secondary" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
+{{< alert title="Public beta" color="warning" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
 
 Before you start
 ----------------
 
-- Read [AMPLIFY Central mesh governance overview](hybrid_overview.htm).
-- You will need a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](build_hybrid_env.htm).
+- Read [AMPLIFY Central mesh governance overview](/docs/central/hybrid_overview).
+- You will need a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](/docs/central/build_hybrid_env).
 - You will need a basic understanding of OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523)).
 - You will need to be familiar with Kubernetes and Helm, including running Helm and kubectl commands.
 - You will need an administrator account for AMPLIFY Central.
@@ -39,7 +39,7 @@ Watch the animation to learn how to do this in AMPLIFY Central UI.
 
 ![Add environment to AMPLIFY Central](/Images/central/add_env_animation_cropped.gif)
 
-{{< alert title="Note" color="primary" >}} You must specify the public FQDN of the private cluster (in this case your private cloud Kubernetes cluster) in the **Host** field when defining your hybrid environment in the AMPLIFY Central UI. You must use the same FQDN in [Generate a key pair and secret for the domain edge gateway](#Generate). {{< /alert >}}
+{{< alert title="Note" color="" >}} You must specify the public FQDN of the private cluster (in this case your private cloud Kubernetes cluster) in the **Host** field when defining your hybrid environment in the AMPLIFY Central UI. You must use the same FQDN in [Generate a key pair and secret for the domain edge gateway](#Generate). {{< /alert >}}
 
 Download the hybrid kit to your client system and unzip it to a unique directory. For example:
 
@@ -61,20 +61,21 @@ To expose an HTTPS endpoint of a service within your environment to external tra
     - The domain certificate must match the domain (FQDN) of your environment
     - The public key certificate must be PEM encoded and match the given private key
 2. Create the Istio namespace. This is the namespace where Istio will be deployed.
+    - The default value of `NAMESPACE_NAME` is `istio-system` and this value is used later when the helm upgrade deployment steps are executed in [Deploy the service mesh and Axway mesh agents](#deploy-the-service-mesh-and-axway-mesh-agents).
 
-    Usage: `kubectl create namespace NAMESPACE_NAME`
-    {{< alert title="Note" color="primary" >}}The default value of `NAMESPACE_NAME` is `istio-system` and this value is used later when the helm upgrade deployment steps are executed in [Deploy the service mesh and Axway mesh agents](#Deploy). {{< /alert >}}
-    Example:
+        Example:
 
-    ```
-    $ kubectl create namespace istio-system
-    namespace/istio-system created
-    ```
+        ```
+        $ kubectl create namespace istio-system
+        namespace/istio-system created
+        ```
 
 3. Create a Kubernetes TLS secret to hold the public certificate and private key, and deploy it into the Istio namespace.
 
     Usage: `kubectl create secret tls SECRET_NAME -n NAMESPACE_NAME --key /PATH/TO/KEY/FILE --cert /PATH/TO/CERT/FILE`
-    {{< alert title="Note" color="primary" >}}`SECRET_NAME` must match the field `secretName` in the `istioOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit. The `secretName` in the Helm chart is generated from your domain name, for example, `kubernetes-cluster-example-certs` for the domain `kubernetes-cluster.example.com`.{{< /alert >}}
+
+    - `SECRET_NAME` must match the field `secretName` in the `istioOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit. The `secretName` in the Helm chart is generated from your domain name, for example, `kubernetes-cluster-example-certs` for the domain `kubernetes-cluster.example.com`.
+    
     Example:
 
     ```
@@ -89,7 +90,7 @@ To expose an HTTPS endpoint of a service within your environment to external tra
 Generate key pairs and secrets for the Axway mesh agents
 --------------------------------------------------------
 
-Before you can deploy the Axway mesh agents in your environment, you must generate key pairs and make those keys available to Kubernetes in the namespace where the agents will be deployed. For more information on Axway mesh agents, see [Axway mesh agents](hybrid_overview.htm#mesh).
+Before you can deploy the Axway mesh agents in your environment, you must generate key pairs and make those keys available to Kubernetes in the namespace where the agents will be deployed. For more information on Axway mesh agents, see [Axway mesh agents](/docs/central/hybrid_overview/#axway-mesh-agents).
 
 ### What are these keys used for?
 
@@ -130,7 +131,7 @@ Create the namespace where the Axway mesh agents will be deployed.
 
 Usage: `kubectl create namespace NAMESPACE_NAME`
 
-{{< alert title="Note" color="primary" >}}The default value for `NAMESPACE_NAME` is `apic-control` and this value is used later when the helm upgrade deployment steps are executed in [Deploy the service mesh and Axway mesh agents](#Deploy). {{< /alert >}}
+- The default value for `NAMESPACE_NAME` is `apic-control` and this value is used later when the helm upgrade deployment steps are executed in [Deploy the service mesh and Axway mesh agents](#deploy-the-service-mesh-and-axway-mesh-agents).
 
 Example:
 
@@ -147,10 +148,10 @@ Create Kubernetes secrets to hold the mesh agents' public certificates and priva
 
 Usage: `kubectl create secret generic SECRET_NAME --namespace NAMESPACE_NAME  --from-file=publicKey=/PATH/TO/PUBLIC/KEY/FILE --from-file=privateKey=/PATH/TO/PRIVATE/KEY/FILE  --from-file=password=PASSWORD_FILE --from-literal=password=PASSWORD -o yaml`
 
-{{< alert title="Note" color="primary" >}} Each `SECRET_NAME` must match the corresponding SDA or CSA field `keysSecretName` in the `hybridOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit.
+- Each `SECRET_NAME` must match the corresponding SDA or CSA field `keysSecretName` in the `hybridOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit.
 The SDA default value of `keysSecretName` is `sda-secrets`.
 The CSA default value of `keysSecretName` is `csa-secrets`.
-To change the secret store names, edit the `keysSecretName` values in the `hybridOverride.yaml` file before you execute the helm upgrade deployment steps.{{< /alert >}}
+To change the secret store names, edit the `keysSecretName` values in the `hybridOverride.yaml` file before you execute the helm upgrade deployment steps.
 
 Example for SDA:
 
