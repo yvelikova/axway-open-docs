@@ -56,6 +56,19 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}     
+  - name: "apipadminsso"
+    label: "API Portal SSO administration pages"
+    label_singular: "API Portal SSO administration page"
+    description: "All pages relating to administering API Portal SSO."
+    folder: "content/en/docs/apiportal_admin/sso"
+    create: true
+    delete: false
+    format: "frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}     
   - name: "apipreleasenotes"
     label: "API Portal release notes pages"
     label_singular: "API Portal release notes page"
