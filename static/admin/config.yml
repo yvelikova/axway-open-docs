@@ -21,7 +21,7 @@ collections: # A list of collections the CMS should be able to edit
     format: "frontmatter" # Specify frontmatter for YAML or json-frontmatter for JSON
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string"} # Every collection must have a title field as it's the default identifier
-      - {name: "linktitle", widget: "hidden", required: false}
+      - {name: "linkTitle", widget: "hidden", required: false}
       - {name: "no_list", widget: "hidden", required: false}
       - {name: "weight", widget: "hidden", required: false}
       - {name: "date", widget: "hidden", required: false}
