@@ -52,6 +52,7 @@ The Blackfriday Markdown parser has some known issues with nested lists. To avoi
     This is more text
     ```
 
+* Do not use indentation for code blocks. Although indentation is supported by Markdown, it causes issues with nesting code blocks inside lists, and with publishing on production.
 * Use single backticks to apply code or monospace formatting to `inline` text.
 
 {{% alert title="Caution" color="warning" %}}
