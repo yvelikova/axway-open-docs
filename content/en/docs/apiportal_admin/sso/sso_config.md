@@ -45,7 +45,6 @@ To create a `service-provider-apiportal.xml` file to your API Gateway instance, 
 ```
 INSTALL_DIR/apigateway/samples/sso/keycloak/service-provider-apiportal.xml
 ```
-      INSTALL_DIR/apigateway/samples/sso/keycloak/service-provider-apiportal.xml
 
 The sample file contains useful information what sections you must change to match your environment.
 
@@ -62,13 +61,15 @@ Do not change any settings with paths containing `/sso`, unless otherwise instru
 
 1. For example, if you generated a keystore called `sso.jks` with a passphrase `abc123` and an alias called `ssokey`, the settings are as follows:
 
-      <ServiceProvider
-         ...
-         keystore="conf/sso.jks"
-         keystorePassphrase="abc123"
-         keyAlias="ssokey"
-         ...
-      </ServiceProvider>
+    ```
+    <ServiceProvider
+        ...
+        keystore="conf/sso.jks"
+        keystorePassphrase="abc123"
+        keyAlias="ssokey"
+        ...
+    </ServiceProvider>
+    ```
 
 1. In the `SamlIdentityProvider` section, update the `Mappings` section with the mapping of IdP attributes to API Manager attributes. For more information on the mapping syntax, see [Mapping syntax](API_Portal_sso_mapping.htm).
 
@@ -94,11 +95,13 @@ To specify the IdP by file in `service-provider-apiportal.xml`, follow these ste
 1. In the `SamlIdentityProvider` section, set the `metadataUrl` field of to the value `./idp.xml`.
 2. The following example shows a sample extract from the `service-provider-apiportal.xml` file for Keycloak. The `metadataUrl` refers to the file `idp.xml`:
 
-       <SamlIdentityProvider
+    ```
+    <SamlIdentityProvider
           entityId="https://keycloak.int.acme.com:8443/auth/realms/Axway"
           metadataUrl="./idp.xml"
           ...
-       </SamlIdentityProvider>
+    </SamlIdentityProvider>
+    ```
 
 3. Create an `idp.xml` file to your API Gateway instance folder using the following templates:
 
