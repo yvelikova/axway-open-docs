@@ -120,13 +120,13 @@ To specify the IdP by URL in `service-provider-apiportal.xml`, in the `SamlIdent
 
 The following example shows an extract from a `service-provider-apiportal.xml` file for a Keycloak IdP. The `metadataUrl` refers to a URL.
 
-    ```
-    <SamlIdentityProvider>
-         entityId="https://keycloak.int.acme.com:8443/auth/realms/Axway"
-         metadataUrl="https://keycloak.int.acme.com:8443/auth/realms/Axway/protocol/saml/descriptor"
-         ...          
-      </SamlIdentityProvider>
-    ```  
+```
+<SamlIdentityProvider>
+        entityId="https://keycloak.int.acme.com:8443/auth/realms/Axway"
+        metadataUrl="https://keycloak.int.acme.com:8443/auth/realms/Axway/protocol/saml/descriptor"
+        ...
+</SamlIdentityProvider>
+```  
 
 A sample of a `service-provider-apiportal.xml` file that uses an IdP specified by URL is included in the `INSTALL_DIR/apigateway/samples/sso/keycloak` folder.
 
