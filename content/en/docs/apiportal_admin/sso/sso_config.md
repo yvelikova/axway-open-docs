@@ -62,7 +62,7 @@ Do not change any settings with paths containing `/sso`, unless otherwise instru
 1. For example, if you generated a keystore called `sso.jks` with a passphrase `abc123` and an alias called `ssokey`, the settings are as follows:
 
     ```
-    <ServiceProvider
+    <ServiceProvider>
         ...
         keystore="conf/sso.jks"
         keystorePassphrase="abc123"
@@ -96,7 +96,7 @@ To specify the IdP by file in `service-provider-apiportal.xml`, follow these ste
 2. The following example shows a sample extract from the `service-provider-apiportal.xml` file for Keycloak. The `metadataUrl` refers to the file `idp.xml`:
 
     ```
-    <SamlIdentityProvider
+    <SamlIdentityProvider>
           entityId="https://keycloak.int.acme.com:8443/auth/realms/Axway"
           metadataUrl="./idp.xml"
           ...
@@ -120,11 +120,13 @@ To specify the IdP by URL in `service-provider-apiportal.xml`, in the `SamlIdent
 
 The following example shows an extract from a `service-provider-apiportal.xml` file for a Keycloak IdP. The `metadataUrl` refers to a URL.
 
-      <SamlIdentityProvider
+    ```
+    <SamlIdentityProvider>
          entityId="https://keycloak.int.acme.com:8443/auth/realms/Axway"
          metadataUrl="https://keycloak.int.acme.com:8443/auth/realms/Axway/protocol/saml/descriptor"
          ...          
       </SamlIdentityProvider>
+    ```  
 
 A sample of a `service-provider-apiportal.xml` file that uses an IdP specified by URL is included in the `INSTALL_DIR/apigateway/samples/sso/keycloak` folder.
 
