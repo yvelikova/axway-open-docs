@@ -27,6 +27,22 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
+  - name: "apipinstall"
+    label: "API Portal installation pages"
+    label_singular: "API Portal installation page"
+    description: "All pages relating to installing API Portal."
+    folder: "content/en/docs/apiportal_install"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
   - name: "apipadmin"
     label: "API Portal administration pages"
     label_singular: "API Portal administration page"
