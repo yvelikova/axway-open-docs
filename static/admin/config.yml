@@ -43,7 +43,7 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
-    - name: "apipha"
+  - name: "apipha"
     label: "Deploy API Portal HA"
     label_singular: "API Portal HA deployment page"
     description: "All pages relating to deploying API Portal for HA."
