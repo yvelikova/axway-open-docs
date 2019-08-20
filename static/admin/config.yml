@@ -34,7 +34,7 @@ collections: # A list of collections the CMS should be able to edit
     folder: "content/en/docs/apiportal_install"
     create: true
     delete: false
-    format: "frontmatter"
+    format: "json-frontmatter"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {name: "linkTitle", widget: "hidden", required: false}
