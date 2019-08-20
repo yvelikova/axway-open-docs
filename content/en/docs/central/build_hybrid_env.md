@@ -25,14 +25,14 @@ Learn how to build a basic Amazon EC2 private cloud hybrid environment and add t
 ## Minimum requirements
 
 - Amazon EC2 instance with Kubernetes and Helm:
-    - Kubernetes 1.11.7 or later recommended
-    - Helm 2.13 or later recommended
+  - Kubernetes 1.11.7 or later recommended
+  - Helm 2.13 or later recommended
 - Public facing fully qualified domain name (FQDN) of the Amazon EC2 cluster
 - Client system (for example, Linux VM) with the following tools installed for accessing and managing your Amazon EC2 environment remotely:
-    - AWS CLI 1.16 recommended - Enables you to interact with AWS services from the command line. See the [AWS CLI installation documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
-    - kubectl 1.13 recommended - Enables you to deploy and manage applications on Kubernetes from the command line. See the [kubectl installation documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
-    - kops 1.11 recommended - Helps you create, destroy, upgrade and maintain Kubernetes clusters from the command line. See the [kops installation documentation](https://github.com/kubernetes/kops/blob/master/docs/install.md).
-    - Helm 2.13 or later recommended - Enables you to install the Axway proprietary service mesh layer later, and to export Helm charts. See the [Helm installation documentation](https://helm.sh/docs/using_helm/#installing-helm).
+  - AWS CLI 1.16 recommended - Enables you to interact with AWS services from the command line. See the [AWS CLI installation documentation](https://docs.aws.amazon.com/cli/latest/userguide/li-chap-install.html).
+  - kubectl 1.13 recommended - Enables you to deploy and manage applications on Kubernetes from the command line. See the [kubectl installation documentation](https://kubernetes.io/docs/asks/tools/install-kubectl/).
+  - kops 1.11 recommended - Helps you create, destroy, upgrade and maintain Kubernetes clusters from the command line. See the [kops installation documentation](https://github.com/kubernetes/ops/blob/master/docs/install.md).
+  - Helm 2.13 or later recommended - Enables you to install the Axway proprietary service mesh layer later, and to export Helm charts. See the [Helm installation documentation](https://elm.sh/docs/using_helm/#installing-helm).
 
 ## Build an Amazon EC2 hybrid environment
 
@@ -41,7 +41,7 @@ Follow these guidelines to build a basic Amazon EC2 hybrid environment manually.
 ### Set up Amazon EC2
 
 1. To create an Amazon EC2 environment, follow the five steps in the [Amazon EC2 set up documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html).
-2. To launch and connect to an Amazon EC2 instance, follow the first two steps in the [Amazon EC2 get started documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html). When launching the instance, choose a Linux AMI and an instance type of `t2.medium`.
+1. To launch and connect to an Amazon EC2 instance, follow the first two steps in the [Amazon EC2 get started documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html). When launching the instance, choose a Linux AMI and an instance type of `t2.medium`.
 
 ### Add Kubernetes to Amazon EC2
 
@@ -76,7 +76,7 @@ Install Helm on your cluster and add the Axway public repository to Helm:
     $ helm init
     ```
 
-2. Verify the Helm version:
+1. Verify the Helm version:
 
     ```
     $ helm version
@@ -84,14 +84,14 @@ Install Helm on your cluster and add the Axway public repository to Helm:
     Server: &version.Version{SemVer:"v2.13.0", GitCommit:"2e55dbe1fdb5fdb96b75ff144a339489417b146b", GitTreeState:"clean"}
     ```
 
-3. Add the Axway public Helm repository to your installation:
+1. Add the Axway public Helm repository to your installation:
 
     ```
     $ helm repo add axway https://charts.axway.com/charts
     "axway" has been added to your repositories
     ```
 
-4. Verify that the Axway public repository has been added:
+1. Verify that the Axway public repository has been added:
 
     ```
     $ helm repo list

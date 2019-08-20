@@ -8,20 +8,17 @@ description: Learn how to secure your API using a JWT token.
 
 *Estimated reading time: 6 minutes*
 
-Before you start
-----------------
+## Before you start
 
 - You will need a basic understanding of JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523))
 - You will need a user account for AMPLIFY Central
 - Import your API as an API proxy in AMPLIFY Central (see [Register an API](/docs/central/quickstart/#register-an-api))
 
-Objectives
-----------
+## Objectives
 
 Learn how to secure your API using a JWT token.
 
-Add JWT authentication to an API proxy
---------------------------------------
+## Add JWT authentication to an API proxy
 
 Follow these steps to add JWT client authentication to your API proxy:
 
@@ -33,8 +30,7 @@ Watch the animation to learn how to do this in AMPLIFY Central UI.
 
 ![Add JWT authentication](/Images/central/JWTaddproxyauth_animation.gif)
 
-Manage access to an API proxy with JWT authentication
------------------------------------------------------
+## Manage access to an API proxy with JWT authentication
 
 To be able to test your API, create an app to manage client access to your API:
 
@@ -48,8 +44,7 @@ To be able to test your API, create an app to manage client access to your API:
 5. On the **APIs** tab, add a new API.
 6. Select your API proxy with JWT authentication, and select the runtime group you deployed it to.
 
-Test an API proxy with JWT authentication
------------------------------------------
+## Test an API proxy with JWT authentication
 
 To test your API proxy in AMPLIFY Central:
 
@@ -65,8 +60,7 @@ Watch the animation to learn how to do this in AMPLIFY Central UI.
 
 ![Test API with JWT](/Images/central/JWTtestapi_animation.gif)
 
-Create a JWT token
-------------------
+## Create a JWT token
 
 There are many libraries and methods for creating signed JWT tokens. The first step is to generate an RSA key pair. This section demonstrates generating the key pair and provides examples of the following signing methods:
 
@@ -246,7 +240,6 @@ To create a JWT token on jwt.io:
     4Fm5eJvbzYvwoA9ZUbLcupewoaNbcGK1QKJDrSP4ZZLik1oQ0y9rhhRjqPe9-xSILoqlpDvKLqxyRgi_BJUMdi1a00nhDNox1rW6SQzdRFnkHF_aQkjJeKFNdm8fw1UF6Jw
     ```
 
-Review
-------
+## Review
 
 You have learned how to secure your API with a JWT token in AMPLIFY Central.
