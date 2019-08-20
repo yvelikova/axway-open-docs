@@ -54,10 +54,9 @@ hybridOverride.yaml  istioOverride.yaml
 To expose an HTTPS endpoint of a service within your environment to external traffic, you need a public certificate and private key for the domain where your environment is hosted, and a TLS secret based on the key pair.
 
 1. Create an X.509 certificate and key for your domain (for example, using [Let's Encrypt](https://letsencrypt.org/)).
-    - The domain certificate must match the domain (FQDN) of your environment
-    - The public key certificate must be PEM encoded and match the given private key
-
-2. Create the Istio namespace. This is the namespace where Istio will be deployed.
+    - The domain certificate must match the domain (FQDN) of your environment.
+    - The public key certificate must be PEM encoded and match the given private key.
+1. Create the Istio namespace. This is the namespace where Istio will be deployed.
 
     Usage: `kubectl create namespace NAMESPACE_NAME`
 
@@ -68,9 +67,8 @@ To expose an HTTPS endpoint of a service within your environment to external tra
     ```
     $ kubectl create namespace istio-system
     namespace/istio-system created
-        ```
-
-3. Create a Kubernetes TLS secret to hold the public certificate and private key, and deploy it into the Istio namespace.
+    ```
+1. Create a Kubernetes TLS secret to hold the public certificate and private key, and deploy it into the Istio namespace.
 
     Usage: `kubectl create secret tls SECRET_NAME -n NAMESPACE_NAME --key /PATH/TO/KEY/FILE --cert /PATH/TO/CERT/FILE`
 
