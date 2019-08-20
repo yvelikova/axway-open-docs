@@ -56,6 +56,7 @@ To expose an HTTPS endpoint of a service within your environment to external tra
 1. Create an X.509 certificate and key for your domain (for example, using [Let's Encrypt](https://letsencrypt.org/)).
     - The domain certificate must match the domain (FQDN) of your environment
     - The public key certificate must be PEM encoded and match the given private key
+
 2. Create the Istio namespace. This is the namespace where Istio will be deployed.
 
     Usage: `kubectl create namespace NAMESPACE_NAME`
