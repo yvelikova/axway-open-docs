@@ -36,7 +36,7 @@ Watch the animation to learn how to do this in AMPLIFY Central UI.
 
 ![Add environment to AMPLIFY Central](/Images/central/add_env_animation_cropped.gif)
 
-{{< alert title="Note" color="" >}} You must specify the public FQDN of the private cluster (in this case your private cloud Kubernetes cluster) in the **Host** field when defining your hybrid environment in the AMPLIFY Central UI. You must use the same FQDN in [Generate a key pair and secret for the domain edge gateway](#Generate). {{< /alert >}}
+{{< alert title="Note" color="" >}} You must specify the public FQDN of the private cluster (in this case your private cloud Kubernetes cluster) in the **Host** field when defining your hybrid environment in the AMPLIFY Central UI. You must use the same FQDN in [Generate a key pair and secret for the domain edge gateway](#generate-key-pairs-and-secrets-for-the-axway-mesh-agents). {{< /alert >}}
 
 Download the hybrid kit to your client system and unzip it to a unique directory. For example:
 
