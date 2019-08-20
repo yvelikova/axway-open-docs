@@ -34,7 +34,7 @@ collections: # A list of collections the CMS should be able to edit
     folder: "content/en/docs/apiportal_install"
     create: true
     delete: false
-    format: "json-frontmatter"
+    format: "frontmatter"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {name: "linkTitle", widget: "hidden", required: false}
@@ -53,9 +53,12 @@ collections: # A list of collections the CMS should be able to edit
     format: "frontmatter"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}     
+      - {label: "Body", name: "body", widget: "markdown"}
   - name: "apipadminsso"
     label: "API Portal SSO administration pages"
     label_singular: "API Portal SSO administration page"
@@ -66,9 +69,12 @@ collections: # A list of collections the CMS should be able to edit
     format: "frontmatter"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}     
+      - {label: "Body", name: "body", widget: "markdown"}
   - name: "apipreleasenotes"
     label: "API Portal release notes pages"
     label_singular: "API Portal release notes page"
@@ -79,9 +85,12 @@ collections: # A list of collections the CMS should be able to edit
     format: "frontmatter"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}  
+      - {label: "Body", name: "body", widget: "markdown"}
   - name: "central"
     label: "AMPLIFY Central pages"
     label_singular: "AMPLIFY Central page"
@@ -92,9 +101,12 @@ collections: # A list of collections the CMS should be able to edit
     format: "frontmatter"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"} 
+      - {label: "Body", name: "body", widget: "markdown"}
   - name: "contribdoc"
     label: "Contribution guidelines pages"
     label_singular: "Contribution guidelines page"
@@ -105,9 +117,12 @@ collections: # A list of collections the CMS should be able to edit
     format: "frontmatter"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}    
+      - {label: "Body", name: "body", widget: "markdown"}   
   - name: "newspost" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "News posts" # Used in the UI, ie.: "New Post"
     label_singular: "News post"
