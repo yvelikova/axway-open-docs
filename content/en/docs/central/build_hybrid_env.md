@@ -30,8 +30,8 @@ Learn how to build a basic Amazon EC2 private cloud hybrid environment and add t
 - Public facing fully qualified domain name (FQDN) of the Amazon EC2 cluster
 - Client system (for example, Linux VM) with the following tools installed for accessing and managing your Amazon EC2 environment remotely:
   - AWS CLI 1.16 recommended - Enables you to interact with AWS services from the command line. See the [AWS CLI installation documentation](https://docs.aws.amazon.com/cli/latest/userguide/li-chap-install.html).
-  - kubectl 1.13 recommended - Enables you to deploy and manage applications on Kubernetes from the command line. See the [kubectl installation documentation](https://kubernetes.io/docs/asks/tools/install-kubectl/).
-  - kops 1.11 recommended - Helps you create, destroy, upgrade and maintain Kubernetes clusters from the command line. See the [kops installation documentation](https://github.com/kubernetes/ops/blob/master/docs/install.md).
+  - kubectl 1.13 recommended - Enables you to deploy and manage applications on Kubernetes from the command line. See the [kubectl installation documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+  - kops 1.11 recommended - Helps you create, destroy, upgrade and maintain Kubernetes clusters from the command line. See the [kops installation documentation](https://github.com/kubernetes/kops/blob/master/docs/install.md).
   - Helm 2.13 or later recommended - Enables you to install the Axway proprietary service mesh layer later, and to export Helm charts. See the [Helm installation documentation](https://elm.sh/docs/using_helm/#installing-helm).
 
 ## Build an Amazon EC2 hybrid environment

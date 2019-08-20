@@ -57,13 +57,16 @@ To expose an HTTPS endpoint of a service within your environment to external tra
     - The domain certificate must match the domain (FQDN) of your environment
     - The public key certificate must be PEM encoded and match the given private key
 2. Create the Istio namespace. This is the namespace where Istio will be deployed.
+
+    Usage: `kubectl create namespace NAMESPACE_NAME`
+
     - The default value of `NAMESPACE_NAME` is `istio-system` and this value is used later when the helm upgrade deployment steps are executed in [Deploy the service mesh and Axway mesh agents](#deploy-the-service-mesh-and-axway-mesh-agents).
 
-        Example:
+    Example:
 
-        ```
-        $ kubectl create namespace istio-system
-        namespace/istio-system created
+    ```
+    $ kubectl create namespace istio-system
+    namespace/istio-system created
         ```
 
 3. Create a Kubernetes TLS secret to hold the public certificate and private key, and deploy it into the Istio namespace.
