@@ -8,15 +8,13 @@ description: Learn how to register your first API in AMPLIFY Central.
 
 *Estimated reading time: 2 minutes*
 
-Before you start
-----------------
+## Before you start
 
-- Read [AMPLIFY Central overview](overview.htm)
-- Read [Understand AMPLIFY Central concepts](fundamental_concepts.htm)
+- Read [AMPLIFY Central overview](/docs/central/overview)
+- Read [Understand AMPLIFY Central concepts](/docs/central/fundamental_concepts)
 - Sign up for a free trial of AMPLIFY Central at [AMPLIFY platform](https://platform.axway.com/)
 
-Objectives
-----------
+## Objectives
 
 Learn how to register your first API in AMPLIFY Central.
 
@@ -25,22 +23,19 @@ Learn how to register your first API in AMPLIFY Central.
 - Monitor the API usage and traffic
 - Publish the API endpoints to AMPLIFY Catalog
 
-Register an API
----------------
+## Register an API
 
 Watch this video to learn how to register your first API as an API proxy in AMPLIFY Central, how to deploy it to a runtime group, and how to test the deployed API.
 
 {{< youtube QTpB3e2DZBg >}}
 
-Secure an API
--------------
+## Secure an API
 
 Watch this video to learn how to secure your API with a client authentication policy, using an API key as an example. The video also demonstrates how to manage access to an API using an app, and how to deploy and test the secured API.
 
 {{< youtube WmuhKoPFF4k >}}
 
-Monitor API traffic
--------------------
+## Monitor API traffic
 
 To monitor API usage and troubleshoot API traffic in AMPLIFY Central UI, click **API Observer** in the left navigation bar.
 
@@ -49,12 +44,10 @@ To monitor API usage and troubleshoot API traffic in AMPLIFY Central UI, click *
 - Click **API Traffic** to view the traffic information. This view is useful for finding and troubleshooting any failed transactions.
   ![Example of API traffic](/Images/central/apiobserver_traffic.png)
 
-Publish API to AMPLIFY Catalog
-------------------------------
+## Publish API to AMPLIFY Catalog
 
 To publish and share your API endpoints in the AMPLIFY Catalog, so that consumers can discover and reuse your service easily, select **API Proxies** in the left navigation bar, click the appropriate API proxy in the list, and click **Add to Catalog** on the **Deployments** tab.
 
-Review
-------
+## Review
 
 You have learned how to register an API as an API proxy in AMPLIFY Central, how to deploy and test it, and how to apply security policies to it. You have also learned how to monitor API usage and traffic, and how to publish API endpoints to AMPLIFY Catalog to make them available to consumers.

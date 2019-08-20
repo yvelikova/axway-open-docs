@@ -8,7 +8,7 @@ description: Understand what mesh governance is, what a hybrid environment is, a
 
 *Estimated reading time: 3 minutes*
 
-{{< alert title="Note" color="secondary" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
+{{< alert title="Public beta" color="warning" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
 
 ## What is mesh governance?
 
