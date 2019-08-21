@@ -35,17 +35,17 @@ You must first create the database server and the client certificate and key fil
 
 1.  To create the RSA certificates, enter the following commands in the given order, and respond to any prompts you receive:
 
-    `openssl genrsa 2048 > /opt/mysql/ca-key.pem`
+    `openssl genrsa 2048 > /etc/mysql/certs/ca-key.pem`
 
-    `openssl req -new -x509 -nodes -days 3600 -key /opt/mysql/ca-key.pem > /opt/mysql/ca.pem`
+    `openssl req -new -x509 -nodes -days 3600 -key /etc/mysql/certs/ca-key.pem > /etc/mysql/certs/ca.pem`
 
-    `openssl req -newkey rsa:2048 -days 3600 -nodes -keyout /opt/mysql/server-key.pem > /opt/mysql/server-req.pem`
+    `openssl req -newkey rsa:2048 -days 3600 -nodes -keyout /etc/mysql/certs/server-key.pem > /etc/mysql/certs/server-req.pem`
 
-    `openssl x509 -req -in /opt/mysql/server-req.pem -days 3600 -CA /opt/mysql/ca.pem -CAkey /opt/mysql/ca-key.pem -set_serial 01 > server-cert.pem`
+    `openssl x509 -req -in /etc/mysql/certs/server-req.pem -days 3600 -CA /etc/mysql/certs/ca.pem -CAkey /etc/mysql/certs/ca-key.pem -set_serial 01 > server-cert.pem`
 
     `openssl req -newkey rsa:2048 -days 3600 -nodes -keyout client-key.pem > client-req.pem`
 
-    `openssl x509 -req -in client-req.pem -days 3600 -CA /opt/mysql/ca-cert.pem -CAkey /opt/mysql/ca-key.pem -set_serial 01 > client-cert.pem`
+    `openssl x509 -req -in client-req.pem -days 3600 -CA /etc/mysql/certs/ca-cert.pem -CAkey /etc/mysql/certs/ca-key.pem -set_serial 01 > client-cert.pem`
 
 3.  To verify the generated certificate, enter the following command:
 
