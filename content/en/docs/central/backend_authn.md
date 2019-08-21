@@ -6,7 +6,7 @@ date: 2019-07-30
 description: Learn how to configure back-end authentication for an API which supports back-end authentication.
 ---
 
-*Estimated reading time: 6 minutes*
+*Estimated reading time: 2 minutes*
 
 ## Before you start
 
