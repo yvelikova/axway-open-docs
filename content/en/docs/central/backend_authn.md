@@ -19,7 +19,7 @@ Learn how to configure authentication for your back-end API.
 
 ## Add back-end HTTP basic authentication to an API proxy
 
-The following steps demonstrate how to configure HTTP basic back-end authentication for a sample API, and how to deploy and test the API.
+The following procedure demonstrates how to configure HTTP basic back-end authentication for a sample API, and how to deploy and test the API.
 
 ### Import an API with HTTP basic authentication as an API proxy
 
@@ -31,7 +31,7 @@ This example uses a sample musical instruments API. You can import this from: <h
 
 ### Configure HTTP basic back-end authentication for the API proxy
 
-On the **Policies** tab change the back-end authentication policy to `HTTP Basic Auth` and enter the authentication credentials. The credentials can be a user name and password combination or only a user name with no password.
+On the **Policies** tab, change the back-end authentication policy to `HTTP Basic Auth` and enter the authentication credentials. The credentials can be a user name and password combination or only a user name with no password.
 
 The credentials for the sample musical instruments API are:
 
@@ -48,7 +48,7 @@ Changing the back-end authentication policy (for example, from no authentication
 
 On the **Deployments** tab, deploy or update a runtime group with this revision of your API proxy.
 
-On the **Test Methods** tab, execute a method and it should return a `200 OK` result. This indicates a successful call of the API using HTTP basic as the back-end authentication.
+On the **Test Methods** tab, execute a method. It should return a `200 OK` result. This indicates a successful call of the API using HTTP basic as the back-end authentication.
 
 ### Update HTTP basic authentication credentials
 
