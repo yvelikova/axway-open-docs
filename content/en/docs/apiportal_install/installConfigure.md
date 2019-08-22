@@ -1,4 +1,10 @@
-{"title":"Additional configuration","linkTitle":"Additional configuration","weight":"9","date":"2019-08-09","description":"Perform additional configuration after installation."}
+{
+    "title":"Additional configuration",
+    "linkTitle":"Additional configuration",
+    "weight":"9",
+    "date":"2019-08-09",
+    "description":"Perform additional configuration after installation."
+}
 
 ## Change API Portal look and feel
 
