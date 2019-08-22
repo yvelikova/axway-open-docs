@@ -3,10 +3,10 @@ title: Configure back-end authentication for an API
 linkTitle: Configure back-end authentication
 weight: 5
 date: 2019-07-30
-description: Learn how to configure back-end authentication for an API which supports back-end authentication.
+description: Learn how to configure back-end authentication for an API.
 ---
 
-*Estimated reading time: 2 minutes*
+*Estimated reading time*: 2 minutes
 
 ## Before you start
 
@@ -15,23 +15,23 @@ description: Learn how to configure back-end authentication for an API which sup
 
 ## Objectives
 
-Learn how to secure your back-end API using HTTP Basic authentication.
+Learn how to configure authentication for your back-end API.
 
 ## Add back-end HTTP basic authentication to an API proxy
 
 The following steps demonstrate how to configure HTTP basic back-end authentication for a sample API, and how to deploy and test the API.
 
-### Step 1 - Import an API that supports back-end authentication as an API proxy
+### Import an API with HTTP basic authentication as an API proxy
 
-Select **API Proxies** in the left navigation bar, click **Register API**,  and import an API with back-end authentication. 
+Select **API Proxies** in the left navigation bar, click **Register API**, and import an API that supports HTTP basic authentication.
 
-This example uses a sample musical instruments API with HTTP basic authentication. You can import this from: <https://39cd48c2323117d7f0ec53a347aa94d8974a2174.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json>
+This example uses a sample musical instruments API. You can import this from: <https://39cd48c2323117d7f0ec53a347aa94d8974a2174.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json>
 
 ![Import an API with HTTP basic authentication](/Images/central/import-proxy.png)
 
-### Step 2 - Configure HTTP basic back-end authentication for the API proxy
+### Configure HTTP basic back-end authentication for the API proxy
 
-On the **Policies** tab change the back-end authentication policy to `HTTP Basic Auth` and enter the authentication credentials. The credentials can be a user name and password combination or only a user name with no password. 
+On the **Policies** tab change the back-end authentication policy to `HTTP Basic Auth` and enter the authentication credentials. The credentials can be a user name and password combination or only a user name with no password.
 
 The credentials for the sample musical instruments API are:
 
@@ -44,7 +44,7 @@ Watch the animation to learn how to do this in AMPLIFY Central UI.
 
 Changing the back-end authentication policy (for example, from no authentication to HTTP basic authentication) always creates a new revision of the API proxy.
 
-### Step 3 - Deploy and test the API proxy revision
+### Deploy and test the API proxy revision
 
 On the **Deployments** tab, deploy or update a runtime group with this revision of your API proxy.
 
