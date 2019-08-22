@@ -1,6 +1,5 @@
 {"title":"Install API Portal dependencies","linkTitle":"Install API Portal dependencies","weight":"2","date":"2019-08-09","description":"Install required dependencies before you install API Portal."}
 
-<!-- markdownlint-disable MD040 MD014 -->
 The API Portal installation script does not install specific dependencies (such as PHP, Apache) that are required by API Portal, so you must install these dependencies yourself before you install API Portal.
 
 ## RHEL – Install dependencies from official RHEL repository
@@ -98,19 +97,19 @@ LoadModule php7_module /opt/rh/httpd24/root/usr/lib64/httpd/modules/librh-php71-
 
 1. Add `index.php` to the `<IfModule dir_module>` directive. For example, change:
 
-    ```
-    <IfModule dir_module>
-            DirectoryIndex index.html
-    </IfModule>
-    ```
+```
+<IfModule dir_module>
+        DirectoryIndex index.html
+</IfModule>
+```
 
-    to:
+to:
 
-    ```
-    <IfModule dir_module>
-            DirectoryIndex index.php index.html
-    </IfModule>
-    ```
+```
+<IfModule dir_module>
+        DirectoryIndex index.php index.html
+</IfModule>
+```
 
 1. Add the following after the `<IfModule dir_module>` directive:
 
@@ -158,19 +157,19 @@ RHEL offers a newer version of Apache that is also available in the additional r
 Follow these steps to install Apache and PHP from the Red Hat Software Collections channel:
 
 1. Enable the additional repository as detailed in [Enable the official RHEL repository](#Enable).
-3. If you have Apache already, remove it:
+2. If you have Apache already, remove it:
 
-```
-$ yum remove httpd
-```
+    ```
+    $ yum remove httpd
+    ```
 
-4. Install the packages:
+3. Install the packages:
 
 ```
 $ yum install httpd24-httpd httpd24-httpd-tools httpd24-mod_ssl
 ```
 
-4. Verify you have the package `httpd24-httpd` with the command:
+1. Verify you have the package `httpd24-httpd` with the command:
 
 ```
 $ rpm -qa  grep httpd24-httpd
