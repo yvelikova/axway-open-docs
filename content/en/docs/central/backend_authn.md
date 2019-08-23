@@ -50,6 +50,8 @@ On the **Deployments** tab, deploy or update a runtime group with this revision 
 
 On the **Test Methods** tab, execute a method. It should return a `200 OK` result. This indicates a successful call of the API using HTTP basic as the back-end authentication.
 
+If the execution of a method. returns a `401 Unauthorized` result. This indicates an unsuccessful call of the API using HTTP basic as the back-end authentication.
+
 ### Update HTTP basic authentication credentials
 
 You can update the HTTP basic authentication credentials after deploying the API proxy. The backend authentication dialog displays the previously set credentials, but as password is a secure field, it is not revealed.
