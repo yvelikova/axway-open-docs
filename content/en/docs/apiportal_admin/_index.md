@@ -1,6 +1,7 @@
 ---
 title: Administer API Portal
 linkTitle: Administer API Portal
+weight: 10
 no_list: true
 date: 2019-07-30
 ---
