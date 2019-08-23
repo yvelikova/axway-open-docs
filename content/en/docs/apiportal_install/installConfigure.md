@@ -1,8 +1,14 @@
-{"title":"Additional configuration","linkTitle":"Additional configuration","weight":"9","date":"2019-08-09","description":"Perform additional configuration after installation."}
+{
+    "title":"Additional configuration",
+    "linkTitle":"Additional configuration",
+    "weight":"9",
+    "date":"2019-08-09",
+    "description":"Perform additional configuration after installation."
+}
 
 ## Change API Portal look and feel
 
-For details on how to configure the look and feel of your API Portal end-user interface, see the [API Portal Administrator Guide](/bundle/APIPortal_77_AdministratorGuide_allOS_en_HTML5) .
+For details on how to configure the look and feel of your API Portal end-user interface, see the [API Portal Administrator Guide](/docs/apiportal_admin/).
 
 ## Configure terms and conditions text
 
