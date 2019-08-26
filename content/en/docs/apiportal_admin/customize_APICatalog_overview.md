@@ -2,37 +2,38 @@
 title: Customize API Catalog
 linkTitle: Customize API Catalog
 weight: 3
-date: 2019-07-30
+date: 2019-07-30T00:00:00.000Z
+description: Customize how your APIs are displayed to your API consumers and what actions they can perform.
 ---
-
 ## Customize API Catalog
 
 You can customize how APIs are displayed in the API Catalog view of API Portal, and you can customize what actions your API consumers can perform on APIs.
 
 You can customize the following:
 
-- Display APIs in a list or tile view.
-- Show or hide the button that enables users to download API definitions. The default is shown.
-- Show or hide the button that enables users to download client SDKs. The default is hidden.
-- Hide APIs associated with specified tags.
-- Show only APIs associated with specified tags. For more details on tags, see Group APIs with tags.
-- Show or hide the button that enables users to try out an API. You can show the button for all users, for authenticated users only, or hide it completely. The default is shown for all users.
-- Display REST API details using the Swagger.io or AMPLIFY Swagger UI rendering tools. The default is AMPLIFY. SOAP APIs are always displayed using Swagger.io.
-- Show or hide Nickname column while using AMPLIFY Swagger UI rendering tool.
-- Display REST API details using a colorful or colorless scheme when using the AMPLIFY rendering tool. You can also change the method colors when using the colorful scheme.
+* Display APIs in a list or tile view.
+* Show or hide the button that enables users to download API definitions. The default is shown.
+* Show or hide the button that enables users to download client SDKs. The default is hidden.
+* Hide APIs associated with specified tags.
+* Show only APIs associated with specified tags. For more details on tags, see Group APIs with tags.
+* Show or hide the button that enables users to try out an API. You can show the button for all users, for authenticated users only, or hide it completely. The default is shown for all users.
+* Display REST API details using the Swagger.io or AMPLIFY Swagger UI rendering tools. The default is AMPLIFY. SOAP APIs are always displayed using Swagger.io.
+* Show or hide Nickname column when using AMPLIFY rendering tool. The default is hidden.
+* Show or hide code examples in endpoint details when using AMPLIFY rendering tool. The default is shown.
+* Display REST API details using a colorful or colorless scheme when using the AMPLIFY rendering tool. You can also change the method colors when using the colorful scheme.
 
 ## Customize API Catalog settings
 
 To change the API Catalog settings:
 
 1. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal_host>/administrator`).
-1. Click **Menus > Main Menu**.
-1. Click **APIs**.
-1. Click the **API Catalog** tab.
+2. Click **Menus > Main Menu**.
+3. Click **APIs**.
+4. Click the **API Catalog** tab.
 
-    ![Customize API catalog](/Images/APIPortal/jai_customize_api_catalog.png)
-   
-1. Change the settings as required and click **Save & Close**.
+    ![Customize API catalog](/Images/uploads/apiportal-jai-customize-api-catalog.png)
+
+5. Change the settings as required and click **Save & Close**.
 
 ## Customize source of API descriptions
 
@@ -45,6 +46,7 @@ To change the settings:
 3. Click **Save**.
 
 ## Customize page title or summary
+
 You can customize the API Catalog page title, the summary text, or both.
 
 1. In JAI, click **Menus > Main Menu**.
@@ -54,6 +56,7 @@ You can customize the API Catalog page title, the summary text, or both.
 5. Click **Save & Close**.
 
 ## Group APIs with tags
+
 You can add tags to APIs in API Manager and use them to split your API Catalog into smaller subsets. For example, you can create multiple themed API groups based on your developer communities.
 
 For more details on adding tags to APIs, see the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/) .
@@ -61,15 +64,17 @@ For more details on adding tags to APIs, see the [API Manager User Guide](/bundl
 To create a dedicated API Catalog for a subset of tagged APIs, do the following:
 
 1. Log in to Joomla! Administrator Interface (JAI).
-1. Click **Menus > Main Menu > Add New Menu Item**.
-1. Enter a menu title for the new API Catalog.
-1. In **Menu Item Type**, click **Select > API Portal > API Catalog Page**.
-1. Set **Access** to the level you want, and ensure that **Status** is set to `Published`.
-1. In **Ordering**, select where in the main menu the new API Catalog appears. The menu item is placed after the item you select here.
-  To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.
-1. On the **API Catalog** tab, in the **Only list APIs with tag**, enter the tags to include in this API Catalog.
-1. On the **Page Display** tab, change the page title and summary text if you want. For more details, see [Change the page title or summary](customize_APICatalog_view.htm#Change).
-1.. Click **Save & Close**.
+2. Click **Menus > Main Menu > Add New Menu Item**.
+3. Enter a menu title for the new API Catalog.
+4. In **Menu Item Type**, click **Select > API Portal > API Catalog Page**.
+5. Set **Access** to the level you want, and ensure that **Status** is set to `Published`.
+6. In **Ordering**, select where in the main menu the new API Catalog appears. The menu item is placed after the item you select here.
+
+    {{< alert title="Tip" color="primary" >}}To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.{{< /alert >}}
+
+7. On the **API Catalog** tab, in the **Only list APIs with tag**, enter the tags to include in this API Catalog.
+8. On the **Page Display** tab, change the page title and summary text if you want. For more details, see [Change the page title or summary](customize_APICatalog_view.htm#Change).
+9. Click **Save & Close**.
 
 Your themed API Catalog is now ready, and you can see it in your API Portal.
 
