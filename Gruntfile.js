@@ -18,8 +18,7 @@ module.exports = function(grunt) {
         }
       },
       src: [
-        // 'content/en/**/*.md'
-        'README.md'
+        'content/en/**/*.md'
       ]
     }
   });
