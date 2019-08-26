@@ -30,9 +30,9 @@ To change the API Catalog settings:
 3. Click **APIs**.
 4. Click the **API Catalog** tab.
 
-![Customize API catalog](/Images/uploads/apiportal-jai-customize-api-catalog.png)
+    ![Customize API catalog](/Images/uploads/apiportal-jai-customize-api-catalog.png)
 
-1. Change the settings as required and click **Save & Close**.
+5. Change the settings as required and click **Save & Close**.
 
 ## Customize source of API descriptions
 
