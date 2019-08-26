@@ -1,6 +1,7 @@
 ---
 title: Customize API Catalog
 linkTitle: Customize API Catalog
+weight: 3
 date: 2019-07-30T00:00:00.000Z
 description: Customize how your APIs are displayed to your API consumers and what actions they can perform.
 ---
