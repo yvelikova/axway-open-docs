@@ -1,4 +1,11 @@
-{"title":"Deploy API Portal in containers","linkTitle":"Deploy API Portal in containers","no_list":"true","weight":"6","date":"2019-08-09","description":"Learn how to deploy API Portal in Docker containers."}
+{
+    "title":"Deploy API Portal in containers",
+    "linkTitle":"Deploy API Portal in containers",
+    "no_list":"true",
+    "weight":"6",
+    "date":"2019-08-09",
+    "description":"Learn how to deploy API Portal in Docker containers."
+}
 
 [Docker](https://www.docker.com/) containers are software containers that wrap software in a complete file system containing everything the software in question needs to run properly, such as code, runtime, system tools, and system libraries. This guarantees that the software always runs the same way, regardless of environment. In addition, you can configure several containers to run on a single host machine, without the overhead of starting and maintaining separate virtual machines.
 
@@ -8,11 +15,10 @@ Because API Gateway and API Manager also support Docker containers, you can run 
 
 For more details on Docker, see the following:
 
--   [Docker overview](https://docs.docker.com/engine/understanding-docker/)
--   [Install Docker on Linux distributions](https://docs.docker.com/engine/installation/linux/)
+- [Docker overview](https://docs.docker.com/engine/understanding-docker/)
+- [Install Docker on Linux distributions](https://docs.docker.com/engine/installation/linux/)
 
-Interaction example
--------------------
+## Interaction example
 
 The following diagram shows an example on how the different components interact in Docker containers:
 
@@ -28,26 +34,24 @@ By default, API Portal uses the port `3306` for the MySQL connection and port `
 
 On the host machines running the Docker containers, you can expose any port you want. The examples in this guide use ports `443` on the API Portal host machine and port `3306` on the MySQL host machine.
 
-API Portal resources
---------------------
+## API Portal resources
 
 Axway provides the following resources for running API Portal in Docker:
 
--   Package containing a `Dockerfile` and other resources to build an API Portal Docker image that uses CentOS 7. For more information on the contents of the package, see [Build and run API Portal using Dockerfile](docker_portal_deploy.htm).
--   Package containing a ready-made API Portal Docker image.
+- Package containing a `Dockerfile` and other resources to build an API Portal Docker image that uses CentOS 7. For more information on the contents of the package, see [Build and run API Portal using Dockerfile](/docs/apiportal_docker/docker_portal_deploy).
+- Package containing a ready-made API Portal Docker image.
 
 You can get the API Portal packages from Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink}.
 
 {{< alert title="Note" color="primary" >}}MySQL and Redis Docker images are not included with the API Portal Docker sample package. You must download them separately from [Docker Hub](https://hub.docker.com/).{{< /alert >}}
 
-Data persistence
-----------------
+## Data persistence
 
 When you make changes that affect the file system of the API Portal container, such as customizations (template, logo) or changes to `vhost` file or `.htaccess` file, it is recommended to back up these changes.
 
 Data is persistent as long as the Docker container exists:
 
--   If you *stop* the container, all your changes are retained when you run the container again.
--   If you *remove* the container, all your changes are lost, and you must either restore them from your backup, or redo them.
+- If you *stop* the container, all your changes are retained when you run the container again.
+- If you *remove* the container, all your changes are lost, and you must either restore them from your backup, or redo them.
 
 For more details on MySQL in Docker, see the [official MySQL Docker repository](https://hub.docker.com/_/mysql/).
