@@ -21,7 +21,7 @@ Customization can be performed at three levels:
 
 * **Customization through the addition of Joomla! plug-ins**: The Joomla! CMS offers thousands of extensions that are available from their website. Axway is only responsible for the support to extensions that are delivered out of the box (EasyBlog and EasyDiscuss).
 
-{{< alert title="Caution" color="warning" >}} If you submit a case to Axway Support and it is suspected that unsupported third-party extensions may be the root cause of the issue, you must reproduce the issue on a non-customized API Portal.{{< /alert >}}
+{{< alert title="Note" color="primary" >}} If you submit a case to Axway Support and it is suspected that unsupported third-party extensions may be the root cause of the issue, you must reproduce the issue on a non-customized API Portal.{{< /alert >}}
 
 ## Prerequisites
 
