@@ -28,31 +28,31 @@ To install the API Portal software in unattended mode:
 
 | Option                   | Description|
 |--------------------------|----------|
-| -h or --help             | Prints all available options for the script.|
-| --apache-without-php     | Accepts yY/nN. Flag indicating whether user wants to continue when PHP could not be detected in Apache.|
-| --mysql-ssl              | Accepts yY/nN. Flag indicating whether to use MySQL in SSL mode.|
-| --mysql-ssl-method       | Accepts 1 or 2. Indicates the method used when SSL mode for MySQL is wanted. <ul><li>1 - One-way authentication</li><li>2 - Two-way authentication</li></ul>|
-| --install-path           | The install path for API Portal. Defaults to `/opt/axway/apiportal/htdoc.`|
-| --mysql-database         | The database to be used by API Portal.  |
-| --mysql-host             | Database host. |
-| --mysql-port             | Database port. |
-| --mysql-username         | Database user.|
-| --mysql-password         | Database password.|
-| --weak-mysql-password    | Accepts yY/nN. Flag indicating whether installation should continue when MySQL password is weak.|
-| --ha-instance            | Accepts yY/nN. Flag indicating whether the HA setup is wanted. Use only for instances that are not initial. For the initial instance use the --initial-ha-instance option. |
-| --initial-ha-instance    | Accepts yY/nN. Flag indicating whether that would be the initial instance of HA setup.  |
-| --php-ini                | The directory where `php.ini` file is located. Example: `/etc` |
-| --apache-config          | The directory where the Apache configuration files are located. Example: `/etc/httpd/conf.d`|
-| --use-encryption-key     | Accepts yY/nN. Flag indicating whether an encryption key is wanted. This option is required when public API mode is going to be used. |
-| --encryption-key         | The place where the encryption key will be stored. Example: `/home/encryption/key`. The last segment is the filename where the key will be stored. In this example it will be called 'key'.|
-| --use-ssl                | Accepts yY/nN. Flag indicating whether API Portal will be served by SSL.|
-| --ssl-type               | Accepts 1 or 2. Indicates what SSL type is wanted. <ul><li>1 - Custom certificate and private key will be provided.</li><li>2 - Use self-signed certificate.</li></ul>|
-| --ssl-certificate        | Path to the SSL certificate. (Used when option 1 is selected for SSL type.)|
-| --private-key            | Path to the private key. (Used when option 1 is selected for SSL type.)|
-| --private-key-passphrase | The passphrase of the private key. (Used when the key was generated.)|
-| --passphrase-path        | The place where passphrase will be stored. The last segment is the filename where the passphrase will be stored. That file is needed to setup Apache to start silently (without asking for a passphrase). |
-| --hostname               | The hostname of API Portal.|
-| --restart-apache         | Accepts yY/nN. Flag indicating whether Apache restart is wanted after installation ( when the Apache service is correctly detected, otherwise a manual restart of Apache is required). |
+| `-h` or `--help`             | Prints all available options for the script.|
+| `--apache-without-php`     | Accepts yY/nN. Flag indicating whether user wants to continue when PHP could not be detected in Apache.|
+| `--mysql-ssl`              | Accepts yY/nN. Flag indicating whether to use MySQL in SSL mode.|
+| `--mysql-ssl-method`       | Accepts 1 or 2. Indicates the method used when SSL mode for MySQL is wanted. <ul><li>1 - One-way authentication</li><li>2 - Two-way authentication</li></ul>|
+| `--install-path`           | The install path for API Portal. Defaults to `/opt/axway/apiportal/htdoc.`|
+| `--mysql-database`         | The database to be used by API Portal.  |
+| `--mysql-host`             | Database host. |
+| `--mysql-port`             | Database port. |
+| `--mysql-username`         | Database user.|
+| `--mysql-password`         | Database password.|
+| `--weak-mysql-password`    | Accepts yY/nN. Flag indicating whether installation should continue when MySQL password is weak.|
+| `--ha-instance`            | Accepts yY/nN. Flag indicating whether the HA setup is wanted. Use only for instances that are not initial. For the initial instance use the `--initial-ha-instance` option. |
+| `--initial-ha-instance`    | Accepts yY/nN. Flag indicating whether that would be the initial instance of HA setup.  |
+| `--php-ini`                | The directory where `php.ini` file is located. Example: `/etc` |
+| `--apache-config`          | The directory where the Apache configuration files are located. Example: `/etc/httpd/conf.d`|
+| `--use-encryption-key`     | Accepts yY/nN. Flag indicating whether an encryption key is wanted. This option is required when public API mode is going to be used. |
+| `--encryption-key`         | The place where the encryption key will be stored. Example: `/home/encryption/key`. The last segment is the filename where the key will be stored. In this example it will be called 'key'.|
+| `--use-ssl`                | Accepts yY/nN. Flag indicating whether API Portal will be served by SSL.|
+| `--ssl-type`               | Accepts 1 or 2. Indicates what SSL type is wanted. <ul><li>1 - Custom certificate and private key will be provided.</li><li>2 - Use self-signed certificate.</li></ul>|
+| `--ssl-certificate`        | Path to the SSL certificate. (Used when option 1 is selected for SSL type.)|
+| `--private-key`            | Path to the private key. (Used when option 1 is selected for SSL type.)|
+| `--private-key-passphrase` | The passphrase of the private key. (Used when the key was generated.)|
+|` --passphrase-path`        | The place where passphrase will be stored. The last segment is the filename where the passphrase will be stored. That file is needed to setup Apache to start silently (without asking for a passphrase). |
+| `--hostname`               | The hostname of API Portal.|
+| -`-restart-apache`         | Accepts yY/nN. Flag indicating whether Apache restart is wanted after installation ( when the Apache service is correctly detected, otherwise a manual restart of Apache is required). |
 
 ## Uninstall API Portal in unattended mode
 
@@ -70,12 +70,12 @@ To uninstall the API Portal software in unattended mode:
 
 | Option           | Description                                  |
 |------------------|----------------------------------------------|
-| -h or --help     | Prints all available options for the script. |
-| --mysql-database | The database to be used by API Portal.       |
-| --mysql-host     | Database host.                               |
-| --mysql-port     | Database port.                               |
-| --mysql-username | Database user.                               |
-| --mysql-password | Database password.                           |
+| `-h or --help`     | Prints all available options for the script. |
+| `--mysql-database` | The database to be used by API Portal.       |
+| `--mysql-host`     | Database host.                               |
+| `--mysql-port`     | Database port.                               |
+| `--mysql-username` | Database user.                               |
+| `--mysql-password` | Database password.                           |
 
 ## Encrypt the Public API user password in unattended mode
 
@@ -91,7 +91,7 @@ To encrypt the Public API mode user password in unattended mode:
 
 ### Encryption script options
 
-| Option           | Description |
-|------------------|----------------|
-| -h or --help     | Prints all available options for the script|
-| --encryption-key | The place where the encryption key will be stored. Example: /home/encryption/key. The last segment will be the filename where the key will be stored. In the example case it will be called 'key'. |
+| Option             | Description |
+|--------------------|----------------|
+| `-h or --help`     | Prints all available options for the script|
+| `--encryption-key` | The place where the encryption key will be stored. Example: `/home/encryption/key`. The last segment will be the filename where the key will be stored. In the example case it will be called 'key'. |

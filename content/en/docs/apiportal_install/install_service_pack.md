@@ -1,7 +1,8 @@
 {
     "title":"Update API Portal with a service pack or patch",
     "linkTitle":"Update API Portal",
-    "weight":"6","date":"2019-08-09",
+    "weight":"6",
+    "date":"2019-08-09",
     "description":"Apply a service pack or patch to API Portal."
 }
 

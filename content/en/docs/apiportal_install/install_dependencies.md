@@ -1,7 +1,8 @@
 {
     "title":"Install API Portal dependencies",
     "linkTitle":"Install API Portal dependencies",
-    "weight":"2","date":"2019-08-09",
+    "weight":"2",
+    "date":"2019-08-09",
     "description":"Install required dependencies before you install API Portal."
 }
 
