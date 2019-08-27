@@ -25,10 +25,6 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-markdownlint');
 
-  // desired tasks to run
-  // grunt.registerTask('default', ['markdownlint']);
-
-  // default task, pre-fixes
-  grunt.registerTask('default', [])
+  grunt.registerTask('default', ['markdownlint']);
 
 };
