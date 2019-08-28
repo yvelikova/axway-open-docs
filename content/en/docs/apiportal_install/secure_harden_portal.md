@@ -150,8 +150,10 @@ TraceEnable off
 UseCanonicalName Off
 ```
 
-### Restart Apache
+### Recommendations
+In order to protect from Web Server Internal IP Address/Internal Network Name Disclosure set `ServerName` to a proper FQDN.
 
+### Restart Apache
 Restart Apache after modifying the `apiportal.conf` and `security.conf` files.
 
 ## Configure PHP
