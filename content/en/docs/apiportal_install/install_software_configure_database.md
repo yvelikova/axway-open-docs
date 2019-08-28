@@ -17,7 +17,6 @@ Connect to your MySQL or MariaDB database, and configure the database for API P
 1. Set the value for `expire_logs_days`. The default is `0`, no automatic removal.
 1. Set the maximum size of the binary log file in `max_binlog_size`.
 1. Set the maximum number of connections in `max_connections`. The default is `151`.
-1. Set `sql_mode` to `NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES`.
 1. Set the size of the buffer pool in `innodb_buffer_pool_size`.
 1. Set the size of the log files in a log group in `innodb_log_file_size`.
 1. Set the size of database storage to a minimum of 100 MB. This is the recommended value for the most common environments, which include the use of blog posts, forums, comments, and so on.
