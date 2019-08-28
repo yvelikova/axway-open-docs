@@ -1,15 +1,14 @@
 ---
 title: Customize API Catalog
 linkTitle: Customize API Catalog
-weight: 3
-date: 2019-07-30T00:00:00.000Z
-description: Customize how your APIs are displayed to your API consumers and what actions they can perform.
+weight: 4
+date: 2019-07-30
+description: Customize how your APIs are displayed to your API consumers and what actions they can perform. 
 ---
-## Customize API Catalog
 
-You can customize how APIs are displayed in the API Catalog view of API Portal, and you can customize what actions your API consumers can perform on APIs.
+## Customize API Catalog settings
 
-You can customize the following:
+You can customize the following in the API Catalog view of API Portal:
 
 * Display APIs in a list or tile view.
 * Show or hide the button that enables users to download API definitions. The default is shown.
@@ -21,8 +20,6 @@ You can customize the following:
 * Show or hide Nickname column when using AMPLIFY rendering tool. The default is hidden.
 * Show or hide code examples in endpoint details when using AMPLIFY rendering tool. The default is shown.
 * Display REST API details using a colorful or colorless scheme when using the AMPLIFY rendering tool. You can also change the method colors when using the colorful scheme.
-
-## Customize API Catalog settings
 
 To change the API Catalog settings:
 
@@ -70,16 +67,16 @@ To create a dedicated API Catalog for a subset of tagged APIs, do the following:
 5. Set **Access** to the level you want, and ensure that **Status** is set to `Published`.
 6. In **Ordering**, select where in the main menu the new API Catalog appears. The menu item is placed after the item you select here.
 
-    {{< alert title="Tip" color="primary" >}}To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.{{< /alert >}}
+    To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.
 
 7. On the **API Catalog** tab, in the **Only list APIs with tag**, enter the tags to include in this API Catalog.
-8. On the **Page Display** tab, change the page title and summary text if you want. For more details, see [Change the page title or summary](customize_APICatalog_view.htm#Change).
+8. On the **Page Display** tab, change the page title and summary text if you want. For more details, see [Customize page title or summary](#customize-page-title-or-summary).
 9. Click **Save & Close**.
 
 Your themed API Catalog is now ready, and you can see it in your API Portal.
 
 You can also choose to use some tags as an internal tool, and hide them from the API consumers. To hide tags, On the **API Catalog** tab, in **Hide tags**, enter the tags to hide.
 
-## Create tags with wildcards
+### Create tags with wildcards
 
-In both **Only list APIs with tag** and **Hide tags** options on **API Catalog** tab, you can add tags using the `*` and `+` wildcards. This is helpful when you want, for example, list only development APIs in one API Catalog and production APIs in another. In this case you can filter them using wildcards as follows: `*dev*` will list APIs which contain `dev` somewhere in the tag, for example, `financial_development` and `development` tags. Or, to hide all tags which start with `test` and end with any other letter, for example, `test` or `tests`, you can do `test+`.
+In both **Only list APIs with tag** and **Hide tags** options on **API Catalog** tab, you can add tags using the `*` and `+` wildcards. This is helpful to list only development APIs in one API Catalog and production APIs in another. In this case you can filter them using wildcards as follows: `*dev*` will list APIs which contain `dev` somewhere in the tag, for example, `financial_development` and `development` tags. Or, to hide all tags which start with `test` and end with any other letter, for example, `test` or `tests`, you can do `test+`.
