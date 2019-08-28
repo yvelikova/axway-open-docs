@@ -41,10 +41,15 @@ With ThemeMagic, you have an administrative interface for creating or modifying 
 
 1. Log in to the Joomla! Administrator Interface (JAI), and click **Extensions > Templates**.
 2. In Templates sidebar, select **Styles**, then select the style **Purity III - Default**.
+
     ![Joomla user interface with Purity III selecting the styles](/Images/APIPortal/JoomlaThemeMagicStyles.png)
+
 3. Select **ThemeMagic**. ThemeMagic opens your portal home page with theme variables are displayed on the left.
+
     ![Joomla User Interface with Purity III theme magic](/Images/APIPortal/joomlathememagic.png)
+
 4. In the ThemeMagic window, sign in to API Portal. You are now ready to start customizing your portal.
+
     ![Screenshot on ThemeMagic](/Images/APIPortal/JoomlaThemeMagiconAPIPortal.png)
 
 ### Create a new theme
@@ -53,7 +58,9 @@ API Portal includes one theme named **Axway**. Create any additional themes fro
 
 1. Open the ThemeMagic tool, and ensure that the theme selected is the default **Axway** theme.
 2. Click the drop-down next to the **Preview** button, and select **Save As**:
+
     ![API Portal customize color screen](/Images/APIPortal/portal_customize.png)
+
 3. Enter a name for your theme, click **Accept**, and wait until the new theme is ready. A new folder is created for your new theme in `local/less/themes/`.
 4. Ensure that the theme selected is your new theme, and change the theming variables on the left as needed to customize your theme.
 5. To check how your changes look on the page, click **Preview**.
@@ -76,7 +83,9 @@ In addition, there are some other variables for fine-grain customization of the 
 1. In JAI, click **Extensions > Templates**.
 2. In the Templates sidebar, select **Styles**, then select the style **Purity III - Default**.
 3. Select the **Theme** page, and select your new theme from the **Theme** drop-down menu:
+
     ![API Portal sample screen on how to save a new theme in templates](/Images/APIPortal/portal_templates.png)
+
 4. Click **Save**, then click **</> Less to CSS**. This is the preferred option as it will only compile the theme you want to use.
 
 ### Configuration files
@@ -126,7 +135,7 @@ To configure the main menu to link your logo to the home page:
 
 ## Customize standard footer
 
-You can customize API Portal standard footer `Copyright © 2018 Axway` to display the name of your company, and you can also add more information to it.
+You can customize API Portal standard footer `Copyright © YYYY Axway` to display the name of your company, and you can also add more information to it.
 
 ### Override the name of the company
 

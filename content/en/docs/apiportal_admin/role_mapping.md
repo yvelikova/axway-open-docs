@@ -56,7 +56,7 @@ To make all API Manager users of an organization called **API Development** edit
 2. Add the name of the organization, either in full or using wildcards. For example: `API Dev*.`
 3. Click **Save**.
 
-Result: The next time users from **API Development** organization log in to API Portal, they can use all features available for the **Editor** group in JAI.
+The next time users from **API Development** organization log in to API Portal, they can use all features available for the **Editor** group in JAI.
 
 ### Map all users of an email domain to authors
 
@@ -66,7 +66,7 @@ To make all API Manager users whose email domain is `acmecompany` authors in JAI
 2. Add the email domain, either in full or using wildcards. For example: `acme*.`
 3. Click **Save**.
 
-Result: After the first time that users with an **acmecompany** email domain log in to API Portal, they will be able to see all features available for the **Author** group in JAI.
+After the first time that users with an **acmecompany** email domain log in to API Portal, they will be able to see all features available for the **Author** group in JAI.
 
 ### Map all API Manager users of a user role to a user group in JAI
 
@@ -75,4 +75,4 @@ To make all API Manager Organization Admins as administrators in JAI:
 1. On the User Groups Mapping table, click the **Developer** checkbox in the **Administrator** role.
 2. Click **Save**.
 
-Result: After the first time that users with API Manager Organization Admins role log in to API Portal, they will be able to see all features available for the **Administrator** group in JAI.
+After the first time that users with API Manager Organization Admins role log in to API Portal, they will be able to see all features available for the **Administrator** group in JAI.

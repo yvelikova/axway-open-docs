@@ -182,7 +182,7 @@ You must create your customized privacy policy before enabling it in API Portal.
 3. Select `Privacy Policy` from the **Category** list.
 4. Click **Save and Close.**
 
-{{< alert title="Note" color="primary" >}}To meet GDPR compliance regulations, JAI does not allow you to edit a privacy policy. To update a policy you must create a new article on the privacy policy category.{{< /alert >}}
+To meet GDPR compliance regulations, JAI does not allow you to edit a privacy policy. To update a policy you must create a new article on the privacy policy category.
 
 ### Enable your new privacy policy
 
