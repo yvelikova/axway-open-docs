@@ -48,7 +48,9 @@ Changing the back-end authentication policy (for example, from no authentication
 
 On the **Deployments** tab, deploy or update a runtime group with this revision of your API proxy.
 
-On the **Test Methods** tab, execute a method. It should return a `200 OK` result. This indicates a successful call of the API using HTTP basic as the back-end authentication.
+On the **Test Methods** tab, execute a method. It should return a `200 OK` result. This indicates a successful call of the API using HTTP basic as the back-end authentication. 
+
+If you execute a method and it returns a `401 Unauthorized` result, this indicates an unsuccessful call of the API (for example, due to invalid authentication credentials).
 
 ### Update HTTP basic authentication credentials
 

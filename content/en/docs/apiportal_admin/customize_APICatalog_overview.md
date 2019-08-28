@@ -10,26 +10,27 @@ description: Customize how your APIs are displayed to your API consumers and wha
 
 You can customize the following in the API Catalog view of API Portal:
 
-- Display APIs in a list or tile view.
-- Show or hide the button that enables users to download API definitions. The default is shown.
-- Show or hide the button that enables users to download client SDKs. The default is hidden.
-- Hide APIs associated with specified tags.
-- Show only APIs associated with specified tags. For more details on tags, see Group APIs with tags.
-- Show or hide the button that enables users to try out an API. You can show the button for all users, for authenticated users only, or hide it completely. The default is shown for all users.
-- Display REST API details using the Swagger.io or AMPLIFY Swagger UI rendering tools. The default is AMPLIFY. SOAP APIs are always displayed using Swagger.io.
-- Show or hide Nickname column while using AMPLIFY Swagger UI rendering tool.
-- Display REST API details using a colorful or colorless scheme when using the AMPLIFY rendering tool. You can also change the method colors when using the colorful scheme.
+* Display APIs in a list or tile view.
+* Show or hide the button that enables users to download API definitions. The default is shown.
+* Show or hide the button that enables users to download client SDKs. The default is hidden.
+* Hide APIs associated with specified tags.
+* Show only APIs associated with specified tags. For more details on tags, see Group APIs with tags.
+* Show or hide the button that enables users to try out an API. You can show the button for all users, for authenticated users only, or hide it completely. The default is shown for all users.
+* Display REST API details using the Swagger.io or AMPLIFY Swagger UI rendering tools. The default is AMPLIFY. SOAP APIs are always displayed using Swagger.io.
+* Show or hide Nickname column when using AMPLIFY rendering tool. The default is hidden.
+* Show or hide code examples in endpoint details when using AMPLIFY rendering tool. The default is shown.
+* Display REST API details using a colorful or colorless scheme when using the AMPLIFY rendering tool. You can also change the method colors when using the colorful scheme.
 
 To change the API Catalog settings:
 
 1. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal_host>/administrator`).
-1. Click **Menus > Main Menu**.
-1. Click **APIs**.
-1. Click the **API Catalog** tab.
+2. Click **Menus > Main Menu**.
+3. Click **APIs**.
+4. Click the **API Catalog** tab.
 
-    ![Customize API catalog](/Images/APIPortal/jai_customize_api_catalog.png)
+    ![Customize API catalog](/Images/uploads/apiportal-jai-customize-api-catalog.png)
 
-1. Change the settings as required and click **Save & Close**.
+5. Change the settings as required and click **Save & Close**.
 
 ## Customize source of API descriptions
 
@@ -60,15 +61,17 @@ For more details on adding tags to APIs, see the [API Manager User Guide](/bundl
 To create a dedicated API Catalog for a subset of tagged APIs, do the following:
 
 1. Log in to Joomla! Administrator Interface (JAI).
-1. Click **Menus > Main Menu > Add New Menu Item**.
-1. Enter a menu title for the new API Catalog.
-1. In **Menu Item Type**, click **Select > API Portal > API Catalog Page**.
-1. Set **Access** to the level you want, and ensure that **Status** is set to `Published`.
-1. In **Ordering**, select where in the main menu the new API Catalog appears. The menu item is placed after the item you select here.
-  To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.
-1. On the **API Catalog** tab, in the **Only list APIs with tag**, enter the tags to include in this API Catalog.
-1. On the **Page Display** tab, change the page title and summary text if you want. For more details, see [Customize page title or summary](#customize-page-title-or-summary).
-1. Click **Save & Close**.
+2. Click **Menus > Main Menu > Add New Menu Item**.
+3. Enter a menu title for the new API Catalog.
+4. In **Menu Item Type**, click **Select > API Portal > API Catalog Page**.
+5. Set **Access** to the level you want, and ensure that **Status** is set to `Published`.
+6. In **Ordering**, select where in the main menu the new API Catalog appears. The menu item is placed after the item you select here.
+
+    To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.
+
+7. On the **API Catalog** tab, in the **Only list APIs with tag**, enter the tags to include in this API Catalog.
+8. On the **Page Display** tab, change the page title and summary text if you want. For more details, see [Customize page title or summary](#customize-page-title-or-summary).
+9. Click **Save & Close**.
 
 Your themed API Catalog is now ready, and you can see it in your API Portal.
 

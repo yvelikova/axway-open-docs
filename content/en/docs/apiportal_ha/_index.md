@@ -1,4 +1,11 @@
-{"title":"Deploy API Portal for high availability","linkTitle":"Deploy API Portal for HA","no_list":"true","weight":"6","date":"2019-08-09","description":"Configure API Portal for high availability (HA) deployment in a single datacenter or multiple datacenters."} 
+{
+    "title":"Deploy API Portal for high availability",
+    "linkTitle":"Deploy API Portal for HA",
+    "no_list":"true",
+    "weight":"6",
+    "date":"2019-08-09",
+    "description":"Configure API Portal for high availability (HA) deployment in a single datacenter or multiple datacenters."
+} 
 
 You can configure API Portal for high availability (HA) deployment to ensure that there is no single of point of failure in the system. This helps to eliminate any potential system downtime in production environments.
 
@@ -38,7 +45,7 @@ Using shared file system is the recommended option, because syncing static files
 
 {{< alert title="Note" color="primary" >}}It is not recommended to use separate databases for API Portal instances instead of the database clusters, because the benefits of the HA deployment are practically lost.{{< /alert >}}
 
-For more details on what data API Portal stores and where, see [Data storage](HA_overview.htm#Data).
+For more details on what data API Portal stores and where, see [Data storage](ha_datastorage/).
 
 #### Multi-datacenter deployment with shared file system
 
