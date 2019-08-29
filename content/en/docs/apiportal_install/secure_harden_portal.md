@@ -150,8 +150,8 @@ TraceEnable off
 UseCanonicalName Off
 ```
 
-### Recommendations
-To protect from Web Server Internal IP Address/Internal Network Name Disclosure set `ServerName` to a proper FQDN.
+### Set ServerName to proper FQDN
+To protect your web server from a vulnerability giving remote attackers the ability to attain your internal IP address or internal network name, set `ServerName` to a proper FQDN.
 
 ### Restart Apache
 Restart Apache after modifying the `apiportal.conf` and `security.conf` files.
