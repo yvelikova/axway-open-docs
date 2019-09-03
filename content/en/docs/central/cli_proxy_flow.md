@@ -1,4 +1,10 @@
-{"title":"Manage an API proxy using AMPLIFY CLI","linkTitle":"Manage an API proxy using AMPLIFY CLI","weight":"6","date":"2019-07-30","description":"Learn how your DevOps service can use AMPLIFY CLI to manage your API proxies."}
+---
+title: Manage an API proxy using AMPLIFY CLI
+linkTitle: Manage an API proxy using AMPLIFY CLI
+weight: 6
+date: 2019-07-30
+description: Learn how your DevOps service can use AMPLIFY CLI to manage your API proxies.
+---
 
 *Estimated reading time: 5 minutes*
 

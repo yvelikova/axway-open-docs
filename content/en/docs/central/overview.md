@@ -1,4 +1,10 @@
-{"title":"AMPLIFY Central overview","linkTitle":"Overview","weight":"1","date":"2019-07-30","description":"Deploy and secure your services in any environment (for example, cloud, on-premise, and so on) and govern your APIs through a central platform that allows you to integrate your services safely and easily with both internal and external consumers."}
+---
+title: AMPLIFY Central overview
+linkTitle: Overview
+weight: 1
+date: 2019-07-30
+description: Deploy and secure your services in any environment (for example, cloud, on-premise, and so on) and govern your APIs through a central platform that allows you to integrate your services safely and easily with both internal and external consumers.
+---
 
 *Estimated reading time: 2 minutes*
 
@@ -14,15 +20,15 @@ AMPLIFY Central capabilities for managing APIs include registering and deploying
 
 ### Register an API
 
-To learn how to register an API as an API proxy in AMPLIFY Central, see [Get started with AMPLIFY Central](new_users/quickstart.htm).
+To learn how to register an API as an API proxy in AMPLIFY Central, see [Get started with AMPLIFY Central](/docs/central/quickstart/#register-an-api).
 
 ### Secure an API
 
 Apply policies to an API proxy to manage access to your API from client applications.
 
-In [Get started with AMPLIFY Central](new_users/quickstart.htm), you learned how to secure your API with a client authentication policy, using an API key as an example.
+In [Get started with AMPLIFY Central](/docs/central/quickstart), you learned how to secure your API with a client authentication policy, using an API key as an example.
 
-You can also secure your API with a JWT client authentication policy. To learn how to generate a JWT and how to apply a JWT client authentication policy to an API, see [Secure an API with JWT](api_mgmt/secure_api_jwt.htm).
+You can also secure your API with a JWT client authentication policy. To learn how to generate a JWT and how to apply a JWT client authentication policy to an API, see [Secure an API with JWT](/docs/central/secure_api_jwt/).
 
 ## DevOps integration
 
@@ -60,7 +66,7 @@ Visit our [API documentation](https://d-api.docs.stoplight.io/).
 
 #### DevOps authentication and authorization
 
-To use the AMPLIFY Central DevOps API in your DevOps pipeline, your DevOps service (for example, Jenkins) must be authenticated with AMPLIFY platform and it must be authorized to use the DevOps API. Use AMPLIFY CLI to log in to AMPLIFY platform with a service account and obtain an access token to perform authorized API calls. For detailed steps, see [Manage an API proxy using AMPLIFY CLI](cli_proxy_flow.htm).
+To use the AMPLIFY Central DevOps API in your DevOps pipeline, your DevOps service (for example, Jenkins) must be authenticated with AMPLIFY platform and it must be authorized to use the DevOps API. Use AMPLIFY CLI to log in to AMPLIFY platform with a service account and obtain an access token to perform authorized API calls. For detailed steps, see [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_proxy_flow).
 
 #### Example DevOps flow
 
