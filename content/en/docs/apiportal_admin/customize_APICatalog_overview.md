@@ -19,7 +19,7 @@ You can customize the following in the API Catalog view of API Portal:
 * Display REST API details using the Swagger.io or AMPLIFY Swagger UI rendering tools. The default is AMPLIFY. SOAP APIs are always displayed using Swagger.io.
 * Show or hide Nickname column when using AMPLIFY rendering tool. The default is hidden.
 * Show or hide code examples in endpoint details when using AMPLIFY rendering tool. The default is shown.
-* Order method parameters - you can choose the order of appearance of these parameters for all methods.
+* Order method parameters to determine the order in which the parameters for all methods are displayed.
 * Display REST API details using a colorful or colorless scheme when using the AMPLIFY rendering tool. You can also change the method colors when using the colorful scheme.
 
 To change the API Catalog settings:
