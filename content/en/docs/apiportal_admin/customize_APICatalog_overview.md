@@ -20,6 +20,7 @@ You can customize the following in the API Catalog view of API Portal:
 * Show or hide Nickname column when using AMPLIFY rendering tool. The default is hidden.
 * Show or hide code examples in endpoint details when using AMPLIFY rendering tool. The default is shown.
 * Order method parameters to determine the order in which the parameters for all methods are displayed.
+* Set a payload size (in KB). If the response is bigger than the configured value, the response is downloaded as file. The default is blank, which means that downloads are disabled. Valid only for AMPLIFY rendering tool.
 * Display REST API details using a colorful or colorless scheme when using the AMPLIFY rendering tool. You can also change the method colors when using the colorful scheme.
 
 To change the API Catalog settings:
