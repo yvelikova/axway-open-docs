@@ -27,6 +27,10 @@ The following prerequisites apply for the `setup-cassandra` script:
 - Cassandra 2.2.8 requires Python 2.7.x *(up to the latest)*
 - Cassandra 2.2.12 requires Python 2.7.x *(up to the latest)*
 
+{{% alert title="Note" %}}
+API Gateway 7.7 supports Cassandra 2.2.12. API Gateway 7.5.3 supports Cassandra versions 2.2.5 and 2.2.8.
+{{% /alert %}}
+
 ### User name and password authentication
 
 User name and password authentication for clients connecting to the cluster is enabled by the `setup-cassandra` script by default. However, you must change the default user name and password created by Cassandra on startup to further secure the installation. The script provides instructions describing how to change the default user name and password and replicate the `system_auth` keyspace using the `cqlsh` command.
@@ -46,10 +50,6 @@ To configure a remote Cassandra node to use the `setup-cassandra` script, perfor
    AXWAY_HOME/apigateway/system/lib/jython/
    ```
 4. Copy the `setup-cassandra.py` file to your chosen directory on the remote Cassandra node.
-    
-{{% alert title="Note" %}}
-API Gateway 7.7 supports Cassandra 2.2.12. API Gateway 7.5.3 supports Cassandra versions 2.2.5 and 2.2.8.
-{{% /alert %}}
 
 ## Run the setup-cassandra script
 
