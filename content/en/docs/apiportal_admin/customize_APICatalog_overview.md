@@ -90,4 +90,10 @@ The Try-It button is enabled on all requests by default. If you want to disable 
 2. In **Try-It Settings**, select which requests will have a Try-It button. 
 3. Click **Save**.
 
+This configuration is per API Manager. If you want to change it, but on a slave one, go to **Components > API Portal > Additional API Managers**.
+
 ![](/Images/uploads/api-manager-try-it-settings.png)
+
+{{% alert title="Info" %}}
+This configuration is per API Manager. If you want to change it, but for a slave one, go to **Components > API Portal > Additional API Managers**.
+{{% /alert %}}
