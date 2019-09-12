@@ -161,7 +161,7 @@ You must export and save the node certificate and private key as a PKCS12 file, 
 
 You must place these files into the same directory where you run the setup-cassandra script from.
 
-To configure TLS/SSL encryption, add the `--enable-server-encryption` option to the script. For example:
+To configure TLS/SSL encryption, add the `--enable-server-encryption` or `--enable-client-encryption` option to the script. For example:
 
 To configure node-to-node TLS/SSL encryption:
 
