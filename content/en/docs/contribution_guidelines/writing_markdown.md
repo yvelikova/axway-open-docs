@@ -1,10 +1,10 @@
 ---
-title: "Write with Markdown"
-linkTitle: "Write with Markdown"
+title: "Markdown guidelines for Axway-Open-Docs"
+linkTitle: "Markdown guidelines"
 weight: 1
 date: 2019-07-30
 description: >
-  Tips on writing and editing using Markdown.
+  Markdown guidelines and Markdown extensions available for Axway-Open-Docs.
 ---
 
 This docs-as-code implementation uses the [Hugo](https://gohugo.io/) static site generator and the Google [Docsy theme](https://www.docsy.dev/) to build this website from the Markdown content files. Hugo uses [Blackfriday](https://github.com/russross/blackfriday) to parse Markdown.
@@ -52,6 +52,7 @@ The Blackfriday Markdown parser has some known issues with nested lists. To avoi
     This is more text
     ```
 
+* Do not use indentation for code blocks. Although indentation is supported by Markdown, it causes issues with nesting code blocks inside lists, and with publishing on production.
 * Use single backticks to apply code or monospace formatting to `inline` text.
 
 {{% alert title="Caution" color="warning" %}}

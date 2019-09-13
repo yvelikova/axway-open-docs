@@ -7,6 +7,7 @@ description: >-
   Customize how your APIs are displayed to your API consumers and what actions
   they can perform.
 ---
+
 ## Customize API Catalog settings
 
 You can customize the following in the API Catalog view of API Portal:
@@ -30,10 +31,9 @@ To change the API Catalog settings:
 2. Click **Menus > Main Menu**.
 3. Click **APIs**.
 4. Click the **API Catalog** tab.
-
 ![Customize API catalog](/Images/uploads/apiportal-jai-customize-api-catalog.png)
+5. Change the settings as required and click **Save & Close**.
 
-1. Change the settings as required and click **Save & Close**.
 
 ## Customize source of API descriptions
 
