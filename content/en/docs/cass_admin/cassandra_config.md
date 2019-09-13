@@ -11,11 +11,11 @@ description: >
 To tolerate the loss of one Cassandra node and to ensure 100% data consistency, API Gateway requires at a minimum the following Cassandra cluster configuration running in a production class environment:
 
 - Three Cassandra nodes (with one seed node)
+- `Replication factor` setting set to `3`, so each node holds 100% of the data.
 - `QUORUM` read/write consistency to ensure that you are reading from a quorum of Cassandra nodes (two) every time.
   {{% alert title="Caution" color="warning" %}}
   `Eventual` consistency is not supported in a production environment due to a risk of stale or missing data.
   {{% /alert %}}
-- `Replication factor` setting set to `3`, so each node holds 100% of the data.
 
 If one Cassandra node fails or needs to be restarted, the cluster continues to operate with the remaining two nodes. This configuration applies to all supported use cases (for example, API Manager and API Gateway custom KPS, OAuth, and client registry data).
 
@@ -60,6 +60,7 @@ Perform the following steps to configure a *seed* node:
     ```
     setup-cassandra --seed --own-ip=<IP_SEED_NODE> --nodes=3 --cassandra-config=CONFIG_FILE
     ```
+
 3. Start Cassandra.
 4. Verify the `CASSANDRA_HOME/logs/system.log` does not contain any errors or warnings.
 5. Run the `nodetool status` command to verify that *one* node is present in `UN` status, and that the IP address is correct.
@@ -70,6 +71,7 @@ The procedure to configure additional nodes uses the `seed` node that you have p
 
 1. Connect to the additional node via SSH, and update the `CASSANDRA_HOME/conf/cassandra.yaml` file.
     Manually:
+
     ```
     seed_provider, parameters, seeds: IP_SEED_NODE
     start_native_transport: true
@@ -82,6 +84,7 @@ The procedure to configure additional nodes uses the `seed` node that you have p
     ```
 
     Using the `setup-cassandra` script:
+
     ```
     setup-cassandra --seed-ip=<IP_SEED_NODE> --own-ip=<IP_NODE_n> --cassandra-config=<PATH_TO_CASSANDRA.YAML>
     ```
@@ -133,9 +136,7 @@ In Policy Studio, open your gateway group configuration.
 1. Select **Server Settings > Cassandra > Authentication**, and enter your Cassandra user name and password (both default to `cassandra`).
 2. Select **Server Settings > Cassandra > Hosts**, and add an address for each Cassandra node in the cluster (`ipA`, `ipB` and `ipC` in this example).
 
-{{% alert title="Tip" %}}
-You can automate these steps by running the `updateCassandraSettings.py` script against a deployment package (`.fed`). For more details, see [Configure a highly available Cassandra cluster](../cassandra_config).
-{{% /alert %}}
+You can automate these steps by running the `updateCassandraSettings.py` script against a deployment package (`.fed`). 
 
 #### Configure the API Gateway Cassandra consistency levels
 
@@ -159,14 +160,12 @@ You can automate these steps by running the `updateCassandraSettings.py` script 
 1. Click **Deploy** in the toolbar to deploy this configuration to the API Gateway group.
 2. Restart each API Gateway in the group.
 
-For details on any connection errors between API Gateway and Cassandra, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).
-
 ### Configure API Manager Cassandra client settings
 
 To update the Cassandra client configuration for API Manager, perform the following steps:
 
 1. Ensure the API Gateway and API Manager components have been installed on the gateway 1 and gateway 2 nodes. These can be local or remote to Cassandra installations. For details, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
-2. Ensure an API Gateway domain, group, and instance have been created on the gateway 1 node using `managedomain`. For more details, see [Configure an API Gateway domain](/csh?context=102&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+2. Ensure an API Gateway domain, group, and instance have been created on the gateway 1 node using `managedomain`. For more details, see [Configure an API Gateway domain](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/) in the API Gateway Administrator Guide.
 3. Start the first gateway instance in the group. For example:
 
     ```
@@ -203,8 +202,8 @@ Do not start this instance, and do not configure API Manager for this instance i
 
 11. Start the second API Gateway instance. For example:
 
-  ```
-  startinstance -n "my_gw_server_2" -g "my_group"
-  ```
+    ```
+    startinstance -n "my_gw_server_2" -g "my_group"
+    ```
 
 12. On startup, this instance receives the API Manager configuration for the group. It now shares the same KPS and Cassandra configuration and data, and uses the ports specified in the `envSettings.props` file.
