@@ -19,6 +19,8 @@
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^9.6.1",
+    "grunt": "^1.0.4",
+    "grunt-markdownlint": "^2.6.0",
     "postcss-cli": "^5.0.1"
   }
 }
