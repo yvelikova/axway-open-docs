@@ -32,10 +32,9 @@ To change the API Catalog settings:
 3. Click **APIs**.
 4. Click the **API Catalog** tab.
 
-![Customize API catalog](/Images/uploads/apiportal-jai-customize-api-catalog.png)
+    ![Customize API catalog](/Images/uploads/apiportal-jai-customize-api-catalog.png)
 
 5. Change the settings as required and click **Save & Close**.
-
 
 ## Customize source of API descriptions
 
@@ -71,7 +70,9 @@ To create a dedicated API Catalog for a subset of tagged APIs, do the following:
 4. In **Menu Item Type**, click **Select > API Portal > API Catalog Page**.
 5. Set **Access** to the level you want, and ensure that **Status** is set to `Published`.
 6. In **Ordering**, select where in the main menu the new API Catalog appears. The menu item is placed after the item you select here.
-   To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.
+
+    To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.
+
 7. On the **API Catalog** tab, in the **Only list APIs with tag**, enter the tags to include in this API Catalog.
 8. On the **Page Display** tab, change the page title and summary text if you want. For more details, see [Customize page title or summary](#customize-page-title-or-summary).
 9. Click **Save & Close**.
@@ -84,18 +85,17 @@ You can also choose to use some tags as an internal tool, and hide them from the
 
 In both **Only list APIs with tag** and **Hide tags** options on **API Catalog** tab, you can add tags using the `*` and `+` wildcards. This is helpful to list only development APIs in one API Catalog and production APIs in another. In this case you can filter them using wildcards as follows: `*dev*` will list APIs which contain `dev` somewhere in the tag, for example, `financial_development` and `development` tags. Or, to hide all tags which start with `test` and end with any other letter, for example, `test` or `tests`, you can do `test+`.
 
-## Customize Try-It button
+## Customize Try-it by type of request
 
-The Try-It button is enabled on all requests by default. If you want to disable it on some, or on all:
+The Try-It button is enabled for all requests to an API by default. To enable or disable it on specific types of requests (`GET`, `POST`, `PUT`, and so on):
 
-1. In JAI, open **Components > API Portal > API Manager.**
-2. In **Try-It Settings**, select which requests will have a Try-It button. 
+1. In JAI, click **Components > API Portal > API Manager**.
+2. In **Try-It Settings**, enable or disable the Try-It button for each request type.
+
+    ![](/Images/uploads/api-manager-try-it-settings.png)
+    
 3. Click **Save**.
 
-This configuration is per API Manager. If you want to change it, but on a slave one, go to **Components > API Portal > Additional API Managers**.
-
-![](/Images/uploads/api-manager-try-it-settings.png)
-
-{{% alert title="Info" %}}
-This configuration is per API Manager. If you want to change it, but for a slave one, go to **Components > API Portal > Additional API Managers**.
+{{% alert title="Note" %}}
+This setting applies only for this API Manager. To change it on other slave API Managers, go to **Components > API Portal > Additional API Managers**.
 {{% /alert %}}
