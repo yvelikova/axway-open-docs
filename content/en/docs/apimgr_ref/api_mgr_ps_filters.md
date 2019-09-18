@@ -1,6 +1,6 @@
 {
     "title": "API Manager Policy Studio filter reference",
-    "linkTitle": "API Manager filter reference",
+    "linkTitle": "Policy Studio filter reference",
     "date": "2019-09-17",
     "description": "Policy Studio filters you can use within a policy to get information from the client registry."
 }

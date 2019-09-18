@@ -1,22 +1,15 @@
 {
-"title": "API Manager response codes",
-"linkTitle": "API Manager response codes",
-"date": "2019-09-17",
-"description": "This topic describes the HTTP response codes that API Manager runtime can return when a transaction is terminated by an API Manager-enabled API Gateway."
+    "title": "API Manager response codes",
+    "linkTitle": "Response codes",
+    "date": "2019-09-17",
+    "description": "HTTP response codes that the API Manager runtime can return when a transaction is terminated by an API Manager-enabled API Gateway."
 }
-
-This topic describes the HTTP response codes that API Manager runtime can return when a transaction is terminated by an API Manager-enabled API Gateway.
 
 | Response code | Response text              | Reason                                                                                                                                        |
 |---------------|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| 400           | Bad Request                | -   Malformed URI received                                                                                                                    
-   -   Content-type checking failed                                                                                                               
-   -   Parameter validation failed                                                                                                                
-   -   Unable to resolve path parameters                                                                                                          
-   -   Unable to encode outbound parameters as UTF-8                                                                                              |
+| 400           | Bad Request                | <ul><li>Malformed URI received</li><li>Content-type checking failed</li><li>Parameter validation failed</li><li>Unable to resolve path parameters</li><li>Unable to encode outbound parameters as UTF-8</li></ul>                                                                                              |
 | 401           | Unauthorized               | Authentication failure (Inbound security device authentication failed)                                                                        |
-| 403           | Forbidden                  | -   Authorization failure (API being invoked has not been granted access to the application associated with the presented client credentials) 
-   -   Presented CORS Origin does not match Javascript Origin configured for the presented client credentials                                     |
+| 403           | Forbidden                  | <ul><li>Authorization failure (API being invoked has not been granted access to the application associated with the presented client credentials)</li><li>Presented CORS Origin does not match Javascript Origin configured for the presented client credentials</li></ul>                                     |
 | 404           | No match found for request | Unable to find a matched API method                                                                                                           |
 | 404           | General Exception          | Generic error thrown by the underlying API Gateway (on which the API Managerruntime is running) when an unexpected exception occurs           |
 | 405           | Method Not Allowed         | No match found for the presented verb/path combination (there may be a match on path, but not on verb)                                        |
