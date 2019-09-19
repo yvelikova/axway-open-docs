@@ -1,70 +1,77 @@
 {
-"title": "Single sign-on reference",
-"linkTitle": "Single sign-on reference",
-"date": "2019-09-17",
-"description": "Single sign-on mapping syntax and examples, and a reference to elements in the `service-provider-apiportal.xml` configuration file."
+    "title": "Single sign-on reference",
+    "linkTitle": "Single sign-on reference",
+    "date": "2019-09-17",
+    "description": "Single sign-on mapping syntax and examples, and a reference to elements in the `service-provider.xml` configuration file."
 }
 
 ## Mapping syntax
 
-An IdP sends information about the SSO user to an SP (API Manager) using attributes. These attributes contain information about the user, such as the user's name, department, organization, email address, phone number, and so on. This section describes how to define mappings from an IdP to API Manager. An IdP can name attributes associated with the authenticated user in a variety of different ways (for example, `mail`, `email`, or `e-mail`). API Manager expects attributes with specific names, so you might need to transform the IdP attributes to the API Manager attributes using a rename mapping. In addition, an IdP might not provide some attributes that API Manager requires, so you might need to use a filter mapping to assign required attributes based on a filter.
+An IdP sends information about the SSO user to an SP (API Manager) using attributes. These attributes contain information about the user, such as the user's name, department, organization, email address, phone number, and so on. 
 
-The mappings are defined in the `Mappings` section of the `SAMLIdentityProvider` section in the `service-provider.xml` file. Two types of mappings are supported:
+This section describes how to define mappings from an IdP to API Manager. An IdP can name attributes associated with the authenticated user in a variety of different ways (for example, `mail`, `email`, or `e-mail`). API Manager expects attributes with specific names, so you might need to transform the IdP attributes to the API Manager attributes using a rename mapping. In addition, an IdP might not provide some attributes that API Manager requires, so you might need to use a filter mapping to assign required attributes based on a filter.
 
-- Rename mapping – This mapping enables you to rename an attribute from the IdP, keeping its value.
-- Filter mapping – This mapping creates output attributes when a filter matches the input attributes from the IdP.
+The mappings are defined in the `Mappings` section of the `SAMLIdentityProvider` section in the `service-provider.xml` file. 
+
+Two types of mappings are supported:
+
+* Rename mapping – This mapping enables you to rename an attribute from the IdP, keeping its value.
+* Filter mapping – This mapping creates output attributes when a filter matches the input attributes from the IdP. For more information, see [Filter syntax](#filter-syntax).
 
 The following table describes the mandatory and optional attributes expected by API Manager, and gives examples of mappings that you can use to provide them.
 
-{{< alert title="Note" color="primary" >}}API Manager attribute names are all lowercase. The attribute names are case-sensitive.{{< /alert >}}
+* `name` (mandatory)
+    * The logged in user name.
+    * Sample RenameMapping if the IdP provides an attribute which should be renamed:
+        `<RenameMapping source="user" target="name"/>`
 
-| Attribute name               | Description                                                                                                           | API Manager requirement | Example                                                                                                                                                                     |
-|------------------------------|-----------------------------------------------------------------------------------------------------------------------|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| name                         | The logged in user name.                                                                                              | Mandatory               | Sample RenameMapping if the IdP provides an attribute which should be renamed:                                                                                              
-                                                                                                                                                                                 
-        <RenameMapping source="user" target="name"/>                                                                                                                             |
-| organization                 | The API Manager organization associated with the logged in user.                                                      
-                                                                                                                         
-  The organization must already exist in API Manager. Organizations can be added by an API Manager administrator.        
-                                                                                                                         
-  See [Usage guidelines](saml_sso_config.htm#Usage) for additional details and exceptions.                               | Mandatory               | The IdP does not need to provide this value.                                                                                                                                
-                                                                                                                                                                                 
-    If it does and the IdP attribute has a different name, you can use a RenameMapping to transform it to an `organization` attribute.                                           
-                                                                                                                                                                                 
-    If the IdP does not provide the value associated with the organization at all, you can use an OutputAttribute to assign an organization to the logged in user. For example:  
-                                                                                                                                                                                 
-        <OutputAttribute name="organization">Research</OutputAttribute>                                                                                                          |
-| role                         | The API Manager role associated with the logged in user.                                                              
-                                                                                                                         
-  Permitted substring values:                                                                                            
-                                                                                                                         
-      Administrator                                                                                                      
-                                                                                                                         
-      Operator                                                                                                           
-                                                                                                                         
-  ```                                                                                                 
-  User                                                                                                                   
-  ```                                                                                                                    
-                                                                                                                         
-  See [Usage guidelines](saml_sso_config.htm#Usage) for details of how these SSO roles are mapped to API Manager roles.  | Mandatory               | The IdP does not need to provide this value.                                                                                                                                
-                                                                                                                                                                                 
-    If it does and the IdP attribute has a different name, you can use a RenameMapping to transform it to a `role` attribute.                                                    
-                                                                                                                                                                                 
-    If the IDP does not provide the value associated with the role at all, you can use an OutputAttribute to assign a role to the logged in user. For example:                   
-                                                                                                                                                                                 
-        <OutputAttribute name="role">Administrator</OutputAttribute>                                                                                                             |
-| mail                         | The email address associated with the logged in user.                                                                 | Optional                | Sample RenameMapping if the IdP provides an attribute which should be renamed:                                                                                              
-                                                                                                                                                                                 
-        <RenameMapping source="email" target="mail"/>                                                                                                                            |
-| description                  | The description text associated with the logged in user.                                                              | Optional                | Sample RenameMapping if the IdP provides an attribute which should be renamed:                                                                                              
-                                                                                                                                                                                 
-        <RenameMapping source="userDescription" target="description"/>                                                                                                           |
-| department                   | The department that the logged in user belongs to.                                                                    | Optional                | Sample RenameMapping if the IdP provides an attribute which should be renamed:                                                                                              
-                                                                                                                                                                                 
-        <RenameMapping source="businessUnit" target="department"/>                                                                                                               |
-| telephonenumber              | The telephone number associated with the logged in user.                                                              | Optional                | Sample RenameMapping if the IdP provides an attribute which should be renamed:                                                                                              
-                                                                                                                                                                                 
-        <RenameMapping source="phone" target="telephonenumber"/>                                                                                                                 |
+* `organization` (mandatory)
+    * The API Manager organization associated with the logged in user. The organization must already exist in API Manager. Organizations can be added by an API Manager administrator.
+
+        See [Usage guidelines](/docs/apimgr_admin/sso/saml_sso_config/#usage-guidelines) for additional details and exceptions.
+
+    * The IdP does not need to provide this value.
+  
+        If it does and the IdP attribute has a different name, you can use a RenameMapping to transform it to an `organization` attribute.
+
+        If the IdP does not provide the value associated with the organization at all, you can use an OutputAttribute to assign an organization to the logged in user. For example:
+
+        `<OutputAttribute name="organization">Research</OutputAttribute>`
+
+* `role` (mandatory)
+    * The API Manager role associated with the logged in user. Permitted substring values: `Administrator`, `Operator`, `User`.
+
+        See [Usage guidelines](/docs/apimgr_admin/sso/saml_sso_config/#usage-guidelines) for details of how these SSO roles are mapped to API Manager roles.
+
+    * The IdP does not need to provide this value.
+
+        If it does and the IdP attribute has a different name, you can use a RenameMapping to transform it to a `role` attribute.
+
+        If the IDP does not provide the value associated with the role at all, you can use an OutputAttribute to assign a role to the logged in user. For example:
+
+        `<OutputAttribute name="role">Administrator</OutputAttribute>`
+
+* `mail` (optional)
+    * The email address associated with the logged in user.
+    * Sample RenameMapping if the IdP provides an attribute which should be renamed:
+    `<RenameMapping source="email" target="mail"/>`
+
+* `description` (optional)
+    * The description text associated with the logged in user.
+    * Sample RenameMapping if the IdP provides an attribute which should be renamed:
+    `<RenameMapping source="userDescription" target="description"/>`
+
+* `department` (optional)
+    * The department that the logged in user belongs to.
+    * Sample RenameMapping if the IdP provides an attribute which should be renamed:
+    `<RenameMapping source="businessUnit" target="department"/>`
+
+* `telephonenumber` (optional)
+    * The telephone number associated with the logged in user.
+    * Sample RenameMapping if the IdP provides an attribute which should be renamed:
+    `<RenameMapping source="phone" target="telephonenumber"/>`
+
+{{< alert title="Note" color="primary" >}}API Manager attribute names are all lowercase. The attribute names are case-sensitive.{{< /alert >}}
 
 ### Rename mapping example
 
@@ -72,7 +79,9 @@ If the IdP generates a attribute name that is different to the attribute name ex
 
 For example, to rename the IdP attribute name `e-mail` to the API Manager attribute `mail`, use the following RenameMapping:
 
-    <RenameMapping source="e-mail" target="mail"/>
+```
+<RenameMapping source="e-mail" target="mail"/>
+```
 
 The `source` attribute refers to the attribute supplied by the IdP that you want to rename.
 
@@ -84,12 +93,12 @@ You can have multiple RenameMapping directives.
 
 In the following example, two rename mappings are used:
 
-- The IdP presents an attribute called `email`. Using the RenameMapping, this is transformed to `mail`.
-- The IdP presents an attribute called `phone`. Using the RenameMapping, this is transformed to `telephonenumber`.
+* The IdP presents an attribute called `email`. Using the RenameMapping, this is transformed to `mail`.
+* The IdP presents an attribute called `phone`. Using the RenameMapping, this is transformed to `telephonenumber`.
 
 In addition, a filter mapping is used to achieve the following:
 
-- If a user logs in with the transformed `mail` attribute set to `sjones@research.activedirectory2012.lab.chicago.acme.int` the user is assigned a `role` of `User` and an `organization` of `Research`.
+* If a user logs in with the transformed `mail` attribute set to `sjones@research.activedirectory2012.lab.chicago.acme.int` the user is assigned a `role` of `User` and an `organization` of `Research`.
 
 ```
 <Mappings>
@@ -143,14 +152,16 @@ Add the two required attributes when the `department` attribute from the IdP is 
 
 Filter by the user’s email, and assign a role and an organization:
 
+```
     <Mappings>
        <RenameMapping source="email" target="mail"/>
        <FilterMapping>
            <Filter>(mail=jsmith@activedirectory2012.prod.acme.org)</Filter>
            <OutputAttribute name="role">API Server Administrator</OutputAttribute>
            <OutputAttribute name="organization">Production</OutputAttribute>
-       </FilterMapping>    
+       </FilterMapping>
     </Mappings>
+```
 
 ### Filter syntax
 
@@ -160,8 +171,8 @@ A filter consists of one or more criteria. If more than one criterion exists in 
 
 #### Criteria
 
-- The criteria must be put in parentheses.
-- A criteria can only be an equality.
+* The criteria must be put in parentheses.
+* A criteria can only be an equality.
 
 Example:
 
@@ -171,8 +182,8 @@ Example:
 
 #### Operators
 
-- The logical operators must be placed in front of the criteria.
-- The whole term must be put in parentheses.
+* The logical operators must be placed in front of the criteria.
+* The whole term must be put in parentheses.
 
 ##### AND operator
 
@@ -220,7 +231,7 @@ You can combine logical operators.
 (&(|(criteria1) (criteria2))(|(criteria3) (criteria4)))
 ```
 
-## `service-provider.xml` configureation file reference
+## `service-provider.xml` configuration file reference
 
 This section describes the elements in the `service-provider.xml` configuration file.
 
@@ -232,18 +243,17 @@ This is the root element of the configuration descriptor. This section contains 
 
 This element describes the certificate validation. You can configure certificate validation to validate the SP and IdP certificates at startup. The following attributes are supported:
 
-| Attribute                     | Description                                                                                                                                                        |
-|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| pathValidation                | If set to `true`, the certification path for each certificate will be checked. If set to `false`, the agent verifies only the validity period of each certificate.  A trust store must be specified if this attribute is `true`.                                                                                                        |
-| enableRevocation              | If set to `true`, the agent also verifies if the certificates are not revoked.                                                                                     |
-| trustStorePath                | The path to the trust store containing the trusted certificates.                                                                                                   |
-| trustStorePassword            | The password to access the trust store.                                                                                                                            |
-| intermediateStorePath         | The path to a store containing intermediate certificates that can appear in certificate chains.                                                                    |
-| intermediateStorePassword     | The password to access the intermediate certificates store.                                                                                                        |
-| delayBetweenValidations       | Defines at which interval certificate validation occurs, in hours.                                                                                                 |
+| Attribute                     | Description                        |
+|-------------------------------|------------------------------------|
+| pathValidation                | If set to `true`, the certification path for each certificate will be checked. If set to `false`, the agent verifies only the validity period of each certificate.  A trust store must be specified if this attribute is `true`.|
+| enableRevocation              | If set to `true`, the agent also verifies if the certificates are not revoked.|
+| trustStorePath                | The path to the trust store containing the trusted certificates.              |
+| trustStorePassword            | The password to access the trust store.                                       |
+| intermediateStorePath         | The path to a store containing intermediate certificates that can appear in certificate chains.|
+| intermediateStorePassword     | The password to access the intermediate certificates store.                   |
+| delayBetweenValidations       | Defines at which interval certificate validation occurs, in hours.            |
 
 To disable certificate validation, set `pathValidation` to false. For example:
-
 
 ```
 <CertificateValidation
@@ -252,22 +262,21 @@ To disable certificate validation, set `pathValidation` to false. For example:
 </CertificateValidation>
 ```
 
-
 ### `<ServiceProvider>`
 
 This element describes the SP. The following attributes are supported:
 
-| Attribute               | Description                                                                                                                                                       |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| entityId                | Sets the unique identifier of the SP. This identifier is sent to the IdP so it can know who is requesting an authentication or logging out.                       |
-| useAppSessions          | Delegates the session management to the application. The default value is `true`.                                                                                 |
-| filteredUri             | Specifies the URI of the SSO filter entry point for authentication. Set this value to `/sso/login`. The SSO filter only manages login URI, for other requests the application must redirect to SSO filter to manage authentication. If the user is not authenticated, a SAML authentication request is built and sent to the IdP. Otherwise, the security token is forwarded to the application.       |
-| logoutUri               | Specifies the URI of the SSO filter entry point for logout process. Set this value to `/sso/logout`. The SSO filter generates a logout request and sends it to the IdP.                                                                                                 |
-| logoutRedirectUri       | Specifies the URI where to redirect after the logout process. Set this value to `/api/portal/v1.3/sso/login` to redirect the user to the login page after logout. |
-| keystore                | Specifies the name of a keystore where the private key of the SP is stored. The default value is `conf/sso.jks`. The SP uses this private key to sign messages to the IdP, and to decrypt messages from the IdP that the IdP has encrypted with the SP's public key. When you set this attribute, you must also set the associated attributes `keystorePassphrase` and `keyAlias`. The keystore must be in the `classpath` of the application or in its working directory. The keystore format must be `.jks`.                                        |
-| keystorePassphrase      | Specifies the password of the keystore.                                                                                                                           |
-| keyAlias                | Specifies the alias of the SP's private key in the keystore.                                                                                                      |
-| sessionIdCookieName     | Sets the name of the cookie where the SSO session identifier is stored if the SSO module is the session manager. The recommended value is `spSessionId2`.         |
+| Attribute               | Description  |
+|-------------------------|--------------|
+| entityId                | Sets the unique identifier of the SP. This identifier is sent to the IdP so it can know who is requesting an authentication or logging out. |
+| useAppSessions          | Delegates the session management to the application. The default value is `true`.|
+| filteredUri             | Specifies the URI of the SSO filter entry point for authentication. Set this value to `/sso/login`. The SSO filter only manages login URI, for other requests the application must redirect to SSO filter to manage authentication. If the user is not authenticated, a SAML authentication request is built and sent to the IdP. Otherwise, the security token is forwarded to the application.|
+| logoutUri               | Specifies the URI of the SSO filter entry point for logout process. Set this value to `/sso/logout`. The SSO filter generates a logout request and sends it to the IdP.|
+| logoutRedirectUri       | Specifies the URI where to redirect after the logout process. Set this value to `/api/portal/v1.3/sso/login` to redirect the user to the login page after logout.|
+| keystore                | Specifies the name of a keystore where the private key of the SP is stored. The default value is `conf/sso.jks`. The SP uses this private key to sign messages to the IdP, and to decrypt messages from the IdP that the IdP has encrypted with the SP's public key. When you set this attribute, you must also set the associated attributes `keystorePassphrase` and `keyAlias`. The keystore must be in the `classpath` of the application or in its working directory. The keystore format must be `.jks`.|
+| keystorePassphrase      | Specifies the password of the keystore.|
+| keyAlias                | Specifies the alias of the SP's private key in the keystore.|
+| sessionIdCookieName     | Sets the name of the cookie where the SSO session identifier is stored if the SSO module is the session manager. The recommended value is `spSessionId2`.|
 
 ### `<AssertionConsumerService>`
 
@@ -281,12 +290,12 @@ This element specifies the IdP URL where the logout responses are sent. Only `HT
 
 This element describes the entity that exchanges SAML messages with the SSO filter. This section contains a section called `<SamlIdentityProvider>`, which supports the following attributes:
 
-| Attribute                     | Description                                                                                                                                                                                                                                                                                                                             |
-|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| entityId format                     | Sets the unique identifier of the IdP. These values must match the `entityId` and `format` values of the Issuer element in the SAML assertions. If the SAML assertion does not have the `format` set, omit the `format` element.                                                                                                                                                                                                                                                         |
-| metadataUrl                   | Specifies the URL of the metadata file. The default value is `./idp.xml`.                                                                                                                                                                                                                                                               |
-| userNameAttribute             | Specifies the name of the IdP attribute that provides the user name. The default value is `urn:oid:2.5.4.42`. When a user is authenticated, the SSO filter sets a principal on the `HttpServletRequest`. By default, the name of this principal is extracted from the `Subject` element in the assertions of an authentication response. If `userNameAttribute` is set, the name of the principal is set to the value of the specified IdP attribute.  |
-| verifyAssertionExpiration     | Verifies the validity period of a SAML assertion. The default value is `false`.                                                                                                                                                                                                                                                         |
+| Attribute                     | Description   |
+|-------------------------------|---------------|
+| entityId format                     | Sets the unique identifier of the IdP. These values must match the `entityId` and `format` values of the Issuer element in the SAML assertions. If the SAML assertion does not have the `format` set, omit the `format` element.|
+| metadataUrl                   | Specifies the URL of the metadata file. The default value is `./idp.xml`.|
+| userNameAttribute             | Specifies the name of the IdP attribute that provides the user name. The default value is `urn:oid:2.5.4.42`. When a user is authenticated, the SSO filter sets a principal on the `HttpServletRequest`. By default, the name of this principal is extracted from the `Subject` element in the assertions of an authentication response. If `userNameAttribute` is set, the name of the principal is set to the value of the specified IdP attribute.|
+| verifyAssertionExpiration     | Verifies the validity period of a SAML assertion. The default value is `false`.|
 
 ### `<Mappings>`
 

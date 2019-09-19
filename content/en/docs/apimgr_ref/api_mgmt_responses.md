@@ -17,5 +17,3 @@
 | 500           | Internal Server Error      | Generic error returned when an unexpected exception occurs (for example, Cassandra not reachable)                                             |
 | 500           | Unexpected API invocation  |                                                                                                                                               |
 | 504           | Gateway Timeout            | Gateway times out when attempting to contact a back-end service via the Connection or Connect to URL filter                                   |
-
-

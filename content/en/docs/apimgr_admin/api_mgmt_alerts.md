@@ -15,7 +15,7 @@ You can enable or disable alerts in the API Manager web interface. You can chang
 
 Alerts are categorized according to the type of event that generates the alert, for example, organization events are in a different category to application events. The following sections list the alerts in each category, and detail the event that triggers the alert, and the type of the alert (governance or runtime). Events initiated by a person (for example, an administrator approves an API consumer registration) are governance alerts. Events that occur during normal operation of the system are runtime alerts.
 
-## Application alerts
+## Application alerts and events
 
 API Manager generates application alerts for events relating to managing applications.
 
@@ -32,12 +32,12 @@ API Manager generates application alerts for events relating to managing applica
 | Enable Application API Access          | Governance | When an application’s API access is enabled.                                                                                                 |
 | Disable Application API Access         | Governance | When an application’s API access is disabled.                                                                                                |
 
-## Application credential alerts
+## Application credential alerts and events
 
 You can use application credential alerts when you want to trigger alerts for any change to the credentials (API keys, OAuth credentials, or external credentials) associated with an application. Application credential alerts are fully configurable:
 
-- Policy developers can write policies that will be invoked when application credentials are created, updated, deleted, enabled, or disabled. For more information, see [Change the alert policy to execute](#Change). For more information on the message attributes available to application credential alert policies, see [Alert message attributes](api_mgmt_alerts_attribs.htm).
-- API administrators can enable or disable alerts for application credentials so that the configured policies get executed when the specified events are triggered. For more information, see [Enable or disable alerts](#Enable).
+* Policy developers can write policies that will be invoked when application credentials are created, updated, deleted, enabled, or disabled. For more information, see [Change the alert policy to execute](#Change). For more information on the message attributes available to application credential alert policies, see [Alert message attributes](api_mgmt_alerts_attribs.htm).
+* API administrators can enable or disable alerts for application credentials so that the configured policies get executed when the specified events are triggered. For more information, see [Enable or disable alerts](#Enable).
 
 API Manager generates application credential alerts for events relating to application credentials.
 
@@ -51,10 +51,10 @@ API Manager generates application credential alerts for events relating to appli
 
 When an application credential alert is triggered, the following users are notified:
 
-- The application developer that created the application associated with the credential being created, modified, or deleted.
-- Any application developer that has manage permissions for the application associated with the credential being created, modified, or deleted.
+* The application developer that created the application associated with the credential being created, modified, or deleted.
+* Any application developer that has manage permissions for the application associated with the credential being created, modified, or deleted.
 
-## API registration alerts
+## API registration alerts and events
 
 API Manager generates API registration alerts for events relating to managing APIs.
 
@@ -67,7 +67,7 @@ API Manager generates API registration alerts for events relating to managing AP
 | API Proxy Authentication Policy Change | Governance | Authentication policy of a published API proxy is changed. |
 | API Deleted                            | Governance | When an API proxy is deleted.                              |
 
-## API catalog alerts
+## API catalog alerts and events
 
 API Manager generates API catalog alerts for events relating to enabling and disabling APIs.
 
@@ -76,7 +76,7 @@ API Manager generates API catalog alerts for events relating to enabling and dis
 | Enable API  | Governance | When an API is enabled in the API catalog.  |
 | Disable API | Governance | When an API is disabled in the API catalog. |
 
-## Application developer alerts
+## Application developer alerts and events
 
 API Manager generates application developer alerts for events relating to managing application developers.
 
@@ -89,7 +89,7 @@ API Manager generates application developer alerts for events relating to managi
 | Disable Application Developer              | Governance | When an application developer is disabled.                                                          |
 | Reset Application Developer Password       | Governance | When an application developer password is reset (not changed).                                      |
 
-## Organization alerts
+## Organization alerts and events
 
 API Manager generates organization alerts for events relating to managing organizations.
 
@@ -104,7 +104,7 @@ API Manager generates organization alerts for events relating to managing organi
 | Enable Organization API Access  | Governance | When an organization’s API access is enabled.                        |
 | Disable Organization API Access | Governance | When an organization’s API access is disabled.                       |
 
-## Quota alerts
+## Quota alerts and events
 
 API Manager generates quota alerts for events relating to system or application quotas.
 
@@ -145,8 +145,7 @@ The following figure shows the view of API management alerts in Policy Studio.
 ![Policy-based API management alerts](/Images/docbook/images/api_mgmt/api_mgmt_alerts_ps.png)
 
 To modify the sample policy associated with an alert, click the sample policy link next to the alert. For more information on configuring policies, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
 To associate a different policy with an alert, click the row containing the alert, and click the **Edit**
 button. In the dialog, click the browse button to select a new **Alert Policy**
@@ -161,137 +160,56 @@ The following tables outline the message properties that are generated for each 
 
 ### Application credential alerts
 
-| Message property           | Description                                                                                                                                                                            |
-|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `alert.recipient.emails`   | Comma separated list of email addresses of recipients of alert emails.                                                                                                                 |
-| `alert.appcredential.type` | Specifies the type of application credential associated with the alert. This message property is present for all application credential alerts. Possible values are: `["apikey", "oauth", "external"]`.                                                                                                                          |
+| Message property           | Description                     |
+|----------------------------|---------------------------------|
+| `alert.recipient.emails`   | Comma separated list of email addresses of recipients of alert emails.|
+| `alert.appcredential.type` | Specifies the type of application credential associated with the alert. This message property is present for all application credential alerts. Possible values are: `["apikey", "oauth", "external"]`.|
 | `alert.user.id`            | The identifier of the user (logged into API Manager) that triggered the alert. A subsequent call to the **Read Application Developer** filter can be used to retrieve the user object. |
 
 #### Application credential created
 
-Entity
+**API Key**:
 
-Message property
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.apikey.id            | The identifier of the newly created API key. Format: GUID.                                                   |
+| alert.appcredential.apikey.applicationId | The identifier of the application associated with the newly created API key. Format: GUID.                   |
+| alert.appcredential.apikey.secret        | The secret associated with the newly created API key. Format: GUID.                                          |
+| alert.appcredential.apikey.enabled       | Specifies whether the newly created API key is enabled or disabled.Possible values are: [ "true", "false" ]. |
+| alert.appcredential.apikey.createdBy     | The identifier of the user that created the API key. Format: GUID.                                           |
+| alert.appcredential.apikey.createdOn     | The time, in milliseconds, when the API key was created                                                      |
+| alert.appcredential.apikey.deletedOn     | The time, in milliseconds, when the API key was deleted.                                                     |
+| alert.appcredential.apikey.corsOrigins   | Comma-separated list of origins associated with the newly created API key.             
 
-Description
+**OAuth**:
 
-API Key
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.oauthclient.id            | The identifier of the newly created OAuth credential. Format: GUID.                                                   |
+| alert.appcredential.oauthclient.applicationId | The identifier of the application associated with the newly created OAuth credential. Format: GUID.                   |
+| alert.appcredential.oauthclient.enabled       | Specifies whether the newly created OAuth credential is enabled or disabled.Possible values are: [ "true", "false" ]. |
+| alert.appcredential.oauthclient.cert          | The PEM-encoded certificate associated with the newly created OAuth credential.                                       |
+| alert.appcredential.oauthclient.secret        | The secret associated with the newly created OAuth credential. Format: GUID.                                          |
+| alert.appcredential.oauthclient.type          | The client type of the newly created OAuth credential.Possible values are: [ "public", "confidential" ].              |
+| alert.appcredential.oauthclient.createdBy     | The identifier of the user that created the OAuth credential. Format: GUID.                                           |
+| alert.appcredential.oauthclient.createdOn     | The time, in milliseconds, when the OAuth credential was created.                                                     |
+| alert.appcredential.oauthclient.corsOrigins   | Comma-separated list of origins associated with the newly created OAuth credential.                                   |
+| alert.appcredential.oauthclient.redirectUrls  | Comma-separated list of redirect URLs associated with the newly created OAuth credential.                             |
 
-`alert.appcredential.apikey.id`
+**External**:
 
-The identifier of the newly created API key. Format: `GUID`.
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.externalclient.id               | The identifier of the newly created external credential. Format: GUID.                                                   |
+| alert.appcredential.externalclient.clientId         | The client identifier associated with the newly created external credential. Format: GUID.                               |
+| alert.appcredential.externalclient.internalClientId | —                                                                                                                        |
+| alert.appcredential.externalclient.applicationId    | The identifier of the application associated with the newly created external credential. Format: GUID.                   |
+| alert.appcredential.externalclient.enabled          | Specifies whether the newly created external credential is enabled or disabled.Possible values are: [ "true", "false" ]. |
+| alert.appcredential.externalclient.createdBy        | The identifier of the user that created the external credential. Format: GUID.                                           |
+| alert.appcredential.externalclient.createdOn        | The time, in milliseconds, when the external credential was created.                                                     |
+| alert.appcredential.externalclient.corsOrigins      | Comma-separated list of origins associated with the newly created external credential.                                   |
 
-`alert.appcredential.apikey.applicationId`
-
-The identifier of the application associated with the newly created API key. Format: `GUID`.
-
-`alert.appcredential.apikey.secret`
-
-The secret associated with the newly created API key. Format: `GUID`.
-
-`alert.appcredential.apikey.enabled`
-
-Specifies whether the newly created API key is enabled or disabled.
-
-Possible values are: `[ "true", "false"]`.
-
-`alert.appcredential.apikey.createdBy`
-
-The identifier of the user that created the API key. Format: `GUID`.
-
-`alert.appcredential.apikey.createdOn`
-
-The time, in milliseconds, when the API key was created
-
-`alert.appcredential.apikey.deletedOn`
-
-The time, in milliseconds, when the API key was deleted.
-
-`alert.appcredential.apikey.corsOrigins`
-
-Comma-separated list of origins associated with the newly created API key.
-
-OAuth
-
-`alert.appcredential.oauthclient.id`
-
-The identifier of the newly created OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.applicationId`
-
-The identifier of the application associated with the newly created OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.enabled`
-
-Specifies whether the newly created OAuth credential is enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.oauthclient.cert`
-
-The PEM-encoded certificate associated with the newly created OAuth credential.
-
-`alert.appcredential.oauthclient.secret`
-
-The secret associated with the newly created OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.type`
-
-The client type of the newly created OAuth credential.
-
-Possible values are: `[ "public", "confidential" ]`.
-
-`alert.appcredential.oauthclient.createdBy`
-
-The identifier of the user that created the OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.createdOn`
-
-The time, in milliseconds, when the OAuth credential was created.
-
-`alert.appcredential.oauthclient.corsOrigins`
-
-Comma-separated list of origins associated with the newly created OAuth credential.
-
-`alert.appcredential.oauthclient.redirectUrls`
-
-Comma-separated list of redirect URLs associated with the newly created OAuth credential.
-
-External
-
-`alert.appcredential.externalclient.id`
-
-The identifier of the newly created external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.clientId`
-
-The client identifier associated with the newly created external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.internalClientId`
-
-—
-
-`alert.appcredential.externalclient.applicationId`
-
-The identifier of the application associated with the newly created external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.enabled`
-
-Specifies whether the newly created external credential is enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.externalclient.createdBy`
-
-The identifier of the user that created the external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.createdOn`
-
-The time, in milliseconds, when the external credential was created.
-
-`alert.appcredential.externalclient.corsOrigins`
-
-Comma-separated list of origins associated with the newly created external credential.
+<!-- TODO rest of these need to be converted to tables -->
 
 #### Application credential updated
 

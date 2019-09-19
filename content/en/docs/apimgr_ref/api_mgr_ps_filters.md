@@ -59,9 +59,9 @@ Configure the following fields on the **General settings** tab:
 
 The type of application credential to read. Select one of the following values:
 
-- `API Key`
-- `OAuth Client`
-- `External Client`
+* `API Key`
+* `OAuth Client`
+* `External Client`
 
 **Credential ID selector**:
 

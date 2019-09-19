@@ -17,8 +17,8 @@ You cannot access API Manager after a successful login using SSO.
 
 Verify that there are no errors in the SSO agent log file due to a misconfiguration. Additionally, make sure you are accessing API Manager using the same host name or IP address as the one specified in the API Manager IdP metadata (`idp.xml` file) used by the Identity Provider:
 
-- Do not use `localhost` because some browsers cannot create cookies for this host name.
-- Do not mix host name and IP address. Because cookies are linked to the string used in the URL for the host, there is no IP address resolution.
+* Do not use `localhost` because some browsers cannot create cookies for this host name.
+* Do not mix host name and IP address. Because cookies are linked to the string used in the URL for the host, there is no IP address resolution.
 
 ## IdP site cannot be reached
 
