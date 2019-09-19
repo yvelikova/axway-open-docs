@@ -1,247 +1,143 @@
 {
-"title": "Configure API Manager settings in Policy Studio",
-"linkTitle": "Configure API Manager settings in Policy Studio",
-"date": "2019-09-17",
-"description": "Policy Studio enables you to configure a range of settings that apply to API Manager and the underlying API Gateway. This topic describes how to create a Policy Studio project with API Manager configuration, and how to configure each of the API Manager settings."
+    "title": "Configure API Manager settings in Policy Studio",
+    "linkTitle": "Configure API Manager settings in Policy Studio",
+    "date": "2019-09-17",
+    "description": "Policy Studio enables you to configure a range of settings that apply to API Manager and the underlying API Gateway. This topic describes how to create a Policy Studio project with API Manager configuration, and how to configure each of the API Manager settings."
 }
-﻿
 
 Policy Studio enables you to configure a range of settings that apply to API Manager and the underlying API Gateway. This topic describes how to create a Policy Studio project with API Manager configuration, and how to configure each of the API Manager settings.
 
-Create a Policy Studio project with API Manager configuration
--------------------------------------------------------------
+## Create a Policy Studio project with API Manager configuration
 
 To create a Policy Studio project with API Manager configuration, perform the following steps:
 
-1.  Ensure that your API Gateway installation has already been configured for API Manager. For more details, see [*Enable API Manager* on page 1](api_mgmt_config.htm#Enable).
-2.  Create a project from one of the following:
-    -   API Gateway instance
-    -   API Gateway configuration directory
-    -   `.fed`, `.pol`, or `.env` file
+1. Ensure that your API Gateway installation has already been configured for API Manager. For more details, see [Enable API Manager](api_mgmt_config.htm#Enable).
+2. Create a project from one of the following:
+    * API Gateway instance
+    * API Gateway configuration directory
+    * `.fed`, `.pol`, or `.env` file
 
->
+For more details on creating projects, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
-For more details on creating projects, see the Get Started section in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+## Configure API Manager server settings
 
-<div>
-
-Configure API Manager server settings
--------------------------------------
-
-In the Policy Studio tree, select **Server Settings**
-> **API Manager**
-to configure the settings described in this section.
+In the Policy Studio tree, select **Server Settings** > **API Manager** to configure the settings described in this section.
 
 The following settings enable you to change the API Manager settings:
 
 Default Administrator Name
-
-Enter the default API administrator user name. This sets the default administrator user name for logging in to API Manager. The default value is `apiadmin`.
+: Enter the default API administrator user name. This sets the default administrator user name for logging in to API Manager. The default value is `apiadmin`.
 
 Default Administrator Password
-
-Enter the default API administrator password. This sets the default administrator password for logging in to API Manager.
+: Enter the default API administrator password. This sets the default administrator password for logging in to API Manager.
 
 Default Administrator Email
-
-Enter the default API administrator email. This sets the default administrator email for API Manager. The default value is `apiadmin@localhost`.
+: Enter the default API administrator email. This sets the default administrator email for API Manager. The default value is `apiadmin@localhost`.
 
 Administrator Distinguished Name (DN)
-
-Enter the API administrator DN.
+: Enter the API administrator DN.
 
 Community Organization Name
+: Enter the organization name for the 'Community' organization. The default is `Community`.
 
-Enter the organization name for the 'Community' organization. The default is `Community`.
+{{< alert title="Note" color="primary" >}}The default API administrator user name and password set in Policy Studio are used only when configuring the initial connection to Apache Cassandra. After Cassandra has been configured (for example, after you have deployed this configuration to API Gateway) changing the credentials in Policy Studio has no effect, and you must use API Manager to change the administrator credentials. For more information, see [Account settings](api_mgmt_config_web.htm#Account).{{< /alert >}}
 
-{{< alert title="Note" color="primary" >}}The default API administrator user name and password set in Policy Studio are used only when configuring the initial connection to Apache Cassandra. After Cassandra has been configured (for example, after you have deployed this configuration to API Gateway) changing the credentials in Policy Studio has no effect, and you must use API Manager to change the administrator credentials. For more information, see [*Account settings* on page 1](api_mgmt_config_web.htm#Account).{{< /alert >}}
 ### Alerts
 
-The **Alerts**
-settings enable you to configure runtime alerts, which call specified policies to handle the alert event. For example, the policy might send an email to an interested party, or forward the alert to an external notification system. Sample policies are provided as a starting point for custom development.
+The **Alerts** settings enable you to configure runtime alerts, which call specified policies to handle the alert event. For example, the policy might send an email to an interested party, or forward the alert to an external notification system. Sample policies are provided as a starting point for custom development.
 
-You can enable or disable alerts in the API Manager web interface. You can change the policy that is executed when an alert is generated on this screen. For more details, see [*API management alerts* on page 1](api_mgmt_alerts.htm).
-
-</div>
-
-<div>
+You can enable or disable alerts in the API Manager web interface. You can change the policy that is executed when an alert is generated on this screen. For more details, see [API management alerts](api_mgmt_alerts.htm).
 
 ### API Listeners
 
-The **API Listeners**
-settings enable you to configure API Gateway listeners to service API Manager-registered APIs. Defaults to `Portal Listener`.
+The **API Listeners** settings enable you to configure API Gateway listeners to service API Manager-registered APIs. Defaults to `Portal Listener`.
 
 {{< alert title="Note" color="primary" >}}This screen only displays listeners that do not have a relative path resolver on the `/`
 relative path. For more details on API Gateway listeners, relative paths, and resolvers, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.{{< /alert >}}
-
-</div>
-
-<div>
+[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).{{< /alert >}}
 
 ### API Promotion
 
-The **API Promotion**
-settings enable you to configure an optional policy that is invoked when APIs registered in API Manager are promoted between environments (for example, from a test or sandbox environment to a live production environment).
+The **API Promotion** settings enable you to configure an optional policy that is invoked when APIs registered in API Manager are promoted between environments (for example, from a test or sandbox environment to a live production environment).
 
-To select a promotion policy, click the browse button on the right, and select a policy that you have already created. By default, no API promotion policy is selected. For more details, see [*Promote managed APIs* on page 1](api_mgmt_promote.htm).
+To select a promotion policy, click the browse button on the right, and select a policy that you have already created. By default, no API promotion policy is selected. For more details, see [Promote managed APIs](api_mgmt_promote.htm).
 
 ### API Connectors
 
 The **API Connectors** settings enable you to configure client authentication profiles to use with specific API connectors and plugins. For example, this includes connecting to Cloud APIs such as Salesforce.com and Google. A preconfigured plugin for Salesforce.com APIs is provided by default.
 
-For more details, see [*Configure API connectors* on page 1](api_mgmt_connector.htm).
-
-</div>
-
-<div>
+For more details, see [Configure API connectors](api_mgmt_connector.htm).
 
 ### Identity Provider
 
-The **Identity Provider**
-settings enable you to integrate API Manager with a wide range of external user repositories. For example, this includes third-party identity providers such as Apache Directory, OpenLDAP, Microsoft Active Directory, and so on. To enable integration, select **Use external identity provider**, and configure the following set of custom policies:
+The **Identity Provider** settings enable you to integrate API Manager with a wide range of external user repositories. For example, this includes third-party identity providers such as Apache Directory, OpenLDAP, Microsoft Active Directory, and so on. To enable integration, select **Use external identity provider**, and configure the following set of custom policies:
 
--   **Account authentication policy**:\
-    Click the browse button, and select the required authentication policy that is invoked whenever a user tries to log in to API Manager. This setting is mandatory.
--   **Account information policy**:\
-    Click the browse button, and select the required information policy that is invoked on first login to seed the user profile in API Manager. This setting is mandatory. For more details, see [*Configure external identity providers* on page 1](api_mgmt_config_external.htm).
--   **Account creation success (optional)**:\
-    Click the browse button, and select an optional policy that is invoked when a new user has been registered with API Manager.
--   **Account creation failure (optional)**:\
-    Click the browse button, and select an optional policy that is invoked when an attempt to register a new account with API Manager has failed.
+* **Account authentication policy**: Click the browse button, and select the required authentication policy that is invoked whenever a user tries to log in to API Manager. This setting is mandatory.
+* **Account information policy**: Click the browse button, and select the required information policy that is invoked on first login to seed the user profile in API Manager. This setting is mandatory. For more details, see [Configure external identity providers](api_mgmt_config_external.htm).
+* **Account creation success (optional)**: Click the browse button, and select an optional policy that is invoked when a new user has been registered with API Manager.
+* **Account creation failure (optional)**: Click the browse button, and select an optional policy that is invoked when an attempt to register a new account with API Manager has failed.
 
-API Manager provides sample external identity provider configuration. For more details, see [*Configure external identity providers* on page 1](api_mgmt_config_external.htm).
+API Manager provides sample external identity provider configuration. For more details, see [Configure external identity providers](api_mgmt_config_external.htm).
 
-{{< alert title="Note" color="primary" >}}The **Identity Provider** settings are used only to configure integration of API Manager with external user repositories. All other API Manager data is stored using a Key Property Store (KPS) in an Apache Cassandra cluster. For more details, see the
-[API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5)
-. {{< /alert >}}
-
-</div>
-
-<div>
+{{< alert title="Note" color="primary" >}}The **Identity Provider** settings are used only to configure integration of API Manager with external user repositories. All other API Manager data is stored using a Key Property Store (KPS) in an Apache Cassandra cluster. For more details, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).{{< /alert >}}
 
 ### Monitoring
 
-The **Monitoring**
-settings allow you to configure monitoring metrics in API Manager:
+The **Monitoring** settings allow you to configure monitoring metrics in API Manager:
 
--   **Enable monitoring**:\
-    Select whether to enable monitoring metrics displayed on the **Monitoring** tab in API Manager. Monitoring is enabled by default.
--   **Use the following database**:\
-    Click the browse button to configure the connection to the database that stores the monitoring metrics. For more details, see
-    [Configure database connections](/csh?context=608&product=prod-api-gateway-77)
-    in the
-    [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-    .
+* **Enable monitoring**: Select whether to enable monitoring metrics displayed on the **Monitoring** tab in API Manager. Monitoring is enabled by default.
+* **Use the following database**: Click the browse button to configure the connection to the database that stores the monitoring metrics.
 
 For more details on monitoring, see [Monitor APIs and applications in API Manager](api_mgmt_monitor.htm).
 
-</div>
-
-<div>
-
 ### OAuth Outbound Credentials
 
-The **OAuth Outbound Credentials**
-setting enables you to configure optional client credentials for use with OAuth outbound authentication. These enable clients to request an OAuth access token using only their client credentials with the authorization specified in the header. By default, no credentials are configured.
-
-For more details, see the following:
-
--   [Configure custom API Manager routing policies](api_mgmt_custom_routing_policies.htm) provides a detailed example of using these credentials with a custom OAuth routing policy
--   [API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/)
-    provides more details on OAuth
--   [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-    explains how to create policies
+The **OAuth Outbound Credentials** setting enables you to configure optional client credentials for use with OAuth outbound authentication. These enable clients to request an OAuth access token using only their client credentials with the authorization specified in the header. By default, no credentials are configured.
 
 ### OAuth Token Information Policies
 
-The **OAuth Token Information Policies**
-setting enables you to configure optional policies used by external OAuth security devices in API Manager. These include custom policies used to obtain and extract token information from external OAuth providers. By default, no policies are configured.
-
-For more details, see the following:
-
--   [*Virtualize REST APIs in* on page 1](api_mgmt_virtualize_web.htm) explains how to configure security devices
--   [API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/)
-    provides more details on OAuth
--   [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-    explains how to create policies
-
-</div>
-
-<div>
+The **OAuth Token Information Policies** setting enables you to configure optional policies used by external OAuth security devices in API Manager. These include custom policies used to obtain and extract token information from external OAuth providers. By default, no policies are configured.
 
 ### OAuth Token Stores
 
-The **OAuth Token Stores**
-settings enable you to configure OAuth token stores for the OAuth security devices used by API Manager-registered APIs. Click **Add**
+The **OAuth Token Stores** settings enable you to configure OAuth token stores for the OAuth security devices used by API Manager-registered APIs. Click **Add**
 to configure an OAuth access token store. To add a store, right-click **Access Token Stores**, and select **Add Access Token Store**. Defaults to **OAuth Access Token Cache**.
-
-For more details on OAuth, see the
-[API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/)
-.
-
-</div>
-
-<div>
 
 ### Quota Settings
 
-The **Quota Settings**
-enable you to configure how quota information is stored. Quotas enable you to manage the maximum message traffic rate that can be sent by applications to APIs. For more details on configure quotas in API Manager, see [*Administer APIs in* on page 1](api_mgmt_admin.htm).
+The **Quota Settings** enable you to configure how quota information is stored. Quotas enable you to manage the maximum message traffic rate that can be sent by applications to APIs. For more details on configure quotas in API Manager, see [Administer APIs](api_mgmt_admin.htm).
 
 You can configure the following settings in Policy Studio:
 
--   **Send warning if API usage reaches**:\
-    Enter the **% of System Quota**
-    and **% of Application Quota**
-    that must be reached before warnings are sent to the API consumer or client application as response headers. Both API usage values default to `80`
-    per cent.
--   When API usage reaches the defined % value, the warning is sent with the following header:
+* **Send warning if API usage reaches**: Enter the **% of System Quota** and **% of Application Quota** that must be reached before warnings are sent to the API consumer or client application as response headers. Both API usage values default to `80` per cent.
 
-    "X-Rate-Limit":"\[\\{\\"window\\":<remaining-time>,\\"type\\":\\"throttle\\",\\"remaining\\":<remaining-calls>}\]"
+    When API usage reaches the defined % value, the warning is sent with the following header:
+
+    ```
+    "X-Rate-Limit":"[\{\"window\":<remaining-time>,\"type\":\"throttle\",\"remaining\":<remaining-calls>}]"
+    ```
 
     When API usage exceeds the defined % value, the warning is sent with the following header:
 
+    ```
     "HTTP-Status":"429 - Too many requests"
 
     "Retry-After":"<value in seconds when the quota windows opens again for traffic>", for example: "Retry-After": "28"
+    ```
 
--   To notify an API administrator or trigger other internal processes you can use the corresponding quota alerts. For more details, see [Alerts](#Alerts).
+    To notify an API administrator or trigger other internal processes you can use the corresponding quota alerts. For more details, see [Alerts](#Alerts).
 
--   **Where to store quota data**:\
-    Select **In external storage**
-    or **In memory only**. This setting defaults to **In external storage**, and to keep the quota in memory only if the time window is below 30 seconds. In this case, if the API administrator configures a quota in API Manager with a time window below 30 seconds, the data is stored in memory instead of in external storage. Alternatively, to never use external storage, select **In memory only**
-    to store data in memory in all cases.
--   If you select **In external storage**, you must specify an external storage mechanism:
-    -   **Automatic (adapt to KPS storage configuration)**: The data is stored externally as configured in the Key Property Store (KPS). This is the default option. For more details, see the
-        [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5)
-        .
-    -   **Use database**: To store your data in a relational database, select this option, and specify the database connection that you want to use in **Environment Configuration** > **External Connections** > **Database Connections**. For more details, see the
-        [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-        .
-    -   **Use Cassandra**: To store your data in an Apache Cassandra database, select this option. For more details, see
-        [Install an Apache Cassandra database](/csh?context=301&product=prod-api-gateway-77)
-        in the
-        [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/)
-        .
-    -   **Cassandra consistency levels**:\
-        When **Use Cassandra**
-        is selected, you can configure **Read**
-        and **Write**
-        consistency levels for the Cassandra database. These settings control how up-to-date and synchronized a row of data is on all of its replicas. For high availability, you must ensure that the Cassandra read and write consistency levels are both set to `QUORUM`.
+* **Where to store quota data**: Select **In external storage** or **In memory only**. This setting defaults to **In external storage**, and to keep the quota in memory only if the time window is below 30 seconds. In this case, if the API administrator configures a quota in API Manager with a time window below 30 seconds, the data is stored in memory instead of in external storage. Alternatively, to never use external storage, select **In memory only** to store data in memory in all cases.
 
-For more details on consistency levels, see the following
+    If you select **In external storage**, you must specify an external storage mechanism:
+    * **Automatic (adapt to KPS storage configuration)**: The data is stored externally as configured in the Key Property Store (KPS). This is the default option. For more details, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
+    * **Use database**: To store your data in a relational database, select this option, and specify the database connection that you want to use in **Environment Configuration** > **External Connections** > **Database Connections**.
+    * **Use Cassandra**: To store your data in an Apache Cassandra database, select this option.
+    * **Cassandra consistency levels**: When **Use Cassandra** is selected, you can configure **Read** and **Write** consistency levels for the Cassandra database. These settings control how up-to-date and synchronized a row of data is on all of its replicas. For high availability, you must ensure that the Cassandra read and write consistency levels are both set to `QUORUM`.
 
--   <http://docs.datastax.com/en/archived/cassandra/2.2/cassandra/dml/dmlConfigConsistency.html>
+For more details on consistency levels, see <http://docs.datastax.com/en/archived/cassandra/2.2/cassandra/dml/dmlConfigConsistency.html>
 
 {{< alert title="Note" color="primary" >}} Quota data is not shared for those quotas created in API Manager with a time window less than the value configured in Policy Studio, irrespective of the storage selected. This could impact on throttling in an HA environment, where multiple API Gateways are servicing requests and contributing to total message counts.{{< /alert >}}
-
-</div>
-
-<div>
 
 ### Inbound Security Policies
 
@@ -252,91 +148,52 @@ API Manager provides a number of built-in authentication policies to secure APIs
 To configure your custom inbound security policies, click **Add**, and select the appropriate policies in the dialog. The configured polices are added to the list.
 
 {{< alert title="Note" color="primary" >}}Inbound security policies must set the `authentication.subject.id` message attribute to match the client ID set in the external credentials of the application, and return true for successful authentication.{{< /alert >}}
-For details on applying inbound security policies to front-end APIs, see [Virtualize REST APIs in API Manager](api_mgmt_virtualize_web.htm). For details on how to create polices in Policy Studio, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+
+For details on applying inbound security policies to front-end APIs, see [Virtualize REST APIs in API Manager](api_mgmt_virtualize_web.htm). For details on how to create polices in Policy Studio, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
 ### Global Request Policies
 
-The **Global Request Policies**
-settings enable you to configure optional global enforcement policies for virtualized APIs in API Manager (for example, security, compliance, or governance policies executed as part of every API call).
+The **Global Request Policies** settings enable you to configure optional global enforcement policies for virtualized APIs in API Manager (for example, security, compliance, or governance policies executed as part of every API call).
 
 To configure global request policies, click **Add**, and select policies in the dialog. By default, no global policies are configured.
 
 When global request policies have been configured in Policy Studio, the API administrator can select a global request policy in API Manager on the **API Manager** **settings** page. The selected global request policy is executed after inbound authentication but before any request, routing, or response policies configured for the front-end API. For more details, see [Enforce API Manager global policies](api_mgmt_global_policies.htm#Configur5).
 
-For details on how to create API Gateway polices in Policy Studio, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
-
 ### Global Response Policies
 
-The **Global Response Policies**
-settings enable you to configure optional global enforcement policies for virtualized APIs in API Manager (for example, security, compliance, or governance policies executed as part of every API call).
+The **Global Response Policies** settings enable you to configure optional global enforcement policies for virtualized APIs in API Manager (for example, security, compliance, or governance policies executed as part of every API call).
 
 To configure global response policies, click **Add**, and select policies in the dialog. By default, no global response policies are configured.
 
 When global response policies have been configured in Policy Studio, the API administrator can select a global response policy in API Manager on the **API Manager** **settings** page. The selected global response policy is executed last after any response policy configured for the front-end API. For more details, see [Enforce API Manager global policies](api_mgmt_global_policies.htm#Configur5).
 
-For details on how to create API Gateway polices in Policy Studio, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
-
 ### Request Policies
 
-The **Request Policies**
-settings enable you to configure optional request processing policies for virtualized APIs in API Manager. For example, you could use the configured policies to check request messages for authentication or authorization.
+The **Request Policies** settings enable you to configure optional request processing policies for virtualized APIs in API Manager. For example, you could use the configured policies to check request messages for authentication or authorization.
 
 To configure request policies, click **Add**, and select policies in the dialog. By default, no request policies are configured.
 
 When request policies have been configured in Policy Studio, you can then apply them in API Manager on the **Frontend API** > **Outbound** > **Advanced** page. The selected request policy is executed after inbound authentication and any global request policy, but before any routing or response policies configured for the front-end API. For more details, see [Configure Advanced Outbound settings](api_mgmt_virtualize_web.htm#Configur5).
 
-For details on how to create API Gateway polices in Policy Studio, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
-
-</div>
-
-<div>
-
 ### Response Policies
 
-The **Response Policies**
-settings enable you to configure optional response processing policies for virtualized APIs in API Manager. For example, you could use the configured policies to validate or transform outbound response messages.
+The **Response Policies** settings enable you to configure optional response processing policies for virtualized APIs in API Manager. For example, you could use the configured policies to validate or transform outbound response messages.
 
 To configure response policies, click **Add**, and select policies in the dialog. By default, no response policies are configured.
 
 When response policies have been configured in Policy Studio, you can then apply them in API Manager on the **Frontend API** > **Outbound** > **Advanced** page. The selected resonse policy is executed after any routing policy configured for the front-end API, but before any global response policy. For more details, see [Configure Advanced Outbound settings](api_mgmt_virtualize_web.htm#Configur5).
 
-For details on how to create API Gateway polices in Policy Studio, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
-
-</div>
-
-<div>
-
 ### Routing Policies
 
-The **Routing Policies**
-settings enable you to configure custom routing policies for virtualized APIs in API Manager. For example, you could use the configured policies to route to a back-end JMS service.
+The **Routing Policies** settings enable you to configure custom routing policies for virtualized APIs in API Manager. For example, you could use the configured policies to route to a back-end JMS service.
 
 To configure routing policies, click **Add**, and select policies in the dialog. By default, no routing policies are configured, and the default URL-based routing policy is used. For more details, see [API Manager default routing policy](api_mgmt_custom_policies.htm#default).
 
 When routing policies have been configured in Policy Studio, you can then apply them in API Manager on the **Frontend API** > **Outbound** > **Advanced** page. The selected routing policy is executed after any request policy and before any response policy configured for the front-end API. For more details, see [Configure Advanced Outbound settings](api_mgmt_virtualize_web.htm#Configur5).
 
-For details on how to create API Gateway polices in Policy Studio, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
-
-</div>
-
-<div id="p_api_mgmt_config_portal_settings_smtp">
-
 ### Fault Handler Policies
 
-The **Fault Handler Policies**
-settings enable you to configure optional fault handler policies that are applied to front-end API invocations in API Manager. The configured fault handler is executed when an error or exception occurs during the API Manager runtime API invocation.
+The **Fault Handler Policies** settings enable you to configure optional fault handler policies that are applied to front-end API invocations in API Manager. The configured fault handler is executed when an error or exception occurs during the API Manager runtime API invocation.
 
 To configure fault handler policies, click **Add**, and select policies in the dialog. The API Manager **Default Fault Handler** policy is configured by default.
 
@@ -346,28 +203,22 @@ For more details, see [Add API Manager fault handler policies](api_mgmt_fault_ha
 
 ### SMTP Server
 
-Under **SMTP Server**
-settings, to send emails (for example, for user registration or client application approval), you must configure an SMTP server for API Manager in the Policy Studio. The default setting is `Portal SMTP`
+Under **SMTP Server** settings, to send emails (for example, for user registration or client application approval), you must configure an SMTP server for API Manager in the Policy Studio. The default setting is `Portal SMTP`
 server on `localhost`.
 
 {{< alert title="Note" color="primary" >}}You must ensure that API Manager is configured with the SMTP server used by your organization to generate emails for user registration or client application approval.{{< /alert >}}
+
 For example, to configure your SMTP server, perform the following steps:
 
-1.  Click the browse button on the on the right of the **SMTP Server**
+1. Click the browse button on the on the right of the **SMTP Server**
     field.
-2.  Right-click **Portal SMTP**, and select **Edit**.
-3.  Complete the SMTP settings in the dialog. The following example settings use the Gmail SMTP server:
-4.  -   **Name**: Name for your SMTP server (for example, `Acme Portal SMTP Server`).
-    -   **SMTP Server Hostname**: Hostname of your SMTP server (for example, `smtp.gmail.com`).
-    -   **Port**: SMTP server port number (for example, `465`).
-    -   **Connection Security**: Select the type of connection security to use for SMTP. The options are `NONE`, `SSL`, or `TLS`. The default is `NONE`.
-    -   **User Name**: Your email user name (for example, `joe.bloggs@gmail.com`).
-    -   **Password**: Your email password.
-
-For more details on SMTP configuration, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+2. Right-click **Portal SMTP**, and select **Edit**.
+3. Complete the SMTP settings in the dialog. The following example settings use the Gmail SMTP server:
+    * **Name**: Name for your SMTP server (for example, `Acme Portal SMTP Server`).
+    * **SMTP Server Hostname**: Hostname of your SMTP server (for example, `smtp.gmail.com`).
+    * **Port**: SMTP server port number (for example, `465`).
+    * **Connection Security**: Select the type of connection security to use for SMTP. The options are `NONE`, `SSL`, or `TLS`. The default is `NONE`.
+    * **User Name**: Your email user name (for example, `joe.bloggs@gmail.com`).
+    * **Password**: Your email password.
 
 {{< alert title="Note" color="primary" >}}When finished updating your API Manager configuration, remember to click **Apply Changes** at the bottom of the window, and then **Deploy** in the toolbar.{{< /alert >}}
-
-</div>
