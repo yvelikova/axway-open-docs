@@ -2,8 +2,10 @@
 title: Customize API Catalog
 linkTitle: Customize API Catalog
 weight: 4
-date: 2019-07-30
-description: Customize how your APIs are displayed to your API consumers and what actions they can perform. 
+date: 2019-07-30T00:00:00.000Z
+description: >-
+  Customize how your APIs are displayed to your API consumers and what actions
+  they can perform.
 ---
 
 ## Customize API Catalog settings
@@ -82,3 +84,18 @@ You can also choose to use some tags as an internal tool, and hide them from the
 ### Create tags with wildcards
 
 In both **Only list APIs with tag** and **Hide tags** options on **API Catalog** tab, you can add tags using the `*` and `+` wildcards. This is helpful to list only development APIs in one API Catalog and production APIs in another. In this case you can filter them using wildcards as follows: `*dev*` will list APIs which contain `dev` somewhere in the tag, for example, `financial_development` and `development` tags. Or, to hide all tags which start with `test` and end with any other letter, for example, `test` or `tests`, you can do `test+`.
+
+## Customize Try-it by type of request
+
+The Try-It button is enabled for all requests to an API by default. To enable or disable it on specific types of requests (`GET`, `POST`, `PUT`, and so on):
+
+1. In JAI, click **Components > API Portal > API Manager**.
+2. In **Try-It Settings**, enable or disable the Try-It button for each request type.
+
+    ![](/Images/uploads/api-manager-try-it-settings.png)
+    
+3. Click **Save**.
+
+{{% alert title="Note" %}}
+This setting applies only for this API Manager. To change it on other slave API Managers, go to **Components > API Portal > Additional API Managers**.
+{{% /alert %}}
