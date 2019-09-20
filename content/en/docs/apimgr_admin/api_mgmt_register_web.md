@@ -1,6 +1,7 @@
 {
 "title": "Register REST APIs in API Manager",
 "linkTitle": "Register REST APIs in API Manager",
+"weight": "5",
 "date": "2019-09-17",
 "description": "API owners can use the API Manager web interface to register back-end REST APIs. You can manually create a new back-end API, or import a definition for an existing API (for example, in Swagger or WADL format). Using API Manager to register REST APIs means that you can register APIs in a browser, in multiple formats, without any service outage. "
 }

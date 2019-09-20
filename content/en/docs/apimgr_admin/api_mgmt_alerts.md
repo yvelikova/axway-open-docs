@@ -1,6 +1,6 @@
 {
-    "title": "API management alerts",
-    "linkTitle": "API management alerts",
+    "title": "Configure API management alerts",
+    "linkTitle": "Configure alerts",
     "date": "2019-09-17",
     "description": "Configure API Manager to generate alerts when specific events occur."
 }

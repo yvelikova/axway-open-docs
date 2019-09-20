@@ -1,6 +1,7 @@
 {
 "title": "Virtualize REST APIs in API Manager",
 "linkTitle": "Virtualize REST APIs in API Manager",
+"weight": "6",
 "date": "2019-09-17",
 "description": "When you have registered a back-end REST API, you can then virtualize it as a publicly exposed front-end API. The **API Catalog** stores information about the REST APIs that have been virtualized as front-end APIs. Virtualized REST APIs published in the **API Catalog** can be made available in API Manager for consumption by API consumers, and for administration by API administrators."
 }
