@@ -1,7 +1,6 @@
 ---
 title: API Manager fixed issues
 linkTitle: API Manager fixed issues
-weight: 
 date: 2019-08-08
 description: Listing of fixed issues in this release.
 ---

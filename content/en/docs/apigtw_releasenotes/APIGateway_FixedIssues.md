@@ -1,7 +1,6 @@
 ---
 title: API Gateway fixed issues
 linkTitle: API Gateway fixed issues
-weight: 
 date: 2019-08-08
 description: Listing of fixed issues in this release.
 ---
