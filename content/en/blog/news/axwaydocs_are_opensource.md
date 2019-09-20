@@ -14,7 +14,7 @@ The ReadMeFirst team of technical writers based in Dublin is proud to announce t
 - anyone can edit them by submitting a pull request
 - technical writers review and publish the changes to the production website.
 
-All updates to the docs ARE published to the production portal - https://docs.axway.com/
+All updates to the docs are published to the Axway production portal - https://docs.axway.com/
 
 ## Ways to collaborate
 
@@ -24,7 +24,7 @@ In Axway, ReadMeFirst team implemented the GitHub workflow and, thinking of no
 
 ## Axway Open Documentation website
 
-The open source docs are available at https://axway-open-docs.netlify.com/. From now on, this is your one-stop source to browse and edit API product documentation.
+The open source docs are available at https://axway-open-docs.netlify.com/, this is your one-stop source to browse and edit API product documentation.
 
 If you find anything to be fixed or improved on a page, you can edit it directly instead of creating Issues, to speed up the process of updating the doc. A technical writer will review your edits, then publish the updated documentation to https://docs.axway.com.
 
