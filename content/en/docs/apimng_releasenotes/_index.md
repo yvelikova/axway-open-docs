@@ -1,6 +1,7 @@
 {
     "title": "API Manager 7.8 Release Notes",
-    "linkTitle": "API Manager 7.8 Release Notes",
+    "linkTitle": "API Manager Release Notes",
+    "weigh": "9",
     "date": "2019-09-20",
     "description": "Learn about the new features and enhancements in this release"
 }
