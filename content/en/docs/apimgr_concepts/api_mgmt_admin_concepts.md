@@ -6,6 +6,8 @@
     "description": "Learn about the concepts and workflows in API administration."
 }
 
+## API administrators
+
 API administrators use API Manager to administer the managed APIs that are exposed to API consumers. The API administrator is a business or operational role who understands the business capability of the APIs, which clients want to access them, and for what reasons. The API administrator does not necessarily have deep knowledge of the API Gateway, and is not familiar with the Policy Studio developer tool.
 
 The API administrator role is responsible for API Manager. This role manages and monitors the virtualized APIs and the clients that use those APIs. API administrator tasks include the following:
@@ -15,10 +17,6 @@ The API administrator role is responsible for API Manager. This role manages and
 * Managing users—API consumers, organization administrators, and API administrators
 * Managing API quotas—system-level and client application-level quotas
 * Monitoring and reporting on API usage
-
-## API administration concepts
-
-This section describes the main components and concepts in API administration.
 
 ### Applications
 
@@ -150,3 +148,41 @@ Manage the following settings:
 The view displayed for organization administrator is a subset of the view displayed for the API administrator. For example, the organization administrator cannot view **OAuth Authorizations**, **Default Quotas**, **API Manager Settings**, or **Alerts**. The following shows an example view:
 
 ![Organization Administrator View](/Images/docbook/images/api_mgmt/api_mgmt_org_admin.png)
+
+## API consumers
+
+API consumer users consume managed APIs exposed by the API Gateway, using them to build and test client applications. API consumers can be client application developers from named organizations or the community organization. They can also include operator users who are responsible for monitoring production applications that invoke managed APIs. API Manager provides an intuitive user interface to enable API consumers to consume the managed APIs exposed by the API Gateway.
+
+### Consume REST APIs
+
+Each API consumer user has an account in API Manager. They can use API Manager to perform tasks such as the following:
+
+* Create applications
+* Manage application authentication credentials
+* Give other API consumers permission to view or manage their applications
+* Monitor application API usage
+* Manage their own account settings
+
+API consumers are concerned only with applications, credentials, and APIs. They do not require detailed knowledge of the API Gateway
+
+### Register an API Manager user account
+
+The API consumer can use to following URL to register an API Manager user account:
+
+```
+https://HOSTNAME:8075
+```
+
+When the user account has been registered, an email is sent to the user to enable them to activate their account. They can then log into API Manager using their registered user name and password.
+
+For details on optional registration codes for organizations, see [Manage access to APIs](/docs/apimgr_admin/api_mgmt_admin/).
+
+## API consumer view
+
+When an API consumer user logs in to API Manager, this displays a specific view for the API consumer. This includes the following subset of menu options:
+
+* **API Catalog**: Browse all virtualized APIs available to the organization.
+* **Clients**: Create, manage, or delete client applications that invoke APIs.
+* **Monitoring**: View historical reports and statistics on all client applications created by the API consumer.
+* **Settings**: Manage user **Account Settings**
+    (for example, change password or user details).
