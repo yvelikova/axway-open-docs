@@ -1,7 +1,7 @@
 {
     "title": "API Gateway 7.8 Release Notes",
     "linkTitle": "API Gateway Release Notes",
-    "weigh": "9",
+    "weigh": "8",
     "date": "2019-09-20",
     "description": "Learn about the new features and enhancements in this release."
 }
