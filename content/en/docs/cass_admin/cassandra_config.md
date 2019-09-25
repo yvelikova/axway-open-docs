@@ -11,6 +11,8 @@ description: >
 To tolerate the loss of one Cassandra node and to ensure 100% data consistency, API Gateway requires at a minimum the following Cassandra cluster configuration running in a production class environment:
 
 * Three Cassandra nodes (with one seed node)
+    * A seed node is contacted by other nodes joining the Cassandra-Cluster to get required Cluster-Information, therefore the seed node must be started first
+    * It is not recommended to make all Cassandra-Nodes a seed, as they are producing traffic overhead
 * `Replication factor` setting set to `3`, so each node holds 100% of the data.
 * `QUORUM` read/write consistency to ensure that you are reading from a quorum of Cassandra nodes (two) every time.
   {{% alert title="Caution" color="warning" %}}
@@ -52,6 +54,10 @@ Perform the following steps to configure a *seed* node:
     authenticator: org.apache.cassandra.auth.PasswordAuthenticator
     authorizer: org.apache.cassandra.auth.CassandraAuthorizer
     ```
+
+    Some parameter details:  
+    The `listen_address` is used for the internal Cassandra-Cluster communication using the . You can either use the parameter `listen_address` or the `listen_interface`, but don't activate both parameters. The resulting IP-Adress is used to connect to this node and must be reachable from __ALL__ other nodes in the cluster.  
+    The `rpc_address` is used for Cassandra-Clients to connect to the cluster and might be different in more complex scenarios.
 
     Using the `setup-cassandra` script:
 
