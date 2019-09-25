@@ -20,7 +20,7 @@ The mapping feature allows to give only view permission to a user group over the
 
 {{< alert title="Caution" color="warning" >}}The combined use of API Portal user groups mapping, the built-in Joomla! Access Control List (ACL), and the user groups feature require advanced knowledge and experience with Joomla!. Incorrect configuration may result in API Portal malfunctioning. {{< /alert >}}
 
-For more details about Joomla! ACL and User Group management, see Joomla! official documentation.
+For more details about Joomla! ACL and User Group management, see [Joomla! official documentation](https://docs.joomla.org/Special:MyLanguage/J3.x:Access_Control_List_Tutorial).
 
 ## User groups mapping table
 
