@@ -42,6 +42,7 @@ The table consists of five columns: **Roles**, **Org.Admin**, **Developer**, **O
 
 The **Search** searches for a given term and automatically expands the rows with the matches.
 
+The provided mapping options are applied using OR. That means, each setting (Organizations, Email, etc.) is applied individually. Therefore it's not possible to configure for instance a mapping to a group of an Organization AND a certain Email-Addresses.  
 The mapping takes effect on a user's next login to API Portal.
 
 ## Example use cases
