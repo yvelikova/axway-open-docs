@@ -26,7 +26,7 @@ For more details about Joomla! ACL and User Group management, see [Joomla! offic
 
 This section describes the user groups mapping table, available from **Components > API Portal > User Groups Mapping**.
 
-The table consists of five columns: **Roles**, **Org.Admin**, **Developer**, **Organizations**, **Email Pattern**.
+The table consists of five columns: **Roles**, **Org. Admin**, **Developer**, **Organizations**, **Email Pattern**.
 
 **Roles** - Displays all the Joomla! user groups.
 
@@ -41,6 +41,8 @@ The table consists of five columns: **Roles**, **Org.Admin**, **Developer**, **O
 ![User groups mapping table](/Images/APIPortal/role_mapping_expanded.png)
 
 The **Search** searches for a given term and automatically expands the rows with the matches.
+
+The mapping options are applied individually and cannot be combined. This means that you can apply one mapping setting (Organizations, Email Pattern, and so on) *OR* another, and you cannot, for example, configure a mapping of an organization *AND* a certain email pattern to a user group.  
 
 The mapping takes effect on a user's next login to API Portal.
 
