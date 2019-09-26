@@ -2,7 +2,7 @@
     "title": "API Manager custom policies",
     "linkTitle": "API Manager custom policies",
     "date": "2019-09-17",
-    "description": "API Manager custom policies are optional policies developed in Policy Studio that can be applied to APIs registered in API Manager. For example, these include custom policies for inbound security, request or response processing, or routing."
+    "description": "API Manager HTTP request flow, and explains the different custom policies that you can add at different stages in the flow."
 }
 
 API Manager custom policies are optional policies developed in Policy Studio that can be applied to APIs registered in API Manager. For example, these include custom policies for inbound security, request or response processing, or routing.
