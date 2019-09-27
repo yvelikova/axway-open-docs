@@ -1,17 +1,17 @@
 ---
-title: Step 2 Start external data stores
+title: Step 2 - Start external data stores
 linkTitle: Step 2 Start external data stores
 date: 2019-09-18
-description: If you are using any external data stores, such as Apache Cassandra for API Manager, or a metrics database for API Manager or API Gateway Analytics, you must start these data stores.
+description: 
 ---
+If you are using any external data stores, such as Apache Cassandra for API Manager, or a metrics database for API Manager or API Gateway Analytics, you must start these data stores.
 
 ## Start Apache Cassandra
 
-{{< alert title="Note" color="primary" >}}Deploying a Cassandra container is only recommended for development environments. In a production environment, you must configure Cassandra for high availability (HA) as detailed in
+Deploying a Cassandra container is only recommended for development environments. In a production environment, you must configure Cassandra for high availability (HA) as detailed in
 [Configure a Cassandra HA cluster](/csh?context=1300&product=prod-api-gateway-77)
 in the
-[API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/)
-.{{< /alert >}}
+[API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/).
 
 For details on starting Apache Cassandra in a Docker container, see <https://hub.docker.com/_/cassandra>.
 

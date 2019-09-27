@@ -1,9 +1,9 @@
 ---
 title: Elastic deployment in the cloud
 linkTitle: Elastic deployment in the cloud
+weight: 2
 date: 2019-09-18
 description: You can deploy API Gateway and API Manager in [Docker](https://www.docker.com/) containers on a cloud platform hosted by infrastructure-as-a-service (IaaS) providers, and use the elastic capability that their automation tools and techniques provide. This enables you to manage the load on your system easily, adding and removing nodes as needed.
-weight: 2
 ---
 
 ## Deployment process
@@ -42,8 +42,6 @@ The topology includes an Admin Node Manager, but with a different role than in t
   * Admin Node Manager listens to the API Gateway nodes, processes the received logs and writes them to the metrics database.
   * The Admin Node Manager container uses a shared volume to access the transaction event logs from API Gateway containers.
 
-    >
-
 #### Cluster manager
 
 A cluster manager such as Docker Swarm or Kubernetes manages the topology and adds or removes nodes as the load on the system changes:
@@ -55,6 +53,4 @@ A cluster manager such as Docker Swarm or Kubernetes manages the topology and ad
 
 If the deployment includes API Manager, Apache Cassandra is configured for high availability (HA) to store API Manager data and Key Property Store (KPS) tables. For more details, see
 [Configure a Cassandra HA cluster](/csh?context=1300&product=prod-api-gateway-77)
-in the
-[API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/)
-.
+in the [API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/)

@@ -25,12 +25,9 @@ For more details on Docker system requirements, see the [Docker documentation](h
 
 ### Set up API Gateway Docker scripts
 
-You must download the following from Axway Support at [https://support.axway.com](https://support.axway.com/) 
+You must download the following from Axway Support at [https://support.axway.com](https://support.axway.com/).
 
 * API Gateway Linux installer
-
->
-
 * Docker scripts package
 
 ### API Gateway licenses

@@ -1,9 +1,10 @@
 ---
-title: Step 3 Generate domain SSL certificates
+title: Step 3 - Generate domain SSL certificates
 linkTitle: Step 3 Generate domain SSL certificates
 date: 2019-09-18
-description: To secure the communications between the Admin Node Manager and API Gateways, you can use the `gen_domain_cert.py` script to generate a self-signed CA certificate for a domain, or a Certificate Signing Request (CSR) to be signed by an external Certificate Authority (CA).
+description: 
 ---
+To secure the communications between the Admin Node Manager and API Gateways, you can use the `gen_domain_cert.py` script to generate a self-signed CA certificate for a domain, or a Certificate Signing Request (CSR) to be signed by an external Certificate Authority (CA).
 
 {{< alert title="Note" color="primary" >}}If you already have a domain certificate (for example, from another API Gateway installation) you can skip this section. You can specify your existing domain certificate (certificate and private key in .pem format) to the `build_anm_image.py`
 and `build_gw_image.py`
@@ -71,10 +72,12 @@ This example creates a self-signed certificate and private key:
 
 The following example creates a certificate signing request (CSR).
 
-Usage guidelines
+### Usage guidelines
 
 * You must send the generated CSR to a CA for signing.
 * When running the scripts to build Admin Node Manager or API Gateway images, specify the certificate and private key returned from the CA, and not the CSR.
+
+### Example command
 
 ```
 $ cd emt_containers-<version>

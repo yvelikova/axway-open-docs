@@ -1,14 +1,14 @@
 ---
-title: Step 5 Create an Admin Node Manager Docker image
+title: Step 5 - Create an Admin Node Manager Docker image
 linkTitle: Step 5 Create an Admin Node Manager Docker image
 date: 2019-09-18
-description: To create an Admin Node Manager Docker image, use the `build_anm_image.py` script.
+description: 
 ---
+Use the `build_anm_image.py` script to create an Admin Node Manager Docker image
 
 ## Admin Node Manager image script options
 
-You must specify the following as options when using the `build_anm_image.py`
-script:
+You must specify the following as options when using the `build_anm_image.py` script:
 
 * Domain certificate, private key, and password.
 * User name and password for the administrator user. You can use this user name and password to log in to the API Gateway Manager web console.
@@ -36,14 +36,9 @@ Usage guidelines
 * Use the `--merge-dir` option to specify the `apigateway` directory containing the JDBC driver JAR file for the metrics database in the `ext/lib` directory:
   * The merge directory must be called `apigateway` and must have the same directory structure as in an API Gateway installation.
   * Copy the JAR file to a new directory `/tmp/apigateway/ext/lib/` and specify `/tmp/apigateway` to the `--merge-dir` option.
-
-<!-- -->
-
 * When running the Admin Node Manager and API Gateway Docker containers, use the `docker run -v` option to mount a volume for the API Gateway events directory:
   * Run the API Gateway container with a volume mounted for the events directory (for example, `-v /tmp/events:/opt/Axway/apigateway/events` writes API Gateway event logs to `/tmp/events` on the host machine).
   * Run the Admin Node Manager container with the same volume mounted (for example, `-v /tmp/events:/opt/Axway/apigateway/events` enables the Admin Node Manager to read API Gateway event logs from `/tmp/events` on the host machine). For details, see [Start a metrics-enabled Admin Node Manager container](/docs/container_topics/containers_docker_setup/docker_script_anmstart#Start).
-
-<!-- -->
 
 * Use the metrics options to specify the URL, user name, and password for your metrics database. If not specified, the metrics options have the following default values:
   * `--metrics-db-url`: Defaults to `${environment.METRICS_DB_URL}`
@@ -86,14 +81,11 @@ script to build Admin Node Manager Docker images:
 
 The following example creates an Admin Node Manager Docker image using an existing Admin Node Manager deployment package (`.fed` file) and customized configuration from an existing API Gateway installation.
 
-Usage guidelines
+#### Usage guidelines
 
 * Ensure that your `.fed` contains the following:
   * Admin Node Manager configuration. You can open the `.fed` in Policy Studio and verify that it is identified as a Node Manager configuration in the navigation pane.
   * Only IP addresses that are accessible at runtime. For example, the `.fed` cannot contain IP addresses of container-based Admin Node Managers and API Gateways, because IP addresses are usually dynamically assigned in a Docker network.
-
-<!-- -->
-
 * Use the `--merge-dir` option to add more files and folders to the `apigateway` directory inside the image:
   * The merge directory must be called `apigateway` and must have the same directory structure as in an API Gateway installation.
   * For example, to add an optional custom `envSettings.props` file to your image, copy `envSettings.props` to a new directory named `/tmp/apigateway/conf/`, and specify `/tmp/apigateway` to the `--merge-dir` option.
@@ -101,7 +93,7 @@ Usage guidelines
 
     {{< alert title="Note" color="primary" >}}`envSettings.props` specifies settings such as the port the Admin Node Manager listens on (default of `8090`), and the session timeout for API Gateway Manager (default of 12 hours). `envSettings.props` must contain only IP addresses and host names that are accessible at runtime. It cannot contain IP addresses of container-based Admin Node Managers and API Gateways because these are usually dynamically assigned in a Docker network.{{< /alert >}}
 
-Example command
+#### Example command
 
 ``` {space="preserve"}
 $ cd emt_containers-<version>
