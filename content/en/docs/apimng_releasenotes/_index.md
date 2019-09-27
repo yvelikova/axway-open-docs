@@ -2,7 +2,7 @@
     "title": "API Manager 7.8 Release Notes",
     "linkTitle": "API Manager Release Notes",
     "no_list": "true",
-    "weight": "8",
+    "weight": "13",
     "date": "2019-09-20",
     "description": "Learn about the new features and enhancements in this release"
 }
