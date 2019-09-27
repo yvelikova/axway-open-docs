@@ -433,3 +433,153 @@ The custom request policy to remove all whitespace at the end of a request is de
     ![Example Set Message filter](/Images/docbook/images/api_mgmt/api_mgmt_connector_sn_wspace_policy5.png)
 
 For more details on ServiceNow APIs, see [http://wiki.servicenow.com](http://wiki.servicenow.com/ "http://wiki.servicenow.com").
+
+## Configure a connector for Axway API Runtime Services
+
+API Manager enables you to import and manage cloud-based application APIs developed using Axway API Builder. Policy developers can configure client authentication profiles for use with the API Builder connector in Policy Studio. When the policy developer has connected to an API Builder cloud API provider, the API administrator can then import and manage API Builder application APIs in the API Manager web console.
+
+### API Builder use cases
+
+API Builder enables you to create APIs as Node.js applications that run in different cloud environments. These include the API Runtime Services virtual private cloud (VPC) or on-premise cloud environments and the Appcelerator Public Cloud environment.
+
+You can create an API Builder project and add endpoints to define how client applications access your application API. API Builder generates a Swagger definition for the application API, which you can import into API Manager using the API Builder connector.
+
+API Builder also provides prebuilt connectors for third-party cloud applications and services (for example, MS SQL, MySQL, or MongoDB). You can also create custom connectors for any data source, reuse third-party connectors in your application APIs, and optimize payload size and data format for integration with mobile apps.
+
+### Configure an API connector for API Runtime Services
+
+Policy developers can configure an API connector in Policy Studio as follows:
+
+1. Select **Server Settings** > **API Manager** > **API Connectors** in the Policy Studio tree on the left.
+2. Click **Add** to add a new connector for API Builder.
+3. Configure the following settings to suit your environment:
+    * **Name**:
+        Enter the name of the API connector (for example, `API Builder`). This name will be displayed in API Manager in the menu option when importing application APIs.
+    * **Resource Prefix**:
+        Enter the resource prefix required for the API Builder connector: `apibuilder`.
+    * **Description**: Enter the following description: `Import API Builder application APIs`. This description will be displayed in the API Manager dialog when importing application APIs.
+    * **URL**:
+        Enter the URL required for your API Builder application API environment. For example, if your API Builder applications are hosted in the API Runtime Services virtual private cloud (VPC) or on-premise cloud environment, contact your system administrator to obtain the required URL.
+        Alternatively, if your API Builder application APIs are hosted publicly, the Appcelerator Public Cloud environment is available the following URL:
+
+        ```
+        https://admin.cloudapp-enterprise.appcelerator.com
+        ```
+
+    * **Class**:
+        Enter the Java class required for the API Builder connector:
+
+        ```
+        com.vordel.apiportal.api.connector.appc.AppceleratorConnector
+        ```
+
+    * **Client Credentials**:
+        You must provide a user name and password to connect to API Builder. Click the browse button to configure the client credential required for API Builder. To configure new credentials, right-click the **Client Credentials** > **HTTP Basic** node, and select **Add HTTP Basic Credentials**. For more details, see [Configure credentials for API Builder](#Example:).
+    * **Max APIs/Import**:
+        Enter the maximum number of application APIs that can be imported from the API Builder cloud API provider into API Manager. A very large number makes it harder for an application API owner to manage. The API Builder connector defaults to `10` application APIs per import. For more details, see [*Import cloud APIs in* on page 1](#Import).
+    * **Merge APIs on import**:
+        You must deselect this setting for API Builder application APIs. Each API Builder application API will be imported into API Manager as a separate back-end API.
+    * **Custom Configuration**:
+        Not all API Builder application APIs can be imported into API Manager by default. Enter the following custom configuration to filter the list of application APIs displayed in API Manager to show only active API Builder application APIs:
+
+        ```
+        {"filters" : [
+            { "status" : [ "online", "Deactivated" ]} ,
+            { "active" : [true]},
+            { "deploymentStatus": ["online"]}
+            ]
+            }
+        ```
+
+        This specifies filter attributes in JSON format to filter the list of available application APIs displayed in API Manager. This field can be blank or contain a JSON `filters` object that includes an array of objects.
+
+4. Click **OK**.
+
+The following example shows the completed configuration for the API Builder cloud application connector in Policy Studio:
+
+![API Builder API connector configuration](/Images/docbook/images/api_mgmt/api_mgmt_connector_api_builder.png)
+
+### Configure credentials for API Runtime Services
+
+To configure client credentials for API Builder, perform the following steps:
+
+1. Register an account for API Builder to obtain your API Builder credentials. For more details, see <http://www.appcelerator.com/>.
+2. In the Policy Studio tree, select **Environment Configuration** > **External Connections** > **Client Credentials** > **HTTP Basic**, and click **Add** on the bottom right.
+3. Enter a **Profile Name** (for example, `API Builder Credentials`).
+4. Ensure **Choose Authentication Type** is set to **Basic**.
+5. Enter your API Builder account credentials in the **Username** and **Password** fields.
+
+{{< alert title="Note" color="primary" >}}Alternatively, you can enter an API Gateway selector (`${authentication.subject.id}`) in the **Username** field. This setting causes the API Builder connector in API Manager to prompt you for your API Builder credentials before importing application APIs.{{< /alert >}}
+
+The following shows an example HTTP basic authentication profile:
+
+![HTTP basic credentials for API Builder](/Images/docbook/images/api_mgmt/api_mgmt_connector_credentials_api_builder.png)
+
+### Import API Builder application APIs in API Manager
+
+When the policy developer has configured the API connector and the associated client authentication credentials in Policy Studio, the API administrator can import the API Builder application API in the API Manager web console. When importing APIs, the import dialog displays the list of available API Builder application APIs. You can filter this list to display the required application APIs.
+
+You can then select multiple application APIs to import into API Manager. You can virtualize and manage the resulting back-end APIs just like any other APIs in API Manager.
+
+For example, to import an API Builder API, perform the following steps in API Manager:
+
+1. Select **API Registration** > **Backend API**.
+2. Click **New API**, and select **Import from API Builder**.
+3. If the client credentials profile for API Builder is configured with a selector for the username, you are prompted to enter valid API Builder login credentials. For more details, see [Configure credentials for API Builder](#Example:). Alternatively, if the credentials profile for API Builder is configured with a valid system account, the API Builder connector automatically attempts to connect to API Builder.
+4. Complete the following details in the import dialog:
+    * **Organization**: Select the organization name from the list.
+    * **Filter**: Enter a filter string, and click **Filter** to display the results in the **APIs** tree.
+    * **APIs**: Select the API Builder application API that you require in the tree. You can continue to filter and select multiple APIs.
+    * **Selected APIs**: View the application APIs selected for import, and click to remove any that do not apply.
+        The following example shows a completed import dialog:
+        ![Import API from API Builder](/Images/docbook/images/api_mgmt/api_mgmt_connector_import_api_buider.png)
+
+5. When you have selected all the application APIs you require, click **Import** at the bottom. Each imported application API is displayed as a separate back-end API in API Manager:
+    ![Imported API Builder API](/Images/docbook/images/api_mgmt/api_mgmt_connector_api_builder_imported.png)
+
+For more details on importing APIs, see [*Register REST APIs in* on page 1](api_mgmt_register_web.htm).
+
+### Manage API Builder application APIs in API Manager
+
+When you import a cloud-based application API and register it as a back-end API, you can virtualize and manage it as a front-end API, just like any other API in API Manager. For example, this includes selecting different authentication mechanisms and testing API methods.
+
+#### Virtualize API Builder application APIs
+
+When you have imported API Builder application APIs into API Manager as back-end APIs, you can then virtualize them as a front-end APIs and secure them in different ways. In a common scenario, API Manager acts as an HTTP basic authentication client to API Builder APIs. To achieve this, you should configure the virtualized front-end API in API Manager to use HTTP basic as the outbound authentication profile.
+
+**Using a system account**:
+
+If the HTTP basic credentials are set to literal values (user name and password), at runtime API Manager uses these credentials to authenticate with API Builder. For more details, see [*Configure HTTP basic credentials for API Builder* on page 1](#Example:).
+
+{{< alert title="Note" color="primary" >}}The front-end API exposed to consumers can use any application or end user authentication or authorization mechanism. The API Builder access rights defined by the system account are shared equally by all consumers.{{< /alert >}}
+
+**Using end user credentials**:
+
+If the HTTP basic credentials are set to a selector value (for example, `${authentication.subject.id}`), at runtime API Manager resolves the selector, and dynamically determines the user credentials to authenticate with API Builder. For more details, see [Configure credentials for API Builder](#Example:).
+
+{{< alert title="Note" color="primary" >}}The front-end API exposed to consumers can use any application or end user authentication or authorization mechanism, as long as the configured selectors can be resolved to valid credentials. The API Builder access rights defined by the credentials resolved at runtime are used.{{< /alert >}}
+
+##### Create the front-end API Builder API in API Manager
+
+When you have configured the HTTP basic credentials in Policy Studio, you can virtualize the back-end API as a front-end API in API Manager. Perform the following steps:
+
+1. Select **API Registration** > **Frontend API**.
+2. Click **New API**, and select **New API from backend API**.
+3. Select the existing API Builder back-end API in the dialog.
+4. Enter a **Resource Path** (for example `/api_builder`).
+5. On the **Inbound** tab, select a security device for authentication from the **Inbound security** setting. For more details, see [*Configure Inbound settings* on page 1](api_mgmt_virtualize_web.htm#Configur4).
+
+    {{< alert title="Note" color="primary" >}}If the HTTP basic credentials are set to a selector value (for example, `${authentication.subject.id}`), this must be resolved by API Manager before calling API Builder.{{< /alert >}}
+
+6. On the **Outbound** tab, select a security device from the **Outbound authentication profile** setting. For example, HTTP basic is a commonly used outbound authentication profile in this scenario. For more details, see [*Configure Outbound settings* on page 1](api_mgmt_virtualize_web.htm#Configur7).
+7. The response contents of API Builder APIs can include relative links to other associated resources. Because the virtualized API in API Manager might present a different relative path to the consuming client application, URL rewriting might be necessary. A sample URL rewriting policy is available in Policy Studio under **Sample Policies** > **API Management URL Rewriting**. Click **Advanced**, and add this as a **Response policy** to use URL rewriting. For more details, see [*Configure Advanced Outbound settings* on page 1](api_mgmt_virtualize_web.htm#Configur5).
+8. Click **Save** or **Apply**.
+9. On the **API Methods** tab, you can select a method, and click **Try method** to test it. For more details, see [*Configure API method information* on page 1](api_mgmt_virtualize_web.htm#Configur6).
+
+The following example shows a virtualized front-end API imported from API Builder with HTTP basic selected for outbound authentication:
+
+![Virtualized API Builder API](/Images/docbook/images/api_mgmt/api_mgmt_connector_virtualized_api_builder.png)
+
+For more details on virtualizing APIs, see [Virtualize REST APIs in API Manager](api_mgmt_virtualize_web.htm).
+
+For more details on API Builder, see [API Builder documentation](/bundle/API_Builder_allOS_en/).
