@@ -26,12 +26,7 @@ This script also supports additional options when generating a base image. For t
 $ cd emt_containers-<version>
 $ ./build_base_image.py -h
 ```
-
 The following examples show how you can use the script to build base Docker images:
-
-* [Create a base image based on standard CentOS7](#Create)
-* [Create a base image based on standard RHEL7](#Create2)
-* [Create a base image based on custom CentOS7/RHEL7](#Create3)
 
 ## Create a base image based on standard CentOS7 {#Create}
 
@@ -50,8 +45,6 @@ This example creates a base Docker image named `apigw-base` with a tag of `lates
 
 The following example creates a base Docker image using a standard RHEL7 image.
 
-Usage guidelines
-
 * You must have an RHEL7 license to build a base API Gateway image based on an RHEL7 OS.
 
 ```
@@ -66,8 +59,6 @@ This example creates a base Docker image named `my-gw-base` with a tag of `1.0`.
 ## Create a base image based on custom CentOS7/RHEL7 {#Create3}
 
 The following example creates a base Docker image using a custom RHEL7 image.
-
-Usage guidelines
 
 * You must have an RHEL7 license to build a base API Gateway image based on an RHEL7 OS.
 

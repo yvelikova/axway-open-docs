@@ -72,12 +72,8 @@ This example creates a self-signed certificate and private key:
 
 The following example creates a certificate signing request (CSR).
 
-### Usage guidelines
-
 * You must send the generated CSR to a CA for signing.
 * When running the scripts to build Admin Node Manager or API Gateway images, specify the certificate and private key returned from the CA, and not the CSR.
-
-### Example command
 
 ```
 $ cd emt_containers-<version>

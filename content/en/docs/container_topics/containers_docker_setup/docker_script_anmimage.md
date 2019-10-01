@@ -4,7 +4,9 @@ linkTitle: Step 5 Create an Admin Node Manager Docker image
 date: 2019-09-18
 description: 
 ---
-Use the `build_anm_image.py` script to create an Admin Node Manager Docker image
+Use the `build_anm_image.py` script to create an Admin Node Manager Docker image.
+
+To create an Admin Node Manager Docker image, use the `build_anm_image.py` script. This script builds an Admin Node Manager Docker image using the base image you created in [Step 4 – Create base Docker image](/docs/container_topics/containers_docker_setup/docker_script_baseimage).
 
 ## Admin Node Manager image script options
 
@@ -31,8 +33,6 @@ $ ./build_anm_image.py -h
 
 The following example creates an Admin Node Manager Docker image with a specified domain certificate that runs with metrics processing enabled. The Admin Node Manager container processes event logs from API Gateway containers and writes them to a specified metrics database. This is the recommended option and is suitable for a production environment.
 
-Usage guidelines
-
 * Use the `--merge-dir` option to specify the `apigateway` directory containing the JDBC driver JAR file for the metrics database in the `ext/lib` directory:
   * The merge directory must be called `apigateway` and must have the same directory structure as in an API Gateway installation.
   * Copy the JAR file to a new directory `/tmp/apigateway/ext/lib/` and specify `/tmp/apigateway` to the `--merge-dir` option.
@@ -47,13 +47,11 @@ Usage guidelines
 
 {{< alert title="Note" color="primary" >}}When running in a multi-node system, you must mount a shared network volume that is accessible from the Admin Node Manager and from all API Gateways.{{< /alert >}}
 
-Example command
-
-``` {space="preserve"}
+```
 $ cd emt_containers-<version>
-$ ./build_anm_image.py 
---domain-cert=certs/mydomain/mydomain-cert.pem 
---domain-key=certs/mydomain/mydomain-key.pem 
+$ ./build_anm_image.py
+--domain-cert=certs/mydomain/mydomain-cert.pem
+--domain-key=certs/mydomain/mydomain-key.pem
 --domain-key-pass-file=/tmp/pass.txt
 --anm-username=gwadmin --anm-pass-file=/tmp/gwadminpass.txt
 --parent-image=my-gw-base:1.0 --out-image=my-metrics-admin-node-manager:1.0
@@ -73,15 +71,13 @@ This example creates an Admin Node Manager Docker image named `my-metrics-admin-
 The following are additional examples of using the `build_anm_image.py`
 script to build Admin Node Manager Docker images:
 
-* [Create an Admin Node Manager image using existing fed and customized configuration](#Create6)
-* [Create a FIPS-enabled Admin Node Manager image](#Create8)
-* [Create an Admin Node Manager image for a development environment](#Create7)
+* [Create an Admin Node Manager image using existing fed and customized configuration](#create-an-admin-node-manager-image-using-existing-fed-and-customized-configuration)
+* [Create a FIPS-enabled Admin Node Manager image](#create-a-fips-enabled-admin-node-manager-image)
+* [Create an Admin Node Manager image for a development environment](create-an-admin-node-manager-image-for-a-development-environment)
 
-### Create an Admin Node Manager image using existing fed and customized configuration {#Create6}
+### Create an Admin Node Manager image using existing fed and customized configuration
 
 The following example creates an Admin Node Manager Docker image using an existing Admin Node Manager deployment package (`.fed` file) and customized configuration from an existing API Gateway installation.
-
-#### Usage guidelines
 
 * Ensure that your `.fed` contains the following:
   * Admin Node Manager configuration. You can open the `.fed` in Policy Studio and verify that it is identified as a Node Manager configuration in the navigation pane.
@@ -93,9 +89,7 @@ The following example creates an Admin Node Manager Docker image using an existi
 
     {{< alert title="Note" color="primary" >}}`envSettings.props` specifies settings such as the port the Admin Node Manager listens on (default of `8090`), and the session timeout for API Gateway Manager (default of 12 hours). `envSettings.props` must contain only IP addresses and host names that are accessible at runtime. It cannot contain IP addresses of container-based Admin Node Managers and API Gateways because these are usually dynamically assigned in a Docker network.{{< /alert >}}
 
-#### Example command
-
-``` {space="preserve"}
+```
 $ cd emt_containers-<version>
 $ ./build_anm_image.py
 --domain-cert=certs/mydomain/mydomain-cert.pem
@@ -115,21 +109,17 @@ This example creates an Admin Node Manager Docker image named `my-fed-admin-node
 * Uses a specified `.fed` that contains Admin Node Manager configuration
 * Uses a specified merge directory that is merged into the Admin Node Manager image
 
-### Create a FIPS-enabled Admin Node Manager image {#Create8}
+### Create a FIPS-enabled Admin Node Manager image
 
 The following example creates an Admin Node Manager Docker image that runs in FIPS-compliant mode.
 
-Usage guidelines
-
 * You must have a valid FIPS-compliant mode API Gateway license file to create an image that can run in FIPS-compliant mode.
 
-Example command
-
-``` {space="preserve"}
+```
 $ cd emt_containers-<version>
-$ ./build_anm_image.py 
---domain-cert=certs/mydomain/mydomain-cert.pem 
---domain-key=certs/mydomain/mydomain-key.pem 
+$ ./build_anm_image.py
+--domain-cert=certs/mydomain/mydomain-cert.pem
+--domain-key=certs/mydomain/mydomain-key.pem
 --domain-key-pass-file=/tmp/pass.txt
 --anm-username=gwadmin --anm-pass-file=/tmp/gwadminpass.txt
 --parent-image=my-gw-base:1.0 --out-image=my-fips-admin-node-manager:1.0
@@ -143,17 +133,13 @@ This example creates an Admin Node Manager Docker image named `my-fips-admin-nod
 * Uses a specified user name of `gwadmin` and a specified password for the administrator user
 * Runs in FIPS-compliant mode
 
-### Create an Admin Node Manager image for a development environment {#Create7}
+### Create an Admin Node Manager image for a development environment
 
 The following example creates a simple Admin Node Manager Docker image suitable for a development environment only using default certificates and a default administrator user.
 
-Usage guidelines
-
 * Do not use default options on production systems. The `--default-cert` and `--default-user` options are provided only as a convenience for development environments.
 
-Example command
-
-``` {space="preserve"}
+```
 $ cd emt_containers-<version>
 $ ./build_anm_image.py
 --default-cert --default-user

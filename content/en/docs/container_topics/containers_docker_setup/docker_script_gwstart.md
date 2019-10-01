@@ -1,15 +1,16 @@
 ---
-title: Step 8 Start the API Gateway Docker container
+title: Step 8 - Start the API Gateway Docker container
 linkTitle: Step 8 Start the API Gateway Docker container
 date: 2019-09-18
-description: Use the `docker run` command to start the API Gateway container.
+description: 
 ---
+Use the `docker run` command to start the API Gateway container.
 
 ## Start an API Manager-enabled API Gateway container
 
 The following example shows how to run an API Manager-enabled API Gateway container in the background on a specific port:
 
-``` {space="preserve"}
+```
 $ docker run -d --name=apimgr --network=api-gateway-domain
   -p 8075:8075 -p 8065:8065 -p 8080:8080
   -v /tmp/events:/opt/Axway/apigateway/events
@@ -28,10 +29,8 @@ This example performs the following:
 * Mounts the `/tmp/events` host directory in the container using the `-v` option. This directory contains API Gateway transaction event logs. For more details, see [Mount volumes to persist logs outside the API Gateway container](#Mount). For best practice, you can parametrize this directory by way of the `quickstart.sh` script included in the Docker scripts package.
 * Sets the `CASS_HOST` environment variable with the Apache Cassandra
     host that is used to store the API Manager data.
-* Uses `METRICS_DB_URL`, `METRICS_DB_USERNAME` and `METRICS_DB_PASS` environment variables to specify connection details for the metrics
-    database.
-* Uses an environment variable `EMT_TRACE_LEVEL` to set a trace level inside the container.
-    In the above example a trace level switches from INFO to DEBUG level during container startup.
+* Uses `METRICS_DB_URL`, `METRICS_DB_USERNAME` and `METRICS_DB_PASS` environment variables to specify connection details for the metrics database.
+* Uses an environment variable `EMT_TRACE_LEVEL` to set a trace level inside the container. In the above example a trace level switches from INFO to DEBUG level during container startup.
 * Sets the `EMT_ANM_HOSTS` environment variable to `anm:8090` in the container. This enables the API Gateway to communicate with the Admin Node Manager container on port `8090`. The API Gateway is now visible in the API Gateway Manager topology view.
 
 ![API Gateway container in topology view](/Images/ContainerGuide/gw_mgr_topology.png)
@@ -42,7 +41,7 @@ If you have started an Admin Node Manager with topology logging enabled, you mus
 
 The following example shows how to set `acme-DC1-server2` as the name of the parent host in the topology log records.
 
-``` {space="preserve"}
+```
 $ docker run -e EMT_PARENT_HOST=acme-DC1-server2 ... api-gateway-my-group:1.0
 ```
 
@@ -52,9 +51,9 @@ $ docker run -e EMT_PARENT_HOST=acme-DC1-server2 ... api-gateway-my-group:1.0
 
 You can persist API Gateway trace and event logs to a directory on your host machine. For example, run the following `docker run` command to start an API Gateway container from an image named `api-gateway-my-group:1.0` and mount volumes for trace and event logs:
 
-``` {space="preserve"}
-$ docker run -it -v /tmp/events:/opt/Axway/apigateway/events 
--v /tmp/trace:/opt/Axway/apigateway/groups/emt-group/emt-service/trace 
+```
+$ docker run -it -v /tmp/events:/opt/Axway/apigateway/events
+-v /tmp/trace:/opt/Axway/apigateway/groups/emt-group/emt-service/trace
 -e EMT_ANM_HOSTS=anm:8090 -p 8080:8080 --network=api-gateway-domain api-gateway-my-group:1.0
 ```
 
@@ -66,8 +65,8 @@ This example starts the API Gateway container and writes the trace and log files
 
 The following simple example sets the `EMT_DEPLOYMENT_ENABLED` environment variable to `true` to enable you to deploy configuration directly from Policy Studio to the running API Gateway container:
 
-``` {space="preserve"}
-$ docker run -d -e EMT_DEPLOYMENT_ENABLED=true -e EMT_ANM_HOSTS=anm:8090 
+```
+$ docker run -d -e EMT_DEPLOYMENT_ENABLED=true -e EMT_ANM_HOSTS=anm:8090
 -p 8080:8080 --network=api-gateway-domain api-gateway-my-group:1.0
 ```
 

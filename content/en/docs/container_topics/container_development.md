@@ -1,9 +1,9 @@
 ---
  title :  Development and deployment with API Gateway containers 
- linkTitle :  Development and deployment with API Gateway containers 
- date :  2019-09-18 
- description :  This topic describes how you can develop and test APIs and policies in a development environment, and how you can promote and deploy them in other environments (for example, preproduction and production).  
+ linkTitle :  Development and deployment with API Gateway containers
  weight: 9
+ date :  2019-09-18 
+ description :  This topic describes how you can develop and test APIs and policies in a development environment, and how you can promote and deploy them in other environments (for example, preproduction and production).
 ---
 
 In a typical API Gateway container deployment:
@@ -22,8 +22,7 @@ In a development environment, the policy developer works in a continuous cycle o
 
 As a developer, you have three different options when testing in a development environment:
 
-* You can use an API Gateway that is running in classic (non-containerized) mode. In this case, to test changes you can deploy configuration changes directly from Policy Studio. For more information, see the
-    [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+* You can use an API Gateway that is running in classic (non-containerized) mode. In this case, to test changes you can deploy configuration changes directly from Policy Studio. For more information, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 * You can use a deployment-enabled API Gateway container. In this case, to test changes you can deploy directly from Policy Studio to the running container. Follow these steps:
   * Follow the steps in [Deploy API Gateway in Docker containers](/docs/container_topics/containers_docker_setup). When starting the API Gateway Docker container, specify `EMT_DEPLOYMENT_ENABLED=true`.   For an example, see [Start a deployment-enabled API Gateway container](/docs/container_topics/containers_docker_setup/docker_script_gwstart#Enable).
   * Make the configuration changes to be tested in Policy Studio and click **Deploy** in the toolbar to deploy the updated configuration to the running API Gateway container.
@@ -43,11 +42,8 @@ To promote a configuration to a preproduction environment, follow these steps:
 * Follow the steps in [Deploy API Gateway in Docker containers](/docs/container_topics/containers_docker_setup). When creating the API Gateway Docker image using `build_gw_image.py`, specify the policy package and preproduction environment package you exported from Policy Studio and Configuration Studio.
 * For reference, see the example [Create an API Gateway image using existing fed and customized configuration](/docs/container_topics/containers_docker_setup/docker_script_gwimage#Create6), however, in this case you will need to specify a `.pol` and `.env` instead of a `.fed`.
 
-For a detailed example of promoting configuration through environments, see
-[Example: Promote from development to testing environment](/csh?context=465&product=prod-api-gateway-77)
-in the
-[API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/)
-.
+For a detailed example of promoting configuration through environments, see [Example: Promote from development to testing environment](/csh?context=465&product=prod-api-gateway-77)
+in the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
 
 ## Promote to production environment
 
@@ -59,21 +55,14 @@ To promote a configuration to a production environment, follow these steps:
 * Follow the steps in [Deploy API Gateway in Docker containers](/docs/container_topics/containers_docker_setup). When creating the API Gateway Docker image using `build_gw_image.py`, specify the policy package and production environment package you exported from Policy Studio and Configuration Studio.
 * For reference, see the example [Create an API Gateway image using existing fed and customized configuration](/docs/container_topics/containers_docker_setup/docker_script_gwimage#Create6), however, in this case you will need to specify a `pol` and `env` instead of a `.fed`.
 
-For a detailed example of promoting configuration through environments, see
-[Example: Promote from development to testing environment](/csh?context=465&product=prod-api-gateway-77)
-in the
-[API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/)
-.
+For a detailed example of promoting configuration through environments, see [Example: Promote from development to testing environment](/csh?context=465&product=prod-api-gateway-77)
+in the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
 
 ## Continuous policy deployment
 
-You can continuously deploy policy updates in a container environment, as part of your CI/CD process by scripting the steps detailed in [Deploy API Gateway in Docker containers](/docs/container_topics/containers_docker_setup) and specifying the latest policy package (`.pol`) exported from the development environment and the environment package (`.env`) for the production environment to the `build_gw_image.py`
-script.
+You can continuously deploy policy updates in a container environment, as part of your CI/CD process by scripting the steps detailed in [Deploy API Gateway in Docker containers](/docs/container_topics/containers_docker_setup) and specifying the latest policy package (`.pol`) exported from the development environment and the environment package (`.env`) for the production environment to the `build_gw_image.py` script.
 
 ## Promote APIs registered in API Manager
 
-You can promote APIs registered in API Manager using the approaches described in
-[Promote managed APIs between environments](/csh?context=1027&product=prod-api-manager-77)
-in the
-[API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/)
-.
+You can promote APIs registered in API Manager using the approaches described in [Promote managed APIs between environments](/csh?context=1027&product=prod-api-manager-77)
+in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).

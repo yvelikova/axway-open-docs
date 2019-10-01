@@ -1,9 +1,10 @@
 ---
-title: Step 6 Start the Admin Node Manager Docker container
+title: Step 6 - Start the Admin Node Manager Docker container
 linkTitle: Step 6 Start the Admin Node Manager Docker container
 date: 2019-09-18
-description: Use the `docker run` command to start the Admin Node Manager container.
+description: 
 ---
+Use the `docker run` command to start the Admin Node Manager container.
 
 ## Start a metrics-enabled Admin Node Manager container {#Start}
 
@@ -22,12 +23,9 @@ This example performs the following:
 * Starts an Admin Node Manager container named `anm` from an image named `admin-node-manager:1.0`. You must specify the name of the image that you created in [Step 5 Create an Admin Node Manager Docker image](/docs/container_topics/containers_docker_setup/docker_script_anmimage).
 * Binds the default management port `8090` of the container to port `8090` on the host machine. This enables you to access the API Gateway Manager web console on port `8090` of your host machine.
 * Runs the container in the background using the `-d` option.
-* Mounts the `/tmp/events` host directory in the
-    container, which contains API Gateway transaction event logs. For best practice, you can parametrize this directory by way of the `quickstart.sh` script included in the Docker scripts package.
-* Uses `METRICS_DB_URL`, `METRICS_DB_USERNAME` and `METRICS_DB_PASS` environment variables to specify connection details for the metrics
-    database.
-* Uses an environment variable `EMT_TRACE_LEVEL` to set a trace level inside the container.
-    In the above example a trace level switches from INFO to DEBUG level during container startup.
+* Mounts the `/tmp/events` host directory in the container, which contains API Gateway transaction event logs. For best practice, you can parametrize this directory by way of the `quickstart.sh` script included in the Docker scripts package.
+* Uses `METRICS_DB_URL`, `METRICS_DB_USERNAME` and `METRICS_DB_PASS` environment variables to specify connection details for the metrics database.
+* Uses an environment variable `EMT_TRACE_LEVEL` to set a trace level inside the container. In the above example a trace level switches from INFO to DEBUG level during container startup.
 
 ## Start an Admin Node Manager container with topology logging enabled
 
@@ -39,7 +37,7 @@ The Admin Node Manager is responsible for writing the topology log, which is con
 
 The following example shows how to configure environment variables to start an Admin Node Manager container with topology logging enabled:
 
-``` {space="preserve"}
+```
 $ docker run -e EMT_TOPOLOGY_LOG_ENABLED=true -e EMT_TOPOLOGY_LOG_INTERVAL=30
   -e EMT_TOPOLOGY_LOG_DEST=3 -e EMT_TOPOLOGY_LOG_DIR=/tmp/topology-logs
   ... admin-node-manager:1.0
