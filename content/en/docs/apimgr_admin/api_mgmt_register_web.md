@@ -11,7 +11,7 @@ API owners can use the API Manager web interface to register back-end REST APIs.
 When a back-end API is registered, you can then virtualize it as a publicly exposed front-end API. Registered and virtualized APIs are governed by the API Gateway using configured policies. API owners and API administrators can use API Manager to manage registered APIs, and API consumers can use API Manager or API Portal to consume virtualized APIs in their applications.
 
 {{< alert title="Note" color="primary" >}}
-You must first register a back-end REST API before you can virtualize a front-end REST API. For more details, see [Virtualize REST APIs in](api_mgmt_virtualize_web.htm).
+You must first register a back-end REST API before you can virtualize a front-end REST API. For more details, see [Virtualize REST APIs in API Manager](/docs/apimgr_admin/api_mgmt_virtualize_web/).
 {{< /alert >}}
 
 ## Back-end and front-end APIs
@@ -28,7 +28,7 @@ is the virtualized publicly exposed REST API that is hosted on the API Gateway, 
 
 By default, the front-end API is the same as the back-end API, proxying the API as is. However, you can edit the front-end API to present an enriched, public-facing API to client applications. For example, you can change the URL path, change and map parameters, or improve the documentation.
 
-In addition, this separation of front-end API and back-end API definitions allows the back-end API to change over time. This means that you can control how changes are exposed to client applications, thus minimizing or eliminating the potential impact these applications. For more details, see [Virtualize REST APIs in](api_mgmt_virtualize_web.htm).
+In addition, this separation of front-end API and back-end API definitions allows the back-end API to change over time. This means that you can control how changes are exposed to client applications, thus minimizing or eliminating the potential impact these applications.
 
 ## Enable an organization for API development
 
@@ -50,10 +50,9 @@ To automatically register an existing back-end REST API in API Manager, perform 
 
 1. Click the **API Registration** > **Backend API** view in API Manager.
 2. Click **New API** and select one of the following:
-    * **Import Swagger API**: Import an API in Swagger format. Only JSON format is supported for Swagger API definition files. For more details on Swagger, see [http://swagger.](http://swagger.io/)
+    * **Import Swagger API**: Import an API in Swagger format. Only JSON format is supported for Swagger API definition files. For more details on Swagger, see [http://swagger.io](http://swagger.io/).
     * **Import RAML API**: Import an API in RESTful API Modeling Language (RAML) format. Importing RAML files that include references to external files is not supported. For more details on RAML, see <http://raml.org/>.
     * **Import WADL API**: Import an API in Web Application Description Language (WADL) format. For more details on WADL, see <https://wadl.java.net/>.
-
 3. In the **Import API** dialog, complete the following:
     * **Source**: Select the source type from the list (for example, Swagger, RAML, WADL definition file or URL).
     * **File** or **URL**: Click the browse button to select the definition file, or enter the URL.
@@ -69,7 +68,7 @@ You can click an API name in the list to view its general details, methods, and 
 
 ![Imported API details in the web console](/Images/docbook/images/api_mgmt/api_mgmt_backend_api_import_details.png)
 
-{{< alert title="Note" color="primary" >}}It is not recommended to have spaces or the URL encoded `%20` in the base path URL.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Do not use spaces or the URL encoded `%20` in the base path URL.{{< /alert >}}
 
 ## Import an existing web service back-end API
 
@@ -90,7 +89,7 @@ API Manager does not support the following features:
 
 * WSDL import from file: You can only import a web service from a URL in API Manager, and must use Policy Studio to import from a file.
 * WS-Policy/WS-Security: If this is required, you must register the web service using Policy Studio.
-* Schema validation: If schemas are available, you can validate using custom request/response policies (see [API Manager custom policies](api_mgmt_custom_policies.htm)). Otherwise, you should register using Policy Studio.
+* Schema validation: If schemas are available, you can validate using custom request/response policies. Otherwise, you should register using Policy Studio.
 * Binding/operation selection: You cannot select specific bindings/operations for import. If this is required, you must use Policy Studio.
 * Cloning: You cannot clone an API registered from a web service.
 
@@ -101,17 +100,15 @@ in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide
 
 ## Import an existing Cloud-based back-end API
 
-{{< alert title="Note" color="primary" >}}Before importing a Cloud API, you must first ensure that the API connector and OAuth profile for the Cloud API have been configured. For example, see [Configure OAuth client credentials for Salesforce.com](api_mgmt_connector_salesforce.htm#Configur). {{< /alert >}}
+Before importing a Cloud API, you must first ensure that the API connector and OAuth profile for the Cloud API have been configured. For example, see [Configure a connector for Salesforce APIs](/docs/apimgr_admin/api_mgmt_connector/#configure-a-connector-for-salesforce-apis).
 
 To import a Cloud-based back-end API for existing Cloud-based APIs in API Manager, perform the following steps:
 
 1. Select **API Registration** > **Backend API**.
-2. Click **New API**, and select **Import from Salesforce.com** or **Import from ServiceNow**
+2. Click **New API**, and select **Import from Salesforce.com** or **Import from ServiceNow**.
 3. Enter your login credentials from your Cloud API provider (for example, Salesforce.com) in the dialog (if prompted).
 4. Select the Cloud APIs that you require in the dialog.
 5. Click **Import** to import the selected APIs as a single back-end API in API Manager.
-
-For a detailed example, see [*Configure Cloud API connectors* on page 1](api_mgmt_connector.htm).
 
 ## Import an existing back-end API deployed on an API Gateway
 
@@ -130,10 +127,7 @@ To import an existing back-end REST or SOAP API that is already deployed on an 
     * **Service**: Select the API Gateway service name (for example, **AcmePayment**.
     * **API name**: Enter the API name (for example, **Acme Payment API**).
     * **Organization**: Select the organization (for example **Acme Inc**).
-
 4. Click **Import** to import the API into the catalog.
-
-{{< alert title="Note" color="primary" >}}The **Import from Topology** feature is only available API administrators.{{< /alert >}}
 
 ## Manually register a new back-end REST API
 
@@ -144,7 +138,7 @@ To manually register a new back-end REST API in API Manager, perform the followi
 3. In the **API** tab, complete the following general details:
     * **API name**: Enter a required name for the API (for example, **Acme API**).
     * **Service type**: Enter a service type for the API (for example, defaults to **REST**).
-    * **Organization**: Select a required organization for the API (for example, **Acme Inc**). See also [Enable an organization for API development](#Enable).
+    * **Organization**: Select a required organization for the API (for example, **Acme Inc**).
     * **Base path URL**: Enter a resource path. Defaults to `http://basepath.org`.
     * **Summary**: Enter an optional summary for the API to display in the **API Catalog**.
     * **Resource path**: Enter a resource path for the API. Defaults to `/api`.
@@ -162,17 +156,13 @@ To add a REST API method to a newly registered API, perform the following steps:
     * **API version**: Enter an optional response type for the API method (for example, a general type like `int`
         or `string`, or a custom type in the schema model for the API) Defaults to `void`.
     * **Description**: Click the **Edit** tab, and enter an optional description for the API.
-2. To add a parameter exposed by the API method, click the add button in the **PARAMETERS**
-    section, and complete the following details:
+2. To add a parameter exposed by the API method, click the add button in the **PARAMETERS** section, and complete the following details:
     * **NAME**: Enter a required name for the parameter (for example, `customer_name`).
     * **DESCRIPTION**: Enter an optional description for the parameter.
     * **TYPE**: Select the parameter type (for example, `query`, `path`, `form`, `body`, or `header`). Defaults to `query`.
     * **DATA TYPE**: Select the parameter data type (for example, `string`, `int`, `boolean`, and so on). Defaults to `string`.
     * **REQUIRED**: Select whether the parameter is required. Defaults to `No`.
     * **ALLOW MULTIPLE**: Select whether multiple parameters are allowed. Defaults to `No`.
-
-    To add more method parameters, click the add button in the **PARAMETERS**
-    section.
 3. To specify content types that can be consumed by the API method, click the plus (+) button in the **CONSUMES CONTENT-TYPE**
     section, and enter the content type. For example, `application/xml`, `text/plain`, and so on. Defaults to `application/json`.
 4. To specify content types that can be produced by the API method, click the plus (+) button in the **PRODUCES CONTENT-TYPE**
@@ -190,21 +180,16 @@ This model is optional and describes the data that is passed to the API as the r
 
 {{< alert title="Tip" color="primary" >}}You can add/edit the data model for a manually created REST API, but this is read-only for an imported REST API. In this case, the data model is part of the imported definition, and cannot be changed. However, if you need to update the model (for example, to fix a bug in the schema), you can do this by cloning the API as described in the next section.{{< /alert >}}
 
-For more details on the **API Catalog**, see [Consume APIs in API Manager](api_mgmt_consume.htm). For more details on JSON schema models, see <http://json-schema.org/>.
-
 ## Manage back-end API lifecycle
 
 When you have registered the back-end API, you can select it in the list of registered APIs, click **Manage selected**, and chose one of the following options:
 
 * **Delete**: Deletes the selected API(s) registered in the **API Registration** > **Backend API** view. You can delete APIs created as front-end APIs in the **Frontend API** view.
-* **Clone API**: Creates a copy of the selected REST API, which you can then edit as required.
-
-    You cannot clone a back-end API imported from a WSDL-based web service.
-
+* **Clone API**: Creates a copy of the selected REST API, which you can then edit as required. You cannot clone a back-end API imported from a WSDL-based web service.
 * **Export API**: Exports a copy of the selected back-end API (in `.json`
     format). You can then import this into another API Manager environment as required as a back-end API.
 * **Download original API description**: For APIs imported from Swagger or WADL definitions, downloads a copy of the original REST API definition.
 
 ## Next steps
 
-When you have registered a back-end REST API, the next step is to virtualize it as a publicly exposed front-end API. For more details, see [Virtualize REST APIs in](api_mgmt_virtualize_web.htm).
+When you have registered a back-end REST API, the next step is to virtualize it as a publicly exposed front-end API. For more details, see [Virtualize REST APIs in API Manager](/docs/apimgr_admin/api_mgmt_virtualize_web/).

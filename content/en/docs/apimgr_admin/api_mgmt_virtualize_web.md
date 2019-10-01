@@ -56,7 +56,7 @@ To import a previously exported API, perform the following steps:
 4. Click **Import**.
 5. Press **F5** to reload the API Manager web console.
 
-## Configure Inbound request settings
+## Configure inbound request settings
 
 When you have virtualized a REST API to create a front-end API, you can edit and configure the inbound request settings between the client and the API Gateway (for example, for customized authentication, authorization, or monitoring). To configure inbound settings, perform the following steps in API Manager:
 
@@ -86,7 +86,7 @@ Scopes must match
 : Select whether the scopes configured in the next setting must match `Any` or `All` of the scopes registered for client applications.
 
 Scopes
-: Enter the scopes configured for this API, which are used for client application authorization. These scopes define a set of authorizations (for example, all read methods) that can be assigned to specific client applications. You can enter a single scope (for example, `app.all`, `app.read`, or `app.write`) or a comma-separated list of scopes. For more details, see [Configure API method-level authorization for client applications](api_mgmt_method_authz.htm#Configur2).
+: Enter the scopes configured for this API, which are used for client application authorization. These scopes define a set of authorizations (for example, all read methods) that can be assigned to specific client applications. You can enter a single scope (for example, `app.all`, `app.read`, or `app.write`) or a comma-separated list of scopes.
 
 Remove credentials on success
 : Select whether to remove the user credentials from the message after successful authentication. This is selected by default. If you disable this option, an inbound request authorization header is forwarded to the back-end. To use another authentication and authorization mechanism to secure the connection to the back-end, you must remove the inbound authorization header using a custom routing policy.
@@ -124,7 +124,7 @@ Realm
 Remove credentials on success
 : Select whether to remove the user credentials from the message after successful authentication. This is selected by default. If you disable this option, an inbound request authorization header is forwarded to the back-end. To use another authentication and authorization mechanism to secure the connection to the back-end, you must remove the inbound authorization header using a custom routing policy.
 
-When using HTTP basic authentication, the client application invoking the API must use the API key as username and the API secret as password, formatted as `Base64Encode("APIKey:APISecret")`.
+{{< alert title="Note" color="primary" >}}When using HTTP basic authentication, the client application invoking the API must use the API key as username and the API secret as password, formatted as `Base64Encode("APIKey:APISecret")`.{{< /alert >}}
 
 #### Invoke Policy
 
@@ -134,46 +134,43 @@ Name
 : Enter the name of the custom security device. Defaults to `Invoke Policy`.
 
 Policy to invoke
-: Select the authentication policy that this security device invokes. This lists policies already configured in Policy Studio in **Environment Configuration > Server Settings > API Manager > Inbound Security Policies**. For more details, see [Configure API Manager settings in Policy Studio](api_mgmt_config_ps.htm).
+: Select the authentication policy that this security device invokes. This lists policies already configured in Policy Studio in **Environment Configuration > Server Settings > API Manager > Inbound Security Policies**.
 
 Use client registry
-: Select whether the `authentication.subject.id` identifier must match one of the application's external credentials in the Client Registry in API Manager.
-
-This setting is selected by default, and is required for API Manager to check if the organization has access to the API. If you do not select this setting, API Manager will not check the organization access.
+: Select whether the `authentication.subject.id` identifier must match one of the application's external credentials in the Client Registry in API Manager. This setting is selected by default, and is required for API Manager to check if the organization has access to the API. If you do not select this setting, API Manager will not check the organization access.
 
 Traffic Monitor subject
 : If **Use client registry** is not selected, the API has no client information, and API Manager does not check organization access to the API. In this case, you can enter the subject name to display in the Traffic tab in API Gateway Manager. Defaults to `${authentication.subject.id}`.
 
 Description
 : Select where the Markdown description for this security device is located. For details on writing documentation with Markdown, see <http://daringfireball.net/projects/markdown/>.
+: Select one of the following:
+    * **Use original policy description**: Use the policy description specified when creating the policy in Policy Studio.
+    * **Use manual description**: Get the description from the contents of a field. Enter the description in the Manual Description field.
+    * **Use markdown file location**: Get the description from a file located on the server. Enter the path to this file in the Markdown file location field. For security reasons, this file must start with an environmentalized variable and cannot attempt directory traversal. For example, the following path is valid: `${env.DOCUMENTS}/markdown/api.md`. The following paths are invalid: `/opt/documents/api.md`, `${env.DOCUMENTS}/../markdown/api.md`.
+    * **Use external URL**: Get the description from an external URL. Enter the URL in the External URL location field.
 
-Select one of the following:
-
-* **Use original policy description**: Use the policy description specified when creating the policy in Policy Studio.
-* **Use manual description**: Get the description from the contents of a field. Enter the description in the Manual Description field.
-* **Use markdown file location**: Get the description from a file located on the server. Enter the path to this file in the Markdown file location field. For security reasons, this file must start with an environmentalized variable and cannot attempt directory traversal. For example, the following path is valid: `${env.DOCUMENTS}/markdown/api.md`. The following paths are invalid: `/opt/documents/api.md`, `${env.DOCUMENTS}/../markdown/api.md`.
-* **Use external URL**: Get the description from an external URL. Enter the URL in the External URL location field.
-
-Invoke Policy security devices generate an Authentication section in the API Catalog that displays the description entered when creating the security device.
+{{< alert title="Note" color="primary" >}}Invoke Policy security devices generate an Authentication section in the API Catalog that displays the description entered when creating the security device.{{< /alert >}}
 
 #### OAuth
 
 Configure the following to enable OAuth authorization:
 
-General:
+##### General OAuth settings
 
 Access token store
-: Select a required OAuth access token store from the list. For details on how to add OAuth access token stores to this list, see [Configure API Manager settings in Policy Studio](api_mgmt_config_ps.htm#Configur).
+: Select a required OAuth access token store from the list. For details on how to add OAuth access token stores to this list, see [Configure API Manager settings in Policy Studio](/docs/apimgr_admin/api_mgmt_config_ps/).
 
 Scopes must match
 : Select whether the OAuth scopes match `Any` or `All` of the OAuth scopes configured in the next field. OAuth scopes are used to control how access tokens are accepted. For more details on OAuth scopes, see the [API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/).
 
-Scopes: Enter a comma-separated list of scopes used to manage how access tokens are accepted. In addition, these tokens are used as default scopes for applications that use this API and do not send the `scope` parameter in the access token request. You can also configure additional default scopes for an application if enabled in **Settings > API Manager Settings > General settings > Enable application scopes**. For details, see [API Manager settings](api_mgmt_config_web.htm#API_Manager_settings). Defaults to `resource.WRITE, resource.READ`.
+Scopes
+: Enter a comma-separated list of scopes used to manage how access tokens are accepted. In addition, these tokens are used as default scopes for applications that use this API and do not send the `scope` parameter in the access token request. You can also configure additional default scopes for an application if enabled in **Settings > API Manager Settings > General settings > Enable application scopes**. For details, see [API Manager settings](/docs/apimgr_ref/api_mgmt_config_web/#api-manager-settings). Defaults to `resource.WRITE, resource.READ`.
 
 Remove credentials on success
 : Select whether to remove the user credentials from the message after successful authentication. This is selected by default. If you disable this option, an inbound request authorization header is forwarded to the back-end. To use another authentication and authorization mechanism to secure the connection to the back-end, you must remove the inbound authorization header using a custom routing policy.
 
-Authorization:
+##### OAuth authorization settings
 
 Access token location
 : Select the required location of the OAuth access token in the inbound request (`Request Header` or `Query string/form body`). Defaults to `Request Header`.
@@ -181,7 +178,7 @@ Access token location
 Authorization header prefix
 : Select the header prefix used to authorize the request (`Bearer` or `OAuth`). Defaults to `Bearer`.
 
-Grant Type: Implicit:
+##### Grant type implicit
 
 Enabled
 : Select whether to enable this simplified authorization code flow optimized for browser-based clients. Enabling advertises this grant type in the API Catalog. It is the role of the OAuth authorization server to support it. Disabling excludes this grant type from the API Catalog.
@@ -192,7 +189,7 @@ Login endpoint URL
 Login token name
 : Enter the response parameter name that will contain the access token. Defaults to `access_token`.
 
-Grant Type: Authorization Code:
+##### Grant type authorization code
 
 Enabled
 : Select whether the authorization code is obtained using an authorization server as an intermediary between the client and resource owner. Enabling advertises this grant type in the API Catalog. It is the role of the OAuth authorization server to support it. Disabling excludes this grant type from the API Catalog.
@@ -216,10 +213,10 @@ Token name
 
 Configure the following to enable OAuth authorization:
 
-General:
+##### General OAuth (external) settings
 
 Token information policy
-: Select a required OAuth token information policy from the list. This is a custom policy used to obtain and extract token information from the external OAuth provider. For details on how to add OAuth token information policies to the list, see [Configure API Manager](api_mgmt_config.htm#Configur).
+: Select a required OAuth token information policy from the list. This is a custom policy used to obtain and extract token information from the external OAuth provider. For details on how to add OAuth token information policies to the list, see [Configure API Manager settings in Policy Studio](/docs/apimgr_admin/api_mgmt_config_ps/).
 
 Scopes must match
 : Select whether the OAuth scopes match Any or All of the OAuth scopes configured in the next field. OAuth scopes are used to control how access tokens are accepted. For more details on OAuth scopes, see the [API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/).
@@ -237,19 +234,13 @@ Traffic monitor subject
 : Enter the identifier name used for clients from the external OAuth provider, which is displayed on the Traffic tab in the API Gateway Manager console. This value can be a selector. Defaults to `${oauth.token.client_id}`.
 
 Extract token attributes
-: Click the add button to specify OAuth token attributes to be extracted from the configured Token information policy and copied to the message whiteboard. For example, these can then be passed to request, response, or routing policies downstream. Specifying attributes ensures their values are retained on the whiteboard after invoking the policy. 
+: Click the add button to specify OAuth token attributes to be extracted from the configured Token information policy and copied to the message whiteboard. For example, these can then be passed to request, response, or routing policies downstream. Specifying attributes ensures their values are retained on the whiteboard after invoking the policy.
+: By default, the following attributes are extracted:
+    * `oauth.token.client_id`
+    * `oauth.token.scopes`
+    * `oauth.token.valid`
 
-By default, the following attributes are extracted:
-
-* `oauth.token.client_id`
-* `oauth.token.scopes`
-* `oauth.token.valid`
-
-Authorization: See the OAuth security device settings.
-
-Grant Type: Implicit: See the OAuth security device settings.
-
-Grant Type: Authorization Code: See the OAuth security device settings.
+For authorization, grant type implicit, and grant type authorization code settings, see the OAuth security device settings.
 
 #### Pass Through
 
@@ -261,7 +252,7 @@ Name
 Subject ID
 : Enter a required authentication subject ID. Defaults to `Pass Through`. This will be displayed in the Traffic view in the API Gateway Manager when the API is invoked using this device.
 
-When you enable pass-through authentication, there is no client application context so application quotas cannot be enforced.
+{{< alert title="Note" color="primary" >}}When you enable pass-through authentication, there is no client application context so application quotas cannot be enforced.{{< /alert >}}
 
 #### Two-way SSL
 
@@ -273,17 +264,20 @@ Name
 API key field
 : Enter the name of the selector used to look up the KPS to retrieve and/or validate the API key and application details. Defaults to `${certificate.subject.CN}`.
 
-### Configure Advanced Inbound settings
+### Advanced inbound settings
 
-When you click the **Advanced** button on the right, the following options are displayed in API Manager:
- **Advanced Setting**             **Description**                                                                                                                                                                                                   ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- **Monitor API usage**            Select whether to enable monitoring metrics for the REST API in the **Monitoring > API Usage** view.                                                                                                            **Enable CORS from all domains** Select whether to enable Cross Origin Resource Sharing (CORS) from all domains. When enabled, this means that requests to this API are allowed from all domains (which corresponds to a CORS setting of `*`).      
-                                                                                                                                                                                                                      
-  To add more advanced CORS configuration (for example, allowed or exposed headers), disable this setting, and add a specific CORS profile for this API. For more details, see [Configure CORS Profiles](#Configur).  **PER-METHOD OVERRIDE**          You can click to override the REST API level settings for specified REST API methods. Click the add button, select an API method from the list, and override the following settings as required:                   
-  * **INBOUND SECURITY PROFILE**: Select a preconfigured security profile for the API method. For more details, see [Configure Security Profiles](#Configur2).                                                      
-  * **CORS PROFILE**: Select a preconfigured CORS profile for the API method. For more details, see [Configure CORS Profiles](#Configur).                                                                          
+Monitor API usage
+: Select whether to enable monitoring metrics for the REST API in the **Monitoring > API Usage** view.
 
-Configure Outbound request settings
------------------------------------
+Enable CORS from all domains
+: Select whether to enable Cross Origin Resource Sharing (CORS) from all domains. When enabled, this means that requests to this API are allowed from all domains (which corresponds to a CORS setting of `*`). To add more advanced CORS configuration (for example, allowed or exposed headers), disable this setting, and add a specific CORS profile for this API. For more details, see [Configure CORS profiles](#configure-cors-profiles).
+
+PER-METHOD OVERRIDE
+: You can click to override the REST API level settings for specified REST API methods. Click the add button, select an API method from the list, and override the following settings as required:
+    * **INBOUND SECURITY PROFILE**: Select a preconfigured security profile for the API method. For more details, see [Configure security profiles](#configure-security-profiles).
+    * **CORS PROFILE**: Select a preconfigured CORS profile for the API method.
+
+## Configure outbound request settings
 
 When you have virtualized a back-end REST API to create a front-end API, you can edit and configure the outbound request settings between the API Gateway and the back-end API. For example, this enables you to customize authentication, and request or response processing. The following page shows configuring an API key authentication profile:
 
@@ -291,226 +285,147 @@ When you have virtualized a back-end REST API to create a front-end API, you can
 
 To configure outbound settings, perform the following steps in API Manager:
 
-1.  Select the **Outbound** tab.
-2.  Select an optional profile from the **Outbound authentication profile** list. This enables you to configure a pre-built authentication mechanism for outbound communication between the API Gateway and the virtualized API:
-3.  **Authentication profile** **Settings**                                                                                                                                                                                                                            
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- **No authentication**      No authentication is performed between the API Gateway and the back-end API.                                                                                                                                                            
- **HTTP Basic**             Configure the following to enable HTTP Basic authentication:                                                                                                                                                                             
-      * **Name**: Enter a required name for the profile. Defaults to `HTTP Basic`.                                                                                                                                                            
-      * **Username**: Enter the required username (API key) used to access the API.                                                                                                                                                           
-      * **Password**: Enter the optional password (API secret) used to access the API.                                                                                                                                                       
- **HTTP Digest**            Configure the following to enable HTTP Digest authentication:                                                                                                                                                                            
-      * **Name**: Enter a required name for the profile. Defaults to `HTTP Digest`.                                                                                                                                                           
-      * **Username**: Enter the required username (API key) used to access the API.                                                                                                                                                           
-      * **Password**: Enter the optional password (API secret) used to access the API.                                                                                                                                                       
- **OAuth**                  Configure the following to enable OAuth authentication:                                                                                                                                                                                  
-                                                                                                                                                                                                                                                
-      * **Provider Profile**: Select the OAuth service provider profile from the list.                                                                                                                                                        
-      * **Token Key (Owner ID)**: Enter the message attribute to be used as the key to look up the token. The token key must be set to the authentication value you require for the OAuth token. Defaults to `${authentication.subject.id}`. 
- **API Key**                Configure the following to enable API key authentication:                                                                                                                                                                                
-      * **Name**: Enter a required name for the profile. Defaults to `API key`.                                                                                                                                                               
-      * **API key field name**: Enter a required name used to store the API key field in the outbound request (for example, `KeyId`).                                                                                                         
-      * **API key**: Enter the API key required to access the API (for example, `AIzaSyB6CzrBlkzuzDKJw0QaZhW9WwBV5IxXMS7`).                                                                                                                   
-      * **Pass credentials as HTTP**: Select the required location of the API key in the outbound request (`Header`, `Query string`, or `Form`).                                                                                             
- **SSL**                    To enable SSL authentication, the API Gateway must supply a certificate signed by certificate authority used by the API. You can configure the following settings:                                                                       
-      * **Name**: Enter a required name for the profile. Defaults to `SSL`.                                                                                                                                                                   
-      * **PFX/P12 Source**: Select whether to specify the certificate using a `.pfx` or `.p12` file, or using a URL.                                                                                                                          
-      * **PFX/P12 File** or **PFX/P12 URL**: Browse to the PFX/P12 file, or enter the PFX/P12 URL.                                                                                                                                            
-      * **PFX/P12 Password**: Enter the password for the certificate.                                                                                                                                                                         
-      * **Trust all certificates in chain**: Select whether to trust all the CA certificates in the certificate chain. If this is not selected, only the top-level CA is trusted. This setting is selected by default.                       
-
-4.  Click the **Advanced** button on the right to configure settings such as request or response processing, routing, and per-API method overrides. The following shows an example:
+1. Select the **Outbound** tab.
+2. Select an optional profile from the **Outbound authentication profile** list. This enables you to configure a pre-built authentication mechanism for outbound communication between the API Gateway and the virtualized API.
+3. Click the **Advanced** button on the right to configure settings such as request or response processing, routing, and per-API method overrides. The following shows an example:
 
 ![Frontend API: advanced outbound settings ](/Images/docbook/images/api_mgmt/api_mgmt_frontend_api_outbound_advanced.png)
 
-### Configure Advanced Outbound settings
+### Outbound authentication settings
 
-When you click the **Advanced** button on the right, the following options are displayed in API Manager:
+#### No authentication
 
-+-----------------------------------+-----------------------------------+ **Advanced Setting**              **Description**                  
-+===================================+===================================+ **Global request policy**         If a global policy has been      
-configured, this field displays  
-the read-only global request     
-policy applied to all front-end  
-API invocations (for example, a  
-mandatory security, compliance,  
-or governance policy). The global
-request policy is executed after 
-inbound authentication, but      
-before any configured request,   
-routing, or response policies. No
-global policies are configured by
-default.\                        
-For details on how to enable     
-global policies, see [Enforce API
-Manager global                   
-policies](api_mgmt_global_policie
-s.htm#Configur).                 
-+-----------------------------------+-----------------------------------+ **Request policy**                Select an optional request       
-processing policy for the API.   
-For example, you could use this  
-pre-configured policy to check   
-the request message for          
-additional authentication,       
-authorization, or validation. No 
-request policies are configured  
-by default.\                     
-For details on how to make custom
-request policies available in the
-list, see [Configure             
-settings](api_mgmt_config.htm#Con
-figur).                          
-+-----------------------------------+-----------------------------------+ **Default method routing**        Select an optional routing policy
-for virtualized API method calls.
-For example, you could use this  
-pre-configured policy to route to
-a backend JMS service. API method
-calls are routed to the          
-`API proxy` in API Manager by    
-default.\                        
-For details on how to make custom
-routing policies available in the
-list, see [Configure API Manager 
-settings in Policy               
-Studio](api_mgmt_config_ps.htm#Co
-nfigur).                         
-For detailed examples using      
-API key and OAuth, see [Configure
-custom API Manager routing       
-policies](api_mgmt_custom_routing
-_policies.htm).                  
-+-----------------------------------+-----------------------------------+ **Response policy**               Select an optional response      
-processing policy for the API.   
-For example, you could use this  
-pre-configured policy to validate
-or transform outbound response   
-messages. No response policies   
-are configured by default.       
-                                
-For details on how to make custom
-response policies available in   
-the list, see [Configure API     
-Manager settings in Policy       
-Studio](api_mgmt_config_ps.htm#Co
-nfigur).                         
-+-----------------------------------+-----------------------------------+ **Global response policy**        If a global policy has been      
-configured, this field displays  
-the read-only global response    
-policy applied to all front-end  
-API invocations (for example, a  
-mandatory security, compliance,  
-or governance policy). The global
-response policy is executed last 
-after any configured response    
-policy. No global policies are   
-configured by default.\          
-For details on how to enable     
-global policies, see [Enforce API
-Manager global                   
-policies](api_mgmt_global_policie
-s.htm#Configur).                 
-+-----------------------------------+-----------------------------------+ **Fault handler policy**          If fault handler policies have   
-been enabled and configured, you 
-can select a fault handler policy
-for the API. The selected fault  
-handler is executed when an error
-or exception occurs during the   
-API Manager runtime API          
-invocation. This setting defaults
-to the API Manager **Default     
-Fault Handler** policy.\         
-For details on how to enable     
-fault handler policies, see [Add 
-API Manager fault handler        
-policies](api_mgmt_fault_handler.
-htm#Configur).                   
-+-----------------------------------+-----------------------------------+ **PER-METHOD OVERRIDE**           You can click to override the    
-REST API level settings for      
-specified REST API methods. Click
-the add button, select an API    
-method from the list, and        
-override the following settings  
-as required:                     
-* **REQUEST POLICY**: Select an
-    optional request processing  
-    policy for the API method    
-    (for more details, see       
-    [Configure API Manager       
-    settings in Policy           
-    Studio](api_mgmt_config_ps.ht
-m#Configur)).                    
-* **RESPONSE POLICY**: Select  
-    an optional response         
-    processing policy for the API
-    method                       
-    (for more details, see       
-    [Configure API Manager       
-    settings in Policy           
-    Studio](api_mgmt_config_ps.ht
-m#Configur)).                    
-* **ROUTING**: Select an       
-    optional routing policy for  
-    the API method               
-    (for more details, see       
-    [Configure API Manager       
-    settings in Policy           
-    Studio](api_mgmt_config_ps.ht
-m#Configur)).                    
-* **FAULT HANDLER POLICY**: If 
-    fault handler policies have  
-    been enabled and configured, 
-    select an optional fault     
-    handler policy for the API   
-    method                       
-    (for more details, see [Add  
-    API Manager fault handler    
-    policies](api_mgmt_fault_hand
-ler.htm#Configur)).              
-* **EDIT API PROXY**: Click    
-    **Edit** to add parameters to
-    the API method. To add       
-    parameters, click the add    
-    button, and configure the    
-    following settings:          
-* * **OUTBOUND PARAMETER**:  
-        Enter the parameter name 
-        (for example,            
-        `customer_name`).        
-    * **PARAMETER TYPE**: Enter
-        the parameter type (for  
-        example, `query`, `path`,
-        `form`, or `header`).    
-    * **DATA TYPE**: Enter the 
-        parameter name (for      
-        example, `string`, `int`,
-        and so on).              
-    * **REQUIRED**: Select     
-        whether the parameter is 
-        required.                
-    * **OUTBOUND VALUE**: Enter
-        the parameter value (for 
-        example, `john doe` or   
-        `${params.path.id}`).    
-    * **EXCLUDE**: Select      
-        whether to exclude the   
-        parameter.               
-    * **DEFAULT MAPPING**:     
-        Select whether the       
-        parameter is mapped by   
-        default.                 
-                                
-* **AUTHENTICATION PROFILE**:  
-    Select an optional           
-    authentication profile for   
-    the API method.              
-+-----------------------------------+-----------------------------------+
+No authentication is performed between the API Gateway and the back-end API.
 
-Configure API information
--------------------------
+#### HTTP Basic authentication
 
-The **API**
-tab enables you to view and edit the API information to be displayed in the **API Catalog**. For example, this includes general settings such as the API name, version, graphic, documentation, and tags.
+Configure the following to enable HTTP Basic authentication:
+
+Name
+: Enter a required name for the profile. Defaults to `HTTP Basic`.
+
+Username
+: Enter the required username (API key) used to access the API.
+
+Password
+: Enter the optional password (API secret) used to access the API.
+
+#### HTTP Digest authentication
+
+Configure the following to enable HTTP Digest authentication:
+
+**Name**
+: Enter a required name for the profile. Defaults to `HTTP Digest`.
+
+**Username**
+: Enter the required username (API key) used to access the API.
+
+**Password**
+: Enter the optional password (API secret) used to access the API.
+
+#### OAuth authentication
+
+Configure the following to enable OAuth authentication:
+
+**Provider Profile**
+: Select the OAuth service provider profile from the list.
+
+**Token Key (Owner ID)**
+: Enter the message attribute to be used as the key to look up the token. The token key must be set to the authentication value you require for the OAuth token. Defaults to `${authentication.subject.id}`.
+
+#### API Key authentication
+
+Configure the following to enable API key authentication:
+
+**Name**
+: Enter a required name for the profile. Defaults to `API key`.
+
+**API key field name**
+: Enter a required name used to store the API key field in the outbound request (for example, `KeyId`).
+
+**API key**
+: Enter the API key required to access the API (for example, `AIzaSyB6CzrBlkzuzDKJw0QaZhW9WwBV5IxXMS7`).
+
+**Pass credentials as HTTP**
+: Select the required location of the API key in the outbound request (`Header`, `Query string`, or `Form`).
+
+#### SSL authentication
+
+To enable SSL authentication, the API Gateway must supply a certificate signed by certificate authority used by the API. You can configure the following settings:
+
+**Name**
+: Enter a required name for the profile. Defaults to `SSL`.
+
+**PFX/P12 Source**
+: Select whether to specify the certificate using a `.pfx` or `.p12` file, or using a URL.
+
+**PFX/P12 File** or **PFX/P12 URL**
+: Browse to the PFX/P12 file, or enter the PFX/P12 URL.
+
+**PFX/P12 Password**
+: Enter the password for the certificate.
+
+**Trust all certificates in chain**
+: Select whether to trust all the CA certificates in the certificate chain. If this is not selected, only the top-level CA is trusted. This setting is selected by default.
+
+### Advanced outbound settings
+
+#### Global request policy
+
+If a global policy has been configured, this field displays the read-only global request policy applied to all front-end API invocations (for example, a mandatory security, compliance, or governance policy). The global request policy is executed after inbound authentication, but before any configured request, routing, or response policies. No global policies are configured by default.
+
+#### Request policy
+
+Select an optional request processing policy for the API. For example, you could use this pre-configured policy to check the request message for additional authentication, authorization, or validation. No request policies are configured by default.
+
+#### Default method routing
+
+Select an optional routing policy for virtualized API method calls. For example, you could use this pre-configured policy to route to a backend JMS service. API method calls are routed to the API proxy in API Manager by default.
+
+#### Response policy
+
+Select an optional response processing policy for the API. For example, you could use this pre-configured policy to validate or transform outbound response messages. No response policies are configured by default.
+
+#### Global response policy
+
+If a global policy has been configured, this field displays the read-only global response policy applied to all front-end API invocations (for example, a mandatory security, compliance, or governance policy). The global response policy is executed last after any configured response policy. No global policies are configured by default.
+
+#### Fault handler policy
+
+If fault handler policies have been enabled and configured, you can select a fault handler policy for the API. The selected fault handler is executed when an error or exception occurs during the API Manager runtime API invocation. This setting defaults to the API Manager Default Fault Handler policy.
+
+#### PER-METHOD OVERRIDE
+
+You can click to override the REST API level settings for specified REST API methods. Click the add button, select an API method from the list, and override the following settings as required:
+
+REQUEST POLICY
+: Select an optional request processing policy for the API method.
+
+RESPONSE POLICY
+: Select an optional response processing policy for the API method.
+
+ROUTING
+: Select an optional routing policy for the API method.
+
+FAULT HANDLER POLICY
+: If fault handler policies have been enabled and configured, select an optional fault handler policy for the API method.
+
+EDIT API PROXY
+: Click Edit to add parameters to the API method. To add parameters, click the add button, and configure the following settings:
+    * OUTBOUND PARAMETER: Enter the parameter name (for example, `customer_name`).
+    * PARAMETER TYPE: Enter the parameter type (for example, `query`, `path`, `form`, or `heade`r).
+    * DATA TYPE: Enter the parameter name (for example, `string`, `int`, and so on).
+    * REQUIRED: Select whether the parameter is required.
+    * OUTBOUND VALUE: Enter the parameter value (for example, `john doe` or `${params.path.id}`).
+    * EXCLUDE: Select whether to exclude the parameter.
+    * DEFAULT MAPPING: Select whether the parameter is mapped by default.
+
+AUTHENTICATION PROFILE
+: Select an optional authentication profile for the API method.
+
+## Configure API information
+
+The **API** tab enables you to view and edit the API information to be displayed in the **API Catalog**. For example, this includes general settings such as the API name, version, graphic, documentation, and tags.
 
 ### Configure general API information
 
@@ -533,45 +448,37 @@ You can configure the following in **DOCUMENTATION** > **Description**:
 
 ### Configure API tags
 
-The **TAGS** section enables you to add tags to categorize and help find your API in the **API Catalog**. Click the add button, and enter a tag name (for example, `Department`) and values (for example, `Engineering,Testing`). You can add multiple tags for your API.
+The **TAGS** section enables you to add tags to categorize and help find your API in the **API Catalog**. Click the add button, and enter a tag name (for example, `Department`) and values (for example, `Engineering,Testing`). You can add multiple tags for your API. You can enter multiple tag values in a comma-separated list without any spaces between each value.
 
-{{< alert title="Tip" color="primary" >}}You can enter multiple tag values in a comma-separated list without any spaces between each value.{{< /alert >}}
-
-For examples of using tags in the **API Catalog**, see [Consume APIs in API Manager](api_mgmt_consume.htm).
-
-Configure API method information
---------------------------------
+## Configure API method information
 
 You can use the **Method** tab to configure the API method information to be displayed in the **API Catalog**. For example, this includes testing the method, configuring its documentation, and adding tags. For example, click **Try method** to invoke the method for test purposes. Authentication credentials are automatically formatted and passed in the test request. Other settings such as method parameters and content types are displayed as read-only.
 
 You can configure API method documentation and tags in the same way that you configure API documentation and tags.
 
-Configure Security Profiles
----------------------------
+## Configure security profiles
 
 You can use the **Security Profiles** tab to create custom security profiles with multiple security devices, which can then be applied as per-method override in the **Inbound** settings for the front-end API.
 
 To create a security profile, perform the following steps:
 
-1.  Click the add button on the left.
-2.  In **GENERAL**, enter a **Name** for the security profile.
-3.  In **DEVICES**, click the add button, select a security device from the list, and configure its settings. For details on configuring each security device type, see [Configure Inbound settings](#Configur4).
-4.  Repeat to add multiple security devices if required.
-5.  You can click **Up** or **Down** to change the order in which security devices are invoked, or **Edit** to change any settings as required.
+1. Click the add button on the left.
+2. In **GENERAL**, enter a **Name** for the security profile.
+3. In **DEVICES**, click the add button, select a security device from the list, and configure its settings. For details on configuring each security device type, see [Inbound security settings](#inbound-security-settings).
+4. Repeat to add multiple security devices if required.
+5. You can click **Up** or **Down** to change the order in which security devices are invoked, or **Edit** to change any settings as required.
 
 {{< alert title="Note" color="primary" >}}Multiple security devices are combined using an `OR` logic. This means that if authentication to the first security device fails, authentication to the second security device is attempted, and so on.{{< /alert >}}
 
-For an end-to-end example of using security profiles, see [Configure API method-level authorization for client applications](api_mgmt_method_authz.htm#Configur2).
+For an end-to-end example of using security profiles, see [Configure API method-level authorization for client applications](/docs/apimgr_admin/api_mgmt_method_authz/).
 
-Configure Authentication Profiles
----------------------------------
+## Configure authentication profiles
 
 You can use the **Authentication Profiles** tab to create custom authentication profiles, which can then be applied to the front-end API in the **Outbound** settings.
 
-To create an authentication profile, click the add button on the left, select an authentication profile from the list, and configure its settings. For details on configuring each authentication profile type, see [Configure Outbound settings](#Configur5).
+To create an authentication profile, click the add button on the left, select an authentication profile from the list, and configure its settings. For details on configuring each authentication profile type, see [Outbound authentication settings](#outbound-authentication-settings).
 
-Configure CORS Profiles
------------------------
+## Configure CORS profiles
 
 You can use the **CORS Profiles** tab to create profiles for Cross Origin Resource Sharing, which can then be applied to the front-end API in the **Inbound** settings. To create an authentication profile, click the add button on the left, and configure the following settings:
 
@@ -580,31 +487,26 @@ You can use the **CORS Profiles** tab to create profiles for Cross Origin Resour
 * **ALLOWED HEADERS**: Click the add button, and enter the list of HTTP headers that can be used when invoking this API. This list of headers is defined by the value of the `Access-Control-Request-Headers` CORS header.
 * **EXPOSED HEADERS**: Click the add button, and enter the list of HTTP headers to be exposed to the client in response to an invocation of this API.
 
-This does not include simple headers such as `Cache-Control`, `Content-Language`, `Content-Type`, `Expires`, `Last-Modified`, and `Pragma`.
+    This does not include simple headers such as `Cache-Control`, `Content-Language`, `Content-Type`, `Expires`, `Last-Modified`, and `Pragma`.
 
 * **CREDENTIALS SUPPORT**: Select whether the API advertises that it supports user credentials. When selected, the `Access-Control-Allow-Credentials` CORS header is sent in the response, with a value of `true`. This setting is not selected by default.
 * **PREFLIGHT RESULT CACHE**: Enter how long the results of a CORS preflight `OPTIONS` request can be stored in the client preflight result cache. When configured, the `Access-Control-Max-Age` CORS header is sent in the response.
 
-For more details on using CORS, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-. This provides more background information and explains how to configure CORS for specific HTTP services and relative paths in Policy Studio. For example, this may be useful when using a third-party load balancer, and you need to configure a CORS profile for the default **API Portal** HTTP service in Policy Studio.
+For more details on using CORS, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/). This provides more background information and explains how to configure CORS for specific HTTP services and relative paths in Policy Studio. For example, this may be useful when using a third-party load balancer, and you need to configure a CORS profile for the default **API Portal** HTTP service in Policy Studio.
 
-Configure trusted certificates
-------------------------------
+## Configure trusted certificates
 
 You can use the **Trusted Certificates** tab to add X.509 certificates, which can be used for the **Outbound** and **Inbound** SSL settings. To add a new certificate, perform the following steps:
 
-1.  Click the add button on the left, and configure the following:
-2.  * **Source**: Select the source of the certificate (**X.509 Certificate** file or **URL**).
+1. Click the add button on the left, and configure the following:
+    * **Source**: Select the source of the certificate (**X.509 Certificate** file or **URL**).
     * **File** or **URL**: Browse to the certificate source file (PKCS12, PEM, DER file), and enter a password if required. Alternatively, enter the URL for the certificate.
     * **Use for outbound**: Select whether is certificate is used for outbound security between the API Gateway and the back-end API. This is selected by default.
     * **Use for inbound**: Select whether is certificate is used for inbound security between the client and the API Gateway. This is not selected by default.
+2. If you selected a **URL** certificate source, enter your **User name** and **Password** if required.
+3. Click **Import**.
 
-3.  If you selected a **URL** certificate source, enter your **User name** and **Password** if required.
-4.  Click **Import**.
-
-Manage front-end REST API lifecycle
------------------------------------
+## Manage front-end REST API lifecycle
 
 When you have registered the back-end REST API, you can select it in the list of registered APIs, click **Manage selected**, and chose one of the following options:
 
@@ -617,28 +519,23 @@ When you have registered the back-end REST API, you can select it in the list of
 * **Upgrade access to newer API**: Upgrades all organizations and applications that had access to the original API to a more recent version of the API (if one exists). You can also deprecate and retire the original API as options.
 * **Grant Access**: Grants organizations access to the selected APIs. You can select whether to **Grant API access to** all organizations, specific organizations, or organizations with access to specific APIs.
 * **Export API collection**: Exports a copy of the selected front-end REST APIs to your chosen directory. The APIs are exported in JSON format in a `.dat` file, which combines the front-end API, back-end API, security profiles, and so on. You must specify the following in the dialog:
-* * **Export file name**: Specify a file name to export (defaults to `api-export.dat`)
-    * **Password**: Add a mandatory password for encryption (see also [Encryption of exported API collections](#Exportin))
+    * **Export file name**: Specify a file name to export (defaults to `api-export.dat`)
+    * **Password**: Add a mandatory password for encryption
 
-* You can then import this file into API Manager as required (for example, when promoting between environments). See also [Import a previously exported API](api_mgmt_virtualize_web.htm#Import) and [Promote managed APIs between environments](api_mgmt_promote.htm#Import).
-
-{{< alert title="Tip" color="primary" >}}For more details on API lifecycle, see [API registration and lifecycle management](api_mgmt_intro.htm#API).{{< /alert >}}
+    You can then import this file into API Manager as required (for example, when promoting between environments). See [Import a previously exported API](#import-a-previously-exported-api) and [Promote managed APIs between environments](/docs/apimgr_admin/api_mgmt_promote/).
 
 ### Encryption of exported API collections
 
 In earlier API Manager versions, you could export API collections as a plaintext file. Now, by default, you can no longer export API collections as plaintext. You must supply a password and the generated file is encrypted. If you wish to generate a plaintext export file, the administrator must add the following lines towards the start of `INSTALL_DIR/apigateway/webapps/apiportal/vordel/apiportal/app/app.config` (for example, before the `nodemanager` setting):
 
-``` {space="preserve"}
+```
 /* Flag to determine if API collections can be exported as clear text:
  - Set to false if API export as clear text is not allowed (exported file is always encrypted)
  - Set to true if API export as clear text is allowed (you can choose to encrypt the file or not)*/
-```
-
-``` {space="preserve"}
 allowAPIExportAsClearText: true,
 ```
 
-{{< alert title="Note" color="primary" >}}If you change this setting, you must clear your browser cache so that the old setting is removed.{{< /alert >}}
+If you change this setting, you must clear your browser cache so that the old setting is removed.
 
 When `allowAPIExportAsClearText` is set to `true`, the **Export API** dialog also includes an **Encrypt** option, which enables you to select whether to encrypt the export file using the specified password. For example:
 
