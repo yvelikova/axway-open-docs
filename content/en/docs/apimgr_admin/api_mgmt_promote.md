@@ -1,12 +1,12 @@
 {
     "title": "Promote managed APIs between environments",
     "linkTitle": "Promote managed APIs between environments",
+    "weight": "12",
     "date": "2019-09-17",
     "description": "Promote APIs between environments."
 }
 
-When APIs have been registered in API Manager, you can promote them directly between environments using the API Manager export/import mechanism. This exports registered APIs in JSON
-format, which you can then import into API Manager as required. For more details, see the [Manage the front-end REST API lifecycle](api_mgmt_virtualize_web.htm#Manage).
+When APIs have been registered in API Manager, you can promote them directly between environments using the API Manager export and import mechanism. This exports registered APIs in JSON format, which you can then import into API Manager as required.
 
 The following approaches to promoting managed APIs are also available:
 
@@ -30,19 +30,19 @@ The `apimanager-promote` script enables you to:
 
 When using the `apimanager-promote` script, the high-level steps are as follows:
 
-1. Export the APIs and applications that you wish to promote from API Manager (as a `.dat` file in JSON format). For example, select the front-end APIs that you wish to export, and click **Manage selected** > **Export API collection**. For more details, see [Manage the front-end REST API lifecycle](api_mgmt_virtualize_web.htm#Manage) and [Manage the client application lifecycle](api_mgmt_consume.htm#Manage).
-    Alternatively, you can export using the API Manager REST API. For more details, see [API Manager REST APIs](api_mgmt_rest_api.htm).
-2. Create your `promotion.properties` file to specify how your APIs and applications are promoted. See [Generate your promotion.properties file](#Specify).
+1. Export the APIs and applications that you wish to promote from API Manager (as a `.dat` file in JSON format). For example, select the front-end APIs that you wish to export, and click **Manage selected** > **Export API collection**.
+
+    Alternatively, you can export using the API Manager REST API. For more details, see [API Manager REST APIs](/docs/apimgr_ref/api_mgmt_rest_api/).
+2. Create your `promotion.properties` file to specify how your APIs and applications are promoted. See [Generate your promotion.properties file](#generate-your-promotion-properties-file).
 3. Place your exported API and application files (`.dat`) and your generated `promotion.properties` file in the same directory.
 
-    {{< alert title="Note" color="primary" >}}You must ensure that the respective files names are `api-*.dat`, `application-*.dat`, and `promotion.properties`, and change the file names if necessary.{{< /alert >}}
-
+    You must ensure that the respective files names are `api-*.dat`, `application-*.dat`, and `promotion.properties`, and change the file names if necessary.
 4. Run the `apimanager-promote` script to import the APIs into the target API Manager environment.
     This script is available in the following directory:
 
-```
-INSTALL_DIR/apigateway/posix/bin
-```
+    ```
+    INSTALL_DIR/apigateway/posix/bin
+    ```
 
 #### Run the apimanager-promote command
 
@@ -52,7 +52,7 @@ You must specify the target environment that you wish to promote into, your API�
 apimanager-promote --target https://apimanager.company.com:8075 --username my_admin --passfile users/apiadmins/my_admin-pass <path/to/my_api_data>
 ```
 
-{{< alert title="Note" color="primary" >}}The `path/to/my_api_data` directory must include the exported `.dat` file for the source APIs (and optional applications if exported) and your `promotion.properties` file.{{< /alert >}}
+The `path/to/my_api_data` directory must include the exported `.dat` file for the source APIs (and optional applications if exported) and your `promotion.properties` file.
 
 #### Specify apimanager-promote command options
 
@@ -105,13 +105,13 @@ The promotion properties are described as follows:
 | `api.publish.virtualhost`           | Specify an optional virtual host name and port on which the promoted APIs are available. The host name should be DNS resolvable. |
 | `api.unpublished.remove`            | Specify whether to remove an old unpubished API from the development organization (`true` or `false`). This only applies when an upgrade occurs. For example, if there is a conflict and `api.conflict.upgrade` is set to `true`, this results in two APIs (existing and upgraded). The `api.unpublished.remove` option specifies whether to keep or delete the existing API that has been unpublished. |
 
-{{< alert title="Tip" color="primary" >}}After running the `apimanager-promote` command, press **F5** to reload the API Manager web console in the target environment.{{< /alert >}}
+After running the `apimanager-promote` command, press **F5** to reload the API Manager web console in the target environment.
 
 ## Promote registered APIs using a promotion policy
 
 APIs and applications registered using API Manager can be exported from one API Manager environment and imported into another API Manager environment using a file-based package (`.dat` file in JSON format). For example, this enables APIs to be promoted from a sandbox API group where client applications are developed and tested to the production API group. You can use a custom promotion policy that has already been developed in Policy Studio to automate this process in API Manager.
 
-{{< alert title="Note" color="primary" >}}If you use a custom promotion policy, you must also promote this policy as part of the standard API Gateway configuration. For more details, see [Promote APIs registered in](#Promote).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}If you use a custom promotion policy, you must also promote this policy as part of the standard API Gateway configuration. For more details, see [Promote APIs developed in Policy Studio](#promote-apis-developed-in-policy-studio).{{< /alert >}}
 
 ### Create the promotion policy in Policy Studio
 
@@ -126,26 +126,70 @@ This policy imports a previously exported API as follows:
 * The import creates a virtualized API and all the back-end API definitions necessary for the front-end API in JSON format.
 * This approach is similar to the `proxies/importFromUrl` method except that it supports traditional form-based file upload to the target environment using `multipart/form-data`.
 
-For more details on the on the `proxies/import` method, see [API Manager REST APIs](api_mgmt_rest_api.htm).
-
-{{< alert title="Tip" color="primary" >}} You can also use the **Set Attribute** filter in your promotion policy to configure the `errorMessage` message attribute with a meaningful error message. For example, when used in conjunction with a **False** filter, this message can then be displayed in API Manager if the API promotion policy fails.{{< /alert >}}
-
-For more details on how to create policies, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+{{< alert title="Tip" color="primary" >}}You can also use the **Set Attribute** filter in your promotion policy to configure the `errorMessage` message attribute with a meaningful error message. For example, when used in conjunction with a **False** filter, this message can then be displayed in API Manager if the API promotion policy fails.{{< /alert >}}
 
 ### Enable the promotion policy in Policy Studio
 
-To enable your custom promotion policy in Policy Studio, select **Server Settings** > **API Manager** > **API Promotion** in the Policy Studio tree. For more details, see [*Configure API management settings in* on page 1](api_mgmt_config_ps.htm).
+To enable your custom promotion policy in Policy Studio, select **Server Settings** > **API Manager** > **API Promotion** in the Policy Studio tree.
 
 ### Enable the promotion policy in API Manager
 
-When you have configured and deployed a promotion policy in Policy Studio, you must also then enable the policy in API Manager. You can do this by selecting **Settings** > **API Manager settings** > **API REGISTRATION** > **API promotion via policy**. A **Promote API** option is then added to the **Frontend API** management menu when you log in again. For more details, see [*Configure web-based settings in* on page 1](api_mgmt_config_web.htm).
+When you have configured and deployed a promotion policy in Policy Studio, you must also then enable the policy in API Manager. You can do this by selecting **Settings** > **API Manager settings** > **API REGISTRATION** > **API promotion via policy**. A **Promote API** option is then added to the **Frontend API** management menu when you log in again.
 
-For details of onboarding a client application from sandbox APIs to production APIs, see [*Deploy sandbox and production APIs* on page 1](api_mgmt_environment.htm).
+For details of onboarding a client application from sandbox APIs to production APIs, see [Deploy sandbox and production APIs](#deploy-sandbox-and-production-apis).
 
 ## Promote APIs developed in Policy Studio
 
 APIs created with the REST API development wizard in Policy Studio are part of the standard API Gateway configuration. This means that you can promote APIs between environments using the API Gateway mechanism for promotion and deployment of API Gateway configuration (using `.fed`, `.pol`, and `.env` packages). For example, you can use this mechanism to promote APIs from a testing environment to a production environment and to handle differences between each environment.
 
-For more details on the API Gateway mechanism for promoting configuration between environments, see the
-[API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/)
-. For details of onboarding a client application from sandbox APIs to production APIs, see *Deploy sandbox and production APIs* on page 1.
+For more details on the API Gateway mechanism for promoting configuration between environments, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
+
+For details of onboarding a client application from sandbox APIs to production APIs, see [Deploy sandbox and production APIs](#deploy-sandbox-and-production-apis).
+
+## Deploy sandbox and production APIs
+
+In a production environment, enterprises should create and deploy the following separate API Gateway groups:
+
+* *Sandbox API group*—the APIs that API consumers use against test back-end systems before going live (for example, a test credit card payment system)
+* *Production API group*—the production APIs that front the production back-end systems (for example, a live credit card payment system)
+
+This production environment topology is recommended by Axway. For details on creating a domain environment topology, see the
+[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+
+This section shows an example production environment topology with Sandbox and Production API groups, and shows examples of promoting and onboarding Sandbox APIs to Production APIs.
+
+### Production environment topology
+
+The following diagram shows the environment topology in a typical production domain. This environment topology includes two separate API Gateway groups, each of which includes two API Gateway instances with API Manager deployed on each, and its own Client Registry and API Manager. This enables the message traffic for the Sandbox API and the Production API to be kept separate.
+
+For example, in named organization X, when an API consumer builds a client application, they log into API Manager in the Sandbox API group. The development application sends requests to the API Gateway instances in the Sandbox API group. Similarly, when an operator manages the production application, they log in to API Manager in the Production API group. The production application sends requests to the API Gateway instances in Production API group. In this way, the Sandbox test traffic can be isolated from the live Production traffic.
+
+The Sandbox API group can support both the Community organization and named organizations, including self-registration. API consumers are registered to create applications, and applications are registered for testing prior to onboarding to the Production APIs. However, the Production API group should support named organizations only, and not the Community, with registration restricted to the API administrator and organization administrator.
+
+![Example production domain](/Images/docbook/images/api_mgmt/api_mgmt_production.png)
+
+### Promote configuration to sandbox and production APIs
+
+The following diagram shows the process of promoting API Gateway policy-based configuration from the downstream environment (for example, development or testing) to both the Sandbox API and Production API groups in the production environment.
+
+Both the Sandbox API and Production API groups are virtualizing the same APIs and therefore must use the same policy package (`.pol`). During configuration promotion, the policy package from the downstream environment (for example, testing) is copied and deployed to both API groups.
+
+However, both API groups use different environment specific configuration (for example, to connect to different back-end systems, which require different connection information). Therefore each API group has a specific environment package (`.env`) that is deployed to the API group along with the common policy package. For more details on promoting API Gateway configuration between environments, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
+
+![Promote production APIs](/Images/docbook/images/api_mgmt/api_mgmt_promotion.png)
+
+If your deployment does not use API Gateway policy-based configuration, you can promote APIs from a downstream environment using the API Manager export and import mechanism.
+
+### Onboard to production APIs
+
+The following diagram shows the process of onboarding a client application from the Sandbox API group to the Production API group. For the API Provider, production onboarding involves registering the API Client in the Production API group, and copying or importing client application information from the Client Registry in the Sandbox API group. For the API Client, the client application is deployed into the API Client production environment, and is configured to invoke the Productions APIs.
+
+![Onboarding production APIs](/Images/docbook/images/api_mgmt/api_mgmt_onboarding.png)
+
+{{< alert title="Note" color="primary" >}}Production onboarding involves more than the technical task of onboarding information between API groups. Internal business processes, which are out of the scope of this document, also need to be considered. These include commercial or legal issues that need to be resolved when setting up a formal business partnership between an API Provider and API Client. For example, will the client be charged for API use, and what quotas are required to service the demand from the end users of client applications.{{< /alert >}}
+
+### Configure high availability
+
+Each API Gateway instance connects to an external Apache Cassandra for default persistent data storage. This Cassandra database is used by features such as API Manager, API keys, and OAuth.
+
+If you configure multiple API Gateways in a group, you should configure high availability in the Apache Cassandra database. For more details, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).

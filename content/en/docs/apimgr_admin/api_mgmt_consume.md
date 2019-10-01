@@ -1,6 +1,7 @@
 {
     "title": "Consume APIs in API Manager",
-    "linkTitle": "Consume APIs in API Manager",
+    "linkTitle": "Consume APIs",
+    "weight": "8",
     "date": "2019-09-17",
     "description": "Consume APIs and manage client applications."
 }

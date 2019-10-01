@@ -1,6 +1,7 @@
 {
-    "title": "API Manager custom policies",
-    "linkTitle": "API Manager custom policies",
+    "title": "Configure API Manager custom policies",
+    "linkTitle": "Configure custom policies",
+    "weight": "9",
     "date": "2019-09-17",
     "description": "Overview of API Manager custom policies. How to add custom routing policies, enforce global policies, and add fault handler policies."
 }

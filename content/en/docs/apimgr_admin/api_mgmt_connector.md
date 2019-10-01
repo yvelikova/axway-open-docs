@@ -1,8 +1,9 @@
 {
-    "title": "Cloud application connectors",
-    "linkTitle": "Cloud application connectors",
+    "title": "Configure cloud application connectors",
+    "linkTitle": "Configure cloud application connectors",
+    "weight": "14",
     "date": "2019-09-17",
-    "description": "Connect to and manage cloud-based applications."
+    "description": "Connect to and manage cloud-based applications in API Manager."
 }
 
 API Manager enables you to connect to and manage cloud-based applications, such as the following:

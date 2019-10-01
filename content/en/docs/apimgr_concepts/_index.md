@@ -1,9 +1,10 @@
 {
-"title": "API management overview",
-"linkTitle": "API management overview",
-"no_list": "true",
-"date": "2019-09-17",
-"description": "An overview of API management, including API registration and API development, and the overall API management lifecycle."
+    "title": "API management overview",
+    "linkTitle": "API management overview",
+    "no_list": "true",
+    "weight":"1",
+    "date": "2019-09-17",
+    "description": "An overview of API management, including API registration and API development, and the overall API management lifecycle."
 }
 
 API management is the process of publishing, promoting and managing Application Programming Interfaces (APIs) in a secure, scalable environment. It includes the creation of API consumer support resources that define and document APIs to facilitate easy consumption. API management supports business initiatives to enable easy interaction with customers and partners.

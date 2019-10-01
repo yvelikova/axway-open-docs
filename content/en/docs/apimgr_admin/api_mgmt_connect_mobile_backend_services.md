@@ -1,8 +1,9 @@
 {
     "title": "Connect to Axway Mobile Backend Services",
     "linkTitle": "Connect to Axway Mobile Backend Services",
+    "weight": "15",
     "date": "2019-09-17",
-    "description": "This topic explains how to connect to Axway Mobile Backend Services from API Manager to virtualize Mobile Backend Services APIs in your API Catalog and add an extra layer of security for your apps. For example, this includes adding quota, threat protection, and user authentication and authorization policies."
+    "description": "Connect to Axway Mobile Backend Services from API Manager."
 }
 
 This topic explains how to connect to Axway Mobile Backend Services from API Manager to virtualize Mobile Backend Services APIs in your API Catalog and add an extra layer of security for your apps. For example, this includes adding quota, threat protection, and user authentication and authorization policies.
