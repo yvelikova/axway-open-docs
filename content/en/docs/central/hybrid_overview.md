@@ -64,4 +64,4 @@ The configuration synchronization agent (CSA) takes policies and rules from AMPL
 
 ### Telemetry agent
 
-The telemetry agent sends metrics and logs for API activity back to AMPLIFY Central so that you can monitor service activity and troubleshoot your services. Only a summary of the API transaction is captured and sent to AMPLIFY Central. Headers and payload remain in the hybrid data plane and can be operated on by other native tools.
+The telemetry agent (TA) sends metrics and logs for API activity back to AMPLIFY Central so that you can monitor service activity and troubleshoot your services. Only a summary of the API transaction is captured and sent to AMPLIFY Central. Headers and payload remain in the hybrid data plane and can be operated on by other native tools.
