@@ -88,14 +88,12 @@ Perform the following steps:
 4. To create the front-end in API Manager, select **API** > **Frontend API** > **New API** > **New API from backend API** and select the existing API from the list (in this case, `MyTest MBS API`).
 5. In the front-end API, click the **Inbound** tab, and in the **Outbound security** field, select **API Key**, and click **OK**.
 6. Click the **Outbound** tab, and in the **Outbound authentication profile** field, select **API Key**.
-7. In the **API Key Authentication** dialog, paste in the **API key** for your Mobile Backend Services app that you created in [Create a Mobile Backend Services app](#Create), and click **OK**.
+7. In the **API Key Authentication** dialog, paste in the **API key** for your Mobile Backend Services app that you created in [Create a Mobile Backend Services app](#create-a-mobile-backend-services-app), and click **OK**.
 8. Click **Save**.
 
 The following example in API Manager shows the API key created earlier when creating the Mobile Backend Services app:
 
 ![Configure API Key Authentication](/Images/docbook/images/api_mgmt/mbs_frontend_app_key.png)
-
-For more details, see [Virtualize REST APIs in API Manager](api_mgmt_virtualize_web.htm).
 
 ### Verify the Mobile Backend Services API virtualization in API Manager
 
@@ -107,17 +105,10 @@ Most of the Mobile Backend Services API methods require user authentication. The
 curl -X POST https://<apimanagerhost>:8065/db/v1/users/login.json -H 'content-type: application/x-www-form-urlencoded' -d 'login=<username>&password=<password>'
 ```
 
-You can specify the Mobile Backend Services username and password that you created earlier in [Create a Mobile Backend Services app](#Create).
+You can specify the Mobile Backend Services username and password that you created earlier.
 
 ## Generate an SDK for virtualized Mobile Backend Services APIs in API Portal
 
 {{< alert title="Note" color="primary" >}}Use the API Portal SDK generator rather than Mobile Backend Services SDK. {{< /alert >}}
 
 You can generate an SDK for virtualized Mobile Backend Services APIs in API Portal. SDK generation must first be enabled in API Portal, see [Enable SDK generator](/csh?context=2000&product=prod-api-portal-77) in the [API Portal Administrator Guide](/bundle/APIPortal_77_AdministratorGuide_allOS_en_HTML5).
-
-## Further information
-
-For more details on Mobile Backend Services, see:
-
-* [Mobile Backend Services documentation](/bundle/Mobile_Backend_Services_allOS_en/)
-* [Mobile Backend Services API 1.6](http://apidocs.axway.com/swagger-ui/index.html?productname=MobileBackendServices&productversion=1.6.0&filename=arrow-db-swagger.json)

@@ -10,7 +10,7 @@
 
 * Ensure that both API Manager and API Gateway and are installed. API Manager is a layered product running on API Gateway, which provides the underlying gateway capabilities. API Gateway is a prerequisite product for API Manager.
 * Ensure that an API Gateway Admin Node Manager and an API Gateway instance have been created and started.
-* Ensure that Apache Cassandra is installed and running, and that the Cassandra hosts have been configured in Policy Studio. For more information on installing and configuring Cassandra, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+* Ensure that Apache Cassandra is installed and running, and that the Cassandra hosts have been configured in Policy Studio.
 
 ## Enable API Manager
 

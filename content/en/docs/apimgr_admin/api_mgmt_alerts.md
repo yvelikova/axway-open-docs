@@ -1,6 +1,7 @@
 {
     "title": "Configure API management alerts",
     "linkTitle": "Configure alerts",
+    "weight": "17",
     "date": "2019-09-17",
     "description": "Configure API Manager to generate alerts when specific events occur."
 }
@@ -36,8 +37,8 @@ API Manager generates application alerts for events relating to managing applica
 
 You can use application credential alerts when you want to trigger alerts for any change to the credentials (API keys, OAuth credentials, or external credentials) associated with an application. Application credential alerts are fully configurable:
 
-* Policy developers can write policies that will be invoked when application credentials are created, updated, deleted, enabled, or disabled. For more information, see [Change the alert policy to execute](#Change). For more information on the message attributes available to application credential alert policies, see [Alert message attributes](api_mgmt_alerts_attribs.htm).
-* API administrators can enable or disable alerts for application credentials so that the configured policies get executed when the specified events are triggered. For more information, see [Enable or disable alerts](#Enable).
+* Policy developers can write policies that will be invoked when application credentials are created, updated, deleted, enabled, or disabled. For more information, see [Change the alert policy to execute](#change-the-alert-policy-to-execute). For more information on the message attributes available to application credential alert policies, see [Alert message attributes](#alert-message-attributes).
+* API administrators can enable or disable alerts for application credentials so that the configured policies get executed when the specified events are triggered. For more information, see [Enable or disable alerts](#enable-or-disable-alerts).
 
 API Manager generates application credential alerts for events relating to application credentials.
 
@@ -172,26 +173,26 @@ The following tables outline the message properties that are generated for each 
 
 | Message property | Description |
 |------------------|-------------|
-| alert.appcredential.apikey.id            | The identifier of the newly created API key. Format: GUID.                                                   |
-| alert.appcredential.apikey.applicationId | The identifier of the application associated with the newly created API key. Format: GUID.                   |
-| alert.appcredential.apikey.secret        | The secret associated with the newly created API key. Format: GUID.                                          |
-| alert.appcredential.apikey.enabled       | Specifies whether the newly created API key is enabled or disabled.Possible values are: [ "true", "false" ]. |
-| alert.appcredential.apikey.createdBy     | The identifier of the user that created the API key. Format: GUID.                                           |
+| alert.appcredential.apikey.id            | The identifier of the newly created API key. Format: `GUID`.                                                   |
+| alert.appcredential.apikey.applicationId | The identifier of the application associated with the newly created API key. Format: `GUID`.                   |
+| alert.appcredential.apikey.secret        | The secret associated with the newly created API key. Format: `GUID`.                                          |
+| alert.appcredential.apikey.enabled       | Specifies whether the newly created API key is enabled or disabled. Possible values are: `[ "true", "false" ]`. |
+| alert.appcredential.apikey.createdBy     | The identifier of the user that created the API key. Format: `GUID`.                                           |
 | alert.appcredential.apikey.createdOn     | The time, in milliseconds, when the API key was created                                                      |
 | alert.appcredential.apikey.deletedOn     | The time, in milliseconds, when the API key was deleted.                                                     |
-| alert.appcredential.apikey.corsOrigins   | Comma-separated list of origins associated with the newly created API key.             
+| alert.appcredential.apikey.corsOrigins   | Comma-separated list of origins associated with the newly created API key.|
 
 **OAuth**:
 
 | Message property | Description |
 |------------------|-------------|
-| alert.appcredential.oauthclient.id            | The identifier of the newly created OAuth credential. Format: GUID.                                                   |
-| alert.appcredential.oauthclient.applicationId | The identifier of the application associated with the newly created OAuth credential. Format: GUID.                   |
-| alert.appcredential.oauthclient.enabled       | Specifies whether the newly created OAuth credential is enabled or disabled.Possible values are: [ "true", "false" ]. |
+| alert.appcredential.oauthclient.id            | The identifier of the newly created OAuth credential. Format: `GUID`.                                                   |
+| alert.appcredential.oauthclient.applicationId | The identifier of the application associated with the newly created OAuth credential. Format: `GUID`.                   |
+| alert.appcredential.oauthclient.enabled       | Specifies whether the newly created OAuth credential is enabled or disabled. Possible values are: `[ "true", "false" ]`. |
 | alert.appcredential.oauthclient.cert          | The PEM-encoded certificate associated with the newly created OAuth credential.                                       |
-| alert.appcredential.oauthclient.secret        | The secret associated with the newly created OAuth credential. Format: GUID.                                          |
-| alert.appcredential.oauthclient.type          | The client type of the newly created OAuth credential.Possible values are: [ "public", "confidential" ].              |
-| alert.appcredential.oauthclient.createdBy     | The identifier of the user that created the OAuth credential. Format: GUID.                                           |
+| alert.appcredential.oauthclient.secret        | The secret associated with the newly created OAuth credential. Format: `GUID`.                                          |
+| alert.appcredential.oauthclient.type          | The client type of the newly created OAuth credential. Possible values are: `[ "public", "confidential" ]`.              |
+| alert.appcredential.oauthclient.createdBy     | The identifier of the user that created the OAuth credential. Format: `GUID`.                                           |
 | alert.appcredential.oauthclient.createdOn     | The time, in milliseconds, when the OAuth credential was created.                                                     |
 | alert.appcredential.oauthclient.corsOrigins   | Comma-separated list of origins associated with the newly created OAuth credential.                                   |
 | alert.appcredential.oauthclient.redirectUrls  | Comma-separated list of redirect URLs associated with the newly created OAuth credential.                             |
@@ -200,629 +201,209 @@ The following tables outline the message properties that are generated for each 
 
 | Message property | Description |
 |------------------|-------------|
-| alert.appcredential.externalclient.id               | The identifier of the newly created external credential. Format: GUID.                                                   |
-| alert.appcredential.externalclient.clientId         | The client identifier associated with the newly created external credential. Format: GUID.                               |
+| alert.appcredential.externalclient.id               | The identifier of the newly created external credential. Format: `GUID`.                                                   |
+| alert.appcredential.externalclient.clientId         | The client identifier associated with the newly created external credential. Format: `GUID`.                               |
 | alert.appcredential.externalclient.internalClientId | —                                                                                                                        |
-| alert.appcredential.externalclient.applicationId    | The identifier of the application associated with the newly created external credential. Format: GUID.                   |
-| alert.appcredential.externalclient.enabled          | Specifies whether the newly created external credential is enabled or disabled.Possible values are: [ "true", "false" ]. |
-| alert.appcredential.externalclient.createdBy        | The identifier of the user that created the external credential. Format: GUID.                                           |
+| alert.appcredential.externalclient.applicationId    | The identifier of the application associated with the newly created external credential. Format: `GUID`.                   |
+| alert.appcredential.externalclient.enabled          | Specifies whether the newly created external credential is enabled or disabled. Possible values are: `[ "true", "false" ]`. |
+| alert.appcredential.externalclient.createdBy        | The identifier of the user that created the external credential. Format: `GUID`.                                           |
 | alert.appcredential.externalclient.createdOn        | The time, in milliseconds, when the external credential was created.                                                     |
 | alert.appcredential.externalclient.corsOrigins      | Comma-separated list of origins associated with the newly created external credential.                                   |
 
-<!-- TODO rest of these need to be converted to tables -->
-
 #### Application credential updated
 
-Entity
-
-Message property
-
-Description
-
-API Key
-
-`alert.appcredential.existing.apikey.id`
-
-The identifier of the existing API key, before the update. Format: `GUID`.
-
-`alert.appcredential.existing.apikey.applicationId`
-
-The identifier of the application associated with the existing API key, before the update. Format: `GUID`.
-
-`alert.appcredential.existing.apikey.secret`
-
-The secret associated with the existing API key, before the update. Format: `GUID`.
-
-`alert.appcredential.existing.apikey.enabled`
-
-Specifies whether the existing API key was enabled or disabled, before the update.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.existing.apikey.createdBy`
-
-The identifier of the user that created the existing API key, before the update. Format: `GUID`.
-
-`alert.appcredential.existing.apikey.createdOn`
-
-The time, in milliseconds, when the existing API key was created, before the update .
-
-`alert.appcredential.existing.apikey.deletedOn`
-
-The time, in milliseconds, when the existing API key was deleted, before the update.
-
-`alert.appcredential.existing.apikey.corsOrigins`
-
-Comma-separated list of origins associated with the existing API key, before the update.
-
-`alert.appcredential.apikey.id`
-
-The identifier of the updated API key. Format: `GUID`.
-
-`alert.appcredential.apikey.applicationId`
-
-The identifier of the application associated with the updated API key. Format: `GUID`.
-
-`alert.appcredential.apikey.secret`
-
-The secret associated with the updated API key. Format: `GUID`.
-
-`alert.appcredential.apikey.enabled`
-
-Specifies whether the updated API key is enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.apikey.createdBy`
-
-The identifier of the user that created the updated API key. Format: `GUID`.
-
-`alert.appcredential.apikey.createdOn`
-
-The time, in milliseconds, when the updated API key was created.
-
-`alert.appcredential.apikey.deletedOn`
-
-The time, in milliseconds, when the updated API key was deleted.
-
-`alert.appcredential.apikey.corsOrigins`
-
-Comma-separated list of origins associated with the updated API key.
-
-OAuth
-
-`alert.appcredential.oauthclient.id`
-
-The identifier of the updated OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.applicationId`
-
-The identifier of the application associated with the updated OAuth credential.Format: `GUID`.
-
-`alert.appcredential.oauthclient.enabled`
-
-Specifies whether the updated OAuth credential is enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.oauthclient.cert`
-
-The PEM-encoded certificate associated with the updated OAuth credential.
-
-`alert.appcredential.oauthclient.secret`
-
-The secret associated with the updated OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.type`
-
-The client type of the updated OAuth credential.
-
-Possible values are: `[ "public", "confidential" ]`.
-
-`alert.appcredential.oauthclient.createdBy`
-
-The identifier of the user that created the updated OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.createdOn`
-
-The time, in milliseconds, when the updated OAuth credential was created.
-
-`alert.appcredential.oauthclient.corsOrigins`
-
-Comma-separated list of origins associated with the updated OAuth credential.
-
-`alert.appcredential.oauthclient.redirectUrls`
-
-Comma-separated list of redirect URLs associated with the updated OAuth credential.
-
-`alert.appcredential.existing.oauthclient.id`
-
-The identifier of the OAuth credential, before the update. Format: `GUID`.
-
-`alert.appcredential.existing.oauthclient.applicationId`
-
-The identifier of the application associated with the OAuth credential, before the update. Format: `GUID`.
-
-`alert.appcredential.existing.oauthclient.enabled`
-
-Specifies whether the OAuth credential was enabled or disabled, before the update.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.existing.oauthclient.cert`
-
-The PEM-encoded certificate associated with the OAuth credential, before the update .
-
-`alert.appcredential.existing.oauthclient.secret`
-
-The secret associated with the OAuth credential, before the update. Format: `GUID`.
-
-`alert.appcredential.existing.oauthclient.type`
-
-The client type of the OAuth credential, before the update.
-
-Possible values are: `[ "public", "confidential" ]`.
-
-`alert.appcredential.existing.oauthclient.createdBy`
-
-The identifier of the user that created the OAuth credential, before the update. Format: `GUID`.
-
-`alert.appcredential.existing.oauthclient.createdOn`
-
-The time, in milliseconds, when the OAuth credential was created, before the update.
-
-`alert.appcredential.existing.oauthclient.corsOrigins`
-
-Comma-separated list of origins associated with the OAuth credential, before the update.
-
-`alert.appcredential.existing.oauthclient.redirectUrls`
-
-Comma-separated list of redirect URLs associated with the OAuth credential, before the update.
-
-External
-
-`alert.appcredential.externalclient.id`
-
-The identifier of the updated external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.clientId`
-
-The client identifier associated with the updated external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.internalClientId`
-
-—
-
-`alert.appcredential.externalclient.applicationId`
-
-The identifier of the application associated with the updated external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.enabled`
-
-Specifies whether the updated external credential is enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.externalclient.createdBy`
-
-The identifier of the user that created the updated external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.createdOn`
-
-The time, in milliseconds, when the updated external credential was created.
-
-`alert.appcredential.externalclient.corsOrigins`
-
-Comma-separated list of origins associated with the updated external credential.
-
-`alert.appcredential.existing.externalclient.id`
-
-The identifier of the external credential, before the update. Format: `GUID`.
-
-`alert.appcredential.existing.externalclient.clientId`
-
-The client identifier associated with the external credential, before the update. Format: `GUID`.
-
-`alert.appcredential.existing.externalclient.internalClientId`
-
-—
-
-`alert.appcredential.existing.externalclient.applicationId`
-
-The identifier of the application associated with the external credential, before the update. Format: `GUID`.
-
-`alert.appcredential.existing.externalclient.enabled`
-
-Specifies whether the external credential was enabled or disabled, before the update.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.existing.externalclient.createdBy`
-
-The identifier of the user that created the external credential, before the update. Format: `GUID`.
-
-`alert.appcredential.existing.externalclient.createdOn`
-
-The time, in milliseconds, when the external credential was created, before the update.
-
-`alert.appcredential.existing.externalclient.corsOrigins`
-
-Comma-separated list of origins associated with the external credential, before the update.
+**API Key**:
+
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.existing.apikey.id            | The identifier of the existing API key, before the update. Format: `GUID`. |
+| alert.appcredential.existing.apikey.applicationId | The identifier of the application associated with the existing API key, before the update. Format: `GUID`.                    |
+| alert.appcredential.existing.apikey.secret        | The secret associated with the existing API key, before the update. Format: `GUID`.                                           |
+| alert.appcredential.existing.apikey.enabled       | Specifies whether the existing API key was enabled or disabled, before the update. Possible values are: `[ "true", "false" ]`. |
+| alert.appcredential.existing.apikey.createdBy     | The identifier of the user that created the existing API key, before the update. Format: `GUID`.                              |
+| alert.appcredential.existing.apikey.createdOn     | The time, in milliseconds, when the existing API key was created, before the update .                                       |
+| alert.appcredential.existing.apikey.deletedOn     | The time, in milliseconds, when the existing API key was deleted, before the update.                                        |
+| alert.appcredential.existing.apikey.corsOrigins   | Comma-separated list of origins associated with the existing API key, before the update.                                    |
+| alert.appcredential.apikey.id                     | The identifier of the updated API key. Format: `GUID`.                                                                        |
+| alert.appcredential.apikey.applicationId          | The identifier of the application associated with the updated API key. Format: `GUID`.                                        |
+| alert.appcredential.apikey.secret                 | The secret associated with the updated API key. Format: `GUID`.                                                               |
+| alert.appcredential.apikey.enabled                | Specifies whether the updated API key is enabled or disabled. Possible values are: `[ "true", "false" ]`.                      |
+| alert.appcredential.apikey.createdBy              | The identifier of the user that created the updated API key. Format: `GUID`.                                                  |
+| alert.appcredential.apikey.createdOn              | The time, in milliseconds, when the updated API key was created.                                                            |
+| alert.appcredential.apikey.deletedOn              | The time, in milliseconds, when the updated API key was deleted.                                                            |
+| alert.appcredential.apikey.corsOrigins            | Comma-separated list of origins associated with the updated API key.                                                        |
+
+**OAuth**:
+
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.oauthclient.id                     | The identifier of the updated OAuth credential. Format: `GUID`.   |
+| alert.appcredential.oauthclient.applicationId          | The identifier of the application associated with the updated OAuth credential.Format: `GUID`.                                |
+| alert.appcredential.oauthclient.enabled                | Specifies whether the updated OAuth credential is enabled or disabled. Possible values are: `[ "true", "false" ]`.             |
+| alert.appcredential.oauthclient.cert                   | The PEM-encoded certificate associated with the updated OAuth credential.                                                   |
+| alert.appcredential.oauthclient.secret                 | The secret associated with the updated OAuth credential. Format: `GUID`.                                                      |
+| alert.appcredential.oauthclient.type                   | The client type of the updated OAuth credential. Possible values are: `[ "public", "confidential" ]`.                          |
+| alert.appcredential.oauthclient.createdBy              | The identifier of the user that created the updated OAuth credential. Format: `GUID`.                                         |
+| alert.appcredential.oauthclient.createdOn              | The time, in milliseconds, when the updated OAuth credential was created.                                                   |
+| alert.appcredential.oauthclient.corsOrigins            | Comma-separated list of origins associated with the updated OAuth credential.                                               |
+| alert.appcredential.oauthclient.redirectUrls           | Comma-separated list of redirect URLs associated with the updated OAuth credential.                                         |
+| alert.appcredential.existing.oauthclient.id            | The identifier of the OAuth credential, before the update. Format: `GUID`.                                                    |
+| alert.appcredential.existing.oauthclient.applicationId | The identifier of the application associated with the OAuth credential, before the update. Format: `GUID`.                    |
+| alert.appcredential.existing.oauthclient.enabled       | Specifies whether the OAuth credential was enabled or disabled, before the update. Possible values are: `[ "true", "false" ]`. |
+| alert.appcredential.existing.oauthclient.cert          | The PEM-encoded certificate associated with the OAuth credential, before the update .                                       |
+| alert.appcredential.existing.oauthclient.secret        | The secret associated with the OAuth credential, before the update. Format: `GUID`.                                           |
+| alert.appcredential.existing.oauthclient.type          | The client type of the OAuth credential, before the update. Possible values are: `[ "public", "confidential" ]`.               |
+| alert.appcredential.existing.oauthclient.createdBy     | The identifier of the user that created the OAuth credential, before the update. Format: `GUID`.                              |
+| alert.appcredential.existing.oauthclient.createdOn     | The time, in milliseconds, when the OAuth credential was created, before the update.                                        |
+| alert.appcredential.existing.oauthclient.corsOrigins   | Comma-separated list of origins associated with the OAuth credential, before the update.                                    |
+| alert.appcredential.existing.oauthclient.redirectUrls  | Comma-separated list of redirect URLs associated with the OAuth credential, before the update.                              |
+
+**External**:
+
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.externalclient.id                        | The identifier of the updated external credential. Format: `GUID`.                                                               |
+| alert.appcredential.externalclient.clientId                  | The client identifier associated with the updated external credential. Format: `GUID`.                                           |
+| alert.appcredential.externalclient.internalClientId          | —                                                                                                                              |
+| alert.appcredential.externalclient.applicationId             | The identifier of the application associated with the updated external credential. Format: `GUID`.                               |
+| alert.appcredential.externalclient.enabled                   | Specifies whether the updated external credential is enabled or disabled. Possible values are: `[ "true", "false" ]`.             |
+| alert.appcredential.externalclient.createdBy                 | The identifier of the user that created the updated external credential. Format: `GUID`.                                         |
+| alert.appcredential.externalclient.createdOn                 | The time, in milliseconds, when the updated external credential was created.                                                   |
+| alert.appcredential.externalclient.corsOrigins               | Comma-separated list of origins associated with the updated external credential.                                               |
+| alert.appcredential.existing.externalclient.id               | The identifier of the external credential, before the update. Format: `GUID`.                                                    |
+| alert.appcredential.existing.externalclient.clientId         | The client identifier associated with the external credential, before the update. Format: `GUID`.                                |
+| alert.appcredential.existing.externalclient.internalClientId | —                                                                                                                              |
+| alert.appcredential.existing.externalclient.applicationId    | The identifier of the application associated with the external credential, before the update. Format: `GUID`.                    |
+| alert.appcredential.existing.externalclient.enabled          | Specifies whether the external credential was enabled or disabled, before the update. Possible values are: `[ "true", "false" ]`. |
+| alert.appcredential.existing.externalclient.createdBy        | The identifier of the user that created the external credential, before the update. Format: `GUID`.                              |
+| alert.appcredential.existing.externalclient.createdOn        | The time, in milliseconds, when the external credential was created, before the update.                                        |
+| alert.appcredential.existing.externalclient.corsOrigins      | Comma-separated list of origins associated with the external credential, before the update.                                    |
 
 #### Application credential deleted
 
-Entity
+**API Key**:
 
-Message property
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.apikey.id            | The identifier of the deleted API key. Format: `GUID`.                                                    |
+| alert.appcredential.apikey.applicationId | The identifier of the application associated with the deleted API key. Format: `GUID`.                    |
+| alert.appcredential.apikey.secret        | The secret associated with the deleted API key. Format: `GUID`.                                           |
+| alert.appcredential.apikey.enabled       | Specifies whether the deleted API key was enabled or disabled. Possible values are:`[ "true", "false" ]`. |
+| alert.appcredential.apikey.createdBy     | The identifier of the user that created the deleted API key. Format: `GUID`.                              |
+| alert.appcredential.apikey.createdOn     | The time, in milliseconds, when the deleted API key was created                                         |
+| alert.appcredential.apikey.deletedOn     | The time, in milliseconds, when the API key was deleted.                                                |
+| alert.appcredential.apikey.corsOrigins   | Comma-separated list of origins associated with the deleted API key. |
 
-Description
+**OAuth**:
 
-API Key
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.oauthclient.id            | The identifier of the deleted OAuth credential. Format: `GUID`.                                                    |
+| alert.appcredential.oauthclient.applicationId | The identifier of the application associated with the deleted OAuth credential. Format: `GUID`.                    |
+| alert.appcredential.oauthclient.enabled       | Specifies whether the deleted OAuth credential was enabled or disabled. Possible values are: `[ "true", "false" ]`. |
+| alert.appcredential.oauthclient.cert          | The PEM-encoded certificate associated with the deleted OAuth credential.                                        |
+| alert.appcredential.oauthclient.secret        | The secret associated with the deleted OAuth credential. Format: `GUID`.                                           |
+| alert.appcredential.oauthclient.type          | The client type of the deleted OAuth credential. Possible values are: `[ "public", "confidential" ]`.               |
+| alert.appcredential.oauthclient.createdBy     | The identifier of the user that created the deleted OAuth credential. Format: `GUID`.                              |
+| alert.appcredential.oauthclient.createdOn     | The time, in milliseconds, when the OAuth credential was created.                                                |
+| alert.appcredential.oauthclient.corsOrigins   | Comma-separated list of origins associated with the deleted OAuth credential.                                    |
+| alert.appcredential.oauthclient.redirectUrls  | Comma-separated list of redirect URLs associated with the deleted OAuth credential. |
 
-`alert.appcredential.apikey.id`
+**External**:
 
-The identifier of the deleted API key. Format: `GUID`.
-
-`alert.appcredential.apikey.applicationId`
-
-The identifier of the application associated with the deleted API key. Format: `GUID`.
-
-`alert.appcredential.apikey.secret`
-
-The secret associated with the deleted API key. Format: `GUID`.
-
-`alert.appcredential.apikey.enabled`
-
-Specifies whether the deleted API key was enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.apikey.createdBy`
-
-The identifier of the user that created the deleted API key. Format: `GUID`.
-
-`alert.appcredential.apikey.createdOn`
-
-The time, in milliseconds, when the deleted API key was created
-
-`alert.appcredential.apikey.deletedOn`
-
-The time, in milliseconds, when the API key was deleted.
-
-`alert.appcredential.apikey.corsOrigins`
-
-Comma-separated list of origins associated with the deleted API key.
-
-OAuth
-
-`alert.appcredential.oauthclient.id`
-
-The identifier of the deleted OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.applicationId`
-
-The identifier of the application associated with the deleted OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.enabled`
-
-Specifies whether the deleted OAuth credential was enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.oauthclient.cert`
-
-The PEM-encoded certificate associated with the deleted OAuth credential.
-
-`alert.appcredential.oauthclient.secret`
-
-The secret associated with the deleted OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.type`
-
-The client type of the deleted OAuth credential.
-
-Possible values are: `[ "public", "confidential" ]`.
-
-`alert.appcredential.oauthclient.createdBy`
-
-The identifier of the user that created the deleted OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.createdOn`
-
-The time, in milliseconds, when the OAuth credential was created.
-
-`alert.appcredential.oauthclient.corsOrigins`
-
-Comma-separated list of origins associated with the deleted OAuth credential.
-
-`alert.appcredential.oauthclient.redirectUrls`
-
-Comma-separated list of redirect URLs associated with the deleted OAuth credential.
-
-External
-
-`alert.appcredential.externalclient.id`
-
-The client identifier associated with the deleted external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.clientId`
-
-The client identifier associated with the deleted external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.internalClientId`
-
-—
-
-`alert.appcredential.externalclient.applicationId`
-
-The identifier of the application associated with the deleted external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.enabled`
-
-Specifies whether the deleted external credential was enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.externalclient.createdBy`
-
-The identifier of the user that created the deleted external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.createdOn`
-
-The time, in milliseconds, when the deleted external credential was created.
-
-`alert.appcredential.externalclient.corsOrigins`
-
-Comma-separated list of origins associated with the deleted external credential.
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.externalclient.id               | The client identifier associated with the deleted external credential. Format: `GUID`.                                |
+| alert.appcredential.externalclient.clientId         | The client identifier associated with the deleted external credential. Format: `GUID`.                                |
+| alert.appcredential.externalclient.internalClientId | —                                                                                                                   |
+| alert.appcredential.externalclient.applicationId    | The identifier of the application associated with the deleted external credential. Format: `GUID`.                    |
+| alert.appcredential.externalclient.enabled          | Specifies whether the deleted external credential was enabled or disabled. Possible values are: `[ "true", "false" ]`. |
+| alert.appcredential.externalclient.createdBy        | The identifier of the user that created the deleted external credential. Format: `GUID`.                              |
+| alert.appcredential.externalclient.createdOn        | The time, in milliseconds, when the deleted external credential was created.                                        |
+| alert.appcredential.externalclient.corsOrigins      | Comma-separated list of origins associated with the deleted external credential.                                    |
 
 #### Application credential enabled
 
-Entity
+**API Key**:
 
-Message property
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.apikey.id            | The identifier of the enabled API key. Format: `GUID`.                                                    |
+| alert.appcredential.apikey.applicationId | The identifier of the application associated with the enabled API key. Format: `GUID`.                    |
+| alert.appcredential.apikey.secret        | The secret associated with the enabled API key. Format: `GUID`.                                           |
+| alert.appcredential.apikey.enabled       | Specifies whether the enabled API key was enabled or disabled. Possible values are:`[ "true", "false" ]`. |
+| alert.appcredential.apikey.createdBy     | The identifier of the user that created the enabled API key. Format: `GUID`.                              |
+| alert.appcredential.apikey.createdOn     | The time, in milliseconds, when the enabled API key was created .                                       |
+| alert.appcredential.apikey.deletedOn     | The time, in milliseconds, when the enabled API key was deleted.                                        |
+| alert.appcredential.apikey.corsOrigins   | Comma-separated list of origins associated with the enabled API key.                                    |
 
-Description
+**OAuth**:
 
-API Key
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.oauthclient.id            | The identifier of the enabled OAuth credential. Format: `GUID`.                                                    |
+| alert.appcredential.oauthclient.applicationId | The identifier of the application associated with the enabled OAuth credential. Format: `GUID`.                    |
+| alert.appcredential.oauthclient.enabled       | Specifies whether the enabled OAuth credential was enabled or disabled. Possible values are: `[ "true", "false" ]`. |
+| alert.appcredential.oauthclient.cert          | The PEM-encoded certificate associated with the enabled OAuth credential.                                        |
+| alert.appcredential.oauthclient.secret        | The secret associated with the enabled OAuth credential. Format: `GUID`.                                           |
+| alert.appcredential.oauthclient.type          | The client type of the enabled OAuth credential. Possible values are: `[ "public", "confidential" ]`.               |
+| alert.appcredential.oauthclient.createdBy     | The identifier of the user that created the enabled OAuth credential. Format: `GUID`.                              |
+| alert.appcredential.oauthclient.createdOn     | The time, in milliseconds, when the enabled OAuth credential was created.                                        |
+| alert.appcredential.oauthclient.corsOrigins   | Comma-separated list of origins associated with the enabled OAuth credential.                                    |
+| alert.appcredential.oauthclient.redirectUrls  | Comma-separated list of redirect URLs associated with the enabled OAuth credential.                              |
 
-`alert.appcredential.apikey.id`
+**External**:
 
-The identifier of the enabled API key. Format: `GUID`.
-
-`alert.appcredential.apikey.applicationId`
-
-The identifier of the application associated with the enabled API key. Format: `GUID`.
-
-`alert.appcredential.apikey.secret`
-
-The secret associated with the enabled API key. Format: `GUID`.
-
-`alert.appcredential.apikey.enabled`
-
-Specifies whether the enabled API key was enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.apikey.createdBy`
-
-The identifier of the user that created the enabled API key. Format: `GUID`.
-
-`alert.appcredential.apikey.createdOn`
-
-The time, in milliseconds, when the enabled API key was created .
-
-`alert.appcredential.apikey.deletedOn`
-
-The time, in milliseconds, when the enabled API key was deleted.
-
-`alert.appcredential.apikey.corsOrigins`
-
-Comma-separated list of origins associated with the enabled API key.
-
-OAuth
-
-`alert.appcredential.oauthclient.id`
-
-The identifier of the enabled OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.applicationId`
-
-The identifier of the application associated with the enabled OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.enabled`
-
-Specifies whether the enabled OAuth credential was enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.oauthclient.cert`
-
-The PEM-encoded certificate associated with the enabled OAuth credential.
-
-`alert.appcredential.oauthclient.secret`
-
-The secret associated with the enabled OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.type`
-
-The client type of the enabled OAuth credential.
-
-Possible values are: `[ "public", "confidential" ]`.
-
-`alert.appcredential.oauthclient.createdBy`
-
-The identifier of the user that created the enabled OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.createdOn`
-
-The time, in milliseconds, when the enabled OAuth credential was created.
-
-`alert.appcredential.oauthclient.corsOrigins`
-
-Comma-separated list of origins associated with the enabled OAuth credential.
-
-`alert.appcredential.oauthclient.redirectUrls`
-
-Comma-separated list of redirect URLs associated with the enabled OAuth credential.
-
-External
-
-`alert.appcredential.externalclient.id`
-
-The identifier of the enabled external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.clientId`
-
-The client identifier associated with the enabled external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.internalClientId`
-
-—
-
-`alert.appcredential.externalclient.applicationId`
-
-The identifier of the application associated with the enabled external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.enabled`
-
-Specifies whether the enabled external credential was enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.externalclient.createdBy`
-
-The identifier of the user that created the enabled external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.createdOn`
-
-The time, in milliseconds, when the enabled external credential was created.
-
-`alert.appcredential.externalclient.corsOrigins`
-
-Comma-separated list of origins associated with the enabled external credential.
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.externalclient.id               | The identifier of the enabled external credential. Format: `GUID`.                                                    |
+| alert.appcredential.externalclient.clientId         | The client identifier associated with the enabled external credential. Format: `GUID`.                                |
+| alert.appcredential.externalclient.internalClientId | —                                                                                                                   |
+| alert.appcredential.externalclient.applicationId    | The identifier of the application associated with the enabled external credential. Format: `GUID`.                    |
+| alert.appcredential.externalclient.enabled          | Specifies whether the enabled external credential was enabled or disabled. Possible values are: `[ "true", "false" ]`. |
+| alert.appcredential.externalclient.createdBy        | The identifier of the user that created the enabled external credential. Format: `GUID`.                              |
+| alert.appcredential.externalclient.createdOn        | The time, in milliseconds, when the enabled external credential was created.                                        |
+| alert.appcredential.externalclient.corsOrigins      | Comma-separated list of origins associated with the enabled external credential.                                    |
 
 #### Application credential disabled
 
-Entity
+**API Key**:
 
-Message property
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.apikey.id            | The identifier of the disabled API key. Format: `GUID`.                                                    |
+| alert.appcredential.apikey.applicationId | The identifier of the application associated with the disabled API key. Format: `GUID`.                    |
+| alert.appcredential.apikey.secret        | The secret associated with the disabled API key. Format: `GUID`.                                           |
+| alert.appcredential.apikey.enabled       | Specifies whether the disabled API key was enabled or disabled. Possible values are:`[ "true", "false" ]`. |
+| alert.appcredential.apikey.createdBy     | The identifier of the user that created the disabled API key. Format: `GUID`.                              |
+| alert.appcredential.apikey.createdOn     | The time, in milliseconds, when the disabled API key was created.                                        |
+| alert.appcredential.apikey.deletedOn     | The time, in milliseconds, when the disabled API key was deleted.                                        |
+| alert.appcredential.apikey.corsOrigins   | Comma-separated list of origins associated with the disabled API key.                                    |
 
-Description
+**OAuth**:
 
-API Key
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.oauthclient.id            | The identifier of the disabled OAuth credential. Format: `GUID`.                                                    |
+| alert.appcredential.oauthclient.applicationId | The identifier of the application associated with the disabled OAuth credential. Format: `GUID`.                    |
+| alert.appcredential.oauthclient.enabled       | Specifies whether the disabled OAuth credential was enabled or disabled. Possible values are: `[ "true", "false" ]`. |
+| alert.appcredential.oauthclient.cert          | The PEM-encoded certificate associated with the disabled OAuth credential.                                        |
+| alert.appcredential.oauthclient.secret        | The secret associated with the disabled OAuth credential. Format: `GUID`.                                           |
+| alert.appcredential.oauthclient.type          | The client type of the disabled OAuth credential. Possible values are: `[ "public", "confidential" ]`.               |
+| alert.appcredential.oauthclient.createdBy     | The identifier of the user that created the disabled OAuth credential. Format: `GUID`.                              |
+| alert.appcredential.oauthclient.createdOn     | The time, in milliseconds, when the disabled OAuth credential was created.                                        |
+| alert.appcredential.oauthclient.corsOrigins   | Comma-separated list of origins associated with the disabled OAuth credential.                                    |
+| alert.appcredential.oauthclient.redirectUrls  | Comma-separated list of redirect URLs associated with the disabled OAuth credential.                              |
 
-`alert.appcredential.apikey.id`
+**External**:
 
-The identifier of the disabled API key. Format: `GUID`.
-
-`alert.appcredential.apikey.applicationId`
-
-The identifier of the application associated with the disabled API key. Format: `GUID`.
-
-`alert.appcredential.apikey.secret`
-
-The secret associated with the disabled API key. Format: `GUID`.
-
-`alert.appcredential.apikey.enabled`
-
-Specifies whether the disabled API key was enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.apikey.createdBy`
-
-The identifier of the user that created the disabled API key. Format: `GUID`.
-
-`alert.appcredential.apikey.createdOn`
-
-The time, in milliseconds, when the disabled API key was created.
-
-`alert.appcredential.apikey.deletedOn`
-
-The time, in milliseconds, when the disabled API key was deleted.
-
-`alert.appcredential.apikey.corsOrigins`
-
-Comma-separated list of origins associated with the disabled API key.
-
-OAuth
-
-`alert.appcredential.oauthclient.id`
-
-The identifier of the disabled OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.applicationId`
-
-The identifier of the application associated with the disabled OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.enabled`
-
-Specifies whether the disabled OAuth credential was enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.oauthclient.cert`
-
-The PEM-encoded certificate associated with the disabled OAuth credential.
-
-`alert.appcredential.oauthclient.secret`
-
-The secret associated with the disabled OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.type`
-
-The client type of the disabled OAuth credential.
-
-Possible values are: `[ "public", "confidential" ]`.
-
-`alert.appcredential.oauthclient.createdBy`
-
-The identifier of the user that created the disabled OAuth credential. Format: `GUID`.
-
-`alert.appcredential.oauthclient.createdOn`
-
-The time, in milliseconds, when the disabled OAuth credential was created.
-
-`alert.appcredential.oauthclient.corsOrigins`
-
-Comma-separated list of origins associated with the disabled OAuth credential.
-
-`alert.appcredential.oauthclient.redirectUrls`
-
-Comma-separated list of redirect URLs associated with the disabled OAuth credential.
-
-External
-
-`alert.appcredential.externalclient.id`
-
-The identifier of the disabled external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.clientId`
-
-The client identifier associated with the disabled external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.internalClientId`
-
-—
-
-`alert.appcredential.externalclient.applicationId`
-
-The identifier of the application associated with the disabled external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.enabled`
-
-Specifies whether the disabled external credential was enabled or disabled.
-
-Possible values are: `["true", "false"]`.
-
-`alert.appcredential.externalclient.createdBy`
-
-The identifier of the user that created the disabled external credential. Format: `GUID`.
-
-`alert.appcredential.externalclient.createdOn`
-
-The time, in milliseconds, when the disabled external credential was created.
-
-`alert.appcredential.externalclient.corsOrigins`
-
-Comma-separated list of origins associated with the disabled external credential.
+| Message property | Description |
+|------------------|-------------|
+| alert.appcredential.externalclient.id               | The identifier of the disabled external credential. Format: `GUID`.                                                    |
+| alert.appcredential.externalclient.clientId         | The client identifier associated with the disabled external credential. Format: `GUID`.                                |
+| alert.appcredential.externalclient.internalClientId | —                                                                                                                    |
+| alert.appcredential.externalclient.applicationId    | The identifier of the application associated with the disabled external credential. Format: `GUID`.                    |
+| alert.appcredential.externalclient.enabled          | Specifies whether the disabled external credential was enabled or disabled. Possible values are: `[ "true", "false" ]`. |
+| alert.appcredential.externalclient.createdBy        | The identifier of the user that created the disabled external credential. Format: `GUID`.                              |
+| alert.appcredential.externalclient.createdOn        | The time, in milliseconds, when the disabled external credential was created.                                        |
+| alert.appcredential.externalclient.corsOrigins      | Comma-separated list of origins associated with the disabled external credential.                                    |

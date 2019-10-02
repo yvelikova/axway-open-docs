@@ -11,11 +11,9 @@ Before you begin using API Manager as an API administrator, you must ensure tha
 * Monitoring metrics
 * Identity provider
 * Quota storage
-* SMTP server
+* SMTP server - You must ensure that API Manager is configured with the SMTP server used by your organization. For example, this enables you to generate emails for user registration or client application approval.
 
-{{< alert title="Note" color="primary" >}}You must ensure that API Manager is configured with the SMTP server used by your organization. For example, this enables you to generate emails for user registration or client application approval.{{< /alert >}}
-
-For more details, see [Configure settings in Policy Studio](http://localhost:1313/docs/apimgr_admin/api_mgmt_config_ps/).
+For more details, see [Configure API Manager settings in Policy Studio](/docs/apimgr_admin/api_mgmt_config_ps/).
 
 ## Manage quotas
 
@@ -102,7 +100,7 @@ To create an organization, perform the following steps:
     * **Enabled**: Select whether the organization is enabled. The organization is enabled by default.
     * **API Development**: Select whether the organization is enabled for API development. This setting is disabled by default.
 
-        {{< alert title="Note" color="primary" >}}You must first enable an organization for API development before you can begin registering REST APIs for that organization. For more details, see [Register REST APIs in](api_mgmt_register_web.htm). When the organization has registered APIs, you cannot disable this setting. {{< /alert >}}
+        You must first enable an organization for API development before you can begin registering REST APIs for that organization. For more details, see [Register REST APIs in API Manager](/docs/apimgr_admin/api_mgmt_register_web/). When the organization has registered APIs, you cannot disable this setting.
 
     * **Virtual host**: Enter the virtual host and port on which unpublished APIs belonging to this organization are available. The host name should be DNS resolvable.
 
@@ -146,12 +144,12 @@ To create a user, perform the following steps:
     * **Image**: Click to add a graphical image for the user (for example, .png, `.gif`, or `.jpeg` file).
     * **Login Name**: Enter a globally unique name to identify the user, which is entered by the user when logging in to API Manager. This can be changed only by an API administrator, and is read-only for all other users. This field is required.
 
-        {{< alert title="Note" color="primary" >}} Changing a user’s login-name prevents that user from logging in. You must ensure that the user is notified of any change.{{< /alert >}}
+        Changing a user’s login-name prevents that user from logging in. You must ensure that the user is notified of any change.
 
     * **Name**: Enter the user's first name and surname to be used as a display name. This field is required.
     * **Email**: Enter an email address for the user. This field is required.
 
-        {{< alert title="Note" color="primary" >}}This must be globally unique when the **Login Name** is set to the email address.{{< /alert >}}
+        This must be globally unique when the **Login Name** is set to the email address.
 
     * **Enabled**: Select whether the user is enabled. The user is enabled by default.
 
@@ -175,13 +173,13 @@ When users have been created, you can click a user name in the **Managing users*
 * Click **Reset password** to generate a random password and send it to the user's email address.
 * Click **Change password** to enter a new user password in the dialog.
 
-{{< alert title="Note" color="primary" >}}When you delete a user, their applications are reassigned to the API administrator.{{< /alert >}}
+When you delete a user, their applications are reassigned to the API administrator.
 
 ### Enforce password changes
 
 You can configure API Manager to ask users to change their password at first login, as well as after an expired interval. These settings are enabled by default. To disable the **Enable password expiry** and **Days before passwords expire** settings, click **Settings** > **API Manager settings**.
 
-{{< alert title="Note" color="primary" >}}If you disable **Enable password expiry**, which forces users to change password at first login, and a new user logs in after that, then this user will not be asked to change password if you decide to enable this setting again.{{< /alert >}}
+If you disable **Enable password expiry**, which forces users to change password at first login, and a new user logs in after that, then this user will not be asked to change password if you decide to enable this setting again.
 
 ## Manage applications
 

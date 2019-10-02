@@ -24,7 +24,7 @@ You can click the **Tags** button in the API Manager toolbar to select tags to f
 
 You can use the **Clients** tab to manage client applications (for example, create, update, or remove client applications that invoke specific APIs). When an application is created, API administrators can also set authentication, quota, and sharing settings on the appropriate tab.
 
-{{< alert title="Note" color="primary" >}}The API administrator must first specify the APIs that an organization is allowed to access before any of its client applications can have access to them. In API Manager, you can only add APIs to an application when they have been added to the organization. For more details, see [*Administer APIs in* on page 1](api_mgmt_admin.htm).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}The API administrator must first specify the APIs that an organization is allowed to access before any of its client applications can have access to them. In API Manager, you can only add APIs to an application when they have been added to the organization. For more details, see [Manage access to APIs](/docs/apimgr_admin/api_mgmt_admin/).{{< /alert >}}
 
 ### Create an application
 
@@ -33,7 +33,7 @@ To create an application, perform the following steps:
 1. Click **New application** in the toolbar, and configure the following general fields:
     * **Image**: Click to add a graphical image for the application (for example, .png, `.gif`, or `.jpeg` file).
     * **Application name**: Enter the name of the application. This field is required.
-    * **Organization**: Enter the name of the organization that the application belongs to. This field is required. The choice of organization determines which APIs are available to the application. For more details, see [*Administer APIs in* on page 1](api_mgmt_admin.htm).
+    * **Organization**: Enter the name of the organization that the application belongs to. This field is required. The choice of organization determines which APIs are available to the application.
     * **Enabled**: Select whether the application is enabled. Applications are enabled by default.
 2. Configure the following additional attributes:
     * **Email**: Enter an email address for the application.
@@ -51,40 +51,35 @@ When applications have been created, you can click an application name in the **
 
 The following settings are available on the **Authentication** tab:
 
-* **API Keys**: Click **New API Key** to create an API key for the application. API keys are enabled by default. Click **Show Secret** to obtain the associated secret key. You can also specify **JavaScript Origins** to allow the application to run on specific protocols or domains (for example, `https://my_test_url.example.com`) for Cross Origins Resource Sharing (CORS). You can enter `*` to allow all domains. For more details, see [Virtualize REST APIs in](api_mgmt_virtualize_web.htm).
+* **API Keys**: Click **New API Key** to create an API key for the application. API keys are enabled by default. Click **Show Secret** to obtain the associated secret key. You can also specify **JavaScript Origins** to allow the application to run on specific protocols or domains (for example, `https://my_test_url.example.com`) for Cross Origins Resource Sharing (CORS). You can enter `*` to allow all domains. For more details, see [Virtualize REST APIs in API Manager](/docs/apimgr_admin/api_mgmt_virtualize_web/).
 * **OAuth Credentials**: Click **New client ID** to create a client ID for the application, and enter the following settings in the dialog:
-* * **Application Type**: Applications set to **Confidential** must always send the generated secret along with their `OAuth-Authorization` request. Applications set to **Public** may ommit the secret, when not using the `client_credentials` grant type. Defaults to **Confidential**.
+    * **Application Type**: Applications set to **Confidential** must always send the generated secret along with their `OAuth-Authorization` request. Applications set to **Public** may ommit the secret, when not using the `client_credentials` grant type. Defaults to **Confidential**.
     * **Redirect URLs**: You can enter optional redirect URLs for the application (one URL per line). The application can then redirect users only to the specified URLs, which helps prevent attacks.
     * **X.509 Certificate**: You can paste the contents of a Base64-encoded public X.509 certificate for the application. This certificate is used to verify the signature of JWT tokens and SAML assertions used in the appropriate OAuth grant types.
 
-* Newly created client IDs are enabled by default. You can click **Show Secret** to obtain the associated secret key. You can specify **JavaScript Origins** to allow the application to run on specific protocols or domains for CORS. For more details, see [Virtualize REST APIs in](api_mgmt_virtualize_web.htm).
-* **External Credentials**: Click **New client ID**, and enter the external client ID for the application. Client IDs are enabled by default. You can specify **JavaScript Origins** to allow the application to run on specific protocols or domains for CORS. For more details, see [Virtualize REST APIs in](api_mgmt_virtualize_web.htm).
+    Newly created client IDs are enabled by default. You can click **Show Secret** to obtain the associated secret key. You can specify **JavaScript Origins** to allow the application to run on specific protocols or domains for CORS.
+* **External Credentials**: Click **New client ID**, and enter the external client ID for the application. Client IDs are enabled by default. You can specify **JavaScript Origins** to allow the application to run on specific protocols or domains for CORS.
 * **Application Scopes**: Click **Add scope**, and select one of the following scopes to manage application access to protected resources:
-* * **resource.READ**: Read-only access to the resource.
+    * **resource.READ**: Read-only access to the resource.
     * **resource.WRITE**: Write access to the resource.
     * **openid**: OpenID Connect access to the resource.
     * **Add New Scope**: Enter a custom scope name to manage access to the resource.
 
-* These settings
-    are displayed only when **Enable application scopes** is selected in
-    **Settings > API Manager settings > General settings**.
-    Any new scopes added in an API Key or OAuth security device are also displayed. For example, see [Example API 
-    administration use cases](api_mgmt_method_authz.htm).
+    These settings are displayed only when **Enable application scopes** is selected in **Settings > API Manager settings > General settings**. Any new scopes added in an API Key or OAuth security device are also displayed.
 
 #### Quota
 
-The **Quota** tab enables API administrators to override the application-default quota and specify application-specific quota rules. For more details, see [Administer APIs in](api_mgmt_admin.htm).
+The **Quota** tab enables API administrators to override the application-default quota and specify application-specific quota rules. For more details, see [Manage access to APIs](/docs/apimgr_admin/api_mgmt_admin/).
 
 #### Sharing
 
 The **Sharing** tab enables API administrators to manage access to the application for specified users. Click **Add User**, select an existing user name from the list, and select whether the user can **View** or **Manage** the application. The default is **View**.
 
-You can add multiple existing users. For details on creating users, see [Administer APIs in](api_mgmt_admin.htm). To remove user access to the application, select the user name, and click **Remove**.
+You can add multiple existing users. For details on creating users, see [Manage access to APIs](/docs/apimgr_admin/api_mgmt_admin/). To remove user access to the application, select the user name, and click **Remove**.
 
 ## Manage the client application lifecycle
 
-When you have created client applications, you can select them in the **Applications**
-view, click **Manage selected**, and chose one of the following options:
+When you have created client applications, you can select them in the **Applications** view, click **Manage selected**, and chose one of the following options:
 
 * **Delete selected item(s)**: Permanently deletes the selected applications from the client registry.
 * **Disable**: Disables the selected applications in the client registry. Applications are enabled by default.
@@ -94,6 +89,7 @@ view, click **Manage selected**, and chose one of the following options:
     * Select whether to encrypt the application data
     * Add a password
     * Export API keys, OAuth credentials, and quota overrides
-* You can then import this file into API Manager as required (for example, when promoting between environments). See also [Promote managed APIs between environments](api_mgmt_promote.htm#Import).
 
-{{< alert title="Tip" color="primary" >}}You can click **Export all** in the menu bar at the top to export all client applications in the client registry. You can click **Import** to import previously exported applications in the selected `.dat` file.{{< /alert >}}
+    You can then import this file into API Manager as required (for example, when promoting between environments).
+
+You can click **Export all** in the menu bar at the top to export all client applications in the client registry. You can click **Import** to import previously exported applications in the selected `.dat` file.

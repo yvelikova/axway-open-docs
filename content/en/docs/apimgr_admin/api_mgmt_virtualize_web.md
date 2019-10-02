@@ -39,7 +39,7 @@ When you have first registered a back-end REST API in API Manager, you can then 
 
 ![Imported API details in the web console](/Images/docbook/images/api_mgmt/api_mgmt_frontend_api_edit.png)
 
-{{< alert title="Note" color="primary" >}}If the virtualized API is not a Swagger 2.0-compatible REST API, API Manager displays a message that Swagger download will not be available in the **API Catalog**. For more details, see [Consume APIs in API Manager](/docs/apimgr_admin/api_mgmt_consume/).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}If the virtualized API is not a Swagger 2.0-compatible REST API, API Manager displays a message that Swagger download will not be available in the **API Catalog**.{{< /alert >}}
 
 ## Import a previously exported API
 

@@ -3,7 +3,7 @@
     "linkTitle": "Promote managed APIs between environments",
     "weight": "12",
     "date": "2019-09-17",
-    "description": "Promote APIs between environments."
+    "description": "Different approaches you can use to promote APIs between environments."
 }
 
 When APIs have been registered in API Manager, you can promote them directly between environments using the API Manager export and import mechanism. This exports registered APIs in JSON format, which you can then import into API Manager as required.
@@ -13,8 +13,6 @@ The following approaches to promoting managed APIs are also available:
 * Use the `apimanager-promote` script to automatically promote APIs between environments with zero downtime for DevOps.
 * Use a promotion policy that you have configured in Policy Studio to automate promotion between environments.
 * When APIs have been developed using Policy Studio, you can also promote them between environments using the API Gateway mechanism for promotion and deployment of standard API Gateway configuration.
-
-This topic describes each of these approaches to API promotion.
 
 ## Promote registered APIs with zero downtime using a script
 
@@ -150,8 +148,8 @@ For details of onboarding a client application from sandbox APIs to production A
 
 In a production environment, enterprises should create and deploy the following separate API Gateway groups:
 
-* *Sandbox API group*—the APIs that API consumers use against test back-end systems before going live (for example, a test credit card payment system)
-* *Production API group*—the production APIs that front the production back-end systems (for example, a live credit card payment system)
+* *Sandbox API group* - the APIs that API consumers use against test back-end systems before going live (for example, a test credit card payment system)
+* *Production API group* - the production APIs that front the production back-end systems (for example, a live credit card payment system)
 
 This production environment topology is recommended by Axway. For details on creating a domain environment topology, see the
 [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).

@@ -12,7 +12,7 @@ Policy Studio enables you to configure a range of settings that apply to API Man
 
 To create a Policy Studio project with API Manager configuration, perform the following steps:
 
-1. Ensure that your API Gateway installation has already been configured for API Manager. For more details, see [Enable API Manager](api_mgmt_config.htm#Enable).
+1. Ensure that your API Gateway installation has already been configured for API Manager. For more details, see [Enable API Manager](/docs/apimgr_admin/api_mgmt_config/#enable-api-manager).
 2. Create a project from one of the following:
     * API Gateway instance
     * API Gateway configuration directory
@@ -65,7 +65,7 @@ To select a promotion policy, click the browse button on the right, and select a
 
 The **API Connectors** settings enable you to configure client authentication profiles to use with specific API connectors and plugins. For example, this includes connecting to Cloud APIs such as Salesforce.com and Google. A preconfigured plugin for Salesforce.com APIs is provided by default.
 
-For more details, see [Configure API connectors](/docs/apimgr_admin/api_mgmt_connector/).
+For more details, see [Configure cloud application connectors](/docs/apimgr_admin/api_mgmt_connector/).
 
 ### Identity Provider
 
@@ -83,7 +83,7 @@ The **Identity Provider** settings enable you to integrate API Manager with a wi
 **Account creation failure (optional)**
 : Click the browse button, and select an optional policy that is invoked when an attempt to register a new account with API Manager has failed.
 
-API Manager provides sample external identity provider configuration. For more details, see [Configure external identity providers](/docs/apimgr_admin/api_mgmt_config_external/).
+API Manager provides sample external identity provider configuration. For more details, see [Configure external LDAP identity providers](/docs/apimgr_admin/api_mgmt_config_external/).
 
 The **Identity Provider** settings are used only to configure integration of API Manager with external user repositories. All other API Manager data is stored using a Key Property Store (KPS) in an Apache Cassandra cluster. For more details, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
 
@@ -113,7 +113,7 @@ The **OAuth Token Stores** settings enable you to configure OAuth token stores f
 
 ### Quota Settings
 
-The **Quota Settings** enable you to configure how quota information is stored. Quotas enable you to manage the maximum message traffic rate that can be sent by applications to APIs. For more details on configure quotas in API Manager, see [Administer APIs](/docs/apimgr_admin/api_mgmt_admin/).
+The **Quota Settings** enable you to configure how quota information is stored. Quotas enable you to manage the maximum message traffic rate that can be sent by applications to APIs. For more details on configure quotas in API Manager, see [Manage access to APIs](/docs/apimgr_admin/api_mgmt_admin/).
 
 You can configure the following settings in Policy Studio:
 
@@ -160,7 +160,7 @@ To configure your custom inbound security policies, click **Add**, and select th
 
 {{< alert title="Note" color="primary" >}}Inbound security policies must set the `authentication.subject.id` message attribute to match the client ID set in the external credentials of the application, and return true for successful authentication.{{< /alert >}}
 
-For details on applying inbound security policies to front-end APIs, see [Virtualize REST APIs in API Manager](/docs/apimgr_admin/api_mgmt_virtualize_web/). For details on how to create polices in Policy Studio, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+For details on applying inbound security policies to front-end APIs, see [Virtualize REST APIs in API Manager](/docs/apimgr_admin/api_mgmt_virtualize_web/).
 
 ### Global Request Policies
 
@@ -168,7 +168,7 @@ The **Global Request Policies** settings enable you to configure optional global
 
 To configure global request policies, click **Add**, and select policies in the dialog. By default, no global policies are configured.
 
-When global request policies have been configured in Policy Studio, the API administrator can select a global request policy in API Manager on the **API Manager** **settings** page. The selected global request policy is executed after inbound authentication but before any request, routing, or response policies configured for the front-end API. For more details, see [Enforce API Manager global policies](/docs/apimgr_admin/api_mgmt_global_policies/).
+When global request policies have been configured in Policy Studio, the API administrator can select a global request policy in API Manager on the **API Manager** **settings** page. The selected global request policy is executed after inbound authentication but before any request, routing, or response policies configured for the front-end API. For more details, see [Enforce API Manager global policies](/docs/apimgr_admin/api_mgmt_custom_policies/#enforce-api-manager-global-policies).
 
 ### Global Response Policies
 
@@ -176,7 +176,7 @@ The **Global Response Policies** settings enable you to configure optional globa
 
 To configure global response policies, click **Add**, and select policies in the dialog. By default, no global response policies are configured.
 
-When global response policies have been configured in Policy Studio, the API administrator can select a global response policy in API Manager on the **API Manager** **settings** page. The selected global response policy is executed last after any response policy configured for the front-end API. For more details, see [Enforce API Manager global policies](/docs/apimgr_admin/api_mgmt_global_policies/).
+When global response policies have been configured in Policy Studio, the API administrator can select a global response policy in API Manager on the **API Manager** **settings** page. The selected global response policy is executed last after any response policy configured for the front-end API. For more details, see [Enforce API Manager global policies](/docs/apimgr_admin/api_mgmt_custom_policies/#enforce-api-manager-global-policies).
 
 ### Request Policies
 
@@ -184,7 +184,7 @@ The **Request Policies** settings enable you to configure optional request proce
 
 To configure request policies, click **Add**, and select policies in the dialog. By default, no request policies are configured.
 
-When request policies have been configured in Policy Studio, you can then apply them in API Manager on the **Frontend API > Outbound > Advanced** page. The selected request policy is executed after inbound authentication and any global request policy, but before any routing or response policies configured for the front-end API. For more details, see [Configure Advanced Outbound settings](api_mgmt_virtualize_web.htm#Configur5).
+When request policies have been configured in Policy Studio, you can then apply them in API Manager on the **Frontend API > Outbound > Advanced** page. The selected request policy is executed after inbound authentication and any global request policy, but before any routing or response policies configured for the front-end API.
 
 ### Response Policies
 
@@ -192,7 +192,7 @@ The **Response Policies** settings enable you to configure optional response pro
 
 To configure response policies, click **Add**, and select policies in the dialog. By default, no response policies are configured.
 
-When response policies have been configured in Policy Studio, you can then apply them in API Manager on the **Frontend API > Outbound > Advanced** page. The selected response policy is executed after any routing policy configured for the front-end API, but before any global response policy. For more details, see [Configure Advanced Outbound settings](/docs/apimgr_admin/api_mgmt_virtualize_web/#configure-advanced-outbound-settings).
+When response policies have been configured in Policy Studio, you can then apply them in API Manager on the **Frontend API > Outbound > Advanced** page. The selected response policy is executed after any routing policy configured for the front-end API, but before any global response policy.
 
 ### Routing Policies
 
@@ -200,7 +200,7 @@ The **Routing Policies** settings enable you to configure custom routing policie
 
 To configure routing policies, click **Add**, and select policies in the dialog. By default, no routing policies are configured, and the default URL-based routing policy is used. For more details, see [API Manager custom policies](/docs/apimgr_admin/api_mgmt_custom_policies/).
 
-When routing policies have been configured in Policy Studio, you can then apply them in API Manager on the **Frontend API > Outbound > Advanced** page. The selected routing policy is executed after any request policy and before any response policy configured for the front-end API. For more details, see [Configure Advanced Outbound settings](/docs/apimgr_admin/api_mgmt_virtualize_web/#configure-advanced-outbound-settings).
+When routing policies have been configured in Policy Studio, you can then apply them in API Manager on the **Frontend API > Outbound > Advanced** page. The selected routing policy is executed after any request policy and before any response policy configured for the front-end API.
 
 ### Fault Handler Policies
 
@@ -210,7 +210,7 @@ To configure fault handler policies, click **Add**, and select policies in the d
 
 When fault handler policies are configured, an API administrator can select a global fault handler policy for all front-end APIs on the **API Manager** **settings** page in API Manager. API developers can also select fault handler policies for specific front-end APIs and API methods on the **Frontend API > Outbound > Advanced** page.
 
-For more details, see [Add API Manager fault handler policies](/docs/apimgr_admin/api_mgmt_fault_handler/).
+For more details, see [Add API Manager fault handler policies](/docs/apimgr_admin/api_mgmt_custom_policies/#add-api-manager-fault-handler-policies).
 
 ### SMTP Server
 

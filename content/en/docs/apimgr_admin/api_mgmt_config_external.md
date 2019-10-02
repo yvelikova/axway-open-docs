@@ -1,7 +1,7 @@
 {
     "title": "Configure external LDAP identity providers",
     "linkTitle": "Configure external LDAP identity providers",
-    "weight": "9",
+    "weight": "16",
     "date": "2019-09-17",
     "description": "Configure policy-based integration with external identity providers using Lightweight Directory Access Protocol (LDAP)."
 }
@@ -95,6 +95,7 @@ To set up Active Directory as an external identity provider, perform the followi
     * **URL**: Enter the URL for your LDAP server (for example, `ldap://127.0.0.1:389`).
     * **User Name**: Enter the distinguished name of the user to connect to the Active Directory (for example, `CN=Joe Bloggs,OU=DUBL,OU=IE,OU=Employees,DC=company,DC=com`). This user must have `Read MemberOf` (search) privileges.
     * **Password**: Enter the user password.
+
     ![Sample Active Directory connection](/Images/docbook/images/api_mgmt/api_mgmt_sample_ad_cxn.png)
 
 6. Click **Test Connection** to verify that the configuration details are correct.

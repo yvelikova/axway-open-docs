@@ -3,19 +3,16 @@
     "linkTitle": "Monitor APIs and applications",
     "weight": "8",
     "date": "2019-09-17",
-    "description": "Use the **Monitoring** tab in API Manager to view metrics on all invoked APIs and client applications in the system."
+    "description": "View metrics on all invoked APIs and client applications in the system."
 }
 
-API administrators and organization administrators can use the **Monitoring**
-tab in API Manager to view metrics on all invoked APIs and client applications in the system.
+API administrators and organization administrators can use the **Monitoring** tab in API Manager to view metrics on all invoked APIs and client applications in the system.
 
-For example, the metrics displayed on the **Monitoring**
-tab include the number of messages, successes, failures, and processing time per-invoked API, or per-client application, over a user-defined time range. This view shows the APIs and client applications that you manage, or have access to view. It only shows APIs and applications when there is data for these APIs and applications in the user-defined time range.
+For example, the metrics displayed on the **Monitoring** tab include the number of messages, successes, failures, and processing time per-invoked API, or per-client application, over a user-defined time range. This view shows the APIs and client applications that you manage, or have access to view. It only shows APIs and applications when there is data for these APIs and applications in the user-defined time range.
 
 The monitoring data is obtained from the metrics database, and the data points are written to the database in 5 minute and 1 hour intervals. At a minimum, applications invoking APIs do not have data available until the end of a 5 minute time window. Similarly, hourly data only becomes available at the start of every hour.
 
-You can filter the metrics displayed on the **Monitoring**
-tab based on specified APIs, methods, organizations, and applications.
+You can filter the metrics displayed on the **Monitoring** tab based on specified APIs, methods, organizations, and applications.
 
 ## Prerequisites
 

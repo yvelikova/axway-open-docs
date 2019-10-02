@@ -16,9 +16,7 @@ This approach provides administrative scaling because the set of methods can be 
 
 This example scenario uses a simple Petstore API to show how to control client application access to specific API methods using application scopes. The example application uses an API key for authentication. This scenario describes how to create an application, create an API key, and define application scopes and security profiles to enable method-level authorization.
 
-The Petstore API used in this example is available from:
-
-<http://petstore.swagger.io/v2/swagger.json>
+The Petstore API used in this example is available from <http://petstore.swagger.io/v2/swagger.json>.
 
 ## Configure application scopes in API Manager
 
@@ -26,7 +24,7 @@ This section assumes that you have already imported an example back-end API (in 
 
 Perform the following steps to configure application scopes in API Manager:
 
-1. Ensure that you are logged into API Manager as an API administrator, and that the organization is enabled for API development. For more details, see [Manage organizations](api_mgmt_admin.htm#Manage2).
+1. Ensure that you are logged into API Manager as an API administrator, and that the organization is enabled for API development.
 2. Select **Settings > API Manager Settings > General settings > Enable application scopes**. Enabling this setting allows you to specify authorization scopes for client applications at both the API level and method level.
 3. Select **Clients** > **Applications**, and click **New application**. You must enter an **Application Name** and select your **Organization**, and click **Create**.
 4. On the default **Application** tab, under **API Access**, click **Add API**, and select **Petstore** to grant API access to the application.

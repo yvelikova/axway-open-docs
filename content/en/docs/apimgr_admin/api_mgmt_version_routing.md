@@ -3,7 +3,7 @@
     "linkTitle": "Configure API routing based on version query string",
     "weight": "10",
     "date": "2019-09-17",
-    "description": "Configure API routing based on a query string version parameter in API Manager."
+    "description": "Host different API versions on a single base path in API Manager and distinguish between them using a query string parameter."
 }
 
 API routing based on query string version enables you to host different API versions on a single base path in API Manager and to distinguish between them using a query string parameter. For example, instead of hosting your APIs on `https://HOSTNAME:8065/api/service/v1` and `https://HOSTNAME:8065/api/service/v2`, you can host them on a single base path of `https://HOSTNAME:8065/api/service.`
