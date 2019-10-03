@@ -1,30 +1,29 @@
 {
-"title": "[]{#\"Unattend\"}Unattended installation",
-"linkTitle": "[]{#\"Unattend\"}Unattended installation",
+"title": "Unattended installation",
+"linkTitle": "Unattended installation",
+"weight":"6",
 "date": "2019-10-02",
-"description": "This topic explains how to run the API Gateway installer in unattended mode on Linux and Windows. It also describes each of the available command options."
+"description": "Run the API Gateway installer in unattended mode on Linux and Windows."
 }
-﻿
 
-This topic explains how to run the API Gateway installer in unattended mode on Linux and Windows. It also describes each of the available command options.
+This page explains how to run the API Gateway installer in unattended mode on Linux and Windows. It also describes each of the available command options.
 
 {{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](../../../InstallGuideTopics/install_dev_tools.htm). API Gateway and API Manager do not support Windows.{{< /alert >}}
 
-Run the installer in unattended mode
-------------------------------------
+## Run the installer in unattended mode
 
 You can run the API Gateway installer in unattended mode on the command line. Perform the following steps:
 
-1.  Change to the directory where the setup file is located.
-2.  Run the setup file with the `--mode unattended` option.
+1. Change to the directory where the setup file is located.
+2. Run the setup file with the `--mode unattended` option.
 
 ### Standard setup without API Manager
 
 The following example shows how to install all available API Gateway components excluding API Manager in unattended mode:
 
-``` {space="preserve"}
-./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended 
---setup_type standard 
+```
+./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended
+--setup_type standard
 --licenseFilePath my_license.lic
 --analyticsLicenseFilePath my_analytics_license.lic
 --prefix /opt/Axway-7.8
@@ -39,9 +38,9 @@ The components are installed in the background, in the directory specified by th
 
 The following example shows how to install all API Gateway components, including API Manager, in unattended mode:
 
-``` {space="preserve"}
-./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended 
---setup_type complete 
+```
+./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended
+--setup_type complete
 --licenseFilePath my_license.lic
 --analyticsLicenseFilePath my_analytics_license.lic
 --apimgmtLicenseFilePath my_mgmt_license.lic
@@ -55,23 +54,19 @@ The components are installed in the background, in the directory specified by th
 
 ### Custom setup
 
-The topics on installing each API Gateway component show how to use the
--`-setup_type advanced` option to install a custom setup in unattended mode. For example, see [Install the API Gateway server](install_gateway.htm).
+The topics on installing each API Gateway component show how to use the `-setup_type advanced` option to install a custom setup in unattended mode. For example, see [Install the API Gateway server](/docs/apigtw_install/install_gateway.htm).
 
-Unattended mode options
------------------------
+## Unattended mode options
 
 For a description of all the available command-line options and their default settings, run the setup file with the `--help` option. This outputs the help text in a separate console. For example:
 
-**Linux**
+**Linux**:
 
-    ./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --help
+```./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --help```
 
-**Windows**
+**Windows**:
 
-``` {space="preserve"}
-APIGateway_7.8_Client_Tools_Install_win-x86-32_BN<n>.exe --help
-```
+```APIGateway_7.8_Client_Tools_Install_win-x86-32_BN<n>.exe --help```
 
 The following table summarizes some of the more common options:
 
@@ -127,5 +122,3 @@ The following table summarizes some of the more common options:
 |                                   | m/docs/installbuilder-userguide.h |
 |                                   | tml>                              |
 +-----------------------------------+-----------------------------------+
-
-
