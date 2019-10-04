@@ -7,9 +7,9 @@ description: >
   How to contribute to Axway-Open-Docs
 ---
 
-Axway documentation is open source now, and we welcome your interest in contribution to improve the quality of our docs.
+Axway documentation is open source, and we welcome your interest in contributing to improve the quality of our docs.
 
-Please read this guide thoroughly before start contributing.
+Please read this guide thoroughly before you start.
 
 * All the documentation on this website is written in Markdown. The textual content is stored in the `/content/en/docs/` folder, and the images, in the `/static/Images/<guide_name>` folder.
 
