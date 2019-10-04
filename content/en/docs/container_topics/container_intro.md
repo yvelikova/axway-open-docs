@@ -3,7 +3,7 @@ title: Elastic deployment in the cloud
 linkTitle: Elastic deployment in the cloud
 weight: 2
 date: 2019-09-18
-description: You can deploy API Gateway and API Manager in Docker containers on a cloud platform hosted by infrastructure-as-a-service (IaaS) providers, and use the elastic capability that their automation tools and techniques provide. This enables you to manage the load on your system easily, adding and removing nodes as needed.
+description: Deploy API Gateway and API Manager in Docker containers on a cloud platform hosted by infrastructure-as-a-service (IaaS) providers, and use the elastic capability that their automation tools and techniques provide. This enables you to manage the load on your system easily, adding and removing nodes as needed.
 ---
 
 ## Deployment process
@@ -38,9 +38,9 @@ The topology includes an Admin Node Manager, but with a different role than in t
 * Admin Node Manager *does not* manage the topology, but is managed by the same cluster manager as the API Gateway nodes.
 * Admin Node Manager provides access to monitoring data and runtime settings.
 * Admin Node Manager builds a dynamic picture of the topology:
-  * New API Gateway nodes automatically start sending transaction event logs to Admin Node Manager when they are started.
-  * Admin Node Manager listens to the API Gateway nodes, processes the received logs and writes them to the metrics database.
-  * The Admin Node Manager container uses a shared volume to access the transaction event logs from API Gateway containers.
+    * New API Gateway nodes automatically start sending transaction event logs to Admin Node Manager when they are started.
+    * Admin Node Manager listens to the API Gateway nodes, processes the received logs and writes them to the metrics database.
+    * The Admin Node Manager container uses a shared volume to access the transaction event logs from API Gateway containers.
 
 #### Cluster manager
 

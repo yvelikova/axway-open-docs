@@ -1,14 +1,10 @@
 ---
 title: Get started with API Gateway in containers
-linkTitle: Get started with API Gateway in containers
+linkTitle: Get started
 weight: 3
 date: 2019-09-18
-description: This page is aimed at users of earlier versions of API Gateway who are deploying API Gateway in containers for the first time. It highlights the differences between container deployments (API Gateway 7.6.0 and later) and classic deployments (API Gateway 7.5.3 and earlier) and provides answers to frequently asked questions (FAQ) about deploying API Gateway in containers. It includes the following sections.
+description: Aimed at users of earlier versions of API Gateway who are deploying API Gateway in containers for the first time. It highlights the differences between container deployments (API Gateway 7.6.0 and later) and classic deployments (API Gateway 7.5.3 and earlier) and provides answers to frequently asked questions (FAQ) about deploying API Gateway in containers.
 ---
-
-* [How to deploy API Gateway in Docker containers](#How2)
-* [How container deployments differ from classic deployments](#How)
-* [Frequently asked questions about container deployments](#Frequent)
 
 ## How to deploy API Gateway in Docker containers
 

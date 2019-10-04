@@ -3,8 +3,10 @@
  linkTitle :  Deploy API Manager or OAuth in Docker containers 
  weight: 6
  date :  2019-09-18 
- description :  This topic describes how to deploy API Manager or OAuth services in your API Gateway containers. These steps are optional and only for users who wish to use API Manager or OAuth in their environment.  
+ description :  Deploy API Manager or OAuth services in your API Gateway containers.
 ---
+
+These steps are optional and only for users who wish to use API Manager or OAuth in their environment.
 
 For details on how to deploy API Manager or OAuth services in a classic deployment (non-containerized), see the following:
 
@@ -25,9 +27,9 @@ Follow these steps:
 * Open Policy Studio and open or create a new project.
 * Select **File > Configure API Manager**.
 * If you do not have any Cassandra hosts configured, you must add a Cassandra host before you can continue:
-  * Enter a name for the Cassandra server (for example, `container_cassandra`).
-  * Enter the name of the Cassandra container as the host name (for example, `cassandra228`).
-  * Enter the port of the Cassandra container (for example, `9042`).
+    * Enter a name for the Cassandra server (for example, `container_cassandra`).
+    * Enter the name of the Cassandra container as the host name (for example, `cassandra228`).
+    * Enter the port of the Cassandra container (for example, `9042`).
 
 * Click **Next**.
 * Enter the appropriate API Manager settings. For full details, see [Enable API Manager](/csh?context=1026&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
@@ -56,9 +58,9 @@ Follow these steps:
 * Open Policy Studio and open or create a new project.
 * Select **File > Configure OAuth**.
 * If you do not have any Cassandra hosts configured, you must add a Cassandra host before you can continue:
-  * Enter a name for the Cassandra server (for example, `container_cassandra`).
-  * Enter the name of the Cassandra container as the host name (for example, `cassandra228`).
-  * Enter the port of the Cassandra container (for example, `9042`).
+    * Enter a name for the Cassandra server (for example, `container_cassandra`).
+    * Enter the name of the Cassandra container as the host name (for example, `cassandra228`).
+    * Enter the port of the Cassandra container (for example, `9042`).
 * Click **Next**.
 * Select the OAuth deployment type. For full details, see
     [Deploy OAuth configuration](/csh?context=400&product=prod-api-gateway-77)
