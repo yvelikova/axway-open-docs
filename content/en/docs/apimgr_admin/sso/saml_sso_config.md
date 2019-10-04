@@ -95,7 +95,7 @@ The `service-provider.xml` mapping effectively maps a user to an organization. T
 * If the user's role is `User` or `Operator`, the user must belong to a specific organization (at most one organization) and that organization must already exist in API Manager. An API Manager administrator user can add the organizations in advance. For more information on adding organizations, see [Manage organizations](/docs/apimgr_admin/api_mgmt_admin/#manage-organizations).
 * If the user's role is `Administrator`, that user does not need to belong to a specific organization.
 
-For more information on API Manager roles, see [API Manager access control](/docs/apimgr_admin/api_mgmt_admin/#api-manager-access-control).
+For more information on API Manager roles, see [API Manager access control](/docs/apimgr_concepts/api_mgmt_orgs_roles/#api-manager-access-control).
 
 ### SSO users and SSO login
 

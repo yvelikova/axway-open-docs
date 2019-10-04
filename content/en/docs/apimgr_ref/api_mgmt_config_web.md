@@ -1,8 +1,9 @@
 {
     "title": "API Manager settings reference",
     "linkTitle": "Settings reference",
+    "weight": "1",
     "date": "2019-09-17",
-    "description": "Reference guide for the **Settings** tab in API Manager."
+    "description": "Reference guide for the **Settings** tab in the API Manager web UI."
 }
 
 ## Account settings
@@ -45,11 +46,13 @@ You can configure the following settings for a user account. For more informatio
 ### Password
 
 **Change password**
-: Click to change the current password for the account.
+: Click to change the current password for the account. It is strongly recommended that you change the default password for security reasons.
 
-It is strongly recommended that you change the default password for security reasons.
+The following restrictions apply:
 
-API administrators can change the password for any internal (non-on-boarded) API Manager user. Organization administrators can change the password for any internal user associated with their organization. External user passwords on-boarded from external identity providers cannot be changed.
+* API administrators can change the password for any internal (non-on-boarded) API Manager user.
+* Organization administrators can change the password for any internal user associated with their organization.
+* External user passwords on-boarded from external identity providers cannot be changed.
 
 ## API Manager settings
 
@@ -121,7 +124,7 @@ For more details on API Portal, see [Administer API Portal](/docs/apiportal_ad
 : Select whether to enable routing to different front-end API versions from a single base path using a query string parameter (for example, `https://HOSTNAME:8065/api/helloworld?v=v1`). This setting is unselected by default, and the URL path-based version is used instead. When selected, you must enter a value in the next setting, **Query string version parameter**.
 
 **Query string version parameter**
-: Specifies the name of the query string version parameter used to route between different API versions (for example, a value of `v` requires `/my_api?v=1` in the query string, while `version` requires `/my_api?version=1`). The name of the parameter will also be published in the Swagger generated for the front-end API in the API Catalog. For a detailed example, see see [Configure API method-level authorization for client applications](/docs/apimgr_admin/api_mgmt_method_authz/).
+: Specifies the name of the query string version parameter used to route between different API versions (for example, a value of `v` requires `/my_api?v=1` in the query string, while `version` requires `/my_api?version=1`). The name of the parameter will also be published in the Swagger generated for the front-end API in the API Catalog. For a detailed example, see see [Configure API routing based on version query string](/docs/apimgr_admin/api_mgmt_version_routing/).
 
 **Idle session timeout (minutes)**
 : Enter the number of minutes after which idle API Manager sessions time out. Defaults to `60` minutes. Changing this value only affects logins made after the change.
@@ -155,7 +158,7 @@ For more information on API promotion, see [Promote managed APIs](/docs/apimgr_a
 **Global Response Policy**
 : Select an optional global response policy to apply to all front-end API invocations. When a global response policy has been selected, it is displayed on the **Frontend API** > **Outbound** tabwhen you click **Advanced**. The global response policy is executed last after any non-global response policy configured for the front-end API.
 
-For more details, see [Enforce API Manager global policies](/docs/apimgr_admin/api_mgmt_global_policies/).
+For more details, see [Enforce API Manager global policies](/docs/apimgr_admin/api_mgmt_custom_policies/#enforce-api-manager-global-policies).
 
 ### Fault handlers
 
@@ -165,7 +168,7 @@ For more details, see [Enforce API Manager global policies](/docs/apimgr_admin/a
 **Global Fault handler Policy**
 : When fault handlers are enabled, you can select a global fault handler to apply to all front-end API invocations. The list of available policies is determined by the fault handler policies that have been configured in Policy Studio. The selected policy will be executed at runtime in the event of an error. This setting defaults to the API Manager **Default Fault Handler** policy.
 
-For more details, see [Add API Manager fault handler policies](/docs/apimgr_admin/api_mgmt_fault_handler/).
+For more details, see [Add API Manager fault handler policies](/docs/apimgr_admin/api_mgmt_custom_policies/#add-api-manager-fault-handler-policies).
 
 ## Alerts
 
