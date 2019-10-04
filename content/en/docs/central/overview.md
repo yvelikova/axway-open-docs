@@ -34,7 +34,7 @@ You can also secure your API with a JWT client authentication policy. To learn h
 
 Apply a rate limit policy to limit the usage of your API.
 
-To learn how to to apply a rate limit configuration to your API, see [Rate Limit an API](/docs/central/proxy_rate_limit/).
+To learn how to to apply a rate limit configuration to your API, see [Rate limit an API](/docs/central/proxy_rate_limit/).
 
 ## DevOps integration
 

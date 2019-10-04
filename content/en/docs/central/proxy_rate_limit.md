@@ -1,33 +1,32 @@
 ---
-title: Rate Limit an API
-linkTitle: Rate Limit an API
+title: Rate limit an API
+linkTitle: Rate limit an API
 weight: 5
 date: 2019-09-19
 description: Learn how to apply a rate limit configuration to your API.
 ---
 
-*Estimated reading time: 5 minutes*
+*Estimated reading time*: 5 minutes
 
 ## Before you start
 
-- You will need an administrator account for AMPLIFY Central
-- Learn how to import your API as an API proxy in AMPLIFY Central (see [Register an API](/docs/central/quickstart/#register-an-api))
-- Learn how to use the AMPLIFY CLI to manage an API proxy (see [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_proxy_flow))
+* You will need an administrator account for AMPLIFY Central
+* Learn how to import your API as an API proxy in AMPLIFY Central (see [Register an API](/docs/central/quickstart/#register-an-api))
+* Learn how to use the AMPLIFY CLI to manage an API proxy (see [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_proxy_flow))
 
 ## Objectives
 
 Learn how to apply a rate limit configuration to your API:
 
-- Understand what API rate limiting is and how it can be useful
-- Configure and test rate limiting on your API using the AMPLIFY Central UI
-- Configure and test rate limiting on your API using the AMPLIFY CLI
+* Understand what API rate limiting is and how it can be useful
+* Configure and test rate limiting on your API using the AMPLIFY Central UI
+* Configure and test rate limiting on your API using the AMPLIFY CLI
 
 ## What is API rate limiting?
 
 Rate limiting is a way to protect the backend service underlying (or implementing) your API. The use of resources underlying your API are protected from more aggressive consumer activity (or spikes in total API calls) which could overwhelm the backend service capacity.
 
 API providers typically measure processing limits in Transactions Per Second (TPS). Rate limiting at the API proxy level is a way to enforce a maximum TPS for all of your API consumers.
-
 
 ### AMPLIFY Central API rate limiting
 
@@ -41,8 +40,8 @@ To begin, [register an api proxy](/docs/central/quickstart/#register-an-api).
 
 ### Set a proxy rate limit on your API
 
-1. Navigate to the **API Proxies** tab. 
-2. Click the API proxy name to open the API proxy details page. 
+1. Navigate to the **API Proxies** tab.
+2. Click the API proxy name to open the API proxy details page.
 3. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section. 
 4. Enter the desired TPS and click the checkbox to save the configuration.
 
@@ -50,14 +49,14 @@ To begin, [register an api proxy](/docs/central/quickstart/#register-an-api).
 
 A new revision with the desired rate limit configuration is created. Deploy the new revision for the configuration to take effect.
 
-#### Test the rate limit configuration
+### Test the rate limit configuration
 
-##### Simple test with docker and curl
+#### Simple test with docker and curl
 
 This sample test uses curl packaged in a docker container to start a few simultaneus API transactions and displays the return status for each attempt. Replace `<your_url_here>` with an endpoint of your proxy. 
 
 ```
-$ docker run curlimages/curl:7.66.0 -s -o /dev/null -w "%{url_effective}:%{http_code}\n" -Z "<your_url_here>#[1-5]"
+docker run curlimages/curl:7.66.0 -s -o /dev/null -w "%{url_effective}:%{http_code}\n" -Z "<your_url_here>#[1-5]"
 ```
 
 Example run for the sample API with a rate limit of 2 TPS:
@@ -71,9 +70,9 @@ https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/
 https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/v2/instruments#5:200
 ```
 
-##### Constant traffic test
+#### Constant traffic test
 
-[k6](https://docs.k6.io/docs/welcome) is a testing tool that can help exemplify a scenario closer to how your API will be used in the real world.
+[K6](https://docs.k6.io/docs/welcome) is a testing tool that can help exemplify a scenario closer to how your API will be used in the real world.
 
 K6 is configured using the Javascript language. Save the follwing script as `rate-limit-test.js`.
 
@@ -101,17 +100,18 @@ export default function() {
 }
 ```
 
-Using the dockerised version of k6 we'll run a test mimicking 20 users doing 20 TPS against your API proxy for 30 seconds. Replace `<your_url_here>` with an endpoint of your proxy.
+Using the dockerised version of K6 we'll run a test mimicking 20 users doing 20 TPS against your API proxy for 30 seconds. Replace `<your_url_here>` with an endpoint of your proxy.
 
 ```
-docker run -i loadimpact/k6 run - -e TEST_URL="<your_url_here>" --rps 20 -u 20 -m 20 -d 30s < rate-limit-test.js
+docker run -i loadimpact/k6 run * -e TEST_URL="<your_url_here>" --rps 20 -u 20 -m 20 -d 30s < rate-limit-test.js
 ```
 
 Sample run against a proxy with a 5 TPS rate limit.
 
 ```
-$ docker run -i loadimpact/k6 run - -e TEST_URL="https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/v2/instruments" --rps 20 -u 20 -m 20 -d 30 < rate-limit-test.js
+docker run -i loadimpact/k6 run * -e TEST_URL="https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/v2/instruments" --rps 20 -u 20 -m 20 -d 30 < rate-limit-test.js
 ```
+
 It produces the final report:
 
 ```
@@ -137,8 +137,8 @@ Notice the passed rate closely matching the enforced rate limit.
 
 ### Remove a proxy rate limit
 
-1. Navigate to the **API Proxies** tab. 
-2. Click the API proxy name to open the API proxy details page. 
+1. Navigate to the **API Proxies** tab.
+2. Click the API proxy name to open the API proxy details page.
 3. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section.
 4. Clear the text field and click the checkbox to save the configuration.
 
