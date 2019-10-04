@@ -26,7 +26,7 @@ Learn how to apply a rate limit configuration to your API:
 
 Rate limiting is a way to protect the backend service underlying (or implementing) your API. The use of resources underlying your API are protected from more aggressive consumer activity (or spikes in total API calls) which could overwhelm the backend service capacity.
 
-API providers typically measure processing limits in Transactions Per Second (TPS). Rate limiting at the API proxy level is a way to enforce a maximum TPS for all of your API consumers.
+API providers typically measure processing limits in Transactions Per Second (TPS). Rate limiting at the API level is a way to enforce a maximum TPS for all of your API consumers. In AMPLIFY Central, we provide rate limiting around the API Proxy activity.
 
 ### AMPLIFY Central API rate limiting
 
