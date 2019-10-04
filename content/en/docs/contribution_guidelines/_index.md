@@ -7,19 +7,21 @@ description: >
   How to contribute to Axway-Open-Docs
 ---
 
-All the documentation on this website is written in Markdown. The textual content is stored in the `/content/en/docs/` folder, and the images, in the `/static/Images/<guide_name>` folder.
+Axway documentation is open source now, and we welcome your interest in contribution to improve the quality of our docs.
 
-We support the following contribution flows:
+Please read this guide thoroughly before start contributing.
 
-* Pull request (PR) via GitHub UI (ideal for small or infrequent changes).
-* Pull request via Netlify CMS (WYSIWYG option is ideal for non-technical users).
-* Pull request via Git CLI (ideal for bigger changes or regular updates). See [Set up and work locally](/docs/contribution_guidelines/setup_work_locally).
+* All the documentation on this website is written in Markdown. The textual content is stored in the `/content/en/docs/` folder, and the images, in the `/static/Images/<guide_name>` folder.
+
+* We support the following contribution flows:
+
+  1. Pull request (PR) via GitHub UI (ideal for small or infrequent changes). See [Edit a page on GitHub](#1-edit-a-page-on-github)
+  2. Pull request via Netlify CMS (WYSIWYG option is ideal for non-technical users). See [Edit with Netlify CMS](#2-edit-with-netlify-cms)
+  3. Pull request via Git CLI (ideal for bigger changes or regular updates). See [Set up and work locally](/docs/contribution_guidelines/setup_work_locally).
 
 {{< alert title="Note" >}}
 All flows require a GitHub account.
 {{< /alert >}}
-
-While you can also create issues on GitHub to ask for updates, it's faster to create a pull request and make the updates yourself.
 
 ## Licensing
 
@@ -39,7 +41,9 @@ GitHub will send you an email notification for every update in your PR or issue.
 
 When the review is finished, we'll merge your PR to this staging website first <https://axway-open-docs.netlify.com/>, then to production <https://docs.axway.com>.
 
-## Edit a page on GitHub
+## Contribution flows
+
+### 1. Edit a page on GitHub
 
 To edit a page and send a PR:
 
@@ -65,13 +69,7 @@ To edit a page and send a PR:
     * This link opens the home page of the website. You must navigate to the page you edited.
     * This link opens in the same tab.
 
-## Create an issue on GitHub
-
-Create an issue to inform us about a problem in the documentation. Please provide detailed information, for example, if it's missing information, an error in a procedure, information not clear, a broken link, and so on. The more details you provide, the more helpful the issue, and the faster we can prioritize and fix it.
-
-To create an issue just click **Create documentation issue** on the upper right corner of the page, and add the relevant information.
-
-## Edit with Netlify CMS
+### 2. Edit with Netlify CMS
 
 Use the Netlify CMS user interface to easily edit pages in a WYSIWYG editor with a real-time preview. You don't need to be familiar with Markdown or with GitHub forking workflows to edit in Netlify CMS.
 
@@ -96,6 +94,14 @@ To edit a page in Netlify CMS:
 7. To ensure that we have all the information we need to review your changes, go to GitHub and add a comment to the pull request, as there is currently no ability in Netlify CMS to tell us what you changed and why.
 
     You can also click the deploy preview link in the pull request to preview your changes exactly as they will appear on the live website.
+
+## Create an issue on GitHub
+
+Create an issue to inform us about a problem in the documentation. Please provide detailed information, for example, if it's missing information, an error in a procedure, information not clear, a broken link, and so on. The more details you provide, the more helpful the issue, and the faster we can prioritize and fix it.
+
+To create an issue just click **Create documentation issue** on the upper right corner of the page, and add the relevant information.
+
+* While you can create issues on GitHub to ask for updates, improving the documentation will be faster if you create a pull request and make the updates yourself.
 
 ## Additional resources
 
