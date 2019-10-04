@@ -1,21 +1,20 @@
 {
 "title": "Multi-datacenter configuration",
 "linkTitle": "Multi-datacenter configuration",
+"weight":"32"
 "date": "2019-10-02",
-"description": "This topic describes the recommended configuration for each API Management data type. It explains the following for each data type:"
+"description": "This page describes the recommended configuration for each API Management data type. It explains the following for each data type:"
 }
-﻿
 
-This topic describes the recommended configuration for each API Management data type. It explains the following for each data type:
+This page describes the recommended configuration for each API Management data type. It explains the following for each data type:
 
--   If the data can be replicated across both datacenters (for example, by deploying in both datacenters or automatic replication)
--   How to configure the replication (for example, by configuring Apache Cassandra, Ehcache, or RDBMS)
--   How to install and configure API Gateway and API Manager in multiple datacenters, and how to optimize performance
+* If the data can be replicated across both datacenters (for example, by deploying in both datacenters or automatic replication)
+* How to configure the replication (for example, by configuring Apache Cassandra, Ehcache, or RDBMS)
+* How to install and configure API Gateway and API Manager in multiple datacenters, and how to optimize performance
 
-For details on recommended architecture, see [Multi-datacenter deployment](multi_datacenter_intro.htm).
+For details on recommended architecture, see [Multi-datacenter deployment](/docs/apigtw_install/multi_datacenter_intro).
 
-API Management configuration
-----------------------------
+## API Management configuration
 
 The recommended configuration for each data type is as follows:
 
@@ -23,23 +22,19 @@ The recommended configuration for each data type is as follows:
 
 | Data type                      | Replication between datacenters                                                                                                  |
 |--------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| API Gateway configuration      | You must deploy the API Gateway group configuration in both datacenters. For details on automating deployment processes, see the 
-  [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/)                                       
-  .                                                                                                                                 |
+| API Gateway configuration      | You must deploy the API Gateway group configuration in both datacenters. For details on automating deployment processes, see the
+  [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).                                                                      |
 | API Gateway logs               | Does not apply (local file-based data only).                                                                                     |
 | API Gateway traffic monitoring | Does not apply (local file-based data only).                                                                                     |
-| API Gateway KPS custom tables  | Automatic. It is best to use Cassandra with replication between datacenters.                                                     
-  See [Configure Cassandra for multiple datacenters](#Cassandr), or your RDBMS documentation.                                       |
+| API Gateway KPS custom tables  | Automatic. It is best to use Cassandra with replication between datacenters. See [Configure Cassandra for multiple datacenters](/docs/apigtw_install/multi_datacenter_intro#Cassandr), or your RDBMS documentation.  |
 
 ### API Manager data
 
-| Data type                                                | Replication between datacenters                                                                                                                       |
-|----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| API Manager catalog, client registry, web-based settings | Automatic. It is best to use Cassandra with replication between datacenters. See [Configure Cassandra for multiple datacenters](#Cassandr).           |
-| API Manager quota counters                               | In memory only, or automatic when using external storage (Cassandra or RDBMS). See [Configure API Manager quota in multiple datacenters](#Configur2). 
-                                                                                                                                                         
-  See also [Configure Cassandra for multiple datacenters](#Cassandr), or your RDBMS documentation.                                                       |
-| API Manager metrics                                      | Automatic. See your RDBMS documentation.                                                                                                              |
+| Data type      | Replication between datacenters   |
+|---------------|---------------------------------------|
+| API Manager catalog, client registry, web-based settings | Automatic. It is best to use Cassandra with replication between datacenters. See [Configure Cassandra for multiple datacenters](#configure_cassandra_for_multiple_datacenters).           |
+| API Manager quota counters                               | In memory only, or automatic when using external storage (Cassandra or RDBMS). See [Configure API Manager quota in multiple datacenters](#Configur2). See also [Configure Cassandra for multiple datacenters](#Cassandr), or your RDBMS documentation.  |
+| API Manager metrics                                      | Automatic. See your RDBMS documentation. |
 
 ### API Gateway Analytics data
 

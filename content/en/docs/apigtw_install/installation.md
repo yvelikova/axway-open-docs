@@ -1,10 +1,27 @@
 {
 "title": "Installation options",
 "linkTitle": "Installation options",
-"weight":"6",
+"weight":"8",
 "date": "2019-10-02",
-"description": "When you run the installation setup file it launches in GUI mode by default. The following sections detail the installation options in GUI mode."
+"description": "This section describes how to install API Gateway on Linux using the installer."
 }
+
+## Prerequisites
+
+* You have downloaded the installation setup file for your target operating system from Axway Support at <https://support.axway.com>.
+    The download instructions are in the welcome letter that Axway sent you in an email message.
+* You have obtained a valid Axway license file for API Gateway, and optionally API Manager or API Gateway Analytics. Also, if you intend to run API Gateway in FIPS-compliant mode, you have ensured that your license file allows this. You can obtain the required licenses from your Axway account manager.
+* You have obtained a valid McAfee license file if you intend to use the **McAfee Anti-Virus** filter.
+* You have reviewed the prerequisites and system requirements in [Prerequisites](/docs/apigtw_install/system_requirements) and have ensured that your target system is suitable
+
+## Installation modes
+
+The API Gateway installer has the following installation modes:
+
+* GUI mode
+* Unattended command-line mode
+
+The following sections describe how to start the installer in GUI mode and the options that you are presented with when performing a GUI mode installation:
 
 ## Start installation
 
@@ -20,7 +37,7 @@ Follow the instructions on each window to complete the installation.
 Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apigtw_install/install_dev_tools). API Gateway and API Manager do not support Windows.
 {{< /alert >}}
 
-To run the setup in unattended mode, see [Unattended installation](/docs/apigtw_install/installation_unattended.htm#Unattend).
+To run the setup in unattended mode, see [Unattended installation](/docs/apigtw_install/installation_unattended).
 
 ## Installation options
 
@@ -164,3 +181,25 @@ A window is displayed to indicate that the installation is complete. If you sele
 The URL of the Admin Node Manager is displayed (for example, `https://127.0.0.1:8090`). You can go to this URL in your browser to access the API Gateway Manager tools.
 
 Click **Finish** to complete the installation. Policy Studio is launched if you selected that option. If you selected to install the QuickStart tutorial, it is also launched in a browser window.
+
+## Install developer tools on Windows
+
+Windows is supported only for a limited set of developer tools that can be used to manage an an existing deployment running on Linux or in Docker containers. API Gateway and API Manager do not support Windows.
+
+The following tools can be installed on Windows:
+
+* Policy Studio
+* Configuration Studio
+* Package and Deployment Tools
+
+You can install the developer tools using the same installer flow as on Linux. To run the installer in the default GUI mode, locate and run the following setup file:
+
+`APIGateway_7.8_Client_Tools_Install_win-x86-32_BN<n>.exe`
+
+Because some options do not apply on Windows installation, screens relating to these options are omitted. The components available for Windows can be installed without a license.
+
+You can choose to install the available developers tools either together or separately. Unattended installation is also available. For more details on each of the tools, see the following:
+
+* [Install Configuration Studio](/docs/apigtw_install/install_config_studio)
+* [Install Policy Studio](/docs/apigtw_install/install_policy_studio)
+* [Install the Package and Deploy tools](/docs/apigtw_install/install_deploy_tools)

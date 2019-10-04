@@ -50,7 +50,7 @@ API Gateway and API Manager support the following relational databases to store 
 * Oracle 11.2, 12.1
 * IBM DB2 10.5
 
-For more details, see [Configure the metrics database](/CommonTopics/metrics_db_install.htm).
+For more details, see [Configure the metrics database](/docs/apigtw_install/metrics_db_install.htm).
 
 ### Apache Cassandra
 
