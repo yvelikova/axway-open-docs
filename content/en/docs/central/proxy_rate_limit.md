@@ -1,12 +1,12 @@
 ---
 title: Rate Limit an API
 linkTitle: Rate Limit an API
-weight: 4
+weight: 5
 date: 2019-09-19
 description: Learn how to apply a rate limit configuration to your API.
 ---
 
-*Estimated reading time: x minutes*
+*Estimated reading time: 5 minutes*
 
 ## Before you start
 
@@ -20,19 +20,20 @@ Learn how to apply a rate limit configuration to your API:
 
 - Understand what API rate limiting is and how it can be useful
 - Configure and test rate limiting on your API using the AMPLIFY Central UI
-- Configure and test rate limiting on your using the AMPLIFY CLI
+- Configure and test rate limiting on your API using the AMPLIFY CLI
 
 ## What is API rate limiting?
 
-Rate limiting is a way to protect the use of resources underlying your API or ensure that a more aggressive consumer doesn't take over your API in defavour of other consumers.
+Rate limiting is a way to protect the backend service underlying (or implementing) your API. The use of resources underlying your API are protected from more aggressive consumer activity (or spikes in total API calls) which could overwhelm the backend service capacity.
 
-API providers typically measure processing limits in Transactions Per Second (TPS). Rate limiting is a way to enforce a maximum TPS for your API consumers.
+API providers typically measure processing limits in Transactions Per Second (TPS). Rate limiting at the API proxy level is a way to enforce a maximum TPS for all of your API consumers.
+
 
 ### AMPLIFY Central API rate limiting
 
-AMPLIFY Central currently provides a fixed window rate limiting implementation with a one second window. Simply explained, each second on the minute your API gets a budget of API transactions. Each valid API transaction uses one unit of the budget. At the begining of each second the budget is reset to it's configured value. If the budget is exhausted before the second is over, all API transactions will be refused until the budget is reset. A valid API transaction is an API transaction that has been successfully processed by AMPLIFY Central.
+AMPLIFY Central currently provides a fixed window rate limiting implementation with a one second window. Simply explained, each second on the minute your API gets a budget of API transactions. Each valid API transaction uses one unit of the budget. At the beginning of each second the budget is reset to its configured value. If the budget is exhausted before the second is over, all API transactions are refused until the budget is reset. A valid API transaction is an API transaction that has been successfully processed by AMPLIFY Central.
 
-AMPLIFY Central allows for two levels of enforcement for rate limiting. At the proxy level, rate limiting will affect all API transactions regardless of the consuming Application. At the proxy and application level, rate limtting will affect all API transactions originating with a specific Application. One or both level can be enforced with AMPLIFY Central.
+AMPLIFY Central allows for two levels of enforcement for rate limiting. At the proxy level, rate limiting affects all API transactions regardless of the consuming application. At the proxy and application level, rate limtting affects all API transactions originating with a specific application. You can enforce one or both levels with AMPLIFY Central.
 
 ## Use the AMPLIFY Central UI to configure rate limiting
 
@@ -40,13 +41,20 @@ To begin, [register an api proxy](/docs/central/quickstart/#register-an-api).
 
 ### Set a proxy rate limit on your API
 
-Navigate to the API Proxies tab. Open the API proxy details page by clicking on the API proxy name. On the policies tab and edit the rate limit policy under the Request to backend section. [Enter the desired TPS](/Images/central/proxy_rate_limit_box.png) and click on the checkbox to save the configuration. A new revision with the desired rate limit configuration will be created. Deploy the new revision for the configuration to take effect.
+1. Navigate to the **API Proxies** tab. 
+2. Click the API proxy name to open the API proxy details page. 
+3. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section. 
+4. Enter the desired TPS and click the checkbox to save the configuration.
+
+![Enter the desired TPS](/Images/central/proxy_rate_limit_box.png)
+
+A new revision with the desired rate limit configuration is created. Deploy the new revision for the configuration to take effect.
 
 #### Test the rate limit configuration
 
 ##### Simple test with docker and curl
 
-This sample test uses curl packaged in a docker container to start a few simultaneus API transactions and displays the return status for each attempt. Replace <your_url_here> with an endpoint of your proxy. 
+This sample test uses curl packaged in a docker container to start a few simultaneus API transactions and displays the return status for each attempt. Replace `<your_url_here>` with an endpoint of your proxy. 
 
 ```
 $ docker run curlimages/curl:7.66.0 -s -o /dev/null -w "%{url_effective}:%{http_code}\n" -Z "<your_url_here>#[1-5]"
@@ -67,9 +75,9 @@ https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/
 
 [k6](https://docs.k6.io/docs/welcome) is a testing tool that can help exemplify a scenario closer to how your API will be used in the real world.
 
-K6 is configured using the javascript language. Save the follwing script as rate-limit-test.js.
+K6 is configured using the Javascript language. Save the follwing script as `rate-limit-test.js`.
 
-```
+```js
 import http from "k6/http";
 import { sleep } from "k6";
 import { Counter } from "k6/metrics";
@@ -93,7 +101,7 @@ export default function() {
 }
 ```
 
-Using the dockerised version of k6 we'll run a test mimicking 20 users doing 20 TPS against your API proxy for 30 seconds. Replace <your_url_here> with an endpoint of your proxy.
+Using the dockerised version of k6 we'll run a test mimicking 20 users doing 20 TPS against your API proxy for 30 seconds. Replace `<your_url_here>` with an endpoint of your proxy.
 
 ```
 docker run -i loadimpact/k6 run - -e TEST_URL="<your_url_here>" --rps 20 -u 20 -m 20 -d 30s < rate-limit-test.js
@@ -104,7 +112,7 @@ Sample run against a proxy with a 5 TPS rate limit.
 ```
 $ docker run -i loadimpact/k6 run - -e TEST_URL="https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/v2/instruments" --rps 20 -u 20 -m 20 -d 30 < rate-limit-test.js
 ```
-It will produce the final report:
+It produces the final report:
 
 ```
     data_received..............: 485 kB 16 kB/s
@@ -129,11 +137,18 @@ Notice the passed rate closely matching the enforced rate limit.
 
 ### Remove a proxy rate limit
 
-Navigate to the API Proxies tab. Open the API proxy details page by clicking on the API proxy name. On the policies tab and edit the rate limit policy under the Request to backend section. [Clear up the textbox](/Images/central/proxy_no_rate_limit_box.png) and click on the checkbox to save the configuration. A new revision with no rate limit will be created. Deploy the new revision for the configuration to take effect.
+1. Navigate to the **API Proxies** tab. 
+2. Click the API proxy name to open the API proxy details page. 
+3. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section.
+4. Clear the text field and click the checkbox to save the configuration.
+
+![Clear up the textbox](/Images/central/proxy_no_rate_limit_box.png)
+
+A new revision with no rate limit is created. Deploy the new revision for the configuration to take effect.
 
 ## Use the AMPLIFY CLI to configure rate limiting on your API
 
-Make sure you're logged in AMPLIFY CLI using the service account.
+Ensure that you are logged in to AMPLIFY CLI using the service account.
 
 ### Create the configuration file and promote your API
 
@@ -170,7 +185,7 @@ Promote the proxy to the test runtime group:
 amplify central proxies promote /myservices/my_service_config.yaml --target="Test Runtime"
 ```
 
-To visualize the API proxy in AMPLIFY Central UI, select **API Proxies** in the left navigation bar, click the appropriate API proxy in the list. Verify the rate limit configuration in the policies tab.
+To visualize the API proxy in AMPLIFY Central UI, select **API Proxies** in the left navigation bar, and click the appropriate API proxy in the list. Verify the rate limit configuration in the **Policies** tab.
 
 ### Remove the rate limit configuration
 
@@ -201,4 +216,4 @@ Promote the new API version and verify that the API proxy is not rate limited an
 
 ## Review
 
-You have learned how rate limiting can help you provide a better API experience to consumers and how configure a rate limit on your API using both the AMPLIFY Central UI and the AMPLIFY CLI.
+You have learned how rate limiting can help you provide a better API experience to consumers and how to configure a rate limit on your API using both the AMPLIFY Central UI and the AMPLIFY CLI.
