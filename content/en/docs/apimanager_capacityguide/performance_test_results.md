@@ -1,9 +1,9 @@
 ---
 title: Performance test results
 linkTitle: Performance test results
-date: 2019-09-26
-description: This section presents the test results for all API Management configurations.
 weight: "6"
+date: 2019-09-26
+description: Presents the single node and multi-node performance results achieved for all API Management configurations.
 ---
 
 ## Test results terminology

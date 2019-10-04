@@ -1,10 +1,11 @@
 ---
 title: Performance test multi-node HA scenarios
 linkTitle: Performance test multi-node HA scenarios
-date: 2019-09-26
-description: Multi-node HA tests concentrate on the performance of API Manager. The following, more constrained set of scenarios is used to test the scalability
 weight: "5"
+date: 2019-09-26
+description:  Introduces the multi-node performance scenarios that were tested.
 ---
+Multi-node HA tests concentrate on the performance of API Manager. The following, more constrained set of scenarios is used to test the scalability.
 
 ## API Manager proxy scenarios
 
