@@ -1,9 +1,9 @@
 ---
 title: Troubleshoot container deployments
 linkTitle": Troubleshoot container deployments
+weight: 13
 date: 2019-09-18
 description: This topic describes problems you might encounter when running API Gateway and API Manager in Docker containers, and provides possible solutions. 
-weight: 13
 ---
 
 ## Reset the default API administrator password
@@ -14,19 +14,19 @@ After the default API administrator account has been created in Apache Cassandra
 
 * Use the `docker exec` command to connect to the running Admin Node Manager Docker container.
 
-``` {space="preserve"}
+```
     docker exec -it <anm-container-id> bash
 ```
 
 * Change to the `bin` directory.
 
-``` {space="preserve"}
+```
     cd /opt/Axway/apigateway/posix/bin
 ```
 
 * Run the `setup-apimanager` script with the `--resetPassword` option.
 
-``` {space="preserve"}
+```
     ./setup-apimanager --resetPassword
 ```
 
@@ -38,25 +38,23 @@ To run the `kpsadmin` tool in a container deployment, you must connect to the Ad
 
 * Use the `docker exec` command to connect to the running Admin Node Manager Docker container.
 
-``` {space="preserve"}
+```
     docker exec -it <anm-container-id> bash
 ```
 
 * Change to the `bin` directory.
 
-``` {space="preserve"}
+```
     cd /opt/Axway/apigateway/posix/bin
 ```
 
 * Run the `kpsadmin` tool.
 
-``` {space="preserve"}
+```
     ./kpsadmin
 ```
 
-For more information on using `kpsadmin`, see the
-[API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5)
-.
+For more information on using `kpsadmin`, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
 
 ## Logs do not persist when container stops
 
@@ -68,8 +66,4 @@ For more information on using `kpsadmin`, see the
 
 Distributed Ehcache is not supported in a container deployment.
 
-You can use Apache Cassandra as a distributed data store. This involves using the KPS scripting API, which enables you to perform CRUD operations and interact directly with a KPS. For details, see
-[Use the KPS scripting API](/csh?context=291&product=prod-api-gateway-77)
-in the
-[API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5)
-.
+You can use Apache Cassandra as a distributed data store. This involves using the KPS scripting API, which enables you to perform CRUD operations and interact directly with a KPS. For details, see [Use the KPS scripting API](/csh?context=291&product=prod-api-gateway-77) in the [API Gateway Key Property Store User Guide](/bundle/PIGateway_77_KPSUserGuide_allOS_en_HTML5).

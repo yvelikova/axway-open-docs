@@ -1,11 +1,12 @@
 ---
-title: Step 1 Create a Docker network
+title: Step 1 - Create a Docker network
 linkTitle: Step 1 Create a Docker network
 date: 2019-09-18
-description: You must run the `docker network` command to create a Docker network for the API Gateway domain. This enables all of the containers in the domain to communicate with each another easily (for example, the API Gateway container and Admin Node Manager container). A containerized API Gateway domain must include one Admin Node Manager container and one or more API Gateway containers.
+description: 
 ---
+You must run the `docker network` command to create a Docker network for the API Gateway domain. This enables all of the containers in the domain to communicate with each another easily (for example, the API Gateway container and Admin Node Manager container). A containerized API Gateway domain must include one Admin Node Manager container and one or more API Gateway containers.
 
-Run the `docker network` command
+Run the `docker network` command:
 
 ```
 $ docker network create api-gateway-domain

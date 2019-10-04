@@ -1,9 +1,9 @@
 ---
 title: Upgrade a container deployment
 linkTitle: Upgrade a container deployment
-date: 2019-09-18
-description: This topic describes how to upgrade your API Gateway or API Manager container deployment from 7.6.2 or later to 7.8. In a container deployment, an upgrade is rolled out using an orchestration tool (for example, Kubernetes or OpenShift) after new Docker images containing the upgrade are pushed to the Docker registry. This enables you to perform a rolling zero downtime update of services.
 weight: 11
+date: 2019-09-18
+description: This page describes how to upgrade your API Gateway or API Manager container deployment from 7.6.2 or later to 7.8. In a container deployment, an upgrade is rolled out using an orchestration tool (for example, Kubernetes or OpenShift) after new Docker images containing the upgrade are pushed to the Docker registry. This enables you to perform a rolling zero downtime update of services.
 ---
 
 ## Upgrade to 7.8
@@ -13,7 +13,7 @@ To perform an upgrade, follow these steps:
 * Download the API Gateway 7.8 Linux installer from Axway Support at [https://support.axway.com](https://support.axway.com/).
 * Create a new base image using the `--installer` option to build the image from the downloaded API Gateway 7.8 installer.  
 
-``` {space="preserve"}
+```
     $ cd emt_containers-<version>
     $ ./build_base_image.py
     --installer=apigw-770-installer.run
@@ -25,20 +25,20 @@ To perform an upgrade, follow these steps:
 * Add any custom configuration to the merge directory. For example, to add a custom `envSettings.props` file to your image, copy `envSettings.props` to `/tmp/apigateway/conf/`.
 * Create new Admin Node Manager and API Gateway images using the `--fed` option to build the API Gateway image from the upgraded `fed` and the `--merge-dir` option to specify the merge directory containing the custom configuration. For example:
 
-``` {space="preserve"}
+```
     $ cd emt_containers-<version>
 
-    $ ./build_anm_image.py 
-    --domain-cert=certs/mydomain/mydomain-cert.pem 
-    --domain-key=certs/mydomain/mydomain-key.pem 
+    $ ./build_anm_image.py
+    --domain-cert=certs/mydomain/mydomain-cert.pem
+    --domain-key=certs/mydomain/mydomain-key.pem
     --domain-key-pass-file=/tmp/pass.txt
     --anm-username=gwadmin --anm-pass-file=/tmp/gwadminpass.txt
     --merge-dir=/tmp/apigateway
 
-    $ ./build_gw_image.py 
-    --license=/tmp/api_gw.lic 
-    --domain-cert=certs/mydomain/mydomain-cert.pem 
-    --domain-key=certs/mydomain/mydomain-key.pem 
+    $ ./build_gw_image.py
+    --license=/tmp/api_gw.lic
+    --domain-cert=certs/mydomain/mydomain-cert.pem
+    --domain-key=certs/mydomain/mydomain-key.pem
     --domain-key-pass-file=/tmp/pass.txt
     --fed=my-upgraded-fed.fed --fed-pass-file=/tmp/my-group-fedpass.txt
     --merge-dir=/tmp/apigateway

@@ -20,13 +20,13 @@ The mapping feature allows to give only view permission to a user group over the
 
 {{< alert title="Caution" color="warning" >}}The combined use of API Portal user groups mapping, the built-in Joomla! Access Control List (ACL), and the user groups feature require advanced knowledge and experience with Joomla!. Incorrect configuration may result in API Portal malfunctioning. {{< /alert >}}
 
-For more details about Joomla! ACL and User Group management, see Joomla! official documentation.
+For more details about Joomla! ACL and User Group management, see [Joomla! official documentation](https://docs.joomla.org/Special:MyLanguage/J3.x:Access_Control_List_Tutorial).
 
 ## User groups mapping table
 
 This section describes the user groups mapping table, available from **Components > API Portal > User Groups Mapping**.
 
-The table consists of five columns: **Roles**, **Org.Admin**, **Developer**, **Organizations**, **Email Pattern**.
+The table consists of five columns: **Roles**, **Org. Admin**, **Developer**, **Organizations**, **Email Pattern**.
 
 **Roles** - Displays all the Joomla! user groups.
 
@@ -41,6 +41,8 @@ The table consists of five columns: **Roles**, **Org.Admin**, **Developer**, **O
 ![User groups mapping table](/Images/APIPortal/role_mapping_expanded.png)
 
 The **Search** searches for a given term and automatically expands the rows with the matches.
+
+The mapping options are applied individually and cannot be combined. This means that you can apply one mapping setting (Organizations, Email Pattern, and so on) *OR* another, and you cannot, for example, configure a mapping of an organization *AND* a certain email pattern to a user group.  
 
 The mapping takes effect on a user's next login to API Portal.
 
