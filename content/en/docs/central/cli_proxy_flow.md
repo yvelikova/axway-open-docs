@@ -143,7 +143,7 @@ If you specify `api-key` as the client authentication policy, you must specify t
 
 `backendAuth` is an optional field. If it is not specified, no back-end authentication is enabled. If you specify `auth-http-basic` as the back-end authentication policy, the password can be empty.
 
-It is best to keep the YAML configuration file in the same source control repository as the source code of your service, so that you can update the configuration file when you make changes to the code for your 
+It is best to keep the YAML configuration file in the same source control repository as the source code of your service, so that you can update the configuration file when you make changes to the code for your service.
 
 ## Create an API proxy
 
