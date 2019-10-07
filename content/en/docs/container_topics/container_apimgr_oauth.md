@@ -1,6 +1,6 @@
 ---
  title :  Deploy API Manager or OAuth in Docker containers 
- linkTitle :  Deploy API Manager or OAuth in Docker containers 
+ linkTitle :  Deploy API Manager or OAuth 
  weight: 6
  date :  2019-09-18 
  description :  Deploy API Manager or OAuth services in your API Gateway containers.

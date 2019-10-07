@@ -1,9 +1,9 @@
 ---
 title:  Deploy API Gateway Analytics in Docker containers 
-linkTitle:  Deploy API Gateway Analytics in Docker containers
+linkTitle:  Deploy API Gateway Analytics
 weight: 7
 date: 2019-09-18
-description: Create an API Gateway Analytics Docker image and how to start an API Gateway Analytics Docker container.
+description: Create an API Gateway Analytics Docker image and start an API Gateway Analytics Docker container.
 ---
 
 These steps are optional and only for users who wish to use API Gateway Analytics monitoring and reporting in their environment. In a containerized deployment, API Gateway Analytics runs as a standalone client of the metrics database.
@@ -28,7 +28,7 @@ You must specify the following as options when using the `build_aga_image.py` sc
     * Standard RHEL7 Docker image downloaded from the [Red Hat Docker registry](https://access.redhat.com/containers)
     * If you specify a custom CentOS7 or RHEL7-based OS Docker image, Docker first tries to find the custom image in the local registry, and then tries to download it from a remote registry
 
-{{< alert title="Note" color="primary" >}}You must have an RHEL7 license to build a base API Gateway image based on an RHEL7 OS.{{< /alert >}}
+You must have an RHEL7 license to build a base API Gateway image based on an RHEL7 OS.
 
 This script also supports additional options when generating an API Gateway Analytics image. For example, you can:
 
@@ -48,16 +48,18 @@ The following examples show how you can use this script to build API Gateway Ana
 
 The following example creates a simple API Gateway Analytics Docker image using a default administrator user and default connection for the metrics database. This approach is recommended in a development environment only.
 
-* Do not use default options on production systems. The `--default-user` option is provided only as a convenience for development environments.
+Do not use default options on production systems. The `--default-user` option is provided only as a convenience for development environments.
 
-* Use the `--merge-dir` option to specify the `analytics` directory containing the JDBC driver JAR file for the specified metrics database in the `ext/lib` directory.
-    * The merge directory must be called `analytics` and must have the same directory structure as the `analytics` directory of an API Gateway Analytics installation.
-    * Copy the JAR file to a new directory `/tmp/analytics/ext/lib/` and specify `/tmp/analytics` to the `--merge-dir` option.
+Use the `--merge-dir` option to specify the `analytics` directory containing the JDBC driver JAR file for the specified metrics database in the `ext/lib` directory.
 
-* Use the metrics options to specify the URL, user name, and password for your metrics database. If not specified, the metrics options have the following default values:
-    * `--metrics-db-url`: Defaults to `${environment.METRICS_DB_URL}`
-    * `--metrics-db-username`: Defaults to `${environment.METRICS_DB_USERNAME}`
-    * `--metrics-db-pass-file`: Default value for password if password file not specified is `${environment.METRICS_DB_PASS}`
+* The merge directory must be called `analytics` and must have the same directory structure as the `analytics` directory of an API Gateway Analytics installation.
+* Copy the JAR file to a new directory `/tmp/analytics/ext/lib/` and specify `/tmp/analytics` to the `--merge-dir` option.
+
+Use the metrics options to specify the URL, user name, and password for your metrics database. If not specified, the metrics options have the following default values:
+
+* `--metrics-db-url`: Defaults to `${environment.METRICS_DB_URL}`
+* `--metrics-db-username`: Defaults to `${environment.METRICS_DB_USERNAME}`
+* `--metrics-db-pass-file`: Default value for password if password file not specified is `${environment.METRICS_DB_PASS}`
 
 For example:
 
@@ -69,22 +71,24 @@ cd emt_containers-<version>
 This example creates an API Gateway Analytics Docker image named `apigw-analytics` with a tag of `1.0`. This image has the following characteristics:
 
 * Based on a standard CentOS7 Docker image
-    * Uses a default user name of `admin` and a default password for the API Gateway Analytics administrator user
-    * Uses default values for the metrics database
-    * Uses a specified merge directory (containing the JDBC driver JAR file for the metrics database) that is merged into the API Gateway Analytics image
+* Uses a default user name of `admin` and a default password for the API Gateway Analytics administrator user
+* Uses default values for the metrics database
+* Uses a specified merge directory (containing the JDBC driver JAR file for the metrics database) that is merged into the API Gateway Analytics image
 
 ### Create an API Gateway Analytics image for a production environment
 
 The following example creates an API Gateway Analytics Docker image using a specified API Gateway Analytics administrator user and specified connection details for the metrics database. This is the recommended approach in a production environment.
 
-* Use the `--merge-dir` option to specify the `analytics` directory containing the JDBC driver JAR file for the specified metrics database in the `ext/lib` directory.
-    * The merge directory must be called `analytics` and must have the same directory structure as the `analytics` directory of an API Gateway Analytics installation.
-    * Copy the JAR file to a new directory `/tmp/analytics/ext/lib/` and specify `/tmp/analytics` to the `--merge-dir` option.
+Use the `--merge-dir` option to specify the `analytics` directory containing the JDBC driver JAR file for the specified metrics database in the `ext/lib` directory.
 
-* Use the metrics options to specify the URL, user name, and password for your metrics database. If not specified, the metrics options have the following default values:
-    * `--metrics-db-url`: Defaults to `${environment.METRICS_DB_URL}`
-    * `--metrics-db-username`: Defaults to `${environment.METRICS_DB_USERNAME}`
-    * `--metrics-db-pass-file`: Default value for password if password file not specified is `${environment.METRICS_DB_PASS}`
+* The merge directory must be called `analytics` and must have the same directory structure as the `analytics` directory of an API Gateway Analytics installation.
+* Copy the JAR file to a new directory `/tmp/analytics/ext/lib/` and specify `/tmp/analytics` to the `--merge-dir` option.
+
+Use the metrics options to specify the URL, user name, and password for your metrics database. If not specified, the metrics options have the following default values:
+
+* `--metrics-db-url`: Defaults to `${environment.METRICS_DB_URL}`
+* `--metrics-db-username`: Defaults to `${environment.METRICS_DB_USERNAME}`
+* `--metrics-db-pass-file`: Default value for password if password file not specified is `${environment.METRICS_DB_PASS}`
 
 For example:
 
@@ -110,10 +114,10 @@ docker run -it --name=analytics -p 8040:8040 --network=api-gateway-domain -v /tm
 
 This example performs the following:
 
-* Starts an API Gateway Analytics container named `analytics` from an image named `apigw-analytics:1.0`. You must specify the name of the API Gateway Analytics Docker image that you created in [Create an API Gateway Analytics Docker image](#Create).
+* Starts an API Gateway Analytics container named `analytics` from an image named `apigw-analytics:1.0`. You must specify the name of the API Gateway Analytics Docker image that you created in [Create an API Gateway Analytics Docker image](#create-an-api-gateway-analytics-docker-image).
 * Binds the port 8040 of the container to port `8040` on the host machine. This enables you to access the API Gateway Analytics web UI on port `8040` of your host machine.
 * Mounts the host directory `/tmp/reports` inside the container to store API Gateway Analytics reports.
-* Uses environment variables to specify connection details for the metrics database. The metrics database must be running as detailed in [Step 2 – Start external data stores](/docs/container_topics/containers_docker_setup/docker_script_cass).
+* Uses environment variables to specify connection details for the metrics database. The metrics database must be running as detailed in [Start external data stores](/docs/container_topics/containers_docker_setup/docker_scripts_prereqs/#start-external-data-stores).
 
 To run the container in the background, use the `-d` option, for example:
 

@@ -3,12 +3,12 @@ title: Redirect logs to stdout
 linkTitle: Redirect logs to stdout
 weight: 8
 date: 2019-09-18
-description: You can configure the API Gateway logging system to redirect the trace and traffic logs to `stdout` instead of to separate files. This allows the logs to be read directly from each container by an external logging service (for example, Elastic Stack or Splunk).
+description: Configure the API Gateway logging system to redirect the trace and traffic logs to `stdout` instead of to separate files, allowing the logs to be read directly from each container by an external logging service (for example, Elastic Stack or Splunk).
 ---
 
 ## Trace logs
 
-The trace log behavior can be modified through the `trace.xml`file or the system environment variables.
+The trace log behavior can be modified through the `trace.xml` file or the system environment variables.
 
 {{< alert title="Note" color="primary" >}}The environment variables override the `trace.xml` file settings. This enables the logging behavior of individual containers to be defined at runtime.{{< /alert >}}
 
@@ -60,4 +60,4 @@ APIGW_LOG_OPENTRAFFIC_OUTPUT=stdout
 
 For more information on trace logging and open traffic logging, see the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/). This guide also describes the open logging JSON schema.
 
-For more information on the environment variables that you can specify at runtime, see [Environment variables reference](/docs/container_topics/container_env_variables#Environm).
+For more information on the environment variables that you can specify at runtime, see [Environment variables reference](/docs/container_topics/container_env_variables/#environment-variables-reference).
