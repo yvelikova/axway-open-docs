@@ -1,10 +1,11 @@
 ---
-title: Elastic deployment in the cloud
-linkTitle: Elastic deployment in the cloud
+title: Elastic deployment overview
+linkTitle: Overview
 weight: 2
 date: 2019-09-18
-description: Deploy API Gateway and API Manager in Docker containers on a cloud platform hosted by infrastructure-as-a-service (IaaS) providers, and use the elastic capability that their automation tools and techniques provide. This enables you to manage the load on your system easily, adding and removing nodes as needed.
+description: Overview of the elastic deployment process and an example containerized topology. 
 ---
+Deploy API Gateway and API Manager in Docker containers on a cloud platform hosted by infrastructure-as-a-service (IaaS) providers, and use the elastic capability that their automation tools and techniques provide. This enables you to manage the load on your system easily, adding and removing nodes as needed.
 
 ## Deployment process
 

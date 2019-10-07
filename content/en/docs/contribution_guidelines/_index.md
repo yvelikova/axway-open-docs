@@ -2,7 +2,7 @@
 title: "Contribution guidelines"
 linkTitle: "Contribution guidelines"
 no_list: true
-weight: 20
+weight: 30
 description: >
   How to contribute to Axway-Open-Docs
 ---

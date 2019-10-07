@@ -3,14 +3,14 @@ title: Get started with API Gateway in containers
 linkTitle: Get started
 weight: 3
 date: 2019-09-18
-description: Aimed at users of earlier versions of API Gateway who are deploying API Gateway in containers for the first time. It highlights the differences between container deployments (API Gateway 7.6.0 and later) and classic deployments (API Gateway 7.5.3 and earlier) and provides answers to frequently asked questions (FAQ) about deploying API Gateway in containers.
+description: Understand the differences between container deployments (API Gateway 7.6.0 and later) and classic deployments (API Gateway 7.5.3 and earlier) and get answers to frequently asked questions (FAQ) about deploying API Gateway in containers.
 ---
 
 ## How to deploy API Gateway in Docker containers
 
 In API Gateway version 7.6.0 and later, you can deploy API Gateway in Docker containers and run it in externally managed topology (EMT) mode. This involves creating Docker images for the Admin Node Manager and API Gateway, and starting Docker containers from those images. For more details, see [Deploy API Gateway in Docker containers](/docs/container_topics/containers_docker_setup).
 
-## How container deployments differ from classic deployments {#How}
+## How container deployments differ from classic deployments
 
 There are significant differences when deploying in containers and running in EMT mode, compared to deploying and running in non-containerized classic mode.
 
@@ -23,7 +23,7 @@ There are significant differences when deploying in containers and running in EM
 
 {{< alert title="Note" color="primary" >}}In a development environment, when you deploy in containers, you can use the `EMT_DEPLOYMENT_ENABLED` environment variable when starting an API Gateway container to enable deploying changes directly from Policy Studio to the running container. {{< /alert >}}
 
-## Frequently asked questions about container deployments {#Frequent}
+## Frequently asked questions about container deployments
 
 ### How do you deploy changes in configuration from Policy Studio
 
