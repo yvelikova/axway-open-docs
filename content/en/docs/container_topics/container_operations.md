@@ -1,23 +1,22 @@
 ---
 title: Operate and monitor API Gateway containers
-linkTitle: Operate and monitor API Gateway containers
+linkTitle: Operate and monitor
 weight: 8
 date: 2019-09-18
-description: You can use the API Gateway Manager web UI to operate and monitor API Gateways running in containers.
+description: Use the API Gateway Manager web UI to operate and monitor API Gateways running in containers.
 ---
 
 ## Connect to API Gateway Manager
 
 To access the web-based API Gateway Manager UI in a container environment, enter the following URL in a web browser:
 
-``` 
+```
 https://HOST:8090/
 ```
 
-`HOST`
-refers to the host name or IP address of the host machine (for example, `https://localhost:8090/`).
+`HOST` refers to the host name or IP address of the host machine (for example, `https://localhost:8090/`).
 
-{{< alert title="Note" color="primary" >}}To access API Gateway Manager from your host machine you must have mapped the Admin Node Manager container port 8090 to port 8090 on your host machine, as detailed in [Step 6 – Start the Admin Node Manager Docker container](/docs/container_topics/containers_docker_setup/docker_script_anmstart).{{< /alert >}}
+To access API Gateway Manager from your host machine you must have mapped the Admin Node Manager container port 8090 to port 8090 on your host machine, as detailed in [Start the Admin Node Manager Docker container](/docs/container_topics/containers_docker_setup/docker_script_anmimage/#start-the-admin-node-manager-docker-container).
 
 ## Monitor API Gateway containers in API Gateway Manager
 
@@ -60,5 +59,4 @@ For more information on monitoring traffic, see [Monitor services in API Gateway
 
 For more information on monitoring topology, see [Manage domain topology in API Gateway Manager](/csh?context=107&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
 
-For more information on viewing logs and events, and configuring dynamic settings, see [Configure API Gateway logging and events](/csh?context=108&product=prod-api-gateway-77) in the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+For more information on viewing logs and events, and configuring dynamic settings, see [Configure API Gateway logging and events](/csh?context=108&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
