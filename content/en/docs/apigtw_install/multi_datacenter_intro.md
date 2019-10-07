@@ -12,7 +12,7 @@ This page describes the infrastructure required for API Management multi-datacen
 
 The following diagram shows the minimum infrastructure required for API Management multi-datacenter deployment.
 
-![Multi-datacenter overview](/images/apigtw_install/multi-dc_overview.png)
+![Multi-datacenter overview](/Images/APIGateway/multi-dc_overview.png)
 
 This deployment architecture is described as follows:
 
@@ -39,9 +39,9 @@ This section describes what API Management data can be persisted and where.
 |                                | * Node Manager/Admin Node Manager: ` INSTALL_DIR/apigateway/conf/fed`                    |
 |                                | Alternatively, you can use a deployment archive (`.fed` file).                           |
 |                                | For more details, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).|
-+--------------------------------|-----------------------------------|
-| API Gateway logs               | Files on disk: <br> * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/logs`<br> * Node Manager/Admin Node Manager: `INSTALL_DIR/apigateway/logs`                           |
-| API Gateway traffic monitoring | Files on disk: <br> * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/conf/opsdb.d`<br> * Node Manager/Admin Node Manager: `INSTALL_DIR/apigateway/conf/opsdb.d`                   |
++--------------------------------|------------------------------------------------------------------------------------------|
+| API Gateway logs               | Files on disk: <br> * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/logs`<br> * Node Manager/Admin Node Manager:           |                                | `INSTALL_DIR/apigateway/logs`    |
+| API Gateway traffic monitoring | Files on disk: <br> * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/conf/opsdb.d`<br> * Node Manager/Admin Node Manager: `INSTALL_DIR/apigateway/conf/opsdb.d`|
 | API Gateway KPS custom tables  | Cassandra or RDBMS  |
 
 ### API Manager data
@@ -50,7 +50,7 @@ This section describes what API Management data can be persisted and where.
 | Data type                         | Storage location                  |
 +===================================+===================================+
 | API Manager catalog, client       | Cassandra                         |
-| registry,\                        |                                   |
+| registry,                         |                                   |
 | web-based settings                |                                   |
 +-----------------------------------+-----------------------------------+
 | API Manager quota counters        | In memory, Cassandra, or RDBMS    |

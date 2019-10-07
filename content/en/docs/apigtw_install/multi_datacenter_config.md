@@ -32,18 +32,17 @@ The recommended configuration for each data type is as follows:
 
 | Data type      | Replication between datacenters   |
 |---------------|---------------------------------------|
-| API Manager catalog, client registry, web-based settings | Automatic. It is best to use Cassandra with replication between datacenters. See [Configure Cassandra for multiple datacenters](#configure_cassandra_for_multiple_datacenters).           |
-| API Manager quota counters                               | In memory only, or automatic when using external storage (Cassandra or RDBMS). See [Configure API Manager quota in multiple datacenters](#Configur2). See also [Configure Cassandra for multiple datacenters](#Cassandr), or your RDBMS documentation.  |
+| API Manager catalog, client registry, web-based settings | Automatic. It is best to use Cassandra with replication between datacenters. See [Configure Cassandra for multiple datacenters](#cassandra_multiple).  |
+| API Manager quota counters                               | In memory only, or automatic when using external storage (Cassandra or RDBMS). See [Configure API Manager quota in multiple datacenters](#API_Manager_quota). See also [Configure Cassandra for multiple datacenters](#cassandra_multiple), or your RDBMS documentation.  |
 | API Manager metrics                                      | Automatic. See your RDBMS documentation. |
 
 ### API Gateway Analytics data
 
 API Gateway Analytics configuration
 
-Configure Cassandra for multiple datacenters
---------------------------------------------
+## Configure Cassandra for multiple datacenters {#cassandra_multiple}
 
-Cassandra is required to store data for API Manager data, and also recommended for API Gateway custom KPS tables. For details on the recommended Cassandra architecture, see [Multi-datacenter deployment architecture](multi_datacenter_intro.htm#Multi-da).
+Cassandra is required to store data for API Manager data, and also recommended for API Gateway custom KPS tables. For details on the recommended Cassandra architecture, see [Multi-datacenter deployment architecture](/docs/apigtw_install/multi_datacenter_intro).
 
 {{< alert title="Note" color="primary" >}}You must install and configure Cassandra on each node in both datacenters before installing and configuring API Gateway and API Manager.{{< /alert >}}
 
@@ -51,39 +50,22 @@ Cassandra is required to store data for API Manager data, and also recommended f
 
 The following prerequisites apply to Cassandra in a multi-datacenter production environment:
 
-Ensure that Cassandra version 2.2.12 is installed. For details, see [Install an Apache Cassandra database](cassandra_install.htm). For details on upgrading Cassandra, see
-[Upgrade Apache Cassandra](/csh?context=801&product=prod-api-gateway-77)
-in the
-[API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5)
-.
-
-You must have at least three Cassandra nodes per datacenter. Cassandra must be installed on each node in the cluster, but should not be started until the Cassandra cluster is fully configured. For more details, see [Install an Apache Cassandra database](cassandra_install.htm).
-
-Configure `JAVA_HOME` to a JRE 1.8 installation.
-
-Each Cassandra node must have Python 2.7.x installed.
-
-Time must be synchronized on all servers.
-
-Determine a naming convention for each datacenter and rack, for example:
-
--   `DC1`, `DC2`
-
->
-
--   `RACK1`, `RACK2`, `RACK3`
-
-{{< alert title="Caution" color="warning" >}}The rack names must be exactly the same in each datacenter. You should choose the names carefully because renaming a datacenter is not possible.{{< /alert >}}
-
-Determine the seed nodes. You must have at least two Cassandra seed nodes per datacenter.
-
-Choose a unique name for the Cassandra cluster.
-
-To avoid firewall issues, you must open the following ports to allow bi-directional communication among the nodes:
-
--   `7001`: Cassandra TLS/SSL inter-node cluster communication
--   `7199`: Cassandra JMX monitoring port (only enabled on `localhost` for security reasons, you must use SSH to connect the machine).
--   `9042`: CQL native client port (only required for an API Gateway or API Manager client connection to Cassandra)
+* Ensure that Cassandra version 2.2.12 is installed. For details, see [Install an Apache Cassandra database](cassandra_install.htm). For details on upgrading Cassandra, see
+[Upgrade Apache Cassandra](/csh?context=801&product=prod-api-gateway-77) in the [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5).
+* You must have at least three Cassandra nodes per datacenter. Cassandra must be installed on each node in the cluster, but should not be started until the Cassandra cluster is fully configured. For more details, see [Install an Apache Cassandra database](cassandra_install.htm).
+* Configure `JAVA_HOME` to a JRE 1.8 installation.
+* Each Cassandra node must have Python 2.7.x installed.
+* Time must be synchronized on all servers.
+* Determine a naming convention for each datacenter and rack, for example:
+    * `DC1`, `DC2`
+    * `RACK1`, `RACK2`, `RACK3`
+    {{< alert title="Caution" color="warning" >}}The rack names must be exactly the same in each datacenter. You should choose the names carefully because renaming a datacenter is not possible.{{< /alert >}}
+* Determine the seed nodes. You must have at least two Cassandra seed nodes per datacenter.
+* Choose a unique name for the Cassandra cluster.
+* To avoid firewall issues, you must open the following ports to allow bi-directional communication among the nodes:
+    * `7001`: Cassandra TLS/SSL inter-node cluster communication
+    * `7199`: Cassandra JMX monitoring port (only enabled on `localhost` for security reasons, you must use SSH to connect the machine).
+    * `9042`: CQL native client port (only required for an API Gateway or API Manager client connection to Cassandra)
 
 ### Configure your cassandra.yaml file
 
@@ -93,63 +75,62 @@ On each node in the cluster, you must configure the following properties in the 
 
 Configure the following settings in `cassandra.yaml`:
 
--   `cluster_name`: Your chosen cluster name, common across both datacenters (for example, `cassandra-cluster1`)
--   `num_tokens`: `256`
--   `endpoint_snitch`: `GossipingPropertyFileSnitch`
--   `-seeds`: Internal IP address for all seed nodes. Each datacenter should have its own seed node IP addresses first, followed by the other datacenters seed nodes. This is critical for replication.
--   For example:
-    -   DC1 seed nodes: `192.168.10.1`, `192.168.10.2`
-    -   DC2 seed nodes: `192.168.20.1`, `192.168.20.2`
-    -   DC1 configuration:\
-        ` -seeds`: `192.168.10.1`, `192.168.10.2`, `192.168.20.1`, `192.168.20.2`
-    -   DC2 configuration:\
-        `-    seeds`: `192.168.20.1`, `192.168.20.2`, `192.168.10.1`, `192.168.10.2`
--   `listen_address`: Specify the *private* IP address of the current node that you are configuring.
--   `broadcast_address`: Specify the *public* IP address of the node. For example, this is important when using a VPN with Network Address Translation (NAT) of IP addresses. Communication between datacenters can only take place using an external IP address.
--   `start_native_transport`: `true`
--   `native_transport_port`: `9042`
+* `cluster_name`: Your chosen cluster name, common across both datacenters (for example, `cassandra-cluster1`)
+* `num_tokens`: `256`
+* `endpoint_snitch`: `GossipingPropertyFileSnitch`
+* `-seeds`: Internal IP address for all seed nodes. Each datacenter should have its own seed node IP addresses first, followed by the other datacenters seed nodes. This is critical for replication.
+    For example:
+    * DC1 seed nodes: `192.168.10.1`, `192.168.10.2`
+    * DC2 seed nodes: `192.168.20.1`, `192.168.20.2`
+    * DC1 configuration:
+        * `-seeds`: `192.168.10.1`, `192.168.10.2`, `192.168.20.1`, `192.168.20.2`
+    * DC2 configuration:
+        * `-seeds`: `192.168.20.1`, `192.168.20.2`, `192.168.10.1`, `192.168.10.2`
+* `listen_address`: Specify the *private* IP address of the current node that you are configuring.
+* `broadcast_address`: Specify the *public* IP address of the node. For example, this is important when using a VPN with Network Address Translation (NAT) of IP addresses. Communication between datacenters can only take place using an external IP address.
+* `start_native_transport`: `true`
+* `native_transport_port`: `9042`
 
-{{< alert title="Note" color="primary" >}}You must remove `cassandra-topology.properties` from `cassandra/conf/`. This is not needed when `GossipingPropertyFileSnitch` is set and could cause conflicts.{{< /alert >}}
+    {{< alert title="Note" color="primary" >}}You must remove `cassandra-topology.properties` from `cassandra/conf/`. This is not needed when `GossipingPropertyFileSnitch` is set and could cause conflicts.{{< /alert >}}
 
 #### Configure authentication settings
 
-It is best to enable authentication. Set the following properties:
+It is recommended to enable authentication. Set the following properties:
 
--   `authenticator`: `org.apache.cassandra.auth.PasswordAuthenticator`
--   `authorizer`: `org.apache.cassandra.auth.CassandraAuthorizer`
-
-{{< alert title="Note" color="primary" >}}When these properties are set, you must change the default Cassandra user.{{< /alert >}}
+* `authenticator`: `org.apache.cassandra.auth.PasswordAuthenticator`
+* `authorizer`: `org.apache.cassandra.auth.CassandraAuthorizer`
+*{{< alert title="Note" color="primary" >}}When these properties are set, you must change the default Cassandra user.{{< /alert >}}
 
 #### Configure TLS/SSL traffic encryption
 
-It is best to enable inter-node and client-to-node TLS/SSL encryption. API Management supports TLS v1.2.
+It is recommended to enable inter-node and client-to-node TLS/SSL encryption. API Management supports TLS v1.2.
 
-**Node-to-node encryption**
+**Node-to-node encryption:**
 
 To enable node-to-node TLS/SSL traffic encryption, set the following properties:
 
 `server_encryption_options`:
 
--   `internode_encryption`: `all`
--   `keystore`: `my-server-keystore.jks`
--   `keystore_password`: `MY_KEYSTORE_PASSWORD`
--   `truststore`: `my-server-truststore.jks`
--   `truststore_password`: `MY_TRUSTSTORE_PASSWORD`
--   `require_client_auth`: `true`
+* `internode_encryption`: `all`
+* `keystore`: `my-server-keystore.jks`
+* `keystore_password`: `MY_KEYSTORE_PASSWORD`
+* `truststore`: `my-server-truststore.jks`
+* `truststore_password`: `MY_TRUSTSTORE_PASSWORD`
+* `require_client_auth`: `true`
 
-**Client-to-node encryption**
+**Client-to-node encryption:**
 
 To enable client-to-node SSL traffic encryption, set the following properties:
 
 `client_encryption_options`:
 
--   `enabled`: `true`
--   `optional`: `false`
--   `keystore`: `my-client-keystore.jks`
--   `keystore_password`: `MY_KEYSTORE_PASSWORD`
--   `truststore`: `my-client-truststore.jks`
--   `truststore_password`: `MY_TRUSTSTORE_PASSWORD`
--   `require_client_auth`: `true`
+* `enabled`: `true`
+* `optional`: `false`
+* `keystore`: `my-client-keystore.jks`
+* `keystore_password`: `MY_KEYSTORE_PASSWORD`
+* `truststore`: `my-client-truststore.jks`
+* `truststore_password`: `MY_TRUSTSTORE_PASSWORD`
+* `require_client_auth`: `true`
 
 ### Configure your cassandra-rackdc.properties file
 
@@ -172,11 +153,7 @@ For example:
 
 When you have configured `cassandra.yaml` and `cassandra-rackdc.properties` on all nodes, you can start the seed nodes one at a time, followed by the remaining nodes in each datacenter.
 
-For details on starting Cassandra, see
-[Manage Apache Cassandra](/csh?context=1301&product=prod-api-gateway-77)
-in the
-[API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/)
-.
+For details on starting Cassandra, see [Manage Apache Cassandra](/csh?context=1301&product=prod-api-gateway-77) in the [API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/).
 
 ### Configure cqlsh for TSL/SSL encryption
 
@@ -184,15 +161,15 @@ If the Cassandra cluster has been configured to use client-to-node TSL/SSL encry
 
 To configure `cqlsh` for TSL/SSL, you must provide the following certificates in a `cqlshrc` file:
 
--   `certfile.pem`: Contains the CA or server certificate of the Cassandra node. This is specified in `my-client-keystore.jks`.
--   `usercert.pem`: Contains the client certificate for `cqlsh`. This needs to be added to the Cassandra truststore: `my-client-truststore.jks`
--   `userkey.pem`: Contains the private key of client certificate for `cqlsh`. This cannot contain a passphrase.
+* `certfile.pem`: Contains the CA or server certificate of the Cassandra node. This is specified in `my-client-keystore.jks`.
+* `usercert.pem`: Contains the client certificate for `cqlsh`. This needs to be added to the Cassandra truststore: `my-client-truststore.jks`
+* `userkey.pem`: Contains the private key of client certificate for `cqlsh`. This cannot contain a passphrase.
 
 A sample is provided in `cassandra/conf/cqlshrc.sample`:
 
 When TSL/SSL has been configured, run the following command:
 
-./cqlsh -u cassandra -p MY\_PASSWORD --ssl --cqlshrc=MY\_CQLSHRC\_FILE 192.168.10.1
+`./cqlsh -u cassandra -p MY_PASSWORD --ssl --cqlshrc=MY_CQLSHRC_FILE 192.168.10.1`
 
 ### Configure the default system\_auth keyspace
 
@@ -200,32 +177,28 @@ When all nodes are online, if authentication is enabled, you must set the replic
 
 {{< alert title="Note" color="primary" >}}You must set the replication strategy to `NetworkTopologyStrategy`, and ensure the replication factor is set to the number of nodes per datacenter (for example, `3`).{{< /alert >}}
 
-<div class="indentTableNested">
-
 Naming is case sensitive and the keyspace definition must use the snitch-configured datacenter names used in `cassandra-rackdc.properties`.
-
-</div>
 
 For example, on Cassandra node 1 in DC1, perform the following steps:
 
-1.  Navigate to the `cassandra/bin` directory
-2.  Log in to `cqlsh` using the IP address of the current node. For example:
+1. Navigate to the `cassandra/bin` directory
+2. Log in to `cqlsh` using the IP address of the current node. For example:
 
-./cqlsh -u cassandra -p cassandra 192.168.10.1
+    `./cqlsh -u cassandra -p cassandra 192.168.10.1`
 
-1.  Run the following command:
+3. Run the following command:
 
-`ALTER KEYSPACE "system_auth" WITH REPLICATION = {'class' : 'NetworkTopologyStrategy', 'DC1' : n, 'DC2' : n};`
+    `ALTER KEYSPACE "system_auth" WITH REPLICATION = {'class' : 'NetworkTopologyStrategy', 'DC1' : n, 'DC2' : n};`
 
-1.  In this example, `n` is the number of nodes per datacenter.
-2.  Run `nodetool repair` on each node as follows:
+    In this example, `n` is the number of nodes per datacenter.
 
-./nodetool repair system\_auth
+4. Run `nodetool repair` on each node as follows:
 
-1.  Change the default Cassandra user. For more details, see the [Configuring authentication](https://docs.datastax.com/en/archived/cassandra/2.2/cassandra/configuration/secureConfigNativeAuth.html?hl=authentication) documentation.
+    `./nodetool repair system_auth`
 
-Configure API Management in multiple datacenters
-------------------------------------------------
+5. Change the default Cassandra user. For more details, see the [Configuring authentication](https://docs.datastax.com/en/archived/cassandra/2.2/cassandra/configuration/secureConfigNativeAuth.html?hl=authentication) documentation.
+
+## Configure API Management in multiple datacenters
 
 When the Cassandra cluster has been set up, you can proceed with installing API Gateway and API Manager. You must have at least two API Gateway instances per datacenter.
 
@@ -233,32 +206,34 @@ When the Cassandra cluster has been set up, you can proceed with installing API 
 
 On the first API Gateway host in DC1, perform the following steps:
 
-1.  Install API Gateway and API Manager using the API Gateway installer. Do not select Cassandra, which has already been installed. For more details, see [Install API Manager](install_api_mgmt.htm).
-2.  Register the Admin Node Manager using the `managedomain` command in `INSTALL_DIR/apigateway/posix/bin`.
-3.  Start the Admin Node Manager using the `nodemanager` command.
-4.  Add the API Gateway instance and group using the `managedomain` command.
-5.  Before starting the API Gateway instance, add the Cassandra host names and IP addresses as environment variables in your `envSettings.props` file located in `INSTALL_DIR/apigateway/conf`. For example:
+1. Install API Gateway and API Manager using the API Gateway installer. Do not select Cassandra, which has already been installed. For more details, see [Install API Manager](install_api_mgmt.htm).
+2. Register the Admin Node Manager using the `managedomain` command in `INSTALL_DIR/apigateway/posix/bin`.
+3. Start the Admin Node Manager using the `nodemanager` command.
+4. Add the API Gateway instance and group using the `managedomain` command.
+5. Before starting the API Gateway instance, add the Cassandra host names and IP addresses as environment variables in your `envSettings.props` file located in `INSTALL_DIR/apigateway/conf`. For example:
 
-env.CASS.NAME1=Host 10.1\
-env.CASS.NAME2=Host 10.2\
-env.CASS.NAME3=Host 10.3\
-env.CASS.HOST1=192.168.10.1\
-env.CASS.HOST2=192.168.10.2\
-env.CASS.HOST3=192.168.10.3
+    ```
+    env.CASS.NAME1=Host 10.1\
+    env.CASS.NAME2=Host 10.2\
+    env.CASS.NAME3=Host 10.3\
+    env.CASS.HOST1=192.168.10.1\
+    env.CASS.HOST2=192.168.10.2\
+    env.CASS.HOST3=192.168.10.3
+    ```
 
-1.  Start the API Gateway using the `startinstance` command in `INSTALL_DIR/apigateway/posix/bin`.
-2.  Configure the API Gateway to connect to the Cassandra cluster. In the Policy Studio tree, select **Server Settings > Cassandra**, and configure the following:
-    -   **Keyspace**: Name of the API Gateway Cassandra keyspace to be created when deployed. Defaults to `x${DOMAINID}_${GROUPID}`.
-    -   **Hosts**: Add the environment variable settings that you set in `envSettings.props`. For example:
-    -   ![Set Cassandra hosts using environment variables](/Images/docbook/images/install/cassandra_multi-dc_hosts.png)
-    -   **Authentication**: Enter the Cassandra user name and password that you configured earlier (see [Configure the default system\_auth keyspace](#Configur)).
-    -   **Security**: Select **Enable SSL**, and select a trusted certificate and client certificate. For example:
-3.  Select **File > Configure API Manager** to configure API Manager settings. For more details on configuring API Manager in Policy Studio, see the
+6. Start the API Gateway using the `startinstance` command in `INSTALL_DIR/apigateway/posix/bin`.
+7. Configure the API Gateway to connect to the Cassandra cluster. In the Policy Studio tree, select **Server Settings > Cassandra**, and configure the following:
+    * **Keyspace**: Name of the API Gateway Cassandra keyspace to be created when deployed. Defaults to `x${DOMAINID}_${GROUPID}`.
+    * **Hosts**: Add the environment variable settings that you set in `envSettings.props`. For example:
+        ![Set Cassandra hosts using environment variables](/Images/docbook/images/install/cassandra_multi-dc_hosts.png)
+    * **Authentication**: Enter the Cassandra user name and password that you configured earlier (see [Configure the default system\_auth keyspace](#Configur)).
+    * **Security**: Select **Enable SSL**, and select a trusted certificate and client certificate. For example:
+8. Select **File > Configure API Manager** to configure API Manager settings. For more details on configuring API Manager in Policy Studio, see the
     [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/)
     .
-4.  Click **Deploy** in the toolbar to deploy the updated configuration.
-5.  For all KPS collections, update the read and write consistency levels to **LOCAL\_QUORUM**. For example, in the Policy Studio tree, select **Environment Configuration > Key Property Stores > API Server > Data Sources > Cassandra Storage**, and click **Edit**.
-6.  Repeat this step for each KPS collection using Cassandra (for example, **Key Property Stores > OAuth** and **API Portal** for API Manager). This also applies to any custom KPS collections that you have created.
+9. Click **Deploy** in the toolbar to deploy the updated configuration.
+10. For all KPS collections, update the read and write consistency levels to **LOCAL\_QUORUM**. For example, in the Policy Studio tree, select **Environment Configuration > Key Property Stores > API Server > Data Sources > Cassandra Storage**, and click **Edit**.
+11. Repeat this step for each KPS collection using Cassandra (for example, **Key Property Stores > OAuth** and **API Portal** for API Manager). This also applies to any custom KPS collections that you have created.
 
 ### Update the Cassandra replication settings for the new API Gateway keyspace
 
@@ -266,22 +241,19 @@ When the new API Gateway keyspace has been deployed, you must update its replica
 
 Perform the following steps:
 
-1.  On Cassandra node 1 in DC1, navigate to the `CASSANDRA_HOME/cassandra/bin` directory.
-2.  Log in to `cqlsh` using the IP address of the current node. For example:
+1. On Cassandra node 1 in DC1, navigate to the `CASSANDRA_HOME/cassandra/bin` directory.
+2. Log in to `cqlsh` using the IP address of the current node. For example:
 
-`./cqlsh 192.168.10.1`
+    `./cqlsh 192.168.10.1`
 
-1.  Run the following command:
+3. Run the following command:
 
-`ALTER KEYSPACE "KEYSPACE_NAME" WITH REPLICATION = {'class' : 'NetworkTopologyStrategy', 'DC1' : 3, 'DC2' : 3};`
+    `ALTER KEYSPACE "KEYSPACE_NAME" WITH REPLICATION = {'class' : 'NetworkTopologyStrategy', 'DC1' : 3, 'DC2' : 3};`
 
-1.  On each node, run `nodetool repair`.
+4. On each node, run `nodetool repair`.
 
-{{< alert title="Tip" color="primary" >}}In a production environment, you should schedule weekly node repairs as a best practice. For more details, see
-[Perform essential Cassandra operations](/csh?context=1302&product=prod-api-gateway-77)
-in the
-[API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/)
-.{{< /alert >}}
+    {{< alert title="Tip" color="primary" >}}In a production environment, you should schedule weekly node repairs as a best practice. For more details, see
+    [Perform essential Cassandra operations](/csh?context=1302&product=prod-api-gateway-77) in the [API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/).{{< /alert >}}
 
 ### Configure the remaining API Gateway nodes
 
@@ -289,43 +261,43 @@ When the API Gateway keyspace has been deployed and its replication updated, you
 
 {{< alert title="Note" color="primary" >}}You should always add one API Gateway instance at a time to the group.{{< /alert >}}
 
-For more details on registering hosts and adding API Gateway instances, see the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/)
-.
+For more details on registering hosts and adding API Gateway instances, see the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
 
 #### Configure the API Gateway environment variables in DC1
 
 For each additional API Gateway instance in DC1, add the following to `envSettings.props` before starting the instance:
 
-env.CASS.NAME1=Host 10.1\
-env.CASS.NAME2=Host 10.2\
-env.CASS.NAME3=Host 10.3\
-env.CASS.HOST1=192.168.10.1\
-env.CASS.HOST2=192.168.10.2\
+```env.CASS.NAME1=Host 10.1
+env.CASS.NAME2=Host 10.2
+env.CASS.NAME3=Host 10.3
+env.CASS.HOST1=192.168.10.1
+env.CASS.HOST2=192.168.10.2
 env.CASS.HOST3=192.168.10.3
+```
 
-\
-\# API Manager Port\
-env.PORT.APIPORTAL=8075\
-\# API Manager Traffic Port\
+```# API Manager Port
+env.PORT.APIPORTAL=8075
+# API Manager Traffic Port
 env.PORT.PORTAL.TRAFFIC=8065
+```
 
 #### Configure the API Gateway environment variables in DC2
 
 For each API Gateway instance in DC2, add the following settings to `envSettings.props` before starting the instance:
 
-env.CASS.NAME1=Host 20.1\
-env.CASS.NAME2=Host 20.2\
-env.CASS.NAME3=Host 20.3\
-env.CASS.HOST1=192.168.20.1\
-env.CASS.HOST2=192.168.20.2\
+```env.CASS.NAME1=Host 20.1
+env.CASS.NAME2=Host 20.2
+env.CASS.NAME3=Host 20.3
+env.CASS.HOST1=192.168.20.1
+env.CASS.HOST2=192.168.20.2
 env.CASS.HOST3=192.168.20.3
+```
 
-\
-\# API Manager Port\
-env.PORT.APIPORTAL=8075\
-\# API Manager Traffic Port\
+```# API Manager Port
+env.PORT.APIPORTAL=8075
+# API Manager Traffic Port
 env.PORT.PORTAL.TRAFFIC=8065
+```
 
 ### Add the load balancer host to API Management whitelists
 
@@ -335,17 +307,17 @@ For each API Gateway host, you must add the external load balancer host to the w
 
 You can do this by creating an API Gateway project based on the Node Manager configuration and adding the external load balancer host to the Node Manager whitelist as a servlet property:
 
-1.  In Policy Studio, select **File > New Project**.
-2.  Enter a project **Name**, and click **Next**.
-3.  Select **From existing configuration** for the project starting point, and click **Next**.
-4.  Click the browse button, select the following directory, and click **Finish**:
-5.  `INSTALL_DIR/apigateway/conf/fed`
-6.  In the Policy Studio tree, select **Environment Configuration > Listeners > Node Manager > Management Services > Paths**.
-7.  In the pane on the right, right-click the **api** servlet, and select **Edit**.
-8.  In the **Servlet** dialog, click **Add**, and enter the following in the **Properties** dialog:
-    -   **Name**: `CsrfProtectionFilterFactory.refererWhitelist`
-    -   **Value**: `https://LB_HOSTNAME:8090`
-9.  Right-click the **AppInfo Service** servlet, click **Edit**, and add the same whitelist setting as a property (see previous step).
+1. In Policy Studio, select **File > New Project**.
+2. Enter a project **Name**, and click **Next**.
+3. Select **From existing configuration** for the project starting point, and click **Next**.
+4. Click the browse button, select the following directory, and click **Finish**:
+5. `INSTALL_DIR/apigateway/conf/fed`
+6. In the Policy Studio tree, select **Environment Configuration > Listeners > Node Manager > Management Services > Paths**.
+7. In the pane on the right, right-click the **api** servlet, and select **Edit**.
+8. In the **Servlet** dialog, click **Add**, and enter the following in the **Properties** dialog:
+    * **Name**: `CsrfProtectionFilterFactory.refererWhitelist`
+    * **Value**: `https://LB_HOSTNAME:8090`
+9. Right-click the **AppInfo Service** servlet, click **Edit**, and add the same whitelist setting as a property (see previous step).
 10. When complete, the configuration is automatically saved to the `apiprojects` directory used by Policy Studio for your project. To get the Node Manager to read this change, you must copy the contents of your `apiprojects` subdirectory to `apigateway/conf/fed`.
 11. Finally, you must restart the Node Manager for the configuration changes to be picked up.
 
@@ -355,34 +327,26 @@ The following shows an example of configuring the **api** servlet setting in Pol
 
 {{< alert title="Note" color="primary" >}}You must ensure that every Node Manager has been updated to accept the load balancer host name. {{< /alert >}}
 
-<div class="indentTableNested">
-
 You can also add multiple load balancer hosts to the whitelist. For example:
 
-</div>
-
-<div class="indentTableNested">
-
--   **Name**: `CsrfProtectionFilterFactory.refererWhitelist`
--   **Value**: `https://dc1-lb.example.com:8090|https://dc2-lb.example.com:8090`
-
-</div>
+* **Name**: `CsrfProtectionFilterFactory.refererWhitelist`
+* **Value**: `https://dc1-lb.example.com:8090|https://dc2-lb.example.com:8090`
 
 #### Add load balancer host to API Manager whitelist
 
 You can do this by creating a new project from an API Gateway instance and adding the external load balancer host to the API Manager whitelist as a servlet property:
 
-1.  In Policy Studio, select **File > New Project from an API Gateway instance**.
-2.  Enter a project **Name**, and click **Next**.
-3.  In the **Connection Details** for the datacenter, enter the load balancer host name in the **Host** field and your credentials, and click **Next**.
-4.  Select the server instance in the datacenter that you wish to update, and click **Finish**.
-5.  In the Policy Studio tree, select **Environment Configuration > Listeners > API Gateway > API Portal > Paths**.
-6.  In the pane on the right, right-click the **API Portal v1.2 (‘v1.2’)** servlet, and select **Edit**.
-7.  In the **Servlet** dialog, click **Add** and enter the following in the **Properties** dialog:
-    -   **Name**: `CsrfProtectionFilterFactory.refererWhitelist`
-    -   **Value**: `https://<LB_HOSTNAME>:8075`
-8.  Right-click the **API Portal v1.3 (‘v1.3’)** servlet, click **Edit**, and add the same whitelist property (see previous step).
-9.  When complete, deploy the configuration to all API Gateways using the load balancer that you added to the whitelist.
+1. In Policy Studio, select **File > New Project from an API Gateway instance**.
+2. Enter a project **Name**, and click **Next**.
+3. In the **Connection Details** for the datacenter, enter the load balancer host name in the **Host** field and your credentials, and click **Next**.
+4. Select the server instance in the datacenter that you wish to update, and click **Finish**.
+5. In the Policy Studio tree, select **Environment Configuration > Listeners > API Gateway > API Portal > Paths**.
+6. In the pane on the right, right-click the **API Portal v1.2 (‘v1.2’)** servlet, and select **Edit**.
+7. In the **Servlet** dialog, click **Add** and enter the following in the **Properties** dialog:
+    * **Name**: `CsrfProtectionFilterFactory.refererWhitelist`
+    * **Value**: `https://<LB_HOSTNAME>:8075`
+8. Right-click the **API Portal v1.3 (‘v1.3’)** servlet, click **Edit**, and add the same whitelist property (see previous step).
+9. When complete, deploy the configuration to all API Gateways using the load balancer that you added to the whitelist.
 
 The following shows an example of configuring the **API Portal v1.2 (‘v1.2’)** servlet setting in Policy Studio:
 
@@ -394,11 +358,7 @@ For API Manager Single Sign On (SSO), when you have multiple API Managers under 
 
 For example, you have two datacenter sites, `apimgt.example.us` and `apimgt.example.eu`. Each site has a separate client, load balancer, and `service-provider.xml` file, and this file is shared by all API Manager instances under that load balancer.
 
-For more details on API Manager SSO, see
-[Configure API Manager SSO](/csh?context=1024&product=prod-api-manager-77)
-in the
-[API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/)
-.
+For more details on API Manager SSO, see [Configure API Manager SSO](/csh?context=1024&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
 
 ### Prevent simultaneous design-time changes in multiple datacenters
 
@@ -406,8 +366,7 @@ If you are using API Management in two or more datacenters at design time, there
 
 In this case, the data would likely become inconsistent between datacenters, and it would be difficult to know that an issue had occurred. There is also no guarantee that they would correctly synchronize at any time in the future. For this reason, it is best to make any design-time changes or updates to objects in your API Management system in one datacenter only.
 
-Optimize API Management performance in a multi-center environment
------------------------------------------------------------------
+## Optimize API Management performance in a multi-center environment
 
 This section explains how to configure various API Gateway settings to optimize API Gateway and API Manager performance in a multi-center environment.
 
@@ -415,17 +374,12 @@ This section explains how to configure various API Gateway settings to optimize 
 
 You can configure global API Gateway settings under the **Server Settings** node in Policy Studio.
 
-In a multi-datacenter environment with a large amount of APIs and data, you may need to increase the value of **Maximum received bytes per transaction** to optimize the performance of the API Manager web console (for example, when viewing APIs in the API catalog). The default value is `20`
-MB (`20971520`
-bytes). For example, you might need to increase this setting, depending on the number of APIs and the volume of data in your multi-datacenter environment.
+In a multi-datacenter environment with a large amount of APIs and data, you may need to increase the value of **Maximum received bytes per transaction** to optimize the performance of the API Manager web console (for example, when viewing APIs in the API catalog). The default value is `20` MB (`20971520`bytes). For example, you might need to increase this setting, depending on the number of APIs and the volume of data in your multi-datacenter environment.
 
-To configure this
-setting, in the Policy Studio tree, select the **Server Settings**
-node, and click **General** in the right pane. To confirm updates, click **Apply changes**
+To configure this setting, in the Policy Studio tree, select the **Server Settings** node, and click **General** in the right pane. To confirm updates, click **Apply changes**
 at the bottom right.
 
-After changing any settings, you must deploy to the API Gateway for the changes to be enforced. Click the **Deploy**
-button in the toolbar, or press F6.
+After changing any settings, you must deploy to the API Gateway for the changes to be enforced. Click the **Deploy** button in the toolbar, or press F6.
 
 ### Increase API Manager polling time and events time for Cassandra replication
 
@@ -437,15 +391,15 @@ You must also change the Time To Live (TTL) of the API Manager events table to b
 
 To configure the API Manager polling time and events table settings, perform the following steps:
 
-1.  Change to the following directory:
-2.  `INSTALL_DIR/apigateway/posix/bin`
-3.  Enter the `esexplorer` command.
-4.  Select **Store > Connect**, and browse to the following file:
-5.  `INSTALL_DIR/apigateway/groups/<group-name>/conf/<group-id>/configs.xml`
-6.  Select **System Components > Portal Config** in the tree on the left.
-7.  Select the **vapiPollerPeriodMs** setting in the pane on the right. Double-click the default value of `200`, and enter a value in the range of `1000` to `30000` milliseconds.
-8.  {{< alert title="Note" color="primary" >}}As a general rule, the higher the value of the polling time setting, the lower the risk of outdated data in the API Gateway runtime. However, it will take longer to update the data in the replicated datacenter.{{< /alert >}}
-9.  Select the **vapiEventTTLMs** setting on the right, and double-click to enter a value of `10800000` milliseconds (3 hours). This is consistent with the default value of the `max_hint_window_in_ms` setting in the `cassandra.yaml` file.
+1. Change to the following directory:
+2. `INSTALL_DIR/apigateway/posix/bin`
+3. Enter the `esexplorer` command.
+4. Select **Store > Connect**, and browse to the following file:
+5. `INSTALL_DIR/apigateway/groups/<group-name>/conf/<group-id>/configs.xml`
+6. Select **System Components > Portal Config** in the tree on the left.
+7. Select the **vapiPollerPeriodMs** setting in the pane on the right. Double-click the default value of `200`, and enter a value in the range of `1000` to `30000` milliseconds.
+8. {{< alert title="Note" color="primary" >}}As a general rule, the higher the value of the polling time setting, the lower the risk of outdated data in the API Gateway runtime. However, it will take longer to update the data in the replicated datacenter.{{< /alert >}}
+9. Select the **vapiEventTTLMs** setting on the right, and double-click to enter a value of `10800000` milliseconds (3 hours). This is consistent with the default value of the `max_hint_window_in_ms` setting in the `cassandra.yaml` file.
 10. When you have completed these settings, you can open the updated API Gateway project in Policy Studio and deploy the updates to all the API Gateway instances in the affected datacenter.
 
 ### Increase Node Manager timeout for longer API Gateway startup
@@ -454,18 +408,17 @@ In a multi-datacenter environment, it may take longer for API Gateway to start. 
 
 To configure the Node Manager timeout for longer startup time, perform the following steps:
 
-1.  Change to the following directory:
-2.  `INSTALL_DIR/apigateway/posix/bin`
-3.  Enter the `esexplorer` command.
-4.  Select **Store > Connect**, and browse to the following file:
-5.  `INSTALL_DIR/apigateway/conf/fed/configs.xml`
-6.  Select **Default System Settings** in the tree on the left.
-7.  Select the **activeTimeout** setting in the pane on the right. Double-click the default value of `240000` (4 minutes), and enter a higher value to better suit your multi-datacenter environment.
-8.  Select the **maxTransTimeout** setting on the right, and double-click to enter a higher value to suit your environment.
-9.  To update to all Node Managers in the group, you can copy the contents of the updated `apigateway/conf/fed` directory to the same directory on each node. Alternatively, you can run the `esexplorer` tool on each node to update the Node Manager settings.
+1. Change to the following directory:
+2. `INSTALL_DIR/apigateway/posix/bin`
+3. Enter the `esexplorer` command.
+4. Select **Store > Connect**, and browse to the following file:
+5. `INSTALL_DIR/apigateway/conf/fed/configs.xml`
+6. Select **Default System Settings** in the tree on the left.
+7. Select the **activeTimeout** setting in the pane on the right. Double-click the default value of `240000` (4 minutes), and enter a higher value to better suit your multi-datacenter environment.
+8. Select the **maxTransTimeout** setting on the right, and double-click to enter a higher value to suit your environment.
+9. To update to all Node Managers in the group, you can copy the contents of the updated `apigateway/conf/fed` directory to the same directory on each node. Alternatively, you can run the `esexplorer` tool on each node to update the Node Manager settings.
 
-Configure Ehcache in multiple datacenters
------------------------------------------
+## Configure Ehcache in multiple datacenters
 
 Caching is replicated between API Gateway instances in each datacenter using the Ehcache distributed caching system. In the distributed cache, there is no master cache controlling all caches. Instead, each cache is a peer that needs to know where all the other peers are located. The examples in this section shows distributed caches for OAuth and Throttling. The cache settings are the same in both cases.
 
@@ -477,14 +430,14 @@ In a distributed cache, each API Gateway has its own local copy of the cache and
 
 To add a distributed cache, perform the following steps:
 
-1.  Select the **Environment Configuration > Libraries > Caches** tree node, and click the **Add**
+1. Select the **Environment Configuration > Libraries > Caches** tree node, and click the **Add**
     button at the bottom right.
-2.  Select **Add Distributed Cache** from the menu, and configure the following settings on the **Configure Distributed Cache** dialog:
+2. Select **Add Distributed Cache** from the menu, and configure the following settings on the **Configure Distributed Cache** dialog:
 
-    -   **Cache name**: Enter a name for the distributed cache (for example, `OAuth` or `Throttling`).
-    -   **Event Listener**: **Properties**: Enter the following setting using environment variables for the replication settings:
+    * **Cache name**: Enter a name for the distributed cache (for example, `OAuth` or `Throttling`).
+    * **Event Listener**: **Properties**: Enter the following setting using environment variables for the replication settings:
 
-    ``` {space="preserve"}
+    ```
     replicateAsynchronously=${env.CACHE.ASYNC.REPLICATION}, 
     asynchronousReplicationIntervalMillis=${env.CACHE.ASYNC.INTERVAL}, 
     replicatePuts=true, replicateUpdates=true, replicateUpdatesViaCopy=true, replicateRemovals=true
@@ -506,51 +459,47 @@ Similarly, when a throttling distributed cache has been configured, it can then 
 
 To configure global distributed cache settings for peer discovery, perform the following steps:
 
-1.  In Policy Studio, select the **Server Settings**
+1. In Policy Studio, select the **Server Settings**
     node , and click **General > Cache**.
-2.  Configure the following settings:
+2. Configure the following settings:
 
-    -   **Peer provider class**: **Properties**: Enter the following setting using an environment variable for the cache URLs:
+    * **Peer provider class**: **Properties**: Enter the following setting using an environment variable for the cache URLs:
 
-    <!-- -->
+        `peerDiscovery=manual,timeToLive=1,rmiURLs=${env.CACHE.RMI.URL}`
 
-        peerDiscovery=manual,timeToLive=1,rmiURLs=${env.CACHE.RMI.URL}
+    * **Peer listener class**: **Properties**: Enter the following setting using environment variables for the hosts and ports:
 
-    -   **Peer listener class**: **Properties**: Enter the following setting using environment variables for the hosts and ports:
+        ``
+        hostName=${env.CACHE.HOST},port=${env.CACHE.PORT},remoteObjectPort=${env.CACHE.REMOTE.OBJECT.PORT} 
+        socketTimeoutMillis=120000
+        ```
 
-    ``` {space="preserve"}
-    hostName=${env.CACHE.HOST},port=${env.CACHE.PORT},remoteObjectPort=${env.CACHE.REMOTE.OBJECT.PORT} 
-    socketTimeoutMillis=120000
-    ```
+3. You can leave all other settings as default. For example, the required settings are displayed as follows in Policy Studio:
 
-3.  You can leave all other settings as default. For example, the required settings are displayed as follows in Policy Studio:
-4.  ![Distributed cache settings for peer discovery](/Images/docbook/images/install/cassandra_multi-dc_global_cache.png)
+    ![Distributed cache settings for peer discovery](/Images/APIGateway/cassandra_multi-dc_global_cache.png)
 
 ### Set the environment variables on each API Gateway host
 
 You must set the environment variables used in the distributed cache in the following file on each host machine:
 
-    INSTALL_DIR/apigateway/conf/envSettings.props
+`INSTALL_DIR/apigateway/conf/envSettings.props`
 
 For example:
 
+    ```
     env.CACHE.RMI.URL=//192.168.10.11:40001/OAuth|//192.168.10.11:40001/Throttle
     env.CACHE.HOST=192.168.10.10
     env.CACHE.PORT=40001
     env.CACHE.REMOTE.OBJECT.PORT=40002
     env.CACHE.ASYNC.REPLICATION=true
     env.CACHE.ASYNC.INTERVAL=10
+    ```
 
-{{< alert title="Note" color="primary" >}}The `env.CACHE.RMI.URL` environment variable should only include URLs for host machines in the same datacenter.{{< /alert >}}
+    {{< alert title="Note" color="primary" >}}The `env.CACHE.RMI.URL` environment variable should only include URLs for host machines in the same datacenter.{{< /alert >}}
 
-For more details, see
-[Global caches](/csh?context=604&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+For more details, see [Global caches](/csh?context=604&product=prod-api-gateway-77) in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
-Configure API Manager quota in multiple datacenters
----------------------------------------------------
+## Configure API Manager quota in multiple datacenters {#API_Manager_quota}
 
 API Manager quotas enable you to manage the maximum message traffic rate that can be sent by applications to APIs for back-end protection. You can use the **Server Settings > API Manager > Quota Settings** in Policy Studio to configure how API Manager quota information is stored. By default, quotas are stored in external storage, and automatically adapt to the configured KPS storage mechanism. However, you can also explicitly configure a storage mechanism of Cassandra, RDBMS, or in memory only.
 
@@ -558,29 +507,23 @@ API Manager quotas enable you to manage the maximum message traffic rate that ca
 
 The following general guidelines apply to API Manager quota storage:
 
--   Storing quota in memory only means that the quota calculation is performed by each API Gateway instance in each group between datacenters. If the quota duration is less than 30 seconds, in memory-only storage is automatically activated.
--   It is best to use API Manager system quota (stored in Cassandra) when the back-end is shared between datacenters.
--   It is best to use the API Gateway Throttling filter (stored in Ehcache) for back-end protection per datacenter.
+* Storing quota in memory only means that the quota calculation is performed by each API Gateway instance in each group between datacenters. If the quota duration is less than 30 seconds, in memory-only storage is automatically activated.
+* It is best to use API Manager system quota (stored in Cassandra) when the back-end is shared between datacenters.
+* It is best to use the API Gateway Throttling filter (stored in Ehcache) for back-end protection per datacenter.
 
-For more details on configuring quotas in API Manager, see the
-[API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/)
-.
+For more details on configuring quotas in API Manager, see the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
 
-Further details
----------------
+## Further details
 
-For more details on using API Gateway environment variables in `envSettings.props`, see the
-[API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/)
-.
+For more details on using API Gateway environment variables in `envSettings.props`, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
 
 For more details on Cassandra and Ehcache, see the following:
 
--   <http://ehcache.org/>
--   <http://cassandra.apache.org/>
--   <http://docs.datastax.com/en/cassandra/2.2/>
+* <http://ehcache.org/>
+* <http://cassandra.apache.org/>
+* <http://docs.datastax.com/en/cassandra/2.2/>
 
 For more details on configuring API Management in multiple datacenters, see:
 
--   [Multi-datacenter deployment](multi_datacenter_intro.htm)
--   [Multi-datacenter failover scenarios](multi_datacenter_failover.htm)
-
+* [Multi-datacenter deployment](multi_datacenter_intro.htm)
+* [Multi-datacenter failover scenarios](multi_datacenter_failover.htm)
