@@ -6,6 +6,20 @@
 "description": "The API Gateway server is the main runtime environment consisting of an API Gateway instance and a Node Manager."
 }
 
+You can install each API Gateway component separately. The API Gateway installer enables you to perform the following:
+
+* [Install the API Gateway server](install_the_API_gateway_server)
+* [Install the QuickStart tutorial](../install_quickstart_tutorial)
+* [Install the Admin Node Manager](../install_node_manager)
+* [Install Policy Studio](../install_policy_studio)
+* [Install API Tester](../../install_api_tester)
+* [Install Configuration Studio](../install_config_studio)
+* [Install API Manager](../../install_api_mgmt)
+* [Install the Package and Deploy tools](../install_deploy_tools)
+* [Install API Gateway Analytics](../install_analytics)
+
+## Install the API Gateway server
+
 The API Gateway server is the main runtime environment consisting of an API Gateway instance and a Node Manager. This page describes how to install API Gateway on Linux.
 
 {{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](../../../InstallGuideTopics/install_dev_tools.htm). API Gateway and API Manager do not support Windows.{{< /alert >}}

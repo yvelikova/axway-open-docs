@@ -96,3 +96,144 @@ This section describes requirements for specific API Gateway components.
 | **API Gateway Manager**   | API Gateway Manager is a web-based client and supports the web browsers listed in [Web browsers](#web-browsers). |
 | **API Gateway Analytics** | The API Gateway Analytics server component has the same operating system and hardware requirements as API Gateway. See [*Operating systems and hardware* on page 1](#operating-systems-and-hardware).<br>API Gateway Analytics requires a database. For database requirements, see [*Databases* on page 1](#databases).<br> The browser-based client component supports the same browsers as API Gateway Manager. See [*Web browsers* on page 1](#web-browsers).  |
 | **API Manager**           | API Manager is a browser-based client and supports the same browsers as API Gateway Manager. See [Web browsers](#web-browsers). |
+
+## Default ports
+
+This section describes the default ports used by API Gateway components.
+
+### API Gateway
+
+The default ports used by API Gateway are as follows:
+
+* **Traffic port**: `8080` (between clients and API Gateway)
+* **Management port**: `8085` (between API Gateway and Admin Node Manager)
+
+### Admin Node Manager
+
+The default port used by the Admin Node Manager for monitoring and management of API Gateway instances is `8090`.
+
+### Policy Studio
+
+The default URL address used by the Policy Studio tool to connect to the Admin Node Manager is as follows:
+
+`https://localhost:8090/api`
+
+### API Gateway Manager
+
+The default URL address used by the API Gateway Manager web console to connect to the Admin Node Manager is as follows:
+
+`https://localhost:8090/`
+
+### API Manager
+
+The default URL address used by the API Manager web console for API management is as follows:
+
+`https://localhost:8075/`
+
+### API Gateway Analytics
+
+The default port used by API Gateway Analytics for reporting, monitoring, and management is `8040` . The default URL address used by the API Gateway Analytics web console is as follows:
+
+`http://localhost:8040/`
+
+## Software and license keys
+
+Axway products are delivered electronically from Axway Support at [https://support.axway.com](https://support.axway.com/). A welcome email notifies you that your products are ready for download.
+
+When you are ready, perform the following tasks:
+
+1. Check your authorization.
+2. Check the hardware and system requirements.
+3. Obtain license keys.
+4. Download the installation setup file from Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink}.
+5. Install products.
+
+### Check your authorization
+
+Verify that you can log in to Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink} . If you do not have an account, follow the instructions in your welcome email.
+
+Log in to download or access:
+
+* The product installation package
+* Your product license key
+* Product documentation
+* Product updates, including patches and service packs
+* Product announcements
+* The support case center, to open a new case or to track opened cases
+
+You can also access other resources, such as articles in the Knowledge Base, the Axway User Forum, and documentation for all Axway products.
+
+### License keys
+
+API Gateway requires the following license keys.
+
+**Axway license file**:
+
+You must have a valid Axway license file to install the following API Gateway components:
+
+* API Gateway Server
+* API Gateway Analytics
+* API Manager
+
+You can obtain an evaluation trial license to enable you to evaluate the API Gateway features. However, you must have a full license to enable all API Gateway features for use in a non-evaluation environment (for example, development, testing, or production). To obtain an evaluation trial license or a full license, contact your Axway Account Manager.
+
+{{< alert title="Note" color="primary" >}}You can install an Admin Node Manager in isolation without an API Gateway license. For more information, see [Install the Admin Node Manager](install_node_manager).{{< /alert >}}
+
+**McAfee license file**:
+
+You must have a valid McAfee license file to use the **McAfee Anti-Virus** filter.
+
+**FIPS-compliant mode license file**:
+
+You must have a valid Axway FIPS-compliant mode license file to run API Gateway in FIPS-compliant mode.
+
+### Multiple installations
+
+API Gateway requires a minimum of two installations for high availability (HA). Make sure that you obtain license keys for all of the API Gateway instances that you are installing.
+
+## Additional prerequisites
+
+This section lists additional prerequisites for installing API Gateway.
+
+On Linux, you must ensure that the installation executable has the appropriate permissions in your environment. For example, you can use the `chmod` command to update the file permissions.
+
+### /tmp directory mounted with noexec
+
+If your Linux system has the `/tmp` directory mounted with `noexec`, you must complete some additional steps before installing or running API Gateway.
+
+**Installation**:
+
+When installing API Gateway, do not install the QuickStart tutorial:
+
+* When running the installer in GUI mode, you must select the **Custom** setup type and deselect the QuickStart tutorial component. For more information, see [Installation options](installation).
+* When running the installer in unattended mode, you must use the `--setup_type advanced` option and specify `qstart` to the `--disable-components` option. For more information, see [Unattended installation](installation_unattended).
+
+You must not install the QuickStart tutorial as this option starts Apache Cassandra, the API Gateway server and the Node Manager when installation completes, and in a system with `/tmp` mounted as `noexec` you must make some changes before starting these components.
+
+**Post-installation**:
+
+After completing the installation and before starting the services:
+
+1. Create a new temporary directory that has `exec` privileges (for example, ` /opt/Axway-7.8/tmp`).
+2. If you installed Cassandra during API Gateway installation, edit the file `CASSANDRA_INSTALL_DIR/conf/cassandra-env.sh` and add the following line:
+    `JVM_OPTS="$JVM_OPTS -Djava.io.tmpdir=<TheNewTmpDir>"`
+3. Create or edit the file `VDISTDIR/apigateway/conf/jvm.xml`, and add the following:
+
+    ```
+    <ConfigurationFragment>
+        <VMArg name="-Djava.io.tmpdir=<TheNewTmpDir>
+    </ConfigurationFragment>
+    ```
+
+### Service packs
+
+Service packs for API Gateway are available
+from Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink}. If any service packs are available for API Gateway 7.8, download and apply them when the installation completes.
+
+For more information on applying a service pack, see [Update API Gateway](install_service_packs).
+
+### Certificates
+
+API Gateway uses Secure Sockets Layer (SSL) for communications between all processes in a domain (for example, internal management traffic between the Admin Node Manager and API Gateway instances).
+
+Certificates are not required during installation; however, certificates will be required after installation to secure API Gateway domains. For more information on configuring and securing API Gateway domains, see the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
