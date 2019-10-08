@@ -1,7 +1,7 @@
 {
 "title": "Multi-datacenter configuration",
 "linkTitle": "Multi-datacenter configuration",
-"weight":"32"
+"weight":"32",
 "date": "2019-10-02",
 "description": "This page describes the recommended configuration for each API Management data type. It explains the following for each data type:"
 }
