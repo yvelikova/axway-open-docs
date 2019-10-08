@@ -1,7 +1,7 @@
 {
 "title": "Multi-datacenter deployment",
 "linkTitle": "Multi-datacenter deployment",
-"weight":"30"
+"weight":"30",
 "date": "2019-10-02",
 "description": "Learn about the recommended multi-datacenter configuration that applies to the various types of API Management data in storage."
 }
