@@ -66,7 +66,7 @@ See the comments included in each script for more detailed information.
 
 ## Use the ZDU scripts
 
-This topic describes how to use the sample ZDU scripts.
+This section describes how to use the sample ZDU scripts.
 
 ### Prerequisites
 
@@ -78,8 +78,8 @@ The prerequisites for the node on which you intend to run the `zdupgrade` script
 * You must install Python 2.6 or later (Python 2.7 recommended) and the `pip` package manager. For more details, see the [Python documentation](https://www.python.org/doc/). We recommend that you do not install Python under a path that contains spaces.
 * On Linux, you must install cryptography dependencies. For more details, see the [Cryptography.io](https://cryptography.io/en/latest/installation/).
 * You must install the `paramiko` and `enum34` Python modules and their dependencies.
-* You must download and install the ZDU sample script package from Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink}.
-* You must have an RSA key for password-less login to the remote nodes over SSH. For more information, see [*Configure SSH server* on page 1](#Configur).
+* You must download and install the ZDU sample script package from Axway Support at [https://support.axway.com](https://support.axway.com/).
+* You must have an RSA key for password-less login to the remote nodes over SSH. For more information, see [Configure SSH server](#configure-ssh-server).
 
 The prerequisites for the remote nodes are as follows:
 
@@ -89,7 +89,7 @@ The prerequisites for the remote nodes are as follows:
 
 * You must have all required licenses for the API Gateway components on each node.
 * The old installation Node Managers and API Gateways must be running.
-* You must configure a SSH server on all nodes. For more information, see [*Configure SSH server* on page 1](#Configur).
+* You must configure a SSH server on all nodes. For more information, see [Configure SSH server](#configure-ssh-server).
 
 #### Configure SSH server
 
@@ -125,7 +125,7 @@ This section describes how to install and run the `zdupgrade` script. It also de
 
 #### Install the package
 
-To install the package, unzip the package you downloaded from Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink} to a directory on your local machine (for example, `/opt/zdu`).
+To install the package, unzip the package you downloaded from Axway Support at [https://support.axway.com](https://support.axway.com/) to a directory on your local machine (for example, `/opt/zdu`).
 
 #### Run with default options
 
@@ -143,7 +143,7 @@ The scripts expect the old installation location to be the same on each node and
 
 The `--old_install_dir` and `--new_install_dir` options are case sensitive.
 
-The scripts use the reference topology unless you specify a topology file using the `--config` option. A sample topology file is provided in `config/topology.json`, however you must update this file to match your configuration. Do not use the `topology.json` file in your API Gateway installation instead of this file as they have a different purpose and format. For more information, see [*Specify topology configuration to use* on page 1](#Specify).
+The scripts use the reference topology unless you specify a topology file using the `--config` option. A sample topology file is provided in `config/topology.json`, however you must update this file to match your configuration. Do not use the `topology.json` file in your API Gateway installation instead of this file as they have a different purpose and format. For more information, see [Specify topology configuration to use](#specify-topology-configuration-to-use).
 
 #### View script options
 
@@ -245,7 +245,7 @@ Perform the following steps to modify the sample scripts:
 
 You must specify your topology configuration to the `zdupgrade` script using the `--config <path_to_the_user_topology_file>` option.
 
-If you do not specify any topology configuration using the `--config` option, the default topology file (`config/topology.json`) is not used, and the reference configuration is used (see [*Reference configuration* on page 1](upgrade_zdu_overview.htm#Referenc)).
+If you do not specify any topology configuration using the `--config` option, the default topology file (`config/topology.json`) is not used, and the reference configuration is used (see [Reference configuration](#reference-configuration)).
 
 Alternatively, you can implement the method `__getTopology(anmHost)` in `topology_builder.py` to return the correct topology configuration for your environment.
 

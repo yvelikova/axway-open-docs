@@ -1,10 +1,9 @@
 {
-"title": "[]{#\"top\"}Troubleshoot an upgrade",
-"linkTitle": "[]{#\"top\"}Troubleshoot an upgrade",
-"date": "2019-10-07",
-"description": "This topic provides advice on troubleshooting the API Gateway upgrade process and the `sysupgrade` commands."
+    "title": "Troubleshoot an upgrade",
+    "linkTitle": "Troubleshooting",
+    "date": "2019-10-07",
+    "description": "This topic provides advice on troubleshooting the API Gateway upgrade process and the `sysupgrade` commands."
 }
-﻿
 
 This topic provides advice on troubleshooting the API Gateway upgrade process and the `sysupgrade` commands.
 
