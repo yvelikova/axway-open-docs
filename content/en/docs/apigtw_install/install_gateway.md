@@ -6,10 +6,6 @@
 "description": "The API Gateway server is the main runtime environment consisting of an API Gateway instance and a Node Manager."
 }
 
-This page describes how to install API Gateway on Linux.
-
-For more details on API Gateway components and concepts, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
-
 {{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apigtw_install/install_dev_tools). API Gateway and API Manager do not support Windows.{{< /alert >}}
 
 ## Prerequisites
@@ -32,6 +28,10 @@ To install the API Gateway server in unattended mode, follow the steps described
 
 The following example shows how to install the API Gateway server component in unattended mode:
 
+```
+./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended --setup_type advanced --enable-components apigateway --disable-components nodemanager,qstart,policystudio,analytics,apitester,configurationstudio,apimgmt,cassandra,packagedeploytools --licenseFilePath mylicense.lic
+```
+
 ## Before you start API Gateway
 
 Before you can start API Gateway, you must first use the `managedomain` script to create a new domain that includes an API Gateway instance. If you installed the QuickStart tutorial, a sample API Gateway domain is automatically configured in your installation. Otherwise, you must first create a new domain. For more details, see the
@@ -45,18 +45,24 @@ To start API Gateway manually, follow these steps:
 
 1. Open a command prompt in the following directory:
 
-    `INSTALL_DIR/apigateway/posix/bin`
+    ```
+    INSTALL_DIR/apigateway/posix/bin
+    ```
 
 2. Ensure that the `startinstance` has execute permissions, and run the `startinstance` command, for example:
 
-    `startinstance -n "Server1" -g "Group1"`
+    ```
+    startinstance -n "Server1" -g "Group1"
+    ```
 
 3. To manage and monitor your gateway, you must ensure that the Admin Node Manager is running. Use the `nodemanager` command to start the Admin Node Manager from the same directory.
 4. To launch API Gateway Manager, enter the following address in your browser:
 
-    `https://HOST:8090/`
+    ```
+    https://HOST:8090/
+    ```
 
-    * `HOST` refers to the host name or IP address of the machine on which API Gateway is running (for example, `https://localhost:8090/`).
+    `HOST` refers to the host name or IP address of the machine on which API Gateway is running (for example, `https://localhost:8090/`).
 
 5. Enter the administrator user name and password. This is the administrator user name and password you entered during installation.
 

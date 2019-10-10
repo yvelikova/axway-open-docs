@@ -3,7 +3,7 @@
 "linkTitle": "Install Policy Studio",
 "weight":"16",
 "date": "2019-10-02",
-"description": "Use Policy Studio to virtualize APIs and develop policies."
+"description": "Policy Studio to virtualize APIs and develop policies."
 }
 
 Policy Studio is a graphical IDE that enables developers to virtualize APIs and develop policies to enforce security, compliance, and operational requirements.

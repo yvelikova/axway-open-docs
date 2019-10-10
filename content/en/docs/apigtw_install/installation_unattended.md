@@ -3,10 +3,10 @@
 "linkTitle": "Unattended installation",
 "weight":"6",
 "date": "2019-10-02",
-"description": "Run the API Gateway installer in unattended mode on Linux and Windows."
+"description": "Run the API Gateway installer or the developer tools installer in unattended mode."
 }
 
-This page explains how to run the API Gateway installer in unattended mode on Linux and Windows. It also describes each of the available command options.
+This section explains how to run the API Gateway installer in unattended mode on Linux and the developer tools installer in unattended mode on Windows. It also describes each of the available command options.
 
 {{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apigtw_install/install_dev_tools/). API Gateway and API Manager do not support Windows.{{< /alert >}}
 
@@ -22,14 +22,7 @@ You can run the API Gateway installer in unattended mode on the command line. Pe
 The following example shows how to install all available API Gateway components excluding API Manager in unattended mode:
 
 ```
-./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended
---setup_type standard
---licenseFilePath my_license.lic
---analyticsLicenseFilePath my_analytics_license.lic
---prefix /opt/Axway-7.8
---cassandraInstalldir opt/db/cassandra
---cassandraJDK opt/jre
---startCassandra 1
+./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended --setup_type standard --licenseFilePath my_license.lic --analyticsLicenseFilePath my_analytics_license.lic --prefix /opt/Axway-7.8 --cassandraInstalldir opt/db/cassandra --cassandraJDK opt/jre --startCassandra 1
 ```
 
 The components are installed in the background, in the directory specified by the `--prefix` option.
@@ -39,15 +32,7 @@ The components are installed in the background, in the directory specified by th
 The following example shows how to install all API Gateway components, including API Manager, in unattended mode:
 
 ```
-./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended
---setup_type complete
---licenseFilePath my_license.lic
---analyticsLicenseFilePath my_analytics_license.lic
---apimgmtLicenseFilePath my_mgmt_license.lic
---prefix /opt/Axway-7.8
---cassandraInstalldir /opt/db/cassandra
---cassandraJDK /opt/jre
---startCassandra 1
+./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended --setup_type complete --licenseFilePath my_license.lic --analyticsLicenseFilePath my_analytics_license.lic --apimgmtLicenseFilePath my_mgmt_license.lic --prefix /opt/Axway-7.8 --cassandraInstalldir /opt/db/cassandra --cassandraJDK /opt/jre --startCassandra 1
 ```
 
 The components are installed in the background, in the directory specified by the `--prefix` option.
@@ -81,7 +66,7 @@ The following summarizes some of the more common options:
 * `--disable-components`: Specify a comma-separated list of components to disable.
 * `--prefix`: Specify an installation directory.
 * `--unattendedmodeui`: Specify different levels of user interaction when installing on a Linux system with X-Windows or on Windows.  
-* `--cassandraInstalldir`: Specify the Apache Cassandra installation directory, for example, `opt/db/cassandra`. 
-* `--cassandraJDK`: Specify the location of your Java Runtime Environment for Apache Cassandra. The default value is `INSTALL_DIR/apigateway/Linux.x86_64/jre/bin` 
+* `--cassandraInstalldir`: Specify the Apache Cassandra installation directory, for example, `opt/db/cassandra`.
+* `--cassandraJDK`: Specify the location of your Java Runtime Environment for Apache Cassandra. The default value is `INSTALL_DIR/apigateway/Linux.x86_64/jre/bin`
 * `--startCassandra`: Specify whether the Apache Cassandra server starts after the installer completes. Set to `1` to start Cassandra after installation, or set to `0` if you do not * want Cassandra to start.
 * `--optionfile`: Specify options in a properties file. For more information on option files, go to <http://installbuilder.bitrock.com/docs/installbuilder-userguide.html>

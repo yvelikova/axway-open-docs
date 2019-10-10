@@ -3,10 +3,10 @@
 "linkTitle": "Plan the deployment",
 "weight":"6",
 "date": "2019-10-07",
-"description": "Learn about the platforms, components, and types of connection required for the deployment of your gateway."
+"description": "Guidance on platforms, components, high availability, and connections to other products when planning your deployment."
 }
 
-This topic discusses how to plan your deployment. For more information on planning an API Gateway system, and how API Gateway interacts with existing infrastructure, see the
+This section discusses how to plan your deployment. For more information on planning an API Gateway system, and how API Gateway interacts with existing infrastructure, see the
 [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
 
 ## Platforms

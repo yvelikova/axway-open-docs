@@ -3,12 +3,10 @@
 "linkTitle": "Install the QuickStart tutorial",
 "weight":"10",
 "date": "2019-10-02",
-"description": "Learn about the main API Gateway features and tools, and how to invoke example APIs to monitor API Gateway using API Gateway Manager"
+"description": "The QuickStart tutorial demonstrates the main API Gateway features and tools, and lets you invoke example APIs and monitor your API Gateway."
 }
 
-The API Gateway QuickStart tutorial is available on Linux. It demonstrates the gateway main features and tools, and enables you to invoke some example APIs and to monitor your gateway using API Gateway Manager.
-
-The QuickStart tutorial is automatically installed as part of a default **Standard** or **Complete** setup. For more details, For more details, see [Installation options](/docs/apigtw_install/installation).
+The QuickStart tutorial is automatically installed as part of a default **Standard** or **Complete** setup.
 
 ## Prerequisites
 
@@ -27,12 +25,7 @@ To install the API Gateway Server, Admin Node Manager, and QuickStart tutorial i
 The following example shows how to install the API Gateway Server component and the QuickStart tutorial in unattended mode:
 
 ```
-APIGateway_7.8_Install_linux-x86-32_BNyyyyMMdd.run --mode unattended
---setup_type advanced
---enable-components apigateway,nodemanager,qstart
---disable-components,policystudio,apitester,
-configurationstudio,apimgmt,cassandra,packagedeploytools
---licenseFilePath mylicense.lic
+APIGateway_7.8_Install_linux-x86-32_BNyyyyMMdd.run --mode unattended --setup_type advanced --enable-components apigateway,nodemanager,qstart --disable-components,policystudio,apitester,configurationstudio,apimgmt,cassandra,packagedeploytools --licenseFilePath mylicense.lic
 ```
 
 ## QuickStart domain configuration
@@ -74,6 +67,7 @@ At any point, if you need to restart the QuickStart tutorial, perform the follow
 
 5. Enter the administrator user name and password. This is the administrator user name and password you entered during installation.
 6. To launch the QuickStart tutorial, enter the following address in your browser:
+
     ```
     http://127.0.0.1:8080/quickstart/index.html?mgr=8090
     ```
