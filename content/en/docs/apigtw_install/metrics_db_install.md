@@ -18,19 +18,17 @@ The prerequisites for setting up the database are as follows:
 
 ### Install a third-party JDBC database
 
-You must install a JDBC-compliant database to store the monitoring and transaction data. Axway provides setup scripts for the following databases:
+* You must ensure that you have the correct credentials to execute the setup scripts and to access the database for operations on the tables created by the scripts.
+* You must install a JDBC-compliant database to store the monitoring and transaction data. Axway provides setup scripts for the following databases:
 
-For details on supported database versions, see [API Gateway Installation Guide - Prerequisites](/docs/apigtw_install/system_requirements).
+    For details on supported database versions, see [API Gateway Installation Guide - Prerequisites](/docs/apigtw_install/system_requirements).
 
-For details on how to install your chosen third-party JDBC database, see your database product documentation.
-
-{{< alert title="Note" color="primary" >}}You must ensure that you have the correct credentials to execute the setup scripts and to access the database for operations on the tables created by the scripts.{{< /alert >}}
+    For details on how to install your chosen third-party JDBC database, see your database product documentation.
 
 ### Install API Manager
 
-You must install API Manager to use it to view the monitoring data in the metrics database. For more details, see the [Install API Manager](install_api_mgmt).
-
-{{< alert title="Note" color="primary" >}}You do not need to install API Gateway Analytics to view monitoring data in API Manager only.{{< /alert >}}
+* You must install API Manager to use it to view the monitoring data in the metrics database. For more details, see the [Install API Manager](/docs/apigtw_install/install_api_mgmt).
+* You do not need to install API Gateway Analytics to view monitoring data in API Manager only.
 
 ## Add third-party JDBC driver files
 

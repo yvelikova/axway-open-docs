@@ -32,31 +32,36 @@ This section describes what API Management data can be persisted and where.
 
 ### API Gateway data
 
-| Data type                      | Storage location                                                                         |
-|--------------------------------|------------------------------------------------------------------------------------------|
-| API Gateway configuration      | Files on disk:                                                                           |
-|                                | * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/conf/fed`      |
-|                                | * Node Manager/Admin Node Manager: ` INSTALL_DIR/apigateway/conf/fed`                    |
-|                                | Alternatively, you can use a deployment archive (`.fed` file).                           |
-|                                | For more details, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).|
-+--------------------------------|------------------------------------------------------------------------------------------|
-| API Gateway logs               | Files on disk: <br> * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/logs`<br> * Node Manager/Admin Node Manager:           |                                | `INSTALL_DIR/apigateway/logs`    |
-| API Gateway traffic monitoring | Files on disk: <br> * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/conf/opsdb.d`<br> * Node Manager/Admin Node Manager: `INSTALL_DIR/apigateway/conf/opsdb.d`|
-| API Gateway KPS custom tables  | Cassandra or RDBMS  |
+* **API Gateway configuration**: files are stored on disk.
+
+  * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/conf/fed`
+  * Node Manager/Admin Node Manager: ` INSTALL_DIR/apigateway/conf/fed` 
+  
+    Alternatively, you can use a deployment archive (`.fed` file). For more details, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
+
+* **API Gateway logs**: Files are stored on disk.
+
+  * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/logs`
+  * Node Manager/Admin Node Manager: `INSTALL_DIR/apigateway/logs`
+
+* **API Gateway traffic monitoring**: files are stored on disk.
+
+  * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/conf/opsdb.d`
+  * Node Manager/Admin Node Manager: `INSTALL_DIR/apigateway/conf/opsdb.d`
+
+* **API Gateway KPS custom tables**: Files are stored on Cassandra or RDBMS.
+
+* **API Gateway OAuth token store**: Files are stored on Ehcache, Cassandra, or RDBMS.
+
+* **API Gateway throttling counters**: Files are stored onEhcache.
+
+* **API Gateway custom cache**: Files are stored on Ehcache.
 
 ### API Manager data
 
-+-----------------------------------+-----------------------------------+
-| Data type                         | Storage location                  |
-+===================================+===================================+
-| API Manager catalog, client       | Cassandra                         |
-| registry,                         |                                   |
-| web-based settings                |                                   |
-+-----------------------------------+-----------------------------------+
-| API Manager quota counters        | In memory, Cassandra, or RDBMS    |
-+-----------------------------------+-----------------------------------+
-| API Manager metrics               | RDBMS                             |
-+-----------------------------------+-----------------------------------+
+* **API Manager catalog, client registry, web-based settings**: Files are stored on Cassandra.
+* **API Manager quota counters**: Files are stored in memory, Cassandra, or RDBMS.
+* **API Manager metrics**: Files are stored on RDBMS.
 
 ## Further details
 

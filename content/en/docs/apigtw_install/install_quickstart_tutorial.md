@@ -6,17 +6,16 @@
 "description": "Learn about the main API Gateway features and tools, and how to invoke example APIs to monitor API Gateway using API Gateway Manager"
 }
 
-The API Gateway QuickStart tutorial is available on Linux. It demonstrates the main API Gateway features and tools, and enables you to invoke some example APIs and to monitor API Gateway using API Gateway Manager.
+The API Gateway QuickStart tutorial is available on Linux. It demonstrates the gateway main features and tools, and enables you to invoke some example APIs and to monitor your gateway using API Gateway Manager.
 
 The QuickStart tutorial is automatically installed as part of a default **Standard** or **Complete** setup. For more details, For more details, see [Installation options](/docs/apigtw_install/installation).
 
 ## Prerequisites
 
-Ensure that all of the prerequisites detailed in [Prerequisites](/docs/apigtw_install/system_requirements/) are met.
+* The QuickStart tutorial is dependent on the API Gateway Server. You cannot install the QuickStart tutorial without the API Gateway Server.
+* Ensure that all of the prerequisites detailed in [Prerequisites](/docs/apigtw_install/system_requirements/) are met.
 
 ## Install the QuickStart tutorial
-
-{{< alert title="Note" color="primary" >}}The QuickStart tutorial is dependent on the API Gateway Server. You cannot install the QuickStart tutorial without the API Gateway Server.{{< /alert >}}
 
 To install the API Gateway Server and the QuickStart tutorial in GUI mode, perform an installation following the steps described in [Installation options](/docs/apigtw_install//installation#select-setup-type), using the following selections:
 
@@ -38,7 +37,7 @@ configurationstudio,apimgmt,cassandra,packagedeploytools
 
 ## QuickStart domain configuration
 
-When the QuickStart tutorial is installed, a sample API Gateway domain is automatically configured in your installation. This includes a `QuickStart Server` API Gateway instance that runs in a `QuickStart Group` group. The QuickStart server and Admin Node Manager start automatically when installation is complete.
+When the QuickStart tutorial is installed, a sample gateway domain is automatically configured in your installation. This includes a `QuickStart Server` gateway instance that runs in a `QuickStart Group` group. The QuickStart server and Admin Node Manager start automatically when installation is complete.
 
 ## Start the QuickStart tutorial
 
@@ -55,25 +54,26 @@ You can click the **Try it** button to invoke the sample API. This displays a JS
 At any point, if you need to restart the QuickStart tutorial, perform the following steps:
 
 1. Open a command prompt in the following directory:
-2. `INSTALL_DIR/apigateway/posix/bin`
-    |             |                                    |
-    |-------------|------------------------------------|
-    | **Linux**   | `INSTALL_DIR/apigateway/posix/bin` |
-    | **Windows** | `INSTALL_DIR\apigateway\Win32\bin` |
 
-3. Run the `startinstance` command, for example:
-4. startinstance -n "QuickStart Server" -g "QuickStart Group"
+    ```
+    INSTALL_DIR/apigateway/posix/bin
+    ```
 
-    {{< alert title="Note" color="primary" >}}You must ensure that the `startinstance` has execute permissions. {{< /alert >}}
-    {{< alert title="Note" color="primary" >}}On Linux, you must ensure that the `startinstance` has execute permissions. {{< /alert >}}
+2. Ensure that the `startinstance` has execute permissions, and run the `startinstance` command, for example:
 
-5. To manage and monitor the API Gateway, you must ensure that the Admin Node Manager is running. Use the `nodemanager` command to start the Admin Node Manager from the same directory.
-6. To launch API Gateway Manager, enter the following address in your browser:
+    ```
+    startinstance -n "QuickStart Server" -g "QuickStart Group"
+    ```
+
+3. To manage and monitor the gateway, you must ensure that the Admin Node Manager is running. Use the `nodemanager` command to start the Admin Node Manager from the same directory.
+4. To launch API Gateway Manager, enter the following address in your browser:
 
     ```
     https://127.0.0.1:8090/
     ```
 
-7. Enter the administrator user name and password. This is the administrator user name and password you entered during installation.
-8. To launch the QuickStart tutorial, enter the following address in your browser:
-9. http://127.0.0.1:8080/quickstart/index.html?mgr=8090
+5. Enter the administrator user name and password. This is the administrator user name and password you entered during installation.
+6. To launch the QuickStart tutorial, enter the following address in your browser:
+    ```
+    http://127.0.0.1:8080/quickstart/index.html?mgr=8090
+    ```

@@ -72,57 +72,16 @@ For a description of all the available command-line options and their default se
 APIGateway_7.8_Client_Tools_Install_win-x86-32_BN<n>.exe --help
 ```
 
-The following table summarizes some of the more common options:
+The following summarizes some of the more common options:
 
-+-----------------------------------+-----------------------------------+
-| Option                            | Description                       |
-+===================================+===================================+
-| `--help`                          | Display available options and     |
-|                                   | default settings.                 |
-+-----------------------------------+-----------------------------------+
-| `--mode`                          | Specify an installation mode.     |
-+-----------------------------------+-----------------------------------+
-| `--setup_type`                    | Specify a setup type (`standard`, |
-|                                   | `complete`, or `advanced`) (on    |
-|                                   | Linux only).                      |
-+-----------------------------------+-----------------------------------+
-| `--enable-components`             | Specify a comma-separated list of |
-|                                   | components to enable.             |
-+-----------------------------------+-----------------------------------+
-| `--disable-components`            | Specify a comma-separated list of |
-|                                   | components to disable.            |
-+-----------------------------------+-----------------------------------+
-| `--prefix`                        | Specify an installation           |
-|                                   | directory.                        |
-+-----------------------------------+-----------------------------------+
-| `--unattendedmodeui`              | Specify different levels of user  |
-|                                   | interaction when installing on a  |
-|                                   | Linux system with X-Windows or on |
-|                                   | Windows.                          |
-+-----------------------------------+-----------------------------------+
-| `--cassandraInstalldir`           | Specify the Apache Cassandra      |
-|                                   | installation directory, for       |
-|                                   | example, `opt/db/cassandra`.      |
-+-----------------------------------+-----------------------------------+
-| `--cassandraJDK`                  | Specify the location of your Java |
-|                                   | Runtime Environment for Apache    |
-|                                   | Cassandra. The default value is:  |
-|                                   |                                   |
-|                                   | `INSTALL_DIR/apigateway/Linux.x86 |
-|                                   | _64/jre/bin`                      |
-+-----------------------------------+-----------------------------------+
-| `--startCassandra`                | Specify whether the Apache        |
-|                                   | Cassandra server starts after the |
-|                                   | installer completes. Set to `1`   |
-|                                   | to start Cassandra after          |
-|                                   | installation, or set to `0` if    |
-|                                   | you do not want Cassandra to      |
-|                                   | start.                            |
-+-----------------------------------+-----------------------------------+
-| `--optionfile`                    | Specify options in a properties   |
-|                                   | file. For more information on     |
-|                                   | option files, go to:\             |
-|                                   | <http://installbuilder.bitrock.co |
-|                                   | m/docs/installbuilder-userguide.h |
-|                                   | tml>                              |
-+-----------------------------------+-----------------------------------+
+* `--help`: Display available options and default settings.
+* `--mode`: Specify an installation mode.
+* `--setup_type`: Specify a setup type (`standard`, `complete`, or `advanced`) (on Linux only).
+* `--enable-components`: Specify a comma-separated list of components to enable.
+* `--disable-components`: Specify a comma-separated list of components to disable.
+* `--prefix`: Specify an installation directory.
+* `--unattendedmodeui`: Specify different levels of user interaction when installing on a Linux system with X-Windows or on Windows.  
+* `--cassandraInstalldir`: Specify the Apache Cassandra installation directory, for example, `opt/db/cassandra`. 
+* `--cassandraJDK`: Specify the location of your Java Runtime Environment for Apache Cassandra. The default value is `INSTALL_DIR/apigateway/Linux.x86_64/jre/bin` 
+* `--startCassandra`: Specify whether the Apache Cassandra server starts after the installer completes. Set to `1` to start Cassandra after installation, or set to `0` if you do not * want Cassandra to start.
+* `--optionfile`: Specify options in a properties file. For more information on option files, go to <http://installbuilder.bitrock.com/docs/installbuilder-userguide.html>

@@ -3,7 +3,7 @@
 "linkTitle": "Install the Admin Node Manager",
 "weight":"14",
 "date": "2019-10-02",
-"description": "Install an Admin Node Manager component in isolation without an API Gateway license. For more details on API Gateway components and concepts, see the \\n \\n \\n \\n ."
+"description": "Install an Admin Node Manager component in isolation without an API Gateway license."
 }
 
 You can install an Admin Node Manager component on Linux in isolation without an API Gateway license. For more details on API Gateway components and concepts, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
@@ -33,4 +33,4 @@ apitester,apimgmt,cassandra,packagedeploytools
 
 ## Start the Admin Node Manager
 
-For more information on starting the Admin Node Manager, see [Start API Gateway](install_gateway).
+For more information on starting the Admin Node Manager, see [Start API Gateway](/docs/apigtw_install/install_gateway#start-api-gateway).

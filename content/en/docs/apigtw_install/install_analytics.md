@@ -3,7 +3,7 @@
 "linkTitle": "Install API Gateway Analytics",
 "weight":"24",
 "date": "2019-10-02",
-"description": "API Gateway Analytics is a server runtime and web-based console for analyzing and reporting on API use over extended periods of time"
+"description": "Analyze API use over extended periods of time."
 }
 
 API Gateway Analytics is a server runtime and web-based console for analyzing and reporting on API use over extended periods of time. For more details, see the [API Gateway Analytics User Guide](/bundle/APIGateway_77_AnalyticsUserGuide_allOS_en_HTML5/).
@@ -12,13 +12,13 @@ API Gateway Analytics is a server runtime and web-based console for analyzing an
 
 Ensure that all of the prerequisites detailed in [Prerequisites](/docs/apigtw_install/system_requirements) are met.
 
-### Axway license file {#axway-license-file "api_gateway_conditions.axway"=""}
+### Axway license file
 
 You must have a valid Axway license file to install API Gateway Analytics. To obtain an evaluation trial license or a full license, contact your Axway Account Manager.
 
 ## Install API Gateway Analytics
 
-To install API Gateway Analytics in GUI mode, perform an installation following the steps described in [Installation options](/docs/apigtw_install/installation), using the following selections:
+To install API Gateway Analytics in GUI mode, perform an installation following the steps described in [Installation options](/docs/apigtw_install/installation#select-setup-type), using the following selections:
 
 * Select the **Custom** setup type.
 * Select to install the API Gateway Analytics component.
@@ -26,6 +26,15 @@ To install API Gateway Analytics in GUI mode, perform an installation following 
 To install API Gateway Analytics in unattended mode, follow the steps described in [Unattended installation](/docs/apigtw_install/installation_unattended).
 
 The following example shows how to install the API Gateway Analytics component in unattended mode:
+
+```
+./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended
+--setup_type advanced
+--enable-components analytics
+--disable-components nodemanager,apigateway,qstart,policystudio,
+apitester,configurationstudio,apimgmt,cassandra,packagedeploytools
+--analyticsLicenseFilePath myanalyticslicense.lic
+```
 
 ## Configure your metrics database for API Gateway Analytics
 
@@ -44,7 +53,7 @@ When you have configured your metrics database and API Gateway Analytics, you ca
 
 ### Start as a service
 
-You can also run API Gateway Analytics as a service. For more information, see [Set up services](TemplateTopics/post-install/post_overview.htm#Set2).
+You can also run API Gateway Analytics as a service. For more information, see [Set up services](/docs/apigtw_install//post_overview#set-up-services).
 
 ## Further information
 

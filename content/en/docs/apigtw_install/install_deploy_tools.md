@@ -3,15 +3,14 @@
 "linkTitle": "Install the Package and Deploy tools",
 "weight":"22",
 "date": "2019-10-02",
-"description": "You can use the API Gateway Package and Deploy tools to automate processes in your API Gateway system for continuous integration. For example, this includes generating API Gateway configuration packages from API team development projects, and building and deploying configurations to API Gateway group instances. "
+"description": "Automate processes in your gateway system for continuous integration. For example, generate gateway configuration packages from API team development projects, and build and deploy configurations to the gateway group instances."
 }
 
-You can use the API Gateway Package and Deploy tools to automate processes in your API Gateway system for continuous integration. For example, this includes generating API Gateway configuration packages from API team development projects, and building and deploying configurations to API Gateway group instances.
+You can use the API Gateway Package and Deploy tools to automate processes in your API Gateway system for continuous integration. For example, this includes generating gateway configuration packages from API team development projects, and building and deploying configurations to the gateway group instances.
 
-You can install the Package and Deploy tools component
-on both Linux and Windows without an API Gateway license.
+You can install the Package and Deploy tools component on both Linux and Windows without an API Gateway license.
 
-{{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](../../../InstallGuideTopics/install_dev_tools.htm). API Gateway and API Manager do not support Windows.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apigtw_install/install_dev_tools). API Gateway and API Manager do not support Windows.{{< /alert >}}
 
 For more details on API Gateway configuration packages, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
 
@@ -21,10 +20,9 @@ Ensure that all of the prerequisites detailed in [Prerequisites](/docs/apigtw_in
 
 ## Install the Package and Deploy tools
 
-To install the Package and Deploy tools in GUI mode, perform an installation following the steps described in [Installation options](/docs/apigtw_install/installation), using the following selections:
+To install the Package and Deploy tools in GUI mode, perform an installation following the steps described in [Installation options](/docs/apigtw_install/installation#select-setup-type), using the following selections:
 
 * Select the **Custom** setup type.
-    This screen is omitted on Windows.
 * Select to install the **Package and Deploy Tools** component.
 
 To install the Package and Deploy tools component in unattended mode, follow the steps described in [Unattended installation](/docs/apigtw_install/installation_unattended).

@@ -8,7 +8,7 @@
 
 API Manager is an additional licensed layered product running on the Axway API Gateway. For more details, see the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
 
-{{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](../../../InstallGuideTopics/install_dev_tools.htm). API Gateway and API Manager do not support Windows.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apigtw_install/install_dev_tools). API Gateway and API Manager do not support Windows.{{< /alert >}}
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ Ensure that all of the prerequisites detailed in [Prerequisites](/docs/apigtw_in
 
 You must have a valid Axway license file to install API Manager. To obtain an evaluation trial license or a full license, contact your Axway Account Manager.
 
-{{< alert title="Note" color="primary" >}}Your API Gateway installation must also be licensed. If you do not have a license for API Gateway, you cannot install API Manager.{{< /alert >}}
+* Your API Gateway installation must also be licensed. If you do not have a license for API Gateway, you cannot install API Manager.
 
 ### Domains with multiple nodes
 
@@ -67,15 +67,9 @@ If you selected to install the QuickStart tutorial, API Manager is configured by
 
 ## Start API Manager
 
-{{< alert title="Note" color="primary" >}}Before starting API Manager, ensure that Apache Cassandra, the Admin Node Manager and API Gateway instance are running. For more details, see [Start API Gateway](install_gateway.htm#Start).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Before starting API Manager, ensure that Apache Cassandra, the Admin Node Manager and API Gateway instance are running. For more details, see [Start API Gateway](/docs/apigtw_install/install_gateway/#start-api-gateway).{{< /alert >}}
 
-When API Manager is configured, you can use the following URL to log into the API Manager web console:
-
-`https://HOST:8075`
-
-The default URL is:
-
-`https://localhost:8075`
+When API Manager is configured, you can use the following URL to log into the API Manager web console: `https://HOST:8075` (The default URL is `https://localhost:8075`).
 
 Enter your API administrator user credentials. This is the API administrator user name and password you entered during installation.
 

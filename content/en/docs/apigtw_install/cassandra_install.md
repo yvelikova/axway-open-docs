@@ -29,17 +29,17 @@ For details on upgrading from an earlier API Gateway version, see the [API Gatew
 
 ## Cassandra prerequisites
 
-This section describes Cassandra-specific prerequisites in addition to the general API Gateway [Prerequisites](TemplateTopics/prereqs/prereqs_overview.htm#top).
+This section describes Cassandra-specific prerequisites in addition to the general API Gateway [Prerequisites](/docs/apigtw_install/system_requirements).
 
 ### Production environment requirements
 
 API Gateway supports the following in production:
 
 * **Operating systems**:
-    * All supported Linux platforms (see [System requirements](/docs/apigtw_install/system_requirements)
+  * All supported Linux platforms, see [System requirements](/docs/apigtw_install/system_requirements#linux)
 * **Cassandra**:
-    * Cassandra version 2.2.12
-    * 64-bit OpenJDK JRE or Oracle JRE version 8
+  * Cassandra version 2.2.12
+  * 64-bit OpenJDK JRE or Oracle JRE version 8
 
 For details on requirements for high availability, see [Configure a Cassandra HA cluster](/csh?context=1300&product=prod-api-gateway-77) in the [API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/).
 
@@ -57,7 +57,7 @@ In GUI mode, to install Apache Cassandra only, use the steps described in [Insta
 
 * **Setup Type**: Select **Custom**.
 * **Select Components**: Select **Cassandra**.
-* **Cassandra configuration**: Enter your Cassandra **Installation Directory** and your **JRE Location**. For more details, see [Cassandra configuration](/docs/apigtw_install/installation#cassandra_configuration).
+* **Cassandra configuration**: Enter your Cassandra **Installation Directory** and your **JRE Location**. For more details, see [Cassandra configuration](/docs/apigtw_install/installation#cassandra-configuration).
 
 ## Install Cassandra in unattended mode
 
