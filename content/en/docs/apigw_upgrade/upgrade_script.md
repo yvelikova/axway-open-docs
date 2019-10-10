@@ -1,7 +1,7 @@
 {
     "title": "sysupgrade command reference",
     "linkTitle": "sysupgrade command reference",
-    "weight": 8,
+    "weight": 19,
     "date": "2019-10-07",
     "description": "Reference to `sysupgrade` commands."
 }
@@ -45,7 +45,7 @@ The following table summarizes the `export` command options:
 | `--username`        | Specify the Admin Node Manager user name.   | Yes (prompted if not specified).  |
 | `--password`        | Specify the Admin Node Manager password.     | Yes (prompted if not specified).  |
 
-### Sample export commands
+### Sample `export` commands
 
 On a single-node system, or a multi-node system with one Admin Node Manager, `export` is typically run as follows:
 

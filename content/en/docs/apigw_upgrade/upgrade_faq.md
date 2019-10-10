@@ -1,20 +1,12 @@
 {
-"title": "Frequently asked questions",
-"linkTitle": "Frequently asked questions",
-"date": "2019-10-07",
-"description": "This topic provides answers to several frequently asked questions about upgrade. It includes FAQs for:"
+    "title": "Frequently asked questions",
+    "linkTitle": "Frequently asked questions",
+    "weight": 8,
+    "date": "2019-10-07",
+    "description": "Get answers to frequently asked questions about upgrade."
 }
-﻿
 
-This topic provides answers to several frequently asked questions about upgrade. It includes FAQs for:
-
--   [All upgrades](#All)
--   [Single-node upgrades](#Single-n)
--   [Multi-node upgrades](#Multi-no)
--   [Metrics database upgrades](#upgrade)
-
-All upgrades
-------------
+## All upgrades
 
 The following FAQs are specific to all upgrades.
 
@@ -22,9 +14,9 @@ The following FAQs are specific to all upgrades.
 
 You must rerun `export` if:
 
--   The previous attempt to run `export` failed (for example, because the old installation processes were not running).
--   You have made a change to the old installation that you also want to apply to the new installation.
--   You updated the configuration in the old installation to resolve a warning or error reported when you ran `upgrade`.
+* The previous attempt to run `export` failed (for example, because the old installation processes were not running).
+* You have made a change to the old installation that you also want to apply to the new installation.
+* You updated the configuration in the old installation to resolve a warning or error reported when you ran `upgrade`.
 
 {{< alert title="Note" color="primary" >}}If you rerun `export`, you must rerun all subsequent steps (`upgrade` and `apply`).{{< /alert >}}
 
@@ -34,41 +26,34 @@ If you make any changes to the old API Gateway installation after running `expor
 
 If you do want the changes to be included in the new 7.8 installation, you must rerun `export`, possibly on all nodes, depending on the changes made. For example, if you deploy a new configuration to a group of API Gateways, you must rerun `export` on all nodes that run instances in that group.
 
-{{< alert title="Note" color="primary" >}}If you rerun `export`, you must rerun all subsequent steps (`upgrade` and `apply`).{{< /alert >}}
-
-<div class="indentTable">
-
-If you rerun `export`, and therefore `upgrade` and `apply`, on the first Admin Node Manager, you have cleaned your topology, so you must rerun `apply` on all other nodes.
-
-</div>
+{{< alert title="Note" color="primary" >}}If you rerun `export`, you must rerun all subsequent steps (`upgrade` and `apply`). If you rerun `export`, and therefore `upgrade` and `apply`, on the first Admin Node Manager, you have cleaned your topology, so you must rerun `apply` on all other nodes.{{< /alert >}}
 
 ### Why would you rerun upgrade?
 
 You must rerun `upgrade` if:
 
--   You have rerun `export`. For more details, see [*Why would you rerun export?* on page 1](#Why)
--   The previous attempt to run `upgrade` failed with errors.
+* You have rerun `export`.
+* The previous attempt to run `upgrade` failed with errors.
 
-{{< alert title="Note" color="primary" >}}When upgrading very large configurations, the default memory settings might not be sufficient for `upgrade` to run successfully (see [*Out of memory error when running upgrade* on page 1](upgrade_troubleshoot.htm#Out)).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}When upgrading very large configurations, the default memory settings might not be sufficient for `upgrade` to run successfully (see [Out of memory error when running upgrade](/docs/apigw_upgrade/upgrade_troubleshoot/#out-of-memory-error-when-running-upgrade)).{{< /alert >}}
 
 ### Why would you rerun apply?
 
 You must rerun `apply` if:
 
--   You have rerun `export` or `upgrade`. For more details, see [Why would I rerun the export command?](#Why) and [Why would I rerun the upgrade command?](#Why2)
--   The previous attempt to run `apply` failed with errors (for example, if you specified the wrong `--anm_host` parameter).
+* You have rerun `export` or `upgrade`.
+* The previous attempt to run `apply` failed with errors (for example, if you specified the wrong `--anm_host` parameter).
 
 ### Why would you run clean?
 
 You might choose to run `clean` if:
 
--   Issues occurred during the upgrade process and you want to restart the upgrade.
--   You need to restart the upgrade to capture new changes made to the old API Gateway installation.
+* Issues occurred during the upgrade process and you want to restart the upgrade.
+* You need to restart the upgrade to capture new changes made to the old API Gateway installation.
 
 {{< alert title="Note" color="primary" >}}The `export --force` command also triggers a full clean of the `export`, `upgrade`, and `apply` outputs, but in addition it also attempts to run `export`; while the `clean` command only cleans the outputs.{{< /alert >}}
 
-Single-node upgrades
---------------------
+## Single-node upgrades
 
 The following FAQs are specific to single-node upgrades.
 
@@ -94,16 +79,12 @@ In a single-node domain, if you have previously run `apply` successfully, and tr
 
 If you run `clean` on a single-node domain, you are back to the start of the `sysupgrade` process. To redo the upgrade, you must:
 
-1.  Run `export`.
+1. Run `export`. Before you run `export`, you must ensure that all processes in the new 7.8 installation are stopped, and that all processes in the old installation are running.
+2. Run `upgrade`.
+3. Shut down all processes in the old installation.
+4. Run `apply`.
 
-Before you run `export`, you must ensure that all processes in the new 7.8 installation are stopped, and that all processes in the old installation are running.
-
-1.  Run `upgrade`.
-2.  Shut down all processes in the old installation.
-3.  Run `apply`.
-
-Multi-node upgrades
--------------------
+## Multi-node upgrades
 
 The following FAQs are specific to multi-node upgrades. The example topology referenced in these FAQs is as follows:
 
@@ -117,13 +98,7 @@ In a multi-node domain, the Admin Node Manager that has the domain CA private ke
 
 In the old installation, the first Admin Node Manager is always the first Node Manager created in the domain. In the new installation, the first Admin Node Manager is always the first node on which you run `apply`, and that node must be an Admin Node Manager in the old API Gateway domain.
 
-{{< alert title="Tip" color="primary" >}}The first Admin Node Manager does not have to be on the same node in the old and new API Gateway installations, but this is the simplest approach. {{< /alert >}}
-
-<div class="indentTable">
-
-For example, in a three-node domain with Admin Node Managers on NodeA and NodeC (and none on NodeB), where NodeA is the first Admin Node Manager in the old installation, the first Admin Node Manager can be on NodeC in the new installation (if you run `apply` on NodeC first). However, the first Admin Node Manager cannot be on NodeB in the new installation, as NodeB was not an Admin Node Manager in the old installation.
-
-</div>
+{{< alert title="Tip" color="primary" >}}The first Admin Node Manager does not have to be on the same node in the old and new API Gateway installations, but this is the simplest approach. For example, in a three-node domain with Admin Node Managers on NodeA and NodeC (and none on NodeB), where NodeA is the first Admin Node Manager in the old installation, the first Admin Node Manager can be on NodeC in the new installation (if you run `apply` on NodeC first). However, the first Admin Node Manager cannot be on NodeB in the new installation, as NodeB was not an Admin Node Manager in the old installation.{{< /alert >}}
 
 ### What happens if you rerun export on the first Admin Node Manager and have already run apply?
 
@@ -133,13 +108,10 @@ In a multi-node domain, if you have previously run `export` successfully on the 
 
 After running `export --force` on the first Admin Node Manager (for example, NodeA) in a multi-node domain, you must perform the following steps:
 
-1.  Rerun `upgrade` on NodeA.
-
-You might also need to rerun `export` and `upgrade` on other nodes. We recommend using the `status` command on all other nodes to ensure that all nodes are at the same stage before proceeding.
-
-1.  Shut down all processes in the old installation on all nodes.
-2.  Rerun `apply` on NodeA.
-3.  Rerun `apply` on all other nodes, in any order. This step is necessary because running `export --force` on NodeA cleans your topology and domain CA private key and certificate.
+1. Rerun `upgrade` on NodeA. You might also need to rerun `export` and `upgrade` on other nodes. We recommend using the `status` command on all other nodes to ensure that all nodes are at the same stage before proceeding.
+2. Shut down all processes in the old installation on all nodes.
+3. Rerun `apply` on NodeA.
+4. Rerun `apply` on all other nodes, in any order. This step is necessary because running `export --force` on NodeA cleans your topology and domain CA private key and certificate.
 
 ### What happens if you rerun export on a node that is not the first Admin Node Manager and have already run apply?
 
@@ -149,10 +121,10 @@ In a multi-node domain, if you have previously run `export` successfully on a no
 
 After running `export --force` on a node that is not the first Admin Node Manager node (for example, NodeC) in a multi-node domain, you must perform the following steps:
 
-1.  Rerun `upgrade` on NodeC.
-2.  Shut down all processes in the old installation on all nodes.
-3.  Start up the processes in the new 7.8 installation on other nodes, especially the Admin Node Manager on NodeA, as this must be running before you can proceed to the next step.
-4.  Rerun `apply` on NodeC. Because you ran `apply` previously on NodeC, this rerun triggers removal of NodeC entries in the topology on the Admin Node Manager on NodeA, before NodeC is registered.
+1. Rerun `upgrade` on NodeC.
+2. Shut down all processes in the old installation on all nodes.
+3. Start up the processes in the new 7.8 installation on other nodes, especially the Admin Node Manager on NodeA, as this must be running before you can proceed to the next step.
+4. Rerun `apply` on NodeC. Because you ran `apply` previously on NodeC, this rerun triggers removal of NodeC entries in the topology on the Admin Node Manager on NodeA, before NodeC is registered.
 
 You do not need to rerun commands on other nodes as a result of running `export --force` on NodeC.
 
@@ -164,12 +136,9 @@ In a multi-node domain, if you have previously run `upgrade` successfully on the
 
 After running `upgrade --force` on the first Admin Node Manager (for example, NodeA) in a multi-node domain, you must perform the following steps:
 
-1.  Shut down all processes in the old installation on all nodes.
-
-You might also need to rerun `upgrade` on other nodes. We recommend using the `status` command on all other nodes to ensure that all nodes are at the same stage before proceeding.
-
-1.  Rerun `apply` on NodeA.
-2.  Rerun `apply` on all other nodes, in any order. This step is necessary because running `upgrade --force` on NodeA cleans your topology and domain CA private key and certificate.
+1. Shut down all processes in the old installation on all nodes. You might also need to rerun `upgrade` on other nodes. We recommend using the `status` command on all other nodes to ensure that all nodes are at the same stage before proceeding.
+2. Rerun `apply` on NodeA.
+3. Rerun `apply` on all other nodes, in any order. This step is necessary because running `upgrade --force` on NodeA cleans your topology and domain CA private key and certificate.
 
 ### What happens if you rerun upgrade on a node that is not the first Admin Node Manager and have already run apply?
 
@@ -179,10 +148,10 @@ In a multi-node domain, if you have previously run `upgrade` successfully on a n
 
 After running `upgrade --force` on a node that is not the first Admin Node Manager node (for example, NodeC) in a multi-node domain, you must perform the following steps:
 
-1.  Shut down all processes in the old installation on all nodes.
-2.  Shut down all processes in the new 7.8 installation on NodeC (for example, any processes started by a previous `apply`).
-3.  Start up the processes in the new 7.8 installation on other nodes, especially the Admin Node Manager on NodeA, as this must be running before you can proceed to the next step.
-4.  Rerun `apply` on NodeC. Because you ran `apply` previously on NodeC, this rerun triggers removal of NodeC entries in the topology on the Admin Node Manager on NodeA, before NodeC is registered.
+1. Shut down all processes in the old installation on all nodes.
+2. Shut down all processes in the new 7.8 installation on NodeC (for example, any processes started by a previous `apply`).
+3. Start up the processes in the new 7.8 installation on other nodes, especially the Admin Node Manager on NodeA, as this must be running before you can proceed to the next step.
+4. Rerun `apply` on NodeC. Because you ran `apply` previously on NodeC, this rerun triggers removal of NodeC entries in the topology on the Admin Node Manager on NodeA, before NodeC is registered.
 
 You do not need to rerun commands on other nodes as a result of running `upgrade --force` on NodeC.
 
@@ -194,9 +163,9 @@ In a multi-node domain, if you have previously run `apply` successfully on the f
 
 After running `apply --force` on the first Admin Node Manager (for example, NodeA) in a multi-node domain, you must perform the following steps:
 
-1.  Leave all processes in the new 7.8 installation running on NodeA.
-2.  Shut down all processes in the new 7.8 installation on all other nodes (the processes in the old installation should already be down).
-3.  Rerun `apply` on all other nodes, in any order.
+1. Leave all processes in the new 7.8 installation running on NodeA.
+2. Shut down all processes in the new 7.8 installation on all other nodes (the processes in the old installation should already be down).
+3. Rerun `apply` on all other nodes, in any order.
 
 ### What happens if you rerun apply on a node that is not the first Admin Node Manager?
 
@@ -212,17 +181,11 @@ In a multi-node domain, if you run `clean` successfully on the first Admin Node 
 
 To redo the upgrade on NodeA, you must perform the following:
 
-1.  Run `export` on NodeA.
-
-Before you run `export`, you must ensure that all processes in the new 7.8 installation are stopped *on all nodes*, and that all processes in the old installation are running *on all nodes*.
-
-1.  Run `upgrade` on NodeA.
-
-You might also need to rerun `export` and `upgrade` on other nodes. We recommend using the `status` command on all other nodes to ensure that all nodes are at the same stage before proceeding.
-
-1.  Shut down all processes in the old installation on all nodes.
-2.  Run `apply` on NodeA.
-3.  Run `apply` on all other nodes, in any order. This step is necessary because running `clean` on NodeA cleans your topology and domain CA private key and certificate.
+1. Run `export` on NodeA. Before you run `export`, you must ensure that all processes in the new 7.8 installation are stopped *on all nodes*, and that all processes in the old installation are running *on all nodes*.
+2. Run `upgrade` on NodeA. You might also need to rerun `export` and `upgrade` on other nodes. We recommend using the `status` command on all other nodes to ensure that all nodes are at the same stage before proceeding.
+3. Shut down all processes in the old installation on all nodes.
+4. Run `apply` on NodeA.
+5. Run `apply` on all other nodes, in any order. This step is necessary because running `clean` on NodeA cleans your topology and domain CA private key and certificate.
 
 ### What happens if you run clean on a node that is not the first Admin Node Manager?
 
@@ -230,37 +193,22 @@ In a multi-node domain, if you run `clean` successfully on a node that is not th
 
 To redo the upgrade on the node you have cleaned, you must perform the following steps:
 
-1.  Run `export` on NodeC.
-
-Before you run `export`, you must ensure that all processes in the new 7.8 installation are stopped *on all nodes*, and that all processes in the old installation are running *on all nodes*.
-
-1.  Run `upgrade` on NodeC.
-2.  Shut down all processes in the old installation on all nodes.
-3.  Start up the processes in the new 7.8 installation on other nodes, especially the Admin Node Manager on NodeA, as this must be running before you can proceed to the next step.
-4.  Run `apply` on NodeC. If you ran `apply` previously on NodeC, this rerun triggers removal of NodeC entries in the topology on the Admin Node Manager on NodeA, before NodeC is registered.
+1. Run `export` on NodeC. Before you run `export`, you must ensure that all processes in the new 7.8 installation are stopped *on all nodes*, and that all processes in the old installation are running *on all nodes*.
+2. Run `upgrade` on NodeC.
+3. Shut down all processes in the old installation on all nodes.
+4. Start up the processes in the new 7.8 installation on other nodes, especially the Admin Node Manager on NodeA, as this must be running before you can proceed to the next step.
+5. Run `apply` on NodeC. If you ran `apply` previously on NodeC, this rerun triggers removal of NodeC entries in the topology on the Admin Node Manager on NodeA, before NodeC is registered.
 
 You do not need to rerun commands on other nodes as a result of running `clean` on NodeC.
 
-API Gateway Analytics and metrics database upgrades
----------------------------------------------------
+## API Gateway Analytics and metrics database upgrades
 
 The following FAQs are specific to upgrading API Gateway Analytics and your metrics database.
 
 ### What should you upgrade first - API Gateway or API Gateway Analytics?
 
-This depends on the version of API Gateway you are upgrading from:
-
--   If you are upgrading from 7.4.0 and later versions, you should upgrade API Gateway Analytics before upgrading API Gateway using the `sysupgrade` command.
--   If you are upgrading from versions earlier than 7.4.0, you should upgrade API Gateway Analytics after upgrading API Gateway using the `sysupgrade` command.
-
-For more details, see [Upgrade API Gateway Analytics](upgrade_analytics.htm).
+If you are upgrading from 7.4.0 and later versions, you should upgrade API Gateway Analytics before upgrading API Gateway using the `sysupgrade` command.
 
 ### Do you need to run managedomain to enable metrics?
 
-If you are upgrading from a pre-7.4.0 API Gateway domain, you must run `managedomain` for each Node Manager in the domain to enable metrics. You must then restart each Node Manager.
-
 If you are upgrading from a 7.4.0 or later API Gateway domain where the Node Managers are configured to write to the database, you do not need to run `managedomain` for each Node Manager. This is because the configuration is migrated when the API Gateways are upgraded.
-
-For details on API Gateway Analytics metrics, see [Step 9 – Enable metrics using managedomain](upgrade_analytics.htm#Step3).
-
-For details on API Manager metrics, see [Upgrade your metrics database for API Manager](upgrade_metrics.htm).
