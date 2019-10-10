@@ -1,7 +1,7 @@
 {
 "title": "Quick start installation",
 "linkTitle": "Quick start installation",
-"weight":"4",
+"weight":"2",
 "date": "2019-10-07",
 "description": "Perform a quick start installation of API Gateway on Linux. A quick start installation is a simple, standard installation of API Gateway."
 }

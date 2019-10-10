@@ -1,18 +1,20 @@
 {
 "title": "Installation options",
 "linkTitle": "Installation options",
-"weight":"8",
+"weight":"6",
 "date": "2019-10-02",
 "description": "This section describes how to install API Gateway on Linux using the installer."
 }
 
+{{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apigtw_install/install_dev_tools). API Gateway and API Manager do not support Windows.{{< /alert >}}
+
 ## Prerequisites
 
-* You have downloaded the installation setup file for your target operating system from Axway Support at <https://support.axway.com>.
+* You have downloaded the installation setup file for your target operating system from Axway Support at <https://support.axway.com>.<br>
     The download instructions are in the welcome letter that Axway sent you in an email message.
 * You have obtained a valid Axway license file for API Gateway, and optionally API Manager or API Gateway Analytics. Also, if you intend to run API Gateway in FIPS-compliant mode, you have ensured that your license file allows this. You can obtain the required licenses from your Axway account manager.
 * You have obtained a valid McAfee license file if you intend to use the **McAfee Anti-Virus** filter.
-* You have reviewed the prerequisites and system requirements in [Prerequisites](/docs/apigtw_install/system_requirements) and have ensured that your target system is suitable
+* You have reviewed the [prerequisites and system requirements](/docs/apigtw_install/system_requirements) and have ensured that your target system is suitable.
 
 ## Installation modes
 
@@ -33,17 +35,11 @@ APIGateway_7.8_Install_linux-x86-32_BN<n>.run
 
 Follow the instructions on each window to complete the installation.
 
-{{< alert title="Note" color="primary" >}}
-Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apigtw_install/install_dev_tools). API Gateway and API Manager do not support Windows.
-{{< /alert >}}
-
 To run the setup in unattended mode, see [Unattended installation](/docs/apigtw_install/installation_unattended).
 
 ## Installation options
 
 When you run the installation setup file it launches in GUI mode by default. The following sections detail the installation options in GUI mode.
-
-{{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apigtw_install/install_dev_tools). API Gateway and API Manager do not support Windows.{{< /alert >}}
 
 ## Welcome
 
@@ -59,17 +55,25 @@ Click **Next** to continue.
 
 You can install API Gateway using the following setup types:
 
-|              |  |
-|--------------|--|
-| **Standard** | Select this option to install all API Gateway components without API Manager. This includes API Gateway Analytics, the QuickStart tutorial, Apache Cassandra database, package and deployment tools, Policy Studio, and Configuration Studio.           |
-| **Complete** | Select this option to install all API Gateway components with API Manager. This includes API Manager, API Gateway Analytics, the QuickStart tutorial, Apache Cassandra database, package and deployment tools, Policy Studio, and Configuration Studio. |
-| **Custom**   | Select this option to customize which components are installed. You must select this option if you are upgrading from a previous API Gateway version. For more details, see the [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5). |
+**Standard**
 
-{{< alert title="Note" color="primary" >}}The API Tester component is deprecated, and is only installed in a **Custom** setup. For more details, see [Install API Tester](install_api_tester.htm).{{< /alert >}}
+Select this option to install all API Gateway components without API Manager. This includes API Gateway Analytics, the QuickStart tutorial, Apache Cassandra database, package and deployment tools, Policy Studio, and Configuration Studio.
+
+**Complete**
+
+Select this option to install all API Gateway components with API Manager. This includes API Manager, API Gateway Analytics, the QuickStart tutorial, Apache Cassandra database, package and deployment tools, Policy Studio, and Configuration Studio.
+
+**Custom**
+
+Select this option to customize which components are installed. You must select this option if you are upgrading from a previous API Gateway version. For more details, see the [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5).
+
+{{< alert title="Note" color="primary" >}}The API Tester component is deprecated, and is only installed in a **Custom** setup. {{< /alert >}}
 
 ### QuickStart tutorial
 
-The **Standard** and **Complete** setup types install the QuickStart tutorial by default, or you can select to install it during the **Custom** setup type. This installs a preconfigured domain and API Gateway instance. If you do not install the QuickStart tutorial, you must configure a domain and API Gateway instance when the installation is complete. For more details, see [Initial configuration](/docs/apigtw_install/post_overview#initial_configuration).
+The **Standard** and **Complete** setup types install the QuickStart tutorial by default, or you can select to install it during the **Custom** setup type. This installs a preconfigured domain and API Gateway instance. If you do not install the QuickStart tutorial, you must configure a domain and API Gateway instance when the installation is complete. 
+
+For more details, see [Initial configuration](/docs/apigtw_install/post_overview##initial-configuration).
 
 Click **Next** to continue.
 
@@ -87,11 +91,11 @@ Click **Next** to continue.
 
 ## Specify installation directory
 
-Enter a location or click the browse button to specify the directory where the API Gateway components are to be installed, for example: ```/opt/Axway-7.8```, and click **Next** to continue.
+Enter a location or click the browse button to specify the directory where the gateway components are to be installed, for example: ```/opt/Axway-7.8```, and click **Next** to continue.
 
 ## Specify license file
 
-Enter the location or click the browse button to specify a valid Axway license file. For more details, see [Software and license keys](/docs/apigtw_install/prereqs_software_and_license_keys).
+Enter the location or click the browse button to specify a valid Axway license file. For more details, see [Software and license keys](/docs/apigtw_install/system_requirements/#software-and-license-keys).
 
 {{< alert title="Note" color="primary" >}}API Gateway, API Gateway Analytics, and API Manager each require a valid Axway license file. If you have separate license files for each of these components, specify the API Gateway license at this step, and you will be prompted for the API Gateway Analytics and API Manager license files at a later step. Alternatively, you can specify a single license file that covers all licensed components.{{< /alert >}}
 
@@ -102,10 +106,12 @@ If you selected to install an Apache Cassandra database, configure the following
 * **Installation Directory**
     Enter the directory in which to install the Cassandra server (for example, `/opt/db/cassandra`).
 
-{{< alert title="Caution" color="warning" >}}Do not install Apache Cassandra in the same directory as the API Gateway components to avoid errors during the Cassandra upgrade.{{< /alert >}}
+    {{< alert title="Caution" color="warning" >}}Do not install Apache Cassandra in the same directory as the API Gateway components to avoid errors during the Cassandra upgrade.{{< /alert >}}
 
 * **JRE Location**
-    Enter the directory of the Java Runtime Environment used by Cassandra. The default value is the location of the JRE provided by API Gateway (for example, `INSTALL_DIR/apigateway/Linux.x86_64/jre/bin`). If you have installed a separate JRE for Cassandra, enter its location instead.<br> For details of the Cassandra JRE requirements and recommendations, see [Cassandra prerequisites](/docs/apigtw_install/cassandra_install#install_apache_cassandra).
+    Enter the directory of the Java Runtime Environment used by Cassandra. The default value is the location of the JRE provided by API Gateway (for example, `INSTALL_DIR/apigateway/Linux.x86_64/jre/bin`). If you have installed a separate JRE for Cassandra, enter its location instead.
+
+    For details of the Cassandra JRE requirements and recommendations, see [Cassandra prerequisites](/docs/apigtw_install/cassandra_install#cassandra-prerequisites).
 
 ## Set the administrator credentials for the Admin Node Manager
 
@@ -138,9 +144,9 @@ This window is only displayed if you selected to install the QuickStart tutorial
 Configure the following settings:
 
 * **Local Management Port**:
-    Enter the local port that the Node Manager uses to manage the API Gateway instance. Defaults to `8085`.
+    Enter the local port that the Node Manager uses to manage the gateway instance. Defaults to `8085`.
 * **External Traffic Port**:
-    Enter the port that the API Gateway uses for message traffic from external clients. Defaults to `8080`.
+    Enter the port that the gateway uses for message traffic from external clients. Defaults to `8080`.
 
 Click **Next** to continue.
 

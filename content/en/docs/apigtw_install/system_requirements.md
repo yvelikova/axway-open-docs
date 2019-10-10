@@ -14,13 +14,36 @@ For more details on API Gateway components, see the [API Gateway Concepts Guide]
 
 This section describes the operating system requirements for API Gateway.
 
-| Platform       | Supported versions                                        | Hardware prerequisites |
-|----------------|-----------------------------------------------------------|------------------------|
-| **Linux**      | - CentOS 6.x, 7.x<br>- Oracle Linux 6.x, 7.x<br>- Red Hat Enterprise Linux 6.x, 7.x<br>- SUSE Linux Enterprise Server 11.x, 12.x<br>API Gateway might not run on systems that do not meet these requirements (see **Note** below).|- Supports 64-bit Linux running on 64-bit hardware <br>Intel Core or AMD Opteron at 2Ghz with Dual Core or faster|
-| **Windows**<br>(Policy Studio, Configuration Studio, Package and Deployment Tools only) | - Windows 10<br>Windows 8.1 |- Supports 32-bit Windows on both 32-bit hardware and 64-bit hardware<br> - Intel Core or AMD Opteron at 2Ghz with Dual Core or faster|
+### Linux
+
+**Supported versions**:
+
+* CentOS 6.x, 7.x
+* Oracle Linux 6.x, 7.x
+* Red Hat Enterprise Linux 6.x, 7.x
+* SUSE Linux Enterprise Server 11.x, 12.x
+
+**Hardware prerequisites**:
+
+* Supports 64-bit Linux running on 64-bit hardware
+* Intel Core or AMD Opteron at 2Ghz with Dual Core or faster
+
+### Windows
+
+(Policy Studio, Configuration Studio, Package and Deployment Tools only)
+
+**Supported versions**:
+
+* Windows 10
+* Windows 8.1
+
+**Hardware prerequisites**:
+
+* Supports 32-bit Windows on both 32-bit hardware and 64-bit hardware
+* Intel Core or AMD Opteron at 2Ghz with Dual Core or faster
 
 {{< alert title="Note" color="primary" >}}When new Linux kernels and distributions are released, Axway modifies and tests its products for stability and reliability on these platforms.
-Axway makes every effort to add support for new kernels and distributions in a timely manner. However, until a kernel or distribution is added to this list, its use with API Gateway is not supported. Axway endeavors to support any generally popular Linux distribution on a release that the vendor still supports. {{< /alert >}}
+Axway makes every effort to add support for new kernels and distributions in a timely manner. However, until a kernel or distribution is added to this list, its use with API Gateway is not supported. Axway endeavors to support any generally popular Linux distribution on a release that the vendor still supports.{{< /alert >}}
 
 ### Disk space and RAM requirements
 
@@ -34,7 +57,7 @@ The disk space and RAM requirements for the developer tools on Windows platforms
 There are also specific requirements for the `/tmp` directory:
 
 * Minimum 500 MB available in the `/tmp` directory and writable permissions on the `/tmp`, `/var/tmp`, and `/usr/tmp` directories.
-* `noexec` must not be set on `/tmp`. If `noexec` is set, you must remount `/tmp` with `noexec` disabled or follow the additional steps detailed in [/tmp directory mounted with noexec](/docs/apigtw_install/prereqs_additional).
+* `noexec` must not be set on `/tmp`. If `noexec` is set, you must remount `/tmp` with `noexec` disabled or follow the additional steps detailed in [/tmp directory mounted with noexec](/docs/apigtw_install/system_requirements/#tmp-directory-mounted-with-noexec).
 
 ## Databases
 
@@ -50,7 +73,7 @@ API Gateway and API Manager support the following relational databases to store 
 * Oracle 11.2, 12.1
 * IBM DB2 10.5
 
-For more details, see [Configure the metrics database](/docs/apigtw_install/metrics_db_install.htm).
+For more details, see [Configure the metrics database](/docs/apigtw_install/metrics_db_install).
 
 ### Apache Cassandra
 
@@ -90,12 +113,10 @@ API Gateway elastic topology is supported in Docker deployments only. For more d
 
 This section describes requirements for specific API Gateway components.
 
-| Component                 | Requirements |
-|---------------------------|---------------|
-| **Policy Studio**         | Policy Studio is a thick client and supports the platforms described in [Thick client platforms](#thick-client-platforms).|
-| **API Gateway Manager**   | API Gateway Manager is a web-based client and supports the web browsers listed in [Web browsers](#web-browsers). |
-| **API Gateway Analytics** | The API Gateway Analytics server component has the same operating system and hardware requirements as API Gateway. See [*Operating systems and hardware* on page 1](#operating-systems-and-hardware).<br>API Gateway Analytics requires a database. For database requirements, see [*Databases* on page 1](#databases).<br> The browser-based client component supports the same browsers as API Gateway Manager. See [*Web browsers* on page 1](#web-browsers).  |
-| **API Manager**           | API Manager is a browser-based client and supports the same browsers as API Gateway Manager. See [Web browsers](#web-browsers). |
+* **Policy Studio** is a thick client and supports the platforms described in [Thick client platforms](#thick-client-platforms).
+* **API Gateway Manager** is a web-based client and supports the web browsers listed in [Web browsers](#web-browsers).
+* **API Gateway Analytics** is a server component that has the same operating system and hardware requirements as API Gateway. See [Operating systems and hardware](#operating-systems-and-hardware). <br>API Gateway Analytics requires a database. For database requirements, see [Databases](#databases). <br> The browser-based client component supports the same browsers as API Gateway Manager. See [Web browsers](#web-browsers).
+* **API Manager** is a browser-based client and supports the same browsers as API Gateway Manager. See [Web browsers](#web-browsers).
 
 ## Default ports
 
@@ -138,19 +159,19 @@ The default port used by API Gateway Analytics for reporting, monitoring, and ma
 
 ## Software and license keys
 
-Axway products are delivered electronically from Axway Support at [https://support.axway.com](https://support.axway.com/). A welcome email notifies you that your products are ready for download.
+Axway products are delivered electronically from <https://support.axway.com/>. A welcome email notifies you that your products are ready for download.
 
 When you are ready, perform the following tasks:
 
 1. Check your authorization.
 2. Check the hardware and system requirements.
 3. Obtain license keys.
-4. Download the installation setup file from Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink}.
+4. Download the installation setup file from <https://support.axway.com/>.
 5. Install products.
 
 ### Check your authorization
 
-Verify that you can log in to Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink} . If you do not have an account, follow the instructions in your welcome email.
+Verify that you can log in to Axway Support at <https://support.axway.com/>. If you do not have an account, follow the instructions in your welcome email.
 
 Log in to download or access:
 
@@ -205,10 +226,10 @@ If your Linux system has the `/tmp` directory mounted with `noexec`, you must co
 
 When installing API Gateway, do not install the QuickStart tutorial:
 
-* When running the installer in GUI mode, you must select the **Custom** setup type and deselect the QuickStart tutorial component. For more information, see [Installation options](installation).
-* When running the installer in unattended mode, you must use the `--setup_type advanced` option and specify `qstart` to the `--disable-components` option. For more information, see [Unattended installation](installation_unattended).
+* When running the installer in GUI mode, you must select the **Custom** setup type and deselect the QuickStart tutorial component. For more information, see [Installation options](/docs/apigtw_install/installation/).
+* When running the installer in unattended mode, you must use the `--setup_type advanced` option and specify `qstart` to the `--disable-components` option. For more information, see [Unattended installation](/docs/apigtw_install/installation_unattended/).
 
-You must not install the QuickStart tutorial as this option starts Apache Cassandra, the API Gateway server and the Node Manager when installation completes, and in a system with `/tmp` mounted as `noexec` you must make some changes before starting these components.
+{{< alert title="Note" color="primary" >}}Do not install the [QuickStart tutorial](/docs/apigtw_install/install_quickstart_tutorial/) as this option starts Apache Cassandra, the API Gateway server and the Node Manager when installation completes, and in a system with `/tmp` mounted as `noexec` you must make some changes before starting these components.{{< /alert >}}
 
 **Post-installation**:
 
@@ -227,10 +248,9 @@ After completing the installation and before starting the services:
 
 ### Service packs
 
-Service packs for API Gateway are available
-from Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink}. If any service packs are available for API Gateway 7.8, download and apply them when the installation completes.
+Service packs for API Gateway are available from <https://support.axway.com/>. If any service packs are available for API Gateway 7.8, download and apply them when the installation completes.
 
-For more information on applying a service pack, see [Update API Gateway](install_service_packs).
+For more information on applying a service pack, see [Update API Gateway](/docs/apigtw_install/install_service_packs).
 
 ### Certificates
 

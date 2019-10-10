@@ -8,7 +8,7 @@
 
 This page explains how to run the API Gateway installer in unattended mode on Linux and Windows. It also describes each of the available command options.
 
-{{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](../../../InstallGuideTopics/install_dev_tools.htm). API Gateway and API Manager do not support Windows.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apigtw_install/install_dev_tools/). API Gateway and API Manager do not support Windows.{{< /alert >}}
 
 ## Run the installer in unattended mode
 
@@ -54,7 +54,7 @@ The components are installed in the background, in the directory specified by th
 
 ### Custom setup
 
-The topics on installing each API Gateway component show how to use the `-setup_type advanced` option to install a custom setup in unattended mode. For example, see [Install the API Gateway server](/docs/apigtw_install/install_gateway.htm).
+The pages on installing each gateway component show how to use the `-setup_type advanced` option to install a custom setup in unattended mode. For example, see [Install the API Gateway server](/docs/apigtw_install/install_gateway/).
 
 ## Unattended mode options
 
@@ -62,11 +62,15 @@ For a description of all the available command-line options and their default se
 
 **Linux**:
 
-```./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --help```
+```
+./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --help
+```
 
 **Windows**:
 
-```APIGateway_7.8_Client_Tools_Install_win-x86-32_BN<n>.exe --help```
+```
+APIGateway_7.8_Client_Tools_Install_win-x86-32_BN<n>.exe --help
+```
 
 The following table summarizes some of the more common options:
 
