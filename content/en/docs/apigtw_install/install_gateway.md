@@ -17,7 +17,7 @@ For more details on API Gateway components and concepts, see the [API Gateway Co
 * Ensure that all of the prerequisites detailed in [Prerequisites](/docs/apigtw_install/system_requirements) are met.
 * If you are using Apache Cassandra, before starting API Gateway, you must first ensure that Cassandra is installed and running. For more details, see [Install an Apache Cassandra database](/docs/apigtw_install/cassandra_install).
 
-### **Axway license file** {#axway-license-file "api_gateway_conditions.axway"=""}
+### Axway license file
 
 You must have a valid Axway license file to install the API Gateway server. Also, if you intend to run API Gateway in FIPS-compliant mode, ensure that your license file allows this. To obtain an evaluation trial license or a full license, contact your Axway Account Manager.
 
