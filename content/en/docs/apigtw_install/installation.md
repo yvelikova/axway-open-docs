@@ -10,7 +10,7 @@
 
 ## Prerequisites
 
-* You have downloaded the installation setup file for your target operating system from Axway Support at <https://support.axway.com>.<br>
+* You have downloaded the installation setup file for your target operating system from Axway Support at <https://support.axway.com>.
     The download instructions are in the welcome letter that Axway sent you in an email message.
 * You have obtained a valid Axway license file for API Gateway, and optionally API Manager or API Gateway Analytics. Also, if you intend to run API Gateway in FIPS-compliant mode, you have ensured that your license file allows this. You can obtain the required licenses from your Axway account manager.
 * You have obtained a valid McAfee license file if you intend to use the **McAfee Anti-Virus** filter.
@@ -53,25 +53,37 @@ Click **Next** to continue.
 
 ## Select setup type
 
-You can install API Gateway using the following setup types:
+You can install API Gateway using the following setup types.
 
-**Standard**
+### Standard
 
 Select this option to install all API Gateway components without API Manager. This includes API Gateway Analytics, the QuickStart tutorial, Apache Cassandra database, package and deployment tools, Policy Studio, and Configuration Studio.
 
-**Complete**
+### Complete
 
 Select this option to install all API Gateway components with API Manager. This includes API Manager, API Gateway Analytics, the QuickStart tutorial, Apache Cassandra database, package and deployment tools, Policy Studio, and Configuration Studio.
 
-**Custom**
+### Custom
 
-Select this option to customize which components are installed. You must select this option if you are upgrading from a previous API Gateway version. For more details, see the [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5).
+Select this option to customize which components are installed. You can install each API Gateway component separately. The API Gateway installer enables you to perform the following:
+
+* [Install the API Gateway server](/docs/apigtw_install/install_gateway/)
+* [Install the QuickStart tutorial](/docs/apigtw_install/install_quickstart_tutorial)
+* [Install the Admin Node Manager](/docs/apigtw_install/install_node_manager)
+* [Install Policy Studio](/docs/apigtw_install/install_policy_studio)
+* [Install API Tester](/docs/apigtw_install//docs/apigtw_install/install_api_tester)
+* [Install Configuration Studio](/docs/apigtw_install/install_config_studio)
+* [Install API Manager](/docs/apigtw_install//docs/apigtw_install/install_api_mgmt)
+* [Install the Package and Deploy tools](/docs/apigtw_install/install_deploy_tools)
+* [Install API Gateway Analytics](/docs/apigtw_install/install_analytics)
 
 {{< alert title="Note" color="primary" >}}The API Tester component is deprecated, and is only installed in a **Custom** setup. {{< /alert >}}
 
+You must select this option if you are upgrading from a previous API Gateway version. For more details, see the [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5).
+
 ### QuickStart tutorial
 
-The **Standard** and **Complete** setup types install the QuickStart tutorial by default, or you can select to install it during the **Custom** setup type. This installs a preconfigured domain and API Gateway instance. If you do not install the QuickStart tutorial, you must configure a domain and API Gateway instance when the installation is complete. 
+The **Standard** and **Complete** setup types install the QuickStart tutorial by default, or you can select to install it during the **Custom** setup type. This installs a preconfigured domain and API Gateway instance. If you do not install the QuickStart tutorial, you must configure a domain and API Gateway instance when the installation is complete.
 
 For more details, see [Initial configuration](/docs/apigtw_install/post_overview##initial-configuration).
 
