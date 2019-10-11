@@ -55,7 +55,7 @@ cd emt_containers-<version>
 
 This example creates a base Docker image named `my-gw-base` with a tag of `1.0`. The image is based on a standard RHEL7 Docker image.
 
-### Create a base image based on custom CentOS7/RHEL7
+### Create a base image based on custom CentOS7/RHEL7 {#custimg}
 
 The following example creates a base Docker image using a custom RHEL7 image.
 
