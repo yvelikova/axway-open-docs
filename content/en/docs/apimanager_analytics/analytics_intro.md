@@ -6,7 +6,7 @@ description: API Gateway Analytics is a server runtime and web-based monitoring 
 weight: "1"
 ---
 
-![API Gateway Analytics](/Images/docbook/images/concepts/reporter.png)
+![API Gateway Analytics](/Images/concepts/reporter.png)
 
 API Gateway Analytics includes the following features:
 
