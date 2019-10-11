@@ -1,14 +1,17 @@
 {
-"title": "Multi-datacenter deployment",
-"linkTitle": "Multi-datacenter deployment",
-"weight":"30",
+"title": "Configure API Management in multiple datacenters",
+"linkTitle": "Configure API Management in multiple datacenters",
+"weight":"2",
+"no_list": "true",
 "date": "2019-10-02",
-"description": "Learn about the recommended multi-datacenter configuration that applies to the various types of API Management data in storage."
+"description": "Recommended multi-datacenter configuration that applies to the various types of API Management data in storage. For each data type, it describes how data is replicated across the datacenter, the recommended configuration, and expected behavior in case of failover."
 }
 
-This page describes the infrastructure required for API Management multi-datacenter deployment, and the various types of API Management data. For example, this includes API catalog, client registry, OAuth tokens, quota, Key Property Store (KPS), and so on. It also describes where the data is stored. For example, this includes files on disk, Apache Cassandra database, Ehcache, or Relational Database Management System (RDBMS). For details on supported database versions, see [System requirements](/docs/apigtw_install/system_requirements).
+## Multi-datacenter deployment
 
-## Multi-datacenter deployment architecture
+This section describes the infrastructure required for API Management multi-datacenter deployment, and the various types of API Management data. For example, this includes API catalog, client registry, OAuth tokens, quota, Key Property Store (KPS), and so on. It also describes where the data is stored. For example, this includes files on disk, Apache Cassandra database, Ehcache, or Relational Database Management System (RDBMS). For details on supported database versions, see [System requirements](/docs/apigtw_install/system_requirements).
+
+### Multi-datacenter deployment architecture
 
 The following diagram shows the minimum infrastructure required for API Management multi-datacenter deployment.
 
@@ -26,28 +29,28 @@ This deployment architecture is described as follows:
 * Caching is replicated between API Gateway instances using the Ehcache distributed caching system. For more details, see [Global caches](/csh?context=604&product=prod-api-gateway-77)
     in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
-## API Management data storage
+### API Management data storage
 
 This section describes what API Management data can be persisted and where.
 
-### API Gateway data
+#### API Gateway data
 
 * **API Gateway configuration**: files are stored on disk.
 
-  * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/conf/fed`
-  * Node Manager/Admin Node Manager: ` INSTALL_DIR/apigateway/conf/fed` 
+    * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/conf/fed`
+    * Node Manager/Admin Node Manager: `INSTALL_DIR/apigateway/conf/fed`
   
     Alternatively, you can use a deployment archive (`.fed` file). For more details, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
 
 * **API Gateway logs**: Files are stored on disk.
 
-  * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/logs`
-  * Node Manager/Admin Node Manager: `INSTALL_DIR/apigateway/logs`
+    * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/logs`
+    * Node Manager/Admin Node Manager: `INSTALL_DIR/apigateway/logs`
 
 * **API Gateway traffic monitoring**: files are stored on disk.
 
-  * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/conf/opsdb.d`
-  * Node Manager/Admin Node Manager: `INSTALL_DIR/apigateway/conf/opsdb.d`
+    * API Gateway instance: `INSTALL_DIR/apigateway/groups/group-n/instance-n/conf/opsdb.d`
+    * Node Manager/Admin Node Manager: `INSTALL_DIR/apigateway/conf/opsdb.d`
 
 * **API Gateway KPS custom tables**: Files are stored on Cassandra or RDBMS.
 
@@ -57,17 +60,8 @@ This section describes what API Management data can be persisted and where.
 
 * **API Gateway custom cache**: Files are stored on Ehcache.
 
-### API Manager data
+#### API Manager data
 
 * **API Manager catalog, client registry, web-based settings**: Files are stored on Cassandra.
 * **API Manager quota counters**: Files are stored in memory, Cassandra, or RDBMS.
 * **API Manager metrics**: Files are stored on RDBMS.
-
-## Further details
-
-For more details on concepts such as shared group configuration, Node Manager, and Admin Node Manager, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
-
-For details on how to configure API Management in multiple datacenters, see:
-
-* [Multi-datacenter configuration](/docs/apigtw_install/multi_datacenter_config)
-* [Multi-datacenter failover scenarios](/docs/apigtw_install/multi_datacenter_failover)

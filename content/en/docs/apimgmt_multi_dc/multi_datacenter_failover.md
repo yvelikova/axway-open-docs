@@ -3,15 +3,8 @@
 "linkTitle": "Multi-datacenter failover scenarios",
 "weight":"34",
 "date": "2019-10-02",
-"description": "Learn about the expected behavior in a multi-datacenter deployment in case of failover."
+"description": "Learn about the expected behavior in a multi-datacenter deployment in case of failover, and how the system will behave in different scenarios."
 }
-
-This page describes expected behavior in a multi-datacenter deployment in case of failover. It explains how the system will behave in each of the following scenarios:
-
-* [One API Gateway instance is down](#one-api-gateway-instance-is-down)
-* [One Apache Cassandra node is down](#one-cassandra-node-is-down)
-* [A full datacenter is down](#a-full-datacenter-is-down)
-* [The network between two datacenters is down](#the-network-between-both-datacenters-is-down)
 
 ## One API Gateway instance is down
 
@@ -50,8 +43,8 @@ The following applies in this scenario:
 * API requests are automatically directed to DC 2 by the load balancer
 * API Manager quotas remain the same but over less servers
 * You should not deploy updates for the following file-based data types to the API Gateway group:
-  * API Gateway configuration
-  * API Gateway KPS custom table structure
+    * API Gateway configuration
+    * API Gateway KPS custom table structure
 
 {{< alert title="Caution" color="warning" >}}
 There is a risk that end-users may need to re-initiate sessions using the following data types stored in Ehcache:
@@ -81,15 +74,15 @@ The following applies in this scenario:
 
 * OAuth or throttling data stored in Ehcache per datacenter is not affected
 * You should not deploy updates for the following file-based data types to the API Gateway group:
-  * API Gateway configuration
-  * API Gateway KPS custom table structure
+    * API Gateway configuration
+    * API Gateway KPS custom table structure
 * For the following data types stored in Cassandra, both datacenters are not synchronized until the network recovers, and then automatically resynchronize:
-  * API Manager catalog, client registry, web-based settings
-  * API Gateway KPS custom table structure
+    * API Manager catalog, client registry, web-based settings
+    * API Gateway KPS custom table structure
 
 * For the following file based data types, a single API Gateway Manager web console cannot access both datacenters while the network is down, and can only access each datacenter separately:
-  * API Gateway logs
-  * API Gateway traffic monitoring
+    * API Gateway logs
+    * API Gateway traffic monitoring
 
 {{< alert title="Note" color="primary" >}}If the network connection has been down for more than two hours, the following steps are recommended:{{< /alert >}}
 
@@ -97,10 +90,3 @@ The following applies in this scenario:
 * Restart the API Gateway instances to resynchronize data from Cassandra (potentially in both datacenters if Cassandra changes have occurred in both datacenters).
 
 It may take a minute for newly created, deleted, or updated APIs in one datacenter to synchronize successfully with the other datacenter.
-
-## Further details
-
-For more details on how to configure API Management in multiple datacenters, see:
-
-* [Multi-datacenter deployment](/docs/apigtw_install/multi_datacenter_intro)
-* [Multi-datacenter configuration](/docs/apigtw_install/multi_datacenter_config)
