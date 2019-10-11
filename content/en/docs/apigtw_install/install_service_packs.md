@@ -6,10 +6,6 @@
 "description": "Apply service packs or patches to API Gateway components."
 }
 
-This section describes how to apply service packs or patches to API Gateway components.
-
-{{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apigtw_install/install_dev_tools). API Gateway and API Manager do not support Windows.{{< /alert >}}
-
 ## Install a service pack or patch
 
 To install a service pack or patch on an existing installation of API Gateway, follow these general guidelines:

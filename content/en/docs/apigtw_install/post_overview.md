@@ -3,14 +3,14 @@
 "linkTitle": "Post-installation",
 "weight":"28",
 "date": "2019-10-07",
-"description": "Learn the tasks to perform after installing API Gateway to verify that the installation has been successful."
+"description": "Tasks to perform after installing API Gateway."
 }
 
 This page describes various tasks that you might perform after installing API Gateway. This includes how to check if an installation has been successful, any initial configuration needed before you can start API Gateway, what you should do to secure API Gateway, and so on.
 
 ## Verify the installation
 
-To verify your installation, follow these guidelines:
+To verify your installation, follow these guidelines.
 
 ### Check the installation log
 
@@ -38,7 +38,9 @@ Depending on the installation options you selected, the following tasks might ne
 
 If you did not install the QuickStart tutorial, you must use the `managedomain` script to create a new managed domain that includes an API Gateway instance. You can run the script from the following directory
 
-`INSTALL_DIR/apigateway/posix/bin`
+```
+INSTALL_DIR/apigateway/posix/bin
+```
 
 For more details on running `managedomain`, see [Configure an API Gateway domain](/csh?context=102&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
 
@@ -46,7 +48,9 @@ For more details on running `managedomain`, see [Configure an API Gateway domain
 
 API Gateway is run as a non-root user to prevent any potential security issues with running as the `root` user. To enable API Gateway to listen on privileged ports when running as non-root, you must perform the steps in [Run API Gateway on privileged ports](/csh?context=110&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/). If you do not perform these steps, the following error is reported during API Gateway startup:
 
-`ERROR   ...  failed to listen on address 0.0.0.0/80: Permission denied. can't bind socket to address`
+```
+ERROR   ...  failed to listen on address 0.0.0.0/80: Permission denied. can't bind socket to address
+```
 
 ### Set up a database for API Gateway Analytics
 
@@ -110,7 +114,9 @@ For more details on `managedomain`, see the [API Gateway Administrator Guide](/b
 
 You can also run the API Gateway Analytics server as a service by creating a script. A sample script and *ReadMe* is provided in the following directory:
 
-`INSTALL_DIR/analytics/posix/samples/etc/init.d/`
+```
+INSTALL_DIR/analytics/posix/samples/etc/init.d/
+```
 
 ### Apache Cassandra
 
@@ -125,9 +131,4 @@ To set up API Gateway for high availability, you need to configure an external A
 
 ## Next steps
 
-Consult the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/) for more information on administering, managing, and troubleshooting an API Gateway system. This guide contains many topics that you will find useful after installing API Gateway. For example:
-
-* Manage an API Gateway domain
-* Configure API Gateway for high availability
-* Backup and disaster recovery
-* Manage user access
+Consult the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/) for more information on administering, managing, and troubleshooting an API Gateway system.

@@ -3,7 +3,7 @@
 "linkTitle": "Install the Package and Deploy tools",
 "weight":"22",
 "date": "2019-10-02",
-"description": "Automate processes in your gateway system for continuous integration. For example, generate gateway configuration packages from API team development projects, and build and deploy configurations to the gateway group instances."
+"description": "Install tools to automate processes for continuous integration."
 }
 
 You can use the API Gateway Package and Deploy tools to automate processes in your API Gateway system for continuous integration. For example, this includes generating gateway configuration packages from API team development projects, and building and deploying configurations to the gateway group instances.
@@ -30,11 +30,7 @@ To install the Package and Deploy tools component in unattended mode, follow the
 For example, the following command shows how to install the API Gateway Package and Deploy tools only in unattended mode on Linux:
 
 ```
-./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended
---setup_type advanced
---enable-components packagedeploytools
---disable-components apigateway,qstart,policystudio,
-analytics,configurationstudio,apitester,apimgmt,cassandra
+./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended --setup_type advanced --enable-components packagedeploytools --disable-components apigateway,qstart,policystudio,analytics,configurationstudio,apitester,apimgmt,cassandra
 ```
 
 For details on using the Package and Deploy tools to automate processes for continuous integration, see [Upgrade an API Gateway project](/csh?context=461&product=prod-api-gateway-77)

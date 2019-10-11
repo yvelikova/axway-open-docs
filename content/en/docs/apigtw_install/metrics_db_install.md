@@ -3,12 +3,10 @@
 "linkTitle": "Install and configure a metrics database",
 "weight":"26",
 "date": "2019-10-07",
-"description": "Create and configure a database for monitoring in API Gateway Analytics API Manager and third-party tools.."
+"description": "Create and configure a database for monitoring in API Gateway Analytics, API Manager, and third-party tools."
 }
 
 API Gateway stores and maintains monitoring and transaction data in a JDBC-compliant database, which can be read by API Gateway Analytics, API Manager, and third-party monitoring tools.
-
-This pages describes how to create and configure a database for monitoring in API Gateway Analytics API Manager and third-party tools.
 
 For details on configuring a database for API Gateway Analytics, see the [API Gateway Analytics User Guide](/bundle/APIGateway_77_AnalyticsUserGuide_allOS_en_HTML5/).
 
@@ -87,7 +85,9 @@ You must ensure that the API Gateway external connection to the database has bee
 
 For API Manager monitoring, run the `dbsetup` command from the following API Gateway directory:
 
-`INSTALL_DIR/apigateway/posix/bin`
+```
+INSTALL_DIR/apigateway/posix/bin
+```
 
 The following example command shows setting up new database tables:
 
@@ -110,7 +110,7 @@ You can specify the following options to the `dbsetup` command:
 | `--dbname=DBNAME`                        | Specifies the database name (mutually exclusive with `--dburl`,`--dbuser`, and `--dbpass`).                                         |
 | `--dburl=DBURL`                          | Specifies the database URL.                                                                                                         |
 | `--dbuser=DBUSER`                        | Specifies the database user.                                                                                                        |
-| `--dbpass=DBPASS`                        | Specifies the database password. You must enclose passwords that contain special characters in single quotation marks.              |      |                                          | For example: ` ./dbsetup --dburl=mysql://127.0.0.1:3306/reports --dbuser=root --dbpass='AcmeCorp!23'`                               |
+| `--dbpass=DBPASS`                        | Specifies the database password. You must enclose passwords that contain special characters in single quotation marks.              |      |                                          | For example: `./dbsetup --dburl=mysql://127.0.0.1:3306/reports --dbuser=root --dbpass='AcmeCorp!23'`                               |
 | `--reinstall`                            | Forces a reinstall of the database, dropping all data.                                                                              |
 | `--stop=STOP`                            | Stops the database upgrade after the named upgrade.                                                                                 |
 

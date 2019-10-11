@@ -3,10 +3,10 @@
 "linkTitle": "License acknowledgments",
 "weight":"38",
 "date": "2019-10-07",
-"description": "Axway API Gateway uses several third-party toolkits to perform specific types of processing. In accordance with the Licensing Agreements for these toolkits, the relevant acknowledgments are listed below."
+"description": "Acknowledgements for third-party toolkits."
 }
 
-## Acknowledgments
+API Gateway uses several third-party toolkits to perform specific types of processing. In accordance with the Licensing Agreements for these toolkits, the relevant acknowledgments are listed below.
 
 **Apache Software Foundation**:
 This product includes software developed by the Apache Software Foundation.
