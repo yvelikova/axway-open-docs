@@ -224,12 +224,21 @@ When you log in to Joomla! Administrator Interface (JAI) do not allow the web br
 
 Reject requests containing unexpected or missing content type headers with HTTP response status "406 Unacceptable" or "415 Unsupported Media Type".
 
-The Content-Type header specifies what media type is being sent with the request. If the Content-Type header is missing, empty or unexpected the server must refuse to service the request with appropriate response. The lack of Content-Type header or the usage of not whitelisted header is crucial as it could lead to CSRF (Cross-site Request Forgery) or even RCE (Remote Code Execution).
+The Content-Type header specifies what media type is being sent with the request. If the Content-Type header is missing, empty or unexpected the server must refuse to serve the request with appropriate response. The lack of Content-Type header or the usage of not allowed header is crucial as it could lead to CSRF (Cross-site Request Forgery) or even RCE (Remote Code Execution).
 
-The configuration of this can be placed in your .htaccess file or in your Virtual host file. Below you can see a code snippet with explanations on every row. The example assumes that the server process only application/json and application/xml data.
+The configuration of this can be placed in your .htaccess file, Virtual host file or global web server configuration. Below you can see a code snippet with explanations on every row. The example is for server processing only application/json and application/xml data.
 
 ```
-# Check if the Content-Type header is missing or emptyRewriteCond %{HTTP:Content-Type} ^$# AND the method type is POST, PUT or PATCHRewriteCond %{REQUEST_METHOD} ^(POST|PUT|PATCH) [OR]# OR Content-Type header is presentRewriteCond %{HTTP:Content-Type} !^$# AND Content-Type value doesn't match one of the following, case-insensitiveRewriteCond %{HTTP:Content-Type} !^(application/json|application/xml) [NC]# Then redirect with response 415 Unsupported Media Type and stop processing other conditionsRewriteRule ^ - [R=415,L]
+# Check if the Content-Type header is missing or empty
+RewriteCond %{HTTP:Content-Type} ^$
+# AND the method type is POST, PUT or PATCH
+RewriteCond %{REQUEST_METHOD} ^(POST|PUT|PATCH) [OR]
+# OR Content-Type header is present
+RewriteCond %{HTTP:Content-Type} !^$
+# AND Content-Type value doesn't match one of the following, case-insensitive
+RewriteCond %{HTTP:Content-Type} !^(application/json|application/xml) [NC]
+# Then redirect with response 415 Unsupported Media Type and stop processing other conditions
+RewriteRule ^ - [R=415,L]
 ```
 
 ## Where to go next
