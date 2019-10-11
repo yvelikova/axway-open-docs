@@ -38,12 +38,10 @@ Managing your API in AMPLIFY Central by way of an API proxy offers the following
 - You can apply policies to the API proxy to manage or secure how client apps use your API.
 - You can analyze the usage of your APIs by client apps, and identify and analyze failed transactions, as all traffic that flows through an API proxy is monitored and recorded.
 
-### What are the AMPLIFY Central Roles and Teams?
+### What are the AMPLIFY Central roles and teams?
 
-AMPLIFY Central has its own set of roles in addition to the AMPLIFY Platform roles. These AMPLIFY Central roles include AMPLIFY Central Admin, Developer and Consumer type roles to manage/use assets (i.e. API Proxies, Applications, Environments, Unified Catalog, etc).  
+AMPLIFY Central has its own set of roles in addition to the AMPLIFY Platform roles. These AMPLIFY Central roles include AMPLIFY Central Admin, Developer, and Consumer type roles to manage and use assets (for example, API proxies, applications, environments, Unified Catalog, and so on).  
 
-Users and Teams of AMPLIFY Central are managed by the AMPLIFY Platform.
+An AMPLIFY Central team is a group of users with varying abilities to manage and use assets. For example, a team member can share assets and their promotion to the Unified Catalog.
 
-An AMPLIFY Central Team is a group of users wtih varying abilities can manage/use assets. For example, a Team member can share assets and their promotion to the Unified Catalog.
-
-For the latest information, refer to the AMPLIFY Platform documentation section for Managing Organizations: (Add proper Link to https://docs.axway.com/bundle/Appcelerator_Dashboard_allOS_en/page/managing_organizations.html )
+Users and teams of AMPLIFY Central are managed by the AMPLIFY Platform. For more information, see [Managing Organizations](https://docs.axway.com/bundle/Appcelerator_Dashboard_allOS_en/page/managing_organizations.html).
