@@ -22,13 +22,13 @@ In an upgrade from API Gateway 7.5.1 and later versions:
 
 ## Before you upgrade
 
-This section describes the steps that you must perform before you upgrade from API Gateway 7.5.x or 7.6.x. It includes checks for your old API Gateway installation and for your new API Gateway 7.8 installation. It includes the following sections:
+This section provides a checklist of the tasks that you must perform on your old API Gateway installation, and on your new API Gateway 7.8 installation, before you upgrade.
 
 {{< alert title="Note" color="primary" >}}API Gateway 7.8 supports Apache Cassandra version 2.2.12. If you are upgrading from API Gateway 7.5.x (which supported Apache Cassandra 2.2.5 and 2.2.8) it is recommended that you upgrade Apache Cassandra to version 2.2.12 *before* you upgrade to API Gateway 7.8. For more information on upgrading Apache Cassandra, see [Upgrade Apache Cassandra](/docs/apigw_upgrade/upgrade_cassandra/).{{< /alert >}}
 
 ### Checklist for the old API Gateway installation
 
-You must perform the following in your old API Gateway installation.
+Perform the following in your old API Gateway installation.
 
 #### Back up the old API Gateway installation
 
@@ -125,67 +125,79 @@ The sample topology is as follows:
 
 ![Single-node topology](/Images/UpgradeGuide/APIgw_single%20node%20upgrade%20topology.png)
 
-### Single-node upgrade steps
+### Check the old installation
 
-1. Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [Checklist for the old API Gateway installation](#checklist-for-the-old-api-gateway-installation).
-2. Install API Gateway 7.8. Select the **Custom** option in the installer, and select the following components:
+Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [Checklist for the old API Gateway installation](#checklist-for-the-old-api-gateway-installation).
+
+### Install API Gateway 7.8
+
+1. Select the **Custom** option in the installer and select to install the following components:
 
     * Admin Node Manager.
     * API Gateway Server.
     * Policy Studio – Select this only if you want to run Policy Studio on the local machine.
     * API Manager – Select this only if you are upgrading API Manager.
 
-    Do not select:
+    Do not select the following components:
 
     * QuickStart tutorial - The QuickStart tutorial creates and starts processes in the new installation. `sysupgrade` requires that no processes are running in the new installation.
-    * Cassandra.
+    * Cassandra - The external Cassandra configuration is retained when upgrading from 7.5.x or 7.6.x.
 
-    When prompted for an installation directory, enter a new directory (for example, `/opt/Axway-7.8`). A warning message displays if you try to install 7.8 in the same directory as the old installation.
+2. When prompted for an installation directory, enter a new directory (for example, `/opt/Axway-7.8`). A warning message displays if you try to install 7.8 in the same directory as the old installation.
+3. When prompted to set an administrator user name and password, enter the same Admin Node Manager credentials that you use for the old API Gateway installation.
 
-    When prompted to set an administrator user name and password, enter the same Admin Node Manager credentials that you use for the old API Gateway installation.
+### Check the new installation
 
-3. When the installation is complete, perform the new installation checks detailed in [Checklist for the new API Gateway 7.8 installation](#checklist-for-the-new-api-gateway-7-8-installation).
-4. Run the `export` and `upgrade` commands.
+When the installation is complete, perform the new installation checks detailed in [Checklist for the new API Gateway 7.8 installation](#checklist-for-the-new-api-gateway-7-8-installation).
 
-    Ensure that the old API Gateway processes are running. This includes, for example, all Admin Node Managers, Node Managers, and API Gateway instances. These processes must be running in the old installation to export the API Gateway configuration data.
+### Run `export` and `upgrade`
 
-    The following example shows how to run the `export` and `upgrade` commands:
+Before running `export`, ensure that the old API Gateway processes are running. This includes, for example, all Admin Node Managers, Node Managers, and API Gateway instances. These processes must be running in the old installation to export the API Gateway configuration data.
 
-    ```
-    cd /opt/Axway-7.8/apigateway/upgrade/bin
-    ./sysupgrade export --old_install_dir /opt/Axway-7.5.1/apigateway/
-    ./sysupgrade upgrade
-    ```
+The following example shows how to run the `export` and `upgrade` commands:
 
-    If there are any errors or warnings, you are prompted to examine the `sysupgrade` log files. For more details on errors and warnings that can occur during upgrade and recommended actions, see [sysupgrade error reference](/docs/apigw_upgrade/upgrade_errors/). You can also use Policy Studio to resolve issues with the configuration. For more details, see [Resolve upgrade issues in Policy Studio](/docs/apigw_upgrade/upgrade_log_analysis_ps/).
+```
+cd /opt/Axway-7.8/apigateway/upgrade/bin
+./sysupgrade export --old_install_dir /opt/Axway-7.5.1/apigateway/
+./sysupgrade upgrade
+```
 
-    You must resolve any errors before proceeding. You can rerun `export` and `upgrade` multiple times until all issues are resolved.
+If there are any errors or warnings, you are prompted to examine the `sysupgrade` log files. For more details on errors and warnings that can occur during upgrade and recommended actions, see [sysupgrade error reference](/docs/apigw_upgrade/upgrade_errors/). You can also use Policy Studio to resolve issues with the configuration. For more details, see [Resolve upgrade issues in Policy Studio](/docs/apigw_upgrade/upgrade_log_analysis_ps/).
 
-5. Run the `apply` command.
+You must resolve any errors before proceeding. You can rerun `export` and `upgrade` multiple times until all issues are resolved.
 
-    Before running `apply`, stop the API Gateway processes in the old installation and ensure that Cassandra is already running.
+### Run `apply`
 
-    The following example shows how to run the `apply` command:
+Before running `apply`, stop the API Gateway processes in the old installation and ensure that Cassandra is already running.
 
-    ```
-    cd /opt/Axway-7.8/apigateway/upgrade/bin
-    ./sysupgrade apply
-    ```
+The following example shows how to run the `apply` command:
 
-    This upgrades the external OAuth and KPS databases (if necessary), creates a new system that matches the old topology, and imports the upgraded data.
+```
+cd /opt/Axway-7.8/apigateway/upgrade/bin
+./sysupgrade apply
+```
 
-    When all steps have completed successfully, the new API Gateway version 7.8 processes should be running.
+This upgrades the external OAuth and KPS databases (if necessary), creates a new system that matches the old topology, and imports the upgraded data.
 
-6. To verify that the upgrade has been successful:
-    * Connect to API Gateway Manager (for example, on `https://HOST:8090/`), and view the API Gateway group topology, administrator users, and Key Property Stores.
-    * Start Policy Studio, and create a new project based on the running API Gateway. You can view the upgraded configuration (for example, policies, settings, and so on).
-    * If you were using OAuth client applications in your old installation, start the Client Application Registry web interface, and view the client applications.
+When all steps have completed successfully, the new API Gateway version 7.8 processes should be running.
+
+### Verify the upgrade
+
+To verify that the upgrade has been successful:
+
+* Connect to API Gateway Manager (for example, on `https://HOST:8090/`), and view the API Gateway group topology, administrator users, and Key Property Stores.
+* Start Policy Studio, and create a new project based on the running API Gateway. You can view the upgraded configuration (for example, policies, settings, and so on).
+* If you were using OAuth client applications in your old installation, start the Client Application Registry web interface, and view the client applications.
 
 ## Multi-node upgrade example
 
 This topic provides an example of a multi-node domain upgrade from API Gateway version 7.5.x or 7.6.x (in this case, 7.5.1) to API Gateway 7.8.
 
 {{< alert title="Tip" color="primary" >}}You can use the steps in this example as a guide when upgrading a multi-node domain from API Gateway 7.5.x or 7.6.x to 7.8. However, you must remember to modify the steps appropriately for your version and topology.{{< /alert >}}
+
+The following diagram shows an example flow for a multi-node upgrade.
+
+![Example multi-node upgrade flow](/Images/UpgradeGuide/APIgw_sample_flow.png)
 
 ### Sample multi-node upgrade topology
 
@@ -198,94 +210,99 @@ The sample topology is as follows:
 
 ![Example multi-node topology](/Images/UpgradeGuide/APIgw_upgrade%20topology.png)
 
-#### API Gateway NodeA
+* API Gateway NodeA: This node runs an Admin Node Manager and a single API Gateway named `APIGateway1` in a group named `GatewayGroup`.
+* API Gateway NodeB: This node runs a Node Manager and a single API Gateway named `APIGateway2` in a group named `GatewayGroup`.
+* API Manager-enabled NodeC: This node runs an Admin Node Manager and a single API Manager-enabled API Gateway named `APIManagerGateway` in a group named `GatewayManagerGroup`.
 
-This node runs an Admin Node Manager and a single API Gateway named `APIGateway1` in a group named `GatewayGroup`.
+### Check the old installation on each node
 
-#### API Gateway NodeB
+Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [Checklist for the old API Gateway installation](#checklist-for-the-old-api-gateway-installation).
 
-This node runs a Node Manager and a single API Gateway named `APIGateway2` in a group named `GatewayGroup`.
+### Install API Gateway 7.8 on each node
 
-#### API Manager-enabled NodeC
+Install API Gateway 7.8 on each node in the multi-node topology where your old API Gateway domain is running.
 
-This node runs an Admin Node Manager and a single API Manager-enabled API Gateway named `APIManagerGateway` in a group named `GatewayManagerGroup`.
+1. Select the **Custom** option in the installer and select to install the following components:
 
-### Multi-node upgrade steps
+    * Admin Node Manager – Select this on NodeA, NodeB and NodeC for the sample topology.
+    * API Gateway Server – Select this on NodeA, NodeB and NodeC for the sample topology. If you are installing on a node that does not run any API Gateways (running an Admin Node Manager only), do not select this.
+    * Policy Studio – Select this on the nodes on which you will run Policy Studio.
+    * API Manager – Select this on NodeC for the sample topology. Select it on other nodes if required.
 
-1. Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [Checklist for the old API Gateway installation](#checklist-for-the-old-api-gateway-installation).
-2. Install API Gateway 7.8 on each node (NodeA, NodeB, and NodeC). Select the **Custom** option in the installer, and select the following components:
-
-    * Admin Node Manager – You must select this on NodeA, NodeB and NodeC for the sample topology.
-    * API Gateway Server – You must select this on NodeA, NodeB and NodeC for the sample topology. If you are installing on a node that does not run any API Gateways (running an Admin Node Manager only), you do not need to select this.
-    * Policy Studio– Select this on the nodes on which you will run Policy Studio.
-    * API Manager– You must select this on NodeC for the sample topology. You can also select it on other nodes if required.
-
-    Do not select:
+    Do not select the following components:
 
     * QuickStart tutorial - The QuickStart tutorial creates and starts processes in the new installation. `sysupgrade` requires that no processes are running in the new installation.
-    * Cassandra.
+    * Cassandra - The external Cassandra configuration is retained when upgrading from 7.5.x or 7.6.x.
 
-    When prompted for an installation directory, enter a new directory (for example, `/opt/Axway-7.8`). A warning message displays if you try to install 7.8 in the same directory as the old installation.
+2. When prompted for an installation directory, enter a new directory (for example, `/opt/Axway-7.8`). A warning message displays if you try to install 7.8 in the same directory as the old installation.
 
-    When prompted to set an administrator user name and password, enter the same Admin Node Manager credentials that you use for the old API Gateway installation.
+3. When prompted to set an administrator user name and password, enter the same Admin Node Manager credentials that you use for the old API Gateway installation.
 
-3. When the installation is complete, perform the new installation checks detailed in [Checklist for the new API Gateway 7.8 installation](#checklist-for-the-new-api-gateway-7-8-installation).
-4. Run the `export` and `upgrade` commands on each node (NodeA, NodeB, and NodeC). You can run and rerun these commands on NodeA, NodeB, and NodeC in any node order.
+### Check the new installation on each node
 
-    {{< alert title="Note" color="primary" >}}The sample topology has two Admin Node Managers (running on NodeA and NodeC). Because there are multiple Admin Node Managers, you must specify which Admin Node Manager to use for `export` with the `--anm_host` option, and this Admin Node Manager must also be the first node you upgrade. We recommend that you specify the first Admin Node Manager (see [Which is the first Admin Node Manager?](/docs/apigw_upgrade/upgrade_faq/#which-is-the-first-admin-node-manager)). The value of `--anm_host` must be an exact match of the host name in the topology (`--anm_host NodeA` in this case) and you must specify the same `--anm_host` on all nodes.{{< /alert >}}
+When the installation is complete, perform the new installation checks detailed in [Checklist for the new API Gateway 7.8 installation](#checklist-for-the-new-api-gateway-7-8-installation).
 
-    Ensure that the old API Gateway processes are running on all nodes. This includes, for example, all Admin Node Managers, Node Managers, and API Gateway instances. These processes must be running in the old installation on all nodes to export the API Gateway configuration data.
+### Run `export` and `upgrade` on each node
 
-    The following example shows how to run the `export` and `upgrade` commands on each node:
+Run the `export` and `upgrade` commands on each node (NodeA, NodeB, and NodeC). You can run and rerun these commands on NodeA, NodeB, and NodeC in any node order.
 
-    ```
-    cd /opt/Axway-7.8/apigateway/upgrade/bin
-    ./sysupgrade export --old_install_dir /opt/Axway-7.5.1/apigateway/ --anm_host NodeA
-    ./sysupgrade upgrade --cass_host NodeA
-    ```
+{{< alert title="Note" color="primary" >}}The sample topology has two Admin Node Managers (running on NodeA and NodeC). Because there are multiple Admin Node Managers, you must specify which Admin Node Manager to use for `export` with the `--anm_host` option, and this Admin Node Manager must also be the first node you upgrade. We recommend that you specify the first Admin Node Manager (see [Which is the first Admin Node Manager?](/docs/apigw_upgrade/upgrade_faq/#which-is-the-first-admin-node-manager)). The value of `--anm_host` must be an exact match of the host name in the topology (`--anm_host NodeA` in this case) and you must specify the same `--anm_host` on all nodes.{{< /alert >}}
 
-    The commands are exactly the same on each node. You must specify `--anm_host Node A` as a parameter to the `export` command on NodeA, NodeB, and NodeC.
+Ensure that the old API Gateway processes are running on all nodes. This includes, for example, all Admin Node Managers, Node Managers, and API Gateway instances. These processes must be running in the old installation on all nodes to export the API Gateway configuration data.
 
-    The sample topology uses Apache Cassandra to store API Manager data, and you must specify the host name or IP address of the new external Cassandra database cluster to the `upgrade` command. If you are not using Apache Cassandra, you must run the `upgrade` command with the `--no_cassandra` option
+The following example shows how to run the `export` and `upgrade` commands on each node:
 
-    If there are any errors or warnings, you are prompted to examine the `sysupgrade` log files. For more details on errors and warnings that can occur during upgrade and recommended actions, see [sysupgrade error reference](/docs/apigw_upgrade/upgrade_errors/). You can also use Policy Studio to resolve issues with the configuration. For more details, see [Resolve upgrade issues in Policy Studio](/docs/apigw_upgrade/upgrade_log_analysis_ps/).
+```
+cd /opt/Axway-7.8/apigateway/upgrade/bin
+./sysupgrade export --old_install_dir /opt/Axway-7.5.1/apigateway/ --anm_host NodeA
+./sysupgrade upgrade --cass_host NodeA
+```
 
-    You must resolve any errors before proceeding. You can rerun `export` and `upgrade` multiple times until all issues are resolved.
+The commands are exactly the same on each node. You must specify `--anm_host Node A` as a parameter to the `export` command on NodeA, NodeB, and NodeC.
 
-5. Run `apply` on the first Admin Node Manager node (NodeA). 
+The sample topology uses Apache Cassandra to store API Manager data, and you must specify the host name or IP address of the new external Cassandra database cluster to the `upgrade` command. If you are not using Apache Cassandra, you must run the `upgrade` command with the `--no_cassandra` option
 
-    Before running `apply`, stop the API Gateway processes in the old installation on NodeA, NodeB, and NodeC, and ensure that Cassandra is already running.
+If there are any errors or warnings, you are prompted to examine the `sysupgrade` log files. For more details on errors and warnings that can occur during upgrade and recommended actions, see [sysupgrade error reference](/docs/apigw_upgrade/upgrade_errors/). You can also use Policy Studio to resolve issues with the configuration. For more details, see [Resolve upgrade issues in Policy Studio](/docs/apigw_upgrade/upgrade_log_analysis_ps/).
 
-    The following example shows how to run the `apply` command on NodeA:
+You must resolve any errors before proceeding. You can rerun `export` and `upgrade` multiple times until all issues are resolved.
 
-    ```
-    cd /opt/Axway-7.8/apigateway/upgrade/bin
-    ./sysupgrade apply --anm_host NodeA
-    ```
+### Run `apply` on the first Admin Node Manager
 
-    The version 7.8 Admin Node Manager and API Gateway are now running on NodeA. You can launch the version 7.8 API Gateway Manager web console on `https://NodeA:8090`.
+Run `apply` on the first Admin Node Manager node (NodeA).
 
-6. Run `apply` on the other nodes in turn (NodeB and then NodeC).
+Before running `apply`, stop the API Gateway processes in the old installation on NodeA, NodeB, and NodeC, and ensure that Cassandra is already running.
 
-    The following example shows how to run the `apply` command on each of the other nodes:
+The following example shows how to run the `apply` command on NodeA:
 
-    ```
-    cd /opt/Axway-7.8/apigateway/upgrade/bin
-    ./sysupgrade apply --anm_host NodeA
-    ```
+```
+cd /opt/Axway-7.8/apigateway/upgrade/bin
+./sysupgrade apply --anm_host NodeA
+```
 
-    sysupgrade is now complete on all nodes. All the API Gateway 7.8 processes are running on all nodes in the topology.
+The version 7.8 Admin Node Manager and API Gateway are now running on NodeA. You can launch the version 7.8 API Gateway Manager web console on `https://NodeA:8090`.
 
-7. To verify that the upgrade has been successful:
-    * Connect to API Gateway Manager (for example, on `https://HOST:8090/`), and view the API Gateway group topology, administrator users, and Key Property Stores.
-    * Start Policy Studio, and create a new project based on the running API Gateway. You can view the upgraded configuration (for example, policies, settings, and so on).
-    * If you were using OAuth client applications in your old installation, start the Client Application Registry web interface, and view the client applications.
+### Run `apply` on the other nodes
 
-    For the sample topology you can also perform the following checks to verify the API Manager upgrade:
+Run `apply` on the other nodes in turn (NodeB and then NodeC).
 
-    1. Connect to the API Manager web console (for example, on `https://HOST:8075/`).
-    2. Log in as an administrator user and view the organizations, application developers, and applications.
-    3. Log in as a non-administrator user and view the applications.
+The following example shows how to run the `apply` command on each of the other nodes:
+
+```
+cd /opt/Axway-7.8/apigateway/upgrade/bin
+./sysupgrade apply --anm_host NodeA
+```
+
+`sysupgrade` is now complete on all nodes. All the API Gateway 7.8 processes are running on all nodes in the topology.
+
+### Verify the multi-node upgrade
+
+Verify the upgrade as detailed in [Verify the upgrade](#verify-the-upgrade).
+
+For the sample topology you can also perform the following checks to verify the API Manager upgrade:
+
+1. Connect to the API Manager web console (for example, on `https://HOST:8075/`).
+2. Log in as an administrator user and view the organizations, application developers, and applications.
+3. Log in as a non-administrator user and view the applications.
 
 ## After you upgrade
 

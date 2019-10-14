@@ -21,7 +21,7 @@ We recommend the following when upgrading your Apache Cassandra version:
 
 The following steps give an example of how to upgrade Cassandra in a single-node setup.
 
-### Step 1 – Install Cassandra 2.2.12
+### Install Cassandra 2.2.12
 
 Follow these steps to install Apache Cassandra 2.2.12 using the API Gateway installer in default GUI mode.
 
@@ -41,7 +41,7 @@ You can also install Cassandra in unattended mode, for example:
 ./APIGateway_7.8_Install_linux-x86-64_BN<n>.run --mode unattended --setup_type advanced --enable-components cassandra --disable-components apigateway,qstart,policystudio,analytics,configurationstudio,apitester,apimgmt,packagedeploytools --cassandraInstalldir /opt/db/cassandra-2212 --cassandraJDK /opt/jre --startCassandra 0
 ```
 
-### Step 2 – Run nodetool drain on Cassandra 2.2.8
+### Run nodetool drain on Cassandra 2.2.8
 
 Run the following commands to drain the node and flush the memTables to the SSTables before copying data to the Cassandra 2.2.12 installation. Writes are not accepted while this is happening.
 
@@ -50,7 +50,7 @@ cd /opt/db/cassandra-228/cassandra/bin
 ./nodetool drain
 ```
 
-### Step 3 – Stop Cassandra 2.2.8
+### Stop Cassandra 2.2.8
 
 Run the following commands to stop Cassandra.
 
@@ -59,7 +59,7 @@ ps –ef | grep cassandra
 sudo kill -9 <cassandra_pid>
 ```
 
-### Step 4 – Copy data from Cassandra 2.2.8 to Cassandra 2.2.12
+### Copy data from Cassandra 2.2.8 to Cassandra 2.2.12
 
 Run the following command to copy the data folder and all subfolders from your Cassandra 2.2.8 installation to your new Cassandra 2.2.12 installation.
 
@@ -75,14 +75,14 @@ For example, after running this command, you should have the following directori
 
 {{< alert title="Tip" color="primary" >}}By default, all Cassandra data is stored in the `data` directory. However, in a production environment you should store the commit log (for example, `/opt/db/cassandra-2212/cassandra/data/commitlog`) on a separate disk partition, or a separate physical device from the data file directories. You can change the default locations in `cassandra.yaml` (`commitlog_directory`, `data_file_directories`, and `saved_caches_directory` properties). For more information, see <http://docs.datastax.com/en/archived/cassandra/2.2/cassandra/configuration/configCassandra_yaml.html>.{{< /alert >}}
 
-### Step 5 – Copy SSL certificates from Cassandra 2.2.8 to Cassandra 2.2.12
+### Copy SSL certificates from Cassandra 2.2.8 to Cassandra 2.2.12
 
 If you have SSL certificates in your Cassandra 2.2.8 installation, copy them to Cassandra 2.2.12. To copy the SSL certificates, copy the following files to `/opt/db/cassandra-2212/cassandra/conf/`:
 
 * `/opt/db/cassandra-228/cassandra/conf/.truststore`
 * `/opt/db/cassandra-228/cassandra/conf/.keystore`
 
-### Step 6 – Update Cassandra 2.2.12 configuration files
+### Update Cassandra 2.2.12 configuration files
 
 Update your Cassandra 2.2.12 configuration files with the relevant settings from your Cassandra 2.2.8 installation. The following files must be updated:
 
@@ -100,7 +100,7 @@ You can do a diff on the files to see a complete list of the differences. The fo
 rpc_address: <Set to the IP address of this Cassandra node>
 listen_address: <Set to the IP address of this Cassandra node>
 seed_provider:
-    # Addresses of hosts that are deemed contact points. 
+    # Addresses of hosts that are deemed contact points.
     # Cassandra nodes use this list of hosts to find each other and learn
     # the topology of the ring.  You must change this if you are running
     # multiple nodes!
@@ -131,7 +131,7 @@ Perform a diff on this file to identify the rack settings to update.
 
 If you changed your JMX configuration after Cassandra 2.2.8 installation, perform a diff on this file to identify the JMX settings to update.
 
-### Step 7 – Start Cassandra 2.2.12
+### Start Cassandra 2.2.12
 
 Run the following commands to start Cassandra.
 
@@ -140,7 +140,7 @@ cd /opt/db/cassandra-2212/cassandra/bin
 ./cassandra
 ```
 
-### Step 8 – Run nodetool upgradesstables on Cassandra 2.2.12
+### Run nodetool upgradesstables on Cassandra 2.2.12
 
 Run the following commands to rewrite SSTables that are not on the current version and upgrade them to Cassandra version 2.2.12.
 
@@ -149,7 +149,7 @@ cd /opt/db/cassandra-2212/cassandra/bin
 ./nodetool upgradesstables
 ```
 
-### Step 9 – Run nodetool repair on Cassandra 2.2.12
+### Run nodetool repair on Cassandra 2.2.12
 
 Run the following commands to repair the tables.
 
@@ -205,7 +205,7 @@ You can also install Cassandra in unattended mode, for example:
 ./APIGateway_7.8_Install_linux-x86-64_BN<n>.run --mode unattended --setup_type advanced --enable-components cassandra --disable-components apigateway,qstart,policystudio,analytics,configurationstudio,apitester,apimgmt,packagedeploytools --cassandraInstalldir /opt/db/cassandra-2212 --cassandraJDK /opt/jre --startCassandra 0
 ```
 
-#### Run nodetool drain on Cassandra 2.2.8
+#### Run nodetool drain on Cassandra 2.2.8 on Node 1
 
 Run the following commands to drain the node and flush the memTables to the SSTables before copying data to the Cassandra 2.2.12 installation. Writes are not accepted while this is happening.
 
@@ -214,7 +214,7 @@ cd /opt/db/cassandra-228/cassandra/bin
 ./nodetool drain
 ```
 
-#### Stop Cassandra 2.2.8
+#### Stop Cassandra 2.2.8 on Node 1
 
 Run the following commands to stop Cassandra.
 
@@ -223,7 +223,7 @@ ps –ef | grep cassandra
 sudo kill -9 <cassandra_pid>
 ```
 
-#### Copy data from Cassandra 2.2.8 to Cassandra 2.2.12
+#### Copy data from Cassandra 2.2.8 to Cassandra 2.2.12 on Node 1
 
 Run the following command to copy the data folder and all subfolders from your Cassandra 2.2.8 installation to your new Cassandra 2.2.12 installation.
 
@@ -239,14 +239,14 @@ For example, after running this command, you should have the following directori
 
 {{< alert title="Tip" color="primary" >}}By default, all Cassandra data is stored in the `data` directory. However, in a production environment you should store the commit log (for example, `/opt/db/cassandra-2212/cassandra/data/commitlog`) on a separate disk partition, or a separate physical device from the data file directories. You can change the default locations in `cassandra.yaml` (`commitlog_directory`, `data_file_directories`, and `saved_caches_directory` properties). For more information, see <http://docs.datastax.com/en/archived/cassandra/2.2/cassandra/configuration/configCassandra_yaml.html>.{{< /alert >}}
 
-#### Copy SSL certificates from Cassandra 2.2.8 to Cassandra 2.2.12
+#### Copy SSL certificates from Cassandra 2.2.8 to Cassandra 2.2.12 on Node 1
 
 If you have SSL certificates in your Cassandra 2.2.8 installation, copy them to Cassandra 2.2.12. To copy the SSL certificates, copy the following files to `/opt/db/cassandra-2212/cassandra/conf/`:
 
 * `/opt/db/cassandra-228/cassandra/conf/.truststore`
 * `/opt/db/cassandra-228/cassandra/conf/.keystore`
 
-#### Update Cassandra 2.2.12 configuration files
+#### Update Cassandra 2.2.12 configuration files on Node 1
 
 Update your Cassandra 2.2.12 configuration files with the relevant settings from your Cassandra 2.2.8 installation. The following files must be updated:
 
@@ -264,7 +264,7 @@ You can do a diff on the files to see a complete list of the differences. The fo
 rpc_address: <Set to the IP address of this Cassandra node>
 listen_address: <Set to the IP address of this Cassandra node>
 seed_provider:
-    # Addresses of hosts that are deemed contact points. 
+    # Addresses of hosts that are deemed contact points.
     # Cassandra nodes use this list of hosts to find each other and learn
     # the topology of the ring.  You must change this if you are running
     # multiple nodes!
@@ -295,7 +295,7 @@ Perform a diff on this file to identify the rack settings to update.
 
 If you changed your JMX configuration after Cassandra 2.2.8 installation, perform a diff on this file to identify the JMX settings to update.
 
-#### Start Cassandra 2.2.12
+#### Start Cassandra 2.2.12 on Node 1
 
 Run the following commands to start Cassandra.
 
@@ -304,7 +304,7 @@ cd /opt/db/cassandra-2212/cassandra/bin
 ./cassandra
 ```
 
-#### Run nodetool upgradesstables on Cassandra 2.2.12
+#### Run nodetool upgradesstables on Cassandra 2.2.12 on Node 1
 
 Run the following commands to rewrite SSTables that are not on the current version and upgrade them to Cassandra version 2.2.12.
 

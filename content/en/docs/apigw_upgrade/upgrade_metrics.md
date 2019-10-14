@@ -23,7 +23,7 @@ The following summarizes the steps to upgrade your metrics database, depending o
 
 If you want to be able to revert back to your old version of API Gateway, the best approach is to create a new metrics database for version 7.8. The old versions can then be relaunched without changes. Where appropriate, this topic details additional tasks that you need to perform to implement this rollback strategy.
 
-## Step 1 – Back up the metrics database in your old installation
+## Back up the metrics database in your old installation
 
 You must backup the metrics database being used in the old installation before upgrading. For more details on backing up your database, see your database user documentation.
 
@@ -31,7 +31,7 @@ You must backup the metrics database being used in the old installation before u
 
 To roll back, you must perform the relevant SQL Restore operation to overwrite the newly created blank database (for example, `MetricsNew`) with the data and schema from the old metrics database.
 
-## Step 2 – Enable metrics using managedomain
+## Enable metrics using managedomain
 
 {{< alert title="Note" color="primary" >}}If you have created a new database as part of a rollback strategy (for example, `MetricsNew`), you must perform this step to specify the database URL of the newly created database to `managedomain`.{{< /alert >}}
 
