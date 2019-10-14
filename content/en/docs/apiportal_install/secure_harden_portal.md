@@ -223,15 +223,13 @@ The user for API Portal should only have access to those databases that it needs
 
 When you log in to Joomla! Administrator Interface (JAI) do not allow the web browser to save or remember your login and password.
 
-## Best practices
+## Reject requests containing unexpected or missing content type headers
 
-### Reject requests containing unexpected or missing content type headers
+It is best practice to reject requests containing unexpected or missing content type headers with the HTTP response status `406 Unacceptable` or `415 Unsupported Media Type`.
 
-Reject requests containing unexpected or missing content type headers with HTTP response status "406 Unacceptable" or "415 Unsupported Media Type".
+The Content-Type header specifies what media type is being sent with the request. If the Content-Type header is missing, empty, or unexpected the server must refuse to serve the request with an appropriate response, as allowing the request might lead to Cross-Site Request Forgery (CSRF) or even remote code execution (RCE).
 
-The Content-Type header specifies what media type is being sent with the request. If the Content-Type header is missing, empty or unexpected the server must refuse to serve the request with appropriate response. The lack of Content-Type header or the usage of not allowed header is crucial as it could lead to CSRF (Cross-site Request Forgery) or even RCE (Remote Code Execution).
-
-The configuration of this can be placed in your .htaccess file, Virtual host file or global web server configuration. Below you can see a code snippet with explanations on every row. The example is for server processing only application/json and application/xml data.
+Add the configuration in your `.htaccess` file, virtual host file, or global web server configuration. The following code snippet gives an example for a server processing only `application/json` and `application/xml` data.
 
 ```
 # Check if the Content-Type header is missing or empty
