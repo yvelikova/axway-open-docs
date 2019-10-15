@@ -12,20 +12,25 @@ For details on configuring a database for API Gateway Analytics, see the [API Ga
 
 ## Prerequisites
 
-The prerequisites for setting up the database are as follows:
+The prerequisites for setting up the database are as follows.
 
 ### Install a third-party JDBC database
 
-* You must ensure that you have the correct credentials to execute the setup scripts and to access the database for operations on the tables created by the scripts.
-* You must install a JDBC-compliant database to store the monitoring and transaction data. Axway provides setup scripts for the following databases:
+You must install a JDBC-compliant database to store the monitoring and transaction data. Axway provides setup scripts for the following databases:
 
-    For details on supported database versions, see [API Gateway Installation Guide - Prerequisites](/docs/apigtw_install/system_requirements).
+* MySQL or MariaDB
+* Microsoft SQL Server
+* Oracle
+* IBM DB2
 
-    For details on how to install your chosen third-party JDBC database, see your database product documentation.
+You must ensure that you have the correct credentials to execute the setup scripts and to access the database for operations on the tables created by the scripts.
 
-### Install API Manager
+For details on supported database versions, see [Databases](/docs/apigtw_install/system_requirements/#databases). For details on how to install your chosen third-party JDBC database, see your database product documentation.
 
-* You must install API Manager to use it to view the monitoring data in the metrics database. For more details, see the [Install API Manager](/docs/apigtw_install/install_api_mgmt).
+### Install API Manager or API Gateway Analytics
+
+* You must install API Manager to use it to view the monitoring data in the metrics database. For more details, see [Install API Manager](/docs/apigtw_install/install_api_mgmt).
+* You must install API Gateway Analytics to use it to view the monitoring data in the metrics database. For more details, see [Install API Gateway Analytics](/docs/apigtw_install/install_analytics/).
 * You do not need to install API Gateway Analytics to view monitoring data in API Manager only.
 
 ## Add third-party JDBC driver files
@@ -51,9 +56,18 @@ To add third-party binaries to Policy Studio, perform the following steps:
 4. Click **OK**.
 5. Restart Policy Studio using the `policystudio -clean` command.
 
+### Add JDBC drivers to API Gateway Analytics
+
+To add the third-party JDBC driver files for your database to API Gateway Analytics
+(if installed), perform the following steps:
+
+1. Add `.jar` files to the `INSTALL_DIR/analytics/ext/lib` directory.
+2. Add `.so` files to the `INSTALL_DIR/analytics/platform/lib` directory.
+3. Restart API Gateway Analytics.
+
 ## Create the third-party database
 
-API Manager monitoring reads message metrics from a third-party JDBC database and display this information in a visual format to administrators. This is the same database in which API Gateway stores its message metrics and audit trail data. You must first create this database using the third-party database of your choice:
+API Gateway Analytics and API Manager monitoring read message metrics from a third-party JDBC database and display this information in a visual format to administrators. This is the same database in which API Gateway stores its message metrics and audit trail data. You must first create this database using the third-party database of your choice:
 
 * MySQL or MariaDB
 * Microsoft SQL Server
@@ -77,11 +91,23 @@ For all supported databases, to ensure atomicity and consistency, you must ensur
 
 For more details, see the product documentation for your chosen third-party database.
 
-## Configure the database connection
+## Configure the database connection for API Gateway Analytics
 
-You must ensure that the API Gateway external connection to the database has been configured in Policy Studio. To configure a connection, select **Environment Configuration** > **External Connections** > **Database Connections** > **Add a Database Connection**. For more details, see the [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
+When you have created the metrics database, you must update your API Gateway Analytics configuration with the database details using the `configureserver` script. For more details, see [Configure API Gateway Analytics](/docs/apimanager_analytics/analytics_config).
+
+## Configure the database connection for API Manager
+
+You must ensure that the API Gateway external connection to the database has been configured in Policy Studio. To configure a connection, select **Environment Configuration > External Connections > Database Connections > Add a Database Connection**. For more details, see the [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
 
 ## Set up the database tables
+
+When you have created the metrics database and configured the database connection, the next step is to set up the database tables.
+
+For API Gateway Analytics monitoring run the `dbsetup` command from the following API Gateway directory:
+
+```
+INSTALL_DIR/analytics/posix/bin
+```
 
 For API Manager monitoring, run the `dbsetup` command from the following API Gateway directory:
 
@@ -92,27 +118,27 @@ INSTALL_DIR/apigateway/posix/bin
 The following example command shows setting up new database tables:
 
 ```
-dbsetup
+$ dbsetup
 New database
 Schema successfully upgraded to:002-leaf
 ```
 
-{{< alert title="Note" color="primary" >}}When you specify command-line arguments to `dbsetup`, the script does not run interactively. You should run `dbsetup` without any options to create the database tables.{{< /alert >}}
+When you specify command-line arguments to `dbsetup`, the script does not run interactively. Run `dbsetup` without any options to create the database tables.
 
 ## Specify options to dbsetup
 
 You can specify the following options to the `dbsetup` command:
 
-| Option                                   | Description                                                                                                                         |
-|------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| `-h, --help`                             | Displays help message and exits.                                                                                                    |
-| `-p PASSPHRASE, --passphrase=PASSPHRASE` | Specifies the configuration passphrase (blank for zero length).                                                                     |
-| `--dbname=DBNAME`                        | Specifies the database name (mutually exclusive with `--dburl`,`--dbuser`, and `--dbpass`).                                         |
-| `--dburl=DBURL`                          | Specifies the database URL.                                                                                                         |
-| `--dbuser=DBUSER`                        | Specifies the database user.                                                                                                        |
-| `--dbpass=DBPASS`                        | Specifies the database password. You must enclose passwords that contain special characters in single quotation marks.              |      |                                          | For example: `./dbsetup --dburl=mysql://127.0.0.1:3306/reports --dbuser=root --dbpass='AcmeCorp!23'`                               |
-| `--reinstall`                            | Forces a reinstall of the database, dropping all data.                                                                              |
-| `--stop=STOP`                            | Stops the database upgrade after the named upgrade.                                                                                 |
+| Option                                   | Description    |
+|------------------------------------------|----------------|
+| `-h, --help`                             | Displays help message and exits. |
+| `-p PASSPHRASE, --passphrase=PASSPHRASE` | Specifies the configuration passphrase (blank for zero length). |
+| `--dbname=DBNAME`                        | Specifies the database name (mutually exclusive with `--dburl`,`--dbuser`, and `--dbpass`). |
+| `--dburl=DBURL`                          | Specifies the database URL. |
+| `--dbuser=DBUSER`                        | Specifies the database user. |
+| `--dbpass=DBPASS`                        | Specifies the database password. You must enclose passwords that contain special characters in single quotation marks. For example: `./dbsetup --dburl=mysql://127.0.0.1:3306/reports --dbuser=root --dbpass='AcmeCorp!23'` |
+| `--reinstall`                            | Forces a reinstall of the database, dropping all data. |
+| `--stop=STOP`                            | Stops the database upgrade after the named upgrade. |
 
 ### dbsetup examples
 
@@ -123,7 +149,7 @@ The following are some examples of using `dbsetup` command options.
 You can use the `--dbname` option to connect to a named database connection configured under the **External Connections** node in the Policy Studio tree. For example:
 
 ```
-dbsetup --dbname=Oracle
+$ dbsetup --dbname=Oracle
 Current schema version:001-initial
 Latest schema version:002-leaf
 Schema successfully upgraded to:002-leaf
@@ -134,7 +160,7 @@ Schema successfully upgraded to:002-leaf
 You can use the `--dburl` option to manually connect to a database instance directly using a URL. For example:
 
 ```
-dbsetup --dburl=jdbc:mysql://localhost/reports --dbuser=root --dbpass=admin
+$ dbsetup --dburl=jdbc:mysql://localhost/reports --dbuser=root --dbpass=admin
 Current schema version:001-initial
 Latest schema version:002-leaf
 Schema successfully upgraded to:002-leaf
@@ -145,7 +171,7 @@ Schema successfully upgraded to:002-leaf
 You can also use the `--dburl` option to set up a newly created database instance where none already exists. For example:
 
 ```
-dbsetup --dburl=jdbc:mysql://localhost/reports --dbuser=root --dbpass=admin
+$ dbsetup --dburl=jdbc:mysql://localhost/reports --dbuser=root --dbpass=admin
 New database
 Schema successfully upgraded to:002-leaf
 ```
@@ -155,28 +181,26 @@ Schema successfully upgraded to:002-leaf
 You can use the `--reinstall` option to wipe and reinstall a database. For example:
 
 ```
-dbsetup --dburl=jdbc:mysql://localhost/reports --dbuser=root --dbpass=admin --reinstall
+$ dbsetup --dburl=jdbc:mysql://localhost/reports --dbuser=root --dbpass=admin --reinstall
 Re-installing database...
 Schema successfully upgraded to:002-leaf
 ```
 
 ## SQL database schema scripts
 
-As an alternative to using the `dbsetup` command, API Gateway also provides separate SQL schema scripts to set up the database tables for each of the supported databases. However, these scripts set up new tables only, and do not perform any upgrades of existing tables. These scripts are provided in the `INSTALL_DIR/`
-`analytics``apigateway/system/conf/sql` directory in the following sub-directories:
+As an alternative to using the `dbsetup` command, API Gateway also provides separate SQL schema scripts to set up the database tables for each of the supported databases. However, these scripts set up new tables only, and do not perform any upgrades of existing tables. These scripts are provided in the `INSTALL_DIR/analytics/system/conf/sql` or `INSTALL_DIR/apigateway/system/conf/sql` directory in the following sub-directories:
 
 * `/mysql`
 * `/mssql`
 * `/oracle`
 * `/db2`
 
-{{< alert title="Note" color="primary" >}}The scripts in the `/mysql` folder apply to both MySQL and MariaDB.{{< /alert >}}
+The scripts in the `/mysql` folder apply to both MySQL and MariaDB.
 
 You can run the SQL commands in the `analytics.sql` file in the appropriate directory for your database. The following example shows creating the tables for a MySQL database:
 
 ```
-mysql> \. INSTALL_DIR/
-analyticsapigateway/system/conf/sql/mysql/analytics.sql
+mysql> \. INSTALL_DIR/apigateway/system/conf/sql/mysql/analytics.sql
 Query OK, 0 rows affected, 1 warning (0.00 sec)
 Query OK, 0 rows affected, 1 warning (0.00 sec)
 ...
@@ -184,5 +208,6 @@ Query OK, 0 rows affected, 1 warning (0.00 sec)
 
 ## Further information
 
-For details on how to view monitoring metrics in API Manager, see the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
-For details on how to view monitoring metrics in API Gateway Analytics, see the [API Gateway Analytics User Guide](/bundle/APIGateway_77_AnalyticsUserGuide_allOS_en_HTML5/).
+For details on how to view monitoring metrics in API Manager, see the [API Manager User Guide](/docs/apimgr_admin/).
+
+For details on how to view monitoring metrics in API Gateway Analytics, see the [API Gateway Analytics User Guide](docs/apimanager_analytics/).
