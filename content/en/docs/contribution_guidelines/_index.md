@@ -47,8 +47,10 @@ When the review is finished, we'll merge your PR to this staging website first <
 
 To edit a page and send a PR:
 
+{{< alert title="Warning" color="warning">}}If this is not the first time that you contribute to axway-open-docs, we strongly recommend that you delete your old fork before continuing. See [Deleting a repository](/blog/2019/10/15/deleting-an-old-fork-before-contributing-to-axway-documentation/) for more information.{{< /alert >}}
+
 1. Click **Edit this page** on the upper right corner of the page.
-2. If this your first time to edit a page in this project, click **Fork this repository** to create a copy (fork) of the Axway repository in your GitHub account. This allows you to propose changes to a repository that you don't have write access to.
+2. Click **Fork this repository** to create a copy (fork) of the Axway repository in your GitHub account. This allows you to propose changes to a repository that you don't have write access to.
 3. Make your changes to the page in the Markdown editor.
 
     Click the **Preview changes** tab to check the formatting of your changes.
