@@ -1,39 +1,35 @@
 ---
 title: Purge the metrics database
 linkTitle: Purge the metrics database
+weight: "5"
 date: 2019-10-07
-description: You can use the `dbpurger` command to connect to your metrics database and to purge old data. This command also enables you to retain a specified amount of data, and to archive all data.
-weight: "8"
+description: Use the `dbpurger` command to connect to your metrics database and purge old data. This command also enables you to retain a specified amount of data, and to archive all data.
 ---
-
-This topic assumes that you have already configured the connection to your metrics database [Configure API Gateway with your metrics database](/docs/apimanager_analytics/metrics_gw_config)
 
 ## Run the dbpurger command
 
-For API Gateway Analytics metrics, you can run the `dbpurger`
-command from the following directory:
+For API Gateway Analytics metrics, you can run the `dbpurger` command from the following directory:
 
-|        OS        | Command                                  |
-|----------------|-----------------------------------|
-| **Linux/UNIX** | `INSTALL_DIR/analytics/posix/bin` |
-| **Windows**    | `INSTALL_DIR\analytics\Win32\bin` |
+```
+INSTALL_DIR/analytics/posix/bin
+```
 
 ### dbpurger options
 
 You can specify the following options to the `dbpurger` command:
 
-| Option                                   | Description                                                                                                                            |
-|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| `-h, --help`                             | Displays help message and exits.                                                                                                       |
-| `-p PASSPHRASE, --passphrase=PASSPHRASE` | Specifies the configuration passphrase (leave blank for zero length).                                                                  |
-| `--dbname=DBNAME`                       | Specifies the database name (mutually exclusive with `dburl`, `dbuser`, and `dbpass`                                                options).                                                                                                                               |
-| `--dburl=DBURL`                          | Specifies the database URL.                                                                                                            |
-| `--dbuser=DBUSER`                        | Specifies the database user.                                                                                                           |
-| `--dbpass=DBPASS`                        | Specifies the database passphrase.                                                                                                     |
-| `--archive`                              | Archive all data.                                                                                                                      |
-| `--out=OUT`                              | Archive all data in the specified directory.                                                                                           |
-| `--purge`                                | Purge data from the database. You must also specify the `--retain`                                                                  option.                                                                                                                                 |
-| `--retain=RETAIN`                        | Specifies the amount of data to retain (for example, `30days`, `1month`, or `1year`). You must specify this option with the `--retain` option.                                                                                                                                 |
+| Option                                   | Description    |
+|------------------------------------------|--------------------------------------------|
+| `-h, --help`                             | Displays help message and exits. |
+| `-p PASSPHRASE, --passphrase=PASSPHRASE` | Specifies the configuration passphrase (leave blank for zero length).   |
+| `--dbname=DBNAME`                        | Specifies the database name (mutually exclusive with `dburl`, `dbuser`, and `dbpass` options). |
+| `--dburl=DBURL`                          | Specifies the database URL.     |
+| `--dbuser=DBUSER`                        | Specifies the database user.   |
+| `--dbpass=DBPASS`                        | Specifies the database passphrase.  |
+| `--archive`                              | Archive all data.  |
+| `--out=OUT`                              | Archive all data in the specified directory.   |
+| `--purge`                                | Purge data from the database. You must also specify the `--retain` option.   |
+| `--retain=RETAIN`                        | Specifies the amount of data to retain (for example, `30days`, `1month`, or `1year`). You must specify this option with the `--retain` option. |
 
 ## Example dbpurger commands
 
@@ -43,7 +39,7 @@ This section shows examples of running `dbpurger` in default interactive mode an
 
 The following example shows the output when running the `dbpurger` command in interactive mode. This example archives all data, retains three months of data, and purges older data from the database:
 
-``` {space="preserve"}
+```
 >dbpurger
 Choosing:Default Database Connection
 Archive database (Y, N) [N]:y
@@ -74,13 +70,12 @@ Purging table:metrics_data... deleted 703 rows
 
 The following example shows the output when specifying options the `dbpurger` command. This example retains 30 days of data, and purges older data from the database:
 
-``` {space="preserve"}
-dbpurger --dburl=jdbc:mysql://127.0.0.1:3306/reports --dbuser=root --dbpass=fred
-   --purge --retain=30days
+```
+dbpurger --dburl=jdbc:mysql://127.0.0.1:3306/reports --dbuser=root --dbpass=fred --purge --retain=30days
 ```
 
-{{< alert title="Note" color="primary" >}}You can run `dbpurger` without a password by specifying the name of the database connection. For example:{{< /alert >}}
+You can run `dbpurger` without a password by specifying the name of the database connection. For example:
 
-``` {space="preserve"}
+```
 dbpurger --dbname="Default Database Connection" --archive --out=archive.dat
 ```
