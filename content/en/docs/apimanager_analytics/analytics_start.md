@@ -179,7 +179,7 @@ You can schedule API Gateway Analytics reports to run on a regular basis, and to
 
 The report data is for the configured *current week of the report*, which is compared to the week before. You can set the configured *current week of the report* to be the actual current calendar week or any prior week (provided there is corresponding data in the database).
 
-### Enable scheduled reporting
+### Enable scheduled reporting in Policy Studio
 
 To configure scheduled report settings in Policy Studio, right-click the **Environment Configuration > Listeners > Axway Analytics** node in the Policy Studio tree, and select **Database Archive**.
 

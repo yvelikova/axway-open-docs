@@ -5,6 +5,7 @@ weight: "5"
 date: 2019-10-07
 description: Use the `dbpurger` command to connect to your metrics database and purge old data. This command also enables you to retain a specified amount of data, and to archive all data.
 ---
+<!-- TODO Merge with Admin Guide topic-->
 
 ## Run the dbpurger command
 
@@ -12,6 +13,12 @@ For API Gateway Analytics metrics, you can run the `dbpurger` command from the f
 
 ```
 INSTALL_DIR/analytics/posix/bin
+```
+
+For API Gateway and API Manager metrics, you can run the `dbpurger` command from the following directory:
+
+```
+INSTALL_DIR/apigateway/posix/bin
 ```
 
 ### dbpurger options

@@ -1,5 +1,5 @@
 ---
-title: API Gateway 7.8 Analytics User Guide
+title: API Gateway Analytics User Guide
 linkTitle: Configure API Gateway Analytics
 weight: 18
 date: 2019-10-03

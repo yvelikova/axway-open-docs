@@ -34,14 +34,8 @@ Before starting API Gateway Analytics, you must perform the following steps:
 3. Configure the database tables using the `dbsetup` script. For more details, see [Install and configure a metrics database](/docs/apigtw_install/metrics_db_install/).
 4. Configure your API Gateway instance and Admin Node Manager to store metrics. For more details, see [Configure API Gateway with the metrics database](/docs/apimanager_analytics/metrics_gw_config).
 
-For more details on managing metrics, see [Purge the metrics database for API Gateway Analytics](/docs/apimanager_analytics/metrics_db_purge).
+For more details on managing metrics, see [Purge the metrics database](/docs/apimanager_analytics/metrics_db_purge).
 
 ## Monitoring and reporting with API Gateway Analytics
 
-When you have configured the metrics database and API Gateway Analytics, you can start monitoring your API traffic and generating reports in API Gateway Analytics.
-
-For details, see the following:
-
-* [Launch API Gateway Analytics](/docs/apimanager_analytics/analytics_start)
-* [Monitor traffic with API Gateway Analytics](/docs/apimanager_analytics/analytics_monitoring)
-* [Configure scheduled reports in API Gateway AnalyticsScheduled report settings](/docs/apimanager_analytics/analytics_scheduled_reports)
+When you have configured the metrics database and API Gateway Analytics, you can start monitoring your API traffic and generating reports in API Gateway Analytics. For details, see [Get started with API Gateway Analytics] (/docs/apimanager_analytics/analytics_start/).
