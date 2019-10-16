@@ -45,7 +45,7 @@ When the review is finished, we'll merge your PR to this staging website first <
 
 ### 1. Edit a page on GitHub
 
-To edit a page and send a PR:
+{{< alert title="Caution" color="warning">}}If this is not the first time that you contribute to axway-open-docs, we strongly recommend that you delete your old fork before continuing. See [Deleting a repository](/blog/2019/10/15/deleting-an-old-fork-before-contributing-to-axway-documentation/) for more information.{{< /alert >}}
 
 {{< alert title="Warning" color="warning">}}If you have previously contributed to this project, your fork might be out of sync, and we strongly recommend that you delete your old fork before continuing. See [Deleting a repository](/blog/2019/10/15/deleting-an-old-fork-before-contributing-to-axway-documentation/) for more information.{{< /alert >}}
 
