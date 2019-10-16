@@ -1,6 +1,7 @@
 ---
 title: "Deleting an old fork before contributing to Axway documentation"
 linkTitle: "Deleting an old fork"
+weight: 6
 date: 2019-10-15
 description: >
     A fork is a copy of a repository. You must make sure that your fork is up to date with the upstream repository before contributing to the documentation.
