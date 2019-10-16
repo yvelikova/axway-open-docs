@@ -32,6 +32,8 @@ In all versions of TLS, it can be configured to support one-way or two-way TLS. 
 
 AMPLIFY Central currently provides one-way TLS from the API Gateway to the backend API.   One-way TLS is automatically negotiated for each API registered to an HTTPS Backend URL endpoint.
 
+TBD - List TLS modes supported
+
 ## Use the AMPLIFY Central UI to establish a TLS connection
 
 To begin, [register an api proxy](/docs/central/quickstart/#register-an-api) to an HTTPS API endpoint.
