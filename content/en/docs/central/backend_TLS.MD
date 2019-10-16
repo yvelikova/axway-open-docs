@@ -34,7 +34,7 @@ AMPLIFY Central currently provides one-way TLS from the API Gateway to the backe
 
 ## Use the AMPLIFY Central UI to establish a TLS connection
 
-To begin, [register an api proxy](/docs/central/quickstart/#register-an-api).
+To begin, [register an api proxy](/docs/central/quickstart/#register-an-api) to an HTTPS API endpoint.
 
 ### Confirm that TLS is negotiated for your API
 
