@@ -18,7 +18,7 @@ Two types of mappings are supported:
 * Rename mapping – This mapping enables you to rename an attribute from the IdP, keeping its value.
 * Filter mapping – This mapping creates output attributes when a filter matches the input attributes from the IdP. For more information, see [Filter syntax](#filter-syntax).
 
-The following sections describes the mandatory and optional attributes expected by API Manager, and gives examples of mappings that you can use to provide them.
+The following sections describe the mandatory and optional attributes expected by API Manager, and give examples of mappings that you can use to provide them.
 
 {{< alert title="Note" color="primary" >}}API Manager attribute names are all lowercase. The attribute names are case-sensitive.{{< /alert >}}
 
