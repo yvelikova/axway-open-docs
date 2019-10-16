@@ -18,60 +18,93 @@ Two types of mappings are supported:
 * Rename mapping – This mapping enables you to rename an attribute from the IdP, keeping its value.
 * Filter mapping – This mapping creates output attributes when a filter matches the input attributes from the IdP. For more information, see [Filter syntax](#filter-syntax).
 
-The following table describes the mandatory and optional attributes expected by API Manager, and gives examples of mappings that you can use to provide them.
-
-* `name` (mandatory)
-    * The logged in user name.
-    * Sample RenameMapping if the IdP provides an attribute which should be renamed:
-        `<RenameMapping source="user" target="name"/>`
-
-* `organization` (mandatory)
-    * The API Manager organization associated with the logged in user. The organization must already exist in API Manager. Organizations can be added by an API Manager administrator.
-
-        See [Usage guidelines](/docs/apimgr_admin/sso/saml_sso_config/#usage-guidelines) for additional details and exceptions.
-
-    * The IdP does not need to provide this value.
-  
-        If it does and the IdP attribute has a different name, you can use a RenameMapping to transform it to an `organization` attribute.
-
-        If the IdP does not provide the value associated with the organization at all, you can use an OutputAttribute to assign an organization to the logged in user. For example:
-
-        `<OutputAttribute name="organization">Research</OutputAttribute>`
-
-* `role` (mandatory)
-    * The API Manager role associated with the logged in user. Permitted substring values: `Administrator`, `Operator`, `User`.
-
-        See [Usage guidelines](/docs/apimgr_admin/sso/saml_sso_config/#usage-guidelines) for details of how these SSO roles are mapped to API Manager roles.
-
-    * The IdP does not need to provide this value.
-
-        If it does and the IdP attribute has a different name, you can use a RenameMapping to transform it to a `role` attribute.
-
-        If the IDP does not provide the value associated with the role at all, you can use an OutputAttribute to assign a role to the logged in user. For example:
-
-        `<OutputAttribute name="role">Administrator</OutputAttribute>`
-
-* `mail` (optional)
-    * The email address associated with the logged in user.
-    * Sample RenameMapping if the IdP provides an attribute which should be renamed:
-    `<RenameMapping source="email" target="mail"/>`
-
-* `description` (optional)
-    * The description text associated with the logged in user.
-    * Sample RenameMapping if the IdP provides an attribute which should be renamed:
-    `<RenameMapping source="userDescription" target="description"/>`
-
-* `department` (optional)
-    * The department that the logged in user belongs to.
-    * Sample RenameMapping if the IdP provides an attribute which should be renamed:
-    `<RenameMapping source="businessUnit" target="department"/>`
-
-* `telephonenumber` (optional)
-    * The telephone number associated with the logged in user.
-    * Sample RenameMapping if the IdP provides an attribute which should be renamed:
-    `<RenameMapping source="phone" target="telephonenumber"/>`
+The following sections describes the mandatory and optional attributes expected by API Manager, and gives examples of mappings that you can use to provide them.
 
 {{< alert title="Note" color="primary" >}}API Manager attribute names are all lowercase. The attribute names are case-sensitive.{{< /alert >}}
+
+### Mandatory attributes
+
+#### `name`
+
+The logged in user name.
+
+Sample RenameMapping if the IdP provides an attribute which should be renamed:
+
+```
+<RenameMapping source="user" target="name"/>
+```
+
+#### `organization`
+
+The API Manager organization associated with the logged in user. The organization must already exist in API Manager. Organizations can be added by an API Manager administrator. See [Usage guidelines](/docs/apimgr_admin/sso/saml_sso_config/#usage-guidelines) for additional details and exceptions.
+
+The IdP does not need to provide this value. If it does and the IdP attribute has a different name, you can use a RenameMapping to transform it to an `organization` attribute. If the IdP does not provide the value associated with the organization at all, you can use an OutputAttribute to assign an organization to the logged in user. For example:
+
+```
+<OutputAttribute name="organization">Research</OutputAttribute>
+```
+
+#### `role`
+
+The API Manager role associated with the logged in user. Permitted substring values: `Administrator`, `Operator`, `User`. See [Usage guidelines](/docs/apimgr_admin/sso/saml_sso_config/#usage-guidelines) for details of how these SSO roles are mapped to API Manager roles.
+
+The IdP does not need to provide this value. If it does and the IdP attribute has a different name, you can use a RenameMapping to transform it to a `role` attribute. If the IDP does not provide the value associated with the role at all, you can use an OutputAttribute to assign a role to the logged in user. For example:
+
+```
+<OutputAttribute name="role">Administrator</OutputAttribute>
+```
+
+### Optional attributes
+
+#### `mail`
+
+The email address associated with the logged in user.
+
+Sample RenameMapping if the IdP provides an attribute which should be renamed:
+
+```
+<RenameMapping source="email" target="mail"/>
+```
+
+#### `description`
+
+The description text associated with the logged in user.
+
+Sample RenameMapping if the IdP provides an attribute which should be renamed:
+
+```
+<RenameMapping source="userDescription" target="description"/>
+```
+
+#### `department`
+
+The department that the logged in user belongs to.
+
+Sample RenameMapping if the IdP provides an attribute which should be renamed:
+
+```
+<RenameMapping source="businessUnit" target="department"/>
+```
+
+#### `telephonenumber`
+
+The telephone number associated with the logged in user.
+
+Sample RenameMapping if the IdP provides an attribute which should be renamed:
+
+```
+<RenameMapping source="phone" target="telephonenumber"/>
+```
+
+#### `userfullname`
+
+The name associated with the logged in user.
+
+Sample RenameMapping if the IdP provides an attribute which should be renamed:
+
+```
+<RenameMapping source="displayName" target="userfullname"/>
+```
 
 ### Rename mapping example
 
