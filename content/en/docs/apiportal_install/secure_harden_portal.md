@@ -26,25 +26,27 @@ For more details on API Portal certificate management, see the [API Management 
 
 On an API Portal software installation, the Apache web server has TLS versions 1.0 and 1.1 enabled in addition to the TSL 1.2 that API Portal uses. Because TLS 1.0 and 1.1 have security vulnerabilities, it is recommended to disable them.
 
-1. To check which TLS versions are enabled, scan your API Portal port: 
+1. To check which TLS versions are enabled, scan your API Portal port:
 
     ```
     sslscan <API Portal IP address>:<your https port>
     ```
 
-   By default, API Portal uses port `443` for secure connections.
+    By default, API Portal uses port `443` for secure connections.
 2. To disable TLS 1.0. and 1.1, open the following file: `/etc/httpd/conf.d/apiportal.conf`
 3. Add the following SSL protocol definition for the secure connection:
-   ```
-   <VirtualHost *:443>
+
+    ```
+    <VirtualHost *:443>
        SSLEngine on
        SSLCertificateFile "/etc/httpd/conf/server.crt"
        SSLCertificateKeyFile "/etc/httpd/conf/server.key"
        SSLProtocol TLSv1.2
        Header always append X-Frame-Options SAMEORIGIN
         ...
-   </VirtualHost>
-   ```
+    </VirtualHost>
+    ```
+
 4. Restart Apache.
 5. Run the `sslscan` again on your API Portal port to check that TLS 1.0 and 1.1 have been disabled.
 
