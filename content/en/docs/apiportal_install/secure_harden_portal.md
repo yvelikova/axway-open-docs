@@ -233,7 +233,9 @@ Add the configuration in your `.htaccess` file, virtual host file, or global web
 # Check if the Content-Type header is missing or empty
 RewriteCond %{HTTP:Content-Type} ^$
 # AND the method type is POST, PUT or PATCH
-RewriteCond %{REQUEST_METHOD} ^(POST|PUT|PATCH)# Then redirect with response 415 Unsupported Media Type and stop processing other conditionsRewriteRule ^ - [R=415,L]
+RewriteCond %{REQUEST_METHOD} ^(POST|PUT|PATCH)
+# Then redirect with response 415 Unsupported Media Type and stop processing other conditions
+RewriteRule ^ - [R=415,L]
 # OR Content-Type header is present
 RewriteCond %{HTTP:Content-Type} !^$
 # AND Content-Type value doesn't match one of the following, case-insensitive
