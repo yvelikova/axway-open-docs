@@ -8,7 +8,7 @@ description: Create a base Docker image containing an operating system and an AP
 
 ## Create a base Docker image
 
-To create a base Docker image containing an operating system and an API Gateway installation, use the `build_base_image.py` script. This script builds a base API Gateway Docker image using an API Gateway7.8 Linux installer and a Docker image based on a standard or custom CentOS7 or RHEL7 operating system image.
+To create a base Docker image containing an operating system and an API Gateway installation, use the `build_base_image.py` script. This script builds a base API Gateway Docker image using an API Gateway 7.8 Linux installer and a Docker image based on a standard or custom CentOS7 or RHEL7 operating system image.
 
 {{< alert title="Caution" color="warning" >}}Docker automatically downloads the latest CentOS or RHEL7 image, which may potentially contain security vulnerabilities. Axway is not responsible for any third-party base O/S images. You must ensure that all base O/S images are up-to-date and apply any security patches if necessary.{{< /alert >}}
 
@@ -55,7 +55,7 @@ cd emt_containers-<version>
 
 This example creates a base Docker image named `my-gw-base` with a tag of `1.0`. The image is based on a standard RHEL7 Docker image.
 
-### Create a base image based on custom CentOS7/RHEL7 {#custimg}
+### Create a base image based on custom CentOS7/RHEL7
 
 The following example creates a base Docker image using a custom RHEL7 image.
 

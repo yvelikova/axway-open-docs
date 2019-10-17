@@ -60,17 +60,19 @@ The unzipped package includes the following:
 
 #### Quickstart demo
 
-The Quickstart demo `quickstart.sh` script enables you to quickly deploy a demo of API Gateway in Docker containers. A `readme.md` is also provided, that describes the Quickstart demo and includes a topology diagram.\
+The Quickstart demo `quickstart.sh` script enables you to quickly deploy a demo of API Gateway in Docker containers. A `readme.md` is also provided, that describes the Quickstart demo and includes a topology diagram.
+
 This script builds a base API Gateway Docker image using an API Gateway Linux installer and a Docker image based on a standard CentOS7 operating system image.
 
-{{< alert title="Caution" color="warning" >}}Docker tries to download the latest CentOS or RHEL7 image from a remote registry, which may potentially contain security vulnerabilities. Axway is not responsible for any third-party base O/S images. You must ensure that all base O/S images are up-to-date and apply any security patches if necessary. Check [Create a base image based on custom CentOS7/RHEL7](/docs/container_topics/containers_docker_setup/docker_script_baseimage#custimg) for more details. {{< /alert >}}
+{{< alert title="Caution" color="warning" >}}Docker tries to download the latest CentOS image from a remote registry, which may potentially contain security vulnerabilities. Axway is not responsible for any third-party base O/S images. You must ensure that all base O/S images are up-to-date and apply any security patches if necessary. See [Create a base image based on custom CentOS7/RHEL7](/docs/container_topics/containers_docker_setup/docker_script_baseimage/#create-a-base-image-based-on-custom-centos7-rhel7) for details.{{< /alert >}}
+
 For the Quickstart help, run:
 
 ```
 ./quickstart.sh -h
 ```
 
-{{< alert title="Tip" color="primary" >}}The `quickstart.sh` script is intended to simplify deployment of API Gateway in containers, especially for development environments and evaluation use. However, you can also use it as a starting point for customization and modify it to suit your own environment. {{< /alert >}}
+The `quickstart.sh` script is intended to simplify deployment of API Gateway in containers, especially for development environments and evaluation use. However, you can also use it as a starting point for customization and modify it to suit your own environment.
 
 ## Create a Docker network
 
