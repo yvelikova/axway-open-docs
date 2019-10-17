@@ -32,7 +32,7 @@ In all versions of TLS, it can be configured to support one-way or two-way TLS. 
 
 AMPLIFY Central currently provides one-way TLS from the API Gateway to the backend API.   One-way TLS is automatically negotiated for each API registered to an HTTPS Backend URL endpoint.
 
-TBD - List TLS modes supported
+TLS versions 1.2 and 1.3 are both supported by the AMPLIFY Central API Gateway.  Advanced Encryption Standard (AES) using both 128 bit and 256 bit keys are supported.   RSA 1024 bit public key lengths are supported for X.509v3 certificates. 
 
 ## Use the AMPLIFY Central UI to establish a TLS connection
 
