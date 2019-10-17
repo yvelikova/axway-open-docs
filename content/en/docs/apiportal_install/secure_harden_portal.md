@@ -227,7 +227,7 @@ It is best practice to reject requests containing unexpected or missing content 
 
 The Content-Type header specifies what media type is being sent with the request. If the Content-Type header is missing, empty, or unexpected the server must refuse to serve the request with an appropriate response, as allowing the request might lead to Cross-Site Request Forgery (CSRF) or even remote code execution (RCE).
 
-Add the configuration in your `.htaccess` file, virtual host file, or global web server configuration. The following code snippet gives an example for a server processing only `application/json` and `application/xml` data.
+Add the configuration in your `.htaccess` file, virtual host file, or global web server configuration. The following code snippet gives an example for a server processing only `application/json` and `application/x-www-form-urlencoded` data.
 
 ```
 # Check if the Content-Type header is missing or empty
