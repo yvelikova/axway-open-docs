@@ -231,7 +231,9 @@ On the first API Gateway host in DC1, perform the following steps:
 
 6. Start the API Gateway using the `startinstance` command in `INSTALL_DIR/apigateway/posix/bin`.
 7. Configure the API Gateway to connect to the Cassandra cluster. In the Policy Studio tree, select **Server Settings > Cassandra**, and configure the following:
-    * **Keyspace**: Name of the API Gateway Cassandra keyspace to be created when deployed. Defaults to `x${DOMAINID}_${GROUPID}`.
+    * **Keyspace**: Name of the API Gateway Cassandra keyspace to be created when deployed. Defaults to `x${DOMAINID}_${GROUPID}`
+    * **Initial replication strategy**: Network Topology Strategy
+    * **Initial replication**: ${env.CASS.REPL.FACTOR}
     * **Hosts**: Add the environment variable settings that you set in `envSettings.props`. For example:
         ![Set Cassandra hosts using environment variables](/Images/APIGateway/cassandra_multi-dc_hosts.png)
     * **Authentication**: Enter the Cassandra user name and password that you configured earlier. See [Configure the default system_auth keyspace](#configure-the-default-system-auth-keyspace).
