@@ -10,7 +10,7 @@
 
 A Policy Studio project is a design-time store of API Gateway configuration on a local file system, which can be deployed to a running API Gateway instance on a server. Policy Studio projects enable you to use API Gateway as a design-time repository for policies as well as a runtime engine for executing those policies.
 
-For example, policy developers can create specific API Gateway configuration projects on their file system, edit the API Gateway policies and other configuration items, and save their changes back to the file system. They can also then deploy their local Policy Studio project configuration to a running API Gateway instance to test those changes. For more details, see [Manage projects](general_project.htm).
+For example, policy developers can create specific API Gateway configuration projects on their file system, edit the API Gateway policies and other configuration items, and save their changes back to the file system. They can also then deploy their local Policy Studio project configuration to a running API Gateway instance to test those changes.
 
 ## API Gateway instances and groups
 
