@@ -1,20 +1,14 @@
 {
-"title": "Manage API Gateway settings",
-"linkTitle": "Manage API Gateway settings",
+"title": "Manage settings",
+"linkTitle": "Manage settings",
+"weight":"99",
 "date": "2019-10-14",
-"description": "You can configure the underlying settings for API Gateway using the **Server Settings**\\nnode in the Policy Studio tree. Alternatively, select the **Tasks > Manage Gateway Settings**\\nmenu option in the Policy Studio main menu. "
+"description": "Configure the underlying settings for API Gateway using the **Server Settings** node in the Policy Studio tree."
 }
-﻿
 
-You can configure the underlying settings for API Gateway using the **Server Settings**
-node in the Policy Studio tree. Alternatively, select the **Tasks > Manage Gateway Settings**
-menu option in the Policy Studio main menu.
+You can configure the underlying settings for API Gateway using the **Server Settings** node in the Policy Studio tree. Alternatively, select the **Tasks > Manage Gateway Settings** menu option in the Policy Studio main menu.
 
-This topic describes the settings available in the **Server Settings**
-window. Click or expand a tree node on this window to configure the appropriate settings. You can confirm changes to these settings by clicking the **Save**
-button at the bottom right of each window.
-
-<div id="p_general_ps_options_api_mgmt" "api_gateway_conditions.axway"="">
+This section describes the settings available in the **Server Settings** window. Click or expand a tree node on this window to configure the appropriate settings. You can confirm changes to these settings by clicking the **Save** button at the bottom right of each window.
 
 API Manager settings
 --------------------
