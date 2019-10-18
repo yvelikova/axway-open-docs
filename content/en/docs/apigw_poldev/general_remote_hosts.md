@@ -1,11 +1,9 @@
 {
-"title": "Configure remote host settings",
-"linkTitle": "Configure remote host settings",
-"date": "2019-10-17",
-"description": "You can use the **Remote Host Settings**\\nto configure the way in which API Gateway connects to a specific external server or routing destination. For example, typical use cases for configuring remote hosts with API Gateway are as follows:"
+    "title": "Configure remote host settings",
+    "linkTitle": "Configure remote host settings",
+    "date": "2019-10-17",
+    "description": "You can use the **Remote Host Settings** to configure the way in which API Gateway connects to a specific external server or routing destination."
 }
-﻿
-<div id="p_general_remote_hosts_over">
 
 Overview
 --------
@@ -24,20 +22,16 @@ You can add remote hosts *per-instance*
 to the API Gateway instance in the Policy Studio tree. For example, select **Environment Configuration** > **Listeners** > **API Gateway** >, right-click this instance, and select **Add Remote Host**. The tabs in the **Remote Host Settings**
 configuration window are described in the following sections.
 
-</div>
-
-<div id="p_general_remote_hosts_gen_conf">
-
 General settings
 ----------------
 
 You can configure the following settings on the **General**
 tab:
 
-**Host Alias**:\
+**Host alias**:\
 The human readable alias name for the remote host (for example, `StockQuote Host`). This setting is required.
 
-**Host Name**:\
+**Host name**:\
 The host name or IP address of the remote host to connect to (for example `stockquote.com`). If the host name entered in a **Static Router**
 filter matches this host name, the connection-specific settings configured on the **Remote Host**
 dialog are used when connecting to this host. This also includes any IP addresses listed on the **Addresses and Load Balancing**
@@ -46,8 +40,8 @@ tab, which override the default network DNS server mappings, if configured. This
 **Port**:\
 The TCP port on the remote host to connect to. Defaults to `80`.
 
-**Maximum Connections**:\
-The maximum number of connections to open to a remote host. If the maximum number of connections has already been established, the API Gateway instance waits for a connection to drop or become idle before making another request. The default maximum is 128 connections.
+**Maximum connections**:\
+The maximum number of connections to open to a remote host. If the maximum number of connections has already been established, the API Gateway instance waits for a connection to drop or become idle before making another request. The default value is `-1`, which allows unlimited connections. In the absence of a remote host, a global default value of `128` applies.
 
 **Allow HTTP 1.1**:\
 The API Gateway uses HTTP 1.0 by default to send requests to a remote host. This prevents any anomalies if the destination server does not fully support HTTP 1.1. If the API Gateway is routing on to a remote host that fully supports HTTP 1.1, you can use this setting to enable API Gateway to use HTTP 1.1.
@@ -64,10 +58,6 @@ Adds a field to outbound TLS/SSL calls that shows the name that the client used 
 {{< alert title="Note" color="primary" >}}To send the SNI extension, you must ensure that the **Verify server's certificate matches requested hostname** setting is also selected. In addition, the **Port** setting must be the port that you are connecting to the server with (for example, `443` is the default port for SSL).{{< /alert >}}
 **Verify server's certificate matches requested hostname**:\
 Ensures that the certificate presented by the server matches the name of the remote host being connected to. This prevents host spoofing and man-in-the-middle attacks. This setting is selected by default.
-
-</div>
-
-<div id="p_general_remote_hosts_address_conf">
 
 Address and load balancing settings
 -----------------------------------
@@ -114,10 +104,6 @@ The response times used by this algorithm decline over time. You can specify the
 For example, server A takes 100 ms to reply, and the other servers in the same priority group reply in 25 ms. A **Period to wait before response time is halved**
 of 10,000 ms (10 sec) means that after 20 seconds server A is retried along with the other servers. In this case, the response time has been halved twice (100 ms / 2 / 2 = 25 ms).
 
-</div>
-
-<div id="p_general_remote_hosts_advanced">
-
 Advanced settings
 -----------------
 
@@ -135,6 +121,8 @@ When the API Gateway receives a large HTTP request, it reads the request off the
 
 For example, the remote host's network connection is pulled out of the machine while sending data to the API Gateway. When the API Gateway has read all the available data off the network, it waits the **Active Timeout**
 period before closing the connection.
+
+The **Active Timeout** value is also used as a wait time when the maximum number of connections for a remote host is reached. For example, when a remote host reaches the **Maximum connections** value, API Gateway waits the active timeout period before giving up on trying to make a new connection.
 
 **Transaction Timeout (ms)**:\
 A configurable transaction timeout that detects slow HTTP attacks (slow header write, slow body write, slow read) and rejects any transaction that keeps the worker threads occupied for an excessive amount of time. The default value is 240000 milliseconds.
@@ -190,10 +178,6 @@ Specifies whether to insert the correlation ID in outbound messages. This means 
 header is added to the outbound message. This is a transaction ID that is attached to each message transaction that passes through API Gateway, and which is used for traffic monitoring in the API Gateway Manager web console. You can use the correlation ID to search for messages in the web console, and you can also access its value from a policy using the `id`
 message attribute. This setting is selected by default.
 
-</div>
-
-<div id="p_general_remote_hosts_watchdogs">
-
 Configure watchdogs
 -------------------
 
@@ -212,10 +196,6 @@ To configure the API Gateway to shut down an HTTP interface based on the availab
 is configured as **Weighted by response time**, and remote host watchdogs are configured, the watch dog polling also contributes to the load balancing calculations.{{< /alert >}}
 For more information on adding a watchdog to a remote host, see [*Configure HTTP watchdog* on page 1](general_watchdog.htm). For more information on adding conditions to an HTTP interface, see [*Configure conditions for HTTP interfaces* on page 1](general_conditions.htm).
 
-</div>
-
-<div id="p_general_remote_hosts_incoming">
-
 Configure an incoming remote host
 ---------------------------------
 
@@ -233,5 +213,3 @@ tab of the remote host settings:
 4.  A CIDR style netmask can be specified (for example, `192.168.0.0/24`
     matches any address in the `192.168.0.x`
     range). This works on a longest-match basis if more than one network specification matches the client.
-
-</div>
