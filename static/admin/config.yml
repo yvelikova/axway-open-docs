@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: Axway/axway-open-docs # Path to your GitHub repository
-  fork_workflow: true
+  open_authoring: true
 
 publish_mode: editorial_workflow
 
