@@ -1,23 +1,20 @@
 {
 "title": "Get help with API Gateway",
 "linkTitle": "Get help with API Gateway",
+"weight":"99",
 "date": "2019-10-14",
-"description": "This topic describes how you can access help and documentation for API Gateway, how to find your installed version (including any installed service pack and patches), and what information you need if you contact Axway Support for assistance."
+"description": "Find your API Gateway installed version and what information you need if you contact Axway Support for assistance."
 }
-﻿
 
-This topic describes how you can access help and documentation for API Gateway, how to find your installed version (including any installed service pack and patches), and what information you need if you contact Axway Support for assistance.
+This section describes how you can access help and documentation for API Gateway, how to find your installed version (including any installed service pack and patches), and what information you need if you contact Axway Support for assistance.
 
-Access help and documentation
------------------------------
+## Access help and documentation
 
-Context-sensitive help is available in Policy Studio. Click the **Help**
-button on any window to display the relevant help page for that window.
+Context-sensitive help is available in Policy Studio. Click the **Help** button on any window to display the relevant help page for that window.
 
-You can access all of the API Gateway documentation on the Axway Documentation portal at <https://docs.axway.com>.
+You can access all of the API Gateway documentation on the Axway Documentation portal at <https://axway-open-docs.netlify.com/>.
 
-Find your installed version
----------------------------
+## Find your installed version
 
 You can find your installed version of API Gateway in several ways.
 
@@ -33,7 +30,7 @@ You can view the installed version number, including any installed service pack,
 
 You can list the API Gateway processes to view the installed version number, including any installed service pack. For example:
 
-``` {space="preserve"}
+```
 $ ps -eaf | grep vshell
 user1 13696 13687  0 Nov14 pts/24   00:11:50 APIGateway1 (Group1) (7.8 SP1) (vshell)
 user1 19595 13643  0 Nov14 pts/23   00:06:05 NodeManager on Host1 (Node Manager Group) (7.8 SP1) (vshell)
@@ -45,7 +42,7 @@ You can find the installed version number, including any installed service pack,
 
 For example, the following trace file (for a Node Manager) shows the installed version and service pack:
 
-``` {space="preserve"}
+```
 # ProductName=nodemanageronhost1.axway.com 7.8 SP1-2016-12-01 rev. 39e69a0 (Linux.x86_64)
 # CurrentDate=Fri, 02 Dec 2016 09:26:14 +0000
 # CurrentDateUTC=1480670774
@@ -56,14 +53,13 @@ For example, the following trace file (for a Node Manager) shows the installed v
 
 For more information on using `managedomain` to find your installed version number, see [*Find your installed version and list patches using managedomain* on page 1](#Find).
 
-Find your installed version and list patches using managedomain
----------------------------------------------------------------
+## Find your installed version and list patches using managedomain
 
 You can use the `managedomain` command with the `-v` or `--version` options to find the installed version number, including any installed service pack or patches, and build information.
 
 The following example shows the output for a system with API Gateway 7.8 installed, with service pack `SP1` installed, and no patches installed:
 
-``` {space="preserve"}
+```
 $ ./managedomain --version
 Version:    7.8 SP1
 Build Date: 2016-11-04 08:34:37 UTC
@@ -77,7 +73,7 @@ When patches are installed, `managedomain --version` displays the names of the p
 
 The following example shows the output for a system with patches installed and no patch validation issues:
 
-``` {space="preserve"}
+```
 $ ./managedomain --version
 Version:    7.8
 Build Date: 2016-12-06 14:56:44 UTC
@@ -86,7 +82,7 @@ Patch:      OpenSSL_1_0_2j-fips
 Patch:      RDAPI-5885_44dc0cde1d94f4dd4744327728aeeac5b2c4a802
 ```
 
-``` {space="preserve"}
+```
 $ ./managedomain --version
 Version:    7.5.3
 Build Date: 2016-12-06 14:56:44 UTC
@@ -97,7 +93,7 @@ Patch:      RDAPI-5885_44dc0cde1d94f4dd4744327728aeeac5b2c4a802
 
 The following example shows the output for a system with patches installed and various patch validation issues:
 
-``` {space="preserve"}
+```
 $ ./managedomain --version
 Version:    7.5.3
 Build Date: 2016-12-06 14:56:44 UTC
@@ -123,11 +119,8 @@ Patch:      RDAPI-5693_etwe2346zdg567fhfg4ue7645846856766700a32
 Patch:      ext/lib/com.vordel.circuit.net.UnexpectedProcessor.jar: Unexpected file
 ```
 
-For more information on the patch validation messages and how to resolve them, see
-[Update API Gateway](/csh?context=304&product=prod-api-gateway-77)
-in the
-[API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/)
-.
+For more information on the patch validation messages and how to resolve them, see [Update API Gateway](/csh?context=304&product=prod-api-gateway-77) in the
+[API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
 
 The `managedomain --version` command checks the version on the local machine only. You do not need to have an Admin Node Manager or API Gateway running to run this command.
 
@@ -135,15 +128,12 @@ This command lists version information relating to what is installed on disk. Yo
 
 This command can also be run in command interpreter mode.
 
-Information to include when you contact Axway Support
------------------------------------------------------
+## Information to include when you contact Axway Support
 
 It is important to include as much information as possible when contacting the Axway Support team. This helps to diagnose and solve the problem in a more efficient manner. The following information should be included with any Support query:
 
--   Name and version of the product (for example, AxwayAPI Gateway7.8).
--   Details of any service pack or patches that were applied to the product, if any.
--   Operating system on which the product is running.
--   A clear (step-by-step) description of the problem or query.
--   If you have encountered an error, the error message should be included in the email. It is also useful to include any relevant trace files from the `/trace`
-    directory of your product installation, preferably with the trace level set to `DEBUG`.
-
+* Name and version of the product (for example, AxwayAPI Gateway7.8).
+* Details of any service pack or patches that were applied to the product, if any.
+* Operating system on which the product is running.
+* A clear (step-by-step) description of the problem or query.
+* If you have encountered an error, the error message should be included in the email. It is also useful to include any relevant trace files from the `/trace` directory of your product installation, preferably with the trace level set to `DEBUG`.

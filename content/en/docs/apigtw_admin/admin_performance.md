@@ -1,35 +1,30 @@
 {
 "title": "API Gateway performance tuning",
 "linkTitle": "API Gateway performance tuning",
+"weight":"26",
 "date": "2019-10-14",
-"description": "This topic explains how to optimize API Gateway performance using various configuration options. For example, general performance tuning options include tracing, monitoring, and logging. More advanced performance tuning options include database pooling, HTTP keep alive, chunked encoding, and client threads."
+"description": "Configure API Gateway to optimize its performance."
 }
-﻿
 
-This topic explains how to optimize API Gateway performance using various configuration options. For example, general performance tuning options include tracing, monitoring, and logging. More advanced performance tuning options include database pooling, HTTP keep alive, chunked encoding, and client threads.
+This section explains how to optimize API Gateway performance using various configuration options. For example, general performance tuning options include tracing, monitoring, and logging. More advanced performance tuning options include database pooling, HTTP keep alive, chunked encoding, and client threads.
 
-General performance tuning
---------------------------
+## General performance tuning
 
 You can optimize API Gateway performance by using Policy Studio to configure the general settings described in this section.
 
 ### Minimize tracing
 
-The **Trace Log**
-is displayed in the **Logs**
-view in the API Gateway Manager web console. When tracing is running at a verbose level (for example, `DEBUG`
-), this means that API Gateway is doing more work and is very dependent on disk input/output. You can set a less verbose trace level for an API Gateway instance or API Gateway port interface (for example, `ERROR`
-or `FATAL`).
+The **Trace Log** is displayed in the **Logs** view in the API Gateway Manager web console. When tracing is running at a verbose level (for example, `DEBUG`), this means that the gateway is doing more work and is very dependent on disk input/output. You can set a less verbose trace level for a gateway instance or port interface (for example, `ERROR` or `FATAL`).
 
-To set the tracing for an API Gateway instance, select **Environment Configuration > Server Settings > General** in the Policy Studio tree, and select the **Trace Level** (for example, `FATAL`):
+To set the tracing for the gateway instance, select **Environment Configuration > Server Settings > General** in the Policy Studio tree, and select the **Trace Level** (for example, `FATAL`):
 
-![Minimize per-product instance tracing](/Images/docbook/images/admin/admin_perf_tracing_instance.png)
+![Minimize per-product instance tracing](/Images/APIGateway/admin_perf_tracing_instance.png)
 
-You can also override the trace level for an API Gateway port interface, and set it to a quieter level. For example, in the Policy Studio tree, select **Environment Configuration > Listeners > API Gateway > Sample Services > Ports**. Right-click an interface in the list on the right, select **Edit**, and set the **Trace level** (for example, `FATAL`):
+You can also override the trace level for a gateway port interface, and set it to a quieter level. For example, in the Policy Studio tree, select **Environment Configuration > Listeners > API Gateway > Sample Services > Ports**. Right-click an interface in the list on the right, select **Edit**, and set the **Trace level** (for example, `FATAL`):
 
-![Minimize per-product interface tracing](/Images/docbook/images/admin/admin_perf_tracing_interface.png)
+![Minimize per-product interface tracing](/Images/APIGateway/admin_perf_tracing_interface.png)
 
-For more details, see [Configure API Gateway diagnostic trace](tracing.htm).
+For more details, see [Configure API Gateway diagnostic trace](/docs/apigtw_admin/tracing).
 
 ### Disable real-time monitoring
 
@@ -39,54 +34,47 @@ view in the API Gateway Manager web console. This caches recent message transact
 To disable in Policy Studio, select **Environment Configuration > Server Settings
 > Monitoring > Real Time Monitoring**, and deselect **Enable Real Time Monitoring**:
 
-![Disable real-time monitoring](/Images/docbook/images/admin/admin_perf_realtime_monitor.png)
+![Disable real-time monitoring](/Images/APIGateway/admin_perf_realtime_monitor.png)
 
-For more details, see [Real-time monitoring metrics](realtime_monitoring_setting.htm).
+For more details, see [Real-time monitoring metrics](/docs/apigtw_admin/realtime_monitoring_setting).
 
 ### Disable traffic monitoring
 
 Traffic monitoring is displayed in the **Traffic** view in the API Gateway Manager web console. By default, the API Gateway stores recent HTTP traffic summaries to the API Gateway disk for use in API Gateway Manager. You can remove this overhead by disabling traffic monitoring.
 
-To disable in Policy Studio, select **Environment Configuration > Server Settings
-> Monitoring > Traffic**, and deselect **Enable Traffic Monitor**:
+To disable in Policy Studio, select **Environment Configuration > Server Settings > Monitoring > Traffic**, and deselect **Enable Traffic Monitor**:
 
-![Disable traffic monitoring](/Images/docbook/images/admin/admin_perf_traffic_monitor.png)
+![Disable traffic monitoring](/Images/APIGateway/admin_perf_traffic_monitor.png)
 
-For more details, see [Traffic monitoring settings](traffic_monitor_settings.htm).
+For more details, see [Traffic monitoring settings](/docs/apigtw_admin/traffic_monitor_settings.htm).
 
 ### Disable transaction logging
 
-The **Transaction Log**
-is displayed in the **Logs**
-view in the API Gateway Manager web console. You should ensure that API Gateway is not sending transaction log messages or events to transaction log destinations. This is because the performance of API Gateway will be determined by the log destination.
+The **Transaction Log** is displayed in the **Logs** view in the API Gateway Manager web console. You should ensure that API Gateway is not sending transaction log messages or events to transaction log destinations. This is because the performance of API Gateway will be determined by the log destination.
 
 To disable transaction logging in the API Gateway, you must disable all log destinations in Policy Studio. For example, select **Environment Configuration > Server Settings > Logging > Transaction Log**, and deselect **Enable logging to a file**. The following example shows disabling logging to file, you must perform this step in all tabs on this screen:
 
-![Disable transaction logging](/Images/docbook/images/admin/admin_perf_transaction_log.png)
+![Disable transaction logging](/Images/APIGateway/admin_perf_transaction_log.png)
 
-For more details, see [Transaction audit log settings](log_global_settings.htm).
+For more details, see [Transaction audit log settings](/docs/apigtw_admin/log_global_settings).
 
 ### Disable access logging
 
 You should also ensure that the API Gateway is not sending log messages to the access log. To disable access logging in the API Gateway, select **Environment Configuration > Server Settings > Logging > Transaction Access Log**, and deselect **Transaction Access Log Enabled**:
 
-![Disable access logging](/Images/docbook/images/admin/admin_perf_access_log.png)
+![Disable access logging](/Images/APIGateway/admin_perf_access_log.png)
 
-For more details, see [Transaction access log settings](log_access_settings.htm).
+For more details, see [Transaction access log settings](/docs/apigtw_admin/log_access_settings).
 
-Advanced performance tuning
----------------------------
+## Advanced performance tuning
 
 You can also use the advanced configuration settings described in this section to optimize API Gateway performance.
 
 ### Configure spilling of data to disk
 
-When stress testing with large messages (greater than 4 MB), the API Gateway spills data to disk instead of holding it in memory. By default, the `spilltodisk`
-option is triggered with payload sizes of 4 MB or more. For example, you can configure this in the `service.xml`
-file in the following directory by adding the `spilltodisk`
-option configured in bytes:
+When stress testing with large messages (greater than 4 MB), the API Gateway spills data to disk instead of holding it in memory. By default, the `spilltodisk` option is triggered with payload sizes of 4 MB or more. For example, you can configure this in the `service.xml` file in the following directory by adding the `spilltodisk` option configured in bytes:
 
-``` {space="preserve"}
+```
 <install-dir>/apigateway/groups/<group-id>/<instance-id>/conf/service.xml
 ```
 
@@ -123,7 +111,7 @@ For example, if you are providing load from 100 parallel clients, the pool setti
 
 To configure database pooling in Policy Studio, select **Environment Configuration > External Connections > Database Connections > Add Database Connection**. For example:
 
-![Configure database pooling](/Images/docbook/images/admin/admin_perf_database_pool.png)
+![Configure database pooling](/Images/APIGateway/admin_perf_database_pool.png)
 
 ### Configure API Gateway for HTTP persistent connections
 
@@ -132,21 +120,15 @@ By default, API Gateway uses HTTP 1.0 for better interoperability. To enable HTT
 In HTTP/1.1, the connection between a client and a server is maintained unless otherwise declared, so that further client requests can avoid the overhead of setting up a new connection. This may or may not model the client population of a particular scenario very well. If it is acceptable to reuse TCP connections (and SSL connections on top of these), ensure your client uses HTTP/1.1, and does not opt out of the HTTP persistent connection.
 
 For the `sr` command, this means you should use the `-V1.1` and `-U1000` arguments to enable the connection be used a number of times before closing it. For details on `sr`, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
-{{< alert title="Note" color="primary" >}}For conformance with the HTTP/1.1 specification, the client must send a `Host`
-header in this configuration, so you must pass a further `-aHost:localhost`
-argument to `sr`
-. If the persistent connection is working correctly, `sr`
-reports a larger number of transactions to connections in its periodic output.{{< /alert >}}
+* For conformance with the HTTP/1.1 specification, the client must send a `Host` header in this configuration, so you must pass a further `-aHost:localhost` argument to `sr`. If the persistent connection is working correctly, `sr` reports a larger number of transactions to connections in its periodic output.
 
 #### Configure HTTP 1.1 for outgoing connections
 
 You can configure a remote host for a destination server supporting HTTP 1.1.
 
-In the Policy Studio node tree, click **Environment Configuration > Listeners
-> API Gateway**. Select the remote host you want and click **Edit**, or add a new host, and select **Allow HTTP 1.1**.
+In the Policy Studio node tree, click **Environment Configuration > Listeners > API Gateway**. Select the remote host you want and click **Edit**, or add a new host, and select **Allow HTTP 1.1**.
 
 Remote host only enforces settings to a specific configured endpoint, not globally. You must edit the settings separately for each destination server you want to configure for HTTP 1.1.
 
@@ -154,40 +136,42 @@ Remote host only enforces settings to a specific configured endpoint, not global
 
 You can enable HTTP 1.1 globally for incoming connections in API Gateway by editing the following file:
 
-INSTALL\_DIR/apigateway/groups/<group>/<instance>/conf/service.xml
+```
+INSTALL_DIR/apigateway/groups/<group>/<instance>/conf/service.xml
+111
 
 To change the default behavior of the HTTP 1.1 settings, set `allowHTTP11` to `true`:
 
-``` {space="preserve"}
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<NetService provider="NetService">   
+<NetService provider="NetService">
 <!-- Configuration file for service. Note that if you wish for the user to enter a passphrase at     
-start up then give the "secret" attribute a value "(prompt)", for example: secret="(prompt)" -->   
-<include file="serviceids.xml"/>   
-<include file="../../conf/group.xml"/>   
+start up then give the "secret" attribute a value "(prompt)", for example: secret="(prompt)" -->
+<include file="serviceids.xml"/>
+<include file="../../conf/group.xml"/>
 <SystemSettings tracelevel="INFO" secret="${secret}"
-        serviceID="${serviceID}" groupID="${groupID}"       
+        serviceID="${serviceID}" groupID="${groupID}"
         serviceName="${serviceName}"
-        groupName="${groupName}"       
-        domainID="${domainID}" title="API Server"       
-        allowHTTP11="true"/>   
-<set property="headless" value="true"/>   
-<include file="$VDISTDIR/system/conf/platform.xml"/>   
-<include file="$VDISTDIR/system/conf/trace.xml"/>   
-<include file="$VDISTDIR/system/conf/libxml.xml"/>   
-<include file="$VDISTDIR/system/conf/jvm.xml"/>   
-<include file="$VDISTDIR/system/conf/nativeJAXP.xml"/>   
-<include file="esconnection.xml"/>   
-<include file="mgmt.xml"/>   
+        groupName="${groupName}"
+        domainID="${domainID}" title="API Server"
+        allowHTTP11="true"/>
+<set property="headless" value="true"/>
+<include file="$VDISTDIR/system/conf/platform.xml"/>
+<include file="$VDISTDIR/system/conf/trace.xml"/>
+<include file="$VDISTDIR/system/conf/libxml.xml"/>
+<include file="$VDISTDIR/system/conf/jvm.xml"/>
+<include file="$VDISTDIR/system/conf/nativeJAXP.xml"/>
+<include file="esconnection.xml"/>
+<include file="mgmt.xml"/>
 <includes dir="extensions" pattern="*.xml"/>
 </NetService>
 ```
 
-Changing this setting enables HTTP 1.1 globally for this particular API Gateway instance. You must restart the instance before the setting takes effect.
+Changing this setting enables HTTP 1.1 globally for this particular gateway instance. You must restart the instance before the setting takes effect.
 
 ### Configure chunked encoding
 
-For interoperability reasons, API Gateway normally does not use chunked encoding when talking to a remote server. Because of the HTTP protocol, API Gateway must send the `Content-Length`
+For interoperability reasons, the gateway normally does not use chunked encoding when talking to a remote server. Because of the HTTP protocol, API Gateway must send the `Content-Length`
 header to the server, and so must precompute the exact size of the content to be transmitted. This may be expensive.
 
 For example, when relaying data directly from client to server, or when the message exists as an abstract XML document in API Gateway, the size may not be immediately available. This means that the entire content from the client must be buffered, or the internal body structure must be serialized an extra time just to measure its size. By configuring a remote host for the destination server to allow HTTP 1.1, when a server is known to be advertising HTTP 1.1, chunked encoding can be used when transmitting to that server where appropriate.
