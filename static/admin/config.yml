@@ -1,14 +1,14 @@
 backend:
   name: github
-  repo: Axway/axway-open-docs # Path to your GitHub repository
-  fork_workflow: true
+  repo: alexearnshaw/axway-open-docs # Path to your GitHub repository
+  open_authoring: true
 
 publish_mode: editorial_workflow
 
 media_folder: "static/Images/uploads" # Media files will be stored in the repo under static/Images/uploads
 public_folder: "/Images/uploads" # The src attribute for uploaded media will begin with /Images/uploads
 
-site_url: https://axway-open-docs.netlify.com/
+site_url: https://fork-axway-open-docs.netlify.com/
 
 collections: # A list of collections the CMS should be able to edit
   - name: "cassdoc" # Used in routes, ie.: /admin/collections/:slug/edit
