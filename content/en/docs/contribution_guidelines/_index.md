@@ -47,7 +47,7 @@ When the review is finished, we'll merge your PR to this staging website first <
 
 To edit a page and send a PR:
 
-1. Click **Edit this page** on the upper right corner of the page.
+1. Click **Edit on GitHub** on the upper right corner of the page.
 2. If this your first time to edit a page in this project, click **Fork this repository** to create a copy (fork) of the Axway repository in your GitHub account. This allows you to propose changes to a repository that you don't have write access to.
 3. Make your changes to the page in the Markdown editor.
 

@@ -1,10 +1,10 @@
 
 # Post (blog, articles etc.)
 [post_edit_this]
-other = "Improve this page (GitHub)"
+other = "Edit on GitHub"
 
 [post_edit_cms]
-other = "Improve this page (CMS)"
+other = "Edit on Netlify CMS"
 
 [contribution_guidelines]
 other = "Contribution guidelines"
