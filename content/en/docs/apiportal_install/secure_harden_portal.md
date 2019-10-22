@@ -254,7 +254,7 @@ RewriteRule ^ - [R=415,L]
 
 Another good practice is to reject requests of HTTP methods that are not actually being used, by returning `405 Method Not Allowed` response. Thus, you might prevent eventual Cross-Site Tracing attacks.
 
-`GET` and `POST` requests are mandatory for API Portal. HTTP methods of your listed API must also be enabled, so you can send requests to them from the Try It page.
+`GET` and `POST` requests are mandatory for API Portal. The HTTP methods your listed APIs support must also be enabled, so you can send requests to them from the Try It page.
 
 The following example allows only `GET`, `POST` and `PUT`:
 
