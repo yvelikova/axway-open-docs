@@ -1,32 +1,26 @@
 {
 "title": "Configure Role-Based Access Control (RBAC)",
-"linkTitle": "Configure Role-Based Access Control (RBAC)",
+"linkTitle": "Configure RBAC",
+"weight":"30",
 "date": "2019-10-14",
-"description": "This topic applies to both API Gateway and API Gateway Analytics."
+"description": "Restrict system access to authorized users based on their assigned roles."
 }
-﻿
-
-{{< alert title="Note" color="primary" >}}This topic applies to both API Gateway and API Gateway Analytics.{{< /alert >}}
 
 Role-Based Access Control (RBAC) enables you to restrict system access to authorized users based on their assigned roles. Using the RBAC model, permissions to perform specific system operations are assigned to specific roles, and system users are granted permission to perform specific operations only through their assigned roles. This simplifies system administration because users do not need to be assigned permissions directly, and instead acquire them through their assigned roles.
 
 The API Gateway uses the RBAC permissions model to ensure that only users with the assigned role can access parts of the management services exposed by the Admin Node Manager. For example, this includes access to traffic monitoring data or making a configuration change by deploying to a group of API Gateways. The following diagram shows an overview of the RBAC model in the API Gateway:
 
-![RBAC Overview](/Images/docbook/images/admin/rbac/rbac_overview.png)
+![RBAC Overview](/Images/APIGateway/rbac_overview.png)
 
-API Gateway Manager
--------------------
+## API Gateway Manager
 
-The web-based API Gateway Manager tool (`https://localhost:8090`) is a centralized dashboard for managing and monitoring the API Gateway, and is controlled by RBAC. Users connecting to this URL with different roles results in different features being displayed.
+The web-based API Gateway Manager tool (`https://localhost:8090`) is a centralized dashboard for managing and monitoring the gateway, and is controlled by RBAC. Users connecting to this URL with different roles results in different features being displayed.
 
-For example, users with the `API Server Administrator`
-role has read/write access in the API Gateway Manager tool. However, users in the `API Server Operator`
-have only read access in the API Gateway Manager tool.
+For example, users with the `API Server Administrator` role has read/write access in the API Gateway Manager tool. However, users in the `API Server Operator` have only read access in the API Gateway Manager tool.
 
-For more details on the tools and privileges assigned to specific user roles, see [*Manage Admin users* on page 1](../CommonTopics/user_mgmt.htm).
+For more details on the tools and privileges assigned to specific user roles, see [Manage Admin users](/docs/apigtw_admin/manage_user_access#manage-admin-users).
 
-Protected management services
------------------------------
+## Protected management services
 
 The Admin Node Manager exposes a number of REST management services, which are all protected by RBAC. For example, the exposed services and the associated tools that use them include the following:
 
@@ -39,32 +33,30 @@ The Admin Node Manager exposes a number of REST management services, which are a
 | Deployment API             | Policy Studio       | Deploys configurations to the API Gateway.                                       |
 | KPS Service                | Policy Studio       | Manages a Key Property Store.                                                    |
 
-RBAC user roles
----------------
+## RBAC user roles
 
 User access to management services is determined by their role(s). Each role has a defined set of management services that it can access. A Management Service is defined by the URI used to access it, for example:
 
-| **Role Name**         | **Service Name** | **API Type** | **Example URI**       |
-|-----------------------|------------------|--------------|-----------------------|
-| `API Server Operator` | Topology API     | REST         | `/api/topology/hosts` |
+**Role Name**: API Server Operator
+**Service Name**: Topology API
+**API Type**: REST
+**Example URI**: `/api/topology/hosts`
 
-For full details on the default roles that have access to each Management Service, see [*Management service roles and permissions* on page 1](#Manageme).
+For full details on the default roles that have access to each Management Service, see [Management service roles and permissions](#management-service-roles-and-permissions).
 
-Local admin user store
-----------------------
+## Local admin user store
 
 By default, all the user credentials are stored in a local admin user store in the following file:
 
-``` {space="preserve"}
+```
 INSTALL_DIR/conf/adminUsers.json
 ```
 
-`INSTALL_DIR`
-is the directory where the API Gateway is installed as Admin Node Manager.
+`INSTALL_DIR` is the directory where the gateway is installed as Admin Node Manager.
 
 The following shows an example file:
 
-``` {space="preserve"}
+```
 {
    "productVersion" :"7.8",
    "version" :1,
@@ -76,9 +68,7 @@ The following shows an example file:
    } ],
    "credentials" :{
      "user-1" :"$AAGQAAAAAQAC$DxlhcXQ2FTZ3mjErhGDEEQ==$0/hQdegidtOyrX2QuUnmEWIzknx4bsf0iPr3HydpbyY="
-```
 
-``` {space="preserve"}
    },
    "adminUserRoles" :[ {
      "id" :"role-1",
@@ -87,9 +77,7 @@ The following shows an example file:
      "id" :"role-2",
      "name" :"API Server Operator"
    }, {
-```
 
-``` {space="preserve"}
      "id" :"role-5",
      "name" :"Deployer"
    }, {
@@ -100,16 +88,13 @@ The following shows an example file:
      "name" :"Policy Developer"
    } ],
    "uniqueIdCounters" :{
-     "Role" :8, 
+     "Role" :8,
      "User" :2
    },
    "adminUsersVersion" :{
      "version" :1,
      "timestamp" :0
    }
-```
-
-``` {space="preserve"}
 }
 ```
 
@@ -117,88 +102,69 @@ The credentials from this file are used to authenticate and perform RBAC on all 
 
 ### Admin user password storage algorithm
 
-Admin user passwords are in stored in the `adminUsers.json`
-file as a base64-encoded salted hash of the plaintext password. To authenticate a user password, the incoming password value is digested in the same way, and compared against the value in the file. If they match, the user is authenticated.
+Admin user passwords are in stored in the `adminUsers.json` file as a base64-encoded salted hash of the plaintext password. To authenticate a user password, the incoming password value is digested in the same way, and compared against the value in the file. If they match, the user is authenticated.
 
 The salt is a 16 byte value generated using the SHA1PRNG pseudo-random number generator algorithm. This algorithm is provided by the Java Cryptography Extension (JCE) and is PBKDF2 with
-HMAC SHA2. The algorithm repeats the digest of the password along with the salt for 102400
-iterations. The salt is stored with the digest allowing for password verification in the following format:
+HMAC SHA2. The algorithm repeats the digest of the password along with the salt for 102400 iterations. The salt is stored with the digest allowing for password verification in the following format:
 
-    $<version-value>$<salt-value>$<password-digest>
+```
+<version-value>$<salt-value>$<password-digest>
+```
 
 For example:
 
-    $AAGQAAAAAQAC$DxlhcXQ2FTZ3mjErhGDEEQ==$0/hQdegidtOyrX2QuUnmEWIzknx4bsf0iPr3HydpbyY=
+```
+AAGQAAAAAQAC$DxlhcXQ2FTZ3mjErhGDEEQ==$0/hQdegidtOyrX2QuUnmEWIzknx4bsf0iPr3HydpbyY=
+```
 
 Because the salt is generated each time a password is stored, the same plaintext password will have a different salt and digest value. For example, the following stored passwords are all digests of the default password:
 
-    $AAGQAAAAAQAC$qqlNVeQ6eAGnBDK0VcU1oQ==$uzK6wvSLjVTdO0/qP9I4d72P6yRG1XbI3KRQIPpZjwA=
-    $AAGQAAAAAQAC$mJbacNzCfoeJ1Ukixyj/xw==$hw7uwm5/D/7HIKKH4mUoM76xnYvqOSDfucKI0U9yndk=
-    $AAGQAAAAAQAC$a3EP3mKkWpJm4flYacTtnQ==$Czke56xcmk9xbjw+KZhi26jpPoXV7fgE0CWp4WBz9kg=
+```
+AAGQAAAAAQAC$qqlNVeQ6eAGnBDK0VcU1oQ==$uzK6wvSLjVTdO0/qP9I4d72P6yRG1XbI3KRQIPpZjwA=
+AAGQAAAAAQAC$mJbacNzCfoeJ1Ukixyj/xw==$hw7uwm5/D/7HIKKH4mUoM76xnYvqOSDfucKI0U9yndk=
+AAGQAAAAAQAC$a3EP3mKkWpJm4flYacTtnQ==$Czke56xcmk9xbjw+KZhi26jpPoXV7fgE0CWp4WBz9kg=
+```
 
 ### Configure an LDAP repository to store credentials
 
 Alternatively, for details on how to configure an LDAP repository to store user credentials, see the following topics:
 
--   [*Active Directory for authentication and RBAC of management services* on page 1](general_rbac_ad_ldap.htm)
--   [*OpenLDAP for authentication and RBAC of management services* on page 1](general_rbac_openldap.htm)
+* [Active Directory for authentication and RBAC of management services](/docs/apigtw_admin/general_rbac_ad_ldap)
+* [OpenLDAP for authentication and RBAC of management services](/docs/apigtw_admin/general_rbac_openldap)
 
-RBAC access control list
-------------------------
+## RBAC access control list
 
-The access control list file (`acl.json`
-) is located in the `conf`
-directory of your API Gateway installation. This file lists each role and the management services that each role may access. By default, this file defines the following roles:
+The access control list file (`acl.json`) is located in the `conf` directory of your API Gateway installation. This file lists each role and the management services that each role may access. By default, this file defines the following roles:
 
--   `API Server Administrator`
--   `API Server Operator`
--   `Deployer`
--   `KPS Administrator`
--   `Policy Developer`
+* `API Server Administrator`
+* `API Server Operator`
+* `Deployer`
+* `KPS Administrator`
+* `Policy Developer`
 
-The default `admin`
-user is assigned the `API Server Administrator`
-, `KPS Administrator`
-, and `Policy Developer`
-roles by default, which together allow access to everything. For full details on the management services that each role has access to, and the permissions that must be listed in the `acl.json`
-file to have access to them, see [*Management service roles and permissions* on page 1](#Manageme).
+The default `admin` user is assigned the `API Server Administrator`, `KPS Administrator`, and `Policy Developer` roles by default, which together allow access to everything. For full details on the management services that each role has access to, and the permissions that must be listed in the `acl.json` file to have access to them, see [Management service roles and permissions](#management-service-roles-and-permissions).
 
-{{< alert title="Note" color="primary" >}}The roles defined in the `acl.json`
-file should exist in the user store used to authenticate the users and load their roles and groups. The default roles are defined in the local Admin User store, which is used to control access to the management services using the **Protect Management Interfaces**
-policy. {{< /alert >}}
+{{< alert title="Note" color="primary" >}}The roles defined in the `acl.json` file should exist in the user store used to authenticate the users and load their roles and groups. The default roles are defined in the local Admin User store, which is used to control access to the management services using the **Protect Management Interfaces** policy. {{< /alert >}}
 
-<div>
-
-<div class="indentTable">
-
-If a different user store is used (for example, an LDAP repository), the LDAP groups should be listed in the `acl.json`
-and `adminUsers.json`
-files.
-
-</div>
-
-</div>
+If a different user store is used (for example, an LDAP repository), the LDAP groups should be listed in the `acl.json` and `adminUsers.json` files.
 
 ### Access control list file format
 
-Each role entry in the `acl.json`
-file has the following format:
+Each role entry in the `acl.json` file has the following format:
 
-``` {space="preserve"}
+```
 "role-name" :[ <list_of_permission_names>]
 ```
 
 The permissions consist of operations that are defined by HTTP methods and URIs:
 
-``` {space="preserve"}
+```
 “permission-name” : { <list_of_operation_names }
 “operation-name” : {
      "methods" :[ <list of HTTP Methods>],
      "paths" :[ <list of path-names>]
 }
-```
 
-``` {space="preserve"}
 “path-name” : {
      "path" :<URI>
 }
@@ -206,18 +172,15 @@ The permissions consist of operations that are defined by HTTP methods and URIs:
 
 This file entry format is described as follows:
 
--   The permissions line is repeated for each permission the role has. To determine which permissions should be listed for each Management Service, see [*Management service roles and permissions* on page 1](#Manageme).
--   You can place a wildcard (`*`
-    ) at the end of the `path`
-    field. For example, see the path for `dojo resources`
-    in the example that follows. This means the role has access to all URIs that start with the URI content that precedes the `*`.
--   In some cases, you must protect a Management Service by specifying a query string after the URI. Exact matches only are supported for query strings.
+* The permissions line is repeated for each permission the role has. To determine which permissions should be listed for each Management Service, see [Management service roles and permissions](#management-service-roles-and-permissions).
+* You can place a wildcard (`*`) at the end of the `path` field. For example, see the path for `dojo resources` in the example that follows. This means the role has access to all URIs that start with the URI content that precedes the `*`.
+* In some cases, you must protect a Management Service by specifying a query string after the URI. Exact matches only are supported for query strings.
 
-### Example access control list file\
+### Example access control list file
 
 The following example shows roles and permissions to URIs:
 
-``` {space="preserve"}
+```
 "paths" : {
       "root" :{ "path" :"/" },
       "emc pages" :{ "path" :"/emc/*" },
@@ -247,219 +210,201 @@ The following example shows roles and permissions to URIs:
 }
 ```
 
-Configure RBAC users and roles
-------------------------------
+## Configure RBAC users and roles
 
-You can use the API Gateway Manager to configure the users and roles in the local Admin User store. Click the **Settings**
-> **Admin Users**
-to view and modify user roles (assuming you have a role that allows this). This screen is displayed as follows:
+You can use the API Gateway Manager to configure the users and roles in the local Admin User store. Click the **Settings** > **Admin Users** to view and modify user roles (assuming you have a role that allows this). This screen is displayed as follows:
 
-![Admin users screen](/Images/docbook/images/admin/rbac/pd_users_list.png)
+![Admin users screen](/Images/APIGateway/pd_users_list.png)
 
 ### Manage RBAC user roles
 
-When you click **Create**
-to create a new user, you can select the roles to assignto the that new user. New users are not assigned a default role. While users that are replicated from an LDAP repository do not require a role to be assigned to them. You can click **Edit**
-to changed the roles assigned to a selected user.
+When you click **Create** to create a new user, you can select the roles to assign to the that new user. New users are not assigned a default role. While users that are replicated from an LDAP repository do not require a role to be assigned to them. You can click **Edit** to changed the roles assigned to a selected user.
 
 ### Add a new role to the user store
 
-When you add a new role to the Admin User store, you must modify the available roles in the `adminUsers.json`
-and `acl.json`
-files in the `conf`
-directory of your Admin Node Manager installation. You must add the new role to the `roles`
-section of the `acl.json`
-file, which lists all the permissions that the new role may have.
+When you add a new role to the Admin User store, you must modify the available roles in the `adminUsers.json` and `acl.json` files in the `conf` directory of your Admin Node Manager installation. You must add the new role to the `roles` section of the `acl.json` file, which lists all the permissions that the new role may have.
 
-{{< alert title="Note" color="primary" >}}You must update the `acl.json`
-before you add the roles to the Admin User store. The RBAC policy object automatically reloads the `acl.json`
+{{< alert title="Note" color="primary" >}}You must update the `acl.json` before you add the roles to the Admin User store. The RBAC policy object automatically reloads the `acl.json`
 file each time you add or remove a role in the Policy Studio.{{< /alert >}}
 
-<div class="indentTable">
+When you update the `acl.json` file, you must restart the Admin Node Manager to reload the `acl.json` file. However, the Admin Node Manager does not need to be rebooted or refreshed if a user’s roles change.
 
-When you update the `acl.json`
-file, you must restart the Admin Node Manager to reload the `acl.json`
-file. However, the Admin Node Manager does not need to be rebooted or refreshed if a user’s roles change.
+For more details on managing user roles, see [Manage Admin users](/docs/apigtw_admin/manage_user_access#manage-admin-users).
 
-</div>
+## Management service roles and permissions
 
-For more details on managing user roles, see [*Manage Admin users* on page 1](../CommonTopics/user_mgmt.htm).
+You can use the following  for reference purposes when making changes to the `acl.json` file. It defines each Management Service, and the default roles that have access to them. It also lists the permissions that must be listed in the `acl.json` file to have access to the Management Service.
 
-Management service roles and permissions
-----------------------------------------
+**API Gateway Manager <https://localhost:8090>**:
 
-You can use the following table for reference purposes when making changes to the `acl.json`
-file. It defines each Management Service, and the default roles that have access to them. It also lists the permissions that must be listed in the `acl.json`
-file to have access to the Management Service.
+* Default Roles
 
-**Management Service**
+    * API Server Administrator
+    * API Server Operator
 
-**Default Roles**
+* Permissions
 
-**Permissions**
+    * `emc`
+    * `mgmt`
 
-API Gateway Manager (`https://localhost:8090`)
+**API Server Administrator**:
 
-API Server Administrator
+* Default Roles
 
-API Server Operator
+    * API Server Administrator
 
-`emc`
+* Permissions
 
-`mgmt`
+    * `emc`
+    * `mgmt`
+    * `mgmt_modify`
+    * `dashboard`
+    * `dashboard_modify`
+    * `deploy`
+    * `config`
 
-API Gateway Manager Dashboard
+**API Gateway Manager Dashboard (read-only access)**:
 
-API Server Administrator
+* Default Roles
 
-`emc`
+    * API Server Operator
 
-`mgmt`
+* Permissions
 
-`mgmt_modify`
+    * `emc`
+    * `mgmt`
+    * `dashboard`
+    * `dashboard_modify`
 
-`dashboard`
+**API Gateway Manager Monitoring**:
 
-`dashboard_modify`
+* Default Roles
 
-`deploy`
+    * API Server Administrator
+    * API Server Operator
 
-`config`
+* Permissions
 
-API Gateway Manager Dashboard (read-only access)
+    * `emc`
+    * `mgmt`
+    * `monitoring`
+    * `events`
+    * `traffic_monitor`
+    * `settings`
+    * `settings_modify`
+    * `logs
 
-API Server Operator
+**API Gateway Manager Traffic**:
 
-`emc`
+* Default Roles
 
-`mgmt`
+    * API Server Administrator
+    * API Server Operator
 
-`dashboard`
+* Permissions
 
-`dashboard_modify`
+    * `emc`
+    * `mgmt`
+    * `traffic_monitor`
 
-API Gateway Manager Monitoring
+**API Gateway Manager Logs**:
 
-API Server Administrator
+* Default Roles
 
-API Server Operator
+    * API Server Administrator
+    * API Server Operator
 
-`emc`
+* Permissions
 
-`mgmt`
+    * `emc`
+    * `mgmt`
+    * `logs`
 
-`monitoring`
+**API Gateway Manager Events**:
 
-`events`
+* Default Roles
 
-`traffic_monitor`
+    * API Server Administrator
+    * API Server Operator
 
-`settings`
+* Permissions
 
-`settings_modify`
+    * `emc`
+    * `mgmt`
+    * `monitoring`
+    * `events`
 
-`logs`
+**API Gateway Manager Settings**:
 
-API Gateway Manager Traffic
+* Default Roles
 
-API Server Administrator
+    * API Server Administrator
 
-API Server Operator
+* Permissions
 
-`emc`
+    * `emc`
+    * `mgmt`
+    * `mgmt_modify`
+    * `settings`
+    * `settings_modify`
 
-`mgmt`
+**API Gateway Manager Settings (read-only access)**:
 
-`traffic_monitor`
+* Default Roles
 
-API Gateway Manager Logs
+    * API Server Operato
 
-API Server Administrator
+* Permissions
 
-API Server Operator
+    * `emc`
+    * `mgmt`
+    * `settings`
 
-`emc`
+**Documentation**:
 
-`mgmt`
+* Default Roles
 
-`logs`
+    * API Server Administrator
+    * API Server Operator
 
-API Gateway Manager Events
+* Permissions
 
-API Server Administrator
+    * `emc`
+    * `mgmt`
 
-API Server Operator
+**KPS**:
 
-`emc`
+* Default Roles
 
-`mgmt`
+    * KPS Administrator
 
-`monitoring`
+* Permissions
 
-`events`
+    * `kps`
+    * `mgmt`
 
-API Gateway Manager Settings
+**Policy Studio**:
 
-API Server Administrator
+* Default Roles
 
-`emc`
+    * Policy Developer
 
-`mgmt`
+* Permissions
 
-`mgmt_modify`
+    * `mgmt`
+    * `deploy`
+    * `config`
 
-`settings`
+**API Gateway Configuration Deployment**:
 
-`settings_modify`
+* Default Roles
 
-API Gateway Manager Settings (read-only access)
+    * API Server Administrator
+    * Policy Developer
+    * Deployer
 
-API Server Operator
+* Permissions
 
-`emc`
-
-`mgmt`
-
-`settings`
-
-Documentation
-
-API Server Administrator
-
-API Server Operator
-
-`emc`
-
-`mgmt`
-
-KPS
-
-KPS Administrator
-
-`mgmt`
-
-`kps`
-
-Policy Studio
-
-Policy Developer
-
-`mgmt`
-
-`deploy`
-
-`config`
-
-API Gateway Configuration Deployment
-
-API Server Administrator
-
-Policy Developer
-
-Deployer
-
-`mgmt`
-
-`deploy`
-
-`config`
+    * `mgmt`
+    * `deploy`
+    * `config`

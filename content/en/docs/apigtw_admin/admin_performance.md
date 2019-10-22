@@ -80,7 +80,7 @@ When stress testing with large messages (greater than 4 MB), the API Gateway spi
 
 For example:
 
-``` {space="preserve"}
+```
 <NetService provider="NetService">
     <SystemSettings
             tracelevel="&server.tracelevel;"
@@ -178,34 +178,29 @@ For example, when relaying data directly from client to server, or when the mess
 
 For example, in the Policy Studio tree, select **Environment Configuration > Listeners > API Gateway**. Select the remote host Right-click the remote host, select **Edit**, and select **Allow HTTP 1.1**:
 
-![Configure allow HTTP 1.1](/Images/docbook/images/admin/admin_perf_allow_http11.png)
+![Configure allow HTTP 1.1](/Images/APIGateway/admin_perf_allow_http11.png)
 
 ### Number of threads for concurrent connections
 
 You may want to consider reducing the number of threads that API Gateway uses for processing incoming messages. Reducing the thread count may result in less resources being consumed. API Gateway handles less load because of the decreased thread count, depending on volume and number of concurrent requests.
 
-For example, you can reduce the number of threads by adding a `maxThreads="64"`
-attribute in the `SystemSettings`
-element in the `service.xml`
-file for the API Gateway instance (for example, in `groups/group-2/conf/instance-1`). This setting also helps in configuring API Gateway to back off from the target service (if API Gateway can process more load than the target service).
+For example, you can reduce the number of threads by adding a `maxThreads="64"` attribute in the `SystemSettings` element in the `service.xml` file for the gateway instance (for example, in `groups/group-2/conf/instance-1`). This setting also helps in configuring the gateway to back off from the target service (if the gateway can process more load than the target service).
 
-By default, the maximum thread count for an API Gateway instance on Linux is 1024.
+By default, the maximum thread count for the gateway instance on Linux is 1024.
 
-{{< alert title="Note" color="primary" >}}You must restart API Gateway for these settings to take effect.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You must restart the gateway for these settings to take effect.{{< /alert >}}
 
 ### Number of client threads on Linux
 
-If there are more than 200 client threads connecting, you must change the following setting in the `venv`
-script in the `posix/lib`
-directory of your API Gateway installation:
+If there are more than 200 client threads connecting, you must change the following setting in the `venv` script in the `posix/lib` directory of your API Gateway installation:
 
-``` {space="preserve"}
+```
 limit=unlimited
 ```
 
 For example, change this setting to the following:
 
-``` {space="preserve"}
+```
 limit=131072
 ```
 
@@ -217,8 +212,4 @@ This applies if the performance test involves more than one connection filter, w
 
 Each connection processor caches connections independently. This is because two connection processors using different SSL certificates cannot pool their connections. They are not interchangeable from an authentication point of view. Therefore, when using multiple connection filters, there is potential to soak the target machine with too many connections.
 
-{{< alert title="Note" color="primary" >}}This applies to both API Gateway **Connection**
-and **Connect to URL**
-filters in Policy Studio. For more details, see
-[API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/)
-.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}This applies to both API Gateway **Connection** and **Connect to URL** filters in Policy Studio. For more details, see [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).{{< /alert >}}
