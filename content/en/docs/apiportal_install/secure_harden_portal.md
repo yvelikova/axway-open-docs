@@ -1,9 +1,9 @@
 {
-    "title": "Secure API Portal",
-    "linkTitle": "Secure API Portal",
-    "weight": "8",
-    "date": "2019-08-09",
-    "description": "Secure and harden your API Portal environment after installation."
+"title": "Secure API Portal",
+  "linkTitle": "Secure API Portal",
+  "weight": "8",
+  "date": "2019-08-09",
+  "description": "Secure and harden your API Portal environment after installation."
 }
 Perform the following steps after installation to ensure that your API Portal environment is secure from internal and external threats:
 
@@ -27,26 +27,22 @@ For more details on API Portal certificate management, see the [API Management 
 On an API Portal software installation, the Apache web server has TLS versions 1.0 and 1.1 enabled in addition to the TSL 1.2 that API Portal uses. Because TLS 1.0 and 1.1 have security vulnerabilities, it is recommended to disable them.
 
 1. To check which TLS versions are enabled, scan your API Portal port:
-
-    ```
-    sslscan <API Portal IP address>:<your https port>
-    ```
-
-    By default, API Portal uses port `443` for secure connections.
+   ```
+   sslscan <API Portal IP address>:<your https port>
+   ```
+   By default, API Portal uses port `443` for secure connections.
 2. To disable TLS 1.0. and 1.1, open the following file: `/etc/httpd/conf.d/apiportal.conf`
 3. Add the following SSL protocol definition for the secure connection:
-
-    ```
-    <VirtualHost *:443>
-       SSLEngine on
-       SSLCertificateFile "/etc/httpd/conf/server.crt"
-       SSLCertificateKeyFile "/etc/httpd/conf/server.key"
-       SSLProtocol TLSv1.2
-       Header always append X-Frame-Options SAMEORIGIN
-        ...
-    </VirtualHost>
-    ```
-
+   ```
+   <VirtualHost *:443>
+      SSLEngine on
+      SSLCertificateFile "/etc/httpd/conf/server.crt"
+      SSLCertificateKeyFile "/etc/httpd/conf/server.key"
+      SSLProtocol TLSv1.2
+      Header always append X-Frame-Options SAMEORIGIN
+       ...
+   </VirtualHost>
+   ```
 4. Restart Apache.
 5. Run the `sslscan` again on your API Portal port to check that TLS 1.0 and 1.1 have been disabled.
 
@@ -80,9 +76,7 @@ To protect API Portal and Joomla! from brute force attacks, you can limit the nu
 4. Enter a value for the number of failed login attempts before the user account is locked.
 5. Enter a value in seconds for how long the user account is locked.
 6. Click **Yes** to enable locking by IP address. When this setting is enabled login attempts are blocked from the same IP address for the lock time specified even if correct user credentials are entered.
-
-    You can enable user account locking and IP address locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts, `UserA` will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, `UserB`) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
-
+   You can enable user account locking and IP address locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts, `UserA` will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, `UserB`) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
 7. Click **Save**.
 
 ## Add trusted OAuth hosts
@@ -249,6 +243,16 @@ RewriteCond %{HTTP:Content-Type} !^(application/json|application/x-www-form-urle
 # Then redirect with response 415 Unsupported Media Type and stop processing other conditions
 RewriteRule ^ - [R=415,L]
 ```
+
+## Ensure the integrity of the logging system
+
+Verify that security logs are protected from unauthorized access and modification. Logging facilities and log information must be protected against tampering, repudiation and unauthorised access. It is critical to ensure logs are stored in a secure and tamper-proof manner so that any evidence derived from them can be evidenced in a provable manner. This is especially important in any form of legal proceedings relating to evidence from the log.
+
+Because of that you must ensure log integrity for the application generated logs. This includes storing logs on write-once media, forwarding a copy of the logs to a centralized SIEM or generating message digests for each log file. This approach ensures that tampering of logs can be detected or prevented.
+
+## Log retention policy
+
+We recommend you to develop a log retention policy to identify storage requirements for device logs and implement procedures to ensure that the audit logs are available for a security response in the case of incident or investigation. The audit logs must be collected for the last 30 days in easily accessible storage media. Older logs should be archived in a protected storage and should be accessible in the future as required for incidents or investigations.
 
 ## Where to go next
 
