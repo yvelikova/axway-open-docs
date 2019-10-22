@@ -250,6 +250,8 @@ Verify that security logs are protected from unauthorized access and modificatio
 
 Because of that you must ensure log integrity for the application generated logs. This includes storing logs on write-once media, forwarding a copy of the logs to a centralized SIEM or generating message digests for each log file. This approach ensures that tampering of logs can be detected or prevented.
 
+API Portal logs are located in `logs` folder found in the root level of the project.
+
 ## Log retention policy
 
 We recommend you to develop a log retention policy to identify storage requirements for device logs and implement procedures to ensure that the audit logs are available for a security response in the case of incident or investigation. The audit logs must be collected for the last 30 days in easily accessible storage media. Older logs should be archived in a protected storage and should be accessible in the future as required for incidents or investigations.
