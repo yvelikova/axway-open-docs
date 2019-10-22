@@ -14,12 +14,7 @@ Since there are other users collaborating with Axway documentation, it's highly 
 
 To avoid issues when sending a pull request, you can [delete and recreate](#delete-and-recreate-your-fork) or [synchronize](#sync-your-fork) your old fork before starting a new contribution.
 
-{{< alert title="Caution" color="warning">}}
-Do not delete your fork if you have pending PRs, otherwise this will erase work that is not merged yet. 
-
-Deleting old branches after a merge is perfectly safe!
-{{< /alert >}}
-
+{{< alert title="Caution" color="warning">}}Do not delete your fork if you have pending PRs, otherwise this will erase work that is not merged yet.{{< /alert >}}
 
 ## Delete and recreate your fork
 
