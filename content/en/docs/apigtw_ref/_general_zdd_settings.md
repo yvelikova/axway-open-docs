@@ -6,20 +6,13 @@
 }
 ﻿
 
-The **Zero Downtime**
-settings enable you to configure zero downtime deployment and zero downtime shutdown. You can enable zero downtime deployment and set delays before and after deployment. You can also enable zero downtime shutdown and set the delay before shutdown.
+The **Zero Downtime** settings enable you to configure zero downtime deployment and zero downtime shutdown. You can enable zero downtime deployment and set delays before and after deployment. You can also enable zero downtime shutdown and set the delay before shutdown.
 
-To configure zero downtime settings, select the **Server Settings**
-node in the Policy Studio tree, and click **General
-> Zero Downtime**. To confirm updates to these settings, click **Save**
-at the bottom right of the window.
+To configure zero downtime settings, select the **Server Settings** node in the Policy Studio tree, and click **General > Zero Downtime**. To confirm updates to these settings, click **Save** at the bottom right of the window.
 
-For more information of performing a zero downtime deployment, see [*Perform zero downtime deployment* on page 1](admin_zdd.htm). For more information on performing a zero downtime shutdown, see [*Perform zero downtime shutdown* on page 1](admin_zds.htm).
+For more information of performing a zero downtime deployment, see [Perform zero downtime deployment](/docs/apigtw_admin/admin_zdd). For more information on performing a zero downtime shutdown, see [Perform zero downtime shutdown](/docs/apigtw_admin/admin_zds).
 
-Prerequisites
--------------
-
-Zero downtime deployment and shutdown rely on the **Health Check LB** policy to alert the load balancer when a maintenance operation is about to begin. To use the zero downtime deployment or shutdown features, the Health Check LB policy must be present in your API Gateway configuration.
+* Zero downtime deployment and shutdown rely on the **Health Check LB** policy to alert the load balancer when a maintenance operation is about to begin. To use the zero downtime deployment or shutdown features, the Health Check LB policy must be present in your API Gateway configuration.
 
 ### New projects
 
@@ -33,16 +26,15 @@ If you created a project in Policy Studio from any other template (for example, 
 
 To import the Health Check LB policy, select **File > Import > Import Configuration Fragment** from the Policy Studio main menu, and select the following file:
 
-    $VDISTDIR/samples/SamplePolicies/HealthCheck/HealthCheckLB.xml
+```
+$VDISTDIR/samples/SamplePolicies/HealthCheck/HealthCheckLB.xml
+```
 
-You must also add the Health Check LB policy to a listener so that the load balancer can ping it to determine the health of the API Gateway (for example, path `/healthchecklb` on HTTP port `8080`). For more information on listeners, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+You must also add the Health Check LB policy to a listener so that the load balancer can ping it to determine the health of the API Gateway (for example, path `/healthchecklb` on HTTP port `8080`).
 
-{{< alert title="Tip" color="primary" >}}You can customize the Health Check LB policy for your own environment. For example, you can modify the response code and message that are returned to the load balancer.{{< /alert >}}
+* You can customize the Health Check LB policy for your own environment. For example, you can modify the response code and message that are returned to the load balancer.
 
-Configuration
--------------
+### Zero downtime Configuration
 
 Configure the following zero downtime settings:
 

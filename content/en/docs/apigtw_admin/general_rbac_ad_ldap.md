@@ -3,10 +3,10 @@
 "linkTitle": "Authenticate and RBAC with Active Directory",
 "weight":"32",
 "date": "2019-10-14",
-"description": "Ue Lightweight Directory Access Protocol (LDAP) to authenticate and perform Role-Based Access Control (RBAC) of your gateway management services."
+"description": "Reconfigure API Gateway to use a Microsoft Active Directory LDAP repository."
 }
 
-Follow the instructions to use a Lightweight Directory Access Protocol (LDAP) to authenticate and perform Role-Based Access Control (RBAC) of the gateway management services, and reconfigure the gateway to use a Microsoft Active Directory LDAP repository.
+Follow the instructions to use a Lightweight Directory Access Protocol (LDAP) to authenticate and perform Role-Based Access Control (RBAC) of the gateway management services, and to reconfigure the gateway to use a Microsoft Active Directory LDAP repository.
 
 * This section uses the sample **Protect Management Interfaces (LDAP)** policy, meaning that the gateway uses an LDAP repository instead of the local Admin User store for authentication and RBAC of users attempting to access the gateway management services.
 
@@ -100,7 +100,7 @@ To create an new LDAP Repository, perform the following steps:
 **LDAP Directory**: Use the LDAP directory created in [Create an LDAP connection](#create-an-ldap-connection).
 **Base Criteria**: Enter the LDAP node that contains the users.
 **User Search Attribute**: Enter `cn`. This is the username entered at login time (in this case, `admin`).
-**Authorization Attribute**: Enter `distinguishedName`. This is the username entered at login time (`admin`). The `authentication.subject.id` message attribute is set to the value of this LDAP attribute (see example below). The `authentication.subject.id` is used as the base criteria in the filter that loads the LDAP groups (the user’s roles). This enables you to narrow the search to a particular user node in the LDAP tree. For more details, see the **Retrieve Attributes from Directory Server** filter in [Create a test policy for LDAP authentication and RBAC](#configure-a-test-policy-for-ldap-authentication-and-RBAC).
+**Authorization Attribute**: Enter `distinguishedName`. This is the username entered at login time (`admin`). The `authentication.subject.id` message attribute is set to the value of this LDAP attribute (see example below). The `authentication.subject.id` is used as the base criteria in the filter that loads the LDAP groups (the user’s roles). This enables you to narrow the search to a particular user node in the LDAP tree. For more details, see the **Retrieve Attributes from Directory Server** filter in [Create a test policy for LDAP authentication and RBAC](#configure-a-test-policy-for-ldap-authentication-and-rback).
 
 An example value of the `authentication.subject.id` message attribute is as follows:
 
