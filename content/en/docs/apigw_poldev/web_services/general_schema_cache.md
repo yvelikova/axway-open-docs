@@ -171,7 +171,7 @@ There are some additional limitations when importing XML schema or WSDL document
     Any HTTP and MIME bindings in the WSDL document are ignored, and only SOAP 1.1 and SOAP 1.2 bindings are imported.
 * **Multiple ports for the same service**\
     If the WSDL contains multiple ports for the same service (for example, a service is available over SSL and in the clear, where the URL differs, but the binding is to the same SOAP service), you can select only one of the ports for import.
-    
+
     If you absolutely require both endpoints to be virtualized on API Gateway, you can create a separate service for each port in the WSDL. A distinct service handler is created for each service, which is responsible for processing requests for that service and routing them on to the endpoint URL specified in the port.
 * **Schemas using the XML Schema namespace to extend element types, but not importing the namespace explicitly**\
     Although some tools can work with invalid schemas like this, API Gateway requires them to be valid so it can run schema validation checks against the messages. The schema must be modified to import the namespace explicitly before you can import the schema in Policy Studio.
