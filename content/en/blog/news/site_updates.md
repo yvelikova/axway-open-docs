@@ -18,7 +18,7 @@ For those of you using the WYSIWYG editing option (**Edit on Netlify CMS**) prov
 
 ## Updates to contribution guidelines
 
-The [guidelines for contributing to the docs](http://localhost:1313/docs/contribution_guidelines/) have recently been updated to include a recommendation to delete and recreate your existing fork of the `axway-open-docs` GitHub repository before starting each new contribution/PR. This is to prevent any conflicts or issues with merging your PRs, which can occur if your fork is out of sync (behind) the Axway repo. You should only do this if you don't have any PRs currently in progress. This is recommended whether you are editing on GitHub or on Netlify CMS.
+The [guidelines for contributing to the docs](/docs/contribution_guidelines/) have recently been updated to include a recommendation to delete and recreate your existing fork of the `axway-open-docs` GitHub repository before starting each new contribution/PR. This is to prevent any conflicts or issues with merging your PRs, which can occur if your fork is out of sync (behind) the Axway repo. You should only do this if you don't have any PRs currently in progress. This is recommended whether you are editing on GitHub or on Netlify CMS.
 
 ## Site search
 
