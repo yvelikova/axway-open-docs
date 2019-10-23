@@ -1,9 +1,9 @@
 {
-"title": "Secure API Portal",
-  "linkTitle": "Secure API Portal",
-  "weight": "8",
-  "date": "2019-08-09",
-  "description": "Secure and harden your API Portal environment after installation."
+    "title": "Secure API Portal",
+    "linkTitle": "Secure API Portal",
+    "weight": "8",
+    "date": "2019-08-09",
+    "description": "Secure and harden your API Portal environment after installation."
 }
 Perform the following steps after installation to ensure that your API Portal environment is secure from internal and external threats:
 

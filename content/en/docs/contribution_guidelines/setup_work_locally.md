@@ -12,15 +12,17 @@ If you are a maintainer of this documentation site, or a contributor who will be
 ## Before you start
 
 * You will need a Git client installed, such as Gitbash
-* You will need write access to the Git repo
+* You will need write access to the Git repo or your own fork of the Git repo
 
 ## Clone the Git repo
 
-Clone the git repo. Don't forget to use `--recurse-submodules` or you won't pull down some of the code you need to generate a working site.
+Clone the Git repo. Don't forget to use `--recurse-submodules` or you won't pull down some of the code you need to generate a working site.
 
 ```
 git clone --recurse-submodules --depth 1 https://github.com/Axway/axway-open-docs.git
 ```
+
+{{< alert title="Note" color="primary">}}If you don't have write access to the repo, clone your _fork_ of the repo instead.{{< /alert >}}
 
 ## Install Hugo
 
@@ -28,21 +30,30 @@ You need a [recent version](https://github.com/gohugoio/hugo/releases) of Hugo t
 
 For full installation instructions for each platform, see [Install Hugo](https://gohugo.io/getting-started/installing/).
 
+### Install Hugo on WSL Ubuntu Linux
+
+Download and unpack the Linux 64 bit deb package:
+
+```
+wget https://github.com/gohugoio/hugo/releases/download/v0.56.3/hugo_extended_0.56.3_Linux-64bit.deb
+sudo dpkg -i hugo_extended_0.56.3_Linux-64bit.deb
+```
+
 ## Install theme dependencies
 
-The theme uses `PostCSS` to generate the site resources the first time you run the server. Install it using `npm`:
+The Docsy theme uses `PostCSS` to generate the site resources the first time you run the server. Install it using `npm`:
 
 ```
 npm install -D --save autoprefixer
 npm install -D --save postcss-cli
 ```
 
+You will need [NodeJS](https://nodejs.org/en/) installed to use `npm`. For more information, see the Docsy [Getting started](https://www.docsy.dev/docs/getting-started/) documentation.
+
 ## Build the site locally
 
 Run the `hugo server` command in your site root.
 
-The website is now available locally at `http://localhost:1313/`. You can now add or edit Markdown files in the `content\en\docs\` directory and Hugo will automatically rebuild the site with the changes. 
+The website is now available locally at `http://localhost:1313/`. You can now add or edit Markdown files in the `content\en\docs\` directory and Hugo will automatically rebuild the site with the changes.
 
 For more details on Hugo commands, see [Basic Usage](https://gohugo.io/getting-started/usage/).
-
-<!-- TODO Add recommendations for Markdown and markdown editors -->

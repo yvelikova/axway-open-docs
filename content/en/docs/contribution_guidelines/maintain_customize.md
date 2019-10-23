@@ -129,3 +129,41 @@ To create a new buttton in the right nav:
 2. Copy the content from `themes/docsy/layouts/partials/page-meta-links.html`
 3. Customize the code to implement a new button
 4. Add the button text string to `i18n/en.toml`
+
+### Using variables
+
+A list of variables can be found in `axway-open-docs/layouts/shortcodes/variables`, stored as HTML files, where the name of the file is the name of the variable. These HTML files just contain the value of the variable.
+
+Variables are called in markdown documentation files with the following:
+
+`{{</*  variables/variable_name  */>}}`
+
+Where `variable_name` is the name of the HTML file that contains the variable value, without the `.html` extension.
+
+For example, 
+
+*"We love {{< variables/company_name >}} Open Docs!"*
+
+would be written in markdown as 
+
+*"We love {{</* variables/company_name */>}} Open Docs!"*
+
+Where `company_name` is stored in `axway-open-docs/layouts/shortcodes/variables` as a HTML file called `company_name.html` and simply contains `Axway`.
+ 
+### Creating variables
+
+Variables are stored in the `axway-open-docs` project as HTML files.
+
+#### Using File explorer
+
+Navigate to `axway-open-docs/layouts/shortcodes/variables` and create a HTML file. Consider the file name carefully since the shortcode name will mirror that of the file but without the `.html` extension. For example, `axway-open-docs/layouts/shortcodes/variables/company_name.html` will be called with `{{</* variables/company_name */>}}` in the markdown file.
+
+Once you've created the file, open it up with your favorite text editor and simply add the value of the variable into it. For example, `axway-open-docs/layouts/shortcodes/variables/company_name.html` simply contains `Axway`.
+
+#### Using Shell
+
+You can customize and run the following bash command (using relative paths):
+
+`echo "Variable value here!" > axway-open-docs/layouts/shortcodes/variables/name_of_variable_file.html`
+
+This will create the HTML file inside of the `shortcodes/variables` directory and add whatever value you want to it.

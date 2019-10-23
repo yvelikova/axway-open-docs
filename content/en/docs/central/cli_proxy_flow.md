@@ -126,14 +126,14 @@ proxy:
     basePath: /api/v1 # base path of the proxy
     swagger: 'https://ec062a054a2977120b7e721801edb38ca24dfbb3.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json'
                                                                                     # optional. Swagger url of the proxy
-    policy:
+    policies:
         clientAuth:
-        type: api-key # type of client authentication policy: can be pass-through or api-key
-        app: 'Sample App' # optional if policy type is pass-through
+            type: api-key # type of client authentication policy: can be pass-through or api-key
+            app: 'Sample App' # optional if policy type is pass-through
         backendAuth: # backend authentication is optional, if not specified, then no backend authentication will be enabled
-        type: auth-http-basic # type of backend authentication policy: only auth-http-basic is supported now
-        username: Joe # required
-        password: changeme # it's allowed to be empty
+            type: auth-http-basic # type of backend authentication policy: only auth-http-basic is supported now
+            username: Joe # required
+            password: changeme # it's allowed to be empty
     tags: ['musical', 'instruments'] # optional
     team: # the team which the proxy will be assigned to.
         name: 'Default Team'
