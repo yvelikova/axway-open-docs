@@ -1,14 +1,11 @@
 {
-"title": "Import API Gateway configuration fragment",
-"linkTitle": "Import API Gateway configuration fragment",
+"title": "Import and export API Gateway configuration",
+"linkTitle": "Import and export API Gateway configuration",
 "date": "2019-10-17",
-"description": "You can import XML-based configuration data into your API Gateway configuration (for example, policies, certificates, and users). For example, this is useful in a development environment if you wish to share and test configuration with other developers. "
+"description": "TODO"
 }
-﻿
-<div id="p_general_import_overview">
 
-Overview
---------
+## Import API Gateway configuration fragment
 
 You can import XML-based configuration data into your API Gateway configuration (for example, policies, certificates, and users). For example, this is useful in a development environment if you wish to share and test configuration with other developers.
 
@@ -18,12 +15,7 @@ For details on exporting configuration data, see [Export configuration](general_
 
 {{< alert title="Note" color="primary" >}}The recommended way to export configuration between different environments is to use configuration packages. Select **File** > **Export** from the main menu. For more details, see [Manage projects](general_project.htm).{{< /alert >}}
 
-</div>
-
-<div id="p_general_import_steps">
-
-Import configuration fragment
------------------------------
+### Import configuration fragment
 
 To import previously-exported API Gateway configuration data, perform the following steps:
 
@@ -42,12 +34,7 @@ To import previously-exported API Gateway configuration data, perform the follow
 
 {{< alert title="Note" color="primary" >}}Be careful when deselecting configuration nodes for import. Deselecting certain nodes might make the imported configuration inconsistent by removing supporting configuration. {{< /alert >}}
 
-</div>
-
-<div id="p_general_import_differences">
-
-View differences
-----------------
+### View differences
 
 The **Import Configuration**
 dialog displays the differences between the existing stored configuration data (destination) and the configuration data to be imported (source). Differences are displayed in the tree as follows:
@@ -66,12 +53,7 @@ Some Configuration entities also contain references to other entities. In this c
 panel. If you double-click a row with an icon, you can drill down to view further **Difference Details**
 dialogs for those entities.
 
-</div>
-
-<div id="p_general_import_items">
-
-What is imported
-----------------
+### What is imported
 
 When configuration data is imported, some configuration items are imported in their entirety. For example, if the contents of a particular policy are different, the entire policy is replaced (new filters are added, missing filters are removed, and conflicting filters are overwritten). In addition, if a complex filter differs in its children, child items are removed and added as required (for example, WS Filter, Web service, User, and so on).
 
@@ -79,12 +61,7 @@ Other imports are additive only. For example, importing a single certificate doe
 
 {{< alert title="Note" color="primary" >}}Although importing some configuration items removes child items by default, you can deselect child nodes to keep existing child items. However, you should take care to avoid inconsistencies. The default selection applies in most cases.{{< /alert >}}
 
-</div>
-
-<div id="p_general_import_migrate">
-
-Upgrade configuration from an earlier version
----------------------------------------------
+### Upgrade configuration from an earlier version
 
 When you import configuration created using an earlier version of API Gateway, the configuration is automatically upgraded to the current API Gateway version configuration. This results in the migration of the configuration entities present in the `.xml`
 file that is being imported.
@@ -104,4 +81,72 @@ For more details on upgrading, see the
 [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5)
 .
 
-</div>
+## Export API Gateway configuration
+
+You can export API Gateway configuration data by right-clicking a Policy Studio tree node (for example, policy or policy container), and selecting the relevant export menu option (for example, **Export Policy**). The configuration is exported to an XML file, which you can then import into a different API Gateway configuration.
+
+For example, this is useful in a development environment if you wish to share and test configuration with other developers. By exporting configuration data from one API Gateway installation, and importing into another API Gateway installation, you can effectively share your API Gateway configuration in a development environment. This also enables you to manage differences and references between configuration components.
+
+For details on importing configuration data, see [*Import configuration* on page 1](general_import.htm).
+
+{{< alert title="Note" color="primary" >}}For details on migrating API Gateway configuration between development, testing, and production environments, see the
+[API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/)
+.{{< /alert >}}
+
+### What is exported
+
+You can export API Gateway configuration items by right-clicking a node in the Policy Studio tree. For example, this includes the following types of Policy Studio tree nodes:
+
+* Policies
+* Policy containers
+* Schemas
+* Alerts
+* Caches
+* Regular expressions (White list)
+* Attacks (Black list)
+* Users
+* Certificates and Keys
+* Relative paths
+* Remote hosts
+* Database Connections
+* Server Settings
+
+In addition, you can also export configuration items that are associated with the selected tree node. For example, this includes referenced policies, MIME types, regular expressions, schemas, and remote hosts. For details on exporting additional configuration items, see the next section.
+
+### Export configuration items
+
+To export API Gateway configuration items, perform the following steps:
+
+1.  Right-click a Policy Studio tree node (for example, policy or policy container), and select the relevant menu option (for example, **Export Policy**).
+2.  The first window in the export wizard is a read-only window that displays the configuration items to be exported. The **Exporting**
+    tree displays the selected tree node (in this case, policy), which is exported by default. **The following configuration items will also be exported**
+    tree includes additional referenced items that are also exported by default along with the policy (for example, MIME types, regular expressions, and schemas).
+3.  You can click **Finish**
+    if this selection suits your requirements. Otherwise, click **Next**
+    to refine the selection.
+4.  In the next window, you can select optional configuration items for export. The **Additional configuration items that may be exported**
+    tree on the left includes dependent items that are not exported by default. For example, these include the following:
+    * Outbound references: Configuration items directly referenced out from the export set to other configuration stores (for example, certificates, users, or external connections).
+    * Inbound references: Configuration items in other configuration stores that directly reference items in the export set.
+    * Associated configuration directly related to the export set (for example, remote hosts or relative paths).
+
+    >
+5.  To add an item for export, select it in the **Additional configuration that may be exported**
+    tree on the left, and click **Add**.
+6.  To remove an item for export, select it in the **Additional configuration that will be exported**
+    tree on the right, and click **Remove**.
+
+The original set of items in the **Additional configuration that will be exported**
+tree cannot be removed. Only items added from the **Additional configuration that may be exported**
+tree can be removed.
+
+1.  By default, items displayed in the **Additional configuration that may be exported**
+    tree are scoped to direct references to the export set (inbound, outbound, and associated). You can select **Display additional configuration that depends on items to be exported**
+    to recursively add references to this tree when additional configuration items are added to the export set.
+2.  Click **OK**
+    to export the selected configuration.
+
+#### Referenced Policies
+
+When exporting a policy or policy container, by default, any policies referenced by the policy are included for export and displayed in the **Additional configuration that will be exported**
+list.
