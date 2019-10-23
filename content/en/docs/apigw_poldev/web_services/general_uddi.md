@@ -1,8 +1,9 @@
 {
-"title": "Retrieve WSDL files from a UDDI registry",
-"linkTitle": "Retrieve WSDL files from a UDDI registry",
+"title": "Work with a UDDI registry",
+"linkTitle": "Work with a UDDI registry",
+"weight": 10,
 "date": "2019-10-17",
-"description": "You can use WSDL files to register web services in the **Web Service Repository**\\nand to add WSDL documents and XML schemas to the global cache. Policy Studio can retrieve a WSDL file from the file system, from a URL, or from a UDDI registry. This topic explains how to retrieve a WSDL file from a UDDI registry. "
+"description": "Connect to a UDDI registry from Policy Studio to retrieve or publish WSDL files."
 }
 
 ## Connect to a UDDI registry
@@ -147,8 +148,7 @@ file as described earlier.{{< /alert >}}
 
 ## Retrieve WSDL files from a UDDI registry
 
-You can use WSDL files to register web services in the **Web Service Repository**
-and to add WSDL documents and XML schemas to the global cache. Policy Studio can retrieve a WSDL file from the file system, from a URL, or from a UDDI registry. This section explains how to retrieve a WSDL file from a UDDI registry.
+Policy Studio can retrieve a WSDL file from the file system, from a URL, or from a UDDI registry. This section explains how to retrieve a WSDL file from a UDDI registry.
 
 You can also browse a UDDI registry in Policy Studio directly without registering a WSDL file. Under the **APIs**
 node in the tree, right-click the **Web Service Repository**
@@ -332,8 +332,7 @@ tree. The properties listed depend on the type of the node that is selected. You
 
 ### Quick search
 
-The **Quick Search**
-option enables you to search the UDDI registry for a specific `tModel`
+The **Quick Search** option enables you to search the UDDI registry for a specific `tModel`
 name or category.
 
 **tModel Name**:
@@ -341,26 +340,18 @@ You can enter a **tModel Name**
 for a fine-grained search. This is a partial or full name pattern with wildcard searching as specified by the *SQL-92 LIKE*
 specification. The wildcard characters are percent `%`, and underscore `_`, where an underscore matches any single character and a percent matches zero or more characters.
 
-**Categories**:
-You can select one of the following options to search by:
+You can select one of the following categories to search by:
 
-**wsdlSpec**
-: Search for `tModel`s classified as `wsdlSpec` (`uddi-org:types`category set to `wsdlSpec`). This is the default.
+**wsdlSpec**: Search for `tModel`s classified as `wsdlSpec` (`uddi-org:types`category set to `wsdlSpec`). This is the default.
 
-**Reusable WS-Policy Expressions**
-: Search for `tModel`s classified as reusable WS-Policy Expressions.
+**Reusable WS-Policy Expressions**: Search for `tModel`s classified as reusable WS-Policy Expressions.
 
-**All**
-: Search for all `tModel`s.
+**All**: Search for all `tModel`s.
 
-Click **Next**
-to start the search. The **Search Results**
-tree shows the `tModel`
-URIs as top-level nodes. These URIs are all WSDL URIs, and you can use these to generate policies on import by selecting the URI, and clicking the **Finish**
+Click **Next** to start the search. The **Search Results** tree shows the `tModel` URIs as top-level nodes. These URIs are all WSDL URIs, and you can use these to generate policies on import by selecting the URI, and clicking the **Finish**
 button.
 
-You can click any of the nodes in the tree to display detailed properties about that node in the table below the **Search Results**
-tree. The properties listed depend on the type of the node that is selected. You can also right-click a node to edit it (for example, add a description, add a category or identifier node, or delete a duplicate node).
+You can click any of the nodes in the tree to display detailed properties about that node in the table below the **Search Results** tree. The properties listed depend on the type of the node that is selected. You can also right-click a node to edit it (for example, add a description, add a category or identifier node, or delete a duplicate node).
 
 ### Name search
 
@@ -553,17 +544,11 @@ To add a `tModel`
 As before, you can click any node in the results tree to display properties about that node in the table. You can also right-click a node to edit it (for example, add a description, add a category or identifier node, or delete a duplicate node). At any stage, you can click the **Clear**
 button on the right to clear the entire contents of the tree. This does not delete the contents of the registry.
 
-For more details on UDDI entities such as `businessEntity`
-and `tModel`, see [*UDDI definitions* on page 1](#UDDI). For details on how to publish web services automatically using a wizard, see [*Publish WSDL files to a UDDI registry* on page 1](general_uddi_publish.htm).
-
 ## Publish WSDL files to a UDDI registry
 
-You can register web services in the **Web Service Repository**
-using Web Services Description Language (WSDL) files. Policy Studio can retrieve a WSDL file from the file system, from a URL, or from a UDDI registry. When you have registered a WSDL file in the web service repository, you can use the **Publish WSDL**
+When you have registered a WSDL file in the web service repository, you can use the **Publish WSDL**
 wizard to publish the WSDL file to a UDDI registry. You can also use the **Find WSDL**
-wizard to search for the selected WSDL file in a UDDI registry. This topic explains how to perform both of these tasks.
-
-For background information and an introduction to general UDDI concepts, see [*Retrieve WSDL files from a UDDI registry* on page 1](general_uddi.htm). For details on how to register WSDL files, see [*Manage web services* on page 1](general_ws_repository.htm).
+wizard to search for the selected WSDL file in a UDDI registry.
 
 ### Find WSDL files
 
@@ -575,7 +560,7 @@ You can search a UDDI registry to determine if a web service is already publishe
     to launch the **Find WSDL**
     wizard.
 3. In the **Find WSDL**
-    dialog, select a UDDI registry from the list. You can add or edit a registry connection using the buttons provided. For details on configuring a registry connection, see [*Connect to a UDDI registry* on page 1](general_uddi_connection.htm).
+    dialog, select a UDDI registry from the list. You can add or edit a registry connection using the buttons provided.
 4. You can select an optional language **Locale**
     from the list. The default is `No Locale`.
 5. Click **Next**. The **WSDL Found in UDDI Registry**
@@ -587,7 +572,7 @@ You can search a UDDI registry to determine if a web service is already publishe
 8. Click **Finish**.
 
 The **Find WSDL**
-wizard provides is a quick and easy way of finding a selected WSDL file published in a UDDI registry. For more fine-grained ways of searching a UDDI registry (for example, for specific WSDL or UDDI entities), see [*Retrieve WSDL files from a UDDI registry* on page 1](general_uddi.htm).
+wizard provides is a quick and easy way of finding a selected WSDL file published in a UDDI registry. For more fine-grained ways of searching a UDDI registry (for example, for specific WSDL or UDDI entities), see [Retrieve WSDL files from a UDDI registry](#retrieve-wsdl-files-from-a-uddi-registry).
 
 ### Publish WSDL files
 
@@ -600,7 +585,7 @@ to a UDDI registry, perform the following steps:
     to launch the **Publish WSDL Wizard**.
 3. Perform the steps in the wizard as described in the next sections.
 
-#### Step 1: Enter virtualized service address and WSDL URL for publishing in UDDI registry
+#### Enter virtualized service address and WSDL URL for publishing in UDDI registry
 
 When you register a WSDL file in the web service repository, API Gateway exposes a *virtualized*
 version of the web service. The host and port for the web service are changed dynamically to point to the machine running API Gateway. The client can then retrieve the WSDL for the virtualized web service from API Gateway, without knowing its real location.
@@ -630,7 +615,7 @@ is entered as the WSDL URL to publish.
 Click **Next**
 when finished.
 
-#### Step 2: View WSDL to UDDI mapping result
+#### View WSDL to UDDI mapping result
 
 You can use this window to view the unpublished mapping of the WSDL file to a UDDI registry structure. You can also edit a specific mapping in the tree view. This window includes the following fields:
 
@@ -651,30 +636,30 @@ that points to the `uddi:uddi.org.wsdl:address tModel`. This option is not selec
 When selected, you can choose one of the following options to specify how WS-Policy statements in the WSDL file are included in the registry:
 
 * **Remote Policy Expressions**: Each WS-Policy URL in the WSDL that is associated with a mapped UDDI entity is accessed remotely. For example, a `businessService` is categorized with the `uddi:w3.org:ws-policy:v1.5:attachment:remotepolicyreference tModel` where the `keyValue` holds the remote WS-Policy URL. This is the default option.
-* **Reusable Policy Expressions**: Each WS-Policy URL in the WSDL that is associated with a mapped UDDI entity has a separate `tModel` published for it. Other UDDI entities (for example, `businessService`) can then refer to these `tModel`s. These are reusable because UDDI entities published in the future can also use these `tModel`s. You can do this in [*Step 4:Select a duplicate publishing approach* on page 1](#Step), by selecting the **Reuse duplicate tModels** option.                                                                                     |
+* **Reusable Policy Expressions**: Each WS-Policy URL in the WSDL that is associated with a mapped UDDI entity has a separate `tModel` published for it. Other UDDI entities (for example, `businessService`) can then refer to these `tModel`s. These are reusable because UDDI entities published in the future can also use these `tModel`s. You can do this in [Select a duplicate publishing approach](#select-a-duplicate-publishing-approach), by selecting the **Reuse duplicate tModels** option.
 
 Click **Next** when finished.
 
-#### Step 3: Select a registry for publishing
+#### Select a registry for publishing
 
 Use this window to select a UDDI registry in which to publish the WSDL to UDDI mapping. Complete the following fields:
 
 **Select Registry**:
 Select an existing UDDI registry to browse for WSDL files from the **Registry**
-drop-down list. To configure the location of a new UDDI registry, click **Add**. Similarly, to edit an existing UDDI registry location, click **Edit**. For details on how to configure a UDDI connection, see [*Connect to a UDDI registry* on page 1](general_uddi_connection.htm).
+drop-down list. To configure the location of a new UDDI registry, click **Add**. Similarly, to edit an existing UDDI registry location, click **Edit**.
 
 **Select Locale**:
 You can select an optional language locale from this list. The default is `No Locale`.
 
 Click **Next** when finished.
 
-#### Step 4: Select a duplicate publishing approach
+#### Select a duplicate publishing approach
 
-This window is displayed only if mapped WSDL entities already exist in the UDDI registry. Otherwise, the wizard skips to [*Step 5:Create or search for business* on page 1](#Step4). This window includes the following fields:
+This window is displayed only if mapped WSDL entities already exist in the UDDI registry. Otherwise, the wizard skips to the next step. This window includes the following fields:
 
 **Select Duplicate Mappings**:
 The **Mapped WSDL to publish**
-pane on the left displays the unpublished WSDL mappings from [*Step 2: View WSDL to UDDI mapping result* on page 1](#Step2). The **Duplicates for WSDL mappings in UDDI registry**
+pane on the left displays the unpublished WSDL mappings from an earlier step. The **Duplicates for WSDL mappings in UDDI registry**
 pane on the right displays the nodes already published in the registry. The **Node List**
 at the bottom right shows a breakdown of the duplicate nodes.
 
@@ -688,14 +673,14 @@ Select one of the following options:
 * **Reuse duplicate tModels**: Publishes the selected entries from the tree on the left, and reuses the selected duplicate entries in the tree on the right. This is the default option. Some or all duplicate `tModel`s (for example, for `portType`, `binding`, and reusable WS-Policy expressions) that already exist in the registry can be reused. This means that a new `businessService`
   that points to existing `tModel`s is published. Any entries selected on the left are published, and any referred to `tModel`s on the left now point to selected duplicate `tModel`s on the right. By default, this option selects all `businessServices`
   on the left, and all duplicate `tModel`s on the right. If there is more than one duplicate `tModel`s, only the first is selected.
-* ***Overwrite duplicates**: Publishes the selected entries from the tree on the left, and overwrites the selected duplicate entries in the tree on the right. When a UDDI entity is overwritten, its UUID key stays the same, but all the data associated with it is overwritten. This is not just a transfer of additions or differences. You can also overwrite some duplicates and create some new entries. By default, this option selects all `businessService`s and `tModel`s on the left and all duplicate `businessService`s and `tModel`s on the right. If there is more than one duplicate, only the first is selected. The default overwrites all selected duplicates and does not create any new UDDI entries, unless there is a new referred to `tModel` (for example, for a reusable WS-Policy expression).
+* **Overwrite duplicates**: Publishes the selected entries from the tree on the left, and overwrites the selected duplicate entries in the tree on the right. When a UDDI entity is overwritten, its UUID key stays the same, but all the data associated with it is overwritten. This is not just a transfer of additions or differences. You can also overwrite some duplicates and create some new entries. By default, this option selects all `businessService`s and `tModel`s on the left and all duplicate `businessService`s and `tModel`s on the right. If there is more than one duplicate, only the first is selected. The default overwrites all selected duplicates and does not create any new UDDI entries, unless there is a new referred to `tModel` (for example, for a reusable WS-Policy expression).
 * **Ignore duplicates**: Publishes the selected entries from the tree on the left, and ignores all duplicates. You can proceed to publish the mapped WSDL to UDDI data. New UDDI entries are created for each item that is selected in the tree on the left.
 
 Click **Next** when finished.
 
-{{< alert title="Note" color="primary" >}}If you select duplicate `businessService`s in the tree, and select **Overwrite duplicates**, the wizard skips to [*Step 6:Publish WSDL* on page 1](#Step3) when you click **Next**.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}If you select duplicate `businessService`s in the tree, and select **Overwrite duplicates**, the wizard skips to [Publish WSDL](#publish-wsdl) when you click **Next**.{{< /alert >}}
 
-#### Step 5: Create or search for business
+#### Create or search for business
 
 Use this window to specify a `businessEntity`
 for the web service. You can create a new `businessEntity`
@@ -720,7 +705,7 @@ name, perform the following steps:
 
 Alternatively, you can select the **Advanced Search**
 option to search by different criteria such as **Keys**, **Categories**, or **tModels**. You can also select a range of search options on the **Advanced**
-tab (for example, **Exact match**, **Case sensitive**, or **Service subset**). For more details, see [*Retrieve WSDL files from a UDDI registry* on page 1](general_uddi.htm).
+tab (for example, **Exact match**, **Case sensitive**, or **Service subset**).
 
 The **Node Counts**
 field shows the total numbers of each UDDI entity type returned from the search (`businessEntity`, `businessService`, `bindingTemplate`,and `tModel`).
@@ -728,7 +713,7 @@ field shows the total numbers of each UDDI entity type returned from the search 
 Click **Next**
 when finished.
 
-#### Step 6: Publish WSDL
+#### Publish WSDL
 
 Use this to publish the WSDL to the UDDI registry.
 

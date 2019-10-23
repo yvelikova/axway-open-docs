@@ -1,8 +1,9 @@
 {
 "title": "Manage data maps",
 "linkTitle": "Manage data maps",
+"weight": 4,
 "date": "2019-10-17",
-"description": "Data maps enable you to define how to map XML and JSON messages to other XML and JSON message formats. Mappings can be from XML to XML, XML to JSON, JSON to JSON, or JSON to XML. "
+"description": "Create data maps to map XML and JSON messages to other XML and JSON message formats."
 }
 
 Data maps enable you to define how to map XML and JSON messages to other XML and JSON message formats. Mappings can be from XML to XML, XML to JSON, JSON to JSON, or JSON to XML.
@@ -24,27 +25,23 @@ To define a new data map, follow these steps:
 6. When you have completed the fields, click **OK** to open the map for editing in the Data Map Editor Design view. The following example shows a map with two input schemas.
     ![Multiple input data map example](/Images/PolDevGuide/Mapper/visual_mapper_multi_input.png)
 
-For more information on Visual Mapper and the Data Map Editor, see the
-[API Gateway Visual Mapper User Guide](/bundle/API_VisualMapper_762_UserGuide_allOS_en_HTML5)
-.
+For more information on Visual Mapper and the Data Map Editor, see the [API Gateway Visual Mapper User Guide](/bundle/API_VisualMapper_78_UserGuide_allOS_en_HTML5).
 
 ### Schema settings
 
 The Source Schema Details and the Target Schema Details sections share the following common fields:
 
 * **Type**: Select the type of the schema, XML or JSON. Choose XML if the schema is defined by an XSD, or choose JSON if the schema is defined as a JSON schema. You can choose one of four possible schema types depending on the required mapping type:
-    | Mapping Type | Source Schema Type | Target Schema Type |
-    |--------------|--------------------|--------------------|
-    | XML to XML   | XML                | XML                |
-    | JSON to JSON | JSON               | JSON               |
-    | XML to JSON  | XML                | JSON               |
-    | JSON to XML  | JSON               | XML                |
+    * XML (source) to XML (target)
+    * JSON (source) to JSON (target)
+    * XML (source) to JSON (target)
+    * JSON (source) to XML (target)
 
     {{< alert title="Note" color="primary" >}}If you select multiple input schemas for a data map, the input schemas must be of the same type (either JSON or XML).{{< /alert >}}
 
 * Select the **Load from filesystem** check box if the schema definition is located in a file. If the type is XML, it is typical to select an XSD file. If the type is JSON, it is typical to select a JSON file that contains the JSON schema definition. Deselect this option to use an XSD or JSON schema that you have previously imported into API Gateway (for example, under **Resources > JSON Schemas**, **Resources > XML Schema Document Bundles**, or **Resources > WSDL Document Bundles**).
 
-* **Schema**: For more information on schemas, see [*Manage JSON schemas* on page 1](resources_json_schemas.htm) and [*Manage WSDL and XML schema documents* on page 1](general_schema_cache.htm).
+* **Schema**:
     * If you selected the **Load from filesystem** option you can select the schema file on the file system. If the **Type** is XML, you can select an XSD file containing the schema definition. If the **Type** is JSON, you can select a JSON file containing the JSON schema definition.
     * If you did not select the **Load from filesystem** option, you can select from the schemas that you previously imported into API Gateway (for example, under **Resources > JSON Schemas**, **Resources > XML Schema Document Bundles**, or **Resources > WSDL Document Bundles**).
 
@@ -53,10 +50,9 @@ The Source Schema Details and the Target Schema Details sections share the follo
 ## Data map options
 
 To open a data map for editing in the Data Map Editor, select the data map node under **Resources > Data Maps** in the Policy Studio tree. The Data Map Editor displays the content of the map and you can make changes. Any changes made to the map must be saved and redeployed. For more information on Visual Mapper and the Data Map Editor, see the
-[API Gateway Visual Mapper User Guide](/bundle/API_VisualMapper_762_UserGuide_allOS_en_HTML5)
-.
+[API Gateway Visual Mapper User Guide](/bundle/API_VisualMapper_78_UserGuide_allOS_en_HTML5).
 
-{{< alert title="Note" color="primary" >}}The schemas selected for the data map typically cannot change. To use a different schema, you must create a new data map. However, there is one exception to this: you can modify a JSON schema stored in **Resources > JSON Schemas** after you have created an associated data map. For more information, see [*Update previously imported JSON schemas* on page 1](#Update).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}The schemas selected for the data map typically cannot change. To use a different schema, you must create a new data map. However, there is one exception to this: you can modify a JSON schema stored in **Resources > JSON Schemas** after you have created an associated data map. For more information, see [Update previously imported JSON schemas](#update-previously-imported-json-schemas).{{< /alert >}}
 
 You can right-click on an existing data map node in the Policy Studio tree, and select one of the following options:
 
@@ -76,11 +72,7 @@ To delete or rename a field in the JSON schema, remove any references to this fi
 
 ## Use a data map in a policy
 
-To use a data map in a policy, add an **Execute Data Map** filter. For more details, see
-[Transform with data map](/csh?context=531&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/)
-.
+To use a data map in a policy, add an **Execute Data Map** filter.
 
 A simple example is described in the following steps:
 
