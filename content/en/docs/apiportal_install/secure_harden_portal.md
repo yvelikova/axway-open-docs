@@ -1,9 +1,9 @@
 {
 "title": "Secure API Portal",
-  "linkTitle": "Secure API Portal",
-  "weight": "8",
-  "date": "2019-08-09",
-  "description": "Secure and harden your API Portal environment after installation."
+"linkTitle": "Secure API Portal",
+"weight": "8",
+"date": "2019-08-09",
+"description": "Secure and harden your API Portal environment after installation."
 }
 
 Perform the following steps after installation to ensure that your API Portal environment is secure from internal and external threats:
@@ -39,12 +39,12 @@ On an API Portal software installation, the Apache web server has TLS versions 
 
     ```
     <VirtualHost *:443>
-      SSLEngine on
-      SSLCertificateFile "/etc/httpd/conf/server.crt"
-      SSLCertificateKeyFile "/etc/httpd/conf/server.key"
-      SSLProtocol TLSv1.2
-      Header always append X-Frame-Options SAMEORIGIN
-       ...
+       SSLEngine on
+       SSLCertificateFile "/etc/httpd/conf/server.crt"
+       SSLCertificateKeyFile "/etc/httpd/conf/server.key"
+       SSLProtocol TLSv1.2
+       Header always append X-Frame-Options SAMEORIGIN
+        ...
     </VirtualHost>
     ```
 
@@ -57,22 +57,19 @@ To counter a session fixation vulnerability in Joomla!, it is recommended that y
 
 1. Open the file `/etc/httpd/conf.d/security.conf`.
 2. Add an access restriction directive for the `/administrator` location. Specify the internal IP address range that is allowed to access JAI. For example:
-
-    ```
-    ServerTokens ProductOnly
-    ServerSignature Off
+   ```
+   ServerTokens ProductOnly
+   ServerSignature Off
        <Location /administrator>
            Order deny,allow
            deny from all
            allow from 10.232.14.
        </Location>
-    ```
-
+   ```
 3. To restart the web server configuration, enter the following:
-
-    ```
-    # /etc/init.d/apache2 reload
-    ```
+   ```
+   # /etc/init.d/apache2 reload
+   ```
 
 ## Limit the number of failed login attempts
 
@@ -86,6 +83,7 @@ To protect API Portal and Joomla! from brute force attacks, you can limit the nu
 6. Click **Yes** to enable locking by IP address. When this setting is enabled login attempts are blocked from the same IP address for the lock time specified even if correct user credentials are entered.
 
     You can enable user account locking and IP address locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts, `UserA` will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, `UserB`) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
+
 7. Click **Save**.
 
 ## Add trusted OAuth hosts
@@ -251,6 +249,22 @@ RewriteCond %{HTTP:Content-Type} !^$
 RewriteCond %{HTTP:Content-Type} !^(application/json|application/x-www-form-urlencoded) [NC]
 # Then redirect with response 415 Unsupported Media Type and stop processing other conditions
 RewriteRule ^ - [R=415,L]
+```
+
+## Allow requests from only used HTTP methods
+
+It is best practice to reject requests from HTTP methods that are not being used with the response `405 Method Not Allowed`. For example, allowing requests from the `TRACE` method might result in Cross-Site Tracing (XST) attacks. Similarly, allowing requests from `PUT` and `DELETE` methods might expose vulnerabilities to the file system.
+
+`GET` and `POST` requests are mandatory for API Portal. You must also allow requests from the HTTP methods your listed APIs support, so users can send requests to them from the Try It page.
+
+Add this configuration in your `.htaccess` or virtual host file. The following example allows only `GET`, `POST`, and `PUT` methods:
+
+```
+# Disable TRACE method
+TraceEnable off
+
+# Enable GET, POST and PUT methods. Must be separated by a space character.
+AllowMethods GET POST PUT
 ```
 
 ## Protect the integrity of the logging system
