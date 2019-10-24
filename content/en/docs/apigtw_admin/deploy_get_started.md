@@ -28,11 +28,11 @@ For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGatewa
 
 ### Edit a project configuration in Policy Studio
 
-When you create or open a Policy Studio project and make a server connection, this loads the project configuration and displays it in the following format: **ProjectName [ServerInstanceType]**
+When you create or open a Policy Studio project and make a server connection, this loads the project configuration and displays it in the following format: **ProjectName [ServerInstanceType]**.
 
 For example:
 
-**MyDevProject [API Gateway]**
+**MyDevProject [API Gateway]**:
 
 When a project configuration is loaded, its services are displayed in the Policy Studio tree on the left. Expand one of the top-level nodes in the tree to display additional details (for example, **APIs**, **Policies**, **Resources**, or **Environment Configuration**).
 

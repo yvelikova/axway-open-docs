@@ -24,7 +24,7 @@ To view the installed version number in Policy Studio, select **Help > About Pol
 
 ### API Gateway Manager
 
-You can view the installed version number, including any installed service pack, for API Gateway instances in API Gateway Manager. For more information, see [*Check the installed version number of API Gateway instances* on page 1](managetopology.htm#Check).
+You can view the installed version number, including any installed service pack, for API Gateway instances in API Gateway Manager. For more information, see [Check the installed version number of API Gateway instances](/docs/apigtw_admin/managetopology#check-installed-version).
 
 ### Process listing
 
@@ -38,7 +38,7 @@ user1 19595 13643  0 Nov14 pts/23   00:06:05 NodeManager on Host1 (Node Manager 
 
 ### Trace file
 
-You can find the installed version number, including any installed service pack, in the header of the trace files for the Node Manager, API Gateway instance, or API Gateway Analytics server. For more information on where to find the trace files, see [*Configure API Gateway diagnostic trace* on page 1](tracing.htm).
+You can find the installed version number, including any installed service pack, in the header of the trace files for the Node Manager, API Gateway instance, or API Gateway Analytics server. For more information on where to find the trace files, see [Configure API Gateway diagnostic trace](/docs/apigtw_admin/tracing).
 
 For example, the following trace file (for a Node Manager) shows the installed version and service pack:
 
@@ -49,11 +49,7 @@ For example, the following trace file (for a Node Manager) shows the installed v
 # TZ=GMT
 ```
 
-### managedomain
-
-For more information on using `managedomain` to find your installed version number, see [*Find your installed version and list patches using managedomain* on page 1](#Find).
-
-## Find your installed version and list patches using managedomain
+## Find your installed version and list patches using managedomain {#find-install-version}
 
 You can use the `managedomain` command with the `-v` or `--version` options to find the installed version number, including any installed service pack or patches, and build information.
 
@@ -80,9 +76,7 @@ Build Date: 2016-12-06 14:56:44 UTC
 Commit Id:  ba35aba7bf84a165dda0df81470f4e9a87d73778
 Patch:      OpenSSL_1_0_2j-fips
 Patch:      RDAPI-5885_44dc0cde1d94f4dd4744327728aeeac5b2c4a802
-```
 
-```
 $ ./managedomain --version
 Version:    7.5.3
 Build Date: 2016-12-06 14:56:44 UTC
