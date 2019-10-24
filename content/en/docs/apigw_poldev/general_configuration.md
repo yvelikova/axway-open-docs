@@ -1,6 +1,7 @@
 {
 "title": "Global configuration",
 "linkTitle": "Global configuration",
+"weight": 3,
 "date": "2019-10-17",
 "description": "Summary of global configuration options in Policy Studio."
 }
@@ -21,8 +22,7 @@ You can configure the underlying configuration settings for API Gateway using th
 * Security
 
 For more details, see the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/)
-.
+[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
 
 ## Web service repository
 

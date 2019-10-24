@@ -1,6 +1,7 @@
 {
 "title": "Manage API Gateway connections",
 "linkTitle": "Manage API Gateway connections",
+"weight": 3,
 "date": "2019-10-17",
 "description": "Use Policy Studio to manage API Gateway server instances."
 }

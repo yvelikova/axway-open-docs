@@ -2,7 +2,7 @@
 "title": "Manage Policy Studio projects",
 "linkTitle": "Manage Policy Studio projects",
 "date": "2019-10-17",
-"weight": 9,
+"weight": 3,
 "description": "Quick reference on working with Policy Studio projects."
 }
 

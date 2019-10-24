@@ -1,6 +1,7 @@
 {
 "title": "Policy Studio preferences and options",
 "linkTitle": "Policy Studio preferences and options",
+"weight": 3,
 "date": "2019-10-17",
 "description": "Configure preferences and viewing options for Policy Studio."
 }
