@@ -1,9 +1,9 @@
 {
-    "title": "Secure API Portal",
-    "linkTitle": "Secure API Portal",
-    "weight": "8",
-    "date": "2019-08-09",
-    "description": "Secure and harden your API Portal environment after installation."
+"title": "Secure API Portal",
+  "linkTitle": "Secure API Portal",
+  "weight": "8",
+  "date": "2019-08-09",
+  "description": "Secure and harden your API Portal environment after installation."
 }
 Perform the following steps after installation to ensure that your API Portal environment is secure from internal and external threats:
 
@@ -248,6 +248,22 @@ RewriteCond %{HTTP:Content-Type} !^$
 RewriteCond %{HTTP:Content-Type} !^(application/json|application/x-www-form-urlencoded) [NC]
 # Then redirect with response 415 Unsupported Media Type and stop processing other conditions
 RewriteRule ^ - [R=415,L]
+```
+
+## Allow requests from only used HTTP methods
+
+It is best practice to reject requests from HTTP methods that are not being used with the response `405 Method Not Allowed`. For example, allowing requests from the `TRACE` method might result in Cross-Site Tracing (XST) attacks. Similarly, allowing requests from `PUT` and `DELETE` methods might expose vulnerabilities to the file system.
+
+`GET` and `POST` requests are mandatory for API Portal. You must also allow requests from the HTTP methods your listed APIs support, so users can send requests to them from the Try It page.
+
+Add this configuration in your `.htaccess` or virtual host file. The following example allows only `GET`, `POST`, and `PUT` methods:
+
+```
+# Disable TRACE method
+TraceEnable off
+
+# Enable GET, POST and PUT methods. Must be separated by a space character.
+AllowMethods GET POST PUT
 ```
 
 ## Where to go next
