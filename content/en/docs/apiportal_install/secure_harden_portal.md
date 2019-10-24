@@ -250,13 +250,13 @@ RewriteCond %{HTTP:Content-Type} !^(application/json|application/x-www-form-urle
 RewriteRule ^ - [R=415,L]
 ```
 
-## Whitelist only used HTTP methods
+## Allow requests from only used HTTP methods
 
-Another good practice is to reject requests of HTTP methods that are not actually being used, by returning `405 Method Not Allowed` in response. For example, the `TRACE` method has debugging purposes and if enabled in production, Cross-Site Tracing attacks may be observed. Similarly, but not exactly, `PUT` and `DELETE` might expose vulnerabilities to the file system.
+It is best practice to reject requests from HTTP methods that are not being used with the response `405 Method Not Allowed`. For example, allowing requests from the `TRACE` method might result in Cross-Site Tracing (XST) attacks. Similarly, allowing requests from `PUT` and `DELETE` methods might expose vulnerabilities to the file system.
 
-`GET` and `POST` requests are mandatory for API Portal. The HTTP methods your listed APIs support must also be enabled, so you can send requests to them from the Try It page.
+`GET` and `POST` requests are mandatory for API Portal. You must also allow requests from the HTTP methods your listed APIs support, so users can send requests to them from the Try It page.
 
-The following example allows only `GET`, `POST` and `PUT`:
+Add this configuration in your `.htaccess` or virtual host file. The following example allows only `GET`, `POST`, and `PUT` methods:
 
 ```
 # Disable TRACE method
@@ -265,7 +265,6 @@ TraceEnable off
 # Enable GET, POST and PUT methods. Must be separated by a space character.
 AllowMethods GET POST PUT
 ```
-You can put this configuration in your `.htaccess` or virtual host file.
 
 ## Where to go next
 
