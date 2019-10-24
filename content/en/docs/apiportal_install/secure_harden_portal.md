@@ -255,21 +255,23 @@ RewriteRule ^ - [R=415,L]
 
 ## Protect the integrity of the logging system
 
-You must ensure that security logs are protected. You must protect logging facilities and log information against tampering, repudiation, and unauthorised access or modification. Store logs in a secure and tamper-proof location so that any evidence derived from the logs can be used as proof, for example, in any form of legal proceedings.
+You must ensure that security logs are protected against tampering, repudiation, and unauthorized access or modification. Store logs in a secure and tamper-proof location so that the logs can be used as evidence, for example, in any form of legal proceedings.
 
 To protect the integrity of the application generated logs:
 
 * Store logs on write-once media
-* Forward a copy of the logs to a centralized SIEM
+* Forward a copy of the logs to a centralized security information and event management (SIEM) system
 * Generate message digests for each log file
 
 This approach ensures that you can detect and prevent tampering.
 
-API Portal logs are located in the `logs` folder in the root level of the project.
+API Portal logs are located in the `logs` folder in the API Portal root directory.
 
-## Log retention policy
+## Develop a log retention policy and archival procedures
 
-We recommend that you develop a log retention policy to identify storage requirements for device logs, and implement procedures to ensure that the audit logs are available for a security response in the case of an incident or investigation. The audit logs must be collected for the last 30 days in easily accessible storage media. Older logs should be archived in a protected storage and should be accessible in the future as required for incidents or investigations.
+We recommend that you develop a log retention policy to identify storage requirements for device logs, and appropriate archival procedures to ensure that the audit logs are available for a security response in the case of an incident or investigation.
+
+The audit logs must be collected for the last 30 days in easily accessible storage media. Older logs should be archived in a protected storage and should be accessible in the future as required for incidents or investigations.
 
 ## Where to go next
 
