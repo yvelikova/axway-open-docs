@@ -1,10 +1,11 @@
 {
 "title": "Secure API Portal",
-  "linkTitle": "Secure API Portal",
-  "weight": "8",
-  "date": "2019-08-09",
-  "description": "Secure and harden your API Portal environment after installation."
+"linkTitle": "Secure API Portal",
+"weight": "8",
+"date": "2019-08-09",
+"description": "Secure and harden your API Portal environment after installation."
 }
+
 Perform the following steps after installation to ensure that your API Portal environment is secure from internal and external threats:
 
 1. Apply the latest service pack (SP) available for this version, as it might contain important security updates. For details, see [Update API Portal](/docs/apiportal_install/install_service_pack/).
@@ -265,6 +266,26 @@ TraceEnable off
 # Enable GET, POST and PUT methods. Must be separated by a space character.
 AllowMethods GET POST PUT
 ```
+
+## Protect the integrity of the logging system
+
+You must ensure that security logs are protected against tampering, repudiation, and unauthorized access or modification. Store logs in a secure and tamper-proof location so that the logs can be used as evidence, for example, in any form of legal proceedings.
+
+To protect the integrity of the application generated logs:
+
+* Store logs on write-once media
+* Forward a copy of the logs to a centralized security information and event management (SIEM) system
+* Generate message digests for each log file
+
+This approach ensures that you can detect and prevent tampering.
+
+API Portal logs are located in the `logs` folder in the API Portal root directory.
+
+## Develop a log retention policy and archival procedures
+
+We recommend that you develop a log retention policy to identify storage requirements for device logs, and appropriate archival procedures to ensure that the audit logs are available for a security response in the case of an incident or investigation.
+
+The audit logs must be collected for the last 30 days in easily accessible storage media. Older logs should be archived in a protected storage and should be accessible in the future as required for incidents or investigations.
 
 ## Where to go next
 
