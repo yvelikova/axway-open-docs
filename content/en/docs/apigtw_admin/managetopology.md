@@ -1,7 +1,7 @@
 {
 "title": "Manage domain topology in API Gateway Manager",
 "linkTitle": "Manage domain topology in API Gateway Manager",
-"weight":"11,
+"weight":"11",
 "date": "2019-10-14",
 "description": "Manage a gateway domain by way of the topology view in the web-based API Gateway Manager tool."
 }
@@ -211,4 +211,4 @@ To deploy existing policy and environment packages to a group of API Gateways, p
 6. Select **Deploy** in the wizard, and the packages are deployed to the API Gateway group.
 7. Click **Finish**.
 
-* You can also use Policy Studio to deploy API Gateway configuration. For details, see [Deploy configuration](/docs/apigtw_admin/deploy_get_started#deploy-api-gateway-configuration).{{< /alert >}}
+* You can also use Policy Studio to deploy API Gateway configuration. For details, see [Deploy configuration](/docs/apigtw_admin/deploy_get_started#deploy-api-gateway-configuration).
