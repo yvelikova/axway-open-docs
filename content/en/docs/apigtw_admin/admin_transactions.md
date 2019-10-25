@@ -1,6 +1,6 @@
 {
-"title": "Introduction to transactions and legs.",
-"linkTitle": "Introduction to transactions and legs.",
+"title": "Introduction to transactions and legs",
+"linkTitle": "Introduction to transactions and legs",
 "weight":"8",
 "date": "2019-10-14",
 "description": "Learn more about inbound and outbound transactions and legs when a message transaction flows from a client to a back-end via an API Gateway. "

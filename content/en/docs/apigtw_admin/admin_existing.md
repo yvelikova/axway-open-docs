@@ -3,14 +3,14 @@
 "linkTitle": "Interaction with existing infrastructure",
 "weight":"6",
 "date": "2019-10-14",
-"description": "Learn how the API Gateway interacts with these components in your existing network infrastructure."
+"description": "API Gateway interaction with different components in the gateway network infrastructure."
 }
 
-As part of API Gateway policy execution, the API Gateway needs to interact with various components of the existing infrastructure. For example, these include external connections to systems such as databases, LDAP servers, third-party identity management products, and so on. This topic describes how the API Gateway interacts with these components in your existing network infrastructure.
+As part of API Gateway policy execution, the gateway needs to interact with various components of the existing infrastructure. For example, these include external connections to systems such as databases, LDAP servers, third-party identity management products, and so on. This topic describes how the gateway interacts with these components in your existing network infrastructure.
 
 ## Databases
 
-API Gateway interoperates with a range of commonly used databases for a wide variety of purposes. For example, this includes managing access control credentials, authorization attributes, identity and role information, monitoring metrics, and reporting. API Gateway uses Java Database Connectivity (JDBC) to manage database connections. The following databases are supported:
+The gateway interoperates with a range of commonly used databases for a wide variety of purposes. For example, this includes managing access control credentials, authorization attributes, identity and role information, monitoring metrics, and reporting. The gateway uses Java Database Connectivity (JDBC) to manage database connections. The following databases are supported:
 
 * MySQL
 * Oracle
@@ -18,11 +18,11 @@ API Gateway interoperates with a range of commonly used databases for a wide var
 * Microsoft SQL Server
 * MariaDB
 
-API Gateway also supports Apache Cassandra for internal data storage. For details on supported database versions, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+The gateway also supports Apache Cassandra for internal data storage. For details on supported database versions, see the [API Gateway Installation Guide](/docs/apigtw_install/).
 
 ## Anti-virus
 
-API Gateway supports Anti-Virus (AV) scanning using virus scanning engines from third-party vendors such as McAfee, Sophos, and ClamAV. Depending on the engine, this scanning can happen in-process or remotely using a client SDK or Internet Content Adaptation Protocol (ICAP). The API Gateway takes message attachments, passes them to the AV scanner, and then acts on the decision. The following conditions apply:
+The gateway supports Anti-Virus (AV) scanning using virus scanning engines from third-party vendors such as McAfee, Sophos, and ClamAV. Depending on the engine, this scanning can happen in-process or remotely using a client SDK or Internet Content Adaptation Protocol (ICAP). It also takes message attachments, passes them to the AV scanner, and then acts on the decision. The following conditions apply:
 
 * AV signature distribution and updates are performed using mechanisms of the anti-virus vendor.
 * Licensing for the AV engine is performed through the AV vendor distribution channels.
@@ -31,19 +31,19 @@ For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGatewa
 
 ## Operations and management
 
-API Gateway has a number of different options for operations and management:
+The gateway has a number of different options for operations and management:
 
-* Detailed transaction logs can be sent to syslog (UDP), relational databases, or flat files. These contain detailed records of processed messages, their contents, how long processing took, and decisions taken during message processing. This type of logging can also include information alerts about policy execution failures and breached Service Level Agreements (SLAs), and information about critical events such as connection or disk failures. Logging levels can be controlled for an API Gateway or policy as a whole or on a filter-by-filter basis.
-* Auditing information can be viewed in real time in the API Gateway Manager console, and can be pushed to your metrics database (for example, for monitoring in API Gateway Analytics, API Manager, or a third-party tool), or pushed to Embedded Analytics dashboards. For more details on logging, see [Troubleshoot your API Gateway installation](part_8_troubleshoot).
-* The API Gateway Manager console is used to provide a current snapshot of how the API Gateway is behaving. For example, it displays how many messages are being processed, and what services are under the most load. API Gateway Manager displays what is happening now on API Gateway instances, and can be viewed by pointing a browser at an Admin Node Manager. For more details, see [Monitor services in API Gateway Manager](monitor_service).
-* Flexible alerts can be sent out to email, SNMP, OPSEC, syslog, Twitter, and Windows Event Log based on a condition being met in a policy. An example might be to email a service owner for every 1000 failures or to generate an alert if a service is processing more than 10000 messages per second. They can also be used to generate alerts on client usage. For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/) .
-* Service Level Agreement filters can be used to perform a statistical measure of the services quality of service. They are used to make sure that the amount of network connection errors, response times and server errors are below a certain threshold. For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+* Detailed transaction logs can be sent to syslog (UDP), relational databases, or flat files. These contain detailed records of processed messages, their contents, how long processing took, and decisions taken during message processing. This type of logging can also include information alerts about policy execution failures and breached Service Level Agreements (SLAs), and information about critical events such as connection or disk failures. Logging levels can be controlled for a gateway or policy as a whole or on a filter-by-filter basis.
+* Auditing information can be viewed in real time in the gateway Manager console, and can be pushed to your metrics database (for example, for monitoring in API Gateway Analytics, API Manager, or a third-party tool), or pushed to Embedded Analytics dashboards.
+* The gateway Manager console is used to provide a current snapshot of how the gateway is behaving. For example, it displays how many messages are being processed, and what services are under the most load. The gateway Manager displays what is happening now on gateway instances, and can be viewed by pointing a browser at an Admin Node Manager. For more details, see [Monitor services in API Gateway Manager](/docs/apigtw_admin/monitor_service).
+* Flexible alerts can be sent out to email, SNMP, OPSEC, syslog, Twitter, and Windows Event Log based on a condition being met in a policy. An example might be to email a service owner for every 1000 failures or to generate an alert if a service is processing more than 10000 messages per second. They can also be used to generate alerts on client usage. For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+* Service Level Agreement filters can be used to perform a statistical measure of the services quality of service. They are used to make sure that the amount of network connection errors, response times and server errors are below a certain threshold.
 
 ## Network firewalls
 
-When deployed in a Demilitarized Zone (DMZ) or perimeter network, the API Gateway sits behind network firewalls. Network Address Translation (NAT) firewall functionality is used on the network firewall to provide the API Gateway with a publicly routable address in the DMZ. This allows the API Gateway to route traffic internally to a local IP address range. API Gateways may be dual-homed to pass messages between the DMZ and the internal trusted network.
+When deployed in a Demilitarized Zone (DMZ) or perimeter network, the gateway sits behind network firewalls. Network Address Translation (NAT) firewall functionality is used on the network firewall to provide the gateway with a publicly routable address in the DMZ. This allows the gateway to route traffic internally to a local IP address range. API Gateways may be dual-homed to pass messages between the DMZ and the internal trusted network.
 
-The API Gateway can then perform security processing on the incoming message traffic. For example, this includes the following:
+The gateway can then perform security processing on the incoming message traffic. For example, this includes the following:
 
 * Looking for known attack patterns.
 * Checking the validity and structure of the message for anomalies.
@@ -51,7 +51,7 @@ The API Gateway can then perform security processing on the incoming message tra
 
 ### Advantages over traditional application firewalls
 
-API Gateways have a number of advantages over traditional application firewalls for message processing:
+Gateways have a number of advantages over traditional application firewalls for message processing:
 
 * Can understand the structure of the traffic, and can detect subtle attack mechanisms such as entity expansion attacks and external reference attacks.
 * Can consume information in the messages such as security and platform-specific tokens.
@@ -61,31 +61,31 @@ If an attack or unusual traffic pattern is detected, the gateway can notify the 
 
 ### Firewall modes
 
-You can configure the API Gateway to act as a network endpoint or a network proxy, or both in tandem.
+You can configure the gateway to act as a network endpoint or a network proxy, or both in tandem.
 
 * Block unidentified traffic. This is the default setting. If there is no policy configured for this traffic, block it and, depending on configuration, raise an alert. In this way, rogue message traffic is detected and blocked.
 * Pass unidentified traffic.
 
 ## Application servers
 
-Application servers are the infrastructure alongside which API Gateways are most commonly deployed. For example, API Gateways are often deployed in production systems with IBM WebSphere, Oracle WebLogic Server, Microsoft Biztalk Server, Fiorano SOA Platform, TIBCO ActiveMatrix BusinessWorks, and many others.
+Application servers are the infrastructure alongside which gateways are most commonly deployed. For example, gateways are often deployed in production systems with IBM WebSphere, Oracle WebLogic Server, Microsoft Biztalk Server, Fiorano SOA Platform, TIBCO ActiveMatrix BusinessWorks, and many others.
 
-API Gateways interact with application servers in a number of modes, for example:
-For increased integration with such application server systems, the API Gateway supports numerous transport protocols including HTTP, HTTPS, JMS, email (SMTP/POP), FTP, and so on.
+Gateways interact with application servers in a number of modes, for example:
+For increased integration with such application server systems, the gateway supports numerous transport protocols including HTTP, HTTPS, JMS, email (SMTP/POP), FTP, and so on.
 
 * Intercepting application server traffic by acting as a proxy.
 * Offloading processing handed over by the application server (for example, to offload message transformation, encryption, or signature validation).
 
 ## Enterprise Service Buses
 
-API Gateways and Enterprise Service Buses (ESBs) have similar functionality and complement each other very well. Example ESB systems include Oracle Enterprise Service Bus, IBM WebSphere ESB, Progress Sonic ESB, Software AG WebMethods, and JBoss ESB. API Gateways are primarily used to perform the following tasks:
+Gateways and Enterprise Service Buses (ESBs) have similar functionality and complement each other very well. Example ESB systems include Oracle Enterprise Service Bus, IBM WebSphere ESB, Progress Sonic ESB, Software AG WebMethods, and JBoss ESB. Gateways are primarily used to perform the following tasks:
 
 * Protect ESBs and downstream systems from traffic surge, potential DoS attacks, and threats.
 * Offload expensive operations such as message validation and cryptography operations from ESBs.
 
 ### Similarities between API Gateways and ESBs
 
-API Gateways and ESBs typically both perform the following tasks:
+Gateways and ESBs typically both perform the following tasks:
 
 * Protocol mediation
 * Message routing and transformation
@@ -96,15 +96,18 @@ API Gateways and ESBs typically both perform the following tasks:
 
 The main differences between API Gateways and ESBs are as follows:
 
-* API Gateways can be used for simple composite services (chained), but do not support Business Process Execution Language (BPEL), and are not suitable for long duration composite services.
-* ESBs are usually delivered with backend adapters for systems such as CICS, IMS, Siebel, or SAP.
-* API Gateways are stateless and cannot maintain transaction state.
-* API Gateways are targeted at performance and application acceleration.
-* API Gateways have been designed to provide superior security capabilities, without impacting on performance.
+API Gateways:
+
+* can be used for simple composite services (chained), but do not support Business Process Execution Language (BPEL), and are not suitable for long duration composite services.
+* are stateless and cannot maintain transaction state.
+* are targeted at performance and application acceleration.
+* have been designed to provide superior security capabilities, without impacting on performance.
+
+ESBs are usually delivered with backend adapters for systems such as CICS, IMS, Siebel, or SAP.
 
 ## Directories and user stores
 
-API Gateway supports a wide variety of user stores including LDAP, Active Directory, and access control products such as CA SiteMinder and Oracle Access Manager. User stores contain some of the most valuable information in an organization. For example, this includes private identity information such as phone numbers, addresses, email addresses, medical plan IDs, user names and passwords, certificates, organization structures, and so on. API Gateways must be able to interact with user stores without compromising them.
+API Gateway supports a wide variety of user stores including LDAP, Active Directory, and access control products such as CA SiteMinder and Oracle Access Manager. User stores contain some of the most valuable information in an organization. For example, this includes private identity information such as phone numbers, addresses, email addresses, medical plan IDs, user names and passwords, certificates, organization structures, and so on. Gateways must be able to interact with user stores without compromising them.
 
 The API Gateway can use LDAP directories to retrieve user information such as the following:
 
@@ -120,7 +123,7 @@ For more details on integration with LDAP servers, see the [API Gateway Policy D
 
 The following diagram shows a simple inline user store deployment:
 
-![Inline user store deployment (DMZ)](/Images/APIGateway/admin/admin_inline_user_store.png)
+![Inline user store deployment (DMZ)](/Images/APIGateway/admin_inline_user_store.png)
 
 **Advantages**:
 
@@ -141,7 +144,7 @@ This architecture has the following disadvantages:
 
 This is a very common setup where the API Gateway is located in the DMZ, and where it communicates with a user store located in the LAN:
 
-![User store in LAN](/Images/APIGateway/admin/admin_internal_user_store.png)
+![User store in LAN](/Images/APIGateway/admin_internal_user_store.png)
 
 **Advantages**:
 
@@ -161,7 +164,7 @@ This architecture has the following disadvantages:
 
 In this scenario, two API Gateways are used to split the security checks across the DMZ and the LAN. For example, threats and JSON and XML schema validity are performed in the DMZ, while authentication and/or authorization is performed in the LAN:
 
-![User store split deployment](/Images/APIGateway/admin/admin_split_user_store.png)
+![User store split deployment](/Images/APIGateway/admin_split_user_store.png)
 
 **Advantages**:
 
@@ -180,7 +183,7 @@ This architecture has the following disadvantages:
 
 API Gateway interoperates with third-party Access Control and Identity Management products at a number of different levels. For example:
 
-![Example access control options](/Images/APIGateway/admin/admin_access_control.png)
+![Example access control options](/Images/APIGateway/admin_access_control.png)
 
 The options shown in the diagram are described as follows:
 
