@@ -1,12 +1,12 @@
 {
 "title": "Run API Gateway in FIPS mode",
 "linkTitle": "Run API Gateway in FIPS mode",
+"weight":"16",
 "date": "2019-10-14",
-"description": "API Gateway supports Federal Information Processing Standards (FIPS). When running an API Gateway instance or a Policy Studio client in FIPS mode, the following FIPS-certified cryptographic modules are enabled and invoked for all FIPS-compliant cryptographic algorithms:"
+"description": "Enable FIPS for a gateway instance and a Policy Studio client"
 }
-﻿
 
-API Gateway supports Federal Information Processing Standards (FIPS). When running an API Gateway instance or a Policy Studio client in FIPS mode, the following FIPS-certified cryptographic modules are enabled and invoked for all FIPS-compliant cryptographic algorithms:
+API Gateway supports Federal Information Processing Standards (FIPS). When running a gateway instance or a Policy Studio client in FIPS mode, the following FIPS-certified cryptographic modules are enabled and invoked for all FIPS-compliant cryptographic algorithms:
 
 | Cryptographic Module                                          | FIPS 140-2 Certificate Number |
 |---------------------------------------------------------------|-------------------------------|
@@ -14,78 +14,62 @@ API Gateway supports Federal Information Processing Standards (FIPS). When runni
 | OpenSSL FIPS Object Module                                    | 1747                          |
 
 {{< alert title="Note" color="primary" >}}
-
 Running API Gateway in FIPS mode is a separately licensed option that must be specifically ordered. For more details, contact your Axway sales representative.
-
 {{< /alert >}}
 
-This topic explains how to enable FIPS for an API Gateway instance and a Policy Studio client, and describes restrictions that apply when running in FIPS mode.
+This topic explains how to enable FIPS for a gateway instance and a Policy Studio client, and describes restrictions that apply when running in FIPS mode.
 
-Enable FIPS mode for an API Gateway
------------------------------------
+## Enable FIPS mode for an API Gateway
 
-You can use the `togglefips`
-script to enable or disable FIPS mode for an API Gateway instance.
+You can use the `togglefips` script to enable or disable FIPS mode for a gateway instance.
 
-{{< alert title="Note" color="primary" >}} {{< /alert >}}
-
--   You can run this script only with a FIPS-enabled API Gateway license.
--   You must restart any Node Manager or API Gateway instances after running the `togglefips` script.
--   To enable FIPS in a multi-node domain you must run `togglefips --enable` on all nodes in the domain, and all API Gateway processes must be restarted.
-
-### 
+* You can run this script only with a FIPS-enabled API Gateway license.
+* You must restart any Node Manager or API Gateway instances after running the `togglefips` script.
+* To enable FIPS in a multi-node domain you must run `togglefips --enable` on all nodes in the domain, and all API Gateway processes must be restarted.
 
 Run the following commands:
 
-``` {space="preserve"}
+```
 > cd apigateway/posix/bin
 > ./togglefips --enable | -e
 > ./togglefips --disable | -d
 ```
 
-### Enable or disable FIPS on Windows {#enable-or-disable-fips-on-windows "api_gateway_conditions.windows"=""}
+### Enable or disable FIPS on Windows
 
 Run the following commands:
 
-``` {space="preserve" "api_gateway_conditions.windows"=""}
+```
 > cd apigateway\Win32\bin
 > togglefips.bat --enable | -e
 > togglefips.bat --disable | -d
 ```
 
-Enable FIPS mode for Policy Studio
-----------------------------------
+## Enable FIPS mode for Policy Studio
 
 You can also enable FIPS mode for a Policy Studio client application only. To enable or disable FIPS mode in Policy Studio, perform the following steps:
 
-1.  Select **Preferences > IPS Mode**.
-2.  Select **Enable FIPS Mode in Axway Policy Studio**.
-3.  Restart Policy Studio with the `clean`
-    option as follows:
+1. Select **Preferences > IPS Mode**.
+2. Select **Enable FIPS Mode in Axway Policy Studio**.
+3. Restart Policy Studio with the `clean` option as follows:
 
-<!-- -->
+```
+policystudio -clean
+```
 
-    >policystudio -clean
+* You can use the same instructions to enable FIPS in Configuration Studio.
 
-{{< alert title="Tip" color="primary" >}}You can use the same instructions to enable FIPS in Configuration Studio.{{< /alert >}}
+## Restrictions when running in FIPS mode
 
-Restrictions when running in FIPS mode
---------------------------------------
+When running in FIPS mode, certain gateway features are not enabled because they depend on non-FIPS compliant algorithms.
 
-When running in FIPS mode, certain API Gateway features are not enabled because they depend on non-FIPS compliant algorithms.
+The following features cannot be run when the gateway is running in FIPS mode:
 
-{{< alert title="Note" color="primary" >}}For a complete list of non-FIPS compliant algorithms and cipher suites configured in all crypto-related filters and interfaces in Policy Studio, select **Tools > Check Security Constraints > FIPS**, and view the output on the pane on the right.{{< /alert >}}
+* HTTP digest authentication filter
+* Kerberos authentication where MD5, DES, and other non-FIPS compliant algorithms are used
 
-The following features cannot be run when the API Gateway is running in FIPS mode:
+For a complete list of non-FIPS compliant algorithms and cipher suites configured in all crypto-related filters and interfaces in Policy Studio, select **Tools > Check Security Constraints > FIPS**, and view the output on the pane on the right.
 
--   HTTP digest authentication filter
--   Kerberos authentication where MD5, DES, and other non-FIPS compliant algorithms are used
-
-Further information
--------------------
+## Further information
 
 For more details on FIPS, see <http://www.nist.gov/itl/fips.cfm>.
-
-For more details on supported security features, see the
-[API Management Security Guide](/bundle/APIGateway_77_SecurityGuide_allOS_en_HTML5)
-.

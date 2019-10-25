@@ -111,17 +111,17 @@ You can filter this tab to display by **Threat Protection** to quickly locate al
 For example, the following shows detailed trace output from drilling down a failed transaction:
 
 ``` {space="preserve"}
-Message:Access denied with code 403 (phase 2). 
+Message:Access denied with code 403 (phase 2).
 Pattern match "(?i:(?:\\b(?:(?:s(?:ys\\.(?:user_(?:(?:t(?:ab(?:_column|le)|rigger)
 |object|view)s|c(?:onstraints|atalog))|all_tables|tab)|elect\\b.{0,40}\\b
 (?:substring|users?|ascii))|m(?:sys(?:(?:queri|ac)e|relationship|column|object)
 s|ysql\\.(db|user))|c(?:onstraint ..." at ARGS:q. [file "C:\Axway-7.8\
 apigateway\system\conf\threat-protection\default\activated_rules\
-modsecurity_crs_41_sql_injection_attacks.conf"] [line "116"] [id "950007"] 
-[rev "2"] [msg "Blind SQL Injection Attack"] [data "Matched Data:SELECT * 
-FROM USERS found within ARGS:q:SELECT * FROM USERS"] [severity "CRITICAL"] 
-[ver "OWASP_CRS/2.2.9"] [maturity "9"] [accuracy "8"] 
-[tag "OWASP_CRS/WEB_ATTACK/SQL_INJECTION"] [tag "WASCTC/WASC-19"] 
+modsecurity_crs_41_sql_injection_attacks.conf"] [line "116"] [id "950007"]
+[rev "2"] [msg "Blind SQL Injection Attack"] [data "Matched Data:SELECT *
+FROM USERS found within ARGS:q:SELECT * FROM USERS"] [severity "CRITICAL"]
+[ver "OWASP_CRS/2.2.9"] [maturity "9"] [accuracy "8"]
+[tag "OWASP_CRS/WEB_ATTACK/SQL_INJECTION"] [tag "WASCTC/WASC-19"]
 [tag "OWASP_TOP_10/A1"] [tag "OWASP_AppSensor/CIE1"] [tag "PCI/6.5.2"]
 ```
 
