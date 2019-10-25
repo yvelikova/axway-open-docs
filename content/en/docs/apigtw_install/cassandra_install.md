@@ -1,6 +1,6 @@
 {
 "title": "Install an Apache Cassandra database",
-"linkTitle": "Install an Apache Cassandra database",
+"linkTitle": "Install Apache Cassandra",
 "weight":"8",
 "date": "2019-10-02",
 "description": "Install Apache Cassandra to store data for API Manager or API Gateway client registry (API key and OAuth)."
@@ -29,14 +29,14 @@ For details on upgrading from an earlier API Gateway version, see the [API Gatew
 
 ## Cassandra prerequisites
 
-This section describes Cassandra-specific prerequisites in addition to the general API Gateway [Prerequisites](TemplateTopics/prereqs/prereqs_overview.htm#top).
+This section describes Cassandra-specific prerequisites in addition to the general API Gateway [Prerequisites](/docs/apigtw_install/system_requirements).
 
 ### Production environment requirements
 
 API Gateway supports the following in production:
 
 * **Operating systems**:
-    * All supported Linux platforms (see [System requirements](/docs/apigtw_install/system_requirements)
+    * All supported Linux platforms, see [System requirements](/docs/apigtw_install/system_requirements#linux)
 * **Cassandra**:
     * Cassandra version 2.2.12
     * 64-bit OpenJDK JRE or Oracle JRE version 8
@@ -57,7 +57,7 @@ In GUI mode, to install Apache Cassandra only, use the steps described in [Insta
 
 * **Setup Type**: Select **Custom**.
 * **Select Components**: Select **Cassandra**.
-* **Cassandra configuration**: Enter your Cassandra **Installation Directory** and your **JRE Location**. For more details, see [Cassandra configuration](/docs/apigtw_install/installation#cassandra_configuration).
+* **Cassandra configuration**: Enter your Cassandra **Installation Directory** and your **JRE Location**. For more details, see [Cassandra configuration](/docs/apigtw_install/installation#cassandra-configuration).
 
 ## Install Cassandra in unattended mode
 
@@ -66,14 +66,7 @@ To install Apache Cassandra using the API Gateway installer in unattended mode, 
 The following command is an example of how to install Apache Cassandra in unattended mode on Linux:
 
 ```
-./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended
---setup_type advanced
---enable-components cassandra
---disable-components apigateway,qstart,policystudio,analytics,
-configurationstudio,apitester,apimgmt,packagedeploytools
---cassandraInstalldir /opt/db/cassandra
---cassandraJDK /opt/jre
---startCassandra 0
+./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended --setup_type advanced --enable-components cassandra --disable-components apigateway,qstart,policystudio,analytics,configurationstudio,apitester,apimgmt,packagedeploytools --cassandraInstalldir /opt/db/cassandra --cassandraJDK /opt/jre --startCassandra 0
 ```
 
 ### Keep Cassandra installation after API Gateway is uninstalled

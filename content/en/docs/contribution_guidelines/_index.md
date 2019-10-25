@@ -2,49 +2,46 @@
 title: "Contribution guidelines"
 linkTitle: "Contribution guidelines"
 no_list: true
-weight: 20
+weight: 30
 description: >
   How to contribute to Axway-Open-Docs
 ---
 
-All the documentation on this website is written in Markdown. The textual content is stored in the `/content/en/docs/` folder, and the images, in the `/static/Images/<guide_name>` folder.
+This documentation is open source, and we welcome your interest in contributing to improve the quality of our docs.
 
-We support the following contribution flows:
+Please read this guide thoroughly before you start.
 
-* Pull request (PR) via GitHub UI (ideal for small or infrequent changes).
-* Pull request via Netlify CMS (WYSIWYG option is ideal for non-technical users).
-* Pull request via Git CLI (ideal for bigger changes or regular updates). See [Set up and work locally](/docs/contribution_guidelines/setup_work_locally).
-
-{{< alert title="Note" >}}
-All flows require a GitHub account.
-{{< /alert >}}
-
-While you can also create issues on GitHub to ask for updates, it's faster to create a pull request and make the updates yourself.
-
-## Licensing
+## Before you start
 
 Before you can contribute to Axway-open-docs you must sign the [Axway Contributor License Agreement (CLA)](https://cla.axway.com/) using your GitHub account.
 
 This is required just once and it should only take a few minutes.
 
-## What to expect when you contribute
+## Contribution flows
 
-When you submit a PR, our team is notified and will respond as quickly as we can. We'll review your PR and ensure that the changes adhere to Axway style and standards by making additional edits for style or clarity.
+All the documentation on this website is written in Markdown. The textual content is stored in the `/content/en/docs/` folder, and the images, in the `/static/Images/<guide_name>` folder.
 
-We'll contact you if we need further information regards to your PR.
+We support the following contribution flows:
+
+1. Pull request (PR) via GitHub UI (ideal for small or infrequent changes). See [Edit on GitHub](#option-1-edit-on-github)
+2. Pull request via Netlify CMS (WYSIWYG option ideal for non-technical users). See [Edit on Netlify CMS](#option-2-edit-on-netlify-cms)
+
+For experienced users, we also support pull requests via Git CLI (ideal for bigger changes or regular updates). See [Set up and work locally](/docs/contribution_guidelines/setup_work_locally).
 
 {{< alert title="Note" >}}
-GitHub will send you an email notification for every update in your PR or issue.
+All flows require a GitHub account.
 {{< /alert >}}
 
-When the review is finished, we'll merge your PR to this staging website first <https://axway-open-docs.netlify.com/>, then to production <https://docs.axway.com>.
+Finally, if you cannot make a direct contribution, but want to report an issue with this documentation, you can do so using GitHub. See [Create an issue on GitHub](#create-an-issue-on-github).
 
-## Edit a page on GitHub
+### Option 1 - Edit on GitHub
 
-To edit a page and send a PR:
+{{< alert title="Caution" color="warning">}}If you have previously contributed to this project, your fork might be out of sync. If you do not have pending PRs, you must delete your old fork before continuing.
 
-1. Click **Edit this page** on the upper right corner of the page.
-2. If this your first time to edit a page in this project, click **Fork this repository** to create a copy (fork) of the Axway repository in your GitHub account. This allows you to propose changes to a repository that you don't have write access to.
+See [Deleting a repository](/docs/contribution_guidelines/deleting_a_repository/) for more information.{{< /alert >}}
+
+1. Click **Edit on GitHub** on the upper right corner of the page.
+2. Click **Fork this repository** to create a copy (fork) of the Axway repository in your GitHub account. This allows you to propose changes to a repository that you don't have write access to.
 3. Make your changes to the page in the Markdown editor.
 
     Click the **Preview changes** tab to check the formatting of your changes.
@@ -65,17 +62,13 @@ To edit a page and send a PR:
     * This link opens the home page of the website. You must navigate to the page you edited.
     * This link opens in the same tab.
 
-## Create an issue on GitHub
-
-Create an issue to inform us about a problem in the documentation. Please provide detailed information, for example, if it's missing information, an error in a procedure, information not clear, a broken link, and so on. The more details you provide, the more helpful the issue, and the faster we can prioritize and fix it.
-
-To create an issue just click **Create documentation issue** on the upper right corner of the page, and add the relevant information.
-
-## Edit with Netlify CMS
+### Option 2 - Edit on Netlify CMS
 
 Use the Netlify CMS user interface to easily edit pages in a WYSIWYG editor with a real-time preview. You don't need to be familiar with Markdown or with GitHub forking workflows to edit in Netlify CMS.
 
-To edit a page in Netlify CMS:
+{{< alert title="Caution" color="warning">}}If you have previously contributed to this project, your fork might be out of sync. If you do not have pending PRs, you must delete your old fork before continuing.
+
+See [Deleting a repository](/docs/contribution_guidelines/deleting_a_repository/) for more information.{{< /alert >}}
 
 1. Click **Edit on Netlify CMS** on the upper right corner of the page.
 2. Sign in to Netlify CMS using your GitHub account.
@@ -89,13 +82,36 @@ To edit a page in Netlify CMS:
 
     ![Set status to Review](/Images/contributing/netlify_setstatustoreview.png)
 
-    {{< alert title="Warning" color="warning">}}Do not make additional updates to the page after changing the status to **In review**.{{< /alert >}}
-
     You will receive an email automatically generated by Netlify CMS with a link for the pull request created on GitHub.
 
-7. To ensure that we have all the information we need to review your changes, go to GitHub and add a comment to the pull request, as there is currently no ability in Netlify CMS to tell us what you changed and why.
+7. To preview your changes exactly as they will appear on the live website, select **Workflow** in the toolbar and open the page you edited from the **In Review** column. When available, a link to the deploy preview appears, near the publishing controls. Click **View Preview**:
 
-    You can also click the deploy preview link in the pull request to preview your changes exactly as they will appear on the live website.
+    ![Preview on CMS](/Images/contributing/cms_deploy_preview.png)
+
+    * This link opens the home page of the website. You must navigate to the page you edited.
+    * This link opens in the same tab.
+
+8. To ensure that we have all the information we need to review your changes, go to GitHub and add a comment to the pull request, as there is currently no ability in Netlify CMS to tell us what you changed and why.
+
+## What to expect when you contribute
+
+When you submit a PR, our team is notified and will respond as quickly as we can. We'll review your PR and ensure that the changes adhere to Axway style and standards by making additional edits for style or clarity.
+
+We'll contact you if we need further information regards to your PR.
+
+{{< alert title="Note" >}}
+GitHub will send you an email notification for every update in your PR or issue.
+{{< /alert >}}
+
+When the review is finished, we'll merge your PR to this staging website first <https://axway-open-docs.netlify.com/>, then to production <https://docs.axway.com>.
+
+## Create an issue on GitHub
+
+Create an issue to inform us about a problem in the documentation. Please provide detailed information, for example, if it's missing information, an error in a procedure, information not clear, a broken link, and so on. The more details you provide, the more helpful the issue, and the faster we can prioritize and fix it.
+
+To create an issue just click **Create documentation issue** on the upper right corner of the page, and add the relevant information.
+
+* While you can create issues on GitHub to ask for updates, improving the documentation will be faster if you create a pull request and make the updates yourself.
 
 ## Additional resources
 

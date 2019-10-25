@@ -30,6 +30,12 @@ In [Get started with AMPLIFY Central](/docs/central/quickstart), you learned how
 
 You can also secure your API with a JWT client authentication policy. To learn how to generate a JWT and how to apply a JWT client authentication policy to an API, see [Secure an API with JWT](/docs/central/secure_api_jwt/).
 
+### Rate limit an API
+
+Apply a rate limit policy to limit the usage of your API.
+
+To learn how to to apply a rate limit configuration to your API, see [Rate limit an API](/docs/central/proxy_rate_limit/).
+
 ## DevOps integration
 
 AMPLIFY Central supports your DevOps processes by providing an API and a CLI for you to automate your configuration and deployments.

@@ -1,9 +1,9 @@
 {
-    "title":"Secure API Portal",
-    "linkTitle":"Secure API Portal",
-    "weight":"8",
-    "date":"2019-08-09",
-    "description":"Secure and harden your API Portal environment after installation."
+"title": "Secure API Portal",
+"linkTitle": "Secure API Portal",
+"weight": "8",
+"date": "2019-08-09",
+"description": "Secure and harden your API Portal environment after installation."
 }
 
 Perform the following steps after installation to ensure that your API Portal environment is secure from internal and external threats:
@@ -27,26 +27,29 @@ For more details on API Portal certificate management, see the [API Management 
 
 On an API Portal software installation, the Apache web server has TLS versions 1.0 and 1.1 enabled in addition to the TSL 1.2 that API Portal uses. Because TLS 1.0 and 1.1 have security vulnerabilities, it is recommended to disable them.
 
-1. To check which TLS versions are enabled, scan your API Portal port: `sslscan <API Portal IP address>:<your https port>`
+1. To check which TLS versions are enabled, scan your API Portal port:
+
+    ```
+    sslscan <API Portal IP address>:<your https port>
+    ```
 
     By default, API Portal uses port `443` for secure connections.
-
-1. To disable TLS 1.0. and 1.1, open the following file: `/etc/httpd/conf.d/apiportal.conf`
-1. Add the following SSL protocol definition for the secure connection:
+2. To disable TLS 1.0. and 1.1, open the following file: `/etc/httpd/conf.d/apiportal.conf`
+3. Add the following SSL protocol definition for the secure connection:
 
     ```
     <VirtualHost *:443>
-        SSLEngine on
-        SSLCertificateFile "/etc/httpd/conf/server.crt"
-        SSLCertificateKeyFile "/etc/httpd/conf/server.key"
-        SSLProtocol TLSv1.2
-        Header always append X-Frame-Options SAMEORIGIN
-         ...
+       SSLEngine on
+       SSLCertificateFile "/etc/httpd/conf/server.crt"
+       SSLCertificateKeyFile "/etc/httpd/conf/server.key"
+       SSLProtocol TLSv1.2
+       Header always append X-Frame-Options SAMEORIGIN
+        ...
     </VirtualHost>
     ```
 
-1. Restart Apache.
-1. Run the `sslscan` again on your API Portal port to check that TLS 1.0 and 1.1 have been disabled.
+4. Restart Apache.
+5. Run the `sslscan` again on your API Portal port to check that TLS 1.0 and 1.1 have been disabled.
 
 ## Protect Joomla! from direct Internet access
 
@@ -54,22 +57,19 @@ To counter a session fixation vulnerability in Joomla!, it is recommended that y
 
 1. Open the file `/etc/httpd/conf.d/security.conf`.
 2. Add an access restriction directive for the `/administrator` location. Specify the internal IP address range that is allowed to access JAI. For example:
-
-    ```
-    ServerTokens ProductOnly
-    ServerSignature Off
-        <Location /administrator>
-            Order deny,allow
-            deny from all
-            allow from 10.232.14.
-        </Location>
-    ```
-
+   ```
+   ServerTokens ProductOnly
+   ServerSignature Off
+       <Location /administrator>
+           Order deny,allow
+           deny from all
+           allow from 10.232.14.
+       </Location>
+   ```
 3. To restart the web server configuration, enter the following:
-
-    ```
-    # /etc/init.d/apache2 reload
-    ```
+   ```
+   # /etc/init.d/apache2 reload
+   ```
 
 ## Limit the number of failed login attempts
 
@@ -151,9 +151,11 @@ UseCanonicalName Off
 ```
 
 ### Set ServerName to proper FQDN
+
 To protect your web server from a vulnerability giving remote attackers the ability to attain your internal IP address or internal network name, set `ServerName` to a proper FQDN.
 
 ### Restart Apache
+
 Restart Apache after modifying the `apiportal.conf` and `security.conf` files.
 
 ## Configure PHP
@@ -188,9 +190,9 @@ You should only set `session.cookie_secure` to `On` if you have configured SSL.
 
 Set `open_basedir` to a list of directories (use `:` to separate directories):
 
-- API Portal root directory
-- Value of `upload_tmp_dir` or `/tmp` if it is empty
-- New location of log files if you changed them according to [Change the location of API Portal log files](#change-the-location-of-api-portal-log-files)
+* API Portal root directory
+* Value of `upload_tmp_dir` or `/tmp` if it is empty
+* New location of log files if you changed them according to [Change the location of API Portal log files](#change-the-location-of-api-portal-log-files)
 
 After updating `php.ini`, restart Apache.
 
@@ -225,6 +227,65 @@ The user for API Portal should only have access to those databases that it needs
 ## Do not allow web browsers to save login and password
 
 When you log in to Joomla! Administrator Interface (JAI) do not allow the web browser to save or remember your login and password.
+
+## Reject requests containing unexpected or missing content type headers
+
+It is best practice to reject requests containing unexpected or missing content type headers with the HTTP response status `406 Unacceptable` or `415 Unsupported Media Type`.
+
+The Content-Type header specifies what media type is being sent with the request. If the Content-Type header is missing, empty, or unexpected the server must refuse to serve the request with an appropriate response, as allowing the request might lead to Cross-Site Request Forgery (CSRF) or even remote code execution (RCE).
+
+Add the configuration in your `.htaccess` file, virtual host file, or global web server configuration. The following code snippet gives an example for a server processing only `application/json` and `application/x-www-form-urlencoded` data.
+
+```
+# Check if the Content-Type header is missing or empty
+RewriteCond %{HTTP:Content-Type} ^$
+# AND the method type is POST, PUT or PATCH
+RewriteCond %{REQUEST_METHOD} ^(POST|PUT|PATCH)
+# Then redirect with response 415 Unsupported Media Type and stop processing other conditions
+RewriteRule ^ - [R=415,L]
+# OR Content-Type header is present
+RewriteCond %{HTTP:Content-Type} !^$
+# AND Content-Type value doesn't match one of the following, case-insensitive
+RewriteCond %{HTTP:Content-Type} !^(application/json|application/x-www-form-urlencoded) [NC]
+# Then redirect with response 415 Unsupported Media Type and stop processing other conditions
+RewriteRule ^ - [R=415,L]
+```
+
+## Allow requests from only used HTTP methods
+
+It is best practice to reject requests from HTTP methods that are not being used with the response `405 Method Not Allowed`. For example, allowing requests from the `TRACE` method might result in Cross-Site Tracing (XST) attacks. Similarly, allowing requests from `PUT` and `DELETE` methods might expose vulnerabilities to the file system.
+
+`GET` and `POST` requests are mandatory for API Portal. You must also allow requests from the HTTP methods your listed APIs support, so users can send requests to them from the Try It page.
+
+Add this configuration in your `.htaccess` or virtual host file. The following example allows only `GET`, `POST`, and `PUT` methods:
+
+```
+# Disable TRACE method
+TraceEnable off
+
+# Enable GET, POST and PUT methods. Must be separated by a space character.
+AllowMethods GET POST PUT
+```
+
+## Protect the integrity of the logging system
+
+You must ensure that security logs are protected against tampering, repudiation, and unauthorized access or modification. Store logs in a secure and tamper-proof location so that the logs can be used as evidence, for example, in any form of legal proceedings.
+
+To protect the integrity of the application generated logs:
+
+* Store logs on write-once media
+* Forward a copy of the logs to a centralized security information and event management (SIEM) system
+* Generate message digests for each log file
+
+This approach ensures that you can detect and prevent tampering.
+
+API Portal logs are located in the `logs` folder in the API Portal root directory.
+
+## Develop a log retention policy and archival procedures
+
+We recommend that you develop a log retention policy to identify storage requirements for device logs, and appropriate archival procedures to ensure that the audit logs are available for a security response in the case of an incident or investigation.
+
+The audit logs must be collected for the last 30 days in easily accessible storage media. Older logs should be archived in a protected storage and should be accessible in the future as required for incidents or investigations.
 
 ## Where to go next
 
