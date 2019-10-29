@@ -10,8 +10,7 @@
 
 This section explains how to monitor example services using the API Gateway Manager monitoring tools. For example, real-time monitoring metrics, message traffic monitoring, and performance statistics.
 
-{{< alert title="Note" color="primary" >}}API Gateway Manager is designed as an operational diagnostics tool only. API Gateway Analytics is recommended for monitoring and reporting of large volumes of historical data. For more details, see the [API Gateway Analytics User Guide](/bundle/APIGateway_77_AnalyticsUserGuide_allOS_en_HTML5/)
-.{{< /alert >}}
+* API Gateway Manager is designed as an operational diagnostics tool only. API Gateway Analytics is recommended for monitoring and reporting of large volumes of historical data. For more details, see the [API Gateway Analytics User Guide](/bundle/APIGateway_77_AnalyticsUserGuide_allOS_en_HTML5/).
 
 ### Before you start
 
@@ -21,7 +20,7 @@ This section explains how to monitor example services using the API Gateway Mana
     2. To enable traffic monitoring, select **Traffic Monitor > Enable Traffic Monitor**.
     3. To enable real-time monitoring, select **Real Time Monitoring > Enable Real Time Monitoring**.
 
-{{< alert title="Note" color="primary" >}}Enabling traffic monitoring might have a negative impact on performance. To maximize performance, disable these settings. For more details, see [*Traffic monitoring settings* on page 1](traffic_monitor_settings).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Enabling traffic monitoring might have a negative impact on performance. To maximize performance, disable these settings. For more details, see [Traffic monitoring settings](/docs/apigtw_ref/monitor_traffic_events_metrics#traffic-monitoring-settings).{{< /alert >}}
 
 ### View real-time monitoring
 
@@ -32,7 +31,7 @@ tab in the **TRAFFIC** section. The following example shows the number of messag
 
 Each time you send messages through the API Gateway to a service, the message status is displayed in the **TRAFFIC** section.
 
-**View traffic monitoring**:
+### View traffic monitoring
 
 You can use the traffic monitoring tools in API Gateway Manager for operational diagnostics and root cause analysis. The **Traffic**
 view provides a web-based message log of the HTTP, HTTPS, JMS, and FTP traffic processed by the API Gateway. You can perform tasks such as the following:
@@ -95,7 +94,7 @@ Click the chart to display the list of blocked messages automatically filtered o
 
 ![Message blocked](/Images/APIGateway/blocked_message_path.gif)
 
-{{< alert title="Note" color="primary" >}}When a blocked message has failed in API Gateway, this means that a filter executed in a policy has returned a failure status. When a blocked message generates an exception, this means that a filter executed in a policy has aborted (thrown an exception). For more details on filters and policies, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}When a blocked message has failed in the gateway, this means that a filter executed in a policy has returned a failure status. When a blocked message generates an exception, this means that a filter executed in a policy has aborted (thrown an exception).{{< /alert >}}
 
 ### Monitor real-time metrics
 
@@ -115,29 +114,29 @@ Drill down to view metrics for specific components at the bottom (for example, f
 
 ### Configure dynamic trace, logging, and monitoring
 
-Click the **Settings** > **Dynamic** tab to configure trace, logging, and monitoring settings on-the-fly. These are dynamic settings, which means that you do not need to refresh or deploy to the API Gateway. For example, you can specify these settings for an API Gateway system, instance, service, interface, or path. For more details, see [*Configure API Gateway logging and events* on page 1](logging.htm).
+Click the **Settings** > **Dynamic** tab to configure trace, logging, and monitoring settings on-the-fly. These are dynamic settings, which means that you do not need to refresh or deploy to the API Gateway. For example, you can specify these settings for an API Gateway system, instance, service, interface, or path. For more details, see [Configure API Gateway logging and events](/docs/apigtw_admin/logging/).
 
 ## Configure API Gateway with the metrics database
 
 Configure a gateway instance and Node Manager to store metrics on historic traffic in a relational database used to store metrics. For example, you can configure monitoring in API Gateway Analytics or API Manager to view data stored in the metrics database, or write custom SQL queries to retrieve metrics data as required.
 
-{{< alert title="Note" color="primary" >}}This section explains how to configure your gateway with a metrics database. It assumes that you have already created your metrics database using the steps described in [Set up the metrics database for API Gateway Analytics](metrics_db_install).{{< /alert >}}
+This section explains how to configure your gateway with a metrics database, and how to perform the following tasks:
+
+* Use Policy Studio to configure an API Gateway instance to write audit logging events to the metrics database, and to write metrics data to the transaction event log.
+* Use the `managedomain` command to configure the Node Manager to process event logs and update the metrics database.
+
+It is assumed that you have already created your metrics database using the steps described in [Set up the metrics database for API Gateway Analytics](metrics_db_install).
 
 The following data streams are used to populate the metrics database:
 
 * **Transaction and system data**: Transaction data includes clients, services, remote hosts, and protocols. System data includes CPU, memory and disk usage, and SLA breaches. The gateway writes this data to a transaction event log, with a new log file automatically created every 5 minutes. The Node Manager parses completed event logs and updates the metrics database.
 * **Transaction audit log events**: These are written directly to the metrics database by the gateway instance.
 
-This section explains how to perform the following tasks:
-
-* Use Policy Studio to configure an API Gateway instance to write audit logging events to the metrics database, and to write metrics data to the transaction event log.
-* Use the `managedomain` command to configure the Node Manager to process event logs and update the metrics database.
-
 ### Connect to the API Gateway in Policy Studio
 
 To connect to the gateway in Policy Studio, perform the following steps:
 
-1. Ensure the Admin Node Manager and API Gateway are running. For more details, see [Start and stop the API Gateway](/docs/apigtw_admin/general_startup).
+1. Ensure the Admin Node Manager and API Gateway are running. For more details, see [Start and stop the API Gateway](/docs/apigtw_admin/manage_operations/#start-and-stop-the-api-gateway).
 2. Create a new project or open an existing project based on a running API Gateway instance. 
 
 ### Configure the metrics database connection
@@ -149,7 +148,7 @@ To configure the API Gateway connection to the metrics database, perform the fol
 3. Configure the database connection to point to your metrics database.
 4. Verify that your database connection is configured correctly by clicking the **Test Connection** button on the **Configure Database Connection** dialog.
 
-* To write the content of message transactions to the database, you must also configure the **Log Message Payload** filter in your policies (for example, at the start and end of the policy).
+To write the content of message transactions to the database, you must also configure the **Log Message Payload** filter in your policies (for example, at the start and end of the policy).
 
 ### Configure the API Gateway to write to the transaction event log
 
@@ -163,7 +162,7 @@ To configure the API Gateway instance to write transaction data to the transacti
     * Record inbound transactions
     * Record outbound transactions
 
-For more details, see [Transaction event log settings](link here).
+For more details, see [Transaction event log settings](/docs/apigtw_ref/log_global_settings/#transaction-event-log-settings).
 
 ### Deploy the updated configuration to the API Gateway
 

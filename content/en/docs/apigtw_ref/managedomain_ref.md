@@ -18,7 +18,7 @@ The `managedomain` command is available in the following directory:
 INSTALL_DIR/apigateway/posix/bin
 ```
 
-For an overview of the `managedomain` command, see [Configure an API Gateway domain](makegateway).
+For an overview of the `managedomain` command, see [Configure an API Gateway domain](/docs/apigtw_admin/makegateway).
 
 ## Managedomain command interpreter mode
 
@@ -44,14 +44,14 @@ topology_check             topology_compare           topology_merge
 topology_synch             version
 ```
 
-{{< alert title="Note" color="primary" >}}You must first run `initialize` to register the first host in the domain in order to create and run API Gateways.{{< /alert >}}
+* You must first run `initialize` to register the first host in the domain in order to create and run the gateways.
 
 ### View help for a command
 
 You can view detailed help for each command and its parameters by entering `help` followed by the command name. The following example shows the help for the `initialize` command:
 
 ```
-> help initialize
+help initialize
 
 Register the first Node Manager and host in a new domain. This Node Manager will
 always be an Admin Node Manager.
@@ -133,7 +133,7 @@ debug : enable debugging.
 You can run a command using tab completion to specify parameters. The following example shows the available parameters for the `create_instance` command:
 
 ```
-> create_instance <press TAB>
+create_instance <press TAB>
 ```
 
 ```
@@ -147,10 +147,10 @@ username                   password                   truststore_file
 truststore_password
 ```
 
-The following example creates a new API Gateway instance with a specific name and group:
+The following example creates a new gateway instance with a specific name and group:
 
 ```
-> create_instance name APIServer1 group Group1
+create_instance name APIServer1 group Group1
 ```
 
 ```
@@ -165,39 +165,26 @@ New API Gateway SSL certificate details:
     thumbprint:E6:C5:B5:6D:52:1D:74:3E:CD:3E:8B:B5:82:24:3A:78:1B:C9:27:F9
     issuer dname:CN=Domain
     issuer thumbprint:B5:68:73:7A:7B:ED:6D:B0:04:40:CF:E3:BC:36:6D:84:F7:49:29:12
-```
 
-```
 The new API Gateway 'APIServer1' in group 'Group1' has been successfully created and installed
-```
 
-```
 Start the new API Gateway by executing the following command:
 Axway-7.8/apigateway/posix/bin/startinstance -g "Group1 " -n "APIServer1"
-```
 
-```
 You can alternatively add Axway-7.8/apigateway/posix/bin/ to your path and use
 "startinstance -g "Group1" -n "APIServer1"".
-```
 
-```
-You can test the connection by visiting the URL:
-http://roadrunner:8080/healthcheck
+You can test the connection by visiting the URL: http://roadrunner:8080/healthcheck
 ```
 
 Tab completion is also available for some parameter values (instance names, group names and host names). The following example shows available instances for the `delete_instance` command:
 
 ```
-> delete_instance name <press TAB>
-```
+delete_instance name <press TAB>
 
-```
 APIServer1   APIServer2
-```
 
-```
-> delete_instance name APIServer
+delete_instance name APIServer
 ```
 
 ## Managedomain interactive mode
@@ -208,41 +195,41 @@ To run in interactive mode, enter `managedomain --menu`, and follow the instruct
 
 The `managedomain --menu` options for host management are as follows:
 
-* Option `1`: `Register host`
+Option `1`: `Register host`
 
 Add a new host that runs an API Gateway to a domain topology. This is equivalent to the `initialize` command. You must ensure that the host is registered in order to create and run API Gateways. For example, you can specify the following:
 
-   * If the host is an Admin Node Manager
-   * Host name
-   * Node Manager name
-   * Node Manager port
-   * Node Manager passphrase
-   * Linux service for Node Manager
-   * Trust store details
+* If the host is an Admin Node Manager
+* Host name
+* Node Manager name
+* Node Manager port
+* Node Manager passphrase
+* Linux service for Node Manager
+* Trust store details
 
 When registering a Node Manager (Admin or not) in an existing domain, you must specify host details of a running Admin Node Manager in the domain. This is not required when registering the first Admin Node Manager in a new domain because this is always an Admin Node Manager.
 
-* Option `2`. `Edit a host`
+Option `2`: `Edit a host`
 
 Edit the details for a host registered in a domain topology (used occasionally). You can update the following:
 
-   * Host name
-   * Node Manager name
-   * Node Manager port
-   * Node Manager passphrase
-   * Linux service for Node Manager
-   * Change admin capabilities
-   * Enable metrics
+* Host name
+* Node Manager name
+* Node Manager port
+* Node Manager passphrase
+* Linux service for Node Manager
+* Change admin capabilities
+* Enable metrics
 
 Changing admin capabilities enables you to change a Node Manager to Admin Node Manager, or an Admin Node Manager to Node Manager. You can only change admin capabilities of the Node Manager running on the same machine. You cannot remove admin capabilities of the last Admin Node Manager in a domain, or from an Admin Node Manager that has the domain key and certificate used to sign CSRs.
 
 When you get a license for an evaluation mode API Gateway, you must use this option to change the host from `127.0.0.1` to a network reachable address or host name. You must also restart the Node Manager to pick up any changes.
 
-* Option `3`: `Delete a host`
+Option `3`: `Delete a host`
 
 Delete a registered host from a domain topology (used occasionally). You must first stop and delete all API Gateways running on the host. You can use this option to delete an Admin Node Manager or Node Manager. The Admin Node Manager that services this request is not allowed to delete itself from the domain, ensuring the domain always has at least one Admin Node Manager.
 
-* Option `4`: `Change Admin Node Manager and/or credentials, currently connecting as:user admin with truststore None`
+Option `4`: `Change Admin Node Manager and/or credentials, currently connecting as:user admin with truststore None`
 
 By default, you connect to an Node Manager using `managedomain` with the credentials specified at installation time. You can override these at startup by passing the `--username --password` command line parameters, or reset while running `managedomain` with this option. This username/password refers to an `admin` user configured in Policy Studio.
 
@@ -388,6 +375,9 @@ You can use the following properties file to automatically provide admin user na
 INSTALL_DIR/apigateway/conf/managedomain.props
 ```
 
+* You must ensure that the appropriate read and execute privileges for your operating system have been set for the `execute` file.
+* You must also ensure that the `execute` and `managedomain.props` files are protected.
+
 Perform the following steps:
 
 1. Open the `managedomain.props` file in an editor.
@@ -395,8 +385,6 @@ Perform the following steps:
 3. Ensure that the path to `../apigateway/conf/execute.sh` is correct.
 4. Change the password echoed in `../apigateway/conf/execute.sh`.
 5. Save your changes to the file.
-
-{{< alert title="Note" color="primary" >}} You must ensure that the appropriate read and execute privileges for your operating system have been set for the `execute` file. You must also ensure that the `execute` and `managedomain.props` files are protected.{{< /alert >}}
 
 Alternatively, you can provide credentials on the command line. The following example shows command mode:
 
@@ -407,7 +395,7 @@ managedomain.bat --print_toplogy --username <userName> --password <password>
 The following example shows interactive mode:
 
 ```
->managedomain --menu
+managedomain --menu
 Enter username: my_admin_user
 Enter password: **********
 ```

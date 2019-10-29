@@ -1,29 +1,29 @@
 {
 "title": "Manage operations",
 "linkTitle": "Manage operations",
-"weight":"16",
+"weight":"15",
 "date": "2019-10-14",
 "description": "API Gateway operations, including start and stop the gateway and its tools, configure the gateway in high availability, and backup and disaster recovery."
 }
 
 ## Start and stop the API Gateway
 
-This topic describes how to start and stop the Node Manager and the gateway instance on the command line, on all platforms. It also describes how to start the Policy Studio graphical tool. For details on the gateway components and concepts, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
+This section describes how to start and stop the Node Manager and the gateway instance on the command line, on all platforms. It also describes how to start the Policy Studio graphical tool. For details on the gateway components and concepts, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
 
-You can also start and stop gateway instances using the API Gateway Manager web console. For more details, see [Manage API Gateway instances](managetopology#Manage).
+You can also start and stop gateway instances using the API Gateway Manager web console. For more details, see [Manage API Gateway instances](/docs/apigtw_admin/managetopology#manage-api-gateway-instances).
 
 ### Prerequisites
 
-Before you can start the gateway, you must first create a new domain that includes a gateway instance. If you installed the QuickStart tutorial, a sample API Gateway domain is automatically configured in your installation. Otherwise, you must create a new domain. For more details, see [Configure an API Gateway domain](makegateway).
+Before you can start the gateway, you must first create a new domain that includes a gateway instance. If you installed the QuickStart tutorial, a sample API Gateway domain is automatically configured in your installation. Otherwise, you must create a new domain. For more details, see [Configure an API Gateway domain](/docs/apigtw_admin/makegateway).
 
 If you are using Apache Cassandra, before starting the gateway, you must first ensure that Cassandra is running. For details on installing and running Cassandra, see the
-[API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+[API Gateway Installation Guide](/docs/apigtw_install/).
 
 ### Set passphrases
 
 By default, data is stored unencrypted in the API Gateway configuration store. However, you can encrypt certain sensitive information such as passwords and private keys using a passphrase. When the passphrase has been set, this encrypts the API Gateway configuration data.
 
-You must enter the passphrase when connecting to the gateway configuration data (for example, using the Policy Studio, or when the API Gateway starts up). For more details on configuring this passphrase, see [Configure an API Gateway encryption passphrase](general_passphrase).
+You must enter the passphrase when connecting to the gateway configuration data (for example, using the Policy Studio, or when the API Gateway starts up). For more details on configuring this passphrase, see [Configure an API Gateway encryption passphrase](/docs/apigtw_security/general_passphrase#set-passphrases).
 
 ### Start the Node Manager
 
@@ -31,7 +31,7 @@ To start the Node Manager on Linux, complete the following steps:
 
 1. Open a shell at the `/posix/bin` directory of your API Gateway installation.
 2. Run the `nodemanager.sh` file, for example:
-3. If you are using an encryption passphrase, you are prompted for this passphrase. Enter the correct encryption passphrase and press Return. For more details, see [Configure an API Gateway encryption passphrase](general_passphrase).
+3. If you are using an encryption passphrase, you are prompted for this passphrase. Enter the correct encryption passphrase and press Return. For more details, see [Configure an API Gateway encryption passphrase](/docs/apigtw_security/general_passphrase/).
 
 ### Start the API Gateway instance
 
@@ -44,7 +44,7 @@ To start the gateway instance and Policy Studio on Linux, perform the following 
     startinstance -n "my_server" -g "my_group"
     ```
 
-3. If you are using an encryption passphrase, you are prompted for this passphrase. Enter the correct encryption passphrase and press Return. For more details, see [Set passphrases](#Set).
+3. If you are using an encryption passphrase, you are prompted for this passphrase. Enter the correct encryption passphrase and press Return. For more details, see [Set passphrases](#set-passphrases).
 4. When API Gateway has successfully started up, run the`policystudio.sh` file in your Policy Studio installation directory. For example:
 
     ```
@@ -149,7 +149,7 @@ When you need to shut down a ateway for any reason (for example, during an upgra
 
 To perform a zero downtime shutdown, follow these steps:
 
-1. Enable zero downtime shutdown in Policy Studio, and set the delay before shutdown. For more information, see [*Zero downtime settings* on page 1](general_zdd_settings).
+1. Enable zero downtime shutdown in Policy Studio, and set the delay before shutdown. For more information, see [Zero downtime settings](/docs/apigtw_ref/additional_settings#zero-downtime-settings).
 2. Configure your load balancer to ping the Health Check LB policy periodically to determine if each API Gateway is healthy. This is available on the following default URL:
 
     ```
@@ -163,7 +163,57 @@ To perform a zero downtime shutdown, follow these steps:
 
 ## Start the API Gateway tools
 
-(placeholder gs_getting_started.md didn't convert)
+This section describes how to start the API Gateway Manager administrator tool and the Policy Studio developer tool.
+
+### Before you begin
+
+Before you start the API Gateway tools, do the following:
+
+**Install the API Gateway and Policy Studio**:
+
+If you have not already done so, see the [API Gateway Installation Guide](/docs/apigtw_install).
+
+**Configure a managed domain**:
+
+If you have not already created a domain, use the `managedomain` script to configure a domain. You should ensure that the Admin Node Manager and an API Gateway instance are running.
+
+### Launch API Gateway Manager
+
+To access the web-based API Gateway Manager administration tools, perform the following steps:
+
+1. Ensure that the Admin Node Manager is running before you can access the web-based API Gateway Manager tools.
+2. Enter the following URL:
+
+    ```
+    https://HOST:8090/
+    ```
+
+    HOST refers to the host name or IP address of the machine on which API Gateway is running (for example, https://localhost:8090/).
+
+3. Enter the administrator user name and password configured at installation time.
+4. Click the appropriate button in the API Gateway Manager page in the browser. The **Dashboard** view is displayed by default.
+
+The API Gateway Manager includes the following main views:
+
+* **Dashboard**: System health, traffic summary, and topology (domain, hosts, API Gateways, and groups).
+* **Traffic**: Message log and performance statistics on the traffic processed by the gateway. For example, all HTTP, HTTPS, JMS, File Transfer, and Directory messages processed by THE gateway.
+* **Monitoring**: Real-time monitoring of all the traffic processed by API Gateway. Includes statistics at the system level and for services invoked and remote hosts connected to.
+* **Logs**: API Gateway trace log, transaction log, and access log files.
+* **Events**: API Gateway transaction log points, alerts, and SLA alerts.
+* **Settings**: Enables you to configure dynamic gateway logging, user roles, and credentials.
+
+### Start Policy Studio
+
+To start the Policy Studio tool used to create and manage policies, perform the following steps:
+
+1. In your Policy Studio installation directory, enter the policystudio command.
+2. In Policy Studio, select **File > New Project**, and follow the steps in the wizard.
+
+Alternatively, if a project has already been created, select **File > Open Project**, or click a link to the existing project on the Policy Studio landing page.
+
+Policy Studio enables you to perform the full range of API Gateway configuration and management tasks. This includes tasks such as develop and assign policies, import services, optimize API Gateway configuration settings, and manage API Gateway deployments.
+
+For more details on using the Policy Studio to manage API Gateway processes and configurations, see [Manage API Gateway deployments](/docs/apigtw_admin/deploy_get_started#manage-api-gateway-deployments).
 
 ## Configure API Gateway high availability
 
@@ -205,7 +255,7 @@ The health check returns a simple `<status>ok</status>` message when successful.
 
 Both transparent load balancing and non-transparent load balancing are supported. For example, in transparent load balancing, the gateway can see that incoming messages are sent from specific client and load balancer IP addresses. The gateway can also extract specific client details from the HTTP header as required (for example, the SSL certificate, user credentials, or IP address for Mutual or 2-Way SSL Authentication). In non-transparent load balancing, the gateway sees only the virtual service address of the load balancer.
 
-In addition, API Gateway can also act as load balancer on the outbound connection to the back-end APIs. For more details, see [Remote Hosts](#Remote).
+In addition, API Gateway can also act as load balancer on the outbound connection to the back-end APIs. For more details, see [Remote Hosts](#remote-hosts).
 
 ### Java Message System
 
@@ -220,7 +270,7 @@ API Gateway supports integration with a wide range of third-party Java Message S
 
 API Gateway can act as a JMS client (for example, polling messages from third-party JMS products or sending message to them). For details on configuring the gateway client connections to JMS systems, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/). For details on configuring HA in supported third-party JMS systems, see the user documentation available from your JMS provider.
 
-API Gateway also provides an embedded Apache ActiveMQ server in each API Gateway instance. For more details, see [Embedded Apache ActiveMQ](#Embedded).
+API Gateway also provides an embedded Apache ActiveMQ server in each API Gateway instance. For more details, see [Embedded Apache ActiveMQ](#embedded-apache-activemq).
 
 ### File Transfer Protocol
 
@@ -231,8 +281,6 @@ API Gateway supports the following protocols:
 * Secure Shell FTP (SFTP)
 
 When using FTP protocols, the gateway writes to a specified directory in your filesystem. In HA environments, when the uploaded data is required for subsequent processing, you should ensure that the filesystem is shared across your API Gateway instances—for example, using Storage Area Network (SAN) or Network File System (NFSv4).
-
-For more details on configuring FTP connections, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
 ### Remote Hosts
 
@@ -283,9 +331,9 @@ You can configure a gateway instance to use an external Apache Cassandra databas
 
 If your gateway system uses any of these features, you must configure an external Apache Cassandra database for HA. All API Gateways in a group can share the same external Cassandra data source. In a production environment, you must configure the gateway group to use the same Cassandra data source to provide HA.
 
-{{< alert title="Note" color="primary" >}}All nodes in a Cassandra cluster must run on the same operating system.{{< /alert >}}
+All nodes in a Cassandra cluster must run on the same operating system.
 
-For more details on installing and configuring an external Cassandra database for HA, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+For more details on installing and configuring an external Cassandra database for HA, see the [Install an Apache Cassandra database](/docs/apigtw_install/cassandra_install/).
 
 ### Embedded Apache ActiveMQ
 
@@ -295,8 +343,8 @@ In this shared network of ActiveMQ brokers, each gateway can start a local embed
 
 For details on how to configure and manage embedded Apache ActiveMQ, see the following:
 
-* [Embedded ActiveMQ settings](general_activemq_settings)
-* [Manage embedded ActiveMQ messaging](admin_messaging)
+* [Embedded ActiveMQ settings](/docs/apigtw_ref/general_activemq_settings)
+* [Manage embedded ActiveMQ messaging](/docs/apigtw_admin/admin_messaging)
 
 For more details on Apache ActiveMQ, see <http://activemq.apache.org/>.
 
@@ -340,7 +388,7 @@ All nodes in the DMZ run Node Managers. There are two nodes deployed behind the 
 
 You must configure at least two Admin Node Managers in a domain for high availability and security.
 
-For details on how to configure and secure multiple Admin Node Managers in a domain, see [Configure Admin Node Manager high availability](/docs/apigtw_admin/admin_node_mngr.htm).
+For details on how to configure and secure multiple Admin Node Managers in a domain, see [Configure Admin Node Manager high availability](/docs/apigtw_admin/admin_node_mngr).
 
 ## API Gateway backup and disaster recovery
 
@@ -370,15 +418,11 @@ You must also back up all databases and third-party systems used with the API Ga
 * Any databases or third-party systems that the API Gateway connects to in External Connections
 
 {{< alert title="Note" color="primary" >}}
-You do not need to back up Policy Studio, Configuration Studio, or API Tester because these tools run in a temporary workspace when required.
-{{< /alert >}}
-
-However, if you have modified any third-party dependencies on the **Preferences** page (for example, to connect to a specific database), you must also add the relevant `.jar` on the **Runtime Dependencies** page in your disaster recovery environment.
+You do not need to back up Policy Studio, Configuration Studio, or API Tester because these tools run in a temporary workspace when required. However, if you have modified any third-party dependencies on the **Preferences** page (for example, to connect to a specific database), you must also add the relevant `.jar` on the **Runtime Dependencies** page in your disaster recovery environment.{{< /alert >}}
 
 ### Back up API Gateway
 
-{{< alert title="Note" color="primary" >}}
-Before starting the back up, you can remove the contents of the `apigateway/conf/opsdb.d` directory. This contains transient monitoring data, which can be quite large in some cases, and does not need to be backed up. {{< /alert >}}
+Before starting the back up, you can remove the contents of the `apigateway/conf/opsdb.d` directory. This contains transient monitoring data, which can be quite large in some cases, and does not need to be backed up.
 
 To back up the gateway installation, you must back up files that have changed in the following directory:
 
@@ -399,7 +443,7 @@ For example, the following directories include API Gateway configuration, and wi
 
 ### Back up before applying a service pack
 
-A service pack requires a full backup of the API Gateway installation, to enable you to restore the previous installation.
+A service pack requires a full backup of the gateway installation, to enable you to restore the previous installation.
 
 For example, the following directories should always be backed up before applying a service pack:
 
@@ -434,7 +478,7 @@ For example, the following directories include API Gateway Analytics configurati
 
 ### Back up databases and third-party systems
 
-You must back up all databases and third-party systems used with API Gateway. For example, you can back a MySQL database by creating a dump file of the tables in use:
+You must back up all databases and third-party systems used with the gateway. For example, you can back a MySQL database by creating a dump file of the tables in use:
 
 ```
 mysqldump -u root temp_backup > db_tables.dump
@@ -450,7 +494,7 @@ To ensure this, your backup and disaster recovery plan should include key metric
 
 ### Example of creating an API Gateway disaster recovery site
 
-This simple example shows how to create a disaster recovery site from a backup of an API Gateway production deployment. It assumes that both the disaster recovery site and the primary production site have the same version of API Gateway installed. In this scenario, the disaster recovery site is a cold standby, and the configuration from production is replicated using a backup of production configuration.
+This simple example shows how to create a disaster recovery site from a backup of a gateway production deployment. It assumes that both the disaster recovery site and the primary production site have the same version of API Gateway installed. In this scenario, the disaster recovery site is a cold standby, and the configuration from production is replicated using a backup of production configuration.
 
 **Back up the production environment**:
 
@@ -463,7 +507,7 @@ To back up the production environment, perform the following steps.
     * `apigateway/system/conf/nodemanager.xml`
     * `apigateway/ext`
 
-If you want the API Gateway and Node Manager to start up automatically on the new host, you should also include `/etc/init.d/vshell-*`.
+If you want the gateway and Node Manager to start up automatically on the new host, you should also include `/etc/init.d/vshell-*`.
 
 This includes separate startup scripts files for the Node Manager and API Gateway instances if an `init.d` script was created using `managedomain` during initial setup.
 
@@ -472,14 +516,14 @@ You can create these at any time using `managedomain`, and choosing option `2`, 
 For example, the following command creates a `.tar` file running from the root directory:
 
 ```
->tar -cvf apigateway_backup.tar /opt/apigateway/conf /opt/apigateway/groups
+tar -cvf apigateway_backup.tar /opt/apigateway/conf /opt/apigateway/groups
 /opt/apigateway/system/conf/nodemanager.xml
 ```
 
 The following example creates a `.tar` file containing the startup scripts running from the root directory:
 
 ```
->tar -cvf startup_scripts.tar /etc/init.d/vshell-*
+tar -cvf startup_scripts.tar /etc/init.d/vshell-*
 ```
 
 **Copy to the disaster recovery site**:
@@ -508,6 +552,4 @@ To replicate to the disaster recovery site:
 
 For details on how to back up and restore an Admin Node Manager for signing SSL certificates in an API Gateway domain, see [Configure Admin Node Manager high availability](/docs/apigtw_admin/admin_node_mngr).
 
-For details on how to back and restore internal data stored in Apache Cassandra (for example, API Gateway KPS data or API Manager data), see the [API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/).
-
-For details on how to configure the underlying settings for API Gateway using the Server Settings node in the Policy Studio tree, see the [API Gateway settings reference](/docs/apigtw_admin/general_ps_options).
+For details on how to back and restore internal data stored in Apache Cassandra (for example, API Gateway KPS data or API Manager data), see the [Apache Cassandra backup and restore](/docs/cass_admin/cassandra_bur/).

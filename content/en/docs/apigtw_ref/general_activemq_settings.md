@@ -76,7 +76,7 @@ When **Require client certificates** is selected, you can then select the root c
 
 Configure the following to specify authentication settings between multiple embedded ActiveMQ brokers:
 
-* The authentication settings are also used by features on the **Messaging** tab in the API Gateway Manager web console (for example, sending messages and managing durable topic subscriptions). For more details, see [Manage embedded ActiveMQ messaging](/docs/apigtw_admin/admin_messaging.htm).
+* The authentication settings are also used by features on the **Messaging** tab in the API Gateway Manager web console (for example, sending messages and managing durable topic subscriptions). For more details, see [Manage embedded ActiveMQ messaging](/docs/apigtw_admin/admin_messaging).
 
 **Authenticate broker and client connections with the following policy**:
 

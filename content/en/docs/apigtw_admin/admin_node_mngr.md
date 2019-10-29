@@ -11,13 +11,15 @@ The Admin Node Manager (ANM) is the central administration server for a gateway 
 In addition to managing the local gateways on its host, the Admin Node Manager communicates with the Node Managers in the domain to perform management operations across the domain. In this architecture, the Node Managers only communicate with the Admin Node Manager, and the API Gateway Manager, Policy Studio, and `managedomain` tools connect to the Admin Node Manager. For more details on Admin Node Manager architecture, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
 
 {{< alert title="Note" color="primary" >}}
-It is recommended that you configure at least two Admin Node Managers in a gateway domain for high availability (HA). This topic describes how to use the using the `managedomain`
+It is recommended that you configure at least two Admin Node Managers in a gateway domain for high availability (HA). This topic describes how to use the `managedomain`
 command to configure and secure multiple Admin Node Managers in a domain.
 {{< /alert >}}
 
 ## Hierarchy of SSL certificates in a domain
 
 API Gateway uses Secure Sockets Layer (SSL) for communications between all processes in a domain. This includes internal management traffic between the Admin Node Manager, Node Manager, and the gateway instances, as shown in the diagram.
+
+* The SSL inter-process communication discussed in this topic refers to system-level management communication only. This is not related to any SSL communication with back-end services, or any SSL ports that the gateway exposes for business traffic.
 
 ![Admin Node Manager in API Gateway domain](/Images/APIGateway/admin_node_mngr_ha.png)
 
@@ -27,10 +29,6 @@ This diagram is described as follows:
 * Mutual SSL is used for communication between Admin Node Managers and Node Managers, and also between Node Managers and API Gateway instances.
 * Each Admin Node Manager, Node Manager, and API Gateway process has an associated SSL certificate used in the SSL session for inter-process communication. These certificates are also used to determine whether a process is a Node Manager or an Admin Node Manager.
 * The domain SSL certificate is the Certificate Authority (CA) used to sign the SSL certificates generated for each Admin Node Manager, Node Manager, and API Gateway process.
-
-{{< alert title="Note" color="primary" >}}
-The SSL inter-process communication discussed in this topic refers to system-level management communication only. This is not related to any SSL communication with back-end services, or any SSL ports that the API Gateway exposes for business traffic.
-{{< /alert >}}
 
 ## How SSL certificates are generated for domain processes
 
@@ -70,7 +68,7 @@ When registering the first Admin Node Manager, you must run `managedomain -i` on
 This generates the private key for the Admin Node Manager, and private keys must always be generated where they are used. No SSL certificates are provided out-of-the-box
 (when the QuickStart demo is not installed).
 
-**Sign Admin Node Manager certificate with system-generated CA key**:
+### Sign Admin Node Manager certificate with system-generated CA key
 
 To register the first Admin Node Manager in the domain and sign its SSL certificate with a system-generated CA key, run the following command:
 
@@ -81,7 +79,7 @@ managedomain -i
 This command generates the CA private key, and a self-signed certificate. It also generates the Admin Node Manager private key and certificate signed by self-signed CA certificate. This command uses the `--sign_with_generated`
 option by default, which means that the SSL certificates are signed with a system-generated CA private key and certificate. There are no Node Managers running in the domain to call yet.
 
-**Sign Admin Node Manager certificate with user-provided CA key**:
+### Sign Admin Node Manager certificate with user-provided CA key
 
 To register the first Admin Node Manager in the domain and sign its SSL certificate with a user-provided CA key, run the following example command:
 
@@ -91,7 +89,7 @@ managedomain -i --sign_with_user_provided --ca=/home/keys/test.p12i
 
 This command generates the Admin Node Manager private key and certificate signed by user-provided CA certificate.
 
-**Sign Admin Node Manager certificate with external CA**:
+### Sign Admin Node Manager certificate with external CA
 
 To register the first Admin Node Manager in the domain and sign its SSL certificate with an external CA, run the following example command:
 
@@ -107,53 +105,43 @@ When you have the signed certificate, use the following command to submit the ce
 managedomain --submit_cert --cert cert.pem
 ```
 
-* API Gateway as external CA
+**API Gateway as external CA**:
 
 In a production environment, you can use the `--sign_with_external_ca` option, and take the generated CSR to an external CA (for example, Verisign). Alternatively, in a development environment, you can run the following command to generate the certificate on an isolated API Gateway installation:
 
-```
-managedomain --sign_csr --csr nodemanager.csr
-```
+    ```
+    managedomain --sign_csr --csr nodemanager.csr
+    ```
 
 This command creates a certificate signed using the system-generated CA key. It writes the certificate to a file, displays the file name so you can retrieve and copy to the host running `managedomain`, and complete registration of the new Node Manager.
 
-{{< alert title="Tip" color="primary" >}}If you wish to avoid using a system-generated self-signed certificate, you can manually copy a user-provided CA private key and certificate to the following locations:{{< /alert >}}
+If you wish to avoid using a system-generated self-signed certificate, you can manually copy a user-provided CA private key and certificate to the following locations:
 
-```
-apigateway/groups/certs/private/domain.p12apigateway/groups/certs/private/domainkey.pem apigateway/groups/certs/domaincert.pem
-```
+    ```
+    apigateway/groups/certs/private/domain.p12apigateway/groups/certs/private/domainkey.pem apigateway/groups/certs/domaincert.pem
+    ```
 
-**Additional certificate generation options**:
+### Additional certificate generation options
 
 In addition to the example commands already shown, you can specify the following options when using `managedomain` to sign SSL certificates for inter-process communication:
 
-```
---domain_passphrase
-```
+`--domain_passphrase`
 
-Encrypt a newly generated `domain.p12`, or unlock a user-provided `domain.p12`. 
+Encrypt a newly generated `domain.p12`, or unlock a user-provided `domain.p12`.
 
-```
---domain_name
-```
+`--domain_name`
 
 Specify the Distinguished Name (DName) for a system-generated CA certificate. Defaults to `CN=Domain`.
 
-```
---sign_alg
-```
+`--sign_alg`
 
 Specify the certificate signing algorithm (for example, `sha1`, `sha256`, `sha384`, or `sha512`). Defaults to `sha256`.
 
-```
---subj_alt_name
-```
+`--subj_alt_name`
 
 Specify a subject alternative name content for the Admin Node Manager certificate. This is used by web browsers during the SSL handshake exchange.
 
-```
---key_passphrase
-```
+`--key_passphrase`
 
 You can also encrypt temporary private key files stored on disk. For example, for the Admin Node Manager private key before it is consumed and written to the Node Manager configuration.
 
@@ -169,7 +157,7 @@ You can specify multiple subject alternative names, for example:
 
 The steps for adding a Node Manager or Admin Node Manager are different because there is now an Admin Node Manager running in the domain that must be invoked to add the new Node Manager.
 
-**Sign Node Manager certificate with system-generated CA key**:
+### Sign Node Manager certificate with system-generated CA key
 
 To add a Node Manager to the domain and sign its SSL certificate with a system-generated CA key, run the following command:
 
@@ -179,7 +167,7 @@ managedomain -a --sign_with_generated --anm_host my_anm.com
 
 This command generates the Node Manager private key, obtains the Node Manager certificate from the Admin Node Manager, and completes registration of the new Node Manager in the domain.
 
-**Sign Node Manager certificate with user-provided CA key**:
+### Sign Node Manager certificate with user-provided CA key
 
 To add a Node Manager to the domain and sign its SSL certificate with a user-provided CA key, run the following command:
 
@@ -190,7 +178,7 @@ managedomain -a --sign_with_user_provided --ca=/home/keys/test.p12
 
 This command signs the new Node Manager certificate with the user-provided CA key and certificate, and completes registration of the new Node Manager in the domain.
 
-**Sign Node Manager certificate with external CA**:
+### Sign Node Manager certificate with external CA
 
 To add a Node Manager to the domain and sign its SSL certificate with an external CA, run the following command:
 
@@ -206,7 +194,7 @@ When you have the signed certificate, use the following command to submit the ce
 managedomain --submit_cert --cert cert.pem
 ```
 
-**Additional options**:
+### Additional options
 
 You can use the `--is_admin` option to specify whether the process is an Admin Node Manager or Node Manager. For more details, see [Change a Node Manager to an Admin Node Manager](change-a-node-manager-to-an-admin-node-manager). See also [Additional certificate generation options](#additional-certificate-generation-options).
 
@@ -214,7 +202,7 @@ You can use the `--is_admin` option to specify whether the process is an Admin N
 
 This section describes the options for signing an API Gateway instance SSL certificate when adding an API Gateway instance to the domain.
 
-**Sign API Gateway certificate with system-generated CA key**:
+### Sign API Gateway certificate with system-generated CA key
 
 To add an API Gateway instance to the domain and sign its SSL certificate with a system-generated CA key, run the following example command:
 
@@ -224,7 +212,7 @@ managedomain -c -n APIGateway1 -g Group1
 
 This command uses the `--sign_with_generated` option by default.
 
-**Sign API Gateway certificate with user-provided CA key**:
+### Sign API Gateway certificate with user-provided CA key
 
 To add an API Gateway instance to the domain and sign its SSL certificate with a user-provided CA key, run the following example command:
 
@@ -232,7 +220,7 @@ To add an API Gateway instance to the domain and sign its SSL certificate with a
 managedomain -c -n APIGateway1 -g Group1 --sign_with_user_provided --ca=/home/keys/test.p12
 ```
 
-**Sign API Gateway certificate with external CA**:
+### Sign API Gateway certificate with external CA
 
 To add an API Gateway instance to the domain and sign its SSL certificate with an external CA, run the following example command:
 
@@ -248,7 +236,7 @@ When you have the signed certificate, use the following command to submit the ce
 managedomain --submit_cert --cert cert.pem
 ```
 
-See also [Sign Admin Node Manager certificate with external CA](#sign-admin-node-manager-certificate-with-external-ca) and [Additional certificate generation options](#additional-certificate-generation-options)
+See also [Sign Admin Node Manager certificate with external CA](#sign-admin-node-manager-certificate-with-external-ca) and [Additional certificate generation options](#additional-certificate-generation-options).
 
 When you add a Node Manager to the domain using the `-a` option, you can add it as a Node Manager or Admin Node Manager. For more details, see [Add a Node Manager to the domain](#add-a-node-manager-to-the-domain). The section that follows describes how to change whether it is a Node Manager or Admin Node Manager at a later stage.
 
@@ -258,11 +246,11 @@ You can change the admin capabilities of the Node Manager running on the host lo
 
 The same options for signing an SSL certificate for a Node Manager or API Gateway instance (described in the preceding sections) are available when changing a Node Manager to an Admin Node Manager, or an Admin Node Manager to a Node Manager.
 
-{{< alert title="Note" color="primary" >}}To change admin capabilities of an Admin Node Manager or Node Manager, you must run `managedomain` on the same host that the Admin Node Manager or Node Manager you wish to change is running. You can edit other aspects of a host remote from `managedomain`.{{< /alert >}}
+* To change admin capabilities of an Admin Node Manager or Node Manager, you must run `managedomain` on the same host that the Admin Node Manager or Node Manager you wish to change is running. You can edit other aspects of a host remote from `managedomain`.
 
 You cannot remove admin capabilities when there is only one Admin Node Manager in a domain because there must be at least one Admin Node Manager in a domain.
 
-**Sign Node Manager certificate with system-generated CA key**:
+### Sign the Node Manager certificate with system-generated CA key
 
 When `host1.com` has an Admin Node Manager, to change admin capabilities from Admin Node Manager to Node Manager, run the following example command:
 
@@ -287,7 +275,7 @@ To remove admin capabilities from the first registered Admin Node Manager, you m
 
 Otherwise, you will not be able to remove admin capabilities. This only applies to a system-generated CA key.
 
-**Sign Node Manager certificate with user-provided CA key**:
+### Sign the Node Manager certificate with user-provided CA key
 
 When `host1.com` has an Admin Node Manager, to change admin capabilities from Admin Node Manager to Node Manager, run the following example command:
 
@@ -303,7 +291,7 @@ managedomain --edit_host --host host1.com --sign_with_user_provided --ca=/home/k
 
 In both cases, the command performs the same steps described in [*Sign certificate with system-generated CA key* on page 1](#Sign2), and the same conditions apply.
 
-**Sign Node Manager certificate with external CA**:
+### Sign the Node Manager certificate with external CA
 
 When `host1.com` has an Admin Node Manager, to change admin capabilities from Admin Node Manager to Node Manager, run the following example command:
 
@@ -331,7 +319,7 @@ This section explains how to regenerate all SSL certificates used for inter-proc
 
 You can also change the domain certificate management option. For example, if the domain was first configured to use a system-generated CA key and certificate to sign all SSL certificates, you can change to a user-provided CA key and certificate, or an external CA. However, you must use the same option on all hosts in the domain.
 
-**Sign certificates in domain with system-generated CA key**:
+### Sign certificates in domain with system-generated CA key
 
 {{< alert title="Note" color="primary" >}}You must first regenerate on the Admin Node Manager host that will hold the system-generated self-signed CA key. This may or may not be the same host that held the system-generated self-signed CA key before regeneration.{{< /alert >}}
 
@@ -351,19 +339,19 @@ After regenerating certificates, you must reboot the Node Manager and API Gatewa
 When you regenerate certificates on the first Admin Node Manager, a Node Manager or API Gateway does not need to be running. When you regenerate certificates on subsequent hosts, the Admin Node Manager holding the CA key must be running because it is used to sign the certificates. This applies only for system-generated CA keys.
 {{< /alert >}}
 
-**Sign certificates in domain with user-provided CA key**:
+### Sign certificates in domain with user-provided CA key
 
 To regenerate all certificates on a host and sign with a user-provided key, run the following example command on each host in the domain:
 
 ```
-managedomain --regen\_certs --sign\_with\_user\_provided --ca=/home/users/qa.p12 --domain\_passphrase foo
+managedomain --regen_certs --sign_with_user_provided --ca=/home/users/qa.p12 --domain_passphrase foo
 ```
 
 This command generates the private keys for the Node Manager and API Gateway instances and signs their certificates. After regenerating the certificates, you must then reboot the Node Manager and API Gateway instances on the local machine.
 
 In this case, `managedomain` does not communicate with an Admin Node Manager when regenerating certificates. The order of hosts selected for certificate regeneration does not matter. An Admin Node Manager does not need to be running when certificates are regenerated or submitted.
 
-**Sign certificates in domain with external CA**:
+### Sign certificates in domain with external CA
 
 To regenerate all certificates on a host and sign with an external CA, run the following command on each host in the domain:
 
@@ -382,13 +370,11 @@ managedomain --submit_cert --cert cert.pem
 After regenerating certificates, you must reboot the Node Manager and API Gateway instances on the local machine. In this case, `managedomain`
 does not talk to an Admin Node Manager when regenerating certificates. The order of hosts selected for certificate regeneration does not matter. An Admin Node Manager does not need to be running when certificates are regenerated or submitted.
 
-{{< alert title="Tip" color="primary" >}}
-You can use `managedomain` in interactive mode (option `24` ) to regenerate a subset of certificates on the host. If you regenerate the CA key and certificate, the Node Manager and all API Gateway certificates are automatically generated.
-{{< /alert >}}
+* You can use `managedomain` in interactive mode (option `24` ) to regenerate a subset of certificates on the host. If you regenerate the CA key and certificate, the Node Manager and all API Gateway certificates are automatically generated.
 
-If you do not regenerate the CA key and certificate, you can choose whether to regenerate the Node Manager certificate, and which API Gateway certificates to regenerate. For more details, see [*Managedomain command reference* on page 1](managedomain_ref.htm).
+If you do not regenerate the CA key and certificate, you can choose whether to regenerate the Node Manager certificate, and which API Gateway certificates to regenerate. For more details, see [Managedomain command reference](/docs/apigtw_admin/managedomain_ref).
 
-**Reset passphrase for CA private key**:
+### Reset passphrase for CA private key
 
 If a system-generated CA private key is used, you can reset the passphrase on the command line as follows:
 
@@ -400,7 +386,7 @@ managedomain --change_domain_passphrase --old_passphrase "oldpass" --new_passphr
 
 If a new SSL certificate is to be generated (due to a new Node Manager or new API Gateway instance), the new domain passphrase must be provided to unlock the CA private key. This command modifies local files only. It does not communicate with any Node Managers in the domain.
 
-**Change domain SSL certificate expiry date**:
+### Change domain SSL certificate expiry date
 
 By default, the SSL certificates are valid for 100 years. To change this value, edit the `apigateway/skel/openssl.cnf` file, and change the value of the `default_days` setting in the `CA_default` section.
 
@@ -417,12 +403,12 @@ This setting applies to signing with a system-generated or user-generated CA key
 
 When the `default_days` setting is changed, all newly signed certificates have the new expiry date. You do not need to reboot the Node Manager. However, you must regenerate certificates if you wish to modify the expiry date of existing certificates.
 
-**Admin Node Manager backup and disaster recovery**:
+### Admin Node Manager backup and disaster recovery
 
 This section explains how to create a backup Admin Node Manager for signing certificates, and how to set up an Admin Node Manager for signing certificates from a backup `domain.p12`
 file.
 
-* Create backup Admin Node Manager for signing certificates
+**Create backup Admin Node Manager for signing certificates**:
 
 If you are using a system-generated CA private key and certificate, the CA private key and certificate are only on the first Admin Node Manager registered in the domain. You can manually copy this CA private key and certificate to other Admin Node Managers so that there is always a backup Admin Node Manager available to sign certificates. Alternatively, you can copy the CA private key and certificate only when there is a problem with the first Admin Node Manager (for example, it is no longer running).
 
@@ -440,7 +426,7 @@ You do not need to reboot Admin Node Manager 2 to be able to sign certificates. 
 You can decide when and if to copy the CA private key to limit the copies of this sensitive data. You must always backup the `domain.p12` file after the registration of the first Admin Node Manager in some secure offline location.
 {{< /alert >}}
 
-* Set up Admin Node Manager for signing certificates from a backup `.p12`
+**Set up Admin Node Manager for signing certificates from a backup `.p12`**:
 
 You can set up an Admin Node Manager for signing certificates from a backup `domain.p12` file only. Perform the following steps:
 
@@ -455,17 +441,15 @@ cd apigateway/groups/certs/privateopenssl pkcs12 -in domain.p12 -out
 -out domainkey.pem -nocerts -passin pass:fred -passout pass:fred
 ```
 
-**Location of SSL private keys and certificates**:
+### Location of SSL private keys and certificates
 
 This section describes the locations of the SSL private keys and certificates for the CA, Node Manager, and API Gateway instances.
 
-* Location of CA private key and certificate
+#### Location of CA private key and certificate
 
 The location of the CA private key and certificate depends on how they are signed.
 
-**System-generated CA private key and certificate**
-
-If SSL certificates are signed by a system-generated CA private key and certificate, the CA private key and certificate are written to disk when the first Admin Node Manager is created by `managedomain`:
+**System-generated CA private key and certificate**: If SSL certificates are signed by a system-generated CA private key and certificate, the CA private key and certificate are written to disk when the first Admin Node Manager is created by `managedomain`:
 
 * **CA private key**: `apigateway/groups/certs/private/domainkey.pem`
 * **CA private key and certificate**: `apigateway/groups/certs/private/domain.p12`
@@ -483,7 +467,7 @@ The CA private key files can be encrypted by a passphrase. You must enter this w
 
 **External CA private key and certificate**: If SSL certificates are signed by an external CA, the CA private key remains with the external third-party CA, or isolated API Gateway installation acting as an external CA. The CA certificate is copied to the API Gateway configuration because it is part of the SSL certificate chain.
 
-* Location of Node Manager private key and certificate
+#### Location of Node Manager private key and certificate
 
 The Node Manager private key and certificate chain are stored in the Node Manager configuration in the following directory:
 
@@ -493,9 +477,9 @@ apigateway/conf/fed
 
 The private key is encrypted using the entity store passphrase.
 
-* Location of API Gateway private key and certificate
+#### Location of API Gateway private key and certificate
 
-The API Gateway private key and certificate chain are stored in the following directory:
+The gateway private key and certificate chain are stored in the following directory:
 
 ```
 apigateway/groups/group-2/instance-1/conf/certs.xml
@@ -513,4 +497,4 @@ If an external CA is signing the certificate, sensitive files may exist for a co
 
 For more details on Admin Node Manager architecture, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
 
-For example Admin Node Manager deployment scenarios, see [Configure API Gateway high availability](high_availability.htm).
+For example Admin Node Manager deployment scenarios, see [Configure API Gateway high availability](/docs/apigtw_admin/manage_operations#configure-api-gateway-high-availability).

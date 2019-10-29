@@ -95,7 +95,7 @@ The version information for each host is shown in the Product Version column (fo
 
 You can use the topology view in API Gateway Manager tool to create, delete, and lock API Gateway groups. The following example shows the options available at the group level:
 
-![Manage groups in API Gateway Manager](/Images/docbook/images/admin/admin_topology_group.png)
+![Manage groups in API Gateway Manager](/Images/APIGateway/admin_topology_group.png)
 
 ### Create an API Gateway group
 
@@ -154,7 +154,7 @@ To start an API Gateway instance, perform the following steps:
 
 The following example shows how to start a stopped API Gateway instance:
 
-![Start API Gateway instance in API Gateway Manager](/Images/docbook/images/admin/admin_topology_instance.png)
+![Start API Gateway instance in API Gateway Manager](/Images/APIGateway/admin_topology_instance.png)
 
 ### Stop an API Gateway instance
 

@@ -3,17 +3,16 @@
 "linkTitle": "Configure a gateway domain",
 "weight":"10",
 "date": "2019-10-14",
-"description": "Use the `managedomain` command to register a host gateway in a new domain, and create a new gateway instance."
+"description": "Use the `managedomain` command to register a host gateway in a new domain and to create a new gateway instance."
 }
 
-This topic describes how to use the `managedomain` command in interactive mode to configure a managed gateway. It shows how to register a host in a new domain, and create a new gateway instance. These are the minimum steps required to configure a domain.
+This topic describes how to use the `managedomain` command in interactive mode to configure a managed gateway. It shows the minimum steps required to configure a domain: register a host in a new domain and create a new gateway instance.
 
-{{< alert title="Note" color="primary" >}}This topic assumes that you have already installed your gateway (see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/)). To use the gateway, you must have a domain configured in your installation.
-If you installed the QuickStart tutorial, an example domain was created automatically. If you did not install QuickStart, you must configure a domain using `managedomain`.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}This topic assumes that you have already installed your gateway (see the [API Gateway Installation Guide](/docs/apigtw_install/)). To use the gateway, you must have a domain configured in your installation. If you installed the QuickStart tutorial, an example domain was created automatically. If you did not install QuickStart, you must configure a domain using `managedomain`.{{< /alert >}}
 
 A single gateway installation supports a single gateway domain only. If you wish to run gateways in different domains on the same host, you need separate installations for each domain. For details on gateway domains and groups, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
 
-You can also use the topology view in the web-based API Gateway Manager tool to manage a newly created domain. For example, you can perform tasks such as create or delete API Gateway groups and instances,and start or stop the gateway instances. For more details, see [Manage domain topology in API Gateway Manager](managetopology).
+You can also use the topology view in the web-based API Gateway Manager tool to manage a newly created domain. For example, you can perform tasks such as create or delete API Gateway groups and instances,and start or stop the gateway instances. For more details, see [Manage domain topology in API Gateway Manager](/docs/apigtw_admin/managetopology).
 
 ## Managedomain script
 
