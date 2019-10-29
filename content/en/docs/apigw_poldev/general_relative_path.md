@@ -98,7 +98,7 @@ is enabled.{{< /alert >}}
 The **Include in traffic monitor log**
 setting is selected by default. It enables traffic monitoring for Relative Path, Static Content Provider, Static File Provider, and Websocket. This setting is disabled in nested paths because it inherits its parent configuration.
 
-{{< alert title="Note" color="primary" >}} If traffic monitoring is disabled at API Gateway level this supersedes the Logging level setting, which will not have any effect even if it is enabled. {{< /alert >}}
+{{< alert title="Note" color="primary" >}}If traffic monitoring is disabled at API Gateway level this supersedes the Logging level setting, which will not have any effect even if it is enabled.{{< /alert >}}
 
 ### HTTP method settings
 
