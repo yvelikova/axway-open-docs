@@ -445,7 +445,7 @@ You can configure Kerberos clients and services under **Environment Configuratio
 For more details on different Kerberos setups with API Gateway, see
 [API Gateway Kerberos Integration Guide](/bundle/APIGateway_77_IntegrationKerberos_allOS_en_HTML5).
 
-### Configuration
+### Keytab configuration
 
 Configure the following fields on the **Keytab Entry**
 dialog:
