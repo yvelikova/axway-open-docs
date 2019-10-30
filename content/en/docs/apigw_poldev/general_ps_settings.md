@@ -158,12 +158,12 @@ The **XML** settings enable you to configure a range of options that affect how 
 
 * **Creating or saving files**: Specifies a line delimiter (for example, `Mac`, `Unix`, `Windows`, or `No translation`).
 * **Creating files**: Specifies a file suffix (`xml`), and the type of encoding (for example, `ISO 10646/Unicode(UTF-8)`).
-* **Validating files** : Configures whether to warn when no grammar is specified. 
+* **Validating files** : Configures whether to warn when no grammar is specified.
 
 **Source**: This includes the following options:
 
 * **Formatting**: Specifies a range of formatting options (for example, line width, line breaks, and indentation).
-* **Content assist**: Specifies whether to make suggestions and which strategy to use (for example, `Lax` or `Strict`).   * **Grammar constraints**: Specifies whether to use inferred grammar in the absence of DTD/Schema. 
+* **Content assist**: Specifies whether to make suggestions and which strategy to use (for example, `Lax` or `Strict`).   * **Grammar constraints**: Specifies whether to use inferred grammar in the absence of DTD/Schema.
 
 **Syntax Coloring**: These settings enable you to associate specific colors with specific XML syntax elements (for example, attribute names, comment delimiters, or processing instruction content).
 

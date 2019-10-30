@@ -10,8 +10,6 @@ You can configure a policy execution scheduler at the level of the API Gateway i
 
 You can use policy execution scheduling in any policy (for example, to perform a message health check). This feature is also useful when polling a service to enforce a Service Level Agreement (for example, to ensure the response time is less than 1000 ms, and if not, to send an alert).
 
-
-
 ## Add a global schedule
 
 To add a schedule to the globally available library in the Policy Studio, perform the following steps:

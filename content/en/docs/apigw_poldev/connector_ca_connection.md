@@ -88,7 +88,7 @@ API Gateway host machine must be registered as an agent with SiteMinder or SOA S
 tool on API Gateway machine. The tool creates a file called `SmHost.conf`, which you can then upload into API Gateway configuration using Policy Studio. For more details on creating the `SmHost.conf` file, see
 [API Gateway Authentication and Authorization Integration Guide](/bundle/APIGateway_77_AuthAuthIntegrationGuide_allOS_en_HTML5)
 
-To add the `SmHost.conf` file to API Gateway, ensure the `SmHost.conf` file is copied to the same machine running Policy Studio, click **Browse**, and select the the `SmHost.conf` file. You can select whether to use an `SmHost.conf` or `SmHost.cnf` file in the dialog. You can also enter the file name as an environment variable selector (for example, `${env.SMHOST}`). 
+To add the `SmHost.conf` file to API Gateway, ensure the `SmHost.conf` file is copied to the same machine running Policy Studio, click **Browse**, and select the the `SmHost.conf` file. You can select whether to use an `SmHost.conf` or `SmHost.cnf` file in the dialog. You can also enter the file name as an environment variable selector (for example, `${env.SMHOST}`).
 
 After selecting the `SmHost.conf` configuration file, you can see the connection details in the text area.
 
