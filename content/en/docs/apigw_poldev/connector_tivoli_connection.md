@@ -1,10 +1,10 @@
 {
 "title": "Configure Tivoli connections",
 "linkTitle": "Configure Tivoli connections",
+"weight": 40,
 "date": "2019-10-17",
-"description": "Tivoli Access Manager for e-business is a commonly used product for securing web resources. Tivoli message filters allows the API Gateway to leverage existing Access Manager policies, thus avoiding the need to maintain duplicate policies in both products. At runtime, the Tivoli filters can delegate authentication and authorization decisions to Access Manager, and can also retrieve user attributes."
+"description": "Configure API Gateway to connect to a Tivoli server."
 }
-﻿
 
 Tivoli Access Manager for e-business is a commonly used product for securing web resources. Tivoli message filters allows the API Gateway to leverage existing Access Manager policies, thus avoiding the need to maintain duplicate policies in both products. At runtime, the Tivoli filters can delegate authentication and authorization decisions to Access Manager, and can also retrieve user attributes.
 
@@ -12,14 +12,12 @@ Tivoli connections determine how a particular API Gateway instance connects to a
 
 {{< alert title="Note" color="primary" >}}Each API Gateway instance can connect to a single Tivoli server. {{< /alert >}}
 
-Prerequisites
--------------
+## Prerequisites
 
 Before you can configure the **Tivoli Authorization** filter, you must configure API Gateway for integration with TAM. For more details, see
-[API Gateway Authentication and Authorization Integration Guide](/bundle/APIGateway_77_AuthAuthIntegrationGuide_allOS_en_HTML5)
+[API Gateway Authentication and Authorization Integration Guide](/bundle/APIGateway_77_AuthAuthIntegrationGuide_allOS_en_HTML5).
 
-Configuration
--------------
+## Configuration
 
 To configure Tivoli connection, in the node tree, select **Environment Configuration > Server Settings > Security > Tivoli**. Alternatively, you can a click **Environment Configuration > External Connections > Tivoli Connection**, and select **Add a Tivoli Connection**. The newly added connection can then be assigned to a particular API Gateway instance.
 
@@ -35,8 +33,8 @@ Enter a name onfor the connection, or select a previously configured Tivoli conn
 
 You can specify how to upload the Tivoli configurations files:
 
--   **Upload Tivoli configuration files**: You can automatically upload all configuration files to a specified API Gateway instance. API Gateway overwrites these files each time at startup or refresh (for example, when configuration updates are deployed). This means that any changes to the main configuration file must be made using the Policy Studio and not directly to the file on disk.
--   **Set file location for main Tivoli Configuration file**: You can manually copy the configuration files to the file system of a API Gateway instance and point API Gateway to pick up the configuration files from that location. API Gateway does not overwrite the files at startup or refresh time. You can edit the main configuration file directly using an editor of your choice.
+* **Upload Tivoli configuration files**: You can automatically upload all configuration files to a specified API Gateway instance. API Gateway overwrites these files each time at startup or refresh (for example, when configuration updates are deployed). This means that any changes to the main configuration file must be made using the Policy Studio and not directly to the file on disk.
+* **Set file location for main Tivoli Configuration file**: You can manually copy the configuration files to the file system of a API Gateway instance and point API Gateway to pick up the configuration files from that location. API Gateway does not overwrite the files at startup or refresh time. You can edit the main configuration file directly using an editor of your choice.
 
 **Connection enabled**:
 

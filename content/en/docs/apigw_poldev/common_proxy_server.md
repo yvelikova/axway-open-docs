@@ -1,37 +1,19 @@
 {
 "title": "Configure proxy servers",
 "linkTitle": "Configure proxy servers",
+"weight": 40,
 "date": "2019-10-17",
-"description": "You can configure settings for individual proxy servers under the **Environment Configuration** > **External Connections**\\nnode in the Policy Studio tree, which you can then specify at the filter level (in the **Connection**\\nand **Connect To URL**\\nfilters). When configured, the filter connects to the HTTP proxy server, which in turn routes the message on to the destination server named in the request URI."
+"description": "Configure settings for individual proxy servers, which you can then specify at the filter level."
 }
-﻿
-<div id="p_common_proxy_server_over">
-
-Overview
---------
 
 You can configure settings for individual proxy servers under the **Environment Configuration** > **External Connections**
 node in the Policy Studio tree, which you can then specify at the filter level (in the **Connection**
 and **Connect To URL**
 filters). When configured, the filter connects to the HTTP proxy server, which in turn routes the message on to the destination server named in the request URI.
 
-For more details, see
-[Connection](/csh?context=503&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/)
-[Connect to URL](/csh?context=502&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/)
-.
-
 {{< alert title="Note" color="primary" >}}API Gateway does not support persistent SSL connections to back-end servers using proxy tunneling. The API Gateway connection caching mechanism is not designed for proxy tunnel connections.{{< /alert >}}
 
-</div>
-
-<div id="p_common_proxy_server_proxy">
-
-Configuration
--------------
+## Configuration
 
 To configure a proxy server under the **Environment Configuration** > **External Connections**
 tree node, right-click the **Proxy Servers**
@@ -47,6 +29,4 @@ node, and select **Add a Proxy Server**. You can configure the following setting
 | **Scheme**           | Specifies whether the proxy server uses the HTTP or HTTPS transport. Defaults to HTTP. |
 
 {{< alert title="Tip" color="primary" >}}These proxy server settings are different from the global proxy settings in the **Preferences**
-dialog in the Policy Studio, which apply only when downloading WSDL, XSD, and XSLT files from the Policy Studio. For more details, see [*preferences* on page 1](general_ps_settings.htm).{{< /alert >}}
-
-</div>
+dialog in Policy Studio, which apply only when downloading WSDL, XSD, and XSLT files from Policy Studio. For more details, see [Proxy settings](/docs/apigw_poldev/general_ps_settings/#proxy-settings).{{< /alert >}}

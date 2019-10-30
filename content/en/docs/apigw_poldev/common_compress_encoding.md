@@ -1,14 +1,10 @@
 {
 "title": "Compressed content encoding",
 "linkTitle": "Compressed content encoding",
+"weight": 40,
 "date": "2019-10-17",
-"description": "The API Gateway supports HTTP content encoding for the `gzip`\\nand `deflate`\\ncompressed content encodings. This enables the API Gateway to compress files and deliver them to clients (for example, web browsers) and to back-end servers. "
+"description": "Configure input and output content encodings globally, per remote host, or per listening interface."
 }
-﻿
-<div id="p_common_compress_encoding_overview">
-
-Overview
---------
 
 The API Gateway supports HTTP content encoding for the `gzip`
 and `deflate`
@@ -20,12 +16,7 @@ In Policy Studio, an **Input Encodings**
 list specifies the content encodings that the API Gateway can accept from peers, and an **Output Encodings**
 list specifies the content encodings that the API Gateway can apply to outgoing messages. You can configure these settings globally, per remote host, or per listening interface.
 
-</div>
-
-<div id="p_common_compress_encoding_response">
-
-Encoding of HTTP responses
---------------------------
+## Encoding of HTTP responses
 
 Content encoding of HTTP responses is negotiated using the `Accept-Encoding`
 HTTP request header. This enables a client to indicate its willingness to receive a particular encoding in this header. The server can then choose to encode the response with one of these client-supported encodings, and indicate this with the `Content-Encoding`
@@ -38,12 +29,7 @@ header sent to the server, thereby requesting the server to apply one of these e
 When acting as a server, the API Gateway selects an output encoding from the intersection of what the client specified in its `Accept-Encoding`
 header, and the currently configured **Output Encodings**, and applies that encoding to the response.
 
-</div>
-
-<div id="p_common_compress_encoding_request">
-
-Encoding of HTTP requests
--------------------------
+## Encoding of HTTP requests
 
 Because a request arrives unsolicited from a client to a server, there is not normally a chance to negotiate the server's ability to process any optional features, so the automatic negotiation provided by the `Accept-Encoding`
 header is not available.
@@ -53,24 +39,17 @@ list to encode its request to the server. If the server fails to accept this enc
 
 By default, the API Gateway always accepts any supported encoding from clients, regardless of settings. For example, if a client sends gzipped content, the API Gateway inflates it regardless of configured settings.
 
-</div>
-
-<div id="p_common_compress_encoding_transfer">
-
-Delimit the end of an HTTP message
-----------------------------------
+## Delimit the end of an HTTP message
 
 HTTP sessions can encode a number of request/response pairs. The rules for delimiting the end of each message and the start of the next one are well defined, but complex due to requirements for historical compatibility, and poor support from HTTP entities.
-
-<div>
 
 ### HTTP requests
 
 There are two ways to delimit the end of an HTTP request:
 
--   A `Content-Length`
+* A `Content-Length`
     header in the request indicates to the server the exact length of the payload entity following the HTTP headers, and can be used by the receiving server to locate the end of that entity.
--   Alternatively, an HTTP/1.1 server should accept chunked transfer encoding, which precedes each chunk of the entity with a length, until a zero-length chunk indicates the end.
+* Alternatively, an HTTP/1.1 server should accept chunked transfer encoding, which precedes each chunk of the entity with a length, until a zero-length chunk indicates the end.
 
 The benefit of using chunked transfer encoding is that the client does not need to know the length of the transmitted entity when it sends HTTP request headers (unlike when inserting a `Content-Length`
 header).
@@ -80,10 +59,6 @@ Because the API Gateway compresses the requests on the fly, it is prohibitively 
 {{< alert title="Note" color="primary" >}}All HTTP/1.1 servers are required to support chunked transfer encoding, but unfortunately some do not, so you can use **Remote Host**
 settings to configure whether a destination is capable of supporting the chunked encoding in HTTP/1.1, regardless of its advertised HTTP protocol version. For more details, see [*Configure remote host settings* on page 1](general_remote_hosts.htm).{{< /alert >}}
 
-</div>
-
-<div>
-
 ### HTTP responses
 
 For HTTP responses, the server has three options for delimiting the end of the entity. The two mentioned above, and also the ability to close the HTTP connection after the response is transmitted. The receiving client can then infer that the entire message has been received due to the normal end of the TCP/IP session.
@@ -91,30 +66,19 @@ For HTTP responses, the server has three options for delimiting the end of the e
 When content encoding responses, the API Gateway avoids using `Content-Length`
 headers in the response, and uses chunked encoding or TCP/IP connection closure to indicate the end of the response. This means that content encoding of responses is supported for HTTP/1.0 or HTTP/1.1 clients.
 
-</div>
-
-</div>
-
-<div id="p_common_compress_encoding_config">
-
-Configure content encodings
----------------------------
+## Configure content encodings
 
 In Policy Studio, you can configure HTTP content encodings in the **Content Encodings**
 dialog. You can configure the following settings globally per API Gateway instance, per remote host, or per listening interface:
 
-|                      |                                                                                      |
-|----------------------|--------------------------------------------------------------------------------------|
-| **Input Encodings**  | Specifies the content encodings that the API Gateway can accept from peers.          |
-| **Output Encodings** | Specifies the content encodings that the API Gateway can apply to outgoing messages. |
+* **Input Encodings**: Specifies the content encodings that the API Gateway can accept from peers.
+* **Output Encodings**: Specifies the content encodings that the API Gateway can apply to outgoing messages.
 
 The available content encodings include `gzip`
 and `deflate`. By default, the content encodings configured in **Environment Configuration** > **Server Settings** > **General**
 are used, which apply at the API Gateway instance level. The default is no content encodings.
 
 You can override these settings at the listening interface level (on the **Advanced** tab of the HTTP or HTTPS Interface dialog), and the remote host level (on the **Advanced** tab of the Remote Host Settings dialog).
-
-<div>
 
 ### Add content encodings
 
@@ -123,21 +87,17 @@ or **Output Encodings**
 field, and perform the following steps in the **Content Encodings**
 dialog:
 
-1.  Deselect the **Use Default**
+1. Deselect the **Use Default**
     setting.
-2.  Select the content encodings to add in the **Available Content Encodings**
+2. Select the content encodings to add in the **Available Content Encodings**
     list on the left.
-3.  Click the **>**
+3. Click the **>**
     or **>>**
     button to move the content encodings to the **Content Encodings**
     list on the right, which displays the active settings. You can also double-click a content encoding to move it to the right or left.
-4.  Click **OK**. This displays the configured encodings in the **Input Encodings**
+4. Click **OK**. This displays the configured encodings in the **Input Encodings**
     or **Output Encodings**
     field (for example, `gzip`, `deflate`).
-
-</div>
-
-<div>
 
 ### Configure no content encodings
 
@@ -151,23 +111,14 @@ field.
 setting to switch to the **Default Settings**
 without losing your original content encoding selection.{{< /alert >}}
 
-</div>
-
-</div>
-
-<div id="p_common_compress_encoding_further">
-
-Further information
--------------------
+## Further information
 
 For more details on the different levels at which you can configure content encodings in Policy Studio, see the following topics:
 
--   [*Configure remote host settings* on page 1](general_remote_hosts.htm)
--   [*Configure HTTP services* on page 1](general_services.htm)
--   General settings in the
+* [*Configure remote host settings* on page 1](general_remote_hosts.htm)
+* [*Configure HTTP services* on page 1](general_services.htm)
+* General settings in the
     [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/)
     .
 
 For more details on HTTP content encoding, see [HTTP RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616.html).
-
-</div>
