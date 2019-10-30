@@ -8,7 +8,7 @@
 
 Follow the instructions to use a Lightweight Directory Access Protocol (LDAP) to authenticate and perform Role-Based Access Control (RBAC) of API Gateway management services, and to reconfigure the gateway to use OpenLDAP as the LDAP repository, and to use the Apache Directory Studio as an LDAP browser.
 
-* This section uses the sample **Protect Management Interfaces (LDAP)** policy, meaning that the gateway uses an LDAP repository instead of the local Admin User store for authentication and RBAC of users attempting to access the gateway management services.
+This section uses the sample **Protect Management Interfaces (LDAP)** policy, meaning that the gateway uses an LDAP repository instead of the local Admin User store for authentication and RBAC of users attempting to access the gateway management services.
 
 {{< alert title="Note" color="primary" >}}If you have multiple Admin Node Managers in your topology, you must ensure that you apply the configuration changes to each Admin Node Manager.{{< /alert >}}
 
@@ -78,7 +78,7 @@ You can repeat these steps to add other roles to the RBAC directory. Alternative
 
 ![Copying Roles to RBAC Directory](/Images/APIGateway/copy_openldap_roles1.gif)
 
-* You should have the RBAC directory ready to add members to the role entries. By default, the `admin` user (`“cn=admin,ou=R&D,o=Vordel Ltd.,l=Dublin 4,st=Dublin,c=IE”`) is already a member of the role entries.
+You should have the RBAC directory ready to add members to the role entries. By default, the `admin` user (`“cn=admin,ou=R&D,o=Vordel Ltd.,l=Dublin 4,st=Dublin,c=IE”`) is already a member of the role entries.
 
 The following example shows the added roles:
 
@@ -94,7 +94,7 @@ To add a user to the OpenLDAP RBAC group, perform the following steps:
 2. Right-click the list of group attributes, and select **New Attribute**.
 3. Enter `member` in the attribute type.
 
-   ![Adding the Role to the OpenLDAP Group](/Images/APIGateway/add_user_openldap_grp.gif)
+    ![Adding the Role to the OpenLDAP Group](/Images/APIGateway/add_user_openldap_grp.gif)
 
 4. Click **Finish**.
 5. In the **DN Editor** dialog, enter the user Distinguished Name (for example, `cn=joe.bloggs,o=Vordel Ltd.,l=Dublin 4,st=Dublin,c=IE`).
@@ -130,22 +130,22 @@ To create an new OpenLDAP Repository, perform the following steps:
 2. Right-click, and select **Add a new Repository**.
 3. Complete the following fields in the dialog:
 
-    **Repository Name**: Enter an appropriate name for the repository.
-    **LDAP Directory**: Use the LDAP directory created in [Create an LDAP connection](#create-an-ldap-connection).
-    **Base Criteria**: Enter the LDAP node that contains the users.
-    **User Search Attribute**: Enter `cn`. This is the username entered at login time (in this case, `admin`).
-    **Authorization Attribute**: Enter `cn`. The `authentication.subject.id` message attribute is set to the value of this LDAP attribute (for example, `cn=admin,ou=R&D,o=Vordel Ltd.,l=Dublin 4,st=Dublin,c=IE .authentication.subject.id` is used as the base criteria in the filter used to load the LDAP groups (the user’s roles). This allows you to narrow the search to a particular user node in the LDAP tree.
+    * **Repository Name**: Enter an appropriate name for the repository.
+    * **LDAP Directory**: Use the LDAP directory created in [Create an LDAP connection](#create-an-ldap-connection).
+    * **Base Criteria**: Enter the LDAP node that contains the users.
+    * **User Search Attribute**: Enter `cn`. This is the username entered at login time (in this case, `admin`).
+    * **Authorization Attribute**: Enter `cn`. The `authentication.subject.id` message attribute is set to the value of this LDAP attribute (for example, `cn=admin,ou=R&D,o=Vordel Ltd.,l=Dublin 4,st=Dublin,c=IE .authentication.subject.id` is used as the base criteria in the filter used to load the LDAP groups (the user’s roles). This allows you to narrow the search to a particular user node in the LDAP tree.
 
-    For more details, see the **Retrieve Attributes from Directory Server** filter in [Create a test policy for LDAP authentication and RBAC](#configure-a-test-policy-for-ldap-authentication-and-rbac).
+For more details, see the **Retrieve Attributes from Directory Server** filter in [Configure a test policy for LDAP authentication and RBAC](#configure-a-test-policy-for-ldap-authentication-and-rbac).
 
 ![Creating an LDAP Repository](/Images/APIGateway/create_openldap_repo.gif)
 
 ### Connect to other LDAP repositories
 
-This topic uses OpenLDAP as an example LDAP repository. Other LDAP repositories such as Oracle Directory Server (formerly iPlanet and Sun Directory Server) and Microsoft Active Directory are also supported. For details on using a Microsoft Active Directory repository, see [*Authentication and RBAC with Active Directory* on page 1](general_rbac_ad_ldap.htm).
+This topic uses OpenLDAP as an example LDAP repository. Other LDAP repositories such as Oracle Directory Server (formerly iPlanet and Sun Directory Server) and Microsoft Active Directory are also supported. For details on using a Microsoft Active Directory repository, see [Authentication and RBAC with Active Directory](/docs/apigtw_admin/general_rbac_ad_ldap).
 
 For an example of querying an Oracle Directory Server repository, see the **Retrieve Attributes from Directory Server**
-filter in [Create a test policy for LDAP authentication and RBAC](#configure-a-test-policy-for-ldap-authentication-and-rbac).
+filter in [Configure a test policy for LDAP authentication and RBAC](#configure-a-test-policy-for-ldap-authentication-and-rbac).
 
 ## Configure a test policy for LDAP authentication and RBAC
 

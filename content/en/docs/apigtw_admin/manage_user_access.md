@@ -10,9 +10,6 @@ By default, the gateway user store contains the configuration data for managing 
 
 In a production environment, user information may be stored in existing user Identity Management repositories such as Microsoft Active Directory, Oracle Access Manager, CA SiteMinder, and so on.
 
-{{< alert title="Note" color="primary" >}}API Gateway *users* provide access to the messages and services protected by API Gateway. However, *admin users*
-provide access to the gateway configuration management features available in Policy Studio, Configuration Studio, and API Gateway Manager.{{< /alert >}}
-
 ## Manage API Gateway users
 
 API Gateway users specify the user identity in the gateway user store. This includes details such as the user name, password, and X.509 certificate. Gateway users must be a member of at least one user group. In addition, users can specify optional attributes, and inherit attributes at the group level.
@@ -39,7 +36,7 @@ Re-enter the user's password to confirm.
 
 **Signing Key**:
 
-Click to load the user certificate from the **Certificate Store**. For details on how to create and import certificates, see [Manage X.509 certificates and keys](/docs/apigtw_admin/general_certificates).
+Click to load the user certificate from the **Certificate Store**. For details on how to create and import certificates, see [Manage X.509 certificates and keys](/docs/apigtw_security/general_certificates).
 
 You can also specify optional user attributes on the **Attributes** tab, which is explained in the next section.
 
@@ -134,8 +131,8 @@ User roles have specific tools and privileges assigned to them. These define who
 
 A single admin user typically has multiple roles. For example, in a development environment, a policy developer admin user would typically have the following roles:
 
- `Policy Developer`
- `API Server Administrator`
+* `Policy Developer`
+* `API Server Administrator`
 
 ### Add a new admin user
 

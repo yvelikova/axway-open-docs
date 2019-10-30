@@ -86,25 +86,15 @@ options {
 
 The example options are described as follows:
 
-`directory`
+**directory**: This is normally set to a directory on a writeable filesystem, such as `/var/bind`. This example is set to the current directory (`"."`).
 
-This is normally set to a directory on a writeable filesystem, such as `/var/bind`. This example is set to the current directory (`"."`).
+**listen-on port**: This example is set to `8866` for testing, but you should leave this blank for real DNS use in a production environment. Most DNS clients such as Web browsers always request on the standard DNS port `53`. You can also configure debugging tools such as `dig` and `nslookup` to try other ports.
 
-`listen-on port`
+**pid-file**: This example sets up `named` to run in the current directory (or `/var/named` if configured), and gives it a name to store its lock file.
 
-This example is set to `8866` for testing, but you should leave this blank for real DNS use in a production environment. Most DNS clients such as Web browsers always request on the standard DNS port `53`. You can also configure debugging tools such as `dig` and `nslookup` to try other ports.
+**allow-**: The example `allow-` options are permissive, and allow any external host to use this name server, update it dynamically, and transfer a dump of its domains. This makes it unsuitable for external exposure. To restrict these `allow-` options to the local system, change the `any` settings to `127.0.0.1`.
 
-`pid-file`
-
-This example sets up `named` to run in the current directory (or `/var/named` if configured), and gives it a name to store its lock file.
-
-`allow-`
-
-The example `allow-` options are permissive, and allow any external host to use this name server, update it dynamically, and transfer a dump of its domains. This makes it unsuitable for external exposure. To restrict these `allow-` options to the local system, change the `any` settings to `127.0.0.1`.
-
-`forwarders`
-
-Requests that cannot be serviced locally are forwarded to the specified servers, which are the default DNS servers for the site. Specifying `forwarders` enables you to use this name server as your local DNS. It can forward requests for sites outside your domain (for example, `example.com` or `apiportal.io`) to the forwarding name servers. This enables your test environment to coexist with your normal name servers.
+**forwarders**: Requests that cannot be serviced locally are forwarded to the specified servers, which are the default DNS servers for the site. Specifying `forwarders` enables you to use this name server as your local DNS. It can forward requests for sites outside your domain (for example, `example.com` or `apiportal.io`) to the forwarding name servers. This enables your test environment to coexist with your normal name servers.
 
 ### Configure default zones
 
@@ -126,17 +116,11 @@ zone "0.0.127.in-addr.arpa" IN {
 
 These settings configure addresses for mapping `localhost` to `127.0.0.1`, and mapping `127.0.0.1` back to `localhost` when required. These example options are described as follows:
 
-`type`
+**type**: Specifies that this is the `master` server for `localhost`.
 
-Specifies that this is the `master` server for `localhost`.
+**file**: Specifies the domain zone file that contains the records for the domain (for more details,see [Configure domain zone files](#configure-domain-zone-files)).
 
-`file`
-
-Specifies the domain zone file that contains the records for the domain (for more details,see [Configure domain zone files](#configure-domain-zone-files)).
-
-`allow-transfer`
-
-Specifies addresses that are allowed to transfer zone information from the zone server. The default `any` setting means that the contents of the domain can be transferred to anyone.
+**allow-transfer**: Specifies addresses that are allowed to transfer zone information from the zone server. The default `any` setting means that the contents of the domain can be transferred to anyone.
 
 ### Configure logging
 

@@ -8,7 +8,7 @@
 
 Follow the instructions to use a Lightweight Directory Access Protocol (LDAP) to authenticate and perform Role-Based Access Control (RBAC) of the gateway management services, and to reconfigure the gateway to use a Microsoft Active Directory LDAP repository.
 
-* This section uses the sample **Protect Management Interfaces (LDAP)** policy, meaning that the gateway uses an LDAP repository instead of the local Admin User store for authentication and RBAC of users attempting to access the gateway management services.
+This section uses the sample **Protect Management Interfaces (LDAP)** policy, meaning that the gateway uses an LDAP repository instead of the local Admin User store for authentication and RBAC of users attempting to access the gateway management services.
 
 {{< alert title="Note" color="primary" >}}If you have multiple Admin Node Managers in your topology, you must ensure that you apply the configuration changes to each Admin Node Manager.{{< /alert >}}
 
@@ -96,11 +96,11 @@ To create an new LDAP Repository, perform the following steps:
 2. Right-click, and select **Add a new Repository**.
 3. Complete the following fields in the dialog:
 
-**Repository Name**: Enter an appropriate name for the repository.
-**LDAP Directory**: Use the LDAP directory created in [Create an LDAP connection](#create-an-ldap-connection).
-**Base Criteria**: Enter the LDAP node that contains the users.
-**User Search Attribute**: Enter `cn`. This is the username entered at login time (in this case, `admin`).
-**Authorization Attribute**: Enter `distinguishedName`. This is the username entered at login time (`admin`). The `authentication.subject.id` message attribute is set to the value of this LDAP attribute (see example below). The `authentication.subject.id` is used as the base criteria in the filter that loads the LDAP groups (the user’s roles). This enables you to narrow the search to a particular user node in the LDAP tree. For more details, see the **Retrieve Attributes from Directory Server** filter in [Create a test policy for LDAP authentication and RBAC](#configure-a-test-policy-for-ldap-authentication-and-rback).
+* **Repository Name**: Enter an appropriate name for the repository.
+* **LDAP Directory**: Use the LDAP directory created in [Create an LDAP connection](#create-an-ldap-connection).
+* **Base Criteria**: Enter the LDAP node that contains the users.
+* **User Search Attribute**: Enter `cn`. This is the username entered at login time (in this case, `admin`).
+* **Authorization Attribute**: Enter `distinguishedName`. This is the username entered at login time (`admin`). The `authentication.subject.id` message attribute is set to the value of this LDAP attribute (see example below). The `authentication.subject.id` is used as the base criteria in the filter that loads the LDAP groups (the user’s roles). This enables you to narrow the search to a particular user node in the LDAP tree. For more details, see the **Retrieve Attributes from Directory Server** filter in [Configure a test policy for LDAP authentication and RBAC](#config-test-policy).
 
 An example value of the `authentication.subject.id` message attribute is as follows:
 
@@ -114,9 +114,9 @@ CN=admin, CN=Users,DC=kerberos3,DC=qa,DC=vordel,DC=comn
 
 This topic uses Microsoft Active Directory as an example LDAP repository. Other LDAP repositories such as Oracle Directory Server (formerly iPlanet and Sun Directory Server) and OpenLDAP are also supported.
 
-For an example of querying an Oracle Directory Server repository, see the **Retrieve Attributes from Directory Server** filter in [Create a test policy for LDAP authentication and RBAC](#configure-a-test-policy-for-ldap-authentication-and-RBAC). For details on using OpenLDAP, see [Authentication and RBAC with OpenLDAP](/docs/apigtw_admin/general_rbac_openldap).
+For an example of querying an Oracle Directory Server repository, see the **Retrieve Attributes from Directory Server** filter in [Configure a test policy for LDAP authentication and RBAC](#config-test-policy). For details on using OpenLDAP, see [Authentication and RBAC with OpenLDAP](/docs/apigtw_admin/general_rbac_openldap).
 
-## Configure a test policy for LDAP authentication and RBAC
+## Configure a test policy for LDAP authentication and RBAC {#config-test-policy}
 
 To avoid locking yourself out of Policy Studio, you can configure an example test policy for LDAP authentication and RBAC, which is invoked when a test URI is called on the server (and not a management services URI). Policy Studio provides an example policy named **Protect Management Interfaces (LDAP)** when the Admin Node Manager configuration is loaded.
 
@@ -135,11 +135,11 @@ Perform the following steps:
 2. For the example policy, select **Policies** > **Management Services** > **Sample LDAP Policies** > **Protect Management Interfaces (LDAP)** when the Admin Node Manager configuration is loaded. This policy is summarized at a high-level as follows:
 
     * **Scripting Language** filter returns `true` if the Node Manager is the Admin Node Manager. This enables subsequent HTTP authentication and RBAC, and updates the HTTP headers based on the user role. Otherwise, this filter calls the **Call Internal Service (no RBAC)** filter without updating the HTTP headers.
-    * **HTTP Basic Authentication** filter verifies the user name and password against the LDAP repository configured in Step 4: Create an LDAP repository.
+    * **HTTP Basic Authentication** filter verifies the user name and password against the LDAP repository configured in [Create an LDAP repository](#create-an-ldap-repository).
     * **Retrieve Attributes from Directory Server** filter finds the LDAP groups that the user belongs to using the LDAP directory connection configured in [Create an LDAP connection](#create-an-ldap-connection).
     * **Management Services RBAC** filter reads the user roles from the configured message attribute (`authentication.subject.role`). This returns `true` if one of the roles has access to the management service currently being invoked, as defined in the `acl.json` file. Otherwise, this returns `false` and the **Return HTTP Error 403:Access Denied (Forbidden)** policy is called because the user does not have the correct role.
 
-3. You must edit some HTTP-based filters and change them from using the **Sample Active Directory Repository** to using the repository that you created in [Step 4: Create an LDAP repository](#Step3). This repository is referenced in the following filters in the example policy:
+3. You must edit some HTTP-based filters and change them from using the **Sample Active Directory Repository** to using the repository that you created in [Create an LDAP repository](#create-an-ldap-repository). This repository is referenced in the following filters in the example policy:
 
     * **Authenticate login attempt**
     * **HTTP Basic**
@@ -162,7 +162,7 @@ To test this policy configuration, perform the following steps:
 
     ```
     "CN=APIGatewayAdministrator,CN=Users,DC=kerberos3,DC=qa,DC=vordel,DC=com" :[
-    "emc", "mgmt", "mgmt_modify", "dashboard", "dashboard_modify", "deploy" "config", 
+    "emc", "mgmt", "mgmt_modify", "dashboard", "dashboard_modify", "deploy" "config",
     "monitoring", "events", "traffic_monitor", "settings", settings_modify", "logs" ]
     ```
 

@@ -18,7 +18,7 @@ This section describes the supported open logging flows, and explains how you ca
 
 Some typical logging flows are shown in the following diagram:
 
-![Open traffic event log flows](/Images/apigtw_admin/observability_flows.png)
+![Open traffic event log flows](/Images/APIGateway/observability_flows.png)
 
 ### Log and trace information stored by API Gateway
 
@@ -34,11 +34,7 @@ The Node Manager also writes trace information to trace files.
 
 ### Metrics database flow
 
-The Node Manager aggregates the transaction event logs from the gateway instances in a domain and writes them to a metrics database for monitoring in API Gateway Analytics, API Manager, or in third-party tools. For more details, see:
-
-* [Configure API Gateway for a metrics database](../CommonTopics/metrics_gw_config.htm)
-* [API Gateway Analytics User Guide](/bundle/APIGateway_77_AnalyticsUserGuide_allOS_en_HTML5/)
-* [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/)
+The Node Manager aggregates the transaction event logs from the gateway instances in a domain and writes them to a metrics database for monitoring in API Gateway Analytics, API Manager, or in third-party tools. For more details, see [Configure API Gateway for a metrics database](/docs/apigtw_admin/monitor_service/#configure-api-gateway-with-the-metrics-database)
 
 ### Decision Insight flow
 
@@ -58,7 +54,7 @@ For more information on configuring Filebeat, see the [Embedded Analytics for AM
 
 To consolidate the flow of transaction event data, traces, and system metrics stored by API Gateway, you can perform the following steps:
 
-1. Configure open traffic event logging as detailed in [*Configure open traffic event logging* on page 1](#Configur).
+1. Configure open traffic event logging as detailed in [Configure open traffic event logging](#configure-open-traffic-event-logging).
 2. Set up a log forwarder to read the trace files and the open traffic event log files from API Gateway and forward them to a consolidation point for use by a third-party observability system.
 
 ## Open traffic event log formats
@@ -73,10 +69,10 @@ In a distributed system with multiple API Gateway instances running, the data is
 
 The open traffic event log combines the data from:
 
-* Transaction event log – This log contains a summary of transactions in JSON format. For more details on the transaction event log, see [Transaction event log settings](log_event_settings).
-* Traffic monitor – This log contains detailed traffic monitoring information including transaction payloads, policy paths, and so on. This data is stored in a proprietary OpsDB format. For more details on traffic monitor, see [*Traffic monitoring settings* on page 1](traffic_monitor_settings).
+* Transaction event log – This log contains a summary of transactions in JSON format. For more details on the transaction event log, see [Transaction event log settings](/docs/apigtw_ref/log_global_settings/#transaction-event-log-settings).
+* Traffic monitor – This log contains detailed traffic monitoring information including transaction payloads, policy paths, and so on. This data is stored in a proprietary OpsDB format. For more details on traffic monitor, see [Traffic monitoring settings](/docs/apigtw_ref/monitor_traffic_events_metrics/#traffic-monitoring-settings).
 
-The combined data is written to an open traffic event log file in JSON format. The JSON schema is described in [Open logging schema](schema) and is available in your installation at `INSTALL_DIR/apigateway/system/schemas/logging/openLogging.json`.
+The combined data is written to an open traffic event log file in JSON format. The JSON schema is described in [Open logging schema](/docs/apigtw_admin/open_logging_schema/) and is available in your installation at `INSTALL_DIR/apigateway/system/schemas/logging/openLogging.json`.
 
 Transaction payloads are stored separately (if payload storage is enabled) and are linked to the open traffic event log files by ID. Payload files are named as follows:
 
@@ -84,7 +80,7 @@ Transaction payloads are stored separately (if payload storage is enabled) and a
     <transaction ID>-<Leg>-<sent|received>
     ```
 
-For more information on transaction and legs, see [Introduction to transactions and legs in API Gateway](admin_transactions).
+For more information on transaction and legs, see [Introduction to transactions and legs in API Gateway](/docs/apigtw_admin/admin_transactions).
 
 The following are some example payload file names:
 
@@ -117,7 +113,7 @@ Open traffic event logging is disabled by default. To enable it, perform the fol
 4. When finished, click **Save** at the bottom right.
 5. Click **Deploy** in the toolbar to deploy your settings to the API Gateway.
 
-For details on configuring all the available options, see [Open traffic event log settings](log_open_traffic_event_settings).
+For details on configuring all the available options, see [Open traffic event log settings](/docs/apigtw_ref/monitor_traffic_events_metrics/#open-traffic-event-log-settings).
 
 ## Environment variables
 
@@ -143,8 +139,8 @@ APIGW_LOG_OPENTRAFFIC_PAYLOAD=[true | false]
 When using the open logging feature, consider the following:
 
 * Enabling the open traffic event log will have a performance impact:
-    * We recommend that you test the performance impact before using this feature in a production system.
-    * Enabling payload storage will consume additional system resources and slow down your overall TPS.
+  * We recommend that you test the performance impact before using this feature in a production system.
+  * Enabling payload storage will consume additional system resources and slow down your overall TPS.
 * Ensure that you have enough disk space available for storing open traffic event log files.
 * Ensure that you implement a file retention policy for open traffic event log files, as API Gateway does not delete files automatically.
 * If you enable payload storage, we recommend using fast disks (for example, SSD).

@@ -13,15 +13,15 @@ You can view and search the contents of API Gateway tracing in the following loc
 * **Logs > Trace** view in API Gateway Manager
 * A console window for the running server
 * Trace files in the following locations:
-    * Admin Node Manager: `INSTALL_DIR/trace`
-    * API Gateway instance: `INSTALL_DIR/groups/<group-id>/<instance-id>/trace`
-    * API Gateway Analytics: `INSTALL_DIR/trace`
+  * Admin Node Manager: `INSTALL_DIR/trace`
+  * API Gateway instance: `INSTALL_DIR/groups/<group-id>/<instance-id>/trace`
+  * API Gateway Analytics: `INSTALL_DIR/trace`
 
 You can view and search the contents of the gateway trace log, domain audit log, and transaction logs in the **Logs** view in API Gateway Manager.
 
-This section explains how to configure the trace log only. For more details, see [Configure API Gateway logging and events](logging).
+This section explains how to configure the trace log only. For more details, see [Configure logging and events](/docs/apigtw_admin/logging).
 
-For details on how to redact sensitive data from trace files (for example, user passwords or credit card details), see [Hide sensitive data in API Gateway Manager](admin_redactors). The trace level you set impacts the redaction.
+For details on how to redact sensitive data from trace files (for example, user passwords or credit card details), see [Hide sensitive data in API Gateway Manager](/docs/apigtw_security/admin_redactors). The trace level you set impacts the redaction.
 
 ## View API Gateway trace files
 
@@ -44,12 +44,13 @@ TraceLevel   Timestamp [thread-id] TraceMessage
 
 For example, the first line in the above extract is described as follows:
 
-|                    |                                                                       |
-|--------------------|-----------------------------------------------------------------------|
-| **`TraceLevel`**   | `INFO`                                                                |
-| **`Timestamp`**    | `15/Jun/2012:09:54:01.047 (day:hours:minutes:seconds:milliseconds)`   |
-| **`Thread-id`**    | `[1b10]`                                                              |
-| **`TraceMessage`** | `Realtime monitoring enabled`                                         |
+**`TraceLevel`**: INFO
+
+**`Timestamp`**: 15/Jun/2012:09:54:01.047 (day:hours:minutes:seconds:milliseconds)
+
+**`Thread-id`**: [1b10]
+
+**`TraceMessage`**: Realtime monitoring enabled
 
 ## Set API Gateway trace levels
 
@@ -77,7 +78,7 @@ When the gateway has started, it reads its trace level from the Default Settings
 
 **Dynamic trace**:
 
-You can also change dynamic gateway trace levels on-the-fly in API Gateway Manager. For more details, see [Configure API Gateway logging and events](/docs/apigtw_admin/logging).
+You can also change dynamic gateway trace levels on-the-fly in API Gateway Manager. For more details, see [Configure logging and events](/docs/apigtw_admin/logging).
 
 ## Configure API Gateway trace files
 

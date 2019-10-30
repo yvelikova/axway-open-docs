@@ -1,22 +1,22 @@
 {
-"title": "API Gateway performance tuning",
-"linkTitle": "API Gateway performance tuning",
+"title": "Performance tuning",
+"linkTitle": "Performance tuning",
 "weight":"26",
 "date": "2019-10-14",
 "description": "Configure API Gateway to optimize its performance."
 }
 
-This section explains how to optimize API Gateway performance using various configuration options. For example, general performance tuning options include tracing, monitoring, and logging. More advanced performance tuning options include database pooling, HTTP keep alive, chunked encoding, and client threads.
+This section explains how to optimize your gateway performance using various configuration options. For example, general performance tuning options include tracing, monitoring, and logging. More advanced performance tuning options include database pooling, HTTP keep alive, chunked encoding, and client threads.
 
 ## General performance tuning
 
-You can optimize API Gateway performance by using Policy Studio to configure the general settings described in this section.
+You can optimize your gateway performance by using Policy Studio to configure the general settings described in this section.
 
 ### Minimize tracing
 
 The **Trace Log** is displayed in the **Logs** view in the API Gateway Manager web console. When tracing is running at a verbose level (for example, `DEBUG`), this means that the gateway is doing more work and is very dependent on disk input/output. You can set a less verbose trace level for a gateway instance or port interface (for example, `ERROR` or `FATAL`).
 
-To set the tracing for the gateway instance, select **Environment Configuration > Server Settings > General** in the Policy Studio tree, and select the **Trace Level** (for example, `FATAL`):
+To set the tracing for the gateway instance, select **Environment Configuration > Server Settings > General** in the Policy Studio tree, and select the **Trace Level** (for example, `FATAL`)
 
 ![Minimize per-product instance tracing](/Images/APIGateway/admin_perf_tracing_instance.png)
 
@@ -46,7 +46,7 @@ To disable in Policy Studio, select **Environment Configuration > Server Setting
 
 ![Disable traffic monitoring](/Images/APIGateway/admin_perf_traffic_monitor.png)
 
-For more details, see [Traffic monitoring settings](/docs/apigtw_admin/traffic_monitor_settings.htm).
+For more details, see [Traffic monitoring settings](/docs/apigtw_ref/monitor_traffic_events_metrics#traffic-monitoring-settings).
 
 ### Disable transaction logging
 
@@ -56,7 +56,7 @@ To disable transaction logging in the API Gateway, you must disable all log dest
 
 ![Disable transaction logging](/Images/APIGateway/admin_perf_transaction_log.png)
 
-For more details, see [Transaction audit log settings](/docs/apigtw_admin/log_global_settings).
+For more details, see [Transaction audit log settings](/docs/apigtw_ref/log_global_settings#transaction-audit-log-settings).
 
 ### Disable access logging
 
@@ -64,7 +64,7 @@ You should also ensure that the API Gateway is not sending log messages to the a
 
 ![Disable access logging](/Images/APIGateway/admin_perf_access_log.png)
 
-For more details, see [Transaction access log settings](/docs/apigtw_admin/log_access_settings).
+For more details, see [Transaction access log settings](/docs/apigtw_ref/log_access_settings#transaction-access-log-settings).
 
 ## Advanced performance tuning
 
@@ -119,8 +119,7 @@ By default, API Gateway uses HTTP 1.0 for better interoperability. To enable HTT
 
 In HTTP/1.1, the connection between a client and a server is maintained unless otherwise declared, so that further client requests can avoid the overhead of setting up a new connection. This may or may not model the client population of a particular scenario very well. If it is acceptable to reuse TCP connections (and SSL connections on top of these), ensure your client uses HTTP/1.1, and does not opt out of the HTTP persistent connection.
 
-For the `sr` command, this means you should use the `-V1.1` and `-U1000` arguments to enable the connection be used a number of times before closing it. For details on `sr`, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+For the `sr` command, this means you should use the `-V1.1` and `-U1000` arguments to enable the connection be used a number of times before closing it.
 
 * For conformance with the HTTP/1.1 specification, the client must send a `Host` header in this configuration, so you must pass a further `-aHost:localhost` argument to `sr`. If the persistent connection is working correctly, `sr` reports a larger number of transactions to connections in its periodic output.
 
@@ -212,4 +211,4 @@ This applies if the performance test involves more than one connection filter, w
 
 Each connection processor caches connections independently. This is because two connection processors using different SSL certificates cannot pool their connections. They are not interchangeable from an authentication point of view. Therefore, when using multiple connection filters, there is potential to soak the target machine with too many connections.
 
-{{< alert title="Note" color="primary" >}}This applies to both API Gateway **Connection** and **Connect to URL** filters in Policy Studio. For more details, see [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).{{< /alert >}}
+This applies to both API Gateway **Connection** and **Connect to URL** filters in Policy Studio.
