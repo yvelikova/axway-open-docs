@@ -70,15 +70,15 @@ You can also add threat protection profiles in **Environment Configuration > Lib
 
 Depending on your environment, you may need to configure the settings in the `modsecurity.conf` file. For example:
 
-* To handle an `application/xml` content type instead of `text/xml`, add the following line to `modsecurity.conf`:
+To handle an `application/xml` content type instead of `text/xml`, add the following line to `modsecurity.conf`:
 
-    ``` {space="preserve"}
-    SecRule REQUEST_HEADERS:Content-Type "application/xml" \
-    "id:'200100',phase:1,t:none,t:lowercase,pass,nolog,ctl:requestBodyProcessor=XML"
-    ```
+```
+SecRule REQUEST_HEADERS:Content-Type "application/xml" \
+"id:'200100',phase:1,t:none,t:lowercase,pass,nolog,ctl:requestBodyProcessor=XML"
+```
 
 * To configure ModSecurity to start denying requests with threatening content, in `modsecurity.conf`, change the value of `SecRuleEngine` from `DetectionOnly` to `On`.
-* If you have not included the security action in your security rules, you may need to set `SecDefaultAction` in `modsecurity.conf`. See [Configure API firewalling](#Configur). For more details on the `SecDefaultAction` parameter, see [ModSecurity Reference Manual](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#SecDefaultAction).
+* If you have not included the security action in your security rules, you may need to set `SecDefaultAction` in `modsecurity.conf`. See [Configure API firewalling](#configure-api-firewalling). For more details on the `SecDefaultAction` parameter, see [ModSecurity Reference Manual](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#SecDefaultAction).
 
 For more details on the `modsecurity.conf` file format and recommended settings, see [Recommended Base Configuration](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#a-recommended-base-configuration) in the ModSecurity documentation.
 
@@ -125,4 +125,4 @@ FROM USERS found within ARGS:q:SELECT * FROM USERS"] [severity "CRITICAL"]
 [tag "OWASP_TOP_10/A1"] [tag "OWASP_AppSensor/CIE1"] [tag "PCI/6.5.2"]
 ```
 
-In addition of being written to trace files, ModSecurity report is also stored in the message attribute `modsec.error.message`. You can configure an alert policy that, for example, uses an Alert filter with a selector for this message attribute in the default message to pass the threat report to third-party monitoring systems. For more details how to configure the Alert filter, see [Alert](/csh?context=529&product=prod-api-gateway-77) in the [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
+In addition of being written to trace files, ModSecurity report is also stored in the message attribute `modsec.error.message`. You can configure an alert policy that, for example, uses an Alert filter with a selector for this message attribute in the default message to pass the threat report to third-party monitoring systems.

@@ -1,7 +1,7 @@
 {
 "title": "Managedomain command reference",
 "linkTitle": "Managedomain command reference",
-"weight":"14",
+"weight":"02",
 "date": "2019-10-14",
 "description": "Learn how to run the `managedomain` commandin different modes:"
 }
@@ -44,7 +44,7 @@ topology_check             topology_compare           topology_merge
 topology_synch             version
 ```
 
-* You must first run `initialize` to register the first host in the domain in order to create and run the gateways.
+You must first run `initialize` to register the first host in the domain in order to create and run the gateways.
 
 ### View help for a command
 
@@ -364,8 +364,8 @@ For details on all available commands, enter `managedomain --help`
 
 For detailed examples of using `managedomain` in command mode, see the following:
 
-* [Configure Admin Node Manager high availability](#configure-admin-node-manager-high-availability)
-* [Find your installed version and list patches using managedomain](#find-your-installed-version-and-list-patches-using-managedomain)
+* [Configure Admin Node Manager high availability](/docs/apigtw_admin/admin_node_mngr)
+* [Find your installed version and list patches using managedomain](/docs/apigtw_admin/trblshoot_get_help#find-install-version)
 
 ## Provide credentials to managedomain
 

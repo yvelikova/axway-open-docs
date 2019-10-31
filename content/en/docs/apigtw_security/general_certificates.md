@@ -1,6 +1,6 @@
 {
-"title": "Manage X.509 certificates and keys",
-"linkTitle": "Manage X.509 certificates and keys",
+"title": "Manage certificates and keys",
+"linkTitle": "Manage certificates and keys",
 "weight":"6",
 "date": "2019-10-18",
 "description": "Import CA certificates, and import and create server certificates and private keys in the certificate store."
@@ -12,7 +12,7 @@ In addition to importing CA certificates, you can import and create server certi
 
 ## View certificates and keys
 
-To view the certificates and keys stored in the certificate store, select **Environment Configuration > Certificates and Keys > >Certificates** in the **Configuration Studio Policy Studio** tree. Certificates and keys are listed on the following tabs in the **Certificates** window:
+To view the certificates and keys stored in the certificate store, select **Environment Configuration > Certificates and Keys > Certificates** in the **Configuration Studio Policy Studio** tree. Certificates and keys are listed on the following tabs in the **Certificates** window:
 
 * **Certificates with Keys**: Server certificates with associated private keys
 * **Certificates**: Server certificates without any associated private keys
@@ -26,11 +26,11 @@ You can search for a specific certificate or key by entering a search string in 
 
 The following options are available at the bottom right of the window:
 
-* **Create/Import**: Click to create or import a new certificate and private key. For details, see [Configure an X.509 certificate](#configure-an-x.509-certificate).
+* **Create/Import**: Click to create or import a new certificate and private key. For details, see [Configure an X.509 certificate](#configure-an-x-509-certificate).
 * **Edit**: Select a certificate, and click to edit its existing settings.
 * **View**: Select a certificate, and click to view more detailed information.
 * **Remove**: Select a certificate, and click to remove the certificate from the certificate store.
-* **Keystore**: Click this to export or import certificates to or from a Java keystore. For details, see [Manage certificates in Java keystores](#manage-certificates-in-java- keystores).
+* **Keystore**: Click this to export or import certificates to or from a Java keystore. For details, see [Manage certificates in Java keystores](#manage-certificates-in-java-keystores).
 
 ## Configure an X.509 certificate
 
@@ -136,7 +136,7 @@ If the HSM requires the server to provide a specific response to a specific requ
 
 If the private key that corresponds to the public key stored in the certificate resides on an external HSM, select **Private key stored on Hardware Security Module (HSM)**, and enter the name of the **Certificate Realm**.
 
-* To use the API Gateway's PKCS#11 engine to access objects in an external HSM, the corresponding HSM provider and certificate realms must also be configured. For more details, see [Configure HSMs and certificate realms](#configure-hsms-and-certificate-realms).
+To use the API Gateway's PKCS#11 engine to access objects in an external HSM, the corresponding HSM provider and certificate realms must also be configured. For more details, see [Configure HSMs and certificate realms](#configure-hsms-and-certificate-realms).
 
 ## Configure HSMs and certificate realms
 
@@ -218,14 +218,14 @@ To create a certificate realm and associated keystore, perform the following ste
 7. You are prompted to input the PIN passphrase for the slot. The passphrase will not echo any output.
 8. When you enter the correct PIN passphrase for the slot, this displays a list of private keys. Choose the key to use for the certificate realm. For example:
 
-    ``
-       Choose from one of the following:
-         1) server1_priv
-         2) jms_priv
-         q) Quit
+```
+Choose from one of the following:
+    1) server1_priv
+    2) jms_priv
+    q) Quit
 
-       Select option:2
-    ``
+Select option:2
+```
 
 9. You are prompted for a file name for the keystore. For example:
 
@@ -239,7 +239,7 @@ To create a certificate realm and associated keystore, perform the following ste
 apigateway/groups/group-2/instance-1/conf/certrealms/jms keys.ks
 ```
 
-* Each gateway instance must have its certificate realm configured. When finished creating certificate realms, you must restart the gateway instance for the changes to take effect.
+Each gateway instance must have its certificate realm configured. When finished creating certificate realms, you must restart the gateway instance for the changes to take effect.
 
 ### Start API Gateway when using an HSM
 
@@ -361,7 +361,7 @@ Enter a unique name for the PGP key pair.
 
 Click **Load** to select the public key and private key files to use.
 
-* The PGP keys added must not be passphrase protected.
+The PGP keys added must not be passphrase protected.
 
 ### Edit a PGP key pair
 

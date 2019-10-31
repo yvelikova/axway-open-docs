@@ -141,7 +141,7 @@ To stop the Node Manager, you must specify the `nodemanager` command along with 
 ./nodemanager -k
 ```
 
-## Shut down a gateway using zero downtime shutdown
+## Shut down a gateway using zero downtime shutdown {#zero-downtime-shutdown}
 
 Perform a zero downtime shutdown of a gateway in a multi-node gateway environment with a load balancer.
 

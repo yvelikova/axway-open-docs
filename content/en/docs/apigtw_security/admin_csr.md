@@ -16,7 +16,7 @@ The gateway runtime incorporates X.509 certificate and private key material in i
 
 A common misunderstanding is that certificates are trusted because they are imported into the gateway configuration, and displayed in the **Certificates** view in Policy Studio. However, imported certificates are not trusted by default, and must be configured in Policy Studio.
 
-For more details, see [Manage X.509 certificates and keys](/docs/apigtw_admin/general_certificates).
+For more details, see [Manage X.509 certificates and keys](/docs/apigtw_security/general_certificates/#configure-an-x-509-certificate).
 
 **What is OpenSSL?**
 
@@ -36,7 +36,7 @@ State or Province Name (full name) [Some-State]:Massachusetts
 Locality Name (e.g., city) []:Boston
 Organization Name (e.g., company) [My Company Ltd]:Acme
 Organizational Unit Name (e.g., section) []:
-Common Name (e.g., server's hostname) [myserver]:api.acme.comEmail 
+Common Name (e.g., server's hostname) [myserver]:api.acme.comEmail
 Address []:api-admin@acme.com
 
 Please enter the following 'extra' attributes to be sent with your certificate request

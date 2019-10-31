@@ -57,7 +57,7 @@ You can also enable FIPS mode for a Policy Studio client application only. To en
 policystudio -clean
 ```
 
-* You can use the same instructions to enable FIPS in Configuration Studio.
+You can use the same instructions to enable FIPS in Configuration Studio.
 
 ## Restrictions when running in FIPS mode
 

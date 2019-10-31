@@ -26,9 +26,9 @@ projchangepass --proj=/home/user1/apiprojects/proj1 --oldpass=changeme --newpass
 
 You can use the `managedomain` command to change the encryption passphrase for an API Gateway group. The following example shows this using `managedomain` in command interpreter mode:
 
-For more details on using `managedomain`, see [Managedomain command reference](/docs/apigtw_admin/managedomain_ref).
+For more details on using `managedomain`, see [Managedomain command reference](/docs/apigtw_ref/managedomain_ref/).
 
-* You must also re-encrypt Key Property Store tables after an encryption passphrase for an API Gateway group has been changed. You can do this using the `kpsadmin` tool.
+You must also re-encrypt Key Property Store tables after an encryption passphrase for an API Gateway group has been changed. You can do this using the `kpsadmin` tool.
 
 ## Enter the passphrase when editing configuration in Policy Studio
 
@@ -88,7 +88,7 @@ Alternatively, you can use a script to automatically provide the passphrase when
           domainID="${domainID}" title="API Gateway"/>
     ```
 
-    * The `passphraseExec` option is only used if it is present and the `secret` option (described in the previous sections) is not used.
+    The `passphraseExec` option is only used if it is present and the `secret` option (described in the previous sections) is not used.
 
 3. Create the passphrase script in the specified location.
 

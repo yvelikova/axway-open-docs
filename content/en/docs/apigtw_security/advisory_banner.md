@@ -35,4 +35,3 @@ For more details on API Gateway Manager, see [Monitor services](/docs/apigtw_adm
 The advisory banner is also displayed when you log in to Policy Studio:
 
 ![Advisory banner in Policy Studio](/Images/APIGateway/advisory_banner_ps.png)
-

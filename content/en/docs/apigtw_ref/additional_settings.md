@@ -1,7 +1,7 @@
 {
 "title": "Policy Studio additional settings",
 "linkTitle": "Policy Studio additional settings",
-"weight":"46",
+"weight":"08",
 "date": "2019-10-14",
 "description": "Configure API Gateway additional settings in Policy Studio."
 }
@@ -78,7 +78,7 @@ The **WSSE Namespace** tab is used to specify the WSSE (and corresponding WSSU) 
 
 API Gateway attempts to identify WS Security blocks belongingto the WSSE namespaces listed in this table. It first attempts to locate Security blocks belonging to the first listed namespace, followed by the second, then the third, and so on until all namespaces have been utilized. If no Security blocks can be found for any of the listed namespaces, the message will be rejected on the grounds that API Gateway does not support the namespace specified in the message.To add a new namespace, click the add button.
 
-{{< alert title="Note" color="primary" >}}Every WSSE namespace has a corresponding WSSU namespace. For example, the following WSSE and WSSU namespaces are inextricably bound:{{< /alert >}}
+Every WSSE namespace has a corresponding WSSU namespace. For example, the following WSSE and WSSU namespaces are inextricably bound:
 
 * WSSE Namespace - `http://schemas.xmlsoap.org/ws/2003/06/secext`
 * WSSU Namespace - `http://schemas.xmlsoap.org/ws/2003/06/utility`
@@ -99,7 +99,7 @@ Configure the following session settings:
 
 Specifies the cache that you wish to configure. Defaults to `HTTP Sessions`.To configure a different cache, click the button on the right, and select the cache touse. The list of currently configured caches is displayed in the tree.
 
-To add a cache, right-click the **Caches** tree node, and select **Add Local Cache** or **Add Distributed Cache**. Alternatively, you can configure caches under the **Environment Configuration > Libraries** node in the Policy Studio tree. For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+To add a cache, right-click the **Caches** tree node, and select **Add Local Cache** or **Add Distributed Cache**. Alternatively, you can configure caches under the **Environment Configuration > Libraries** node in the Policy Studio tree.
 
 **Clear Expired Sessions Period**:
 
@@ -111,9 +111,9 @@ The **Zero Downtime** settings enable you to configure zero downtime deployment 
 
 To configure zero downtime settings, select the **Server Settings** node in the Policy Studio tree, and click **General > Zero Downtime**. To confirm updates to these settings, click **Save** at the bottom right of the window.
 
-For more information of performing a zero downtime deployment, see [Perform zero downtime deployment](/docs/apigtw_admin/admin_zdd). For more information on performing a zero downtime shutdown, see [Perform zero downtime shutdown](/docs/apigtw_admin/admin_zds).
+For more information of performing a zero downtime deployment, see [Perform zero downtime deployment](/docs/apigtw_admin/deploy_get_started/#perform-zero-downtime-deployment). For more information on performing a zero downtime shutdown, see [Perform zero downtime shutdown](/docs/apigtw_admin/manage_operations/#zero-downtime-shutdown).
 
-* Zero downtime deployment and shutdown rely on the **Health Check LB** policy to alert the load balancer when a maintenance operation is about to begin. To use the zero downtime deployment or shutdown features, the Health Check LB policy must be present in your API Gateway configuration.
+Zero downtime deployment and shutdown rely on the **Health Check LB** policy to alert the load balancer when a maintenance operation is about to begin. To use the zero downtime deployment or shutdown features, the Health Check LB policy must be present in your API Gateway configuration.
 
 ### New projects
 
@@ -133,7 +133,7 @@ $VDISTDIR/samples/SamplePolicies/HealthCheck/HealthCheckLB.xml
 
 You must also add the Health Check LB policy to a listener so that the load balancer can ping it to determine the health of the API Gateway (for example, path `/healthchecklb` on HTTP port `8080`).
 
-* You can customize the Health Check LB policy for your own environment. For example, you can modify the response code and message that are returned to the load balancer.
+You can customize the Health Check LB policy for your own environment. For example, you can modify the response code and message that are returned to the load balancer.
 
 ### Zero downtime Configuration
 

@@ -71,7 +71,7 @@ The examples use `$VDISTDIR` to refer to the absolute path where the gateway is 
 export VDISTDIR=/opt/Axway-7.8/apigateway
 ```
 
-* `patchelf` is a development and administration tool, and is not installed on systems by default. If you do not wish to install extra tools on your production environment, you can patch the `vshell` binary on another non-production system and move it to the production environment.
+<i class="fas fa-bullhorn"></i> `patchelf` is a development and administration tool, and is not installed on systems by default. If you do not wish to install extra tools on your production environment, you can patch the `vshell` binary on another non-production system and move it to the production environment.
 
 ## Add API Gateway library paths to jvm.xml
 
@@ -106,7 +106,7 @@ The gateway processes must be able to listen on Internet domain privileged ports
 * Admin Node Manager
 * API Gateway Analytics
 
-* Using `setcap` to set this capability is supported from kernel 2.6.24 onwards. If the kernel version is before 2.6.33, you must enable `CONFIG_SECURITY_FILE_CAPABILITIES`.
+<i class="fas fa-bullhorn"></i>  Using `setcap` to set this capability is supported from kernel 2.6.24 onwards. If the kernel version is before 2.6.33, you must enable `CONFIG_SECURITY_FILE_CAPABILITIES`.
 
 To set the capability on the `vshell` binary, run the following command:
 
@@ -121,7 +121,7 @@ getcap /opt/Axway-7.8/apigateway/platform/bin/vshell
 /opt/Axway-7.8/apigateway/platform/bin/vshell = cap_net_bind_service+ep
 ```
 
-* If you set this capability, you must remove it again before applying a service pack or uninstalling, as it results in the product binaries being locked.
+If you set this capability, you must remove it again before applying a service pack or uninstalling, as it results in the product binaries being locked.
 
 To remove the capability, run the following command:
 
@@ -131,4 +131,4 @@ sudo setcap -r /opt/Axway-7.8/apigateway/platform/bin/vshell
 
 ## Restart API Gateway
 
-Start the gateway as the non-root user. For more information on starting API Gateway, see [Start and stop the API Gateway](/docs/apigtw_admin/general_startup).
+Start the gateway as the non-root user. For more information on starting API Gateway, see [Start and stop the API Gateway](/docs/apigtw_admin/manage_operations/#start-and-stop-the-api-gateway).

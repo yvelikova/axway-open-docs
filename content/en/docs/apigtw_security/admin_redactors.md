@@ -1,6 +1,6 @@
 {
-"title": "Hide sensitive data in API Gateway Manager",
-"linkTitle": "Hide sensitive data in API Gateway Manager",
+"title": "Hide sensitive data",
+"linkTitle": "Hide sensitive data",
 "weight":"10",
 "date": "2019-10-14",
 "description": "Redact sensitive content message content types such as HTTP headers, JSON, XML, HTML form, and plain text."
@@ -8,7 +8,7 @@
 
 API Gateway enables you to remove sensitive content from messages monitored in the API Gateway Manager web console and traffic monitoring database. You can redact sensitive content message content types such as HTTP headers, JSON, XML, HTML form, and plain text.
 
-For example, sensitive data such as user passwords or credit card details can be redacted from both request and response messages. This means that such sensitive data is only ever present in the API Gateway memory during message processing, and is never displayed onscreen or persisted to disk. This is shown in the following architecture diagram:
+For example, sensitive data such as user passwords or credit card details can be redacted from both request and response messages. This means that such sensitive data is only ever present in the gteway memory during message processing, and is never displayed onscreen or persisted to disk. This is shown in the following architecture diagram:
 
 ![Redact sensitive message content from API Gateway](/Images/APIGateway/admin_redaction.png)
 
@@ -88,7 +88,7 @@ To enable redaction for a gateway instance, perform the following steps:
 
 7. Restart the gateway instance.
 
-* For all message content (HTTP, JSON, HTML form, and plain text), you must first ensure that the appropriate URL is defined in an `HTTPRedactor`. 
+For all message content (HTTP, JSON, HTML form, and plain text), you must first ensure that the appropriate URL is defined in an `HTTPRedactor`. 
 
 ## Redact HTTP message content
 
@@ -274,16 +274,14 @@ For example, to redact all the children of an element named `axway:sensitive_dat
 
 You can specify the following XML redaction directives:
 
-|                     |                                                             |
-|---------------------|-------------------------------------------------------------|
-| `redactChildren`    | Removes all children of a specified element                 |
-| `redactElement`     | Redacts the specified element and all its descendants       |
-| `redactText`        | Removes all text nodes from the specified element           |
-| `redactDescendants` | Redacts children and text descendants of the specified node |
+* `redactChildren`: Removes all children of a specified element
+* `redactElement`: Redacts the specified element and all its descendants
+* `redactText`: Removes all text nodes from the specified element
+* `redactDescendants`: Redacts children and text descendants of the specified node
 
 If you need to redact attributes of the specified node, you can configure this using `XMLRedactedAttribute` (child of `XMLRedactedElement`). `XMLRedactedElement` has two mandatory attributes, `localname` and `namespace`, which have the same meaning for `XMLRedactedAttribute`.
 
-* An empty XML namespace name is the same as the default document namespace.
+An empty XML namespace name is the same as the default document namespace.
 
 ### XML redactor configuration
 
@@ -390,7 +388,7 @@ Supported HTML form content types are as follows:
 * `application/x-www-form-urlencoded`
 * `multipart/formdata`
 
-** Redact raw message content
+**Redact raw message content**
 
 You can redact specific plain text by configuring regular expressions to define content to be removed. The following shows a configuration example:
 
@@ -405,11 +403,9 @@ You can redact specific plain text by configuring regular expressions to define 
 
 In this configuration model, the `Regex` element includes the following attributes to define the redactor behavior:
 
-| Attribute | Description         |
-|-----------|---------------------|
-| `exp`     | Regular expression used to match the desired content. Possible values are valid regular expressions.  |
-| `redact`  | Specifies which groups in the match are redacted. Possible values are comma-separated lists of group indexes (for example, `1` or `1,2` or `4,6,7`, and so on). You can specify `0` to redact the entire match. |
-| `icase`   | Specifies whether the match is case insensitive. Possible values are `true` (case insensitive) and `false` (case sensitive).|
+* `exp`: Regular expression used to match the desired content. Possible values are valid regular expressions.
+* `redact`: Specifies which groups in the match are redacted. Possible values are comma-separated lists of group indexes (for example, `1` or `1,2` or `4,6,7`, and so on). You can specify `0` to redact the entire match.
+* `icase`: Specifies whether the match is case insensitive. Possible values are `true` (case insensitive) and `false` (case sensitive).
 
 **Example: Redact credit card details from raw text**:
 
@@ -421,9 +417,7 @@ This section shows some configured regular expressions and the behavior with spe
 
 The following shows example message content and the behavior with this expression:
 
-| Message content                | Behavior                                                                                               |
-|--------------------------------|--------------------------------------------------------------------------------------------------------|
-| `&creditcard=1234123412341234` | Content matches expression. Defined group 1 `(\d{16})` is redacted (in this case, `1234123412341234`). |
+* `&creditcard=1234123412341234`: Content matches expression. Defined group 1 `(\d{16})` is redacted (in this case, `1234123412341234`).
 
 The following expression specifies to redact multiple defined groups:
 
@@ -433,9 +427,7 @@ The following expression specifies to redact multiple defined groups:
 
 The following shows example message content and the behavior with this expression:
 
-| Message content                | Behavior          |
-|--------------------------------|-------------------|
-| `ccdigits:1234.2345.3456.4567` | Content matches expression. Defined groups 1 `(\d{1,4})`, 2 `(\d{1,4}))`, and 3 `(\d{1,4})` are redacted (in this case `1234`, `2345`, and `3456`. Defined group 4 `(\d{1,4})` is left intact (in this case `4567`).   |
+* `ccdigits:1234.2345.3456.4567`: Content matches expression. Defined groups 1 `(\d{1,4})`, 2 `(\d{1,4}))`, and 3 `(\d{1,4})` are redacted (in this case `1234`, `2345`, and `3456`. Defined group 4 `(\d{1,4})` is left intact (in this case `4567`).
 
 The following expression specifies to redact content using case insensitivity:
 
@@ -445,12 +437,10 @@ The following expression specifies to redact content using case insensitivity:
 
 The following shows example message content and the behavior with this expression:
 
-| Message content                | Behavior                                                                                                                |
-|--------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| `credit card 123456781234567`  | Content matches expression. Entire match (`credit card 1234567812345678`) is redacted.                                  |
-| `Credit Card 1234567812345678` | Content matches expression because of the `icase` attribute. Entire match (`Credit Card 1234567812345678`) is redacted. |
+* `credit card 123456781234567`: Content matches expression. Entire match (`credit card 1234567812345678`) is redacted.
+* `Credit Card 1234567812345678`: Content matches expression because of the `icase` attribute. Entire match (`Credit Card 1234567812345678`) is redacted.
 
-Redact trace log records## 
+## Redact trace log records
 
 You can redact API Gateway trace log records by configuring regular expressions to define content to be removed at a trace level.
 This configuration applies to trace records equal or lower than the level configured. For example, `INFO` level redacts messages at levels `INFO`, `DEBUG`, and `DATA`. For details on trace levels, see [Configure API Gateway diagnostic trace](/docs/apigtw_admin/tracing).
@@ -474,5 +464,5 @@ Redaction for trace log records works as follows:
 
 For details on how to redact sensitive data from domain audit log and access log files, see the following topics:
 
-* [Configure API Gateway logging and events](logging.htm)
-* [Transaction access log settings](log_access_settings.htm)
+* [Configure API Gateway logging and events](/docs/apigtw_admin/logging)
+* [Transaction access log settings](/docs/apigtw_ref/log_global_settings/#transaction-access-log-setting)

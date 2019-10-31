@@ -1,7 +1,7 @@
 {
 "title": "Cassandra settings in Policy Studio",
 "linkTitle": "Cassandra settings in Policy Studio",
-"weight":"42",
+"weight":"04",
 "date": "2019-10-14",
 "description": "Configure settings for the external Apache Cassandra database in Policy Studio to store API Gateway and API Manager data."
 }
@@ -18,7 +18,7 @@ The Cassandra settings in Policy Studio enable you to configure settings for the
 
 To configure Cassandra settings, select the **Server Settings > Cassandra** node in the Policy Studio tree. To apply updates to these settings, click **Apply changes** at the bottom right of each page.
 
-For more details on installing and configuring an Apache Cassandra database cluster, see the [API Gateway Installation Guide](/docs/apigtw_install/cassandra_install/).
+For more details on installing and configuring an Apache Cassandra database cluster, see [Install an Apache Cassandra database](/docs/apigtw_install/cassandra_install/).
 
 ## Cassandra Keyspace settings
 
@@ -76,11 +76,11 @@ Select whether to use Secure Sockets Layer (SSL) to establish secured connection
 
 * **Trusted certificates**:
 
-Click to select the list of certificates or certificate authorities trusted when validating Cassandra server certificates. This is required when SSL is enabled. For details on importing certificates, see [Manage X.509 certificates and keys](../CommonTopics/general_certificates.htm).
+Click to select the list of certificates or certificate authorities trusted when validating Cassandra server certificates. This is required when SSL is enabled. For details on importing certificates, see [Manage X.509 certificates and keys](/docs/apigtw_security/general_certificates/).
 
 * **Client certificate**:
 
-Click to select the client certificate and key to use if client authentication is required by the Cassandra server (also known as SSL mutual authentication). For details on importing certificates, see [Manage X.509 certificates and keys](../CommonTopics/general_certificates.htm).
+Click to select the client certificate and key to use if client authentication is required by the Cassandra server (also known as SSL mutual authentication). For details on importing certificates, see [Manage X.509 certificates and keys](/docs/apigtw_security/general_certificates/).
 
 * **Accepted cipher suites**:
 
