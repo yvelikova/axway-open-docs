@@ -14,8 +14,6 @@ You can create a new Policy Studio project from the following starting points:
 * API Gateway instance
 * Existing API Gateway configuration
 
-For details on opening an existing project, see [*Manage API Gateway connections* on page 1](general_connection_details.htm).
-
 ## Launch the New Project wizard
 
 To launch the **New Project** wizard in Policy Studio, select **File** > **New Project** in the main menu. Alternatively, click **New Project** on the welcome page.

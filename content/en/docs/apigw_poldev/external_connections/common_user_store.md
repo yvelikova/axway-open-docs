@@ -343,7 +343,7 @@ To configure the Authentication Repository dialog for Oracle Directory Server (f
 * **Repository Name**:
     Enter a suitable name for this user store.
 * **Directory Name**:
-    Click **Add/Edit** to add details of your Oracle Directory Server. For more details, see [Configure LDAP directories](common_ldap_conf.htm).
+    Click **Add/Edit** to add details of your Oracle Directory Server.
 
 The **User Search Conditions** section instructs API Gateway to search the LDAP tree according to the following conditions:
 
@@ -373,7 +373,7 @@ dialog for Microsoft Active Directory Server. The values enter here differ from 
 * **Repository Name**:
     Enter a suitable name for this search.
 * **LDAP Directory**:
-    Click **Add/Edit** to add details of your Active Directory Server. For more details, see [Configure LDAP directories](common_ldap_conf.htm).
+    Click **Add/Edit** to add details of your Active Directory Server.
 
 The **User Search Conditions** instruct API Gateway to search the LDAP tree according to certain criteria. The values specified are different from those selected for Oracle Directory Server, because MS Active Directory Server uses different attributes and classes to Oracle Directory Server:
 

@@ -56,14 +56,12 @@ For more details, see [Register and secure web services](/docs/apigw_poldev/web_
 You can use the `projchangepass` command to change the encryption passphrase for a Policy Studio project. For more information on `projchangepass`, see
 [Automate processes for continuous integration](/csh?context=460&product=prod-api-gateway-77)
 in the
-[API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/)
-.
+[API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
 
 {{< alert title="Note" color="primary" >}}It is important to distinguish between the passphrase used by a project on the local file system and the passphrase used by an API Gateway group configuration on a running API Gateway instance. For details on specifying a different passphrase for runtime, see [Deploy configuration](../CommonTopics/deploy_wizard.htm). {{< /alert >}}
 
 For more details on configuring encryption passphrases, see the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/)
-.
+[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
 
 ## Export configuration packages
 
@@ -80,11 +78,10 @@ When you have saved a configuration package, you can use it to create a Policy S
 
 ## Import configuration into a project
 
-When a project is loaded in Policy Studio, you can select **File** > **Import** > **Configuration Fragment** from the main menu to import configuration into the project. This feature enables you to import XML-based configuration previously exported from Policy Studio. For more details, see [Import configuration](general_import.htm).
+When a project is loaded in Policy Studio, you can select **File** > **Import** > **Configuration Fragment** from the main menu to import configuration into the project. This feature enables you to import XML-based configuration previously exported from Policy Studio.
 
 You can also select **File** > **Import** > **Custom filters** to import custom filters to be added to the Policy Studio filter palette. For more details, see the
-[API Gateway Developer Guide](/bundle/APIGateway_77_DeveloperGuide_allOS_en_HTML5)
-.
+[API Gateway Developer Guide](/bundle/APIGateway_77_DeveloperGuide_allOS_en_HTML5).
 
 ## Manage multiple projects
 
@@ -109,4 +106,4 @@ To unlock a server connection, perform the following steps:
 5. Upload the files back to the server's `conf/fed` directory.
 6. Restart the Admin Node Manager.
 
-For more details on **Management Services**, see [Configure HTTP services](general_services.htm).
+For more details on **Management Services**, see [Management services](/docs/apigw_poldev/gw_instances/general_services/#management-services).

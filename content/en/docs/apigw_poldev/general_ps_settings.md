@@ -103,7 +103,7 @@ enable you to specify what action is taken when an unrecognized server certifica
 
 Configure one of the following options:
 
-* ***Prompt User**: When you try to connect to SSL services, you are prompted with a dialog. If you choose to trust this particular server certificate displayed in the dialog, it is stored locally, and you are not prompted again.
+* **Prompt User**: When you try to connect to SSL services, you are prompted with a dialog. If you choose to trust this particular server certificate displayed in the dialog, it is stored locally, and you are not prompted again.
 * **Trust All**: All server certificates are trusted.
 * **Keystore**: Enter or browse to the location of the **Keystore** that contains the authentication credentials sent to a remote host for mutual SSL, and enter the appropriate **Keystore Password**.
 
@@ -245,7 +245,7 @@ To confirm your updates, you must click **Save Changes**
 at the bottom right of the dialog. Alternatively, at any stage you can click **Restore Defaults**
 to return to the original factory settings.
 
-For more details on the API Gateway selector syntax, see [*Select configuration values at runtime* on page 1](general_selector.htm).
+For more details on the API Gateway selector syntax, see [Select configuration values at runtime](/docs/apigw_poldev/general_selector/).
 
 ### Return to default filter view
 

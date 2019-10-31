@@ -82,7 +82,7 @@ A selector is a special syntax that enables API Gateway configuration settings t
 ${http.request.clientaddr}
 ```
 
-Selectors are powerful a feature when extending the API Gateway to integrate with other systems. For more details on selectors, see [*Select configuration values at runtime* on page 1](general_selector.htm).
+Selectors are powerful a feature when extending the API Gateway to integrate with other systems. For more details on selectors, see [Select configuration values at runtime](/docs/apigw_poldev/general_selector/).
 
 ## Faults and errors
 

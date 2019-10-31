@@ -10,7 +10,7 @@
 
 This section describes how to use Policy Studio to configure an API Gateway policy manually. It also applies to cases where a web service definition is not available in a Web Services Description Language (WSDL) file, meaning that the policy used to protect a web service must be configured manually.
 
-However, the recommended way to configure a policy to protect a web service is to import the WSDL file for that service. If your web service has WSDL-based definitions, see [*Configure policies from WSDL files* on page 1](general_policy_wsdl.htm).
+However, the recommended way to configure a policy to protect a web service is to import the WSDL file for that service. If your web service has WSDL-based definitions, see [Configure policies from WSDL files](/docs/apigw_poldev/web_services/general_policy_wsdl/).
 
 The following steps outline how to manually create a policy to protect a web service and then test it.
 
@@ -137,7 +137,7 @@ You can configure a global policy at the service level to run as part of a polic
 
 ![Global Policy Configured on Relative Path](/Images/docbook/images/general/path_global_policy.gif)
 
-For more details, see [*Configure relative paths* on page 1](general_relative_path.htm).
+For more details, see [Configure relative paths](/docs/apigw_poldev/gw_instances/general_relative_path/).
 
 ### Show global policies
 
@@ -164,7 +164,7 @@ Similarly, subtle differences in security requirements might require the token a
 
 If you need to create separate policies for such cases, interoperating with different vendor services can become arduous. This involves creating several complicated policies that might only differ in one field in each filter. To avoid this duplication, you can create a *policy assembly* that inserts the WS-Security `UsernameToken` into the message and generates the XML-Signature.
 
-However, instead of explicitly configuring fields mentioned above (for example, enveloped or enveloping signature, include a `<wsse:BinarySecurityToken>`, or signing key to use), the policy assembly can use selectors for these fields, which are configured dynamically at runtime. For more details, see [*Select configuration values at runtime* on page 1](general_selector.htm).
+However, instead of explicitly configuring fields mentioned above (for example, enveloped or enveloping signature, include a `<wsse:BinarySecurityToken>`, or signing key to use), the policy assembly can use selectors for these fields, which are configured dynamically at runtime.
 
 The policy assembly advertises that it requires configuration details to be called generically from other policies. For example, it requires the key to sign the message. By templating the signing policy as a policy assembly, and making it available to call from other policies like any other filter, the caller must set the signing key for the policy assembly. In this way, different policies that require a signed `UsernameToken` can call the same policy assembly. By using selectors to pass in different signing keys, messages are signed using the appropriate key for each calling policy.
 
