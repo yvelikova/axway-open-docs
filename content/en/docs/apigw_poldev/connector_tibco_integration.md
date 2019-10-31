@@ -1,7 +1,7 @@
 {
 "title": "Integrate with TIBCO Rendezvous",
 "linkTitle": "Integrate with TIBCO",
-"weight": 30,
+"weight": 60,
 "date": "2019-10-17",
 "description": "Configure API Gateway to produce or consume messages for TIBCO Rendezvous."
 }

@@ -3,7 +3,7 @@
 "linkTitle": "Manage web services",
 "weight": 2,
 "date": "2019-10-17",
-"description": "Describes how to manage web services and groups, and explains what happens when you import a WSDL file to register a web service. Also describes how to export a registered web service, how to update (or resynchronize) an existing web service, and how to expose additional operations on a web service."
+"description": "Learn how to manage web services and groups, and understand what happens when you import a WSDL file to register a web service."
 }
 
 The **Web Service Repository** stores information about web services whose definitions have been imported using Policy Studio. The WSDL files that contain these web services definitions are stored together with their related XML schemas. Clients of the web service can then query the repository for the WSDL file, which they can use to build and send messages to the web service using API Gateway.

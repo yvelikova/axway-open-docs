@@ -1,7 +1,7 @@
 {
 "title": "Configure relative paths",
 "linkTitle": "Configure relative paths",
-"weight": 30,
+"weight": 2,
 "date": "2019-10-17",
 "description": "Configure relative path resolvers to invoke a policy when a request arrives on a specific path."
 }

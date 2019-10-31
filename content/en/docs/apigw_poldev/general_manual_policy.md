@@ -1,7 +1,7 @@
 {
     "title": "Configure policies",
     "linkTitle": "Configure policies",
-    "weight": 6,
+    "weight": 5,
     "date": "2019-10-17",
     "description": "Learn how to configure policies manually, and how to configure global policies and policy assemblies."
 }

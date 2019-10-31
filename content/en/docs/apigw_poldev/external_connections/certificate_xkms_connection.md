@@ -1,7 +1,7 @@
 {
 "title": "Configure XKMS connections",
 "linkTitle": "Configure XKMS connections",
-"weight": 40,
+"weight": 13,
 "date": "2019-10-17",
 "description": "Configure API Gateway to query an XKMS responder to determine whether a given certificate can be trusted."
 }

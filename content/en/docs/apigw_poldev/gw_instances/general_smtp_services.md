@@ -1,7 +1,7 @@
 {
 "title": "Configure SMTP services",
 "linkTitle": "Configure SMTP services",
-"weight": 30,
+"weight": 4,
 "date": "2019-10-17",
 "description": "Configure API Gateway to receive email and to act as a mail relay."
 }

@@ -1,7 +1,7 @@
 {
 "title": "Configure a directory scanner",
 "linkTitle": "Configure a directory scanner",
-"weight": 30,
+"weight": 7,
 "date": "2019-10-17",
 "description": "Scan a specified directory on the file system for files containing messages."
 }

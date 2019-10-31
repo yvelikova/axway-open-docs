@@ -1,7 +1,7 @@
 {
 "title": "Configure authentication repositories",
 "linkTitle": "Configure authentication repositories",
-"weight": 40,
+"weight": 1,
 "date": "2019-10-17",
 "description": "Configure API Gateway to authenticate clients using user name and password combinations stored in an authentication repository."
 }

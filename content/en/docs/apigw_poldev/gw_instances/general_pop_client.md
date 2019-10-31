@@ -1,7 +1,7 @@
 {
 "title": "Configure a POP client",
 "linkTitle": "Configure a POP client",
-"weight": 30,
+"weight": 8,
 "date": "2019-10-17",
 "description": "Poll a POP mail server and read email messages from it."
 }

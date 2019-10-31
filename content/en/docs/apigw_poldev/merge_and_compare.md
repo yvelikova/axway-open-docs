@@ -1,9 +1,9 @@
 {
 "title": "Compare and merge API Gateway configurations",
 "linkTitle": "Compare and merge API Gateway configurations",
-"weight": 10,
+"weight": 50,
 "date": "2019-10-17",
-"description": "Compare the currently loaded API Gateway configuration with a configuration stored in a deployment package (`.fed file) and merge any differences."
+"description": "Compare the currently loaded API Gateway configuration with a configuration stored in a deployment package (`.fed` file) and merge any differences."
 }
 
 In Policy Studio, you can compare the currently loaded API Gateway configuration with a configuration stored in a deployment package (`.fed` file). You can also merge any differences between the configurations.

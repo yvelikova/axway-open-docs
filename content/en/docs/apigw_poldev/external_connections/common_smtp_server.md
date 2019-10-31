@@ -1,7 +1,7 @@
 {
 "title": "Configure SMTP servers",
 "linkTitle": "Configure SMTP servers",
-"weight": 40,
+"weight": 11,
 "date": "2019-10-17",
 "description": "Configure the API Gateway to use a specified SMTP server to relay messages to an email recipient."
 }

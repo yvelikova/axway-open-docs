@@ -1,7 +1,7 @@
 {
 "title": "Configure a file transfer service",
 "linkTitle": "Configure a file transfer service",
-"weight": 30,
+"weight": 5,
 "date": "2019-10-17",
 "description": "Configure API Gateway to act as a file transfer service."
 }

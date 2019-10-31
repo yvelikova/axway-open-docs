@@ -1,7 +1,7 @@
 {
 "title": "Configure Tivoli connections",
 "linkTitle": "Configure Tivoli connections",
-"weight": 40,
+"weight": 12,
 "date": "2019-10-17",
 "description": "Configure API Gateway to connect to a Tivoli server."
 }

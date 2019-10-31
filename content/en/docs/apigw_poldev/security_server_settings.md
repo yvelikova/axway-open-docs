@@ -1,7 +1,7 @@
 {
 "title": "Configure Oracle SSM and Kerberos settings",
 "linkTitle": "Configure Oracle SSM and Kerberos settings",
-"weight": 10,
+"weight": 50,
 "date": "2019-10-17",
 "description": "Configure Oracle SSM and Kerberos settings."
 }

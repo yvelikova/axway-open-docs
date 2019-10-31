@@ -1,7 +1,7 @@
 {
 "title": "Cryptographic acceleration",
 "linkTitle": "Cryptographic acceleration",
-"weight": 30,
+"weight": 10,
 "date": "2019-10-17",
 "description": "Configure API Gateway to use an OpenSSL engine for cryptographic acceleration."
 }

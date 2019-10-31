@@ -1,7 +1,7 @@
 {
 "title": "Configure HTTP services",
 "linkTitle": "Configure HTTP services",
-"weight": 30,
+"weight": 1,
 "date": "2019-10-17",
 "description": "Configure HTTP services groups,  HTTP/S interfaces, packet sniffers, and Management services."
 }

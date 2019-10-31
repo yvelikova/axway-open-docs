@@ -1,7 +1,7 @@
 {
     "title": "Get started with routing configuration",
     "linkTitle": "Get started with routing configuration",
-    "weight": 4,
+    "weight": 50,
     "date": "2019-10-17",
     "description": "Configure API Gateway to send messages to external services."
 }

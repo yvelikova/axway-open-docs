@@ -1,7 +1,7 @@
 {
 "title": "Configure connection groups and URL groups",
 "linkTitle": "Configure connection groups and URL groups",
-"weight": 40,
+"weight": 20,
 "date": "2019-10-17",
 "description": "Configure API Gateway to connect to multiple external servers in a connection group, or multiple URLs in a URL group, on a round-robin basis."
 }

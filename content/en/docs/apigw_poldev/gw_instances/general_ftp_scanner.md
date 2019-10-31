@@ -1,7 +1,7 @@
 {
 "title": "Configure an FTP poller",
 "linkTitle": "Configure an FTP poller",
-"weight": 30,
+"weight": 6,
 "date": "2019-10-17",
 "description": "Use API Gateway to poll a remote file server, to query and retrieve files to be processed."
 }

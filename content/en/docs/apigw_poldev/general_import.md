@@ -1,7 +1,7 @@
 {
 "title": "Import and export API Gateway configuration",
 "linkTitle": "Import and export API Gateway configuration",
-"weight": 3,
+"weight": 12,
 "date": "2019-10-17",
 "description": "Import and export configuration data to share it in a development environment and to manage differences and references."
 }

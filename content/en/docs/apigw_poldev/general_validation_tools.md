@@ -1,7 +1,7 @@
 {
 "title": "Compliance validation tools",
 "linkTitle": "Compliance validation tools",
-"weight": 10,
+"weight": 50,
 "date": "2019-10-17",
 "description": "Check the compliance of your configuration against security standards."
 }

@@ -1,7 +1,7 @@
 {
 "title": "Configure WebSocket connections",
 "linkTitle": "Configure WebSocket connections",
-"weight": 30,
+"weight": 3,
 "date": "2019-10-17",
 "description": "Configure API Gateway to act as a WebSocket proxy."
 }

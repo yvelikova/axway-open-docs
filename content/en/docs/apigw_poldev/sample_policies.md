@@ -1,7 +1,7 @@
 {
     "title": "Get started with sample policies",
     "linkTitle": "Get started with sample policies",
-    "weight": 5,
+    "weight": 4,
     "date": "2019-10-17",
     "description": "Learn about and set up the example policies available in the `samples` directory of your API Gateway installation."
 }

@@ -1,7 +1,7 @@
 {
 "title": "Configure Key Property Store data",
 "linkTitle": "Configure KPS data",
-"weight": 20,
+"weight": 10,
 "date": "2019-10-17",
 "description": "Use a Key Property Store to store data that can be referenced by policies running on an API Gateway."
 }

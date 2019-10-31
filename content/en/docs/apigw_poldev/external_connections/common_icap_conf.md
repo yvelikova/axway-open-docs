@@ -1,6 +1,7 @@
 {
 "title": "Configure ICAP servers",
 "linkTitle": "Configure ICAP servers",
+"weight": 4,
 "date": "2019-10-17",
 "description": "Configure API Gateway to connect to an ICAP server."
 }

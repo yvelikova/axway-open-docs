@@ -1,7 +1,7 @@
 {
 "title": "Configure Sentinel servers",
 "linkTitle": "Configure Sentinel servers",
-"weight": 30,
+"weight": 9,
 "date": "2019-10-17",
 "description": "Configure API Gateway to send events to Axway Sentinel server."
 }

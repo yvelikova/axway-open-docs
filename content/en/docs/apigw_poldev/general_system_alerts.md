@@ -1,7 +1,7 @@
 {
 "title": "Configure system alerts",
 "linkTitle": "Configure system alerts",
-"weight": 20,
+"weight": 11,
 "date": "2019-10-17",
 "description": "Configure alert destinations for API Gateway system alerts."
 }

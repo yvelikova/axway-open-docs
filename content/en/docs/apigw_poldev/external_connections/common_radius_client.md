@@ -1,7 +1,7 @@
 {
 "title": "Configure RADIUS clients",
 "linkTitle": "Configure RADIUS clients",
-"weight": 40,
+"weight": 8,
 "date": "2019-10-17",
 "description": "Integrate API Gateway with remote systems over the RADIUS protocol."
 }

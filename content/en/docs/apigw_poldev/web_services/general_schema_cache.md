@@ -3,7 +3,7 @@
 "linkTitle": "Manage WSDL and XML schema documents",
 "weight": 3,
 "date": "2019-10-17",
-"description": "WSDL files often contain XML schemas that define the elements that appear in SOAP messages. When you import a WSDL file to register a web service, the imported WSDL file, and any XML schemas included in the WSDL, are added to a global cache of WSDL and XML schema documents. You can also add XML schemas and WSDL documents to the cache independently. "
+"description": "Manage the global cache of WSDL and XML schema documents."
 }
 
 WSDL files often contain XML schemas that define the elements that appear in SOAP messages. When you import a WSDL file to register a web service, the imported WSDL file, and any XML schemas included in the WSDL, are added to a global cache of WSDL and XML schema documents. You can also add XML schemas and WSDL documents to the cache independently.

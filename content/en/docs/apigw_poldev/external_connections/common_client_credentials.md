@@ -1,7 +1,7 @@
 {
 "title": "Configure client credentials",
 "linkTitle": "Configure client credentials",
-"weight": 40,
+"weight": 2,
 "date": "2019-10-17",
 "description": "Client credentials enable you to globally configure client authentication settings for the following authentication options:"
 }

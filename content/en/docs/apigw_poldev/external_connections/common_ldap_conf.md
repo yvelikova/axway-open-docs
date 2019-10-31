@@ -1,7 +1,7 @@
 {
 "title": "Configure LDAP directories",
 "linkTitle": "Configure LDAP directories",
-"weight": 40,
+"weight": 6,
 "date": "2019-10-17",
 "description": "Configure a connection to an LDAP or LDAPS directory."
 }

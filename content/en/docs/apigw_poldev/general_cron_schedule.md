@@ -1,7 +1,7 @@
 {
 "title": "Schedule policy execution",
 "linkTitle": "Schedule policy execution",
-"weight": 6,
+"weight": 5,
 "date": "2019-10-17",
 "description": "Schedule the execution of any policy on a specified date and time."
 }

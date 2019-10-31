@@ -1,7 +1,7 @@
 {
 "title": "Configure caching",
 "linkTitle": "Configure caching",
-"weight": 20,
+"weight": 9,
 "date": "2019-10-17",
 "description": "Learn how to configure both local and distributed caches in API Gateway, and how to configure a policy to cache responses."
 }

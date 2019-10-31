@@ -1,7 +1,7 @@
 {
 "title": "Configure proxy servers",
 "linkTitle": "Configure proxy servers",
-"weight": 40,
+"weight": 7,
 "date": "2019-10-17",
 "description": "Configure settings for individual proxy servers, which you can then specify at the filter level."
 }

@@ -1,7 +1,7 @@
 {
 "title": "Configure database connections",
 "linkTitle": "Configure database connections",
-"weight": 30,
+"weight": 3,
 "date": "2019-10-17",
 "description": "Configure database connections and database queries."
 }

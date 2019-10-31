@@ -1,7 +1,7 @@
 {
 "title": "Configure remote host settings",
 "linkTitle": "Configure remote host settings",
-"weight": 30,
+"weight": 2,
 "date": "2019-10-17",
 "description": "Configure the way in which API Gateway connects to a specific external server or routing destination."
 }

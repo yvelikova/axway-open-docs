@@ -1,7 +1,7 @@
 {
 "title": "Upgrade log analysis",
 "linkTitle": "Upgrade log analysis",
-"weight": 10,
+"weight": 50,
 "date": "2019-10-17",
 "description": "Detect and analyze upgrade issues in Policy Studio."
 }

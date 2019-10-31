@@ -1,7 +1,7 @@
 {
 "title": "Configure Kerberos services",
 "linkTitle": "Configure Kerberos services",
-"weight": 30,
+"weight": 5,
 "date": "2019-10-17",
 "description": "Configure API Gateway to act as a Kerberos service."
 }

@@ -1,9 +1,9 @@
 {
-"title": "Manage Policy Studio projects",
-"linkTitle": "Manage Policy Studio projects",
+"title": "Policy Studio quick reference",
+"linkTitle": "Policy Studio quick reference",
 "date": "2019-10-17",
-"weight": 3,
-"description": "Quick reference on working with Policy Studio projects."
+"weight": 2,
+"description": "Quick reference to Policy Studio, including working with projects, deploying configuration, and adding APIs and web services to a project."
 }
 
 ## Create a new project
@@ -15,6 +15,17 @@ For more details, see [Create a project](/docs/apigw_poldev/gs_project/).
 ## Open an existing project
 
 To open an existing project in Policy Studio, select **File** > **Open Project** from the main menu, or click **Open Project** on the welcome page, and enter the project details in the dialog. Alternatively, click a link to the existing project in the **Recent Projects** pane on the welcome page.
+
+When you select **File** > **Open Project** or click **Open Project** on the welcome page, you can configure the following connection settings in the **Open project** window:
+
+**Location**:
+Enter or browse to the full path to the project in the file system (for example, `C:\Users\john\apiprojects\my_test_project`). You can select from the connection history of existing projects in the list.
+
+**Project Name**:
+If a valid project location is selected, Policy Studio completes this field with the project name configured in the `.project` file in the specified project **Location**.
+
+**Passphrase**:
+Enter the encryption passphrase if one has been configured.
 
 ## Save changes to a project
 
@@ -82,3 +93,20 @@ You can work with multiple projects in Policy Studio. When a project is loaded i
 ## Close a project
 
 To close the project currently open in Policy Studio, select **File** > **Close Project** from the main menu. Alternatively, click the **X** icon next to the project name in the toolbar.
+
+## Unlock a server connection
+
+You can also unlock an existing connection to a server. This is for emergency use if you have changed configuration, and this results in you being locked out from the **Management Services** on port `8090`. In this case, you have incorrectly configured the authentication filter in the **Protect Management Interfaces** policy.
+
+For example, if you created and deployed an LDAP connection without specifying the correct associated user accounts, and are now unable to connect to the Admin Node Manager.
+
+To unlock a server connection, perform the following steps:
+
+1. Download all the files in the server's `conf/fed` directory to the machine on which Policy Studio is installed.
+2. Start Policy Studio.
+3. Create a new project from existing configuration based on the `conf/fed` directory that you downloaded from the server in step 1.
+4. Change the configuration details as required (for example, specify the correct user account details for the LDAP connection under the **Environment Configuration** > **External Connections** node).
+5. Upload the files back to the server's `conf/fed` directory.
+6. Restart the Admin Node Manager.
+
+For more details on **Management Services**, see [Configure HTTP services](general_services.htm).

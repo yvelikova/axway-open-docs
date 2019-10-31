@@ -1,10 +1,20 @@
 {
-    "title": "Policy development with Policy Studio",
-    "linkTitle": "Policy development with Policy Studio",
+    "title": "Get started with Policy Studio",
+    "linkTitle": "Get started with Policy Studio",
     "weight": 1,
     "date": "2019-10-17",
     "description": "Explains some of the main components and concepts used in API Gateway policy development, and shows examples of how they are displayed in Policy Studio."
 }
+
+## Before you start
+
+Before you start developing policies in Policy Studio:
+
+* Install API Gateway and Policy Studio
+* Create a managed domain
+* Start API Gateway and Policy Studio
+
+For details, see [Install API Gateway](/docs/apigtw_install/).
 
 ## Policy Studio projects
 
@@ -151,3 +161,64 @@ filter. This feature is not meant to replace an enterprise J2EE server, but rath
 ## Service virtualization
 
 When you register an API service or web service, and deploy it to the API Gateway, the API Gateway virtualizes the service. Instead of connecting to the service directly, clients connect through the API Gateway. The API Gateway can then apply policies to messages sent to the destination service (for example, to enable security, monitoring, and acceleration).
+
+## API Gateway settings
+
+You can configure the underlying configuration settings for API Gateway using the **Environment Configuration > Server Settings** node in the Policy Studio tree. This includes the following settings:
+
+* API Manager
+* General
+* Logging
+* Messaging
+* Monitoring
+* Security
+
+For more details, see the
+[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+
+## Certificates and keys
+
+API Gateway must be able to trust X.509 certificates to establish SSL connections with external servers, validate XML Signatures, encrypt XML segments for certain recipients, and for other such cryptographic operations. Similarly, a private key is required to carry out certain other cryptographic operations, such as message signing and decrypting data.
+
+The **Certificate Store** contains all the certificates and keys that are considered to be trusted by the API Gateway. Certificates can be imported into or created by the certificate store. You can also assign a private key to the public key stored in a certificate, by importing the private key, or by generating one using the provided interface.
+
+For more information on importing and creating certificates and keys, see [Manage X.509 certificates and keys](../CommonTopics/general_certificates.htm).
+
+## API Gateway user store
+
+Users are mainly used for authentication purposes in API Gateway. In this context, the **User Store** acts as a repository for user information against which users can be authenticated. You can also store user attributes for each user or user group. For example, you can then use these attributes when generating SAML attribute assertions on behalf of the user.
+
+[Manage API Gateway users](../CommonTopics/general_users.htm) contains more details on how to create users, user groups, and attributes.
+
+## Black list and White list
+
+The **White list** is a global library of regular expressions that can be used across several different filters. For example, the **Validate HTTP Headers**, **Validate Query String**, and **Validate Message Attributes** filters all use regular expressions from the **White list** to ensure that various parts of the request contain expected content.
+
+The **White list** is prepopulated with regular expressions that can be used to identify common data formats, such as alphanumeric characters, dates, email addresses, IP addresses, and so on. For example, if a particular HTTP header is expected to contain an email address, the **Email Address** expression from the library can be run against the HTTP header to ensure that it contains an email address as expected. This is yet another way that the API Gateway can ensure that only the correct data reaches the web service.
+
+While the **White list** contains regular expressions to identify valid data, the **Black list** contains regular expressions that are used to identify common attack signatures. For example, this includes expressions to scan for SQL injection attacks, buffer overflow attacks, ASCII control characters, DTD entity expansion attacks, and many more.
+
+You can run various parts of the request message against the regular expressions contained in the **Black list** library. For example, the HTTP headers, request query string, and message (MIME) parts can be scanned for SQL injection attacks by selecting the SQL-type expressions from the **Black list** .The **Threatening Content** filter also uses regular expressions from the **Black list**
+to identify attack signatures in request messages.
+
+## Scripts
+
+The **Scripts** library contains the JavaScript and Groovy scripts that API Gateway can use to interact with the message as it is processed. For example, you use these scripts with the **Scripting Filter** to get, set, and evaluate specific message attributes.
+
+In the Policy Studio navigation tree, you can access the global scripts library by selecting **Resources > Scripts**. Select a child node to view or edit its contents. To add a script, right-click the **Scripts** node, and select **Add Script**.
+
+For more details on using the **Scripts Library** dialog to add scripts, and on configuring API Gateway to use scripts, see the **Scripting language** filter.
+
+## Stylesheets
+
+The **Stylesheets**
+library contains the XSLT style sheets that API Gateway can use to transform incoming request messages. The **XSLT Transformation**
+filter enables you convert the contents of a message using these style sheets. For example, an incoming XML message that adheres to a specific XML schema can be converted to an XML message that adheres to a different schema before it is sent to the destination web service.
+
+In the Policy Studio navigation tree, you can access the global style sheet library by selecting **Resources > Stylesheets**. Select a child node to view or edit its contents. To add a style sheet, right-click the **Stylesheets** node, and select **Add Stylesheet**.
+
+## References
+
+References can occur between API Gateway configurations items (for example, a policy might include a reference to an external connection to a database). You can view references between configuration items in Policy Studio by right-clicking an item, and selecting **Show All References**. References are displayed in a tab at the bottom of the window.
+
+The **Show All References** option is enabled only for items that have references to other items. For an example in a default API Gateway installation, right-click **Environment Configuration > External Connections > LDAP Connections > Sample Active Directory Connection**, and select **Show all References**. Showing all references is useful for impact analysis (for example, before upgrading or migrating), and is a general navigation aid.

@@ -1,7 +1,7 @@
 {
 "title": "Configure SiteMinder/SOA Security Manager connections",
 "linkTitle": "Configure SiteMinder/SOA Security Manager connections",
-"weight": 40,
+"weight": 10,
 "date": "2019-10-17",
 "description": "Create connections to CA SiteMinder and CA SOA Security Manager."
 }

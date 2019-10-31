@@ -1,7 +1,7 @@
 {
 "title": "Configure virtual hosts",
 "linkTitle": "Configure virtual hosts",
-"weight": 30,
+"weight": 2,
 "date": "2019-10-17",
 "description": "Configure virtual hosts for HTTP services or REST APIs."
 }
