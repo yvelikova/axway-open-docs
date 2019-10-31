@@ -139,7 +139,32 @@ proxy:
         name: 'Default Team'
 ```
 
-If you specify `api-key` as the client authentication policy, you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created.
+If you specify `api-key` as the client authentication policy, you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created. Additional applications can be specified in the `apps` section of the proxy. The apps will be created if necessary. The `app` field under `clientAuth` can be ommited:
+
+```
+version: v1 # Version of the file format
+apiVersion: v1 # This version ensures backward compatibility and would not mandate a frequent update from a client side
+proxy:
+    name: 'Musical Instruments secured' # name of the proxy
+    basePath: /api/v1 # base path of the proxy
+    swagger: 'https://ec062a054a2977120b7e721801edb38ca24dfbb3.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json'
+                                                                                    # optional. Swagger url of the proxy
+    policies:
+        clientAuth:
+            type: api-key # type of client authentication policy: can be pass-through or api-key
+            app: 'Sample App' # optional
+        backendAuth: # backend authentication is optional, if not specified, then no backend authentication will be enabled
+            type: auth-http-basic # type of backend authentication policy: only auth-http-basic is supported now
+            username: Joe # required
+            password: changeme # it's allowed to be empty
+    tags: ['musical', 'instruments'] # optional
+    apps:
+    - name: 'Second Sample App' # this app will be allowed to consume the proxy
+    - name: 'Third Sample App' # this app will be allowed to consume the proxy
+    team: # the team which the proxy will be assigned to.
+        name: 'Default Team'
+```
+
 
 `backendAuth` is an optional field. If it is not specified, no back-end authentication is enabled. If you specify `auth-http-basic` as the back-end authentication policy, the password can be empty.
 
