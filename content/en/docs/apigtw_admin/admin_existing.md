@@ -18,7 +18,7 @@ The gateway interoperates with a range of commonly used databases for a wide var
 * Microsoft SQL Server
 * MariaDB
 
-The gateway also supports Apache Cassandra for internal data storage. For details on supported database versions, see the [API Gateway Installation Guide](/docs/apigtw_install/).
+The gateway also supports Apache Cassandra for internal data storage. For details on supported database versions, see [Install an Apache Cassandra database](/docs/apigtw_install/cassandra_install/).
 
 ## Anti-virus
 
@@ -27,8 +27,6 @@ The gateway supports Anti-Virus (AV) scanning using virus scanning engines from 
 * AV signature distribution and updates are performed using mechanisms of the anti-virus vendor.
 * Licensing for the AV engine is performed through the AV vendor distribution channels.
 
-For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
-
 ## Operations and management
 
 The gateway has a number of different options for operations and management:
@@ -36,7 +34,7 @@ The gateway has a number of different options for operations and management:
 * Detailed transaction logs can be sent to syslog (UDP), relational databases, or flat files. These contain detailed records of processed messages, their contents, how long processing took, and decisions taken during message processing. This type of logging can also include information alerts about policy execution failures and breached Service Level Agreements (SLAs), and information about critical events such as connection or disk failures. Logging levels can be controlled for a gateway or policy as a whole or on a filter-by-filter basis.
 * Auditing information can be viewed in real time in the gateway Manager console, and can be pushed to your metrics database (for example, for monitoring in API Gateway Analytics, API Manager, or a third-party tool), or pushed to Embedded Analytics dashboards.
 * The gateway Manager console is used to provide a current snapshot of how the gateway is behaving. For example, it displays how many messages are being processed, and what services are under the most load. The gateway Manager displays what is happening now on gateway instances, and can be viewed by pointing a browser at an Admin Node Manager. For more details, see [Monitor services in API Gateway Manager](/docs/apigtw_admin/monitor_service).
-* Flexible alerts can be sent out to email, SNMP, OPSEC, syslog, Twitter, and Windows Event Log based on a condition being met in a policy. An example might be to email a service owner for every 1000 failures or to generate an alert if a service is processing more than 10000 messages per second. They can also be used to generate alerts on client usage. For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+* Flexible alerts can be sent out to email, SNMP, OPSEC, syslog, Twitter, and Windows Event Log based on a condition being met in a policy. An example might be to email a service owner for every 1000 failures or to generate an alert if a service is processing more than 10000 messages per second. They can also be used to generate alerts on client usage.
 * Service Level Agreement filters can be used to perform a statistical measure of the services quality of service. They are used to make sure that the amount of network connection errors, response times and server errors are below a certain threshold.
 
 ## Network firewalls
@@ -116,8 +114,6 @@ The API Gateway can use LDAP directories to retrieve user information such as th
 * Authorization of clients based on attribute values.
 * Retrieval of attributes for placing into SAML assertions.
 * Checking certificate validity using Certificate Revocation Lists (CRL) retrieved from user stores.
-
-For more details on integration with LDAP servers, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
 ### Simple inline user store deployment
 
@@ -203,7 +199,7 @@ API Gateway supports Secure Sockets Layer (SSL) and Transport Layer Security (TL
 
 API Gateway includes the following support for service registries and repositories:
 
-* Architects and policy developers can use Policy Studio to pull Web service definitions (WSDL) from UDDI directories or HTTP-based repositories. These WSDL files are then used to generate the required security policies. The gateway can update UDDI registries with updated WSDL files or can serve them directly to the client. For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+* Architects and policy developers can use Policy Studio to pull Web service definitions (WSDL) from UDDI directories or HTTP-based repositories. These WSDL files are then used to generate the required security policies. The gateway can update UDDI registries with updated WSDL files or can serve them directly to the client.
 * When the API Manager product is installed, architects and policy developers can use Policy Studio to register REST APIs with the gateway. API administrators can then use API Manager to make these APIs available to client application developers in a Client Application Registry. For more details, see the [API Manager User Guide](/bundle/ APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
 
 ## Software Configuration Management

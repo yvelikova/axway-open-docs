@@ -186,8 +186,6 @@ You can use the API Gateway Manager web console to deploy API Gateway configurat
 * policy package (`.pol`)
 * environment package (`.env`)
 
-For more details on configuration packages, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
-
 ### Deploy a deployment package
 
 To deploy an existing deployment package to a group of API Gateways, perform the following steps:

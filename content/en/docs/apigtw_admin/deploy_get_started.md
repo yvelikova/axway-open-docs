@@ -40,7 +40,7 @@ When editing a project configuration, you can deploy updates using the **Deploy*
 
 To deploy to a running API Gateway instance in a group, click **Deploy** in the toolbar, and follow the steps in the wizard. For more details, see [Deploy API Gateway configuration](/docs/apigtw_admin/deploy_get_started/#deploy-api-gateway-configuration).
 
-* You must connect to the Admin Node Manager server to deploy API Gateway configuration or manage multiple API Gateway instances in your network.
+You must connect to the Admin Node Manager server to deploy API Gateway configuration or manage multiple API Gateway instances in your network.
 
 ### Manage deployments in API Gateway Manager
 

@@ -69,13 +69,11 @@ For example, the following diagram shows load balancing across two groups of API
 
 ![Group-based load balancing](/Images/APIGateway/lb_groups.png)
 
-The API Gateway imposes no special requirements on load balancers. Loads are balanced on a number of characteristics including the response time or system load. The execution of API Gateway policies is stateless, and the route through which a message takes on a particular system has no bearing on its processing. Some items such as caches and counters are held on a distributed cache, which is updated on a per message basis. As a result, API Gateways can operate successfully in both sticky and non-sticky modes. For more details on caching, see the
-[API Gateway Policy Developer Guide](/docs/apigtw_poldev/).
+The API Gateway imposes no special requirements on load balancers. Loads are balanced on a number of characteristics including the response time or system load. The execution of API Gateway policies is stateless, and the route through which a message takes on a particular system has no bearing on its processing. Some items such as caches and counters are held on a distributed cache, which is updated on a per message basis. As a result, API Gateways can operate successfully in both sticky and non-sticky modes.
 
 The distributed state poses a number of questions in terms of active/active and active/passive clustering. For example, if the counter and cache state is important, you must design your overall system so that at least one API Gateway is active at all times. This means that for a resilient HA system, a minimum of at least two active API Gateways at any one time, with a third and fourth in passive mode is recommended.
 
-The API Gateway ensures zero downtime by implementing configuration deployment in a rolling fashion. For example, while each API Gateway instance in the cluster or group takes a few seconds to update its configuration, it stops serving new requests, but all existing in-flight requests are honored. Meanwhile, the rest of the cluster or group can still receive new requests. The load balancer ensures that requests are pushed to the nodes that are still receiving requests. For more details on deploying API Gateway configuration, see the
-[API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
+The API Gateway ensures zero downtime by implementing configuration deployment in a rolling fashion. For example, while each API Gateway instance in the cluster or group takes a few seconds to update its configuration, it stops serving new requests, but all existing in-flight requests are honored. Meanwhile, the rest of the cluster or group can still receive new requests. The load balancer ensures that requests are pushed to the nodes that are still receiving requests.
 
 ### Load balancing guidelines
 
@@ -97,8 +95,6 @@ Secure Socket Layer (SSL) connections can be terminated at the load balancer or 
 * **Load balancer configured for SSL pass-through, all traffic passed to API Gateway**:
 
     With SSL pass-through, the traffic is encrypted so the load balancer cannot make any layer seven decisions (for example, if HTTP 500 is returned by the gateway, route to the HA gateway) To avoid this problem, you can configure the gateway so that it closes external ports on defined error conditions. In this way, the load balancer is alerted to switch to the HA gateway.
-
-    The API Gateway can also optionally use a cryptographic accelerator for SSL termination. For more details, see the [API Gateway Policy Developer Guide](/docs/apigtw_poldev/).
 
 ## High Availability and failover
 
@@ -166,8 +162,6 @@ The following guidelines apply to development staging and testing:
 * Have a plan in place to roll back quickly in the event of a problem occurring.
 * Test all systems and policy updates before promoting them to production.
 * Test High Availability and resiliency before going into production.
-
-For more details, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
 
 ## Hardening—secure the API Gateway
 

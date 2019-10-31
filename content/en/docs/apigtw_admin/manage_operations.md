@@ -59,7 +59,7 @@ You can enter the `startinstance` command without any arguments to display the s
 INSTALL_DIR/apigateway/posix/bin>startinstanceusage:"startinstance
 [[-n instance-name -g group-name [instance-args]] | [directory-location [instance-args]]]"
 
-# The API Gateway instances listed below are available to run on this machine as follows:
+The API Gateway instances listed below are available to run on this machine as follows:
 
 startinstance -n "server1" -g "group1"
 startinstance -n "server2" -g "group2"

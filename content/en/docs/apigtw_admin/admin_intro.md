@@ -8,7 +8,7 @@
 
 This topic introduces the main issues involved in you API gateway administration.
 
-* For an introduction to API Gateway features, tools, and architecture, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
+For an introduction to API Gateway features, tools, and architecture, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
 
 ## API Gateway form factors
 

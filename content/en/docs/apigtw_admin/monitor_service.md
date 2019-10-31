@@ -125,7 +125,7 @@ This section explains how to configure your gateway with a metrics database, and
 * Use Policy Studio to configure an API Gateway instance to write audit logging events to the metrics database, and to write metrics data to the transaction event log.
 * Use the `managedomain` command to configure the Node Manager to process event logs and update the metrics database.
 
-It is assumed that you have already created your metrics database using the steps described in [Set up the metrics database for API Gateway Analytics](metrics_db_install).
+It is assumed that you have already created your metrics database. See [Install and configure a metrics database](/docs/apigtw_install/metrics_db_install/).
 
 The following data streams are used to populate the metrics database:
 
@@ -176,7 +176,7 @@ If you have not already done so, you must use the `managedomain` tool to enable 
 
 All gateway instances running on the host node generate transaction event log files. These files are all written to the same folder, and are collectively processed and aggregated by the Node Manager on the host, and then written to the metrics database. The metrics database provides the data for the graphical charts in the monitoring views in API Gateway Analytics and API Manager.
 
-* The Node Manager on each host in the domain must be configured to write metrics data to the same database that API Gateway Analytics reads from. The gateway can write to the same database for transaction audit logging if required.
+The Node Manager on each host in the domain must be configured to write metrics data to the same database that API Gateway Analytics reads from. The gateway can write to the same database for transaction audit logging if required.
 
 **Use the managedomain interactive menu**:
 
