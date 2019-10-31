@@ -1,7 +1,7 @@
 {
 "title": "Select configuration values at runtime",
 "linkTitle": "Select configuration values at runtime",
-"weight": 40,
+"weight": 15,
 "date": "2019-10-17",
 "description": "A selector is a special syntax that enables API Gateway configuration settings to be evaluated and expanded at runtime based on metadata values (for example, from message attributes, a Key Property Store (KPS), or environment variables)."
 }

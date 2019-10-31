@@ -1,7 +1,7 @@
 {
 "title": "Compare and merge API Gateway configurations",
 "linkTitle": "Compare and merge API Gateway configurations",
-"weight": 50,
+"weight": 13,
 "date": "2019-10-17",
 "description": "Compare the currently loaded API Gateway configuration with a configuration stored in a deployment package (`.fed` file) and merge any differences."
 }
