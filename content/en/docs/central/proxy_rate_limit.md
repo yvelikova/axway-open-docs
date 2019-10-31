@@ -270,7 +270,7 @@ proxy:
 
 ### Specify a rate limit for some application consuming your API
 
-The following example shows how to set a rate limit for each individual app. The `overrides` section defines a 3 TPS individual rate limit for `Rate Limited App 1`, a 5 TPS individual rate limit for `Rate Limited App 2`. `Rate Limited App 3` will not be rate limited at all.
+The following example shows how to set a rate limit for each individual application. There is no rate limit on the API as a whole. The `overrides` section defines a 3 TPS individual rate limit for `Rate Limited App 1`, a 5 TPS individual rate limit for `Rate Limited App 2`. `Rate Limited App 3` will not be rate limited at all.
 
 ```
 version: v1 # Version of the file format
@@ -285,9 +285,9 @@ proxy:
         rateLimit:
             overrides:
               - appName: Rate Limited App 1
-                perProxyAndApp: 3 # this app is not limited individually
+                perProxyAndApp: 3 # this app is limited individually
               - appName: Rate Limited App 2
-                perProxyAndApp: 5 # this app is not limited individually
+                perProxyAndApp: 5 # this app is limited individually
     tags: ['musical', 'instruments', 'ratelimit']
     apps:
     - name: Rate Limited App 1
