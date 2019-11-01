@@ -37,7 +37,7 @@ Alternatively, select **File** > **Save All** to save the changes to all open u
 
 When a project is loaded in Policy Studio, you can select **Tasks** > **Deploy** from the main menu to deploy saved changes to a running API Gateway instance at any time. Alternatively, click the **Deploy** button in the toolbar.
 
-For more details, see [Deploy configuration](../CommonTopics/deploy_wizard.htm).
+For more details, see [Deploy configuration](/docs/apigtw_admin/deploy_get_started/#deploy-api-gateway-configuration).
 
 ## Add an API to a project
 
@@ -61,7 +61,7 @@ in the
 {{< alert title="Note" color="primary" >}}It is important to distinguish between the passphrase used by a project on the local file system and the passphrase used by an API Gateway group configuration on a running API Gateway instance. For details on specifying a different passphrase for runtime, see [Deploy configuration](../CommonTopics/deploy_wizard.htm). {{< /alert >}}
 
 For more details on configuring encryption passphrases, see the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+[API Gateway Administrator Guide](/docs/apigtw_admin/).
 
 ## Export configuration packages
 
@@ -80,8 +80,7 @@ When you have saved a configuration package, you can use it to create a Policy S
 
 When a project is loaded in Policy Studio, you can select **File** > **Import** > **Configuration Fragment** from the main menu to import configuration into the project. This feature enables you to import XML-based configuration previously exported from Policy Studio.
 
-You can also select **File** > **Import** > **Custom filters** to import custom filters to be added to the Policy Studio filter palette. For more details, see the
-[API Gateway Developer Guide](/bundle/APIGateway_77_DeveloperGuide_allOS_en_HTML5).
+You can also select **File** > **Import** > **Custom filters** to import custom filters to be added to the Policy Studio filter palette.
 
 ## Manage multiple projects
 

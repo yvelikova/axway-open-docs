@@ -166,12 +166,12 @@ DEBUG   09:09:12:953 [0d50] enough cached SSL sessions 11AA3894 to support.acme.
 **Input Encodings**:
 Click the browse button to specify the HTTP content encodings that the API Gateway can accept from peers. The available content encodings include `gzip`
 and `deflate`. By default, the content encodings configured the **Default Settings**
-are used. You can override this setting at the remote host and HTTP interface levels. For more details, see [*Compressed content encoding](common_compress_encoding.htm).
+are used. You can override this setting at the remote host and HTTP interface levels. For more details, see [Compressed content encoding](/docs/apigw_poldev/gw_instances/common_compress_encoding/).
 
 **Output Encodings**:
 Click the browse button to specify the HTTP content encodings that the API Gateway can apply to outgoing messages. The available content encodings include `gzip`
 and `deflate`. By default, the content encodings configured the **Default Settings**
-are used. You can override this setting at the remote host and HTTP interface levels. For more details, see [*Compressed content encoding](common_compress_encoding.htm).
+are used. You can override this setting at the remote host and HTTP interface levels. For more details, see [Compressed content encoding](/docs/apigw_poldev/gw_instances/common_compress_encoding/).
 
 **Include correlation ID in headers**:
 Specifies whether to insert the correlation ID in outbound messages. This means that an `X-CorrelationID`
@@ -185,7 +185,7 @@ You can configure an HTTP interface to shut down based on certain *conditions*. 
 To configure the API Gateway to shut down an HTTP interface based on the availability of a remote host, perform the following steps:
 
 1. Configure an **HTTP Watchdog** for the remote host. See [Configure HTTP watchdog](#configure-http-watchdog).
-2. Configure a **Requires Endpoint** condition on the HTTP interface. See [Configure conditions for HTTP interfaces](/docs/apigw_poldev/general_services/#configure-conditions-for-an-http-interface).
+2. Configure a **Requires Endpoint** condition on the HTTP interface. See [Configure conditions for an HTTP Interface](/docs/apigw_poldev/gw_instances/general_services/#configure-conditions-for-an-http-interface).
 3. When configuring this condition, select the remote host configured in step 1 (the host with the associated Watchdog).
 
 {{< alert title="Note" color="primary" >}}When **Load Balancing** is configured as **Weighted by response time**, and remote host watchdogs are configured, the watch dog polling also contributes to the load balancing calculations.{{< /alert >}}

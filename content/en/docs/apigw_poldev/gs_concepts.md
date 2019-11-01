@@ -173,9 +173,6 @@ You can configure the underlying configuration settings for API Gateway using th
 * Monitoring
 * Security
 
-For more details, see the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
-
 ## Certificates and keys
 
 API Gateway must be able to trust X.509 certificates to establish SSL connections with external servers, validate XML Signatures, encrypt XML segments for certain recipients, and for other such cryptographic operations. Similarly, a private key is required to carry out certain other cryptographic operations, such as message signing and decrypting data.
@@ -188,7 +185,7 @@ For more information on importing and creating certificates and keys, see [Manag
 
 Users are mainly used for authentication purposes in API Gateway. In this context, the **User Store** acts as a repository for user information against which users can be authenticated. You can also store user attributes for each user or user group. For example, you can then use these attributes when generating SAML attribute assertions on behalf of the user.
 
-[Manage API Gateway users](../CommonTopics/general_users.htm) contains more details on how to create users, user groups, and attributes.
+[Manage API Gateway users](/docs/apigtw_admin/manage_user_access/) contains more details on how to create users, user groups, and attributes.
 
 ## Black list and White list
 

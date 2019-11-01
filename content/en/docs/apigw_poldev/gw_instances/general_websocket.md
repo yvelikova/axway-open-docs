@@ -43,7 +43,7 @@ You can assign specific policies on this tab to specific URIs that define the We
 differently to frames being exchanged between a client and `ws://example.org/voip`.
 
 {{< alert title="Note" color="primary" >}}In the above scenario, different sets of policies need to be defined for each URI (`/echo`
-and `/voip`). This requires different relative paths. For more information on relative paths, see [Configure relative paths](/docs/apigw_poldev/general_relative_path/).{{< /alert >}}
+and `/voip`). This requires different relative paths. For more information on relative paths, see [Configure relative paths](/docs/apigw_poldev/gw_instances/general_relative_path/).{{< /alert >}}
 
 **When a request arrives that matches the path**:
 Enter the path on which WebSocket connections are to be accepted. This defines the URI of the WebSocket endpoint. A relative path resolver for this path must already exist.
@@ -93,11 +93,11 @@ This is the absolute time for the connection to be active. For example, if this 
 
 #### Advanced settings
 
-For details on the fields on this tab, see [Advanced settings](/docs/apigw_poldev/general_relative_path/#advanced-settings).
+For details on the fields on this tab, see [Advanced settings](/docs/apigw_poldev/gw_instances/general_relative_path/#advanced-settings).
 
 #### CORS settings
 
-For details on the fields on this tab, see [CORS settings](/docs/apigw_poldev/general_relative_path/#cors-settings).
+For details on the fields on this tab, see [CORS settings](/docs/apigw_poldev/gw_instances/general_relative_path/#cors-settings).
 
 ## Monitor a WebSocket connection
 

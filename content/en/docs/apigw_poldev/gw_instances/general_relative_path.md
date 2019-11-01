@@ -90,8 +90,8 @@ You can configure the following settings on the specified relative path:
 
 Select the **Include in transaction access log** setting to add this relative path to the API Gateway Access Log. This enables the Access Log at the service level. This setting is not selected by default.
 
-{{< alert title="Note" color="primary" >}}You must also enable the Transaction Access Log at the API Gateway level. In the Policy Studio tree, select **Environment Configuration** > **Server Settings** > **Logging** > **Access Log**, and ensure that **Writing to Transaction Access Log**
-is enabled.{{< /alert >}}
+You must also enable the Transaction Access Log at the API Gateway level. In the Policy Studio tree, select **Environment Configuration** > **Server Settings** > **Logging** > **Access Log**, and ensure that **Writing to Transaction Access Log**
+is enabled.
 
 #### Traffic Monitor Logging
 
@@ -194,8 +194,8 @@ policy succeeds:
 
 ![Nested Relative Path](/Images/docbook/images/general/relative_path_children.png)
 
-{{< alert title="Note" color="primary" >}}The parent policy (in this case, **Protect**) must use the **Call Internal Service**
-filter. This acts as a loopback and enables child resolvers to be invoked. When this prerequisite is met, you can add nested relative paths as required.{{< /alert >}}
+The parent policy (in this case, **Protect**) must use the **Call Internal Service**
+filter. This acts as a loopback and enables child resolvers to be invoked. When this prerequisite is met, you can add nested relative paths as required.
 
 ### How to access message attributes from parent resolvers
 
@@ -456,4 +456,4 @@ To configure this setting, perform the following steps:
     <VMArg name="-Dcom.vordel.strictUriSyntaxChecking=true"/>
     ```
 
-The default and recommended setting is `true`.
+    The default and recommended setting is `true`.

@@ -3,7 +3,7 @@
     "linkTitle": "Create a Policy Studio project",
     "weight": 3,
     "date": "2019-10-17",
-    "description": " A Policy Studio project is a design-time store of API Gateway configuration on a local file system, which can be deployed to a running API Gateway instance on a server."
+    "description": " A Policy Studio project is a design-time store of API Gateway configuration on a local file system, which can be deployed to a running gateway instance on a server."
 }
 
 You can create a new Policy Studio project from the following starting points:
