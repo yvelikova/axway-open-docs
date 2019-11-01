@@ -3,17 +3,15 @@
 "linkTitle": "Configure Admin Node Manager high availability",
 "weight":"12",
 "date": "2019-10-15",
-"description": "The Admin Node Manager is the central administration server for a gateway domain. It manages all the local gateways on a machine, collects monitoring information, manages dynamic settings, deploys configuration, and so on."
+"description": "Use `managedomain` to configure ANM high availability."
 }
 
-The Admin Node Manager (ANM) is the central administration server for a gateway domain, and is responsible for performing management operations across the domain. The Node Manager (NM) on each machine manages all the local gateways on that machine, regardless of the group they are in. This includes collecting monitoring information, managing dynamic settings, deploying configuration, and so on.
+The Admin Node Manager (ANM) is the central administration server for an API Gateway domain, and is responsible for performing management operations across the domain. The Node Manager (NM) on each machine manages all the local gateways on that machine, regardless of the group they are in. This includes collecting monitoring information, managing dynamic settings, deploying configuration, and so on.
 
-In addition to managing the local gateways on its host, the Admin Node Manager communicates with the Node Managers in the domain to perform management operations across the domain. In this architecture, the Node Managers only communicate with the Admin Node Manager, and the API Gateway Manager, Policy Studio, and `managedomain` tools connect to the Admin Node Manager. For more details on Admin Node Manager architecture, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
+In addition to managing the local gateways on its host, the Admin Node Manager communicates with the Node Managers in the domain to perform management operations across the domain. In this architecture, the Node Managers only communicate with the Admin Node Manager, and the API Gateway Manager, Policy Studio, and `managedomain` tools connect to the Admin Node Manager.
 
 {{< alert title="Note" color="primary" >}}
-It is recommended that you configure at least two Admin Node Managers in a gateway domain for high availability (HA). This topic describes how to use the `managedomain`
-command to configure and secure multiple Admin Node Managers in a domain.
-{{< /alert >}}
+It is recommended that you configure at least two Admin Node Managers in an API Gateway domain for high availability (HA).{{< /alert >}}
 
 ## Hierarchy of SSL certificates in a domain
 
@@ -109,17 +107,17 @@ managedomain --submit_cert --cert cert.pem
 
 In a production environment, you can use the `--sign_with_external_ca` option, and take the generated CSR to an external CA (for example, Verisign). Alternatively, in a development environment, you can run the following command to generate the certificate on an isolated API Gateway installation:
 
-    ```
-    managedomain --sign_csr --csr nodemanager.csr
-    ```
+```
+managedomain --sign_csr --csr nodemanager.csr
+```
 
 This command creates a certificate signed using the system-generated CA key. It writes the certificate to a file, displays the file name so you can retrieve and copy to the host running `managedomain`, and complete registration of the new Node Manager.
 
 If you wish to avoid using a system-generated self-signed certificate, you can manually copy a user-provided CA private key and certificate to the following locations:
 
-    ```
-    apigateway/groups/certs/private/domain.p12apigateway/groups/certs/private/domainkey.pem apigateway/groups/certs/domaincert.pem
-    ```
+```
+apigateway/groups/certs/private/domain.p12apigateway/groups/certs/private/domainkey.pem apigateway/groups/certs/domaincert.pem
+```
 
 ### Additional certificate generation options
 
@@ -494,9 +492,3 @@ When Node Managers and API Gateway instances are being registered, private keys 
 {{< /alert >}}
 
 If an external CA is signing the certificate, sensitive files may exist for a considerable time, so this directory must have restricted access. You can encrypt this sensitive data using the `--key_passphrase` parameter.
-
-## Further information
-
-For more details on Admin Node Manager architecture, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
-
-For example Admin Node Manager deployment scenarios, see [Configure API Gateway high availability](/docs/apigtw_admin/manage_operations#configure-api-gateway-high-availability).

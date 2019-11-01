@@ -96,7 +96,7 @@ Use the **Private Key**tab to configure details of the private key. By default, 
 
 API Gateway supports PKCS#11-compatible HSM devices. For example, this includes Thales nShield Solo, SafeNet Luna SA, and so on.
 
-![Edit a Private key](/Images/APIGateway/general_certs_edit_key_new.PNG)
+![Edit a Private key](/Images/APIGateway/general_certs_edit_key_new.png)
 
 ### Private key stored locally
 
@@ -218,14 +218,14 @@ To create a certificate realm and associated keystore, perform the following ste
 7. You are prompted to input the PIN passphrase for the slot. The passphrase will not echo any output.
 8. When you enter the correct PIN passphrase for the slot, this displays a list of private keys. Choose the key to use for the certificate realm. For example:
 
-```
-Choose from one of the following:
-    1) server1_priv
-    2) jms_priv
-    q) Quit
+    ```
+    Choose from one of the following:
+        1) server1_priv
+        2) jms_priv
+        q) Quit
 
-Select option:2
-```
+    Select option:2
+    ```
 
 9. You are prompted for a file name for the keystore. For example:
 
@@ -425,3 +425,67 @@ Similarly, you can import certificates and keys from a Java keystore into the ce
 To import any of these keys to the certificate store, select the box next to the certificate or key to import, and click **Import to Trusted certificate store**. If the key is protected by a password, you are prompted for this password.
 
 You can also use the **Keystore** window to view and remove existing entries in the keystore. You can also add keys to the keystore and to create a new keystore. Use the appropriate button to perform any of these tasks.
+
+## Generate a CSR and import the certificate and key
+
+You can use a Certificate Signing Request (CSR) from a Certificate Authority (CA) to obtain certificates used by the gateway. Policy Studio can generate both X.509 certificates and associated private keys. However, it cannot generate a CSR. You may need to generate a CSR to request a CA to issue a certificate for use in the gateway.
+
+This topic explains how to generate a CSR using the open source OpenSSL tool. It explains how to import the resulting certificate and corresponding private key into Policy Studio to be used in gateway configuration (for example, for SSL, signing, and encryption).
+
+### How are certificates and keys stored in API Gateway?
+
+The gateway runtime incorporates X.509 certificate and private key material in its configuration store. However, this is not a Java Key Store (JKS).
+
+A common misunderstanding is that certificates are trusted because they are imported into the gateway configuration, and displayed in the **Certificates** view in Policy Studio. However, imported certificates are not trusted by default, and must be configured in Policy Studio.
+
+### What is OpenSSL?
+
+OpenSSL is a free, popular and robust open source toolkit implementing Secure Sockets Layer (SSL) v2 and v3, Transport Layer Security (TLS) v1, and a full-strength general purpose cryptography library. You can use OpenSSL to easily create CSRs. You can also use OpenSSL to create self-signed certificates for use in SSL or message-level security scenarios in a development environment for testing purposes. However, if required, it is considerably faster and easier to create self-signed developer certificates directly in Policy Studio, and there is no need to use an external CA.
+
+### Create a private key and CSR
+
+You can use Policy Studio to generate certificates and private keys. However, certificates created in this way must be signed (self-signed or by a private key already configured in the tool). In most cases, this is not appropriate, so you should create the certificate and private key using a 3rd party tool such as OpenSSL.
+
+The private key is required to generate the X.509 certificate and corresponding CSR. For example, the following command creates a private key file named `mycompanyca.key` with a key length of 2048 bits (strong) and a corresponding CSR in the file `mycompany.csr`:
+
+```
+openssl req -out mycompany.csr -new -newkey rsa:2048 -nodes \
+  -keyout mycompany.key
+Country Name (2 letter code) []:US
+State or Province Name (full name) [Some-State]:Massachusetts
+Locality Name (e.g., city) []:Boston
+Organization Name (e.g., company) [My Company Ltd]:Acme
+Organizational Unit Name (e.g., section) []:
+Common Name (e.g., server's hostname) [myserver]:api.acme.comEmail
+Address []:api-admin@acme.com
+
+Please enter the following 'extra' attributes to be sent with your certificate request
+A challenge password []:
+An optional company name []:Acme
+```
+
+You can now submit the CSR to a public or private CA, and the CA will issue the certificate to be imported into API Gateway for use in SSL and message signing operations.
+
+### Submit the CSR to the CA
+
+Each CA will have a slightly different process for submitting a CSR. However, most CAs provide a web-based interface for this purpose. After you submit the CSR to the appropriate CA, the CA will provide a signed version of the certificate, which you can then import into Policy Studio.
+
+### Import the certificate and key into Policy Studio
+
+When you receive a signed certificate from the CA after submitting the CSR generated earlier, you must import both the certificate and associated private key into the appropriate key store in Policy Studio to enable SSL and message-level security. Depending on the CA used and how the certificate and key were generated, the certificate an key can be in separate files or combined in a single file.
+
+Perform the following steps:
+
+1. In Policy Studio, connect to an API Gateway instance.
+2. In the tree on the left, select **Certificates**. The certificates are displayed in the pane on the right.
+3. Depending on your use case, click the appropriate import button at the bottom right:
+    * Design-time: Click **Keystore**, click **Add to keystore** on the subsequent dialog box. This imports the certificate and private key into the key store for Policy Studio.
+    * Run-time: Click **Create/Import**. This import the certificate and private key into the runtime key store for API Gateway.
+4. Configure the **X.509 Certificate** tab as follows:
+    * Click **Import Certificate** if the certificate is in a separate file. If the certificate and key are in the same file, click **Import Certificate + Key**.
+    * Browse to `mycompany.crt` or the file that contains both the certificate and private key. Ensure that the correct file type is set in the file selector at the bottom right (usually `.pem`).
+5. Configure the **Private Key** tab as follows:
+    * Select the **Private Key** tab (you must import both the certificate and the associated private key).
+    * Click **Import Private Key**.
+    * Browse to `mycompany.key`. Ensure that the correct file type is set in the file selector at the bottom right.
+6. Click **OK** to complete importing the key and certificate.

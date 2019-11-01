@@ -3,12 +3,12 @@
 "linkTitle": "Configure encryption passphrase",
 "weight":"4",
 "date": "2019-10-14",
-"description": "Encrypt the gateway sensitive information using an encryption passphrase."
+"description": "Encrypt API Gateway configuration data using an encryption passphrase."
 }
 
-By default, the gateway configuration data is stored unencrypted. However, you can encrypt sensitive information such as passwords and private keys using an encryption passphrase. When the passphrase has been set (and the data has been encrypted with it), you must then enter the passphrase when connecting to the gateway with Policy Studio, or when the gateway is starting up, so that the encrypted data can be decrypted. You can enter an encryption passphrase at the level of a local Policy Studio project on the local file system, and at the level of a running gateway group instance.
+By default, the API Gateway configuration data is stored unencrypted. However, you can encrypt sensitive information such as passwords and private keys using an encryption passphrase. When the passphrase has been set (and the data has been encrypted with it), you must then enter the passphrase when connecting to the gateway with Policy Studio, or when the gateway is starting up, so that the encrypted data can be decrypted. You can enter an encryption passphrase at the level of a local Policy Studio project on the local file system, and at the level of a running API Gateway group instance.
 
-All sensitive information in the gateway configuration data is encrypted when you set an encryption passphrase. For example, this sensitive information includes passwords that the gateway requires for connecting to external systems (databases, LDAP, and so on), or private keys that are not stored on a Hardware Security Module (HSM). All sensitive information is encrypted using the Password-Based Encryption (PBE) system specified by the Public-Key Cryptography Standard (PKCS#12).
+All sensitive information in the API Gateway configuration data is encrypted when you set an encryption passphrase. For example, this sensitive information includes passwords that the gateway requires for connecting to external systems (databases, LDAP, and so on), or private keys that are not stored on a Hardware Security Module (HSM). All sensitive information is encrypted using the Password-Based Encryption (PBE) system specified by the Public-Key Cryptography Standard (PKCS#12).
 
 This section describes how to specify an encryption passphrase for a local Policy Studio project or when connecting to a gateway in Policy Studio, in a gateway configuration file, or when the gateway is starting up. It also describes how to change the passphrase when it has been set initially.
 
@@ -43,7 +43,7 @@ Used to decrypt sensitive data that has already been encrypted (for example, pri
 
 **Password**:
 
-Used to authenticate to the API Gateway's management interface using HTTP basic authentication when opening a connection to a server. Required by default. 
+Used to authenticate to the API Gateway's management interface using HTTP basic authentication when opening a connection to a server. Required by default.
 
 ## Provide the passphrase in a configuration file or at startup
 
@@ -69,7 +69,7 @@ INSTALL_DIR/apigateway/groups/GROUP/conf/group.xml
 
 ### Prompt for the passphrase at server startup
 
-If you do not wish to enter the passphrase directly in the Node Manager or API Gateway instance configuration file, and do not need to start as a Linuxdaemon, you can configure the Node Manager or API Gateway to prompt the administrator for the passphrase on the command line when starting up. To do this, enter the `"(prompt)"` special value for the `secret` attribute as follows:
+If you do not wish to enter the passphrase directly in the Node Manager or API Gateway instance configuration file, and do not need to start as a Linux daemon, you can configure the Node Manager or API Gateway to prompt the administrator for the passphrase on the command line when starting up. To do this, enter the `"(prompt)"` special value for the `secret` attribute as follows:
 
 To configure this for the Node Manager, update your `nodemanager.xml` file. To configure for an API Gateway group, update the relevant `group.xml` file.
 
@@ -83,7 +83,7 @@ Alternatively, you can use a script to automatically provide the passphrase when
     ```
     <SystemSettings tracelevel="INFO"
            passphraseExec="$VINSTDIR/../passwd.sh"
-           serviceID="${serviceID}" groupID="${groupID}" 
+           serviceID="${serviceID}" groupID="${groupID}"
            serviceName="${serviceName}" groupName="${groupName}"
           domainID="${domainID}" title="API Gateway"/>
     ```

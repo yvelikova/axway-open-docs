@@ -88,7 +88,7 @@ To enable redaction for a gateway instance, perform the following steps:
 
 7. Restart the gateway instance.
 
-For all message content (HTTP, JSON, HTML form, and plain text), you must first ensure that the appropriate URL is defined in an `HTTPRedactor`. 
+For all message content (HTTP, JSON, HTML form, and plain text), you must first ensure that the appropriate URL is defined in an `HTTPRedactor`.
 
 ## Redact HTTP message content
 
@@ -344,7 +344,7 @@ And the following XML redactor configuration:
 ```
 <XMLRedactor>
     <RedactMime mimeType="text/xml" />
-    <XMLRedactedElement localname="UsernameToken" 
+    <XMLRedactedElement localname="UsernameToken"
         namespace="http://docs.oasis-open.org/wss/2004/01/
           oasis-200401-wss-wssecurity-secext-1.0.xsd
           "redactionDisposition="redactChildren">
@@ -388,7 +388,7 @@ Supported HTML form content types are as follows:
 * `application/x-www-form-urlencoded`
 * `multipart/formdata`
 
-**Redact raw message content**
+## Redact raw message content
 
 You can redact specific plain text by configuring regular expressions to define content to be removed. The following shows a configuration example:
 
@@ -447,11 +447,13 @@ This configuration applies to trace records equal or lower than the level config
 
 The following shows a configuration example, at an `INFO` trace level, which uses `Regex` elements already defined in the [Redact raw message content](#redact-raw-message-content) section.
 
-    <TraceRedactor level="INFO">
-         <Regex exp="creditcard\s*=\s*(\d{16})" redact="1" icase="true"/>
-         <Regex exp="source:\b(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})\b" redact="1,2" icase="true"/>
-         <Regex exp="\d{16}" redact="0" icase="false" />
-    </TraceRedactor>
+```
+<TraceRedactor level="INFO">
+        <Regex exp="creditcard\s*=\s*(\d{16})" redact="1" icase="true"/>
+        <Regex exp="source:\b(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})\b" redact="1,2" icase="true"/>
+        <Regex exp="\d{16}" redact="0" icase="false" />
+</TraceRedactor>
+```
 
 Redaction for trace log records works as follows:
 

@@ -3,12 +3,12 @@
 "linkTitle": "Manage API firewalling",
 "weight":"14",
 "date": "2019-10-14",
-"description": "API firewalling capabilities is a toolkit for real-time HTTP traffic monitoring, logging, and access control to helps companies to mitigate application-level threats to their APIs."
+"description": "Enable API firewalling on an API Gateway interface in Policy Studio, and monitor API firewalling in API Gateway Manager."
 }
 
 API Gateway provides API firewalling capabilities by embedding Apache ModSecurity. This is a toolkit for real-time HTTP traffic monitoring, logging, and access control. This helps companies to mitigate application-level threats to their APIs. For example, this includes cross-site scripting, SQL injection, command injection, cross-site request forgery, and many others.
 
-The gateway administrators can configure the embedded ModSecurity engine to protect API Gateway HTTP traffic against threats and monitor reported exceptions. This topic explains how to enable API firewalling on a gateway interface in Policy Studio, and how to monitor API firewalling in the API Gateway Manager web console.
+You can configure the embedded ModSecurity engine to protect API Gateway HTTP traffic against threats and monitor reported exceptions.
 
 For more details on ModSecurity, see [Apache ModSecurity documentation](http://www.modsecurity.org/).
 
@@ -52,7 +52,7 @@ If no threat protection profiles have been configured, do the following:
 
     **Rules directory**:
 
-    Enter the name of the subdirectory that stores the threat protection rules. When you download or create ModSecurity security rules, you must put them in this subdirectory. The     embedded ModSecurity engine loads all `.conf` files in this directory. The default is `${environment.VDISTDIR}/system/conf/threat-protection/default/activated_rules`.    
+    Enter the name of the subdirectory that stores the threat protection rules. When you download or create ModSecurity security rules, you must put them in this subdirectory. The     embedded ModSecurity engine loads all `.conf` files in this directory. The default is `${environment.VDISTDIR}/system/conf/threat-protection/default/activated_rules`.
 
     **Alert policy**:
 

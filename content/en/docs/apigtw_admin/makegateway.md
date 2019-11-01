@@ -1,18 +1,21 @@
 {
-"title": "Configure a gateway domain",
-"linkTitle": "Configure a gateway domain",
+"title": "Configure an API Gateway domain",
+"linkTitle": "Configure an API Gateway domain",
 "weight":"10",
 "date": "2019-10-14",
-"description": "Use the `managedomain` command to register a host gateway in a new domain and to create a new gateway instance."
+"description": "Use the `managedomain` command to configure a managed API Gateway."
 }
 
-This topic describes how to use the `managedomain` command in interactive mode to configure a managed gateway. It shows the minimum steps required to configure a domain: register a host in a new domain and create a new gateway instance.
+This section describes the minimum steps required to configure an API Gateway domain:
 
-{{< alert title="Note" color="primary" >}}This topic assumes that you have already installed your gateway (see the [API Gateway Installation Guide](/docs/apigtw_install/)). To use the gateway, you must have a domain configured in your installation. If you installed the QuickStart tutorial, an example domain was created automatically. If you did not install QuickStart, you must configure a domain using `managedomain`.{{< /alert >}}
+* Register a host in a new domain
+* Create a new API Gateway instance
 
-A single gateway installation supports a single gateway domain only. If you wish to run gateways in different domains on the same host, you need separate installations for each domain. For details on gateway domains and groups, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
+{{< alert title="Note" color="primary" >}}If you installed the QuickStart tutorial, an example domain was created automatically. If you did not install QuickStart, you must configure a domain using `managedomain`.{{< /alert >}}
 
-You can also use the topology view in the web-based API Gateway Manager tool to manage a newly created domain. For example, you can perform tasks such as create or delete API Gateway groups and instances,and start or stop the gateway instances. For more details, see [Manage domain topology in API Gateway Manager](/docs/apigtw_admin/managetopology).
+A single API Gateway installation supports a single API Gateway domain only. If you wish to run gateways in different domains on the same host, you need separate installations for each domain.
+
+You can also use the topology view in the web-based API Gateway Manager tool to manage a newly created domain. For example, you can create or delete API Gateway groups and instances, and start or stop instances. For more details, see [Manage domain topology in API Gateway Manager](/docs/apigtw_admin/managetopology).
 
 ## Managedomain script
 
@@ -25,8 +28,6 @@ When configuring a domain, the `managedomain` script enables you to perform task
 * Deployment (deploying to a group, listing deployments, creating or downloading deployment archives, and editing group passphrases)
 * Domain SSL certificates (regenerating SSL certificates on localhost)
 
-For example, you can use the `managedomain` script to register a host in a domain and create a new API Gateway instance. These are the minimum tasks required to create a new domain, and which are documented in this topic.
-
 ### Managedomain options
 
 For details on selecting specific options, enter the `managedomain` command in the following directory, and follow the instructions at the command prompt:
@@ -37,7 +38,7 @@ INSTALL_DIR/apigateway/posix/bin
 
 {{< alert title="Note" color="primary" >}}To register an API Gateway instance as a service on Linux, you must run the `managedomain` command as `root`.{{< /alert >}}
 
-For more details on `managedomain` options, see [Managedomain command reference](/docs/apigtw_admin/managedomain_ref). For details on how to use the `managedomain` command to configure SSL certificates and Admin Node Manager high availability, see [Configure Admin Node Manager high availability](/docs/apigtw_admin/admin_node_mngr).
+For more details on `managedomain` options, see [Managedomain command reference](/docs/apigtw_admin/managedomain_ref).
 
 ## Register a host in a domain
 
@@ -92,18 +93,20 @@ To create an API Gateway instance, perform the following steps:
     startinstance -n "my_server" -g "my_group"
     ```
 
-* You can add a gateway instance on any registered host in the domain, not just the local host. However, if you are creating Linux services for the gateway, you must run `managedomain` on the same host.
+* You can add an API Gateway instance on any registered host in the domain, not just the local host. However, if you are creating Linux services for the gateway, you must run `managedomain` on the same host.
 * You must run `startinstance` on the host on which you intend to start the instance.
 * You must ensure that the `startinstance` file has execute permissions. Running `startinstance` without any arguments lists all API Gateway instances available on the host.
 
 ## Test the health of an API Gateway instance
 
-You can test the connection to the new gateway instance by connecting to the Health Check service. For example, enter the following default URL in your browser: <http://HOST:8080/healthcheck>
+You can test the connection to the new API Gateway instance by connecting to the Health Check service. For example, enter the following default URL in your browser: <http://HOST:8080/healthcheck>
 
 This should display a simple `<status>ok</status>` message.
 
-You can view the newly created gateway instance on the API Gateway Manager dashboard. For example, the default URL is as follows: <https://HOST:8090>
+You can view the newly created gateway instance on the API Gateway Manager dashboard. For example, the default URL is as follows:
+
+```
+https://HOST:8090
+```
 
 The port numbers used to connect depend on those entered when configuring the domain using `managedomain`, and are available from the localhost only.
-
-Start and stop the gateway.

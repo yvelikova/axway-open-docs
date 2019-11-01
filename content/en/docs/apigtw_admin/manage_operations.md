@@ -8,22 +8,22 @@
 
 ## Start and stop the API Gateway
 
-This section describes how to start and stop the Node Manager and the gateway instance on the command line, on all platforms. It also describes how to start the Policy Studio graphical tool. For details on the gateway components and concepts, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
+This section describes how to start and stop the Node Manager and the API Gateway instance on the command line. It also describes how to start Policy Studio.
 
-You can also start and stop gateway instances using the API Gateway Manager web console. For more details, see [Manage API Gateway instances](/docs/apigtw_admin/managetopology#manage-api-gateway-instances).
+You can also start and stop API Gateway instances using API Gateway Manager. For more details, see [Manage API Gateway instances](/docs/apigtw_admin/managetopology#manage-api-gateway-instances).
 
 ### Prerequisites
 
-Before you can start the gateway, you must first create a new domain that includes a gateway instance. If you installed the QuickStart tutorial, a sample API Gateway domain is automatically configured in your installation. Otherwise, you must create a new domain. For more details, see [Configure an API Gateway domain](/docs/apigtw_admin/makegateway).
+Before you can start API Gateway, you must first create a new domain that includes a gateway instance. If you installed the QuickStart tutorial, a sample API Gateway domain is automatically configured in your installation. Otherwise, you must create a new domain. For more details, see [Configure an API Gateway domain](/docs/apigtw_admin/makegateway).
 
-If you are using Apache Cassandra, before starting the gateway, you must first ensure that Cassandra is running. For details on installing and running Cassandra, see the
+If you are using Apache Cassandra, before starting API Gateway, you must first ensure that Cassandra is running. For details on installing and running Cassandra, see the
 [API Gateway Installation Guide](/docs/apigtw_install/).
 
 ### Set passphrases
 
 By default, data is stored unencrypted in the API Gateway configuration store. However, you can encrypt certain sensitive information such as passwords and private keys using a passphrase. When the passphrase has been set, this encrypts the API Gateway configuration data.
 
-You must enter the passphrase when connecting to the gateway configuration data (for example, using the Policy Studio, or when the API Gateway starts up). For more details on configuring this passphrase, see [Configure an API Gateway encryption passphrase](/docs/apigtw_security/general_passphrase#set-passphrases).
+You must enter the passphrase when connecting to the configuration data (for example, using the Policy Studio, or when the API Gateway starts up). For more details on configuring this passphrase, see [Configure an API Gateway encryption passphrase](/docs/apigtw_security/general_passphrase#set-passphrases).
 
 ### Start the Node Manager
 
@@ -31,24 +31,30 @@ To start the Node Manager on Linux, complete the following steps:
 
 1. Open a shell at the `/posix/bin` directory of your API Gateway installation.
 2. Run the `nodemanager.sh` file, for example:
-3. If you are using an encryption passphrase, you are prompted for this passphrase. Enter the correct encryption passphrase and press Return. For more details, see [Configure an API Gateway encryption passphrase](/docs/apigtw_security/general_passphrase/).
+
+    ```
+    ./nodemanager
+    ```
+
+3. If you are using an encryption passphrase, you are prompted for this passphrase.
 
 ### Start the API Gateway instance
 
 To start the gateway instance and Policy Studio on Linux, perform the following steps:
 
 1. Open a shell at the `/posix/bin` directory of your gateway installation.
-2. Ensure that the `startinstance` file has execute permissions and run `startinstance` command to start the gateway, for example:
+2. Ensure that the `startinstance` file has execute permissions and run the `startinstance` command, for example:
 
     ```
     startinstance -n "my_server" -g "my_group"
     ```
 
-3. If you are using an encryption passphrase, you are prompted for this passphrase. Enter the correct encryption passphrase and press Return. For more details, see [Set passphrases](#set-passphrases).
-4. When API Gateway has successfully started up, run the`policystudio.sh` file in your Policy Studio installation directory. For example:
+3. If you are using an encryption passphrase, you are prompted for this passphrase.
+4. When API Gateway has successfully started, run the`policystudio.sh` file in your Policy Studio installation directory. For example:
 
     ```
-    prompt# cd /usr/home/policystudioprompt# ./policystudio"
+    cd /usr/home/policystudio
+    ./policystudio"
     ```
 
 5. When Policy Studio is starting up, you are prompted for connection details for API Gateway.
@@ -56,8 +62,8 @@ To start the gateway instance and Policy Studio on Linux, perform the following 
 You can enter the `startinstance` command without any arguments to display the servers registered on the machine. For example:
 
 ```
-INSTALL_DIR/apigateway/posix/bin>startinstanceusage:"startinstance
-[[-n instance-name -g group-name [instance-args]] | [directory-location [instance-args]]]"
+$ startinstance
+usage:"startinstance [[-n instance-name -g group-name [instance-args]] | [directory-location [instance-args]]]"
 
 The API Gateway instances listed below are available to run on this machine as follows:
 
@@ -65,7 +71,7 @@ startinstance -n "server1" -g "group1"
 startinstance -n "server2" -g "group2"
 ```
 
-If you have a single gateway instance on the host on which you run `startinstance`, that instance starts when you specify no arguments.
+If you have a single API Gateway instance on the host on which you run `startinstance`, that instance starts when you specify no arguments.
 
 **Startup options**:
 
@@ -121,9 +127,13 @@ startinstance -s -n InstanceName -g GroupName && echo Running
 
 ### Connect to API Gateway in Policy Studio
 
-When starting the Policy Studio, you are prompted for details on how to connect to the Admin Node Manager (for example, the server session, host, port, user name, and password). The default connection URL is <https://*HOST*:8090/api>
+When starting the Policy Studio, you are prompted for details on how to connect to the Admin Node Manager (for example, the server session, host, port, user name, and password). The default connection URL is:
 
-`HOST` is the IP address or host name of the machine on which the API Gateway runs. For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+```
+https://<HOST>:8090/api
+```
+
+`HOST` is the IP address or host name of the machine on which the API Gateway runs.
 
 ### Stop API Gateway
 
@@ -135,17 +145,17 @@ To stop the API Gateway instance, you must specify the group and instance name t
 
 ### Stop the Node Manager
 
-To stop the Node Manager, you must specify the `nodemanager` command along with the `-k` option. For example: 
+To stop the Node Manager, you must specify the `nodemanager` command along with the `-k` option. For example:
 
 ```
 ./nodemanager -k
 ```
 
-## Shut down a gateway using zero downtime shutdown {#zero-downtime-shutdown}
+## Shut down an API Gateway using zero downtime shutdown {#zero-downtime-shutdown}
 
-Perform a zero downtime shutdown of a gateway in a multi-node gateway environment with a load balancer.
+Perform a zero downtime shutdown of a gateway in a multi-node API Gateway environment with a load balancer.
 
-When you need to shut down a ateway for any reason (for example, during an upgrade), zero downtime shutdown enables you to indicate this to the load balancer for a set amount of time before the shutdown begins, avoiding traffic loss.
+When you need to shut down a gateway for any reason (for example, during an upgrade), zero downtime shutdown enables you to indicate this to the load balancer for a set amount of time before the shutdown begins, avoiding traffic loss.
 
 To perform a zero downtime shutdown, follow these steps:
 
@@ -161,67 +171,13 @@ To perform a zero downtime shutdown, follow these steps:
     * The Health Check LB policy returns a `503 Service Unavailable` response. This indicates to the load balancer that the API Gateway is not available for traffic and the load balancer stops routing to it.
     * After the specified delay before shutdown (for example, 10 seconds), the API Gateway is shut down.
 
-## Start the API Gateway tools
-
-This section describes how to start the API Gateway Manager administrator tool and the Policy Studio developer tool.
-
-### Before you begin
-
-Before you start the API Gateway tools, do the following:
-
-**Install the API Gateway and Policy Studio**:
-
-If you have not already done so, see the [API Gateway Installation Guide](/docs/apigtw_install).
-
-**Configure a managed domain**:
-
-If you have not already created a domain, use the `managedomain` script to configure a domain. You should ensure that the Admin Node Manager and an API Gateway instance are running.
-
-### Launch API Gateway Manager
-
-To access the web-based API Gateway Manager administration tools, perform the following steps:
-
-1. Ensure that the Admin Node Manager is running before you can access the web-based API Gateway Manager tools.
-2. Enter the following URL:
-
-    ```
-    https://HOST:8090/
-    ```
-
-    HOST refers to the host name or IP address of the machine on which API Gateway is running (for example, https://localhost:8090/).
-
-3. Enter the administrator user name and password configured at installation time.
-4. Click the appropriate button in the API Gateway Manager page in the browser. The **Dashboard** view is displayed by default.
-
-The API Gateway Manager includes the following main views:
-
-* **Dashboard**: System health, traffic summary, and topology (domain, hosts, API Gateways, and groups).
-* **Traffic**: Message log and performance statistics on the traffic processed by the gateway. For example, all HTTP, HTTPS, JMS, File Transfer, and Directory messages processed by THE gateway.
-* **Monitoring**: Real-time monitoring of all the traffic processed by API Gateway. Includes statistics at the system level and for services invoked and remote hosts connected to.
-* **Logs**: API Gateway trace log, transaction log, and access log files.
-* **Events**: API Gateway transaction log points, alerts, and SLA alerts.
-* **Settings**: Enables you to configure dynamic gateway logging, user roles, and credentials.
-
-### Start Policy Studio
-
-To start the Policy Studio tool used to create and manage policies, perform the following steps:
-
-1. In your Policy Studio installation directory, enter the policystudio command.
-2. In Policy Studio, select **File > New Project**, and follow the steps in the wizard.
-
-Alternatively, if a project has already been created, select **File > Open Project**, or click a link to the existing project on the Policy Studio landing page.
-
-Policy Studio enables you to perform the full range of API Gateway configuration and management tasks. This includes tasks such as develop and assign policies, import services, optimize API Gateway configuration settings, and manage API Gateway deployments.
-
-For more details on using the Policy Studio to manage API Gateway processes and configurations, see [Manage API Gateway deployments](/docs/apigtw_admin/deploy_get_started#manage-api-gateway-deployments).
-
 ## Configure API Gateway high availability
 
-System administrators can configure High Availability (HA) in the gateway environment to ensure that there is no single of point of failure in the system. This helps to eliminate any potential system downtime in production environments. Typically, the gateway platform is deployed in the Demilitarized Zone (DMZ) to provide an additional layer of security for your back-end systems.
+System administrators can configure High Availability (HA) in the API Gateway environment to ensure that there is no single of point of failure in the system. This helps to eliminate any potential system downtime in production environments. Typically, the API Gateway platform is deployed in the Demilitarized Zone (DMZ) to provide an additional layer of security for your back-end systems.
 
-This section describes the recommended gateway architecture in an HA production environment. It includes recommendations on topics such as load balancing, commonly used transport protocols, caching, persistence, and connections to external systems.
+This section describes the recommended architecture in an HA production environment. It includes recommendations on topics such as load balancing, commonly used transport protocols, caching, persistence, and connections to external systems.
 
-## HA in production environments
+### HA in production environments
 
 The following diagram shows an overview of a Gateway platform running in an HA production environment:
 
@@ -301,7 +257,7 @@ In the distributed cache, there is no master cache controlling all caches in the
 
 For more details on configuring distributed cache settings, see the topic on Global Caches in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/). API Gateway distributed caching system is based on Ehcache. For more details, see <http://ehcache.org/>.
 
-## External Connections
+### External Connections
 
 You can use **External Connections** settings in Policy Studio to configure how the gateway connects to specific external third-party systems. For example, this includes connections such as the following:
 
@@ -356,6 +312,8 @@ API Gateway provides an active/active high availability solution for the Admin N
 * Only nodes behind the internal firewall run Admin Node Managers
 * DMZ has multiple zones, and only nodes behind the firewall run Admin Node Managers
 
+You must configure at least two Admin Node Managers in a domain for high availability and security. For details on how to configure and secure multiple Admin Node Managers in a domain, see [Configure Admin Node Manager high availability](/docs/apigtw_admin/admin_node_mngr).
+
 **Scenario 1—Admin Node Managers in DMZ**:
 
 In this deployment pattern, all nodes in the DMZ run an Admin Node Manager in active/active mode. For example:
@@ -383,12 +341,6 @@ In this deployment pattern, all nodes in the DMZ run an Admin Node Manager in ac
 This deployment pattern is a refinement of scenario 2. The DMZ is divided into multiple zones with no inter-zone communication. Multiple gateway instances are deployed on separate nodes in each zone, and all nodes in the zone can communicate with each other.
 
 All nodes in the DMZ run Node Managers. There are two nodes deployed behind the internal firewall running Admin Node Managers in an active/active configuration. Both Admin Node Managers can manage any Node Manager in any zone.
-
-### Further details
-
-You must configure at least two Admin Node Managers in a domain for high availability and security.
-
-For details on how to configure and secure multiple Admin Node Managers in a domain, see [Configure Admin Node Manager high availability](/docs/apigtw_admin/admin_node_mngr).
 
 ## API Gateway backup and disaster recovery
 

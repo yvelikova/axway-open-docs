@@ -3,10 +3,10 @@
 "linkTitle": "Run API Gateway in FIPS mode",
 "weight":"16",
 "date": "2019-10-14",
-"description": "Enable FIPS for a gateway instance and a Policy Studio client"
+"description": "Run an API Gateway instance or a Policy Studio client in FIPS mode."
 }
 
-API Gateway supports Federal Information Processing Standards (FIPS). When running a gateway instance or a Policy Studio client in FIPS mode, the following FIPS-certified cryptographic modules are enabled and invoked for all FIPS-compliant cryptographic algorithms:
+API Gateway supports Federal Information Processing Standards (FIPS). When running an API Gateway instance or a Policy Studio client in FIPS mode, the following FIPS-certified cryptographic modules are enabled and invoked for all FIPS-compliant cryptographic algorithms:
 
 | Cryptographic Module                                          | FIPS 140-2 Certificate Number |
 |---------------------------------------------------------------|-------------------------------|
@@ -16,8 +16,6 @@ API Gateway supports Federal Information Processing Standards (FIPS). When runni
 {{< alert title="Note" color="primary" >}}
 Running API Gateway in FIPS mode is a separately licensed option that must be specifically ordered. For more details, contact your Axway sales representative.
 {{< /alert >}}
-
-This topic explains how to enable FIPS for a gateway instance and a Policy Studio client, and describes restrictions that apply when running in FIPS mode.
 
 ## Enable FIPS mode for an API Gateway
 

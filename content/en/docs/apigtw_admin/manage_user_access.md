@@ -1,18 +1,18 @@
 {
-"title": "Manage user access",
-"linkTitle": "Manage user access",
+"title": "Manage users",
+"linkTitle": "Manage users",
 "weight":"28",
 "date": "2019-10-22",
-"description": "API Gateway *users* provide access to the messages and services protected by the gateway, whilst *admin users* provide access to the gateway configuration management features available in Policy Studio, Configuration Studio, and API Gateway Manager."
+"description": "API Gateway *users* provide access to the messages and services protected by API Gateway, whilst *admin users* provide access to the API Gateway configuration management features available in Policy Studio, Configuration Studio, and API Gateway Manager."
 }
-
-By default, the gateway user store contains the configuration data for managing  the gateway user information. API Gateway user store is typically used in a development environment, and is useful for demonstration purposes.
-
-In a production environment, user information may be stored in existing user Identity Management repositories such as Microsoft Active Directory, Oracle Access Manager, CA SiteMinder, and so on.
 
 ## Manage API Gateway users
 
-API Gateway users specify the user identity in the gateway user store. This includes details such as the user name, password, and X.509 certificate. Gateway users must be a member of at least one user group. In addition, users can specify optional attributes, and inherit attributes at the group level.
+By default, the API Gateway user store contains the configuration data for managing API Gateway user information. This user store is typically used in a development environment, and is useful for demonstration purposes.
+
+In a production environment, user information may be stored in existing user Identity Management repositories such as Microsoft Active Directory, Oracle Access Manager, CA SiteMinder, and so on.
+
+API Gateway users specify the user identity in the API Gateway user store. This includes details such as the user name, password, and X.509 certificate. API Gateway users must be a member of at least one user group. In addition, users can specify optional attributes, and inherit attributes at the group level.
 
 To view all existing users, select the **Environment Configuration > Users and Groups > Users** node in the tree. The users are listed in the table on the main panel. You can find a specific user by entering a search string in the **Filter** field.
 
@@ -83,7 +83,7 @@ To delete a specific user or group, select it in the list, and click the **Remov
 
 ## Manage admin users
 
-When logging into the Policy Studio or API Gateway Manager, you must enter the user credentials stored in the local admin user store to connect to the API Gateway server instance. Admin users are responsible for managing API Gateway instances using the gateway management APIs. To manage admin users, click the **Settings** > **Admin Users**
+When logging into the Policy Studio or API Gateway Manager, you must enter the user credentials stored in the local admin user store to connect to the API Gateway server instance. Admin users are responsible for managing API Gateway instances using the API Gateway management APIs. To manage admin users, click the **Settings** > **Admin Users**
 tab in the API Gateway Manager.
 
 ### Admin user privileges

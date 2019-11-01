@@ -3,7 +3,7 @@
 "linkTitle": "Managedomain command reference",
 "weight":"02",
 "date": "2019-10-14",
-"description": "Learn how to run the `managedomain` commandin different modes:"
+"description": "Run the `managedomain` command in different modes."
 }
 
 This topic describes how to run `managedomain` in the following modes:
@@ -233,7 +233,7 @@ Option `4`: `Change Admin Node Manager and/or credentials, currently connecting 
 
 By default, you connect to an Node Manager using `managedomain` with the credentials specified at installation time. You can override these at startup by passing the `--username --password` command line parameters, or reset while running `managedomain` with this option. This username/password refers to an `admin` user configured in Policy Studio.
 
-You can also use this option to select which Admin Node Manager `managedomain` connects to. `managedomain` must talk to an Admin Node Manager, which can be local or remote. By default, `managedomain` connects to the local running Admin Node Manager, otherwise it searches the topology and uses the first running Admin Node Manager that it finds. 
+You can also use this option to select which Admin Node Manager `managedomain` connects to. `managedomain` must talk to an Admin Node Manager, which can be local or remote. By default, `managedomain` connects to the local running Admin Node Manager, otherwise it searches the topology and uses the first running Admin Node Manager that it finds.
 
 ### API Gateway management
 
@@ -267,7 +267,7 @@ Must be run by a user with permission to create a service on the host operating 
 
 The `managedomain --menu` options for group management are as follows:
 
-Option `11`: `Edit group (rename it) `
+Option `11`: `Edit group (rename it)`
 
 Rename an API Gateway group. This functionality is not available in Policy Studio and API Gateway Manager.
 
@@ -279,16 +279,16 @@ Delete all API Gateways in the group and the group itself. You must ensure that 
 
 The `managedomain --menu` options for topology management are as follows:
 
-Option `13`: `Print topology `
+Option `13`: `Print topology`
 
 Output the contents of the deployed domain topology. This includes the following:
 
-   * Topology version
-   * Hosts
-   * Admin Node Managers
-   * Node Managers
-   * Groups
-   * API Gateway instances (tags)
+* Topology version
+* Hosts
+* Admin Node Managers
+* Node Managers
+* Groups
+* API Gateway instances (tags)
 
 Option `14`: `Check topologies are in sync`
 
@@ -318,7 +318,7 @@ Option `19`: `List deployment information`
 
 List the deployment information for all API Gateways in a topology. This functionality is also available in Policy Studio and API Gateway Manager.
 
-Option `20`: `Create deployment archive `
+Option `20`: `Create deployment archive`
 
 Create a deployment archive from a directory that contains a federated API Gateway configuration.
 
@@ -340,7 +340,7 @@ The `managedomain --menu` options for group management are as follows:
 
 Option `24`: `Regenerate SSL certificates on localhost`
 
-Regenerate the SSL certificates used to secure API Gateway components in the domain (for example, Node Manager and the API Gateway instances that it manages). You must restart the Node Manager on the localhost after running this option. You must run this option on all hosts in the domain. 
+Regenerate the SSL certificates used to secure API Gateway components in the domain (for example, Node Manager and the API Gateway instances that it manages). You must restart the Node Manager on the localhost after running this option. You must run this option on all hosts in the domain.
 
 Option `25`: `Sign CSR`
 
@@ -358,7 +358,7 @@ You can also enter `managedomain` commands and parameters directly on the comman
 managedomain -i --sign_with_user_provided --ca=/home/keys/test.p12
 ```
 
-{{< alert title="Note" color="primary" >}}You must run `managedomain -i` or` --initialize` to register the first host in the domain in order to create and run API Gateways.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You must run `managedomain -i` or `--initialize` to register the first host in the domain in order to create and run API Gateways.{{< /alert >}}
 
 For details on all available commands, enter `managedomain --help`
 

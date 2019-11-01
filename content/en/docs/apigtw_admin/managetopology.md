@@ -3,7 +3,7 @@
 "linkTitle": "Manage domain topology in API Gateway Manager",
 "weight":"11",
 "date": "2019-10-14",
-"description": "Manage a gateway domain by way of the topology view in the web-based API Gateway Manager tool."
+"description": "Use the topology view in API Gateway Manager to manage an existing API Gateway domain."
 }
 
 When using API Gateway Manager to manage an existing domain, you must ensure that the host was first registered in the domain using the `managedomain` script. For more details, see [Configure an API Gateway domain](/docs/apigtw_admin/makegateway).
@@ -13,8 +13,6 @@ The API Gateway Manager web console is available from the following URL:
 ```
 https://HOST:8090
 ```
-
-For more details, see [Start the tools](/docs/apigtw_admin/manage_operations#start-the-api-gateway-tools).
 
 ## Check the status of API Gateway groups and instances {#check-status}
 
@@ -208,5 +206,3 @@ To deploy existing policy and environment packages to a group of API Gateways, p
 5. Click **Next**.
 6. Select **Deploy** in the wizard, and the packages are deployed to the API Gateway group.
 7. Click **Finish**.
-
-* You can also use Policy Studio to deploy API Gateway configuration. For details, see [Deploy configuration](/docs/apigtw_admin/deploy_get_started#deploy-api-gateway-configuration).

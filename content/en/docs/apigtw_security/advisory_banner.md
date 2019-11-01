@@ -3,7 +3,7 @@
 "linkTitle": "Configure an advisory banner",
 "weight":"12",
 "date": "2019-10-14",
-"description": "Display an advisory warning message about unauthorized use of the gateway when establishing a successful user session from Policy Studio or API Gateway Manager."
+"description": "Display an advisory warning message about unauthorized use of API Gateway when establishing a successful user session from Policy Studio or API Gateway Manager."
 }
 
 To enable an advisory banner, perform the following steps:
@@ -22,15 +22,9 @@ To enable an advisory banner, perform the following steps:
 
 3. Click **Apply** to save the changes.
 
-### Advisory banner in API Gateway Manager
-
 When the banner is enabled, it is displayed on the API Gateway Manager login dialog:
 
 ![Advisory banner in API Gateway Manager](/Images/APIGateway/advisory_banner_gwmgr.png)
-
-For more details on API Gateway Manager, see [Monitor services](/docs/apigtw_admin/monitor_service).
-
-### Advisory banner in Policy Studio
 
 The advisory banner is also displayed when you log in to Policy Studio:
 
