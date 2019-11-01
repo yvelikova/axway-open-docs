@@ -1,10 +1,10 @@
 ---
-title: "Maintain and customize this site"
+title: "Maintain and customize Axway-Open-Docs website"
 linkTitle: "Maintain and customize"
 weight: 5
 date: 2019-07-11
 description: >
-  Understand how to maintain and customize this documentation site.
+  Understand how to maintain and customize the Axway-Open-Docs website.
 ---
 
 {{% alert title="Note" %}}
@@ -26,8 +26,6 @@ This documentation site uses the following tools:
 * Docsy - The documentation site uses the Docsy documentation theme from Google.
 * Netlify - The site is deployed on Netlify. Deployments are triggered by pushes to GitHub.
 * Netlify CMS - Provides a WYSIWYG view of documentation pages.
-
-<!--- TODO Add info about TravisCI, linters, recommended editors --->
 
 ## Overview of config files
 
@@ -75,17 +73,23 @@ The Docsy theme is installed in this site's git repo as a git submodule. To upda
     git submodule update --recursive
     ```
 
+## Create content with the Docsy theme
+
+For lots of information about how the content of a Docsy themed website is structured, and how to add different types of content (including documentation pages, blog posts, landing pages, community pages, and even static content), see [Docsy - Adding Content](https://www.docsy.dev/docs/adding-content/content/).
+
+For more information on how the navigation and search work, see [Docsy - Navigation ansd Search](https://www.docsy.dev/docs/adding-content/navigation/).
+
 ## Customize the Docsy theme
 
 This section explains how to customize various elements of the Docsy theme.
 
 ### Add code to head and body end of pages
 
-To add code to the `head` and end of the `body` sections of each page (for example if using Netlify Identity with Netlify CMS), create the files `layouts/partials/hooks/head-end.html` and `layouts/partials/hooks/body-end.html` and add the code in those files. For details, see [the Docsy instructions](https://docsydocs.netlify.com/docs/adding-content/lookandfeel/#add-code-to-head-or-before-body-end).
+To add code to the `head` and end of the `body` sections of each page (for example if using Netlify Identity with Netlify CMS), create the files `layouts/partials/hooks/head-end.html` and `layouts/partials/hooks/body-end.html` and add the code in those files. For details, see [Docsy - Add code to head or before body end](https://www.docsy.dev/docs/adding-content/lookandfeel/#add-code-to-head-or-before-body-end).
 
 ### Change colors and fonts
 
-To change the theme colors and fonts, modify the file `assets/scss/_variables_project.scss` as detailed in [the Docsy instructions](https://docsydocs.netlify.com/docs/adding-content/lookandfeel/).
+To change the theme colors and fonts, modify the file `assets/scss/_variables_project.scss` as detailed in [Docsy - Look and Feel](https://www.docsy.dev/docs/adding-content/lookandfeel/).
 
 ### Change the logo and background images
 
@@ -93,13 +97,13 @@ To change the logo, add a logo file as `assets/icons/logo.svg`. This overrides t
 
 To change the background image on the home page (`content/en/_index.html`) add an image containing `background` in the file name to the `content/en/` folder, for example, `content\en\featured-background.jpg`.
 
-For more details, see [the Docsy instructions](https://docsydocs.netlify.com/docs/adding-content/iconsimages/).
+To change the favicon, add a new favicon in the `static/favicons` directory.
 
-<!-- TODO Change the favicon for the browser tab-->
+For more details, see [Docsy - Logos and Images](https://www.docsy.dev/docs/adding-content/iconsimages/).
 
 ### Change icons
 
-To change a specific Font Awesome icon, locate an alternative icon on <https://fontawesome.com/> and replace the icon class in the code. The exact steps tdiffer depending on whether the icon is being used in a content page, a shortcode, a partial layout, and so on.
+To change a specific Font Awesome icon, locate an alternative icon on <https://fontawesome.com/> and replace the icon class in the code. The exact steps differ depending on whether the icon is being used in a content page, a shortcode, a partial layout, and so on.
 
 ### Remove the About section
 
@@ -130,37 +134,41 @@ To create a new buttton in the right nav:
 3. Customize the code to implement a new button
 4. Add the button text string to `i18n/en.toml`
 
-### Using variables
+### Add Analytics and user feedback tracking
+
+For information on enabling Google Analytics tracking and the user feedback widget, see [Docsy - Analytics and User Feedback](https://www.docsy.dev/docs/adding-content/feedback/).
+
+## Use variables in content
 
 A list of variables can be found in `axway-open-docs/layouts/shortcodes/variables`, stored as HTML files, where the name of the file is the name of the variable. These HTML files just contain the value of the variable.
 
-Variables are called in markdown documentation files with the following:
+Variables are called in Markdown documentation files with the following:
 
 `{{</*  variables/variable_name  */>}}`
 
 Where `variable_name` is the name of the HTML file that contains the variable value, without the `.html` extension.
 
-For example, 
+For example:
 
-*"We love {{< variables/company_name >}} Open Docs!"*
+`"We love {{< variables/company_name >}} Open Docs!"`
 
-would be written in markdown as 
+would be written in Markdown as:
 
-*"We love {{</* variables/company_name */>}} Open Docs!"*
+`"We love {{</* variables/company_name */>}} Open Docs!"`
 
 Where `company_name` is stored in `axway-open-docs/layouts/shortcodes/variables` as a HTML file called `company_name.html` and simply contains `Axway`.
- 
-### Creating variables
+
+### Create a new variable
 
 Variables are stored in the `axway-open-docs` project as HTML files.
 
-#### Using File explorer
+#### Use file explorer
 
 Navigate to `axway-open-docs/layouts/shortcodes/variables` and create a HTML file. Consider the file name carefully since the shortcode name will mirror that of the file but without the `.html` extension. For example, `axway-open-docs/layouts/shortcodes/variables/company_name.html` will be called with `{{</* variables/company_name */>}}` in the markdown file.
 
 Once you've created the file, open it up with your favorite text editor and simply add the value of the variable into it. For example, `axway-open-docs/layouts/shortcodes/variables/company_name.html` simply contains `Axway`.
 
-#### Using Shell
+#### Use shell
 
 You can customize and run the following bash command (using relative paths):
 

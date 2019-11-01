@@ -1,6 +1,6 @@
 ---
-title: "Deleting an old fork before contributing to Axway documentation"
-linkTitle: "Deleting an old fork"
+title: "Delete an outdated fork before contributing to Axway documentation"
+linkTitle: "Delete an outdated fork"
 weight: 6
 date: 2019-10-15
 description: >
