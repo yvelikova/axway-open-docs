@@ -106,7 +106,7 @@ The gateway processes must be able to listen on Internet domain privileged ports
 * Admin Node Manager
 * API Gateway Analytics
 
-<i class="fas fa-bullhorn"></i>  Using `setcap` to set this capability is supported from kernel 2.6.24 onwards. If the kernel version is before 2.6.33, you must enable `CONFIG_SECURITY_FILE_CAPABILITIES`.
+Using `setcap` to set this capability is supported from kernel 2.6.24 onwards. If the kernel version is before 2.6.33, you must enable `CONFIG_SECURITY_FILE_CAPABILITIES`.
 
 To set the capability on the `vshell` binary, run the following command:
 
