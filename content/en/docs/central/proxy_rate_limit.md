@@ -189,7 +189,7 @@ To visualize the API proxy in AMPLIFY Central UI, select **API Proxies** in the 
 
 ### Apply a rate limit for each application consuming your API
 
-When your API is protected with an authentication method you can enforce a rate limit for each application consuming your API. In the sample configuration below the API is protected by api key authentication. Under `rateLimit` we can specify two configurations. The `perProxy` value defines a rate limit at the API level, meaning all calls . The `perProxyAndApp` value defines a second level of rate limiting enforced for each application consuming the API. The two application under `apps` will be limited to 1 TPS individually, as defined by the `perProxyAndApp` configuration, but traffic from both apps will be limited to 10 TPS as defined by the `perProxy` configuration.
+When your API is protected with an authentication method you can enforce a rate limit for each application consuming your API. In the sample configuration below the API is protected by api key authentication. Under `rateLimit` we can specify two configurations. The `perProxy` value defines a rate limit at the API level, meaning all calls . The `perProxyAndApp` value defines a second level of rate limiting enforced for each application consuming the API. The two application under `apps` will be limited to 3 TPS individually, as defined by the `perProxyAndApp` configuration, but traffic from both apps will also be limited to 5 TPS as defined by the `perProxy` configuration.
 
 ```
 version: v1 # Version of the file format
@@ -202,8 +202,8 @@ proxy:
         clientAuth:
             type: api-key
         rateLimit:
-            perProxy: 10 # the desired TPS limit for your API
-            perProxyAndApp: 1 # the default TPS limit for each application consuming the API
+            perProxy: 5 # the desired TPS limit for your API
+            perProxyAndApp: 3 # the default TPS limit for each application consuming the API
     tags: ['musical', 'instruments', 'ratelimit']
     apps:
     - name: Rate Limited App 1
@@ -227,7 +227,7 @@ proxy:
         clientAuth:
             type: api-key
         rateLimit:
-            perProxy: 10 # the desired TPS limit for your API
+            perProxy: 5 # the desired TPS limit for your API
             perProxyAndApp: 1 # the default TPS limit for each application consuming the API
             overrides:
               - appName: Rate Limited App 1
@@ -255,7 +255,7 @@ proxy:
         clientAuth:
             type: api-key
         rateLimit:
-            perProxy: 10 # the desired TPS limit for your API
+            perProxy: 5 # the desired TPS limit for your API
             perProxyAndApp: 1 # the default TPS limit for each application consuming the API
             overrides:
               - appName: Rate Limited App 1
