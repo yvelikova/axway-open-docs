@@ -26,7 +26,7 @@ git clone --recurse-submodules --depth 1 https://github.com/Axway/axway-open-doc
 ```
 
 {{% alert title="Note" %}}
-Don't forget to use `--recurse-submodules` or you won't pull down some of the Docsy theme code you need to generate a working site.
+You must use `--recurse-submodules` or you won't pull down some of the Docsy theme code you need to generate a working site.
 {{% /alert %}}
 
 If you don't have write access to the repo, clone your _fork_ of the repo instead:

@@ -75,7 +75,7 @@ The Docsy theme is installed in this site's git repo as a git submodule. To upda
 
 ## Create content with the Docsy theme
 
-For lots of information about how the content of a Docsy themed website is structured, and how to add different types of content (including documentation pages, blog posts, landing pages, community pages, and even static content), see [Docsy - Adding Content](https://www.docsy.dev/docs/adding-content/content/).
+To learn more about how the content of a Docsy themed website is structured, and how to add different types of content (including documentation pages, blog posts, landing pages, community pages, and even static content), see [Docsy - Adding Content](https://www.docsy.dev/docs/adding-content/content/).
 
 For more information on how the navigation and search work, see [Docsy - Navigation ansd Search](https://www.docsy.dev/docs/adding-content/navigation/).
 
