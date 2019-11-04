@@ -38,7 +38,7 @@ Finally, if you cannot make a direct contribution, but want to report an issue w
 
 {{< alert title="Caution" color="warning">}}If you have previously contributed to this project, your fork might be out of sync. If you do not have pending PRs, you must delete your old fork before continuing.
 
-See [Deleting a repository](/docs/contribution_guidelines/deleting_a_repository/) for more information.{{< /alert >}}
+See [Delete an outdated fork](/docs/contribution_guidelines/deleting_a_repository/) for more information.{{< /alert >}}
 
 1. Click **Edit on GitHub** on the upper right corner of the page.
 2. Click **Fork this repository** to create a copy (fork) of the Axway repository in your GitHub account. This allows you to propose changes to a repository that you don't have write access to.
@@ -68,7 +68,7 @@ Use the Netlify CMS user interface to easily edit pages in a WYSIWYG editor with
 
 {{< alert title="Caution" color="warning">}}If you have previously contributed to this project, your fork might be out of sync. If you do not have pending PRs, you must delete your old fork before continuing.
 
-See [Deleting a repository](/docs/contribution_guidelines/deleting_a_repository/) for more information.{{< /alert >}}
+See [Delete an outdated fork](/docs/contribution_guidelines/deleting_a_repository/) for more information.{{< /alert >}}
 
 1. Click **Edit on Netlify CMS** on the upper right corner of the page.
 2. Sign in to Netlify CMS using your GitHub account.
