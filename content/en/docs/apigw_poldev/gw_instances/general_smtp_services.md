@@ -58,7 +58,7 @@ To configure an inbound interface, perform the following steps in Policy Studio:
 1. Under the **Environment Configuration** > **Listeners**
     node in the tree, select the SMTP node under the instance.
 2. Right-click, and select **Add Interface** > interface type (**TCP**, **SSL**, or **STARTTLS**).
-3. Complete the settings on the relevant dialog. For full details on these settings, see [Configure HTTP services](/docs/apigw_poldev/general_services/).
+3. Complete the settings on the relevant dialog. For full details on these settings, see [Configure HTTP services](/docs/apigw_poldev/gw_instances/general_services/).
 4. Click **OK**.
 
 ## Configure policy handlers for SMTP commands

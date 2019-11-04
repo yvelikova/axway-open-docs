@@ -12,7 +12,7 @@ The ability to import and export XML-based configuration data is useful in a dev
 
 You can import XML-based configuration data into your API Gateway configuration (for example, policies, certificates, and users).
 
-{{< alert title="Note" color="primary" >}}The recommended way to export configuration between different environments is to use configuration packages. Select **File** > **Export** from the main menu. For more details, see [Manage projects](general_project.htm).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}The recommended way to export configuration between different environments is to use configuration packages. Select **File** > **Export** from the main menu. For more details, see [Manage projects](/docs/apigw_poldev/general_project).{{< /alert >}}
 
 ### Import configuration fragment
 

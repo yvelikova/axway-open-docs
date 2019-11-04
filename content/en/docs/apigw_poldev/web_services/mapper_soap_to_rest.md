@@ -38,8 +38,11 @@ The next step is to define a REST API for a currency conversion service as follo
 4. Add a **Validate REST** filter to the `MainRouter` policy. Set the **Method** to `GET`, add two request parameters called `fromCurrency` and `toCurrency`, and select the **Extract valid parameters into individual message attributes** check box:
     ![Validate REST filter](/Images/PolDevGuide/Mapper/validate_rest.png)
 5. Add a relative path for the `MainRouter` policy so that all REST requests received by API Gateway on the path `/convertcurrency/getConversionRate` are processed by the `MainRouter` policy. On the **HTTP Method** tab of the path resolver, set the method to `GET`.
+
     ![Add relative path](/Images/PolDevGuide/Mapper/relative_path.png)
+
     At this stage, the MainRouter policy should look like this:
+
     ![MainRouter policy (1)](/Images/PolDevGuide/Mapper/mainrouter_policy_1.png)
 
 ## Route REST requests through the virtualized SOAP service
@@ -71,12 +74,19 @@ First, create a dedicated request processing policy to create the SOAP request m
     You need to replace the currencies in the message body with the currencies from the incoming REST request. To enable the autocompletion mechanism in the **Set Message** filter, which will allow you to insert the `fromCurrency` and `toCurrency` selector strings in the message body, you must first connect up the filters in the `MainRouter` and `GetCurrencyConvertorRequest` policies.
 5. Add a **Policy Shortcut** filter to the `MainRouter` policy, and set it to call the `GetCurrencyConvertorRequest` policy.
 6. Connect the filters in the `MainRouter` policy as follows:
+
     ![MainRouter policy (2)](/Images/PolDevGuide/Mapper/mainrouter_policy_2.png)
+
 7. Connect the filters in the `GetCurrencyConvertorRequest` policy as follows:
+
     ![GetCurrencyConvertorRequest policy](/Images/PolDevGuide/Mapper/getcurrencyconvertorrequest_policy.png)
+
 8. Edit the **Set Message** filter. Select the currency type in the message body and start typing to see matching selectors.
+
     ![Set message autocompletion](/Images/PolDevGuide/Mapper/set_message_autocomplete.png)
+
 9. Insert the selectors `$params.query.fromCurrency` and `$params.query.toCurrency` in place of the currency types.
+
     ![Set message with selectors](/Images/PolDevGuide/Mapper/set_message_selectors.png)
 
 ### Create a response processing policy
@@ -86,12 +96,17 @@ Next, create a response processing policy to convert the XML returned from the S
 1. Create a response processing policy called `GetCurrencyConvertorResponse`.
 2. Add an **XML to JSON**
     filter to the policy. Configure it to extract the SOAP Body content first and remove any namespaces:
+
     ![XML to JSON filter](/Images/PolDevGuide/Mapper/xmltojson.png)
+
 3. The GetCurrencyConvertorResponse policy should now look like this:
+
     ![GetCurrencyConvertorResponse policy](/Images/PolDevGuide/Mapper/GetCurrencyConvertorResponse.png)
+
 4. Add another **Policy Shortcut** filter to the `MainRouter` policy, and set it to call the `GetCurrencyConvertorResponse` policy.
 
     At this stage, the MainRouter policy should look like this:
+
     ![Complete MainRouter policy](/Images/PolDevGuide/Mapper/mainrouter_policy_complete.png)
 
 ## Test the REST to SOAP mapping

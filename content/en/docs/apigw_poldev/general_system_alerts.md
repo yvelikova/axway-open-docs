@@ -48,7 +48,7 @@ You configure the alert messages to be written to a local or remote Windows Even
 
 ### Check Point FireWall-1 (OPSEC)
 
-API Gateway complies with Open Platform for Security (OPSEC). OPSEC compliance is awarded by Check Point Software Technologies to products that have been successfully integrated with at least one of their products, in this case Check Point FireWall-1,
+API Gateway complies with Open Platform for Security (OPSEC). OPSEC compliance is awarded by Check Point Software Technologies to products that have been successfully integrated with at least one of their products, in this case Check Point FireWall-1.
 
 FireWall-1 is the industry leading firewall that provides network security based on a security policy created by an administrator. Although OPSEC is not an open standard, the platform is recognized worldwide as the standard for interoperability of network security, and the alliance contains over 300 different companies. OPSEC integration is achieved through a number of published APIs that enable third-party vendors to interoperate with Check Point products.
 
@@ -110,7 +110,7 @@ Amazon SNS is a managed push messaging service that you can used to send push no
 2. Enter a name for this alert destination.
 3. In **AWS Credential**, select your AWS security credentials (API key and secret) that API Gateway uses when connecting to Amazon SNS.
 4. Select the region appropriate for your deployment.
-5. In **Client settings**, select the AWS client configuration API Gateway uses when connecting to Amazon SNS. For more details, see [Configure Amazon SQS queue listener](general_aws_poller.htm).
+5. In **Client settings**, select the AWS client configuration API Gateway uses when connecting to Amazon SNS. For more details, see [Configure Amazon SQS queue listener](/docs/apigw_poldev/gw_instances/general_aws_poller).
 6. In **Topic ARN**, enter the topic Amazon Resource Name (ARN) to send alerts to.
 7. When you create a topic, Amazon SNS assigns it a unique ARN that includes the service name (for example, SNS), the region, the AWS ID of the user, and the topic name. The ARN is returned as part of the API call to create the topic.
 

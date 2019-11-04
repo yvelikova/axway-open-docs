@@ -13,10 +13,8 @@ Client credentials enable you to globally configure client authentication settin
 * Kerberos
 * OAuth 2.0 as a client
 
-{{< alert title="Note" color="primary" >}}
 For more information on configuring OAuth 2.0 client credentials, see the
 [API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/).
-{{< /alert >}}
 
 You can configure settings for client credentials under the **Environment Configuration > External Connections > Client Credentials**
 node in the Policy Studio tree, which you can then specify at the filter level, for example, in the **Connection**
@@ -123,9 +121,7 @@ A Kerberos client can authenticate to a Kerberos service by sending a Kerberos s
 
 {{< alert title="Note" color="primary" >}}
 You can also configure the API Gateway to authenticate to a Kerberos service by including the relevant Kerberos tokens inside the XML message. For more details, see
-[Kerberos client authentication](/csh?context=509&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
+[Configure Kerberos services](/docs/apigw_poldev/external_connections/kerberos_service/).
 
 For more details on different Kerberos setups with API Gateway, see
 [API Gateway Kerberos Integration Guide](/bundle/APIGateway_77_IntegrationKerberos_allOS_en_HTML5).
@@ -267,7 +263,7 @@ The Kerberos principal uses the secret key to communicate with the KDC's Authent
 **Enter Password**:
 You can only enter a password if you selected to request the TGT from the KDC. The password is used when generating the secret key. A secret key is not required if the TGT has been already retrieved either from a system ticket cache or from delegated credentials.
 
-{{< alert title="Note" color="primary" >}}By default, the password entered here is stored in clear-text form in the underlying configuration data in API Gateway. If necessary, the password can be encrypted using a passphrase.{{< /alert >}}
+By default, the password entered here is stored in clear-text form in the underlying configuration data in API Gateway. If necessary, the password can be encrypted using a passphrase.
 
 **Keytab**:
 If you selected to request the TGT from the KDC, you can also extract the secret key for the principal from a keytab
@@ -278,7 +274,7 @@ file.
 To load the principal-to-key mappings into the table in the dialog, select **Load Keytab**
 and browse to the existing keytab file. To add a new keytab entry, select **Add Principal**. To delete a keytab entry, select the entry in the table and click **Delete Entry**. To export the entire contents of the keytab table in the dialog, click **Export Keytab**.
 
-{{< alert title="Note" color="primary" >}}By default, the contents of the keytab table – derived from a keytab file or manually entered – stored in clear-text form in the underlying configuration data in API Gateway. If necessary, the contents of the keytab table can be encrypted using a passphrase.{{< /alert >}}
+By default, the contents of the keytab table – derived from a keytab file or manually entered – stored in clear-text form in the underlying configuration data in API Gateway. If necessary, the contents of the keytab table can be encrypted using a passphrase.
 
 When API Gateway starts, it writes the stored keytab contents to the `/conf/plugin/kerberos/keytabs/`
 directory in your API Gateway installation. It is recommended to configure directory-based or file-based access control for this directory and its contents.
@@ -353,7 +349,7 @@ On Linux, this setting is not required, so ensure it is deselected for better pe
 Specify the time interval (in milliseconds) to wait before generating the client-side Kerberos Authenticator tokens when synchronizing to avoid over-zealous replay detection on the Kerberos service. You can only set this value if you have also selected the **Synchronize to Avoid Replays Errors at Service**
 option.
 
-{{< alert title="Note" color="primary" >}}The default value of 15 milliseconds matches the clock resolution time of operating systems. For more details on the clock resolution on your target operating system, consult your operating system documentation .{{< /alert >}}
+The default value of 15 milliseconds matches the clock resolution time of operating systems. For more details on the clock resolution on your target operating system, consult your operating system documentation.
 
 **Refresh credential when remaining validity is X secs**:
 
@@ -404,14 +400,14 @@ separator. Specify the realm here if the principal belongs to either a non-defau
 **Principal Type**:
 Select the type of principal specified in the field above. The following table lists the available principal types.
 
-{{< alert title="Note" color="primary" >}}The principal name types and their corresponding OIDs are defined in the General Security Services API (GSS-API). {{< /alert >}}
-
 | Principal name type          | Explanation                                          | OID                      |
 |------------------------------|------------------------------------------------------|--------------------------|
 | `NT_USER_NAME`               | The principal name identifies a named user on the local system  | `1.2.840.113554.1.2.1.1` |
 | `KERBEROS_V5_PRINCIPAL_NAME` | The principal name represents a Kerberos version 5 principal.  | `1.2.840.113554.1.2.2.1` |
 | `NT_EXPORT_NAME`             | The principal name represents an exported canonical byte representation of the name (for example, which can be used when searching for the principal in an Access Control List (ACL)). | `1.3.6.1.5.6.4`   |
 | `NT_HOSTBASED_SERVICE`       | The principal name identifies a service associated with a specific host.   | `1.3.6.1.5.6.2`   |
+
+The principal name types and their corresponding OIDs are defined in the General Security Services API (GSS-API).
 
 To add new principal types, click **Add**. The name entered in the **Name**
 field on the **Kerberos Principal Name OID**
@@ -422,7 +418,7 @@ class.
 Similarly, the corresponding OID for this name type must be entered in the **OID**
 field of the dialog.
 
-{{< alert title="Note" color="primary" >}}OIDs and principal type names must only be changed to reflect changes in the underlying GSS-API. Because of this, do not edit
+{{< alert title="Note" color="primary" >}}OIDs and principal type names must only be changed to reflect changes in the underlying GSS-API. Therefore, do not edit
 the existing **Principal Types**
 except under strict supervision by Axway Support.{{< /alert >}}
 
@@ -464,11 +460,10 @@ Select the encryption types. The encryption types determine the algorithms used 
 
 To ensure maximum interoperability between Kerberos clients and Kerberos services configured in API Gateway and different KDCs, all encryption types are selected by default. This way, the generated keytab entry contains a separate encryption key for each encryption type listed here, and each key is mapped to the selected Kerberos principal name.
 
-{{< alert title="Note" color="primary" >}}
 You must ensure that the required encryption types exist in the keytab as defined in Kerberos system settings in the `krb5.conf` file. For a Kerberos client to request a Ticket Granting Ticket (TGT), it must have at least one key that matches one of the encryption types listed in the `default_tkt_enctypes`
 setting in `krb5.conf`. A Kerberos service requires a key of a matching encryption type to be able to decrypt a TGT a Kerberos client presents.
 
-For more details on the `krb5.conf` file, see [Configure Kerberos settings](/docs/apigw_poldev/security_server_settings/#configure-kerberos-settings).{{< /alert >}}
+For more details on the `krb5.conf` file, see [Configure Kerberos settings](/docs/apigw_poldev/security_server_settings/#configure-kerberos-settings).
 
 By default, for Windows 2003 Active Directory, TGT is encrypted using the `rc4-hmac`
 encryption type. However, if the service user has enabled **Use DES encryption types for this account**, the `des-cbc-md5`

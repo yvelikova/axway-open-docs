@@ -102,13 +102,13 @@ INSTALL_DIR/apigateway/groups/GROUP_ID/conf
 
 In the unlikely event that automatic registration fails, you should check the following:
 
-* Ensure the time on the API Gateway is synchronized with the time on the PassPort machine. When PassPort processes the CSR, it sets the **Valid From** date to the current time. If the PassPort time is ahead of the API Gateway time, the API Gateway is unable to use the certificate because it is not yet valid. The error in the trace log is as follows:
+Ensure the time on the API Gateway is synchronized with the time on the PassPort machine. When PassPort processes the CSR, it sets the **Valid From** date to the current time. If the PassPort time is ahead of the API Gateway time, the API Gateway is unable to use the certificate because it is not yet valid. The error in the trace log is as follows:
 
     ```
     java.security.cert.CertificateNotYetValidException:java.security.cert.CertificateNotYetValidException
     ```
 
-* By default, PassPort blocks for up to 2 seconds waiting for the CSR to be processed. You can configure this value in the PassPort administration user interface under **Administration** > **System Properties**
+By default, PassPort blocks for up to 2 seconds waiting for the CSR to be processed. You can configure this value in the PassPort administration user interface under **Administration** > **System Properties**
     (`am.registration.cert.signature.wait.time`). If the signing request takes longer than this, one of the following errors may be logged:
 
     ```
@@ -123,7 +123,8 @@ In the unlikely event that automatic registration fails, you should check the fo
     ```
 
     This is generally a transient error that may be generated when the initial registration is in progress. Resubmitting the request should succeed. If the error persists, check in the PassPort administration user interface for the reason why the signing request has been delayed.
-* If the registration request has been refused by the PassPort administrator, the following error is displayed:
+
+If the registration request has been refused by the PassPort administrator, the following error is displayed:
 
     ```
     Registration has been refused.
@@ -131,7 +132,7 @@ In the unlikely event that automatic registration fails, you should check the fo
     [Status:Validation Refused]
     ```
 
-* If CSR processing fails for some other reason, the following error is logged:
+If CSR processing fails for some other reason, the following error is logged:
 
     ```
     Registration has failed and API Gateway is unable to communicate with PassPort.
@@ -234,9 +235,9 @@ field.
 There are two basic configuration items required to retrieve a user's profile from the database:
 
 * **Database Location**:
-    To configure connection details for the database, click **Add**, and complete the Database Connection dialog. For details on configuring the fields on this dialog, see [Configure database connections](common_db_conf.htm). To edit or remove previously configured database connections, select them from the drop-down list and click **Edit** or **Delete**.
+    To configure connection details for the database, click **Add**, and complete the Database Connection dialog. For details on configuring the fields on this dialog, see [Configure database connections](/docs/apigw_poldev/external_connections/common_db_conf). To edit or remove previously configured database connections, select them from the drop-down list and click **Edit** or **Delete**.
 * **Database Query**:
-    **Database Query** retrieves the profile of a specific user from the database to enable API Gateway to authenticate the user. after a successfull authentication, you can select an attribute of this user to use for the authorization filter later in the policy. **Database Query** can be an SQL statement, stored procedure, or function call. For details on how to configure **Database Query**, see [Configure database queries](common_db_query.htm).
+    **Database Query** retrieves the profile of a specific user from the database to enable API Gateway to authenticate the user. after a successfull authentication, you can select an attribute of this user to use for the authorization filter later in the policy. **Database Query** can be an SQL statement, stored procedure, or function call. For details on how to configure **Database Query**, see [Configure database queries](/docs/apigw_poldev/external_connections/common_db_conf/#configure-database-queries).
 
 **Format Password Received From Client**:
 If the user sends up a clear-text password to API Gateway, but that user's password is stored in a hashed format in the database, API Gateway must hash the password before performing the authentication step.
@@ -304,7 +305,7 @@ in subsequent authorization filters. If **User Name** is selected, the user name
 
 For example, if the administrator selects **User Name** from the **Authorization Attribute Format** list, `admin` (the **User Name** field) is used for authorization. Alternatively, if the administrator selects **X.509 Distinguished Name**, the X.509 DName is used for authorization (for example, `O=Company, OU=comp, EMAIL=emp@company.com, CN=emp`).
 
-For more information on adding and configuring users to the authentication repository, see [Manage API Gateway users](../CommonTopics/general_users.htm).
+For more information on adding and configuring users to the authentication repository, see [Manage API Gateway users](/docs/apigtw_admin/manage_user_access/).
 
 ## LDAP repositories
 

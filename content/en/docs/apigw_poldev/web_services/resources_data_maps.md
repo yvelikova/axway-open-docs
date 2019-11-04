@@ -19,8 +19,8 @@ To define a new data map, follow these steps:
 1. Right-click the **Data Maps** node and select **Add New Data Map**. The Data Map dialog is displayed.
     ![Sample screen of the Add a Data Map ](/Images/PolDevGuide/Mapper/sample_datamap_dialog.png)
 2. Enter a unique **Name** for the data map.
-3. In the Source Schema Details section, click the Add button to select an input schema. You can add multiple input schemas, but all input schemas must be of the same type (either JSON or XML). You can also delete schemas and reorder schemas in the list. For more details on input schema settings, see [Schema settings](#Schema).
-4. In the Target Schema Details section, click the Browse button to select an output schema. For more details on output schema settings, see [Schema settings](#Schema).
+3. In the Source Schema Details section, click the Add button to select an input schema. You can add multiple input schemas, but all input schemas must be of the same type (either JSON or XML). You can also delete schemas and reorder schemas in the list. For more details on input schema settings, see [Schema settings](#schema-settings).
+4. In the Target Schema Details section, click the Browse button to select an output schema. For more details on output schema settings, see [Schema settings](#schema-settings).
 5. The read-only field **Engine** displays the XSLT processor used by the data map (for example, `Saxon`).
 6. When you have completed the fields, click **OK** to open the map for editing in the Data Map Editor Design view. The following example shows a map with two input schemas.
     ![Multiple input data map example](/Images/PolDevGuide/Mapper/visual_mapper_multi_input.png)

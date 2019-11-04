@@ -37,7 +37,7 @@ Select the region appropriate for your deployment. You can choose from the follo
 * US GovCloud
 
 **Client settings**:
-Click the browse button to select the AWS client configuration to be used by API Gateway when connecting to Amazon SQS. For more details, see [*Configure AWS client settings* on page 1](#Configur).
+Click the browse button to select the AWS client configuration to be used by API Gateway when connecting to Amazon SQS. For more details, see [Configure AWS client settings](#configure-aws-client-settings).
 
 ### Poll settings
 
@@ -140,8 +140,6 @@ field.
 
 You can optionally configure these settings to tune low level TCP parameters to try and improve performance.
 
-{{< alert title="Note" color="primary" >}}These settings are for advanced users only.{{< /alert >}}
-
 **Size hint (in bytes) for the low level TCP send buffer**:
 Enter the size hint (in bytes) for the low level TCP send buffer.
 
@@ -151,4 +149,4 @@ Enter the size hint (in bytes) for the low level TCP receive buffer.
 ## Further information
 
 For more detailed information on Amazon Web Services integration, see the *AWS Integration Guide*
-available from Axway Support.
+available from [Axway Support](https://support.axway.com/).

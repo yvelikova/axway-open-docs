@@ -26,9 +26,7 @@ Environmentalization refers to configuring environment-specific settings for a p
 option.
 
 When this option is selected, you can environmentalize a selected field (for example, database URL) by clicking the globe icon to the right of the field. Alternatively, press **Ctrl-E**. When you have selected settings to be environmentalized, the field is disabled, and the globe icon is displayed on the right. You can manage settings that have been environmentalized under the **Environment Settings**
-node in the Policy Studio tree. For more details, see the
-[API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/)
-.
+node in the Policy Studio tree.
 
 ### FIPS mode
 
@@ -65,8 +63,8 @@ You can specify global proxy settings that apply only when downloading WSDL, XSD
 | **Username**  | Optional user name when connecting to the proxy server. |
 | **Password**  | Optional password when connecting to the proxy server.  |
 
-{{< alert title="Tip" color="primary" >}}You can also specify individual proxy servers under the **Environment Configuration** > **External Connections** node in the Policy Studio tree. These are different from the global proxy settings in the **Preferences** because you can specify these proxy servers at the filter level (in the **Connection**
-and **Connect To URL** filters). {{< /alert >}}
+You can also specify individual proxy servers under the **Environment Configuration** > **External Connections** node in the Policy Studio tree. These are different from the global proxy settings in the **Preferences** because you can specify these proxy servers at the filter level (in the **Connection**
+and **Connect To URL** filters).
 
 ### Runtime dependencies
 
@@ -79,7 +77,7 @@ to select a JAR file to add to the list of dependencies, and click **Apply**
 when finished. A copy of the JAR file is added to the `plugins`
 directory in your Policy Studio installation.
 
-{{< alert title="Note" color="primary" >}}You must restart Policy Studio and the server for these changes to take effect. You should restart Policy Studio using the `policystudio -clean` command.{{< /alert >}}
+Then, restart Policy Studio and the server for these changes to take effect. You should restart Policy Studio using the `policystudio -clean` command.
 
 #### Custom filter dependencies
 
@@ -148,7 +146,7 @@ The WS-I settings are described as follows:
 {{< alert title="Note" color="primary" >}}On Linux, when you download WS-I Testing Tools v1.1, you must run `dos2unix`
 on `/java/bin/Analyzer.sh` and `/java/bin/setenv.sh`, because both files do not have executable privileges set and have Windows line endings, so the shell interpreter is unable to use them.{{< /alert >}}
 
-For details on running the WS-I testing tools, see [*Manage WSDL and XML schema documents* on page 1](general_schema_cache.htm).
+For details on running the WS-I testing tools, see [Manage WSDL and XML schema documents](/docs/apigw_poldev/web_services/general_schema_cache/).
 
 ### XML settings
 

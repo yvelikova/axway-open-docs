@@ -70,7 +70,7 @@ The **Service Handler** is used to control and validate requests to the web serv
 
 ### Security policies
 
-If you configured a WS-policy to enforce security between the client and API Gateway (as described in [*Configure a security policy](general_policy_wsdl.htm#Configur)), or if the imported WSDL file contained WS-Policy assertions, a number of additional policies are automatically created in a generated policy container named `WSPolicy`. Any recipient policies are created in a container named `Recipient` and any initiator policies are created in a container named `Initiator`. These generated policies include the filters required to generate and validate the relevant security tokens (for example, SAML tokens, WS-Security `UsernameToken` elements, and WS-Addressing headers). These policies perform the necessary cryptographic operations (for example, signing/verifying and encryption/decryption) to meet the security requirements of the specified policies.
+If you configured a WS-policy to enforce security between the client and API Gateway (as described in [Configure a security policy](/docs/apigw_poldev/web_services/general_policy_wsdl/)), or if the imported WSDL file contained WS-Policy assertions, a number of additional policies are automatically created in a generated policy container named `WSPolicy`. Any recipient policies are created in a container named `Recipient` and any initiator policies are created in a container named `Initiator`. These generated policies include the filters required to generate and validate the relevant security tokens (for example, SAML tokens, WS-Security `UsernameToken` elements, and WS-Addressing headers). These policies perform the necessary cryptographic operations (for example, signing/verifying and encryption/decryption) to meet the security requirements of the specified policies.
 
 ## Export a web service
 
@@ -187,4 +187,4 @@ For example, if the policy is deployed under `http://SERVICES:8080/services/getQ
 
 ### Publish to UDDI
 
-For details on how to publish a WSDL file registered in the web service repository to a UDDI registry, see [Publish WSDL files to a UDDI registry](general_uddi_publish.htm).
+For details on how to publish a WSDL file registered in the web service repository to a UDDI registry, see [Publish WSDL files to a UDDI registry](/docs/apigw_poldev/web_services/general_uddi/#publish-wsdl-files-to-a-uddi-registry).

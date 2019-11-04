@@ -50,7 +50,7 @@ are updated to reflect the installation of the Java SSM. At minimum, the followi
 For example, to modify the classpath, place the following `jvm.xml`
 in the `conf` directory of the API Gateway installation:
 
-```
+```xml
 <!--Additional JVM settings to run with Oracle Entitlements Server BEA_HOME must be set to the location 
     where the SSM is installed -->
 <ConfigurationFragment>
@@ -199,8 +199,8 @@ section. This setting is not required.
 The text input field in the Kerberos configuration window displays a default configuration for `krb5.conf`. You can type and modify the configuration as needed, and then click **OK** to upload it to your API Gateway configuration. Alternatively, if you have an existing `krb5.conf`
 file that you want to use, select **Load File** and open to the configuration file. The contents of the file are displayed in the text area, and you can edit and upload it to API Gateway.
 
-{{< alert title="Note" color="primary" >}} Refer to your Kerberos documentation for more information on the settings that can be configured in the `krb5.conf`
-file.{{< /alert >}}
+Refer to your Kerberos documentation for more information on the settings that can be configured in the `krb5.conf`
+file.
 
 ### Advanced settings
 

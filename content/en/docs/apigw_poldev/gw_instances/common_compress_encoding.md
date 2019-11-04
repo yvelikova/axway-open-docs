@@ -57,7 +57,7 @@ header).
 Because the API Gateway compresses the requests on the fly, it is prohibitively expensive to calculate the content length before compressing the body. As a result, outbound content encoding is only supported when talking to HTTP/1.1 servers that support chunked transfer encoding.
 
 {{< alert title="Note" color="primary" >}}All HTTP/1.1 servers are required to support chunked transfer encoding, but unfortunately some do not, so you can use **Remote Host**
-settings to configure whether a destination is capable of supporting the chunked encoding in HTTP/1.1, regardless of its advertised HTTP protocol version. For more details, see [*Configure remote host settings* on page 1](general_remote_hosts.htm).{{< /alert >}}
+settings to configure whether a destination is capable of supporting the chunked encoding in HTTP/1.1, regardless of its advertised HTTP protocol version. For more details, see [Configure remote host settings](/docs/apigw_poldev/gw_instances/general_remote_hosts).{{< /alert >}}
 
 ### HTTP responses
 
@@ -107,18 +107,6 @@ in the **Input Encodings**
 or **Output Encodings**
 field.
 
-{{< alert title="Note" color="primary" >}}You can select the **Use Default**
-setting to switch to the **Default Settings**
-without losing your original content encoding selection.{{< /alert >}}
-
-## Further information
-
-For more details on the different levels at which you can configure content encodings in Policy Studio, see the following topics:
-
-* [*Configure remote host settings* on page 1](general_remote_hosts.htm)
-* [*Configure HTTP services* on page 1](general_services.htm)
-* General settings in the
-    [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/)
-    .
+You can select the **Use Default** setting to switch to the **Default Settings** without losing your original content encoding selection.
 
 For more details on HTTP content encoding, see [HTTP RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616.html).

@@ -22,9 +22,9 @@ Alternatively, you can configure a global JMS service under the **Environment Co
 
 API Gateway provides all the required third-party JAR files for IBM WebSphere MQ and Apache ActiveMQ (both embedded and external).
 
-{{< alert title="Note" color="primary" >}}For other third-party JMS providers only, you must add the required third-party JAR files to the API Gateway classpath for messaging to function correctly. If the provider's implementation is platform-specific, copy the provider JAR files to `INSTALL_DIR/ext/PLATFORM`.
+For other third-party JMS providers only, you must add the required third-party JAR files to the API Gateway classpath for messaging to function correctly. If the provider's implementation is platform-specific, copy the provider JAR files to `INSTALL_DIR/ext/PLATFORM`.
 
-`INSTALL_DIR` is your API Gateway installation, and `PLATFORM` is the platform on which API Gateway is installed (`Linux.x86_64`). If the provider implementation is platform-independent, copy the JAR files to `INSTALL_DIR/ext/lib`.{{< /alert >}}
+`INSTALL_DIR` is your API Gateway installation, and `PLATFORM` is the platform on which API Gateway is installed (`Linux.x86_64`). If the provider implementation is platform-independent, copy the JAR files to `INSTALL_DIR/ext/lib`.
 
 ## Configure a JMS service
 
@@ -278,7 +278,7 @@ You can use the API Gateway server settings to configure the default embedded Ap
 
 In the Policy Studio tree, select **Environment Configuration > Server Settings > Messaging > Embedded ActiveMQ**. For example, you can enable embedded ActiveMQ, and configure location and SSL security settings.
 
-{{< alert title="Note" color="primary" >}}Apache ActiveMQ 5.14.3 restricts serializing object message types. For more details, see the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Apache ActiveMQ 5.14.3 restricts serializing object message types. For more details, see the [API Gateway Administrator Guide](/docs/apigtw_admin/).{{< /alert >}}
 
 ## Monitor messaging using API Gateway Manager
 
