@@ -3,10 +3,8 @@
 "linkTitle": "Configure logging and events",
 "weight":"20",
 "date": "2019-10-14",
-"description": "Configure the gateway logging and events."
+"description": "Learn about the different types of logs and events that are displayed in API Gateway Manager, and how to configure them."
 }
-
-This section first provides an overview of the different types of logs and events that are displayed in API Gateway Manager, and how to configure them.
 
 You can configure API Gateway log and event default settings in **Server Settings** in Policy Studio, and you can use the API Gateway Manager web console **Settings > Dynamic** tab to configure the log settings at runtime.
 
@@ -49,14 +47,12 @@ Alternatively, you can view contents of the domain audit log file. For example, 
 
 For example:
 
-    ```
-    {"timestamp":1397724538713,"message":"User 'admin' connected with 3 defined user roles","eventId":107,"metadata":{"userID":"admin"}}
-    {"timestamp":1397724539638,"message":"Deployment data read by user 'admin'","eventId":1037,"metadata":{}}
-    {"timestamp":1397726232992,"message":"Performing domain audit lookup for service 'Node Manager on cayote.acme.com' 
-    over a 24h interval","eventId":9,"metadata": {"userID":"admin","serviceID":"nodemanager-1"}}
-    {"timestamp":1397726235233,"message":"Performing domain audit lookup for service 'Node Manager on cayote.acme.com' 
-    over a 24h interval","eventId":9,"metadata": {"userID":"admin","serviceID":"nodemanager-1"}}
-    ```
+```
+{"timestamp":1397724538713,"message":"User 'admin' connected with 3 defined user roles","eventId":107,"metadata":{"userID":"admin"}}
+{"timestamp":1397724539638,"message":"Deployment data read by user 'admin'","eventId":1037,"metadata":{}}
+{"timestamp":1397726232992,"message":"Performing domain audit lookup for service 'Node Manager on cayote.acme.com' over a 24h interval","eventId":9,"metadata": {"userID":"admin","serviceID":"nodemanager-1"}}
+{"timestamp":1397726235233,"message":"Performing domain audit lookup for service 'Node Manager on cayote.acme.com' over a 24h interval","eventId":9,"metadata": {"userID":"admin","serviceID":"nodemanager-1"}}
+```
 
 The default maximum size for the audit log file is 5 MB. A new file is created when the server instance restarts. The maximum of files stored in the `logs` directory is `50`. When this maximum number of log files is reached, the files roll over, and the oldest files are deleted. See also [Offload audit log files to an external audit server](#offload-audit-log-files-to-an-external-audit-server).
 
@@ -66,17 +62,13 @@ To configure the set of events that are displayed in the domain audit log, perfo
 
 1. In API Gateway Manager, select **Settings > Domain Audit Events**.
 2. Select the event categories to display in the domain audit log. You can drill down in each category to select individual events. If events are not selected, they are not written to the domain audit log. For example, the available events include the following:
-
-    | Event category           | Event types                                                                                               |
-    |--------------------------|-----------------------------------------------------------------------------------------------------------|
-    | **Communication events** | Communication between the Admin Node Manager and API Gateway (connection or failure).                     |
-    | **Configuration events** | Configuration deployment started, completed, error, or rollback. Passphrase or archive update, and so on. |
-    | **KPS events**           | Key Property Store (KPS) object created, query read, and so on.                                           |
-    | **Service events**       | Service started, stopped, or shutdown failed, and audit log offload or event configuration.               |
-    | **Session events**       | HTTPS and TLS session established, failed, or terminated.                                                 |
-    | **Topology events**      | Host, group, or instance added, removed, or updated, and so on.                                           |
-    | **User store events**    | Admin user, role, and password policy created, updated, deleted, and so on.                               |
-
+    * **Communication events**: Communication between the Admin Node Manager and API Gateway (connection or failure).
+    * **Configuration events**: Configuration deployment started, completed, error, or rollback. Passphrase or archive update, and so on.
+    * **KPS events**: Key Property Store (KPS) object created, query read, and so on.
+    * **Service events**: Service started, stopped, or shutdown failed, and audit log offload or event configuration.
+    * **Session events**: HTTPS and TLS session established, failed, or terminated.
+    * **Topology events**: Host, group, or instance added, removed, or updated, and so on.
+    * **User store events**: Admin user, role, and password policy created, updated, deleted, and so on.
 3. Click **Apply** when finished.
 
 The list of configured domain audit log events is stored on disk in the following JSON file:
@@ -98,14 +90,11 @@ To configure how the scheduler connects to the remote audit server, perform the 
 
 1. In API Gateway Manager, select **Settings > Domain Audit Settings**.
 2. Configure the following settings:
-
-    |                           |                                                                                                                         |
-    |---------------------------|-------------------------------------------------------------------------------------------------------------------------|
-    | **Enabled**               | Select whether the external audit offload scheduler is enabled. This is disabled by default.                            |
-    | **Destination URL**       | Enter the required HTTP URL of the external audit server. The application at this URL must be capable of processing the audit files.|
-    | **Username**              | If the audit server requires HTTP Basic authentication, enter the user name.                                             |
-    | **Password**              | If HTTP Basic authentication is required, enter the password.                                                            |
-    | **Trusted Certificates**  | Enter the list of PEM-encoded certificates that are considered trusted for the TLS connection to the remote audit server.|
+    * **Enabled**: Select whether the external audit offload scheduler is enabled. This is disabled by default.
+    * **Destination URL**: Enter the required HTTP URL of the external audit server. The application at this URL must be capable of processing the audit files.
+    * **Username**: If the audit server requires HTTP Basic authentication, enter the user name.
+    * **Password**: If HTTP Basic authentication is required, enter the password.
+    * **Trusted Certificates**: Enter the list of PEM-encoded certificates that are considered trusted for the TLS connection to the remote audit server.
 3. Click **Apply** when finished.
 
 **Redact domain audit log output**:
@@ -123,27 +112,27 @@ This file enables you to specify rules to filter out sensitive details or noisy 
 For example, the following entry specifies an `outputMessage` for all `GET` messages on the `ops/setserviceconfig` path:
 
 ```
-    <apiauditrule>
-       <method>GET</method>
-       <path>^ops/getserviceconfig$</path>
-       <pathMatch>MATCHES</pathMatch>
-           <query`Args>*</queryArgs>
-           <outputMessage>Update configuration for service '${serviceName}'
-            :${queryArgs}</outputMessage>
-    </apiauditrule>
+<apiauditrule>
+    <method>GET</method>
+    <path>^ops/getserviceconfig$</path>
+    <pathMatch>MATCHES</pathMatch>
+        <query`Args>*</queryArgs>
+        <outputMessage>Update configuration for service '${serviceName}'
+        :${queryArgs}</outputMessage>
+</apiauditrule>
 ```
 
 The following example specifies no `outputMessage` for `GET` messages on the `api/monitoring/metrics` path:
 
 ```
-    <apiauditrule>
-       <method>GET</method>
-       <path>api/monitoring/metrics</path>
-       <pathMatch>BEGINS_WITH</pathMatch>
-    </apiauditrule>
+<apiauditrule>
+    <method>GET</method>
+    <path>api/monitoring/metrics</path>
+    <pathMatch>BEGINS_WITH</pathMatch>
+</apiauditrule>
 ```
 
-**Domain audit rule syntax**
+**Domain audit rule syntax**:
 
 The rules in the `apiaudit.xml` file analyze the traffic passing through the API Gateway router service, and control the entries in the domain audit log. These rules are checked in the order specified in the file. The `method`, `path` and `pathMatch` elements determine whether a rule is triggered. If a rule is triggered, all subsequent rules are ignored. You should specify all rules in order of priority (for example, most sensitive or noisy first).
 
@@ -165,7 +154,7 @@ Option to specify query string arguments output in the log. To redact certain ar
 
 `outputMessage`
 
-Option to specify the message output printed in the log. Leaving this blank or omitting the element means that no entry is made in the domain audit log for this rule. 
+Option to specify the message output printed in the log. Leaving this blank or omitting the element means that no entry is made in the domain audit log for this rule.
 
 For more details and example rules, see the contents of the `conf/apiaudit.xml` file.
 
@@ -255,8 +244,7 @@ For example, the top-level **SYSTEM SETTINGS** allow you to configure logging of
 You can also select a relative path or service in the tree, and configure the following options:
 
 * **SERVICE SETTINGS**: Select whether the service is enabled.
-* **TRANSACTION AUDIT LOGGING LEVEL**: You can select from **Fatal**, **Failure**, and **Success**. See the **Transaction Audit Logging Level and Message** monitoring setting in the
-    [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+* **TRANSACTION AUDIT LOGGING LEVEL**: You can select from **Fatal**, **Failure**, and **Success**.
 * **TRANSACTION AUDIT PAYLOAD LOGGING**: Disabled by default. See the **Log Message Payload** filter in the [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
 * **TRANSACTION ACCESS LOGGING**: See [Transaction access log settings](/docs/apigtw_ref/log_global_settings/#transaction-access-log-settings).
 * **TRAFFIC MONITOR LOGGING**: Select whether traffic monitoring is enabled. For more details, see [Traffic monitoring settings.](/docs/apigtw_ref/monitor_traffic_events_metrics/#traffic-monitoring-settings)

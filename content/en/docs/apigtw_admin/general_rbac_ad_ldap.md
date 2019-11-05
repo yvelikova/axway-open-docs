@@ -1,12 +1,10 @@
 {
-"title": "Authenticate and RBAC with Active Directory",
-"linkTitle": "Authenticate and RBAC with Active Directory",
+"title": "Authentication and RBAC with Active Directory",
+"linkTitle": "Authentication and RBAC with Active Directory",
 "weight":"32",
 "date": "2019-10-14",
-"description": "Reconfigure API Gateway to use a Microsoft Active Directory LDAP repository."
+"description": "Use LDAP to authenticate and perform Role-Based Access Control (RBAC) of API Gateway management services, and reconfigure API Gateway to use a Microsoft Active Directory LDAP repository."
 }
-
-Follow the instructions to use a Lightweight Directory Access Protocol (LDAP) to authenticate and perform Role-Based Access Control (RBAC) of the gateway management services, and to reconfigure the gateway to use a Microsoft Active Directory LDAP repository.
 
 This section uses the sample **Protect Management Interfaces (LDAP)** policy, meaning that the gateway uses an LDAP repository instead of the local Admin User store for authentication and RBAC of users attempting to access the gateway management services.
 
@@ -127,7 +125,7 @@ You must edit this policy to change it from using the sample LDAP connection to 
 Perform the following steps:
 
 1. In Policy Studio, create a new project based on the Admin Node Manager configuration. For example:
-    
+
     ```
     INSTALL_DIR\apigateway\conf\fed
     ```
@@ -267,4 +265,3 @@ You must perform the following steps to allow `Fred` to view the trace files:
 {{< alert title="Note" color="primary" >}}`Fred` is not allowed to access the server APIs used by the Policy Studio. If an attempt is made to connect to the server using the Policy Studio with his credentials, an `Access denied` error is displayed. {{< /alert >}}
 
 No other configuration is required to give user `Fred` the above access to the management services. Other users in the same LDAP group can also view trace files without further configuration changes because the LDAP group is already defined in the `acl.json` file.
-

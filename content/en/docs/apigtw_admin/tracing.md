@@ -3,19 +3,19 @@
 "linkTitle": "Configure diagnostic trace",
 "weight":"24",
 "date": "2019-10-14",
-"description": "View and configure trace files output to see diagnostic trace and debugging information about API Gateway runtime execution."
+"description": "Configure and view diagnostic trace and debugging information about API Gateway runtime execution."
 }
 
-By default, the gateway produces diagnostic trace and debugging information to record details about its runtime execution. For example, this includes services starting or stopping, exceptions, and messages sent through the gateway. This information can then be used by the gateway administrators and developers for diagnostics and debugging purposes, and is useful when contacting [Axway Support](https://support.axway.com/).
+By default, API Gateway produces diagnostic trace and debugging information to record details about its runtime execution. For example, this includes services starting or stopping, exceptions, and messages sent through the gateway. This information can then be used by administrators and developers for diagnostics and debugging purposes, and is useful when contacting [Axway Support](https://support.axway.com/).
 
 You can view and search the contents of API Gateway tracing in the following locations:
 
 * **Logs > Trace** view in API Gateway Manager
 * A console window for the running server
 * Trace files in the following locations:
-  * Admin Node Manager: `INSTALL_DIR/trace`
-  * API Gateway instance: `INSTALL_DIR/groups/<group-id>/<instance-id>/trace`
-  * API Gateway Analytics: `INSTALL_DIR/trace`
+    * Admin Node Manager: `INSTALL_DIR/trace`
+    * API Gateway instance: `INSTALL_DIR/groups/<group-id>/<instance-id>/trace`
+    * API Gateway Analytics: `INSTALL_DIR/trace`
 
 You can view and search the contents of the gateway trace log, domain audit log, and transaction logs in the **Logs** view in API Gateway Manager.
 
@@ -44,13 +44,13 @@ TraceLevel   Timestamp [thread-id] TraceMessage
 
 For example, the first line in the above extract is described as follows:
 
-**`TraceLevel`**: INFO
+`TraceLevel`: INFO
 
-**`Timestamp`**: 15/Jun/2012:09:54:01.047 (day:hours:minutes:seconds:milliseconds)
+`Timestamp`: 15/Jun/2012:09:54:01.047 (day:hours:minutes:seconds:milliseconds)
 
-**`Thread-id`**: [1b10]
+`Thread-id`: [1b10]
 
-**`TraceMessage`**: Realtime monitoring enabled
+`TraceMessage`: Realtime monitoring enabled
 
 ## Set API Gateway trace levels
 

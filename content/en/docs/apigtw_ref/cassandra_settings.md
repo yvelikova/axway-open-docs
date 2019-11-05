@@ -1,20 +1,20 @@
 {
 "title": "Cassandra settings in Policy Studio",
-"linkTitle": "Cassandra settings in Policy Studio",
+"linkTitle": "Cassandra settings",
 "weight":"04",
 "date": "2019-10-14",
-"description": "Configure settings for the external Apache Cassandra database in Policy Studio to store API Gateway and API Manager data."
+"description": "Configure settings for the external Apache Cassandra database in Policy Studio."
 }
 
 The Cassandra settings in Policy Studio enable you to configure settings for the external Apache Cassandra database used to store API Gateway and API Manager data. For example, you can use a Cassandra database to store data used by the following components:
-
-{{< alert title="Note" color="primary" >}}You do not need to configure Cassandra settings if you do not use Apache Cassandra for any of these features.{{< /alert >}}
 
 * API Manager: Client registry, API catalog, and quota management
 * Key Property Store: Custom table definitions and data
 * OAuth token store
 * Client registry: API key and OAuth solutions using API Gateway only
 * Throttling: Smooth rate limiting
+
+{{< alert title="Note" color="primary" >}}You do not need to configure Cassandra settings if you do not use Apache Cassandra for any of these features.{{< /alert >}}
 
 To configure Cassandra settings, select the **Server Settings > Cassandra** node in the Policy Studio tree. To apply updates to these settings, click **Apply changes** at the bottom right of each page.
 
@@ -28,7 +28,7 @@ Configure the following in the **Keyspace** settings:
 
 Specifies the Cassandra keyspace used to store tables and data.
 
-The keyspace name must be unique and less than 48 permitted characters. These include underscore (`_`) and alphanumeric characters (`a-z`,` A-Z`, `0-9`).
+The keyspace name must be unique and less than 48 permitted characters. These include underscore (`_`) and alphanumeric characters (`a-z`,`A-Z`, `0-9`).
 
 This is a unique namespace used to define data replication on cluster nodes. Defaults to `x${DOMAIN_ID}_${GROUP_ID}`. You can enter text, environment variables, and the following API Gateway-specific variables:
 
@@ -139,10 +139,3 @@ Select the consistency level for Cassandra read operations from the list. Defaul
 Select the consistency level for Cassandra write operations from the list. Defaults to `ONE`.
 
 For more details on Cassandra consistency levels, see the [Consistency level documentation](http://docs.datastax.com/en/archived/cassandra/2.2/cassandra/dml/dmlConfigConsistency.html).
-
-### Further information
-
-For more details on throttling and rate limiting, see the following:
-
-* Configure rate limiting in the API Gateway Policy Developer Guide.
-* Throttling in the API Gateway Policy Developer Filter Reference.

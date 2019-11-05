@@ -1,10 +1,12 @@
 {
-"title": "Configure a DNS service to host multiple domain names",
-"linkTitle": "Configure a DNS service to host multiple domain names",
+"title": "Set up DNS wildcards for virtual hosts",
+"linkTitle": "Set up DNS wildcards",
 "weight":"36",
 "date": "2019-10-14",
-"description": "Translate domain names to numerical IP addresses used to locate services and devices worldwide, and associates details with domain names assigned to each resource."
+"description": "Configure a DNS service with wildcards for virtual hosting. This is a prerequisite for configuring the API Gateway or API Manager for virtual hosts."
 }
+
+<!-- TODO Merge this with virtual hosts topic in pol dev guide ? -->
 
 The Domain Name System (DNS) is a hierarchical distributed naming system for resources on the Internet or a private network. It translates domain names to numerical IP addresses used to locate services and devices worldwide, and associates details with domain names assigned to each resource. You can use wildcard DNS records to specify multiple domain names by using an asterisk in the domain name (such as `*.example.com`).
 
@@ -17,9 +19,6 @@ This setting enables you to run more than one website, or set of REST APIs, on a
 https://company1.api.example.com:8080/api/v1/test
 https://company2.api.example.com:8080/api/v2/test
 ```
-
-{{< alert title="Note" color="primary" >}}This topic explains how to set up DNS wildcards for virtual hosts. This is a prerequisite for configuring the API Gateway or API Manager
-for virtual hosts.{{< /alert >}}
 
 ## DNS workflow
 

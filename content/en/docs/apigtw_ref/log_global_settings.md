@@ -1,16 +1,16 @@
 {
-"title": "Transaction audit log settings",
-"linkTitle": "Transaction audit log settings",
+"title": "Transaction log settings in Policy Studio",
+"linkTitle": "Transaction log settings",
 "weight":"48",
 "date": "2019-10-14",
-"description": "Configure API Gateway transaction logging settings in Policy Studio"
+"description": "Configure settings for API Gateway transaction audit, transaction access, and transaction event logging in Policy Studio."
 }
 
 ## Transaction audit log settings
 
 One of the most important features of a server-based product is its ability to maintain highly detailed and configurable logging. It is crucial that a record of each and every transaction is kept, and that these records can easily be queried by an administrator to carry out detailed transaction analysis. In recognition of this requirement, the API Gateway provides detailed logging to a number of possible locations.
 
-You can configure the API Gateway so that it logs information about all requests. Such information includes the request itself, the time of the request, where the request was routed to, and the response that was returned to the client. The logging information can be written to the console, log file, local/remote syslog, and/or a database, depending on what is configured in the logging settings.
+You can configure the API Gateway so that it logs information about all requests. Such information includes the request itself, the time of the request, where the request was routed to, and the response that was returned to the client. The logging information can be written to the console, log file, local or remote syslog, or a database, depending on what is configured in the logging settings.
 
 The API Gateway can also digitally sign the logging information it sends to the log files and the database. This means that the logging information can not be altered after it has been signed, thus enabling an irreversible audit trail to be created.
 
@@ -168,14 +168,12 @@ The syntax used to specify the access log file is based on the syntax of availab
 %h %l %u %t "%r" %s %b
 ```
 
-The log format strings in this example are explained in [*Supported log format strings* on page 1](#Supporte).
-
 The following extract from the `access.log` file illustrates the log format resulting from the default access log patern:
 
 ```
-s1.axway.com - lisa [09/05/2012:18:24:48 00] "POST / HTTP/1.0" 200 429 
-s2.axway.com - dave [09/05/2012:18:25:26 00] "POST / HTTP/1.0" 200 727 
-s3.axway.com - fred [09/05/2012:18:27:12 00] "POST / HTTP/1.0" 200 596 
+s1.axway.com - lisa [09/05/2012:18:24:48 00] "POST / HTTP/1.0" 200 429
+s2.axway.com - dave [09/05/2012:18:25:26 00] "POST / HTTP/1.0" 200 727
+s3.axway.com - fred [09/05/2012:18:27:12 00] "POST / HTTP/1.0" 200 596
 ................
 ................
 ```
@@ -218,7 +216,7 @@ In addition, you can specify one of the following aliases for commonly used patt
 * **`common`**: `%h %l %u %t "%r" %s %b`
 * **`combined`**: `%h %l %u %t "%r" %s %b "%{Referer}i" "%{User-Agent}i"`
 
-For more details on Apache HTTP Server access log formats, see <http://httpd.apache.org/docs/current/logs.html)<http://httpd.apache.org/docs/current/logs.html>.
+For more details on Apache HTTP Server access log formats, see <http://httpd.apache.org/docs/current/logs.html>.
 
 ### Configure the access log
 
@@ -267,7 +265,7 @@ For more details, see [Supported log format strings](#supported-log-format-strin
 
 For example, in the Policy Studio tree, select the relative path, right-click it in the **Resolvers** pane, and select **Edit**. Then click the **Logging Settings** tab, and select **Include in server access log records**. For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
-###  Redact sensitive details from the access log
+### Redact sensitive details from the access log
 
 The default syntax for the access log is as follows:
 
@@ -535,7 +533,7 @@ Protocol used.
 
 **finalStatus**:
 
-Status text of the transaction element execution.                      
+Status text of the transaction element execution.
 
 The following example shows the JSON format used for an HTTP `transaction` event with a service context and inbound and outbound transaction legs:
 
@@ -620,7 +618,7 @@ In this example, the `legs` data is based on traffic monitoring, and its `durati
 
 * The `duration` value for leg `0` minus the sum of the duration of all subsequent legs should give you the time spent in the API Gateway for that transaction. In this example, this is 1843 ms – 566 ms = 1277 ms.
 
-For more information about transactions and legs, see [Introduction to transactions and legs in API Gateway](/docs/apigtw_admin/admin_transactions).
+For more information about transactions and legs, see [Introduction to transactions and legs in API Gateway](/docs/apigtw_admin/admin_open_logging/#introduction-to-transactions-and-legs).
 
 The service context is an abstract concept, and the `duration` at this level measures time spent in that context only. The service context might be set in an arbitrary place in a policy, so this information is typically not as useful as the leg data—unless in composite services scenarios.
 

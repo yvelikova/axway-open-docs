@@ -3,10 +3,8 @@
 "linkTitle": "Authentication and RBAC with OpenLDAP ",
 "weight":"34",
 "date": "2019-10-14",
-"description": "Reconfigure API Gateway to use OpenLDAP as the LDAP repository and to use the Apache Directory Studio as an LDAP browser."
+"description": "Use LDAP to authenticate and perform Role-Based Access Control (RBAC) of API Gateway management services, and reconfigure API Gateway to use OpenLDAP as the LDAP repository and Apache Directory Studio as an LDAP browser."
 }
-
-Follow the instructions to use a Lightweight Directory Access Protocol (LDAP) to authenticate and perform Role-Based Access Control (RBAC) of API Gateway management services, and to reconfigure the gateway to use OpenLDAP as the LDAP repository, and to use the Apache Directory Studio as an LDAP browser.
 
 This section uses the sample **Protect Management Interfaces (LDAP)** policy, meaning that the gateway uses an LDAP repository instead of the local Admin User store for authentication and RBAC of users attempting to access the gateway management services.
 

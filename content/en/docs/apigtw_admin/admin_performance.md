@@ -3,14 +3,14 @@
 "linkTitle": "Performance tuning",
 "weight":"26",
 "date": "2019-10-14",
-"description": "Configure API Gateway to optimize its performance."
+"description": "Optimize API Gateway performance using various configuration options."
 }
 
-This section explains how to optimize your gateway performance using various configuration options. For example, general performance tuning options include tracing, monitoring, and logging. More advanced performance tuning options include database pooling, HTTP keep alive, chunked encoding, and client threads.
+General performance tuning options include tracing, monitoring, and logging. More advanced performance tuning options include database pooling, HTTP keep alive, chunked encoding, and client threads.
 
 ## General performance tuning
 
-You can optimize your gateway performance by using Policy Studio to configure the general settings described in this section.
+You can optimize your API Gateway performance by using Policy Studio to configure the general settings described in this section.
 
 ### Minimize tracing
 
@@ -121,7 +121,7 @@ In HTTP/1.1, the connection between a client and a server is maintained unless o
 
 For the `sr` command, this means you should use the `-V1.1` and `-U1000` arguments to enable the connection be used a number of times before closing it.
 
-* For conformance with the HTTP/1.1 specification, the client must send a `Host` header in this configuration, so you must pass a further `-aHost:localhost` argument to `sr`. If the persistent connection is working correctly, `sr` reports a larger number of transactions to connections in its periodic output.
+For conformance with the HTTP/1.1 specification, the client must send a `Host` header in this configuration, so you must pass a further `-aHost:localhost` argument to `sr`. If the persistent connection is working correctly, `sr` reports a larger number of transactions to connections in its periodic output.
 
 #### Configure HTTP 1.1 for outgoing connections
 
@@ -137,7 +137,7 @@ You can enable HTTP 1.1 globally for incoming connections in API Gateway by edit
 
 ```
 INSTALL_DIR/apigateway/groups/<group>/<instance>/conf/service.xml
-111
+```
 
 To change the default behavior of the HTTP 1.1 settings, set `allowHTTP11` to `true`:
 
@@ -187,7 +187,7 @@ For example, you can reduce the number of threads by adding a `maxThreads="64"` 
 
 By default, the maximum thread count for the gateway instance on Linux is 1024.
 
-{{< alert title="Note" color="primary" >}}You must restart the gateway for these settings to take effect.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You must restart API Gateway for these settings to take effect.{{< /alert >}}
 
 ### Number of client threads on Linux
 

@@ -1,73 +1,16 @@
 {
-"title": "Manage deployments",
+"title": "Manage API Gateway deployments",
 "linkTitle": "Manage deployments",
 "weight":"16",
 "date": "2019-10-18",
-"description": "Manage the gateway deployments, deploy its configuration, and perform zero downtime deployment"
+"description": "Use Policy Studio or API Gateway Manager to deploy API Gateway configuration, and perform a zero downtime policy deployment in a multi-node API Gateway environment with a load balancer."
 }
 
-## Manage API Gateway deployments
+You can use Policy Studio to deploy configuration to API Gateway instances running in groups in an API Gateway domain. Policy Studio enables you to edit the gateway configuration and then deploy it to the server instance, where it can be reloaded later. You can deploy modified configuration to multiple gateway instances in a group managed by an Admin Node Manager.
 
-You can use Policy Studio to deploy configuration to the gateway instances running in groups in a gateway domain. Policy Studio enables you to edit the gateway configuration and then deploy it to the server instance, where it can be reloaded later. You can deploy modified configuration to multiple gateway instances in a group managed by an Admin Node Manager.
-
-The API Gateway Manager web console also enables you to deploy configuration packages to the ateway instances running in groups in a domain, to create groups and gateway instances, and to manage administrator users. In this way, Policy Studio and the API Gateway Manager enable policy developers and administrators to centrally manage the policies that are enforced at all nodes throughout the network.
+API Gateway Manager also enables you to deploy configuration packages to the API Gateway instances running in groups in a domain. In this way, Policy Studio and API Gateway Manager enable policy developers and administrators to centrally manage the policies that are enforced at all nodes throughout the network.
 
 In addition, Policy Studio enables you to compare and merge differences between versions of the same policy. Policies can be merged, and deployed to any running instance that is managed by Policy Studio. One of the most powerful uses of this centralized management capability is in transitioning from a staging environment to a production environment. For example, policies can be developed and tested on the staging environment, and when ready, they can be deployed to all instances deployed in the production environment.
-
-### Create a project in Policy Studio
-
-{{< alert title="Note" color="primary" >}}Before starting Policy Studio, you should first ensure that the Admin Node Manager and the server instance that you wish to deploy to have been started.{{< /alert >}}
-
-To create a new Policy Studio project, select **File** > **New Project**, and follow the steps in the wizard. For more details, see [Create a Policy Studio project](../PolicyDevTopics/gs_project).
-
-Alternatively, if a project has already been created, select **File** > **Open Project** in the main menu, or click **Open Project** on the landing page.
-
-### Edit a project configuration in Policy Studio
-
-When you create or open a Policy Studio project and make a server connection, this loads the project configuration and displays it in the following format:
-
-**ProjectName [ServerInstanceType]**:
-
-For example:
-
-**MyDevProject [API Gateway]**:
-
-When a project configuration is loaded, its services are displayed in the Policy Studio tree on the left. Expand one of the top-level nodes in the tree to display additional details (for example, **APIs**, **Policies**, **Resources**, or **Environment Configuration**).
-
-When editing a project configuration, you can deploy updates using the **Deploy** button in the toolbar (alternatively, press **F6**). For more details, see [Deploy API Gateway configuration](/docs/apigtw_admin/deploy_get_started/#deploy-api-gateway-configuration).
-
-### Deploy to a server in Policy Studio
-
-To deploy to a running API Gateway instance in a group, click **Deploy** in the toolbar, and follow the steps in the wizard. For more details, see [Deploy API Gateway configuration](/docs/apigtw_admin/deploy_get_started/#deploy-api-gateway-configuration).
-
-You must connect to the Admin Node Manager server to deploy API Gateway configuration or manage multiple API Gateway instances in your network.
-
-### Manage deployments in API Gateway Manager
-
-In the web-based API Gateway Manager tool, the **TOPOLOGY** section on the **Dashboard** tab enables you to create API Gateway groups and instances, and to deploy configuration packages to running servers in API Gateway groups.
-
-For details on how to access the API Gateway Manager, see [Start the API Gateway tools](/docs/apigtw_admin/manage_operations/#start-the-api-gateway-tools).
-
-### Compare and merge configurations in Policy Studio
-
-You can compare and merge differences between the currently loaded API Gateway configuration with a configuration stored in a deployment package (.fed file). Click the **Compare**
-button on the Policy Studio toolbar to select a `.fed` file to compare the current configuration against. The results are displayed in the **Compare/Merge** tab.
-
-For example, you can view the differences made to particular fields in an Authentication filter that occurs in both configurations. When a difference is located, you can merge the differences, and thereby update the fields in the Authentication filter in the current configuration with the field values for the same Authentication filter in the deployment package.
-
-### Manage administrator users in API Gateway Manager
-
-You can add new administrator users to enable role-based access to the API Gateway configuration managed by Policy Studio and API Gateway Manager. The default administrator user has access to all API Gateway features in Policy Studio and API Gateway Manager, and can view and modify all API Gateway configurations.
-
-To add or remove administrator users, click the **Settings > Admin Users** tab in the API Gateway Manager. For more details, see [Manage admin users](/docs/apigtw_admin/manage_user_access/#manage-admin-users).
-
-For more details on role-based access, see [Configure Role-Based Access Control (RBAC)](/docs/apigtw_admin/general_rbac).
-
-### Configure policies in Policy Studio
-
-You can use Policy Studio to manage the configuration of your policies, which can then be deployed to running instances of Axway API Gateways.
-
-For details on configuring the full range of message filters (for example, for Authentication, Authorization, or Content Filtering), see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
 ## Deploy API Gateway configuration
 
@@ -87,12 +30,12 @@ You can deploy updates to a currently loaded configuration when editing the conf
 
     * **Host**: Enter the server host to connect to. The default is `localhost`.
     * **Port**: Enter the port to connect on. The default Admin Node Manager port is `8090`.
-    * **User name**: The deployment service is protected by HTTP basic authentication. Enter the administrator user name to use to authenticate to the server. For more details, see [Manage admin users](/docs/apigtw_admin/manage_user_access/#manage-admin-users).
+    * **User name**: The deployment service is protected by HTTP basic authentication. Enter the administrator user name to use to authenticate to the server.
     * **Password**: You can edit API Gateway configuration in a Policy Studio project, and deploy to specified API Gateway instances running in an API Gateway group. You can deploy projects based on existing configuration, configuration packages, factory configuration, or a running API Gateway instance.
 4. Click **Advanced** to enter the **URL** of the deployment service exposed by the server. This setting is optional. The default Admin Node Manager URL is `https://localhost:8090/api`.
 5. Click **Next** to configure deployment options.
 
-    If an advisory warning has been configured, you must click **Next** again. For more details, see [Configure an advisory banner](/docs/apigtw_security/advisory_banner).
+    If an advisory warning has been configured, you must click **Next** again.
 
 6. In the **Select the servers(s) you wish to deploy to** section, select an API Gateway group from the **Group** list, and select the server instance(s) in the box below.
 
@@ -179,9 +122,14 @@ The deployment options for the `managedomain --menu` command are as follows:
 
 For more details, see [Managedomain command reference](/docs/apigtw_ref/managedomain_ref/).
 
-## Perform zero downtime deployment
+### Compare and merge configurations in Policy Studio
 
-Perform a zero downtime policy deployment to the ateway in a multi-node API Gateway environment with a load balancer.
+You can compare and merge differences between the currently loaded API Gateway configuration with a configuration stored in a deployment package (`.fed` file). Click the **Compare**
+button on the Policy Studio toolbar to select a `.fed` file to compare the current configuration against. The results are displayed in the **Compare/Merge** tab.
+
+For example, you can view the differences made to particular fields in an Authentication filter that occurs in both configurations. When a difference is located, you can merge the differences, and thereby update the fields in the Authentication filter in the current configuration with the field values for the same Authentication filter in the deployment package.
+
+## Perform zero downtime deployment
 
 When you deploy configuration (for example, a `.fed` file) to a group of API Gateways, the configuration is deployed sequentially to each API Gateway in the group. While the configuration is being deployed to a given API Gateway there is a service interruption during which that API Gateway cannot process traffic.
 
@@ -199,7 +147,7 @@ The following diagram illustrates the process:
 6. `API Gateway 1` informs the Admin Node Manager that deployment is complete.
 7. The Admin Node Manager repeats step 2 through step 6 for `API Gateway 2`.
 
-## Deploy configuration using zero downtime deployment
+### Deploy configuration using zero downtime deployment
 
 To perform a zero downtime policy deployment, follow these steps:
 

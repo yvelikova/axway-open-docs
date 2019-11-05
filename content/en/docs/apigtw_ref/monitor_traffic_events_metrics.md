@@ -1,9 +1,9 @@
 {
-"title": "Monitor traffic, events, and metrics",
-"linkTitle": "Monitor traffic, events, and metrics",
+"title": "Traffic monitoring and metrics settings in Policy Studio",
+"linkTitle": "Traffic monitoring and metrics settings",
 "weight":"52",
 "date": "2019-10-14",
-"description": "Configure the open traffic event logs written by the API Gateway instances, and where the data is stored and what message transaction details are recorded in the message traffic logs."
+"description": "Configure settings for open traffic event logs, traffic monitoring, and real-time monitoring metrics in Policy Studio."
 }
 
 ## Open traffic event log settings
@@ -151,11 +151,11 @@ and **Monitoring** views in API Gateway Manager, and is selected by default. To 
 
 Specifies how often in seconds that system metrics are measured (for example, CPU, disk space, and memory usage). Defaults to `3` seconds.
 
-## Configure real-time metrics
+### Configure real-time metrics
 
 Configure the following settings in the **Real Time Monitoring Limits** section:
 
-* Real-time monitoring may have a negative impact on API Gateway performance. To optimize performance, disable monitoring for one or more metrics.
+Real-time monitoring may have a negative impact on API Gateway performance. To optimize performance, disable monitoring for one or more metrics.
 
 You should set the maximum services, methods, and remote hosts to values that will never be reached in normal operation. These settings protect the API Gateway by setting an upper limit on the amount of memory consumed by real-time monitoring.
 
@@ -171,7 +171,7 @@ Specifies the maximum number of API services that are monitored by the API Gatew
 
 Enables real-time monitoring of metrics data on the **API Methods** tab. This is enabled by default.
 
-* To enable method monitoring, you must ensure that service monitoring is also enabled. Disabling service monitoring also disables method monitoring.
+To enable method monitoring, you must ensure that service monitoring is also enabled. Disabling service monitoring also disables method monitoring.
 
 **Maximum Methods**:
 
@@ -193,10 +193,10 @@ Enables real-time monitoring of metrics data on the **Clients** tab. This is ena
 
 Specifies the maximum number of clients that are monitored by the API Gateway. When the maximum is reached, the API Gateway stops collecting metrics for new clients. Defaults to `10000`.
 
-* The number of unique clients that communicate with an API Gateway is potentially unbounded. The maximum number of clients is therefore a soft limit. When this is reached, monitoring stops for the oldest client and begins for the newest client instead.
+The number of unique clients that communicate with an API Gateway is potentially unbounded. The maximum number of clients is therefore a soft limit. When this is reached, monitoring stops for the oldest client and begins for the newest client instead.
 
 For the other maximum values (services, methods, and remote hosts), exceptions are thrown and logged when the limits are reached.
 
 To confirm updates to these settings, click **Save** at the bottom right of the window. Click **Deploy** in the toolbar to deploy the updated configuration to the API Gateway.
 
-* You must restart the gateway instance after changing any of the maximum values (for example, **Maximum Services**, **Maximum Methods**, **Maximum Clients**, or **Maximum Remote Hosts**).
+You must restart the gateway instance after changing any of the maximum values (for example, **Maximum Services**, **Maximum Methods**, **Maximum Clients**, or **Maximum Remote Hosts**).

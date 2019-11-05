@@ -3,10 +3,10 @@
 "linkTitle": "Manage embedded ActiveMQ messaging",
 "weight":"38",
 "date": "2019-10-14",
-"description": "The `Messaging` view in API Gateway Manager enables you to manage the Apache ActiveMQ messaging broker that is embedded in the API Gateway instance."
+"description": "The **Messaging** view in API Gateway Manager enables you to manage the Apache ActiveMQ messaging broker that is embedded in the API Gateway instance."
 }
 
-For example, this includes managing JMS message queues, topics, subscribers, and consumers, monitoring server connections, and so on.
+Use the **Messaging** view to manage JMS message queues, topics, subscribers, and consumers, and to monitor server connections.
 
 For more details on Apache ActiveMQ, see <http://activemq.apache.org/>. For details on the embedded ActiveMQ architecture, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
 
@@ -97,8 +97,7 @@ To create a new subscriber, select **Actions > Create Subscriber**, and complete
 * **Destination**: Specifies the JMS destination being subscribed to (for example, topic name).
 * **Selector**: Specifies a JMS selector used to attach a filter to a subscription and perform content-based routing.
 
-<!-- What if we used things like this for things that need to be highlighted but we don't want to use TIP/ Notes, etc? https://docsydocs.netlify.com/docs/adding-content/lookandfeel/ -->
-<div class="-bg-200 p-3 display-8">JMS selectors and filters in ActiveMQ are in no way related to API Gateway selectors and filters. JMS selectors are defined using SQL 92 syntax, and typically apply to message headers. For example: `JMSType = 'car' AND color = 'blue' AND weight >250`. For more details, see http://activemq.apache.org/selectors.html.</div>
+JMS selectors and filters in ActiveMQ are in no way related to API Gateway selectors and filters. JMS selectors are defined using SQL 92 syntax, and typically apply to message headers. For example: `JMSType = 'car' AND color = 'blue' AND weight >250`. For more details, see <http://activemq.apache.org/selectors.html>.
 
 The following screen shows a newly created subscriber:
 

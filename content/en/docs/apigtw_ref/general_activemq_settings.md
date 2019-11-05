@@ -1,9 +1,9 @@
 {
-"title": "Embedded ActiveMQ settings",
+"title": "Embedded ActiveMQ settings in Policy Studio",
 "linkTitle": "Embedded ActiveMQ settings",
 "weight":"50",
 "date": "2019-10-14",
-"description": "Configure settings for the Apache ActiveMQ messaging broker that is embedded in each API Gateway instance."
+"description": "Configure settings for the Apache ActiveMQ messaging broker in Policy Studio."
 }
 
 The **Embedded ActiveMQ** settings enable you to configure settings for the Apache ActiveMQ messaging broker that is embedded in each API Gateway instance. You can also configure multiple embedded ActiveMQ brokers to work together as a network of brokers in a group of API Gateway instances. For more details, see [Apache ActiveMQ](http://activemq.apache.org/) documentation.

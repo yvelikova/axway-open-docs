@@ -3,16 +3,14 @@
 "linkTitle": "Get help with API Gateway",
 "weight":"99",
 "date": "2019-10-14",
-"description": "Find your API Gateway installed version and what information you need if you contact Axway Support for assistance."
+"description": "Access help and documentation for API Gateway, find your installed version (including any installed service pack and patches), and what other information you need when contacting Axway Support."
 }
-
-This section describes how you can access help and documentation for API Gateway, how to find your installed version (including any installed service pack and patches), and what information you need if you contact Axway Support for assistance.
 
 ## Access help and documentation
 
 Context-sensitive help is available in Policy Studio. Click the **Help** button on any window to display the relevant help page for that window.
 
-You can access all of the API Gateway documentation on the Axway Documentation portal at <https://axway-open-docs.netlify.com/>.
+You can access all of the API Gateway documentation on the Axway Documentation portal at <https://docs.axway.com/>.
 
 ## Find your installed version
 

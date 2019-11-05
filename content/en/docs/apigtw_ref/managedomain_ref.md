@@ -1,6 +1,6 @@
 {
-"title": "Managedomain command reference",
-"linkTitle": "Managedomain command reference",
+"title": "managedomain command reference",
+"linkTitle": "managedomain command reference",
 "weight":"02",
 "date": "2019-10-14",
 "description": "Run the `managedomain` command in different modes."
@@ -20,7 +20,7 @@ INSTALL_DIR/apigateway/posix/bin
 
 For an overview of the `managedomain` command, see [Configure an API Gateway domain](/docs/apigtw_admin/makegateway).
 
-## Managedomain command interpreter mode
+## `managedomain` command interpreter mode
 
 To run in default command interpreter mode, enter `managedomain`, and press Tab to view and select options. For example:
 
@@ -187,7 +187,7 @@ APIServer1   APIServer2
 delete_instance name APIServer
 ```
 
-## Managedomain interactive mode
+## `managedomain` interactive mode
 
 To run in interactive mode, enter `managedomain --menu`, and follow the instructions at the command prompt. The following options are available:
 
@@ -350,7 +350,7 @@ Option `26`: `Submit externally signed certificate`
 
 Specify an SSL certificate signed by an externally signed Certificate Authority (CA) to be used by a Node Manager or API Gateway instance. Use this option after registering a host or creating an API Gateway using a certificate signed by an external CA. Submitting the certificate with this option completes the host registration or API Gateway creation.
 
-## Managedomain command mode
+## `managedomain` command mode
 
 You can also enter `managedomain` commands and parameters directly on the command line. For example, the following command creates an Admin Node Manager on the first host in the domain and signs with a user-provided domain key:
 
@@ -367,7 +367,7 @@ For detailed examples of using `managedomain` in command mode, see the following
 * [Configure Admin Node Manager high availability](/docs/apigtw_admin/admin_node_mngr)
 * [Find your installed version and list patches using managedomain](/docs/apigtw_admin/trblshoot_get_help#find-install-version)
 
-## Provide credentials to managedomain
+## Provide credentials to `managedomain`
 
 You can use the following properties file to automatically provide admin user name and password credentials to authenticate to the Admin Node Manager:
 

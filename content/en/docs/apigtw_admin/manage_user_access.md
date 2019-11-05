@@ -3,7 +3,7 @@
 "linkTitle": "Manage users",
 "weight":"28",
 "date": "2019-10-22",
-"description": "API Gateway *users* provide access to the messages and services protected by API Gateway, whilst *admin users* provide access to the API Gateway configuration management features available in Policy Studio, Configuration Studio, and API Gateway Manager."
+"description": "API Gateway *users* provide access to the messages and services protected by API Gateway, while *admin users* provide access to the API Gateway configuration management features available in Policy Studio, Configuration Studio, and API Gateway Manager."
 }
 
 ## Manage API Gateway users
