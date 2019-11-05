@@ -423,9 +423,7 @@ To configure a STARTTLS outgoing server in your Thunderbird client, perform the 
 7. Click **OK**.
 8. Send the mail.
 
-The following example from the API Gateway trace shows the SMTP commands that occur. Commands marked in **bold text**
-shows traffic from the Thunderbird client to the API Gateway and vice versa. Commands marked in *italic text*
-shows traffic from the API Gateway to the Gmail server at `smtp.gmail.com:587`, and vice versa.
+The following is an example from the API Gateway trace showing the SMTP commands that occur.
 
 ```
 DEBUG 14:46:46:546 [14b4] incoming call on interface *:8026 from 127.0.0.1:1487

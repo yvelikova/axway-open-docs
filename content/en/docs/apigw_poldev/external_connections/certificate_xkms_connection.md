@@ -23,7 +23,7 @@ Enter an appropriate name for this XKMS connection.
 **URL Group**:
 Select a group of XKMS responders from the URL Group list. The API Gateway attempts to connect to the XKMS responders in the selected group in a round-robin fashion. It attempts to connect to the responders with the highest priority first, before connecting to responders with a lower priority.
 
-You can add, edit, or remove URL Groups by selecting the appropriate button. For more information on adding and editing URL groups, see [*Configure URL groups* on page 1](common_url_groups.htm).
+You can add, edit, or remove URL Groups by selecting the appropriate button. For more information on adding and editing URL groups, see [Configure URL groups](/docs/apigw_poldev/external_connections/common_connection_groups/#url-groups).
 
 **User Name**:
 Requests to XKMS responders can be signed by a user to whom the **Sign OCSP or XKMS Requests**

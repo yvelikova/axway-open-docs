@@ -8,7 +8,7 @@
 
 Axway Sentinel is a Business Activity Monitoring (BAM) product that collects, aggregates, correlates, and reports events from API Gateway and other Axway products, applications, and systems throughout your infrastructure. Sentinel is a separate product that you can buy from Axway or an authorized partner.
 
-{{< alert title="Note" color="primary" >}}A complete documentation set for Axway Sentinel is available on the Axway Support website: [https://support.axway.com](https://support.axway.com/).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}A complete documentation set for Axway Sentinel is available on the [Axway Support](https://support.axway.com/) website.{{< /alert >}}
 
 To add a new Sentinel server connection, in the Policy Studio tree, under the **Environment Configuration** > **External Connections**
 node, right-click the **Sentinel Servers**
