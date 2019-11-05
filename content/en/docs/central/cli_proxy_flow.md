@@ -6,13 +6,13 @@ date: 2019-07-30
 description: Learn how your DevOps service can use AMPLIFY CLI to manage your API proxies.
 ---
 
-*Estimated reading time: 5 minutes*
+*Estimated reading time*: 5 minutes
 
 ## Before you start
 
-- If you are applying security to your API proxy, you will need a basic understanding of Basic Authentication ([RFC 7617](https://tools.ietf.org/html/rfc7617)), or OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523))
-- You will need an administrator account for AMPLIFY Central
-- Install AMPLIFY CLI
+* If you are applying security to your API proxy, you will need a basic understanding of Basic Authentication ([RFC 7617](https://tools.ietf.org/html/rfc7617)), or OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523))
+* You will need an administrator account for AMPLIFY Central
+* Install AMPLIFY CLI
 
 ### Install AMPLIFY CLI
 
@@ -46,13 +46,13 @@ description: Learn how your DevOps service can use AMPLIFY CLI to manage your AP
 
 Learn how to authorize your DevOps service to use the AMPLIFY Central DevOps APIs by way of AMPLIFY CLI to manage your API proxies.
 
-- Generate an RSA key pair for your DevOps service account
-- Create a DevOps service account in AMPLIFY Central UI
-- Authenticate your service account with AMPLIFY platform
-- Create a YAML configuration file representing your API proxy
-- Create the API proxy using AMPLIFY CLI
-- Promote the API proxy using AMPLIFY CLI
-- Test the API proxy using AMPLIFY Central UI or a REST client
+* Generate an RSA key pair for your DevOps service account
+* Create a DevOps service account in AMPLIFY Central UI
+* Authenticate your service account with AMPLIFY platform
+* Create a YAML configuration file representing your API proxy
+* Create the API proxy using AMPLIFY CLI
+* Promote the API proxy using AMPLIFY CLI
+* Test the API proxy using AMPLIFY Central UI or a REST client
 
 ## Service account authentication and authorization
 
@@ -140,6 +140,32 @@ proxy:
 ```
 
 If you specify `api-key` as the client authentication policy, you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created.
+
+You can specify additional applications in the `apps` section of the proxy. The apps are created if necessary. The `app` field under `clientAuth` can be omitted. For example:
+
+```
+version: v1 # Version of the file format
+apiVersion: v1 # This version ensures backward compatibility and would not mandate a frequent update from a client side
+proxy:
+    name: 'Musical Instruments secured' # name of the proxy
+    basePath: /api/v1 # base path of the proxy
+    swagger: 'https://ec062a054a2977120b7e721801edb38ca24dfbb3.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json'
+                                                                                    # optional. Swagger url of the proxy
+    policies:
+        clientAuth:
+            type: api-key # type of client authentication policy: can be pass-through or api-key
+            app: 'Sample App' # optional
+        backendAuth: # backend authentication is optional, if not specified, then no backend authentication will be enabled
+            type: auth-http-basic # type of backend authentication policy: only auth-http-basic is supported now
+            username: Joe # required
+            password: changeme # it's allowed to be empty
+    tags: ['musical', 'instruments'] # optional
+    apps:
+    * name: 'Second Sample App' # this app will be allowed to consume the proxy
+    * name: 'Third Sample App' # this app will be allowed to consume the proxy
+    team: # the team which the proxy will be assigned to.
+        name: 'Default Team'
+```
 
 `backendAuth` is an optional field. If it is not specified, no back-end authentication is enabled. If you specify `auth-http-basic` as the back-end authentication policy, the password can be empty.
 
