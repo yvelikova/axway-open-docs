@@ -26,7 +26,7 @@ API Portal provides the following capabilities for both internal and external a
 
 * **Self-registration and profile management** — Application developers can self-register and manage their profiles.
 * **Browsing and testing APIs in API Catalog** — API Catalog contains the APIs that have been registered in API Manager and are available for use. Application developers can browse these APIs and their associated documentation, and invoke APIs using the built-in test capability. They can also download API definitions (Swagger or WSDL) and client SDKs (iOS, Android, Titanium, or Node.js).
-* **Creating and managing applications** — Application developers can register their applications that use the APIs, and obtain API Key or OAuth or external credentials for their applications.
+* **Creating and managing applications** — Applications allow you to create security credentials to consume APIs that are protected by authentication. Application developers can use Applications to generate credentials (API Key, OAuth, or external credentials), which will allow them to consume APIs.
 * **Monitoring API usage** — Application developers can register their application's use of APIs through graphical real-time charts.
 * **Pricing** - You can provide specific pricing information relating to APIs, products, plans, and services.
 * **Help Center** — Provides a central point for links that you can use to offer additional information, for example, FAQs, documentation, discussion forums, or further contact information.
