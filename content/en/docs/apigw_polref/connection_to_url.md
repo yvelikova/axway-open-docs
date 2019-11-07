@@ -1,10 +1,12 @@
 {
-"title": "Connect to URL",
-"linkTitle": "Connect to URL",
+"title": "Routing filters",
+"linkTitle": "Routing filters",
 "weight": 11,
 "date": "2019-10-17",
-"description": "Use the **Connect to URL** or **Connection** filters to send messages to a target web service."
+"description": "Commonly used routing filters, including **Connect to URL** and **Connection**."
 }
+
+Depending on how the API Gateway is perceived by the client, different combinations of routing filters can be used. For an introduction to routing scenarios and the filters in the **Routing** category, see [Get started with routing configuration](/docs/apigw_polref/connection_general/).
 
 ## Connect to URL filter
 
@@ -21,11 +23,9 @@ filter is equivalent to using the following combination of routing filters:
 * Connection
 
 The **Connect to URL**
-filter enables the API Gateway to act as the endpoint to the client connection (and not as a proxy), and to hide the deployment hierarchy of protected web services from clients. In other words, the API Gateway performs *service virtualization*. For an introduction to routing scenarios and the filters in the **Routing**
-category, see
-[Get started with routing configuration](/docs/apigw_polref/connection_general/).
+filter enables the API Gateway to act as the endpoint to the client connection (and not as a proxy), and to hide the deployment hierarchy of protected web services from clients. In other words, the API Gateway performs *service virtualization*.
 
-### General settings
+### Configure general settings
 
 Configure the following general settings:
 
@@ -37,7 +37,7 @@ Enter the complete URL of the target web service. You can specify this setting a
 
 You can also enter any query string parameters associated with the incoming request message as a selector, for example, `${http.request.uri}?${http.raw.querystring}`.
 
-### Request settings
+### Configure request settings
 
 On the **Request**
 tab, you can use the API Gateway selector syntax to evaluate and expand request details at runtime. The values specified on this tab are used in the outbound request to the URL.
@@ -68,7 +68,7 @@ Content-Type:text/html
 **Request Protocol Headers**:
 Enter the HTTP headers associated with the incoming request message. Defaults to `${http.headers}`.
 
-### SSL settings
+### Configure SSL settings
 
 Configure the SSL settings on the **SSL**
 tab. You can select the server certificates to trust on the **Trusted Certificates**
@@ -103,7 +103,7 @@ dialog:
 Select this option to choose a certificate from the Certificate Store. Select the client certificate to use to authenticate to the server specified in the **URL**
 field.
 
-#### Advanced
+#### Advanced SSL
 
 You can configure the following settings on the **Advanced (SSL)** tab.
 
@@ -130,7 +130,7 @@ The default cipher string of `FIPS:!SSLv3:!aNULL` performs the following:
 * Forces the use of TLSv1.2 only
 * Forbids unauthenticated cipher suites
 
-### Authentication settings
+### Configure authentication settings
 
 The **Authentication**
 tab enables you to select a client credential profile for authentication. You can use client credential profiles to configure client credentials and provider settings for authentication using API keys, HTTP basic or digest authentication, Kerberos, or OAuth.
@@ -139,7 +139,7 @@ Click the browse button next to the **Choose a Credential Profile**
 field to select a credential profile. You can configure client credential profiles globally under the **Environment Configuration** > **External Connections**
 node in the Policy Studio tree.
 
-### Additional settings
+### Configure additional settings
 
 The **Settings**
 tab enables you to configure the following additional settings:
@@ -304,16 +304,13 @@ Select this option to release any connection opened by a previous call to a conn
 
 The **Connection** filter makes the connection to the remote web service. It relies on connection details that are set by the other filters in the **Routing** category. Because the **Connection** filter connects out to other services, it negotiates the SSL handshake involved in setting up a mutually authenticated secure channel.
 
-Depending on how the API Gateway is perceived by the client, different combinations of routing filters can be used. For an introduction to routing scenarios and the filters in the **Routing**
-category, see [Get started with routing configuration](/docs/apigw_polref/connection_general/).
-
-### Settings
+### Configure SSL, authentication, and additional settings
 
 You can configure SSL settings, such as trusted certificates, client certificates, SSL/TLS protocols, and ciphers on the **SSL**
-tab. For details on the fields on this tab, see [SSL settings](#ssl-settings).
+tab. For details on the fields on this tab, see [Configure SSL settings](#configure-ssl-settings).
 
 You can select credential profiles to use for authentication on the **Authentication**
-tab. For details on the fields on this tab, see [Authentication settings](#authentication-settings).
+tab. For details on the fields on this tab, see [Configure authentication settings](#configure-authentication-settings).
 
 The **Settings** tab allows you to configure the following additional settings:
 
@@ -325,7 +322,7 @@ The **Settings** tab allows you to configure the following additional settings:
 * **Response Body**
 * **Connection**
 
-By default, these sections are collapsed. Click a section to expand it. For details on the fields on this tab, see [Additional settings](#additional-settings).
+By default, these sections are collapsed. Click a section to expand it. For details on the fields on this tab, see [Configure additional settings](#configure-additional-settings).
 
 ## Static router filter
 
@@ -364,9 +361,6 @@ You can use the **Rewrite URL**
 filter to specify the path on the remote machine to send the request to. This filter normally used in conjunction with a **Static Router**
 filter, whose role is to supply the host and port of the remote service.
 
-Depending on how API Gateway is perceived by the client, different combinations of routing filters can be used. For an introduction to routing scenarios and the filters in the **Routing**
-category, see [Get started with routing configuration](/docs/apigw_polref/connection_general/).
-
 ### Configure a URL rewrite
 
 Configure the following fields on the **Rewrite URL**
@@ -379,3 +373,17 @@ Enter an appropriate name for the filter to display in a policy.
 Enter the relative path of the web service in the **URL** field. API Gateway combines the specified path with the host and port number specified in the **Static Router** filter to build up the complete URL to route to.
 
 Alternatively, you can perform simple URL rewrites by specifying a fully qualified URL into the **URL** field. You can then use a **Dynamic Router** to route the message to the specified URL.
+
+## Dynamic router filter
+
+API Gateway can act as a proxy for clients of the secured web service. When a client uses a proxy, it includes the fully qualified URL of the destination in the request line of the HTTP request. It sends this request to the configured proxy, which then forwards the request to the host specified in the URL. The relative path used in the original request is preserved by the proxy on the outbound connection.
+
+The following is an example of an HTTP request line that was made through a proxy, where `WEB_SERVICE_HOST`
+is the name or IP address of the machine hosting the destination web service:
+
+```
+POST http://WEB_SERVICE_HOST:80/myService HTTP/1.0
+```
+
+When API Gateway acts as a proxy for clients, it can receive requests like the one above. The **Dynamic Router**
+filter can route the request on to the URL specified in the request line (`http://WEB_SERVICE_HOST:80/myService`).
