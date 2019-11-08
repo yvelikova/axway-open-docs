@@ -8,7 +8,7 @@ description: Understand what mesh governance is, what a hybrid environment is, a
 
 *Estimated reading time: 3 minutes*
 
-{{< alert title="Note" color="secondary" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
+{{< alert title="Public beta" color="warning" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
 
 ## What is mesh governance?
 
@@ -64,4 +64,4 @@ The configuration synchronization agent (CSA) takes policies and rules from AMPL
 
 ### Telemetry agent
 
-The telemetry agent sends metrics and logs for API activity back to AMPLIFY Central so that you can monitor service activity and troubleshoot your services. Only a summary of the API transaction is captured and sent to AMPLIFY Central. Headers and payload remain in the hybrid data plane and can be operated on by other native tools.
+The telemetry agent (TA) sends metrics and logs for API activity back to AMPLIFY Central so that you can monitor service activity and troubleshoot your services. Only a summary of the API transaction is captured and sent to AMPLIFY Central. Headers and payload remain in the hybrid data plane and can be operated on by other native tools.
