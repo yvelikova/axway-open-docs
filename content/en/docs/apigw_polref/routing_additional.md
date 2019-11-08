@@ -3,7 +3,7 @@
 "linkTitle": "Additional routing filters",
 "weight": 13,
 "date": "2019-10-17",
-"description": "Additional routing filters, including ..."
+"description": "Additional routing filters, including HTTP redirect and status, file upload and download, SMTP, and extract path parameters."
 }
 
 ## HTTP redirect filter
@@ -541,3 +541,29 @@ To also log response messages passively, as is typically required for a complete
 
 You can see from the policy that the first logging filter logs the *request*
 message. By this stage, the packet sniffer has assembled the request packets into a complete HTTP request, and this is what is passed to the **Log Request Message** filter. The **Assemble response packets** filter is a **Wait for response packets** filter that assembles response packets into complete HTTP response messages and passes them to the **Log Response Messages** filter, which logs the complete response message.
+
+## Call internal service filter
+
+The **Call internal service**
+filter is a special filter that passes messages to an internal servlet application or static content provider that has been deployed at the API Gateway. The appropriate application is selected based on the relative path on which the request message is received.
+
+This filter is used by Management Services that are configured to listen on the Management Interface on port 8090. For more information on how the **Call internal service**
+filter is used by these services, see [Management services](/docs/apigw_poldev/gw_instances/general_services/#management-services).
+
+### Configure call internal service
+
+You can configure the following fields on the filter window:
+
+**Name**:
+Enter an appropriate name for this filter to display in a policy.
+
+**Additional HTTP Headers to Send to Internal Service**:
+Click the **Add**
+button to configure additional HTTP headers to send to the internal application. Specify the following fields on the **HTTP Header**
+dialog:
+
+* **HTTP Header Name**:
+    Enter the name of the HTTP header to add to the message.
+* **HTTP Header Value**:
+    Enter the value of the new HTTP header. You can also enter selectors to represent message attributes. At runtime, API Gateway expands these selectors to the current value of the corresponding message attribute. For example, the `${id}`
+    selector is replaced by the value of the current message ID.
