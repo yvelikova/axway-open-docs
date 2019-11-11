@@ -1,63 +1,165 @@
 backend:
   name: github
   repo: Axway/axway-open-docs # Path to your GitHub repository
-  fork_workflow: true
+  open_authoring: true
 
 publish_mode: editorial_workflow
 
 media_folder: "static/Images/uploads" # Media files will be stored in the repo under static/Images/uploads
 public_folder: "/Images/uploads" # The src attribute for uploaded media will begin with /Images/uploads
 
+site_url: https://axway-open-docs.netlify.com/
+
 collections: # A list of collections the CMS should be able to edit
-  - name: "cassdoc"
-    label: "Cassandra administration page"
-    folder: "content/en/docs/cass_admin"
-    create: true
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
+  - name: "cassdoc" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Administer Apache Cassandra" # Used in CMS UI left nav
+    label_singular: "Apache Cassandra administration" # Used in CMS UI, ie.: "New Post"
+    description: "All pages relating to administering Apache Cassandra for API Gateway and API Manager." # Used in CMS UI
+    folder: "content/en/docs/cass_admin" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    delete: false # Allow users to delete documents in this collection
+    format: "frontmatter" # Specify frontmatter for YAML or json-frontmatter for JSON
+    fields: # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string"} # Every collection must have a title field as it's the default identifier
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "apipadmin"
-    label: "API Portal administration page"
-    folder: "content/en/docs/apiportal_admin"
+  - name: "apipinstall"
+    label: "Install API Portal"
+    label_singular: "API Portal installation"
+    description: "All pages relating to installing API Portal."
+    folder: "content/en/docs/apiportal_install"
     create: true
+    delete: false
+    format: "json-frontmatter"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}     
-  - name: "apipreleasenotes"
-    label: "API Portal release notes page"
-    folder: "content/en/docs/apiportal_releasenotes"
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "apipha"
+    label: "Deploy API Portal HA"
+    label_singular: "API Portal HA deployment"
+    description: "All pages relating to deploying API Portal for HA."
+    folder: "content/en/docs/apiportal_ha"
     create: true
+    delete: false
+    format: "json-frontmatter"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}  
-  - name: "central"
-    label: "AMPLIFY Central page"
-    folder: "content/en/docs/central"
-    create: true
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"} 
-  - name: "contribdoc"
-    label: "Contribution guidelines page"
-    folder: "content/en/docs/contribution_guidelines"
-    create: false
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}    
+  - name: "apipcontainers"
+    label: "Deploy API Portal in containers"
+    label_singular: "API Portal container deployment"
+    description: "All pages relating to deploying API Portal in containers."
+    folder: "content/en/docs/apiportal_ha"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}    
+  - name: "apipadmin"
+    label: "Administer API Portal"
+    label_singular: "API Portal administration"
+    description: "All pages relating to administering API Portal."
+    folder: "content/en/docs/apiportal_admin"
+    create: true
+    delete: false
+    format: "frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "apipadminsso"
+    label: "Administer API Portal (SSO)"
+    label_singular: "API Portal SSO administration"
+    description: "All pages relating to administering API Portal SSO."
+    folder: "content/en/docs/apiportal_admin/sso"
+    create: true
+    delete: false
+    format: "frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "apipreleasenotes"
+    label: "API Portal release notes"
+    description: "All pages relating to API Portal release."
+    folder: "content/en/docs/apiportal_releasenotes"
+    create: false
+    delete: false
+    format: "frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "central"
+    label: "AMPLIFY Central documentation"
+    label_singular: "AMPLIFY Central documentation"
+    description: "All pages relating to AMPLIFY Central."
+    folder: "content/en/docs/central"
+    create: true
+    delete: false
+    format: "frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "contribdoc"
+    label: "Contribution guidelines"
+    description: "All pages relating to contributing to the documentation."
+    folder: "content/en/docs/contribution_guidelines"
+    create: false
+    delete: false
+    format: "frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}   
   - name: "newspost" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "News post" # Used in the UI, ie.: "New Post"
+    label: "News posts" # Used in the UI, ie.: "New Post"
+    label_singular: "News post"
+    description: "All news posts."
     folder: "content/en/blog/news" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
+    delete: false
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Author", name: "author", widget: "string"}
@@ -66,9 +168,12 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Image", name: "image", widget: "image", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
   - name: "releasepost" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Release post" # Used in the UI, ie.: "New Post"
+    label: "Release posts" # Used in the UI, ie.: "New Post"
+    label_singular: "Release post"
+    description: "All product release posts."
     folder: "content/en/blog/releases" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
+    delete: false
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Author", name: "author", widget: "string"}
@@ -77,9 +182,12 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Image", name: "image", widget: "image", required: false}
       - {label: "Body", name: "body", widget: "markdown"}      
   - name: "friendspost" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Friends post" # Used in the UI, ie.: "New Post"
+    label: "Friends posts" # Used in the UI, ie.: "New Post"
+    label_singular: "Friends post"
+    description: "All friends of the doc posts."
     folder: "content/en/blog/friends" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
+    delete: false
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Author", name: "author", widget: "string"}
