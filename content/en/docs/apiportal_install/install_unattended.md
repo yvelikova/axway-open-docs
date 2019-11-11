@@ -29,30 +29,30 @@ To install the API Portal software in unattended mode:
 | Option                   | Description|
 |--------------------------|----------|
 | `-h` or `--help`             | Prints all available options for the script.|
-| `--apache-without-php`     | Accepts yY/nN. Flag indicating whether user wants to continue when PHP could not be detected in Apache.|
+| `--apache-without-php`     | Accepts yY/nN. Flag indicating whether to continue when PHP cannot be detected in Apache.|
 | `--mysql-ssl`              | Accepts yY/nN. Flag indicating whether to use MySQL in SSL mode.|
-| `--mysql-ssl-method`       | Accepts 1 (one-way authentication) or 2 (two-way authentication). Indicates the method used when SSL mode for MySQL is wanted.|
+| `--mysql-ssl-method`       | Accepts 1 (one-way authentication) or 2 (two-way authentication). Indicates the authentication method to use with MySQL in SSL mode.|
 | `--install-path`           | The install path for API Portal. Example: `/opt/axway/apiportal/htdoc`|
-| `--mysql-database`         | The database to be used by API Portal.  |
+| `--mysql-database`         | The database to use for API Portal.  |
 | `--mysql-host`             | Database host. |
 | `--mysql-port`             | Database port. Example: `3306`|
 | `--mysql-username`         | Database user.|
 | `--mysql-password`         | Database password.|
 | `--weak-mysql-password`    | Accepts yY/nN. Flag indicating whether installation should continue when MySQL password is weak.|
-| `--ha-instance`            | Accepts yY/nN. Flag indicating whether the HA setup is wanted. Use only for instances that are not initial. For the initial instance use the `--initial-ha-instance` option. |
-| `--initial-ha-instance`    | Accepts yY/nN. Flag indicating whether that would be the initial instance of HA setup.  |
+| `--ha-instance`            | Accepts yY/nN. Flag indicating whether to use HA setup. Use only for instances that are not initial. For the initial instance use the `--initial-ha-instance` option. |
+| `--initial-ha-instance`    | Accepts yY/nN. Flag indicating whether this is the initial instance for HA setup.  |
 | `--php-ini`                | The directory where `php.ini` file is located. Example: `/etc` |
 | `--apache-config`          | The directory where the Apache configuration files are located. Example: `/etc/httpd/conf.d`|
-| `--use-encryption-key`     | Accepts yY/nN. Flag indicating whether an encryption key is wanted. This option is required when public API mode is going to be used. |
-| `--encryption-key`         | The place where the encryption key will be stored. Example: `/home/encryption/key`. The last segment is the filename where the key will be stored. In this example it will be called 'key'. (Used when yY is selected for the `--use-encryption-key` option.)|
+| `--use-encryption-key`     | Accepts yY/nN. Flag indicating whether to use an encryption key. This option is required for public API mode.|
+| `--encryption-key`         | The place where the encryption key is stored. Example: `/home/encryption/key`. The last segment is the file name (in this example it is called `key`). (Used when yY is selected for the `--use-encryption-key` option.)|
 | `--use-ssl`                | Accepts yY/nN. Flag indicating whether API Portal will be served by SSL.|
-| `--ssl-type`               | Accepts 1 (custom certificate and private key will be provided) or 2 (use self-signed certificate). Indicates what SSL type is wanted.|
+| `--ssl-type`               | Accepts 1 (use custom certificate and private key) or 2 (use self-signed certificate). Indicates what SSL type to use.|
 | `--ssl-certificate`        | Path to the SSL certificate. (Used when option 1 is selected for SSL type.)|
 | `--private-key`            | Path to the private key. (Used when option 1 is selected for SSL type.)|
 | `--private-key-passphrase` | The passphrase of the private key. (Used when the key was generated. Used when option 1 SSL type is selected.)|
-|`--passphrase-path`        | The place where passphrase will be stored. The last segment is the filename where the passphrase will be stored. That file is needed to setup Apache to start silently (without asking for a passphrase). (Used when option 1 SSL type is selected.)|
-| `--hostname`               | The hostname of API Portal. (Used when option 1 SSL type is selected.)|
-| -`-restart-apache`         | Accepts yY/nN. Flag indicating whether Apache restart is wanted after installation ( when the Apache service is correctly detected, otherwise a manual restart of Apache is required). |
+|`--passphrase-path`        | The place where passphrase is stored. The last segment is the file name. This file is needed to set up Apache to start silently (without asking for a passphrase). (Used when option 1 SSL type is selected.)|
+| `--hostname`               | The host name of API Portal. (Used when option 1 SSL type is selected.)|
+| `--restart-apache`         | Accepts yY/nN. Flag indicating whether to restart Apache after installation (Apache can be restarted only when the Apache service is correctly detected. Otherwise, you must restart Apache manually).|
 
 ## Uninstall API Portal in unattended mode
 
@@ -70,10 +70,10 @@ To uninstall the API Portal software in unattended mode:
 
 | Option           | Description                                  |
 |------------------|----------------------------------------------|
-| `-h or --help`     | Prints all available options for the script. |
-| `--mysql-ssl`      | Accepts yY/nN. Flag indicating whether MySQL in SSL mode is used.|
-| `--mysql-ssl-method` | Accepts 1 (one-way authentication) or 2 (two-way authentication). Indicates the method used when SSL mode for MySQL is wanted.|
-| `--mysql-database` | The database to be used by API Portal.       |
+| `-h` or `--help`     | Prints all available options for the script. |
+| `--mysql-ssl`      | Accepts yY/nN. Flag indicating whether to use MySQL in SSL mode.|
+| `--mysql-ssl-method` | Accepts 1 (one-way authentication) or 2 (two-way authentication). Indicates the authentication method to use with MySQL in SSL mode.|
+| `--mysql-database` | The database to use for API Portal.       |
 | `--mysql-host`     | Database host.                               |
 | `--mysql-port`     | Database port.                               |
 | `--mysql-username` | Database user.                               |
@@ -95,5 +95,5 @@ To encrypt the Public API mode user password in unattended mode:
 
 | Option             | Description |
 |--------------------|----------------|
-| `-h or --help`     | Prints all available options for the script|
-| `--encryption-key` | The place where the encryption key will be stored. Example: `/home/encryption/key`. The last segment will be the filename where the key will be stored. In the example case it will be called 'key'. |
+| `-h` or `--help`     | Prints all available options for the script|
+| `--encryption-key` | The place where the encryption key is stored. Example: `/home/encryption/key`. The last segment is the file name (in this example it is called `key`). |
