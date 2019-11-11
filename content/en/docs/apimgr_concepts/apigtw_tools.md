@@ -1,12 +1,14 @@
 {
 "title": "API Gateway tools",
 "linkTitle": "API Gateway tools",
-"weight":"4",
+"weight":"11",
 "date": "2019-11-07",
 "description": "API Gateway tools to develop, deploy, and manage API solutions."
 }
 
-Axway API Gateway provides powerful easy-to-use tools that enable you to develop, deploy, and manage API solutions. This topic introduces each of the API Gateway tools:
+<!-- TODO Resolve duplication between apimgr_concepts topics (e.g. tools) and these topics -->
+
+Axway API Gateway provides powerful easy-to-use tools that enable you to develop, deploy, and manage API solutions.
 
 ![API Gateway tools](/Images/docbook/images/concepts/api_server_tools_rs.png)
 
@@ -110,22 +112,6 @@ A policy can also contain other policies, which enables you to build modular reu
 
 Policy Studio is available also on Windows.
 
-## API Tester
-
-Axway API Tester is a graphical tool that enables you to test API performance, scalability, and security. For example, you can use API Tester to send an example request message to a specific API service, and view the associated response.
-
-![Policy Studio](/Images/docbook/images/concepts/api_tester.png)
-
-API Tester includes the following features:
-
-* REST API and SOAP Web services testing
-* Security token insertion (for example, WS-Security and SAML)
-* SOAP attachment management
-* Simplified certificate and key management
-* Test case creation and stress testing
-
-For more details, see the API Tester online help.
-
 ## Configuration Studio
 
 Configuration Studio is a graphical tool used to promote API Gateway configuration from development environments to upstream environments (for example, testing or production).
@@ -160,6 +146,8 @@ API Gateway Manager includes the following features:
 * Managing dynamic system settings
 * Managing user roles assigned in the domain
 
+## API Gateway Analytics
+
 API Gateway Analytics is a server runtime and web-based monitoring and reporting console that enables you to generate scheduled reports and analyze API use over time in multiple API Gateways across the domain.
 
 ![API Gateway Analytics](/Images/docbook/images/concepts/reporter.png)
@@ -184,7 +172,7 @@ The Embedded Analytics dashboards enable you to monitor key metrics such as the 
 * **API usage**— traffic, active APIs, and active applications
 * **Client application health**— number of methods with high response time, failure rate, exception rate
 
-For more details, see the [Embedded Analytics for AMPLIFY API Management documentation](/bundle/EmbeddedAnalyticsAPIM_allOS_en_HTML5/).
+For more details, see the [Embedded Analytics for AMPLIFY API Management documentation](https://docs.axway.com/bundle/EmbeddedAnalyticsAPIM_allOS_en_HTML5/).
 
 ## Key Property Store
 
@@ -195,11 +183,9 @@ The API Gateway Key Property Store (KPS) is used to store configuration paramete
 The KPS includes the following features:
 
 * Policies look up configuration data in the KPS at runtime to dynamically determine behavior
-* Policies developed in the Policy Studio use a selector syntax to specify context-sensitive lookup of policy configuration data at runtime from the KPS (for example, `$* {kps.CustomerProfiles[JoeBloggs].age}` obtains the age of the specified customer)
+* Policies developed in the Policy Studio use a selector syntax to specify context-sensitive lookup of policy configuration data at runtime from the KPS (for example, `${kps.CustomerProfiles[JoeBloggs].age}` obtains the age of the specified customer)
 * Provides a cached read-frequently, write occasionally cache with backing stores
 * Policy-specific UIs can be developed for business or operational users to manage the policy configuration data in the KPS
-
-For more details, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
 
 ## Embedded Apache ActiveMQ
 
@@ -214,6 +200,3 @@ Queue and topic management is integrated into the API Gateway Manager web consol
 ![ActiveMQ message](/Images/docbook/images/concepts/admin_messaging_content.png)
 
 The API Gateway installation includes the ActiveMQ Java JMS 1.1 client library, which applications can use to send and receives message to and from the queues and topics hosted on the embedded ActiveMQ broker. In addition, ActiveMQ clients that use the OpenWire protocol (ActiveMQ default transport protocol) can interact with the embedded broker. For more details, see [Apache ActiveMQ OpenWire documentation](http://activemq.apache.org/openwire.html).
-
-For details on how to manage ActiveMQ brokers embedded in API Gateway, see the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).

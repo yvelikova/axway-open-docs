@@ -1,7 +1,7 @@
 {
 "title": "Introduction to API Gateway",
 "linkTitle": "Introduction to API Gateway",
-"weight":"2",
+"weight":"10",
 "date": "2019-11-07",
 "description": "Axway API Gateway manages, delivers, and secures enterprise APIs, applications, and consumers."
 }
@@ -127,7 +127,7 @@ API Gateway provides the following integration features:
 
 **Identity management**\
 
-API Gateway integrates with existing third-party Identity Management (IM) infrastructures to perform authentication and authorization of message traffic. For example, integration is provided with LDAP, Microsoft Active Directory, Oracle Access Manager, Computer Associates SiteMinder, Entrust GetAccess, IBM Tivoli Access Manager, RSA Access Manager, and other IM products. API Gateway also interoperates with leading integration products and platforms (for example, Microsoft .NET, Oracle WebLogic, IBM WebSphere, and SAP NetWeaver).
+API Gateway integrates with existing third-party Identity Management (IM) infrastructures to perform authentication and authorization of message traffic. For example, integration is provided with LDAP, Microsoft Active Directory, Oracle Access Manager, Computer Associates SiteMinder, Entrust GetAccess, IBM Tivoli Access Manager, RSA Access Manager, and other IM products. API Gateway also integrates with leading integration products and platforms (for example, Microsoft .NET, Oracle WebLogic, IBM WebSphere, and SAP NetWeaver).
 
 **Scalability**\
 
@@ -149,15 +149,15 @@ API Gateway includes support for multi-byte message data and a wide range of int
 
 API Gateway accelerates performance as follows:
 
-* **Processing offload**
+**Processing offload**:
 
-You can use API Gateway to offload the heavy lifting of XML from application servers, and on to the network. This frees up resources on application servers and enables applications to run faster. Axway's patented high-performance core XML acceleration engine, coupled with hardware acceleration ensures wire speed network performance.
+You can use API Gateway to offload the heavy lifting of XML from application servers, and on to the network. This frees up resources on application servers and enables applications to run faster.
 
-**Acceleration engine**\
+**Acceleration engine**:
 
-* The core acceleration engine is integrated into API Gateway to accelerate the essential XML security primitives. This engine provides XML processing at faster levels than those performed by common JAXP implementations in application servers and other applications that sit downstream from API Gateway. The acceleration engine performs Document Object Model (DOM) processing, XPath, JSON Path, XSLT conversion, and validation of XML and JSON.
+The core acceleration engine is integrated into API Gateway to accelerate the essential XML security primitives. This engine provides XML processing at faster levels than those performed by common JAXP implementations in application servers and other applications that sit downstream from API Gateway. The acceleration engine performs Document Object Model (DOM) processing, XPath, JSON Path, XSLT conversion, and validation of XML and JSON.
 
-**Data enrichment**\
+**Data enrichment**:
 
 API Gateway can automatically populate content in XML and JSON documents from sources such as databases. By putting this functionality on to the network infrastructure, data is automatically populated in messages before they reach the consuming services. This simplifies and accelerates applications in ESBs and application servers.
 

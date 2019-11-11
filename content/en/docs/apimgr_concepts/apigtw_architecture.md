@@ -1,7 +1,7 @@
 {
 "title": "API Gateway architecture",
 "linkTitle": "API Gateway architecture",
-"weight":"6",
+"weight":"12",
 "date": "2019-11-07",
 "description": "API Gateway supports a distributed architecture based on groups of gateways in an administrative domain."
 }
