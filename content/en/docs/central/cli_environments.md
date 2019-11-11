@@ -1,16 +1,15 @@
 ---
-title: Manage an API proxy using AMPLIFY CLI
-linkTitle: Manage an API proxy using AMPLIFY CLI
+title: Manage an environment using AMPLIFY CLI
+linkTitle: Manage an environment using AMPLIFY CLI
 weight: 6
-date: 2019-07-30
-description: Learn how your DevOps service can use AMPLIFY CLI to manage your API proxies.
+date: 2019-11-11
+description: Learn how you can use the AMPLIFY CLI to manage your environments.
 ---
 
 *Estimated reading time*: 5 minutes
 
 ## Before you start
 
-* If you are applying security to your API proxy, you will need a basic understanding of Basic Authentication ([RFC 7617](https://tools.ietf.org/html/rfc7617)), or OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523))
 * You will need an administrator account for AMPLIFY Central
 * Install AMPLIFY CLI
 
@@ -44,30 +43,28 @@ description: Learn how your DevOps service can use AMPLIFY CLI to manage your AP
 
 ## Objectives
 
-Learn how to authorize your DevOps service to use the AMPLIFY Central DevOps APIs by way of AMPLIFY CLI to manage your API proxies.
+Learn how to create and manage your environments using the AMPLIFY CLI.
 
-* Generate an RSA key pair for your DevOps service account
-* Create a DevOps service account in AMPLIFY Central UI
-* Authenticate your service account with AMPLIFY platform
-* Create a YAML configuration file representing your API proxy
-* Create the API proxy using AMPLIFY CLI
-* Promote the API proxy using AMPLIFY CLI
-* Test the API proxy using AMPLIFY Central UI or a REST client
+* Create a new environment
+* Retrieve a list of all available environments
+* Retrieve details for a specific environment
+* Update a specific environment
+* Delete a specific environment
 
 ## Service account authentication and authorization
 
-To manage API proxies in AMPLIFY Central, your DevOps service account must authenticate with AMPLIFY platform and it must be authorized to use the AMPLIFY Central DevOps APIs.
+To manage API proxies in AMPLIFY Central, your DevOps service account must authenticate with AMPLIFY Platform and it must be authorized to use the AMPLIFY Central DevOps APIs.
 
 To support DevOps service interactions, AMPLIFY Central uses the OAuth 2.0 client credentials flow with JWT:
 
 1. Create an RSA public private key pair for your DevOps service account
-2. Use the public key to register the service account with AMPLIFY platform to obtain a client ID
-3. Use the client ID and private key to authenticate with AMPLIFY platform to obtain a JWT
+2. Use the public key to register the service account with AMPLIFY Platform to obtain a client ID
+3. Use the client ID and private key to authenticate with AMPLIFY Platform to obtain a JWT
 4. Use the JWT to make authorized API calls to AMPLIFY Central
 
 ## Generate an RSA key pair
 
-To authorize a DevOps service account with AMPLIFY platform, you need a public and private key pair in RSA format. To create this key pair, use `openssl` as follows:
+To authorize a DevOps service account with AMPLIFY Platform, you need a public and private key pair in RSA format. To create this key pair, use `openssl` as follows:
 
 ```
 $ openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
