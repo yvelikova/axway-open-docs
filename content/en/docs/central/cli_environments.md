@@ -131,7 +131,7 @@ Options:
 
 ```
 -o, --output = yaml | json
--f, --filename (yml, yaml, or json)
+-f, --file = (filename.yml, filename.yaml, or filename.json)
 ```
 
 ### List environments
