@@ -8,6 +8,8 @@ description: Learn how you can use the AMPLIFY CLI to manage your environments.
 
 *Estimated reading time*: 5 minutes
 
+    {{% alert title="Note" %}}This feature is currently in development and will be available soon.{{% /alert %}}
+
 ## Before you start
 
 * You will need an administrator account for AMPLIFY Central
@@ -15,7 +17,7 @@ description: Learn how you can use the AMPLIFY CLI to manage your environments.
 
 ### Install AMPLIFY CLI
 
-1. Install Node.js 8 LTS or later
+1. Install Node.js 8 LTS or later *(Note: Node.js > 11 is not yet supported)*
 2. Run the following command to install AMPLIFY CLI:
 
     ```
@@ -111,9 +113,81 @@ amplify central config list
 { 'client-id': 'DOSA_105cf15d051c432c8cd2e1313f54c2da' }
 ```
 
-## Here is what we're going to do
+## Environment Management
 
-Here are the basic steps to outline what we're doing.
+AMPLIFY Central allows users to manage their environments using the CLI. The following actions and options are supported.
+
+### Create an environment
+
+
+Examples:
+
+```
+amplify central create environment <name> -f <filename>
+amplify central create env <name> -o json
+```
+
+Options:
+
+```
+-o, --output = yaml | json
+-f, --filename (yml, yaml, or json)
+```
+
+### List environments
+
+Examples:
+
+```
+amplify central get environments
+amplify central get envs -o yaml
+```
+
+Options:
+
+```
+-o, --output = yaml | json
+```
+
+### Get an environment's details
+
+Examples:
+
+```
+amplify central get environment <name>
+amplify central get env <name> -o yaml
+```
+
+Options:
+
+```
+-o, --output = yaml | json
+```
+
+### Update an environment
+
+Examples:
+
+```
+amplify central edit environment <name>
+amplify central edit env <name> -o yaml
+```
+
+Options:
+
+```
+-o, --output = yaml | json
+```
+
+### Delete an environment
+
+**WARNING:** This action cannot be reversed.
+
+Examples:
+
+```
+amplify central delete env <name>
+```
 
 ## Review
 
