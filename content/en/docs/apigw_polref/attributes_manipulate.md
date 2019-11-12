@@ -3,7 +3,7 @@
 "linkTitle": "Attribute filters",
 "weight": 20,
 "date": "2019-10-17",
-"description": "TODO Attributes"
+"description": "Filters to manipulate message attributes."
 }
 
 ## Compare attribute filter

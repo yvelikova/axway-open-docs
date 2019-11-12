@@ -1,9 +1,9 @@
 {
-"title": "Retrieve attributes",
-"linkTitle": "Retrieve attributes",
+"title": "Retrieve attribute filters",
+"linkTitle": "Retrieve attribute filters",
 "weight": 25,
 "date": "2019-10-17",
-"description": "TODO."
+"description": "Filters to retrieve message attributes."
 }
 
 ## Retrieve attributes with JSON path filter
@@ -70,114 +70,6 @@ The following example shows the corresponding request and response in Axway API 
 ### Exceptions
 
 The **Retrieve Attributes with JSON Path** filter aborts with a `CircuitAbortException` if the content body of the payload is not in valid JSON format.
-
-## Retrieve attribute from directory server filter
-
-The API Gateway can leverage an existing directory server by querying it for user profile data. The **Retrieve From Directory Server** filter can look up a user and retrieve that user's attributes represented as a list of search results. Each element of the list represents a list of multivalued attributes returned from the directory server.
-
-### Configure database settings
-
-Configure the following fields on the **Database** tab:
-
-**LDAP Directory**:
-The API Gateway queries the selected Lightweight Directory Access Protocol (LDAP) directory for user attributes. An LDAP connection is retrieved from a pool of connections at runtime. Click the browse button to select the LDAP directory to query. To use an existing LDAP directory, (for example, `Sample Active Directory Connection`), select it in the tree.
-
-To add an LDAP directory, right-click the **LDAP Connections** tree node, and select **Add an LDAP Connection**. Alternatively, you can add LDAP connections under the **Environment Configuration > External Connections** node in the Policy Studio tree.
-
-#### Retrieve Unique User Identity
-
-The **Retrieve Unique User Identity** section enables you to select the user whose profile the API Gateway looks up in the directory server. The user ID can be taken from a message attribute or looked up from an LDAP directory. Configure the following fields:
-
-**From Selector Expression**:
-Select this option if the user ID is stored in a message attribute, and specify the selector expression used to obtain its value at runtime (for example, `${authentication.subject.id}`). A user's credentials are stored in the `authentication.subject.id` message attribute after authenticating to the API Gateway, so this is the most likely attribute to enter in this field.
-
-Typically, this contains the Distinguished Name (DName) or user name of the authenticated user. The name extracted from the specified message attribute is used to query the directory server.
-
-**From LDAP Search**:
-In cases where you have not already obtained the user's identity and the `authentication.subject.id` attribute has not been prepopulated by a prior authentication filter, you must configure the API Gateway to retrieve the user's identity from an LDAP search. Click **Configure Directory Search** to configure the search criteria to use to retrieve the user's unique DName from the LDAP repository. The User Search dialog is used to search a given LDAP directory for a unique user according to the criteria configured in the following fields:
-
-* **Base Criteria**: The value entered here tells the API Gateway where it should begin searching the LDAP directory. For example, it might be appropriate to search for a given user under the `C=IE`
-    tree in the LDAP hierarchy.
-* **Query Search Filter**: The value entered here is what the API Gateway uses to determine whether it has obtained a successful match. Since you are searching for a specific user, you can use the user name of an authenticated user (the value of the `authentication.subject.id` message attribute) to lookup in the LDAP directory. You must also specify the object class that defines users for the particular type of LDAP directory that you are searching against. For example, object classes representing users amongst common LDAP directories are `inetOrgPerson`, `givenName`, and `User`.
-
-    For example, to search for an authenticated user against Microsoft's Active Directory, you might specify the following as the **Query Search Filter**:
-
-    ```
-    (objectclass=User)(cn=${authentication.subject.id})
-    ```
-
-    The string representation of the LDAP search filter must comply with the `RFC2254` grammar and format. However, you might use the following Java system property in `jvm.xml` to ignore `RFC2254` escaping mechanism in the filter:
-
-    ```
-    <ConfigurationFragment>
-    <SystemProperty name="avoidLDAPQueryEscaping" value="true" />
-    </ConfigurationFragment>
-    ```
-
-* **Search Scope**: These settings specify the depth of the LDAP tree to search. This depends largely on the structure of your LDAP directory.
-
-#### Retrieve Attributes
-
-The **Retrieve Attributes** section instructs the API Gateway to search the LDAP tree to locate a specific user profile. When the appropriate profile is retrieved, the API Gateway extracts the specified user attributes. Configure the following fields:
-
-**Base Criteria**:
-You can specify where the API Gateway should begin searching the LDAP directory using a selector. The selector represents the value of a message attribute that is expanded at runtime. The two most likely message attributes to be used here are the authenticated user's ID and Distinguished Name. Select one of the predefined selectors from the list:
-
-* `${authentication.subject.id}`
-* `${authentication.subject.dname}`
-
-Alternatively, you can enter a selector representing other message attributes using the same syntax.
-
-**Search Filter**:
-This is the name given by the particular LDAP directory to the *User* class. This depends on the type of LDAP directory configured. You can also use a selector to represent the value of a message attribute. For example, you can use the `user.role` attribute to store the user class. The syntax for using the selector representing this attribute is as follows:
-
-```
-(objectclass=${user.role})
-```
-
-**Search Scope**:
-If the API Gateway retrieves a user profile node from the LDAP tree, the option selected here dictates the level that the API Gateway searches the node to. The available options are:
-
-* **Object level**
-* **One level**
-* **Sub-tree**
-
-**Unique Result**:
-Select this option to force the API Gateway to retrieve a unique user profile from the LDAP directory. This is useful in cases where the LDAP search has returned several profiles.
-
-**Attribute Name**:
-The **Attribute Name** table lists the attributes the API Gateway retrieves from the user profile. If no attributes are listed, the API Gateway extracts all user attributes. In both cases, retrieved attributes are set to the `attribute.lookup.list` message attribute. Click **Add** to add the name of an attribute to extract from the returned user profile. Enter the attribute name to extract from the profile in the **Attribute Name** field of the **Attribute Lookup** dialog.
-
-{{< alert title="Note" color="primary" >}}
-It is important to be aware of the following:
-
-* If the search returns results for more than one user, and the **Unique Result**
-    option is enabled, an error is generated. If this option is not enabled, all attributes are merged.
-* If an attribute is configured that does not exist in the repository, no error is generated.
-* If no attributes are configured, all attributes present for the user are retrieved.
-{{< /alert >}}
-
-### Configure advanced settings
-
-Configure the following fields on the **Advanced** tab:
-
-**Enable legacy attribute naming for retrieved attributes**:
-Specifies whether to enable legacy naming of retrieved message attributes. This field is not selected by default. In versions earlier than version 7.1, retrieved attributes were stored in message attributes in the following format:
-
-```
-user.<retrieved_attribute_name>
-```
-
-For example, `${user.email}`, `${user.role}`, and so on. If the retrieved attribute was multi-valued, you would access the values using `${user.email.1}` or `${user.email.2}`, and so on. In version 7.1 and later, by default, you can query for multivalued retrieved attributes using an array syntax (for example, `${user.email[0]}`, or `${user.email[1]}`, and so on). Select this setting to use the legacy format for attribute naming instead.
-
-**Prefix for message attribute**:
-You can specify an optional prefix for message attribute names. The default prefix is `user`. For more details, see **Enable legacy attribute naming for retrieved attributes**.
-
-{{< alert title="Note" color="primary" >}}
-When legacy attribute naming is not enabled, if you call the **Retrieve from Directory Server** filter multiple times in a row, the results are appended to the original `user` attributes, instead of replacing them.
-
-For example, in single request, two **Retrieve from Directory Server** filters consecutively query an LDAP server for attributes, and both use the default prefix name of `user`. However, the attribute results of the second LDAP call do not replace the first results, and the `user` attribute gets a second entry instead. This means that to retrieve the attributes returned by the second call, you must use `${user[1].anotherattribute[0]}`.
-{{< /alert >}}
 
 ## Retrieve from HTTP header filter
 
@@ -484,32 +376,21 @@ For details on prerequisites for integration with IBM Tivoli, see the
 [API Gateway Authentication and Authorization Integration Guide](/bundle/APIGateway_77_AuthAuthIntegrationGuide_allOS_en_HTML5)
 .
 
-Configuration
--------------
-
 Complete the following fields to configure the **Retrieve from Tivoli** filter:
 
-**Name**:\
+**Name**:
 Enter an appropriate name for the filter to display in a policy.
 
-**User ID**:\
+**User ID**:
 Enter the ID of a user to retrieve attributes for. You can enter a static user name, Distinguished Name (DName), or selector representing a message attribute. The selector is expanded to the value of the message attribute at runtime.
 
-For example, you can enter `${authentication.subject.id}`. This means that the ID of the authenticated user, which is normally a DName, is used to retrieve attributes for. For this to work correctly, you must configure an authentication filter to run before this filter in the policy. For more details on selectors, see
-[Select configuration values at runtime](/csh?context=630&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+For example, you can enter `${authentication.subject.id}`. This means that the ID of the authenticated user, which is normally a DName, is used to retrieve attributes for. For this to work correctly, you must configure an authentication filter to run before this filter in the policy.
 
-**Attributes**:\
+**Attributes**:
 You can specify a list of user attributes to retrieve from the Tivoli server. To add individual attributes to be retrieved, click **Add** and enter the attributes in the dialog. If you want all attributes to be retrieved, leave the table blank.
 
-**Tivoli Configuration Files**:\
-A Tivoli configuration file that contains all the required connection details is associated with a particular API Gateway instance. Click **Settings** to display the **Tivoli Configuration** dialog. On the **Tivoli Configuration** dialog, select the API Gateway instance which connection details you want to edit. For more details on configuring this wizard, see
-[Configure Tivoli connections](/csh?context=632&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+**Tivoli Configuration Files**:
+A Tivoli configuration file that contains all the required connection details is associated with a particular API Gateway instance. Click **Settings** to display the **Tivoli Configuration** dialog. On the **Tivoli Configuration** dialog, select the API Gateway instance which connection details you want to edit. For more details on configuring this wizard, see [Configure Tivoli connections](/docs/apigw_poldev/external_connections/connector_tivoli_connection/).
 
 ## Retrieve attribute from message filter
 
@@ -517,20 +398,13 @@ The **Retrieve from Message**
 filter uses XPath expressions to extract the value of an XML element or attribute from the message and set it to an internal message attribute. The XPath expression can also return a `NodeList`, and the `NodeList`
 can be set to the specified message attribute.
 
-</div>
-
-<div id="p_retr_attrs_message_conf">
-
-Configuration
--------------
-
 The following fields are available on the **Retrieve from Message**
 filter configuration window:
 
-**Name**:\
+**Name**:
 Enter an appropriate name for this filter to display in a policy.
 
-**Use the following XPath**:\
+**Use the following XPath**:
 Configure an XPath expression to retrieve the desired content.
 
 Click the **Add**
@@ -538,76 +412,61 @@ button to add an XPath expression. You can add and remove existing expressions b
 and **Remove**
 buttons respectively.
 
-**Store the extracted content**:\
+**Store the extracted content**:
 Select an option to specify how the extracted content is stored. The options are:
 
-* **of the node as text (java.lang.String)**\
-    This option saves the content of the node retrieved from the XPath expression to the specified message attribute as a `String`.
-* **for all nodes found as text (java.lang.String)**\
-    This option saves all nodes retrieved from the XPath expression to the specified message attribute as a `String`
+* **of the node as text (java.lang.String)**: This option saves the content of the node retrieved from the XPath expression to the specified message attribute as a `String`.
+* **for all nodes found as text (java.lang.String)**: This option saves all nodes retrieved from the XPath expression to the specified message attribute as a `String`
     (for example, `<node1>test</node1>`). This option is useful for extracting `<Signature>`, `<Security>`, and `<UsernameToken>`
     blocks, as well as proprietary blocks of XML from messages.
-* **for all nodes found as a list (java.util.List)**\
-    This option saves the nodes retrieved from the XPath expression to the specified message attribute as a Java `List`, where each item is of type `Node`. For example, if the XPath returns `<node1>test</node1>`, there is one node in the `List`
+* **for all nodes found as a list (java.util.List)**: This option saves the nodes retrieved from the XPath expression to the specified message attribute as a Java `List`, where each item is of type `Node`. For example, if the XPath returns `<node1>test</node1>`, there is one node in the `List`
     (`<node1>`). The child text node (`test`) is accessible from that node, but is not saved as an entry in the `List`
     at the top-level.
 
-**Extracted content will be stored in attribute named**:\
+**Extracted content will be stored in attribute named**:
 The API Gateway sets the value of the message attribute selected here to the value extracted from the message. You can also enter a user-defined message attribute.
 
-**Optionally the message payload can be replaced by the extracted content**:\
+**Optionally the message payload can be replaced by the extracted content**:
 Select this option to take the value being set into the attribute and add it to the content body of the response. This option is not selected by default.
 
-**Use the following content type for new payload**:\
+**Use the following content type for new payload**:
 This field is only available if the preceding option is selected. This allows you to specify the content type for the response, based on what is added to the content body.
-
-</div>
 
 ## Retrieve attribute from database filter
 
 The API Gateway can retrieve user attributes from a specified database, or write user attributes to a specified database. It can do this by running an SQL query on the database, or by invoking a stored procedure call. The query results are represented as a list of properties. Each element in the list represents a query result row returned from the database for the specified SQL query or stored procedure call. These properties represent pairs of attribute names and values for each column in the row.
 
-Database settings
------------------
+### Configure database settings
 
 Configure the following fields on the **Database**
 tab:
 
-**Database Location**:\
+**Database Location**:
 The API Gateway searches the selected database for the user's attributes. Click the browse button to select the database to search. To use an existing database connection (for example, `Default Database Connection`), select it in the tree. To add a database connection, right-click the **Database Connections**
 tree node, and select **Add DB connection**. Alternatively, you can add database connections under the **Environment Configuration** > **External Connections**
-node in the Policy Studio tree view. For more information on configuring database connections, see
-[Configure database connections](/csh?context=608&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+node in the Policy Studio tree view.
 
-**Database Statements**:\
+**Database Statements**:
 The **Database Statements**
 table lists the currently configured SQL queries or stored procedure calls. These queries and calls retrieve certain user attributes from the database selected in the **Database Location**
 field. You can edit and delete existing queries by selecting them from the list and clicking the **Edit**
 and **Delete**
-buttons. Queries are executed in the order they are listed in the filter. You can change the order of execution using the **Up** and **Down** buttons. For more information on how to configure a **Database Query**, see
-[Configure database queries](/csh?context=609&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+buttons. Queries are executed in the order they are listed in the filter. You can change the order of execution using the **Up** and **Down** buttons.
 
-Advanced settings
------------------
+### Configure advanced settings
 
 On the **Advanced**
 tab, configure the following fields in the **User Attribute Extraction**
 section:
 
-**Place query results into user attribute list**:\
+**Place query results into user attribute list**:
 Select whether to place database query results in message attributes. When selected, the message attribute names are generated based on the message attribute prefix and the attribute name. For example, if the specified prefix is `user`
 and the attributes are `PHONE`
 and `EMAIL`, the `user.PHONE`
 and `user.EMAIL`
 attributes are generated. This setting is selected by default.
 
-**Associate attributes with user ID returned by selector**:\
+**Associate attributes with user ID returned by selector**:
 When the **Place query results into message attribute list**
 setting is selected, you can specify a user ID to associate with the user attributes. For example, if the user name is stored as `admin`
 in the database, you must select the message attribute containing the value `admin`. The API Gateway then looks up the database using this name. By default, the user ID is stored in the `${authentication.subject.id}`
@@ -616,118 +475,175 @@ message attribute.
 Configure the following fields on the **Attribute Naming**
 section:
 
-**Enable legacy attribute naming for retrieved attributes**:\
+**Enable legacy attribute naming for retrieved attributes**:
 Specifies whether to enable legacy naming of retrieved message attributes. This field is not selected by default. Prior to version 7.1, retrieved attributes were stored in message attributes in the following format:
 
-    user.<retrieved_attribute_name>
+```
+user.<retrieved_attribute_name>
+```
 
 For example, `${user.email}`, `${user.role}`, and so on. If the retrieved attribute was multivalued, you would access the values using `${user.email.1}`
 or `${user.email.2}`, and so on. In version 7.1 and later, by default, you can query for multivalued retrieved attributes using an array syntax (for example, `${user.email[0]}`, or `${user.email[1]}`, and so on). Select this setting to use the legacy format for attribute naming instead.
 
-**Example of output attribute format with legacy attribute naming**\
-The following table shows the output attribute format when legacy attribute naming is selected:
+**Prefix for message attribute**:
+Specifies an optional prefix for message attribute names used to store query results. The default prefix is `user`.
 
-| **Place query results into user attribute list** | **Prefix for message attribute name (optional)** | **Output attribute format (when attribute name is PHONE)** |
-|--------------------------------------------------|--------------------------------------------------|------------------------------------------------------------|
-| Selected (default)                               | `user`                                           
-  (default)                                         | * `attribute.lookup.list`: Map of retrieved attributes   
-                                                               
-   * `user.PHONE`: Attribute value                           
-                                                               
-   * `${user.PHONE}`: Example selector                       |
-| Selected (default)                               | None                                             | * `attribute.lookup.list`: Map of retrieved attributes   
-                                                               
-   * `PHONE`: Attribute value                                
-                                                               
-   * `${PHONE}`: Example selector                            |
-| Not selected                                     | `user`                                           
-  (default)                                         | * `user.PHONE`: Attribute value                          
-                                                               
-   * `${user.PHONE}`: Example selector                       |
-| Not selected                                     | None                                             | * `PHONE`: Attribute value                               
-                                                               
-   * `${PHONE}`: Example selector                            |
-
-**Example of output attribute format without legacy attribute naming**\
-The following table shows the output attribute format when legacy attribute naming is not selected:
-
-| **Place query results into user attribute list** | **Prefix for message attribute name (mandatory)** | **Output attribute format (when attribute name is PHONE)**                                                      |
-|--------------------------------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| Selected (default)                               | `user`                                            
-  (default)                                          | * `user`: List of properties, where each corresponds to a retrieved row (attribute name and value pair)       
-                                                                                                                    
-   * `${user[0].PHONE}`: Example selector                                                                         |
-| Not selected                                     | `user`                                            
-  (default)                                          | * `user.PHONE`: List of properties, where each corresponds to a retrieved row (attribute name and value pair) 
-                                                                                                                    
-   * `${user.PHONE[0]}`: Example selector                                                                         |
-
-**Prefix for message attribute**:\
-Specifies an optional prefix for message attribute names used to store query results. The default prefix is `user`. For more details, see **Place query results into user attribute list**
-and **Enable legacy attribute naming for retrieved attributes**.
-
-**Attribute name for stored procedure out parameters**:\
+**Attribute name for stored procedure out parameters**:
 You can also specify an attribute name for stored procedure out parameters. The default prefix is `out.param.value`.
 
-**Case for attribute names**:\
+**Case for attribute names**:
 You can specify whether attribute names are in lower case or upper case. The default is lower case.
 
 Configure the following fields on the **Result Set Options**
 section:
 
-**Fail on empty result set**:\
+**Fail on empty result set**:
 Specify whether this filter fails if the result set is empty. This setting is not selected by default.
 
-**Attribute name for result set size**:\
+**Attribute name for result set size**:
 Specify the attribute name used to store the size of the result set. Defaults to `db.result.count`.
+
+## Retrieve attribute from directory server filter
+
+The API Gateway can leverage an existing directory server by querying it for user profile data. The **Retrieve From Directory Server** filter can look up a user and retrieve that user's attributes represented as a list of search results. Each element of the list represents a list of multivalued attributes returned from the directory server.
+
+### Configure database settings for directory server
+
+Configure the following fields on the **Database** tab:
+
+**LDAP Directory**:
+The API Gateway queries the selected Lightweight Directory Access Protocol (LDAP) directory for user attributes. An LDAP connection is retrieved from a pool of connections at runtime. Click the browse button to select the LDAP directory to query. To use an existing LDAP directory, (for example, `Sample Active Directory Connection`), select it in the tree.
+
+To add an LDAP directory, right-click the **LDAP Connections** tree node, and select **Add an LDAP Connection**. Alternatively, you can add LDAP connections under the **Environment Configuration > External Connections** node in the Policy Studio tree.
+
+The **Retrieve Unique User Identity** section enables you to select the user whose profile the API Gateway looks up in the directory server. The user ID can be taken from a message attribute or looked up from an LDAP directory. Configure the following fields:
+
+**From Selector Expression**:
+Select this option if the user ID is stored in a message attribute, and specify the selector expression used to obtain its value at runtime (for example, `${authentication.subject.id}`). A user's credentials are stored in the `authentication.subject.id` message attribute after authenticating to the API Gateway, so this is the most likely attribute to enter in this field.
+
+Typically, this contains the Distinguished Name (DName) or user name of the authenticated user. The name extracted from the specified message attribute is used to query the directory server.
+
+**From LDAP Search**:
+In cases where you have not already obtained the user's identity and the `authentication.subject.id` attribute has not been prepopulated by a prior authentication filter, you must configure the API Gateway to retrieve the user's identity from an LDAP search. Click **Configure Directory Search** to configure the search criteria to use to retrieve the user's unique DName from the LDAP repository. The User Search dialog is used to search a given LDAP directory for a unique user according to the criteria configured in the following fields:
+
+* **Base Criteria**: The value entered here tells the API Gateway where it should begin searching the LDAP directory. For example, it might be appropriate to search for a given user under the `C=IE`
+    tree in the LDAP hierarchy.
+* **Query Search Filter**: The value entered here is what the API Gateway uses to determine whether it has obtained a successful match. Since you are searching for a specific user, you can use the user name of an authenticated user (the value of the `authentication.subject.id` message attribute) to lookup in the LDAP directory. You must also specify the object class that defines users for the particular type of LDAP directory that you are searching against. For example, object classes representing users amongst common LDAP directories are `inetOrgPerson`, `givenName`, and `User`.
+
+    For example, to search for an authenticated user against Microsoft's Active Directory, you might specify the following as the **Query Search Filter**:
+
+    ```
+    (objectclass=User)(cn=${authentication.subject.id})
+    ```
+
+    The string representation of the LDAP search filter must comply with the `RFC2254` grammar and format. However, you might use the following Java system property in `jvm.xml` to ignore `RFC2254` escaping mechanism in the filter:
+
+    ```
+    <ConfigurationFragment>
+    <SystemProperty name="avoidLDAPQueryEscaping" value="true" />
+    </ConfigurationFragment>
+    ```
+
+* **Search Scope**: These settings specify the depth of the LDAP tree to search. This depends largely on the structure of your LDAP directory.
+
+The **Retrieve Attributes** section instructs the API Gateway to search the LDAP tree to locate a specific user profile. When the appropriate profile is retrieved, the API Gateway extracts the specified user attributes. Configure the following fields:
+
+**Base Criteria**:
+You can specify where the API Gateway should begin searching the LDAP directory using a selector. The selector represents the value of a message attribute that is expanded at runtime. The two most likely message attributes to be used here are the authenticated user's ID and Distinguished Name. Select one of the predefined selectors from the list:
+
+* `${authentication.subject.id}`
+* `${authentication.subject.dname}`
+
+Alternatively, you can enter a selector representing other message attributes using the same syntax.
+
+**Search Filter**:
+This is the name given by the particular LDAP directory to the *User* class. This depends on the type of LDAP directory configured. You can also use a selector to represent the value of a message attribute. For example, you can use the `user.role` attribute to store the user class. The syntax for using the selector representing this attribute is as follows:
+
+```
+(objectclass=${user.role})
+```
+
+**Search Scope**:
+If the API Gateway retrieves a user profile node from the LDAP tree, the option selected here dictates the level that the API Gateway searches the node to. The available options are:
+
+* **Object level**
+* **One level**
+* **Sub-tree**
+
+**Unique Result**:
+Select this option to force the API Gateway to retrieve a unique user profile from the LDAP directory. This is useful in cases where the LDAP search has returned several profiles.
+
+**Attribute Name**:
+The **Attribute Name** table lists the attributes the API Gateway retrieves from the user profile. If no attributes are listed, the API Gateway extracts all user attributes. In both cases, retrieved attributes are set to the `attribute.lookup.list` message attribute. Click **Add** to add the name of an attribute to extract from the returned user profile. Enter the attribute name to extract from the profile in the **Attribute Name** field of the **Attribute Lookup** dialog.
+
+{{< alert title="Note" color="primary" >}}
+It is important to be aware of the following:
+
+* If the search returns results for more than one user, and the **Unique Result**
+    option is enabled, an error is generated. If this option is not enabled, all attributes are merged.
+* If an attribute is configured that does not exist in the repository, no error is generated.
+* If no attributes are configured, all attributes present for the user are retrieved.
+{{< /alert >}}
+
+### Configure advanced settings for directory server
+
+Configure the following fields on the **Advanced** tab:
+
+**Enable legacy attribute naming for retrieved attributes**:
+Specifies whether to enable legacy naming of retrieved message attributes. This field is not selected by default. In versions earlier than version 7.1, retrieved attributes were stored in message attributes in the following format:
+
+```
+user.<retrieved_attribute_name>
+```
+
+For example, `${user.email}`, `${user.role}`, and so on. If the retrieved attribute was multi-valued, you would access the values using `${user.email.1}` or `${user.email.2}`, and so on. In version 7.1 and later, by default, you can query for multivalued retrieved attributes using an array syntax (for example, `${user.email[0]}`, or `${user.email[1]}`, and so on). Select this setting to use the legacy format for attribute naming instead.
+
+**Prefix for message attribute**:
+You can specify an optional prefix for message attribute names. The default prefix is `user`.
+
+{{< alert title="Note" color="primary" >}}
+When legacy attribute naming is not enabled, if you call the **Retrieve from Directory Server** filter multiple times in a row, the results are appended to the original `user` attributes, instead of replacing them.
+
+For example, in single request, two **Retrieve from Directory Server** filters consecutively query an LDAP server for attributes, and both use the default prefix name of `user`. However, the attribute results of the second LDAP call do not replace the first results, and the `user` attribute gets a second entry instead. This means that to retrieve the attributes returned by the second call, you must use `${user[1].anotherattribute[0]}`.
+{{< /alert >}}
 
 ## Retrieve attribute from user store filter
 
 The API Gateway user store contains user profiles, including attributes relating to each user. After a user has successfully authenticated to the API Gateway, the **Retrieve From User Store**
 filter can retrieve attributes belonging to that user from the user store.
 
-</div>
-
-<div id="p_attr_user_store_database">
-
-Database settings
------------------
+### Configure database settings for user store
 
 Configure the following fields on the **Database**
 tab:
 
-**User ID**:\
+**User ID**:
 Select or enter the name of the message attribute that contains the name of the user to look up in the user store. For example, if the user name is stored as `admin`, select the message attribute containing the value `admin`. The API Gateway then looks up the user in the user store using this name.
 
-**Attributes**:\
+**Attributes**:
 Enter the list of attributes that the API Gateway should retrieve if it successfully looks up the user specified by the **User ID**
 field. To add attributes, click the **Add**
 button. Similarly, to edit or remove existing attributes, click the **Edit**
 or **Remove**
 buttons.
 
-</div>
-
-<div id="p_attr_user_store_advanced">
-
-Advanced settings
------------------
+### Configure advanced settings for user store
 
 Configure the following fields on the **Advanced**
 tab:
 
-**Enable legacy attribute naming for retrieved attributes**:\
+**Enable legacy attribute naming for retrieved attributes**:
 Specifies whether to enable legacy naming of retrieved message attributes. This field is not selected by default. Prior to version 7.1, retrieved attributes were stored in message attributes in the following format:
 
-    user.<retrieved_attribute_name>
+```
+user.<retrieved_attribute_name>
+```
 
 For example, `${user.email}`, `${user.role}`, and so on. If the retrieved attribute was multivalued, you would access the values using `${user.email.1}`
 or `${user.email.2}`, and so on. In version 7.1 and later, by default, you can query for multivalued retrieved attributes using an array syntax (for example, `${user.email[0]}`, or `${user.email[1]}`, and so on). Select this setting to use the legacy format for attribute naming instead.
 
-**Prefix for message attribute**:\
+**Prefix for message attribute**:
 You can specify an optional prefix for message attribute names. The default prefix is `user`.
 
-**Fail on empty result set**:\
+**Fail on empty result set**:
 Specify whether this filter fails if the result set is empty. This setting is not selected by default.
-
-</div>
