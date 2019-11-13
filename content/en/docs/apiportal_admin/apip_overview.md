@@ -8,7 +8,7 @@ description: Learn the key capabilities and features of API Portal.
 
 Axway API Portal is a self-service developer portal layered on both API Manager and API Gateway.
 
-With API Portal, you can enable both internal or external client application developers to browse, consume, build, and test APIs for use in their applications on their own. You can use several channels, such as FAQs, articles, forums or blogs, to provide more information for the developers and to encourage developer engagement. The look and feel of the web-based API Portal is fully customizable to match your brand and image.
+With API Portal, you can enable both internal or external client application (app) developers to browse, consume, build, and test APIs for use in their applications on their own. You can use several channels, such as FAQs, articles, forums or blogs, to provide more information for the developers and to encourage developer engagement. The look and feel of the web-based API Portal is fully customizable to match your brand and image.
 
 API Portal is part of the Axway AMPLIFY API Management solution. For more details, see the [AMPLIFY API Management Getting Started Guide](/bundle/APIManagementPlus_GettingStartedGuide_allOS_en_HTML5/) .
 
@@ -22,12 +22,12 @@ API Portal provides the following capabilities specifically for the organizatio
 
 * **User and application administration** — You can execute basic operations, such as approvals and rejections, on both API Portal users and applications from your organization.
 
-API Portal provides the following capabilities for both internal and external application developers:
+API Portal provides the following capabilities for both internal and external app developers:
 
-* **Self-registration and profile management** — Application developers can self-register and manage their profiles.
-* **Browsing and testing APIs in API Catalog** — API Catalog contains the APIs that have been registered in API Manager and are available for use. Application developers can browse these APIs and their associated documentation, and invoke APIs using the built-in test capability. They can also download API definitions (Swagger or WSDL) and client SDKs (iOS, Android, Titanium, or Node.js).
-* **Creating and managing applications** — Applications allow your Application Developers to generate credentials (API Key, OAuth, or external credentials) to consume APIs that are protected by authentication.
-* **Monitoring API usage** — Application developers can register their application's use of APIs through graphical real-time charts.
+* **Self-registration and profile management** — App developers can self-register and manage their profiles.
+* **Browsing and testing APIs in API Catalog** — API Catalog contains the APIs that have been registered in API Manager and are available for use. App developers can browse these APIs and their associated documentation, and invoke APIs using the built-in test capability. They can also download API definitions (Swagger or WSDL) and client SDKs (iOS, Android, Titanium, or Node.js).
+* **Creating and managing applications** — Applications allow your app developers to generate credentials (API Key, OAuth, or external credentials) to consume APIs that are protected by authentication.
+* **Monitoring API usage** — App developers can register their application's use of APIs through graphical real-time charts.
 * **Pricing** - You can provide specific pricing information relating to APIs, products, plans, and services.
 * **Help Center** — Provides a central point for links that you can use to offer additional information, for example, FAQs, documentation, discussion forums, or further contact information.
 * **[Blog](http://stackideas.com/easyblog)** and **[Discussion forums](http://stackideas.com/easydiscuss)** - These are Joomla! plugins from a third-party vendor that you can use to share information and interact with the developer community.
