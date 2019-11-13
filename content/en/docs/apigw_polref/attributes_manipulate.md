@@ -6,6 +6,8 @@
 "description": "Filters to manipulate message attributes."
 }
 
+<!-- TODO reorder based on usage from GA-->
+
 ## Compare attribute filter
 
 The **Compare Attribute**

@@ -6,6 +6,8 @@
 "description": "Commonly used routing filters, including **Connect to URL** and **Connection**."
 }
 
+<!-- TODO reorder based on usage from GA-->
+
 Depending on how the API Gateway is perceived by the client, different combinations of routing filters can be used. For an introduction to routing scenarios and the filters in the **Routing** category, see [Get started with routing configuration](/docs/apigw_polref/connection_general/).
 
 ## Connect to URL filter

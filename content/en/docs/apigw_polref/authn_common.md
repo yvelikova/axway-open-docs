@@ -3,7 +3,7 @@
 "linkTitle": "Authentication filters",
 "weight": 30,
 "date": "2019-10-17",
-"description": "Commonly used authentication filters, including..."
+"description": "Commonly used authentication filters, including API key, HTTP basic, and SAML."
 }
 
 ## API key authentication filter
@@ -84,7 +84,7 @@ setting, and select one of the following options:
 **Authenticate API key and secret**:
 Select whether to authenticate both the API key ID and the secret key. This means that the client must supply the API key ID and the secret key in the request message. This setting is selected by default.
 
-### Configure advanced settings
+### Configure advanced API key settings
 
 Configure the following fields on the **Advanced**
 tab:
@@ -156,7 +156,7 @@ Authorization:Basic dm9yZGVsOnZvcmRlbA==
 
 The realm presented in the challenge for HTTP Basic authentication is the realm currently specified in **Environment Configuration > Server Settings > General**.
 
-### Configure general settings
+### Configure general HTTP basic settings
 
 When you configure the **HTTP Basic Authentication** filter, you specify where API Gateway finds the user profiles for authentication. API Gateway can look up user profiles in a local repository on API Gateway, a database, or an LDAP directory.
 
@@ -257,7 +257,7 @@ The following sample SOAP message contains a SAML authentication assertion:
 </soap-env:Envelope>
 ```
 
-### Configure details settings
+### Configure SAML authentication details settings
 
 Configure the following fields on the **Details**
 tab:
@@ -584,7 +584,7 @@ AND
 ===> Therefore the client IP address is NOT inside the configured range.
 ```
 
-### Example – Specify an exact IP address
+#### Example – Specify an exact IP address
 
 You can also specify an exact IP address by using a netmask of`255.255.255.255`. When this netmask is used, only requests from this client IP address is allowed or blocked, depending on what is configured in the filter. This example assumes that the following details have been configured in the IP Address filter:
 

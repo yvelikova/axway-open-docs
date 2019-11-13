@@ -6,6 +6,8 @@
 "description": "Filters to retrieve message attributes."
 }
 
+<!-- TODO reorder based on usage from GA-->
+
 ## Retrieve attributes with JSON path filter
 
 JSON Path is an XPath like query language for JSON (JavaScript Object Notation) that enables you to select nodes in a JSON document. The **Retrieve Attributes with JSON Path**

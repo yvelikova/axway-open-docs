@@ -3,8 +3,60 @@
 "linkTitle": "Additional authentication filters",
 "weight": 35,
 "date": "2019-10-17",
-"description": "Additional authentication filters, including..."
+"description": "Additional authentication filters, including attribute authentication, SAML PDP,  and CA SOA Security Manager."
 }
+
+## Attribute authentication filter
+
+In cases when user credentials are passed to the API Gateway in a non-standard way, the credentials can be copied into API Gateway message attributes, and authenticated against a specified authentication repository (for example, API Gateway user store, LDAP directory, or database) using an **Attribute Authentication**
+filter. For example, assume user credentials are passed to API Gateway in the following XML message:
+
+```xml
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <ns:User xmlns:ns="http://www.user.com">
+      <ns:Username>1</ns:Username>
+      <ns:Password>2</ns:Password>
+    </ns:User>
+  </s:Body>
+</s:Envelope>
+```
+
+In this example, the standard methods of passing credentials (for example, HTTP basic or digest authentication, SAML assertions, and WS-Security Username tokens) are bypassed, and the client sends the user name and password as parameters in a simple SOAP message.
+
+When the API Gateway receives this message, it can extract the value of the `<Username>`
+and `<Password>`
+elements using an XPath expression configured in the **Retrieve from Message**
+filter. This filter uses an XPath expression to retrieve the value of an element or attribute, and can then store this value in the specified message attribute.
+
+You can configure an instance of this filter to retrieve the value of the `<Username>`
+attribute, and store it in the `authentication.subject.id`
+message attribute. Similarly, you can configure another filter to retrieve the value of the `<Password>`, and store it in the `authentication.subject.password`
+message attribute.
+
+The **Attribute Authentication**
+filter can then use the user name and password values stored in these message attributes to authenticate the user against the specified authentication repository.
+
+Complete the following fields to configure this filter:
+
+**Name**:
+Enter an appropriate name for this filter to display in a policy.
+
+**Username**:
+Specify the API Gateway message attribute that contains the user name of the user to be authenticated. The default attribute is the `authentication.subject.id`
+attribute, which is typically used to store a user name.
+
+**Password**:
+Enter the API Gateway message attribute that contains the password of the user to authenticate. The default message attribute is `authentication.subject.password`, which typically stores a password.
+
+**Credential Format**:
+Select the format of the credential stored in the API Gateway message attribute specified in the **Username**
+field above. By default, `User Name`
+is selected.
+
+**Repository Name**:
+Select an existing repository to authenticate the user against from the list. Alternatively, you can configure a new authentication repository by clicking the **Add**
+button.
 
 ## Insert timestamp filter
 
@@ -21,7 +73,7 @@ times, which combine to define the lifetime of the timestamp. The following show
 </wsu:Timestamp>
 ```
 
-Because the WS-Utility timestamp is inserted into the WS-Security header block, it is also referred to as a WSS timestamp. For example, see [*Extract WSS timestamp* on page 1](attributes_extract_timestamp.htm).
+Because the WS-Utility timestamp is inserted into the WS-Security header block, it is also referred to as a WSS timestamp. For example, see [Extract WSS timestamp](/docs/apigw_polref/attributes_manipulate/#extract-wss-timestamp-filter).
 
 Complete the following fields to configure the API Gateway to insert a timestamp into the message:
 
@@ -149,58 +201,6 @@ If the SAMLP response from the PDP contains a SAML authentication assertion, the
 
 **Drift Time**:
 The SAMLP request to the PDP is time stamped by the API Gateway. To account for differences in the times on the machines running the API Gateway and the SAML PDP the specified time is subtracted from the time at which the API Gateway generates the SAMLP request.
-
-## Attribute authentication filter
-
-In cases when user credentials are passed to the API Gateway in a non-standard way, the credentials can be copied into API Gateway message attributes, and authenticated against a specified authentication repository (for example, API Gateway user store, LDAP directory, or database) using an **Attribute Authentication**
-filter. For example, assume user credentials are passed to API Gateway in the following XML message:
-
-```xml
-<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-  <s:Body>
-    <ns:User xmlns:ns="http://www.user.com">
-      <ns:Username>1</ns:Username>
-      <ns:Password>2</ns:Password>
-    </ns:User>
-  </s:Body>
-</s:Envelope>
-```
-
-In this example, the standard methods of passing credentials (for example, HTTP basic or digest authentication, SAML assertions, and WS-Security Username tokens) are bypassed, and the client sends the user name and password as parameters in a simple SOAP message.
-
-When the API Gateway receives this message, it can extract the value of the `<Username>`
-and `<Password>`
-elements using an XPath expression configured in the **Retrieve from Message**
-filter. This filter uses an XPath expression to retrieve the value of an element or attribute, and can then store this value in the specified message attribute.
-
-You can configure an instance of this filter to retrieve the value of the `<Username>`
-attribute, and store it in the `authentication.subject.id`
-message attribute. Similarly, you can configure another filter to retrieve the value of the `<Password>`, and store it in the `authentication.subject.password`
-message attribute.
-
-The **Attribute Authentication**
-filter can then use the user name and password values stored in these message attributes to authenticate the user against the specified authentication repository.
-
-Complete the following fields to configure this filter:
-
-**Name**:
-Enter an appropriate name for this filter to display in a policy.
-
-**Username**:
-Specify the API Gateway message attribute that contains the user name of the user to be authenticated. The default attribute is the `authentication.subject.id`
-attribute, which is typically used to store a user name.
-
-**Password**:
-Enter the API Gateway message attribute that contains the password of the user to authenticate. The default message attribute is `authentication.subject.password`, which typically stores a password.
-
-**Credential Format**:
-Select the format of the credential stored in the API Gateway message attribute specified in the **Username**
-field above. By default, `User Name`
-is selected.
-
-**Repository Name**:
-Select an existing repository to authenticate the user against from the list. Alternatively, you can configure a new authentication repository by clicking the **Add**
-button.
 
 ## CA SOA Security Manager authentication filter
 

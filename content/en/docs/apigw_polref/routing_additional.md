@@ -6,6 +6,8 @@
 "description": "Additional routing filters, including HTTP redirect and status, file upload and download, SMTP, and extract path parameters."
 }
 
+<!-- TODO reorder based on usage from GA-->
+
 ## HTTP redirect filter
 
 You can use the **HTTP Redirect**
