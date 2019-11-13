@@ -2,7 +2,7 @@
 title: API Portal overview
 linkTitle: Overview
 weight: 1
-date: 2019-07-30
+date: 2019-07-30T00:00:00.000Z
 description: Learn the key capabilities and features of API Portal.
 ---
 
@@ -39,7 +39,7 @@ API Portal offers two rendering options to customize the visualization of the AP
 
 ### Swagger.io SwaggerUI
 
-This option shows the commonly known fields of a method, and it is the default option for SOAP APIs.
+This option shows the commonly known fields of a method, and it is the default option for SOAP APIs. It supports only API Gateway as an OAuth resource server.
 
 ### AMPLIFY SwaggerUI
 
@@ -48,8 +48,13 @@ In addition to the commonly known fields of a method, the AMPLIFY option also pr
 * **Body Parameters** - Shows the body of the parameter and its JSON schema.
 * **Examples (or, snippets)** - This section displays a line or block of code that you can copy and paste, and run straight away using the relevant tool (curl, Titanium, node.js, web.js).
 * **OAuth Authorization code flow** - Allows you to request a token to authorize access to your requests using an OAuth authorization code, as opposed to the `Client credentials` option where you need a secret key to request the token.
+* **External OAuth resource servers** - Supports authorization code flow only.
 
 The AMPLIFY option also allows you to customize the method colors (grayscale or colorful). It is the default option for REST APIs.
+
+{{% alert title="Note" %}}
+Clients in external OAuth servers must be created as public, and their redirect URL must be set to `{apiportal-url}/cb`.
+{{% /alert %}}
 
 ## API Portal users
 
