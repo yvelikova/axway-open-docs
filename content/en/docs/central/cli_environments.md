@@ -32,15 +32,14 @@ description: Learn how you can use the AMPLIFY CLI to manage your environments.
     amplify pm install @axway/amplify-central-cli
     ```
 
-4. Run AMPLIFY package manager list command to view available packages:
+4. Run AMPLIFY package manager list command to view available packages. Please verify the @axway/amplify-central-cli version is at minimum 0.1.3:
 
     ```
     amplify pm list
     AMPLIFY CLI, version 1.2.1
     Copyright (c) 2018, Axway, Inc. All Rights Reserved.
     NAME                           | INSTALLED VERSIONS | ACTIVE VERSION
-    @axway/amplify-api-builder-cli | 1.0.1              | 1.0.1
-    @axway/amplify-central-cli     | 0.1.1              | 0.1.1
+    @axway/amplify-central-cli     | 0.1.3              | 0.1.3
     ```
 
 ## Objectives
@@ -115,7 +114,7 @@ amplify central config list
 
 ## Environment Management
 
-AMPLIFY Central allows users to manage their environments using the CLI. The following actions and options are supported.
+AMPLIFY Central allows users to manage their distributed cloud and OnPrem environments using the CLI.
 
 ### Create an environment
 
