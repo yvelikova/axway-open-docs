@@ -48,12 +48,12 @@ In addition to the commonly known fields of a method, the AMPLIFY option also pr
 * **Body Parameters** - Shows the body of the parameter and its JSON schema.
 * **Examples (or, snippets)** - This section displays a line or block of code that you can copy and paste, and run straight away using the relevant tool (curl, Titanium, node.js, web.js).
 * **OAuth Authorization code flow** - Allows you to request a token to authorize access to your requests using an OAuth authorization code, as opposed to the `Client credentials` option where you need a secret key to request the token.
-* **External OAuth resource servers** with authorization code flow only. 
+* **External OAuth resource servers** - Supports authorization code flow only.
 
 The AMPLIFY option also allows you to customize the method colors (grayscale or colorful). It is the default option for REST APIs.
 
 {{% alert title="Note" %}}
-Clients in external OAuth servers must be created as public and their redirect URL must be set to *{apiportal-url}/cb*.
+Clients in external OAuth servers must be created as public, and their redirect URL must be set to `{apiportal-url}/cb`.
 {{% /alert %}}
 
 ## API Portal users
