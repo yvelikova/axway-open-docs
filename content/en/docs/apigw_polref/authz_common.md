@@ -144,14 +144,10 @@ The selected value determines the value of the `<ConfirmationMethod>`
 element. The following table shows the available methods, their meanings, and their respective values in the `<ConfirmationMethod>`
 element:
 
-| Method         | Meaning                                                                                                                                                                                                                             | Value                                          |
-|----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
-| Holder Of Key  | The API Gateway includes the key used to prove that the API Gateway is the holder of the key, or it includes a reference to the key.                                                                                                | `urn:oasis:names:tc:SAML:1.0:cm:holder-of-key` |
-| Bearer         | The subject of the assertion is the bearer of the assertion.                                                                                                                                                                        | `urn:oasis:names:tc:SAML:1.0:cm:bearer`        |
-| SAML Artifact  | The subject of the assertion is the user that presented a SAMLArtifact to the API Gateway.                                                                                                                                          | `urn:oasis:names:tc:SAML:1.0:cm:artifact`      |
-| Sender Vouches | Use this confirmation method to assert that the API Gateway is acting on behalf of the authenticated end user. No other information relating to the context of the assertion is sent. It is recommended that both the assertion and 
-  the SOAP Body must be signed if this option is selected. These message parts can be signed by using the **XML Signature Generation**                                                                                                 
-  filter (see [*XML signature generation* on page 1](content_sign_message.htm)).                                                                                                                                                       | `urn:oasis:names:tc:SAML:1.0:cm:bearer`        |
+* Holder Of Key: The API Gateway includes the key used to prove that the API Gateway is the holder of the key, or it includes a reference to the key. Value: `urn:oasis:names:tc:SAML:1.0:cm:holder-of-key`
+* Bearer: The subject of the assertion is the bearer of the assertion. Value: `urn:oasis:names:tc:SAML:1.0:cm:bearer`
+* SAML Artifact: The subject of the assertion is the user that presented a SAML Artifact to the API Gateway. Value: `urn:oasis:names:tc:SAML:1.0:cm:artifact`
+* Sender Vouches: Use this confirmation method to assert that the API Gateway is acting on behalf of the authenticated end user. No other information relating to the context of the assertion is sent. It is recommended that both the assertion and the SOAP Body must be signed if this option is selected. These message parts can be signed by using the **XML Signature Generation** filter. Value: `urn:oasis:names:tc:SAML:1.0:cm:bearer`
 
 You can also leave the **Method**
 field blank, in which case no `<ConfirmationMethod>`
@@ -189,7 +185,7 @@ tab:
     One way of doing this is to select the recipient's certificate from the Certificate Store. By encrypting the symmetric key with the public in the recipient's certificate, the key can only be decrypted by the recipient's private key, to which only the recipient has access. Select the **Signing Key**
     button, and select the recipient's certificate on the Select Certificate
     dialog.
-* **Encrypt using Certificate from Selector Expression**:\
+* **Encrypt using Certificate from Selector Expression**:
     Alternatively, if the recipient's certificate has already been used (perhaps to encrypt part of the message), the certificate can be retrieved using the selector expression entered in this field. Using a selector enables settings to be evaluated and expanded at runtime based on metadata (for example, in a message attribute, Key Property Store, or environment variable).
 * **Symmetric Key Length**:
     Enter the length (in bits) of the symmetric key to use.
@@ -213,7 +209,7 @@ tab must be configured regardless of whether you have elected to use symmetric o
     Select this option to add the certificate as an attachment to the message. The certificate is then referenced from the `<KeyInfo>`
     block.
 * **Security Token Reference**:
-    The Security Token Reference (STR) provides a way to refer to a key contained within a SOAP message from another part of the message. It is often used in cases where different security blocks in a message use the same key material and it is considered an overhead to include the key more than once in the message.\
+    The Security Token Reference (STR) provides a way to refer to a key contained within a SOAP message from another part of the message. It is often used in cases where different security blocks in a message use the same key material and it is considered an overhead to include the key more than once in the message.
 
     When this option is selected, a `<wsse:SecurityTokenReference>`
     element is inserted into the `<KeyInfo>`
@@ -291,40 +287,28 @@ The eXtensible Access Control Markup Language (XACML) Policy Enforcement Point (
 
 ![XACML PEP Architecture](/Images/docbook/images/authz/xacml_pep.png)
 
-### Workflow\
+### Workflow
 
- In more detail, when the **XACML PEP**
+In more detail, when the **XACML PEP**
 filter is configured in the API Gateway, the workflow is as follows:
 
-1.  The client sends a request for the resource to the XACML PEP filter.
-2.  The PEP filter stores the original client request, and generates the XACML request.
-3.  The PEP filter delegates message-level security to the polices configured on the **XACML**
+1. The client sends a request for the resource to the XACML PEP filter.
+2. The PEP filter stores the original client request, and generates the XACML request.
+3. The PEP filter delegates message-level security to the polices configured on the **XACML**
     tab.
-4.  The PEP filter routes the XACML request to the PDP using details configured on the **Routing**
+4. The PEP filter routes the XACML request to the PDP using details configured on the **Routing**
     tab.
-5.  The PDP decides if access should be granted, and sends the XACML response back to the API Gateway.
-6.  The PEP filter validates the response from the PDP.
-7.  By default, if the response is `Permit`, the PEP filter passes, and the original client request for the resource is authorized, and the policy flow continues on the success path.
+5. The PDP decides if access should be granted, and sends the XACML response back to the API Gateway.
+6. The PEP filter validates the response from the PDP.
+7. By default, if the response is `Permit`, the PEP filter passes, and the original client request for the resource is authorized, and the policy flow continues on the success path.
 
-<div>
+For more details on XACML, see the XACML specification at <http://docs.oasis-open.org/xacml/2.0/access_control-xacml-2.0-core-spec-os.pdf>
 
-### Further information
-
-For more details on XACML, see the XACML specification at:\
-<http://docs.oasis-open.org/xacml/2.0/access_control-xacml-2.0-core-spec-os.pdf>
-
-</div>
-
-</div>
-
-<div id="p_authz_xacml_pep_sample_request">
-
-Example XACML request
----------------------
+### Example XACML request
 
 The following example XACML request is used to illustrate the XACML request configuration settings explained in this topic:
 
-```
+```xml
 <Request xmlns="urn:oasis:names:tc:xacml:2.0:context:schema:os"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Subject>
@@ -332,7 +316,7 @@ The following example XACML request is used to illustrate the XACML request conf
         DataType="http://www.w3.org/2001/XMLSchema#string">
         <AttributeValue>admin</AttributeValue>
       </Attribute>
-      <Attribute AttributeId=”department" 
+      <Attribute AttributeId=”department"
         DataType="http://www.w3.org/2001/XMLSchema#string">
         <AttributeValue>sysadmin</AttributeValue>
       </Attribute>
@@ -353,59 +337,55 @@ The following example XACML request is used to illustrate the XACML request conf
 </Request>
 ```
 
-</div>
-
-<div id="p_authz_xacml_pep_xacml_conf">
-
-XACML settings
---------------
+### Configure XACML settings
 
 The **XACML**
 tab specifies configuration settings for the generated XACML request. Configure the following fields on this tab:
 
-**XACML Version**:\
+**XACML Version**:
 Select the XACML version from the list. Defaults to `XACML2_0`.
 
-**Create XACML Request Assertion with the following attributes**:\
+**Create XACML Request Assertion with the following attributes**:
 Click the **Add**
 button on the following tabs to add attributes to the XACML request:
 
-  ----------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  **Subject**       Represents the entity making the access request (wants access to the resource). The `Subject`
-                    element can contain multiple `Attribute`
-                    elements used to identify the `Subject`. Each `Attribute`
-                    element has two attributes: `AttributeId`
-                    and `DataType`. You can define your own `AttributeId`
-                    or use those provided by the XACML specification. For more details on adding attributes, see the next subsection.
+* **Subject**: Represents the entity making the access request (wants access to the resource). The `Subject`
+element can contain multiple `Attribute`
+elements used to identify the `Subject`. Each `Attribute`
+element has two attributes: `AttributeId`
+and `DataType`. You can define your own `AttributeId`
+or use those provided by the XACML specification. For more details on adding attributes, see the next subsection.
+* **Resource**: Defines the data, service, or system component that the `Subject`
+wants to access. The `Resource`
+element contains one or more attributes of the resource to which subjects request access. There can be only one `Resource`
+element per XACML request. A specific `Resource`
+is identified by the `Attribute`
+child element. In the [Example XACML request](#example-xacml-request), the `Subject`
+wants to access the following `Resource`:
 
-  **Resource**      Defines the data, service, or system component that the `Subject`
-                    wants to access. The `Resource`
-                    element contains one or more attributes of the resource to which subjects request access. There can be only one `Resource`
-                    element per XACML request. A specific `Resource`
-                    is identified by the `Attribute`
-                    child element. In the [*Example XACML request* on page 1](#Example), the `Subject`
-                    wants to access the following `Resource`:\
-                    `http://localhost:8280/services/echo/echoString`
+```
+http://localhost:8280/services/echo/echoString
+```
 
-  **Action**        Contains one or more attributes of the action that subjects wish to perform on the resource. There can be only one `Action`
-                    element per XACML request. A specific `Action`
-                    is identified by the `Attribute`
-                    child element. In the [*Example XACML request* on page 1](#Example), the `Subject`
-                    wants read access the following `Resource`:\
-                    `http://localhost:8280/services/echo/echoString`
+* **Action**: Contains one or more attributes of the action that subjects wish to perform on the resource. There can be only one `Action`
+element per XACML request. A specific `Action`
+is identified by the `Attribute`
+child element. In the [Example XACML request](#example-xacml-request), the `Subject`
+wants read access the following `Resource`:
 
-  **Environment**   A more complex request context may contain some attributes not associated with the `Subject`, `Resource`, or `Action`. These are placed in an optional `Environment`
-                    element after the `Action`
-                    element.
-  ----------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+```
+http://localhost:8280/services/echo/echoString
+```
 
-<div>
+* **Environment**: A more complex request context may contain some attributes not associated with the `Subject`, `Resource`, or `Action`. These are placed in an optional `Environment`
+element after the `Action`
+element.
 
 When you click the **Add**
 button on each tab, the **XACML**
 dialog is displayed to enable you to add attributes. Complete the following fields on this dialog:
 
-**Attribute ID**:\
+**Attribute ID**:
 Enter a custom `AttributeId`
 or select one provided by the XACML specification from the list. For example, the XACML special identifiers defined for the `Subject`
 include the following:
@@ -430,17 +410,17 @@ subject-id
 ...
 ```
 
-In the [*Example XACML request* on page 1](#Example), the first attribute under the `Subject`
+In the [Example XACML request](#example-xacml-request), the first attribute under the `Subject`
 element uses the `urn:oasis:names:tc:xacml:1.0:subject:subject-id`
 identifier. The next is a custom `department`
 attribute. This can be any custom attribute for example, `mail`, `givenName`, or `accessList`), which is identified by the XACML policy defined where this request is evaluated.
 
-**Value(s)**:\
+**Value(s)**:
 Click the **Add**
 button to add an attribute value. Enter the value in the **Add**
 dialog, and click **OK**. You can add multiple values for a single attribute.
 
-**Type**:\
+**Type**:
 Select the type of data that the `AttributeValue`
 element should contain from the list. For example, the set of data types defined in XACML includes the following:
 
@@ -461,25 +441,23 @@ http://www.w3.org/2001/XMLSchema#hexBinary
 ...
 ```
 
-In the [*Example XACML request* on page 1](#Example), the Attributes are of type `http://www.w3.org/2001/XMLSchema#string`.
+In the [Example XACML request](#example-xacml-request), the Attributes are of type `http://www.w3.org/2001/XMLSchema#string`.
 
-**Issuer**:\
+**Issuer**:
 Specify an optional issuer for the attribute. For example, this may be a Distinguished Name, or some other identifier agreed with the issuer.
 
-</div>
-
-### AuthzDecisionQuery Settings\
+#### AuthzDecisionQuery settings
 
 This section enables you to configure settings for the Authorization Decision Query, which is sent in the XACML request to the PDP. Complete the following fields in this group:
 
-**Decision based on external XACML attributes**:\
+**Decision based on external XACML attributes**:
 If this is selected, the authorization decision must be made based only on the information contained in the XACML Authz Decision Query, and external XACML attributes must not be used. If this is unselected, the authorization decision can be made based on XACML attributes not contained in the XACML Authz Decision Query. This is unselected by default, which is equivalent to the following setting in the XACML Authz Decision Query:
 
 ```
 <InputContextOnly value="false">
 ```
 
-**Return Context**:\
+**Return Context**:
 If this is selected, the PDP must include an `xacmlcontext:Request`
 instance in the `XACMLAuthzDecision`
 statement in the `XACMLAuthzDecision`
@@ -494,7 +472,7 @@ response. This is unselected by default, which is equivalent to the following se
 <ReturnContext value="false">
 ```
 
-**Combine Policies**:\
+**Combine Policies**:
 If this is selected, the PDP must insert all policies passed in the `xacmlsamlp:XACMLAuthzDecisionQuery`
 into the set of policies or policy sets that define the PDP. If this is unselected, there must be no more than one `xacml:Policy`
 or `xacml:PolicySet`
@@ -505,18 +483,18 @@ passed in the `xacml-samlp:XACMLAuthzDecisionQuery`
 <CombinePolicies value="true">
 ```
 
-### XACML Message Security\
+#### XACML Message Security
 
 This section enables you to delegate message-level security to the configured custom security polices. Complete the following fields in this group:
 
-* **XACML Request Security**:\
+* **XACML Request Security**:
     Click the browse button, select a policy in the **XACML request security policy**
     dialog, and click **OK**.
-* **XACML Response Security**:\
+* **XACML Response Security**:
     Click the browse button, select a policy in the **XACML response security policy**
     dialog, and click **OK**.
 
-### XACML Response\
+#### XACML Response
 
 Select the **Required response decision**
 from the PDP that is required for this **XACML PEP**
@@ -527,46 +505,32 @@ filter to pass. Defaults to `Permit`. Possible values are as follows:
 * `Indeterminate`
 * `NotApplicable`
 
-</div>
-
-<div id="p_authz_xacml_pep_routing_conf">
-
-Routing settings
-----------------
+### Configure routing settings
 
 The **Routing**
 tab enables you to specify configuration settings for routing the XACML request to the PDP. You can specify a direct connection to the PDP using a URL. Alternatively, if the routing behavior is more complex, you can delegate to a custom routing policy, which takes care of the added complexity.
 
-**Use the following URL**:\
+**Use the following URL**:
 
-To route XACML requests to a URL, select this option, and enter the **URL**. You can also specify the URL as a selector so that the URL is built dynamically at runtime from the specified message attributes. For example, `${host}:${port}`, or `${http.destination.protocol}://${http.destination.host}:${http.destination.port}`. For more details on selectors, see
-[Select configuration values at runtime](/csh?context=630&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+To route XACML requests to a URL, select this option, and enter the **URL**. You can also specify the URL as a selector so that the URL is built dynamically at runtime from the specified message attributes. For example, `${host}:${port}`, or `${http.destination.protocol}://${http.destination.host}:${http.destination.port}`.
 
 You can configure SSL settings, credential profiles for authentication, and other settings for the direct connection using the tabs in the **Connection Details**
-group. For more details, see [*Connect to URL* on page 1](connection_to_url.htm).
+group. For more details, see [Connect to URL](/docs/apigw_polref/routing_common/#connect-to-url-filter).
 
-**Delegate routing to the following policy**:\
+**Delegate routing to the following policy**:
 To use a dedicated routing policy to send XACML requests to the PDP, select this option. Click the browse button next to the **Routing Policy**
 field. Select the policy to use to route XACML requests, and click **OK**.
 
-</div>
-
-<div id="p_authz_xacml_pep_adv_conf">
-
-Advanced settings
------------------
+### Configure advanced XACML settings
 
 Configure the following settings on the **Advanced**
 tab:
 
-### SOAP Settings\
+#### SOAP Settings
 
 The available SOAP settings are as follows:
 
-**SOAP version required**:\
+**SOAP version required**:
 Specifies the SOAP version required when creating the XACML request message. The available options are as follows:
 
 * `SOAP1_1`
@@ -575,37 +539,36 @@ Specifies the SOAP version required when creating the XACML request message. The
 
 Defaults to `SOAP1_1`.
 
-**SOAP Operation**:\
+**SOAP Operation**:
 Specifies the SOAP operation name used in the XACML request message. Defaults to `XACMLAuthzDecisionQuery`.
 
-**Prefix**:\
+**Prefix**:
 Specifies the prefix name used in the XACML request message. Defaults to `xacml-samlp`.
 
-**Namespace**:\
+**Namespace**:
 Specifies the namespace used in the XACML request message. Defaults to `urn:oasis:xacml:2.0:saml:protocol:schema:os`.
 
-**SOAP Action**:\
+**SOAP Action**:
 You can specify an optional `SOAPAction`
 field used in the XACML request header to indicate the intent of the request message.
 
-### Advanced Settings\
+#### Advanced Settings
 
 The available advanced settings are as follows:
 
-**Store and restore original message**:\
+**Store and restore original message**:
 Specifies whether to store the original client request before generating the XACML request, and then to restore the original client request after access is granted. This option is selected by default.
 
-**Split subject attributes into individual elements**:\
+**Split subject attributes into individual elements**:
 Specifies whether to split `Subject`
 attributes into individual elements in the XACML request. This option is not selected by default.
 
-**Split resource attributes into individual elements**:\
+**Split resource attributes into individual elements**:
 Specifies whether to split `Resource`
 attributes into individual elements in the XACML request. This option is not selected by default.
 
-</div>
-
 ## LDAP attribute authorization filter
+
 The **LDAP RBAC**
 filter combines Lightweight Directory Access Protocol (LDAP) with Role-Based Access Control (RBAC). This filter enables you to authorize a backend service based on user roles stored using LDAP. You can use the **LDAP RBAC**
 filter to read an attribute from LDAP, and compare it against some known values (for example, if `role`
@@ -615,32 +578,26 @@ and **Compare Attribute** filters.
 The **LDAP RBAC**
 filter enables you to define LDAP connection and search settings, and to configure how specified message attributes are processed. This filter also enables you to configure optional settings such as results caching and actions to take if a returned attribute is multivalued.
 
-</div>
-
-<div id="p_attributes_ldap_rbac_config">
-
-General settings
-----------------
+### Configure LDAP RBAC general settings
 
 Configure the following fields on the **Settings**
 tab:
 
-**Connection**:\
+**Connection**:
 Click the button on the right to select your preconfigured LDAP directory server (for example, `openldap.qa.axway.com`). For details on how to configure LDAP servers, see
-[Configure LDAP directories](/csh?context=617&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+[Configure LDAP directories](/docs/apigw_poldev/external_connections/common_ldap_conf/).
 
-**Search Base**:\
+**Search Base**:
 Enter the Distinguished Name (DN) to use as the base from which the search starts (for example, `o=Axway,l=Dublin 4,st=Dublin,C=IE`).
 
-**Filter**:\
+**Filter**:
 Enter the search filter to use. For example:
 
-    (&(objectclass=inetOrgPerson)(cn=${authentication.subject.id}))
+```
+(&(objectclass=inetOrgPerson)(cn=${authentication.subject.id}))
+```
 
-**Scope**:\
+**Scope**:
 Select one of the following search scopes from the list.
 
 * **Object**: Searches on the base DN only (compare)
@@ -649,7 +606,7 @@ Select one of the following search scopes from the list.
 
 Defaults to **Subtree**.
 
-**Attribute validation rules**:\
+**Attribute validation rules**:
 When the search completes, the attributes returned in the results are processed by the rules in the **Attribute validation rules**
 table. This processing is the same as the **Compare Attribute**
 filter. You can logically `AND`
@@ -668,10 +625,10 @@ of the specified conditions to apply. Click the **Add**
 button at the bottom right to specify a rule condition. In the **Attribute filter rule**
 dialog, perform the following steps:
 
-1.  Enter a message attribute name in the **LDAP attribute named**
+1. Enter a message attribute name in the **LDAP attribute named**
     field (for example, `member`
     or `mail`).
-2.  Select one of the following rule conditions from the list:
+2. Select one of the following rule conditions from the list:
     * `contains`
     * `doesn't contain`
     * `doesn't match regular expression`
@@ -680,111 +637,37 @@ dialog, perform the following steps:
     * `is not`
     * `matches regular expression`
     * `starts with`
-
-    >
-3.  Enter a value to compare with in the text box on the right (for example, `POST`). Alternatively, you can enter a selector that is expanded at runtime (for example, `${http.request.uri}`). For more details on selectors, see
-    [Select configuration values at runtime](/csh?context=630&product=prod-api-gateway-77)
-    in the
-    [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-    .
-4.  Click **OK**.
+3. Enter a value to compare with in the text box on the right (for example, `POST`). Alternatively, you can enter a selector that is expanded at runtime (for example, `${http.request.uri}`).
+4. Click **OK**.
 
 The following figure shows some example search settings and attribute validation rules:
 
 ![LDAP Attribute Authorization Settings](/Images/docbook/images/attr/ldap_rbac_authz.png)
 
-{{< alert title="Tip" color="primary" >}}When using this filter to determine if a user is a member of a `groupOfNames`, all the member attributes are concatenated together. The string containing the member attributes can be compared using a regular expression value provided in **Attribute validation rules**. {{< /alert >}}
-<div class="indentTable">
+{{< alert title="Tip" color="primary" >}}
+When using this filter to determine if a user is a member of a `groupOfNames`, all the member attributes are concatenated together. The string containing the member attributes can be compared using a regular expression value provided in **Attribute validation rules**.
 
 Because each attribute is not checked individually, you must create the regular expression string appropriately. For example, an expression such as `(?i:^.*${cert.subject.id}.*$)`
 allows for extra characters before and after the string searched for.
+{{< /alert >}}
 
-</div>
-
-</div>
-
-<div id="p_attributes_ldap_rbac_advanced">
-
-Advanced settings
------------------
+### Configure LDAP RBAC advanced settings
 
 You can configure the following optional settings on the **Advanced**
 tab:
 
-**Cache settings**:\
+**Cache settings**:
 Select whether to cache the LDAP search results. This setting is selected by default.
 
-**Store results in the cache**:\
-Click the button on the right to select the preconfigured cache in which to store results. For more details on caches, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-. Select one of the following settings:
+**Store results in the cache**:
+Click the button on the right to select the preconfigured cache in which to store results. For more details on caches, see [Configure caching](/docs/apigw_poldev/general_cache/). Select one of the following settings:
 
 * **Use the LDAP search filter as cache key**: Uses the LDAP search filter configured on the **Settings**
     tab as the cache key.
 * **Or use the following value as the cache key**: Enter a specific value for the cache key.
 
-**If returned attribute contains multiple values**:\
+**If returned attribute contains multiple values**:
 Select one of the following settings:
 
 * **Concatenate values with the following**: Enter the character used to concatenate multiple attribute values. A comma is used by default.
 * **Use value at index**: Enter the index number of the attribute value to use. Defaults to `0`.
-
-</div>
-
-## Attribute authorization filter
-
-The purpose of the filters in the **Attributes**
-filter group is to extract user attributes from various sources. You can use these filters to retrieve attributes from the message, an LDAP directory, a database, the API Gateway user store, HTTP headers, a SAML attribute assertion, and so on.
-
-After retrieving a set of user attributes, API Gateway stores them in the `attribute.lookup.list`
-message attribute, which is essentially a map of name-value pairs. It is the role of the **Attributes**
-authorization filter to check the value of these attributes to authorize the user.
-
-Configure the following fields on the **Attributes**
-configuration window:
-
-**Name**:
-Enter a suitable name for this filter to display in a policy.
-
-**Attributes**:
-The **Attributes**
-table lists the checks that the API Gateway performs on user attributes stored in the `attribute.lookup.list`
-message attribute. The API Gateway performs the following checks:
-
-* The entries in the table are OR-ed together so that if any one of them succeeds, the filter returns a pass.
-* The attribute checks listed in the table are run in series until one of them passes.
-* You can add a number of attribute-value pairs to a single attribute check by separating them with commas (for example, `company=axway, department=engineering, role=engineer`).
-* If multiple attribute-value pairs are present in a given attribute check, these pairs are AND-ed together so that the overall attribute check only passes if all the attribute-value pairs pass. For example, if the attribute check comprises, `department=engineering, role=engineer`, this check only passes if both attributes are found with the correct values in the `attribute.lookup.list`
-    message attribute.
-
-To add an attribute check to the **Attributes**
-table, click **Add**, and enter attributes in the dialog. For attribute checks involving attributes extracted from a SAML attribute assertion, you must specify the namespace of the attribute given in the assertion. For example, API Gateway can extract the `role`
-attribute from the following SAML `<Attribute Statement>`, and store it in the `attribute.lookup.list`
-map:
-
-```
-<saml:AttributeStatement>
-  <saml:Attribute Name="role" NameFormat="http://www.company.com">
-    <saml:AttributeValue>admin</saml:AttributeValue>
-  </saml:Attribute>
-  <saml:Attribute Name="email" NameFormat="http://www.company.com">
-    <saml:AttributeValue>joe@company.com</saml:AttributeValue>
-  </saml:Attribute>
-  <saml:Attribute Name="dept" NameFormat="">
-    <saml:AttributeValue>engineering</saml:AttributeValue>
-  </saml:Attribute> 
-</saml:AttributeStatement>
-```
-
-The `NameFormat`
-attribute of the `<Attribute>`
-gives the namespace of the attribute name. You must enter this namespace (together with a corresponding prefix) in the **Add Attributes**
-dialog. For example, to extract the `role`
-attribute from the SAML attribute statement above, enter `pre:role=admin`
-in the **Attribute Requirement**
-field. Then you must also map the `pre`
-prefix to the `http://www.company.com`
-namespace, as specified by the `NameFormat`
-attribute in the attribute statement.
-
-</div>
