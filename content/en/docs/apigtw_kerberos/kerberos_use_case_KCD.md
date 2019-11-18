@@ -3,7 +3,7 @@
 "linkTitle": "Kerberos constrained delegation",
 "weight":"10",
 "date": "2019-11-14",
-"description": " Kerberos *constrained* delegation (KCD) enables API Gateway to act as a trusted Kerberos service principal, acquire a Kerberos service ticket in the name of the requesting end user, and authenticate to a constrained set of Kerberos back-end services as the end user."
+"description": "Kerberos *constrained* delegation (KCD) enables API Gateway to act as a trusted Kerberos service principal, to acquire a Kerberos service ticket in the name of the requesting end user, and to authenticate to a constrained set of Kerberos back-end services as the end user."
 }
 
 * **Client application**: Does not support Kerberos authentication, or cannot provide Kerberos credentials.
@@ -43,98 +43,94 @@ For the example in this section, the trusted Kerberos principal `TrustedAPIGatew
 
 The example Kerberos realm name `AXWAY.COM` is specific to the examples in this guide. Replace the example realm name with your own realm name.
 
-The next sections describe the steps to configure the gateway in unconstrained credentials delegation.
+The next sections describe the steps to configure the gateway in constrained credentials delegation.
 
 ## Configure active directory
 
-This section describes how to configure a Kerberos service principal for API Gateway in Active Directory acting as the Key Distribution Center (KDC).
+This section describes how to configure a trusted Kerberos client principal for API Gateway in Active Directory acting as the Key Distribution Centre (KDC) .
 
-1. On the Windows Domain Controller, click **Control panel > Administrative Tools > Active Directory User and Computers**.
+Before you configure the user account for the trusted Kerberos principal, you must have configured the user account and Service Principal Names (SPN) for the back-end services you want API Gateway to request service tickets for. For an example configuration, see [Configure a user account for the Kerberos service](/docs/apigtw_kerberos/kerberos_use_case_demo#configure-a-user-account-for-the-kerberos-service).
+
+### Configure user account for the trusted Kerberos principal
+
+1. On the Windows Domain Controller, click **Control panel > Administrative Tools > Active Directory User and Computers**
 2. Right-click **Users**, and select **New > User**.
-3. Enter a name for the Kerberos principal (such as `IntermediaryGateway`) in the **First Name** and **User Logon Name** fields, select your Active Directory domain from the drop-down menu (`@axway.com`), and click **Next**.
+3. Enter a name for the Kerberos principal (`TrustedAPIGateway`) in the **First Name** and **User Logon Name** fields, select your Active Directory domain from the drop-down menu (`@axway.com`), and click **Next**.
 4. Enter the password, and do the following:
-    * User must change password at next logon: Deselect this.
-    * User cannot change password: Select this.
-    * Password never expires: Select this.
+    * **User must change password at next logon**: Deselect this.
+    * **User cannot change password**: Select this.
+    * **Password never expires**: Select this.
 
     This ensures that a working API Gateway configuration does not stop working when a user chooses, or is prompted to change their password. API Gateway does not track these actions.
 
     If these options are not suitable in your implementation and a user password changes in Active Directory, you must then update the password or keytab of the Kerberos client or service related to the user in Policy Studio, and redeploy the configuration to API Gateway.
-    If you cannot deselect **User must change password at next logon**, ensure the user changes the password and that the new password or keytab is deployed to API Gateway before API Gateway attempts to connect as this user.
 
-    You can store Kerberos passwords in a KPS table to update a changed password in runtime. For more details, see [Use KPS to store passwords for Kerberos authentication](/docs/apigtw_kerberos/kerberos_kps).
+    If you cannot deselect **User must change password at next logon**, ensure the user changes the password and that the new password or keytab is deployed to API Gateway *before* API Gateway attempts to connect as this user.
+
+    You can store Kerberos passwords in a KPS table to update a changed password in runtime. For more details, see [Use KPS to store passwords for Kerberos authentication](/docs/apigtw_kerberos/kerberos_kps#use-kps-to-store-passwords-for-kerberos-authentication).
 
 5. Click **Next > Finish**.
-6. Map a Service Principal Name (SPN) to the user account. The Kerberos client uses the SPN to uniquely identify a service. To map the SPN, open a command prompt on the Windows Domain Controller, and enter the following command:
+6. Open a command prompt on the Windows Domain Controller, and enter the following command to set the Service Principal Name (SPN):
 
     ```
-    ktpass -princ HTTP/<host>@<Kerberos realm> -mapuser <user> -pass password -out <user>.keytab -crypto rc4-hmac-nt -kvno 0
+    setspn -A <service class>/<host> <service name>
     ```
 
-    The SPN is of the format `HTTP/<host>@<Kerberos realm>`, where `<host>` is the name of the host running the Kerberos service, `IntermediaryGateway` in this case:
+    For example:
 
     ```
-    ktpass -princ HTTP/IntermediaryGateway.axway.com@AXWAY.COM -mapuser IntermediaryGateway -pass Axway123 -out IntermediaryGateway.keytab -crypto rc4-hmac-nt -kvno 0
+    setspn -A HTTP/TrustedAPIGateway.axway.com TrustedAPIGateway
     ```
 
-    Replace the example Kerberos realm name with your own realm name. Note that the realm name is uppercase.
+    This command creates the SPN, but does not create a keytab file.
 
-    The command creates an SPN `HTTP/IntermediaryGateway.axway.com@AXWAY.COM`, which is mapped to the `IntermediaryGateway` user account. The command also creates a keytab file for the account that you can use later when configuring a Kerberos service for API Gateway in Policy Studio. See [Configure API Gateway policy](/docs/apigtw_kerberos/kerberos_use_case_ucd#configure-api-gateway-policy).
+7. Right-click on the new user, and select **Properties > Delegation**, and select **Trust this user for delegation to specified services only** and **Use any authentication protocol**. API Gateway does not support the option **Use Kerberos only**.
+8. Add the back-end services (here `HTTP/BackEndService.axway.com` and `HOST/BackEndService.axway.com`), then click **OK**. The trusted Kerberos principal can request service tickets for these back-end services on behalf of the impersonated end users.
 
-    If you do not want to create a keytab file, you can use the following command:
-
-    ```
-    setspn -A HTTP/<host> <user>
-    ```
-
-    As a Kerberos service, API Gateway authenticates the client application using Kerberos authentication. For the authentication to succeed, the client application or end user    must also have an account configured in your Active Directory. For an example configuration for the client account, see [Configure a user account in Active Directory](/docs/apigtw_kerberos/kerberos_use_case_client#configure-a-user-account-in-active-directory). You must also configure user accounts and Service Principal Names (SPN) for the back-end services you want API   Gateway to request service tickets for.
-
-7. Right-click on the new user, and select **Properties > Delegation**. Then, select the **Trust this user for delegation to any service (Kerberos only)** option.
-
-This is required for the API Gateway to extract delegated credentials when using unconstrained delegation where the client is the browser.
+    ![Overview](/Images/IntegrationGuides/KerberosIntegration/KerberosConstrainedDelegation/Overview_4.png)
 
 ## Configure Kerberos principals
 
-This section describes how to add Kerberos principals for the intermediary Kerberos service, and back-end Kerberos service for unconstrained credentials delegation using Policy Studio.
+This section describes how to add Kerberos principals for the end user, trusted Kerberos principal, and back-end Kerberos service for KCD using Policy Studio.
 
 1. In the node tree, click **Environment Configuration > External Connections > Kerberos Principals**.
-2. Add a new Kerberos principal for the intermediary Kerberos service account as follows:
-    * **Name**: `IntermediaryGateway`
-    * **Principal Name**: `IntermediaryGateway@AXWAY.COM`
-    * **Principal Type**: `NT_USER_NAME`
-3. Add a new Kerberos principal for the back-end Kerberos service account as follows:
-    * **Name**: `<Back-end service name>` (for example, `Back-end Kerberos Service`)
-    * **Principal Name**: `<Service Principal Name for the back-end service>` (for example, `HOST/BackEndService.axway.com@AXWAY.COM`)
+2. Add a new Kerberos principal for the end user:
+    * **Name**: `End User Principal to Impersonate in KCD`
+    * **Principal Name**: `${authentication.subject.id}@AXWAY.COM`
     * **Principal Type**: `NT_USER_NAME`
 
-For more details on the fields and options in this configuration window, see [Configure Kerberos principals](/docs/apigw_poldev/external_connections/common_client_credentials/#configure-kerberos-principals) in the *Policy Developer Guide*.
+3. Using a selector here enables you to impersonate multiple end users.
+4. Add a new Kerberos principal for the trusted Kerberos principal account as follows:
+    * **Name**: `TrustedAPIGateway for KCD`
+    * **Principal Name**: `TrustedAPIGateway@AXWAY.COM`
+    * **Principal Type**: `NT_USER_NAME`
+
+5. Add a new Kerberos principal for the back-end service account as follows:
+    **Name**: `<Back-end service name>` (for example, `Back-end Kerberos Service`)
+    **Principal Name**: `<Service Principal Name for the back-end service>` (for example, `HOST/BackEndService.axway.com@AXWAY.COM`)
+    **Principal Type**: `NT_USER_NAME`
 
 ## Configure API Gateway policy
 
-This section describes for unconstrained credential delegation using Policy Studio.
+This section describes how to configure API Gateway for the KCD using Policy Studio.
 
-### Configure an intermediary Kerberos service
+### Configure the Kerberos client
 
-1. In the node tree, click **Environment Configuration > External Connections > Kerberos Services**.
-2. Click **Add a Kerberos Service**, and enter a name for your Kerberos service (`IntermediaryGateway Kerberos Service for Unconstrained Delegation`).
-3. On the **Kerberos Endpoint** tab, set the following:
-    * **Kerberos Principal**: `IntermediaryGateway`.
-    * **Enter Password**: Enter the password for `IntermediaryGateway@AXWAY.COM`.
-    * **Enabled**: Select this option.
-4. On the **Advanced** tab, set the following:
-    **Mechanism**: `SPNEGO_MECHANISM`.
-    **Extract delegated credentials**: Select this option.
-
-Selecting **Extract delegated credentials** means that API Gateway extracts the Kerberos client’s TGT from the SPNEGO token after the client has been authenticated. API Gateway can then use the TGT to request service tickets to other Kerberos services on behalf of the Kerberos client. For more details on the fields and options in this configuration window, see [Configure Kerberos services](/docs/apigw_poldev/external_connections/kerberos_service/).
-
-### Configure a Kerberos client for the delegated credentials
+Although the trusted Kerberos principal can be referred to as a Kerberos service principal, it is acting on the client-side of the Kerberos authentication transaction, and needs a Kerberos client for KCD.
 
 1. In the node tree, click **Environment Configuration > External Connections > Kerberos Clients**.
-2. Click **Add a Kerberos Client**, and enter a name for your client (`Kerberos Client for Unconstrained Delegation`).
+2. Click **Add a Kerberos Client**, and enter a name for your client (`Trusted Kerberos Client for KCD`).
 3. On the **Kerberos Endpoint** tab, set the following:
-    * **Load from delegated credentials**: Select this option.
-    * **Enabled**: Make sure this option is selected.
-4. On the **Advanced** tab, set the following:
+    * **Load via JAAS Login**: Select this option and the **Request from KDC** option.
+    * **Kerberos Principal**: `TrustedAPIGateway for KCD`.
+    * **Enter Password**: Enter the password for `TrustedAPIGateway@AXWAY.COM`.
+    * **Enabled**: Ensure this option is selected.
+
+4. On the **Kerberos Constrained Delegation** tab, set the following:
+    * **Kerberos Principal to Impersonate**: `End User Principal to Impersonate in KCD`
+    * **Select Cache for Impersonated Subjects**: `Kerberos Constrained Delegation Impersonated Subject Cache`
+
+5. On the **Advanced** tab, set the following:
     * **Mechanism**: `SPNEGO_MECHANISM`.
     * **Context Settings**: Select the following options:
         * **Mutual authentication**
@@ -143,108 +139,140 @@ Selecting **Extract delegated credentials** means that API Gateway extracts the 
         * **Anonymity**
         * **Replay Detection**
         * **Sequence Checking**
-    * **Synchronize to Avoid Replay Errors at Service**: Deselect this option to improve performance.
-    * **Refresh when remaining validity is <value> seconds**: Set to `300`.
+    * **Synchronize to Avoid Replay Errors at Service**:
+    * Deselect this option to improve performance.
+    * **Refresh when remaining validity is `<value>` seconds**: Set to `300`.
 
-For more details on the fields and options in this configuration window, see [Configure Kerberos clients](/docs/apigw_poldev/external_connections/common_client_credentials/#configure-kerberos-clients).
-
-### Configure a Kerberos profile for the intermediary Kerberos service
+### Configure a Kerberos profile for the Kerberos client
 
 1. In the node tree, click **Environment Configuration > External Connections > Client Credentials > Kerberos**.
 2. Add a Kerberos profile as follows:
-    * **Profile Name**: `Authenticate to Back-End Service using Delegated Credentials`.
-    * **Kerberos Client**: `Kerberos Client for Unconstrained Delegation`.
+    * **Profile Name**: `Authenticate to BackEndService using KCD`.
+    * **Kerberos Client**: `Trusted Kerberos Client for KCD`.
     * **Kerberos Service Principal**: `<Back-end Kerberos Service>`.
     * **Send token with first request**: Select this option.
 
-### Configure an intermediary policy
+### Configure a Kerberos policy
 
-The following section describes how to configure the policy for API Gateway delegating the credentials.
+The following section describes how to configure the Kerberos policy for KCD.
 
-To start, add a new policy named, for example, `Kerberos Intermediary for Unconstrained Credentials Delegation`.
+To start, add a new policy named, for example, `Kerberos KCD SPNEGO Client-Side`.
 
-**Configure a Kerberos service filter**\
+**Configure the end user authentication method**\
 
-1. Open the **Authentication** category in the filter palette, and drag a **Kerberos Service** filter onto the policy canvas.
-2. Set **Kerberos Service** to the intermediary Kerberos service you created (`IntermediaryGateway Kerberos Service for Unconstrained Delegation`).
-3. Change **Kerberos Standard** to **SPNEGO Over HTTP**, and click **Finish**.
-4. Right-click the **Kerberos Service** filter, and select **Set as Start**.
+1. Configure the authentication mechanism the end user application requires. The required filters and configuration details depend on the type of authentication. For an example configuration, see [Configure a KCD demo setup](/docs/apigtw_kerberos/kerberos_use_case_KCD#configure-a-kcd-demo-setup).
+2. Right-click the first filter in your policy, and select **Set as Start**.
 
-### Configure retrieving the end user credentials
+**Configure connection to the back-end service**\
 
-1. Open the **Attributes** category in the palette, and drag a **Retrieve from HTTP Header** filter onto the policy canvas.
-2. Set the **HTTP Header name** to `WWW-Authenticate` and **Attribute ID** to `outer.www.authenticate`, and click **Finish**.
-3. Open the **Conversion** category in the palette, drag a **Remove HTTP Header** filter onto the policy canvas.
-4. Set **HTTP Header Name** to `WWW-Authenticate`.
+1. Open the **Routing** category in the filter palette, and drag a **Connect to URL** filter onto the policy canvas.
+2. Enter the **URL** used to invoke the back-end service.
+3. On the **Authentication** tab, select the Kerberos credential profile configured earlier (`Authenticate to BackEndService using KCD`), and click **Finish**.\
+    For more details on the fields and options in this configuration window, see [Connect to URL](/csh?context=502&product=prod-api-gateway-77) in the
+    [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
 
-### Configure authentication to the back-end service
+**Build the policy**\
 
-1. Open the **Routing** category in the palette, and drag a **Connect to URL** filter onto the canvas.
-2. Enter the **URL** used to invoke the back-end Kerberos service.
-3. On the **Authentication** tab, select the Kerberos profile you configured (`Authenticate to Back-End Service using Delegated Credentials`), and click **Finish**.\
-4. Open the **Conversion** category in the palette, and drag an **Add HTTP Header** filter onto the policy canvas.
-5. Set the following, and click **Finish**:
-    **HTTP Header Name**: `WWW-Authenticate`.
-    **HTTP Header Value**: `${outer.www.authenticate}`.
-    **Override existing header**: Select this option.
-    **Add header to HTTP headers attribute**: Select this option.
-6. Open the **Utility** category in the palette, and drag a **Reflect Message** filter onto the canvas.
+1. Click the **Add Relative Path** icon to create a new relative path `/kcd` that links to this Kerberos client-side policy.
+2. Connect the filters with a success path.
 
-### Build the policy
+    ![Overview](/Images/IntegrationGuides/KerberosIntegration/KerberosConstrainedDelegation/Overview_6.png)
 
-1. Click on the **Add Relative Path** icon to create a new relative path `/intermediary` that links to this policy.
-2. Connect the filters with success paths.
+    The policy has the following flow:
 
-    ![Intermediary policy filters](/Images/IntegrationGuides/KerberosIntegration/cred_deleg_spnego/imagePasted25.png)
+    * API Gateway authenticates the end user using a non-Kerberos authentication mechanism, and sets the message attribute `authentication.subject.id` to the user name of the end user.
+    * API Gateway generates a Kerberos principal name for the end user using the selector `${authentication.subject.id}@AXWAY.COM`.
+    * API Gateway checks the cache of impersonated subjects for valid credentials for the end user Kerberos principal name.
+    * If valid credentials are not found, API Gateway impersonates the end user, and sends a service ticket request in the name of the end user to the KDC.
+    * API Gateway sends the Kerberos token containing the service ticket in the name of the end user to the back-end Kerberos service.
+    * The back-end Kerberos service authenticates the end user and returns its response.
 
-The policy has the following flow:
-
-* API Gateway receives a request from the end user, and uses the Kerberos token in the `Authorization` HTTP header to authenticate the end user.
-* API Gateway extracts the value of the `WWW-Authenticate` HTTP header and saves the value to a message attribute, so it can be reinstated later. This token is the response to the original token the end user sent.
-* API Gateway retrieves a service ticket for the end user to access the back-end Kerberos service, connects to the back-end Kerberos service, and authenticates using the Kerberos credentials relating to the original end user.
-* API Gateway reinstates the value of the `WWW-Authenticate` HTTP Header, overriding the value the back-end Kerberos service set.
-* API Gateway sends the response to the Kerberos client.
-
-### Configure Kerberos system settings
+### Configure the Kerberos system settings
 
 1. In the node tree, click **Environment Configuration > Server Settings > Security > Kerberos**, and click **Add Kerberos Configuration**.
 2. On the **krb5.conf** tab, add the Kerberos settings as follows:
-  
+
     ```
     [libdefaults]
     default_realm = AXWAY.COM
+    renewable=true
+    proxiable=tru
+    forwardable=true`
+
     [realms]
     AXWAY.COM = {
     kdc = dc.axway.com
     }
     ```
 
-    Replace the realm settings in the example code with your Kerberos realm, and set the `kdc` setting to the host name of your Windows Domain Controller.
+    For KCD, the setting `forwardable` must be `true`.
+
+    Replace the realm settings in the example with your Kerberos realm, and set the `kdc` setting to the host name of your Windows Domain Controller.
+
+For more details on the fields and options in this configuration window, see [Kerberos configuration](/docs/apigw_poldev/security_server_settings/#configure-kerberos-settings).
 
 ### Deploy the configuration
 
 To deploy the configuration to API Gateway, click the **Deploy** icon.
 
-You have now configured and deployed a policy for the authenticating Kerberos service on API Gateway that delegates the SPNEGO credentials to the back-end Kerberos service. The client application calls the policy on relative path `/intermediary`.
+You have now configured and deployed a simple KCD policy for SPNEGO authentication where API Gateway acts as the trusted Kerberos principal for KCD. The end user application that invokes this policy in API Gateway must provide authentication credentials to satisfy the chosen non-Kerberos authentication mechanism.
 
-For demonstration purposes, you may want to add API Gateway as the client application and the back-end service. For example configurations, see [Demo setup: API Gateway as both Kerberos client and service](/docs/apigtw_kerberos/kerberos_use_case_demo). When configuring API Gateway as the client application for credentials delegation, the setting `forwardable` on the `krb5.conf` tab in the Kerberos system settings must be `true`:
+For demonstration purposes, you can add API Gateway as the back-end service as well as sample users. See [Configure a KCD demo setup](configure_gw_to_act_as_test_svc_CD.htm).
 
-```
-[libdefaults]
-default_realm = AXWAY.COM
-forwardable=true
-
-
-[realms]
-AXWAY.COM = {
-kdc = dc.axway.com
-}
-```
+For other use cases covered in this guide, see [Kerberos use cases](../kerberos_overview.htm#Kerberos).
 
 ### Test the configuration
 
-Use a client application to call the policy in API Gateway.
+Use a client application to call the KCD policy in API Gateway.
 
 The back-end Kerberos service should send a confirmation on a successful authentication.
 
 The **Traffic Monitor** tab on the API Gateway Manager (`https://localhost:8090`) is an excellent place to view and troubleshoot the message flows. For more details, see [Monitor services in API Gateway Manager](/docs/apigtw_admin/monitor_service/#monitor-services-in-api-gateway-manager).
+
+## Configure a KCD demo setup
+
+Follow the next steps to configure a test back-end service and sample users to test or demonstrate the KCD.
+
+### Configure a back-end service for testing
+
+For demonstration purposes, you can use another API Gateway instance as the back-end Kerberos service. API Gateway is configured as the Kerberos service for the most part the same way for both KCD and standard Kerberos authentication in the client-side transaction. For more details, see [Configure API Gateway to act as the Kerberos service](\docs\apigtw_kerberos\kerberos_use_case_demo#configure-api-gateway-to-act-as-the-kerberos-service).
+
+The difference between KCD and standard SPNEGO configuration is that for KCD, the back-end service must have a Service Principal Name (SPN). For more details, see [Map an SPN to the user account](\docs\apigtw_kerberos\kerberos_use_case_service#map-an-spn-to-the-user-account).
+
+### Configure sample authentication
+
+For demonstration purposes, you can configure HTTP Basic authentication against a local user repository as the incoming authentication mechanism on API Gateway for the end user.
+
+**Configure sample users**\
+
+You can quickly add some sample users to a local repository in Policy Studio.
+
+The user identity in the local repository must be mappable to an end user Kerberos principal name, so that when the trusted Kerberos principal impersonates an end user, the original end user can be identified in Active Directory. The setup in this guide uses a selector expression `${authentication.subject.id}@AXWAY.COM` for the mapping. For more details, see [Configure Kerberos principals](#configure-kerberos-principals).
+
+For example, if your end user Kerberos principal names were `Bob@AXWAY.COM`, and `Bill@AWAY.COM`, then add users named Bob and Bill to the local user repository.
+
+1. In the node tree, click **Environment Configuration > Users and Groups > Users**.
+2. Click **Add**, and fill in the details for your user. For example:
+
+    | Bob                  | Bill                 |
+    |----------------------|----------------------|
+    | User Name: `Bob`     | User Name: `Bill`    |
+    | Password: `changeme` | Password: `changeme` |
+
+The passwords in the local user repository do *not* need to match these users' Kerberos passwords in the Key Distribution Center. Here, the user names and passwords configured in the local repository are passed to API Gateway over HTTP Basic.
+
+**Configure HTTP Basic authentication**\
+
+In this example, API Gateway authenticates the end users using HTTP Basic.
+
+1. Open the **Authentication** category, and drag a **HTTP Basic** filter onto the policy canvas.
+2. Set **Credential Format** to **User Name**, and select **Allow client challenge**.
+3. Set **Repository Name** to **Local User Store**, and click **Finish**.
+
+    For more details on the fields and options in this configuration window, see [HTTP basic authentication](/csh?context=506&product=prod-api-gateway-77) in the [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
+4. Right-click the **HTTP Basic** filter, and select **Set as Start**.
+5. Connect the filters with a success path.
+
+    ![Demo policy](/Images/IntegrationGuides/KerberosIntegration/KerberosConstrainedDelegation/demo_policy.png)
+
+To test the configuration, see [Test the policies](#test-the-configuration).
