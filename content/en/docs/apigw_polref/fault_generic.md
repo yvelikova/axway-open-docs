@@ -22,7 +22,7 @@ Name
 : Enter an appropriate name for this filter to display in a policy.
 
 HTTP Response Code Status
-: Enter the HTTP response code status for this **Generic Error** filter. This ensures that a meaningful response is sent to the client in the case of an error occurring in a configured policy. Defaults to `500 (Internal Server Error)`. For a complete list of status codes, see the [HTTP Specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html).
+: Enter the HTTP response code status. This ensures that a meaningful response is sent to the client in the case of an error occurring in a configured policy. Defaults to `500` (Internal Server Error). For a complete list of status codes, see the [HTTP Specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html).
 
 Configure the following options in the **Generic Error Contents** section:
 
@@ -45,35 +45,31 @@ Use Stylesheet
 
 Because XSLT stylesheets accept XML as input, API Gateway implicitly transforms the incoming message into XML. Next, it retrieves the selected XSLT stylesheet and applies the transformation to the message, and sends the response in the format specified.
 
-### Create customized generic errors
-
-Use the following approaches to create customized generic errors.
-
-#### Use the Generic Error filter
+### Create customized generic error using the Generic Error filter
 
 On the **Advanced** tab, you can customize the generation of a response message when the request cannot be inferred as a SOAP or JSON request.
 
-Apply Response Rules
-: When this setting is selected, you can select one of the following rules:
+**Apply Response Rules**: When this setting is selected, you can select one of the following rules:
 
-* Delegate to Policy: Select a policy to generate the response message. For example, the policy could use a **JSON Error** filter to generate a JSON response.
-* Response Content: Set the response body content and headers directly in the respective text areas. You can use the API Gateway selector syntax to evaluate and expand request details at runtime. The values specified on this tab are used in the outbound request to the URL.
-    * Body: Enter the content of the incoming request message body (body headers and body content). Defaults to `${content.body}`.
+* **Delegate to Policy**: Select a policy to generate the response message. For example, the policy could use a **JSON Error** filter to generate a JSON response.
+* **Response Content**: Set the response body content and headers directly in the respective text areas. You can use the API Gateway selector syntax to evaluate and expand request details at runtime. The values specified on this tab are used in the outbound request to the URL.
 
-    For example, enter the `Content-Type` followed by a return, and then the required message payload:
+    * **Body**: Enter the content of the incoming request message body (body headers and body content). Defaults to `${content.body}`.
 
-    ```
-    Content-Type:text/html
-    <!DOCTYPE html><html><body><h1>Hello World</h1></body></html>
-    ```
+        For example, enter the `Content-Type` followed by a return, and then the required message payload:
 
-    * Headers: Enter the HTTP headers associated with the incoming request message. Defaults to `${http.headers}`.
+        ```
+        Content-Type:text/html
+        <!DOCTYPE html><html><body><h1>Hello World</h1></body></html>
+        ```
 
-#### Use the Set Message filter
+    * **Headers**: Enter the HTTP headers associated with the incoming request message. Defaults to `${http.headers}`.
+
+### Create customized generic error using the Set Message filter
 
 You can also use the **Set Message** filter to create customized generic errors. The **Set Message** filter can change the contents of the message body to any arbitrary content. When an exception occurs in a policy, you can use this filter to customize the body of the generic error.
 
-For details on how to use the **Set Message** filter to generate customized faults and return them to the client, see the example in [SOAP fault handling](https://axway.zoominsoftware.io/bundle/APIGateway_78_PolicyDevFilterReference_allOS_en_HTML5/page/Content/PolicyDevTopics/fault_soap.htm). You can use the same approach to generate customized generic errors.
+For details on how to use the **Set Message** filter to generate customized faults and return them to the client, see the example in [SOAP fault filter](#soap-fault-filter). You can use the same approach to generate customized generic errors.
 
 ## JSON error filter
 
@@ -81,7 +77,7 @@ In cases where a JavaScript Object Notation (JSON) transaction fails, the API Ga
 to convey error information to the client. By default, the API Gateway returns a very basic fault to the client when a message filter fails.
 
 You can add the **JSON Error**
-filter to a policy to return more meaningful error information to the client. For example, the following message extract shows the format of a JSON error raised when a JSON Schema Validation filter fails:
+filter to a policy to return more meaningful error information to the client. For example, the following message extract shows the format of a JSON error raised when a **JSON Schema Validation** filter fails:
 
 ```json
 {
@@ -99,10 +95,10 @@ filter to a policy to return more meaningful error information to the client. Fo
 }
 ```
 
-{{< alert title="Note" color="primary" >}}For security reasons, it is good practice to return as little information as possible to the client. However, for diagnostic reasons, it is useful to return as much information to the client as possible. Using the **JSON Error**
-filter, administrators have the flexibility to configure just how much information to return to clients, depending on their individual requirements.{{< /alert >}}
+For security reasons, it is good practice to return as little information as possible to the client. However, for diagnostic reasons, it is useful to return as much information to the client as possible. Using the **JSON Error**
+filter, administrators have the flexibility to configure just how much information to return to clients, depending on their individual requirements.
 
-For more details on JSON schema validation, see [*JSON schema validation* on page 1](content_schema_json.htm). For more details on JSON, see <http://www.json.org/index.html>.
+For more details on JSON, see <http://www.json.org/index.html>.
 
 Configure the following general settings:
 
@@ -111,19 +107,17 @@ Enter an appropriate name for this filter to display in a policy.
 
 **HTTP Response Code Status**:
 Enter the HTTP response code status for this JSON error filter. This ensures that a meaningful response is sent to the client in the case of an error occurring in a configured policy. Defaults to `500`
-(`Internal Server Error`). For a complete list of status codes, see the [HTTP Specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html).
+(Internal Server Error). For a complete list of status codes, see the [HTTP Specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html).
 
 The following configuration options are available in the **JSON Error Contents**
 section:
 
 **Show detailed explanation of error**:
-Select this option to return a detailed explanation of the JSON error in the error message. This makes it possible to suppress the reason for the exception in a tightly locked down system. By default, the reason is displayed as `message blocked`
-in the JSON error. This option displays the value of the `${circuit.failure.reason}`
+Select this option to return a detailed explanation of the JSON error in the error message. This makes it possible to suppress the reason for the exception in a tightly locked down system. By default, the reason is displayed as `message blocked` in the JSON error. This option displays the value of the `${circuit.failure.reason}`
 message attribute selector.
 
 **Show filter execution path**:
-Select this option to return the list of filters run on the message before the error occurred. For each filter listed in the JSON Error, the status is output (`Pass`
-or `Fail`). The following message extract shows a *filter execution path*
+Select this option to return the list of filters run on the message before the error occurred. For each filter listed in the JSON Error, the status is output (`Pass` or `Fail`). The following message extract shows a *filter execution path*
 returned in a JSON error:
 
 ```json
@@ -195,23 +189,18 @@ Select this option to return the message attributes present when the JSON error 
 ]
 ```
 
-{{< alert title="Caution" color="warning" >}}For security reasons, **Show filter execution path**, **Show stack trace**, and **Show current message attributes**
-should not be used in a production environment.{{< /alert >}}
+{{< alert title="Caution" color="warning" >}}For security reasons, **Show filter execution path**, **Show stack trace**, and **Show current message attributes** should not be used in a production environment.{{< /alert >}}
 
-### Create customized JSON errors
-
-You can use the following approaches to create customized JSON errors.
-
-#### Use the Generic Error filter
+### Create customized JSON error using the Generic Error filter
 
 Instead of using the **JSON Error**
 filter, you can use the **Generic Error**
 filter to transform the JSON error message returned by applying an XSLT stylesheet. The **Generic Error**
 filter examines the incoming message and infers the type of message to be returned (for example, JSON or SOAP). You can use the **Advanced** tab to customize the generation of a response message if the request cannot be inferred as a SOAP or JSON request.
 
-For more details, see [*Generic error handling* on page 1](fault_generic.htm).
+For more details, see [Generic error filter](#generic-error-filter).
 
-#### Use the Set Message filter
+### Create customized JSON error using the Set Message filter
 
 You can create customized JSON errors using the **Set Message**
 filter with the **JSON Error**
@@ -219,7 +208,7 @@ filter. The **Set Message**
 filter can change the contents of the message body to any arbitrary content. When an exception occurs in a policy, you can use this filter to customize the body of the JSON error.
 
 For details on how to use the **Set Message**
-filter to generate customized faults and return them to the client, see the example in [*SOAP fault handling* on page 1](fault_soap.htm). You can use the same approach to generate customized JSON errors.
+filter to generate customized faults and return them to the client, see the example in [SOAP fault filter](#soap-fault-filter). You can use the same approach to generate customized JSON errors.
 
 ## SOAP fault filter
 
@@ -269,9 +258,7 @@ Select this option to return a detailed explanation of the SOAP fault in the fau
 in the SOAP fault).
 
 **Show Filter Execution Path**:
-Select this option to return a SOAP fault containing the list of filters run on the message before the error occurred. For each filter listed in the SOAP fault, the status is given (`pass`
-or `fail`). The following message shows a *filter execution path*
-returned in a SOAP fault:
+Select this option to return a SOAP fault containing the list of filters run on the message before the error occurred. For each filter listed in the SOAP fault, the status is given (`pass` or `fail`). The following message shows a *filter execution path* returned in a SOAP fault:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -285,12 +272,11 @@ returned in a SOAP fault:
                 <env:Value>policy failed</env:Value>
             </env:Subcode>
          </env:Code>
-         <env:Detail xmlns:axwayfault="http://www.axway.com/soapfaults" 
-             axwayfault:type="exception" type="exception">
-             <axwayfault:path> 
-                <axwayfault:visit node="HTTP Parser" status="Pass"></axwayfault:visit> 
-                <axwayfault:visit node="/services" status="Fail"></axwayfault:visit> 
-                <axwayfault:visit node="/status" status="Fail"></axwayfault:visit> 
+         <env:Detail xmlns:axwayfault="http://www.axway.com/soapfaults" axwayfault:type="exception" type="exception">
+             <axwayfault:path>
+                <axwayfault:visit node="HTTP Parser" status="Pass"></axwayfault:visit>
+                <axwayfault:visit node="/services" status="Fail"></axwayfault:visit>
+                <axwayfault:visit node="/status" status="Fail"></axwayfault:visit>
              </axwayfault:path>
          </env:Detail>
        </env:Fault>
@@ -318,40 +304,36 @@ element, as shown in the following example:
 </fault:attributes>
 ```
 
-### Create Customized SOAP faults
-
-You can use the following approaches to create customized SOAP faults.
-
-#### Use the Generic Error filter
+### Create customized SOAP fault using the Generic Error filter
 
 Instead of using the **SOAP Fault**
 filter, you can use the **Generic Error**
 filter to transform the SOAP fault message returned by applying an XSLT stylesheet. The **Generic Error**
 filter examines the incoming message and infers the type of message to be returned (for example, JSON or SOAP). You can use the **Advanced** tab to customize the generation of a response message if the request cannot be inferred as a SOAP or JSON request.
 
-For more details, see [*Generic error handling* on page 1](fault_generic.htm).
+For more details, see [Generic error filter](#generic-error-filter).
 
-#### Use the Set Message filter
+### Create customized SOAP fault using the Set Message filter
 
 You can create customized SOAP faults using the **Set Message**
 filter with the **SOAP Fault**
 filter. The **Set Message**
 filter can change the contents of the message body to any arbitrary content. When an exception occurs in a policy, you can use this filter to customize the body of the SOAP fault. The following example demonstrates how to generate customized SOAP faults and return them to the client.
 
-##### Step 1: Create the top-level policy
+#### Create the top-level policy
 
 This example first creates a very simple policy called **Main Policy**. This policy ensures the size of incoming messages is between 100 and 1000 bytes. Messages in this range are echoed back to the client.
 
 ![Main Policy](/Images/docbook/images/fault/main_circuit_start.gif)
 
-##### Step 2: Create the fault policy
+#### Create the fault policy
 
 Next, create a second policy called **Fault Circuit**. This policy uses the **Set Message**
 filter to customize the body of the SOAP fault. When configuring this filter, enter the contents of the customized SOAP fault to return to clients in the text area provided.
 
 ![Fault Circuit](/Images/docbook/images/fault/fault_circuit.gif)
 
-##### Step 3: Create a shortcut to the fault policy
+#### Create a shortcut to the fault policy
 
 Add a **Policy Shortcut**
 filter to the **Main Policy**
@@ -361,7 +343,7 @@ is displayed as follows:
 
 ![Main Policy with Fault Handler](/Images/docbook/images/fault/main_circuit.gif)
 
-##### How this example works
+#### How this example works
 
 Assume a 2000-byte message is received by the API Gateway and is passed to the **Main Policy**
 for processing. The message is parsed by the **HTTP Parser**
