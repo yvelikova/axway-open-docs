@@ -39,7 +39,7 @@ Before you start configuration, you must have API Gateway installed on any machi
 
 ## Example names
 
-For the example in this section, the trusted Kerberos principal `TrustedAPIGateway` can impersonate valid users in Active Directory and request service tickets in their name to the back-end service principals `HTTP/BackEndService.axway.com@AXWAY.COM` and `HOST/BackEndService.axway.com@AXWAY.COM`. You can use the example names, or replace them with names of your own.
+For the example in this section, the trusted Kerberos principal `TrustedAPIGateway` can impersonate valid users in Active Directory and request service tickets in their name to the back-end service principals `HTTP/BackEndService.axway.com@AXWAY.COM` and `HOST/BackEndService.axway.com@AXWAY.COM`.
 
 The example Kerberos realm name `AXWAY.COM` is specific to the examples in this guide. Replace the example realm name with your own realm name.
 
@@ -99,16 +99,17 @@ This section describes how to add Kerberos principals for the end user, trusted 
     * **Principal Name**: `${authentication.subject.id}@AXWAY.COM`
     * **Principal Type**: `NT_USER_NAME`
 
-3. Using a selector here enables you to impersonate multiple end users.
-4. Add a new Kerberos principal for the trusted Kerberos principal account as follows:
+    Using a selector here enables you to impersonate multiple end users.
+3. Add a new Kerberos principal for the trusted Kerberos principal account as follows:
     * **Name**: `TrustedAPIGateway for KCD`
     * **Principal Name**: `TrustedAPIGateway@AXWAY.COM`
     * **Principal Type**: `NT_USER_NAME`
 
-5. Add a new Kerberos principal for the back-end service account as follows:
-    **Name**: `<Back-end service name>` (for example, `Back-end Kerberos Service`)
-    **Principal Name**: `<Service Principal Name for the back-end service>` (for example, `HOST/BackEndService.axway.com@AXWAY.COM`)
-    **Principal Type**: `NT_USER_NAME`
+4. Add a new Kerberos principal for the back-end service account as follows:
+
+    * **Name**: `<Back-end service name>` (for example, `Back-end Kerberos Service`)
+    * **Principal Name**: `<Service Principal Name for the back-end service>` (for example, `HOST/BackEndService.axway.com@AXWAY.COM`)
+    * **Principal Type**: `NT_USER_NAME`
 
 ## Configure API Gateway policy
 
@@ -139,8 +140,7 @@ Although the trusted Kerberos principal can be referred to as a Kerberos service
         * **Anonymity**
         * **Replay Detection**
         * **Sequence Checking**
-    * **Synchronize to Avoid Replay Errors at Service**:
-    * Deselect this option to improve performance.
+    * **Synchronize to Avoid Replay Errors at Service**: Deselect this option to improve performance.
     * **Refresh when remaining validity is `<value>` seconds**: Set to `300`.
 
 ### Configure a Kerberos profile for the Kerberos client
@@ -160,7 +160,7 @@ To start, add a new policy named, for example, `Kerberos KCD SPNEGO Client-Side`
 
 **Configure the end user authentication method**\
 
-1. Configure the authentication mechanism the end user application requires. The required filters and configuration details depend on the type of authentication. For an example configuration, see [Configure a KCD demo setup](/docs/apigtw_kerberos/kerberos_use_case_KCD#configure-a-kcd-demo-setup).
+1. Configure the authentication mechanism the end user application requires. The required filters and configuration details depend on the type of authentication. For an example configuration, see [Configure a KCD demo setup](/docs/apigtw_kerberos/kerberos_use_case_kcd#configure-a-kcd-demo-setup).
 2. Right-click the first filter in your policy, and select **Set as Start**.
 
 **Configure connection to the back-end service**\
@@ -209,17 +209,13 @@ To start, add a new policy named, for example, `Kerberos KCD SPNEGO Client-Side`
 
     Replace the realm settings in the example with your Kerberos realm, and set the `kdc` setting to the host name of your Windows Domain Controller.
 
-For more details on the fields and options in this configuration window, see [Kerberos configuration](/docs/apigw_poldev/security_server_settings/#configure-kerberos-settings).
+    For more details on the fields and options in this configuration window, see [Kerberos configuration](/docs/apigw_poldev/security_server_settings/#configure-kerberos-settings).
 
-### Deploy the configuration
-
-To deploy the configuration to API Gateway, click the **Deploy** icon.
+3. Click the **Deploy** icon to deploy the configuration to API Gateway.
 
 You have now configured and deployed a simple KCD policy for SPNEGO authentication where API Gateway acts as the trusted Kerberos principal for KCD. The end user application that invokes this policy in API Gateway must provide authentication credentials to satisfy the chosen non-Kerberos authentication mechanism.
 
-For demonstration purposes, you can add API Gateway as the back-end service as well as sample users. See [Configure a KCD demo setup](configure_gw_to_act_as_test_svc_CD.htm).
-
-For other use cases covered in this guide, see [Kerberos use cases](../kerberos_overview.htm#Kerberos).
+For demonstration purposes, you can add API Gateway as the back-end service as well as sample users. See [Configure a KCD demo setup](#configure-a-kcd-demo-setup).
 
 ### Test the configuration
 
@@ -235,9 +231,9 @@ Follow the next steps to configure a test back-end service and sample users to t
 
 ### Configure a back-end service for testing
 
-For demonstration purposes, you can use another API Gateway instance as the back-end Kerberos service. API Gateway is configured as the Kerberos service for the most part the same way for both KCD and standard Kerberos authentication in the client-side transaction. For more details, see [Configure API Gateway to act as the Kerberos service](\docs\apigtw_kerberos\kerberos_use_case_demo#configure-api-gateway-to-act-as-the-kerberos-service).
+For demonstration purposes, you can use another API Gateway instance as the back-end Kerberos service. API Gateway is configured as the Kerberos service for the most part the same way for both KCD and standard Kerberos authentication in the client-side transaction. For more details, see [Configure API Gateway to act as the Kerberos service](/docs/apigtw_kerberos/kerberos_use_case_service/).
 
-The difference between KCD and standard SPNEGO configuration is that for KCD, the back-end service must have a Service Principal Name (SPN). For more details, see [Map an SPN to the user account](\docs\apigtw_kerberos\kerberos_use_case_service#map-an-spn-to-the-user-account).
+The difference between KCD and standard SPNEGO configuration is that for KCD, the back-end service must have a Service Principal Name (SPN). For more details, see [Map an SPN to the user account](/docs/apigtw_kerberos/kerberos_use_case_service/#map-an-spn-to-the-user-account).
 
 ### Configure sample authentication
 

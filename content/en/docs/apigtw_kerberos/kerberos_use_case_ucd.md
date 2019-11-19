@@ -1,6 +1,6 @@
 {
-"title": "API Gateway in unconstrained credentials delegation",
-"linkTitle": "API Gateway in unconstrained credentials delegation",
+"title": "Kerberos unconstrained delegation",
+"linkTitle": "Kerberos unconstrained delegation",
 "date": "2019-11-14",
 "weight":"12",
 "description": "A client application can authenticate to API Gateway using Kerberos by way of delegating its Kerberos credentials to API Gateway, which acts as an intermediary between a Kerberos client and Kerberos back-end services"
@@ -18,7 +18,7 @@ Using Kerberos authentication, API Gateway authenticates the Kerberos client. AP
 
 ![Diagram illustrating the unconstrained credential delegation.](/Images/IntegrationGuides/KerberosIntegration/cred_deleg_spnego/kerberos_use_case_UCD.png)
 
-A safer method for credentials delegation in Kerberos authentication is *constrained* delegation. In constrained delegation with protocol transition, the Kerberos service can obtain a Kerberos service ticket to itself on behalf of a Kerberos principal (end user) without requiring the principal to initially authenticate using Kerberos. Constrained delegation also restricts which back-end services the Kerberos service can request Kerberos service tickets on behalf of the client. The credential delegation is only allowed to a constrained set of Kerberos services that are configured in the Kerberos Key Distribution Center (KDC). For more details, see [API Gateway in Kerberos constrained delegation](/docs/apigtw_kerberos/kerberos_use_case_KCD).
+A safer method for credentials delegation in Kerberos authentication is *constrained* delegation. In constrained delegation with protocol transition, the Kerberos service can obtain a Kerberos service ticket to itself on behalf of a Kerberos principal (end user) without requiring the principal to initially authenticate using Kerberos. Constrained delegation also restricts which back-end services the Kerberos service can request Kerberos service tickets on behalf of the client. The credential delegation is only allowed to a constrained set of Kerberos services that are configured in the Kerberos Key Distribution Center (KDC). For more details, see [API Gateway in Kerberos constrained delegation](/docs/apigtw_kerberos/kerberos_use_case_kcd/).
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ Before you start configuration, you must have API Gateway installed on any machi
 
 ## Example names
 
-The example name for the intermediary Kerberos service used in this guide is `IntermediaryGateway`. You can use this name, or replace it with a name of your own.
+The example name for the intermediary Kerberos service used in this guide is `IntermediaryGateway`.
 
 The example Kerberos realm name `AXWAY.COM` is specific to the examples in this guide. Replace the example realm name with your own realm name.
 
@@ -40,9 +40,9 @@ This section describes how to configure a Kerberos service principal for API Gat
 2. Right-click **Users**, and select **New > User**.
 3. Enter a name for the Kerberos principal (such as `IntermediaryGateway`) in the **First Name** and **User Logon Name** fields, select your Active Directory domain from the drop-down menu (`@axway.com`), and click **Next**.
 4. Enter the password, and do the following:
-    * User must change password at next logon: Deselect this.
-    * User cannot change password: Select this.
-    * Password never expires: Select this.
+    * **User must change password at next logon**: Deselect this.
+    * **User cannot change password**: Select this.
+    * **Password never expires**: Select this.
 
     This ensures that a working API Gateway configuration does not stop working when a user chooses, or is prompted to change their password. API Gateway does not track these actions.
 
@@ -157,14 +157,14 @@ To start, add a new policy named, for example, `Kerberos Intermediary for Uncons
 3. Change **Kerberos Standard** to **SPNEGO Over HTTP**, and click **Finish**.
 4. Right-click the **Kerberos Service** filter, and select **Set as Start**.
 
-### Configure retrieving the end user credentials
+**Configure retrieving the end user credentials**\
 
 1. Open the **Attributes** category in the palette, and drag a **Retrieve from HTTP Header** filter onto the policy canvas.
 2. Set the **HTTP Header name** to `WWW-Authenticate` and **Attribute ID** to `outer.www.authenticate`, and click **Finish**.
 3. Open the **Conversion** category in the palette, drag a **Remove HTTP Header** filter onto the policy canvas.
 4. Set **HTTP Header Name** to `WWW-Authenticate`.
 
-### Configure authentication to the back-end service
+**Configure authentication to the back-end service**\
 
 1. Open the **Routing** category in the palette, and drag a **Connect to URL** filter onto the canvas.
 2. Enter the **URL** used to invoke the back-end Kerberos service.
@@ -200,6 +200,7 @@ The policy has the following flow:
     ```
     [libdefaults]
     default_realm = AXWAY.COM
+
     [realms]
     AXWAY.COM = {
     kdc = dc.axway.com
@@ -220,7 +221,6 @@ For demonstration purposes, you may want to add API Gateway as the client applic
 [libdefaults]
 default_realm = AXWAY.COM
 forwardable=true
-
 
 [realms]
 AXWAY.COM = {

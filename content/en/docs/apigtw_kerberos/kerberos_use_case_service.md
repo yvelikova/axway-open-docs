@@ -22,7 +22,7 @@ Before you start configuration, you must have API Gateway installed on any machi
 
 ## Example names
 
-For the example in this section, a client application supporting Kerberos connects to the Kerberos service `ServiceGateway` running on the host machine `gateway.axway.com` connects to an existing back-end service. You can use the example names, or replace them with names of your own.
+For the example in this section, a client application supporting Kerberos connects to the Kerberos service `ServiceGateway` running on the host machine `gateway.axway.com` connects to an existing back-end service.
 
 The example Kerberos realm name `AXWAY.COM` is specific to the examples in this guide. Replace the example realm name with your own realm name.
 
@@ -30,9 +30,9 @@ The next sections describe the steps to configure the gateway as a Kerberos serv
 
 ## Configuration process
 
-The most common client application in this scenario is a browser, so this example focuses on that. For instructions on how to configure your browser, see [Configure your browser to authenticate to API Gateway](#configure_browser_service)
+The most common client application in this scenario is a browser, so this example focuses on that. For instructions on how to configure your browser, see [Configure your browser to authenticate to API Gateway](#configure-your-browser-to-authenticate-to-api-gateway)
 
-The connection between the client application and API Gateway acting as the Kerberos service is by default unsecured. For security reasons, it is recommended to enable SSL/TLS connection in the Kerberos service. SSL/TLS is configured in the SSL port on the Kerberos service, but you must also configure your browser separately to use SSL/TLS connection. For more details, see [Configure browser SPNEGO authentication over SSL/TLS](#system_config_for_spnego_ssl_service).
+The connection between the client application and API Gateway acting as the Kerberos service is by default unsecured. For security reasons, it is recommended to enable SSL/TLS connection in the Kerberos service. SSL/TLS is configured in the SSL port on the Kerberos service, but you must also configure your browser separately to use SSL/TLS connection. For more details, see [Configure browser authentication over SSL/TLS](#configure-browser-authentication).
 
 ## Configure a user account in Active Directory
 
@@ -55,14 +55,14 @@ This section describes how to configure a Kerberos service principal for API Gat
 
     If you cannot deselect **User must change password at next logon**, ensure the user changes the password and that the new password or keytab is deployed to API Gateway *before* API Gateway attempts to connect as this user.
 
-    You can store Kerberos passwords in a KPS table to update a changed password in runtime. For more details, see [Use KPS to store passwords for Kerberos authentication](/docs/apigtw_kerberos/KerberosIntegration/kerberos_kps).
+    You can store Kerberos passwords in a KPS table to update a changed password in runtime. For more details, see [Use KPS to store passwords for Kerberos authentication](/docs/apigtw_kerberos/kerberos_kps).
 
 6. Click **Next > Finish**.
 7. Right-click the new user **gateway**, and select **Properties**.
 8. On the **Account** tab, select **Use DES encryption types for this account**.
 9. Click **Apply > OK**.
 
-As a Kerberos service, API Gateway authenticates the client application using Kerberos authentication. For the authentication to succeed, the client application must have an account configured in your Active Directory. For an example configuration, see [Configure a user account in Active Directory](/docs/apigtw_kerberos/active_directory_configuration_client).
+As a Kerberos service, API Gateway authenticates the client application using Kerberos authentication. For the authentication to succeed, the client application must have an account configured in your Active Directory. For an example configuration, see [Configure a user account in Active Directory](#configure-a-user-account-in-active-directory).
 
 ### Map an SPN to the user account
 
@@ -84,9 +84,9 @@ You must map a Service Principal Name (SPN) to the user account you created (`ga
     Replace `gateway.axway.com` with the full host name your browser will use when connecting to API Gateway.\
     Replace `AXWAY.COM` with your Kerberos realm name. Note that the realm name should be uppercase.
 
-This command creates an SPN `HTTP/gateway.axway.com@AXWAY.COM`, which is mapped to the user account (`gateway`).
+    This command creates an SPN `HTTP/gateway.axway.com@AXWAY.COM`, which is mapped to the user account (`gateway`).
 
-The command also creates a keytab file for the account that you can use later when configuring the Kerberos service in Policy Studio. See [Configure Kerberos principal](/docs/apigtw_kerberos/kerberos_use_case_client#configure-kerberos-principals).
+    The command also creates a keytab file for the account that you can use later when configuring the Kerberos service in Policy Studio. See [Configure Kerberos principal](/docs/apigtw_kerberos/kerberos_use_case_client#configure-kerberos-principals).
 
 If you do not want to create a keytab file, you can use the following command:
 
@@ -106,44 +106,44 @@ For example, if the user enters `http://gateway.axway.com:8080/kerberos`, the SP
 
 If the host name is defined in the DNS as a host (A-name), the SPN is directly resolved from the host:
 
-* The DNS server has the following DNS record defined:
+The DNS server has the following DNS record defined:
 
-    ```
-    HOST(A): gateway.axway.com
-    ```
+```
+HOST(A): gateway.axway.com
+```
 
-* The following URL is entered in the client browser:
+The following URL is entered in the client browser:
 
-    ```
-    URL: http://gateway.axway.com:8080/kerberos
-    ```
+```
+URL: http://gateway.axway.com:8080/kerberos
+```
 
-* The requested SPN is:
+The requested SPN is:
 
-    ```
-    HTTP/gateway.axway.com
-    ```
+```
+HTTP/gateway.axway.com
+```
 
 If DNS aliases (C-names) are used as host names, the SPN is resolved by mapping the C-name to a DNS A-name:
 
-* The DNS server has the following records defined:
+The DNS server has the following records defined:
 
-    ```
-    HOST(A): gateway.axway.com
-    Alias (CNAME): test -> gateway.axway.com
-    ```
+```
+HOST(A): gateway.axway.com
+Alias (CNAME): test -> gateway.axway.com
+```
 
-* The following URL is entered in the client browser:
+The following URL is entered in the client browser:
 
-    ```
-    URL: http://test.axway.com:8080/kerberos
-    ```
+```
+URL: http://test.axway.com:8080/kerberos
+```
 
-* The requested SPN is:
+The requested SPN is:
 
-    ```
-    HTTP/gateway.axway.com
-    ```
+```
+HTTP/gateway.axway.com
+```
 
 If all host names are defined as hosts (A-names) in the DNS, you must map separate SPNs for the hosts to the user account you configured.
 
@@ -204,8 +204,6 @@ This section describes how to configure API Gateway as the Kerberos service usin
 3. Click **Enter Password**, and enter the password for `gateway@AXWAY.COM`.
 4. On the **Advanced** tab, set **Mechanism** to **SPNEGO\_MECHANISM**, and click **OK**.
 
-For more details on the fields and options in this configuration window, see [Configure Kerberos services](/csh?context=614&product=prod-api-gateway-77) in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
-
 ### Configure the Kerberos authentication
 
 Configure the Kerberos policy for API Gateway as the Kerberos service.
@@ -214,8 +212,6 @@ To start, add a new policy named, for example, `Kerberos Service SPNEGO`.
 
 1. Open the **Authentication** category in the palette, and drag a **Kerberos Service** filter onto the policy canvas.
 2. Select the Kerberos service you configured (`ServiceGateway Kerberos Service`), select **SPNEGO Over HTTP**, and click **OK**.
-    For more details on the fields and options in this configuration window, see [Kerberos service authentication](/csh?context=510&product=prod-api-gateway-77)
-    in the [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
 3. Right-click the **Kerberos Service** filter on the policy canvas, and select **Set as Start**.
 
 ### Configure connection to the back-end service
@@ -223,8 +219,6 @@ To start, add a new policy named, for example, `Kerberos Service SPNEGO`.
 1. Configure the authentication mechanism the back-end service requires. The required filters and configuration details depend on the type of authentication. For more details on different authentication methods.
 2. Open the **Routing** category in the filter palette, and drag a **Connect to URL** filter onto the policy canvas.
 3. Enter the **URL** used that invokes the back-end service, and click **Finish**.
-    For more details on the fields and options in this configuration window, see [Connect to URL](/csh?context=502&product=prod-api-gateway-77) in the
-    [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
 
 ### Build the policy
 
@@ -233,23 +227,21 @@ To start, add a new policy named, for example, `Kerberos Service SPNEGO`.
 
     ![policy with Kerberos SErvice, Set Success Messae, and Reflect Message filters](/Images/IntegrationGuides/KerberosIntegration/browser_spnego/gw_config_policy.png)
 
-The policy has the following flow:
+    The policy has the following flow:
 
-* API Gateway authenticates the client application, such as a browser, using Kerberos authentication.
-* API Gateway creates the authentication tokens the back-end service requires.
-* API Gateway connects and authenticates to the back-end service.
+    * API Gateway authenticates the client application, such as a browser, using Kerberos authentication.
+    * API Gateway creates the authentication tokens the back-end service requires.
+    * API Gateway connects and authenticates to the back-end service.
 
-If API Gateway can map the Kerberos credentials received from the client app to the end-user-specific credentials in the non-Kerberos authentication mechanism, API Gateway can authenticate the actual end user to the back-end service.
+    If API Gateway can map the Kerberos credentials received from the client app to the end-user-specific credentials in the non-Kerberos authentication mechanism, API Gateway can authenticate the actual end user to the back-end service.
 
-### Deploy the configuration
-
-To deploy the configuration to API Gateway, click **Deploy** icon.
+3. Click the **Deploy** icon to deploy the configuration to API Gateway.
 
 You have now configured and deployed a simple Kerberos policy for SPNEGO authentication.
 
-The most common client application in this scenario is a standard browser. In addition to configuring API Gateway, you must also configure your browser to authenticate to API Gateway. For more details, see [Configure your browser to authenticate to API Gateway](#configure-your-browser).
+The most common client application in this scenario is a standard browser. In addition to configuring API Gateway, you must also configure your browser to authenticate to API Gateway. For more details, see [Configure your browser to authenticate to API Gateway](#configure-your-browser-to-authenticate-to-api-gateway).
 
-By default, the connection between the browser and API Gateway acting as the Kerberos service is by default unsecured. For details how to change to a secured connection, see [Configure browser authentication over SSL/TLS](#configure-browser-authentication).
+By default, the connection between the browser and API Gateway acting as the Kerberos service is by default unsecured. For details how to change to a secured connection, see [Configure browser authentication over SSL/TLS](#configure-your-browser-to-use-ssl-tls-connection).
 
 ## Configure your browser to authenticate to API Gateway
 
@@ -322,14 +314,11 @@ For more details on the fields and options in this configuration window, see [Ma
 2. Click **Add > HTTPS Interface**, and enter a name for the interface.
 3. On the **Network** tab, set **Port** to `8081`.
 4. Click **X.509 Certificate**, select your SSL certificate, and click **OK**.
+5. Click the **Deploy** icon to deploy the configuration to API Gateway.
 
 For more details on the fields and options in this configuration window, see [Configure HTTP services](/docs/apigw_poldev/gw_instances/general_services/).
 
-**Deploy the configuration**\
-
-To deploy the configuration to API Gateway, click **Deploy** icon.
-
-You must configure your browser to use secure connection as well. For more details, see [Configure your browser to use SSL/TLS connection](configure_browser_ssl_service.htm).
+You must configure your browser to use secure connection as well. For more details, see [Configure your browser to use SSL/TLS connection](#configure-your-browser-to-use-ssl-tls-connection).
 
 ## Configure your browser to use SSL/TLS connection
 
@@ -341,6 +330,7 @@ This section describes how to configure your browser to authenticate with SPNEGO
 2. Click **Tools > Internet Options**.
 3. On the **Security** tab, click **Local Intranet > Sites > Advanced**.
 4. In **Add this website to the zone**, enter your host name (`https://gateway.axway.com`), and click **Add**. You do not have to enter the port or the relative path, and you can use wildcards for the host name (`https://*.axway.com`).
+
     Ensure the host name matches the SPN you mapped to the user account in Active Directory. The SPN must also match the host name the client browser authenticating to API Gateway specifies in the URL. See [Map an SPN to the user account](#map-an-spn-to-the-user-account).
 5. Click **Close**.
 
@@ -350,6 +340,7 @@ This section describes how to configure your browser to authenticate with SPNEGO
 2. In the address bar, enter `about:config`. If you get a warning prompt on changing the advanced settings, accept it.
 3. Right-click the preference name **network.negotiate-auth.trusted-uris**, and select **Modify**.
 4. Enter your host name (`https://gateway.axway.com`). If you have multiple entries, separate them with a comma.
+
     Ensure the host name matches the SPN you mapped to the user account in Active Directory. The SPN must also match the host name the client browser authenticating to API Gateway specifies in the URL. See [Map an SPN to the user account](#map-an-spn-to-the-user-account).
 5. Click **OK**.
 

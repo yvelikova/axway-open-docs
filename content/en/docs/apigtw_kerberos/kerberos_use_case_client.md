@@ -20,7 +20,7 @@ Before you start configuration, you must have API Gateway installed on any machi
 
 ## Example names
 
-For the example in this section, the Kerberos client `ClientGateway` connects to an existing back-end service. You can use the example names, or replace them with names of your own.
+For the example in this section, the Kerberos client `ClientGateway` connects to an existing back-end service.
 
 The example Kerberos realm name `AXWAY.COM` is specific to the examples in this guide. Replace the example realm name with your own realm name.
 
@@ -48,7 +48,7 @@ Configure a Kerberos client principal for API Gateway in Active Directory acting
 
 5. Click **Next > Finish**.
 
-As a Kerberos client, API Gateway authenticates to an existing back-end Kerberos service. For the authentication to succeed, the back-end Kerberos service must have an account and any SPNs configured in your Active Directory. For an example configuration, see [Configure a user account in Active Directory](configure-a-user-account-in-active-directory).
+As a Kerberos client, API Gateway authenticates to an existing back-end Kerberos service. For the authentication to succeed, the back-end Kerberos service must have an account and any SPNs configured in your Active Directory. For an example configuration, see [Configure a user account in Active Directory](#configure-a-user-account-in-active-directory).
 
 ## Configure Kerberos principals
 
@@ -86,7 +86,7 @@ This section describes how to configure API Gateway as the Kerberos client using
         * **Anonymity**
         * **Replay Detection**
         * **Sequence Checking**
-    * ***Synchronize to Avoid Replay Errors at Service**: Deselect this option to improve performance.
+    * **Synchronize to Avoid Replay Errors at Service**: Deselect this option to improve performance.
 
 ### Configure a Kerberos profile for the Kerberos client
 
@@ -110,8 +110,6 @@ In this example, API Gateway authenticates the end user application using HTTP B
 1. Open the **Authentication** category, and drag a **HTTP Basic** filter onto the policy canvas.
 2. Set **Credential Format** to **User Name**, and select **Allow client challenge**.
 3. Set **Repository Name** to `Local User Store`, and click **Finish**.\
-    For more details on the fields and options in this configuration window, see [HTTP basic authentication](/csh?context=506&product=prod-api-gateway-77)
-    in the [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
 4. Right-click the **HTTP Basic** filter, and select **Set as Start**.
 
 API Gateway does not authenticate the end user to the back end. The back-end service only sees API Gateway's Kerberos credentials regardless of how the end user authenticates to API Gateway.
@@ -144,23 +142,18 @@ The policy has the following flow:
 1. In the node tree, click **Environment Configuration > Server Settings > Security > Kerberos**, and click **Add Kerberos Configuration**.
 2. On the **krb5.conf** tab, change the following settings:
 
-```
-[libdefaults]
-default_realm = AXWAY.COM
-[realms]
-AXWAY.COM = {
-kdc = dc.axway.com
-}
-```
+    ```
+    [libdefaults]
+    default_realm = AXWAY.COM
+    [realms]
+    AXWAY.COM = {
+    kdc = dc.axway.com
+    }
+    ```
 
-Replace the realm settings in the example code with your Kerberos realm, and set the `kdc` setting to the host name of your Windows Domain Controller.
+    Replace the realm settings in the example code with your Kerberos realm, and set the `kdc` setting to the host name of your Windows Domain Controller.
 
-For more details on the fields and options in this configuration window, see [Kerberos configuration](/csh?context=615&product=prod-api-gateway-77) in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
-
-### Deploy the configuration
-
-To deploy the configuration to API Gateway, click the **Deploy** icon.
+3. Click the **Deploy** icon to deploy the configuration to API Gateway.
 
 You have now configured and deployed a simple Kerberos policy for SPNEGO authentication.
 

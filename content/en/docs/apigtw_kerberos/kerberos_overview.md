@@ -44,8 +44,8 @@ Kerberos authentication based on Simple and Protected Negotiation Protocol (SPNE
 
 This guide provides examples of the following Kerberos scenarios:
 
-* [Demo setup: API Gateway as both Kerberos client and service](Kerberos_demo/kerberos_use_case_demo.htm)
-* [API Gateway as a Kerberos client](Kerberos_client/kerberos_use_case_client.htm)
-* [API Gateway as a Kerberos service](Kerberos_service/kerberos_use_case_service.htm)
-* [API Gateway in Kerberos constrained delegation](KerberosConstrainedDelegation/kerberos_use_case_KCD.htm)
-* [API Gateway in unconstrained credentials delegation](UnconstrainedCredentialsDelegation/kerberos_use_case_ucd.htm)
+* [Demo setup: API Gateway as both Kerberos client and service](/docs/apigtw_kerberos/kerberos_use_case_demo/)
+* [API Gateway as a Kerberos client](/docs/apigtw_kerberos/kerberos_use_case_client/)
+* [API Gateway as a Kerberos service](/docs/apigtw_kerberos/kerberos_use_case_service/)
+* [API Gateway in Kerberos constrained delegation](/docs/apigtw_kerberos/kerberos_use_case_kcd/)
+* [API Gateway in unconstrained credentials delegation](/docs/apigtw_kerberos/kerberos_use_case_ucd/)
