@@ -94,7 +94,7 @@ field, this results in the following output XML:
 </customer>
 ```
 
-### Insert processing instructions into the output XML
+#### Insert processing instructions into the output XML
 
 For example, take the following incoming JSON message:
 
@@ -205,7 +205,7 @@ processing instruction, the JSON array is reconstructed regardless of this optio
 
 The **XML to JSON** filter aborts with a `CircuitAbortException` if the JSON parser has a problem parsing the stream converted from XML to JSON.
 
-## Add HTTP header
+## Add HTTP header filter
 
 The API Gateway can add HTTP headers to a message as it passes through a policy. It can also set a Base64-encoded value for the header. For example, you can use the **Add HTTP Header**
 filter to add a message ID to an HTTP header. This message ID can then be forwarded to the destination web service, where messages can be indexed and tracked by their IDs. In this way, you can create a complete *audit trail*
@@ -214,49 +214,38 @@ of the message from the time it is received by the API Gateway, until it is proc
 Each message being processed by the API Gateway is assigned a unique transaction ID, which is stored in the `id`
 message attribute. You can use the `${id}`
 selector to represent the value of the unique message ID. At runtime, this selector is expanded to the value of the `id`
-message attribute. For more details on selectors, see
-[Select configuration values at runtime](/csh?context=630&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
-
-</div>
-
-<div id="p_conversion_add_header_conf">
-
-Configuration
--------------
+message attribute.
 
 To configure the **Add HTTP Header**
 filter, complete the following fields:
 
-**Name**:\
+**Name**:
 Enter an appropriate name for the filter to display in a policy.
 
-**HTTP Header Name**:\
+**HTTP Header Name**:
 Enter the name of the HTTP header to add to the message.
 
-**HTTP Header Value**:\
+**HTTP Header Value**:
 Enter the value of the new HTTP header. You can also enter selectors to represent message attributes. At runtime, the API Gateway expands the selector to the current value of the corresponding message attribute. For example, the `${id}`
 selector is replaced by the value of the current message ID. Message attribute selectors have the following syntax:
 
-```json
+```
 ${message_attribute}
 ```
 
-**Override existing header**:\
+**Override existing header**:
 Select this setting to override the existing header value. This setting is selected by default.
 
 {{< alert title="Note" color="primary" >}}When overriding an existing header, the header can be an HTTP body-related header or a general HTTP header. To override an HTTP body-related header (for example, `Content-Type`), you must select the **Override existing header**
-and **Add header to body**
-settings.{{< /alert >}}
-**Base64 Encode**:\
+and **Add header to body** settings.{{< /alert >}}
+
+**Base64 Encode**:
 Select this setting to Base64 encode the HTTP header value. For example, you should use this if the header value is an X.509 certificate.
 
-**Add header to body**:\
+**Add header to body**:
 Select this option to add the HTTP header to the message body. Use this option for HTTP body entity headers, which provide metadata about the message body. For example, this includes headers such as the following:
 
-```json
+```
 Content-Language
 Content-Length
 Content-Location
@@ -268,11 +257,11 @@ Last-Modified
 Extension header
 ```
 
-**Add header to HTTP headers attribute**:\
+**Add header to HTTP headers attribute**:
 Select this option to add the HTTP header to the `http.headers`
 message attribute. Use this option for general HTTP headers, which apply to both request and response messages. For example, this includes headers such as `SOAPAction`:
 
-```json
+```
 Server:
 Connection: close
 X-CorrelationID: Id-9e38c653c24c0000000000009593813a 0
@@ -283,7 +272,7 @@ Content-Type: text/xml; charset="utf-8"
 MyHeader: FOO
 ```
 
-```json
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Body>
@@ -296,56 +285,39 @@ MyHeader: FOO
 </soap:Envelope>
 ```
 
-</div>
-
-## Remove HTTP header
+## Remove HTTP header filter
 
 The API Gateway can strip a named HTTP header from the message as it passes through a policy. This is especially useful in cases where end user credentials are passed to the API Gateway in an HTTP header. After processing the credentials, you can use the **Remove HTTP Header**
 filter to strip the header from the message to ensure that it is not forwarded on to the destination web service.
 
-</div>
-
-<div id="p_conversion_remove_header_conf">
-
-Configuration
--------------
-
 To configure the **Remove HTTP Header**
 filter, perform the following steps:
 
-1.  Enter an appropriate name for this filter in the **Name**
+1. Enter an appropriate name for this filter in the **Name**
     field.
-2.  Specify the name of the HTTP header to remove in the **HTTP Header Name**
+2. Specify the name of the HTTP header to remove in the **HTTP Header Name**
     field.
-3.  Select **Fail if header is not present**
-    to configure the API Gateway to abort the filter if the message does not contain the named HTTP header. Headers can be added to the message using the **Add HTTP Header** filter (see [*Add HTTP header](conversion_add_header.htm)).
+3. Select **Fail if header is not present**
+    to configure the API Gateway to abort the filter if the message does not contain the named HTTP header. Headers can be added to the message using the **Add HTTP Header** filter.
 
-</div>
-
-## Add node to JSON document
+## Add JSON node filter
 
 You can use the **JSON Add Node**
 filter to add a node to a JavaScript Object Notation (JSON) document. The new node is inserted into the location specified by a JSON Path expression. JSON Path is a query language that enables you to select nodes in a JSON document.
 
 For more details on JSON Path, see <http://code.google.com/p/jsonpath>.
 
-</div>
-
-<div id="p_conversion_add_json_node_gen_conf">
-
-Configuration
--------------
-
 You can configure the following settings:
 
-**Name**:\
+**Name**:
 Enter a suitable name that reflects the role of this filter in the policy.
 
-**JSON Path Expression**:\
+**JSON Path Expression**:
 Enter the JSON Path expression used to add the node to the JSON document (for example, `$.store`). Policy Studio warns you if you enter an unsupported JSON Path expression.
 
 {{< alert title="Note" color="primary" >}}If this expression returns more than one node, the first node is used. If the expression returns no nodes, the filter returns false.{{< /alert >}}
-**Node Source**:\
+
+**Node Source**:
 In the **Content**
 area, enter the JSON node to be inserted into the message. For example, the following node source represents a new car:
 
@@ -360,41 +332,34 @@ area, enter the JSON node to be inserted into the message. For example, the foll
 
 Select one of the following options for the source of the new node:
 
-* **Add as a new item to an array**:\
+* **Add as a new item to an array**:
     If you select this option, the new JSON node is added as an item in an array.
-* **Add as a new item with field name**:\
+* **Add as a new item with field name**:
     If you select this option, the new JSON node is added as a field specified in the **Field Name**
     field (for example, `car`).
-* **Insert previously removed nodes**:\
+* **Insert previously removed nodes**:
     You can configure a **JSON Remove Node**
     filter to remove JSON nodes from the message and store them in the `deleted.json.node.list`
     message attribute. You can then use the **JSON Add Node**
     filter to reinsert these nodes in a different location in the message, effectively moving the deleted nodes in the message. When selecting this option, you must also select **Save deleted nodes to be reinserted to new location**
     in the **Remove JSON Node**
     filter, which runs before the **Add JSON Node**
-    filter in the policy. For more details, see [*Remove node from JSON document](conversion_remove_json_node.htm).
+    filter in the policy.
 
-**What to do with any existing siblings in the container**:\
+**What to do with any existing siblings in the container**:
 Select one of the following options to determine where the new node is placed relative to the nodes returned by the JSON Path expression:
 
-* **Append**:\
+* **Append**:
     The new node is appended as a child node of the node returned by the JSON Path expression. If there are already child nodes of the node returned by the JSON expression, the new node is added as the last child node.
-* **Replace**:\
+* **Replace**:
     The node pointed to by the JSON expression is completely replaced by the new node.
 
-</div>
-
-<div id="p_conversion_add_json_node_examples">
-
-Examples
---------
+### Add JSON node examples
 
 The following are some examples of using the **JSON Add Node**
 filter to add and replace JSON nodes.
 
-<div>
-
-### Add a JSON node
+#### Add a JSON node
 
 The following example shows the settings required to add a car node to the store:
 
@@ -404,11 +369,7 @@ The following example shows the corresponding request and response message in Ax
 
 ![Add JSON node request and response](/Images/docbook/images/json/add_json_node_sb.png)
 
-</div>
-
-<div>
-
-### Add an item to an array
+#### Add an item to an array
 
 The following example shows the settings required to add a book to an array:
 
@@ -418,11 +379,7 @@ The following example shows the corresponding request and response message in AP
 
 ![Add item to array request and response](/Images/docbook/images/json/add_json_node_array_sb.png)
 
-</div>
-
-<div>
-
-### Add a field replacing others
+#### Add a field replacing others
 
 The following example shows the settings required to add a field to the bicycle, removing any other fields that may exist:
 
@@ -432,63 +389,45 @@ The following example shows the corresponding request and response message in AP
 
 ![Add field replacing others request and response](/Images/docbook/images/json/add_json_node_replace_sb.png)
 
-Exceptions
-----------
+### Add JSON node filter exceptions
 
 The **JSON Add Node** filter aborts with a `CircuitAbortException` if:
 
 * Content body of the payload is not in valid JSON format
 * New node to be added (content in **Node Source**) is not in valid JSON format
 
-</div>
-
-</div>
-
-## Remove node from JSON document
+## Remove JSON node filter
 
 You can use the **JSON Remove Node**
 filter to remove a JSON node from a JSON message. You can specify the node to remove using a JSON Path expression. The JSON Path query language enables you to select nodes in a JSON document.
 
 For more details on JSON Path, see <http://code.google.com/p/jsonpath>.
 
-</div>
-
-<div id="p_conversion_remove_json_node_conf">
-
-Configuration
--------------
-
 To configure this filter, specify the following fields:
 
-**Name**:\
+**Name**:
 Enter a suitable name that reflects the role of the filter in the policy.
 
-**JSON Path Expression**:\
+**JSON Path Expression**:
 Enter a JSON Path expression to specify the node to remove (for example, `$.store.bicycle`). Policy Studio warns you if you enter an unsupported JSON Path expression.
 
 {{< alert title="Note" color="primary" >}}If the specified expression returns more than one node, all returned nodes are removed.{{< /alert >}}
-**Fail if no nodes returned from JSON Path**:\
+
+**Fail if no nodes returned from JSON Path**:
 When this option is selected, and the JSON Path expression returns no nodes, the filter returns false. If this option is *not*
 selected, and the JSON Path returns no nodes, the filter returns true, and no nodes are removed. This option is not selected by default.
 
-**Save deleted nodes to be reinserted to new location**:\
+**Save deleted nodes to be reinserted to new location**:
 Select this option if you want to move JSON nodes from one location in the message to another. The deleted nodes are stored in the `deleted.json.node.list`
 message attribute. You can then use the **JSON Add Node**
-filter to insert the deleted nodes into a different location in the message. For more details, see [*Add node to JSON document](conversion_add_json_node.htm).
+filter to insert the deleted nodes into a different location in the message.
 
-</div>
-
-<div id="p_conversion_remove_json_node_examples">
-
-Examples
---------
+### Remove JSON node examples
 
 The following are some examples of using the **JSON Remove Node**
 filter.
 
-<div>
-
-### Remove a node
+#### Remove a node
 
 The following example shows removing a bicycle from the store:
 
@@ -498,11 +437,7 @@ The following example shows the corresponding request and response message in Ax
 
 ![Remove JSON node request and response](/Images/docbook/images/json/remove_json_node_sb.png)
 
-</div>
-
-<div>
-
-### Remove all items in an array
+#### Remove all items in an array
 
 The following example shows removing all books in an array:
 
@@ -512,105 +447,86 @@ The following example shows the corresponding request and response message in AP
 
 ![Remove JSON array request and response](/Images/docbook/images/json/remove_json_node_array_sb.png)
 
-Exceptions
-----------
+### Remove JSON node filter exceptions
 
 The **JSON Remove Node** filter aborts with a `CircuitAbortException` if:the content body of the payload is not in valid JSON format.
 
-</div>
-
-</div>
-
-## Set message
+## Set message filter
 
 The **Set Message**
 filter replaces the body of the message. The replacement data can be plain text, HTML, XML, or any other text-based markup.
 
 You can also use the **Set Message**
-filter to customize SOAP faults that are returned to clients in the case of a failure or exception in the policy. For a detailed explanation of how to use this filter to customize SOAP faults, see [*SOAP fault handling](fault_soap.htm).
-
-</div>
-
-<div id="p_conversion_set_message_conf">
-
-Configuration
--------------
+filter to customize SOAP faults that are returned to clients in the case of a failure or exception in the policy. For a detailed explanation of how to use this filter to customize SOAP faults, see [SOAP fault handling](fault_soap.htm).
 
 Perform the following steps to configure the **Set Message**
 filter:
 
-1.  Enter a name for this filter to display in a policy in the **Name**
+1. Enter a name for this filter to display in a policy in the **Name**
     field.
-2.  Specify the content type of the new message body in the **Content-Type**
+2. Specify the content type of the new message body in the **Content-Type**
     field. For example, if the new message body is HTML markup, enter `text/html`
     in the **Content-Type**
     field.
-3.  Enter the new message body in the **Message Body**
-    text area.
-4.  You can use selectors to ensure that current message attribute values are inserted into the message body at the appropriate places. For more information, see [*Example of using selectors in the message body](#Example).
-5.  Alternatively, click **Populate**
+3. Enter the new message body in the **Message Body** text area.
+
+    You can use selectors to ensure that current message attribute values are inserted into the message body at the appropriate places.
+
+    Alternatively, click **Populate**
     on the right of the window, and select **From file on disk**
     to load the message contents from a file, or select **From web service operation**
     to load the message contents from a web service (WSDL file) that you have already imported into the web service repository.
-6.  You can also insert REST API parameters into the message body. Right-click within the message body at the point where the parameter should be inserted and select **Insert > REST API Parameter**.
 
-</div>
+    You can also insert REST API parameters into the message body. Right-click within the message body at the point where the parameter should be inserted and select **Insert > REST API Parameter**.
 
-<div id="p_conversion_set_message_example">
-
-Example of using selectors in the message body
-----------------------------------------------
+### Example of using selectors in the message body
 
 You can use selectors representing the values of message attributes in the replacement text to insert message-specific data into the message body. For example, you can insert the authenticated user's ID into a `<Username>`
 element by using a `${authentication.subject.id}`
 selector as follows:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-      <soap:Header>
-        <Username>${authentication.subject.id}</Username>
-      </soap:Header>
-      <soap:Body>
-        <getQuote xmlns="axway.com">
-          <ticker>ORM.L</ticker>
-        </getQuote>
-      </soap:Body>
-    </soap:Envelope>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Header>
+    <Username>${authentication.subject.id}</Username>
+    </soap:Header>
+    <soap:Body>
+    <getQuote xmlns="axway.com">
+        <ticker>ORM.L</ticker>
+    </getQuote>
+    </soap:Body>
+</soap:Envelope>
+```
 
 Assuming the user authenticated successfully to the API Gateway, the message body is set as follows:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-      <soap:Header>
-        <Username>axway</Username>
-      </soap:Header>
-      <soap:Body>
-        <getQuote xmlns="axway.com">
-          <ticker>ORM.L</ticker>
-        </getQuote>
-      </soap:Body>
-    </soap:Envelope>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Header>
+    <Username>axway</Username>
+    </soap:Header>
+    <soap:Body>
+    <getQuote xmlns="axway.com">
+        <ticker>ORM.L</ticker>
+    </getQuote>
+    </soap:Body>
+</soap:Envelope>
+```
 
-For more details on selectors, see
-[Select configuration values at runtime](/csh?context=630&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
-
-</div>
-
-## Create REST request
-
-Representational State Transfer (REST) is a client-server architectural style used to represent the state of application resources in distributed systems. Typically, servers expose resources using a URI, and clients access these resources using HTTP verbs such as HTTP GET, HTTP POST, HTTP DELETE, and so on.
+## Create REST request filter
 
 The **Create REST Request**
 filter enables you to create HTTP requests to RESTful web services. You can also configure the query string parameters that are sent with the REST request. For example, for an HTTP GET request, the parameters are URL-encoded and appended to the request URI as follows:
 
-    GET /translate_a/t?client=t&sl=en&tl=ga&text=Hello
+```
+GET /translate_a/t?client=t&sl=en&tl=ga&text=Hello
+```
 
 For an HTTP POST request, the parameters are URL-encoded and added to the request body as follows:
 
-```json
+```
 POST /webservices/tempconvert.asmx/CelsiusToFahrenheit
 Host:ww.w3schools.com
 Accept-charset:en
@@ -618,24 +534,17 @@ Celsius=200
 ```
 
 This filter is found in the **Conversion**
-category in Policy Studio. For details on how to extract REST request attributes from a message, see [*Extract REST request attributes](attributes_extract_rest_request.htm). For details on how to validate a REST request, see [*Validate REST request](content_validate_rest_request.htm).
-
-</div>
-
-<div id="p_conversion_create_rest_request_conf">
-
-Configuration
--------------
+category in Policy Studio. For details on how to extract REST request attributes from a message, see [Extract REST request attributes filter](/docs/apigw_polref/attributes_manipulate/#extract-rest-request-attributes-filter). For details on how to validate a REST request, see [REST request validatioon filter](/docs/apigw_polref/content_common/#rest-request-validation-filter).
 
 Complete the following fields:
 
-**Name**:\
+**Name**:
 Enter an appropriate name for the filter to display in a policy.
 
-**HTTP Method**:\
+**HTTP Method**:
 Enter or select an HTTP method from the list (for example, `POST`, `GET`, `DELETE`, and so on).
 
-**REST Request Parameters**:\
+**REST Request Parameters**:
 You can add query string parameters to the REST request. These are simple name-value pairs (for example, `Name=Joe Bloggs`). To add query string parameters, click the **Add**
 button, and enter the name-value pair in the **Configure REST Request Parameters**
 dialog. Repeat to add multiple parameters.
@@ -645,19 +554,13 @@ and `http.raw.querystring`
 message attributes to store the query string. For example, you can then append contents of the `http.raw.querystring`
 message attribute to a **Connect to URL**
 or **Rewrite URL**
-filter using a message attribute selector (for example, `${http.raw.querystring}`). For more details on selectors, see
-[Select configuration values at runtime](/csh?context=630&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+filter using a message attribute selector (for example, `${http.raw.querystring}`).
 
-**Add attributes stored in attribute lookup list to REST request**:\
+**Add attributes stored in attribute lookup list to REST request**:
 If you have populated the `attribute.lookup.list`
 message attribute using a previous filter in a policy, you can select this setting to include these message attributes in the serialized query string that is written to the request.
 
-</div>
-
-## Insert MTOM attachment
+## Insert MTOM attachment filter
 
 Message Transmission Optimization Mechanism (MTOM) provides a way to send binary data to web services in standard SOAP messages. MTOM leverages the include mechanism defined by XML Optimized Packaging (XOP) whereby binary data can be sent as a MIME attachment (similar to SOAP with attachments) to a SOAP message. The binary data can then be referenced in the SOAP message using the `<xop:Include>`
 element.
@@ -668,85 +571,76 @@ The following MTOM message contains a binary image encapsulated in a MIME part:
 element. The `href`
 attribute of this element refers to the `Content-ID`
 HTTP header of the MIME part.{{< /alert >}}
-    POST /services/uploadImages HTTP/1.1
-    Host: API Tester
-    Content-Type: Multipart/Related;boundary=MIME_boundary;
-      type="application/xop+xml";
-      start="<mymessage.xml@example.org>";
-      start-info="text/xml"
-      
-    --MIME_boundary
-    Content-Type: application/xop+xml;
-      charset=UTF-8;
-      type="text/xml"
-    Content-Transfer-Encoding: 8bit
-    Content-ID: <mymessage.xml@example.org>
 
-    <?xml version="1.0" encoding="UTF-8"?>
-        <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-          <soap:Body>
-            <uploadGraphic xmlns="www.example.org">
-              <image>
-                <xop:Include xmlns:xop='http://www.w3.org/2004/08/xop/include' 
-                href='cid:http://example.org/myimage.gif' />
-              </image>
-            </uploadGraphic>
-          </soap:Body>
-        </soap:Envelope>
+```
+POST /services/uploadImages HTTP/1.1
+Host: API Tester
+Content-Type: Multipart/Related;boundary=MIME_boundary;
+    type="application/xop+xml";
+    start="<mymessage.xml@example.org>";
+    start-info="text/xml"
 
-    --MIME_boundary
-    Content-Type: image/gif
-    Content-Transfer-Encoding: binary
-    Content-ID: <http://example.org/myimage.gif>
-      
-    // binary octets for image
+--MIME_boundary
+Content-Type: application/xop+xml;
+    charset=UTF-8;
+    type="text/xml"
+Content-Transfer-Encoding: 8bit
+Content-ID: <mymessage.xml@example.org>
 
-    --MIME_boundary
+<?xml version="1.0" encoding="UTF-8"?>
+    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+        <soap:Body>
+        <uploadGraphic xmlns="www.example.org">
+            <image>
+            <xop:Include xmlns:xop='http://www.w3.org/2004/08/xop/include' href='cid:http://example.org/myimage.gif' />
+            </image>
+        </uploadGraphic>
+        </soap:Body>
+    </soap:Envelope>
+
+--MIME_boundary
+Content-Type: image/gif
+Content-Transfer-Encoding: binary
+Content-ID: <http://example.org/myimage.gif>
+
+// binary octets for image
+
+--MIME_boundary
+```
 
 When the API Gateway receives this request, the **Insert MTOM Attachment**
 filter can be used to read the binary data in the MIME parts pointed to by the `<xop:Include>`
 elements embedded in the SOAP request. The binary data is then Base64-encoded and inserted into the message in place of the `<xop:Include>`
 elements. The resulting message is as follows:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-      <soap:Body>
-        <uploadGraphic xmlns="www.example.org">
-          <image>/aWKKapGGyQ=</image>
-        </uploadGraphic>
-      </soap:Body>
-    </soap:Envelope>
-
-</div>
-
-<div id="p_conversion_insert_mtom_conf">
-
-Configuration
--------------
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+    <uploadGraphic xmlns="www.example.org">
+        <image>/aWKKapGGyQ=</image>
+    </uploadGraphic>
+    </soap:Body>
+</soap:Envelope>
+```
 
 Complete the following fields for the **Insert MTOM Attachment**
 filter:
 
-**Name**:\
+**Name**:
 Enter a name for the filter.
 
-**XPath Location**:\
+**XPath Location**:
 Use an XPath expression to point to the location of the `<xop:Include>`
 element that refers to the binary attachment. The specified XPath expression can point to multiple `<xop:Include>`
 elements if necessary. For example, an XPath expression of `//xop:Include`
 returns all `<xop:Include>`
-elements in the SOAP envelope. For more information, see
-[Configure XPath expressions](/csh?context=640&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+elements in the SOAP envelope.
 
-**Remove attachments once they have been included in the message:**\
+**Remove attachments once they have been included in the message**:
 Select this option to remove the MIME parts that contain the actual binary content from the message after they have been inserted into the message.
 
-</div>
-
-## Extract MTOM content
+## Extract MTOM content filter
 
 Message Transmission Optimization Mechanism (MTOM) provides a way to send binary data to web services within standard SOAP messages. MTOM leverages the include mechanism defined by XML Optimized Packaging (XOP) whereby binary data can be sent as a MIME attachment (similar to SOAP with attachments) to a SOAP message. The binary data can then be referenced in the SOAP message using the `<xop:Include>`
 element.
@@ -754,57 +648,60 @@ element.
 The following MTOM message contains a binary image that has been Base64-encoded so that it can be inserted as the contents of the `<image>`
 element:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-      <soap:Body>
-        <uploadGraphic xmlns="www.example.org">
-          <image>/aWKKapGGyQ=</image>
-        </uploadGraphic>
-      </soap:Body>
-    </soap:Envelope>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+    <uploadGraphic xmlns="www.example.org">
+        <image>/aWKKapGGyQ=</image>
+    </uploadGraphic>
+    </soap:Body>
+</soap:Envelope>
+```
 
 When the API Gateway receives this request, the **Extract MTOM Content**
 filter can be used to extract the Base64-encoded content from the `<image>`
 element, replace it with an `<xop:Include>`
 element, which contains a reference to a newly created MIME part that contains the binary content. The following request shows the resulting MTOM message:
 
-    POST /services/uploadImages HTTP/1.1
-    Host: API Tester
-    Content-Type: Multipart/Related;boundary=MIME_boundary;
-      type="application/xop+xml";
-      start="<mymessage.xml@example.org>";
-      start-info="text/xml"
-      
-    --MIME_boundary
-    Content-Type: application/xop+xml;
-      charset=UTF-8;
-      type="text/xml"
-    Content-Transfer-Encoding: 8bit
-    Content-ID: <mymessage.xml@example.org>
+```
+POST /services/uploadImages HTTP/1.1
+Host: API Tester
+Content-Type: Multipart/Related;boundary=MIME_boundary;
+    type="application/xop+xml";
+    start="<mymessage.xml@example.org>";
+    start-info="text/xml"
 
-    <?xml version="1.0" encoding="UTF-8"?>
-        <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-          <soap:Body>
-            <uploadGraphic xmlns="www.example.org">
-              <image>
-                <xop:Include xmlns:xop='http://www.w3.org/2004/08/xop/include' 
-                href='cid:http://example.org/myimage.gif' />
-              </image>
-            </uploadGraphic>
-          </soap:Body>
-        </soap:Envelope>
+--MIME_boundary
+Content-Type: application/xop+xml;
+    charset=UTF-8;
+    type="text/xml"
+Content-Transfer-Encoding: 8bit
+Content-ID: <mymessage.xml@example.org>
 
-    --MIME_boundary
-    Content-Type: image/gif
-    Content-Transfer-Encoding: binary
-    Content-ID: <http://example.org/myimage.gif>
-      
-    // binary octets for image
+<?xml version="1.0" encoding="UTF-8"?>
+    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+        <soap:Body>
+        <uploadGraphic xmlns="www.example.org">
+            <image>
+            <xop:Include xmlns:xop='http://www.w3.org/2004/08/xop/include' href='cid:http://example.org/myimage.gif' />
+            </image>
+        </uploadGraphic>
+        </soap:Body>
+    </soap:Envelope>
 
-    --MIME_boundary
+--MIME_boundary
+Content-Type: image/gif
+Content-Transfer-Encoding: binary
+Content-ID: <http://example.org/myimage.gif>
 
-{{< alert title="Note" color="primary" >}}Note the following in the resulting MTOM message:{{< /alert >}}
-<div class="indentTable">
+// binary octets for image
+
+--MIME_boundary
+```
+
+{{< alert title="Note" color="primary" >}}
+Note the following in the resulting MTOM message:
 
 * The Base64-encoded contents of the `<image>`
     element have been replaced by the `<xop:Include>`
@@ -816,61 +713,33 @@ element, which contains a reference to a newly created MIME part that contains t
     attribute corresponds to the value of the `Content-ID`
     HTTP header of the MIME part that contains the binary octets of the actual image file.
 
-</div>
-
-</div>
-
-<div id="p_conversion_extract_mtom_conf">
-
-Configuration
--------------
+{{< /alert >}}
 
 Complete the following fields for the **Extract MTOM Content**
 filter:
 
-**Name**:\
+**Name**:
 Enter an appropriate name for the filter to display in a policy.
 
-**XPath Location**:\
+**XPath Location**:
 Use an XPath expression to locate the encoded data elements. For example, in the sample SOAP request message above, you would configure an XPath expression to point to the `<image>`
-element. For more information, see
-[Configure XPath expressions](/csh?context=640&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
+element.
 
-</div>
-
-## Transform with data map
+## Transform with data map filter
 
 Data maps enable you to define how to map XML and JSON messages to other XML and JSON message formats. You can use the **Execute Data Map** filter to execute a data map as part of a policy. This filter is available in the **Conversion** category in Policy Studio
 
-Configuration
--------------
-
 Configure the following fields:
 
-**Name**:
+**Name**: Enter a name that reflects the role of this filter in the policy.
 
-Enter a name that reflects the role of this filter in the policy.
+**Data Map**: Click the browse button to view the list of available data maps and select the required data map.
 
-**Data Map**:
+You can create data maps under the **Resources > Data Maps** node in the Policy Studio tree.
 
-Click the browse button to view the list of available data maps and select the required data map.
+**Default Encoding**: Enter the default encoding for the data map. The default value is `UTF-8`.
 
-You can create data maps under the **Resources > Data Maps** node in the Policy Studio tree. For more information, see
-[Manage data maps](/csh?context=646&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
-
-**Default Encoding**:
-
-Enter the default encoding for the data map. The default value is `UTF-8`.
-
-**Source Document**:
-
-This section is automatically populated with the input schemas when you select a data map. The ordering of the schemas in the filter matches the ordering in the data map.
+**Source Document**: This section is automatically populated with the input schemas when you select a data map. The ordering of the schemas in the filter matches the ordering in the data map.
 
 You must specify the message attribute to map to the inputs of each schema. Click **Edit** to edit the message attributes.
 
@@ -879,22 +748,14 @@ You must specify the message attribute to map to the inputs of each schema. Clic
 
 ![Execute data map source document](/Images/PolDevGuide/Mapper/execute_data_map_filter_src_doc.png)
 
-**External Parameters**:
+**External Parameters**: This section is automatically populated when you select a data map. Click **Edit** to edit the expression for each parameter. For more details on parameters, see the
+[API Gateway Visual Mapper User Guide](/bundle/API_VisualMapper_78_UserGuide_allOS_en_HTML5).
 
-This section is automatically populated when you select a data map. Click **Edit** to edit the expression for each parameter. For more details on parameters, see the
-[API Gateway Visual Mapper User Guide](/bundle/API_VisualMapper_762_UserGuide_allOS_en_HTML5)
-.
+### Example data map policy
 
-Example policy
---------------
+For an example of how to use a data map in a policy, see [Manage data maps](/docs/apigw_poldev/web_services/resources_data_maps/).
 
-For an example of how to use a data map in a policy, see
-[Manage data maps](/csh?context=646&product=prod-api-gateway-77)
-in the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
-.
-
-## Transform with XSLT
+## Transform with XSLT filter
 
 Extensible Stylesheet Language Transformations (XSLT) is a declarative, XML-based language used to transform XML documents into other XML documents. An XSL stylesheet is used to transform an XML document into another document type. The stylesheet defines how elements in the XML source document should appear in the resulting XML document.
 
@@ -906,20 +767,11 @@ This type of conversion is especially valuable in the web services arena, where 
 {{< alert title="Note" color="primary" >}}The **XSLT Transformation**
 filter supports XSLT version 1.0 by default.{{< /alert >}}
 
-</div>
-
-<div id="p_conversion_stylesheet_config">
-
-Configuration
--------------
-
 Configure the following fields for the **XSLT Transformation**
 filter:
 
-**Name**:\
+**Name**:
 Enter a suitable name to reflect the role of this filter in a policy.
-
-<div id="p_conversion_stylesheet_location">
 
 ### Stylesheet location settings
 
@@ -936,10 +788,6 @@ You can also modify existing stylesheets in the **XSLT Contents**
 text area of the dialog. Click the **Update**
 button to update them in the API Gateway configuration.
 
-</div>
-
-<div id="p_conversion_stylesheet_params">
-
 ### Stylesheet parameter settings
 
 You can pass parameters to an XSL stylesheet using specified values in `<xsl:param>`
@@ -955,7 +803,7 @@ to specify the message attribute to pass to the stylesheet.
 
 The following example from an XSL stylesheet that uses parameters shows how to configure this:
 
-```json
+```xsl
 <xsl:param name="authentication.subject.id"/>
 <xsl:param name="authentication.issuer.id"/>
 ```
@@ -965,32 +813,22 @@ and `authentication.issuer.id`
 message attributes to the **Message Attributes to use**
 table.
 
-{{< alert title="Note" color="primary" >}}The name of the specified parameter must be a valid API Gateway message attribute name, and there *must*
-be an equivalent parameter name in the stylesheet. {{< /alert >}}
+{{< alert title="Note" color="primary" >}}The name of the specified parameter must be a valid API Gateway message attribute name, and there *must* be an equivalent parameter name in the stylesheet. {{< /alert >}}
 
-</div>
-
-<div id="p_conversion_stylsheet_advanced">
-
-### Advanced settings
+### Advanced XSLT settings
 
 Complete the following fields on the **Advanced**
 tab:
 
-**Provider class name**:\
+**Provider class name**:
 Enter the fully qualified name of the XSLT provider class of the XSLT library to be used. This class *must*
 be added to the API Gateway's classpath. If this field is left blank, the default provider is used.
 
-{{< alert title="Tip" color="primary" >}}The simplest way to add a provider class to the API Gateway's classpath is to drop the required JAR file into the `INSTALL_DIR/apigateway/ext/lib`
-directory, where `INSTALL_DIR`
-refers to the root of your API Gateway installation.{{< /alert >}}
-**Result will be XML**:\
+To add a provider class to the API Gateway's classpath, drop the required JAR file into the `INSTALL_DIR/apigateway/ext/lib` directory, where `INSTALL_DIR` refers to the root of your API Gateway installation.
+
+**Result will be XML**:
 You can convert an incoming XML message to other data formats. Select this option if the result of the XSLT conversion is always XML. If not, the content-type of the result document depends on the output method of the XSLT stylesheet. For example, if the stylesheet specifies an output method of HTML (`<xsl:output method="html">`), this field should be left blank so that the API Gateway can forward on the HTML output document to the target web service.
 
-**Do not change the content type header**:\
+**Do not change the content type header**:
 You can select whether to change the HTTP `Content-Type`
 header in this XSLT transformation. This setting is selected by default, so the content type is preserved.
-
-</div>
-
-</div>
