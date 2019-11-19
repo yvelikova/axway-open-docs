@@ -46,4 +46,4 @@ For more infomration on [Transfer CFT](https://docs.axway.com/bundle/FlowCentral
 
 ## Review
 
-You have learned how to add your private cloud hybrid environment to AMPLIFY Central, and how to create and test an API proxy for an API exposed by a demo microservice deployed in the hybrid environment.
+You have learned how to add, update, and delete a CFT Profile to an App in AMPLIFY Central.
