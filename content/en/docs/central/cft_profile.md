@@ -26,15 +26,15 @@ The following procedure demonstrates how to configure a CFT profile to an applic
 
 Select **Apps** in the left navigation bar, select an existing app or create a new app.
 
-![App Identity Profiles](/static/Images/central/app_identity_profiles.png)
+![App Identity Profiles](/Images/central/app_identity_profiles.png)
 
 ### In CFT Profile section of the Identity Profiles, add a CFT profile.
 
-![CFT Profiles](/static/Images/central/cft_profile.png)
+![CFT Profiles](/Images/central/cft_profile.png)
 
 Provide the mandatory profile name and the product name which will be used by the file exchange application.
 
-![CFT profile created](/static/Images/central/cft_profile_Save.gif)
+![CFT profile created](/Images/central/cft_profile_Save.gif)
 
 ### Update or delete CFT profile.
 
