@@ -1,50 +1,23 @@
 ---
 title: Manage an environment using AMPLIFY CLI
 linkTitle: Manage an environment using AMPLIFY CLI
-weight: 6
+weight: 7
 date: 2019-11-11
-description: Learn how you can use the AMPLIFY CLI to manage your environments.
+description: Learn how your DevOps service can use AMPLIFY CLI to manage your environments.
 ---
 
-*Estimated reading time*: 5 minutes
+*Estimated reading time*: XX minutes
 
-    {{% alert title="Note" %}}This feature is currently in development and will be available soon.{{% /alert %}}
+{{% alert title="Note" %}}This feature is currently in development and will be available soon.{{% /alert %}}
 
 ## Before you start
 
-* You will need an administrator account for AMPLIFY Central
-* Install AMPLIFY CLI
-
-### Install AMPLIFY CLI
-
-1. Install Node.js 8 LTS or later *(Note: Node.js > 11 is not yet supported)*
-2. Run the following command to install AMPLIFY CLI:
-
-    ```
-    [sudo] npm install -g @axway/amplify-cli
-    ```
-
-    {{% alert title="Note" %}}Use `sudo` on Mac OS X or Linux if you do not own the directory that npm installs packages to. On Windows, you do not need to run as Administrator as npm installs packages into your AppData directory.{{% /alert %}}
-
-3. Run AMPLIFY package manager to install AMPLIFY Central CLI:
-
-    ```
-    amplify pm install @axway/amplify-central-cli
-    ```
-
-4. Run AMPLIFY package manager list command to view available packages. Please verify the @axway/amplify-central-cli version is at minimum 0.1.3:
-
-    ```
-    amplify pm list
-    AMPLIFY CLI, version 1.2.1
-    Copyright (c) 2018, Axway, Inc. All Rights Reserved.
-    NAME                           | INSTALLED VERSIONS | ACTIVE VERSION
-    @axway/amplify-central-cli     | 0.1.3              | 0.1.3
-    ```
+* You will need to [authorize your DevOps service to use the DevOps API](/docs/central/cli_getstarted/)
+* Verify the @axway/amplify-central-cli version is at minimum 0.1.3.
 
 ## Objectives
 
-Learn how to create and manage your environments using the AMPLIFY CLI.
+Learn how to create and manage your distributed cloud and on-premise environments using the AMPLIFY CLI.
 
 * Create a new environment
 * Retrieve a list of all available environments
@@ -52,72 +25,7 @@ Learn how to create and manage your environments using the AMPLIFY CLI.
 * Update a specific environment
 * Delete a specific environment
 
-## Service account authentication and authorization
-
-To manage API proxies in AMPLIFY Central, your DevOps service account must authenticate with AMPLIFY Platform and it must be authorized to use the AMPLIFY Central DevOps APIs.
-
-To support DevOps service interactions, AMPLIFY Central uses the OAuth 2.0 client credentials flow with JWT:
-
-1. Create an RSA public private key pair for your DevOps service account
-2. Use the public key to register the service account with AMPLIFY Platform to obtain a client ID
-3. Use the client ID and private key to authenticate with AMPLIFY Platform to obtain a JWT
-4. Use the JWT to make authorized API calls to AMPLIFY Central
-
-## Generate an RSA key pair
-
-To authorize a DevOps service account with AMPLIFY Platform, you need a public and private key pair in RSA format. To create this key pair, use `openssl` as follows:
-
-```
-$ openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
-..............................................................+++
-.........................+++
-
-user@test123 ~/test
-$ openssl rsa -pubout -in private_key.pem -out public_key.pem
-writing RSA key
-
-user@test123 ~/test
-$ ls
-private_key.pem  public_key.pem
-```
-
-## Create a service account
-
-Log in to AMPLIFY Central UI as an administrator, and create a service account for your DevOps service. Add the public key that you created earlier. When the account is created, copy the client identifier from the **Client ID** field.
-
-Watch the animation to learn how to do this in AMPLIFY Central UI.
-
-![Create service account in AMPLIFY Central UI](/Images/central/service_account_animation.gif)
-
-## Log in to AMPLIFY CLI
-
-To authorize the service account with AMPLIFY platform, log in to AMPLIFY CLI using the following command:
-
-```
-amplify auth login --client-id DOSA_105cf15d051c432c8cd2e1313f54c2da --secret-file ~/test/private_key.pem
-```
-
-### Save the service account client identifier
-
-To save the service account client identifier for future operations:
-
-```
-amplify central config set --client-id DOSA_105cf15d051c432c8cd2e1313f54c2da
-```
-
-To view the saved configuration:
-
-```
-amplify central config list
-{ 'client-id': 'DOSA_105cf15d051c432c8cd2e1313f54c2da' }
-```
-
-## Environment Management
-
-AMPLIFY Central allows users to manage their distributed cloud and OnPrem environments using the CLI.
-
-### Create an environment
-
+## Create an environment
 
 Examples:
 
@@ -133,7 +41,7 @@ Options:
 -f, --file = (filename.yml, filename.yaml, or filename.json)
 ```
 
-### List environments
+## List environments
 
 Examples:
 
@@ -148,7 +56,7 @@ Options:
 -o, --output = yaml | json
 ```
 
-### Get an environment's details
+## Get an environment's details
 
 Examples:
 
@@ -163,7 +71,7 @@ Options:
 -o, --output = yaml | json
 ```
 
-### Update an environment
+## Update an environment
 
 Examples:
 
@@ -178,9 +86,9 @@ Options:
 -o, --output = yaml | json
 ```
 
-### Delete an environment
+## Delete an environment
 
-**WARNING:** This action cannot be reversed.
+{{% alert title="Warning" color="warning"%}}This action cannot be reversed.{{% /alert %}}
 
 Examples:
 
@@ -190,4 +98,4 @@ amplify central delete env <name>
 
 ## Review
 
-You have learned how to authorize your DevOps service to use the AMPLIFY Central DevOps APIs by way of AMPLIFY CLI to manage your environments.
+You have learned how to use the AMPLIFY Central DevOps APIs by way of AMPLIFY CLI to manage your environments.
