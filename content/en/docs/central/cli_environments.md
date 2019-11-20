@@ -6,7 +6,7 @@ date: 2019-11-11
 description: Learn how your DevOps service can use AMPLIFY CLI to manage your environments.
 ---
 
-*Estimated reading time*: XX minutes
+*Estimated reading time*: 1 minute
 
 {{% alert title="Note" %}}This feature is currently in development and will be available soon.{{% /alert %}}
 
@@ -56,7 +56,7 @@ Options:
 -o, --output = yaml | json
 ```
 
-## Get an environment's details
+## Get the details of an environment
 
 Examples:
 
