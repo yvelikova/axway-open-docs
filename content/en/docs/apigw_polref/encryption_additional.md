@@ -1,13 +1,94 @@
 {
-"title": "JWT encrypt filter",
-"linkTitle": "JWT encrypt filter",
+"title": "Additional encryption filters",
+"linkTitle": "Additional encryption filters",
+"weight", 115,
 "date": "2019-10-17",
-"description": "You can use the **JWT Encrypt** filter to encrypt arbitrary content (for example, a JWT claims set). The result of the encryption is called JSON Web Encryption (JWE)."
+"description": "Additional encryption filters, including JWT and SMIME encryption and decryption."
 }
-﻿
 
-Overview
---------
+## JWT decrypt filter
+
+You can use the **JWT Decrypt** filter to decrypt encrypted JWTs.
+
+Upon successful decryption, the filter removes all metadata, such as headers and encryption-specific information of the incoming encrypted JWT, and outputs the originally encrypted payload.
+
+For example, when you decrypt the following JWE Payload:
+
+eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZHQ00ifQ.
+
+OKOawDo13gRp2ojaHV7LFpZcgV7T6DVZKTyKOMTYUmKoTCVJRgckCL9kiMT03JGe
+
+ipsEdY3mx\_etLbbWSrFr05kLzcSr4qKAq7YN7e9jwQRb23nfa6c9d-StnImGyFDb
+
+Sv04uVuxIp5Zms1gNxKKK2Da14B8S4rzVRltdYwam\_lDp5XnZAYpQdb76FdIKLaV
+
+mqgfwX7XWRxv2322i-vDxRfqNzo\_tETKzpVLzfiwQyeyPGLBIO56YJ7eObdv0je8
+
+1860ppamavo35UgoRdbYaBcoh9QcfylQr66oc6vFWXRcZ\_ZT2LawVCWTIy3brGPi
+
+6UklfCpIMfIjf7iGdXKHzg.
+
+48V1\_ALb6US04U3b.
+
+5eym8TW\_c8SuK0ltJ3rpYIzOeDQz7TALvtu6UG9oMo4vpzs9tX\_EFShS8iB7j6ji
+
+SdiwkIr3ajwQzaBtQD\_A.
+
+XFBoMYUZodetZdvTiFvSkQ
+
+The output is:
+
+The true sign of intelligence is not knowledge but imagination.
+
+{{< alert title="Note" color="primary" >}}The JWT Decrypt filter automatically detects whether the input JWT is encrypted with symmetric or asymmetric key and automatically uses the corresponding settings. For example, you can configure decryption with symmetric key and certificate; however, the filter uses the former or latter depending on the type of JWE it receives as input.{{< /alert >}}
+
+General settings
+----------------
+
+Configure the following field on the **JWT Decrypt** window:
+
+**Name**:
+
+Enter an appropriate name for the filter to display in a policy.
+
+**Token location**:
+
+Enter the selector expression to obtain the JWT to be decrypted.
+
+Decryption using key selection
+------------------------------
+
+Optionally, configure the following fields in the **Key selection** section:
+
+**X509 certificate**:
+
+Select the certificate from the certificate store that is used to decrypt the payload.
+
+**Selector expression**:
+
+Alternatively, enter a selector expression to retrieve the alias of the certificate in the certificate store.
+
+Shared key selection details
+----------------------------
+
+Optionally, configure the following fields in the **Shared key selection** section:
+
+**None**:
+
+Select if you do not want to decrypt tokens that are encrypted with shared keys.
+
+**Shared key**:
+
+Enter the shared key that is used to [encrypt](jwt_encrypt.htm) the payload. The key should be given as a base64-encoded byte array.
+
+**Selector expression**:
+
+Alternatively, enter a selector expression to obtain the shared key. The value returned by the selector should contain:
+
+-   Byte array (possibly produced by a different filter)
+-   Base64-encoded byte array
+
+## JWT encrypt filter
 
 You can use the **JWT Encrypt** filter to encrypt arbitrary content (for example, a JWT claims set). The result of the encryption is called JSON Web Encryption (JWE).
 
@@ -175,4 +256,87 @@ The following encryption methods are not supported when API Gateway is in FIPS m
 -   AES GCM using 128-bit key (A128GCM)
 -   AES GCM using 192-bit key (A192GCM)
 -   AES GCM using 256-bit key (A256GCM)
+
+## SMIME decryption
+
+The **SMIME Decryption**
+filter can be used to decrypt an encrypted Secure/Multipurpose Internet Mail Extensions (SMIME) message.
+
+See also [*SMIME encryption* on page 1](encryption_smime_enc.htm).
+
+</div>
+
+<div id="p_encryption_smime_dec_conf">
+
+Configuration
+-------------
+
+Complete the following fields to configure this filter:
+
+**Name**:\
+Enter a name for the filter to display in a policy.
+
+**Use Certificate to Decrypt**:\
+Check the box next to the certificate that you want to use to decrypt the encrypted PKCS\#7 message with. The private key associated with this certificate is used to actually decrypt the message.
+
+</div>
+
+## SMIME encryption
+
+You can use the **SMIME Encryption**
+filter to generate an encrypted Secure/Multipurpose Internet Mail Extensions (SMIME) message. This filter enables you to configure the certificates of the recipients of the encrypted message. You can also configure advanced options such as ciphers and Base64 encoding.
+
+See also [*SMIME decryption* on page 1](encryption_smime_dec.htm).
+
+</div>
+
+<div id="p_encryption_smime_enc_conf">
+
+General settings
+----------------
+
+Complete the following field:
+
+**Name**:\
+Enter an appropriate name for the filter to display in a policy.
+
+</div>
+
+<div id="p_encryption_smime_enc_recipients">
+
+Recipient settings
+------------------
+
+The **Recipients**
+tab enables you to configure the certificates of the recipients of the encrypted SMIME message. Select one of the following options:
+
+**Use the following certificates**:\
+This is the default option. Select the certificates of the recipients of the encrypted message. The public keys associated with these certificates are used to encrypt the data so that it can only be decrypted using the associated private keys.
+
+**Certificate in attribute**:\
+Alternatively, enter the message attribute that contains the certificate of the recipients of the encrypted message. Defaults to the `certificate`
+message attribute.
+
+</div>
+
+<div id="p_encryption_smime_enc_adv">
+
+Advanced settings
+-----------------
+
+The **Advanced**
+tab includes the following settings:
+
+**Cipher**:\
+Enter the cipher that you want to use to encrypt the message data. Defaults to the `DES-EDE3-CBC`
+cipher.
+
+**Content-Type**:\
+Enter the `Content-Type`
+of the message data. Defaults to `application/pkcs7-mime`.
+
+**Base64 encode**:\
+Select whether to Base64 encode the message data. This option is not selected by default.
+
+</div>
 
