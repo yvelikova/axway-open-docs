@@ -8,6 +8,8 @@
 
 When authenticating to API Gateway using Kerberos, a client application can delegate its Kerberos credentials to API Gateway. API Gateway acts as an intermediary between a Kerberos client and Kerberos back-end services, and requests service tickets to any other Kerberos service in the same Kerberos realm on behalf of the client. These service tickets can then be used to authenticate the original end user to the other Kerberos services. This type of Kerberos delegation is often called *unconstrained* or *open*.
 
+In this scenario:
+
 * **Client application**: Supports Kerberos authentication.
 * **Back-end service**: Requires Kerberos authentication with the end user's credentials. Multiple back-end services may exist.
 * **API Gateway**: Acts as both a Kerberos service and client, and authenticates to different back-end services as the end user.
@@ -32,7 +34,7 @@ The example Kerberos realm name `AXWAY.COM` is specific to the examples in this 
 
 The next sections describe the steps to configure the gateway in unconstrained credentials delegation.
 
-## Configure active directory
+## Configure Active Directory
 
 This section describes how to configure a Kerberos service principal for API Gateway in Active Directory acting as the Key Distribution Center (KDC).
 
@@ -94,7 +96,7 @@ This section describes how to add Kerberos principals for the intermediary Kerbe
     * **Principal Name**: `<Service Principal Name for the back-end service>` (for example, `HOST/BackEndService.axway.com@AXWAY.COM`)
     * **Principal Type**: `NT_USER_NAME`
 
-For more details on the fields and options in this configuration window, see [Configure Kerberos principals](/docs/apigw_poldev/external_connections/common_client_credentials/#configure-kerberos-principals) in the *Policy Developer Guide*.
+For more details on the fields and options in this configuration window, see [Configure Kerberos principals](/docs/apigw_poldev/external_connections/common_client_credentials/#configure-kerberos-principals).
 
 ## Configure API Gateway policy
 
@@ -131,7 +133,7 @@ Selecting **Extract delegated credentials** means that API Gateway extracts the 
         * **Replay Detection**
         * **Sequence Checking**
     * **Synchronize to Avoid Replay Errors at Service**: Deselect this option to improve performance.
-    * **Refresh when remaining validity is <value> seconds**: Set to `300`.
+    * **Refresh when remaining validity is `<value>` seconds**: Set to `300`.
 
 For more details on the fields and options in this configuration window, see [Configure Kerberos clients](/docs/apigw_poldev/external_connections/common_client_credentials/#configure-kerberos-clients).
 
@@ -150,21 +152,21 @@ The following section describes how to configure the policy for API Gateway dele
 
 To start, add a new policy named, for example, `Kerberos Intermediary for Unconstrained Credentials Delegation`.
 
-**Configure a Kerberos service filter**\
+#### Configure a Kerberos service filter
 
 1. Open the **Authentication** category in the filter palette, and drag a **Kerberos Service** filter onto the policy canvas.
 2. Set **Kerberos Service** to the intermediary Kerberos service you created (`IntermediaryGateway Kerberos Service for Unconstrained Delegation`).
 3. Change **Kerberos Standard** to **SPNEGO Over HTTP**, and click **Finish**.
 4. Right-click the **Kerberos Service** filter, and select **Set as Start**.
 
-**Configure retrieving the end user credentials**\
+#### Configure retrieving the end user credentials
 
 1. Open the **Attributes** category in the palette, and drag a **Retrieve from HTTP Header** filter onto the policy canvas.
 2. Set the **HTTP Header name** to `WWW-Authenticate` and **Attribute ID** to `outer.www.authenticate`, and click **Finish**.
 3. Open the **Conversion** category in the palette, drag a **Remove HTTP Header** filter onto the policy canvas.
 4. Set **HTTP Header Name** to `WWW-Authenticate`.
 
-**Configure authentication to the back-end service**\
+#### Configure authentication to the back-end service
 
 1. Open the **Routing** category in the palette, and drag a **Connect to URL** filter onto the canvas.
 2. Enter the **URL** used to invoke the back-end Kerberos service.

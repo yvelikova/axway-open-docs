@@ -3,7 +3,7 @@
 "linkTitle": "Store passwords for Kerberos authentication",
 "weight":"14",
 "date": "2019-11-14",
-"description": "API Gateway must be in sync with Active Directory to securely provide Kerberos authentication."
+"description": "Use a KPS to store passwords and keep API Gateway in sync with Active Directory."
 }
 
 Kerberos authentication in API Gateway relies on keeping API Gateway in sync with Active Directory. If a password changes in Active Directory, it must also be updated in API Gateway.

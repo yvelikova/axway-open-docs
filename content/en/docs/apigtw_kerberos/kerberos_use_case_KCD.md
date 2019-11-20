@@ -6,6 +6,8 @@
 "description": "Kerberos *constrained* delegation (KCD) enables API Gateway to act as a trusted Kerberos service principal, to acquire a Kerberos service ticket in the name of the requesting end user, and to authenticate to a constrained set of Kerberos back-end services as the end user."
 }
 
+In this scenario:
+
 * **Client application**: Does not support Kerberos authentication, or cannot provide Kerberos credentials.
 * **Back-end service**: Requires Kerberos authentication with end user's credentials. Multiple back-end services may exist.
 * **API Gateway**: Authenticates the client application, then acts as a Kerberos client and authenticates to the back-end service as the end user.
@@ -29,8 +31,6 @@ KCD uses two Microsoft Kerberos extensions, Protocol Transition and Constrained 
 
 In API Gateway, Protocol Transition and Constrained Delegation must be used in combination. Constrained Delegation is not possible using a ticket obtained by API Gateway when authenticating the client using Kerberos. An API Gateway policy can enforce the authentication of the client to API Gateway to use Kerberos authentication. However, API Gateway does not support forcing this within Active Directory. A policy that forces the incoming authentication to use Kerberos authentication still does both Protocol Transition and Constrained Delegation.
 
-{{< alert title="Note" color="primary" >}}Kerberos Constrained Delegation is not supported out-of-the-box in API Gateway v7.5.1 or earlier.{{< /alert >}}
-
 In addition to constrained delegation, API Gateway also supports *unconstrained* or *open* credentials delegation. Constrained delegation is considered to be more secure than unconstrained delegation because the KDC administrator can constrain the set of back-end services that the trusted Kerberos service can request tickets for as the end user they are impersonating. Restricting the delegation reduces the number of potential targets for attacks, so that if one part of the system is compromised, the whole system is not. In unconstrained delegation, the Kerberos service ticket can be requested for any valid service. For more details, see [API Gateway in unconstrained credentials delegation](/docs/apigtw_kerberos/kerberos_use_case_ucd).
 
 ## Prerequisites
@@ -45,7 +45,7 @@ The example Kerberos realm name `AXWAY.COM` is specific to the examples in this 
 
 The next sections describe the steps to configure the gateway in constrained credentials delegation.
 
-## Configure active directory
+## Configure Active Directory
 
 This section describes how to configure a trusted Kerberos client principal for API Gateway in Active Directory acting as the Key Distribution Centre (KDC) .
 
@@ -158,20 +158,18 @@ The following section describes how to configure the Kerberos policy for KCD.
 
 To start, add a new policy named, for example, `Kerberos KCD SPNEGO Client-Side`.
 
-**Configure the end user authentication method**\
+#### Configure the end user authentication method
 
 1. Configure the authentication mechanism the end user application requires. The required filters and configuration details depend on the type of authentication. For an example configuration, see [Configure a KCD demo setup](/docs/apigtw_kerberos/kerberos_use_case_kcd#configure-a-kcd-demo-setup).
 2. Right-click the first filter in your policy, and select **Set as Start**.
 
-**Configure connection to the back-end service**\
+#### Configure connection to the back-end service
 
 1. Open the **Routing** category in the filter palette, and drag a **Connect to URL** filter onto the policy canvas.
 2. Enter the **URL** used to invoke the back-end service.
-3. On the **Authentication** tab, select the Kerberos credential profile configured earlier (`Authenticate to BackEndService using KCD`), and click **Finish**.\
-    For more details on the fields and options in this configuration window, see [Connect to URL](/csh?context=502&product=prod-api-gateway-77) in the
-    [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
+3. On the **Authentication** tab, select the Kerberos credential profile configured earlier (`Authenticate to BackEndService using KCD`), and click **Finish**.
 
-**Build the policy**\
+#### Build the policy
 
 1. Click the **Add Relative Path** icon to create a new relative path `/kcd` that links to this Kerberos client-side policy.
 2. Connect the filters with a success path.
@@ -196,8 +194,8 @@ To start, add a new policy named, for example, `Kerberos KCD SPNEGO Client-Side`
     [libdefaults]
     default_realm = AXWAY.COM
     renewable=true
-    proxiable=tru
-    forwardable=true`
+    proxiable=true
+    forwardable=true
 
     [realms]
     AXWAY.COM = {
@@ -239,7 +237,7 @@ The difference between KCD and standard SPNEGO configuration is that for KCD, th
 
 For demonstration purposes, you can configure HTTP Basic authentication against a local user repository as the incoming authentication mechanism on API Gateway for the end user.
 
-**Configure sample users**\
+#### Configure sample users
 
 You can quickly add some sample users to a local repository in Policy Studio.
 
@@ -257,15 +255,13 @@ For example, if your end user Kerberos principal names were `Bob@AXWAY.COM`, and
 
 The passwords in the local user repository do *not* need to match these users' Kerberos passwords in the Key Distribution Center. Here, the user names and passwords configured in the local repository are passed to API Gateway over HTTP Basic.
 
-**Configure HTTP Basic authentication**\
+#### Configure HTTP Basic authentication
 
 In this example, API Gateway authenticates the end users using HTTP Basic.
 
 1. Open the **Authentication** category, and drag a **HTTP Basic** filter onto the policy canvas.
 2. Set **Credential Format** to **User Name**, and select **Allow client challenge**.
 3. Set **Repository Name** to **Local User Store**, and click **Finish**.
-
-    For more details on the fields and options in this configuration window, see [HTTP basic authentication](/csh?context=506&product=prod-api-gateway-77) in the [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
 4. Right-click the **HTTP Basic** filter, and select **Set as Start**.
 5. Connect the filters with a success path.
 

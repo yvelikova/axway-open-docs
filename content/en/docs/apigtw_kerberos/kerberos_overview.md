@@ -26,7 +26,7 @@ On Windows 2000 and later, Kerberos authentication is the default authentication
 
 ![Kerberos_flow_overview](/Images/IntegrationGuides/KerberosIntegration/Kerberos_flow_overview.png)
 
-1. A Kerberos client sends its user ID in a cleartext message to the AS. The message does not include the client's password, nor its secret key based on the password.
+1. A Kerberos client sends its user ID in a clear text message to the AS. The message does not include the client's password, nor its secret key based on the password.
 2. The AS checks if the client is in the user database, and if found, generates the secret key for the client by hashing the client's password. The AS then sends a client/TGS session key and a TGT to the Kerberos client. The session key is encrypted with the secret key of the client.
 3. The Kerberos client decrypts the client/TGS session key, and sends a request message – containing the TGT and the ID of the Kerberos service to be accessed – and an authenticator message – containing the client ID and the timestamp and encrypted with the client/TGS session key – to the TGS.
 4. The TGS decrypts the TGT in the request message to retrieve client/TGS session key, and decrypts the authenticator message. The TGS verifies the Kerberos client is authorized to access the Kerberos service requested, and sends a service ticket and a client/server session key encrypted with the client/TGS session key to the Kerberos client.

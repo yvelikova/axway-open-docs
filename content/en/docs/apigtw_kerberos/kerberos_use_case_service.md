@@ -3,8 +3,10 @@
 "linkTitle": "API Gateway as a Kerberos service",
 "weight":"8",
 "date": "2019-11-14",
-"description": "API Gateway as a Kerberos service to mediate the authentication of a non-Kerberos client application to a back-end service."
+"description": "Configure API Gateway as a Kerberos service to mediate the authentication of a non-Kerberos client application to a back-end service."
 }
+
+In this scenario:
 
 * **Client application**: Supports Kerberos authentication.
 * **Back-end service**: Requires non-Kerberos authentication (for example, OAuth or SAML).
@@ -30,7 +32,7 @@ The next sections describe the steps to configure the gateway as a Kerberos serv
 
 ## Configuration process
 
-The most common client application in this scenario is a browser, so this example focuses on that. For instructions on how to configure your browser, see [Configure your browser to authenticate to API Gateway](#configure-your-browser-to-authenticate-to-api-gateway)
+The most common client application in this scenario is a browser, so this example focuses on that. For instructions on how to configure your browser, see [Configure your browser to authenticate to API Gateway](#configure-your-browser-to-authenticate-to-api-gateway).
 
 The connection between the client application and API Gateway acting as the Kerberos service is by default unsecured. For security reasons, it is recommended to enable SSL/TLS connection in the Kerberos service. SSL/TLS is configured in the SSL port on the Kerberos service, but you must also configure your browser separately to use SSL/TLS connection. For more details, see [Configure browser authentication over SSL/TLS](#configure-browser-authentication).
 
@@ -225,7 +227,7 @@ To start, add a new policy named, for example, `Kerberos Service SPNEGO`.
 1. Click **Add Relative Path** icon, create a new relative path `/gw-service-to-back-end` that links to the Kerberos policy, and click **OK**.
 2. Connect the filters with success paths.
 
-    ![policy with Kerberos SErvice, Set Success Messae, and Reflect Message filters](/Images/IntegrationGuides/KerberosIntegration/browser_spnego/gw_config_policy.png)
+    ![policy with Kerberos SErvice, Set Success Message, and Reflect Message filters](/Images/IntegrationGuides/KerberosIntegration/browser_spnego/gw_config_policy.png)
 
     The policy has the following flow:
 
@@ -297,7 +299,7 @@ The next sections describe how to enable SSL connection.
 
 This section describes how to import an existing SSL certificate for API Gateway and configure an HTTPS interface in Policy Studio.
 
-**Import an SSL certificate**\
+#### Import an SSL certificate
 
 To enable SSL/TLS connection, you must have a valid SSL certificate.
 
@@ -308,7 +310,7 @@ To enable SSL/TLS connection, you must have a valid SSL certificate.
 
 For more details on the fields and options in this configuration window, see [Manage X.509 certificates and keys](/docs/apigtw_security/general_certificates/#configure-an-x-509-certificate).
 
-**Configure an HTTPS interface**\
+#### Configure an HTTPS interface
 
 1. In the node tree, click **Environment Configuration > Listeners > API Gateway > Default Services > Ports**.
 2. Click **Add > HTTPS Interface**, and enter a name for the interface.

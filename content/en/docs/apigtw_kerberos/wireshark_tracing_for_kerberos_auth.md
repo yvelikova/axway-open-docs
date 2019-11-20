@@ -75,7 +75,7 @@ If you have the Kerberos client and Kerberos service running on separate machine
 
     ![Wireshark](/Images/IntegrationGuides/KerberosIntegration/Wireshark/wireshark_tracing_spnego_kerb_delegation_flags.png)
 
-## Use Wireshark to trace Authentication Service Exchange and Ticket-Granting Service Exchange {#wireshark-service-exchange}
+## Use Wireshark to trace Authentication Service Exchange and Ticket-Granting Service Exchange
 
 You can use Wireshark to trace the Kerberos traffic between the Kerberos client and the Kerberos KDC (Windows Domain Controller). This traffic relates to the Kerberos Authentication Service Exchange (`AS-REQ` and `AS-REP`) and the Ticket-Granting Service Exchange (`TGS-REQ` and `TGS-REP`) when the client requests the TGT and service ticket.
 

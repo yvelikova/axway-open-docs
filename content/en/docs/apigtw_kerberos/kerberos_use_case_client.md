@@ -3,8 +3,10 @@
 "linkTitle": "API Gateway as a Kerberos client",
 "weight":"6",
 "date": "2019-11-14",
-"description": "API Gateway as a Kerberos client to mediate the authentication of a non-Kerberos client application to a back-end service."
+"description": "Configure API Gateway as a Kerberos client to mediate the authentication of a non-Kerberos client application to a back-end service."
 }
+
+In this scenario:
 
 * **Client application**: Does not support Kerberos authentication.
 * **Back-end service**: Requires Kerberos authentication, but not the end user's credential.
@@ -103,7 +105,7 @@ This section describes how to configure the Kerberos policy for API Gateway as t
 
 To start, add a new policy named, for example, `Kerberos Client SPNEGO`.
 
-**Configure the end user authentication method**\
+#### Configure the end user authentication method
 
 In this example, API Gateway authenticates the end user application using HTTP Basic. Depending on your environment, you may want to use a different authentication mechanism.
 
@@ -114,13 +116,13 @@ In this example, API Gateway authenticates the end user application using HTTP B
 
 API Gateway does not authenticate the end user to the back end. The back-end service only sees API Gateway's Kerberos credentials regardless of how the end user authenticates to API Gateway.
 
-**Configure connection to the back-end service**\
+#### Configure connection to the back-end service
 
 1. Open the **Routing** category in the filter palette, and drag a **Connect to URL** filter onto the policy canvas.
 2. Enter the **URL** used that invokes the back-end service.
 3. On the **Authentication** tab, choose the Kerberos credential profile configured earlier (`Authenticate to back-end service`), and click **Finish**.
 
-If the back-end service requires an SSL/TLS connection, SSL must be configured on the Connect to URL filter. For more details on the fields and options in this configuration window, see [Connect to URL](/csh?context=502&product=prod-api-gateway-77) in the [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
+If the back-end service requires an SSL/TLS connection, SSL must be configured on the **Connect to URL** filter.
 
 ### Build the policy
 
