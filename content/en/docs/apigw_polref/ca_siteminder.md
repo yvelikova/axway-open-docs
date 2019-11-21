@@ -3,7 +3,7 @@
 "linkTitle": "CA SiteMinder filters",
 "weight": 50,
 "date": "2019-10-17",
-"description": "Use the filters when integrating with CA SiteMinder."
+"description": "Integrate with CA SiteMinder."
 }
 
 ## Prerequisites
