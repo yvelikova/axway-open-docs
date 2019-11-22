@@ -1,17 +1,16 @@
 {
 "title": "Example: Promote from development to testing environment",
 "linkTitle": "Example: Promote from development to testing environment",
+"weight":"20",
 "date": "2019-11-19",
-"description": "This topic describes a step-by-step example of promoting configuration from a development environment to a testing environment. If further promotions to more upstream environments are required, you can repeat Step 4 and Step 5 only. "
+"description": "Use case example on how to promote configuration from a development environment to a testing environment."
 }
-﻿
 
 This topic describes a step-by-step example of promoting configuration from a development environment to a testing environment. If further promotions to more upstream environments are required, you can repeat Step 4 and Step 5 only.
 
 {{< alert title="Note" color="primary" >}}Some environments (for example, testing and production) might be exact copies of each other, which enables you to deploy the same environment package to both environments. In these cases, repeat Step 5 only.{{< /alert >}}
 
-**Example topology**
---------------------
+## Example topology
 
 This example assumes the following simple environment topology:
 

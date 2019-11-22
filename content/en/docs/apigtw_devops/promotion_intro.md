@@ -1,23 +1,16 @@
 {
-"title": "Introduction to API Gateway deployment and promotion",
-"linkTitle": "Introduction to API Gateway deployment and promotion",
+"title": "Deployment and promotion introduction",
+"linkTitle": "Deployment and promotion introduction",
+"weight":"2",
 "date": "2019-11-19",
-"description": "This topic introduces the concepts in the deployment and promotion of API Gateway configuration. A typical enterprise-level customer will have several environments through which an API Gateway configuration will move from development to production. For example, this typically includes completely separate development, testing, and production domains. Promotion refers to the act of moving API Gateway configuration from one environment to another, and configuring environment-specific values so that the configuration can be deployed in each environment. For details on general API Gateway concepts, see the \\n \\n \\n \\n ."
+"description": "This topic introduces the concepts in the deployment and promotion of API Gateway configuration."
 }
-﻿
 
-This topic introduces the concepts in the deployment and promotion of API Gateway configuration. A typical enterprise-level customer will have several environments through which an API Gateway configuration will move from development to production. For example, this typically includes completely separate development, testing, and production domains. Promotion refers to the act of moving API Gateway configuration from one environment to another, and configuring environment-specific values so that the configuration can be deployed in each environment. For details on general API Gateway concepts, see the
-[API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5)
-.
+A typical enterprise-level customer will have several environments through which an API Gateway configuration will move from development to production. For example, this typically includes completely separate development, testing, and production domains. Promotion refers to the act of moving API Gateway configuration from one environment to another, and configuring environment-specific values so that the configuration can be deployed in each environment.
 
-API Gateway supports a range of different operating systems. This means that API Gateway configuration can be promoted and deployed across environments running on different operating systems. For details on supported platform versions, see the
-[API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/)
-.
+API Gateway supports a range of different operating systems. This means that API Gateway configuration can be promoted and deployed across environments running on different operating systems. For details on supported platform versions, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
 
-<div id="p_promotion_intro_envs">
-
-Environment topology
---------------------
+## Environment topology
 
 In a typical environment topology, each environment is implemented as a completely separate API Gateway domain. The exact mapping of environments to domains is determined by how each environment is administered, and which users have access rights.
 
@@ -33,37 +26,22 @@ The API Gateway configuration is deployed to a group of API Gateways. Therefore,
 
 {{< alert title="Note" color="primary" >}}The API Gateway does not mandate a specific environment-to-domain configuration, and is flexible enough to work with any architecture. However, you should manage your environments in an environment and domain topology. Implementing each environment as a distinct API Gateway domain is a good starting point.{{< /alert >}}
 
-</div>
+## Promotion and deployment
 
-<div id="p_promotion_intro_terms">
-
-Promotion and deployment
-------------------------
-
-In a multienvironment topology, *promotion*
-refers to physically moving an API Gateway configuration between environments. For example, this might involve using FTP to transfer a configuration file, or loading and retrieving the file in a Configuration Management (CM) repository. In addition, promotion involves configuring environment-specific settings for the target environment (for example, users, certificates, and external connections to third-party systems). This is known as *environmentalization*.
+In a multienvironment topology, *promotion* refers to physically moving an API Gateway configuration between environments. For example, this might involve using FTP to transfer a configuration file, or loading and retrieving the file in a Configuration Management (CM) repository. In addition, promotion involves configuring environment-specific settings for the target environment (for example, users, certificates, and external connections to third-party systems). This is known as *environmentalization*.
 
 Promotion typically involves two distinct tasks performed by different user types:
 
--   In the downstream development environment, the policy developer prepares the configuration for promotion to upstream environments (for example, testing and production). This involves deciding what settings are environment-specific, and assumes expertise in policy development and configuration tools such as Policy Studio.
--   The upstream user takes the configuration prepared by the policy developer, creates the environment-specific configuration, and deploys it. This is typically performed by an API Gateway administrator in upstream environments. The Configuration Studio tool used for this promotion step is designed for the skills of upstream administrators, and does not assume expertise in policy development and configuration.
+* In the downstream development environment, the policy developer prepares the configuration for promotion to upstream environments (for example, testing and production). This involves deciding what settings are environment-specific, and assumes expertise in policy development and configuration tools such as Policy Studio.
+* The upstream user takes the configuration prepared by the policy developer, creates the environment-specific configuration, and deploys it. This is typically performed by an API Gateway administrator in upstream environments. The Configuration Studio tool used for this promotion step is designed for the skills of upstream administrators, and does not assume expertise in policy development and configuration.
 
-*Deployment*
-refers to deploying configuration to an API Gateway group in a local domain. For example, you can deploy using the following tools:
+*Deployment* refers to deploying configuration to an API Gateway group in a local domain. For example, you can deploy using the following tools:
 
--   Policy Studio in a development environment
--   API Gateway Manager in a testing environment
--   Scripts in a production environment (for example, `managedomain`
-    or a custom script)
+* Policy Studio in a development environment
+* API Gateway Manager in a testing environment
+* Scripts in a production environment (for example, `managedomain` or a custom script)
 
-For more details, see [*Deployment and Promotion Tasks* on page 1](promotion_arch.htm).
-
-</div>
-
-<div id="p_promotion_intro_config">
-
-API Gateway configuration
--------------------------
+## API Gateway configuration
 
 API Gateway configuration consists of the following types of information:
 
@@ -81,36 +59,18 @@ These component configuration types are described as follows:
 | **Environment Setting** | Environment-specific settings for environmentalized configuration in the policy, listener, and external connection configuration | All environment specific           |
 | **Package Property**    | Name-value pairs used to describe the contents of the configuration package (for example, `Version`, `ID`, or `Timestamp`).      | Some environment specific          |
 
-</div>
-
-<div id="p_promotion_intro_packages">
-
-API Gateway configuration packages
-----------------------------------
+## API Gateway configuration packages
 
 The API Gateway deployment and promotion tools bundle the API Gateway configuration into the following configuration package files:
 
-| **Package**             | **Description**                                                                                                                                                             | **Used when**                                                                                                                                                                                                                                                                    |
-|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Deployment package**  
- (`.fed`                  
- )                        | Contains all API Gateway component configuration (policy, listener, external connection, user, certificate, and environment setting). Implemented as a `.fed`               
-  file. This contains all of the data that would be contained in separate policy and environment packages combined.                                                            | Used by the policy developer in Policy Studio during the iterative development cycle to deploy all configuration. For more details, see [*Deploying in a Development Environment* on page 1](promotion_arch.htm#Deployin).                                                       |
-| **Policy package**      
- (`.pol`                  
- )                        | Contains the policy, listener, external connection, and environment setting configuration. Implemented as a `.pol`                                                          
-  file. The environment settings in the `.pol`                                                                                                                                 
-  file contain a list of what has been environmentalized in the policy, listener, and external connection configuration. It does not contain the environment-specific values.  | Used when promoting APIs and policy configuration to an upstream environment (for example, testing or production). Its contents remain unchanged in the upstream environment. For more details, see [*Environmentalizing Configuration* on page 1](promotion_arch.htm#Environm). |
-| **Environment package** 
- (`.env`                  
- )                        | Contains the user, certificate, and environment setting configuration. Implemented as an `.env`                                                                             
-  file. The environment settings in the `.env`                                                                                                                                 
-  file contain a list of what has been environmentalized in the policy, listener, and external connection configuration, along with the environment-specific values.           | Environment-specific settings used in upstream environments only (for example, testing or production). For more details, see [*Promoting Upstream (First Cycle)* on page 1](promotion_arch.htm#Promotin).                                                                        |
+| **Package**             | **Description**   | **Used when**        |
+|-------------------------| ------------------| ---------------------|
+| **Deployment package**  (`.fed`)                         | Contains all API Gateway component configuration (policy, listener, external connection, user, certificate, and environment setting). Implemented as a `.fed` file. This contains all of the data that would be contained in separate policy and environment packages combined.                                         | Used by the policy developer in Policy Studio during the iterative development cycle to deploy all configuration. For more details, see [*Deploying in a Development Environment* on page 1](promotion_arch.htm#Deployin).                                                       |
+| **Policy package** (`.pol`)                        | Contains the policy, listener, external connection, and environment setting configuration. Implemented as a `.pol` file. The environment settings in the `.pol` file contain a list of what has been environmentalized in the policy, listener, and external connection configuration. It does not contain the environment-specific values.  | Used when promoting APIs and policy configuration to an upstream environment (for example, testing or production). Its contents remain unchanged in the upstream environment. For more details, see [Environmentalizing Configuration](/docs/apigtw_devops/promotion_arch#environmentalize-configuration). |
+| **Environment package**
+ (`.env`)                        | Contains the user, certificate, and environment setting configuration. Implemented as an `.env` file. The environment settings in the `.env`
+  file contain a list of what has been environmentalized in the policy, listener, and external connection configuration, along with the environment-specific values.           | Environment-specific settings used in upstream environments only (for example, testing or production). For more details, see [*Promoting Upstream (First Cycle)* on page 1](/docs/apigtw_devops/promotion_arch##promote-upstream).                                                                        |
 
 The combined contents of the policy package and environment package are equivalent to the contents of the deployment package, which contains all API Gateway configuration.
 
 ![API Gateway configuration packages](/Images/docbook/images/promotion/gw_config_packages.png)
-
-For more details on package properties, see [*Configuring Package Properties* on page 1](promotion_props.htm).
-
-</div>

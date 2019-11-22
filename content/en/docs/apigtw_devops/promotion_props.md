@@ -1,25 +1,20 @@
 {
 "title": "Configure package properties",
 "linkTitle": "Configure package properties",
+"weight":"6",
 "date": "2019-11-19",
-"description": "The API Gateway configuration package files include property files that contain name-value pairs describing the package contents, and which are known as *package properties*. This topic describes these properties, and explains how to configure default and custom package properties using the Policy Studio and Configuration Studio tools. "
+"description": "Learn how to configure the API Gateway deployment, policy, and environment packages contents."
 }
-﻿
 
 The API Gateway configuration package files include property files that contain name-value pairs describing the package contents, and which are known as *package properties*. This topic describes these properties, and explains how to configure default and custom package properties using the Policy Studio and Configuration Studio tools.
 
 The API Gateway bundles its configuration in the following package formats:
 
--   Deployment package (`.fed`)
--   Policy package (`.pol`)
--   Environment package (`.env`)
+* Deployment package (`.fed`)
+* Policy package (`.pol`)
+* Environment package (`.env`)
 
-*configuration packages* on page 1.
-
-<div id="p_promotion_props_manifest">
-
-Configure package properties
-----------------------------
+## Configure package properties
 
 All three API Gateway configuration package formats (`.fed`, `.pol`, and `.env`) contain property name-value pairs, which you can use to describe the package contents. These package property values are stored in package property files (`.mf`). A deployment package (`.fed`) has two sets of package properties, one associated with the policy-related configuration, and one associated with the environment-related configuration. Policy packages (`.pol`) and environment packages (`.env`) have a single set of properties each.
 
@@ -59,7 +54,3 @@ To add a new package property, click the add icon on the right of the window. Si
 You can edit environment properties in Configuration Studio using a similar window. You can only view policy properties because these are read-only.
 
 Package property values are deployed to an API Gateway along with the entire configuration in the relevant configuration package structure.
-
-</div>
-
- 

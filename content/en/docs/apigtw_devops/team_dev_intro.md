@@ -1,12 +1,12 @@
 {
 "title": "Introduction to API Gateway team development",
 "linkTitle": "Introduction to API Gateway team development",
+"weight":"12",
 "date": "2019-11-19",
-"description": "This topic introduces the concepts and main features of API Gateway team development. This enables a team of API Gateway policy developers to work in parallel developing APIs and policies to be deployed as a single API Gateway configuration using a Source Code Management (SCM) system."
+"description": "This topic introduces the concepts and main features of API Gateway team development"
 }
-﻿
 
-This topic introduces the concepts and main features of API Gateway team development. This enables a team of API Gateway policy developers to work in parallel developing APIs and policies to be deployed as a single API Gateway configuration using a Source Code Management (SCM) system.
+ This feature enables a team of API Gateway policy developers to work in parallel developing APIs and policies to be deployed as a single API Gateway configuration using a Source Code Management (SCM) system.
 
 In addition, team development enables continuous integration (CI) and continuous delivery (CD) practices to be used in an API Gateway system. This enables the API Gateway to use best practices for development, deployment, and promotion, and to support the increasing use of DevOps tooling.
 
@@ -15,6 +15,8 @@ The following diagram shows the different stages of delivery, from development t
 ![DevOps delivery pipeline](/Images/docbook/images/promotion/devops_delivery.png)
 
 The following details the various tasks that you might perform at each stage.
+
+
 
 |             |                                                                                                    |                                                                                                       |
 |-------------|----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
