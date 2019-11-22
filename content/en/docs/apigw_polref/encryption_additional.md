@@ -14,36 +14,37 @@ Upon successful decryption, the filter removes all metadata, such as headers and
 
 For example, when you decrypt the following JWE Payload:
 
+```
 eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZHQ00ifQ.
 
 OKOawDo13gRp2ojaHV7LFpZcgV7T6DVZKTyKOMTYUmKoTCVJRgckCL9kiMT03JGe
 
-ipsEdY3mx\_etLbbWSrFr05kLzcSr4qKAq7YN7e9jwQRb23nfa6c9d-StnImGyFDb
+ipsEdY3mx_etLbbWSrFr05kLzcSr4qKAq7YN7e9jwQRb23nfa6c9d-StnImGyFDb
 
-Sv04uVuxIp5Zms1gNxKKK2Da14B8S4rzVRltdYwam\_lDp5XnZAYpQdb76FdIKLaV
+Sv04uVuxIp5Zms1gNxKKK2Da14B8S4rzVRltdYwam_lDp5XnZAYpQdb76FdIKLaV
 
-mqgfwX7XWRxv2322i-vDxRfqNzo\_tETKzpVLzfiwQyeyPGLBIO56YJ7eObdv0je8
+mqgfwX7XWRxv2322i-vDxRfqNzo_tETKzpVLzfiwQyeyPGLBIO56YJ7eObdv0je8
 
-1860ppamavo35UgoRdbYaBcoh9QcfylQr66oc6vFWXRcZ\_ZT2LawVCWTIy3brGPi
+1860ppamavo35UgoRdbYaBcoh9QcfylQr66oc6vFWXRcZ_ZT2LawVCWTIy3brGPi
 
 6UklfCpIMfIjf7iGdXKHzg.
 
-48V1\_ALb6US04U3b.
+48V1_ALb6US04U3b.
 
-5eym8TW\_c8SuK0ltJ3rpYIzOeDQz7TALvtu6UG9oMo4vpzs9tX\_EFShS8iB7j6ji
+5eym8TW_c8SuK0ltJ3rpYIzOeDQz7TALvtu6UG9oMo4vpzs9tX_EFShS8iB7j6ji
 
-SdiwkIr3ajwQzaBtQD\_A.
+SdiwkIr3ajwQzaBtQD_A.
 
 XFBoMYUZodetZdvTiFvSkQ
+```
 
 The output is:
 
+```
 The true sign of intelligence is not knowledge but imagination.
+```
 
 {{< alert title="Note" color="primary" >}}The JWT Decrypt filter automatically detects whether the input JWT is encrypted with symmetric or asymmetric key and automatically uses the corresponding settings. For example, you can configure decryption with symmetric key and certificate; however, the filter uses the former or latter depending on the type of JWE it receives as input.{{< /alert >}}
-
-General settings
-----------------
 
 Configure the following field on the **JWT Decrypt** window:
 
@@ -55,8 +56,7 @@ Enter an appropriate name for the filter to display in a policy.
 
 Enter the selector expression to obtain the JWT to be decrypted.
 
-Decryption using key selection
-------------------------------
+### Decryption using key selection
 
 Optionally, configure the following fields in the **Key selection** section:
 
@@ -68,8 +68,7 @@ Select the certificate from the certificate store that is used to decrypt the pa
 
 Alternatively, enter a selector expression to retrieve the alias of the certificate in the certificate store.
 
-Shared key selection details
-----------------------------
+### Shared key selection details
 
 Optionally, configure the following fields in the **Shared key selection** section:
 
@@ -85,8 +84,8 @@ Enter the shared key that is used to [encrypt](jwt_encrypt.htm) the payload. The
 
 Alternatively, enter a selector expression to obtain the shared key. The value returned by the selector should contain:
 
--   Byte array (possibly produced by a different filter)
--   Base64-encoded byte array
+* Byte array (possibly produced by a different filter)
+* Base64-encoded byte array
 
 ## JWT encrypt filter
 
@@ -96,14 +95,15 @@ JWE represents encrypted content using JSON-based data structures. The JWE crypt
 
 A JWE represents the following logical values:
 
--   JOSE Header
--   JWE Encrypted Key
--   JWE Initialization Vector
--   JWE Ciphertext
--   JWE Authentication Tag
+* JOSE Header
+* JWE Encrypted Key
+* JWE Initialization Vector
+* JWE Ciphertext
+* JWE Authentication Tag
 
 The encrypted content is outputted in JWE Compact Serialization format, which is produced by base64-encoding the logical values and concatenates them with a period (‘.’) in between:
 
+```
 BASE64URL(UTF8(JWE Protected Header)) ‚.‘
 
 BASE64URL(JWE Encrypted Key) ‚.‘
@@ -113,37 +113,39 @@ BASE64URL(JWE Initialization Vector) ‚.‘
 BASE64URL(JWE Ciphertext) ‚.‘
 
 BASE64URL(JWE Authentication Tag)
+```
 
 For example, when you use the RSAES-OAEP algorithm and AES GCM encryption method to encrypt the following content (the JWE Payload):
 
+```
 The true sign of intelligence is not knowledge but imagination.
+```
 
 The following string is returned:
 
+```
 eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZHQ00ifQ.
 
 OKOawDo13gRp2ojaHV7LFpZcgV7T6DVZKTyKOMTYUmKoTCVJRgckCL9kiMT03JGe
 
-ipsEdY3mx\_etLbbWSrFr05kLzcSr4qKAq7YN7e9jwQRb23nfa6c9d-StnImGyFDb
+ipsEdY3mx_etLbbWSrFr05kLzcSr4qKAq7YN7e9jwQRb23nfa6c9d-StnImGyFDb
 
-Sv04uVuxIp5Zms1gNxKKK2Da14B8S4rzVRltdYwam\_lDp5XnZAYpQdb76FdIKLaV
+Sv04uVuxIp5Zms1gNxKKK2Da14B8S4rzVRltdYwam_lDp5XnZAYpQdb76FdIKLaV
 
-mqgfwX7XWRxv2322i-vDxRfqNzo\_tETKzpVLzfiwQyeyPGLBIO56YJ7eObdv0je8
+mqgfwX7XWRxv2322i-vDxRfqNzo_tETKzpVLzfiwQyeyPGLBIO56YJ7eObdv0je8
 
-1860ppamavo35UgoRdbYaBcoh9QcfylQr66oc6vFWXRcZ\_ZT2LawVCWTIy3brGPi
+1860ppamavo35UgoRdbYaBcoh9QcfylQr66oc6vFWXRcZ_ZT2LawVCWTIy3brGPi
 
 6UklfCpIMfIjf7iGdXKHzg.
 
-48V1\_ALb6US04U3b.
+48V1_ALb6US04U3b.
 
-5eym8TW\_c8SuK0ltJ3rpYIzOeDQz7TALvtu6UG9oMo4vpzs9tX\_EFShS8iB7j6ji
+5eym8TW_c8SuK0ltJ3rpYIzOeDQz7TALvtu6UG9oMo4vpzs9tX_EFShS8iB7j6ji
 
-SdiwkIr3ajwQzaBtQD\_A.
+SdiwkIr3ajwQzaBtQD_A.
 
 XFBoMYUZodetZdvTiFvSkQ
-
-General settings
-----------------
+```
 
 Configure the following field on the **JWT Encrypt** window:
 
@@ -151,8 +153,7 @@ Configure the following field on the **JWT Encrypt** window:
 
 Enter an appropriate name for the filter to display in a policy.
 
-Encryption details
-------------------
+### Encryption details
 
 Configure the following fields **Encryption details** section:
 
@@ -164,8 +165,7 @@ Enter a selector expression to retrieve the payload to be signed. The content ca
 
 Select whether to encrypt using a asymmetric key, symmetric key, or JSON Web Key.
 
-Asymmetric key details
-----------------------
+### Asymmetric key details
 
 If you have selected the asymmetric key type, configure the following fields in the **Asymmetric** section:
 
@@ -185,8 +185,7 @@ Select the algorithm to use for encryption.
 
 Select the method to use for encryption.
 
-Symmetric key details
----------------------
+### Symmetric key details
 
 If you have selected the symmetric key type, configure the following fields on the **Symmetric** section:
 
@@ -208,8 +207,8 @@ Enter the shared key that should be used to encrypt the payload. The key should 
 
 Alternatively, enter a selector expression to retrieve the shared key. The value returned by the selector should contain:
 
--   Byte array (possibly produced by a different filter)
--   Base64-encoded byte array
+* Byte array (possibly produced by a different filter)
+* Base64-encoded byte array
 
 **Algorithm**:
 
@@ -219,22 +218,21 @@ Select the algorithm used to encrypt.
 
 Select the method used tp encrypt.
 
-JWK details
------------
+### JWK details
 
 If you have selected the JWK key type, complete the following fields in the **JWK details** section:
 
 **JSON Web key**:
 
-Enter a selector expression to retrieve the JSON Web Key used to encrypt the payload. JWKs can be retrieved with the [Connect to URL](connection_to_url.htm) filter.
+Enter a selector expression to retrieve the JSON Web Key used to encrypt the payload. JWKs can be retrieved with the **Connect to URL** filter.
 
 **Algorithm**:
 
 Select the algorithm to use for encryption.
 
--   To use the algorithm specified in the JWK, select **Always use JWK algorithm**. If no algorithm is specified within the JWK, the filter will fail.
--   To always use the algorithm specified in the JWK (if one is defined), but default to the algorithm specified in the **Algorithm** field (if no algorithm is specified in the JWK), select **Use JWK algorithm if available, but default to the selected algorithm below if not**.
--   To always use a specific algorithm (regardless if an algorithm is specified in the JWK), select **Always use the algorithm selected below**.
+* To use the algorithm specified in the JWK, select **Always use JWK algorithm**. If no algorithm is specified within the JWK, the filter will fail.
+* To always use the algorithm specified in the JWK (if one is defined), but default to the algorithm specified in the **Algorithm** field (if no algorithm is specified in the JWK), select **Use JWK algorithm if available, but default to the selected algorithm below if not**.
+* To always use a specific algorithm (regardless if an algorithm is specified in the JWK), select **Always use the algorithm selected below**.
 
 {{< alert title="Note" color="primary" >}}The encryption method should always be specified.{{< /alert >}}
 
@@ -242,101 +240,67 @@ Select the algorithm to use for encryption.
 
 Select the method to use for encryption.
 
-FIPS restrictions
------------------
+### FIPS restrictions
 
 The following algorithms are not supported when API Gateway is in FIPS mode:
 
--   Key wrap with AES GCM using 128-bit key (A128GCMKW)
--   Key wrap with AES GCM using 192-bit key (A192GCMKW)
--   Key wrap with AES GCM using 256-bit key (A256GCMKW)
+* Key wrap with AES GCM using 128-bit key (A128GCMKW)
+* Key wrap with AES GCM using 192-bit key (A192GCMKW)
+* Key wrap with AES GCM using 256-bit key (A256GCMKW)
 
 The following encryption methods are not supported when API Gateway is in FIPS mode:
 
--   AES GCM using 128-bit key (A128GCM)
--   AES GCM using 192-bit key (A192GCM)
--   AES GCM using 256-bit key (A256GCM)
+* AES GCM using 128-bit key (A128GCM)
+* AES GCM using 192-bit key (A192GCM)
+* AES GCM using 256-bit key (A256GCM)
 
 ## SMIME decryption
 
 The **SMIME Decryption**
 filter can be used to decrypt an encrypted Secure/Multipurpose Internet Mail Extensions (SMIME) message.
 
-See also [*SMIME encryption* on page 1](encryption_smime_enc.htm).
-
-</div>
-
-<div id="p_encryption_smime_dec_conf">
-
-Configuration
--------------
-
 Complete the following fields to configure this filter:
 
-**Name**:\
+**Name**:
 Enter a name for the filter to display in a policy.
 
-**Use Certificate to Decrypt**:\
-Check the box next to the certificate that you want to use to decrypt the encrypted PKCS\#7 message with. The private key associated with this certificate is used to actually decrypt the message.
-
-</div>
+**Use Certificate to Decrypt**:
+Check the box next to the certificate that you want to use to decrypt the encrypted PKCS#7 message with. The private key associated with this certificate is used to actually decrypt the message.
 
 ## SMIME encryption
 
 You can use the **SMIME Encryption**
 filter to generate an encrypted Secure/Multipurpose Internet Mail Extensions (SMIME) message. This filter enables you to configure the certificates of the recipients of the encrypted message. You can also configure advanced options such as ciphers and Base64 encoding.
 
-See also [*SMIME decryption* on page 1](encryption_smime_dec.htm).
-
-</div>
-
-<div id="p_encryption_smime_enc_conf">
-
-General settings
-----------------
-
 Complete the following field:
 
-**Name**:\
+**Name**:
 Enter an appropriate name for the filter to display in a policy.
 
-</div>
-
-<div id="p_encryption_smime_enc_recipients">
-
-Recipient settings
-------------------
+### Recipient settings
 
 The **Recipients**
 tab enables you to configure the certificates of the recipients of the encrypted SMIME message. Select one of the following options:
 
-**Use the following certificates**:\
+**Use the following certificates**:
 This is the default option. Select the certificates of the recipients of the encrypted message. The public keys associated with these certificates are used to encrypt the data so that it can only be decrypted using the associated private keys.
 
-**Certificate in attribute**:\
+**Certificate in attribute**:
 Alternatively, enter the message attribute that contains the certificate of the recipients of the encrypted message. Defaults to the `certificate`
 message attribute.
 
-</div>
-
-<div id="p_encryption_smime_enc_adv">
-
-Advanced settings
------------------
+### Advanced SMIME encryption settings
 
 The **Advanced**
 tab includes the following settings:
 
-**Cipher**:\
+**Cipher**:
 Enter the cipher that you want to use to encrypt the message data. Defaults to the `DES-EDE3-CBC`
 cipher.
 
-**Content-Type**:\
+**Content-Type**:
 Enter the `Content-Type`
 of the message data. Defaults to `application/pkcs7-mime`.
 
-**Base64 encode**:\
+**Base64 encode**:
 Select whether to Base64 encode the message data. This option is not selected by default.
-
-</div>
-
