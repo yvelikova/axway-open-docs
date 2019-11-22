@@ -1,9 +1,9 @@
 {
 "title": "Conversion filters",
 "linkTitle": "Conversion filters",
-"weight": 90,
+"weight": 50,
 "date": "2019-10-17",
-"description": "Commonly used conversion filters."
+"description": "Commonly used conversion filters, including JSON to XML, JSON node, and XSLT."
 }
 
 ## JSON to XML conversion filter

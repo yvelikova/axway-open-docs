@@ -1,7 +1,7 @@
 {
 "title": "Utility filters",
 "linkTitle": "Utility filters",
-"weight": 200,
+"weight": 105,
 "date": "2019-10-17",
 "description": "Commonly used utility filters."
 }
@@ -36,7 +36,7 @@ filter, specify the following fields:
 contains a selector, a `MissingPropertyException`
 can occur, which results in a `CircuitAbortException`.{{< /alert >}}
 
-## Copy or modify attributes
+## Copy or modify attributes filter
 
 The **Copy/Modify Attributes**
 filter copies the values of message or user attributes to other message or user attributes. You can also set the value of a message or user attribute to a user-specified value.
@@ -85,7 +85,7 @@ The message can be copied to one of the following types of attributes:
 Select **Create list attribute**
 if the new attribute can contain several items.
 
-## Set attribute
+## Set attribute filter
 
 The **Set Attribute**
 filter enables you to set the value of a specified message attribute.
@@ -99,7 +99,7 @@ Complete the following fields:
 * **Attribute Value**:
     Enter the value of the message attribute specified above.
 
-## Remove attribute
+## Remove attribute filter
 
 You can use the **Remove Attribute**
 filter to remove a specified message attribute from a request message or a response message, depending on where the filter is placed in the policy.
@@ -110,7 +110,7 @@ Enter a suitable name for this filter to display in a policy.
 **Attribute Name**:
 Select or enter the message attribute name to be removed from the message (for example, `authentication.subject.password`).
 
-## Evaluate selector
+## Evaluate selector filter
 
 The **Evaluate Selector**
 filter enables you to evaluate the contents of a specified selector expression, and return a boolean result. A selector is a special syntax that enables API Gateway configuration settings to be evaluated and expanded at runtime.
@@ -147,7 +147,7 @@ Enter the selector expression to be evaluated. Defaults to the following selecto
 ${1 + 1 == 2}
 ```
 
-## Reflect message
+## Reflect message filter
 
 The **Reflect Message**
 filter echoes the HTTP request headers, body, and attachments back to the client.
@@ -160,7 +160,7 @@ Enter a name for the filter to display in a policy.
 **HTTP response code status**:
 Specify an HTTP status response code to return to the client.
 
-## Reflect message and attributes
+## Reflect message and attributes filter
 
 The **Reflect Message and Attributes**
 filter echoes the HTTP request headers, body, and attachments back to the client. It also echoes back the message attributes that were stored in the message at the time when the message completed the policy.

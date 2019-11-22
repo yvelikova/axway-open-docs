@@ -1,9 +1,9 @@
 {
 "title": "Caching filters",
 "linkTitle": "Caching filters",
-"weight": 70,
+"weight": 75,
 "date": "2019-10-17",
-"description": "Use caching filters to work with cached messages."
+"description": "Filters to cache parts of a message, and work with cached attributes."
 }
 
 To learn more about caching, and for an example of a caching policy, see [Configure caching](/docs/apigw_poldev/general_cache/).

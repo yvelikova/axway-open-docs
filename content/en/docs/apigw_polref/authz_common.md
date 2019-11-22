@@ -3,7 +3,7 @@
 "linkTitle": "Authorization filters",
 "weight": 40,
 "date": "2019-10-17",
-"description": "Commonly used authorization filters."
+"description": "Commonly used authorization filters, including SAML authorization assertion, XACML PEP, and LDAP."
 }
 
 ## Insert SAML authorization assertion filter

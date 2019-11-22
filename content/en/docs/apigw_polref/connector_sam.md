@@ -1,6 +1,7 @@
 {
 "title": "Sun Access Manager filters",
 "linkTitle": "Sun Access Manager filters",
+"weight": 119,
 "date": "2019-10-17",
 "description": "Integrate with Sun Access Manager"
 }

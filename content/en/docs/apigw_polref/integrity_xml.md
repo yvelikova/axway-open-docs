@@ -1,7 +1,7 @@
 {
 "title": "XML integrity filters",
 "linkTitle": "XML integrity filters",
-"weight": 120,
+"weight": 96,
 "date": "2019-10-17",
 "description": "Sign and verify XML messages."
 }

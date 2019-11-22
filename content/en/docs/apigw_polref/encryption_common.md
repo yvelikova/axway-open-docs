@@ -1,7 +1,7 @@
 {
 "title": "Encryption and decryption filters",
 "linkTitle": "Encryption and decryption filters",
-"weight": 110,
+"weight": 90,
 "date": "2019-10-17",
 "description": "Commonly used filters for encrypting or decrypting messages, including PGP encryption and decryption, and key generation."
 }

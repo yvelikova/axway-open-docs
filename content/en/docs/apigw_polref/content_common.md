@@ -1,9 +1,9 @@
 {
 "title": "Content filtering filters",
 "linkTitle": "Content filtering filters",
-"weight": 85,
+"weight": 60,
 "date": "2019-10-17",
-"description": "Commonly used filters that filter messages based on their content."
+"description": "Commonly used filters for filtering and validating messages based on their content. Includes query string validation, HTTP header validation, and JSON schema validation."
 }
 
 ## Query string validation filter

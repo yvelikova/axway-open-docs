@@ -1,7 +1,7 @@
 {
 "title": "XML encryption filters",
 "linkTitle": "XML encryption filters",
-"weight": 111,
+"weight": 91,
 "date": "2019-10-17",
 "description": "XML encryption and decryption filters and settings."
 }
@@ -609,7 +609,7 @@ message attribute, which is required by the **XML-Decryption**
 filter.
 
 {{< alert title="Note" color="primary" >}}The output of a successfully executed decryption filter is the original unencrypted message. Depending on whether the **Remove Encrypted Key used in decryption**
-has been enabled, all information relating to the encryption key can be removed from the message. For more details, see [*Options](#Options).{{< /alert >}}
+has been enabled, all information relating to the encryption key can be removed from the message. For more details, see [Options](#ptions).{{< /alert >}}
 
 To understand how XML encryption works, see [XML encryption overview](#xml-encryption-overview). The following sections describe how to configure the **XML Decryption Settings**
 filter to decrypt encrypted XML data.
@@ -711,6 +711,7 @@ block is removed from the message.
 {{< alert title="Note" color="primary" >}}In cases where the `<EncryptedKey>`
 block has been included in the `<EncryptedData>`
 block, it is removed regardless of whether this setting has been selected.{{< /alert >}}
+
 **Default Derived Key Label**:
 If the API Gateway consumes a `<DerivedKeyToken>`, the default value entered is used to recreate the derived key that is used to decrypt the encrypted data.
 

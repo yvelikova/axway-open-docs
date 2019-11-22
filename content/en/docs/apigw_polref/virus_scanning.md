@@ -1,12 +1,12 @@
 {
 "title": "Virus scanning filters",
 "linkTitle": "Virus scanning filters",
-"weight": 89,
+"weight": 69,
 "date": "2019-10-17",
 "description": "Scan the content of a message for viruses."
 }
 
-## Scan with McAfee anti-virus
+## Scan with McAfee anti-virus filter
 
 The **McAfee Anti-Virus**
 filter scans incoming HTTP requests and their attachments for viruses and exploits. For example, if a virus is detected in a MIME attachment or in the XML message body, the API Gateway can reject the entire message and return a SOAP Fault to the client. In addition, this filter supports cleaning of messages from infections such as viruses and exploits. It also provides scan type presets for different detection levels, and reports overall message status after scanning.
@@ -167,7 +167,7 @@ mv datv2.tmp datv2.new
 
 These create a temporary folder, copy the files into this folder, and rename the temporary folder to `datv2.new`. In this way, the scanner is guaranteed to pick up the virus definition files when it detects the new directory.
 
-## Scan with ClamAV anti-virus
+## Scan with ClamAV anti-virus filter
 
 You can use the **ClamAV Anti-Virus**
 filter to check messages for viruses by connecting to a ClamAV daemon running on network. The ClamAV daemon inspects the message and if the daemon finds a virus, it returns a corresponding response to the API Gateway, which can then block the message, if necessary.
@@ -184,7 +184,7 @@ Enter the host name of the machine on which the ClamAV daemon is running.
 **ClamAV Daemon Port Number**:
 Enter the port on which the ClamAV daemon is listening.
 
-## Scan with Sophos anti-virus
+## Scan with Sophos anti-virus filter
 
 The **Sophos Anti-Virus**
 filter uses the Sophos Anti-Virus Interface (SAVI) to screen messages for viruses. You can configure the behavior of the Sophos library using configuration options available in the **Sophos Anti-Virus**

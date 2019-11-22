@@ -1,12 +1,12 @@
 {
 "title": "Additional utility filters",
 "linkTitle": "Additional utility filters",
-"weight": 205,
+"weight": 106,
 "date": "2019-10-17",
 "description": "Additional utility filters."
 }
 
-## Insert BST
+## Insert BST filter
 
 You can use the **Insert BST**
 filter to insert a Binary Security Token (BST) into a message. A BST is a security token that is in binary form, and therefore not necessarily human readable. For example, an X.509 certificate is a binary security token. Inserting a BST into a message is normally performed as a side effect of signing or encrypting a message. However, there are also some scenarios where you might insert a certificate into a message in a BST without signing or encrypting the message.
@@ -39,7 +39,7 @@ Select the BST value type, or enter a custom type. Example value types include t
 **Base64 Encode**:
 Select this option to Base64-encode the data. This option applies only when the data in the message attribute is not already Base64 encoded. In some cases, the input might already be Base64 encoded, so you should deselect this setting in these cases.
 
-## Check group membership
+## Check group membership filter
 
 The **Check Group Membership**
 filter checks whether the specified API Gateway user is a member of the specified API Gateway user group. The user and the group are both stored in the API Gateway user store. For more details, see
@@ -70,7 +70,7 @@ The possible paths through this filter are as follows:
 | `False`        | The specified user is not a member of the specified group. |
 | `CircuitAbort` | An exception occurred while executing the filter.          |
 
-## Execute external process
+## Execute external process filter
 
 This filter enables you to execute an external process from a policy. It can execute any external process (for example, start an SSH session to connect to another machine, run a script, or send an SMS message).
 
@@ -99,7 +99,7 @@ tab includes the following fields:
   
 **Block till process finished**: Select whether to block until the process is finished in the check box. This is enabled by default.
 
-## Invoke policy per message body
+## Invoke policy per message body filter
 
 In cases where API Gateway receives a multipart related MIME message, you can use the **Invoke Policy per Message Body**
 filter to pass each body part to a specified policy for processing.
@@ -123,7 +123,7 @@ MIME messages.
 
 If one of the body parts is actually an archive file (for example, tar or zip), this setting determines the maximum depth of files to unzip in cases where the archive file contains other archive files, which might contain others, and so on.
 
-## Locate XML nodes
+## Locate XML nodes filter
 
 You can use the **Locate XML Nodes**
 filter to select a number of nodes from an XML message. The selected nodes are stored in a message attribute, which is typically used by a signature or XML encryption filter later in a policy.
@@ -209,13 +209,13 @@ any nodes that might already exist in the specified attribute, or if they should
 to any existing nodes. You can also decide to **Reset**
 the contents of the message attribute. Select the appropriate option depending on your requirements.
 
-## HTTP parser
+## HTTP parser filter
 
 The **HTTP Parser** filter parses the HTTP message headers and body. As such, it acts as a barrier in the policy to guarantee that the entire content has been received before any other filters are invoked. It can be used, for example, to wait for an entire message from the back-end service before the gateway begins to reply to the caller. It requires the `content.body` attribute.
 
 The **HTTP Parser** filter forces the server to do *store-and-forward* routing instead of the default *cut-through* routing, where the request is only parsed on-demand. For example, you can use this filter as a simple test to ensure that the message is XML.
 
-## Pause processing
+## Pause processing filter
 
 The **Pause**
 filter is mainly used for testing purposes. This
@@ -229,7 +229,7 @@ Enter an appropriate name for the filter to display in a policy.
 **Pause for**:
 When the filter is executed in a policy, it sleeps for the time specified in this field. Defaults to `10000` milliseconds.
 
-## Policy shortcut chain
+## Policy shortcut chain filter
 
 The **Policy Shortcut Chain**
 filter enables you to run a series of configured policies in sequence without needing to wire up a policy containing several **Policy Shortcut**
@@ -300,7 +300,7 @@ field (depending on whether you chose a specific policy or a policy label when c
 or **API Gateway request policy (Health Check)**). The policy in which this **Policy Shortcut Chain**
 filter is configured calls the selected policy or policy label when it is executed.
 
-## Policy shortcut
+## Policy shortcut filter
 
 The **Policy Shortcut**
 filter enables you to reuse the functionality of one policy in another policy. For example, you could create a policy called **Security Tokens**
@@ -322,7 +322,7 @@ filter is configured calls the selected policy when it is executed.
 
 {{< alert title="Tip" color="primary" >}}Alternatively, to speed up policy shortcut configuration, you can drag a policy from the tree on the left of the Policy Studio and drop it on to the policy canvas on the right. This automatically configures a policy shortcut to the selected policy.{{< /alert >}}
 
-## Set response status
+## Set response status filter
 
 The **Set Response Status**
 filter is used to explicitly set the response status of a call. This status is then recorded as a message metric for use in reporting.
@@ -343,7 +343,7 @@ Select **Pass**
 or **Fail**
 to set the response status.
 
-## Switch on attribute value
+## Switch on attribute value filter
 
 The **Switch on Attribute Value**
 filter enables you to switch to a specific policy based on the value of a configured message attribute. You can specify various switch cases (for example, contains, is, ends with, matches regular expression, and so on). Specified switch cases are evaluated in succession until a switch case is found, and the policy specified for that case is executed. You can also specify a default policy, which is executed when none of the switch cases specified in the filter is found.
@@ -396,7 +396,7 @@ when finished. You can click **Add**, and repeat as necessary to add more switch
 and **Down**
 buttons on the right.
 
-## Quote of the day
+## Quote of the day filter
 
 The **Quote of the day**
 filter is a useful test utility for returning a simple SOAP response to a client. The API Gateway wraps the quote in a SOAP response, which can then be returned to the client.
@@ -631,6 +631,25 @@ For example, the following cron expression blocks all messages received on April
 
 The default value is `* * 9-17 * * ? *`, which specifies a time of 9:00:00 to 17:00:00 every day.
 
-## Configuration Web Service
+## Management services RBAC filter
 
-This filter is only used by the configuration Management Service and should not need to be configured.
+Role-Based Access Control (RBAC) is used to protect access to the API Gateway management services. For example, management services are invoked when a user accesses the server using Policy Studio or API Gateway Manager (`https://localhost:8090/`). For more information on RBAC, see [Configure Role-Based Access Control (RBAC)](/docs/apigtw_admin/general_rbac/).
+
+The **Management Services RBAC**
+filter can be used to perform the following tasks:
+
+* Read the user roles from the configured message attribute (for example, `authentication.subject.role`).
+* Determine which management service URI is currently being invoked.
+* Return true if one of the roles has access to the management service currently being invoked, as defined in the `acl.json`
+    file.
+* Otherwise, return false.
+
+{{< alert title="Caution" color="warning" >}}This filter is for management services use only. The **Management Services** HTTP services group should only be modified under strict supervision from Axway Support.{{< /alert >}}
+
+Configure the following settings:
+
+**Name**:
+Enter an appropriate name for this filter to display in a policy.
+
+**Role Attribute**:
+Select or enter the message attribute that contains the user roles.

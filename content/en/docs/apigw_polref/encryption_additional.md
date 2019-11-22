@@ -1,7 +1,7 @@
 {
 "title": "Additional encryption filters",
 "linkTitle": "Additional encryption filters",
-"weight": 115,
+"weight": 95,
 "date": "2019-10-17",
 "description": "Additional encryption filters, including JWT and SMIME encryption and decryption."
 }

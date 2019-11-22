@@ -1,6 +1,6 @@
 {
-"title": "Send to or read from JMS",
-"linkTitle": "Send to or read from JMS",
+"title": "Route to JMS",
+"linkTitle": "Route to JMS",
 "weight": 12,
 "date": "2019-10-17",
 "description": "Send messages to or read messages from a JMS messaging system."

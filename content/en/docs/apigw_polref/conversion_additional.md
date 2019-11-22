@@ -1,9 +1,9 @@
 {
 "title": "Additional conversion filters",
 "linkTitle": "Additional conversion filters",
-"weight": 95,
+"weight": 55,
 "date": "2019-10-17",
-"description": "Additional filters for use in conversions."
+"description": "Additional filters for use in conversions, including XML node, create cookie, and load file."
 }
 
 ## Add XML node filter

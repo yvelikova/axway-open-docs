@@ -1,9 +1,9 @@
 {
 "title": "Monitoring and logging filters",
 "linkTitle": "Monitoring and logging filters",
-"weight": 120,
+"weight": 85,
 "date": "2019-10-17",
-"description": "TODO."
+"description": "Logging filters including log message payload, and monitoring filters including Axway Sentinel filters and the alert filter."
 }
 
 ## Log message payload filter

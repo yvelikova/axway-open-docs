@@ -1,7 +1,7 @@
 {
 "title": "CA SiteMinder filters",
 "linkTitle": "CA SiteMinder filters",
-"weight": 50,
+"weight": 111,
 "date": "2019-10-17",
 "description": "Integrate with CA SiteMinder."
 }

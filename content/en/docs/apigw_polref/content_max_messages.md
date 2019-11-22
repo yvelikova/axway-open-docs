@@ -1,7 +1,7 @@
 {
 "title": "Throttling filter",
 "linkTitle": "Throttling filter",
-"weight": 80,
+"weight": 59,
 "date": "2019-10-17",
 "description": "Use the **Throttling** filter to rate limit calls to a back-end service."
 }

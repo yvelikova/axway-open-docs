@@ -1,9 +1,9 @@
 {
 "title": "Fault and error handling filters",
 "linkTitle": "Fault and error handling filters",
-"weight": 100,
+"weight": 79,
 "date": "2019-10-17",
-"description": "Use these filters to handle faults and errors."
+"description": "Handle faults and errors in your policies."
 }
 
 ## Generic error filter

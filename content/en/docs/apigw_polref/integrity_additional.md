@@ -1,7 +1,7 @@
 {
     "title": "Additional integrity filters",
     "linkTitle": "Additional integrity filters",
-    "weight": 125,
+    "weight": 97,
     "date": "2019-10-17",
     "description": "Sign and verify JWT and SMIME messages."
 }

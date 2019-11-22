@@ -3,7 +3,7 @@
 "linkTitle": "Additional authorization filters",
 "weight": 45,
 "date": "2019-10-17",
-"description": "Additional authorization filters."
+"description": "Additional authorization filters, including attribute authorization, Axway Passport, SAML, and SAML PDP."
 }
 
 ## Attribute authorization filter

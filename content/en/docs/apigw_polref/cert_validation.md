@@ -1,9 +1,9 @@
 {
 "title": "Certificate validation filters",
 "linkTitle": "Certificate validation filters",
-"weight": 60,
+"weight": 70,
 "date": "2019-10-17",
-"description": "Use these filters to validate X.509 certificates."
+"description": "Validate X.509 certificates using OCSP, CRL, or XKMS."
 }
 
 Whenever API Gateway receives an X.509 certificate, either as part of the SSL handshake or as part of the XML message itself, it is important to be able to determine whether that certificate is legitimate or not.

@@ -1,9 +1,9 @@
 {
 "title": "Additional content filtering filters",
 "linkTitle": "Additional content filtering filters",
-"weight": 87,
+"weight": 65,
 "date": "2019-10-17",
-"description": "Additional filters that filter messages based on their content."
+"description": "Additional filters for content filtering, including threatening content and content validation."
 }
 
 ## Content validation filter
