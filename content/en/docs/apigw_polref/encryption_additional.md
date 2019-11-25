@@ -78,7 +78,7 @@ Select if you do not want to decrypt tokens that are encrypted with shared keys.
 
 **Shared key**:
 
-Enter the shared key that is used to [encrypt](jwt_encrypt.htm) the payload. The key should be given as a base64-encoded byte array.
+Enter the shared key that is used to encrypt the payload. The key should be given as a base64-encoded byte array.
 
 **Selector expression**:
 

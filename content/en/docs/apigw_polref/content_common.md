@@ -829,7 +829,7 @@ This standard procedure of interpreting XOP messages is described in [XML-binary
 When a schema validation check fails, the validation errors are stored in the `xsd.errors` API Gateway message attribute. You can return an appropriate SOAP Fault to the client by writing out the contents of this message attribute.
 
 For example, you can do this by configuring a **Set Message**
-filter (for more information, see [*Set message](conversion_set_message.htm)) to write a custom response message back to the client. Place the **Set Message**
+filter to write a custom response message back to the client. Place the **Set Message**
 filter on the failure path of the **Schema Validation**
 filter. You can enter the following sample SOAP Fault message in the **Set Message**
 filter. Notice the use of the `${xsd.errors}`

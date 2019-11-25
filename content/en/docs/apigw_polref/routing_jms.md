@@ -184,7 +184,7 @@ settings enable you to configure the following:
 **JMS Service**:
 Click the browse button on the right, and select an existing JMS service in the tree. To add a JMS Service, right-click the **JMS Services**
 tree node, and select **Add a JMS Service**. Alternatively, you can configure JMS services under the **Environment Configuration** > **External Connections**
-node in the Policy Studio tree. For more details, see [*Configure messaging services* on page 1](general_messaging.htm).
+node in the Policy Studio tree. For more details, see [Configure messaging services](/docs/apigw_poldev/general_messaging/).
 
 **Source type**:
 Select one of the following from the list:

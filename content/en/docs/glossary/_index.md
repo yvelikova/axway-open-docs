@@ -1,7 +1,7 @@
 {
 "title": "Glossary",
 "linkTitle": "Glossary",
-"weight":"30",
+"weight":"99",
 "date": "2019-11-07",
 "description": "Reference to AMPLIFY API Management and AMPLIFY Central terminology."
 }

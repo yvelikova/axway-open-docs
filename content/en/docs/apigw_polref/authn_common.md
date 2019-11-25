@@ -426,7 +426,7 @@ When the **HTML Form based Authentication**
 filter is configured, the API Gateway can authenticate the user details specified in the HTML form against a user profile stored in the API Gateway local repository, a database, or an LDAP directory. The **HTML Form based Authentication**
 filter also enables you to specify how HTTP sessions are managed (for example, session expiry, and applicable API Gateway domain or relative path).
 
-{{< alert title="Tip" color="primary" >}}For an alternative approach to HTTP session management, which also includes the ability to check or to end sessions, see [*Create session* on page 1](authn_session_create.htm). {{< /alert >}}
+{{< alert title="Tip" color="primary" >}}For an alternative approach to HTTP session management, which also includes the ability to check or to end sessions, see [Create session](#create-session-filter). {{< /alert >}}
 
 ### Configure general HTML form settings
 
@@ -489,7 +489,7 @@ tab enable you to specify how to handle invalid login attempts. You can choose t
 
 {{< alert title="Note" color="primary" >}}If you are using two or more instances of HTTP basic, HTTP digest, or HTML form-based authentication filters in the same policy, and they share the same invalid attempts cache, you must use the same invalid attempts settings on each of the filters.{{< /alert >}}
 
-For more details on the settings on this tab, see [*Invalid attempts* on page 1](authn_http_basic.htm#Invalid).
+For more details on the settings on this tab, see [Invalid attempts](#configure-invalid-attempts).
 
 ## IP address authentication filter
 
@@ -951,7 +951,7 @@ option.
 
 The API Gateway can act as a Kerberos service to consume Kerberos tokens sent from a client in the HTTP header or in the message itself. The Kerberos client must have obtained a ticket from the Ticket Granting Server (TGS) for this Kerberos service. The service ticket makes up part of the Kerberos client-side token that is sent to the Kerberos service. If the service can validate the token, the client is authenticated successfully.
 
-For more details on different Kerberos setups with API Gateway, see [API Gateway Kerberos Integration Guide](/bundle/APIGateway_77_IntegrationKerberos_allOS_en_HTML5).
+For more details on different Kerberos setups with API Gateway, see [API Gateway Kerberos Integration Guide](/docs/apigtw_kerberos/).
 
 To add a **Kerberos Service** filter, open the **Authentication** category, and drag the filter onto the policy canvas. The following sections describe how to configure the different fields of this filter.
 
@@ -1143,7 +1143,7 @@ filters to manage HTTP sessions.
 
 {{< alert title="Tip" color="primary" >}}The **Create Session**
 filter offers a more flexible approach to managing HTTP sessions than using the **HTTP Form-Based Authentication**
-filter. For example, the form-based approach does not include the ability to check or end sessions, and sessions are auto-renewed on each invocation of the filter. For more details, see [*HTML form-based authentication* on page 1](authn_html_form.htm).{{< /alert >}}
+filter. For example, the form-based approach does not include the ability to check or end sessions, and sessions are auto-renewed on each invocation of the filter. For more details, see [HTML form-based authentication](#html-form-based-authentication-filter).{{< /alert >}}
 
 Complete the following fields to configure this filter:
 
@@ -1490,7 +1490,7 @@ section enables you to specify how to handle invalid attempts. You can choose to
 
 {{< alert title="Note" color="primary" >}}If you are using two or more instances of HTTP basic, HTTP digest, or HTML form-based authentication filters in the same policy, and they share the same invalid attempts cache, you must use the same invalid attempts settings on each of the filters.{{< /alert >}}
 
-For more details on the fields in this section, see [*Invalid attempts* on page 1](authn_http_basic.htm#Invalid).
+For more details on the fields in this section, see [Invalid attempts](#configure-invalid-attempts).
 
 ## Check session filter
 
@@ -1549,7 +1549,7 @@ filter (for example, `/sales`). This removes the cookie for the specified path o
 
 You can configure the API Gateway to act as a Kerberos client and to obtain a service ticket for a specific Kerberos service. The service ticket makes up part of the Kerberos client-side token that is sent to the Kerberos service. If the service can validate the token, the client is authenticated successfully.
 
-For more details on different Kerberos setups with API Gateway, see [API Gateway Kerberos Integration Guide](/bundle/APIGateway_77_IntegrationKerberos_allOS_en_HTML5).
+For more details on different Kerberos setups with API Gateway, see [API Gateway Kerberos Integration Guide](/docs/apigtw_kerberos/).
 
 There are two filters you can use to configure the client-side transaction:
 

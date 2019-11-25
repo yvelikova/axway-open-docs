@@ -233,7 +233,7 @@ A HTTP cookie is data sent by a server in an HTTP response to a client. The clie
 The **Get Cookie** filter is used to read the `Cookie` and `Set-Cookie` HTTP headers. The `Cookie`
 header is used when a client sends a cookie to a server. The `Set-Cookie` header is used when the server instructs the client to store a cookie.
 
-For more details, see [*Create cookie* on page 1](conversion_create_cookie.htm).
+For more details, see [Create cookie](/docs/apigw_polref/conversion_additional/#create-cookie-filter).
 
 ### Configure get cookie
 

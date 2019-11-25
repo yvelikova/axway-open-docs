@@ -275,7 +275,7 @@ node, and select **Register Web Service**.
 
 ### Monitoring settings
 
-The fields on this tab enable you to configure to configure whether API Gateway displays usage metrics data for this web service. For example, this information can be used by API Gateway Analytics to produce reports showing how and who is calling this web service. For details on the fields on this tab, see [Monitoring options](ws_filter.htm#Monitori).
+The fields on this tab enable you to configure to configure whether API Gateway displays usage metrics data for this web service. For example, this information can be used by API Gateway Analytics to produce reports showing how and who is calling this web service. For details on the fields on this tab, see [Monitoring options](#monitoring-options).
 
 ## Return WSDL filter
 

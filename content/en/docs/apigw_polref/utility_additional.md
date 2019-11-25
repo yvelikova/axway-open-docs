@@ -3,7 +3,7 @@
 "linkTitle": "Additional utility filters",
 "weight": 106,
 "date": "2019-10-17",
-"description": "Additional utility filters."
+"description": "Additional utility filters, including policy shortcut and policy shortcut chain, and the scripting language filter."
 }
 
 ## Insert BST filter

@@ -3,7 +3,7 @@
 "linkTitle": "Utility filters",
 "weight": 105,
 "date": "2019-10-17",
-"description": "Commonly used utility filters."
+"description": "Commonly used utility filters, including set and remove attribute, and reflect message."
 }
 
 ## String replace filter
