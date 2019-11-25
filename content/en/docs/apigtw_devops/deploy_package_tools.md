@@ -6,8 +6,6 @@
 "description": "The API Gateway package and deploy tools enable you to automate processes for continuous integration."
 }
 
-## Run the package and deploy tools
-
 You can run the package and deploy tools from the following directory:
 
 ```
@@ -18,17 +16,12 @@ For example, to run the `projpack --help` command:
 
 ```
 cd /opt/Axway-7.8/apigateway/posix/bin
-```
-
-```
 projpack --help
 ```
 
 ## Generate configuration packages from API Gateway projects
 
 The `projpack` tool enables you to use automatic processes to generate API Gateway configuration packages from multiple API Gateway projects. For example, you can automatically generate deployment packages (`.fed`), policy packages (`.pol`), and environment packages (`.env`), which you can then use to promote APIs and policy configuration to upstream environments.
-
-<!-- # # # # # # # # # # # # # # # # # # # # # # # # # # # # # TABLE REMOVED FROM HERE -->
 
 ### Example projpack use cases
 
@@ -62,7 +55,7 @@ projpack --create --dir=/home/jbloggs/testfeds/ --name=dev.fed --type=fed
 --add /home/jbloggs/apiprojects/proj1 -add /home/jbloggs/apiprojects/proj2 --passfile=/home/jbloggs/passfile.txt
 ```
 
-For more details on the passphrase file format, see [*Read passphrases from a file* on page 1](#Reading).
+For more details on the passphrase file format, see [Read passphrases from a file](#read-passphrases-from-a-file).
 
 #### Import project configuration into an existing deployment archive
 
@@ -74,8 +67,6 @@ projpack --import --replace --dir=/home/user1/testfeds/ --passphrase=my_text --n
 ```
 
 {{< alert title="Note" color="primary" >}}You can use the `--replace` option before `--add` to override conflicts, otherwise if conflicts are found the command exits. {{< /alert >}}
-
-For more examples, see `projpack --help`.
 
 ### Read passphrases from a file
 
@@ -92,7 +83,7 @@ p1=my_text1
 p2=my_text2
 ```
 
-{{< alert title="Note" color="primary" >}}For security reasons, this file should be protected with appropriate permissions. For example, the following command changes the file ownership: {{< /alert >}}
+For security reasons, this file should be protected with appropriate permissions. For example, the following command changes the file ownership:
 
 ```
 sudo chown root: <passphrases_file>
@@ -103,6 +94,8 @@ The following command specifies file permissions:
 ```
 sudo chmod 400 <passphrases_file>
 ```
+
+For more examples, see `projpack --help`.
 
 ## Build and deploy API Gateway configurations
 
@@ -149,6 +142,8 @@ projdeploy --dir=/tests --passphrase=pass --name=mypackage --type=fed
 --includes mygateway1 mygateway2 mygateway3
 ```
 
+For more examples, see `projdeploy --help`.
+
 ## Change the passphrase of an API Gateway project
 
 The `projchangepass` tool enables you to change the passphrase of an API Gateway project.
@@ -181,6 +176,8 @@ oldPP="changeme"
 newPP=newpassPhrase
 confirmPP=newpassPhrase
 ```
+
+For more examples, see `projchangepass --help`.
 
 ## Upgrade an API Gateway project
 
@@ -291,3 +288,7 @@ REPORT 23/Jan/2017:16:00:00.005 ... Logging directory: /tmp/projupgrade_logs_201
 ```
 
 The output shows that Project1 was upgraded successfully, but Project2 failed to upgrade because of an `"Invalid group passphrase"`. To fix this, you could write the Project2 passphrase to a file and rerun `projupgrade` with the `--passfile` option.
+
+For more examples, see `projupgrade --help`.
+
+To see more command options for the continuous integration tools, see [Continuous integration tools reference](/docs/apigtw_ref/devopstools_ref).

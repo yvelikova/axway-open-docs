@@ -3,7 +3,7 @@
 "linkTitle": "Sample promotion and deployment scripts",
 "weight":"8",
 "date": "2019-11-19",
-"description": "The API Gateway provides a collection of sample scripts to enable you to automate various common administration tasks."
+"description": "Use API Gateway sample scripts to to automate common administration tasks."
 }
 
 The API Gateway provides a collection of sample scripts to enable you to automate various common administration tasks. These scripts are based on the Jython Java scripting interpreter (see [http://www.jython.org](http://www.jython.org/)). You can extend these scripts to suit your needs by using the Jython language syntax. All Jython sample scripts are found in the following directory in your API Gateway installation:
@@ -12,7 +12,7 @@ The API Gateway provides a collection of sample scripts to enable you to automat
 INSTALL_DIR/samples/scripts
 ```
 
-For details on packaging and deployment tools, see [Automate team development processes for continuous integration](/docs/apigtw_devops/deploy_package_tools).
+For details on packaging and deployment tools, see [Automate processes for continuous integration](/docs/apigtw_devops/deploy_package_tools).
 
 ## Run the sample scripts
 

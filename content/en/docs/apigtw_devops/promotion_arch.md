@@ -48,8 +48,8 @@ In an upstream environment (for example, testing), the API Gateway administrator
 
 When the environment package has been created, the administrator can use API Gateway Manager or scripts to deploy both the policy package from the development environment and the newly created environment package. Each environment will have its own version of the `.env` file containing environment-specific settings, certificates, users, and so on. This constitutes a full deployable configuration when combined with the unmodified `.pol` file from the development environment.
 
-{{< alert title="Note" color="primary" >}}Alternatively, the administrator can save a deployment package (`.fed`) from Configuration Studio, which merges the policy and environment package data. If you are not concerned with moving an unmodified policy package from the development environment to all upstream environments, you can save a single `.fed`
-file, and deploy this using API Gateway Manager or scripts (for example, if you want a single file for convenience).{{< /alert >}}
+Alternatively, the administrator can save a deployment package (`.fed`) from Configuration Studio, which merges the policy and environment package data. If you are not concerned with moving an unmodified policy package from the development environment to all upstream environments, you can save a single `.fed` file, and deploy this using API Gateway Manager or scripts (for example, if you want a single file for convenience).
+
 The following diagram shows an example environment topology.
 
 ![Upstream administration (first phase)](/Images/docbook/images/promotion/upstream_phase1.png)

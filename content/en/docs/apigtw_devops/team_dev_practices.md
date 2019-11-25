@@ -3,7 +3,7 @@
 "linkTitle": "Team development best practices",
 "weight":"14",
 "date": "2019-11-19",
-"description": "This topic describes recommended best practices for creating API Gateway team development projects."
+"description": "Learn the recommended best practices for creating API Gateway team development projects."
 }
 This includes creating a common project and API projects, adding the projects to an SCM system, and setting up project dependencies.
 
