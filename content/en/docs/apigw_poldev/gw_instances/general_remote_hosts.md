@@ -25,42 +25,41 @@ configuration window are described in the following sections.
 You can configure the following settings on the **General**
 tab:
 
-**Host alias**:
-The human readable alias name for the remote host (for example, `StockQuote Host`). This setting is required.
+**Host alias**
+: The human readable alias name for the remote host (for example, `StockQuote Host`). This setting is required.
 
-**Host name**:
-The host name or IP address of the remote host to connect to (for example `stockquote.com`). If the host name entered in a **Static Router**
+**Host name**
+: The host name or IP address of the remote host to connect to (for example `stockquote.com`). If the host name entered in a **Static Router**
 filter matches this host name, the connection-specific settings configured on the **Remote Host**
 dialog are used when connecting to this host. This also includes any IP addresses listed on the **Addresses and Load Balancing**
 tab, which override the default network DNS server mappings, if configured. This setting is required.
 
-**Port**:
-The TCP port on the remote host to connect to. Defaults to `80`.
+**Port**
+: The TCP port on the remote host to connect to. Defaults to `80`.
 
-**Maximum connections**:
-The maximum number of connections to open to a remote host. If the maximum number of connections has already been established, the API Gateway instance waits for a connection to drop or become idle before making another request. The default value is `-1`, which allows unlimited connections. In the absence of a remote host, a global default value of `128` applies.
+**Maximum connections**
+: The maximum number of connections to open to a remote host. If the maximum number of connections has already been established, the API Gateway instance waits for a connection to drop or become idle before making another request. The default value is `-1`, which allows unlimited connections. In the absence of a remote host, a global default value of `128` applies.
 
-**Allow HTTP 1.1**:
-The API Gateway uses HTTP 1.0 by default to send requests to a remote host. This prevents any anomalies if the destination server does not fully support HTTP 1.1. If the API Gateway is routing on to a remote host that fully supports HTTP 1.1, you can use this setting to enable API Gateway to use HTTP 1.1.
+**Allow HTTP 1.1**
+: The API Gateway uses HTTP 1.0 by default to send requests to a remote host. This prevents any anomalies if the destination server does not fully support HTTP 1.1. If the API Gateway is routing on to a remote host that fully supports HTTP 1.1, you can use this setting to enable API Gateway to use HTTP 1.1.
 
-**Include Content Length in Request**:
-When this option is selected, the API Gateway includes the `Content-Length` HTTP header in all requests to this remote host. This setting only applies to outgoing remote host connections.
+**Include Content Length in Request**
+: When this option is selected, the API Gateway includes the `Content-Length` HTTP header in all requests to this remote host. This setting only applies to outgoing remote host connections.
 
-**Include Content Length in Response**:
-When this option is selected, if the API Gateway sends a response to this remote host that contains a `Content-Length` HTTP header, it returns this length to the client. This setting only applies to incoming remote host connections.
+**Include Content Length in Response**
+: When this option is selected, if the API Gateway sends a response to this remote host that contains a `Content-Length` HTTP header, it returns this length to the client. This setting only applies to incoming remote host connections.
 
-**Send Server Name Indication TLS extension to server**:
-Adds a field to outbound TLS/SSL calls that shows the name that the client used to connect. This can be useful if the server handles several different domains, and needs to present different certificates depending on the name the client used to connect. For example, this is required by some cloud-based services such as Amazon CloudFront. This setting is not selected by default.
+**Send Server Name Indication TLS extension to server**
+: Adds a field to outbound TLS/SSL calls that shows the name that the client used to connect. This can be useful if the server handles several different domains, and needs to present different certificates depending on the name the client used to connect. For example, this is required by some cloud-based services such as Amazon CloudFront. This setting is not selected by default.
 
 {{< alert title="Note" color="primary" >}}To send the SNI extension, you must ensure that the **Verify server's certificate matches requested hostname** setting is also selected. In addition, the **Port** setting must be the port that you are connecting to the server with (for example, `443` is the default port for SSL).{{< /alert >}}
 
-**Verify server's certificate matches requested hostname**:
-Ensures that the certificate presented by the server matches the name of the remote host being connected to. This prevents host spoofing and man-in-the-middle attacks. This setting is selected by default.
+**Verify server's certificate matches requested hostname**
+: Ensures that the certificate presented by the server matches the name of the remote host being connected to. This prevents host spoofing and man-in-the-middle attacks. This setting is selected by default.
 
 ## Address and load balancing settings
 
-You can configure the following settings on the **Addresses and Load Balancing**
-tab:
+You can configure the following settings on the **Addresses and Load Balancing** tab:
 
 **Addresses to use instead of DNS lookup**:
 You can add a list of IP addresses that the API Gateway uses instead of attempting a DNS lookup on the host name provided. This is useful in cases where a DNS server is not available or is unreliable. By default, connection attempts are made to the listed IP addresses on a round-robin basis.
@@ -109,44 +108,43 @@ tab are used when creating sockets for connecting to the remote host. Default va
 You can configure the following configuration options on the **Advanced**
 tab:
 
-**Connection Timeout**:
-If a connection to this remote host is not established within the time set in this field, the connection times out and the connection fails. Defaults to 30000 milliseconds (30 seconds).
+**Connection Timeout**
+: If a connection to this remote host is not established within the time set in this field, the connection times out and the connection fails. Defaults to 30000 milliseconds (30 seconds).
 
-**Active Timeout**:
-When the API Gateway receives a large HTTP request, it reads the request off the network when it becomes available. If the time between reading successive blocks of data exceeds the **Active Timeout**, the API Gateway closes the connection. This prevents a remote host from closing the connection while sending data. Defaults to 30000 milliseconds (30 seconds).
+**Active Timeout**
+: When the API Gateway receives a large HTTP request, it reads the request off the network when it becomes available. If the time between reading successive blocks of data exceeds the **Active Timeout**, the API Gateway closes the connection. This prevents a remote host from closing the connection while sending data. Defaults to 30000 milliseconds (30 seconds).
 
 For example, the remote host's network connection is pulled out of the machine while sending data to the API Gateway. When the API Gateway has read all the available data off the network, it waits the **Active Timeout**
 period before closing the connection.
 
 The **Active Timeout** value is also used as a wait time when the maximum number of connections for a remote host is reached. For example, when a remote host reaches the **Maximum connections** value, API Gateway waits the active timeout period before giving up on trying to make a new connection.
 
-**Transaction Timeout (ms)**:
-A configurable transaction timeout that detects slow HTTP attacks (slow header write, slow body write, slow read) and rejects any transaction that keeps the worker threads occupied for an excessive amount of time. The default value is 240000 milliseconds.
+**Transaction Timeout (ms)**
+: A configurable transaction timeout that detects slow HTTP attacks (slow header write, slow body write, slow read) and rejects any transaction that keeps the worker threads occupied for an excessive amount of time. The default value is 240000 milliseconds.
 
-**Max Received Bytes**:
-The maximum number of bytes received in a transaction. This is a configurable maximum length for the received data on transactions that API Gateway can handle. This setting limits the entire amount of data received over the link, regardless of whether it consists of body, headers, or request line. The default value is 10 MB (10485760 bytes).
+**Max Received Bytes**
+: The maximum number of bytes received in a transaction. This is a configurable maximum length for the received data on transactions that API Gateway can handle. This setting limits the entire amount of data received over the link, regardless of whether it consists of body, headers, or request line. The default value is 10 MB (10485760 bytes).
 
-**Max Sent Bytes**:
-The maximum number of bytes sent in a transaction. This is a configurable maximum length for the transmitted data on transactions that API Gateway can handle. This setting limits the entire amount of data sent over the link, regardless of whether it consists of body, headers, or request line. The default value is 10 MB (10485760 bytes).
+**Max Sent Bytes**
+: The maximum number of bytes sent in a transaction. This is a configurable maximum length for the transmitted data on transactions that API Gateway can handle. This setting limits the entire amount of data sent over the link, regardless of whether it consists of body, headers, or request line. The default value is 10 MB (10485760 bytes).
 
-**Idle Timeout**:
-The API Gateway supports HTTP 1.1 persistent connections. The **Idle Timeout**
-is the time that API Gateway waits after sending a message over a persistent connection to the remote host before it closes the connection. Defaults to 15000 milliseconds (15 seconds).
+**Idle Timeout**
+: The API Gateway supports HTTP 1.1 persistent connections. The **Idle Timeout** is the time that API Gateway waits after sending a message over a persistent connection to the remote host before it closes the connection. Defaults to 15000 milliseconds (15 seconds).
 
 Typically, the remote host tells the API Gateway that it wants to use a persistent connection. The API Gateway acknowledges this, and keeps the connection open for a specified period of time after sending the message to the host. If the connection is not reused by within the **Idle Timeout**
 period, the API Gateway closes the connection.
 
-**Input Buffer Size**:
-The maximum amount of memory allocated to each request. The default value is 8192 bytes.
+**Input Buffer Size**
+: The maximum amount of memory allocated to each request. The default value is 8192 bytes.
 
-**Output Buffer Size**:
-The maximum amount of memory allocated to each response. The default value is 8192 bytes.
+**Output Buffer Size**
+: The maximum amount of memory allocated to each response. The default value is 8192 bytes.
 
-**Cache addresses for (ms)**:
-The period of time to cache addressing information after it has been received from the naming service (for example, DNS). The default value is 300000 milliseconds.
+**Cache addresses for (ms)**
+: The period of time to cache addressing information after it has been received from the naming service (for example, DNS). The default value is 300000 milliseconds.
 
-**SSL Session Cache Size**:
-Specifies the size of the SSL session cache for connections to the remote host. This controls the number of idle SSL sessions that can be kept in memory. Defaults to `32`. If there are more than 32 simultaneous SSL sessions, this does not prevent another SSL connection from being established, but means that no more SSL sessions are cached. A cache size of `0`
+**SSL Session Cache Size**
+: Specifies the size of the SSL session cache for connections to the remote host. This controls the number of idle SSL sessions that can be kept in memory. Defaults to `32`. If there are more than 32 simultaneous SSL sessions, this does not prevent another SSL connection from being established, but means that no more SSL sessions are cached. A cache size of `0`
 means no cache, and no outbound SSL connections are cached.
 
 {{< alert title="Tip" color="primary" >}}You can use this setting to improve performance because it caches the slowest part of establishing the SSL connection. A new connection does not need to go through full authentication if it finds its target in the cache.{{< /alert >}}
@@ -163,18 +161,18 @@ If the cache is full, the output is as follows:
 DEBUG   09:09:12:953 [0d50] enough cached SSL sessions 11AA3894 to support.acme.com:443 already
 ```
 
-**Input Encodings**:
-Click the browse button to specify the HTTP content encodings that the API Gateway can accept from peers. The available content encodings include `gzip`
+**Input Encodings**
+: Click the browse button to specify the HTTP content encodings that the API Gateway can accept from peers. The available content encodings include `gzip`
 and `deflate`. By default, the content encodings configured the **Default Settings**
 are used. You can override this setting at the remote host and HTTP interface levels. For more details, see [Compressed content encoding](/docs/apigw_poldev/gw_instances/common_compress_encoding/).
 
-**Output Encodings**:
-Click the browse button to specify the HTTP content encodings that the API Gateway can apply to outgoing messages. The available content encodings include `gzip`
+**Output Encodings**
+: Click the browse button to specify the HTTP content encodings that the API Gateway can apply to outgoing messages. The available content encodings include `gzip`
 and `deflate`. By default, the content encodings configured the **Default Settings**
 are used. You can override this setting at the remote host and HTTP interface levels. For more details, see [Compressed content encoding](/docs/apigw_poldev/gw_instances/common_compress_encoding/).
 
-**Include correlation ID in headers**:
-Specifies whether to insert the correlation ID in outbound messages. This means that an `X-CorrelationID`
+**Include correlation ID in headers**
+: Specifies whether to insert the correlation ID in outbound messages. This means that an `X-CorrelationID`
 header is added to the outbound message. This is a transaction ID that is attached to each message transaction that passes through API Gateway, and which is used for traffic monitoring in the API Gateway Manager web console. You can use the correlation ID to search for messages in the web console, and you can also access its value from a policy using the `id`
 message attribute. This setting is selected by default.
 
@@ -197,21 +195,21 @@ An HTTP Watchdog can be added to a Remote Host configuration in order to periodi
 To configure an HTTP Watchdog, right-click a previously configured Remote Host in the Policy Studio tree (for example, under **Environment Configuration** > **Listeners** > **API Gateway**). Then select **Watchdog**
 > **Add**, and configure the following settings in the dialog.
 
-**Valid HTTP Response Code Ranges**:
-You can use this section to specify the HTTP response codes that you can regard as proof that the Remote Host is available. For example, if a 200 OK HTTP response is received for the poll request, the Remote Host can be considered available.
+**Valid HTTP Response Code Ranges**
+: You can use this section to specify the HTTP response codes that you can regard as proof that the Remote Host is available. For example, if a 200 OK HTTP response is received for the poll request, the Remote Host can be considered available.
 
 To specify a range of HTTP status codes, click the **Add**
 button and enter the **Start**
 and **End**
 of the range of HTTP response codes in the fields provided. An exact response code can be specified by entering the response code in both fields (for example, `200`).
 
-**HTTP Request for Polling**:
-The fields in this section enable you to configure the type and URI of the HTTP request to poll the Remote Host with. The default is the *Options*
+**HTTP Request for Polling**
+: The fields in this section enable you to configure the type and URI of the HTTP request to poll the Remote Host with. The default is the *Options*
 HTTP command with a URI of `*`, which is typically used to retrieve status information about the HTTP server. To use an alternative HTTP request to poll the Remote Host, select an HTTP request method from the **Method**, and specify the **URI**
 field.
 
-**Remote Host Polling**:
-The settings in this section determine when and how the HTTP Watchdog polls the Remote Host. The **Poll Frequency**
+**Remote Host Polling**
+: The settings in this section determine when and how the HTTP Watchdog polls the Remote Host. The **Poll Frequency**
 determines how often the Watchdog is to send the polling request to the Remote Host.
 
 By default, the Watchdog uses real HTTP requests to the Remote Host to determine its availability. In other words, if the API Gateway is sending a batch of requests to the Remote Host, it uses the response codes from these requests to decide whether or not the Remote Host is up. Therefore, the Watchdog effectively "polls" the Remote Host by sending real HTTP requests to it.
