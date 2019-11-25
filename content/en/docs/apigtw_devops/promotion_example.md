@@ -21,10 +21,9 @@ This example assumes the following simple environment topology:
 
 ## Policy developer edits configuration and deploys in development environment {#edit-configuration}
 
-The policy developer in the development environment uses Policy Studio to create policies, users, certificates, listeners, and so on as required for the business solution they are developing. The policy developer will edit and deploy the configuration to the **Dev Payment API Group**
-repeatedly until they are finished with the configuration.
+The policy developer in the development environment uses Policy Studio to create policies, users, certificates, listeners, and so on as required for the business solution they are developing. The policy developer will edit and deploy the configuration to the **Dev Payment API Group** repeatedly until they are finished with the configuration.
 
-### Deploy in **Policy Studio**
+### Deploy in Policy Studio
 
 The policy developer deploys the configuration in Policy Studio by clicking the **Deploy**
 button in the toolbar when editing the configuration. This displays the following window:
@@ -97,7 +96,7 @@ Alternatively, you can click the **Jump to configuration** link, and return to t
 
 ### Deploy the configuration
 
-After all environment-specific fields have been selected, and appropriate values set for the development environment, the policy developer should deploy and test the updated configuration. For details on deploying to the group, see [Policy developer edits configuration and deploys in development environment](##edit-configuration). The deployment package (`.fed`) deployed to the **Dev Payment API Group** will contain the entries in the environment settings store, and the associated values suitable for the development environment.
+After all environment-specific fields have been selected, and appropriate values set for the development environment, the policy developer should deploy and test the updated configuration. The deployment package (`.fed`) deployed to the **Dev Payment API Group** will contain the entries in the environment settings store, and the associated values suitable for the development environment.
 
 ### Environmentalize reference fields
 
@@ -107,7 +106,7 @@ The standard way to environmentalize a certificate at group level is to click **
 
 Alternatively, you can environmentalize a certificate using an alias. For example, in the development environment, the **XML Signature** filter could use a certificate named `MySigningCert`. The policy package (`.pol`) created from the development environment must be merged with an environment package (`.env`) that contains a certificate with the same alias.
 
-{{< alert title="Note" color="primary" >}}You can also environmentalize certificates using an alias at the API Gateway instance level as described in [Externalizing Instance Configuration](externalizing-instance-configuration). However, certificates are normally environmentalized at the API Gateway group level as described in this topic.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You can also environmentalize certificates using an alias at the API Gateway instance level as described in [Externalizing Instance Configuration](/docs/apigtw_devops/env_variables). However, certificates are normally environmentalized at the API Gateway group level as described in this topic.{{< /alert >}}
 
 ## Policy developer saves policy package in Policy Studio for promotion
 
@@ -164,8 +163,7 @@ The administrator can add, edit, or remove new certificates, keys, users, and us
 * [Manage certificates and keys](/docs/apigtw_security/general_certificates/)
 * [Manage users](/docs/apigtw_admin/manage_user_access/)
 
-{{< alert title="Note" color="primary" >}}If a certificate reference has been environmentalized, such as in the **Sample Active Directory Connection**, you must create or import a testing environment certificate in Configuration Studio. This makes the certificate available for selection when the environmentalized settings are edited in the **Environment Settings**
-tree in Configuration Studio.{{< /alert >}}
+If a certificate reference has been environmentalized, such as in the **Sample Active Directory Connection**, you must create or import a testing environment certificate in Configuration Studio. This makes the certificate available for selection when the environmentalized settings are edited in the **Environment Settings** tree in Configuration Studio.
 
 ### Update package properties
 
