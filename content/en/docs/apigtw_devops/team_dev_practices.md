@@ -1,9 +1,9 @@
 {
 "title": "Team development best practices",
 "linkTitle": "Team development best practices",
-"weight":"14",
+"weight":"70",
 "date": "2019-11-19",
-"description": "Learn the recommended best practices for creating API Gateway team development projects."
+"description": "Recommended best practices for creating API Gateway team development projects."
 }
 This includes creating a common project and API projects, adding the projects to an SCM system, and setting up project dependencies.
 
@@ -111,9 +111,12 @@ To create project dependencies between a common project and an API project, perf
 
 1. Open one of the API projects in Policy Studio.
 2. To create a project dependency between this API project and the common project, right-click **Project Dependencies** in the Policy Studio tree, select **Manage Project Dependencies**, and click **Add**.
-    * The common project configuration displayed in the **Project Dependencies** section of the API project are read-only.
+
+    The common project configuration displayed in the **Project Dependencies** section of the API project are read-only.
 3. Use a common configuration item (for example, a policy) from the common project in the API project (for example, using a policy shortcut).
 
-    ![Example of a project dependancy](/Images/docbook/images/promotion/project_dependancy_example.png)
+    ![Example of a project dependency](/Images/docbook/images/promotion/project_dependancy_example.png)
 
 4. Push the changes made to the API project to your SCM. For example, you are using Git and have changed an API project named Orders API in `/home/jdoe/apiprojects/ordersapi/`. If you changed the message in a **Set Message** filter from `OK` to `Not OK`, typically, the `PrimaryStore.xml` shows as modified when you run the `git status` command.
+
+For more details on managing project dependencies, see [Manage project dependencies](/docs/apigtw_devops/team_dev_dependencies/).

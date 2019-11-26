@@ -1,9 +1,9 @@
 {
-"title": "Automate processes for continuous integration",
-"linkTitle": "Automate processes for continuous integration",
-"weight":"18",
+"title": "Packaging and deployment tools",
+"linkTitle": "Packaging and deployment tools",
+"weight":"90",
 "date": "2019-11-19",
-"description": "The API Gateway package and deploy tools enable you to automate processes for continuous integration."
+"description": "Use the package and deploy tools to automate packaging, deploying, and upgrading configuration for continuous integration."
 }
 
 You can run the package and deploy tools from the following directory:
@@ -18,6 +18,8 @@ For example, to run the `projpack --help` command:
 cd /opt/Axway-7.8/apigateway/posix/bin
 projpack --help
 ```
+
+For a full listing of command options for the tools, see [Continuous integration tools reference](/docs/apigtw_ref/devopstools_ref).
 
 ## Generate configuration packages from API Gateway projects
 
@@ -42,8 +44,7 @@ The `--passphrase` and `--projpass` options are required, or you can use `--pass
 The following example shows how to create a deployment package (`.fed`) from multiple API Gateway projects:
 
 ```
-projpack --create --dir=/home/jbloggs/testfeds/ --passphrase=my_text --name=dev.fed --type=fed
---add /home/jbloggs/apiprojects/proj1 /home/jbloggs/apiprojects/proj2 --projpass-none
+projpack --create --dir=/home/jbloggs/testfeds/ --passphrase=my_text --name=dev.fed --type=fed --add /home/jbloggs/apiprojects/proj1 /home/jbloggs/apiprojects/proj2 --projpass-none
 ```
 
 #### Create an encrypted deployment package from multiple projects using a passphrase file
@@ -51,8 +52,7 @@ projpack --create --dir=/home/jbloggs/testfeds/ --passphrase=my_text --name=dev.
 The following example shows how to create a deployment package (`.fed`) from multiple API Gateway projects, where the passphrases are supplied in a passphrase file:
 
 ```
-projpack --create --dir=/home/jbloggs/testfeds/ --name=dev.fed --type=fed
---add /home/jbloggs/apiprojects/proj1 -add /home/jbloggs/apiprojects/proj2 --passfile=/home/jbloggs/passfile.txt
+projpack --create --dir=/home/jbloggs/testfeds/ --name=dev.fed --type=fed --add /home/jbloggs/apiprojects/proj1 -add /home/jbloggs/apiprojects/proj2 --passfile=/home/jbloggs/passfile.txt
 ```
 
 For more details on the passphrase file format, see [Read passphrases from a file](#read-passphrases-from-a-file).
@@ -62,8 +62,7 @@ For more details on the passphrase file format, see [Read passphrases from a fil
 The following example shows how to import configuration from specified API Gateway projects into a specified deployment package:
 
 ```
-projpack --import --replace --dir=/home/user1/testfeds/ --passphrase=my_text --name=my_package --type=fed
---add /home/user1/apiprojects/proj1 --projpass=my_text1 --add /home/user1/apiprojects/proj2 --projpass=my_text2
+projpack --import --replace --dir=/home/user1/testfeds/ --passphrase=my_text --name=my_package --type=fed --add /home/user1/apiprojects/proj1 --projpass=my_text1 --add /home/user1/apiprojects/proj2 --projpass=my_text2
 ```
 
 {{< alert title="Note" color="primary" >}}You can use the `--replace` option before `--add` to override conflicts, otherwise if conflicts are found the command exits. {{< /alert >}}
@@ -118,8 +117,7 @@ projdeploy --passphrase-none --name=test.fed
 The following example shows how to deploy a specified deployment package and apply a new passphrase and environment settings on a local host:
 
 ```
-projdeploy --dir=/tests --passphrase=pass --name=my_package --type=fed
---change-pass-to=newpass --apply-env=/tests/prod/prod.env
+projdeploy --dir=/tests --passphrase=pass --name=my_package --type=fed --change-pass-to=newpass --apply-env=/tests/prod/prod.env
 ```
 
 #### Deploy a policy package to a specified host and group
@@ -127,9 +125,7 @@ projdeploy --dir=/tests --passphrase=pass --name=my_package --type=fed
 The following example shows how to deploy a specified policy package and apply new settings on a specified Admin Node Manager host and port, and API Gateway group:
 
 ```
-projdeploy --dir=/tests --passphrase=pass --name=mypackage --type=pol
---change-pass-to-none --apply-env=/tests/prod/prod.env 
---deploy-to --host-name=myhost --port=myport --user-name=myname --password==mypass --group-name=mygroup
+projdeploy --dir=/tests --passphrase=pass --name=mypackage --type=pol --change-pass-to-none --apply-env=/tests/prod/prod.env --deploy-to --host-name=myhost --port=myport --user-name=myname --password==mypass --group-name=mygroup
 ```
 
 #### Deploy a deployment package to specified instances
@@ -137,9 +133,7 @@ projdeploy --dir=/tests --passphrase=pass --name=mypackage --type=pol
 The following example shows how to deploy a specified deployment package and apply new settings on a specified Admin Node Manager host, port, and set of API Gateway instances:
 
 ```
-projdeploy --dir=/tests --passphrase=pass --name=mypackage --type=fed
---deploy-to --host-name=myhost --port=myport --user-name=myname --password==mypass --group-name=mygroup
---includes mygateway1 mygateway2 mygateway3
+projdeploy --dir=/tests --passphrase=pass --name=mypackage --type=fed --deploy-to --host-name=myhost --port=myport --user-name=myname --password==mypass --group-name=mygroup --includes mygateway1 mygateway2 mygateway3
 ```
 
 For more examples, see `projdeploy --help`.
@@ -290,5 +284,3 @@ REPORT 23/Jan/2017:16:00:00.005 ... Logging directory: /tmp/projupgrade_logs_201
 The output shows that Project1 was upgraded successfully, but Project2 failed to upgrade because of an `"Invalid group passphrase"`. To fix this, you could write the Project2 passphrase to a file and rerun `projupgrade` with the `--passfile` option.
 
 For more examples, see `projupgrade --help`.
-
-To see more command options for the continuous integration tools, see [Continuous integration tools reference](/docs/apigtw_ref/devopstools_ref).

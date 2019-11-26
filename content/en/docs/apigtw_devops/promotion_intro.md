@@ -1,14 +1,12 @@
 {
-"title": "Deployment and promotion introduction",
-"linkTitle": "Deployment and promotion introduction",
-"weight":"2",
+"title": "Deployment and promotion overview",
+"linkTitle": "Deployment and promotion overview",
+"weight":"10",
 "date": "2019-11-19",
-"description": "This topic introduces the concepts in the deployment and promotion of API Gateway configuration."
+"description": "Understand deployment and promotion concepts, including API Gateway configuration and configuration packages."
 }
 
 A typical enterprise-level customer will have several environments through which an API Gateway configuration will move from development to production. For example, this typically includes completely separate development, testing, and production domains. Promotion refers to the act of moving API Gateway configuration from one environment to another, and configuring environment-specific values so that the configuration can be deployed in each environment.
-
-API Gateway supports a range of different operating systems. This means that API Gateway configuration can be promoted and deployed across environments running on different operating systems. For details on supported platform versions, see the [API Gateway Installation Guide](/docs/apigtw_install/).
 
 ## Environment topology
 
@@ -65,10 +63,59 @@ The API Gateway deployment and promotion tools bundle the API Gateway configurat
 
 | **Package**             | **Description**   | **Used when**        |
 |-------------------------| ------------------| ---------------------|
-| **Deployment package**  (`.fed`)                         | Contains all API Gateway component configuration (policy, listener, external connection, user, certificate, and environment setting). Implemented as a `.fed` file. This contains all of the data that would be contained in separate policy and environment packages combined.                                         | Used by the policy developer in Policy Studio during the iterative development cycle to deploy all configuration. For more details, see [Deploying in a Development Environment](/docs/apigtw_devops/promotion_arch/#deploy-in-a-development-environment).                                                       |
-| **Policy package** (`.pol`)                        | Contains the policy, listener, external connection, and environment setting configuration. Implemented as a `.pol` file. The environment settings in the `.pol` file contain a list of what has been environmentalized in the policy, listener, and external connection configuration. It does not contain the environment-specific values.  | Used when promoting APIs and policy configuration to an upstream environment (for example, testing or production). Its contents remain unchanged in the upstream environment. For more details, see [Environmentalizing Configuration](/docs/apigtw_devops/promotion_arch#environmentalize-configuration). |
-| **Environment package** (`.env`)                    | Contains the user, certificate, and environment setting configuration. Implemented as an `.env` file. The environment settings in the `.env` file contain a list of what has been environmentalized in the policy, listener, and external connection configuration, along with the environment-specific values.           | Environment-specific settings used in upstream environments only (for example, testing or production). For more details, see [Promoting Upstream (First Cycle)](/docs/apigtw_devops/promotion_arch#promote-upstream-first-cycle).      |
+| **Deployment package**  (`.fed`)                         | Contains all API Gateway component configuration (policy, listener, external connection, user, certificate, and environment setting). Implemented as a `.fed` file. This contains all of the data that would be contained in separate policy and environment packages combined.                                         | Used by the policy developer in Policy Studio during the iterative development cycle to deploy all configuration. For more details, see [Deploy in a development environment](/docs/apigtw_devops/promotion_arch/#deploy-in-a-development-environment).                                                       |
+| **Policy package** (`.pol`)                        | Contains the policy, listener, external connection, and environment setting configuration. Implemented as a `.pol` file. The environment settings in the `.pol` file contain a list of what has been environmentalized in the policy, listener, and external connection configuration. It does not contain the environment-specific values.  | Used when promoting APIs and policy configuration to an upstream environment (for example, testing or production). Its contents remain unchanged in the upstream environment. For more details, see [Environmentalize configuration](/docs/apigtw_devops/promotion_arch/#environmentalize-configuration). |
+| **Environment package** (`.env`)                    | Contains the user, certificate, and environment setting configuration. Implemented as an `.env` file. The environment settings in the `.env` file contain a list of what has been environmentalized in the policy, listener, and external connection configuration, along with the environment-specific values.           | Environment-specific settings used in upstream environments only (for example, testing or production). For more details, see [Promote upstream (first cycle)](/docs/apigtw_devops/promotion_arch/#promote-upstream-first-cycle).      |
 
 The combined contents of the policy package and environment package are equivalent to the contents of the deployment package, which contains all API Gateway configuration.
 
 ![API Gateway configuration packages](/Images/docbook/images/promotion/gw_config_packages.png)
+
+## Configure package properties
+
+The API Gateway configuration package files include property files that contain name-value pairs describing the package contents, and which are known as *package properties*.
+
+The API Gateway bundles its configuration in the following package formats:
+
+* Deployment package (`.fed`)
+* Policy package (`.pol`)
+* Environment package (`.env`)
+
+All three API Gateway configuration package formats (`.fed`, `.pol`, and `.env`) contain property name-value pairs, which you can use to describe the package contents. These package property values are stored in package property files (`.mf`). A deployment package (`.fed`) has two sets of package properties, one associated with the policy-related configuration, and one associated with the environment-related configuration. Policy packages (`.pol`) and environment packages (`.env`) have a single set of properties each.
+
+### Default properties
+
+The default set of package properties that can be edited includes the following:
+
+| **Property**       | **Description**                                                                                                       |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------|
+| **Name**           | Name associated with the configuration (for example, `Payment API Configuration`)                                     |
+| **Description**    | Description associated with the configuration (for example, `API Gateway configuration settings for the Payment API`) |
+| **Version**        | Configuration version (for example, `v3`)                                                                             |
+| **VersionComment** | Comment relating to the configuration version (for example, `Added SSL`)                                              |
+
+These fields are all free format text fields. You can set them to an empty value, or remove them completely, as required. The set of properties is completely customizable. You can add your own custom properties if required.
+
+### Read-only properties
+
+The package also includes the following read-only, system-controlled package properties:
+
+| **Property**  | **Description**                       |
+|---------------|---------------------------------------|
+| **Id**        | A unique ID for the package           |
+| **Timestamp** | The time that the package was written |
+
+### Configure properties in Policy Studio
+
+When editing an API Gateway configuration in Policy Studio, you can add, edit, or remove the policy properties and environment properties in the **Environment Configuration** > **Package Properties**
+tree node. For example, the following window is displayed when you select **Policies**:
+
+![Policy Studio package properties](/Images/docbook/images/promotion/ps_properties.png)
+
+To add a new package property, click the add icon on the right of the window. Similarly, to delete a package property, click the delete icon to the right of the property.
+
+### Configure properties in Configuration Studio
+
+You can edit environment properties in Configuration Studio using a similar window. You can only view policy properties because these are read-only.
+
+Package property values are deployed to an API Gateway along with the entire configuration in the relevant configuration package structure.

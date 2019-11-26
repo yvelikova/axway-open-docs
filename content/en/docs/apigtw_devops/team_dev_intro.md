@@ -1,9 +1,9 @@
 {
-"title": "Introduction to team development",
-"linkTitle": "Introduction to team development",
-"weight":"12",
+"title": "Team development overview",
+"linkTitle": "Team development overview",
+"weight":"60",
 "date": "2019-11-19",
-"description": "This topic introduces the concepts and main features of API Gateway team development"
+"description": "Understand team development concepts and features."
 }
 
  This feature enables a team of API Gateway policy developers to work in parallel developing APIs and policies to be deployed as a single API Gateway configuration using a Source Code Management (SCM) system.
@@ -16,12 +16,12 @@ The following diagram shows the different stages of delivery, from development t
 
 The following details the various tasks that you might perform at each stage.
 
-**Develop**\
+**Develop**:
 
 * Team of developers develop API and common projects in parallel on local development environments.
 * Run unit tests on projects prior to SCM check in
 
-**Version**\
+**Version**:
 
 * Manage and version projects in SCM
 * Diff projects to identify conflicts
@@ -29,23 +29,23 @@ The following details the various tasks that you might perform at each stage.
 * Control developer access to projects
 * Rollback changes
 
-**Build**\
+**Build**:
 
 * Build script (`projpack`) builds API Gateway configuration by merging API and common projects
 * Creates the policy package (`.pol`) containing all the projects
 
-**Test**\
+**Test**:
 
 * Deployment script (`projdeploy`) deploys configuration to test environment to execute system tests
 * Deploys policy and environment packages for test environment
 * Run full test suites on entire configuration to detect regressions
 
-**Release**\
+**Release**:
 
 * Manage and version configuration in package management repository
 * Policy and environment packages by version and environment
 
-**Deploy**\
+**Deploy**:
 
 * Deploy configuration from package management repository to target environments
 * Extract and deploy policy and environment packages for specific configuration version and environment

@@ -7,8 +7,6 @@
 "description": "Continuous integration tools command options."
 }
 
-This topic describes the command options for API Gateway deploy tools.
-
 ## `projpack` command options
 
 The `projpack` command options are described as follows:
@@ -32,28 +30,25 @@ The `projpack` command options are described as follows:
 | `--tracedir`             | Directory to write trace files to. The default is none. |
 | `--add, -a`              | List of projects to merge into the configuration package. You must specify a passphrase for each list of projects with the `--projpass` option (or use `--projpass-none`). Use a space to separate multiple projects.|
 
-**`--add` parameter example**
+### `--add` parameter example
 
 To specify two projects with the same passphrase and one project with a different passphrase:
 
 ```
---add /home/user1/apiprojects/proj1 /home/user1/apiprojects/proj2 --projpass=testa
---add /home/user1/apiprojects/proj3 --projpass=testb
+--add /home/user1/apiprojects/proj1 /home/user1/apiprojects/proj2 --projpass=testa --add /home/user1/apiprojects/proj3 --projpass=testb
 ```
 
 To specify two projects with the same passphrase and two projects with no passphrase:
 
 ```
---add /home/user1/apiprojects/proj1 /home/user1/apiprojects/proj2 --projpass=testa
---add /home/user1/apiprojects/proj3 /home/user1/apiprojects/proj4 --projpass-none
+--add /home/user1/apiprojects/proj1 /home/user1/apiprojects/proj2 --projpass=testa --add /home/user1/apiprojects/proj3 /home/user1/apiprojects/proj4 --projpass-none
 ```
 
 {{< alert title="Note" color="primary" >}}If you are using a passphrase file to specify the passphrases you must specify each project individually to the `--add` option. {{< /alert >}}
 For example, to specify four projects with all passphrases in a passphrase file:
 
 ```
---add /home/user1/apiprojects/proj1 -add /home/user1/apiprojects/proj2 --add /home/user1/apiprojects/proj3
---add /home/user1/apiprojects/proj4 --passfile=/home/user1/passfile.txt
+--add /home/user1/apiprojects/proj1 -add /home/user1/apiprojects/proj2 --add /home/user1/apiprojects/proj3 --add /home/user1/apiprojects/proj4 --passfile=/home/user1/passfile.txt
 ```
   
 ## `projdeploy` command options
@@ -99,7 +94,7 @@ The `projchangepass` command options are described as follows:
 | `--tracelevel`           | Trace level for the generated trace file.   Supported trace levels are `FATAL`, `ALWAYS`, `ERROR`, `INFO`, `MIN`, `DEBUG`, `VERBOSE`. The default is `INFO`.                                              |
 | `--tracedir`             | Directory to write trace files to. The default is none.                                       |
 
-### `projupgrade` command options
+## `projupgrade` command options
 
 The `projupgrade` command options are described as follows:
 

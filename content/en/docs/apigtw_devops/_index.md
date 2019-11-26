@@ -1,11 +1,11 @@
 {
-    "title": "DevOps Deployment Guide",
-    "linkTitle": "DevOps Deployment Guide",
-    "weight":"20",
+    "title": "Deploy API Gateway configuration to production",
+    "linkTitle": "Deploy to production",
+    "weight":"48",
     "date": "2019-10-14",
     "description": "Promote and deploy API Gateway configuration in development, testing, and production environments."
 }
 
-This guide explains how to promote and deploy API Gateway configuration in development, test, and production environments.
+Promotion and deployment involves moving API Gateway configuration from one environment to another (for example, from development to testing to production), and configuring environment-specific values so that the configuration can be deployed in each environment.
 
-It also explains how a team of policy developers can develop APIs and policies to be deployed as a single API Gateway configuration using a Source Code Management (SCM) system.
+Before deploying API Gateway configuration in a production environment, consult the [API Gateway Administrator Guide](/docs/apigtw_admin/) for information on planning and managing an API Gateway system in production.

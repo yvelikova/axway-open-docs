@@ -1,14 +1,10 @@
 {
-"title": "Example: Promote from development to testing environment",
-"linkTitle": "Example: Promote from development to testing environment",
-"weight":"20",
+"title": "Example promotion and deployment",
+"linkTitle": "Example promotion and deployment",
+"weight":"30",
 "date": "2019-11-19",
 "description": "Use case example on how to promote configuration from a development environment to a testing environment."
 }
-
-This topic describes a step-by-step example of promoting configuration from a development environment to a testing environment. If further promotions to more upstream environments are required, you can repeat Step 4 and Step 5 only.
-
-{{< alert title="Note" color="primary" >}}Some environments (for example, testing and production) might be exact copies of each other, which enables you to deploy the same environment package to both environments. In these cases, repeat Step 5 only.{{< /alert >}}
 
 ## Example topology
 
@@ -19,7 +15,7 @@ This example assumes the following simple environment topology:
 
 ![Example environment topology](/Images/docbook/images/promotion/example_topology.png)
 
-## Policy developer edits configuration and deploys in development environment {#edit-configuration}
+## Edit configuration and deploy in development environment {#edit-configuration}
 
 The policy developer in the development environment uses Policy Studio to create policies, users, certificates, listeners, and so on as required for the business solution they are developing. The policy developer will edit and deploy the configuration to the **Dev Payment API Group** repeatedly until they are finished with the configuration.
 
@@ -34,7 +30,7 @@ Select the **Group** and API Gateway instances to which to deploy the configurat
 
 {{< alert title="Note" color="primary" >}}This simple example shows a group with a single API Gateway instance. Groups will typically have multiple API Gateway instances. If some Node Managers in the group are not running, do not select the API Gateways on those hosts, and you can still deploy to the other hosts in the group. {{< /alert >}}
 
-## Policy developer environmentalizes the environment-specific settings
+## Environmentalize the environment-specific settings
 
 When the policy developer is developing policies in an iterative manner as described in Step 1, they might choose not to consider what settings are environment-specific yet, or they might choose to environmentalize these settings as they go along. Either way, before promotion can occur, all settings that are environment-specific must be environmentalized to prepare the configuration for promotion to upstream environments.
 
@@ -106,9 +102,9 @@ The standard way to environmentalize a certificate at group level is to click **
 
 Alternatively, you can environmentalize a certificate using an alias. For example, in the development environment, the **XML Signature** filter could use a certificate named `MySigningCert`. The policy package (`.pol`) created from the development environment must be merged with an environment package (`.env`) that contains a certificate with the same alias.
 
-{{< alert title="Note" color="primary" >}}You can also environmentalize certificates using an alias at the API Gateway instance level as described in [Externalizing Instance Configuration](/docs/apigtw_devops/env_variables). However, certificates are normally environmentalized at the API Gateway group level as described in this topic.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You can also environmentalize certificates using an alias at the API Gateway instance level as described in [Externalize an instance configuration](/docs/apigtw_devops/promotion_arch/#externalize-an-instance-configuration). However, certificates are normally environmentalized at the API Gateway group level as described in this topic.{{< /alert >}}
 
-## Policy developer saves policy package in Policy Studio for promotion
+## Save policy package in Policy Studio for promotion
 
 The policy developer finishes editing and environmentalizing the configuration that they are running with, and deploys it to the API Gateway. They must then save the policy package in Policy Studio to enable promotion to the testing environment. To save the policy package, perform the following steps:
 
@@ -122,7 +118,7 @@ A policy package (`.pol`) file is created on disk. The policy developer must tra
 
 {{< alert title="Note" color="primary" >}}The steps described so far are the same for first and subsequent cycle promotions. For the first cycle, the policy developer will most likely use the default factory configuration as their starting point for editing the configuration. In subsequent cycles, the starting point will most likely be the existing configuration currently deployed to the **Dev Payment API Group**.{{< /alert >}}
 
-## API Gateway administrator creates testing environment package in Configuration Studio
+## Create testing environment package in Configuration Studio
 
 This step depends on whether this is a first cycle promotion or a subsequent cycle promotion.
 
@@ -181,7 +177,7 @@ If the API Gateway administrator selects the **Environment Configuration** > **P
 
 When you have entered all the environment-specific settings for the testing environment, select **File > Save > Environment Package** in Configuration Studio. An environment package (`.env`) file is saved to disk.
 
-## API Gateway administrator deploys configuration to testing environment group
+## Deploy configuration to testing environment group
 
 The testing API Gateway administrator takes the policy package unchanged from the development environment created in Step 3, and the environment package created using Configuration Studio for the testing environment created in Step 4, and deploys them to the **Testing Payment API Group** using API Gateway Manager or scripts.
 
@@ -211,3 +207,11 @@ If further updates are required to the environment-specific settings in the test
 Normally the policy package will be promoted through to upstream environments without any updates. However, in some cases, a single policy package for all environments will not be possible. For example, you might wish to use different authorization filters in development and testing environments. But the policy developer might not have sufficient knowledge to create the necessary configuration for all upstream environments in the policy package. In this case, the API Gateway administrator in the upstream environment must use Policy Studio to make the required changes.
 
 The administrator will open a policy package from the development environment and the current testing environment package (if one exists) in Policy Studio, before making the testing environment-specific updates to the configuration. The administrator can save a policy package (`.pol`) and an environment package (`.env`) from Policy Studio. They can deploy them as usual to the **Testing Payment API Group** using API Gateway Manager or scripts. Alternatively, they can save a single deployment package (`.fed`), and deploy this package.
+
+## Further promotions to upstream environments
+
+If further promotions to more upstream environments are required, repeat [Create testing environment package in Configuration Studio](#create-testing-environment-package-in-configuration-studio) and [Deploy configuration to testing environment group](#deploy-configuration-to-testing-environment-group) only.
+
+{{< alert title="Note" color="primary" >}}
+Some environments (for example, testing and production) might be exact copies of each other, which enables you to deploy the same environment package to both environments. In these cases, repeat [Deploy configuration to testing environment group](#deploy-configuration-to-testing-environment-group) only.
+{{< /alert >}}
