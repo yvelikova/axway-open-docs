@@ -1,7 +1,7 @@
 ---
 title: API Gateway Analytics User Guide
 linkTitle: Configure API Gateway Analytics
-weight: 18
+weight: 70
 date: 2019-10-03
 description: Configure and use API Gateway Analytics to record, monitor, and report on the history of message traffic between API Gateway instances and various services, remote hosts, and clients running in an API Gateway domain.
 ---

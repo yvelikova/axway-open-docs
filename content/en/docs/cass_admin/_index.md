@@ -1,7 +1,7 @@
 ---
 title: "API Gateway Apache Cassandra Administrator Guide"
 linkTitle: "Administer Apache Cassandra"
-weight: 17
+weight: 53
 date: 2019-06-05
 description: >
   This guide explains how to configure and manage the Apache Cassandra database
