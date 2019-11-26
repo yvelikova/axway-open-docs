@@ -2,7 +2,7 @@
     "title":"Deploy API Portal for high availability",
     "linkTitle":"Deploy API Portal for HA",
     "no_list":"true",
-    "weight":"6",
+    "weight":"45",
     "date":"2019-08-09",
     "description":"Configure API Portal for high availability (HA) deployment in a single datacenter or multiple datacenters."
 } 
