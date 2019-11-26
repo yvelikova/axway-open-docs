@@ -1,7 +1,7 @@
 {
 "title": "Certifications and compliance",
 "linkTitle": "Certifications and compliance",
-"weight": 2,
+"weight": 20,
 "date": "2019-11-25",
 "description": "This section describes the certifications the product has received and the standards it is compliant with."
 }

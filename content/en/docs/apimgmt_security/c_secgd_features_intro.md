@@ -1,7 +1,7 @@
 {
 "title": "Security features",
 "linkTitle": "Security features",
-"weight": 3,
+"weight": 30,
 "date": "2019-11-25",
 "description": "This product contains the following security features."
 }

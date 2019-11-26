@@ -1,7 +1,7 @@
 {
 "title": "Identity and access management",
 "linkTitle": "Identity and access management",
-"weight": 4,
+"weight": 40,
 "date": "2019-11-25",
 "description": "This section describes the identity and access management features of the product."
 }

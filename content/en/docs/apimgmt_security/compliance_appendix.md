@@ -1,7 +1,7 @@
 {
 "title": "Compliant configuration settings for Policy Studio",
 "linkTitle": "Compliant configuration settings for Policy Studio",
-"weight": 10,
+"weight": 100,
 "date": "2019-11-25",
 "description": "Policy Studio ships with a useful tool that allows you to scan a configuration and identify items that do not comply with the FIPS, Suite B, and Suite B Top Secret security standards.  For example, if you have a large configuration where the non-FIPS algorithm MD5 has been selected, you can run the FIPS Compliance Validation Tool to identify all occurrences of this algorithm.  "
 }

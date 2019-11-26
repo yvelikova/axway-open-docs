@@ -1,7 +1,7 @@
 {
 "title": "Product certificates",
 "linkTitle": "Product certificates",
-"weight": 8,
+"weight": 80,
 "date": "2019-11-25",
 "description": "This section descirbes the product certificates for API Gateway and API\\u00a0Portal."
 }

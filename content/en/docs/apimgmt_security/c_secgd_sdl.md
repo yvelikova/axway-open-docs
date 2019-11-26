@@ -1,7 +1,7 @@
 {
 "title": "Secure Development Lifecycle",
 "linkTitle": "Secure Development Lifecycle",
-"weight": 1,
+"weight": 10,
 "date": "2019-11-25",
 "description": "Describes Axway global SDL."
 }

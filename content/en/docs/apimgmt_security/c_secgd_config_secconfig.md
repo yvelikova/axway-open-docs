@@ -1,7 +1,7 @@
 {
 "title": "Security configuration",
 "linkTitle": "Security configuration",
-"weight": 6,
+"weight": 60,
 "date": "2019-11-25",
 "description": "This section describes the primary security configurations that can be applied to API Gateway, API Manager, and API Portal.  "
 }

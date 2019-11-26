@@ -1,7 +1,7 @@
 {
 "title": "Secure by default configuration",
 "linkTitle": "Secure by default configuration",
-"weight": 7,
+"weight": 70,
 "date": "2019-11-25",
 "description": "Security best practices recommend that products are shipped secure-by-default to ensure that an out-of-the-box installation is not vulnerable to attacks. "
 }

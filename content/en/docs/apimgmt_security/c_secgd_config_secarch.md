@@ -1,7 +1,7 @@
 {
 "title": "Security architecture",
 "linkTitle": "Security architecture",
-"weight": 5,
+"weight": 50,
 "date": "2019-11-25",
 "description": "This section describes the architecture, from a security perspective, for API Gateway and API Portal."
 }
