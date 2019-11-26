@@ -1,7 +1,7 @@
 ---
 title: API Portal 7.8 Release Notes
 linkTitle: API Portal Release Notes
-weight: 9
+weight: 105
 no_list: true
 date: 2019-08-08
 description: Learn about the new features and enhancements in this release.

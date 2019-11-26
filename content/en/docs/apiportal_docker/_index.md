@@ -2,7 +2,7 @@
     "title":"Deploy API Portal in containers",
     "linkTitle":"Deploy API Portal in containers",
     "no_list":"true",
-    "weight":"6",
+    "weight":"35",
     "date":"2019-08-09",
     "description":"Learn how to deploy API Portal in Docker containers."
 }
