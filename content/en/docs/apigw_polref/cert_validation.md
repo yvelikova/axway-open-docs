@@ -161,18 +161,11 @@ tab, you can enable a specific policy to run after the message is created, or af
 
 Configure the following advanced settings:
 
-**Run this policy after the message has been created**:
+* **Run this policy after the message has been created**: Click the browse button to select a policy to be run after the message has been created.
 
-Click the browse button to select a policy to be run after the message has been created.
+* **Run this policy after a response has been received**: Click the browse button to select a policy to be run after a response has been received.
 
-**Run this policy after a response has been received**:
-
-Click the browse button to select a policy to be run after a response has been received.
-
-**Record outbound transactions**:
-
-Select this option to enable recording of outbound transactions on the **Traffic**
-tab in API Gateway Manager. This field is not selected by default.
+* **Record outbound transactions**: Select this option to enable recording of outbound transactions on the **Traffic** tab in API Gateway Manager. This field is not selected by default.
 
 ### Integration with Axway Validation Authority
 
@@ -180,9 +173,12 @@ When using the **OCSP client**
 with Axway Validation Authority (VA) as an OCSP responder, you can use the following trust models:
 
 * **Direct trust**
-* In this model, OCSP responses are signed with the OCSP signing certificate of the VA server. The signing certificate is not included in the OCSP response.
+
+    In this model, OCSP responses are signed with the OCSP signing certificate of the VA server. The signing certificate is not included in the OCSP response.
+
 * **VA delegated trust**
-* In this model, the signing certificate is included in the OCSP response. API Gateway might not have this certificate. If not, it must have the issuer (CA) certificate of the signing certificate.
+
+    In this model, the signing certificate is included in the OCSP response. API Gateway might not have this certificate. If not, it must have the issuer (CA) certificate of the signing certificate.
 
 You can import certificates into the API Gateway trusted certificate store under the **Environment Configuration** > **Certificates and Keys**
 node in the Policy Studio tree.
@@ -637,14 +633,14 @@ This field provides an alternative way to specify the user certificate. You can 
 ${authentication.subject.id}
 ```
 
-{{< alert title="Tip" color="primary" >}}You can associate a certificate with this user using the **Signing Key**
-option in the user configuration. In this way, the specified user name is used to retrieve the certificate associated with that user.{{< /alert >}}
+You can also associate a certificate with this user using the **Signing Key**
+option in the user configuration. In this way, the specified user name is used to retrieve the certificate associated with that user.
 
 **Selector Expression**:
 You can specify a selector expression by enclosing the message attribute name that contains the certificate in curly brackets, and prefixing this with `$`
 (for example, `${certificate}`). Using a selector is a more flexible way of locating certificates than specifying the user directly.
 
-{{< alert title="Note" color="primary" >}}This selector expression must return an X.509 certificate. Selectors used in other fields return a string that is then used to look up the certificate (for example, in the certificate store, user store, HTTP header, or attachment).{{< /alert >}}
+This selector expression must return an X.509 certificate. Selectors used in other fields return a string that is then used to look up the certificate (for example, in the certificate store, user store, HTTP header, or attachment).
 
 **HTTP Header Name**:
 Enter the name of the HTTP header that contains the certificate. Alternatively, you can enter a selector expression that evaluates to a string that contains the HTTP header name, and whose value is the certificate.
@@ -655,7 +651,7 @@ Enter the name of the attachment (`Content-Id`) that contains the certificate. A
 **Certificate Alias**:
 Enter the alias name of the certificate. Alternatively, you can enter a selector expression that evaluates to a string that contains the certificate alias in the certificate store.
 
-{{< alert title="Tip" color="primary" >}}This certificate alias refers to a certificate in the API Gateway's trusted certificate store, and not to a certificate in the Java keystore.{{< /alert >}}
+This certificate alias refers to a certificate in the API Gateway's trusted certificate store, and not to a certificate in the Java keystore.
 
 ## Certificate chain check filter
 

@@ -3,7 +3,7 @@
 "linkTitle": "Throttling filter",
 "weight": 59,
 "date": "2019-10-17",
-"description": "Use the **Throttling** filter to rate limit calls to a back-end service."
+"description": "Use the Throttling filter to rate limit calls to a back-end service."
 }
 
 The **Throttling**

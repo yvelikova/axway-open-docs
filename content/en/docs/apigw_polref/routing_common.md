@@ -3,12 +3,12 @@
 "linkTitle": "Routing filters",
 "weight": 11,
 "date": "2019-10-17",
-"description": "Commonly used routing filters, including **Connect to URL** and **Connection**."
+"description": "Commonly used routing filters, including Connect to URL and Connection."
 }
 
 <!-- TODO reorder based on usage from GA-->
 
-Depending on how the API Gateway is perceived by the client, different combinations of routing filters can be used. For an introduction to routing scenarios and the filters in the **Routing** category, see [Get started with routing configuration](/docs/apigw_polref/connection_general/).
+Depending on how the API Gateway is perceived by the client, different combinations of routing filters can be used. For an introduction to routing scenarios and the filters in the **Routing** category, see [Get started with routing configuration](/docs/apigw_polref/routing_getstarted/).
 
 ## Connect to URL filter
 
@@ -176,18 +176,18 @@ Enter the maximum number of retries to attempt. Defaults to `5`.
 Enter the time to delay between retries in milliseconds. Defaults to `500`
 ms.
 
-**Add an HTTP status range**
+**Add an HTTP status range**:
 To add an HTTP status range to the default list displayed in the **Retry On**
 table, click the **Add**
 button. In the **Configure HTTP Status Code**
 dialog, complete the following fields:
 
 * **Name**:
-* Enter a name for the HTTP status range.
+Enter a name for the HTTP status range.
 * **Start status**:
-* Enter the first HTTP status code in the range.
+Enter the first HTTP status code in the range.
 * **End status**:
-* Enter the last HTTP status code in the range.
+Enter the last HTTP status code in the range.
 
 To add one specific status code only, enter the same code in the **Start status**
 and **End status**

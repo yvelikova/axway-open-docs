@@ -108,7 +108,9 @@ The order of execution of message interception points is as follows:
 In steps 1, 3, 4, and 6, the execution order is as follows:
 
 A.  Before operation-specific policy
+
 B.  Operation-specific policy Shortcuts
+
 C.  After operation-specific policy
 
 The overall order of all the message interception points is described in the sequence that follows.

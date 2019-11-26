@@ -50,7 +50,6 @@ Configure the following node details:
 **Node Type**:
 Select the type of the new node from the list.
 
-{{< alert title="Note" color="primary" >}}
 When choosing a node type, consider the following:
 
 * You can only append a node to a **Node Type**
@@ -63,8 +62,6 @@ When choosing a node type, consider the following:
     node using the **Replace**
     option, it must replace an existing `Attribute`
     node.
-
-{{< /alert >}}
 
 **Node Content**:
 This field contains the node to be inserted into the message. The **Node Content**

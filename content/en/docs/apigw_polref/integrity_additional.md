@@ -64,42 +64,26 @@ hJ1phCnvWh6IeYI2w9QOYEUipUTI8np6LbgGY9Fs98rqVt5AXLIhWkWywlVmtVrB
 p0igcN_IoypGlUPQGe77Rw
 ```
 
-Configure the following settings on the **JWT Sign**
-window:
+Configure the following settings on the **JWT Sign** window:
 
-**Name**:
-
-Enter an appropriate name for the filter to display in a policy.
+* **Name**: Enter an appropriate name for the filter to display in a policy.
 
 Configure the following fields in the **Signing details** section:
 
-**Token location**:
-
-Enter the selector expression to obtain the payload to be signed. The content can be JWT claims, encrypted token, or you can enter a different option.
-
-**Key type**:
-
-Select whether to sign with a private (asymmetric) key or HMAC (symmetric key).
+* **Token location**: Enter the selector expression to obtain the payload to be signed. The content can be JWT claims, encrypted token, or you can enter a different option.
+* **Key type**: Select whether to sign with a private (asymmetric) key or HMAC (symmetric key).
 
 If you selected the asymmetric key type, configure the following fields in the **Asymmetric** section:
 
-**Signing key**:
+**Signing key**: Select the private key from the certificate store that is used to sign the payload.
 
-Select the private key from the certificate store that is used to sign the payload.
+**Selector expression**: Alternatively, enter a selector expression to get the alias of the private key in the certificate store.
 
-**Selector expression**:
-
-Alternatively, enter a selector expression to get the alias of the private key in the certificate store.
-
-**Algorithm**:
-
-Select the algorithm used to sign.
+**Algorithm**: Select the algorithm used to sign.
 
 If you selected the symmetric key type, complete the following fields **Symmetric** section:
 
-**Shared key**:
-
-Enter the shared key used to sign the payload. The key should be given as a base64-encoded byte array and must use the following minimum lengths depending on the selected algorithm used to sign:
+**Shared key**: Enter the shared key used to sign the payload. The key should be given as a base64-encoded byte array and must use the following minimum lengths depending on the selected algorithm used to sign:
 
 | Algorithm                  | Minimum key length  |
 |----------------------------|---------------------|
@@ -107,16 +91,12 @@ Enter the shared key used to sign the payload. The key should be given as a base
 | HMAC using SHA-384 (HS384) | 48 bytes (384 bits) |
 | HMAC using SHA-512 (HS512) | 64 bytes (512 bits) |
 
-**Selector expression**:
-
-Alternatively, enter a selector expression to obtain the shared key. The value returned from the selector should contain:
+**Selector expression**: Alternatively, enter a selector expression to obtain the shared key. The value returned from the selector should contain:
 
 * Byte array (possibly produced by a different filter)
 * Base64-encoded byte array
 
-**Algorithm**:
-
-Select the algorithm used to sign.
+**Algorithm**: Select the algorithm used to sign.
 
 ## JWT Verify filter
 

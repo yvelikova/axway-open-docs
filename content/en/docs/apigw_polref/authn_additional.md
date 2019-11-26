@@ -212,7 +212,7 @@ CA SOA Security Manager can authenticate end users and authorize them to access 
 * **SAML Session Ticket**: Consumes a SAML session ticket from an HTTP header, SOAP envelope, or session cookie to authenticate the end user.
 
 By delegating the authentication decision to CA SOA Security Manager, the API Gateway acts as a Policy Enforcement Point (PEP). It *enforces*
-the decisions made by the CA SOA Security Manager, which acts a Policy Decision Point (PDP). For more details, see the *CA SOA Security Manager Policy Configuration Guide*.
+the decisions made by the CA SOA Security Manager, which acts a Policy Decision Point (PDP).
 
 ### Prerequisites
 
@@ -329,7 +329,6 @@ file for that API Gateway. To configure the API Gateway to use a non-default age
 5. Restart API Gateway.
 
 {{< alert title="Note" color="primary" >}}
-It is important to note the following:
 
 * The properties file is written to the `/lib/modules/soasm`
     directory when a SOA Security Manager Authentication or Authorization filter is loaded at startup, or on server refresh (for example, when a configuration update is deployed), but only if the file does not already exist in this location.

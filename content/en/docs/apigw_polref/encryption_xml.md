@@ -609,7 +609,7 @@ message attribute, which is required by the **XML-Decryption**
 filter.
 
 {{< alert title="Note" color="primary" >}}The output of a successfully executed decryption filter is the original unencrypted message. Depending on whether the **Remove Encrypted Key used in decryption**
-has been enabled, all information relating to the encryption key can be removed from the message. For more details, see [Options](#ptions).{{< /alert >}}
+has been enabled, all information relating to the encryption key can be removed from the message. For more details, see [Options](#options).{{< /alert >}}
 
 To understand how XML encryption works, see [XML encryption overview](#xml-encryption-overview). The following sections describe how to configure the **XML Decryption Settings**
 filter to decrypt encrypted XML data.

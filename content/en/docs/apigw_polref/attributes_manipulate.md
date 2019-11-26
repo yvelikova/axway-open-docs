@@ -43,7 +43,7 @@ dialog, perform the following steps:
 3. Enter a value to compare with in the text box on the right (for example, `POST`). Alternatively, you can enter a selector that is expanded at runtime (for example, `${http.request.uri}`).
 4. Click **OK**.
 
-Finally, to edit or delete an existing rule condition, select it in the table, and click the appropriate button.
+Finally, to edit or delete an existing rule condition, select it in the table and click the appropriate button.
 
 ## Extract REST request attributes filter
 
