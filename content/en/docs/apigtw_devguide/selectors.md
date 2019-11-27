@@ -1,0 +1,185 @@
+{
+"title": "Access configuration values dynamically at runtime",
+"linkTitle": "Access configuration values dynamically at runtime",
+"date": "2019-11-27",
+"description": "You can access configuration values dynamically at runtime using *selectors*. A selector is a special syntax that enables API Gateway configuration settings to be evaluated and expanded at runtime, based on metadata values (for example, from message attributes, a Key Property Store (KPS), or environment variables). "
+}
+﻿
+
+You can access configuration values dynamically at runtime using *selectors*. A selector is a special syntax that enables API Gateway configuration settings to be evaluated and expanded at runtime, based on metadata values (for example, from message attributes, a Key Property Store (KPS), or environment variables).
+
+For example, when a HTTP request is received, it is converted into a set of message attributes. Each message attribute represents a specific characteristic of the HTTP request, such as the HTTP headers, HTTP body, and so on.
+
+For more information on using selectors, see the
+[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
+.
+
+Example selector expressions
+----------------------------
+
+The
+[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
+includes some examples of selector expressions. The following table lists some more complex examples.
+
+| Selector expression                                          | Result                                                                                                                                                                                                                                                                                                                     |
+|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ``` {space="preserve"}                                       
+ ${kps.matrix.row.column}                                      
+ ${kps.matrix[“row”][“column”]}                                
+ ```                                                           | For a KPS with multiple read keys, the values for each key are provided in order. The result of the expression is also indexable:                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                              
+  ``` {space="preserve"}                                                                                                                                                                                                                                                                                                      
+  set property test = ${kps.matrix.row}                                                                                                                                                                                                                                                                                       
+  ```                                                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                                              
+  `${test[“column”]}` looks up the KPS for `[row/column]`.                                                                                                                                                                                                                                                                    |
+| ``` {space="preserve"}                                       
+ ${content.body.getParameters().get("grant_type")}             
+ ```                                                           | Gets the HTTP form post field called `grant_type`.                                                                                                                                                                                                                                                                         |
+| ``` {space="preserve"}                                       
+ ${content.body.getJSON().get('access_token').getTextValue()}  
+ ```                                                           | If a body is of type `application/json` then it is automatically treated as a `com.vordel.mime.JSONBody`. A `JSONBody` object returns an `com.fasterxml.jackson.databind.JsonNode` object via a `getJSON()` call.                                                                                                          
+                                                                                                                                                                                                                                                                                                                              
+  For more information, see the [Javadoc for JsonNode class](http://static.javadoc.io/com.fasterxml.jackson.core/jackson-databind/2.7.4/index.html?com/fasterxml/jackson/databind/JsonNode.html).                                                                                                                             
+                                                                                                                                                                                                                                                                                                                              
+  For example, if the body contains the following JSON content:                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                              
+  ``` {space="preserve"}                                                                                                                                                                                                                                                                                                      
+  {                                                                                                                                                                                                                                                                                                                           
+    "access_token":"2YotnFZFEj",                                                                                                                                                                                                                                                                                              
+    "token_type":"example",                                                                                                                                                                                                                                                                                                   
+    "expires_in":3600                                                                                                                                                                                                                                                                                                         
+  }                                                                                                                                                                                                                                                                                                                           
+  ```                                                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                                              
+  this selector results in the value `2YotnFZFEj`.                                                                                                                                                                                                                                                                            |
+| ${content.body.getJSON().toString()}                         | If a body is of type `com.vordel.mime.JSONBody`, this selector converts the JSON contained in the body to a string value.                                                                                                                                                                                                  |
+| ``` {space="preserve"}                                       
+ ${environment.VINSTDIR}                                       
+ ```                                                           | Accesses the environment variable `VINSTDIR`.                                                                                                                                                                                                                                                                              |
+| ``` {space="preserve"}                                       
+ ${http.path[2]}                                               
+ ```                                                           | If you have the filter **Extract REST Request Attributes** in your policy, this filter adds the incoming URI to the message whiteboard as a String array, so that you can index into the path. If the incoming path is `/thisisa/test`, using this type of selector results in the following attributes on the whiteboard: 
+                                                                                                                                                                                                                                                                                                                              
+  ``` {space="preserve"}                                                                                                                                                                                                                                                                                                      
+  ${http.path[1]} = thisisa                                                                                                                                                                                                                                                                                                   
+  ${http.path[2]} = test                                                                                                                                                                                                                                                                                                      
+  ```                                                                                                                                                                                                                                                                                                                         |
+
+### Database query results
+
+You can use the **Retrieve from or write to database** filter to retrieve user attributes from a database or write user attributes to a database. You can select whether to place database query results in message attributes on the **Advanced** tab of the filter. By default, the **Place query results into user attribute list** option is selected. For more information on the **Retrieve from or write to database** filter, see the
+[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
+.
+
+The query results are represented as a list of properties. Each element in the list represents a query result row returned from the database. These properties represent pairs of attribute names and values for each column in the row. The **Prefix for message attribute** field in the filter is required to name the list of returned properties (for example, `user`).
+
+#### Results in user attribute list
+
+The following table shows some example selectors when the option **Place query results into user attribute list** is selected.
+
+| Selector expression    | Result                 |
+|------------------------|------------------------|
+| ``` {space="preserve"} 
+ ${user[0].NAME}         
+ ```                     | ``` {space="preserve"} 
+  John                    
+  ```                     |
+| ``` {space="preserve"} 
+ ${user[0].LASTNAME}     
+ ```                     | ``` {space="preserve"} 
+  Kennedy                 
+  ```                     |
+| ``` {space="preserve"} 
+ ${user[1].NAME}         
+ ```                     | ``` {space="preserve"} 
+  Brian                   
+  ```                     |
+| ``` {space="preserve"} 
+ ${user[1].LASTNAME}     
+ ```                     | ``` {space="preserve"} 
+  O’Connor                
+  ```                     |
+
+You can also use standard Java function calls on the attributes. For example:
+
+-   `${user.size()}` – Number of properties (number of rows) retrieved from the database
+-   `${user[0].NAME.equals(“John”)}` – Returns true if the `NAME` attribute (value of column `NAME` in first row) is `“John”`
+
+For more information, see the `java.util.ArrayList` and `java.lang.String` class interfaces.
+
+#### Results not in user attribute list
+
+The following table shows some example selectors when the option **Place query results into user attribute list** is not selected.
+
+| Selector Expression    | Result                 |
+|------------------------|------------------------|
+| ``` {space="preserve"} 
+ ${user.NAME[0]}         
+ ```                     | ``` {space="preserve"} 
+  John                    
+  ```                     |
+| ``` {space="preserve"} 
+ ${user.LASTNAME[0]}     
+ ```                     | ``` {space="preserve"} 
+  Kennedy                 
+  ```                     |
+| ``` {space="preserve"} 
+ ${user.NAME[1]}         
+ ```                     | ``` {space="preserve"} 
+  Brian                   
+  ```                     |
+| ``` {space="preserve"} 
+ ${user.LASTNAME[1]}     
+ ```                     | ``` {space="preserve"} 
+  O’Connor                
+  ```                     |
+
+You can also use standard Java function calls on the attributes. For example:
+
+-   `${user.NAME.size()}` – Number of `NAME` attributes (number of rows with column `NAME`) retrieved from the database
+-   `${user.NAME[0].equals(“John”)}` – Returns true if the first `NAME` attribute (value of column `NAME` in first row) is `“John”`
+
+For more information, see the `java.util.ArrayList` and `java.lang.String` class interfaces.
+
+### LDAP directory server search results
+
+You can use the **Retrieve from directory server** filter to retrieve user profile data. For more information on the **Retrieve from directory server** filter, see the
+[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/)
+.
+
+The filter can look up a user and retrieve that user's attributes represented as a list of search results. Each element of the list represents a list of multivalued attributes returned from the directory server. The **Prefix for message attribute field** in the filter is required to name the list of search results (for example, `user`).
+
+The following table shows some example selectors:
+
+| Selector Expression    | Result                 |
+|------------------------|------------------------|
+| ``` {space="preserve"} 
+ ${user[0].memberOf[0]}  
+ ```                     | ``` {space="preserve"} 
+  CN=Operator,OU=Sales    
+  ```                     |
+| ``` {space="preserve"} 
+ ${user[0].memberOf[1]}  
+ ```                     | ``` {space="preserve"} 
+  CN=Developer,OU=Dev     
+  ```                     |
+| ``` {space="preserve"} 
+ ${user[0].memberOf[2]}  
+ ```                     | ``` {space="preserve"} 
+  CN=Operator,OU=Support  
+  ```                     |
+| ``` {space="preserve"} 
+ ${user[1].memberOf[0]}  
+ ```                     | ``` {space="preserve"} 
+  CN=Operator,OU=Sales    
+  ```                     |
+
+You can also use standard Java function calls on the attributes. For example:
+
+-   `${user.size()}` – Number of search results returned by the LDAP directory server
+-   `${user[0].memberOf.size()}` – Number of `memberOf` attribute values returned in the search result
+-   `${user[0].memberOf.contains(“CN=Operator,OU=Sales”)}` – Returns true if one of the returned `memberOf` attributes is `“CN=Operators,OU=Sales”`
+-   `${user[0].memberOf[0].equals(“CN=Operator,OU=Sales”)}` – Returns true if the first `memberOf` attribute is `“CN=Operators,OU=Sales”`
+
+For more information, see `java.util.ArrayList` and `java.lang.String` class interfaces.
