@@ -1,10 +1,10 @@
 {
 "title": "Access configuration values dynamically at runtime",
 "linkTitle": "Access configuration values dynamically at runtime",
+"weight":"50",
 "date": "2019-11-27",
 "description": "You can access configuration values dynamically at runtime using *selectors*. A selector is a special syntax that enables API Gateway configuration settings to be evaluated and expanded at runtime, based on metadata values (for example, from message attributes, a Key Property Store (KPS), or environment variables). "
 }
-﻿
 
 You can access configuration values dynamically at runtime using *selectors*. A selector is a special syntax that enables API Gateway configuration settings to be evaluated and expanded at runtime, based on metadata values (for example, from message attributes, a Key Property Store (KPS), or environment variables).
 

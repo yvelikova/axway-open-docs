@@ -1,10 +1,10 @@
 {
 "title": "Define user interfaces using declarative XML",
 "linkTitle": "Define user interfaces using declarative XML",
+"weight":"30",
 "date": "2019-11-27",
-"description": "You can define the Policy Studio user interfaces for a custom filter using *declarative XML*. Declarative XML is a user interface markup language that is used to define UI elements and bindings, allowing you to quickly create dialogs within Policy Studio with minimal coding."
+"description": "Define the Policy Studio user interfaces for a custom filter using declarative XML"
 }
-﻿
 
 You can define the Policy Studio user interfaces for a custom filter using *declarative XML*. Declarative XML is a user interface markup language that is used to define UI elements and bindings, allowing you to quickly create dialogs within Policy Studio with minimal coding.
 
@@ -20,12 +20,11 @@ The following sections describe how the declarative UI XML file for this dialog 
 
 {{< alert title="Note" color="primary" >}}This dialog and the following code are for demonstration purposes only and might not reflect the current settings for this filter in Policy Studio. {{< /alert >}}
 
-Load the declarative XML file\
-------------------------------
+## Load the declarative XML file
 
 The following code demonstrates how to load the declarative XML file within the Policy Studio class.
 
-``` {space="preserve"}
+```
 package com.vordel.client.manager.filter.oauth2.provider.authorize;
 
 import org.eclipse.swt.widgets.Composite;
@@ -41,22 +40,20 @@ public class OAuthAuthorizationRequestPage extends VordelPage {
 
     @Override
     public void createControl(Composite parent) {
-        Composite container = 
+        Composite container =
           render(parent, getClass().getResourceAsStream("declarative.xml"));
         setControl(container);
     }
 
-    …    
-    
+    …
 }
 ```
 
-Declarative XML file
---------------------
+## Declarative XML file
 
 The following `declarative.xml` file defines the dialog in Policy Studio.
 
-``` {space="preserve"}
+```xml
 <ui>
   <panel columns="2" span="2">
     <NameAttribute />
@@ -64,22 +61,22 @@ The following `declarative.xml` file defines the dialog in Policy Studio.
       <tab label="OAUTH_APPLICATION_VALIDATION">
         <panel>
           <panel columns="2" fill="false">
-            <TextAttribute field="kpsAlias" 
-              label="OAUTH_USE_KPS" 
+            <TextAttribute field="kpsAlias"
+              label="OAUTH_USE_KPS"
               required="true" />
           </panel>
           <group label="OAUTH_AUTHORIZATION_REQUEST_AUTHN" fill="false">
             <RadioGroupAttribute field="authNWith" columns="4">
-              <choice value="INTERNAL_AUTHN_FLOW" 
+              <choice value="INTERNAL_AUTHN_FLOW"
                 label="USE_INTERNAL_FLOW" span="4" />
-              <choice value="CIRCUIT_FLOW" 
+              <choice value="CIRCUIT_FLOW"
                 label="OAUTH_AUTHORIZATION_REQUEST_AUTHN_USE_CIRCUIT" />
               <panel margin="1" columns="4" span="2" fill="false">
-                <ReferenceSelector field="circuitPK" 
+                <ReferenceSelector field="circuitPK"
                   selectableTypes="FilterCircuit"
-                  searches="ROOT_CIRCUIT_CONTAINER,CircuitContainer" 
+                  searches="ROOT_CIRCUIT_CONTAINER,CircuitContainer"
                   title="OAUTH_AUTHORIZATION_REQUEST_AUTHN_SELECT_CIRCUIT" />
-                <TextAttribute field="subjectAttr" 
+                <TextAttribute field="subjectAttr"
                   label="OAUTH_AUTHORIZATION_REQUEST_AUTHN_SELECTOR" />
               </panel>
             </RadioGroupAttribute>
@@ -89,24 +86,24 @@ The following `declarative.xml` file defines the dialog in Policy Studio.
       <tab label="OAUTH_AUTHZ_CODE_GENERATION">
         <panel>
           <panel columns="3" fill="false">
-            <ReferenceSelector field="authzCodeCache" 
+            <ReferenceSelector field="authzCodeCache"
               selectableTypes="AuthzCodePersist"
-              searches="OAuth2StoresGroup,AuthzCodeStoreGroup" 
+              searches="OAuth2StoresGroup,AuthzCodeStoreGroup"
               label="OAUTH_AUTHORIZATION_REQUEST_STORE_CODE"
-              title="OAUTH_AUTHORIZATION_REQUEST_CHOOSE_CACHE" 
+              title="OAUTH_AUTHORIZATION_REQUEST_CHOOSE_CACHE"
               required="true" />
           </panel>
           <panel columns="2" fill="false">
-            <TextAttribute field="accessCodeTemplateLocation" 
+            <TextAttribute field="accessCodeTemplateLocation"
               label="ACCESS_CODE_TEMPLATE_LOCATION"
               required="true" />
           </panel>
-          <group label="OAUTH_AUTHORIZATION_REQUEST_GENERATE_CODE" 
+          <group label="OAUTH_AUTHORIZATION_REQUEST_GENERATE_CODE"
             columns="4" fill="false">
-            <NumberAttribute field="authzCodeLength" 
+            <NumberAttribute field="authzCodeLength"
               label="AUTHZ_CODE_LENGTH"
               required="true" min="10" />
-            <NumberAttribute field="authzCodeExpiresInSecs" 
+            <NumberAttribute field="authzCodeExpiresInSecs"
               label="AUTHZ_CODE_EXPIRES_SECS"
               required="true" max="60O" />
           </group>
@@ -121,15 +118,15 @@ The following `declarative.xml` file defines the dialog in Policy Studio.
           </panel>
         </scrollpanel>
       </tab>
-      
+
       …
-      
+
     </tabFolder>
   </panel>
 </ui>
 ```
 
-This section describes some of the elements declared in the preceding XML file. For a complete listing of all the UI elements and bindings available, see [Declarative UI reference](dec_ui_reference.htm).
+This section describes some of the elements declared in the preceding XML file. For a complete listing of all the UI elements and bindings available, see [Declarative UI reference](/docs/apigtw_devguide/dec_ui_reference).
 
 This declarative XML file declares that the main panel of the dialog spans two columns. All the labels are obtained from the associated `resources.properties` file.
 
@@ -154,9 +151,9 @@ The third tab includes a `<scrollpanel>` tag. The `<scrollpanel>` tag renders an
 
 One of the following tags must be a direct child of `<scrollpanel>`:
 
--   `<panel>`
--   `<group>`
--   `<tabFolder>`
+* `<panel>`
+* `<group>`
+* `<tabFolder>`
 
 For the **Access Token Details** tab it uses the `<panel>` tag. It also uses the `<include>` tag that allows another declarative XML file to be included inline in the parent including XML file.
 
