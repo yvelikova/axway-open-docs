@@ -2,11 +2,10 @@
 title: Manage an API proxy using AMPLIFY CLI
 linkTitle: Manage an API proxy using AMPLIFY CLI
 weight: 6
-date: 2019-07-30
+date: 2019-07-30T00:00:00.000Z
 description: Learn how your DevOps service can use AMPLIFY CLI to manage your API proxies.
 ---
-
-*Estimated reading time*: 5 minutes
+_Estimated reading time_: 5 minutes
 
 ## Before you start
 
@@ -32,11 +31,10 @@ apiVersion: v1 # This version ensures backward compatibility and would not manda
 proxy:
     name: 'Musical Instruments secured' # name of the proxy
     basePath: /api/v1 # base path of the proxy
-    swagger: 'https://ec062a054a2977120b7e721801edb38ca24dfbb3.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json'
-                                                                                    # optional. Swagger url of the proxy
+    swagger: 'https://ec062a054a2977120b7e721801edb38ca24dfbb3.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json' # optional. Swagger url of the proxy
     policies:
         clientAuth:
-            type: api-key # type of client authentication policy: can be pass-through or api-key
+            type: api-key # type of client authentication policy: can be pass-through, api-key, jwt-token, oauth
             app: 'Sample App' # optional if policy type is pass-through
         backendAuth: # backend authentication is optional, if not specified, then no backend authentication will be enabled
             type: auth-http-basic # type of backend authentication policy: only auth-http-basic is supported now
@@ -44,12 +42,14 @@ proxy:
             password: changeme # it's allowed to be empty
     tags: ['musical', 'instruments'] # optional
     team: # the team which the proxy will be assigned to.
-        name: 'Default Team'
+        name: 'Default Team'    
 ```
 
-If you specify `api-key` as the client authentication policy, you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created.
+If you use one of the client authentication policies except pass-through: `api-key, jwt-token, oauth`, you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created.
 
-You can specify additional applications in the `apps` section of the proxy. The apps are created if necessary. The `app` field under `clientAuth` can be omitted. For example:
+`backendAuth` is an optional field. If it is not specified, no back-end authentication is enabled. If you specify `auth-http-basic` as the back-end authentication policy, the password can be empty.
+
+You can specify additional applications and their profiles in the `apps` section of the proxy. The `app` field under `clientAuth` can be omitted. The apps are created if necessary and will be allowed to consume the proxy, if you have `api-key` client authentication policy.  For example:
 
 ```
 version: v1 # Version of the file format
@@ -57,31 +57,54 @@ apiVersion: v1 # This version ensures backward compatibility and would not manda
 proxy:
     name: 'Musical Instruments secured' # name of the proxy
     basePath: /api/v1 # base path of the proxy
-    swagger: 'https://ec062a054a2977120b7e721801edb38ca24dfbb3.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json'
-                                                                                    # optional. Swagger url of the proxy
+    swagger: 'https://ec062a054a2977120b7e721801edb38ca24dfbb3.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json' # optional. Swagger url of the proxy
     policies:
         clientAuth:
-            type: api-key # type of client authentication policy: can be pass-through or api-key
+            type: api-key # type of client authentication policy: can be pass-through, api-key, jwt-token, or oauth
             app: 'Sample App' # optional
         backendAuth: # backend authentication is optional, if not specified, then no backend authentication will be enabled
             type: auth-http-basic # type of backend authentication policy: only auth-http-basic is supported now
             username: Joe # required
             password: changeme # it's allowed to be empty
     tags: ['musical', 'instruments'] # optional
-    apps:
-    * name: 'Second Sample App' # this app will be allowed to consume the proxy
-    * name: 'Third Sample App' # this app will be allowed to consume the proxy
+    apps:     
+     - name: 'Second Sample App' # this app will be allowed to consume the proxy
+     - name: 'Third Sample App' # this app will be allowed to consume the proxy
     team: # the team which the proxy will be assigned to.
         name: 'Default Team'
 ```
 
-`backendAuth` is an optional field. If it is not specified, no back-end authentication is enabled. If you specify `auth-http-basic` as the back-end authentication policy, the password can be empty.
+If you're using oauth client authentication policy you should specify clientId, issuer, metadataPath in application profile. So this application will be allowed to consume your proxy. The type of client authentication policy that you've specified under `clientApp` must match the type of application profile. For example:
+```
+version: v1 # Version of the file format
+apiVersion: v1 # This version ensures backward compatibility and would not mandate a frequent update from a client side
+proxy:
+    name: 'Musical Instruments secured' # name of the proxy
+    basePath: /api/v1 # base path of the proxy
+    swagger: 'https://ec062a054a2977120b7e721801edb38ca24dfbb3.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json'
+    policies:
+        clientAuth:
+            type: oauth
+            app: 'Sample App'
+        backendAuth:
+            type: auth-http-basic
+            username: Joe 
+            password: changeme
+    apps:
+      - name: 'Sample App'
+        profiles:
+          - name: 'Sample profile'
+            type: oauth
+            clientId: 'client-id-123'
+            issuer: 'https://sample.com/oauth2/default' # authorization server URL
+            metadataPath: '/.well-known/oauth-authorization-server'
+```
 
 It is best to keep the YAML configuration file in the same source control repository as the source code of your service, so that you can update the configuration file when you make changes to the code for your service.
 
 ## Create an API proxy
 
-The `create` command *creates* an API proxy if none already exists for this API, or *updates* the existing API proxy. It returns the name of the API proxy created.
+The `create` command _creates_ an API proxy if none already exists for this API, or _updates_ the existing API proxy. It returns the name of the API proxy created.
 
 Enter the following command to create an API proxy:
 
@@ -93,9 +116,9 @@ Specify the full path to the YAML configuration file that describes your API.
 
 This command also supports the following options:
 
-| Option           | Description                                                                                  |
-|------------------|----------------------------------------------------------------------------------------------|
-| `--force` or `-f`| The default behavior is to create or update the API proxy. Use this option to force create a new API proxy.|
+| Option            | Description                                                                                                 |
+| ----------------- | ----------------------------------------------------------------------------------------------------------- |
+| `--force` or `-f` | The default behavior is to create or update the API proxy. Use this option to force create a new API proxy. |
 
 For details of the API, see [Create proxy API](https://d-api.docs.stoplight.io/api-reference/devops-api/create-proxy).
 
@@ -119,10 +142,10 @@ amplify central proxies promote /myservices/my_service_config.yaml --source="Tes
 
 This command supports the following options:
 
-| Option       | Description                  |
-|--------------|------------------------------|
-| `--source`   | The runtime to promote from. |
-| `--target`   | The runtime to promote to.   |
+| Option     | Description                  |
+| ---------- | ---------------------------- |
+| `--source` | The runtime to promote from. |
+| `--target` | The runtime to promote to.   |
 
 For details of the API, see [Promote proxy API](https://d-api.docs.stoplight.io/api-reference/devops-api/promote-proxy).
 
