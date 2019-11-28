@@ -3,25 +3,22 @@
 "linkTitle": "Product certificates",
 "weight": 80,
 "date": "2019-11-25",
-"description": "This section descirbes the product certificates for API Gateway and API\\u00a0Portal."
+"description": "Details of signed certificates used by API Gateway and API Portal, and any sample certificates that are shipped."
 }
 
-This section descirbes the product certificates for API Gateway and API Portal.
-
-API Gateway
------------
+## API Gateway certificates
 
 The Windows installer for the
 developer tools has been signed using the private key associated with the following certificate:
 
-| Owner                                                                                 | Issuer                                                         | Expiry                                                                       |
-|---------------------------------------------------------------------------------------|----------------------------------------------------------------|------------------------------------------------------------------------------|
+| Owner    | Issuer           | Expiry           |
+|----------|------------------|------------------|
 | Owner: CN=Axway Inc, OU=Product Development, O=Axway Inc, L=Phoenix, ST=Arizona, C=US | Issuer: CN=Thawte Code Signing CA - G2, O="Thawte, Inc.", C=US | Valid from: Fri Dec 12 00:00:00 GMT 2014 until: Mon Dec 11 23:59:59 GMT 2017 |
 
 The product ships with its own JCE provider for interfacing to hardware security modules (HSMs) in a generic manner.  This provider is signed with the private key that corresponds to the public key in the following certificate:
 
-| Owner                                                                  | Issuer                                                                                                          | Expiry                                                                       |
-|------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| Owner       | Issuer                                  | Expiry         |
+|-------------|-----------------------------------------|----------------|
 | Owner: CN=Axway, OU=Java Software Code Signing, O=Sun Microsystems Inc | Issuer: CN=JCE Code Signing CA, OU=Java Software Code Signing, O=Sun Microsystems Inc, L=Palo Alto, ST=CA, C=US | Valid from: Tue Feb 12 00:53:53 GMT 2013 until: Fri Feb 16 00:53:53 GMT 2018 |
 
 The following table lists the sample certificates with private keys that are shipped with the product.  These certificates are for test purposes only and must be replaced with production-ready certificates for a production environment.
@@ -38,15 +35,13 @@ The following table lists the product-specific CA certificates that ship with th
 |----------------|-------------|-------------------|
 | AxwayRootCA    | AxwayRootCA | 23rd August, 2042 |
 
-To authenticate the product using SSL with other internal components, a domain certificate is generated using the `managedomain` utility.  This certificate is then used to sign the auto-generated per-instance certificates used in SSL communications between internal components, for example, an API Gateway instance and an Admin Node Manager. 
+To authenticate the product using SSL with other internal components, a domain certificate is generated using the `managedomain` utility.  This certificate is then used to sign the auto-generated per-instance certificates used in SSL communications between internal components, for example, an API Gateway instance and an Admin Node Manager.
 
-While not necessary, you can change these certificates to more suitable enterprise-level CA-signed certificates, where available. The
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/)
-describes how to use the `managedomain` utility to do this.
+While not necessary, you can change these certificates to more suitable enterprise-level CA-signed certificates, where available. [Configure Admin Node Manager high availability](/docs/apigtw_admin/admin_node_mngr/) describes how to use the `managedomain` utility to do this.
 
 The following output shows the process whereby an initial domain-level key pair is generated for the Admin Node Manager:
 
-``` {space="preserve"}
+```
 Generating domain private key and certificate...
 Generating private key...
 Generating CSR for key...
@@ -70,7 +65,7 @@ The system has placed your domain private key into directory '/nightly/15_10_14/
 
 Whenever a new API Gateway instance is created (using the `create_instance` command), the instance’s SSL certificate is signed by the domain level Admin Node Manager's SSL certificate that was generated in the sequence shown above.
 
-``` {space="preserve"}
+```
 > create_instance name Server1 group Group1
 Requesting CSR from Admin Node Manager...
 CSR received from Admin Node Manager.
@@ -86,19 +81,10 @@ New API Gateway SSL certificate details:
 The new API Gateway 'Server1' in group 'Group1' has been successfully created and installed
 ```
 
-For a more detailed explanation of the options available with the `managedomain` utility, including how to use your own certificates for internal SSL/TLS channels between internal components, see the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/)
-.
-
-API Portal
-----------
+## API Portal certificates
 
 For API Portal, upon installation, a sample certificate is generated:
 
--   Sample certificate CN
--   Issuing CA
--   Validity
--   Linux
--   Certificate Shack
--   5 years
-
+|Sample certificate CN|Issuing CA       |Validity|
+|---------------------|-----------------|--------|
+|Linux                |Certificate Shack|5 years |

@@ -3,10 +3,8 @@
 "linkTitle": "Security best practices",
 "weight": 90,
 "date": "2019-11-25",
-"description": "When using this product, follow these security best practices."
+"description": "Recommended best practices for securing API Gateway, API Manager, and API Portal."
 }
-
-When using this product, follow these security best practices.
 
 ## Secure connections
 
@@ -38,28 +36,28 @@ You must limit the users that have privileged access to the machine on which API
 
 As much as possible, limit the number of Internet access points. Do not open useless Internet connections and limit interconnections with external networks as much as possible. This limits the product’s attack surface, reduces the risk of external attacks, and makes it easier to audit the product.
 
-For a list of default ports that are opened by the API Gateway components, see the
-[API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/)
-.
+For a list of default ports that are opened by the API Gateway components, see [Default ports](/docs/apigtw_install/system_requirements/#default-ports).
 
 ## Session timeouts
 
-The default idle session timeout for the API Gateway Manager web UI is 12 hours. It is recommended that you change this timeout to 120 minutes or less. For details, see the
-[API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/)
-.
+The default idle session timeout for the API Gateway Manager web UI is 12 hours. It is recommended that you change this timeout to 120 minutes or less. For details, see [Change default session timeout for API Gateway Manager](/docs/apigtw_install/post_overview/#change-default-session-timeout-for-api-gateway-manager).
 
 ## Correct upgrade procedure
 
 In the event of a possible vulnerability discovered in the product, you must be able to apply the patch or new Service Pack as soon as possible. Make sure you have the correct procedure to complete the upgrade. Always use the latest version of the product, if possible, as it contains fixes to known vulnerabilities.
 
-For more information on upgrade procedures, see the following documents:
+For more information on upgrade procedures, see the following sections:
 
-* API Gateway software:
-    [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/)
-    and
-    [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5)
+* API Gateway and API Manager software:
+    * [API Gateway Upgrade Guide](/docs/apigw_upgrade/)
+    * [Update API Gateway](/docs/apigtw_install/install_service_packs/)
+* API Gateway and API Manager container deployment:
+    * [Upgrade a container deployment](/docs/container_topics/container_upgrade/)
+    * [Apply a patch or service pack](/docs/container_topics/container_patch_sp/)
 * API Portal:
-    [API Portal Installation and Upgrade Guide](/bundle/APIPortal_77_InstallationGuide_allOS_en_HTML5)
+    * [Upgrade API Portal](/docs/apiportal_install/upgrade_automatic/)
+    * [Upgrade API Portal docker deployment](/docs/apiportal_docker/upgrade_docker/)
+    * [Update API Portal with a service pack or patch](/docs/apiportal_install/install_service_pack/)
 
 ## Generic or anonymous users
 
@@ -74,14 +72,9 @@ In line with security best practices, you can configure a password policy for ad
 It is also possible to take certain actions when a configurable number of invalid authentication attempts has occurred via HTTP basic, HTTP digest, and HTML form-based authentication.  For example, you can lock a user account or ban an IP address if a certain number of invalid passwords have been submitted to API Gateway.
 
 For more information on setting the password policy for administrator users, see the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/)
-.
+[Configure a password policy for admin users](/docs/apigtw_admin/manage_user_access/#configure-a-password-policy-for-admin-users).
 
-You can also configure password policies for API Manager and API Portal users. For details, see the
-[API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/)
-and the
-[API Portal Administrator Guide](/bundle/APIPortal_77_AdministratorGuide_allOS_en_HTML5)
-.
+You can also configure password policies for [API Manager](/docs/apimgr_admin/api_mgmt_admin/#enforce-password-changes) and [API Portal](/docs/apiportal_admin/customize_page_content/#enforce-password-policies) users.
 
 ## Default authentication account
 
@@ -122,9 +115,7 @@ The product can also send the following types of alerts under certain configurab
 * Amazon SNS
 * Twitter feed
 
-See the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/)
-for more information on configuring logging and alerting in API Gateway.
+See [Configure logging and events](/docs/apigtw_admin/logging/) and [Configure system alerts](/docs/apigw_poldev/general_system_alerts/) for more information on configuring logging and alerting in API Gateway.
 
 ## Sensitive files and databases
 
@@ -151,7 +142,7 @@ The files in the following directory, where `<ID>` represents the policy package
 
 ```
 
-As stated earlier (see [Entity Store passphrase](../Configuration/c_secgd_config_secconfig.htm#Entity)), an encryption passphrase can be used to encrypt sensitive data in the Entity Store, including private keys, passwords, and tokens.
+As stated earlier, an encryption passphrase can be used to encrypt sensitive data in the Entity Store, including private keys, passwords, and tokens.
 
 ### Administrator passwords
 
@@ -183,9 +174,7 @@ In cases where API Gateway must be started automatically without manual interven
 /skel/service.xml
 ```
 
-If you configure a password executable file for use with `managedomain` (see the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/)
-for details), it is important to protect the following file:
+If you configure a password executable file for use with `managedomain`, it is important to protect the following file:
 
 ```
 /conf/managedomain.props
@@ -269,7 +258,7 @@ saml-verify-metadata-signature = true
 
 ### File integrity
 
-After downloading the product package from Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink}, it is highly recommended to verify the file integrity. Use a third-party tool for your OS to compute the hash of the downloaded file and compare it with the hash that is displayed on the Details page for the product package. Both SHA-256 and MD5 hashes are provided but it is safer to use SHA-256.
+After downloading the product package from Axway Support at [https://support.axway.com](https://support.axway.com/), it is highly recommended to verify the file integrity. Use a third-party tool for your OS to compute the hash of the downloaded file and compare it with the hash that is displayed on the Details page for the product package. Both SHA-256 and MD5 hashes are provided but it is safer to use SHA-256.
 
 It is also recommended to protect file integrity after the product has been installed using a file integrity monitoring tool. In order to be able to configure the monitoring tool, the following tables provide information about the files used by the product and which actions can modify those files.
 
@@ -293,7 +282,7 @@ Outside upgrade, the following files in API Gateway and API Manager should not c
 * `*.js` Javascript files in `INSTALL_DIR/apigateway/webapps` and all subdirectories.
 * `*.*` executables in `INSTALL_DIR/apigateway/posix/bin`.
 
-{{< alert title="Note" color="primary" >}} All other files are modified at runtime and cannot be verified using a monitoring tool.{{< /alert >}}
+All other files are modified at runtime and cannot be verified using a monitoring tool.
 
 #### Files modified on specific actions in API Portal
 
@@ -311,19 +300,15 @@ Outside upgrade, the following files in API Portal are modified by specific act
 * `*.*` template files in `INSTALL_DIR/templates/purity_iii/local/`: New themes are created or the CSS files modified.
 * `*.*` custom CSS files in `INSTALL_DIR/templates/purity_iii/css/`: The custom CSS file can be modified.
 
-{{< alert title="Note" color="primary" >}} All other files are modified at runtime and cannot be verified using a monitoring tool.{{< /alert >}}
+All other files are modified at runtime and cannot be verified using a monitoring tool.
 
 ## Certificate verification
 
-It is recommended that you explicitly configure the API Manager certificate in API Portal and enable API Portal to verify the certificate and host of API Manager. For more information, see the
-[API Portal Installation and Upgrade Guide](/bundle/APIPortal_77_InstallationGuide_allOS_en_HTML5)
-.
+It is recommended that you explicitly configure the API Manager certificate in API Portal and enable API Portal to verify the certificate and host of API Manager. For more information, see [Connect API Portal to API Manager](/docs/apiportal_install/connect_to_apimgr/).
 
 ## Internet access restriction
 
-In API Portal, it is recommended that you protect the Joomla! administration UI from direct Internet access. For more information, see the
-[API Portal Installation and Upgrade Guide](/bundle/APIPortal_77_InstallationGuide_allOS_en_HTML5)
-.
+In API Portal, it is recommended that you protect the Joomla! administration UI from direct Internet access. For more information, see [Secure API Portal](/docs/apiportal_install/secure_harden_portal/).
 
 ## Administrator user name
 

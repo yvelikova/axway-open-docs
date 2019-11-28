@@ -3,10 +3,8 @@
 "linkTitle": "Certifications and compliance",
 "weight": 20,
 "date": "2019-11-25",
-"description": "This section describes the certifications the product has received and the standards it is compliant with."
+"description": "Certifications API Gateway and API Portal have received, and standards they comply with."
 }
-
-This section describes the certifications the product has received and the standards it is compliant with.
 
 ## Common Criteria certification
 
@@ -43,7 +41,9 @@ When operating in FIPS mode, the following FIPS-certified cryptographic modules 
 The ability to run API Gateway in FIPS mode is a licensable option of the standard version and must be specifically ordered.  It is possible to enable or disable FIPS mode as required. For more information on running in FIPS mode, see
 [Run API Gateway in FIPS mode](/docs/apigtw_security/admin_fips/).
 
-You can run the FIPS Compliance Validation Tool from Policy Studio to check that a configuration is FIPS compliant. This tool is available from the **Tools > Check Security Constraints > FIPS** menu option. For more information on running the tool, see [Compliance validation tools](/docs/apigw_poldev/general_validation_tools/). For guidance on compliant settings for Policy Studio filters, see [*Compliant settings for filters* on page 1](../compliance_appendix.htm).
+You can run the FIPS Compliance Validation Tool from Policy Studio to check that a configuration is FIPS compliant. This tool is available from the **Tools > Check Security Constraints > FIPS** menu option.
+
+For more information on running the tool, see [Compliance validation tools](/docs/apigw_poldev/general_validation_tools/). For guidance on compliant settings for Policy Studio filters, see [Compliant settings for filters](/docs/apimgmt_security/compliance_appendix/).
 
 ### API Portal FIPS compliance
 
@@ -51,7 +51,7 @@ API Portal is not FIPS-140-2 compliant.
 
 ## NIST Suite B compliance
 
-You can run the National Institute of Standards and Technology (NIST) Suite B and Suite B Top Secret Compliance Validation Tools from Policy Studio to ensure that a configuration is Suite B or Suite B Top Secret compliant. These tools are available from the **Tools > Check Security Constraints > SuiteB** and the **Tools > Check Security Constraints > SuiteBTS** menu options. For more information on running these tools, see [Compliance validation tools](/docs/apigw_poldev/general_validation_tools/). For guidance on compliant settings for Policy Studio filters, see [*Compliant settings for filters* on page 1](../compliance_appendix.htm).
+You can run the National Institute of Standards and Technology (NIST) Suite B and Suite B Top Secret Compliance Validation Tools from Policy Studio to ensure that a configuration is Suite B or Suite B Top Secret compliant. These tools are available from the **Tools > Check Security Constraints > SuiteB** and the **Tools > Check Security Constraints > SuiteBTS** menu options.
 
 ### API Portal NIST compliance
 
