@@ -2,7 +2,7 @@
 title: Apache Cassandra backup and restore
 linkTitle: Backup and restore
 weight: 5
-date: 2019-06-05T00:00:00.000Z
+date: 2019-06-05
 description: |
   Learn how to back up and restore Cassandra.
 ---
@@ -71,28 +71,32 @@ You must repeat these steps for each keyspace to back up.
 {{% /alert %}}
 
 1. Create a snapshot by running the following command on the seed node:
-   ```
-   nodetool CONNECTION_PARMS snapshot -t SNAPSHOT_NAME-TIMESTAMP API_GW_KEYSPACE_NAME
-   ```
-   For example:
 
-![Create a snapshot](/Images/CassandraAdminGuide/nodetool_snapshot.png)
+    ```
+    nodetool CONNECTION_PARMS snapshot -t SNAPSHOT_NAME-TIMESTAMP API_GW_KEYSPACE_NAME
+    ```
 
-1. Run the Cassandra snapshot backup script to copy the snapshot files to another location:
-   {{% alert title="Note" %}}
-   This script also clears the snapshot files from the Cassandra `data` directory.
-   {{% /alert %}}
-     When this script finishes, it creates the following backup directory structure:
-   ```
-   <BACKUP_ROOT_DIR>
-   ├── <SNAPSHOT_NAME>
-   │ ├── <TABLE_NAME>
-   │ │  ├── <SNAPSHOT_FILES>
-   │ ├── <TABLE_NAME>
-   │ │  ├── <SNAPSHOT FILES>
-   │ │...
-   ```
-2. Archive the `SNAPSHOT_NAME` directory using your company's archive method so you can restore it later if needed.
+    For example:
+
+    ![Create a snapshot](/Images/CassandraAdminGuide/nodetool_snapshot.png)
+
+2. Run the Cassandra snapshot backup script to copy the snapshot files to another location:
+
+    {{% alert title="Note" %}}This script also clears the snapshot files from the Cassandra `data` directory.{{% /alert %}}
+
+    When this script finishes, it creates the following backup directory structure:
+
+    ```
+    <BACKUP_ROOT_DIR>
+    ├── <SNAPSHOT_NAME>
+    │ ├── <TABLE_NAME>
+    │ │  ├── <SNAPSHOT_FILES>
+    │ ├── <TABLE_NAME>
+    │ │  ├── <SNAPSHOT FILES>
+    │ │...
+    ```
+
+3. Archive the `SNAPSHOT_NAME` directory using your company's archive method so you can restore it later if needed.
 
 ### Sample Cassandra snapshot backup script
 
@@ -161,35 +165,40 @@ Before you restore a keyspace in a new Cassandra cluster, you must ensure that t
 
 1. Shut down all API Gateway instances and any other clients in the Cassandra cluster.
 2. Drain and shut down each Cassandra node in the cluster, one node at a time.
-   {{% alert title="Caution" color="warning" %}}
-   Wait for it to complete on each Cassandra node before shutting it down, otherwise data loss may occur:
-   {{% /alert %}}
-   ````
-           ```
-           nodetool CONNECTION_PARMS drain
-           ```
-   ````
+  
+    {{% alert title="Caution" color="warning" %}}Wait for it to complete on each Cassandra node before shutting it down, otherwise data loss may occur:{{% /alert %}}
+
+    ```
+    nodetool CONNECTION_PARMS drain
+    ```
+
 3. On the Cassandra seed node, delete all files in the `commitlog` and `saved_caches` directory.
-   For example:
-   ```
-   rm -r /opt/cassandra/data/commitlog/* /opt/cassandra/data/saved_caches/*
-   ```
-   {{% alert title="Caution" color="warning" %}}
-   Do not delete any folders in the keyspace folder on the node being restored. The restore script requires the table directories to be present in order to function correctly.
-   {{% /alert %}}
-4. On the Cassandra seed node, run the Cassandra restore snapshot script to restore the snapshot files taken by the backup process and script (described in [Back up a keyspace](#Back)).
+
+    For example:
+
+    ```
+    rm -r /opt/cassandra/data/commitlog/* /opt/cassandra/data/saved_caches/*
+    ```
+
+    {{% alert title="Caution" color="warning" %}}Do not delete any folders in the keyspace folder on the node being restored. The restore script requires the table directories to be present in order to function correctly.{{% /alert %}}
+
+4. On the Cassandra seed node, run the Cassandra restore snapshot script to restore the snapshot files taken by the backup process and script.
 5. On the other nodes in the cluster, perform the following:
-   * Delete all files in the `commitlog` and `saved_caches` directory.
-   * Delete all files in the `KEYSPACE` being restored under the `CASSANDRA_DATA_DIRECTORY`. For example:
-     ```
-     rm -rf /opt/cassandra/data/data/x9fa003e2_d975_4a4a_a27e_280ab7fd8a5_group_2/*
-     ```
+    * Delete all files in the `commitlog` and `saved_caches` directory.
+    * Delete all files in the `KEYSPACE` being restored under the `CASSANDRA_DATA_DIRECTORY`. For example:
+
+    ```
+    rm -rf /opt/cassandra/data/data/x9fa003e2_d975_4a4a_a27e_280ab7fd8a5_group_2/*
+    ```
+
 6. If you have other keyspaces to restore, return to step 4 and repeat. Otherwise, continue to the next steps.
 7. One at a time, start the Cassandra seed node, and then the other nodes, and wait for each to be in Up/Normal (`UN`) state in `nodetool status` before you proceed to the next node.
 8. Perform a full repair of the cluster as follows on each node one at a time:
-   ```
-   nodetool repair -pr --full
-   ```
+
+    ```
+    odetool repair -pr --full
+    ```
+
 9. On the Cassandra seed node, run the Cassandra reload the indexes script.
 10. Start the API Gateway instances.
 
