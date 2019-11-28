@@ -30,17 +30,14 @@ You must read all of the following before you perform any of the instructions in
 ## Which data keyspaces to back up?
 
 These procedures apply to data in API Management and KPS keyspaces only.
-You must first obtain a list of the keyspace names to back up. API Management keyspaces may have a custom name defined, but are named in the format of `<UUID>_group_[n]` by default. For example:
+
+You must first obtain a list of the keyspace names to back up. API Management keyspaces may have a custom name defined, but they are named in the format of `<UUID>_group_[n]` by default. For example:
 
 ```
 x9fa003e2_d975_4a4a_a27e_280ab7fd8a5_group_2p_2
 ```
 
-{{% alert title="Note" %}}
-All Cassandra internal keyspaces begin with `system`, and should not be backed up using this process.
-{{% /alert %}}
-
-You can do this using `cqlsh` or `kpsadmin` commands:
+All Cassandra internal keyspaces begin with `system`, and should not be backed up using this process. You can do this using `cqlsh` or `kpsadmin` commands:
 
 ### Find keyspaces using cqlsh
 
@@ -64,21 +61,14 @@ Using `kpsadmin`, choose: `option 30) Show Configuration`, and enter the API Gat
 
 To back up a keyspace, you will use the `nodetool snapshot` command to create hard links, run a custom script to back up these links, and then archive that backup.
 
-It is recommended to take a snapshot backup on a daily basis.
-
-{{% alert title="Note" %}}
-You must repeat these steps for each keyspace to back up.
-{{% /alert %}}
+* It is recommended to take a snapshot backup on a daily basis.
+* You must repeat these steps for each keyspace to back up.
 
 1. Create a snapshot by running the following command on the seed node:
 
     ```
     nodetool CONNECTION_PARMS snapshot -t SNAPSHOT_NAME-TIMESTAMP API_GW_KEYSPACE_NAME
     ```
-
-    For example:
-
-    ![Create a snapshot](/Images/CassandraAdminGuide/nodetool_snapshot.png)
 
 2. Run the Cassandra snapshot backup script to copy the snapshot files to another location:
 
@@ -152,7 +142,7 @@ done
 This section explains how to restore API Management and KPS keyspaces and provides an example script to restore the files.
 
 {{% alert title="Note" %}}
-If you are restoring a keyspace to the same cluster that the backup was taken from, skip to [Steps to restore a keyspace](#Restore).
+If you are restoring a keyspace to the same cluster that the backup was taken from, skip to [Steps to restore a keyspace](#steps-to-restore-a-keyspace).
 {{% /alert %}}
 
 Before you restore a keyspace in a new Cassandra cluster, you must ensure that the following:
