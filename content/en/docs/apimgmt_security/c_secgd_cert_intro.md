@@ -3,7 +3,7 @@
 "linkTitle": "Certifications and compliance",
 "weight": 20,
 "date": "2019-11-25",
-"description": "Certifications API Gateway and API Portal have received, and standards they comply with."
+"description": "Certifications API management products have received, and standards they comply with."
 }
 
 ## Common Criteria certification

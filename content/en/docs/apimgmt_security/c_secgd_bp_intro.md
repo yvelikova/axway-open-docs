@@ -8,7 +8,7 @@
 
 ## Secure connections
 
-As stated earlier, all connections between internal components ( API Gateways and Node Managers) are secured by mutual authentication.  Best practices would recommend securing all connections to external networks with mutual authentication, where that is supported by the back-end service.
+All connections between internal components (API Gateways and Node Managers) are secured by mutual authentication.  Best practices would recommend securing all connections to external networks with mutual authentication, where that is supported by the back-end service.
 
 Similarly, where API Gateway is receiving messages over various protocols, ensure these connections are mutually authenticated where possible.
 
@@ -69,7 +69,7 @@ In cases where multiple administrator users are responsible for configuring poli
 
 In line with security best practices, you can configure a password policy for administrator users in API Gateway Manager. Password policy refers to the size and complexity of the password, as well as to all the rules to manage the password.
 
-It is also possible to take certain actions when a configurable number of invalid authentication attempts has occurred via HTTP basic, HTTP digest, and HTML form-based authentication.  For example, you can lock a user account or ban an IP address if a certain number of invalid passwords have been submitted to API Gateway.
+It is also possible to take certain actions when a configurable number of invalid authentication attempts has occurred via HTTP basic, HTTP digest, and HTML form-based authentication.  For example, you can lock a user account or ban an IP address if a certain number of invalid passwords have been submitted to API Gateway. For details, see [Authentication filters](/docs/apigw_polref/authn_common/).
 
 For more information on setting the password policy for administrator users, see the
 [Configure a password policy for admin users](/docs/apigtw_admin/manage_user_access/#configure-a-password-policy-for-admin-users).
@@ -92,28 +92,11 @@ You should limit your remote connections in the following ways:
 
 An important aspect of security is to be notified when something wrong occurs, and to be able to investigate it. Therefore, it is important to define the right level of logging and audit, and to set the right alerts.
 
-API Gateway can log audit and monitoring data to the following locations:
-
-* Axway Sentinel
-* Local text file
-* Local XML file
-* Database
-* Local syslog
-* Remote syslog
-* System console
-* Apache Access log file
+API Gateway can log audit and monitoring data to different locations, for example, Axway Sentinel, local text or XML file, local or remote syslog, and so on.
 
 Events can be audited at different levels, for example, success, failure, or abort.  The audit trails written to the local text file, local XML file, and database can all be signed to ensure integrity.
 
-The product can also send the following types of alerts under certain configurable error conditions:
-
-* Email messages
-* OPSEC alerts
-* SNMP trap
-* Local and remote syslog
-* Windows event log
-* Amazon SNS
-* Twitter feed
+The product can also send various types of alerts (for example, email messages, SNMP traps, Amazon SNS, and so on) under certain configurable error conditions.
 
 See [Configure logging and events](/docs/apigtw_admin/logging/) and [Configure system alerts](/docs/apigw_poldev/general_system_alerts/) for more information on configuring logging and alerting in API Gateway.
 
@@ -202,7 +185,7 @@ In terms of audit trail data written out by the API Gateway, it is important to 
 
 You should also protect any custom logging files if a non-default location has been configured.
 
-### API Portal
+### API Portal files
 
 The files located in the following directory contain configuration, log, and source files:
 
@@ -302,14 +285,14 @@ Outside upgrade, the following files in API Portal are modified by specific act
 
 All other files are modified at runtime and cannot be verified using a monitoring tool.
 
-## Certificate verification
+## API Portal certificate verification
 
 It is recommended that you explicitly configure the API Manager certificate in API Portal and enable API Portal to verify the certificate and host of API Manager. For more information, see [Connect API Portal to API Manager](/docs/apiportal_install/connect_to_apimgr/).
 
-## Internet access restriction
+## API Portal Internet access restriction
 
 In API Portal, it is recommended that you protect the Joomla! administration UI from direct Internet access. For more information, see [Secure API Portal](/docs/apiportal_install/secure_harden_portal/).
 
-## Administrator user name
+## API Portal administrator user name
 
 API Portal forces you to change the administrator password on first login. For best practice, you should also change the administrator user name.

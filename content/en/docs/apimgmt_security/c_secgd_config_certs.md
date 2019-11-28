@@ -3,10 +3,10 @@
 "linkTitle": "Product certificates",
 "weight": 80,
 "date": "2019-11-25",
-"description": "Details of signed certificates used by API Gateway and API Portal, and any sample certificates that are shipped."
+"description": "Details of signed certificates used by API Gateway, and sample certificates that are shipped with API Gateway and API Portal."
 }
 
-## API Gateway certificates
+## API Gateway developer tools certificates
 
 The Windows installer for the
 developer tools has been signed using the private key associated with the following certificate:
@@ -15,11 +15,15 @@ developer tools has been signed using the private key associated with the follow
 |----------|------------------|------------------|
 | Owner: CN=Axway Inc, OU=Product Development, O=Axway Inc, L=Phoenix, ST=Arizona, C=US | Issuer: CN=Thawte Code Signing CA - G2, O="Thawte, Inc.", C=US | Valid from: Fri Dec 12 00:00:00 GMT 2014 until: Mon Dec 11 23:59:59 GMT 2017 |
 
+## API Gateway JCE provider certificates
+
 The product ships with its own JCE provider for interfacing to hardware security modules (HSMs) in a generic manner.  This provider is signed with the private key that corresponds to the public key in the following certificate:
 
 | Owner       | Issuer                                  | Expiry         |
 |-------------|-----------------------------------------|----------------|
 | Owner: CN=Axway, OU=Java Software Code Signing, O=Sun Microsystems Inc | Issuer: CN=JCE Code Signing CA, OU=Java Software Code Signing, O=Sun Microsystems Inc, L=Palo Alto, ST=CA, C=US | Valid from: Tue Feb 12 00:53:53 GMT 2013 until: Fri Feb 16 00:53:53 GMT 2018 |
+
+## API Gateway sample certificates
 
 The following table lists the sample certificates with private keys that are shipped with the product.  These certificates are for test purposes only and must be replaced with production-ready certificates for a production environment.
 
@@ -28,6 +32,8 @@ The following table lists the sample certificates with private keys that are shi
 | Change this for production | Change this for production | 1st October, 2037  |
 | Samples Test CA            | Samples Test CA            | 10th January, 2037 |
 | Samples Test Certificate   | Samples Test CA            | 10th January       |
+
+## API Gateway CA certificates
 
 The following table lists the product-specific CA certificates that ship with the API Gateway's trusted certificate store.  The other default CA certificates in the certificate store are populated from the `cacerts` trust store in the JRE that is bundled with the product.
 
@@ -81,7 +87,7 @@ New API Gateway SSL certificate details:
 The new API Gateway 'Server1' in group 'Group1' has been successfully created and installed
 ```
 
-## API Portal certificates
+## API Portal sample certificates
 
 For API Portal, upon installation, a sample certificate is generated:
 

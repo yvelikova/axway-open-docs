@@ -3,22 +3,18 @@
 "linkTitle": "Compliant configuration settings for Policy Studio",
 "weight": 100,
 "date": "2019-11-25",
-"description": "Policy Studio ships with a useful tool that allows you to scan a configuration and identify items that do not comply with the FIPS, Suite B, and Suite B Top Secret security standards.  For example, if you have a large configuration where the non-FIPS algorithm MD5 has been selected, you can run the FIPS Compliance Validation Tool to identify all occurrences of this algorithm.  "
+"description": "Reference to compliant settings for FIPS, NIST Suite B, and NIST Suite B TS."
 }
-﻿
 
-Policy Studio ships with a useful tool that allows you to scan a configuration and identify items that do not comply with the FIPS, Suite B, and Suite B Top Secret security standards.  For example, if you have a large configuration where the non-FIPS algorithm MD5 has been selected, you can run the FIPS Compliance Validation Tool to identify all occurrences of this algorithm. 
+Policy Studio ships with a useful tool that allows you to scan a configuration and identify items that do not comply with the FIPS, Suite B, and Suite B Top Secret security standards.  For example, if you have a large configuration where the non-FIPS algorithm MD5 has been selected, you can run the FIPS Compliance Validation Tool to identify all occurrences of this algorithm.
 
 You can click on the warning message in the report to jump directly to the offending configuration item.  Using the details in this topic, you can quickly enter or select a compliant algorithm or cipher suite to be FIPS-compliant.
 
 While running in FIPS mode, the runtime blocks any attempts to use non-FIPS-compliant algorithms.  The Compliance Validation Tool should be used before a configuration is deployed to identify potential problems at configuration time rather than waiting to diagnose runtime errors.
 
-Abbreviations
--------------
+## Abbreviations
 
 The following are common compliance abbreviations:
-
-<div class="indentTable">
 
 | Abbreviation | Meaning                                        |
 |--------------|------------------------------------------------|
@@ -27,45 +23,37 @@ The following are common compliance abbreviations:
 | SB TS        | Suite B Top Secret                             |
 | NIST         | National Institute of Standards and Technology |
 
-</div>
+## HTTPS interface, SMTP interface, ICAP server, Connection filter, Connect to URL filter
 
-HTTPS interface, SMTP interface, ICAP server, Connection filter, Connect to URL filter
---------------------------------------------------------------------------------------
+Field
+: Ciphers (Advanced SSL Tab)
 
-The following ciphers are compliant.
+FIPS compliant:
 
-<div class="indentTable">
+* FIPS
+* FIPS:!SSLv3
+* FIPS:!SSLv3:!aNULL
 
-| Field                      | FIPS               | Suite B                                                                        | Suite B TS                                                                     |
-|----------------------------|--------------------|--------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
-| Ciphers (Advanced SSL Tab) | FIPS               
-                      
-  FIPS:!SSLv3         
-                      
-  FIPS:!SSLv3:!aNULL  | ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA 
-                                                                                   
-   ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256                         | ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA 
-                                                                                    
-    ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384                         |
+Suite B compliant:
 
-</div>
+* ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA
+* ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256
+
+Suite B TS compliant:
+
+* ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA
+* ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384
 
 ### FIPS
 
-{{< alert title="Note" color="primary" >}}The default ciphers macro of “FIPS:!SSLv3:!aNULL”:{{< /alert >}}
+The default ciphers macro of `FIPS:!SSLv3:!aNULL`:
 
-<div class="indentTable">
-
--   Enables FIPS-compatible cipher suites only
--   Explicitly blocks cipher suites that require SSLv3 or lower
--   Forces the use of TLSv1.2 only
--   Forbids unauthenticated cipher suites
-
-</div>
+* Enables FIPS-compatible cipher suites only
+* Explicitly blocks cipher suites that require SSLv3 or lower
+* Forces the use of TLSv1.2 only
+* Forbids unauthenticated cipher suites
 
 The following table shows the SSL/TLS protocol version, key exchange, authentication, encryption, and MAC algorithms that are used by each supported cipher suite.
-
-<div class="indentTable">
 
 | Cipher Suite                  | SSL     | Kx         | Auth  | Enc         | MAC    |
 |-------------------------------|---------|------------|-------|-------------|--------|
@@ -98,13 +86,9 @@ The following table shows the SSL/TLS protocol version, key exchange, authentica
 | AES128-GCM-SHA256             | TLSv1.2 | RSA        | RSA   | AESGCM(128) | AEAD   |
 | AES128-SHA256                 | TLSv1.2 | RSA        | RSA   | AES(128)    | SHA256 |
 
-</div>
-
 ### Suite B
 
 The following cipher suites are Suite B compliant.
-
-<div class="indentTable">
 
 | Cipher Suite                  | SSL     | Kx   | Auth  | Enc         | MAC    |
 |-------------------------------|---------|------|-------|-------------|--------|
@@ -112,12 +96,10 @@ The following cipher suites are Suite B compliant.
 | ECDHE-ECDSA-AES128-SHA256     | TLSv1.2 | ECDH | ECDSA | AES(128)    | SHA256 |
 | ECDHE-ECDSA-AES128-SHA        | SSLv3   | ECDH | ECDSA | AES(128)    | SHA1   |
 
-</div>
-
 The Validation Tool will consider the following cipher strings as compliant:
 
--   ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256
--   ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA
+* ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256
+* ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA
 
 {{< alert title="Note" color="primary" >}}The ECDHE-ECDSA-AES128-SHA cipher suite uses the SSLv3 protocol and is therefore not recommended.{{< /alert >}}
 
@@ -125,29 +107,22 @@ The Validation Tool will consider the following cipher strings as compliant:
 
 The following cipher suites are Suite B TS compliant.
 
-<div class="indentTable">
-
 | Cipher Suite                  | SSL     | Kx   | Auth  | Enc         | MAC    |
 |-------------------------------|---------|------|-------|-------------|--------|
 | ECDHE-ECDSA-AES256-GCM-SHA384 | TLSv1.2 | ECDH | ECDSA | AESGCM(256) | AEAD   |
 | ECDHE-ECDSA-AES256-SHA384     | TLSv1.2 | ECDH | ECDSA | AES(256)    | SHA384 |
 | ECDHE-ECDSA-AES256-SHA        | SSLv3   | ECDH | ECDSA | AES(256)    | SHA1   |
 
-</div>
-
 The Validation Tool will consider the following cipher strings as compliant:
 
--   ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384
--   ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA
+* ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384
+* ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA
 
 {{< alert title="Note" color="primary" >}}The ECDHE-ECDSA-AES256-SHA cipher suite uses the SSLv3 protocol and is therefore not recommended.{{< /alert >}}
 
-JMS service – Active MQ
------------------------
+## JMS service – Active MQ
 
 It is possible to select any number of the ciphers listed in the FIPS column, which means that JMS service supports all the selected ciphers.
-
-<div class="indentTable">
 
 | Field        | FIPS                                                                                                                                 | Suite B                                   | Suite B TS                                |
 |--------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|-------------------------------------------|
@@ -277,9 +252,9 @@ The filter is FIPS-compliant for verification of all XML Signatures.
 
 The XML Signature Verification filter uses the WS-SecurityPolicy-based Algorithm Suite configuration setting to mandate the crypto algorithms used on the XML Signature it is verifying.  These algorithms are not compliant because:
 
--   Suite B requires the Signature Method to be ECDSAwithSHA256 or ECDSAwithSHA384, but only RsaSha1 is supported by the WS-SecurityPolicy algorithms.
--   Only the SHA1 and SHA256 digest algorithms are supported by the Algorithm Suites, neither of which are Top Secret compliant.
--   The algorithm suites mandate the use of KwRsa15 or KwRsaOaep, which both use 3DES or AES in CBC mode.
+* Suite B requires the Signature Method to be ECDSAwithSHA256 or ECDSAwithSHA384, but only RsaSha1 is supported by the WS-SecurityPolicy algorithms.
+* Only the SHA1 and SHA256 digest algorithms are supported by the Algorithm Suites, neither of which are Top Secret compliant.
+* The algorithm suites mandate the use of KwRsa15 or KwRsaOaep, which both use 3DES or AES in CBC mode.
 
 KeyInfo configuration
 ---------------------
@@ -288,9 +263,9 @@ The KeyInfo configuration is available on several filters, for example, XML Sign
 
 The following Security Token Reference mechanisms all use SHA1 and are not Suite B or Suite B TS compliant:
 
--   EncryptedKeySHA1
--   ThumbprintSHA1
--   Kerberosv5APREQSHA1
+* EncryptedKeySHA1
+* ThumbprintSHA1
+* Kerberosv5APREQSHA1
 
 Create Thumbprint filter
 ------------------------
@@ -447,9 +422,9 @@ Kerberos settings
 
 If the `krb5.conf` file contains a `default_tgs_enctypes` property with any of the following values, it is not FIPS-compliant:
 
--   des-cbc-md5
--   des-cbc-crc
--   rc4-hmac
+* des-cbc-md5
+* des-cbc-crc
+* rc4-hmac
 
 ### Suite B and Suite B TS
 
@@ -473,9 +448,9 @@ SiteMinder SMHost configuration
 
 If the SiteMinder `SMHost.conf` file contains one of the following prefixes on the value of the `sharedsecret` property, it is not FIPS-compliant:
 
--   {RC4}
--   {RC2}
--   {DES}
+* {RC4}
+* {RC2}
+* {DES}
 
 ### Suite B and Suite B TS
 

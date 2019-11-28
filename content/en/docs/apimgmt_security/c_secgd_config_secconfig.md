@@ -3,10 +3,8 @@
 "linkTitle": "Security configuration",
 "weight": 60,
 "date": "2019-11-25",
-"description": "TODO"
+"description": "Describes the main configurable security features of API Gateway, API Manager, and API Portal."
 }
-
-This section describes the primary security configurations that can be applied to API Gateway, API Manager, and API Portal.
 
 ## API Gateway inbound SSL configuration
 
