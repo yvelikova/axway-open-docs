@@ -1,9 +1,9 @@
 ---
 title: Authorization code grant (or web server) flow
-linkTitle: Authorization code grant (or web server) flow
+linkTitle: Authorization code grant
+weight: 20
 date: 2019-11-18
 description: The authorization code or web server flow is suitable for clients that can interact with the end-user's user-agent (typically a web browser), and that can receive incoming requests from the authorization server (can act as an HTTP server). The authorization code flow is also known as the *three-legged OAuth* flow.
-weight: 2
 ---
 
 The authorization code flow is as follows:
@@ -34,11 +34,8 @@ Redirect the user to the authorization endpoint with the following parameters:
 
 The following is an example URL:
 
-``` {space="preserve"}
-https://apigateway/oauth/authorize?client_id=SampleConfidentialApp
- &response_type=code
- &&redirect_uri=http%3A%2F%2Flocalhost%3A8090%2Fauth%2Fredirect.html
- &scope=https%3A%2F%2Flocalhost%3A8090%2Fauth%2Fuserinfo.email
+```
+https://apigateway/oauth/authorize?client_id=SampleConfidentialApp&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8090%2Fauth%2Fredirect.html&scope=https%3A%2F%2Flocalhost%3A8090%2Fauth%2Fuserinfo.email
 ```
 
 {{< alert title="Note" color="primary" >}}During this step the resource owner user must approve access for the application web server to access their protected resources, as shown in the following example window.{{< /alert >}}
@@ -50,7 +47,7 @@ https://apigateway/oauth/authorize?client_id=SampleConfidentialApp
 The response to the above request is sent to the `redirect_uri`. If the user approves the access request, the response contains an authorization code and the `state`
 parameter (if included in the request). If the user does not approve the request, the response contains an error message. All responses are returned to the web server on the query string. For example:
 
-``` {space="preserve"}
+```
 https://localhost/oauth_callback&code=9srN6sqmjrvG5bWvNB42PCGju0TFVV
 ```
 
@@ -71,15 +68,11 @@ After the web server receives the authorization code, it can exchange the author
 
 The following example HTTPS `POST` shows some parameters:
 
-``` {space="preserve"}
-    POST /api/oauth/token HTTP/1.1
-    Content-Type:application/x-www-form-urlencoded
+```
+POST /api/oauth/token HTTP/1.1
+Content-Type:application/x-www-form-urlencoded
 
-    client_id=SampleConfidentialApp&client_secret=6808d4b6-ef09-4b0d-8f28-3b05da9c48ec
-     &code=9srN6sqmjrvG5bWvNB42PCGju0TFVV
-     &redirect_uri=http%3A%2F%2Flocalhost%3A8090%2Fauth%2Fredirect.html
-     &grant_type=authorization_code
-     &format=query
+client_id=SampleConfidentialApp&client_secret=6808d4b6-ef09-4b0d-8f28-3b05da9c48ec&code=9srN6sqmjrvG5bWvNB42PCGju0TFVV    &redirect_uri=http%3A%2F%2Flocalhost%3A8090%2Fauth%2Fredirect.html&grant_type=authorization_code&format=query
 ```
 
 ### Web server receives access token
@@ -95,38 +88,38 @@ After the request is verified, the API Gateway sends a response to the client. T
 
 The following is an example response:
 
-``` {space="preserve"}
-    HTTP/1.1 200 OK
-    Cache-Control:no-store
-    Content-Type:application/json
-    Pragma:no-cache{
-        "access_token":“O91G451HZ0V83opz6udiSEjchPynd2Ss9......",
-        "token_type":"Bearer",
-        "expires_in":"3600" }
+```
+HTTP/1.1 200 OK
+Cache-Control:no-store
+Content-Type:application/json
+Pragma:no-cache{
+    "access_token":“O91G451HZ0V83opz6udiSEjchPynd2Ss9......",
+    "token_type":"Bearer",
+    "expires_in":"3600" }
 ```
 
 ### Web server uses access token to access protected resources
 
 After the web server obtains an access token, it can gain access to protected resources on the resource server by placing it in an `Authorization:Bearer` HTTP header:
 
-``` {space="preserve"}
-    GET /oauth/protected HTTP/1.1
-    Authorization:Bearer O91G451HZ0V83opz6udiSEjchPynd2Ss9
-    Host:apigateway.com
+```
+GET /oauth/protected HTTP/1.1
+Authorization:Bearer O91G451HZ0V83opz6udiSEjchPynd2Ss9
+Host:apigateway.com
 ```
 
 For example, the `curl` command to call a protected resource with an access token is as follows:
 
-``` {space="preserve"}
-    curl -H "Authorization:Bearer O91G451HZ0V83opz6udiSEjchPynd2Ss9" https://apigateway.com/oauth/protected
+```
+curl -H "Authorization:Bearer O91G451HZ0V83opz6udiSEjchPynd2Ss9" https://apigateway.com/oauth/protected
 ```
 
 ## Run the sample client
 
 The following Jython sample client creates and sends an authorization request for the authorization grant flow to the authorization server:
 
-``` {space="preserve"}
-    INSTALL_DIR/samples/scripts/oauth/authorization_code.py
+```
+INSTALL_DIR/samples/scripts/oauth/authorization_code.py
 ```
 
 To run the sample, perform the following steps:
@@ -134,19 +127,16 @@ To run the sample, perform the following steps:
 1. Open a shell prompt at the `INSTALL_DIR/samples/scripts` directory.
 2. Execute the following command:
 
-    ``` {space="preserve"}
-    > run oauth/authorization_code.py
+    ```
+    run oauth/authorization_code.py
     ```
 
     The script outputs the following:
 
-    ``` {space="preserve"}
-    > Go to the URL here:
-            http://127.0.0.1:8080/api/oauth/authorize?client_id=SampleConfidentialApp
-            &response_type=code
-            &scope=https%3A%2F%2Flocalhost%3A8090%2Fauth%2Fuserinfo.email
-            &redirect_uri=https%3A%2F%2Flocalhost%2Foauth_callback
-            Enter Authorization code in dialog
+    ```
+    Go to the URL here:
+    http://127.0.0.1:8080/api/oauth/authorize?client_id=SampleConfidentialApp&response_type=code&scope=https%3A%2F%2Flocalhost%3A8090%2Fauth%2Fuserinfo.email&redirect_uri=https%3A%2F%2Flocalhost%2Foauth_callback
+    Enter Authorization code in dialog
     ```
 
 3. Copy the URL into a browser, and perform the following steps as prompted:
@@ -156,37 +146,37 @@ To run the sample, perform the following steps:
 
     After the resource owner has authorized and approved access to the application, the authorization server redirects a fragment containing the authorization code to the redirection URI. For example:
 
-    ``` {space="preserve"}
+    ```
     https://localhost/oauth_callback&code=AaI5Or3RYB2uOgiyqVsLs1ATIY0ll0
     ```
 
     In this example, the authorization code is:
 
-    ``` {space="preserve"}
+    ```
     AaI5Or3RYB2uOgiyqVsLs1ATIY0ll0
     ```
 
 4. Enter this value into the **Enter Authorization Code** dialog.
- ![Entering OAuth 2.0 Authorization Code](/Images/OAuth/oauth_web_server_authz_code.png)
+
+    ![Entering OAuth 2.0 Authorization Code](/Images/OAuth/oauth_web_server_authz_code.png)
 
     The script exchanges the authorization code for an access token, and then accesses the protected resource using the access token. For example:
 
-    ``` {space="preserve"}
+    ```
     Enter Authorization code in dialog
-            AuthZ code:AaI5Or3RYB2uOgiyqVsLs1ATIY0ll0
-            Exchange authZ code for access token
-            Sending up access token request using grant_type set to authorization_code
-            Response from access token request:200
-            Parsing the json response
-            **********************ACCESS TOKEN RESPONSE***********************************
-            Access token received from authorization server icPgKP2uVUD2thvAZ5ENhsQb66ffnZEC
-            XHyRQEz5zP8aGzcobLV3AR
-            Access token type received from authorization server Bearer
-            Access token expiry time:3599
-            Refresh token:NpNbzIVVvj8MhMmcWx2zsawxxJ3YADfc0XIxlZvw0tIhh8
-            ******************************************************************************
-            Now we can try access the protected resource using the access token
-            Executing get request on the protected url
-            Response from protected resource request is:200
-            <html>Congrats! You've hit an OAuth protected resource</html>
+    AuthZ code:AaI5Or3RYB2uOgiyqVsLs1ATIY0ll0
+    Exchange authZ code for access token
+    Sending up access token request using grant_type set to authorization_code
+    Response from access token request:200
+    Parsing the json response
+    **********************ACCESS TOKEN RESPONSE***********************************
+    Access token received from authorization server icPgKP2uVUD2thvAZ5ENhsQb66ffnZECXHyRQEz5zP8aGzcobLV3AR
+    Access token type received from authorization server Bearer
+    Access token expiry time:3599
+    Refresh token:NpNbzIVVvj8MhMmcWx2zsawxxJ3YADfc0XIxlZvw0tIhh8
+    ******************************************************************************
+    Now we can try access the protected resource using the access token
+    Executing get request on the protected url
+    Response from protected resource request is:200
+    <html>Congrats! You've hit an OAuth protected resource</html>
     ```

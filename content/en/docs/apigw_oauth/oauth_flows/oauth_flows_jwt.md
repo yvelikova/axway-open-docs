@@ -1,9 +1,9 @@
 ---
 title: JWT flow
 linkTitle: JWT flow
+weight: 70
 date: 2019-11-18
 description: A JSON Web Token (JWT) is a JSON-based security token encoding that enables identity and security information to be shared across security domains.
-weight: 7
 ---
 
 ![OAuth 2.0 JWT Flow](/Images/OAuth/APIgw_jwt_flow.png)

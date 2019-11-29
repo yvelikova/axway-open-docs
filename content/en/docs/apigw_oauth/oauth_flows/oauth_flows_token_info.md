@@ -1,9 +1,9 @@
 ---
 title: Token information service flow
 linkTitle: Token information service flow
+weight: 90
 date: 2019-11-18
 description: You can use the token information service to validate that an access token was issued by the API Gateway. A request to the `tokenInfo` service is an HTTP `GET` request for information in a specified OAuth 2.0 access token.
-weight: 9
 ---
 
 ![OAuth 2.0 Token Info](/Images/OAuth/APIgw_token_info.png)

@@ -1,9 +1,9 @@
 ---
 title: Revoke token flow
 linkTitle: Revoke token flow
+weight: 80
 date: 2019-11-18
 description: In some cases a user might wish to revoke access given to an application. An access token can be revoked by calling the API Gateway revoke service and providing the access token to be revoked. A revoke token request causes the removal of the client permissions associated with the particular token to access the end-user's protected resources.
-weight: 8
 ---
 
 ![OAuth 2.0 Revoke Token](/Images/OAuth/APIgw_Revoke_token.png)

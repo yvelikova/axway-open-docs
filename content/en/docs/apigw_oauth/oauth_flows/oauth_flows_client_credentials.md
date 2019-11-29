@@ -1,9 +1,9 @@
 ---
 title: Client credentials grant flow
 linkTitle: Client credentials grant flow
+weight: 60
 date: 2019-11-18
 description: The client credentials grant type must only be used by confidential clients. The client can request an access token using only its client credentials (or other supported means of authentication) when the client is requesting access to the protected resources under its control. The client can also request access to those of another resource owner that has been previously arranged with the authorization server (the method of which is beyond the scope of the specification).
-weight: 6
 ---
 
 ![Client Credentials Flow](/Images/OAuth/APIgw_Client_cred_grant_flow.png)

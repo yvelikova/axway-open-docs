@@ -1,9 +1,9 @@
 ---
 title: Resource owner password credentials flow
 linkTitle: Resource owner password credentials flow
+weight: 50
 date: 2019-11-18
 description: The resource owner password credentials flow is also known as the username-password authentication flow. This flow can be used as a replacement for an existing login when the consumer already has the user's credentials.
-weight: 5
 ---
 
 The resource owner password credentials grant type is suitable in cases where the resource owner has a trust relationship with the client (for example, the device operating system or a highly privileged application). The authorization server should take special care when enabling this grant type, and only allow it when other flows are not viable.

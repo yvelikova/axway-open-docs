@@ -1,9 +1,9 @@
 ---
 title: Implicit grant (or user agent) flow
 linkTitle: Implicit grant (or user agent) flow
+weight: 30
 date: 2019-11-18
 description: The implicit grant (user agent) authentication flow is used by client applications (consumers) residing on the user's device. This can be implemented in a browser using a scripting language such as JavaScript, or from a mobile device, or a desktop application. These consumers cannot keep the client secret confidential (application password or private key). 
-weight: 3
 ---
 
 The user agent flow is as follows:
