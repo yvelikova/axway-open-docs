@@ -42,14 +42,14 @@ proxy:
             password: changeme # it's allowed to be empty
     tags: ['musical', 'instruments'] # optional
     team: # the team which the proxy will be assigned to.
-        name: 'Default Team'    
+        name: 'Default Team'
 ```
 
-If you use one of the client authentication policies except pass-through: `api-key, jwt-token, oauth`, you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created.
+If you specify a client authentication policies other than `pass-through` (for example, `api-key`, `jwt-token`, or `oauth`), you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created.
 
 `backendAuth` is an optional field. If it is not specified, no back-end authentication is enabled. If you specify `auth-http-basic` as the back-end authentication policy, the password can be empty.
 
-You can specify additional applications and their profiles in the `apps` section of the proxy. The `app` field under `clientAuth` can be omitted. The apps are created if necessary and will be allowed to consume the proxy, if you have `api-key` client authentication policy.  For example:
+You can specify additional applications and their profiles in the `apps` section of the proxy. The `app` field under `clientAuth` can be omitted. The apps are created if necessary and are allowed to consume the proxy, if you specify `api-key` as the client authentication policy. For example:
 
 ```
 version: v1 # Version of the file format
@@ -67,14 +67,15 @@ proxy:
             username: Joe # required
             password: changeme # it's allowed to be empty
     tags: ['musical', 'instruments'] # optional
-    apps:     
+    apps:
      - name: 'Second Sample App' # this app will be allowed to consume the proxy
      - name: 'Third Sample App' # this app will be allowed to consume the proxy
     team: # the team which the proxy will be assigned to.
         name: 'Default Team'
 ```
 
-If you're using oauth client authentication policy you should specify clientId, issuer, metadataPath in application profile. So this application will be allowed to consume your proxy. The type of client authentication policy that you've specified under `clientApp` must match the type of application profile. For example:
+If you specify `oauth` as the client authentication policy, specify `clientId`, `issuer`, and `metadataPath` in the application profile, to allow this application to consume your proxy. The type of client authentication policy specified under `clientApp` must match the type of application profile. For example:
+
 ```
 version: v1 # Version of the file format
 apiVersion: v1 # This version ensures backward compatibility and would not mandate a frequent update from a client side
@@ -88,7 +89,7 @@ proxy:
             app: 'Sample App'
         backendAuth:
             type: auth-http-basic
-            username: Joe 
+            username: Joe
             password: changeme
     apps:
       - name: 'Sample App'
