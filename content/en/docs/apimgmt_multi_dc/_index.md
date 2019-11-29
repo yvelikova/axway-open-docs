@@ -1,7 +1,7 @@
 {
 "title": "Configure API Management in multiple datacenters",
 "linkTitle": "Configure API Management in multiple datacenters",
-"weight":"2",
+"weight":"40",
 "no_list": "true",
 "date": "2019-10-02",
 "description": "Recommended multi-datacenter configuration that applies to the various types of API Management data in storage. For each data type, it describes how data is replicated across the datacenter, the recommended configuration, and expected behavior in case of failover."

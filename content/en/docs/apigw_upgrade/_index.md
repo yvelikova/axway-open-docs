@@ -1,7 +1,7 @@
 {
-    "title": "API Gateway 7.8 Upgrade Guide ",
+    "title": "API Gateway Upgrade Guide ",
     "linkTitle": "Upgrade API Gateway",
-    "weight": 4,
+    "weight": 26,
     "date": "2019-10-07",
     "description": "Upgrade to API Gateway version 7.8 from earlier API Gateway versions."
 }
