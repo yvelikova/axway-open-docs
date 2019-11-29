@@ -1,7 +1,7 @@
 {
 "title": "API Management Security Guide",
-"linkTitle": "API Management Security Guide",
-"weight": 55,
+"linkTitle": "Security guidance",
+"weight": 49,
 "date": "2019-11-25",
 "description": "This guide describes the security features of API Gateway, API Manager, and API Portal and provides instructions and best practices for strengthening their security."
 }
