@@ -8,28 +8,18 @@
 
 You can extend the capability of API Gateway by adding a custom filter. There are several options for adding a custom filter:
 
-* Write your custom requirement in Java and invoke it using the **Scripting Language** filter. You can use this approach to develop your business logic in a standard IDE and debug and test it in standalone mode before integrating with API Gateway. See [Use JavaScript to call existing Java code](custom_filter_javascript_existing).
-* Write your custom requirement using the **Scripting Language** filter alone. See [Use JavaScript for custom requirements](custom_filter_javascript_customreqs).
-* Write your custom filter using the API Gateway developer extension kit. Using this approach, a fully integrated filter is created that has the API Gateway runtime capability and appears in the filter palette in Policy Studio. See [Write a custom filter using the extension kit](custom_filter_extension_kit).
-
-The following examples all use different approaches to extend API Gateway by adding a custom filter.
+* Write your custom requirement in Java and invoke it using the **Scripting Language** filter. You can use this approach to develop your business logic in a standard IDE and debug and test it in standalone mode before integrating with API Gateway. See [Use JavaScript to call existing Java code](#use-javascript-to-call-existing-java-code).
+* Write your custom requirement using the **Scripting Language** filter alone. See [Use JavaScript for custom requirements](#use-javascript-for-custom-requirements).
+* Write your custom filter using the API Gateway developer extension kit. Using this approach, a fully integrated filter is created that has the API Gateway runtime capability and appears in the filter palette in Policy Studio. See [Write a custom filter using the extension kit](/docs/apigtw_ref/custom_filter_extension_kit/).
 
 The following summarizes the different approaches for adding a custom filter:
 
-**Scripting**
-: Quick way to reuse some functionality exposed in Java
-: No major development skills required
-: Does not appear in filter palette in Policy Studio
-: Possible approaches:
-    * [Use JavaScript to call existing Java code](#use-javascript-to-call-existing-java-code)
-    * [Use JavaScript for custom requirements](#use-javascript-for-custom-requirements)
-
-**Writing a Java Filter**
-: Enterprise integration
-: Development skills required
-: Filter appears in filter palette in Policy Studio
-: Possible approaches:
-    * [Write a custom filter using the extension kit](#write-a-custom-filter-using-the-extension-kit)
+| Scripting                                                                                          | Writing a Java Filter  |
+|----------------------------------------------------------------------------------------------------|------------------------|
+| Quick way to reuse some functionality exposed in Java                                              | Enterprise integration   |
+| No major development skills required                                                               | Development skills required   |
+| Does not appear in filter palette in Policy Studio                                                 | Filter appears in filter palette in Policy Studio   |
+| See [Use JavaScript to call existing Java code](#use-javascript-to-call-existing-java-code)  and [Use JavaScript for custom requirements](#use-javascript-for-custom-requirements)      | See [Write a custom filter using the extension kit](/docs/apigtw_ref/custom_filter_extension_kit/) |
 
 ## Use JavaScript to call existing Java code
 
@@ -80,4 +70,3 @@ To test the configuration, follow these steps:
 4. Click **Run** to send the message to API Gateway.
 
 Alternatively, you can test the policy by entering the URL `http://localhost:8080/invokejava` into any web browser.
-

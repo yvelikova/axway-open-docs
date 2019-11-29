@@ -1,10 +1,10 @@
 {
 "title": "Enable API Gateway with JMX",
 "linkTitle": "Enable API Gateway with JMX",
+"weight":"80",
 "date": "2019-11-27",
-"description": "Java Management Extensions (JMX) allows remote clients to connect to a JVM and manage or monitor running applications in that JVM. MBeans are the controllable endpoints of your application where remote clients can observe application activity as well as control their inner workings. "
+"description": "Set up Java Management Extensions to allows remote clients to connect to a JVM and manage or monitor running applications."
 }
-﻿
 
 Java Management Extensions (JMX) allows remote clients to connect to a JVM and manage or monitor running applications in that JVM. MBeans are the controllable endpoints of your application where remote clients can observe application activity as well as control their inner workings.
 
@@ -12,8 +12,8 @@ For more information on implementing an MBean interface, see the `FilterIntercep
 
 After you have set up your MBean, you need to tell the JMX infrastructure about the MBean so that it can be published to clients. This involves creating a unique name for the MBean and then registering it with the MBeanServer. For example:
 
-``` {space="preserve"}
-…
+```
+...
 try {
     MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
     // Construct the ObjectName for the MBean we will register
@@ -22,27 +22,29 @@ try {
     mbs.registerMBean(this, name);
 } catch (Throwable t) {
     Trace.error(t);
-}           
-…
+}
+...
 ```
 
 After you have set up your MBeans and registered them with the MBeanServer you can view them in the management console that your JMX container supports (for example, JConsole). To use JConsole, add the following JVM argument to API Gateway and restart it.
 
 Follow these steps:
 
-1.  Create a file called `jvm.xml` in the following location:
-2.  ``` {space="preserve"}
+1. Create a file called `jvm.xml` in the following location:
+
+   ```
     INSTALL_DIR/apigateway/groups/GROUP_ID/INSTANCE_ID/conf
     ```
 
-3.  Edit the `jvm.xml` file so that the contents are as follows:
-4.  ``` {space="preserve"}
+2. Edit the `jvm.xml` file so that the contents are as follows:
+
+   ```
     <ConfigurationFragment>
-      <VMArg name="-Dcom.sun.management.jmxremote"/> 
+      <VMArg name="-Dcom.sun.management.jmxremote"/>
     </ConfigurationFragment>
     ```
 
-5.  Restart API Gateway.
+3. Restart API Gateway.
 
 When you restart the API Gateway instance with the above settings you can connect using Java Monitoring and Management Console (`JConsole`) and view your MBeans. Launch `jconsole` (an executable in the `bin` directory of your Java JDK installation) and select the **MBeans** tab to see the **FilterInterceptorMBean** listed on the left. You can see the message total, success, failure, and abort counts.
 

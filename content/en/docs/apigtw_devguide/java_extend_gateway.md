@@ -1,7 +1,7 @@
 {
 "title": "Java interfaces for extending API Gateway",
 "linkTitle": "Java interfaces for extending API Gateway",
-"weight":"40",
+"weight":"50",
 "date": "2019-11-27",
 "description": "Learn about the Java interfaces that can be used to extend API Gateway."
 }

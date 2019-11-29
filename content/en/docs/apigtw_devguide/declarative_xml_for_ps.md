@@ -45,7 +45,7 @@ public class OAuthAuthorizationRequestPage extends VordelPage {
         setControl(container);
     }
 
-    …
+    ...
 }
 ```
 
@@ -119,7 +119,7 @@ The following `declarative.xml` file defines the dialog in Policy Studio.
         </scrollpanel>
       </tab>
 
-      …
+      ...
 
     </tabFolder>
   </panel>

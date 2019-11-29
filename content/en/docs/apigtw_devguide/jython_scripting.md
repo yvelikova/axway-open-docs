@@ -1,20 +1,20 @@
 {
 "title": "Automate tasks with Jython scripts",
 "linkTitle": "Automate tasks with Jython scripts",
+"weight":"90",
 "date": "2019-11-27",
-"description": "API Gateway contains several sample scripts that let you automate various common administration tasks. The scripts are based on the Java scripting interpreter, Jython ([http://www.jython.org](http://www.jython.org/)). Scripts can be extended to suit your needs by following the Jython language syntax. All Jython scripts can be found in the following location:"
+"description": "Learn more about API Gateway Jython sample scripts that you can use to automate common administration tasks."
 }
-﻿
 
 API Gateway contains several sample scripts that let you automate various common administration tasks. The scripts are based on the Java scripting interpreter, Jython ([http://www.jython.org](http://www.jython.org/)). Scripts can be extended to suit your needs by following the Jython language syntax. All Jython scripts can be found in the following location:
 
-``` {space="preserve"}
+```
 INSTALL_DIR/apigateway/samples/scripts
 ```
 
 To run a sample script, you can call the `run` shell in this directory and point it to the script to be run. For example, to run the `changeTrace.py` sample script:
 
-``` {space="preserve"}
+```
 > cd INSTALL_DIR/apigateway/samples/scripts
 > ./run.sh config/changeTrace.py
 ```
