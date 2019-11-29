@@ -213,7 +213,7 @@ An important aspect of maintaining the integrity of the product audit trail is t
 For more details on how to sign transaction logs, see the
 [Transaction audit log settings](/docs/apigtw_ref/log_global_settings/#transaction-audit-log-settings).
 
-API Gateway HSM integration
+## API Gateway HSM integration
 
 API Gateway can offload private key storage and operations to a hardware security module (HSM) that has been installed on the host machine. For more information on storing certificates and keys on a HSM, see [Manage certificates and keys](https://axway-open-docs.netlify.com/docs/apigtw_security/general_certificates/).
 
@@ -287,3 +287,7 @@ For more information, see [Configure events displayed in domain audit log](/docs
 API Gateway offers the ability to offload domain and transaction logs to a remote audit server periodically.
 
 For more information, see [Offload audit log files to an external audit server](/docs/apigtw_admin/logging/#offload-audit-log-files-to-an-external-audit-server).
+
+## API Gateway redaction
+
+API Gateway enables you to remove sensitive content from messages monitored in the API Gateway Manager web console and traffic monitoring database. You can redact sensitive content message content types such as HTTP headers, JSON, XML, HTML form, and plain text. For details, see [Hide sensitive data](/docs/apigtw_security/admin_redactors/).
