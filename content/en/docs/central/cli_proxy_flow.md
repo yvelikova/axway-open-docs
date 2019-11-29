@@ -45,7 +45,7 @@ proxy:
         name: 'Default Team'
 ```
 
-If you specify a client authentication policies other than `pass-through` (for example, `api-key`, `jwt-token`, or `oauth`), you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created.
+If you specify a client authentication policy other than `pass-through` (for example, `api-key`, `jwt-token`, or `oauth`), you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created.
 
 `backendAuth` is an optional field. If it is not specified, no back-end authentication is enabled. If you specify `auth-http-basic` as the back-end authentication policy, the password can be empty.
 
