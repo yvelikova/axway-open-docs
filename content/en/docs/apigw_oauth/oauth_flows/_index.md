@@ -7,3 +7,10 @@ description: Describes each of the supported OAuth 2.0 flows in detail, and show
 ---
 
 API Gateway can use the OAuth 2.0 protocol for authentication and authorization. API Gateway can act as an OAuth 2.0 authorization server and supports several OAuth 2.0 flows that cover common web server, JavaScript, device, installed application, and server-to-server scenarios.
+
+API Gateway includes sample Jython scripts for all supported OAuth flows. For example, to run a sample script for the implicit grant flow:
+
+```
+cd INSTALL_DIR/samples/scripts/oauth
+sh run.sh oauth/implicit_grant.py
+```
