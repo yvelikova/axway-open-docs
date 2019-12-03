@@ -330,7 +330,7 @@ When the Button is clicked a certificate selection dialog similar to the followi
 
 ```
 <ui>
- <panel>
+ `panel`
   <certSelector label="SECURITY_SERVER_CERTIFICATE" field="sslCertificate"
    required="false" view="privateKey" />
  </panel>
@@ -347,8 +347,6 @@ The above XML renders the following UI:
 
 The <CertTreeAttribute> tag renders a JFace TreeViewer, populated with certificate information read from the certificate store.
 
-
-
 | Attribute   | Description                                                                                                                                   | M/O | Default |
 |-------------|-----------------------------------------------------------------------------------------------------------------------------------------------|-----|---------|
 | field       | Specifies the name of the field of the entity backed by the rendered controls.                                                                | M   | -       |
@@ -362,8 +360,8 @@ The <CertTreeAttribute> tag renders a JFace TreeViewer, populated with certifica
 
 ```
 <ui>
- <panel>
-  <CertTreeAttribute label="SSL_CERTIFICATES_LABEL" field="sslUsers" 
+ `panel`
+  <CertTreeAttribute label="SSL_CERTIFICATES_LABEL" field="sslUsers"
    required="false" multiSelect="false" keysOnly="true" tableHeight="300" />
  </panel>
 </ui>
@@ -375,57 +373,39 @@ The above XML renders the following UI:
 
 ![CertTreeAttribute example](/Images/APIGatewayDeveloperGuide/03000026.png)
 
-CheckboxGroupAttribute
-----------------------
+## CheckboxGroupAttribute
 
-
-
-The <CheckboxGroupAttribute> tag renders an SWT Composite with zero or more Buttons (style = `SWT.CHECK`) defined using `choice` tags as children.
+The `CheckboxGroupAttribute` tag renders an SWT Composite with zero or more Buttons (style = `SWT.CHECK`) defined using `choice` tags as children.
 
 ### CheckboxGroupAttribute attributes
 
 | Attribute | Description                                                                    | M/O | Default |
 |-----------|--------------------------------------------------------------------------------|-----|---------|
 | field     | Specifies the name of the field of the entity backed by the rendered controls. | M   | -       |
-| columns   | Value used in the creation of layout data for the Composite.                   
-                                                                                  
-  Columns represents the number of cell columns in the layout:                    
-                                                                                  
-  ```                                                          
-  GridLayout layout = new GridLayout();                                           
-  layout.numColumns = columns;                                                    
-  ```                                                                             | O   | 1       |
+| columns   | Value used in the creation of layout data for the Composite.<br> Columns represents the number of cell columns in the layout: <pre>GridLayout layout = new GridLayout();<br>layout.numColumns = columns;</pre> | O   | 1   |
 | required  | Specifies whether or not the entity field is required.                         | O   | false   |
 
 ### choice attributes
 
-| Attribute | Description                                                                                                                                                                                  | M/O | Default |
-|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|---------|
-| label     | Specifies the ID of the resource containing the text to display on the Label.                                                                                                                | M   | -       |
+| Attribute | Description     | M/O | Default |
+|-----------|---------------|-----|---------|
+| label     | Specifies the ID of the resource containing the text to display on the Label. | M   | -       |
 | value     | Specifies one of the possible entity values for the ‘field’ defined in the CheckboxGroupAttribute tag. This value is tied to the button, and saved to the Entity if this button is selected. | M   | -       |
-| span      | Value used in the creation of layout data for the Button.                                                                                                                                    
-                                                                                                                                                                                                
-  Span represents the horizontal span of the following GridData:                                                                                                                                
-                                                                                                                                                                                                
-  ```                                                                                                                                                                        
-  GridData gridData = new GridData();                                                                                                                                                           
-  gridData.horizontalAlignment = GridData.FILL;                                                                                                                                                 
-  gridData.grabExcessHorizontalSpace = true;                                                                                                                                                    
-  gridData.horizontalSpan = span;                                                                                                                                                               
-  ```                                                                                                                                                                                           | O   | 1       |
+| span      | Value used in the creation of layout data for the Button.<br> Span represents the horizontal span of the following GridData:<pre>GridData gridData = new GridData();<br>gridData.horizontalAlignment = GridData.FILL;<br>gridData.grabExcessHorizontalSpace = true;<br>gridData.horizontalSpan = span;</pre>| O   | 1       |
 
 **Sample XML**\
 
 The following example represents the multi-valued “options” entity field, of which there are three possible values: “value1”, “value2”, and “custom”.
 
--   If the first check box button is selected (represented by the first `choice` tag) the “options” acquire the value “value1”.
--   If the second check box button is selected the “options” acquire the two values: “value1” and “value2”.
--   If all three check boxes are selected the “options” acquire all three values: “value1”, “value2” and “custom”.
+* If the first check box button is selected (represented by the first `choice` tag) the “options” acquire the value “value1”.
+* If the second check box button is selected the “options” acquire the two values: “value1” and “value2”.
+* If all three check boxes are selected the “options” acquire all three values: “value1”, “value2” and “custom”.
 
-The <CheckboxGroupAttribute> tag is not restricted to having only `choice` tags as children. A good candidate is the <panel> container tag, as outlined in the example below. When the ‘User Defined’ choice is selected the children of the subsequent panel are enabled automatically. When the ‘User Defined’ choice is unselected, these children are disabled automatically.
+The `CheckboxGroupAttribute` tag is not restricted to having only `choice` tags as children. A good candidate is the `panel` container tag, as outlined in the example below. When the ‘User Defined’ choice is selected the children of the subsequent panel are enabled automatically. When the ‘User Defined’ choice is unselected, these children are disabled automatically.
 
+```
     <ui>
-        <panel>
+        `panel`
             <CheckboxGroupAttribute field="options" label="Select Values">
                 <choice value="value1" label="Value1" />
                 <choice value="value2" label="Value2" />
@@ -436,6 +416,7 @@ The <CheckboxGroupAttribute> tag is not restricted to having only `choice` tags 
             </CheckboxGroupAttribute>
         </panel>
     </ui>
+```
 
 **Rendered UI**\
 
@@ -449,26 +430,21 @@ The multi-valued “options” entity field has two values: “value2” and “
 
 ![CheckboxGroupAttribute example 2](/Images/APIGatewayDeveloperGuide/CheckboxGroupAttribute_2.png)
 
-CircuitChainTable
------------------
-
-
+## CircuitChainTable
 
 The <CircuitChainTable> tag renders a Table widget. The table is populated with the field values of the backed entity.
-
-
 
 | Attribute       | Description                                                                                           | M/O | Default |
 |-----------------|-------------------------------------------------------------------------------------------------------|-----|---------|
 | flavor          | Specifies the type of entity that is backed by each Table entry in the rendered controls.             | M   | -       |
 | setOrderable    | Specifies whether the table has up and down buttons to traverse the entries.                          | O   | true    |
-| setCapabilities | Specifies the CRUD capabilities that are allowed. They are separated by a comma \[ADD, EDIT, DELETE\] | O   | -       |
+| setCapabilities | Specifies the CRUD capabilities that are allowed. They are separated by a comma [ADD, EDIT, DELETE]   | O   | -       |
 
 **Sample XML**\
 
 ```
 <ui>
-  <CircuitChainTable flavor="OperationCircuitReference" 
+  <CircuitChainTable flavor="OperationCircuitReference"
    setOrderable="false" setCapabilities="EDIT"/>
 </ui>
 ```
@@ -479,19 +455,14 @@ The above XML renders the following UI:
 
 ![CircuitChainTable example](/Images/APIGatewayDeveloperGuide/03000027.png)
 
-ComboAttribute
---------------
+## ComboAttribute
 
-
-
-The <ComboAttribute> tag renders an SWT Combo widget, backed by the specified entity field.
-
-
+The `ComboAttribute` tag renders an SWT Combo widget, backed by the specified entity field.
 
 | Attribute     | Description                                                                                                                                                | M/O | Default |
 |---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|---------|
 | field         | Specifies the name of the field of the entity backed by the rendered controls.                                                                             | M   | -       |
-| contentSource | Specifies a string array (Java String\[\]) or map (Java Map<>) with which to populate the combo box.                                                 | M   | -       |
+| contentSource | Specifies a string array (Java String[]) or map (Java Map<>) with which to populate the combo box.                                                 | M   | -       |
 | label         | Specifies a textual label to appear to the left of the Combo                                                                                               | O   | -       |
 | includeBlank  | Specifies whether or not a blank item should be added as the first item to the combo box                                                                   | O   | false   |
 | readOnly      | Specifies whether or not the combo box is read-only; that is, whether or not the user can enter their own value as well as select from the drop-down list. | O   | false   |
@@ -503,7 +474,7 @@ The <ComboAttribute> tag renders an SWT Combo widget, backed by the specified en
 ```
 <ui>
  <group label="TRACE_SETTINGS_LABEL" columns="2" span="2">
-  <ComboAttribute field="traceLevel" label="TRACE_LEVEL_LABEL" 
+  <ComboAttribute field="traceLevel" label="TRACE_LEVEL_LABEL"
    required="true" readOnly="true"
    contentSource="com.vordel.client.manager.filter.util.TraceHelper.logLevels" />
  </group>
@@ -516,14 +487,9 @@ The above XML renders the following UI:
 
 ![ComboAttribute example](/Images/APIGatewayDeveloperGuide/02000028.jpg)
 
-comboBinding
-------------
-
-
+## comboBinding
 
 The <comboBinding> tag allows you to create a binding between various widgets.
-
-
 
 | Attribute     | Description                                                                                   | M/O | Default |
 |---------------|-----------------------------------------------------------------------------------------------|-----|---------|
@@ -539,13 +505,13 @@ The binding below specifies a binding between a ComboAttribute and a TextAttribu
 
 ```
 <ui>
- <ComboAttribute field="extractMethod" 
+ <ComboAttribute field="extractMethod"
   label="JMS_CONSUMER_EXTRACTION_METHOD_LABEL"
   contentSource="com.vordel.client.manager.filter.jms.JMSConsumerDialog.extractMethods"
-  includeBlank="false" readOnly="true" 
+  includeBlank="false" readOnly="true"
   required="true" stretch="true"/>
- <TextAttribute field="attributeName" 
-  label="JMS_MESSAGE_ATTRIBUTE_NAME" 
+ <TextAttribute field="attributeName"
+  label="JMS_MESSAGE_ATTRIBUTE_NAME"
   required="false"/>
  <comboBinding driver="JMS_CONSUMER_EXTRACTION_METHOD_LABEL"
   driven="JMS_MESSAGE_ATTRIBUTE_NAME"
@@ -560,30 +526,16 @@ The above XML renders the following UI:
 
 ![ComboAttribute example](/Images/APIGatewayDeveloperGuide/03000029.png)
 
-ComboStackPanel
----------------
+## ComboStackPanel
 
-
-
-The <ComboStackPanel> tag primarily renders an SWT Combo widget, backed by the specified entity field. If the tag contains <panel> children it also renders those controls as part of an SWT StackLayout control, with each panel being ‘flipped’ when the selection in the combo box changes.
-
-
+The `ComboStackPanel` tag primarily renders an SWT Combo widget, backed by the specified entity field. If the tag contains `panel` children it also renders those controls as part of an SWT StackLayout control, with each panel being ‘flipped’ when the selection in the combo box changes.
 
 | Attribute | Description                                                                     | M/O | Default |
 |-----------|---------------------------------------------------------------------------------|-----|---------|
 | field     | Specifies the name of the field of the entity backed by the rendered combo box. | M   | -       |
 | label     | Specifies a textual label to appear to the left of the Combo                    | O   | -       |
 | required  | Specifies whether or not the entity field is required                           | O   | false   |
-| span      | Value used in the creation of layout-data for the Combo.                        
-                                                                                   
-  Span represents the horizontal span of the following GridData:                   
-                                                                                   
-  ```                                                           
-      GridData gridData = new GridData();                                          
-      gridData.horizontalAlignment = GridData.FILL;                                
-      gridData.grabExcessHorizontalSpace = true;                                   
-      gridData.horizontalSpan = span;                                              
-  ```                                                                              | O   | 1       |
+| span      | Value used in the creation of layout-data for the Combo.<br>Span represents the horizontal span of the following GridData:<pre>GridData gridData = new GridData();<br>gridData.horizontalAlignment = GridData.FILL;<br>gridData.grabExcessHorizontalSpace = true;<br>gridData.horizontalSpan = span;</pre>  | O   | 1       |
 
 **Sample XML**\
 
@@ -595,23 +547,23 @@ The <ComboStackPanel> tag primarily renders an SWT Combo widget, backed by the s
    <panel label="FTP" columns="2">
     <TextAttribute label="FTP_UPLOAD_SSL_PROTOCOL_LABEL" field="sslProtocol"/>
    </panel>
-     
+
    <panel label="FTPS" columns="2">
     <TextAttribute label="FTP_UPLOAD_SSL_PROTOCOL_LABEL" field="sslProtocol"/>
     <ButtonAttribute label="FTP_UPLOAD_SSL_IS_IMPLICIT" field="isImplicit" />
     <tabFolder span="2">
      <tab label="FTP_UPLOAD_SSL_TRUSTED_CERTS_TAB">
-      <panel>
-       <CertTreeAttribute label="FTP_UPLOAD_SSL_TRUSTED_CERTS_LABEL" 
-        field="trustedCerts" required="false" 
+      `panel`
+       <CertTreeAttribute label="FTP_UPLOAD_SSL_TRUSTED_CERTS_LABEL"
+        field="trustedCerts" required="false"
         tableHeight="100" />
       </panel>
      </tab>
      <tab label="FTP_UPLOAD_SSL_CLIENT_CERTS_TAB">
-      <panel>
-       <CertTreeAttribute label="FTP_UPLOAD_SSL_CLIENT_CERTS_LABEL" 
-        field="clientCert" required="false" 
-        multiSelect="false" keysOnly="true" 
+      `panel`
+       <CertTreeAttribute label="FTP_UPLOAD_SSL_CLIENT_CERTS_LABEL"
+        field="clientCert" required="false"
+        multiSelect="false" keysOnly="true"
         tableHeight="100" />  
       </panel>
      </tab>
@@ -632,14 +584,9 @@ The above XML renders the following UI:
 
 ![ComboStackPanel example](/Images/APIGatewayDeveloperGuide/0200002B.jpg)
 
-Condition
----------
+## Condition
 
-
-
-The <Condition> tag introduces control statements.
-
-
+The `Condition` tag introduces control statements.
 
 | Attribute | Description                                                                                                | M/O | Default |
 |-----------|------------------------------------------------------------------------------------------------------------|-----|---------|
@@ -669,14 +616,9 @@ If the “httphostheader” property is not enabled nothing is displayed. If the
 
 ![Condition example](/Images/APIGatewayDeveloperGuide/0300002C.png)
 
-CronAttribute
--------------
+## CronAttribute
 
-
-
-The <CronAttribute> tag renders an SWT Button widget and a SWT Text widget, backed by the specified entity field.
-
-
+The `CronAttribute` tag renders an SWT Button widget and a SWT Text widget, backed by the specified entity field.
 
 | Attribute | Description                                                                    | M/O | Default |
 |-----------|--------------------------------------------------------------------------------|-----|---------|
@@ -688,9 +630,9 @@ The <CronAttribute> tag renders an SWT Button widget and a SWT Text widget, back
 
 ```
 <ui>
-   <CronAttribute field="expression" 
-    label="CRON_EXPRESSION_DIALOG_EXPRESSION_LABEL" 
-    required="true"/> 
+   <CronAttribute field="expression"
+    label="CRON_EXPRESSION_DIALOG_EXPRESSION_LABEL"
+    required="true"/>
 </ui>
 ```
 
@@ -700,38 +642,24 @@ The above XML renders the following UI:
 
 ![CronAttribute example](/Images/APIGatewayDeveloperGuide/0300002D.png)
 
-ContentEncodingAttribute
-------------------------
-
-
+## ContentEncodingAttribute
 
 The <ContentEncodingAttribute> tag renders an SWT Text widget and a SWT Button widget, backed by the specified entity field.
 
-
-
-| Attribute    | Description                                                                                                                                                                              | M/O | Default |
-|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|---------|
-| field        | Specifies the name of the field of the entity backed by the rendered controls.                                                                                                           | M   | -       |
-| label        | Specifies the ID of the resource containing the text to display on the Label (to the left of the Text box)                                                                               | O   | -       |
+| Attribute    | Description         | M/O | Default |
+|--------------|---------------------|-----|---------|
+| field        | Specifies the name of the field of the entity backed by the rendered controls.    | M   | -       |
+| label        | Specifies the ID of the resource containing the text to display on the Label (to the left of the Text box)    | O   | -       |
 | trackChanges | Specifies whether or not changes will be tracked when the button state has changed. If set to “true” this will call the trackChange() method on the page on which the button is rendered | O   | false   |
-| span         | Value used in the creation of layout data for the Button..                                                                                                                               
-                                                                                                                                                                                            
-  Span represents the horizontal span of the following GridData:                                                                                                                            
-                                                                                                                                                                                            
-  ```                                                                                                                                                                    
-      GridData gridData = new GridData();                                                                                                                                                   
-      gridData.horizontalAlignment = GridData.FILL;                                                                                                                                         
-      gridData.grabExcessHorizontalSpace = true;                                                                                                                                            
-      gridData.horizontalSpan = span;                                                                                                                                                       
-  ```                                                                                                                                                                                       | O   | 1       |
-| required     | Specifies whether or not the entity field is required                                                                                                                                    | O   | false   |
+| span         | Value used in the creation of layout data for the Button. <br>Span represents the horizontal span of the following GridData:<pre>GridData gridData = new GridData();<br>gridData.horizontalAlignment = GridData.FILL;<br>gridData.grabExcessHorizontalSpace = true;<br>gridData.horizontalSpan = span;</pre>           | O   | 1       |
+| required     | Specifies whether or not the entity field is required        | O   | false   |
 
 **Sample XML**\
 
 ```
 <ui>
-   <ContentEncodingAttribute field="inputEncodings" 
-    label="inputEncodings" trackChanges="true"/> 
+   <ContentEncodingAttribute field="inputEncodings"
+    label="inputEncodings" trackChanges="true"/>
 </ui>
 ```
 
@@ -740,3 +668,345 @@ The <ContentEncodingAttribute> tag renders an SWT Text widget and a SWT Button w
 The above XML renders the following UI:
 
 ![ContentEncodingAttribute example](/Images/APIGatewayDeveloperGuide/0300002E.png)
+
+## DirectoryChooser
+
+The `DirectoryChooser` tag renders an SWT Label, Text and Button widget. When clicked, the button displays a directory browser to allow you to easily select a directory.
+
+| Attribute | Description                                                                    | M/O | Default |
+|-----------|--------------------------------------------------------------------------------|-----|---------|
+| label     | Text for the label to be displayed                                             | M   | -       |
+| field     | Specifies the name of the field of the entity backed by the rendered controls. | M   | -       |
+| span      | Value used in the creation of layout data for the Composite.<br>Span represents the horizontal span of the following GridData:<pre>GridData gridData = new GridData();<br>gridData.horizontalAlignment = GridData.FILL;<br>gridData.grabExcessHorizontalSpace = true;<br>gridData.horizontalSpan = span;</pre>    | O   | 1       |
+| required  | Specifies whether or not the entity field is required                          | O   | false   |
+
+**Sample XML**\
+
+```
+<ui>
+ <group label="LOCATION_LABEL" span="2">
+  <panel columns="2">
+   <TextAttribute field="fileName" label="FILENAME_LABEL" required="true" />
+   <DirectoryChooser field="directory" label="DIRECTORY_LABEL" required="true"
+    span="2" />
+  </panel>
+ </group>
+</ui>
+```
+
+**Rendered UI**\
+
+The above XML renders the following UI:
+
+![DirectoryChooser example](/Images/APIGatewayDeveloperGuide/0200002F.jpg)
+
+## ESPKReferenceSummaryAttribute
+
+The `ESPKReferenceSummaryAttribute` tag renders an SWT Text and Button control. When clicked, the button displays a reference browser to allow you to easily select the required entity reference.
+
+| Attribute       | Description                                                                                                                                          | M/O | Default |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------|-----|---------|
+| label           | Specifies the ID of the resource containing the text to display on the Label.                                                                        | O   | -       |
+| field           | Specifies the name of the field of the entity backed by the rendered controls.                                                                       | M   | -       |
+| required        | Specifies whether or not the entity field is required.                                                                                               | O   | false   |
+| dialogTitle     | Specifies the ID of the resource containing the text to display on the title bar of the reference browser dialog.                                    | O   | -       |
+| displayName     | Specifies the ID of the resource containing the attribute/control name to be displayed in the event of an error.                                     | O   | -       |
+| selectableTypes | Specifies the entity types (as a comma separated list) that are selectable in the TreeViewer displayed in the Reference Selector dialog.             | M   | -       |
+| searches        | Specifies the entity types (as a comma separated list) that are searchable for entities of those types specified by the “selectableTypes” attribute. | M   | -       |
+
+**Sample XML**\
+
+```
+<ui>
+ <ESPKReferenceSummaryAttribute
+  displayName="EMS_CONSUMER_SELECT_CONNECTION_DISP_NAME"
+  field="emsClient"
+  searches="EMSClientGroup" selectableType="EMSClient"
+  dialogTitle="EMS_CLIENT_DIALOG_TITLE" required="true" span="2" />
+</ui>
+```
+
+**Rendered UI**\
+
+The above XML renders the following UI:
+
+![ESPKReferenceSummaryAttribute example](/Images/APIGatewayDeveloperGuide/03000030.png)
+
+The following dialog is displayed when you click the browse button:
+
+![Dialog displayed on browse](/Images/APIGatewayDeveloperGuide/03000031.png)
+
+## FieldTable
+
+The `FieldTable` tag renders an SWT TableViewer, along with a bank of buttons to allow you to enter a list of values, the type of which is based on the specified entity field.
+
+| Attribute       | Description                                                                       | M/O | Default |
+|-----------------|-----------------------------------------------------------------------------------|-----|---------|
+| label           | Text for the label to be displayed.                                               | M   | -       |
+| field           | Specifies the name of the field of the entity backed by the rendered controls.    | M   | -       |
+| helpID          | Help identifier used for the Add/Edit dialogs associated with the table.          | M   | -       |
+| span            | Value used in the creation of layout data for the controls.<br>Span represents the horizontal span of the following GridData:<pre>GridData gridData = new GridData();<br>gridData.horizontalAlignment = GridData.FILL;<br>gridData.grabExcessHorizontalSpace = true;<br>gridData.horizontalSpan = span;</pre>     | O   | 2       |
+| required        | Specifies whether or not the entity field is required.                            | O   | false   |
+| columnWidth     | Specifies the width of the column in the table.                                   | O   | 200     |
+| addDialogTitle  | Specifies the title of the dialog that appears when the ‘Add’ button is clicked.  | O   | ‘Add’   |
+| editDialogTitle | Specifies the title of the dialog that appears when the ‘Edit’ button is clicked. | O   | ‘Edit’  |
+| labelText       | Specifies the text that appears on the label on the Add and Edit dialogs.         | O   | ‘Value’ |
+
+**Sample XML**\
+
+```
+<ui>
+   <panel columns="2">
+     <TextAttribute field="cmdLine" label="CMD_LINE_LABEL" required="true" />
+     <FieldTable field="arguments" label="ARGUMENTS_LABEL" />
+  </panel>
+</ui>
+```
+
+**Rendered UI**\
+
+The above XML renders the following UI:
+
+![FieldTable example](/Images/APIGatewayDeveloperGuide/02000032.jpg)
+
+## FileChooserText
+
+The `FileChooserText` tag renders an SWT Label, Text and Button widget. When clicked, the button displays a file browser to allow a user to easily select a file.
+
+| Attribute | Description                                                                    | M/O | Default |
+|-----------|--------------------------------------------------------------------------------|-----|---------|
+| label     | Text for the label to be displayed                                             | M   | -       |
+| field     | Specifies the name of the field of the entity backed by the rendered controls. | M   | -       |
+| span      | Value used in the creation of layout data for the Composite.<br>Span represents the horizontal span of the following GridData:<pre>GridData gridData = new GridData();<br>gridData.horizontalAlignment = GridData.FILL;<br>gridData.grabExcessHorizontalSpace = true;<br>gridData.horizontalSpan = span;<pre>    | O   | 1       |
+| required  | Specifies whether or not the entity field is required                          | O   | false   |
+
+**Sample XML**\
+
+```
+<ui>
+  <panel columns="2">
+    <FileChooserText field="fileIn" label="FILE_LABEL" required="true" span="2" />
+  </panel>
+</ui>
+```
+
+**Rendered UI**\
+
+The above XML renders the following UI:
+
+![FileChooserText example](/Images/APIGatewayDeveloperGuide/0200000A.jpg)
+
+## group
+
+The `group` tag renders an SWT Group widget, which is usually used to group other widgets.
+
+| Attribute       | Description       | M/O | Default |
+|-----------------|------------------------|-----|---------|
+| label           | Used to give the group a visual name and also employed internally for binding purposes to allow the control and its children to be enabled/disabled.    | O   | -       |
+| columns         | Value used in the creation of the layout data for the Composite.<br>Columns represent the number of cell columns of the following GridLayout:<pre>GridLayout gridLayout = new GridLayout();<br>gridLayout.numColumns = columns;</pre>      | O   | 1       |
+| span            | Value used in the creation of layout data for the Composite.<br>Span represents the horizontal span of the following GridData:<pre>GridData gridData = new GridData();<br>gridData.horizontalAlignment = GridData.FILL;<br>gridData.grabExcessHorizontalSpace = true;<br>gridData.horizontalSpan = span;</pre>   | O   | 1       |
+| margin          | Value used in the creation of the layout data for the Composite.<br>Margin specifies the number of pixels to be used for the Composite. It can be specified as a single integer value whereby the following layout members will be set:<pre>GridLayout gridLayout = new GridLayout();<br>gridLayout.marginHeight = margin;<br>gridLayout.marginWidth = margin;<br>gridLayout.marginTop = margin;<br>gridLayout.marginBottom = margin;<br>gridLayout.marginLeft = margin;<br>gridLayout.marginRight = margin;</pre><br>Margin can also be specified as a list of 4 integer values, whereby the following layout members will be set:<pre>GridLayout gridLayout = new GridLayout();<br>StringTokenizer st = new StringTokenizer(margin, “,”);<br>gridLayout.marginTop = st.nextToken();<br>gridLayout.marginBottom = st.nextToken();<br>gridLayout.marginLeft = st.nextToken();<br>gridLayout.marginRight = st.nextToken();</pre>   | O   | 5       |
+| fill            | Value used in the creation of the layout data for the Composite.<br>Fill specifies that the layout should resize the Composite to fill both horizontally and vertically, and, depending on its parent, should grow horizontally and vertically if the space is available. Fill is usually used in conjunction with “span”. Fill represents the following GridData:<pre>GridData gridData = new GridData();<br>gridData.horizontalAlignment = GridData.FILL;<br>gridData.verticalAlignment = GridData.FILL;<br>gridData.grabExcessHorizontalSpace = true;<br>gridData.grabExcessVerticalSpace = true;<br>gridData.horizontalSpan = span;</pre>  | O   | true    |
+| verticalSpacing | Value used in the creation of the layout data for the Composite.<br>Specifies the number of pixels from the bottom edge of one cell and the top edge of its neighboring cell underneath:<pre>GridLayout gridLayout = new GridLayout();<br>gridLayout.verticalSpacing = verticalSpacing;</pre>   | O   | 5       |
+| indent          | Value used in the creation of the layout data for the Composite.<br>Specifies the number of pixels of horizontal margin that will be placed along the left and right edges of the layout. The following layout member will be set:<pre>GridLayout gridLayout = new GridLayout();<br>gridLayout.marginWidth = indent;</pre> | O   | 0       |
+
+**Sample XML**\
+
+```
+<ui>
+ <group label="LOG_PAGE_CATEGORY_LABEL" columns="2">
+  <CategoryAttribute label="LOG_CATEGORY_LABEL" required="true" />
+ </group>
+</ui>
+```
+
+**Rendered UI**\
+
+The above XML renders the following UI:
+
+![group example](/Images/APIGatewayDeveloperGuide/02000033.jpg)
+
+## HTTPStatusTableAttribute
+
+The <HTTPStatusTableAttribute> tag renders a Table and a group SWT Buttons that appear as a Button bar. When clicked, the buttons display a dialog to add, edit, or delete a HTTP status code.
+
+| Attribute   | Description                                                                    | M/O | Default |
+|-------------|--------------------------------------------------------------------------------|-----|---------|
+| field       | Specifies the name of the field of the entity backed by the rendered controls. | M   | -       |
+| tableHeight | Specifies the preferred height of the control                                  | O   | -       |
+| required    | Specifies whether or not the entity field is required                          | O   | false   |
+
+**Sample XML**\
+
+```
+<ui>
+  <HTTPStatusTableAttribute field="retryHTTPRanges" tableHeight="100" />
+</ui>
+```
+
+**Rendered UI**\
+
+The above XML renders the following UI:
+
+![HTTPStatusTableAttribute](/Images/APIGatewayDeveloperGuide/03000034.png)
+
+## include
+
+The <include> tag allows another declarative XML file to be included inline in the parent including XML file.
+
+| Attribute | Description                                                                                                              | M/O | Default |
+|-----------|------------------------------------------------------------------------------------------------------------------------- |-----|---------|
+| resource  | The name of the declarative XML file to be included inline in the declarative parent XML file.                 | M   |         |
+| class     | The class, including package, used to render the included resource. Any required string resources will need to be redefined in the local `resource.properties` file. | O   |    |
+
+**Sample XML**\
+
+```
+<ui>
+ <panel columns="2">
+  <include resource="AuditSettings-page.xml"
+   class="com.vordel.client.manager.AuditSettingsPage"/>
+ </panel>
+</ui>
+```
+
+## label
+
+The `label` tag renders an SWT Label widget.
+
+| Attribute | Description                                                                   | M/O | Default |
+|-----------|-------------------------------------------------------------------------------|-----|---------|
+| label     | Specifies the ID of the resource containing the text to display on the Label. | M   | -       |
+| span      | Value used in the creation of layout data for the Label.<br>Span represents the horizontal span of the following GridData:<pre>GridData gridData = new GridData();<br>gridData.horizontalAlignment = GridData.FILL;<br>gridData.grabExcessHorizontalSpace = true;<br>gridData.horizontalSpan = span;</pre>      | O   | 1       |
+| bold      | Value used to specify whether or not the font is rendered bold.               | O   | false   |
+
+**Sample XML**\
+
+```
+<ui>
+ <panel columns="2">
+  <NameAttribute />
+  <label label="FILE_TO_LOAD_SUMMARY" span="2" />
+ </panel>
+</ui>
+```
+
+**Rendered UI**\
+
+The above XML renders the following UI:
+
+![label example](/Images/APIGatewayDeveloperGuide/02000035.jpg)
+
+## LifeTimeAttribute
+
+The `LifeTimeAttribute` tag renders a Label, Text, and a group of Spin controls, representing a time span. This allows you to enter values for Days, Hours, Minutes and Seconds.
+
+| Attribute | Description                                                                                              | M/O | Default |
+|-----------|----------------------------------------------------------------------------------------------------------|-----|---------|
+| label     | Specifies the ID of the resource containing the text to display on the Label to the left of all controls | O   | -       |
+| field     | Specifies the name of the field of the entity backed by the rendered controls.                           | M   | -       |
+| required  | Specifies whether or not the entity field is required                                                    | O   | false   |
+
+**Sample XML**\
+
+```
+<ui>
+ <panel columns="2">
+  <panel span="2" columns="3" margin="0">
+   <LifeTimeAttribute label="VALIDITY_LABEL" field="validity" required="true" />
+  </panel>
+ </panel>
+</ui>
+```
+
+**Rendered UI**\
+
+The above XML renders the following UI:
+
+![LifeTimeAttribute example](/Images/APIGatewayDeveloperGuide/0200000D.jpg)
+
+## NameAttribute
+
+The `NameAttribute` tag renders an SWT Label and accompanying Text widget. It is used to wrap the following TextAttribute:
+
+```
+<TextAttribute field="name" label="NAME_LABEL" required="true" />
+```
+
+The label `NAME_LABEL` must exist in the appropriate `resource.properties` file.
+
+**Sample XML**\
+
+```
+<ui>
+  <panel columns="2">
+    <NameAttribute />
+  </panel>
+</ui>
+```
+
+**Rendered UI**\
+
+The above XML renders the following UI:
+
+![NameAttribute example](/Images/APIGatewayDeveloperGuide/02000036.jpg)
+
+## MsgAttrAttribute
+
+The <MsgAttrAttribute> tag renders an SWT Label and accompanying Combo widget populated with a list of Axway message attributes.
+
+| Attribute | Description                                                                    | M/O | Default |
+|-----------|--------------------------------------------------------------------------------|-----|---------|
+| label     | Specifies the ID of the resource containing the text to display on the Label.  | M   | -       |
+| field     | Specifies the name of the field of the entity backed by the rendered controls. | M   | -       |
+| span      | Value used in the creation of layout data for the Composite.<br>Span represents the horizontal span of the following GridData:<pre>GridData gridData = new GridData();<br>gridData.horizontalAlignment = GridData.FILL;<br>gridData.grabExcessHorizontalSpace = true;<br>gridData.horizontalSpan = span;</pre>   | O   | 1       |
+| required  | Specifies whether or not the entity field is required.                         | O   | false   |
+
+**Sample XML**\
+
+```
+<ui>
+ <panel columns="2">
+  <MsgAttrAttribute field="sourceAttribute"
+   label="STRING_REPLACE_SRC_ATTRIBUTE_LABEL" required="true"/>
+ </panel>
+</ui>
+```
+
+**Rendered UI**\
+
+The above XML renders the following UI:
+
+![MsgAttrAttribute example](/Images/APIGatewayDeveloperGuide/02000037.jpg)
+
+## MultiValueTextAttrAttribute
+
+The <MultiValueTextAttribute> tag is similar to the TextAttribute tag in that it renders an SWT Text widget (and optionally, a Label widget), backed by the specified field for the entity being configured. The difference is that it caters for multiple values interspersed with the specified separator.
+
+| Attribute | Description                          | M/O | Default |
+|-----------|--------------------------------------|-----|---------|
+| field     | Specifies the name of the field of the entity backed by the rendered controls.<br>The default value of the field will automatically appear in the Text widget.      | M   | -      |
+| label     | Indicates that a Label should be rendered to the left of the Text widget.<br>The value of this field is set to a resource identifier, specified in a `resource.properties` file. | O   | -       |
+| required  | Specifies whether or not the field is required. If required and the user does not enter a value, a warning dialog appears, prompting the user to enter a value for the field. | O   | -       |
+| span      | Value used in the creation of layout data for the controls that are rendered.<br>If a single-line control is being rendered, the span represents the horizontal span of the following GridData:<pre>GridData gridData = new GridData();<br>gridData.horizontalAlignment = GridData.FILL;<br>gridData.grabExcessHorizontalSpace = true;<br>gridData.horizontalSpan = colSpan;</pre><br>If multiline control is being rendered, the span represents the horizontal span of the following GridData:<pre>GridData gridData = new GridData();<br>gridData.horizontalAlignment = GridData.FILL;<br>gridData.verticalAlignment = GridData.FILL;<br>gridData.grabExcessHorizontalSpace = true;<br>gridData.grabExcessVerticalSpace = true;<br>gridData.horizontalSpan = colSpan;</pre>     | O   | 1       |
+| split     | Specifies the string used as a separator to the list of multiple values.                                                                                                      | O   | -       |
+
+**Sample XML**\
+
+```
+<ui>
+ <panel columns="2">
+  <MultiValueTextAttribute field="extension" label="EXTENSION_LABEL"
+   required="false" split=";"/>
+ </panel>
+</ui>
+```
+
+**Rendered UI**\
+
+The above XML renders the following UI:
+
+![MultiValueTextAttribute example](/Images/APIGatewayDeveloperGuide/02000038.jpg)
+
+In this case, `EXTENSION_LABEL` is resolved to the localized string “Extension:”.
+
