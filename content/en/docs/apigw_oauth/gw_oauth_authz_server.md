@@ -3,7 +3,7 @@ title: API Gateway as an OAuth 2.0 authorization server
 linkTitle: API Gateway as an OAuth 2.0 authorization server
 weight: 40
 date: 2019-11-18
-description: Configure API Gateway as OAuth authorization server using sample policies as a starting point, and set up a store for OAuth access tokens and authorization codes.
+description: Configure API Gateway as an OAuth authorization server using sample policies as a starting point, and set up a store for OAuth access tokens and authorization codes.
 ---
 
 ## Authorization server policies and filters

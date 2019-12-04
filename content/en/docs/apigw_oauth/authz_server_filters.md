@@ -1,6 +1,6 @@
 ---
-title: OAuth 2.0 authorization server filters
-linkTitle: OAuth 2.0 authorization server filters
+title: OAuth authorization server filters
+linkTitle: OAuth authorization server filters
 weight: 60
 date: 2019-11-18
 description: Filters you can use when API Gateway is acting as an OAuth authorization server.

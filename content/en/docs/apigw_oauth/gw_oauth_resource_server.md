@@ -3,7 +3,7 @@ title: API Gateway as an OAuth 2.0 resource server
 linkTitle: API Gateway as an OAuth 2.0 resource server
 weight: 70
 date: 2019-11-18
-description: Configure API Gateway as OAuth resource server using sample policies as a starting point, and manage client applications and OAuth scopes in the Client Application Registry.
+description: Configure API Gateway as an OAuth resource server using sample policies as a starting point, and manage client applications and OAuth scopes in the Client Application Registry.
 ---
 
 ## Resource server policies and filters

@@ -1,9 +1,9 @@
 ---
-title: OAuth 2.0 message attributes
-linkTitle: OAuth 2.0 message attributes
+title: OAuth message attributes
+linkTitle: OAuth message attributes
+weight: 160
 date: 2019-11-18
-description: This section describes the message attributes that are available in the API Gateway OAuth server and OAuth client filters.
-weight: 16
+description: Reference to the message attributes that are available in the API Gateway OAuth server and OAuth client filters.
 ---
 
 ## OAuth 2.0 server message attributes

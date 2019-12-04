@@ -1,6 +1,6 @@
 ---
-title: OAuth 2.0 resource server filters
-linkTitle: OAuth 2.0 resource server filters
+title: OAuth resource server filters
+linkTitle: OAuth resource server filters
 weight: 70
 date: 2019-11-18
 description: Filters you can use when API Gateway is acting as an OAuth resource server.
