@@ -186,7 +186,7 @@ Before you restore a keyspace in a new Cassandra cluster, you must ensure that t
 8. Perform a full repair of the cluster as follows on each node one at a time:
 
     ```
-    odetool repair -pr --full
+    nodetool repair -pr --full
     ```
 
 9. On the Cassandra seed node, run the Cassandra reload the indexes script.
