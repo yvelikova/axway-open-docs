@@ -78,4 +78,4 @@ Complete the following steps to build the samples:
 
 The following code samples are included:
 
-* `DEVELOPER_SAMPLES/FilterInterceptorLoadableModule` – Sample classes that implement Java interfaces. For more information, see [Java interfaces for extending](/docs/apigw_devguide/java_extend_gateway).
+* `DEVELOPER_SAMPLES/FilterInterceptorLoadableModule` – Sample classes that implement Java interfaces. For more information, see [Java interfaces for extending API Gateway](/docs/apigtw_devguide/java_extend_gateway).

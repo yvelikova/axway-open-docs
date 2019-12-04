@@ -13,7 +13,7 @@ Jersey REST services are exposed on the internal management HTTPS listener that 
 The API Gateway REST APIs are available from the following locations:
 
 * `INSTALL_DIR/apigateway/samples/swagger`
-* [Product APIs](/category/api) page on the Axway Documentation portal
+* [Product APIs](https://axway.zoominsoftware.io/category/api) page on the Axway Documentation portal
 
 {{< alert title="Note" color="primary" >}}When viewing REST APIs on the Axway Documentation portal, the `consumes` field is not displayed if you are using `formData` type parameters in an API, due to limitations in the Swagger UI version.{{< /alert >}}
 
@@ -162,8 +162,8 @@ Every group and API Gateway instance in a domain is assigned a unique ID, and th
 To run the `managedomain` script, enter the following commands:
 
 ```
-> cd INSTALL_DIR/apigateway/posix/bin/
-> managedomain --menu
+cd INSTALL_DIR/apigateway/posix/bin/
+managedomain --menu
 ```
 
 Enter the domain user name and password when prompted. The topology management options are displayed as follows:
@@ -317,8 +317,8 @@ In this example, the following are the names and associated IDs:
 You can call the Topology API from Jython scripts. The sample Jython script `INSTALL_DIR/apigateway/samples/scripts/topology/outputIDs.py` uses the Topology API to output the name and ID of the group and API Gateway instance.
 
 ```
-> cd INSTALL_DIR/apigateway/samples/scripts
-> ./run.sh topology/outputIDs.py
+cd INSTALL_DIR/apigateway/samples/scripts
+./run.sh topology/outputIDs.py
 API Server 'QuickStart Server' has id 'instance-1' belongs to Group 'QuickStart
 Group' with id 'group-2', it is running on...
 ```

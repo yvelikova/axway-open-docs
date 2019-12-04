@@ -1,9 +1,9 @@
 {
-"title": "Entity Store",
-"linkTitle": "Entity Store",
+"title": "Key Property and Entity Store",
+"linkTitle": "Key Property and Entity Store",
 "weight":"70",
 "date": "2019-11-27",
-"description": "Learn about the KPS and ES stores that are used to store policy properties all configuration data required to run API Gateway."
+"description": "Learn about the KPS and ES stores that are used to store policy properties and all configuration data required to run API Gateway."
 }
 
 ## Key Property Store
@@ -22,7 +22,7 @@ API Gateway runs with a number of separate stores that are combined as a federat
 
 The federated entity store is made up of component stores. Each component store is responsible for one or more *branch points* in the configuration tree. Each component store must be consistent in its own right:
 
-* It must have all the entity types (see [*Entity types* on page 1](#Entity)) required to describe its component entities
+* It must have all the entity types required to describe its component entities.
 * It must also have valid hard references within. Hard references are fields that refer to other entities via their real primary keys (PKs). Soft references allow an entity in one store to reference an entity in another store. This is done via Portable ESPKs, which the federated entity store has the added ability, above other store flavors, to resolve to the correct entity when calling `getEntity(ESPK pk)`.
 
 The following table lists the XML-based stores:

@@ -387,4 +387,4 @@ You can remove the type from the primary store by running the following command:
 -g "QuickStart Group" -n "QuickStart Server"
 ```
 
-You can use the ES Explorer tool to view new types that were added, or to verify that types were removed. For more information, see [*Use the ES Explorer* on page 1](entity_store.htm#Use).
+You can use the ES Explorer tool to view new types that were added, or to verify that types were removed. For more information, see [Use the ES Explorer](/docs/apigtw_devguide/entity_store#use-the-es-explorer).
