@@ -58,7 +58,7 @@ You can use the **Read Application Credential** filter to get information from t
 
 This filter stores the information in a message attribute (for example, `apimgmt.appcredential`). You can use this filter within an alert handling policy (or any other policy) to get information about an application credential easily.
 
-The following example shows how to extract values from the returned HashMap:
+The information is stored as a HashMap. To extract a value from the map, use a selector. For example:
 
 ```
 ${appcredential.get("appcredential.apikey.secret")}
