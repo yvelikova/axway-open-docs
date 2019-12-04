@@ -26,11 +26,13 @@ Learn how to apply a rate limit configuration to your API:
 
 Rate limiting is a way to protect the backend service underlying (or implementing) your API. The use of resources underlying your API are protected from more aggressive consumer activity (or spikes in total API calls) which could overwhelm the backend service capacity.
 
-API providers typically measure processing limits in Transactions Per Second (TPS). Rate limiting at the API level is a way to enforce a maximum TPS for all of your API consumers. In AMPLIFY Central, we provide rate limiting around the API Proxy activity.
+API providers typically measure processing limits in Transactions Per (Seconds/Minutes/Hours/1day). Rate limiting at the API level is a way to enforce a maximum Transactions Per (Seconds/Minutes/Hours/1day) for all of your API consumers. In AMPLIFY Central, we provide rate limiting around the API Proxy activity.
 
 ### AMPLIFY Central API rate limiting
 
-AMPLIFY Central currently provides a fixed window rate limiting implementation with a one second window. Simply explained, each second on the minute your API gets a budget of API transactions. Each valid API transaction uses one unit of the budget. At the beginning of each second the budget is reset to its configured value. If the budget is exhausted before the second is over, all API transactions are refused until the budget is reset. A valid API transaction is an API transaction that has been successfully processed by AMPLIFY Central.
+AMPLIFY Central currently provides a variable interval rate limiting implementation with a sliding window bucket algorithm with minimum of 1 second interval to maximum of 1 day. Intervals should be specified in duration format P[n]Y[n]M[n]DT[n]H[n]M[n]S or P[n]W supported by ISO_8601 standard. For more information duration format, please refer to wiki link  https://en.wikipedia.org/wiki/ISO_8601#Durations
+
+A valid API transaction is an API transaction that has been successfully processed by AMPLIFY Central.
 
 AMPLIFY Central allows for two levels of enforcement for rate limiting. At the proxy level, rate limiting affects all API transactions regardless of the consuming application. At the proxy and application level, rate limiting affects all API transactions originating with a specific application. You can enforce one or both levels with AMPLIFY Central.
 
@@ -156,6 +158,8 @@ Ensure that you are logged in to AMPLIFY CLI using the service account.
 
 The AMPLIFY Central DevOps CLI allows you to define the `rateLimit` configuration under the `policies` section of your API configuration file. For example:
 
+Below is the example to create proxy level rate limit per second interval.
+
 ```
 version: v1 # Version of the file format
 apiVersion: v1 # This version ensures backward compatibility and would not mandate a frequent update from a client side
@@ -173,7 +177,29 @@ proxy:
         name: 'Default Team'
 ```
 
-The `perProxy` field specifies the desired TPS limit for your API.
+Below is an example to create proxy level rate limit with variable interval
+
+```
+version: v1 # Version of the file format
+apiVersion: v1 # This version ensures backward compatibility and would not mandate a frequent update from a client side
+proxy:
+    name: 'Musical Instruments Rate Limited' # name of the proxy
+    basePath: /examples/ratelimit/api/v1 # base path of the proxy
+    swagger: 'https://ec062a054a2977120b7e721801edb38ca24dfbb3.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json' # Swagger url of the proxy
+    policies:
+        clientAuth:
+            type: pass-through
+        rateLimit: # the desired rate limit for your API with variable interval of 10 seconds
+            perProxy:
+                limit: 5
+                interval: PT10S
+    tags: ['musical', 'instruments', 'ratelimit']
+    team:
+        name: 'Default Team'
+```
+
+
+The `perProxy` field specifies the desired TPS limit for your API. In case you want to specify variable interval, you can use new format (as mentioned above having limit and intervals). Intervals should be given in duration format P[n]Y[n]M[n]DT[n]H[n]M[n]S or P[n]W supported by ISO_8601 standard. 
 
 Create the API proxy:
 
@@ -220,6 +246,37 @@ proxy:
     team:
         name: 'Default Team'
 ```
+Below is an example of same use case as above, but with variable interval set to 10 seconds.
+
+```
+version: v1 # Version of the file format
+apiVersion: v1 # This version ensures backward compatibility and would not mandate a frequent update from a client side
+proxy:
+    name: 'Musical Instruments Rate Limited' # name of the proxy
+    basePath: /examples/ratelimit/api/v1 # base path of the proxy
+    swagger: 'https://ec062a054a2977120b7e721801edb38ca24dfbb3.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json' # Swagger url of the proxy
+    policies:
+        clientAuth:
+            type: api-key
+        rateLimit:
+            perProxy: # the desired Rate limit for your API - 5 transaction per 10 seconds interval
+                limit: 5
+                interval: PT10S
+            perProxyAndApp: # the default Rate limit for each application consuming the API
+                limit: 3
+                interval: PT10S
+    tags: ['musical', 'instruments', 'ratelimit']
+    apps:
+    - name: Rate Limited App 1
+    - name: Rate Limited App 2
+    team:
+        name: 'Default Team'
+```
+
+
+
+
+
 
 ### Apply a specific rate limit for an application consuming your API
 
@@ -251,6 +308,40 @@ proxy:
     team:
         name: 'Default Team'
 ```
+Below is an example of same use case as above, but with variable interval set to 10 seconds.
+
+
+```
+version: v1 # Version of the file format
+apiVersion: v1 # This version ensures backward compatibility and would not mandate a frequent update from a client side
+proxy:
+    name: 'Musical Instruments Rate Limited' # name of the proxy
+    basePath: /examples/ratelimit/api/v1 # base path of the proxy
+    swagger: 'https://ec062a054a2977120b7e721801edb38ca24dfbb3.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json' # Swagger url of the proxy
+    policies:
+        clientAuth:
+            type: api-key
+        rateLimit:
+            perProxy: # the desired rate limit for your API for 10 seconds interval
+                limit: 5
+                interval: PT10S
+            perProxyAndApp: # the default Ratellimit for each application consuming the API
+                limit: 1
+                interval: PT10S
+            overrides:
+              - appName: Rate Limited App 1
+                perProxyAndApp: # this app can individually do 3 Transactions per 10 seconds interval
+                    limit: 3
+                    interval: PT10S
+    tags: ['musical', 'instruments', 'ratelimit']
+    apps:
+    - name: Rate Limited App 1
+    - name: Rate Limited App 2
+    team:
+        name: 'Default Team'
+```
+
+
 
 ### Disable the rate limit for an application consuming your API
 
