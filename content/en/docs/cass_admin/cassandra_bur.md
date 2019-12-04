@@ -186,7 +186,7 @@ Before you restore a keyspace in a new Cassandra cluster, you must ensure that t
 8. Perform a full repair of the cluster as follows on each node one at a time:
 
     ```
-    odetool repair -pr --full
+    nodetool repair -pr --full
     ```
 
 9. On the Cassandra seed node, run the Cassandra reload the indexes script.
@@ -243,7 +243,8 @@ do
   table_names+=(${name})
   table_uuids+=(${uuid})
 done < ${keyspace_tables}
-set +esort -o ${keyspace_tablenames} ${keyspace_tablenames}sort -o ${keyspace_tablenames} ${keyspace_tablenames}
+set +esort -o ${keyspace_tablenames} ${keyspace_tablenames}
+sort -o ${keyspace_tablenames} ${keyspace_tablenames}
 diff -a -q ${keyspace_tablenames} ${backup_tablenames}
 if [ $? -ne 0 ]; then
   echo -e "\nERROR: The tables on the keyspace at, '${keyspace_path}', are not the same as the ones from the backup at,
