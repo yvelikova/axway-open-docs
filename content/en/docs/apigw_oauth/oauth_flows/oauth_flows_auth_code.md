@@ -3,8 +3,9 @@ title: Authorization code grant (or web server) flow
 linkTitle: Authorization code grant
 weight: 20
 date: 2019-11-18
-description: The authorization code or web server flow is suitable for clients that can interact with the end-user's user-agent (typically a web browser), and that can receive incoming requests from the authorization server (can act as an HTTP server). The authorization code flow is also known as the *three-legged OAuth* flow.
+description: The authorization code or web server flow is suitable for clients that can interact with the end-user's user-agent (typically a web browser), and that can receive incoming requests from the authorization server (can act as an HTTP server).
 ---
+The web server authentication flow is used by applications that are hosted on a secure server. A critical aspect of the web server flow is that the server must be able to protect the issued client application's secret. The authorization code flow is also known as the *three-legged OAuth* flow.
 
 The authorization code flow is as follows:
 

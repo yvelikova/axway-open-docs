@@ -12,36 +12,38 @@ API Gateway provides the following sample policies that are exposed by the OAuth
 
 To view the paths exposed by the OAuth 2.0 Services listener, select **Environment Configuration > Listeners > API Gateway > OAuth 2.0 Services > Paths** in the Policy Studio tree. In the Resolvers window, click on the policy associated with a path to view the sample policy. Alternatively, to view all of the sample policies, select **Policies > OAuth 2.0** in the Policy Studio tree.
 
+For more information on the OAuth server filters, see [OAuth authorization server filters](/docs/apigw_oauth/authz_server_filters/).
+
 ### Authorization Request sample policy
 
 Exposed on path: `/api/oauth/authorize`
 
-This policy is used in the authorization code grant flow to obtain an authorization code. It uses the **Authorization Code Flow** filter (see [Consume authorization requests](/docs/apigw_oauth/oauth_auth_server/oauth_authz_code_flow)). This policy is also used in the implicit grant flow to obtain an access token. It uses the **Create ID Token** filter (see [Create an OpenID Connect ID token](/docs/apigw_oauth/oauth_openid_filters/oauth_openid_create)).
+This policy is used in the authorization code grant flow to obtain an authorization code. It uses the **Authorization Code Flow** filter. This policy is also used in the implicit grant flow to obtain an access token. It uses the **Create ID Token** filter.
 
 ### Access Token Service sample policy
 
 Exposed on path: `/api/oauth/token`
 
-This policy is used to obtain an access token. It calls another policy depending on the `grant_type` in the request: 
+This policy is used to obtain an access token. It calls another policy depending on the `grant_type` in the request:
 
-* For the authorization code grant flow it calls the Access Code policy, which uses the **Access token using Authorization Code** filter (see [Get access token using authorization code](/docs/apigw_oauth/gw_oauth_auth_server/oauth_access_tokens_auth_codes)) and the **Create ID Token** filter (see [Create an OpenID Connect ID token](/docs/apigw_oauth/oauth_openid_filters/oauth_openid_create)).
-* For the resource owner password credentials flow it calls the Resource Owner Password Credentials policy, which uses the **Resource Owner Credentials** filter (see [Get access token using resource owner credentials](/docs/apigw_oauth/oauth_auth_server/oauth_resource_owner_credentials)).
-* For the client credentials flow it calls the Resource Owner Password Credentials policy, which uses the **Access Token using Client Credentials** filter (see [Get access token using client credentials](/docs/apigw_oauth/oauth_auth_server/oauth_access_token_credentials)).
-* For the JWT flow it calls the JWT policy, which uses the **Access Token using JWT** filter (see [Get access token using JWT](/docs/apigw_oauth/oauth_auth_server/oauth_access_token_jwt)).
-* For the SAML flow it calls the SAML policy, which uses the **Access Token using SAML Assertion** filter (see [Get access token using SAML assertion](/docs/apigw_oauth/oauth_auth_server/oauth_access_token_saml)).
-* For the refresh token flow it calls the Refresh policy, which uses the **Refresh Access Token** filter (see [Refresh access token](/docs/apigw_oauth/oauth_auth_server/oauth_access_token_refresh)).
+* For the authorization code grant flow it calls the Access Code policy, which uses the **Access token using Authorization Code** filter and the **Create ID Token** filter.
+* For the resource owner password credentials flow it calls the Resource Owner Password Credentials policy, which uses the **Resource Owner Credentials** filter.
+* For the client credentials flow it calls the Resource Owner Password Credentials policy, which uses the **Access Token using Client Credentials** filter.
+* For the JWT flow it calls the JWT policy, which uses the **Access Token using JWT** filter.
+* For the SAML flow it calls the SAML policy, which uses the **Access Token using SAML Assertion** filter.
+* For the refresh token flow it calls the Refresh policy, which uses the **Refresh Access Token** filter.
 
 ### Revoke Token sample policy
 
 Exposed on path: `/api/oauth/revoke`
 
-This policy is used to revoke an access token or refresh token. It uses the **Revoke a Token** filter (see [Revoke token](/docs/apigw_oauth/oauth_auth_server/oauth_revoke_token)).
+This policy is used to revoke an access token or refresh token. It uses the **Revoke a Token** filter.
 
 ### Access Token Info sample policy
 
 Exposed on path: `/api/oauth/tokeninfo`
 
-This policy is used to request information about an access token. It uses the **Access Token Information** filter (see [Get access token information](/docs/apigw_oauth/oauth_auth_server/oauth_access_token_info)).
+This policy is used to request information about an access token. It uses the **Access Token Information** filter.
 
 ## Manage access tokens and authorization codes
 

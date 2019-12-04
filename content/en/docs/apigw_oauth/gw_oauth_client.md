@@ -6,8 +6,6 @@ date: 2019-11-18
 description: Learn about using API Gateway as an OAuth client. Configure API Gateway as an OAuth client using sample policies as a starting point, configure OAuth client application credentials, and set up a store for client access tokens.
 ---
 
-## Introduction to API Gateway OAuth client
-
 OAuth is an open standard for authorization that enables client applications to access server resources on behalf of a specific resource owner. OAuth also enables resource owners (end users) to authorize limited third-party access to their server resources without sharing their credentials.
 
 API Gateway can act as the client application in an OAuth 2.0 scenario, and as such API Gateway can instigate the authorization process handle redirects, and request OAuth tokens from an authorization server. Received tokens are stored securely and subsequently used to access protected resources on behalf of users. This provides the following benefits:
@@ -18,7 +16,7 @@ API Gateway can act as the client application in an OAuth 2.0 scenario, and as s
 
 {{< alert title="Note" color="primary" >}}This document assumes that you are familiar with both the terms and concepts described in the [OAuth 2.0 Authorization Framework](http://tools.ietf.org/html/rfc6749) and the OAuth server features of API Gateway.{{< /alert >}}
 
-### API Gateway OAuth client features
+## API Gateway OAuth client features
 
 API Gateway provides the following features to support OAuth 2.0 client functionality:
 
@@ -32,7 +30,7 @@ API Gateway provides the following features to support OAuth 2.0 client function
     * JWT
     * SAML assertion
 
-        {{< alert title="Note" color="primary" >}}The implicit grant type is not supported as it is designed to support client applications that do not have a secure server component, and as such it is not applicable for API Gateway acting as an OAuth client. {{< /alert >}}
+    {{< alert title="Note" color="primary" >}}The implicit grant type is not supported as it is designed to support client applications that do not have a secure server component, and as such it is not applicable for API Gateway acting as an OAuth client. {{< /alert >}}
 
 The following diagram shows the role of API Gateway as an OAuth 2.0 client application accessing OAuth services provided by Axway API Gateway, Google, and Salesforce:
 
@@ -45,13 +43,13 @@ The OAuth client capability of API Gateway supports the following scenario:
 * Instead API X is proxied by API Gateway as API Y, and exposed into the enterprise for internal applications to use. A policy implements API Y, including all the OAuth client capability to invoke API X.
 * The internal application invokes API Y using an internal authentication mechanism (for example, HTTP basic). The policy authenticates the internal application and then invokes API X using OAuth.
 
-You can test the OAuth client capabilities of API Gateway using a web-based OAuth client demo. For more information, see [OAuth client demo](/docs/apigw_oauth/client_demo).
+You can test the OAuth client capabilities of API Gateway using a web-based OAuth client demo. For more information, see [OAuth client demo](/docs/apigw_oauth/gw_client_demo/#api-gateway-oauth-client-demo).
 
 Contact Axway Support for more information on integrating your application with Google or Salesforce APIs using API Gateway and OAuth 2.0.
 
 ## OAuth 2.0 example client workflow
 
-This example is similar to the [OAuth 2.0 example workflow](/docs/apigw_oauth/oauth_intro#oauth_server_workflow), but in this context API Gateway acts as a client, and the service provider is Google.
+This example is similar to the [OAuth server example workflow](/docs/apigw_oauth/gw_oauth_server/#oauth-server-example-workflow), but in this context API Gateway acts as a client, and the service provider is Google.
 
 Assume that you, as a resource owner, are using a service that wants to access your Google calendar (a protected resource). The service is defined on API Gateway (API Gateway is an OAuth client). You do not want to reveal your Google credentials to API Gateway. This problem can be solved using the example OAuth 2.0 web server flow shown in the following diagram:
 
@@ -59,7 +57,7 @@ Assume that you, as a resource owner, are using a service that wants to access y
 
 Out of band, API Gateway preregisters with Google and obtains a client ID and secret. API Gateway also registers a redirect URL to receive the authorization code from Google when you, as resource owner, authorize access to your Google calendar. The application has also requested access to an API named `/google/calendar`, which has an OAuth scope of `calendar`.
 
-The credentials received from Google are added to the Google client credential profile using Policy Studio (for more information, see [Add application credentials](/docs/apigw_oauth/oauth_client/oauth_add_client_credentials)). The provider profile is also configured with the authorization endpoint and token endpoint of the Google authorization server (for more information, see [Add OAuth provider](/docs/apigw_oauth/oauth_client/oauth_add_credential_provider)). The redirect URL is also created as an HTTP listener on API Gateway, with a filter for receiving the authorization code (for more information, see [Create a callback URL listener](/docs/apigw_oauth/oauth_client/oauth_callback)).
+The credentials received from Google are added to the Google client credential profile using Policy Studio. The provider profile is also configured with the authorization endpoint and token endpoint of the Google authorization server. The redirect URL is also created as an HTTP listener on API Gateway, with a filter for receiving the authorization code. For more information, see [Configure OAuth client application credentials](#configure-oauth-client-application-credentials).
 
 The steps in the diagram are described as follows:
 
@@ -80,6 +78,8 @@ API Gateway provides a number of sample policies for when API Gateway is acting 
 * Google
 * SalesForce
 
+For more details on the filters used in the sample policies, see [OAuth client filters](/docs/apigw_oauth/oauth_client_filters/).
+
 To view the paths exposed by the OAuth2 Client API Keys Demo listener, select **Environment Configuration > Listeners > API Gateway > OAuth2 Client API Keys Demo > Paths** in the Policy Studio tree. In the Resolvers window, click on the policy associated with a path to view the sample policy. Alternatively, to view all of the sample policies, select **Policies > OAuth Client** in the Policy Studio tree.
 
 The following Google sample policies are exposed by the OAuth2 Client API Keys Demo listener on the following paths.
@@ -88,19 +88,19 @@ The following Google sample policies are exposed by the OAuth2 Client API Keys D
 
 Exposed on path: `/client/google/authorize`
 
-This policy is used in the authorization code flow when API Gateway is acting as an OAuth client. It redirects the resource owner's user agent to the Google authorization server, where they are asked to log in and grant access to the requested scope. It uses the **Redirect resource owner to Authz Server** filter (see [Redirect resource owner to authorization server](/docs/apigw_oauth/oauth_client_filters/oauth_client_redirect)).
+This policy is used in the authorization code flow when API Gateway is acting as an OAuth client. It redirects the resource owner's user agent to the Google authorization server, where they are asked to log in and grant access to the requested scope. It uses the **Redirect resource owner to Authz Server** filter.
 
 ### Google Access Calendar Resource sample policy
 
 Exposed on path: `/client/google/calendar`
 
-This policy is used to access the protected resource (Google Calendar). It uses the the **Retrieve OAuth Client Access Token from Token Storage** filter (see [Retrieve OAuth client access token from token storage](/docs/apigw_oauth/oauth_client_filters/oauth_client_get_token) to retrieve the access token received from Google from the API Gateway client access token store.
+This policy is used to access the protected resource (Google Calendar). It uses the the **Retrieve OAuth Client Access Token from Token Storage** filter to retrieve the access token received from Google from the API Gateway client access token store.
 
 ### Google Authorize Callback sample policy
 
 Exposed on path: `/client/google/callback`
 
-This policy is used when Google returns the authorization code to the callback URL listener on API Gateway. It uses the **Get OAuth Access Token** filter (see [Get OAuth client access token](/docs/apigw_oauth/oauth_client_filters/oauth_client_authorise)) to exchange the authorization code for an access token.
+This policy is used when Google returns the authorization code to the callback URL listener on API Gateway. It uses the **Get OAuth Access Token** filter to exchange the authorization code for an access token.
 
 ## Configure OAuth client application credentials
 
@@ -151,13 +151,13 @@ Select an OAuth flow type. The options are:
 For more details on the authentication flows that API Gateway supports, see [OAuth 2.0 authentication flows](/docs/apigw_oauth/oauth_flows/).
 
 **Redirect URL**:
-Enter the URL of the client's redirect endpoint (for example, `https://localhost:8088/oauth_callback`). This is the URL registered with the provider for receiving access codes via a redirect from the authorization server. This must match a listener configured on API Gateway (see [Create a callback URL listener](/docs/apigw_oauth/oauth_client/oauth_callback)).
+Enter the URL of the client's redirect endpoint (for example, `https://localhost:8088/oauth_callback`). This is the URL registered with the provider for receiving access codes via a redirect from the authorization server. This must match a listener configured on API Gateway (see [Create a callback URL listener](#create-a-callback-url-listener)).
 
 To configure client scopes, SAML bearer settings, JWT settings, or other advanced settings, click the appropriate tabs.
 
 #### Configure scopes
 
-You can configure the scopes that a client application can access on the **Scopes** tab. Click **Add** to add a scope. This is the set of scopes required by the application, and this list must match, or be a subset of, the required scopes registered with the OAuth provider. For more information on scopes, see [Manage OAuth scopes](/docs/apigw_oauth/gw_oauth_resource_server/oauth_scopes).
+You can configure the scopes that a client application can access on the **Scopes** tab. Click **Add** to add a scope. This is the set of scopes required by the application, and this list must match, or be a subset of, the required scopes registered with the OAuth provider. For more information on scopes, see [Manage OAuth scopes](/docs/apigw_oauth/gw_oauth_resource_server/#manage-oauth-scopes-in-the-client-application-registry).
 
 #### Configure SAML bearer
 
@@ -280,7 +280,7 @@ In the client demo configuration the callback policy first checks if the current
 
 ## Manage client access tokens
 
-You can configure client access token stores under the **Environment Configuration > Libraries > OAuth2 Stores** node in the Policy Studio tree. API Gateway can store client access tokens in its cache, in an embedded database, or in a relational database. For more information on the persistent storage options, see [Manage access tokens and authorization codes](/docs/apigw_oauth/gw_oauth_auth_server/oauth_access_tokens_auth_codes).
+You can configure client access token stores under the **Environment Configuration > Libraries > OAuth2 Stores** node in the Policy Studio tree. API Gateway can store client access tokens in its cache, in an embedded database, or in a relational database. For more information on the persistent storage options, see [Manage access tokens and authorization codes](/docs/apigw_oauth/gw_oauth_authz_server/#manage-access-tokens-and-authorization-codes).
 
 To store client access tokens in a relational database, create the supporting schema using the `oauth-client.sql` SQL scripts that you can find in the following directory:
 
@@ -297,7 +297,7 @@ OAuth client access tokens are purged on expiry. After a successful token reques
 You can configure a OAuth credential profile to set a Bearer token in the authorization header on API Gateway when calling a resource server. This example uses a call policy with **Connect to URL** filter to call the resource server.
 
 1. In the Policy Studio tree, click **External Connections > Client Credentials > OAuth2**.
-2. On the OAuth Credentials tab, double-click the credential profile you want to edit. To create a new credentials profile, see [Add application credentials](/docs/apigw_oauth/oauth_client/oauth_add_client_credentials).
+2. On the OAuth Credentials tab, double-click the credential profile you want to edit.
 3. Call the Resource server:
 
     * Select the filter **Connect to URL**.

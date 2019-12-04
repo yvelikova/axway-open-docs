@@ -42,9 +42,9 @@ Enter the attribute that stores the properties. Defaults to `oauth.state.map`.
 
 You can use the **Retrieve OAuth Client Access Token from Token Storage** filter to retrieve a stored access token from a client access token store.
 
-Tokens received from OAuth providers are stored in a **Client Access Token Store**. You can configure client access token stores under the **Environment Configuration > Libraries > OAuth2 Stores** node in the Policy Studio tree. Similar to an **Access Token Store**, this store can be backed by an API Gateway cache (default), a relational database, or an Apache Cassandra database. For more details on client access token stores, see [Manage client access tokens](/docs/apigw_oauth/oauth_client/oauth_client_access_tokens).
+Tokens received from OAuth providers are stored in a **Client Access Token Store**. You can configure client access token stores under the **Environment Configuration > Libraries > OAuth2 Stores** node in the Policy Studio tree. Similar to an **Access Token Store**, this store can be backed by an API Gateway cache (default), a relational database, or an Apache Cassandra database. For more details on client access token stores, see [Manage client access tokens](/docs/apigw_oauth/gw_oauth_client/#manage-client-access-tokens).
 
-A configured token store is associated with an OAuth provider (see [Add OAuth 2.0 provider](/docs/apigw_oauth/oauth_client/oauth_add_credential_provider)) and is shared by all client applications registered with that provider.
+A configured token store is associated with an OAuth provider and is shared by all client applications registered with that provider.
 
 These stored tokens can be retrieved by this filter by specifying the OAuth 2.0 provider profile (the client application registered with a provider) and the token key (for example, the authentication subject id of the current user). Stored tokens are indexed by the client ID of the the client application and the token key. If `authentication.subject.id` is not available, the client ID is used for both indexes. This is valid for grant types that treat the client application as the resource owner, that is, client credentials, JWT, and SAML (when no resource owner is specified).
 

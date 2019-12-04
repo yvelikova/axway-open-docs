@@ -14,3 +14,8 @@ API Gateway includes sample Jython scripts for all supported OAuth flows. For ex
 cd INSTALL_DIR/samples/scripts/oauth
 sh run.sh oauth/implicit_grant.py
 ```
+
+In addition to the following flows, API Gateway also supports:
+
+* Refresh token flow – After the client application has been authorized for access, it can use a refresh token to get a new access token. This is only done after the consumer already has received an access token using the authorization code grant or resource owner password credentials flow.
+* SAML assertion flow – The OAuth 2.0 **Access Token using SAML Assertion** filter enables an OAuth client to request an access token using a SAML assertion. This flow is used when a client wishes to utilize an existing trust relationship, expressed through the semantics of the SAML assertion, without a direct user approval step at the authorization server.

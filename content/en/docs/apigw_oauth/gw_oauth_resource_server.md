@@ -8,7 +8,7 @@ description: Configure API Gateway as an OAuth resource server using sample poli
 
 ## Resource server policies and filters
 
-API Gateway provides a sample Resource Service policy that is exposed by the OAuth 2.0 Services listener on the path `/api/oauth/protected`. The Resource Service sample policy contains a **Validate Access Token** filter (see [Validate access token](/docs/apigw_oauth/oauth_resource_server_filters/oauth_validate_token)), which is responsible for validating the access token.
+API Gateway provides a sample Resource Service policy that is exposed by the OAuth 2.0 Services listener on the path `/api/oauth/protected`. The Resource Service sample policy contains a **Validate Access Token** filter, which is responsible for validating the access token.
 
 ![Sample Resource Service policy](/Images/OAuth/sample_resource_service_policy.png)
 
@@ -18,7 +18,7 @@ The filter checks that the token has not expired and that the token scopes match
 
 The **Validate Access Token** filter does not take into account the access rights of the resource owner or the HTTP verb used, only that the token has the required access (scopes). These considerations are intentionally left open for policy developers to manage as per their application's requirements. For example, a successfully passing filter will set the `authentication.subject.id` to that of the resource owner who originally authorized the token, and a subsequent filter could decide if the resource owner has individual rights to the resource, or the resource can be modified to represent a user specific resource.
 
-Scopes defined in the filter can use selectors. This can be useful to tie the validation of a token to a request specific attribute, such as the HTTP verb. A filter scope defined as `${http.request.verb}` would ensure that the access token must have a scope called POST when the request is a POST, GET when the request is a GET, and so on. However, this type of configuration must be considered when defining the client application in the Client Application Registry, as to be able to request a token with scopes like POST and GET those scopes must be available to the application. For more information, see [Register and manage OAuth client applications](/docs/apigw_oauth/gw_oauth_resource_server/oauth_app_registration).
+Scopes defined in the filter can use selectors. This can be useful to tie the validation of a token to a request specific attribute, such as the HTTP verb. A filter scope defined as `${http.request.verb}` would ensure that the access token must have a scope called POST when the request is a POST, GET when the request is a GET, and so on. However, this type of configuration must be considered when defining the client application in the Client Application Registry, as to be able to request a token with scopes like POST and GET those scopes must be available to the application. For more information, see [Register and manage OAuth client applications](#register-and-manage-oauth-client-applications).
 
 ### Create custom OAuth protected resources
 
@@ -48,13 +48,13 @@ You can access the Client Application Registry web interface at the following UR
 https://localhost:8089
 ```
 
-{{< alert title="Note" color="primary" >}}You must perform the steps described in [Set up as an OAuth server](/docs/apigw_oauth/oauth_server_setup_part) (for example, enable the OAuth endpoints and import or migrate client applications) before you can manage client applications using the Client Application Registry.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You must perform the steps described in [Set up API Gateway OAuth server](/docs/apigw_oauth/gw_server/) (for example, enable the OAuth endpoints and import or migrate client applications) before you can manage client applications using the Client Application Registry.{{< /alert >}}
 
 Log in using the Client Application Registry user name and password.
 
 To register a new client application, click the **New application** button.
 
-To edit an existing client application, click the application name in the list of applications. You can add API keys, OAuth credentials, and OAuth scopes for the application. For more information on OAuth scopes, see [Manage OAuth scopes in the Client Application Registry](oauth_scopes).
+To edit an existing client application, click the application name in the list of applications. You can add API keys, OAuth credentials, and OAuth scopes for the application. For more information on OAuth scopes, see [Manage OAuth scopes in the Client Application Registry](#manage-oauth-scopes-in-the-client-application-registry).
 
 ![Edit application in Client Application Registry](/Images/OAuth/oauth_app_reg_ui_detail.png)
 
@@ -77,7 +77,7 @@ In API Gateway, a global OAuth scopes model is used:
 * Scopes can be dynamically defined and assigned to registered client applications in the Client Application Registry.
 * Supports default scopes, which are scopes assigned if no scopes are requested in the authorization request.
 
-{{< alert title="Note" color="primary" >}}This scopes model is also supported in API Manager. For more details, see [Scopes in API Manager](docs/apigw_oauth/apimgr_resource_server/apimgr_scopes).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}This scopes model is also supported in API Manager. For more details, see [Scopes in API Manager](/docs/apigw_oauth/apimgr_oauth_resource_server/#scopes-in-api-manager).{{< /alert >}}
 
 ### Manage OAuth scopes in the Client Application Registry
 

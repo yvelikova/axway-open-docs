@@ -1,10 +1,12 @@
 ---
 title: Implicit grant (or user agent) flow
-linkTitle: Implicit grant (or user agent) flow
+linkTitle: Implicit grant
 weight: 30
 date: 2019-11-18
-description: The implicit grant (user agent) authentication flow is used by client applications (consumers) residing on the user's device. This can be implemented in a browser using a scripting language such as JavaScript, or from a mobile device, or a desktop application. These consumers cannot keep the client secret confidential (application password or private key). 
+description: The implicit grant (user agent) authentication flow is used by client applications (consumers) residing on the user's device.
 ---
+
+This can be implemented in a browser using a scripting language such as JavaScript, or from a mobile device, or a desktop application. These consumers cannot keep the client secret confidential (application password or private key).
 
 The user agent flow is as follows:
 
@@ -32,11 +34,8 @@ Redirect the user to the authorization endpoint with the following parameters:
 
 The following is an example URL:
 
-``` {space="preserve"}
-    https://apigateway/oauth/authorize?client_id=SampleConfidentialApp
-     &response_type=token
-     &&redirect_uri=http%3A%2F%2Flocalhost%3A8090%2Fauth%2Fredirect.html
-     &scope=https%3A%2F%2Flocalhost%3A8090%2Fauth%2Fuserinfo.email
+```
+https://apigateway/oauth/authorize?client_id=SampleConfidentialApp&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%3A8090%2Fauth%2Fredirect.html&scope=https%3A%2F%2Flocalhost%3A8090%2Fauth%2Fuserinfo.email
 ```
 
 {{< alert title="Note" color="primary" >}}During this step the resource owner user must approve access for the application (web server) to access their protected resources, as shown in the following example window.{{< /alert >}}
@@ -47,10 +46,8 @@ The following is an example URL:
 
 The response to the above request is sent to the `redirect_uri`. If the user approves the access request, the response contains an access token and the state parameter (if included in the request). For example:
 
-``` {space="preserve"}
-    https://localhost/oauth_callback#access_token=19437jhj2781FQd44AzqT3Zg
-    &token_type=Bearer
-    &expires_in=3600
+```
+https://localhost/oauth_callback#access_token=19437jhj2781FQd44AzqT3Zg&token_type=Bearer&expires_in=3600
 ```
 
 If the user does not approve the request, the response contains an error message.
@@ -69,25 +66,24 @@ After the request is verified, the API Gateway sends a response to the client. T
 After the application obtains an access token, it can gain access to protected resources on the resource server by placing it in an `Authorization:Bearer`
 HTTP header:
 
-``` {space="preserve"}
-    GET /oauth/protected HTTP/1.1
-    Authorization:Bearer O91G451HZ0V83opz6udiSEjchPynd2Ss9
-    Host:apigateway.com
+```
+GET /oauth/protected HTTP/1.1
+Authorization:Bearer O91G451HZ0V83opz6udiSEjchPynd2Ss9
+Host:apigateway.com
 ```
 
 For example, the `curl`command to call a protected resource with an access token is as follows:
 
-``` {space="preserve"}
-    curl -H "Authorization:Bearer O91G451HZ0V83opz6udiSEjchPynd2Ss9" 
-    https://apigateway.com/oauth/protected
+```
+curl -H "Authorization:Bearer O91G451HZ0V83opz6udiSEjchPynd2Ss9" https://apigateway.com/oauth/protected
 ```
 
 ## Run the sample client
 
 The following Jython sample client creates and sends an authorization request for the implicit grant flow to the authorization server:
 
-``` {space="preserve"}
-    INSTALL_DIR/samples/scripts/oauth/implicit_grant.py
+```
+INSTALL_DIR/samples/scripts/oauth/implicit_grant.py
 ```
 
 To run the sample, perform the following steps:
@@ -95,50 +91,43 @@ To run the sample, perform the following steps:
 1. Open a shell prompt at the `INSTALL_DIR/samples/scripts` directory.
 2. Execute the following command:
 
-    ``` {space="preserve"}
-    > run oauth/implicit_grant.py
+    ```
+    run oauth/implicit_grant.py
     ```
 
     The script outputs the following:
 
-    ``` {space="preserve"}
-    > Go to the URL here:
-            http://127.0.0.1:8080/api/oauth/authorize?client_id=SampleConfidentialApp
-            &response_type=token
-            &scope=https%3A%2F%2Flocalhost%3A8090%2Fauth%2Fuserinfo.email
-            &redirect_uri=https%3A%2F%2Flocalhost%2Foauth_callback
-            &state=1956901292
-            Enter Access Token code in dialog
+    ```
+    Go to the URL here:
+    http://127.0.0.1:8080/api/oauth/authorize?client_id=SampleConfidentialApp&response_type=token&scope=https%3A%2F%2Flocalhost%3A8090%2Fauth%2Fuserinfo.email&redirect_uri=https%3A%2F%2Flocalhost%2Foauth_callback&state=1956901292
+    Enter Access Token code in dialog
     ```
 
     After the resource owner has authorized and approved access to the application, the authorization server redirects to the redirection URI a fragment containing the access token. For example:
 
-    ``` {space="preserve"}
-            https://localhost/oauth_callback#
-            access_token=4owzGyokzLLQB5FH4tOMk7Eqf1wqYfENEDXZ1mGvN7u7a2Xexy2OU9
-            &expires_in=3599
-            &state=1956901292
-            &token_type=Bearer
+    ```
+    https://localhost/oauth_callback#access_token=4owzGyokzLLQB5FH4tOMk7Eqf1wqYfENEDXZ1mGvN7u7a2Xexy2OU9&expires_in=3599
+    &state=1956901292&token_type=Bearer
     ```
 
     In this example, the access token is:
 
-    ``` {space="preserve"}
-        4owzGyokzLLQB5FH4tOMk7Eqf1wqYfENEDXZ1mGvN7u7a2Xexy2OU9
+    ```
+    4owzGyokzLLQB5FH4tOMk7Eqf1wqYfENEDXZ1mGvN7u7a2Xexy2OU9
     ```
 
 3. Enter this value into the **Enter Access Token from fragment** dialog.
+
     ![Entering OAuth 2.0 Access Token](/Images/OAuth/oauth_user_agent_token.png)
 
     The script attempts to access the protected resource using the access token. For example:
 
-``` {space="preserve"}
-**********************ACCESS TOKEN RESPONSE******************************
-        Access token received from authorization server 4owzGyokzLLQB5FH4tOMk7Eqf1wqYfEN
-        EDXZ1mGvN7u7a2Xexy2OU9
-        ******************************************************************************
-        Now we can try access the protected resource using the access token
-        Executing get request on the protected url
-        Response from protected resource request is:200
-        <html>Congrats! You've hit an OAuth protected resource</html>
-```
+    ```
+    **********************ACCESS TOKEN RESPONSE******************************
+    Access token received from authorization server 4owzGyokzLLQB5FH4tOMk7Eqf1wqYfENEDXZ1mGvN7u7a2Xexy2OU9
+    ******************************************************************************
+    Now we can try access the protected resource using the access token
+    Executing get request on the protected url
+    Response from protected resource request is:200
+    <html>Congrats! You've hit an OAuth protected resource</html>
+    ```

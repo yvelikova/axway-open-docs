@@ -1,16 +1,18 @@
 ---
 title: Revoke token flow
-linkTitle: Revoke token flow
+linkTitle: Revoke token
 weight: 80
 date: 2019-11-18
-description: In some cases a user might wish to revoke access given to an application. An access token can be revoked by calling the API Gateway revoke service and providing the access token to be revoked. A revoke token request causes the removal of the client permissions associated with the particular token to access the end-user's protected resources.
+description:  A revoke token request causes the removal of the client application permissions associated with the particular token to access the end-user's protected resources.
 ---
+
+In some cases a user might wish to revoke access given to an application. An access token can be revoked by calling the API Gateway revoke service and providing the access token to be revoked.
 
 ![OAuth 2.0 Revoke Token](/Images/OAuth/APIgw_Revoke_token.png)
 
 The endpoint for revoke token requests is as follows:
 
-``` {space="preserve"}
+```
 https://HOST:8089/api/oauth/revoke
 ```
 
@@ -20,31 +22,31 @@ with the following parameters:
 | Parameter         | Description                                                                                      |
 |-------------------|--------------------------------------------------------------------------------------------------|
 | `token`           | Required. A token to be revoked (for example, `4eclEUX1N6oVIOoZBbaDTI977SV3T9KqJ3ayOvs4gqhGA4`). |
-| `token_type_hint` | Optional. A hint specifying the token type. For example, `access_token` or `refresh_token`.                                                              |
+| `token_type_hint` | Optional. A hint specifying the token type. For example, `access_token` or `refresh_token`. |
 
 The following is an example POST request:
 
-``` {space="preserve"}
-    POST /api/oauth/revoke HTTP/1.1
-    Content-Type:application/x-www-form-urlencoded; charset=UTF-8
-    Host:192.168.0.48:8080
-    Authorization:Basic U2FtcGxlQ29uZmlkZW50aWFsQXBwOjY4MDhkNGI2LWVmMDktNGIwZC04ZjI4LT
-    NiMDVkYTljNDhlYw==token=4eclEUX1N6oVIOoZBbaDTI977SV3T9KqJ3ayOvs4gqhGA4
-    &token_type_hint=refresh_token
+```
+POST /api/oauth/revoke HTTP/1.1
+Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+Host:192.168.0.48:8080
+Authorization:Basic U2FtcGxlQ29uZmlkZW50aWFsQXBwOjY4MDhkNGI2LWVmMDktNGIwZC04ZjI4LT
+NiMDVkYTljNDhlYw==token=4eclEUX1N6oVIOoZBbaDTI977SV3T9KqJ3ayOvs4gqhGA4
+&token_type_hint=refresh_token
 ```
 
 ## Run the sample client
 
 The following Jython sample client creates a token revoke request to the authorization server:
 
-``` {space="preserve"}
-    INSTALL_DIR/samples/scripts/oauth/revoke_token.py
+```
+INSTALL_DIR/samples/scripts/oauth/revoke_token.py
 ```
 
 To run the sample, open a shell prompt at `INSTALL_DIR/samples/scripts`, and execute the following command:
 
-``` {space="preserve"}
-    > run oauth/revoke_token.py
+```
+run oauth/revoke_token.py
 ```
 
 Paste the value associated with the token in the dialog:
@@ -76,9 +78,9 @@ The following HTTP status response codes are returned:
 
 The following is an example response:
 
-``` {space="preserve"}
-    Token to be revoked:3eXnUZzkODNGb9D94Qk5XhiV4W4gu9muZ56VAYoZiot4WNhIZ72D3
-    Revoking token...............
-    Response from revoke token request is:200
-    Successfully revoked token
+```
+Token to be revoked:3eXnUZzkODNGb9D94Qk5XhiV4W4gu9muZ56VAYoZiot4WNhIZ72D3
+Revoking token...............
+Response from revoke token request is:200
+Successfully revoked token
 ```

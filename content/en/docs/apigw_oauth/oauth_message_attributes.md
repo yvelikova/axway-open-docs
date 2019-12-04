@@ -17,13 +17,11 @@ Most of the OAuth 2.0 server policy filters in the API Gateway generate message 
 * `oauth.client.details`
 * `scope` attributes
 
-For more details on selectors, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
-
-### accesstoken methods
+### `accesstoken` methods
 
 The following methods are available to call on the `accesstoken` message attribute:
 
-``` {space="preserve"}
+```
 ${accesstoken.getValue()}
 ${accesstoken.getExpiration()}
 ${accesstoken.getExpiresIn()}
@@ -41,7 +39,7 @@ ${accesstoken.getAdditionalInformation()}
 
 The following example shows output from querying each of the `accesstoken` methods:
 
-``` {space="preserve"}
+```
 so0HlJYASrnXqn2fL2VWgiunaLfSBhWv6W7JMbmOa131HoQzZB1rNJ
 Fri Oct 05 17:16:54 IST 2012
 3599
@@ -57,11 +55,11 @@ https://localhost:8090/auth/userinfo.email
 {department=engineering}
 ```
 
-### accesstoken.authn methods
+### `accesstoken.authn` methods
 
 The following methods are available to call on the `accesstoken.authn` message attribute:
 
-``` {space="preserve"}
+```
 ${accesstoken.authn.getUserAuthentication()}
 ${accesstoken.authn.getAuthorizationRequest().getScope()}
 ${accesstoken.authn.getAuthorizationRequest().getClientId()}
@@ -72,23 +70,20 @@ ${accesstoken.authn.getAuthorizationRequest().getParameters()}
 
 The following example shows output from querying each of the `accesstoken.authn` methods:
 
-``` {space="preserve"}
+```
 admin
 [https://localhost:8090/auth/userinfo.email]
 SampleConfidentialApp
 343dqak32ksla
 https://localhost/oauth_callback
-{client_secret=6808d4b6-ef09-4b0d-8f28-3b05da9c48ec, 
-  scope=https://localhost:8090/auth/userinfo.email, grant_type=authorization_code, 
-  redirect_uri=https://localhost/oauth_callback, state=null, 
-  code=FOT4nudbglQouujRl8oH3EOMzaOlQP, client_id=SampleConfidentialApp}
+{client_secret=6808d4b6-ef09-4b0d-8f28-3b05da9c48ec, scope=https://localhost:8090/auth/userinfo.email, grant_type=authorization_code, redirect_uri=https://localhost/oauth_callback, state=null,   code=FOT4nudbglQouujRl8oH3EOMzaOlQP, client_id=SampleConfidentialApp}
 ```
 
-### authzcode methods
+### `authzcode` methods
 
 The following methods are available to call on the `authzcode` message attribute:
 
-``` {space="preserve"}
+```
 ${authzcode.getCode()}
 ${authzcode.getState()}
 ${authzcode.getApplicationName()}
@@ -102,7 +97,7 @@ ${authzcode.getAdditionalInformation()}
 
 The following example shows output from querying each of the `authzcode` methods:
 
-``` {space="preserve"}
+```
 F8aHby7zctNRknmWlp3voe61H20Md1
 sds12dsd3343ddsd
 SampleConfidentialApp
@@ -114,11 +109,11 @@ admin
 {costunit=hr}
 ```
 
-### oauth.client.details methods
+### `oauth.client.details` methods
 
 The following methods are available to call on the `oauth.client.details` message attribute:
 
-``` {space="preserve"}
+```
 ${oauth.client.details.getClientType()}
 ${oauth.client.details.getApplication()}
 ${oauth.client.details.getBase64EncodedCert()}
@@ -139,7 +134,7 @@ ${oauth.client.details.isEnabled()}
 
 The following example shows output from querying each of the `oauth.client.details` methods:
 
-``` {space="preserve"}
+```
 confidential
 com.vordel.common.apiserver.model.Application@126c334d
 -----BEGIN CERTIFICATE-----MIICwzCCAasCBgE6HBsdpzANBg ......END CERTIFICATE
@@ -154,8 +149,7 @@ d0e8952f-cefe-18e1-b2bf-8accdc456933
 796501dd-7df5-4a94-a111-146c7bbab22a
 [https://localhost:8088/redirect]
 [com.vordel.common.apiserver.discovery.model.OAuthAppScope@6a25ce50]
-[com.vordel.common.apiserver.discovery.model.OAuthAppScope@6a25ce50, 
-  com.vordel.common.apiserver.discovery.model.OAuthAppScope@580c1ca1]
+[com.vordel.common.apiserver.discovery.model.OAuthAppScope@6a25ce50,  com.vordel.common.apiserver.discovery.model.OAuthAppScope@580c1ca1]
 true
 ```
 
@@ -163,18 +157,14 @@ true
 
 If you add additional access token parameters to the OAuth **Access Token Info** filter, you can return a lot of additional information about the token. For example:
 
-``` {space="preserve"}
+```
 {
   "audience" :"SampleConfidentialApp",
   "user_id" :"admin",
   "scope" :"https://localhost:8090/auth/userinfo.email",
   "expires_in" :3567,
   "Access Token Expiry Date" :"Wed Aug 15 11:19:19 IST 2012",
-  "Authentication parameters" :"{username=admin, 
-client_secret=6808d4b6-ef09-4b0d-8f28-3b05da9c48ec, 
-scope=https://localhost:8090/auth/userinfo.email, grant_type=password, 
-redirect_uri=null, state=null, client_id=SampleConfidentialApp, 
-password=xxxxxxxx}",
+  "Authentication parameters" :"{username=admin, client_secret=6808d4b6-ef09-4b0d-8f28-3b05da9c48ec, scope=https://localhost:8090/auth/userinfo.email, grant_type=password, redirect_uri=null, state=null, client_id=SampleConfidentialApp, password=xxxxxxxx}",
   "Access Token Type:" :"Bearer"
 ```
 
@@ -185,7 +175,7 @@ You also have the added flexibility to add extra name/value pair settings to acc
 You can then update the **Access Token Info**
 filter to add a name/value pair using a selector to get the following value:
 
-``` {space="preserve"}
+```
 Department/${accesstoken.getAdditionalInformation().get("Department")}
 ```
 
@@ -195,22 +185,19 @@ For example:
 
 Then the JSON response is as follows:
 
-``` {space="preserve"}
-    {
-      "audience" :"SampleConfidentialApp",
-      "user_id" :"SampleConfidentialApp",
-      "scope" :"https://localhost:8090/auth/userinfo.email",
-      "expires_in" :3583,
-      "Access Token Type:" :"Bearer",
-      "Authentication parameters" :"{client_secret=6808d4b6-ef09-4b0d-8f28-3b05da9c48ec, 
-    scope=https://localhost:8090/auth/userinfo.email, grant_type=client_credentials, 
-    redirect_uri=null, state=null, client_id=SampleConfidentialApp}",
-      "Department" :"Engineering",
-      "Access Token Expiry Date" :"Wed Aug 15 12:10:57 IST 2012"
+```
+{
+  "audience" :"SampleConfidentialApp",
+  "user_id" :"SampleConfidentialApp",
+  "scope" :"https://localhost:8090/auth/userinfo.email",
+  "expires_in" :3583,
+  "Access Token Type:" :"Bearer",
+  "Authentication parameters" :"{client_secret=6808d4b6-ef09-4b0d-8f28-3b05da9c48ec, scope=https://localhost:8090/auth/userinfo.email, grant_type=client_credentials, redirect_uri=null, state=null, client_id=SampleConfidentialApp}",
+  "Department" :"Engineering",
+  "Access Token Expiry Date" :"Wed Aug 15 12:10:57 IST 2012"
 ```
 
-You can also use API Gateway selector syntax when storing additional information with the token. For more details on selectors, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+You can also use API Gateway selector syntax when storing additional information with the token.
 
 ### OAuth scope attributes
 
@@ -219,19 +206,17 @@ and `resource.WRITE`):
 
 * `scopes.in.token` Stores the OAuth scopes that have been sent in to the authorization server when requesting the access token.
 * `scopes.for.token` Stores the OAuth scopes that have been granted for the access token request.
-* `scopes.required` Used by the **Validate Access Token** filter only. If there is a failure accessing an OAuth resource due to incorrect scopes in the access token, an `insufficent_scope` exception is sent back in the `WWW-Authenticate` header. When **Get scopes by calling a policy** is set, the configured policy can set the `scopes.required` message attribute. This enables the OAuth resource server to properly interact with client applications and provide useful error response messages. For example:
+* `scopes.required` Used by the **Validate Access Token** filter only. If there is a failure accessing an OAuth resource due to incorrect scopes in the access token, an `insufficient_scope` exception is sent back in the `WWW-Authenticate` header. When **Get scopes by calling a policy** is set, the configured policy can set the `scopes.required` message attribute. This enables the OAuth resource server to properly interact with client applications and provide useful error response messages. For example:
 
-``` {space="preserve"}
-    WWW-Authenticate  Bearer realm="DefaultRealm",
-    error="insufficient_scope",
-    error_description="scope(s) associated with access token are not valid to access this resource", 
-    scope="Scopes must match All of these scopes:https://localhost:8090/auth/user.photos 
-     https://localhost:8090/auth/userinfo.email"
+```
+WWW-Authenticate  Bearer realm="DefaultRealm",
+error="insufficient_scope",
+error_description="scope(s) associated with access token are not valid to access this resource", scope="Scopes must match All of these scopes:https://localhost:8090/auth/user.photos https://localhost:8090/auth/userinfo.email"
 ```
 
 ### OAuth SAML bearer attributes
 
-The message attribute `oauth.saml.doc` is set on the message whiteboard by the **Access Token using SAML Assertion** filter. This is a W3C DOM document view of the SAML bearer assertion that API Gateway receives from an OAuth client application. The document in this form can be verified by other filters, but in an OAuth context the **XML Signature Verification** is typically used. For more information, see the **XML Signature Verification** filter in the [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
+The message attribute `oauth.saml.doc` is set on the message whiteboard by the **Access Token using SAML Assertion** filter. This is a W3C DOM document view of the SAML bearer assertion that API Gateway receives from an OAuth client application. The document in this form can be verified by other filters, but in an OAuth context the **XML Signature Verification** is typically used.
 
 ## OAuth 2.0 client message attributes
 
@@ -240,13 +225,11 @@ The OAuth 2.0 client policy filters in API Gateway generate message attributes t
 * `oauth.client.accesstoken`
 * `oauth.client.application`
 
-For more details on selectors, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
-
-### oauth.client.accesstoken methods
+### `oauth.client.accesstoken` methods
 
 The following methods are available to call on the `oauth.client.accesstoken` message attribute:
 
-``` {space="preserve"}
+```
 ${oauth.client.accesstoken.getAuthentication()}
 ${oauth.client.accesstoken.getClientId()}
 ${oauth.client.accesstoken.getAccessToken()}
@@ -262,25 +245,25 @@ ${oauth.client.accesstoken.getTokenType()}
 
 The following example shows output from querying each of the `oauth.client.accesstoken` methods:
 
-``` {space="preserve"}
+```
 regadmin
- ClientConfidentialApp
- SIDnxbYabJwRZpKexUx6R3dTEwKOj0afQo7sr2DrDYuJaVCAb9xvPBk
- Thu Mar 06 12:34:44 GMT 2014
- false
- true
- GokdAuu706ydZtNkl92UEPmnJRNmVBJPiPVGGrEwXKz5Uh
- 3599
- Thu Mar 06 13:34:43 GMT 2014
- {state=9a388d14-a0e9-4b32-9003-e322c93279dd, scope=resource.WRITE}
+ClientConfidentialApp
+SIDnxbYabJwRZpKexUx6R3dTEwKOj0afQo7sr2DrDYuJaVCAb9xvPBk
+Thu Mar 06 12:34:44 GMT 2014
+false
+true
+GokdAuu706ydZtNkl92UEPmnJRNmVBJPiPVGGrEwXKz5Uh
+3599
+Thu Mar 06 13:34:43 GMT 2014
+{state=9a388d14-a0e9-4b32-9003-e322c93279dd, scope=resource.WRITE}
 ```
 
-### oauth.client.application methods
+### `oauth.client.application` methods
 
 This attribute represents the provider profile selected in the filter. It contains the provider details, such as token and authorization endpoints, and the token store, as well as the specifics of the client application including the client ID and secret. The following methods are available to call on the `oauth.client.application`
 message attribute:
 
-``` {space="preserve"}
+```
 ${oauth.client.application.getTokenURL()}
 ${oauth.client.application.getAuthentication()}
 ${oauth.client.application.getProviderName()}
@@ -301,7 +284,7 @@ ${oauth.client.application.getProvider()}
 
 The following example shows output from querying each of the `oauth.client.application` methods:
 
-``` {space="preserve"}
+```
 https://127.0.0.1:8089/api/oauth/token
 regadmin
 API Gateway
