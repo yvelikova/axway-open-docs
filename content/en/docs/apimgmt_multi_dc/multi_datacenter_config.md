@@ -220,27 +220,33 @@ On the first API Gateway host in DC1, perform the following steps:
 5. Before starting the API Gateway instance, add the Cassandra host names and IP addresses as environment variables in your `envSettings.props` file located in `INSTALL_DIR/apigateway/conf`. For example:
 
     ```
-    env.CASS.NAME1=Host 10.1\
-    env.CASS.NAME2=Host 10.2\
-    env.CASS.NAME3=Host 10.3\
-    env.CASS.HOST1=192.168.10.1\
-    env.CASS.HOST2=192.168.10.2\
+    env.CASS.NAME1=Host 10.1
+    env.CASS.NAME2=Host 10.2
+    env.CASS.NAME3=Host 10.3
+    env.CASS.HOST1=192.168.10.1
+    env.CASS.HOST2=192.168.10.2
     env.CASS.HOST3=192.168.10.3
+    env.CASS.REPL.FACTOR=DC1:3;DC2:3;
     ```
 
 6. Start the API Gateway using the `startinstance` command in `INSTALL_DIR/apigateway/posix/bin`.
 7. Configure the API Gateway to connect to the Cassandra cluster. In the Policy Studio tree, select **Server Settings > Cassandra**, and configure the following:
-    * **Keyspace**: Name of the API Gateway Cassandra keyspace to be created when deployed. Defaults to `x${DOMAINID}_${GROUPID}`.
+    * **Keyspace**: Name of the API Gateway Cassandra keyspace to be created when deployed. Defaults to `x${DOMAINID}_${GROUPID}`
+    * **Initial replication strategy**: Network Topology Strategy
+    * **Initial replication**: ${env.CASS.REPL.FACTOR}
     * **Hosts**: Add the environment variable settings that you set in `envSettings.props`. For example:
         ![Set Cassandra hosts using environment variables](/Images/APIGateway/cassandra_multi-dc_hosts.png)
     * **Authentication**: Enter the Cassandra user name and password that you configured earlier. See [Configure the default system_auth keyspace](#configure-the-default-system-auth-keyspace).
     * **Security**: Select **Enable SSL**, and select a trusted certificate and client certificate. For example:
 8. Select **File > Configure API Manager** to configure API Manager settings.
-9. Click **Deploy** in the toolbar to deploy the updated configuration.
-10. For all KPS collections, update the read and write consistency levels to **LOCAL_QUORUM**. For example, in the Policy Studio tree, select **Environment Configuration > Key Property Stores > API Server > Data Sources > Cassandra Storage**, and click **Edit**.
-11. Repeat this step for each KPS collection using Cassandra (for example, **Key Property Stores > OAuth** and **API Portal** for API Manager). This also applies to any custom KPS collections that you have created.
+9. For all KPS collections, update the read and write consistency levels to **LOCAL_QUORUM**. For example, in the Policy Studio tree, select **Environment Configuration > Key Property Stores > API Server > Data Sources > Cassandra Storage**, and click **Edit**.
+10. Repeat this step for each KPS collection using Cassandra (for example, **Key Property Stores > OAuth** and **API Portal** for API Manager). This also applies to any custom KPS collections that you have created.
+11. Click **Deploy** in the toolbar to deploy the updated configuration.
+{{< alert title="Note" color="primary" >}}Policy Studio may need a longer transaction timeout in the Admin Nodemanager server settings than the default time (4 minutes), especially for the first deploy that creates the API Manager Cassandra tables. In this case, it is recommended to increase the timeout to at least 10 minutes. See the [API Gateway Administrator Guide](/docs/apimgr_admin/) for more details. If Policy Studio shows a timeout error, the back-end would still complete and the success status can be verified in the API Manager instance trace file.{{< /alert >}}
 
 ### Update the Cassandra replication settings for the new API Gateway keyspace
+
+{{< alert title="Note" color="primary" >}}This set up is only needed if the initial deployment did not set the multi-datacenter replication values.{{< /alert >}}
 
 When the new API Gateway keyspace has been deployed, you must update its replication strategy and replication factor in the same way as the default `system_auth` keyspace. This time instead of the `system_auth` keyspace name, use the name of the newly created keyspace.
 
@@ -281,6 +287,7 @@ env.CASS.NAME3=Host 10.3
 env.CASS.HOST1=192.168.10.1
 env.CASS.HOST2=192.168.10.2
 env.CASS.HOST3=192.168.10.3
+env.CASS.REPL.FACTOR=DC1:3;DC2:3;
 ```
 
 ```
@@ -301,6 +308,7 @@ env.CASS.NAME3=Host 20.3
 env.CASS.HOST1=192.168.20.1
 env.CASS.HOST2=192.168.20.2
 env.CASS.HOST3=192.168.20.3
+env.CASS.REPL.FACTOR=DC1:3;DC2:3;
 ```
 
 ```

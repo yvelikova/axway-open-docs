@@ -1,9 +1,9 @@
 {
-    "title": "Secure API Portal",
-    "linkTitle": "Secure API Portal",
-    "weight": "8",
-    "date": "2019-08-09",
-    "description": "Secure and harden your API Portal environment after installation."
+"title": "Secure API Portal",
+"linkTitle": "Secure API Portal",
+"weight": "8",
+"date": "2019-08-09",
+"description": "Secure and harden your API Portal environment after installation."
 }
 
 Perform the following steps after installation to ensure that your API Portal environment is secure from internal and external threats:
@@ -27,23 +27,27 @@ For more details on API Portal certificate management, see the [API Management 
 
 On an API Portal software installation, the Apache web server has TLS versions 1.0 and 1.1 enabled in addition to the TSL 1.2 that API Portal uses. Because TLS 1.0 and 1.1 have security vulnerabilities, it is recommended to disable them.
 
-1. To check which TLS versions are enabled, scan your API Portal port: 
+1. To check which TLS versions are enabled, scan your API Portal port:
+
     ```
     sslscan <API Portal IP address>:<your https port>
     ```
-   By default, API Portal uses port `443` for secure connections.
+
+    By default, API Portal uses port `443` for secure connections.
 2. To disable TLS 1.0. and 1.1, open the following file: `/etc/httpd/conf.d/apiportal.conf`
 3. Add the following SSL protocol definition for the secure connection:
-   ```
-   <VirtualHost *:443>
+
+    ```
+    <VirtualHost *:443>
        SSLEngine on
        SSLCertificateFile "/etc/httpd/conf/server.crt"
        SSLCertificateKeyFile "/etc/httpd/conf/server.key"
        SSLProtocol TLSv1.2
        Header always append X-Frame-Options SAMEORIGIN
         ...
-   </VirtualHost>
-   ```
+    </VirtualHost>
+    ```
+
 4. Restart Apache.
 5. Run the `sslscan` again on your API Portal port to check that TLS 1.0 and 1.1 have been disabled.
 
@@ -79,6 +83,7 @@ To protect API Portal and Joomla! from brute force attacks, you can limit the nu
 6. Click **Yes** to enable locking by IP address. When this setting is enabled login attempts are blocked from the same IP address for the lock time specified even if correct user credentials are entered.
 
     You can enable user account locking and IP address locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts, `UserA` will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, `UserB`) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
+
 7. Click **Save**.
 
 ## Add trusted OAuth hosts
@@ -229,20 +234,58 @@ It is best practice to reject requests containing unexpected or missing content 
 
 The Content-Type header specifies what media type is being sent with the request. If the Content-Type header is missing, empty, or unexpected the server must refuse to serve the request with an appropriate response, as allowing the request might lead to Cross-Site Request Forgery (CSRF) or even remote code execution (RCE).
 
-Add the configuration in your `.htaccess` file, virtual host file, or global web server configuration. The following code snippet gives an example for a server processing only `application/json` and `application/xml` data.
+Add the configuration in your `.htaccess` file, virtual host file, or global web server configuration. The following code snippet gives an example for a server processing only `application/json` and `application/x-www-form-urlencoded` data.
 
 ```
 # Check if the Content-Type header is missing or empty
 RewriteCond %{HTTP:Content-Type} ^$
 # AND the method type is POST, PUT or PATCH
-RewriteCond %{REQUEST_METHOD} ^(POST|PUT|PATCH) [OR]
+RewriteCond %{REQUEST_METHOD} ^(POST|PUT|PATCH)
+# Then redirect with response 415 Unsupported Media Type and stop processing other conditions
+RewriteRule ^ - [R=415,L]
 # OR Content-Type header is present
 RewriteCond %{HTTP:Content-Type} !^$
 # AND Content-Type value doesn't match one of the following, case-insensitive
-RewriteCond %{HTTP:Content-Type} !^(application/json|application/xml) [NC]
+RewriteCond %{HTTP:Content-Type} !^(application/json|application/x-www-form-urlencoded) [NC]
 # Then redirect with response 415 Unsupported Media Type and stop processing other conditions
 RewriteRule ^ - [R=415,L]
 ```
+
+## Allow requests from only used HTTP methods
+
+It is best practice to reject requests from HTTP methods that are not being used with the response `405 Method Not Allowed`. For example, allowing requests from the `TRACE` method might result in Cross-Site Tracing (XST) attacks. Similarly, allowing requests from `PUT` and `DELETE` methods might expose vulnerabilities to the file system.
+
+`GET` and `POST` requests are mandatory for API Portal. You must also allow requests from the HTTP methods your listed APIs support, so users can send requests to them from the Try It page.
+
+Add this configuration in your `.htaccess` or virtual host file. The following example allows only `GET`, `POST`, and `PUT` methods:
+
+```
+# Disable TRACE method
+TraceEnable off
+
+# Enable GET, POST and PUT methods. Must be separated by a space character.
+AllowMethods GET POST PUT
+```
+
+## Protect the integrity of the logging system
+
+You must ensure that security logs are protected against tampering, repudiation, and unauthorized access or modification. Store logs in a secure and tamper-proof location so that the logs can be used as evidence, for example, in any form of legal proceedings.
+
+To protect the integrity of the application generated logs:
+
+* Store logs on write-once media
+* Forward a copy of the logs to a centralized security information and event management (SIEM) system
+* Generate message digests for each log file
+
+This approach ensures that you can detect and prevent tampering.
+
+API Portal logs are located in the `logs` folder in the API Portal root directory.
+
+## Develop a log retention policy and archival procedures
+
+We recommend that you develop a log retention policy to identify storage requirements for device logs, and appropriate archival procedures to ensure that the audit logs are available for a security response in the case of an incident or investigation.
+
+The audit logs must be collected for the last 30 days in easily accessible storage media. Older logs should be archived in a protected storage and should be accessible in the future as required for incidents or investigations.
 
 ## Where to go next
 

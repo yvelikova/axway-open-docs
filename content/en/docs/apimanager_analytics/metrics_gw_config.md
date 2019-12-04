@@ -6,9 +6,7 @@ date: 2019-10-07
 description: Configure an API Gateway instance and Node Manager to store metrics on historic traffic in a relational database.
 ---
 
-<!-- TODO replace with Admin Guide version -->
-
- When API Gateway is configured to store metrics in a relational databse, you can configure monitoring in API Gateway Analytics or API Manager to view data stored in the metrics database, or write custom SQL queries to retrieve metrics data as required.
+ When API Gateway is configured to store metrics in a relational database, you can configure monitoring in API Gateway Analytics or API Manager to view data stored in the metrics database, or write custom SQL queries to retrieve metrics data as required.
 
 {{< alert title="Note" color="primary" >}}This topic explains how to configure API Gateway with a metrics database. This topic assumes that you have already created your metrics database using the steps described in
 [Install and configure a metrics database](/docs/apigtw_install/metrics_db_install/).{{< /alert >}}
@@ -36,7 +34,7 @@ To configure the API Gateway connection to the metrics database, perform the fol
 3. Configure the database connection to point to your metrics database.
 4. Verify that your database connection is configured correctly by clicking the **Test Connection** button on the **Configure Database Connection** dialog.
 
-You can troubleshoot your database connection by viewing the contents of your server `.trc` file in the `INSTALL_DIR/apigateway/trace` directory. For more details, see [Configure API Gateway diagnostic trace](/csh?context=106&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+You can troubleshoot your database connection by viewing the contents of your server `.trc` file in the `INSTALL_DIR/apigateway/trace` directory. For more details, see [Configure API Gateway diagnostic trace](/docs/apigtw_admin/tracing/).
 
 ## Configure transaction audit logging to the metrics database
 
@@ -136,7 +134,7 @@ The `managedomain` metrics options are described as follows:
 
 {{< alert title="Note" color="primary" >}}When the `managedomain` command has finished, you must restart the Node Manager. {{< /alert >}}
 
-For more details on `managedomain`, see the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+For more details on `managedomain`, see the [API Gateway Administrator Guide](/docs/apigtw_admin/).
 
 ## Configure additional options for event log processing in the Node Manager
 
@@ -173,4 +171,4 @@ For example, perform the following steps:
 
 For details on how to view monitoring metrics in API Manager, see the [API Manager User Guide](/docs/apimgr_admin/).
 
-For details on how to view monitoring metrics in API Gateway Analytics, see the [API Gateway Analytics User Guide](docs/apimanager_analytics/).
+For details on how to view monitoring metrics in API Gateway Analytics, see [Monitor traffic](/docs/apimanager_analytics/analytics_start/#monitor-traffic).
