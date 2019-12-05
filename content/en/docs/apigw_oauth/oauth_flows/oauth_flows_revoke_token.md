@@ -1,10 +1,10 @@
----
-title: Revoke token flow
-linkTitle: Revoke token
-weight: 80
-date: 2019-11-18
-description:  A revoke token request causes the removal of the client application permissions associated with the particular token to access the end-user's protected resources.
----
+{
+"title": "Revoke token flow",
+"linkTitle": "Revoke token",
+"weight": 80,
+"date": "2019-11-18",
+"description": "A revoke token request causes the removal of the client application permissions associated with the particular token to access the end-user's protected resources."
+}
 
 In some cases a user might wish to revoke access given to an application. An access token can be revoked by calling the API Gateway revoke service and providing the access token to be revoked.
 
@@ -57,11 +57,13 @@ Select the type of token hint in the next dialog:
 
 ![Providing a token hint](/Images/OAuth/oauth_revoke_token_hint.png)
 
-If you select `none`, no `token_type_hint`parameter is specified in the POST request. If you select `access_token`, the POST request contains `token_type_hint=access_token`. If you select `refresh_token`, the POST request contains `token_type_hint=refresh_token`.
+If you select `none`, no `token_type_hint` parameter is specified in the POST request. If you select `access_token`, the POST request contains `token_type_hint=access_token`. If you select `refresh_token`, the POST request contains `token_type_hint=refresh_token`.
 
 When the authorization server receives the token revocation request, it first validates the client credentials and verifies whether the client is authorized to revoke the particular token based on the client identity.
 
-{{< alert title="Note" color="primary" >}}Only the client that was issued the token can revoke it.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}
+Only the client that was issued the token can revoke it.
+{{< /alert >}}
 
 The authorization server decides whether the token is an access token or a refresh token:
 

@@ -6,15 +6,13 @@ date: 2019-11-18
 description: Configure API Gateway as an OpenID Connect identity provider (IdP) and as an OpenID Connect relying party (RP).
 ---
 
-## Introduction to API Gateway OpenID Connect
+The OpenID Connect 1.0 (OID) protocol is a simple identity layer on top of the OAuth 2.0 protocol. OAuth 2.0 provides an access authorization delegation protocol, and OpenID Connect leverages OAuth features to allow authorized access to user authentication session APIs in an interoperable manner. OpenID Connect uses a REST interface and simple JSON assertions called JSON Web Tokens (JWTs) to provide identifying *claims* about users. The protocol is designed to be API-friendly and adaptable to multiple formats such as web and mobile, and it has built-in provisions for robust signing and encryption.
 
- The OpenID Connect 1.0 (OID) protocol is a simple identity layer on top of the OAuth 2.0 protocol. OAuth 2.0 provides an access authorization delegation protocol, and OpenID Connect leverages OAuth features to allow authorized access to user authentication session APIs in an interoperable manner. OpenID Connect uses a REST interface and simple JSON assertions called JSON Web Tokens (JWTs) to provide identifying *claims* about users. The protocol is designed to be API-friendly and adaptable to multiple formats such as web and mobile, and it has built-in provisions for robust signing and encryption.
-
- In its simplest form, an OpenID Connect deployment allows applications (such as browsers, mobiles, and desktop clients), to request and receive information about a user's identities. This allows the user to authenticate to a third-party application that acts as a relying party (RP) using an identity established with the OpenID Connect identity provider (IdP).
+In its simplest form, an OpenID Connect deployment allows applications (such as browsers, mobiles, and desktop clients), to request and receive information about a user's identities. This allows the user to authenticate to a third-party application that acts as a relying party (RP) using an identity established with the OpenID Connect identity provider (IdP).
 
 This section describes the concepts behind OpenID Connect and demonstrates how to use the API Gateway as an OpenID Connect identity provider and as a relying party. The following sections use the client demo that ships with API Gateway to illustrate OpenID Connect concepts.
 
-### OpenID Connect concepts
+## OpenID Connect concepts
 
 OpenID Connect is specified in the [OpenID Connect 1.0 specification](http://openid.net/specs/openid-connect-core-1_0.html). It defines the following concepts:
 
@@ -24,13 +22,13 @@ OpenID Connect is specified in the [OpenID Connect 1.0 specification](http://ope
 * ID token: JSON Web Token (JWT) that contains claims about the authenticated user.
 * UserInfo endpoint: Protected resource that, when presented with an access token by the client, returns authorized information about the end user.
 
-### Relationship to OAuth 2.0
+## Relationship to OAuth 2.0
 
 To support maximum interoperability, the OID specification defines standard scopes, defined request objects and corresponding claims, the ID token format, and a UserInfo endpoint. These features represent the primary additions to the OAuth 2.0 standard and should be available across all IdP implementations of OpenID Connect.
 
 ![OID features](/Images/OAuth/APIgw_Relationship_to_Oauth.png)
 
-#### Standard scopes
+### Standard scopes
 
 The OpenID Connect specification defines a set of predefined scopes for use in the OpenID Connect authorization flow.
 
@@ -43,19 +41,19 @@ The following scopes are not directly catered for in the OpenID Connect filters,
 * `address` – OPTIONAL. This scope requests that the issued access token grants access to the `address` claim at the UserInfo endpoint.
 * `phone` – OPTIONAL. This scope requests that the issued access token grants access to the `phone_number` and `phone_number_verified` claims at the UserInfo endpoint.
 
-#### Request object and claims
+### Request object and claims
 
 The OpenID Connect request object is an optional part of the specification and is not supported in the current version of API Gateway. The request object is used to provide OpenID Connect request parameters that might differ from the default ones. Request objects might be supported in future versions of API Gateway.
 
-#### ID token
+### ID token
 
 The ID token is a JWT-based security token that contains claims about the authentication of an end user by an authorization server. When using the authorization code flow the ID token is returned as a property of the access token.  For the implicit and some hybrid flows the ID token is returned in response to the authorization request. As an IdP, API Gateway will produce an ID token using the **Create ID Token** filter, either in the authorization endpoint policy or the token endpoint policy. This token will be signed for verification by the client and can include user defined claims. This provides flexibility in creating claims from any user store. Acting as an RP, a client can verify a received ID token with the **Verify ID Token** filter. This should be done in the callback policy as API Gateway does not support implicit flows as a client. After being verified, the ID token can be used to look up or create a user record and create an authenticated session for the user.
 
-#### UserInfo endpoint
+### UserInfo endpoint
 
 The UserInfo endpoint is defined as an OAuth 2.0 protected resource that returns extended claims about the authenticated end user. To access this resource an API Gateway acting as an RP must use the access token received in the OpenID Connect authentication process. A successful request will return a JSON object with the claims for the user. As an IdP the implementation of the UserInfo endpoint should be similar to any OAuth protected resource with a minimum scope requirement of `openid`. The implementation of this endpoint is deliberately left open for policy developers to integrate their own authentication stores.
 
-### OpenID Connect flow
+## OpenID Connect flow
 
 The OpenID Connect process follows the OAuth 2.0 three-legged authorization code flow (see [Authorization code grant (or web server) flow](/docs/apigw_oauth/oauth_flows/oauth_flows_auth_code)), but with the additional concepts of an ID token and a UserInfo endpoint.
 

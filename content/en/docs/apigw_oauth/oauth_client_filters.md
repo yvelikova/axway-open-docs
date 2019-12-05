@@ -1,9 +1,9 @@
 ---
 title: OAuth client filters
 linkTitle: OAuth client filters
+weight: 110
 date: 2019-11-18
 description: Filters you can use when API Gateway is acting as an OAuth client.
-weight: 110
 ---
 
 ## Redirect resource owner to authorization server filter
