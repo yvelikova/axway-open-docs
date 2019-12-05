@@ -1,6 +1,6 @@
 {
 "title": "Add a custom filter to API Gateway",
-"linkTitle": "Add a custom filter to API Gateway",
+"linkTitle": "Add a custom filter",
 "weight":"20",
 "date": "2019-11-27",
 "description": "Extend the capability of API Gateway by adding a custom filter."
@@ -20,6 +20,8 @@ The following summarizes the different approaches for adding a custom filter:
 | No major development skills required                                                               | Development skills required   |
 | Does not appear in filter palette in Policy Studio                                                 | Filter appears in filter palette in Policy Studio   |
 | See [Use JavaScript to call existing Java code](#use-javascript-to-call-existing-java-code)  and [Use JavaScript for custom requirements](#use-javascript-for-custom-requirements)      | See [Write a custom filter using the extension kit](/docs/apigtw_ref/custom_filter_extension_kit/) |
+
+Before creating your own custom filter you should understand exactly what message filters are, and how they are chained together to create a message policy. These concepts are documented in detail in the [API Gateway Policy Developer Guide](/docs/apigw_poldev/).
 
 ## Use JavaScript to call existing Java code
 

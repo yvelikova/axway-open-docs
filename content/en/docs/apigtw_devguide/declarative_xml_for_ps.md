@@ -1,12 +1,12 @@
 {
-"title": "Define user interfaces using declarative XML",
-"linkTitle": "Define user interfaces using declarative XML",
+"title": "Define custom filter user interfaces",
+"linkTitle": "Define custom filter user interfaces",
 "weight":"30",
 "date": "2019-11-27",
-"description": "Define the Policy Studio user interfaces for a custom filter using declarative XML"
+"description": "Use declarative XML to define the Policy Studio user interfaces for a custom filter."
 }
 
-You can define the Policy Studio user interfaces for a custom filter using *declarative XML*. Declarative XML is a user interface markup language that is used to define UI elements and bindings, allowing you to quickly create dialogs within Policy Studio with minimal coding.
+Declarative XML is a user interface markup language that is used to define UI elements and bindings, allowing you to quickly create dialogs within Policy Studio with minimal coding.
 
 The defined UI elements map to Eclipse SWT (Standard Widget Toolkit) widgets and Axway ScreenAttributes (groups of SWT widgets backed by entity instances).
 
@@ -24,7 +24,7 @@ The following sections describe how the declarative UI XML file for this dialog 
 
 The following code demonstrates how to load the declarative XML file within the Policy Studio class.
 
-```
+```java
 package com.vordel.client.manager.filter.oauth2.provider.authorize;
 
 import org.eclipse.swt.widgets.Composite;

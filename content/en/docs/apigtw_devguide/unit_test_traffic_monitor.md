@@ -1,6 +1,6 @@
 {
-"title": "Unit test a filter using the Traffic Monitor API",
-"linkTitle": "Unit test a filter using the Traffic Monitor API",
+"title": "Unit test a custom filter using the Traffic Monitor API",
+"linkTitle": "Unit test a custom filter",
 "weight":"40",
 "date": "2019-11-27",
 "description": "Create JUnit tests, debug custom Java code, and get detailed diagnostic information for a custom filter."
@@ -23,7 +23,7 @@ Perform the following steps to write a JUnit test for the Health Check policy fi
 
 1. Create a test class called `TestHealthCheck`. It should extend the `TestClientResponse` utility class, which contains several assertion methods that can be used to test the client responses returned from a web resource. For example:
 
-    ```
+    ```java
     import com.vordel.ops.TestClientResponse;
 
     public class TestHealthCheck extends TestClientResponse {
@@ -33,17 +33,16 @@ Perform the following steps to write a JUnit test for the Health Check policy fi
 
 2. Within the `setup` method, create a new instance of a `com.vordel.ops.TrafficMonitorClient`. This client contains several assertion methods that can be used to evaluate the response based on the traffic information in and out of the API Gateway, and the CorrelationId.
 
-    ```
+    ```java
     @BeforeClass
     public static void setup() throws NodeManagerAPIException {
-      client = new TrafficMonitorClient("https", "localhost", "8090",
-        SERVER_ID, USERNAME, PASSWORD);
+      client = new TrafficMonitorClient("https", "localhost", "8090", SERVER_ID, USERNAME, PASSWORD);
     }
     ```
 
 3. Create a test case that invokes a request and evaluates the response returned using the `TrafficMonitorClient`. Each filter of the policy can be evaluated to determine if it passed or failed.
 
-    ```
+    ```java
     import javax.ws.rs.core.Response;
 
     @Test
@@ -89,7 +88,7 @@ To change the JVM settings of an API Gateway instance, follow these steps:
 
 2. Edit the `jvm.xml` file so that the contents are as follows:
 
-    ```
+    ```xml
     <ConfigurationFragment>
       <VMArg name="-Xrunjdwp:transport=dt_socket,server=y,address=9999" />
     </ConfigurationFragment>
@@ -115,7 +114,7 @@ To add custom trace information to custom code, you can add `Trace` statements w
 
 For example, the following code adds `Trace` statements to output the thread ID associated with the chat, which corresponds to the thread field of the SMACK XMPP message to a custom Jabber filter (see [Write a custom filter using the extension kit](/docs/apigtw_ref/custom_filter_extension_kit/)).
 
-```
+```java
 ...
 import com.vordel.trace.Trace;
 ...
@@ -154,7 +153,7 @@ To output custom log4j information perform the following steps:
 
 1. Update the `log4j2.xml` file, located in the `INSTALL_DIR/apigateway/system/conf` directory, to specify that the log4j appender sends output to the API Gateway trace file. For example:
 
-    ```
+    ```xml
     <Root level="debug">
     <AppenderRef ref="STDOUT" />
     <AppenderRef ref="VordelTrace" />
@@ -163,7 +162,7 @@ To output custom log4j information perform the following steps:
 
 2. Add log4j statements to your code. Log4j is already on the API Gateway CLASSPATH. The following example shows the preceding code with log4j statements instead of Trace statements:
 
-    ```
+    ```java
     ...
     import org.apache.log4j.Logger;
     ...

@@ -8,9 +8,9 @@
 
 This section describes the following Java interfaces that can be used to extend API Gateway:
 
-* LoadableModule – Classes that implement this interface are used to instantiate long-lived objects in the API Gateway process. These objects can be loaded at startup or when a new configuration is deployed, and can be unloaded at shutdown.
-* MessageCreationListener – Classes that implement this interface are used to track message creation.
-* MessageListener – Classes that implement this interface are used to to track the changes in a message as it flows through API Gateway.
+* `LoadableModule` – Classes that implement this interface are used to instantiate long-lived objects in the API Gateway process. These objects can be loaded at startup or when a new configuration is deployed, and can be unloaded at shutdown.
+* `MessageCreationListener` – Classes that implement this interface are used to track message creation.
+* `MessageListener` – Classes that implement this interface are used to to track the changes in a message as it flows through API Gateway.
 
 ## Create a loadable module
 
@@ -24,7 +24,7 @@ The loadable module object itself is informed when it is loaded, reconfigured, a
 
 The base `LoadableModule` interface has three methods. These are used on startup of the API Gateway, on shutdown of the API Gateway, or when a new configuration is deployed to the API Gateway. The following example shows the methods.
 
-```
+```java
 public interface LoadableModule {
 
     ...
@@ -77,7 +77,7 @@ All TypeDocs for `LoadableModule` classes must:
 
 The following definition lists the various fields that form the configuration data for the `TimerLoadableModule` class.
 
-```
+```xml
 <entityType name="TimerLoadableModule" extends="NamedLoadableModule">
     <constant name="_version" type="integer" value="0"/>
     <constant name="class" type="string"
@@ -101,7 +101,7 @@ The API Gateway server-side implementation class is responsible for creating a t
 
 The following code shows the members and methods of the `TimerLoadableModule` class:
 
-```
+```java
 public class TimerLoadableModule implements LoadableModule {
 
   Timer timer = null;
@@ -152,7 +152,7 @@ The `configure` method loads the configuration data and creates a new `TimerTask
 
 This section describes the `MessageCreationListener` interface, and provides an example of a message creation listener class that implements the interface. The sample code can be found in the `DEVELOPER_SAMPLES/FilterInterceptorLoadableModule` directory.
 
-### MessageCreationListener interface
+### `MessageCreationListener` interface
 
 The `MessageCreationListener` interface provides a method that is invoked when a message is created.
 
@@ -160,7 +160,7 @@ A `MessageCreationListener` class is used to track message creation. It is calle
 
 An example of its usage can be seen in the following `FilterInterceptor` class:
 
-```
+```java
 public class FilterInterceptor implements LoadableModule,
   MessageCreationListener, MessageListener, FilterInterceptorMBean
 {
@@ -193,7 +193,7 @@ The message creation listener is added when the loadable module is loaded, and r
 
 This section describes the `MessageListener` interface, and provides an example of a message listener class that implements the interface. The sample code can be found in the `DEVELOPER_SAMPLES/FilterInterceptorLoadableModule` directory.
 
-### MessageListener interface
+### `MessageListener` interface
 
 The `MessageListener` interface provides a set of callbacks that are invoked during the processing of a message as it passes through the processing engine of the API Gateway. The `MessageListener` interface provides callbacks which are invoked at certain points in the processing, for example just before a policy (circuit) is run, or before and after a message is processed by a filter. A message listener can be used to track the changes in a message as it flows through API Gateway, or to monitor the status of policies or filters as messages pass through them. Commonly it is used to gather statistics on message processing, which can then be used to give an indication of the status of API Gateway.
 
@@ -224,7 +224,7 @@ In this example, the `FilterInterceptorLoadableModule` extends `NamedLoadableMod
 
 The following definition lists the various fields that form the configuration data for the `FilterInterceptorLoadableModule` class and declares an instance of the type.
 
-```
+```xml
 <entityStoreData>
   <entityType name="FilterInterceptorLoadableModule" extends="NamedLoadableModule">
     <constant name="class" type="string"
@@ -234,7 +234,7 @@ The following definition lists the various fields that form the configuration da
 </entityStoreData>
 ```
 
-```
+```xml
 <entityStoreData>
   <entity type="FilterInterceptorLoadableModule">
     <fval name="name">
@@ -244,7 +244,7 @@ The following definition lists the various fields that form the configuration da
 </entityStoreData>
 ```
 
-```
+```xml
 <typeSet>
   <typedoc file="FilterInterceptorLoadableModule.xml"/>
   <typedoc file="instance.xml"/>
@@ -254,11 +254,8 @@ The following definition lists the various fields that form the configuration da
 To add the `FilterInterceptorLoadableModule` type to the primary entity store, you can use the `publish.py` script. For example:
 
 ```
-> cd INSTALL_DIR/apigateway/samples/scripts
-> ./run.sh publish/publish.py
--i DEVELOPER_SAMPLES/FilterInterceptorLoadableModule/conf/typedoc/typeSet.xml
--t FilterInterceptorLoadableModule
--g "QuickStart Group" -n "QuickStart Server"
+cd INSTALL_DIR/apigateway/samples/scripts
+./run.sh publish/publish.py -i DEVELOPER_SAMPLES/FilterInterceptorLoadableModule/conf/typedoc/typeSet.xml -t FilterInterceptorLoadableModule -g "QuickStart Group" -n "QuickStart Server"
 ```
 
 Alternatively, you can use the ES Explorer to add the type.
@@ -269,7 +266,7 @@ The API Gateway server-side implementation class is responsible for monitoring m
 
 The following is an extract of the `FilterInterceptor` class that can be found in the `DEVELOPER_SAMPLES/FilterInterceptorLoadableModule/src` directory.
 
-```
+```java
 public class FilterInterceptor implements LoadableModule,
   MessageCreationListener, MessageListener, FilterInterceptorMBean
 {
@@ -356,7 +353,7 @@ INFO 26/Feb/2013:11:26:20.799 [1698] Circuit [Send Instant Message] has finished
 
 The following is a sample style sheet that can be used with the `removeType` script in the API Gateway to remove the `FilterInterceptorLoadableModule` and its instances from the primary entity store.
 
-```
+```xml
 <?xml version="1.0" ?>
 <stylesheet xmlns="http://www.w3.org/1999/XSL/Transform"
   version="1.0"
@@ -380,11 +377,8 @@ The following is a sample style sheet that can be used with the `removeType` scr
 You can remove the type from the primary store by running the following command:
 
 ```
-> cd INSTALL_DIR/apigateway/samples/scripts
-> ./run.sh unpublish/unpublish.py
--i DEVELOPER_SAMPLES/FilterInterceptorLoadableModule/conf/remove.xslt
--t FilterInterceptorLoadableModule
--g "QuickStart Group" -n "QuickStart Server"
+cd INSTALL_DIR/apigateway/samples/scripts
+./run.sh unpublish/unpublish.py -i DEVELOPER_SAMPLES/FilterInterceptorLoadableModule/conf/remove.xslt -t FilterInterceptorLoadableModule -g "QuickStart Group" -n "QuickStart Server"
 ```
 
 You can use the ES Explorer tool to view new types that were added, or to verify that types were removed. For more information, see [Use the ES Explorer](/docs/apigtw_devguide/entity_store#use-the-es-explorer).
