@@ -30,7 +30,8 @@ API providers typically measure processing limits in Transactions Per (Seconds/M
 
 ### AMPLIFY Central API rate limiting
 
-AMPLIFY Central currently provides a variable interval rate limiting implementation with a sliding window bucket algorithm with minimum of 1 second interval to maximum of 1 day. Intervals should be specified in duration format P[n]Y[n]M[n]DT[n]H[n]M[n]S or P[n]W supported by ISO_8601 standard. For more information duration format, please refer to wiki link  https://en.wikipedia.org/wiki/ISO_8601#Durations
+AMPLIFY Central currently provides a variable interval rate limiting implementation with a sliding window bucket algorithm with **minimum of 1 second interval to maximum of 1 day.**
+Intervals should be specified in duration format P[n]Y[n]M[n]DT[n]H[n]M[n]S or P[n]W supported by ISO_8601 standard. For more information duration format, please refer to wiki link  https://en.wikipedia.org/wiki/ISO_8601#Durations
 
 A valid API transaction is an API transaction that has been successfully processed by AMPLIFY Central.
 
@@ -189,7 +190,7 @@ proxy:
     policies:
         clientAuth:
             type: pass-through
-        rateLimit: # the desired rate limit for your API with variable interval of 10 seconds
+        rateLimit: # the desired rate limit for your API with 5 transactions per 10 seconds variable interval
             perProxy:
                 limit: 5
                 interval: PT10S
@@ -262,7 +263,7 @@ proxy:
             perProxy: # the desired Rate limit for your API - 5 transaction per 10 seconds interval
                 limit: 5
                 interval: PT10S
-            perProxyAndApp: # the default Rate limit for each application consuming the API
+            perProxyAndApp: # the default Rate limit for each app consuming the API to 3 transactions per 10 seconds interval
                 limit: 3
                 interval: PT10S
     tags: ['musical', 'instruments', 'ratelimit']
@@ -325,7 +326,7 @@ proxy:
             perProxy: # the desired rate limit for your API for 10 seconds interval
                 limit: 5
                 interval: PT10S
-            perProxyAndApp: # the default Ratellimit for each application consuming the API
+            perProxyAndApp: # the default Ratelimit for each app consuming the API to 1 transaction per 10 seconds interval
                 limit: 1
                 interval: PT10S
             overrides:
