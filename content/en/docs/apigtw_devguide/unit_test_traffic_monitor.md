@@ -1,6 +1,6 @@
 {
-"title": "Unit test a custom filter using the Traffic Monitor API",
-"linkTitle": "Unit test a custom filter",
+"title": "Test and debug a custom filter",
+"linkTitle": "Test and debug a custom filter",
 "weight":"40",
 "date": "2019-11-27",
 "description": "Create JUnit tests, debug custom Java code, and get detailed diagnostic information for a custom filter."
@@ -112,7 +112,7 @@ For more information on tracing and logging see [Configure API Gateway trace fil
 
 To add custom trace information to custom code, you can add `Trace` statements within your code.
 
-For example, the following code adds `Trace` statements to output the thread ID associated with the chat, which corresponds to the thread field of the SMACK XMPP message to a custom Jabber filter (see [Write a custom filter using the extension kit](/docs/apigtw_ref/custom_filter_extension_kit/)).
+For example, the following code adds `Trace` statements to output the thread ID associated with the chat, which corresponds to the thread field of the SMACK XMPP message to a custom Jabber filter (see [Write a custom filter using the extension kit](/docs/apigtw_devguide/custom_filter_extension_kit/)).
 
 ```java
 ...

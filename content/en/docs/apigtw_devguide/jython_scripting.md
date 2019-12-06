@@ -21,93 +21,93 @@ cd INSTALL_DIR/apigateway/samples/scripts
 
 The following  summarizes the Jython scripts that are available in the API Gateway installation.
 
-**analyze**\
+`analyze`
+: This category contains scripts to:
+    * Print a list of all references in the API Gateway. For each reference it shows what store it originates from and to.
+    * Check if the API Gateway is locked down.
+    * Get a list of unresolved references between entities in the API Gateway.
 
-* Prints a list of all references in the API Gateway. For each reference it shows what store it originates from and to.
-* Checks if the API Gateway is locked down.
-* Gets a list of unresolved references between entities in the API Gateway.
+`apikeys`
+: This category contains scripts to:
+    * Send an API key and associated secret as query parameters.
+    * Send an API key only as a query parameter.
+    * Fetch a URL with HTTP basic authentication.
+    * Send a signed query string.
+    * Send an authenticated REST request.
 
-**apikeys**\
+`cassandra`
+: This category contains scripts to:
+    * Convert all Cassandra-based data stores to file-based data stores and redeploy.
 
-* Shows how to send an API key and associated secret as query parameters.
-* Shows how to send an API key only as query parameters.
-* Shows how to fetch a URL with HTTP basic authentication.
-* Shows how to send a signed query string.
-* Shows how to send an authenticated REST request.
+`certs`
+: This category contains scripts to:
+    * Add a new certificate to the certificate store from different sources.
 
-**cassandra**\
+`config`
+: This category contains scripts to:
+    * Remove the sample service listeners and policies from the API Gateway.
+    * Connect to a particular process and toggle tracing for the management port.
+    * Connect to the API Gateway and set an address to bind to on a given port of a given interface.
+    * Update the `maxInputLen`, `maxOuputLen`, and `maxRequestMemory` configuration in Node Managers and API Gateways.
 
-* Converts all Cassandra-based data stores to file-based data stores and redeploys.
+`environmentalize`
+: This category contains scripts to:
+    * Mark fields for environmentalization and create associated environment setting entries.
+    * Get the fields that have been marked for environmentalizing and output the associated value in environment settings.
+    * Remove fields marked as environmentalized.
+    * Create a deployment archive from a policy package and an environment package.
 
-**certs**\
+`io`
+: This category contains scripts to:
+    * Import and export entities to and from an API Gateway configuration.
 
-* Adds a new certificate to the certificate store from different sources.
+`json`
+: This category contains scripts to:
+    * Generate a JSON schema for a fully qualified class name.
 
-**config**\
+`migrate`
+: This category contains scripts to:
+    * Download the current `.fed`, `.pol` and `.env` archives via Node Manager from an API Gateway.
+    * Create a deployment package from policy and environment packages. They can be obtained from a running API Gateway, from a source code repository (for example, Git or SVN), or via USB or FTP, and so on.
+    * Demonstrate a promotion of configuration from the development environment to the staging environment.
 
-* Removes the sample service listeners and policies from the API Gateway.
-* Connects to a particular process and toggles tracing for the management port.
-* Connects to the API Gateway and sets an address to bind to on a given port of a given interface.
-* Updates the `maxInputLen`, `maxOuputLen`, and `maxRequestMemory` configuration in Node Managers and API Gateways.
+`monitor`
+: This category contains scripts to:
+    * Print the filter details of each policy executed in a transaction.
+    * Print the success or failure status of each filter in a transaction.
 
-**environmentalize**\
+`oauth`
+: This category contains scripts to:
+    * Provide OAuth 2.0 support.
 
-* Marks fields for environmentalization and creates associated environment setting entries.
-* Gets the fields that have been marked for environmentalizing and outputs the associated value in environment settings.
-* Removes fields marked as environmentalized.
-* Creates a deployment archive from a policy package and an environment package.
+`passport`
+: This category contains scripts to:
+    * Create an Axway PassPort CSD based on the API service configuration. An Axway Component Security Descriptor (CSD) file is used when registering with Axway PassPort.
 
-**io**\
+`publish`
+: This category contains scripts to:
+    * Add an entity type and any defined instances to an associated entity store.
 
-* Imports and exports entities to and from an API Gateway configuration.
+`unpublish`
+: This category contains scripts to:
+    * Remove an entity type and any defined instances from an associated entity store.
 
-**json**\
+`topology`
+: This category contains scripts to:
+    * Create API Gateway instances in a group.
+    * Get the domain topology from the Admin Node Manager.
+    * Get the domain topology and output the IDs of the API Gateway instances.
 
-* Generates a JSON schema for a fully qualified class name.
+`securityconstraints`
+: This category contains scripts to:
+    * Check a configuration for FIPS, SuiteB, or SuiteBTS compliance.
 
-**migrate**\
+`users`
+: This category contains scripts to:
+    * Connect to a particular process and add a new user to the user store.
 
-* Downloads the current `.fed`, `.pol` and `.env` archives via Node Manager from an API Gateway.
-* Creates a deployment package from policy and environment packages. They can be obtained from a running API Gateway, from a source code repository (for example, Git or SVN), or via USB or FTP  and so on.
-* Demonstrates a promotion of configuration from the development environment to the staging environment.
-
-**monitor**\
-
-* Prints the filter details of each policy executed in a transaction.
-* Prints the success or failure status of each filter in a transaction.
-
-**oauth**\
-
-* Provides OAuth 2.0 support.
-
-**passport**\
-
-* Creates an Axway PassPort CSD based on the API service configuration. An Axway Component Security Descriptor (CSD) file is used when registering with Axway PassPort.
-
-**publish**\
-
-* Adds an entity type and any defined instances to an associated entity store.
-
-**unpublish**\
-
-* Removes an entity type and any defined instances from an associated entity store.
-
-**topology**\
-
-* Creates API Gateway instances in a group.
-* Gets the domain topology from the Admin Node Manager.
-* Gets the domain topology and outputs the IDs of the API Gateway instances.
-
-**securityconstraints**\
-
-* Checks a configuration for FIPS, SuiteB, or SuiteBTS compliance.
-
-**users**\
-
-* Connects to a particular process and adds a new user to the user store.
-
-**ws**\
-
-* Registers a WSDL in an API Gateway.
-* Lists the web services in an API Gateway.
-* Removes a registered service from the API Gateway.
+`ws`
+: This category contains scripts to:
+    * Register a WSDL in an API Gateway.
+    * List the web services in an API Gateway.
+    * Remove a registered service from the API Gateway.

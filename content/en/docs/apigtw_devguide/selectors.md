@@ -1,9 +1,9 @@
 {
-"title": "Access configuration values dynamically at runtime",
-"linkTitle": "Access configuration values dynamically at runtime",
+"title": "Complex selector expressions",
+"linkTitle": "Complex selector expressions",
 "weight":"60",
 "date": "2019-11-27",
-"description": "Use selectors to access configuration values dynamically at runtime"
+"description": "Use complex selector expressions to access configuration values dynamically at runtime."
 }
 
 You can access configuration values dynamically at runtime using *selectors*. A selector is a special syntax that enables API Gateway configuration settings to be evaluated and expanded at runtime, based on metadata values (for example, from message attributes, a Key Property Store (KPS), or environment variables).
@@ -12,9 +12,9 @@ For example, when a HTTP request is received, it is converted into a set of mess
 
 ## Example selector expressions
 
-The [Develop Policy](/docs/apigw_poldev/general_selector/) guide includes some examples of selector expressions. The following lists some more complex examples.
+For an explanation of selector syntax and some examples of selector expressions, see [Select configuration values at runtime](/docs/apigw_poldev/general_selector/). The following lists some more complex examples.
 
-**Selector expression**\
+### KPS with multiple read keys
 
 ```
 ${kps.matrix.row.column}
@@ -29,15 +29,15 @@ set property test = ${kps.matrix.row}
 
 `${test[“column”]}` looks up the KPS for `[row/column]`.
 
-**Selector expression**\
+### Parameter from content body
 
 ```
 ${content.body.getParameters().get("grant_type")}
 ```
 
-Gets the HTTP form post field called `grant_type`. 
+Gets the HTTP form post field called `grant_type`.
 
-**Selector expression**\
+### Parameter from JSON content body
 
 ```
 ${content.body.getJSON().get('access_token').getTextValue()}  
@@ -59,7 +59,7 @@ For example, if the body contains the following JSON content:
 
 this selector results in the value `2YotnFZFEj`.
 
-**Selector expression**\
+### Convert JSON content body to string
 
 ```
 ${content.body.getJSON().toString()}
@@ -67,7 +67,7 @@ ${content.body.getJSON().toString()}
 
 If a body is of type `com.vordel.mime.JSONBody`, this selector converts the JSON contained in the body to a string value.
 
-**Selector expression**\
+### Environment variable
 
 ```
 ${environment.VINSTDIR}
@@ -75,7 +75,7 @@ ${environment.VINSTDIR}
 
 Accesses the environment variable `VINSTDIR`.
 
-**Selector expression**\
+### HTTP path
 
 ```
 ${http.path[2]}
@@ -132,8 +132,7 @@ For more information, see the `java.util.ArrayList` and `java.lang.String` class
 
 ### LDAP directory server search results
 
-You can use the **Retrieve from directory server** filter to retrieve user profile data. For more information on the **Retrieve from directory server** filter, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+You can use the **Retrieve from directory server** filter to retrieve user profile data.
 
 The filter can look up a user and retrieve that user's attributes represented as a list of search results. Each element of the list represents a list of multivalued attributes returned from the directory server. The **Prefix for message attribute field** in the filter is required to name the list of search results (for example, `user`).
 
@@ -154,3 +153,9 @@ You can also use standard Java function calls on the attributes. For example:
 * `${user[0].memberOf[0].equals(“CN=Operator,OU=Sales”)}` – Returns true if the first `memberOf` attribute is `“CN=Operators,OU=Sales”`
 
 For more information, see `java.util.ArrayList` and `java.lang.String` class interfaces.
+
+## More information on KPS
+
+A Key Property Store (KPS) is an external data store of API Gateway policy properties, which is typically read frequently, and seldom written to. Using a KPS enables metadata-driven policies, whereby policy configuration is stored in an external data store, and looked up dynamically when policies are executed.
+
+For more information on KPS, see the [API Gateway Policy Developer Guide](/docs/apigw_poldev/) and also the [API Gateway Key Property Store User Guide](https://docs.axway.com/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).

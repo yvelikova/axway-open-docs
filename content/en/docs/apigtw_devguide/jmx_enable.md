@@ -3,7 +3,7 @@
 "linkTitle": "Enable API Gateway with JMX",
 "weight":"80",
 "date": "2019-11-27",
-"description": "Set up Java Management Extensions to allows remote clients to connect to a JVM and manage or monitor running applications."
+"description": "Set up Java Management Extensions to allow remote clients to connect to a JVM and manage or monitor running applications."
 }
 
 Java Management Extensions (JMX) allows remote clients to connect to a JVM and manage or monitor running applications in that JVM. MBeans are the controllable endpoints of your application where remote clients can observe application activity as well as control their inner workings.
@@ -12,7 +12,7 @@ For more information on implementing an MBean interface, see the `FilterIntercep
 
 After you have set up your MBean, you need to tell the JMX infrastructure about the MBean so that it can be published to clients. This involves creating a unique name for the MBean and then registering it with the MBeanServer. For example:
 
-```
+```java
 ...
 try {
     MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
@@ -32,15 +32,15 @@ Follow these steps:
 
 1. Create a file called `jvm.xml` in the following location:
 
-   ```
+    ```
     INSTALL_DIR/apigateway/groups/GROUP_ID/INSTANCE_ID/conf
     ```
 
 2. Edit the `jvm.xml` file so that the contents are as follows:
 
-   ```
+    ```xml
     <ConfigurationFragment>
-      <VMArg name="-Dcom.sun.management.jmxremote"/>
+        <VMArg name="-Dcom.sun.management.jmxremote"/>
     </ConfigurationFragment>
     ```
 

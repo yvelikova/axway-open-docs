@@ -1,16 +1,10 @@
 {
-"title": "Key Property and Entity Store",
-"linkTitle": "Key Property and Entity Store",
+"title": "Entity Store",
+"linkTitle": "Entity Store",
 "weight":"70",
 "date": "2019-11-27",
-"description": "Learn about the KPS and ES stores that are used to store policy properties and all configuration data required to run API Gateway."
+"description": "Learn about the Entity Store (ES) and the ES Explorer tool."
 }
-
-## Key Property Store
-
-A Key Property Store (KPS) is an external data store of API Gateway policy properties, which is typically read frequently, and seldom written to. Using a KPS enables metadata-driven policies, whereby policy configuration is stored in an external data store, and looked up dynamically when policies are executed.
-
-## Entity Store
 
 Configuration data for API Gateway is stored in the Entity Store (ES). The Entity Store is an XML-based store that holds all configuration data required to run API Gateway. It contains policies, filters, certificates, resources, and so on. The Entity Store for a group of API Gateways can be found at the following location:
 
@@ -38,7 +32,7 @@ The following table lists the XML-based stores:
 | ```UserStore.xml```                      | User store containing user names and passwords and associated user roles.                                                    |
 | ```ResourcesRepository.xml```                      | Contains the resource information.                                                                                           |
 
-### Entity types
+## Entity types
 
 An *entity type* is a description of an entity in the Entity Store. An entity type defines the following properties for a given entity:
 
@@ -68,13 +62,13 @@ A field in an entity can be of the following type:
 A field must be assigned a cardinality. The possible cardinalities are:
 
 * zero or one (?)
-* zero or many (\*)
+* zero or many (*)
 * one or many (+)
 * one (1)
 
 The following shows an example.
 
-```
+```xml
 <field name="name" type="string" cardinality="1" isKey="true" />
 <field name="isEnabled" type="boolean" cardinality="1" default="true"/>
 <field name="hosts" type="string" cardinality="*"/>
@@ -87,13 +81,13 @@ The following shows an example.
 
 A field that refers to another entity within the same component entity store is called a *hard reference*. For example:
 
-```
+```xml
 <field cardinality="1" name="category" type="@Category">
 ```
 
 A field that refers to another entity in another component entity store is called a *soft reference*. For example:
 
-```
+```xml
 <field cardinality="1" name="repository" type="^AuthnRepositoryBase"/>
 ```
 
@@ -109,7 +103,7 @@ Because a filter is a configurable item, it requires a new XML TypeDoc to be wri
 
 When an instance of the filter is added to a policy using Policy Studio, a corresponding entity instance is created and stored in the Entity Store. Whenever the filter instance is invoked, its configuration data is read from the entity instance in the Entity Store.
 
-### Use the ES Explorer
+## Use the ES Explorer
 
 ES Explorer is a registry editor type tool which allows you to connect directly to an Entity Store (ES). Within the ES explorer you can perform various create, read, update, delete (CRUD) operations on the entities, and view the available types in the Entity Store. To open a federated entity store in ES Explorer, load the `configs.xml` file. Alternatively, to open a component entity store, load the XML file (for example, `PrimaryStore.xml`).
 
@@ -150,8 +144,11 @@ The following table shows some examples of shorthand keys:
 | ```/[CircuitContainer]**/[FilterCircuit]/[Reflector]name=Reflect```| Get all filters of type Reflector, but restricted to Reflector filters with the name `Reflect`. |
 | ```/[CircuitContainer]**/[FilterCircuit]/[FilterCircuit]```                                                            | Get all policies in a configuration (you need two shorthand keys).                              |
 
-{{< alert title="Note" color="primary" >}}Forward slashes must be escaped, for example:{{< /alert >}}
+{{< alert title="Note" color="primary" >}}
+Forward slashes must be escaped, for example:
 
 ```
 /[NetService]name=Service/[HTTP]name=Management Services/[ServletApplication]uriprefix=\/manager\//[Servlet]uri=webManager
 ```
+
+{{< /alert >}}

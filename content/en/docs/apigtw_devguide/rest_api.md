@@ -56,13 +56,13 @@ You can import the API Gateway REST API Swagger 2.0 definitions into API Manager
 
 ## Add a Jersey-based REST API
 
-The following sections refer to `restJabber` sample code that is no longer included in the code samples supplied with API Gateway. We recommend that you use this section only as a general guide for adding a Jersey-based REST API.
+{{< alert title="Note" color="primary" >}}The following sections refer to `restJabber` sample code that is no longer included in the code samples supplied with API Gateway. We recommend that you use this section only as a general guide for adding a Jersey-based REST API.{{< /alert >}}
 
 The following example shows how to add a Jersey REST service to your API Gateway and configure a corresponding servlet in Policy Studio. The REST service implements the SMACK API. The example also demonstrates how invoking a REST request sends an instant message to an account on Google Talk.
 
 1. Annotate your Java class. The following example shows a code snippet of a Jersey-annotated Java class for the Smack API. The full class definition can be found in the `DEVELOPER_SAMPLES/restJabber` directory. You must replace the `username` and `password` in the sample code with appropriate values.
 
-    ```
+    ```java
     @Path("/jabber")
     public class RestJabberRequest {
 
@@ -118,7 +118,7 @@ The following example shows how to add a Jersey REST service to your API Gateway
 4. Alternatively, you can add the JARs to the CLASSPATH for a single API Gateway instance only, by copying them to the `INSTALL_DIR/apigateway/groups/GROUP_ID/INSTANCE_ID/ext/lib` directory.
 5. Restart API Gateway. The REST Jabber service is now available.
 6. Add your servlet application and servlet using Policy Studio or ES Explorer.
-7. Test the REST service..
+7. Test the REST service.
 
 ## Add a servlet using Policy Studio
 
@@ -215,7 +215,7 @@ curl --insecure --user UNAME:PWD https://127.0.0.1:8090/api/topology
 
 The result is a JSON response with a format similar to the following.
 
-```
+```json
 {
     "result": {
         "id": "50fd7b96-6e8f-401e-b38c-eb77891e3aeb",
@@ -319,6 +319,7 @@ You can call the Topology API from Jython scripts. The sample Jython script `INS
 ```
 cd INSTALL_DIR/apigateway/samples/scripts
 ./run.sh topology/outputIDs.py
+
 API Server 'QuickStart Server' has id 'instance-1' belongs to Group 'QuickStart
 Group' with id 'group-2', it is running on...
 ```

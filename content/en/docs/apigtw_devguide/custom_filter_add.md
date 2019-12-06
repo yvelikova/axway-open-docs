@@ -10,7 +10,7 @@ You can extend the capability of API Gateway by adding a custom filter. There ar
 
 * Write your custom requirement in Java and invoke it using the **Scripting Language** filter. You can use this approach to develop your business logic in a standard IDE and debug and test it in standalone mode before integrating with API Gateway. See [Use JavaScript to call existing Java code](#use-javascript-to-call-existing-java-code).
 * Write your custom requirement using the **Scripting Language** filter alone. See [Use JavaScript for custom requirements](#use-javascript-for-custom-requirements).
-* Write your custom filter using the API Gateway developer extension kit. Using this approach, a fully integrated filter is created that has the API Gateway runtime capability and appears in the filter palette in Policy Studio. See [Write a custom filter using the extension kit](/docs/apigtw_ref/custom_filter_extension_kit/).
+* Write your custom filter using the API Gateway developer extension kit. Using this approach, a fully integrated filter is created that has the API Gateway runtime capability and appears in the filter palette in Policy Studio. See [Write a custom filter using the extension kit](/docs/apigtw_devguide/custom_filter_extension_kit/).
 
 The following summarizes the different approaches for adding a custom filter:
 
@@ -19,7 +19,6 @@ The following summarizes the different approaches for adding a custom filter:
 | Quick way to reuse some functionality exposed in Java                                              | Enterprise integration   |
 | No major development skills required                                                               | Development skills required   |
 | Does not appear in filter palette in Policy Studio                                                 | Filter appears in filter palette in Policy Studio   |
-| See [Use JavaScript to call existing Java code](#use-javascript-to-call-existing-java-code)  and [Use JavaScript for custom requirements](#use-javascript-for-custom-requirements)      | See [Write a custom filter using the extension kit](/docs/apigtw_ref/custom_filter_extension_kit/) |
 
 Before creating your own custom filter you should understand exactly what message filters are, and how they are chained together to create a message policy. These concepts are documented in detail in the [API Gateway Policy Developer Guide](/docs/apigw_poldev/).
 

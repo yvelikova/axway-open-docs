@@ -1,9 +1,9 @@
 {
 "title": "Write a custom filter using the extension kit",
-"linkTitle": "Write a custom filter using the extension kit",
-"weight":"90",
+"linkTitle": "Write a custom filter",
+"weight":"25",
 "date": "2019-11-27",
-"description": "Write your custom filter using the API Gateway developer extension kit."
+"description": "Write a custom filter using the API Gateway developer extension kit."
 }
 
 {{< alert title="Note" color="primary" >}}The following sections refer to `jabber` sample code that is no longer included in the code samples supplied with API Gateway. We recommend that you use this section only as a general guide for writing a custom filter using the extension kit. {{< /alert >}}
@@ -14,7 +14,7 @@ The steps required to build, integrate, configure, and test the supplied `Jabber
 
 ## Create the TypeDoc
 
-A *TypeDoc* is an XML file that contains entity type definitions. Entity type definitions describe the format of data associated with a configurable item. For more details on entity types, see [Entity types](/docs/apigtw_ref/entity_store#entity-types).
+A *TypeDoc* is an XML file that contains entity type definitions. Entity type definitions describe the format of data associated with a configurable item. For more details on entity types, see [Entity types](/docs/apigtw_devguide/entity_store/#entity-types).
 
 All TypeDocs for custom filters must:
 
@@ -24,7 +24,7 @@ All TypeDocs for custom filters must:
 
 The following example shows how the TypeDoc lists the various fields that form the configuration data for the JabberFilter.
 
-```
+```xml
 <entityStoreData>
   <entityType name="JabberFilter" extends="Filter">
       <constant name="class" type="string"
@@ -40,7 +40,7 @@ The following example shows how the TypeDoc lists the various fields that form t
 
 You can also provide internationalized log messages by specifying an `<entity>` block of type `InternationationalizationFilter` in the `<entityStoreData>` elements. For example:
 
-```
+```xml
 <entityStoreData>
  <!-- Internationalization for logging / audit trail -->
  <entity xmlns="http://www.vordel.com/2005/06/24/entityStore"
@@ -77,7 +77,7 @@ The `Filter` class is responsible for the following tasks:
 
 The following code shows the members and methods of the `JabberFilter` class.
 
-```
+```java
 public class JabberFilter extends DefaultFilter {
 
     protected final void setDefaultPropertyDefs() {
@@ -116,7 +116,7 @@ The attributes are stored in sets of property definitions (`Set<PropDef>`). A pr
 
 In the case of the `JabberFilter` class, the `content.body` attribute, which is of type `com.vordel.mime.Body`, is required because the SOAP parameters must be extracted from the body of the HTTP request. The property definition is declared as follows:
 
-```
+```java
 protected final void setDefaultPropertyDefs() {
     reqProps.add(new PropDef(MessageProperties.CONTENT_BODY,
       com.vordel.mime.Body.class));
@@ -133,7 +133,7 @@ This is the API Gateway runtime component of the filter that is returned by the 
 
 The following code shows how the Processor attaches to the Filter class and uses its data to process the message. It gets the configuration data using selectors to set up a connection to an XMPP server, creates a chat, and sends a message to a chat participant. The complete code for the class is available in the `DEVELOPER_SAMPLES/jabber` directory.
 
-```
+```java
 public class JabberProcessor extends MessageProcessor {
 
     …
@@ -216,11 +216,11 @@ The `invoke` method can have the following possible results:
 
 The declarative UI XML file encapsulates the design of the user interface of filters and dialogs. It includes the markup UI elements and bindings to create the Jabber filter dialog within Policy Studio.
 
-For more information on using declarative XML, see [Define user interfaces using declarative XML](/docs/apigtw_devguide/declarative_xml_for_ps). For a complete listing of the available elements and bindings, see [Declarative UI reference](/docs/apigtw_devguide/dec_ui_reference).
+For more information on using declarative XML, see [Define user interfaces using declarative XML](/docs/apigtw_devguide/declarative_xml_for_ps). For a complete listing of the available elements and bindings, see [Declarative UI reference](/docs/apigtw_ref/dec_ui_reference).
 
 The following declarative XML shows the elements needed to create the Jabber filter dialog:
 
-```
+```xml
 <ui>
  <panel columns="2">
   <NameAttribute />
@@ -285,11 +285,11 @@ The `JabberFilterUI` class, which is returned by the `getConfigPanelClass` metho
 * Naming the category of filters to which this filter belongs
 * Specifying the name of the images to use as the icons and images for this filter
 
-### JabberFilterUI class
+### `JabberFilterUI` class
 
 The code for the `JabberFilterUI` class is as follows:
 
-```
+```java
 public class JabberFilterUI extends DefaultGUIFilter
 {
     public Vector<VordelPage> getPropertyPages() {
@@ -341,11 +341,11 @@ A page only represents a single configuration window in Policy Studio. You can c
 
 If you look at the `getPropertyPages` method of the `JabberFilterUI` class, you can see that the `JabberFilterPage` class forms one of the configuration windows (or pages) for the `JabberFilter`. The `JabberFilterPage` class is responsible for loading the declarative UI XML file that defines the layout of all the input fields that make up the configuration window for the `JabberFilter`.
 
-### JabberFilterPage class
+### `JabberFilterPage` class
 
 The code for the `JabberFilterPage` class is as follows:
 
-```
+```java
 public class JabberFilterPage extends VordelPage
 {
     public JabberFilterPage() {
@@ -390,7 +390,7 @@ To define a mapping for the help page, follow these steps:
 1. Open the `csh.xml` file.
 2. Add the following XML to the file:
 
-    ```
+    ```xml
     <context id="jabber_help">
         <description>Jabber Filter</description>
         <topic label="Jabber Filter" href="Content/PolicyDevTopics/jabber.htm"/>
@@ -405,7 +405,7 @@ To define a mapping for the help page, follow these steps:
 `public void createControl(Composite parent)`  
 This method is responsible for loading the declarative UI XML file that creates the configuration pages. Localization keys from the `resources.properties` file are used to give labels for the input fields in the XML file.
 
-### resources.properties file
+### `resources.properties` file
 
 Both the declarative UI XML file and the GUI classes use localized keys for all text that is displayed on the configuration window. This makes it easy to localize or customize all text displayed in Policy Studio. The localization keys and their corresponding strings are stored in the `resources.properties` file, which takes the following format:
 
@@ -496,7 +496,7 @@ To register the type definition using Policy Studio, perform the following steps
 2. Select **File > Import > Import Custom Filters**.
 3. Browse to the `Typeset.xml` file. A TypeSet file is used to group together one or more TypeDocs. This enables multiple TypeDocs to be added to the entity store in batch mode. The `JabberTypeSet.xml` file includes the following:
 
-    ```
+    ```xml
     <typeSet>
         <!-- JabberFilter Typedoc -->
         <typedoc file="JabberFilterDesc.xml" />
@@ -528,7 +528,7 @@ To create a policy, perform the following steps:
     * **Message:** Message to send
 5. To check that the help is working correctly, click the **Help** button on the filter dialog.
 
-    In [Create the classes](#create-the-classes), as part of the `getHelp` method, you added a mapping to the `contexts.xml` file (in the `/plugins/com.vordel.rcp.policystudio.resources_<version>` directory of your Policy Studio installation). After restarting Policy Studio, the **Help** button should function correctly.
+    In [Create the classes](#create-the-policy-studio-classes), as part of the `getHelp` method, you added a mapping to the `contexts.xml` file (in the `/plugins/com.vordel.rcp.policystudio.resources_<version>` directory of your Policy Studio installation). After restarting Policy Studio, the **Help** button should function correctly.
 
 6. To add a **Reflect Message** filter, which echoes the client message back to the client, drag it from the **Utility** group onto the policy canvas.
 7. Configure the **Reflect Message** filter as follows:
