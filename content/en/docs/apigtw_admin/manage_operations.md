@@ -17,7 +17,7 @@ You can also start and stop API Gateway instances using API Gateway Manager. For
 Before you can start API Gateway, you must first create a new domain that includes a gateway instance. If you installed the QuickStart tutorial, a sample API Gateway domain is automatically configured in your installation. Otherwise, you must create a new domain. For more details, see [Configure an API Gateway domain](/docs/apigtw_admin/makegateway).
 
 If you are using Apache Cassandra, before starting API Gateway, you must first ensure that Cassandra is running. For details on installing and running Cassandra, see the
-[API Gateway Installation Guide](/docs/apigtw_install/).
+[API Gateway Installation Guide](/docs/apim_installation/apigtw_install/).
 
 ### Set passphrases
 
@@ -289,7 +289,7 @@ If your gateway system uses any of these features, you must configure an externa
 
 All nodes in a Cassandra cluster must run on the same operating system.
 
-For more details on installing and configuring an external Cassandra database for HA, see the [Install an Apache Cassandra database](/docs/apigtw_install/cassandra_install/).
+For more details on installing and configuring an external Cassandra database for HA, see the [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
 
 ### Embedded Apache ActiveMQ
 

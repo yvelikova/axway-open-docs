@@ -9,7 +9,7 @@ description: Configure an API Gateway instance and Node Manager to store metrics
  When API Gateway is configured to store metrics in a relational database, you can configure monitoring in API Gateway Analytics or API Manager to view data stored in the metrics database, or write custom SQL queries to retrieve metrics data as required.
 
 {{< alert title="Note" color="primary" >}}This topic explains how to configure API Gateway with a metrics database. This topic assumes that you have already created your metrics database using the steps described in
-[Install and configure a metrics database](/docs/apigtw_install/metrics_db_install/).{{< /alert >}}
+[Install and configure a metrics database](/docs/apim_installation/apigtw_install/metrics_db_install/).{{< /alert >}}
 
 ## API Gateway metrics data streams
 

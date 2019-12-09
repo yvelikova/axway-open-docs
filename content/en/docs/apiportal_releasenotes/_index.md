@@ -13,8 +13,8 @@ API Portal provides an API consumer-facing interface that you can customize to 
 
 API Portal is available as a software installation or a virtualized deployment in Docker containers. For more information, see:
 
-* [Install API Portal](/docs/apiportal_install/)
-* [Deploy API Portal in containers](/docs/apiportal_docker/)
+* [Install API Portal](/docs/apim_installation/apiportal_install/)
+* [Deploy API Portal in containers](/docs/apim_installation/apiportal_docker/)
 
 ## New features and enhancements
 

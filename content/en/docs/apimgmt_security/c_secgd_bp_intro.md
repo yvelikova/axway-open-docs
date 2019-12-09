@@ -36,11 +36,11 @@ You must limit the users that have privileged access to the machine on which API
 
 As much as possible, limit the number of Internet access points. Do not open useless Internet connections and limit interconnections with external networks as much as possible. This limits the product’s attack surface, reduces the risk of external attacks, and makes it easier to audit the product.
 
-For a list of default ports that are opened by the API Gateway components, see [Default ports](/docs/apigtw_install/system_requirements/#default-ports).
+For a list of default ports that are opened by the API Gateway components, see [Default ports](/docs/apim_installation/apigtw_install/system_requirements/#default-ports).
 
 ## Session timeouts
 
-The default idle session timeout for the API Gateway Manager web UI is 12 hours. It is recommended that you change this timeout to 120 minutes or less. For details, see [Change default session timeout for API Gateway Manager](/docs/apigtw_install/post_overview/#change-default-session-timeout-for-api-gateway-manager).
+The default idle session timeout for the API Gateway Manager web UI is 12 hours. It is recommended that you change this timeout to 120 minutes or less. For details, see [Change default session timeout for API Gateway Manager](/docs/apim_installation/apigtw_install/post_overview/#change-default-session-timeout-for-api-gateway-manager).
 
 ## Correct upgrade procedure
 
@@ -49,15 +49,15 @@ In the event of a possible vulnerability discovered in the product, you must be 
 For more information on upgrade procedures, see the following sections:
 
 * API Gateway and API Manager software:
-    * [API Gateway Upgrade Guide](/docs/apigw_upgrade/)
-    * [Update API Gateway](/docs/apigtw_install/install_service_packs/)
+    * [API Gateway Upgrade Guide](/docs/apim_installation/apigw_upgrade/)
+    * [Update API Gateway](/docs/apim_installation/apigtw_install/install_service_packs/)
 * API Gateway and API Manager container deployment:
-    * [Upgrade a container deployment](/docs/container_topics/container_upgrade/)
-    * [Apply a patch or service pack](/docs/container_topics/container_patch_sp/)
+    * [Upgrade a container deployment](/docs/apim_installation/apigw_containers/container_upgrade/)
+    * [Apply a patch or service pack](/docs/apim_installation/apigw_containers/container_patch_sp/)
 * API Portal:
-    * [Upgrade API Portal](/docs/apiportal_install/upgrade_automatic/)
-    * [Upgrade API Portal docker deployment](/docs/apiportal_docker/upgrade_docker/)
-    * [Update API Portal with a service pack or patch](/docs/apiportal_install/install_service_pack/)
+    * [Upgrade API Portal](/docs/apim_installation/apiportal_install/upgrade_automatic/)
+    * [Upgrade API Portal docker deployment](/docs/apim_installation/apiportal_docker/upgrade_docker/)
+    * [Update API Portal with a service pack or patch](/docs/apim_installation/apiportal_install/install_service_pack/)
 
 ## Generic or anonymous users
 
@@ -287,11 +287,11 @@ All other files are modified at runtime and cannot be verified using a monitorin
 
 ## API Portal certificate verification
 
-It is recommended that you explicitly configure the API Manager certificate in API Portal and enable API Portal to verify the certificate and host of API Manager. For more information, see [Connect API Portal to API Manager](/docs/apiportal_install/connect_to_apimgr/).
+It is recommended that you explicitly configure the API Manager certificate in API Portal and enable API Portal to verify the certificate and host of API Manager. For more information, see [Connect API Portal to API Manager](/docs/apim_installation/apiportal_install/connect_to_apimgr/).
 
 ## API Portal Internet access restriction
 
-In API Portal, it is recommended that you protect the Joomla! administration UI from direct Internet access. For more information, see [Secure API Portal](/docs/apiportal_install/secure_harden_portal/).
+In API Portal, it is recommended that you protect the Joomla! administration UI from direct Internet access. For more information, see [Secure API Portal](/docs/apim_installation/apiportal_install/secure_harden_portal/).
 
 ## API Portal administrator user name
 

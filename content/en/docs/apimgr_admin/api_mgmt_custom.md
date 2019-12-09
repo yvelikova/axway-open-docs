@@ -14,7 +14,7 @@ API Portal is implemented as a stand-alone CMS-based portal, which you can run 
 
 For more details, see the following API Portal documentation:
 
-* [API Portal Installation and Upgrade Guide](/docs/apiportal_install/)
+* [API Portal Installation and Upgrade Guide](/docs/apim_installation/apiportal_install/)
 * [API Portal Administrator Guide](/docs/apiportal_admin/)
 
 ## Customize API Manager generated email

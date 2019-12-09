@@ -52,7 +52,7 @@ For more details, see [Add custom API Manager routing policies](/docs/apimgr_adm
 
 ## API Portal outbound SSL configuration
 
-By default, API Portal performs secure outbound requests to API Manager and API Gateway. To configure the API Portal to verify API Manager’s certificates and host name, see [Connect API Portal to API Manager](/docs/apiportal_install/connect_to_apimgr/).
+By default, API Portal performs secure outbound requests to API Manager and API Gateway. To configure the API Portal to verify API Manager’s certificates and host name, see [Connect API Portal to API Manager](/docs/apim_installation/apiportal_install/connect_to_apimgr/).
 
 ## Secure Apache Cassandra configuration
 

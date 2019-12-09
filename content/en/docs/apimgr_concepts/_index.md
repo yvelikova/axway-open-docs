@@ -127,7 +127,7 @@ This wizard in Policy Studio enables you to create new REST APIs that route to p
 
 API Portal is a self-service web-based portal that enables API consumers to consume APIs that you have exposed for organizations API Manager. API consumers can register and manage their user profile, register applications, manage application credentials, browse front-end APIs and supporting documentation, monitor application API usage, and access blogs, forums, and so on.
 
-API Portal is implemented as a stand-alone CMS-based portal, which you can run using the default Axway branding and functionality, or customize and extend to meet your specific requirements and those of your target API consumers. You can deploy the internet-facing API Portal separately from the API Gateway and API Manager, with a dedicated web interface to limit potential security breaches. For more details, see [API Portal Installation and Upgrade Guide](/docs/apiportal_install/).
+API Portal is implemented as a stand-alone CMS-based portal, which you can run using the default Axway branding and functionality, or customize and extend to meet your specific requirements and those of your target API consumers. You can deploy the internet-facing API Portal separately from the API Gateway and API Manager, with a dedicated web interface to limit potential security breaches. For more details, see [API Portal Installation and Upgrade Guide](/docs/apim_installation/apiportal_install/).
 
 ### API Manager API
 

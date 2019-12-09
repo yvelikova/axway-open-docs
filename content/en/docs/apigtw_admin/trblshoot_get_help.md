@@ -111,7 +111,7 @@ Patch:      RDAPI-5693_etwe2346zdg567fhfg4ue7645846856766700a32
 Patch:      ext/lib/com.vordel.circuit.net.UnexpectedProcessor.jar: Unexpected file
 ```
 
-For more information on the patch validation messages and how to resolve them, see [Update API Gateway](/docs/apigtw_install/install_service_packs/).
+For more information on the patch validation messages and how to resolve them, see [Update API Gateway](/docs/apim_installation/apigtw_install/install_service_packs/).
 
 The `managedomain --version` command checks the version on the local machine only. You do not need to have an Admin Node Manager or API Gateway running to run this command.
 

@@ -76,7 +76,7 @@ The following guidelines help you to decide where to deploy the gateway:
 Although you can select the API Gateway Analytics component in the API Gateway installer, it is good practice to install API Gateway Analytics on a separate host from your gateway installations. You should ensure that API Gateway Analytics runs on a dedicated host, or on a host that is not a running an API Gateway instance or Node Manager.
 
 You can deploy API Gateway Analytics on any supported host platform depending on its availability in your architecture. For more details on supported platform versions, see the
-[API Gateway Installation Guide](/docs/apigtw_install/).
+[API Gateway Installation Guide](/docs/apim_installation/apigtw_install/).
 
 {{< alert title="Note" color="primary" >}}API Gateway Analytics supports a range of databases for storing historic reports and metrics (for example, Oracle, DB2, MySQL, and Microsoft SQL Server). You should not install the database used for API Gateway Analytics in the DMZ. You should install this database in the LAN on a separate host from your API Gateway installations.{{< /alert >}}
 
@@ -98,7 +98,7 @@ For more details on configuring mutual SSL, and configuring WS-Security and SAML
 The main stages in the overall API Gateway administration lifecycle are as follows:
 
 1. Planning an API Gateway system. This is described in [Plan an API Gateway system](/docs/apigtw_admin/admin_planning/).
-2. Installing API Gateway components. See the [API Gateway Installation Guide](/docs/apigtw_install/).
+2. Installing API Gateway components. See the [API Gateway Installation Guide](/docs/apim_installation/apigtw_install/).
 3. Configuring a domain. This is described in [Configure an API Gateway domain](/docs/apigtw_admin/makegateway/).
 4. Operating and managing the API Gateway. This is described in the rest of this guide.
 5. Upgrading an API Gateway. See the [API Gateway Upgrade Guide](/docs/apigw_upgrade).
@@ -117,7 +117,7 @@ The gateway interoperates with a range of commonly used databases for a wide var
 * Microsoft SQL Server
 * MariaDB
 
-API Gateway also supports Apache Cassandra for internal data storage. For details on supported database versions, see [Install an Apache Cassandra database](/docs/apigtw_install/cassandra_install/).
+API Gateway also supports Apache Cassandra for internal data storage. For details on supported database versions, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
 
 ### Anti-virus
 

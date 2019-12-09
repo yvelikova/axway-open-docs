@@ -14,7 +14,7 @@ Before you start developing policies in Policy Studio:
 * Create a managed domain
 * Start API Gateway and Policy Studio
 
-For details, see [Install API Gateway](/docs/apigtw_install/).
+For details, see [Install API Gateway](/docs/apim_installation/apigtw_install/).
 
 ## Policy Studio projects
 
