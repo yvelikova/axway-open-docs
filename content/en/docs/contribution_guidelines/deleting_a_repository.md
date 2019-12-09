@@ -1,6 +1,6 @@
 ---
-title: "Deleting an old fork before contributing to Axway documentation"
-linkTitle: "Deleting an old fork"
+title: "Delete an outdated fork before contributing to Axway documentation"
+linkTitle: "Delete an outdated fork"
 weight: 6
 date: 2019-10-15
 description: >
@@ -13,6 +13,8 @@ The first time you make a contribution to the Axway documentation by way of the 
 Since there are other users collaborating with Axway documentation, it's highly likely that your fork will be behind the upstream repository quickly and you might encounter errors, or conflicts, the next time you try to send a pull request to `axway-open-docs`.
 
 To avoid issues when sending a pull request, you can [delete and recreate](#delete-and-recreate-your-fork) or [synchronize](#sync-your-fork) your old fork before starting a new contribution.
+
+{{< alert title="Caution" color="warning">}}Do not delete your fork if you have pending PRs, otherwise this will erase work that is not merged yet.{{< /alert >}}
 
 ## Delete and recreate your fork
 

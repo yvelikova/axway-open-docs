@@ -219,7 +219,12 @@ The remote host settings available in API Manager are a subset of the settings a
 : If a connection to this remote host is not established within the time specified in this field, the connection times out and fails. Defaults to `30000` milliseconds (30 seconds). This setting is required.
 
 **Active timeout**
-: When the underlying API Gateway receives a large HTTP request, it reads the request off the network when it becomes available. If the time between reading successive blocks of data exceeds the active timeout, the API Gateway closes the connection. This prevents a remote host from closing the connection while sending data. Defaults to `30000` milliseconds (30 seconds). This setting is required.
+: When the API Gateway receives a large HTTP request, it reads the request off the network when it becomes available. If the time between reading successive blocks of data exceeds the **Active Timeout**, the API Gateway closes the connection. This prevents a remote host from closing the connection while sending data. Defaults to 30000 milliseconds (30 seconds).
+
+For example, the remote host's network connection is pulled out of the machine while sending data to the API Gateway. When the API Gateway has read all the available data off the network, it waits the **Active Timeout**
+period before closing the connection.
+
+The **Active Timeout** value is also used as a wait time when the maximum number of connections for a remote host is reached. For example, when a remote host reaches the **Maximum connections** value, API Gateway waits the active timeout period before giving up on trying to make a new connection.
 
 **Transaction timeout**
 : A configurable transaction timeout that detects slow HTTP attacks (slow header write, slow body write, slow read) and rejects any transaction that keeps the worker threads occupied for an excessive amount of time. The default value is `240000` milliseconds. This setting is required.

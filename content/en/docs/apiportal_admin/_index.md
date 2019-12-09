@@ -1,7 +1,7 @@
 ---
 title: API Portal Administration Guide
 linkTitle: Administer API Portal
-weight: 9
+weight: 55
 date: 2019-07-30
 description: This guide describes how to customize and configure API Portal.
 ---

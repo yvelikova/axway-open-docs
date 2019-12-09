@@ -5,7 +5,6 @@ weight: "5"
 date: 2019-10-07
 description: Use the `dbpurger` command to connect to your metrics database and purge old data. This command also enables you to retain a specified amount of data, and to archive all data.
 ---
-<!-- TODO Merge with Admin Guide topic-->
 
 ## Run the dbpurger command
 
