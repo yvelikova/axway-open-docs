@@ -20,7 +20,7 @@ By default the HTTPS interface:
 * Blocks unauthenticated ciphers.
 
 For more information on configuring HTTPS interfaces, see the
-[HTTP and HTTPS interfaces](/docs/apigw_poldev/gw_instances/general_services/#http-and-https-interfaces).
+[HTTP and HTTPS interfaces](/docs/apim_policydev/apigw_poldev/gw_instances/general_services/#http-and-https-interfaces).
 
 ## API Portal inbound SSL configuration
 
@@ -42,7 +42,7 @@ As well as receiving messages over SSL-enabled interfaces, API Gateway can also 
 
 Similarly, other filters allow you to make outbound connections over SSL, for example, **File Upload** and **File Download** filters, **SMTP** filter, **Read from JMS** filter, and **Send to JMS** filter.
 
-For more information, see [Routing filters](/docs/apigw_polref/routing_common/).
+For more information, see [Routing filters](/docs/apim_policydev/apigw_polref/routing_common/).
 
 ## API Manager outbound SSL configuration
 
@@ -107,9 +107,9 @@ For more information, see the
 
 ## API Gateway authentication
 
-API Gateway supports a large range of authentication mechanisms and protocols, including HTTP basic and digest authentication, HTML form-based authentication, SSL, session-based authentication, SAML, WS-Security UsernameToken, Kerberos, and many more.  For more information on these filters, see [Authentication filters](/docs/apigw_polref/authn_common/).
+API Gateway supports a large range of authentication mechanisms and protocols, including HTTP basic and digest authentication, HTML form-based authentication, SSL, session-based authentication, SAML, WS-Security UsernameToken, Kerberos, and many more.  For more information on these filters, see [Authentication filters](/docs/apim_policydev/apigw_polref/authn_common/).
 
-API Gateway can also integrate with a number of third party Identity Management products to authenticate users, such as Axway PassPort, Entrust GetAccess, Oracle Entitlements Server, Oracle Access Manager, CA SiteMinder, RADIUS, RSA Access Manager, Sun Access Manager, Tivoli repositories, LDAP, database, Key Property Store (KPS), and the local user store.  For more information on authentication repositories, see [Configure authentication repositories](/docs/apigw_poldev/external_connections/common_user_store/).
+API Gateway can also integrate with a number of third party Identity Management products to authenticate users, such as Axway PassPort, Entrust GetAccess, Oracle Entitlements Server, Oracle Access Manager, CA SiteMinder, RADIUS, RSA Access Manager, Sun Access Manager, Tivoli repositories, LDAP, database, Key Property Store (KPS), and the local user store.  For more information on authentication repositories, see [Configure authentication repositories](/docs/apim_policydev/apigw_poldev/external_connections/common_user_store/).
 
 ## API Portal authentication
 
@@ -121,7 +121,7 @@ API Gateway also integrates with a number of third-party Identity Management pro
 
 It also supports standard authorization schemes, including LDAP RBAC, SAML, SAML PDP, XACML, and X.509 certificate attributes.  OAuth 2.0 and OpenID Connect are also supported, and are discussed in the following section.
 
-For details on how to configure these authorization services, see [Configure external connections](/docs/apigw_poldev/external_connections/).
+For details on how to configure these authorization services, see [Configure external connections](/docs/apim_policydev/apigw_poldev/external_connections/).
 
 ## API Gateway OAuth and OpenID Connect
 
@@ -145,13 +145,13 @@ for more information on OAuth and OpenID Connect.
 
 There are a number of different encryption filters available in API Gateway, for example, **XML Encryption**, **PGP Encrypt and Sign**, and **SMIME Encryption**.  Similarly, API Gateway can sign and verify messages using XML signature, SMIME, or PGP.
 
-For more information, see [Encryption filters](/docs/apigw_polref/encryption_common/), [XML integrity filters](/docs/apigw_polref/integrity_xml/), and [Additional integrity filters](/docs/apigw_polref/integrity_additional/).
+For more information, see [Encryption filters](/docs/apim_policydev/apigw_polref/encryption_common/), [XML integrity filters](/docs/apim_policydev/apigw_polref/integrity_xml/), and [Additional integrity filters](/docs/apim_policydev/apigw_polref/integrity_additional/).
 
 ## API Gateway certificate validation
 
 While the API Gateway's SSL stack will implicitly check the validity of a certificate in terms of its trusted certificate chain and expiry date, it is also possible to validate client certificates against a CRL, OCSP responder, or XKMS server.  These additional validation mechanisms are especially useful in cases where the certificate is extracted from the message itself, rather than the SSL session.
 
-See [Certificate validation filters](/docs/apigw_polref/cert_validation/) for more information on these certificate validation mechanisms.
+See [Certificate validation filters](/docs/apim_policydev/apigw_polref/cert_validation/) for more information on these certificate validation mechanisms.
 
 ## API Gateway Entity Store passphrase
 
@@ -211,7 +211,7 @@ API Portal forces a Joomla! administrator password change on first login.
 An important aspect of maintaining the integrity of the product audit trail is the ability to sign audit records.  API Gateway can sign audit data written to text files, XML files, and databases.
 
 For more details on how to sign transaction logs, see the
-[Transaction audit log settings](/docs/apigtw_ref/log_global_settings/#transaction-audit-log-settings).
+[Transaction audit log settings](/docs/apim_reference/apigtw_ref/log_global_settings/#transaction-audit-log-settings).
 
 ## API Gateway HSM integration
 

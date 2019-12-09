@@ -69,7 +69,7 @@ In cases where multiple administrator users are responsible for configuring poli
 
 In line with security best practices, you can configure a password policy for administrator users in API Gateway Manager. Password policy refers to the size and complexity of the password, as well as to all the rules to manage the password.
 
-It is also possible to take certain actions when a configurable number of invalid authentication attempts has occurred via HTTP basic, HTTP digest, and HTML form-based authentication.  For example, you can lock a user account or ban an IP address if a certain number of invalid passwords have been submitted to API Gateway. For details, see [Authentication filters](/docs/apigw_polref/authn_common/).
+It is also possible to take certain actions when a configurable number of invalid authentication attempts has occurred via HTTP basic, HTTP digest, and HTML form-based authentication.  For example, you can lock a user account or ban an IP address if a certain number of invalid passwords have been submitted to API Gateway. For details, see [Authentication filters](/docs/apim_policydev/apigw_polref/authn_common/).
 
 For more information on setting the password policy for administrator users, see the
 [Configure a password policy for admin users](/docs/apim_administration/apigtw_admin/manage_user_access/#configure-a-password-policy-for-admin-users).
@@ -98,7 +98,7 @@ Events can be audited at different levels, for example, success, failure, or abo
 
 The product can also send various types of alerts (for example, email messages, SNMP traps, Amazon SNS, and so on) under certain configurable error conditions.
 
-See [Configure logging and events](/docs/apim_administration/apigtw_admin/logging/) and [Configure system alerts](/docs/apigw_poldev/general_system_alerts/) for more information on configuring logging and alerting in API Gateway.
+See [Configure logging and events](/docs/apim_administration/apigtw_admin/logging/) and [Configure system alerts](/docs/apim_policydev/apigw_poldev/general_system_alerts/) for more information on configuring logging and alerting in API Gateway.
 
 ## Sensitive files and databases
 

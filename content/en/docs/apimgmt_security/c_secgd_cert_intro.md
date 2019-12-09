@@ -43,7 +43,7 @@ The ability to run API Gateway in FIPS mode is a licensable option of the standa
 
 You can run the FIPS Compliance Validation Tool from Policy Studio to check that a configuration is FIPS compliant. This tool is available from the **Tools > Check Security Constraints > FIPS** menu option.
 
-For more information on running the tool, see [Compliance validation tools](/docs/apigw_poldev/general_validation_tools/). For guidance on compliant settings for Policy Studio filters, see [Compliant settings for filters](/docs/apimgmt_security/compliance_appendix/).
+For more information on running the tool, see [Compliance validation tools](/docs/apim_policydev/apigw_poldev/general_validation_tools/). For guidance on compliant settings for Policy Studio filters, see [Compliant settings for filters](/docs/apimgmt_security/compliance_appendix/).
 
 ### API Portal FIPS compliance
 

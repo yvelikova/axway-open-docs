@@ -207,7 +207,7 @@ To start, add a new policy named, for example, `Kerberos KCD SPNEGO Client-Side`
 
     Replace the realm settings in the example with your Kerberos realm, and set the `kdc` setting to the host name of your Windows Domain Controller.
 
-    For more details on the fields and options in this configuration window, see [Kerberos configuration](/docs/apigw_poldev/security_server_settings/#configure-kerberos-settings).
+    For more details on the fields and options in this configuration window, see [Kerberos configuration](/docs/apim_policydev/apigw_poldev/security_server_settings/#configure-kerberos-settings).
 
 3. Click the **Deploy** icon to deploy the configuration to API Gateway.
 

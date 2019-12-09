@@ -20,7 +20,7 @@ The following summarizes the different approaches for adding a custom filter:
 | No major development skills required                                                               | Development skills required   |
 | Does not appear in filter palette in Policy Studio                                                 | Filter appears in filter palette in Policy Studio   |
 
-Before creating your own custom filter you should understand exactly what message filters are, and how they are chained together to create a message policy. These concepts are documented in detail in the [API Gateway Policy Developer Guide](/docs/apigw_poldev/).
+Before creating your own custom filter you should understand exactly what message filters are, and how they are chained together to create a message policy. These concepts are documented in detail in the [API Gateway Policy Developer Guide](/docs/apim_policydev/apigw_poldev/).
 
 ## Use JavaScript to call existing Java code
 

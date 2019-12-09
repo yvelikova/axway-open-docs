@@ -20,7 +20,7 @@ This section explains how to monitor example services using the API Gateway Mana
     2. To enable traffic monitoring, select **Traffic Monitor > Enable Traffic Monitor**.
     3. To enable real-time monitoring, select **Real Time Monitoring > Enable Real Time Monitoring**.
 
-{{< alert title="Note" color="primary" >}}Enabling traffic monitoring might have a negative impact on performance. To maximize performance, disable these settings. For more details, see [Traffic monitoring settings](/docs/apigtw_ref/monitor_traffic_events_metrics#traffic-monitoring-settings).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Enabling traffic monitoring might have a negative impact on performance. To maximize performance, disable these settings. For more details, see [Traffic monitoring settings](/docs/apim_reference/apigtw_ref/monitor_traffic_events_metrics#traffic-monitoring-settings).{{< /alert >}}
 
 ### View real-time monitoring
 

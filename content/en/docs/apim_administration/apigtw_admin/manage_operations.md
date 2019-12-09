@@ -159,7 +159,7 @@ When you need to shut down a gateway for any reason (for example, during an upgr
 
 To perform a zero downtime shutdown, follow these steps:
 
-1. Enable zero downtime shutdown in Policy Studio, and set the delay before shutdown. For more information, see [Zero downtime settings](/docs/apigtw_ref/additional_settings#zero-downtime-settings).
+1. Enable zero downtime shutdown in Policy Studio, and set the delay before shutdown. For more information, see [Zero downtime settings](/docs/apim_reference/apigtw_ref/additional_settings#zero-downtime-settings).
 2. Configure your load balancer to ping the Health Check LB policy periodically to determine if each API Gateway is healthy. This is available on the following default URL:
 
     ```
@@ -299,7 +299,7 @@ In this shared network of ActiveMQ brokers, each gateway can start a local embed
 
 For details on how to configure and manage embedded Apache ActiveMQ, see the following:
 
-* [Embedded ActiveMQ settings](/docs/apigtw_ref/general_activemq_settings)
+* [Embedded ActiveMQ settings](/docs/apim_reference/apigtw_ref/general_activemq_settings)
 * [Manage embedded ActiveMQ messaging](/docs/apim_administration/apigtw_admin/admin_messaging)
 
 For more details on Apache ActiveMQ, see <http://activemq.apache.org/>.
