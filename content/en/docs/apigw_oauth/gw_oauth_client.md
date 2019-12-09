@@ -120,7 +120,7 @@ You must register client applications with the OAuth service provider (for examp
 * API Gateway applications can be registered in the Client Application Registry (port 8089).
 
 If you have installed API Manager, you can register API Gateway applications in API Manager (port 8075). For more information, see the
-[Manage client applications in API Manager](/docs/apimgr_admin/api_mgmt_consume/#manage-client-applications).
+[Manage client applications in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_consume/#manage-client-applications).
 
 The API Gateway provider represents OAuth services running on an API Gateway. The API Gateway provider uses the existing OAuth server samples for authorization and token endpoints (for example, `https://127.0.0.1:8089/api/oauth/authorize` and `https://127.0.0.1:8089/api/oauth/token`). The Google and SalesForce provider settings ship with the current public endpoints.
 

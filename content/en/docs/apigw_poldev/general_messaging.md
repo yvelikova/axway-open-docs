@@ -278,7 +278,7 @@ You can use the API Gateway server settings to configure the default embedded Ap
 
 In the Policy Studio tree, select **Environment Configuration > Server Settings > Messaging > Embedded ActiveMQ**. For example, you can enable embedded ActiveMQ, and configure location and SSL security settings.
 
-{{< alert title="Note" color="primary" >}}Apache ActiveMQ 5.14.3 restricts serializing object message types. For more details, see the [API Gateway Administrator Guide](/docs/apigtw_admin/).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Apache ActiveMQ 5.14.3 restricts serializing object message types. For more details, see the [API Gateway Administrator Guide](/docs/apim_administration/apigtw_admin/).{{< /alert >}}
 
 ## Monitor messaging using API Gateway Manager
 

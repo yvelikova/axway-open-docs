@@ -58,7 +58,7 @@ Specifies whether to use Secure Sockets Layer (SSL) to secure the communication 
 
 **Server Cert**:
 
-When **Enable SSL** is selected, click to select the server certificate with a private key that is used for SSL communication between ActiveMQ brokers. For details on importing certificates into the certificate store, see [Manage X.509 certificates and keys](/docs/apigtw_admin/general_certificates).
+When **Enable SSL** is selected, click to select the server certificate with a private key that is used for SSL communication between ActiveMQ brokers. For details on importing certificates into the certificate store, see [Manage X.509 certificates and keys](/docs/apim_administration/apigtw_admin/general_certificates).
 
 **Accepted cipher suites**:
 
@@ -68,15 +68,15 @@ When **Enable SSL** is selected, select which cipher suites should be accepted b
 
 **Require Client Certificates**:
 
-When **Enable SSL** is set, specifies whether to require client certificates for client SSL authentication. For example, for mutual (two-way) SSL communication, you must trust the issuer of the client certificate by importing the client certificate issuer into the certificate store. For details on importing certificates, see [Manage X.509 certificates and keys](/docs/apigtw_admin/general_certificates).
+When **Enable SSL** is set, specifies whether to require client certificates for client SSL authentication. For example, for mutual (two-way) SSL communication, you must trust the issuer of the client certificate by importing the client certificate issuer into the certificate store. For details on importing certificates, see [Manage X.509 certificates and keys](/docs/apim_administration/apigtw_admin/general_certificates).
 
-When **Require client certificates** is selected, you can then select the root certificate authorities that are trusted for mutual (two-way) SSL communication between ActiveMQ brokers. For details on importing certificates into the API Gateway certificate store, see [Manage X.509 certificates and keys](/docs/apigtw_admin/general_certificates).
+When **Require client certificates** is selected, you can then select the root certificate authorities that are trusted for mutual (two-way) SSL communication between ActiveMQ brokers. For details on importing certificates into the API Gateway certificate store, see [Manage X.509 certificates and keys](/docs/apim_administration/apigtw_admin/general_certificates).
 
 ### Authentication settings
 
 Configure the following to specify authentication settings between multiple embedded ActiveMQ brokers:
 
-* The authentication settings are also used by features on the **Messaging** tab in the API Gateway Manager web console (for example, sending messages and managing durable topic subscriptions). For more details, see [Manage embedded ActiveMQ messaging](/docs/apigtw_admin/admin_messaging).
+* The authentication settings are also used by features on the **Messaging** tab in the API Gateway Manager web console (for example, sending messages and managing durable topic subscriptions). For more details, see [Manage embedded ActiveMQ messaging](/docs/apim_administration/apigtw_admin/admin_messaging).
 
 **Authenticate broker and client connections with the following policy**:
 
@@ -104,7 +104,7 @@ Configure the following advanced settings:
 
 **Maximum UI queue browsing size**:
 
-Enter the maximum number of messages loaded into memory and returned to the API Gateway Manager UI when listing messages contained in a queue. For more information on viewing the messages in a queue, see [Manage messages in a queue](/docs/apigtw_admin/admin_messaging#manage-messages-in-a-queue).
+Enter the maximum number of messages loaded into memory and returned to the API Gateway Manager UI when listing messages contained in a queue. For more information on viewing the messages in a queue, see [Manage messages in a queue](/docs/apim_administration/apigtw_admin/admin_messaging#manage-messages-in-a-queue).
 
 **Maximum memory usage**:
 

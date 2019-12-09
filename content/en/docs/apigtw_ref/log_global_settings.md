@@ -60,7 +60,7 @@ ${level} ${timestamp} ${id} ${text} ${filterType} ${filterName}
 
 The available logging properties are described as follows:
     * **`level`**: The log level (`fatal` , `fail`, `success`).
-    * **`timestamp`**: The time that the message was processed in user-readable form. For more details, see **Date format** in [General settings](/docs/apigtw_admin/general_settings).
+    * **`timestamp`**: The time that the message was processed in user-readable form. For more details, see **Date format** in [General settings](/docs/apim_administration/apigtw_admin/general_settings).
     * **`id`**: The unique transaction ID assigned to the message.
     * **`text`**: The text of the log message that was configured in the filter itself. In the case of the **Log Message Payload** filter, the `${payload}` selector contains the message that was sent by the client.
     * **`filterName`**: The name of the filter that generated the log message.
@@ -302,7 +302,7 @@ The **Transaction Event Log** provides a summary of each gateway message transac
 The event log file data is processed by the local Node Manager every 5 minutes, aggregated into the appropriate metrics data, and then written to a database. API Manager can use the data from the database to display metrics in the system. Event log file data is written in JSON format, which also enables it to be integrated with third-party logging tools such as Splunk.
 
 {{< alert title="Note" color="primary" >}}
-Node Manager processing of event log data is not enabled by default. You must enable the Node Manager to write metrics to the database. For more details, see [Configure API Gateway with a metrics database](/docs/apigtw_admin/monitor_service#configure-api-gateway-with-the-metrics-database).
+Node Manager processing of event log data is not enabled by default. You must enable the Node Manager to write metrics to the database. For more details, see [Configure API Gateway with a metrics database](/docs/apim_administration/apigtw_admin/monitor_service#configure-api-gateway-with-the-metrics-database).
 {{< /alert >}}
 
 ### Transaction event log formats
@@ -618,7 +618,7 @@ In this example, the `legs` data is based on traffic monitoring, and its `durati
 
 * The `duration` value for leg `0` minus the sum of the duration of all subsequent legs should give you the time spent in the API Gateway for that transaction. In this example, this is 1843 ms – 566 ms = 1277 ms.
 
-For more information about transactions and legs, see [Introduction to transactions and legs in API Gateway](/docs/apigtw_admin/admin_open_logging/#introduction-to-transactions-and-legs).
+For more information about transactions and legs, see [Introduction to transactions and legs in API Gateway](/docs/apim_administration/apigtw_admin/admin_open_logging/#introduction-to-transactions-and-legs).
 
 The service context is an abstract concept, and the `duration` at this level measures time spent in that context only. The service context might be set in an arbitrary place in a policy, so this information is typically not as useful as the leg data—unless in composite services scenarios.
 

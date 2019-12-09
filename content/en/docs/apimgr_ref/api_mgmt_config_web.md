@@ -8,7 +8,7 @@
 
 ## Account settings
 
-You can configure the following settings for a user account. For more information on managing users, see [Manage users](/docs/apimgr_admin/api_mgmt_admin/#manage-users).
+You can configure the following settings for a user account. For more information on managing users, see [Manage users](/docs/apim_administration/apimgr_admin/api_mgmt_admin/#manage-users).
 
 ### General
 
@@ -92,7 +92,7 @@ You can configure the following settings on the **API Manager** tab:
 **API Portal host and port**
 : Enter the host name or IP address and port used in auto-generated email links sent to API consumers (for example, `www.example.com:443`). The host is required, and the port is optional. If you do not enter a value, the default port is `443`. Enter the host and port (optional), but not the scheme. For example, `example.com:443` or `example.com` is correct, but `https://example.com:443` or `http://example.com` is incorrect.
 
-For more details on API Portal, see [Administer API Portal](/docs/apiportal_admin/).
+For more details on API Portal, see [Administer API Portal](/docs/apim_administration/apiportal_admin/).
 
 ### General settings
 
@@ -115,7 +115,7 @@ For more details on API Portal, see [Administer API Portal](/docs/apiportal_ad
 : Enter a valid regular expression to restrict the login names that you can enter. This does not retrospectively enforce login names. If you change the default setting, you must update the `loginNameValidationMessage` in `app.config`. Defaults to `[^;,\\/?#<>&;!]{1,}`.
 
 **Enable application scopes**
-: Select whether to enable scopes at the level of the client application. This allows the API administrator to create application-level scopes to permit access to resources that are not covered by API-level scopes (for example, for API method-level authorization). This setting is not enabled by default. For more details, see [Configure API method-level authorization for client applications](/docs/apimgr_admin/api_mgmt_method_authz/).
+: Select whether to enable scopes at the level of the client application. This allows the API administrator to create application-level scopes to permit access to resources that are not covered by API-level scopes (for example, for API method-level authorization). This setting is not enabled by default. For more details, see [Configure API method-level authorization for client applications](/docs/apim_administration/apimgr_admin/api_mgmt_method_authz/).
 
 **Apply application scope restrictions**
 : When this option is selected, only the scopes that are enabled at the level of the client application are returned when a request is submitted that contains an empty scope list. This enables applications to have read-only access to an API. Scopes that are not specified in the application are not available when requesting a token for this application.
@@ -124,7 +124,7 @@ For more details on API Portal, see [Administer API Portal](/docs/apiportal_ad
 : Select whether to enable routing to different front-end API versions from a single base path using a query string parameter (for example, `https://HOSTNAME:8065/api/helloworld?v=v1`). This setting is unselected by default, and the URL path-based version is used instead. When selected, you must enter a value in the next setting, **Query string version parameter**.
 
 **Query string version parameter**
-: Specifies the name of the query string version parameter used to route between different API versions (for example, a value of `v` requires `/my_api?v=1` in the query string, while `version` requires `/my_api?version=1`). The name of the parameter will also be published in the Swagger generated for the front-end API in the API Catalog. For a detailed example, see see [Configure API routing based on version query string](/docs/apimgr_admin/api_mgmt_version_routing/).
+: Specifies the name of the query string version parameter used to route between different API versions (for example, a value of `v` requires `/my_api?v=1` in the query string, while `version` requires `/my_api?version=1`). The name of the parameter will also be published in the Swagger generated for the front-end API in the API Catalog. For a detailed example, see see [Configure API routing based on version query string](/docs/apim_administration/apimgr_admin/api_mgmt_version_routing/).
 
 **Idle session timeout (minutes)**
 : Enter the number of minutes after which idle API Manager sessions time out. Defaults to `60` minutes. Changing this value only affects logins made after the change.
@@ -145,7 +145,7 @@ For more details on API Portal, see [Administer API Portal](/docs/apiportal_ad
 **API promotion via policy**
 : Select whether APIs can be promoted using a policy specified in Policy Studio. Enabling the **API promotion via policy** setting forces a reload of API Manager, and you must log in again. A **Promote API** option is also then added to the **Frontend API** management menu. This setting is disabled by default.
 
-For more information on API promotion, see [Promote managed APIs](/docs/apimgr_admin/api_mgmt_promote/).
+For more information on API promotion, see [Promote managed APIs](/docs/apim_administration/apimgr_admin/api_mgmt_promote/).
 
 ### Global policies
 
@@ -158,7 +158,7 @@ For more information on API promotion, see [Promote managed APIs](/docs/apimgr_a
 **Global Response Policy**
 : Select an optional global response policy to apply to all front-end API invocations. When a global response policy has been selected, it is displayed on the **Frontend API** > **Outbound** tabwhen you click **Advanced**. The global response policy is executed last after any non-global response policy configured for the front-end API.
 
-For more details, see [Enforce API Manager global policies](/docs/apimgr_admin/api_mgmt_custom_policies/#enforce-api-manager-global-policies).
+For more details, see [Enforce API Manager global policies](/docs/apim_administration/apimgr_admin/api_mgmt_custom_policies/#enforce-api-manager-global-policies).
 
 ### Fault handlers
 
@@ -168,13 +168,13 @@ For more details, see [Enforce API Manager global policies](/docs/apimgr_admin/a
 **Global Fault handler Policy**
 : When fault handlers are enabled, you can select a global fault handler to apply to all front-end API invocations. The list of available policies is determined by the fault handler policies that have been configured in Policy Studio. The selected policy will be executed at runtime in the event of an error. This setting defaults to the API Manager **Default Fault Handler** policy.
 
-For more details, see [Add API Manager fault handler policies](/docs/apimgr_admin/api_mgmt_custom_policies/#add-api-manager-fault-handler-policies).
+For more details, see [Add API Manager fault handler policies](/docs/apim_administration/apimgr_admin/api_mgmt_custom_policies/#add-api-manager-fault-handler-policies).
 
 ## Alerts
 
 You can use API Manager to enable or disable alert notifications for specific events (for example, when an application request is created, or an organization is created). When an alert is generated by API Manager, you can execute a custom policy to handle the alert (for example, to send an email to an interested party, or to forward the alert to an external notification system).
 
-You can use the alert settings in Policy Studio to select which policies are configured to handle each event. For more details, see [Configure API management alerts](/docs/apimgr_admin/api_mgmt_alerts/).
+You can use the alert settings in Policy Studio to select which policies are configured to handle each event. For more details, see [Configure API management alerts](/docs/apim_administration/apimgr_admin/api_mgmt_alerts/).
 
 ## Remote hosts
 

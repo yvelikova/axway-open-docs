@@ -18,7 +18,7 @@ The `managedomain` command is available in the following directory:
 INSTALL_DIR/apigateway/posix/bin
 ```
 
-For an overview of the `managedomain` command, see [Configure an API Gateway domain](/docs/apigtw_admin/makegateway).
+For an overview of the `managedomain` command, see [Configure an API Gateway domain](/docs/apim_administration/apigtw_admin/makegateway).
 
 ## `managedomain` command interpreter mode
 
@@ -364,8 +364,8 @@ For details on all available commands, enter `managedomain --help`
 
 For detailed examples of using `managedomain` in command mode, see the following:
 
-* [Configure Admin Node Manager high availability](/docs/apigtw_admin/admin_node_mngr)
-* [Find your installed version and list patches using managedomain](/docs/apigtw_admin/trblshoot_get_help#find-install-version)
+* [Configure Admin Node Manager high availability](/docs/apim_administration/apigtw_admin/admin_node_mngr)
+* [Find your installed version and list patches using managedomain](/docs/apim_administration/apigtw_admin/trblshoot_get_help#find-install-version)
 
 ## Provide credentials to `managedomain`
 

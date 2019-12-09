@@ -10,7 +10,7 @@
 
 The **Open Traffic Event Log** settings enable you to configure the open traffic event logs written by the API Gateway instances. For example, you can enable open traffic event logging, configure where the logs are stored, and whether or not transaction payloads are stored.
 
-For more information on open logging, see [Configure open logging](/docs/apigtw_admin/admin_open_logging).
+For more information on open logging, see [Configure open logging](/docs/apim_administration/apigtw_admin/admin_open_logging).
 
 ### Configure the open traffic event log
 
@@ -108,7 +108,7 @@ Select whether to record the received payload data for the message transaction. 
 These settings are global for all traffic passing through the API Gateway. You can override these persistence settings at the port level when configuring an HTTP or HTTPS interface. For more details, see [Configure HTTP services](/csh?context=610&product=prod-api-gateway-77) in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
 Details of inbound and outbound transactions are also written to the transaction event log. If recording of inbound or outbound transactions is disabled in **Traffic Monitor**
-settings, transaction data will not be written to the event log. For more details, see [Transaction event log settings](/docs/apigtw_admin/log_event_settings).
+settings, transaction data will not be written to the event log. For more details, see [Transaction event log settings](/docs/apim_administration/apigtw_admin/log_event_settings).
 
 **Transaction File Management Settings**:
 
@@ -134,7 +134,7 @@ Enter the maximum number of days after which transaction files are purged. Files
 
 You can configure real-time monitoring metrics for a gateway instance. For example, this enables you to specify monitoring of messages at the level of API services, methods,clients, and remote hosts. This is important when managing APIs because of requirements to bill clients for their API usage.
 
-When real-time monitoring is enabled, monitoring data is stored in API Gateway memory and displayed in the API Gateway Manager web console. API Gateway Manager uses the configured real-time monitoring metrics to display graphical reports in its **Dashboard** and **Monitoring** views. For more details on viewing real-time metrics, see [Monitor services in API Gateway Manager](/docs/apigtw_admin/monitor_service).
+When real-time monitoring is enabled, monitoring data is stored in API Gateway memory and displayed in the API Gateway Manager web console. API Gateway Manager uses the configured real-time monitoring metrics to display graphical reports in its **Dashboard** and **Monitoring** views. For more details on viewing real-time metrics, see [Monitor services in API Gateway Manager](/docs/apim_administration/apigtw_admin/monitor_service).
 
 To configure real-time monitoring settings in the Policy Studio tree, select the **Server Settings** node, and click **Monitoring** > **Real Time Monitoring**.
 

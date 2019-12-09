@@ -43,7 +43,7 @@ The following table lists the product-specific CA certificates that ship with th
 
 To authenticate the product using SSL with other internal components, a domain certificate is generated using the `managedomain` utility.  This certificate is then used to sign the auto-generated per-instance certificates used in SSL communications between internal components, for example, an API Gateway instance and an Admin Node Manager.
 
-While not necessary, you can change these certificates to more suitable enterprise-level CA-signed certificates, where available. [Configure Admin Node Manager high availability](/docs/apigtw_admin/admin_node_mngr/) describes how to use the `managedomain` utility to do this.
+While not necessary, you can change these certificates to more suitable enterprise-level CA-signed certificates, where available. [Configure Admin Node Manager high availability](/docs/apim_administration/apigtw_admin/admin_node_mngr/) describes how to use the `managedomain` utility to do this.
 
 The following output shows the process whereby an initial domain-level key pair is generated for the Admin Node Manager:
 

@@ -28,6 +28,6 @@ You can import the API Manager REST API Swagger 2.0 definitions into API Manager
     * **Organization**: Select the organization from the list (for example, **API Development**).
 4. Click **Import** to import the API Manager API.
 
-For more details, see [Register REST APIs in API Manager](/docs/apimgr_admin/api_mgmt_register_web/).
+For more details, see [Register REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_register_web/).
 
 ![API Manager REST API Swagger 2.0 Definition](/Images/docbook/images/api_mgmt/api_mgmt_rest_api.png)

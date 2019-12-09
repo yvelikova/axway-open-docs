@@ -208,6 +208,6 @@ Query OK, 0 rows affected, 1 warning (0.00 sec)
 
 ## Further information
 
-For details on how to view monitoring metrics in API Manager, see the [API Manager User Guide](/docs/apimgr_admin/).
+For details on how to view monitoring metrics in API Manager, see the [API Manager User Guide](/docs/apim_administration/apimgr_admin/).
 
 For details on how to view monitoring metrics in API Gateway Analytics, see the [API Gateway Analytics User Guide](docs/apimanager_analytics/).

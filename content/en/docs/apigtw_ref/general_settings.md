@@ -185,7 +185,7 @@ The **Zero Downtime** settings enable you to configure zero downtime deployment 
 
 To configure zero downtime settings, select the **Server Settings** node in the Policy Studio tree, and click **General > Zero Downtime**. To confirm updates to these settings, click **Save** at the bottom right of the window.
 
-For more information of performing a zero downtime deployment, see [Perform zero downtime deployment](/docs/apigtw_admin/deploy_get_started/#perform-zero-downtime-deployment). For more information on performing a zero downtime shutdown, see [Perform zero downtime shutdown](/docs/apigtw_admin/manage_operations/#zero-downtime-shutdown).
+For more information of performing a zero downtime deployment, see [Perform zero downtime deployment](/docs/apim_administration/apigtw_admin/deploy_get_started/#perform-zero-downtime-deployment). For more information on performing a zero downtime shutdown, see [Perform zero downtime shutdown](/docs/apim_administration/apigtw_admin/manage_operations/#zero-downtime-shutdown).
 
 Zero downtime deployment and shutdown rely on the **Health Check LB** policy to alert the load balancer when a maintenance operation is about to begin. To use the zero downtime deployment or shutdown features, the Health Check LB policy must be present in your API Gateway configuration.
 

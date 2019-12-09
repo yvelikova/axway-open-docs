@@ -37,7 +37,7 @@ client_id=SampleConfidentialApp&client_secret=......
 
 {{< alert title="Note" color="primary" >}}To support name-based virtual hosts, you must first ensure that your Domain Name System (DNS) server has been updated to map each host name to the correct IP address (for example, `*.example.com`
 is mapped to `192.0.2.11`). For more details on configuring a DNS service with wildcards for virtual hosting, see the
-[API Gateway Administrator Guide](/docs/apigtw_admin/). When your DNS server has been updated to map each host name to the correct IP address, you can then configure the API Gateway for virtual hosting.{{< /alert >}}
+[API Gateway Administrator Guide](/docs/apim_administration/apigtw_admin/). When your DNS server has been updated to map each host name to the correct IP address, you can then configure the API Gateway for virtual hosting.{{< /alert >}}
 
 ## Configure virtual hosts for HTTP services
 

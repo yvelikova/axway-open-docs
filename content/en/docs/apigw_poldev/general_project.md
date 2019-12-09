@@ -37,7 +37,7 @@ Alternatively, select **File** > **Save All** to save the changes to all open u
 
 When a project is loaded in Policy Studio, you can select **Tasks** > **Deploy** from the main menu to deploy saved changes to a running API Gateway instance at any time. Alternatively, click the **Deploy** button in the toolbar.
 
-For more details, see [Deploy configuration](/docs/apigtw_admin/deploy_get_started/#deploy-api-gateway-configuration).
+For more details, see [Deploy configuration](/docs/apim_administration/apigtw_admin/deploy_get_started/#deploy-api-gateway-configuration).
 
 ## Add an API to a project
 
@@ -61,7 +61,7 @@ in the
 {{< alert title="Note" color="primary" >}}It is important to distinguish between the passphrase used by a project on the local file system and the passphrase used by an API Gateway group configuration on a running API Gateway instance. For details on specifying a different passphrase for runtime, see [Deploy configuration](../CommonTopics/deploy_wizard.htm). {{< /alert >}}
 
 For more details on configuring encryption passphrases, see the
-[API Gateway Administrator Guide](/docs/apigtw_admin/).
+[API Gateway Administrator Guide](/docs/apim_administration/apigtw_admin/).
 
 ## Export configuration packages
 

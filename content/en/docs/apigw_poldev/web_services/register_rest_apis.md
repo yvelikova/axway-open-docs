@@ -12,7 +12,7 @@ The **REST API Repository** node in the Policy Studio tree stores information a
 
 APIs created using the REST API development wizard are registered by importing as a back-end API into API Manager. Registered APIs are governed by the API Gateway using policies defined in the client registry. API administrators can use API Manager to manage registered APIs, and API consumers can use API Manager to consume registered APIs in their client applications.
 
-{{< alert title="Note" color="primary" >}}You can use Policy Studio to create new REST APIs that route to custom policies. You must use API Manager to register a front-end REST API that routes to the destination REST API. For more details, see [Virtualize REST APIs in API Manager](/docs/apimgr_admin/api_mgmt_virtualize_web/).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You can use Policy Studio to create new REST APIs that route to custom policies. You must use API Manager to register a front-end REST API that routes to the destination REST API. For more details, see [Virtualize REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_virtualize_web/).{{< /alert >}}
 
 ## Virtualized REST APIs
 

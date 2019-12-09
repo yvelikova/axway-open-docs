@@ -305,7 +305,7 @@ in subsequent authorization filters. If **User Name** is selected, the user name
 
 For example, if the administrator selects **User Name** from the **Authorization Attribute Format** list, `admin` (the **User Name** field) is used for authorization. Alternatively, if the administrator selects **X.509 Distinguished Name**, the X.509 DName is used for authorization (for example, `O=Company, OU=comp, EMAIL=emp@company.com, CN=emp`).
 
-For more information on adding and configuring users to the authentication repository, see [Manage API Gateway users](/docs/apigtw_admin/manage_user_access/).
+For more information on adding and configuring users to the authentication repository, see [Manage API Gateway users](/docs/apim_administration/apigtw_admin/manage_user_access/).
 
 ## LDAP repositories
 

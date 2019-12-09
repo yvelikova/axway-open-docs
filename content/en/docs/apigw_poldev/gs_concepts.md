@@ -185,7 +185,7 @@ For more information on importing and creating certificates and keys, see [Manag
 
 Users are mainly used for authentication purposes in API Gateway. In this context, the **User Store** acts as a repository for user information against which users can be authenticated. You can also store user attributes for each user or user group. For example, you can then use these attributes when generating SAML attribute assertions on behalf of the user.
 
-[Manage API Gateway users](/docs/apigtw_admin/manage_user_access/) contains more details on how to create users, user groups, and attributes.
+[Manage API Gateway users](/docs/apim_administration/apigtw_admin/manage_user_access/) contains more details on how to create users, user groups, and attributes.
 
 ## Black list and White list
 

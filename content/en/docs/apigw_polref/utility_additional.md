@@ -43,7 +43,7 @@ Select this option to Base64-encode the data. This option applies only when the 
 
 The **Check Group Membership**
 filter checks whether the specified API Gateway user is a member of the specified API Gateway user group. The user and the group are both stored in the API Gateway user store. For more details, see
-[Manage users](/docs/apigtw_admin/manage_user_access/).
+[Manage users](/docs/apim_administration/apigtw_admin/manage_user_access/).
 
 Configure the following required fields:
 
@@ -633,7 +633,7 @@ The default value is `* * 9-17 * * ? *`, which specifies a time of 9:00:00 to 17
 
 ## Management services RBAC filter
 
-Role-Based Access Control (RBAC) is used to protect access to the API Gateway management services. For example, management services are invoked when a user accesses the server using Policy Studio or API Gateway Manager (`https://localhost:8090/`). For more information on RBAC, see [Configure Role-Based Access Control (RBAC)](/docs/apigtw_admin/general_rbac/).
+Role-Based Access Control (RBAC) is used to protect access to the API Gateway management services. For example, management services are invoked when a user accesses the server using Policy Studio or API Gateway Manager (`https://localhost:8090/`). For more information on RBAC, see [Configure Role-Based Access Control (RBAC)](/docs/apim_administration/apigtw_admin/general_rbac/).
 
 The **Management Services RBAC**
 filter can be used to perform the following tasks:

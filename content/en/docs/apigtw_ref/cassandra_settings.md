@@ -76,11 +76,11 @@ Select whether to use Secure Sockets Layer (SSL) to establish secured connection
 
 * **Trusted certificates**:
 
-Click to select the list of certificates or certificate authorities trusted when validating Cassandra server certificates. This is required when SSL is enabled. For details on importing certificates, see [Manage X.509 certificates and keys](/docs/apigtw_security/general_certificates/).
+Click to select the list of certificates or certificate authorities trusted when validating Cassandra server certificates. This is required when SSL is enabled. For details on importing certificates, see [Manage X.509 certificates and keys](/docs/apim_administration/apigtw_security/general_certificates/).
 
 * **Client certificate**:
 
-Click to select the client certificate and key to use if client authentication is required by the Cassandra server (also known as SSL mutual authentication). For details on importing certificates, see [Manage X.509 certificates and keys](/docs/apigtw_security/general_certificates/).
+Click to select the client certificate and key to use if client authentication is required by the Cassandra server (also known as SSL mutual authentication). For details on importing certificates, see [Manage X.509 certificates and keys](/docs/apim_administration/apigtw_security/general_certificates/).
 
 * **Accepted cipher suites**:
 

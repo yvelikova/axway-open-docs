@@ -1,6 +1,6 @@
 {
-"title": "Configure API Management in multiple datacenters",
-"linkTitle": "Configure API Management in multiple datacenters",
+"title": "Configure API Manager in multiple datacenters",
+"linkTitle": "Configure API Manager in multi-DC",
 "weight":"40",
 "no_list": "true",
 "date": "2019-10-02",

@@ -14,7 +14,7 @@ The security devices supported for the inbound request (between the client and A
 
 In addition to the prebuilt OAuth security devices, you can also create custom security profiles with multiple security devices, which can be applied as per-method overrides. This enables you to control the authentication and authorization mechanisms that are supported for the API not just at the API level, but also at the API method level.
 
-For more information on virtualizing APIs in API Manager and protecting those APIs with OAuth, see [Virtualize REST APIs in API Manager](/docs/apimgr_admin/api_mgmt_virtualize_web/).
+For more information on virtualizing APIs in API Manager and protecting those APIs with OAuth, see [Virtualize REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_virtualize_web/).
 
 ## Scopes in API Manager
 
@@ -80,4 +80,4 @@ You can also add OAuth scopes at the client application level if you have enable
 
 ![Manage client applications in API Manager](/Images/OAuth/api_mgmt_app.png)
 
-For more information on registering and managing client applications in API Manager, see [Manage client applications in API Manager](/docs/apimgr_admin/api_mgmt_consume/#manage-client-applications).
+For more information on registering and managing client applications in API Manager, see [Manage client applications in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_consume/#manage-client-applications).

@@ -15,7 +15,7 @@ By placing the **Log Message Payload**
 filter at various key locations in the policy, a complete audit trail of the message can be achieved. For example, by placing the filter after each filter in the policy, the complete history of the message can be logged. This is especially useful in cases where the message has been altered by the API Gateway (for example, by signing or encrypting the message, inserting security tokens, or by converting the message to another grammar using XSLT).
 
 Log messages can be stored in several locations, including a database, a file, or the system console. For more details on configuring logging destinations,
-see [Configure logging and events](/docs/apigtw_admin/logging/).
+see [Configure logging and events](/docs/apim_administration/apigtw_admin/logging/).
 
 Enter an appropriate name for the **Log Message Payload**
 filter in the **Name**

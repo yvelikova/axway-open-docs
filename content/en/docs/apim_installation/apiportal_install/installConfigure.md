@@ -8,7 +8,7 @@
 
 ## Change API Portal look and feel
 
-For details on how to configure the look and feel of your API Portal end-user interface, see the [API Portal Administrator Guide](/docs/apiportal_admin/).
+For details on how to configure the look and feel of your API Portal end-user interface, see the [API Portal Administrator Guide](/docs/apim_administration/apiportal_admin/).
 
 ## Configure terms and conditions text
 
