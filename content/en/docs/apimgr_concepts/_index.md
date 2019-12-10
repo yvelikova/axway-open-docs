@@ -1,6 +1,6 @@
 {
-    "title": "API management overview",
-    "linkTitle": "API management overview",
+    "title": "API management concepts",
+    "linkTitle": "API management concepts",
     "no_list": "true",
     "weight":"10",
     "date": "2019-09-17",

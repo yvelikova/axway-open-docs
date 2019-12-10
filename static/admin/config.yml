@@ -11,11 +11,59 @@ public_folder: "/Images/uploads" # The src attribute for uploaded media will beg
 site_url: https://fork-axway-open-docs.netlify.com/
 
 collections: # A list of collections the CMS should be able to edit
-  - name: "cass_admin" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Administer Apache Cassandra" # Used in CMS UI left nav
+  - name: "apimgr_concepts" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "API management concepts" # Used in CMS UI left nav
     label_singular: "page in this section" # Used in CMS UI, ie.: "New Post"
-    description: "All pages relating to administering Apache Cassandra for API Gateway and API Manager." # Used in CMS UI
-    folder: "content/en/docs/cass_admin" # The path to the folder where the documents are stored
+    description: "All pages relating to API management concepts" # Used in CMS UI
+    folder: "content/en/docs/apimgr_concepts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    delete: false # Allow users to delete documents in this collection
+    format: "json-frontmatter" # Specify frontmatter for YAML or json-frontmatter for JSON
+    fields: # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string"} # Every collection must have a title field as it's the default identifier
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "apigtw_install" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Install API Gateway" # Used in CMS UI left nav
+    label_singular: "page in this section" # Used in CMS UI, ie.: "New Post"
+    description: "All pages relating to installing API Gateway and API Manager." # Used in CMS UI
+    folder: "content/en/docs/apim_installation/apigtw_install" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    delete: false # Allow users to delete documents in this collection
+    format: "json-frontmatter" # Specify frontmatter for YAML or json-frontmatter for JSON
+    fields: # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string"} # Every collection must have a title field as it's the default identifier
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}  
+  - name: "apiportal_install"
+    label: "Install or upgrade API Portal"
+    label_singular: "page in this section"
+    description: "All pages relating to installing or upgrading API Portal."
+    folder: "content/en/docs/apim_installation/apiportal_install"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "apigw_containers" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Deploy API Gateway in containers" # Used in CMS UI left nav
+    label_singular: "page in this section" # Used in CMS UI, ie.: "New Post"
+    description: "All pages relating to deploying API Gateway and API Manager in Docker containers." # Used in CMS UI
+    folder: "content/en/docs/apim_installation/apigw_containers" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     delete: false # Allow users to delete documents in this collection
     format: "frontmatter" # Specify frontmatter for YAML or json-frontmatter for JSON
@@ -26,17 +74,17 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "weight", widget: "hidden", required: false}
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
-  - name: "apiportal_install"
-    label: "Install API Portal"
-    label_singular: "page in this section"
-    description: "All pages relating to installing API Portal."
-    folder: "content/en/docs/apim_installation/apiportal_install"
-    create: true
-    delete: false
-    format: "json-frontmatter"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}    
+  - name: "cass_admin" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Administer Apache Cassandra" # Used in CMS UI left nav
+    label_singular: "page in this section" # Used in CMS UI, ie.: "New Post"
+    description: "All pages relating to administering Apache Cassandra for API Gateway and API Manager." # Used in CMS UI
+    folder: "content/en/docs/cass_admin" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    delete: false # Allow users to delete documents in this collection
+    format: "frontmatter" # Specify frontmatter for YAML or json-frontmatter for JSON
+    fields: # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string"} # Every collection must have a title field as it's the default identifier
       - {name: "linkTitle", widget: "hidden", required: false}
       - {name: "no_list", widget: "hidden", required: false}
       - {name: "weight", widget: "hidden", required: false}
