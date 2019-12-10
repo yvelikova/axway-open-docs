@@ -11,9 +11,9 @@ public_folder: "/Images/uploads" # The src attribute for uploaded media will beg
 site_url: https://fork-axway-open-docs.netlify.com/
 
 collections: # A list of collections the CMS should be able to edit
-  - name: "cassdoc" # Used in routes, ie.: /admin/collections/:slug/edit
+  - name: "cass_admin" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Administer Apache Cassandra" # Used in CMS UI left nav
-    label_singular: "Apache Cassandra administration" # Used in CMS UI, ie.: "New Post"
+    label_singular: "page in this section" # Used in CMS UI, ie.: "New Post"
     description: "All pages relating to administering Apache Cassandra for API Gateway and API Manager." # Used in CMS UI
     folder: "content/en/docs/cass_admin" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
@@ -27,11 +27,11 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "apipinstall"
+  - name: "apiportal_install"
     label: "Install API Portal"
-    label_singular: "API Portal installation"
+    label_singular: "page in this section"
     description: "All pages relating to installing API Portal."
-    folder: "content/en/docs/apiportal_install"
+    folder: "content/en/docs/apim_installation/apiportal_install"
     create: true
     delete: false
     format: "json-frontmatter"
@@ -43,10 +43,10 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "apipha"
-    label: "Deploy API Portal HA"
-    label_singular: "API Portal HA deployment"
-    description: "All pages relating to deploying API Portal for HA."
+  - name: "apiportal_ha"
+    label: "Configure API Portal for HA"
+    label_singular: "page in this section"
+    description: "All pages relating to configuring API Portal for HA."
     folder: "content/en/docs/apiportal_ha"
     create: true
     delete: false
@@ -59,11 +59,11 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}    
-  - name: "apipcontainers"
+  - name: "apiportal_docker"
     label: "Deploy API Portal in containers"
-    label_singular: "API Portal container deployment"
+    label_singular: "page in this section"
     description: "All pages relating to deploying API Portal in containers."
-    folder: "content/en/docs/apiportal_ha"
+    folder: "content/en/docs/apim_installation/apiportal_ha"
     create: true
     delete: false
     format: "json-frontmatter"
@@ -75,11 +75,11 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}    
-  - name: "apipadmin"
+  - name: "apiportal_admin"
     label: "Administer API Portal"
-    label_singular: "API Portal administration"
+    label_singular: "page in this section"
     description: "All pages relating to administering API Portal."
-    folder: "content/en/docs/apiportal_admin"
+    folder: "content/en/docs/apim_administration/apiportal_admin"
     create: true
     delete: false
     format: "frontmatter"
@@ -91,11 +91,11 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "apipadminsso"
+  - name: "apiportal_admin_sso"
     label: "Administer API Portal (SSO)"
-    label_singular: "API Portal SSO administration"
+    label_singular: "page in this section"
     description: "All pages relating to administering API Portal SSO."
-    folder: "content/en/docs/apiportal_admin/sso"
+    folder: "content/en/docs/apim_administration/apiportal_admin/sso"
     create: true
     delete: false
     format: "frontmatter"
@@ -107,11 +107,12 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "apipreleasenotes"
+  - name: "apiportal_releasenotes"
     label: "API Portal release notes"
+    label_singular: "page in this section"
     description: "All pages relating to API Portal release."
-    folder: "content/en/docs/apiportal_releasenotes"
-    create: false
+    folder: "content/en/docs/apim_relnotes/apiportal_releasenotes"
+    create: true
     delete: false
     format: "frontmatter"
     fields:
@@ -124,7 +125,7 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Body", name: "body", widget: "markdown"}
   - name: "central"
     label: "AMPLIFY Central documentation"
-    label_singular: "AMPLIFY Central documentation"
+    label_singular: "page in this section"
     description: "All pages relating to AMPLIFY Central."
     folder: "content/en/docs/central"
     create: true
@@ -138,7 +139,7 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "contribdoc"
+  - name: "contribution_guidelines"
     label: "Contribution guidelines"
     description: "All pages relating to contributing to the documentation."
     folder: "content/en/docs/contribution_guidelines"

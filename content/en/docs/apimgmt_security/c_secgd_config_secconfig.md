@@ -20,7 +20,7 @@ By default the HTTPS interface:
 * Blocks unauthenticated ciphers.
 
 For more information on configuring HTTPS interfaces, see the
-[HTTP and HTTPS interfaces](/docs/apigw_poldev/gw_instances/general_services/#http-and-https-interfaces).
+[HTTP and HTTPS interfaces](/docs/apim_policydev/apigw_poldev/gw_instances/general_services/#http-and-https-interfaces).
 
 ## API Portal inbound SSL configuration
 
@@ -42,17 +42,17 @@ As well as receiving messages over SSL-enabled interfaces, API Gateway can also 
 
 Similarly, other filters allow you to make outbound connections over SSL, for example, **File Upload** and **File Download** filters, **SMTP** filter, **Read from JMS** filter, and **Send to JMS** filter.
 
-For more information, see [Routing filters](/docs/apigw_polref/routing_common/).
+For more information, see [Routing filters](/docs/apim_policydev/apigw_polref/routing_common/).
 
 ## API Manager outbound SSL configuration
 
 The **Connect To URL** filters provided in the API Manager custom routing policy templates use TLS version 1.2 with strong FIPS-compliant ciphers by default for SSL/TLS connections. You can modify the SSL/TLS protocols and ciphers in custom routing policies as needed.
 
-For more details, see [Add custom API Manager routing policies](/docs/apimgr_admin/api_mgmt_custom_policies/#add-custom-api-manager-routing-policies).
+For more details, see [Add custom API Manager routing policies](/docs/apim_administration/apimgr_admin/api_mgmt_custom_policies/#add-custom-api-manager-routing-policies).
 
 ## API Portal outbound SSL configuration
 
-By default, API Portal performs secure outbound requests to API Manager and API Gateway. To configure the API Portal to verify API Manager’s certificates and host name, see [Connect API Portal to API Manager](/docs/apiportal_install/connect_to_apimgr/).
+By default, API Portal performs secure outbound requests to API Manager and API Gateway. To configure the API Portal to verify API Manager’s certificates and host name, see [Connect API Portal to API Manager](/docs/apim_installation/apiportal_install/connect_to_apimgr/).
 
 ## Secure Apache Cassandra configuration
 
@@ -81,7 +81,7 @@ Certificates and key pairs can be imported into the API Gateway's trusted certif
 
 {{< alert title="Note" color="primary" >}}All private keys stored in the certificate store can be encrypted with the Entity Store passphrase.{{< /alert >}}
 
-For more information on the certificate store, see [Manage certificates and keys](/docs/apigtw_security/general_certificates/). Certificates and keys can also be stored in a Hardware Security Module (HSM), for example, Thales nShield Solo or Safenet Luna SA.
+For more information on the certificate store, see [Manage certificates and keys](/docs/apim_administration/apigtw_security/general_certificates/). Certificates and keys can also be stored in a Hardware Security Module (HSM), for example, Thales nShield Solo or Safenet Luna SA.
 
 API Gateway can also trust certificates in a Java keystore by adding the following line to the `/system/conf/jvm.xml` file:
 
@@ -95,7 +95,7 @@ After installing API Gateway, it is necessary to run the `managedomain` utility 
 
 Rather than using the default auto-generated certificates (that are signed by a domain-level CA certificate), you can use alternative, custom certificates that have been generated out of band using a PKI, for example.
 
-[Configure Admin Node Manager high availability](/docs/apigtw_admin/admin_node_mngr/) describes how to use the `managedomain` utility to do this.
+[Configure Admin Node Manager high availability](/docs/apim_administration/apigtw_admin/admin_node_mngr/) describes how to use the `managedomain` utility to do this.
 
 ## API Gateway and Axway PassPort integration
 
@@ -107,9 +107,9 @@ For more information, see the
 
 ## API Gateway authentication
 
-API Gateway supports a large range of authentication mechanisms and protocols, including HTTP basic and digest authentication, HTML form-based authentication, SSL, session-based authentication, SAML, WS-Security UsernameToken, Kerberos, and many more.  For more information on these filters, see [Authentication filters](/docs/apigw_polref/authn_common/).
+API Gateway supports a large range of authentication mechanisms and protocols, including HTTP basic and digest authentication, HTML form-based authentication, SSL, session-based authentication, SAML, WS-Security UsernameToken, Kerberos, and many more.  For more information on these filters, see [Authentication filters](/docs/apim_policydev/apigw_polref/authn_common/).
 
-API Gateway can also integrate with a number of third party Identity Management products to authenticate users, such as Axway PassPort, Entrust GetAccess, Oracle Entitlements Server, Oracle Access Manager, CA SiteMinder, RADIUS, RSA Access Manager, Sun Access Manager, Tivoli repositories, LDAP, database, Key Property Store (KPS), and the local user store.  For more information on authentication repositories, see [Configure authentication repositories](/docs/apigw_poldev/external_connections/common_user_store/).
+API Gateway can also integrate with a number of third party Identity Management products to authenticate users, such as Axway PassPort, Entrust GetAccess, Oracle Entitlements Server, Oracle Access Manager, CA SiteMinder, RADIUS, RSA Access Manager, Sun Access Manager, Tivoli repositories, LDAP, database, Key Property Store (KPS), and the local user store.  For more information on authentication repositories, see [Configure authentication repositories](/docs/apim_policydev/apigw_poldev/external_connections/common_user_store/).
 
 ## API Portal authentication
 
@@ -121,7 +121,7 @@ API Gateway also integrates with a number of third-party Identity Management pro
 
 It also supports standard authorization schemes, including LDAP RBAC, SAML, SAML PDP, XACML, and X.509 certificate attributes.  OAuth 2.0 and OpenID Connect are also supported, and are discussed in the following section.
 
-For details on how to configure these authorization services, see [Configure external connections](/docs/apigw_poldev/external_connections/).
+For details on how to configure these authorization services, see [Configure external connections](/docs/apim_policydev/apigw_poldev/external_connections/).
 
 ## API Gateway OAuth and OpenID Connect
 
@@ -145,19 +145,19 @@ for more information on OAuth and OpenID Connect.
 
 There are a number of different encryption filters available in API Gateway, for example, **XML Encryption**, **PGP Encrypt and Sign**, and **SMIME Encryption**.  Similarly, API Gateway can sign and verify messages using XML signature, SMIME, or PGP.
 
-For more information, see [Encryption filters](/docs/apigw_polref/encryption_common/), [XML integrity filters](/docs/apigw_polref/integrity_xml/), and [Additional integrity filters](/docs/apigw_polref/integrity_additional/).
+For more information, see [Encryption filters](/docs/apim_policydev/apigw_polref/encryption_common/), [XML integrity filters](/docs/apim_policydev/apigw_polref/integrity_xml/), and [Additional integrity filters](/docs/apim_policydev/apigw_polref/integrity_additional/).
 
 ## API Gateway certificate validation
 
 While the API Gateway's SSL stack will implicitly check the validity of a certificate in terms of its trusted certificate chain and expiry date, it is also possible to validate client certificates against a CRL, OCSP responder, or XKMS server.  These additional validation mechanisms are especially useful in cases where the certificate is extracted from the message itself, rather than the SSL session.
 
-See [Certificate validation filters](/docs/apigw_polref/cert_validation/) for more information on these certificate validation mechanisms.
+See [Certificate validation filters](/docs/apim_policydev/apigw_polref/cert_validation/) for more information on these certificate validation mechanisms.
 
 ## API Gateway Entity Store passphrase
 
 Sensitive data, such as passwords, private keys, and tokens, can be encrypted using the Entity Store passphrase.  The data is encrypted using PBE with SHA1 and 3DES in CBC mode.
 
-For more information on passphrases, see [Configure encryption passphrase](/docs/apigtw_security/general_passphrase/).
+For more information on passphrases, see [Configure encryption passphrase](/docs/apim_administration/apigtw_security/general_passphrase/).
 
 ### Set Entity Store passphrase for automated startup
 
@@ -175,14 +175,14 @@ You can configure the following rules for API Gateway administrator user passwor
 * How long a password is valid.
 * The minimum number of uppercase, lowercase, numeric, and special characters a password must contain.
 
-For more details, see [Configure a password policy for admin users](/docs/apigtw_admin/manage_user_access/#configure-a-password-policy-for-admin-users).
+For more details, see [Configure a password policy for admin users](/docs/apim_administration/apigtw_admin/manage_user_access/#configure-a-password-policy-for-admin-users).
 
 ## API Manager password policy
 
 In API Manager, you can enable password expiry intervals and configure custom validation rules for API Manager user passwords. For more details, see:
 
-* [Enforce password changes](/docs/apimgr_admin/api_mgmt_admin/#enforce-password-changes)
-* [Customize API Manager password validation](/docs/apimgr_admin/api_mgmt_custom/#customize-api-manager-password-validation)
+* [Enforce password changes](/docs/apim_administration/apimgr_admin/api_mgmt_admin/#enforce-password-changes)
+* [Customize API Manager password validation](/docs/apim_administration/apimgr_admin/api_mgmt_custom/#customize-api-manager-password-validation)
 
 ## API Portal password policy
 
@@ -211,17 +211,17 @@ API Portal forces a Joomla! administrator password change on first login.
 An important aspect of maintaining the integrity of the product audit trail is the ability to sign audit records.  API Gateway can sign audit data written to text files, XML files, and databases.
 
 For more details on how to sign transaction logs, see the
-[Transaction audit log settings](/docs/apigtw_ref/log_global_settings/#transaction-audit-log-settings).
+[Transaction audit log settings](/docs/apim_reference/apigtw_ref/log_global_settings/#transaction-audit-log-settings).
 
 ## API Gateway HSM integration
 
-API Gateway can offload private key storage and operations to a hardware security module (HSM) that has been installed on the host machine. For more information on storing certificates and keys on a HSM, see [Manage certificates and keys](https://axway-open-docs.netlify.com/docs/apigtw_security/general_certificates/).
+API Gateway can offload private key storage and operations to a hardware security module (HSM) that has been installed on the host machine. For more information on storing certificates and keys on a HSM, see [Manage certificates and keys](https://axway-open-docs.netlify.com/docs/apim_administration/apigtw_security/general_certificates/).
 
 ## API Gateway API firewalling configuration
 
 API Gateway embeds Apache ModSecurity to protect the API traffic that goes through the API Gateway against common HTTP attacks, such as cross-site scripting, SQL injection, command injection, cross-site request forgery, and many others.  Apache ModSecurity is a toolkit for real-time HTTP traffic monitoring, logging, and access control.
 
-For more information on configuring API firewalling, see [Manage API firewalling](/docs/apigtw_security/admin_waf/).
+For more information on configuring API firewalling, see [Manage API firewalling](/docs/apim_administration/apigtw_security/admin_waf/).
 
 ## Policy Studio SSL settings
 
@@ -250,7 +250,7 @@ In line with security best practices, the default behavior of the API Gateway in
 
 When running in FIPS mode, all cryptographic operations are performed by the embedded OpenSSL FIPS Object Module and the Entrust Authority Security Toolkit.  Furthermore, the API Gateway runtime will disable cryptographic algorithms that are not FIPS compliant, such as DES and MD5.
 
-The ability to operate in FIPS mode is determined by the type of license used for API Gateway. If a FIPS-enabled license is used, API Gateway can be configured to run in FIPS mode or standard mode.  For more details on running in FIPS mode, see [Run API Gateway in FIPS mode](/docs/apigtw_security/admin_fips/).
+The ability to operate in FIPS mode is determined by the type of license used for API Gateway. If a FIPS-enabled license is used, API Gateway can be configured to run in FIPS mode or standard mode.  For more details on running in FIPS mode, see [Run API Gateway in FIPS mode](/docs/apim_administration/apigtw_security/admin_fips/).
 
 It is also possible to operate Policy Studio in FIPS mode. This enables FIPS-certified cryptographic modules and ensures that all cryptographic operations (for example, SSL) are performed by these modules. To enable FIPS mode, select **Window > Preferences > FIPS Mode** in Policy Studio.
 
@@ -266,13 +266,13 @@ You can check an API Gateway configuration for Suite B and Suite B Top Secret co
 
 You can enable an advisory banner in API Gateway Manager, which displays when a user logs in to API Gateway Manager or Policy Studio.
 
-For more information, see [Configure an advisory banner](/docs/apigtw_security/advisory_banner/).
+For more information, see [Configure an advisory banner](/docs/apim_administration/apigtw_security/advisory_banner/).
 
 ## API keys in API Manager and API Portal
 
 API Manager and API Portal enable you to generate and store API keys for client applications. API keys are stored in a Key Property Store (KPS) and can be managed using the API Manager web UI, API Portal web UI, or the `kpsadmin` tool. Alternatively, you can also generate and store API keys for client applications using the Client Application Registry.
 
-For more information on API key generation and storage, see [Manage client applications](/docs/apimgr_admin/api_mgmt_consume/#manage-client-applications).
+For more information on API key generation and storage, see [Manage client applications](/docs/apim_administration/apimgr_admin/api_mgmt_consume/#manage-client-applications).
 
 For more information on the `kpsadmin` tool, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
 
@@ -280,14 +280,14 @@ For more information on the `kpsadmin` tool, see the [API Gateway Key Property S
 
 API Gateway exposes an interface in API Gateway Manager that allows you to enable or disable different types of events, including authentication, SSL session establishment, external audit offload, and so on.
 
-For more information, see [Configure events displayed in domain audit log](/docs/apigtw_admin/logging/#configure-events-displayed-in-domain-audit-log).
+For more information, see [Configure events displayed in domain audit log](/docs/apim_administration/apigtw_admin/logging/#configure-events-displayed-in-domain-audit-log).
 
 ### External audit offload
 
 API Gateway offers the ability to offload domain and transaction logs to a remote audit server periodically.
 
-For more information, see [Offload audit log files to an external audit server](/docs/apigtw_admin/logging/#offload-audit-log-files-to-an-external-audit-server).
+For more information, see [Offload audit log files to an external audit server](/docs/apim_administration/apigtw_admin/logging/#offload-audit-log-files-to-an-external-audit-server).
 
 ## API Gateway redaction
 
-API Gateway enables you to remove sensitive content from messages monitored in the API Gateway Manager web console and traffic monitoring database. You can redact sensitive content message content types such as HTTP headers, JSON, XML, HTML form, and plain text. For details, see [Hide sensitive data](/docs/apigtw_security/admin_redactors/).
+API Gateway enables you to remove sensitive content from messages monitored in the API Gateway Manager web console and traffic monitoring database. You can redact sensitive content message content types such as HTTP headers, JSON, XML, HTML form, and plain text. For details, see [Hide sensitive data](/docs/apim_administration/apigtw_security/admin_redactors/).

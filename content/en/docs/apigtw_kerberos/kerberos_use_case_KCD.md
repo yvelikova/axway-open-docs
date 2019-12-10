@@ -207,7 +207,7 @@ To start, add a new policy named, for example, `Kerberos KCD SPNEGO Client-Side`
 
     Replace the realm settings in the example with your Kerberos realm, and set the `kdc` setting to the host name of your Windows Domain Controller.
 
-    For more details on the fields and options in this configuration window, see [Kerberos configuration](/docs/apigw_poldev/security_server_settings/#configure-kerberos-settings).
+    For more details on the fields and options in this configuration window, see [Kerberos configuration](/docs/apim_policydev/apigw_poldev/security_server_settings/#configure-kerberos-settings).
 
 3. Click the **Deploy** icon to deploy the configuration to API Gateway.
 
@@ -221,7 +221,7 @@ Use a client application to call the KCD policy in API Gateway.
 
 The back-end Kerberos service should send a confirmation on a successful authentication.
 
-The **Traffic Monitor** tab on the API Gateway Manager (`https://localhost:8090`) is an excellent place to view and troubleshoot the message flows. For more details, see [Monitor services in API Gateway Manager](/docs/apigtw_admin/monitor_service/#monitor-services-in-api-gateway-manager).
+The **Traffic Monitor** tab on the API Gateway Manager (`https://localhost:8090`) is an excellent place to view and troubleshoot the message flows. For more details, see [Monitor services in API Gateway Manager](/docs/apim_administration/apigtw_admin/monitor_service/#monitor-services-in-api-gateway-manager).
 
 ## Configure a KCD demo setup
 

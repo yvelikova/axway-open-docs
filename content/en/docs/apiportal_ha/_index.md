@@ -1,11 +1,11 @@
 {
-    "title":"Deploy API Portal for high availability",
-    "linkTitle":"Deploy API Portal for HA",
+    "title":"Configure API Portal for HA in single or multiple datacenters",
+    "linkTitle":"Configure API Portal for HA (single or  multi-DC)",
     "no_list":"true",
     "weight":"45",
     "date":"2019-08-09",
     "description":"Configure API Portal for high availability (HA) deployment in a single datacenter or multiple datacenters."
-} 
+}
 
 You can configure API Portal for high availability (HA) deployment to ensure that there is no single of point of failure in the system. This helps to eliminate any potential system downtime in production environments.
 

@@ -216,7 +216,7 @@ The `invoke` method can have the following possible results:
 
 The declarative UI XML file encapsulates the design of the user interface of filters and dialogs. It includes the markup UI elements and bindings to create the Jabber filter dialog within Policy Studio.
 
-For more information on using declarative XML, see [Define user interfaces using declarative XML](/docs/apigtw_devguide/declarative_xml_for_ps). For a complete listing of the available elements and bindings, see [Declarative UI reference](/docs/apigtw_ref/dec_ui_reference).
+For more information on using declarative XML, see [Define user interfaces using declarative XML](/docs/apigtw_devguide/declarative_xml_for_ps). For a complete listing of the available elements and bindings, see [Declarative UI reference](/docs/apim_reference/apigtw_ref/dec_ui_reference).
 
 The following declarative XML shows the elements needed to create the Jabber filter dialog:
 

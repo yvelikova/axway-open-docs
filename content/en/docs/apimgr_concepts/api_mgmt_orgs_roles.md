@@ -98,7 +98,7 @@ The API administrator can manage the maximum message traffic rate that can be se
 * *Application-default quota*: The default quota that applies on a per-application basis to all applications unless an application-specific quota is configured. This quota specifies the default maximum message rate that any application can send to APIs and methods (for example, 25 messages per second).
 * *Application-specific quota*: This overrides the application-default quota. This quota specifies the maximum message rate that the specific application can send to APIs and methods (for example, 15 messages per second).
 
-API administrators can specify all quotas at the API and at API method level. For more details, see [Manage quotas](/docs/apimgr_admin/api_mgmt_admin/#manage-quotas).
+API administrators can specify all quotas at the API and at API method level. For more details, see [Manage quotas](/docs/apim_administration/apimgr_admin/api_mgmt_admin/#manage-quotas).
 
 ### Authorization
 
@@ -120,7 +120,7 @@ When an API administrator logs on to API Manager, it displays a specific view fo
 
 ### API
 
-Register a **Backend API**, then virtualize it as a **Frontend API**, and browse all virtualized APIs in the **API Catalog**. For more details, see [Get started with API Manager](/docs/apimgr_admin/api_mgmt_workflow/).
+Register a **Backend API**, then virtualize it as a **Frontend API**, and browse all virtualized APIs in the **API Catalog**. For more details, see [Get started with API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_workflow/).
 
 ### Clients
 
@@ -130,7 +130,7 @@ Manage system and application **Default Quotas**, and **OAuth Authorizations**. 
 
 ### Monitoring
 
-View historical reports and statistics on all client applications in the domain. For more details, see [Monitor APIs and applications in API Manager](/docs/apimgr_admin/api_mgmt_monitor/).
+View historical reports and statistics on all client applications in the domain. For more details, see [Monitor APIs and applications in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_monitor/).
 
 ### Settings
 
@@ -173,7 +173,7 @@ https://HOSTNAME:8075
 
 When the user account has been registered, an email is sent to the user to enable them to activate their account. They can then log into API Manager using their registered user name and password.
 
-For details on optional registration codes for organizations, see [Manage access to APIs](/docs/apimgr_admin/api_mgmt_admin/).
+For details on optional registration codes for organizations, see [Manage access to APIs](/docs/apim_administration/apimgr_admin/api_mgmt_admin/).
 
 ## API consumer view
 
@@ -205,7 +205,7 @@ The following table shows the difference between case 3 and 4 when the appropria
 | Disabled                       | Disabled                 | Enabled    | Email sent to API admin email address for approval by API admin, and directed to API Manager. |
 | Disabled                       | Enabled                  | Enabled    | Email sent to the organization email address for approval by the API admin or organization admin, and directed to API Portal. If API Portal is disabled, the admin is directed to API Manager in all cases. |
 
-For more details, see [API Manager settings](/docs/apimgr_ref/api_mgmt_config_web/#api-manager-settings).
+For more details, see [API Manager settings](/docs/apim_reference/apimgr_ref/api_mgmt_config_web/#api-manager-settings).
 
 ### Application creation workflow
 
@@ -223,7 +223,7 @@ The following table shows the difference between case 3 and 4 when the appropria
 | Disabled                  | Disabled                        | Enabled    | Email sent to the organization email address for approval by API admin, and directed to API Manager. |
 | Disabled                  | Enabled                         | Enabled    | Email sent to the organization email address for approval by API admin or organization admin, and directed to API Manager in all cases. |
 
-For more details, see [API Manager settings](/docs/apimgr_ref/api_mgmt_config_web/#api-manager-settings).
+For more details, see [API Manager settings](/docs/apim_reference/apimgr_ref/api_mgmt_config_web/#api-manager-settings).
 
 ### API access workflow
 

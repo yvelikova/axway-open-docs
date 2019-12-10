@@ -62,8 +62,8 @@ If the back-end API is an existing REST API, an API owner uses API Manager to re
 
 For more details, see the following:
 
-* [Register REST APIs in API Manager](/docs/apimgr_admin/api_mgmt_register_web/)
-* [Virtualize REST APIs in API Manager](/docs/apimgr_admin/api_mgmt_virtualize_web/)
+* [Register REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_register_web/)
+* [Virtualize REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_virtualize_web/)
 
 If the existing back-end API is not a REST API, or if custom policies are required, a policy developer uses Policy Studio to create a new API (for example, for SOAP to REST, or cloud-based applications). APIs developed in Policy Studio are then imported as back-end APIs in API Manager.
 
@@ -73,13 +73,13 @@ For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGatewa
 
 When APIs are registered using API Manager, an API administrator can promote them between environments directly using API Manager (for example, from sandbox to production APIs). When APIs are created using the REST API development wizard in Policy Studio, an API Gateway administrator can promote them using the API Gateway mechanism for promotion and deployment of API Gateway configuration.
 
-For more details, see [Promote managed APIs between environments](/docs/apimgr_admin/api_mgmt_promote).
+For more details, see [Promote managed APIs between environments](/docs/apim_administration/apimgr_admin/api_mgmt_promote).
 
 ### 3 - API administration
 
 The API administrator manages and monitors the APIs at runtime using API Manager. For example, this includes all organizations and users registered to log into API Manager, client applications and their authentication credentials, and authorization and quota policies. The API administrator manages who can consume, what they can consume, and how much can they consume. For example, which business partners are permitted to consume which APIs, and what are their quota levels.
 
-For more details, see [Manage access to APIs](/docs/apimgr_admin/api_mgmt_admin/).
+For more details, see [Manage access to APIs](/docs/apim_administration/apimgr_admin/api_mgmt_admin/).
 
 ### 4 - API consumption
 
@@ -87,7 +87,7 @@ API consumers can self-register in API Manager or API Portal. They browse and c
 
 For example, API consumers might be internal developers or external business partners. They can log into API Manager or API Portal, and browse APIs and their associated documentation for consumption. They can then develop and test client applications that use these APIs. In this way, API Manager builds a community around the APIs, enabling organizations and consumers to register themselves, and to create and manage their own applications.
 
-For more details, see [Consume APIs](/docs/apimgr_admin/api_mgmt_consume/).
+For more details, see [Consume APIs](/docs/apim_administration/apimgr_admin/api_mgmt_consume/).
 
 ## Tools for API management
 
@@ -127,7 +127,7 @@ This wizard in Policy Studio enables you to create new REST APIs that route to p
 
 API Portal is a self-service web-based portal that enables API consumers to consume APIs that you have exposed for organizations API Manager. API consumers can register and manage their user profile, register applications, manage application credentials, browse front-end APIs and supporting documentation, monitor application API usage, and access blogs, forums, and so on.
 
-API Portal is implemented as a stand-alone CMS-based portal, which you can run using the default Axway branding and functionality, or customize and extend to meet your specific requirements and those of your target API consumers. You can deploy the internet-facing API Portal separately from the API Gateway and API Manager, with a dedicated web interface to limit potential security breaches. For more details, see [API Portal Installation and Upgrade Guide](/docs/apiportal_install/).
+API Portal is implemented as a stand-alone CMS-based portal, which you can run using the default Axway branding and functionality, or customize and extend to meet your specific requirements and those of your target API consumers. You can deploy the internet-facing API Portal separately from the API Gateway and API Manager, with a dedicated web interface to limit potential security breaches. For more details, see [API Portal Installation and Upgrade Guide](/docs/apim_installation/apiportal_install/).
 
 ### API Manager API
 
@@ -146,7 +146,7 @@ In addition to the main features, API Manager also provides the following featur
 
 ## API Portal features
 
-See [API Portal overview](/docs/apiportal_admin/apip_overview/) for details of API Portal key capabilities and features.
+See [API Portal overview](/docs/apim_administration/apiportal_admin/apip_overview/) for details of API Portal key capabilities and features.
 
 ## API registration and lifecycle management in API Manager
 

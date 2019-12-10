@@ -126,7 +126,7 @@ The following `declarative.xml` file defines the dialog in Policy Studio.
 </ui>
 ```
 
-This section describes some of the elements declared in the preceding XML file. For a complete listing of all the UI elements and bindings available, see [Declarative UI reference](/docs/apigtw_ref/dec_ui_reference).
+This section describes some of the elements declared in the preceding XML file. For a complete listing of all the UI elements and bindings available, see [Declarative UI reference](/docs/apim_reference/apigtw_ref/dec_ui_reference).
 
 This declarative XML file declares that the main panel of the dialog spans two columns. All the labels are obtained from the associated `resources.properties` file.
 
