@@ -74,7 +74,39 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "weight", widget: "hidden", required: false}
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}    
+      - {label: "Body", name: "body", widget: "markdown"} 
+  - name: "apiportal_docker"
+    label: "Deploy API Portal in containers"
+    label_singular: "page in this section"
+    description: "All pages relating to deploying API Portal in containers."
+    folder: "content/en/docs/apim_installation/apiportal_docker"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}  
+  - name: "apigw_upgrade"
+    label: "Upgrade API Gateway"
+    label_singular: "page in this section"
+    description: "All pages relating to upgrading API Gateway."
+    folder: "content/en/docs/apim_installation/apigw_upgrade"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}            
   - name: "cass_admin" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Administer Apache Cassandra" # Used in CMS UI left nav
     label_singular: "page in this section" # Used in CMS UI, ie.: "New Post"
@@ -96,22 +128,6 @@ collections: # A list of collections the CMS should be able to edit
     label_singular: "page in this section"
     description: "All pages relating to configuring API Portal for HA."
     folder: "content/en/docs/apiportal_ha"
-    create: true
-    delete: false
-    format: "json-frontmatter"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {name: "linkTitle", widget: "hidden", required: false}
-      - {name: "no_list", widget: "hidden", required: false}
-      - {name: "weight", widget: "hidden", required: false}
-      - {name: "date", widget: "hidden", required: false}
-      - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}    
-  - name: "apiportal_docker"
-    label: "Deploy API Portal in containers"
-    label_singular: "page in this section"
-    description: "All pages relating to deploying API Portal in containers."
-    folder: "content/en/docs/apim_installation/apiportal_docker"
     create: true
     delete: false
     format: "json-frontmatter"

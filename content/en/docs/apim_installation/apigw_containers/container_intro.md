@@ -1,7 +1,7 @@
 ---
 title: Elastic deployment overview
 linkTitle: Overview
-weight: 2
+weight: 10
 date: 2019-09-18
 description: Overview of the elastic deployment process and an example containerized topology. 
 ---

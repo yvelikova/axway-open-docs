@@ -1,7 +1,7 @@
 ---
 title: Upgrade a container deployment
 linkTitle: Upgrade a container deployment
-weight: 11
+weight: 105
 date: 2019-09-18
 description: Upgrade your API Gateway or API Manager container deployment from 7.6.2 or later to 7.8.
 ---

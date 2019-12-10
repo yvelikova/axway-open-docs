@@ -1,14 +1,14 @@
 ---
 title: Get started with API Gateway in containers
 linkTitle: Get started
-weight: 3
+weight: 20
 date: 2019-09-18
 description: Understand the differences between container deployments (API Gateway 7.6.0 and later) and classic deployments (API Gateway 7.5.3 and earlier) and get answers to frequently asked questions (FAQ) about deploying API Gateway in containers.
 ---
 
 ## How to deploy API Gateway in Docker containers
 
-In API Gateway version 7.6.0 and later, you can deploy API Gateway in Docker containers and run it in externally managed topology (EMT) mode. This involves creating Docker images for the Admin Node Manager and API Gateway, and starting Docker containers from those images. For more details, see [Deploy API Gateway in Docker containers](/docs/apim_installation/apigw_containers/containers_docker_setup).
+In API Gateway version 7.6.0 and later, you can deploy API Gateway in Docker containers and run it in externally managed topology (EMT) mode. This involves creating Docker images for the Admin Node Manager and API Gateway, and starting Docker containers from those images.
 
 ## How container deployments differ from classic deployments
 
@@ -59,13 +59,13 @@ For more information, see [Operate and monitor API Gateway containers](/docs/api
 
 ### How do you persist logs
 
-To persist API Gateway logs to a directory on your host machine, you can use the `docker run -v` option to mount volumes for logs when running the API Gateway Docker container. For an example, see [Mount volumes to persist logs outside the API Gateway container](/docs/apim_installation/apigw_containers/containers_docker_setup/docker_script_gwstart#Mount).
+To persist API Gateway logs to a directory on your host machine, you can use the `docker run -v` option to mount volumes for logs when running the API Gateway Docker container. For an example, see [Mount volumes to persist logs outside the API Gateway container](/docs/apim_installation/apigw_containers/docker_script_gwimage/#mount-volumes-to-persist-logs-outside-the-api-gateway-container).
 
 For more information on using volumes to persist data, see the [Use volumes](https://docs.docker.com/storage/volumes/) Docker documentation.
 
 ### What license do you need to run
 
-You must have an appropriate license to run API Gateway or API Manager in a Docker container. For more information, see [What you need before you start](/docs/apim_installation/apigw_containers/containers_docker_setup/docker_scripts_prereqs).
+You must have an appropriate license to run API Gateway or API Manager in a Docker container. For more information, see [Set up Docker environment](/docs/apim_installation/apigw_containers/docker_scripts_prereqs).
 
 ### How do you upgrade from 7.5.3 to 7.8
 
@@ -79,8 +79,8 @@ For information on upgrading to 7.8, see the
 
 When building your API Gateway or Admin Node Manager Docker images, you can specify a merge directory containing custom configuration, JAR files, and so on, to add to the Docker image. For detailed examples, see:
 
-* [Create an ANM image using existing ANM fed and customized configuration](/docs/apim_installation/apigw_containers/containers_docker_setup/docker_script_anmimage#Create6)
-* [Create an API Gateway image using existing fed and customized configuration](/docs/apim_installation/apigw_containers/containers_docker_setup/docker_script_gwimage#Create6)
+* [Create an ANM image using existing ANM fed and customized configuration](/docs/apim_installation/apigw_containers/docker_script_anmimage/#create-an-admin-node-manager-image-using-existing-fed-and-customized-configuration)
+* [Create an API Gateway image using existing fed and customized configuration](/docs/apim_installation/apigw_containers/docker_script_gwimage/#create-an-api-gateway-image-using-existing-fed-and-customized-configuration)
 
 ### How do you manage API Gateway topology
 
@@ -90,10 +90,10 @@ This means that you cannot use the `managedomain` script or the API Gateway Mana
 
 ### How do you run API Gateway administration tools or scripts
 
-In a container deployment, you must connect to the running Admin Node Manager Docker container to run API Gateway administration tools, such as `kpsadmin`. For an example, see [Manage KPS with kpsadmin](/docs/apim_installation/apigw_containers/container_troubleshoot#Manage).
+In a container deployment, you must connect to the running Admin Node Manager Docker container to run API Gateway administration tools, such as `kpsadmin`. For an example, see [Manage KPS with kpsadmin](/docs/apim_installation/apigw_containers/container_troubleshoot/#manage-kps-with-kpsadmin).
 
 ### How do you set up API Manager metrics
 
 To set up API Manager metrics you must first create an Admin Node Manager Docker image with metrics processing enabled, and then run the Admin Node Manager and API Gateway Docker containers using the `docker run -v` option to mount a volume for the API Gateway events directory.
 
-When starting the containers, you must also specify the connection details for the metrics database using environment variables. For an example, see [Create a metrics-enabled ANM image](/docs/apim_installation/apigw_containers/containers_docker_setup/docker_script_anmimage#Create9).
+When starting the containers, you must also specify the connection details for the metrics database using environment variables. For an example, see [Create a metrics-enabled ANM image](/docs/apim_installation/apigw_containers/docker_script_anmimage/#create-a-metrics-enabled-admin-node-manager-image).

@@ -1,7 +1,7 @@
 ---
  title :  Deploy API Manager or OAuth in Docker containers 
  linkTitle :  Deploy API Manager or OAuth 
- weight: 6
+ weight: 80
  date :  2019-09-18 
  description :  Deploy API Manager or OAuth services in your API Gateway containers.
 ---
@@ -42,7 +42,7 @@ Follow these steps:
 
 ### Deploy API Manager enabled API Gateway container {#apimgrdeploy}
 
-Follow the steps in [Deploy API Gateway in Docker containers](/docs/apim_installation/apigw_containers/containers_docker_setup). When creating the API Gateway Docker image using `build_gw_image.py`, specify the deployment package you exported from Policy Studio. For an example, see [Create an API Manager or OAuth enabled API Gateway image](/docs/apim_installation/apigw_containers/containers_docker_setup/docker_script_gwimage#createapimgroauth).
+Follow the steps in [Deploy API Gateway in Docker containers](/docs/apim_installation/apigw_containers/containers_docker_setup). When creating the API Gateway Docker image using `build_gw_image.py`, specify the deployment package you exported from Policy Studio. For an example, see [Create an API Manager or OAuth enabled API Gateway image](/docs/apim_installation/apigw_containers/docker_script_gwimage#createapimgroauth).
 
 ## Deploy OAuth services
 
@@ -74,4 +74,4 @@ Follow these steps:
 
 ### Deploy OAuth-enabled API Gateway container {#oauthdeploy}
 
-Follow the steps in [Deploy API Gateway in Docker containers](/docs/apim_installation/apigw_containers/containers_docker_setup). When creating the API Gateway Docker image using `build_gw_image.py`, specify the deployment package you exported from Policy Studio. For an example, see [Create an API Manager or OAuth enabled API Gateway image](/docs/apim_installation/apigw_containers/containers_docker_setup/docker_script_gwimage#createapimgroauth).
+Follow the steps in [Deploy API Gateway in Docker containers](/docs/apim_installation/apigw_containers/containers_docker_setup). When creating the API Gateway Docker image using `build_gw_image.py`, specify the deployment package you exported from Policy Studio. For an example, see [Create an API Manager or OAuth enabled API Gateway image](/docs/apim_installation/apigw_containers/docker_script_gwimage#createapimgroauth).

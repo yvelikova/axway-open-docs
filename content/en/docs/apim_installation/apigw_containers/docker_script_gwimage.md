@@ -1,7 +1,7 @@
 ---
 title: Create and start API Gateway Docker container
 linkTitle: Create and start API Gateway Docker container
-weight: 4
+weight: 60
 date: 2019-09-18
 description: Steps to build an API Gateway Docker image and start an API Gateway Docker container.
 ---
@@ -226,7 +226,7 @@ docker run -it -v /tmp/events:/opt/Axway/apigateway/events -v /tmp/trace:/opt/Ax
 
 This example starts the API Gateway container and writes the trace and log files to `/tmp/events` and `/tmp/trace` on your host machine. The trace and log files contain the container ID of the API Gateway container in the file names.
 
-{{< alert title="Note" color="primary" >}}To enable an Admin Node Manager container to process the event logs from API Gateway containers, you must run the Admin Node Manager container with the same volume mounted. For more details, see [Create a metrics-enabled ANM image](/docs/apim_installation/apigw_containers/containers_docker_setup/docker_script_anm/#create-a-metrics-enabled-admin-node-manager-image) and [Start a metrics-enabled Admin Node Manager container](/docs/apim_installation/apigw_containers/containers_docker_setup/docker_script_anm/#start-a-metrics-enabled-admin-node-manager-container).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}To enable an Admin Node Manager container to process the event logs from API Gateway containers, you must run the Admin Node Manager container with the same volume mounted. For more details, see [Create a metrics-enabled ANM image](/docs/apim_installation/apigw_containers/docker_script_anm/#create-a-metrics-enabled-admin-node-manager-image) and [Start a metrics-enabled Admin Node Manager container](/docs/apim_installation/apigw_containers/docker_script_anm/#start-a-metrics-enabled-admin-node-manager-container).{{< /alert >}}
 
 ### Start a deployment-enabled API Gateway container in a development environment
 

@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot container deployments
 linkTitle: Troubleshooting
-weight: 13
+weight: 110
 date: 2019-09-18
 description: Problems you might encounter when running API Gateway and API Manager in Docker containers, and possible solutions. 
 ---

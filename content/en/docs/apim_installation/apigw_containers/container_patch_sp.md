@@ -1,7 +1,7 @@
 ---
 title: Apply a patch or service pack
 linkTitle: Apply a patch or service pack
-weight: 12
+weight: 108
 date: 2019-09-18
 description: Apply a patch or a service pack (SP) to an API Gateway or API Manager container deployment.
 ---

@@ -1,7 +1,7 @@
 ---
 title: Redirect logs to stdout
 linkTitle: Redirect logs to stdout
-weight: 8
+weight: 75
 date: 2019-09-18
 description: Configure the API Gateway logging system to redirect the trace and traffic logs to `stdout` instead of to separate files, allowing the logs to be read directly from each container by an external logging service (for example, Elastic Stack or Splunk).
 ---

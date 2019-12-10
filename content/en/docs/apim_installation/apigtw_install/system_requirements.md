@@ -98,7 +98,7 @@ Policy Studio has the following additional requirements on Linux:
 
 ## Docker containers
 
-API Gateway and API Manager support elastic topology in Docker deployments. For details of Docker support, see [Set up Docker environment](/docs/apim_installation/apigw_containers/containers_docker_setup/docker_scripts_prereqs/).
+API Gateway and API Manager support elastic topology in Docker deployments. For details of Docker support, see [Set up Docker environment](/docs/apim_installation/apigw_containers/docker_scripts_prereqs/).
 
 {{< alert title="Note" color="primary" >}}If you are using API Manager monitoring, you also require a shared file system between your API Gateway instances and Admin Node Manager. This is required for processing of transaction event logs and writing API metrics to a database.{{< /alert >}}
 

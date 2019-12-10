@@ -1,7 +1,7 @@
 ---
 title: Create base Docker image
 linkTitle: Create base Docker image
-weight: 2
+weight: 40
 date: 2019-09-18
 description: Create a base Docker image containing an operating system and an API Gateway installation.
 ---

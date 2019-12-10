@@ -1,7 +1,7 @@
 ---
 title: Create and start Admin Node Manager Docker container
 linkTitle: Create and start Admin Node Manager Docker container
-weight: 3
+weight: 50
 date: 2019-09-18
 description: Steps to build an Admin Node Manager Docker image and start an Admin Node Manager container.
 ---
@@ -10,7 +10,7 @@ description: Steps to build an Admin Node Manager Docker image and start an Admi
 
 Use the `build_anm_image.py` script to create an Admin Node Manager Docker image.
 
-To create an Admin Node Manager Docker image, use the `build_anm_image.py` script. This script builds an Admin Node Manager Docker image using the base image you created in [Create base Docker image](/docs/apim_installation/apigw_containers/containers_docker_setup/docker_script_baseimage).
+To create an Admin Node Manager Docker image, use the `build_anm_image.py` script. This script builds an Admin Node Manager Docker image using the base image you created in [Create base Docker image](/docs/apim_installation/apigw_containers/docker_script_baseimage).
 
 ### Admin Node Manager image script options
 
@@ -178,7 +178,7 @@ This example performs the following:
 * Sets the destination of the log records.
 * Specifies a directory to write log records.
 
-{{< alert title="Note" color="primary" >}} You must specify the API Gateway host identity in [Start the API Gateway Docker container](/docs/apim_installation/apigw_containers/containers_docker_setup/docker_script_gw/#start-the-api-gateway-docker-container) to be able to identify the host of the log records.{{< /alert >}}
+{{< alert title="Note" color="primary" >}} You must specify the API Gateway host identity in [Start the API Gateway Docker container](/docs/apim_installation/apigw_containers/docker_script_gw/#start-the-api-gateway-docker-container) to be able to identify the host of the log records.{{< /alert >}}
 
 ### Further information
 
