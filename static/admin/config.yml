@@ -63,7 +63,7 @@ collections: # A list of collections the CMS should be able to edit
     label: "Deploy API Portal in containers"
     label_singular: "page in this section"
     description: "All pages relating to deploying API Portal in containers."
-    folder: "content/en/docs/apim_installation/apiportal_ha"
+    folder: "content/en/docs/apim_installation/apiportal_docker"
     create: true
     delete: false
     format: "json-frontmatter"
