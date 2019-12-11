@@ -107,11 +107,11 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}   
-  - name: "apigtw_devops"
+  - name: "apimgmt_multi_dc"
     label: "Configure API Manager in multi-DC"
     label_singular: "page in this section"
     description: "All pages relating to configuring API Manager in multi-DC."
-    folder: "content/en/docs/apigtw_devops"
+    folder: "content/en/docs/apimgmt_multi_dc"
     create: true
     delete: false
     format: "json-frontmatter"
@@ -162,7 +162,7 @@ collections: # A list of collections the CMS should be able to edit
     folder: "content/en/docs/apimanager_capacityguide"
     create: true
     delete: false
-    format: "json-frontmatter"
+    format: "frontmatter"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {name: "linkTitle", widget: "hidden", required: false}

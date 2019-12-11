@@ -4,7 +4,7 @@
     "weight": "4",
     "date": "2019-09-17",
     "description": "Quick summary of the steps required to register and virtualize an API in API Manager."
-    }
+}
 
 {{< alert title="Note" color="primary" >}}
 Before you can register APIs in API Manager, you must first enable an organization for API registration and development. The API Manager welcome screen prompts you to automatically create an `API Development` organization, which is enabled for API development by default. For more details, see [Register REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_register_web/).
