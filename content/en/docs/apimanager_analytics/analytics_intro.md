@@ -4,7 +4,6 @@ linkTitle: Overview
 weight: 1
 date: 2019-10-03
 description: Gives a brief overview of API Gateway Analytics and outlines the steps required to set up and use it.
-weight: "1"
 ---
 API Gateway Analytics is a server runtime and web-based monitoring and reporting console that enables you to generate scheduled reports and analyze API use over time in multiple API Gateways across the domain.
 

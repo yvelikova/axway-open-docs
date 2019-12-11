@@ -1,9 +1,10 @@
----
-title: API Gateway fixed issues
-linkTitle: API Gateway fixed issues
-date: 2019-08-08
-description: Listing of fixed issues in this release.
----
+{
+    "title": "Fixed issues",
+    "linkTitle": "Fixed issues",
+    "weight": "20",
+    "date": "2019-09-20",
+    "description": "Listing of fixed issues in this release."
+}
 
 <!-- TODO Update this statement with the versions and SP numbers for 7.8 -->
 

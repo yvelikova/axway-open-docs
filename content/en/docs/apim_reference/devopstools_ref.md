@@ -1,4 +1,3 @@
-
 {
 "title": "Continuous integration tools reference",
 "linkTitle": "Continuous integration tools reference",
