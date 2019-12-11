@@ -120,7 +120,7 @@ The deployment options for the `managedomain --menu` command are as follows:
 22) Update deployment archive properties
 ```
 
-For more details, see [Managedomain command reference](/docs/apim_reference/apigtw_ref/managedomain_ref/).
+For more details, see [Managedomain command reference](/docs/apim_reference/managedomain_ref/).
 
 ### Compare and merge configurations in Policy Studio
 
@@ -151,7 +151,7 @@ The following diagram illustrates the process:
 
 To perform a zero downtime policy deployment, follow these steps:
 
-1. Enable zero downtime deployment in Policy Studio, and set the delays before and after deployment. For more information, see [Zero downtime settings](/docs/apim_reference/apigtw_ref/additional_settings#zero-downtime-settings).
+1. Enable zero downtime deployment in Policy Studio, and set the delays before and after deployment. For more information, see [Zero downtime settings](/docs/apim_reference/additional_settings#zero-downtime-settings).
 2. Configure your load balancer to ping the Health Check LB policy periodically to determine if each API Gateway is healthy. This is available on the following default URL:
 
     ```

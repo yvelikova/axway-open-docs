@@ -46,7 +46,7 @@ To disable in Policy Studio, select **Environment Configuration > Server Setting
 
 ![Disable traffic monitoring](/Images/APIGateway/admin_perf_traffic_monitor.png)
 
-For more details, see [Traffic monitoring settings](/docs/apim_reference/apigtw_ref/monitor_traffic_events_metrics#traffic-monitoring-settings).
+For more details, see [Traffic monitoring settings](/docs/apim_reference/monitor_traffic_events_metrics#traffic-monitoring-settings).
 
 ### Disable transaction logging
 
@@ -56,7 +56,7 @@ To disable transaction logging in the API Gateway, you must disable all log dest
 
 ![Disable transaction logging](/Images/APIGateway/admin_perf_transaction_log.png)
 
-For more details, see [Transaction audit log settings](/docs/apim_reference/apigtw_ref/log_global_settings#transaction-audit-log-settings).
+For more details, see [Transaction audit log settings](/docs/apim_reference/log_global_settings#transaction-audit-log-settings).
 
 ### Disable access logging
 
@@ -64,7 +64,7 @@ You should also ensure that the API Gateway is not sending log messages to the a
 
 ![Disable access logging](/Images/APIGateway/admin_perf_access_log.png)
 
-For more details, see [Transaction access log settings](/docs/apim_reference/apigtw_ref/log_access_settings#transaction-access-log-settings).
+For more details, see [Transaction access log settings](/docs/apim_reference/log_access_settings#transaction-access-log-settings).
 
 ## Advanced performance tuning
 

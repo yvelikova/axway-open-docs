@@ -467,4 +467,4 @@ Redaction for trace log records works as follows:
 For details on how to redact sensitive data from domain audit log and access log files, see the following topics:
 
 * [Configure API Gateway logging and events](/docs/apim_administration/apigtw_admin/logging)
-* [Transaction access log settings](/docs/apim_reference/apigtw_ref/log_global_settings/#transaction-access-log-setting)
+* [Transaction access log settings](/docs/apim_reference/log_global_settings/#transaction-access-log-setting)

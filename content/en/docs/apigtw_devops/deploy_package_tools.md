@@ -19,7 +19,7 @@ cd /opt/Axway-7.8/apigateway/posix/bin
 projpack --help
 ```
 
-For a full listing of command options for the tools, see [Continuous integration tools reference](/docs/apim_reference/apigtw_ref/devopstools_ref).
+For a full listing of command options for the tools, see [Continuous integration tools reference](/docs/apim_reference/devopstools_ref).
 
 ## Generate configuration packages from API Gateway projects
 

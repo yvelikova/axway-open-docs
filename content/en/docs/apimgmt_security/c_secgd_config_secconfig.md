@@ -211,7 +211,7 @@ API Portal forces a Joomla! administrator password change on first login.
 An important aspect of maintaining the integrity of the product audit trail is the ability to sign audit records.  API Gateway can sign audit data written to text files, XML files, and databases.
 
 For more details on how to sign transaction logs, see the
-[Transaction audit log settings](/docs/apim_reference/apigtw_ref/log_global_settings/#transaction-audit-log-settings).
+[Transaction audit log settings](/docs/apim_reference/log_global_settings/#transaction-audit-log-settings).
 
 ## API Gateway HSM integration
 

@@ -500,7 +500,7 @@ After a successful read, the custom property is available in the resulting attri
 ${myOrg.customProperty1}
 ```
 
-For more details, see [Read organization](/docs/apim_reference/apimgr_ref/api_mgr_ps_filters/#read-organization).
+For more details, see [Read organization](/docs/apim_reference/api_mgr_ps_filters/#read-organization).
 
 ### Retrieve custom properties for applications
 
@@ -516,7 +516,7 @@ After a successful read, the custom property is available in the resulting attri
 ${myApp.customProperty1}
 ```
 
-For more details, see [Read application](/docs/apim_reference/apimgr_ref/api_mgr_ps_filters/#read-application).
+For more details, see [Read application](/docs/apim_reference/api_mgr_ps_filters/#read-application).
 
 ### Retrieve custom properties for users
 
@@ -532,7 +532,7 @@ After a successful read, the custom property is available in the resulting attri
 ${myUser.customProperty1}
 ```
 
-For more details, see [Read application developer](/docs/apim_reference/apimgr_ref/api_mgr_ps_filters/#read-application-developer).
+For more details, see [Read application developer](/docs/apim_reference/api_mgr_ps_filters/#read-application-developer).
 
 ### Retrieve custom properties for APIs
 
@@ -623,4 +623,4 @@ To specify the location of the API Gateway Manager console, perform the followin
 
 ## Custom development
 
-Web application developers can use the API Manager REST API to perform custom development. For example, you can use this REST API to view and update the configured users, organizations, applications, and to monitor events related to API Portal and API Manager. For more details, see the [API Manager REST APIs](/docs/apim_reference/apimgr_ref/api_mgmt_rest_api/).
+Web application developers can use the API Manager REST API to perform custom development. For example, you can use this REST API to view and update the configured users, organizations, applications, and to monitor events related to API Portal and API Manager. For more details, see the [API Manager REST APIs](/docs/apim_reference/api_mgmt_rest_api/).

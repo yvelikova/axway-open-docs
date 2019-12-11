@@ -10,7 +10,7 @@ Use the **Messaging** view to manage JMS message queues, topics, subscribers, an
 
 For more details on Apache ActiveMQ, see <http://activemq.apache.org/>. For details on the embedded ActiveMQ architecture, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
 
-The **Messaging** view is disabled by default. Before you can use the features in this view, you must first enable the ActiveMQ messaging broker and configure a shared directory in Policy Studio. For more details, see [Embedded ActiveMQ settings](/docs/apim_reference/apigtw_ref/general_activemq_settings/).
+The **Messaging** view is disabled by default. Before you can use the features in this view, you must first enable the ActiveMQ messaging broker and configure a shared directory in Policy Studio. For more details, see [Embedded ActiveMQ settings](/docs/apim_reference/general_activemq_settings/).
 
 ## Manage messaging queues
 

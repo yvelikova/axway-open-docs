@@ -283,6 +283,230 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
+  - name: "apigw_poldev"
+    label: "Develop policies"
+    label_singular: "page in this section"
+    description: "All pages relating to developing policies in Policy Studio."
+    folder: "content/en/docs/apim_policydev/apigw_poldev"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}  
+  - name: "apigw_poldev_external_connections"
+    label: "Develop policies (external connections)"
+    label_singular: "page in this section"
+    description: "All pages relating to configuring external connections in Policy Studio."
+    folder: "content/en/docs/apim_policydev/apigw_poldev/external_connections"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}  
+  - name: "apigw_poldev_gw_instances"
+    label: "Develop policies (instances and listeners)"
+    label_singular: "page in this section"
+    description: "All pages relating to configuring API Gateway instances and listeners in Policy Studio."
+    folder: "content/en/docs/apim_policydev/apigw_poldev/gw_instances"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}  
+  - name: "apigw_poldev_web_services"
+    label: "Develop policies (web services)"
+    label_singular: "page in this section"
+    description: "All pages relating to registering and securing web services in Policy Studio."
+    folder: "content/en/docs/apim_policydev/apigw_poldev/web_services"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}  
+  - name: "apigw_oauth"
+    label: "Configure OAuth"
+    label_singular: "page in this section"
+    description: "All pages relating to configuring OAuth in Policy Studio."
+    folder: "content/en/docs/apim_policydev/apigw_oauth"
+    create: true
+    delete: false
+    format: "frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"} 
+  - name: "apigw_oauth_oauth_flows"
+    label: "Configure OAuth (flows)"
+    label_singular: "page in this section"
+    description: "All pages relating to OAuth authentication flows."
+    folder: "content/en/docs/apim_policydev/apigw_oauth/oauth_flows"
+    create: true
+    delete: false
+    format: "frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"} 
+  - name: "apigw_polref"
+    label: "Policy filter reference"
+    label_singular: "page in this section"
+    description: "All pages relating to filters in Policy Studio."
+    folder: "content/en/docs/apim_policydev/apigw_polref"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}    
+  - name: "apigtw_kerberos"
+    label: "Integrate with Kerberos"
+    label_singular: "page in this section"
+    description: "All pages relating to integrating with Kerberos."
+    folder: "content/en/docs/apigtw_kerberos"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"} 
+  - name: "apimanager_analytics"
+    label: "Configure API Gateway Analytics"
+    label_singular: "page in this section"
+    description: "All pages relating to configuring and using API Gateway Analytics."
+    folder: "content/en/docs/apimanager_analytics"
+    create: true
+    delete: false
+    format: "frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}  
+  - name: "apigtw_devguide"
+    label: "Extend API Gateway"
+    label_singular: "page in this section"
+    description: "All pages relating to extending and customizing API Gateway."
+    folder: "content/en/docs/apigtw_devguide"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}    
+  - name: "apim_reference"
+    label: "Reference"
+    label_singular: "page in this section"
+    description: "All reference pages for API Gateway and API Manager."
+    folder: "content/en/docs/apim_reference"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}  
+  - name: "glossary"
+    label: "Glossary"
+    label_singular: "page in this section"
+    description: "Glossary for API Management and AMPLIFY Central."
+    folder: "content/en/docs/glossary"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}  
+  - name: "apigtw_releasenotes"
+    label: "API Gateway release notes"
+    label_singular: "page in this section"
+    description: "All pages relating to API Gateway release."
+    folder: "content/en/docs/apim_relnotes/apigtw_releasenotes"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "apimng_releasenotes"
+    label: "API Manager release notes"
+    label_singular: "page in this section"
+    description: "All pages relating to API Manager release."
+    folder: "content/en/docs/apim_relnotes/apimng_releasenotes"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}          
   - name: "apiportal_releasenotes"
     label: "API Portal release notes"
     label_singular: "page in this section"

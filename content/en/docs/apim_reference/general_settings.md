@@ -24,7 +24,7 @@ screen:
 The **Active Timeout** value is also used as a wait time when the maximum number of connections for a host is reached. For example, when a host reaches the **Maximum connections** value, API Gateway waits the active timeout period before giving up on trying to make a new connection. The global default value for **Maximum connections** is `128` and cannot be changed. However, you can configure **Maximum connections** and **Active Timeout** on a per-host basis using the **Remote Hosts** interface.
 
 **Date format**
-: Configures the format of the date for the purposes of transaction audit logging and historic metrics. Defaults to `MM.dd.yyyy HH:mm:ss,SSS`. For more details on this format, see <http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html>. See also [Transaction audit log settings](/docs/apim_reference/apigtw_ref/log_global_settings/).
+: Configures the format of the date for the purposes of transaction audit logging and historic metrics. Defaults to `MM.dd.yyyy HH:mm:ss,SSS`. For more details on this format, see <http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html>. See also [Transaction audit log settings](/docs/apim_reference/log_global_settings/).
 
 **Cache refresh interval**
 : Configures the number of seconds that the server caches data loaded from an external source before refreshing data from that source. Defaults to `5` seconds. To disable the cache, set this to `0`. This cache applies to attributes retrieved from external databases, LDAP directories, internal user stores, and IBM Tivoli. It also applies to query results for authentication against LDAP or databases, and to certificate revocation lists for certificate validation (CRL and XKMS only).
@@ -131,7 +131,7 @@ By default, the server uses the `Id` attribute for each of the WSSE namespaces l
       </dsig:Signature>
    </soap:Header>
    <soap:Body>
-       <getProduct wsu:Id="Axway:sLmDCph3tGZ10" 
+       <getProduct wsu:Id="Axway:sLmDCph3tGZ10"
            xmlns:wsu="http://schemas.xmlsoap.org/ws/2003/06/utility">
            <Name>SOA Test Client</Name>
            <Company>Company</Company>
