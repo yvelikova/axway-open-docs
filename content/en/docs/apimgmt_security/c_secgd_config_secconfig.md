@@ -81,7 +81,7 @@ Certificates and key pairs can be imported into the API Gateway's trusted certif
 
 {{< alert title="Note" color="primary" >}}All private keys stored in the certificate store can be encrypted with the Entity Store passphrase.{{< /alert >}}
 
-For more information on the certificate store, see [Manage certificates and keys](/docs/apim_administration/apigtw_security/general_certificates/). Certificates and keys can also be stored in a Hardware Security Module (HSM), for example, Thales nShield Solo or Safenet Luna SA.
+For more information on the certificate store, see [Manage certificates and keys](/docs/apim_administration/general_certificates/). Certificates and keys can also be stored in a Hardware Security Module (HSM), for example, Thales nShield Solo or Safenet Luna SA.
 
 API Gateway can also trust certificates in a Java keystore by adding the following line to the `/system/conf/jvm.xml` file:
 
@@ -157,7 +157,7 @@ See [Certificate validation filters](/docs/apim_policydev/apigw_polref/cert_vali
 
 Sensitive data, such as passwords, private keys, and tokens, can be encrypted using the Entity Store passphrase.  The data is encrypted using PBE with SHA1 and 3DES in CBC mode.
 
-For more information on passphrases, see [Configure encryption passphrase](/docs/apim_administration/apigtw_security/general_passphrase/).
+For more information on passphrases, see [Configure encryption passphrase](/docs/apim_administration/general_passphrase/).
 
 ### Set Entity Store passphrase for automated startup
 
@@ -215,13 +215,13 @@ For more details on how to sign transaction logs, see the
 
 ## API Gateway HSM integration
 
-API Gateway can offload private key storage and operations to a hardware security module (HSM) that has been installed on the host machine. For more information on storing certificates and keys on a HSM, see [Manage certificates and keys](https://axway-open-docs.netlify.com/docs/apim_administration/apigtw_security/general_certificates/).
+API Gateway can offload private key storage and operations to a hardware security module (HSM) that has been installed on the host machine. For more information on storing certificates and keys on a HSM, see [Manage certificates and keys](https://axway-open-docs.netlify.com/docs/apim_administration/general_certificates/).
 
 ## API Gateway API firewalling configuration
 
 API Gateway embeds Apache ModSecurity to protect the API traffic that goes through the API Gateway against common HTTP attacks, such as cross-site scripting, SQL injection, command injection, cross-site request forgery, and many others.  Apache ModSecurity is a toolkit for real-time HTTP traffic monitoring, logging, and access control.
 
-For more information on configuring API firewalling, see [Manage API firewalling](/docs/apim_administration/apigtw_security/admin_waf/).
+For more information on configuring API firewalling, see [Manage API firewalling](/docs/apim_administration/admin_waf/).
 
 ## Policy Studio SSL settings
 
@@ -250,7 +250,7 @@ In line with security best practices, the default behavior of the API Gateway in
 
 When running in FIPS mode, all cryptographic operations are performed by the embedded OpenSSL FIPS Object Module and the Entrust Authority Security Toolkit.  Furthermore, the API Gateway runtime will disable cryptographic algorithms that are not FIPS compliant, such as DES and MD5.
 
-The ability to operate in FIPS mode is determined by the type of license used for API Gateway. If a FIPS-enabled license is used, API Gateway can be configured to run in FIPS mode or standard mode.  For more details on running in FIPS mode, see [Run API Gateway in FIPS mode](/docs/apim_administration/apigtw_security/admin_fips/).
+The ability to operate in FIPS mode is determined by the type of license used for API Gateway. If a FIPS-enabled license is used, API Gateway can be configured to run in FIPS mode or standard mode.  For more details on running in FIPS mode, see [Run API Gateway in FIPS mode](/docs/apim_administration/admin_fips/).
 
 It is also possible to operate Policy Studio in FIPS mode. This enables FIPS-certified cryptographic modules and ensures that all cryptographic operations (for example, SSL) are performed by these modules. To enable FIPS mode, select **Window > Preferences > FIPS Mode** in Policy Studio.
 
@@ -266,7 +266,7 @@ You can check an API Gateway configuration for Suite B and Suite B Top Secret co
 
 You can enable an advisory banner in API Gateway Manager, which displays when a user logs in to API Gateway Manager or Policy Studio.
 
-For more information, see [Configure an advisory banner](/docs/apim_administration/apigtw_security/advisory_banner/).
+For more information, see [Configure an advisory banner](/docs/apim_administration/advisory_banner/).
 
 ## API keys in API Manager and API Portal
 
@@ -290,4 +290,4 @@ For more information, see [Offload audit log files to an external audit server](
 
 ## API Gateway redaction
 
-API Gateway enables you to remove sensitive content from messages monitored in the API Gateway Manager web console and traffic monitoring database. You can redact sensitive content message content types such as HTTP headers, JSON, XML, HTML form, and plain text. For details, see [Hide sensitive data](/docs/apim_administration/apigtw_security/admin_redactors/).
+API Gateway enables you to remove sensitive content from messages monitored in the API Gateway Manager web console and traffic monitoring database. You can redact sensitive content message content types such as HTTP headers, JSON, XML, HTML form, and plain text. For details, see [Hide sensitive data](/docs/apim_administration/admin_redactors/).

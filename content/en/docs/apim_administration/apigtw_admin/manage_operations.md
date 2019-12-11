@@ -23,7 +23,7 @@ If you are using Apache Cassandra, before starting API Gateway, you must first e
 
 By default, data is stored unencrypted in the API Gateway configuration store. However, you can encrypt certain sensitive information such as passwords and private keys using a passphrase. When the passphrase has been set, this encrypts the API Gateway configuration data.
 
-You must enter the passphrase when connecting to the configuration data (for example, using the Policy Studio, or when the API Gateway starts up). For more details on configuring this passphrase, see [Configure an API Gateway encryption passphrase](/docs/apim_administration/apigtw_security/general_passphrase#set-passphrases).
+You must enter the passphrase when connecting to the configuration data (for example, using the Policy Studio, or when the API Gateway starts up). For more details on configuring this passphrase, see [Configure an API Gateway encryption passphrase](/docs/apim_administration/general_passphrase#set-passphrases).
 
 ### Start the Node Manager
 

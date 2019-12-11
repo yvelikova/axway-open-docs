@@ -106,23 +106,23 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "weight", widget: "hidden", required: false}
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}            
-  - name: "cass_admin" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Administer Apache Cassandra" # Used in CMS UI left nav
-    label_singular: "page in this section" # Used in CMS UI, ie.: "New Post"
-    description: "All pages relating to administering Apache Cassandra for API Gateway and API Manager." # Used in CMS UI
-    folder: "content/en/docs/cass_admin" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    delete: false # Allow users to delete documents in this collection
-    format: "frontmatter" # Specify frontmatter for YAML or json-frontmatter for JSON
-    fields: # The fields each document in this collection have
-      - {label: "Title", name: "title", widget: "string"} # Every collection must have a title field as it's the default identifier
+      - {label: "Body", name: "body", widget: "markdown"}   
+  - name: "apigtw_devops"
+    label: "Configure API Manager in multi-DC"
+    label_singular: "page in this section"
+    description: "All pages relating to configuring API Manager in multi-DC."
+    folder: "content/en/docs/apigtw_devops"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
       - {name: "linkTitle", widget: "hidden", required: false}
       - {name: "no_list", widget: "hidden", required: false}
       - {name: "weight", widget: "hidden", required: false}
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Body", name: "body", widget: "markdown"}   
   - name: "apiportal_ha"
     label: "Configure API Portal for HA"
     label_singular: "page in this section"
@@ -139,6 +139,102 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}    
+  - name: "apigtw_devops"
+    label: "Deploy to production"
+    label_singular: "page in this section"
+    description: "All pages relating to deploying API Gateway configuration."
+    folder: "content/en/docs/apigtw_devops"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}       
+  - name: "apimanager_capacityguide"
+    label: "Capacity planning and performance"
+    label_singular: "page in this section"
+    description: "All pages relating to capacity planning and performance tests."
+    folder: "content/en/docs/apimanager_capacityguide"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}   
+  - name: "apimgmt_security"
+    label: "Security guidance"
+    label_singular: "page in this section"
+    description: "All pages relating to security guidance for API Gateway, API Manager, and API Portal."
+    folder: "content/en/docs/apimgmt_security"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"} 
+  - name: "apigtw_admin"
+    label: "Administer API Gateway"
+    label_singular: "page in this section"
+    description: "All pages relating to administering API Gateway."
+    folder: "content/en/docs/apim_administration/apigtw_admin"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}   
+  - name: "apimgr_admin"
+    label: "Administer API Manager"
+    label_singular: "page in this section"
+    description: "All pages relating to administering API Manager."
+    folder: "content/en/docs/apim_administration/apimgr_admin"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"} 
+  - name: "apimgr_admin_sso"
+    label: "Administer API Manager (SSO)"
+    label_singular: "page in this section"
+    description: "All pages relating to administering API Manager SSO."
+    folder: "content/en/docs/apim_administration/apimgr_admin/sso"
+    create: true
+    delete: false
+    format: "json-frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}   
   - name: "apiportal_admin"
     label: "Administer API Portal"
     label_singular: "page in this section"
@@ -165,6 +261,22 @@ collections: # A list of collections the CMS should be able to edit
     format: "frontmatter"
     fields:
       - {label: "Title", name: "title", widget: "string"}
+      - {name: "linkTitle", widget: "hidden", required: false}
+      - {name: "no_list", widget: "hidden", required: false}
+      - {name: "weight", widget: "hidden", required: false}
+      - {name: "date", widget: "hidden", required: false}
+      - {label: "Summary", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}                                    
+  - name: "cass_admin" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Administer Apache Cassandra" # Used in CMS UI left nav
+    label_singular: "page in this section" # Used in CMS UI, ie.: "New Post"
+    description: "All pages relating to administering Apache Cassandra for API Gateway and API Manager." # Used in CMS UI
+    folder: "content/en/docs/cass_admin" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    delete: false # Allow users to delete documents in this collection
+    format: "frontmatter" # Specify frontmatter for YAML or json-frontmatter for JSON
+    fields: # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string"} # Every collection must have a title field as it's the default identifier
       - {name: "linkTitle", widget: "hidden", required: false}
       - {name: "no_list", widget: "hidden", required: false}
       - {name: "weight", widget: "hidden", required: false}
