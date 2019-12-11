@@ -1,7 +1,7 @@
 ---
-title: API Management 7.8 Capacity Planning Guide
+title: API Management Capacity Planning Guide
 linkTitle: Capacity planning and performance
-weight: 19
+weight: 48
 date: 2019-09-26
 description: This guide provides information for capacity planning and outlines performance results for common SOAP and REST use cases for both API Manager and API Gateway.
 ---
