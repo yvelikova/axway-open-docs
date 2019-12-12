@@ -1,5 +1,5 @@
 {
-"title": "API Management Security Guide",
+"title": "Security guidance",
 "linkTitle": "Security guidance",
 "weight": 49,
 "date": "2019-11-25",

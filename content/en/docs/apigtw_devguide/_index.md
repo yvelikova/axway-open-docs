@@ -1,5 +1,5 @@
 {
-    "title": "API Gateway Developer Guide",
+    "title": "Extend API Gateway",
     "linkTitle": "Extend API Gateway",
     "weight":"89",
     "date": "2019-10-14",

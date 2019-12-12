@@ -13,17 +13,17 @@ The prerequisites for configuring API Gateway Analytics are as follows.
 
 ### Install API Gateway
 
-Because API Gateway Analytics reports on transactions processed by API Gateway in real time, you must ensure that API Gateway is installed. For more details, see the [API Gateway Installation Guide](/docs/apigtw_install/).
+Because API Gateway Analytics reports on transactions processed by API Gateway in real time, you must ensure that API Gateway is installed. For more details, see the [API Gateway Installation Guide](/docs/apim_installation/apigtw_install/).
 
 To view API Gateway metrics in API Gateway Analytics, you must also enable the recording of metrics. For more details, see [Configure API Gateway with the metrics database](/docs/apimanager_analytics/metrics_gw_config).
 
 ### Install API Gateway Analytics
 
-You must ensure that API Gateway Analytics is installed. For more details, see [Install API Gateway Analytics](/docs/apigtw_install/install_analytics/).
+You must ensure that API Gateway Analytics is installed. For more details, see [Install API Gateway Analytics](/docs/apim_installation/apigtw_install/install_analytics/).
 
 ### Configure a database
 
-You must ensure that a JDBC-compliant database is installed to store the API Gateway monitoring and transaction data. For more details, see [Install and configure a metrics database](/docs/apigtw_install/metrics_db_install/).
+You must ensure that a JDBC-compliant database is installed to store the API Gateway monitoring and transaction data. For more details, see [Install and configure a metrics database](/docs/apim_installation/apigtw_install/metrics_db_install/).
 
 ## Update API Gateway Analytics configuration
 

@@ -1,5 +1,5 @@
 ---
-title: API Management Capacity Planning Guide
+title: Capacity planning and performance
 linkTitle: Capacity planning and performance
 weight: 48
 date: 2019-09-26

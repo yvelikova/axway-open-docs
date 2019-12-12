@@ -26,7 +26,7 @@ The following is a description of the diagram:
 * The Admin Node Manager uses RBAC to determine if the user has permission to access the requested service.
 * If the user has permission, the request can be completed. Otherwise, the request is denied.
 
-For a more detailed explanation of RBAC in API Gateway, see [Configure Role-Based Access Control (RBAC)](/docs/apigtw_admin/general_rbac/).
+For a more detailed explanation of RBAC in API Gateway, see [Configure Role-Based Access Control (RBAC)](/docs/apim_administration/apigtw_admin/general_rbac/).
 
 ## Available resources and actions
 
