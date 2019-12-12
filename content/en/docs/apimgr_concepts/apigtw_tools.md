@@ -26,7 +26,7 @@ The central API Gateway core component is described as follows:
 
 In enterprise organizations, the API Gateway is typically deployed in the DMZ between the public Internet and private intranet.
 
-For more details, see [API Gateway architecture](/docs/apigtw_concepts/apigtw_architecture/).
+For more details, see [API Gateway architecture](/docs/apimgr_concepts/apigtw_architecture/).
 
 ## API Manager
 
