@@ -42,7 +42,15 @@ This will open a new dialog box for your OAuth information. Choose a helpful nam
 
 ### Making An API Call
 
-Inside the API Proxy with an OAuth Client authentication policy, click the "Test Methods" tab.
+1. Inside the API Proxy with an OAuth Client authentication policy, click the "Test Methods" tab.
+2. If you have more than one valid Deployment, choose the one you want to test. If you only have one, it will automatically be selected for you.
+3. If you have more than one valid OAuth Profile, choose the one you want to test. If you only have one, it will automatically be selected for you.
+
+When you select a valid OAuth Profile, you will see your Client ID displayed in a read-only field. This will assist you, the provider, in generating an OAuth token from the correct application in your 3rd party OAuth server.
+
+After your 3rd party OAuth server has generated a valid OAuth token, paste that token into the large "OAuth token" field. You may now attempt to make valid API calls with your proxy.
+
+*NOTE:* If your token is invalid, expired, or empty, you will receive a *403: Unauthorized* response.
 
 ### What is an API proxy?
 
