@@ -8,7 +8,7 @@
 
 ## Prerequisites
 
-Ensure that all of the prerequisites detailed in [Prerequisites](/docs/apim_installation/apigtw_install/system_requirements) are met.
+Ensure that all of the [prerequisites](/docs/apim_installation/apigtw_install/system_requirements) are met.
 
 ### Axway license file
 
@@ -16,7 +16,7 @@ You must have a valid Axway license file to install API Gateway Analytics. To ob
 
 ## Install API Gateway Analytics
 
-To install API Gateway Analytics in GUI mode, perform an installation following the steps described in [Installation options](/docs/apim_installation/apigtw_install/installation#select-setup-type), using the following selections:
+To install API Gateway Analytics in GUI mode, perform an installation following the steps described in [Installation](/docs/apim_installation/apigtw_install/installation), using the following selections:
 
 * Select the **Custom** setup type.
 * Select to install the API Gateway Analytics component.
@@ -38,16 +38,12 @@ Before starting API Gateway Analytics, you must perform the following steps:
 3. Configure the database tables using the `dbsetup` script.
 4. Enable writing of metrics from your API Gateway instance to the database using the `managedomain` tool.
 
-For more details on how to perform these steps, see the [API Gateway Analytics User Guide](/bundle/APIGateway_77_AnalyticsUserGuide_allOS_en_HTML5/).
+For more details on how to perform these steps, see the [API Gateway Analytics User Guide](/docs/apimanager_analytics/).
 
 ## Start API Gateway Analytics
 
-When you have configured your metrics database and API Gateway Analytics, you can start up API Gateway Analytics. For more details, see the [API Gateway Analytics User Guide](/bundle/APIGateway_77_AnalyticsUserGuide_allOS_en_HTML5/).
+When you have configured your metrics database and API Gateway Analytics, you can start up API Gateway Analytics.
 
 ### Start as a service
 
 You can also run API Gateway Analytics as a service. For more information, see [Set up services](/docs/apim_installation/apigtw_install/post_overview#set-up-services).
-
-## Further information
-
-For details on how to set up scheduled reports, view monitoring data in API Gateway Analytics, or purge the metrics database, see the [API Gateway Analytics User Guide](/bundle/APIGateway_77_AnalyticsUserGuide_allOS_en_HTML5/).

@@ -1,7 +1,7 @@
 {
 "title": "Configure open logging",
 "linkTitle": "Configure open logging",
-"weight":"22",
+"weight":"115",
 "date": "2019-10-14",
 "description": "Consolidate transaction event data, traces, and system metrics stored by API Gateway, and visualize and analyze them in external observability systems."
 }

@@ -1,7 +1,7 @@
 {
 "title": "Run API Gateway in FIPS mode",
 "linkTitle": "Run API Gateway in FIPS mode",
-"weight":"16",
+"weight":"85",
 "date": "2019-10-14",
 "description": "Run an API Gateway instance or a Policy Studio client in FIPS mode."
 }

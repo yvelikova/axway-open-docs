@@ -1,7 +1,7 @@
 {
 "title": "Manage API firewalling",
 "linkTitle": "Manage API firewalling",
-"weight":"14",
+"weight":"80",
 "date": "2019-10-14",
 "description": "Enable API firewalling on an API Gateway interface in Policy Studio, and monitor API firewalling in API Gateway Manager."
 }
