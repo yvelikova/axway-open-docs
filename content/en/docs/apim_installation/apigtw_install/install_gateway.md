@@ -10,8 +10,8 @@
 
 ## Prerequisites
 
-* Ensure that all of the prerequisites detailed in [Prerequisites](/docs/apim_installation/apigtw_install/system_requirements) are met.
-* If you are using Apache Cassandra, before starting API Gateway, you must first ensure that Cassandra is installed and running. For more details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install).
+* Ensure that all of the [prerequisites](/docs/apim_installation/apigtw_install/system_requirements) are met.
+* If you are using Apache Cassandra, before starting API Gateway, you must first ensure that Cassandra is installed and running.
 
 ### Axway license file
 
@@ -19,7 +19,7 @@ You must have a valid Axway license file to install the API Gateway server. Also
 
 ## Install the API Gateway server
 
-To install the API Gateway server in GUI mode, perform an installation following the steps described in [Installation options](/docs/apim_installation/apigtw_install/installation#select-setup-type), using the following selections:
+To install the API Gateway server in GUI mode, perform an installation following the steps described in [Installation](/docs/apim_installation/apigtw_install/installation), using the following selections:
 
 * Select the **Custom** setup type.
 * Select to install the API Gateway server component.
@@ -34,8 +34,7 @@ The following example shows how to install the API Gateway server component in u
 
 ## Before you start API Gateway
 
-Before you can start API Gateway, you must first use the `managedomain` script to create a new domain that includes an API Gateway instance. If you installed the QuickStart tutorial, a sample API Gateway domain is automatically configured in your installation. Otherwise, you must first create a new domain. For more details, see the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+Before you can start API Gateway, you must first use the `managedomain` script to create a new domain that includes an API Gateway instance. If you installed the QuickStart tutorial, a sample API Gateway domain is automatically configured in your installation. Otherwise, you must first create a new domain. For more details, see [Configure an API Gateway domain](/docs/apim_administration/apigtw_admin/makegateway/).
 
 If you installed the QuickStart tutorial, the QuickStart server and Admin Node Manager start automatically. Otherwise, you must start them manually.
 
@@ -66,8 +65,8 @@ To start API Gateway manually, follow these steps:
 
 5. Enter the administrator user name and password. This is the administrator user name and password you entered during installation.
 
-{{< alert title="Note" color="primary" >}}You can encrypt all sensitive API Gateway configuration data with an encryption passphrase. For example, you can specify this passphrase in your gateway configuration file, or on the command line when the gateway is starting up. For more details, see the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/). {{< /alert >}}
+{{< alert title="Note" color="primary" >}}You can encrypt all sensitive API Gateway configuration data with an encryption passphrase. For example, you can specify this passphrase in your gateway configuration file, or on the command line when the gateway is starting up. For more details, see [Configure an encryption passphrase](/docs/apim_administration/apigtw_admin/general_passphrase/). {{< /alert >}}
 
 ### Start as a service
 
-You can also run the gateway instances and Node Managers as services. For more information, see [Set up services](/docs/apim_installation/apigtw_install/post_overview).
+You can also run the gateway instances and Node Managers as services. For more information, see [Set up services](/docs/apim_installation/apigtw_install/post_overview/#set-up-services).

@@ -6,13 +6,13 @@
 "description": "Prerequisites and steps for installing and starting API Manager."
 }
 
-API Manager is an additional licensed layered product running on the Axway API Gateway. For more details, see the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
+API Manager is an additional licensed layered product running on the Axway API Gateway.
 
 {{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apim_installation/apigtw_install/install_dev_tools). API Gateway and API Manager do not support Windows.{{< /alert >}}
 
 ## Prerequisites
 
-Ensure that all of the prerequisites detailed in [Prerequisites](/docs/apim_installation/apigtw_install/system_requirements) are met.
+Ensure that all of the prerequisites detailed in [prerequisites](/docs/apim_installation/apigtw_install/system_requirements) are met.
 
 ### Axway license file
 
@@ -30,7 +30,7 @@ The Apache Cassandra database is required to store API Manager data. You can ins
 
 ## Install API Manager
 
-To install API Manager in GUI mode, perform an installation following the steps described in [Installation options](/docs/apim_installation/apigtw_install/installation), using the following selections:
+To install API Manager in GUI mode, perform an installation following the steps described in [Installation](/docs/apim_installation/apigtw_install/installation), using the following selections:
 
 * Select the **Custom** setup type.
 * Select to install the following components:
@@ -38,12 +38,6 @@ To install API Manager in GUI mode, perform an installation following the steps 
     * API Gateway Server
     * Admin Node Manager
     * Cassandra (if not already installed separately before API Manager)
-
-For more details, see the following:
-
-* [Install the API Gateway server](/docs/apim_installation/apigtw_install/install_gateway)
-* [Install the Admin Node Manager](/docs/apim_installation/apigtw_install/install_node_manager)
-* [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install)
 
 ### Unattended mode
 
@@ -57,7 +51,7 @@ The following example shows how to install the API Manager, API Gateway Server, 
 
 ## Configure API Manager
 
-If you selected to install the QuickStart tutorial, API Manager is configured by default. If you did not install the QuickStart tutorial, you must configure API Manager. For more details, see the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
+If you selected to install the QuickStart tutorial, API Manager is configured by default. If you did not install the QuickStart tutorial, you must configure API Manager. For more details, see the [Set up API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_config/).
 
 ## Start API Manager
 
