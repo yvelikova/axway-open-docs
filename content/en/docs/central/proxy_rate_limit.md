@@ -182,30 +182,6 @@ proxy:
 
 The `perProxy` field specifies the desired Transactions Per Second (TPS) limit for your API.
 
-**Example 2** - Create a rate limit with a variable interval of 5 transactions per 10 seconds
-
-```
-version: v1 # Version of the file format
-apiVersion: v1 # This version ensures backward compatibility and would not mandate a frequent update from a client side
-proxy:
-    name: 'Musical Instruments Rate Limited' # name of the proxy
-    basePath: /examples/ratelimit/api/v1 # base path of the proxy
-    swagger: 'https://ec062a054a2977120b7e721801edb38ca24dfbb3.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json' # Swagger url of the proxy
-    policies:
-        clientAuth:
-            type: pass-through
-        rateLimit:
-            perProxy:
-                limit: 5
-                interval: PT10S
-    tags: ['musical', 'instruments', 'ratelimit']
-    team:
-        name: 'Default Team'
-```
-
-To specify a variable interval, you must use the fields `limit` and `interval` in conjunction.
-
-The field `interval` must follow the format `P[n]Y[n]M[n]DT[n]H[n]M[n]S` or `P[n]W`, supported by the ISO_8601 standard.
 
 Create the API proxy:
 
@@ -293,7 +269,7 @@ Under `perProxy` or `perProxyAndApp` you can specify two configurations:
 * `limit` value defines number of API calls that needs to be rate limited.
 * `interval` value defines at what interval, API calls needs to be rate limited at. 
   
-The field `interval` must follow the format `P[n]Y[n]M[n]DT[n]H[n]M[n]S` or `P[n]W`, supported by the ISO_8601 standard.
+The field `interval` must follow the format `PT[n]H[n]M[n]S`, supported by the ISO_8601 standard.
 
 **Some examples for interval:**
 
