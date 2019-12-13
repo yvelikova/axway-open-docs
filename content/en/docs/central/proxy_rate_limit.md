@@ -26,14 +26,11 @@ Learn how to apply a rate limit configuration to your API:
 
 Rate limiting is a way to protect the backend service underlying (or implementing) your API. The use of resources underlying your API are protected from more aggressive consumer activity (or spikes in total API calls) which could overwhelm the backend service capacity.
 
-API providers typically measure processing limits in Transactions Per (Seconds/Minutes/Hours/1day). Rate limiting at the API level is a way to enforce a maximum Transactions Per (Seconds/Minutes/Hours/1day) for all of your API consumers. In AMPLIFY Central, we provide rate limiting around the API Proxy activity.
+API providers typically measure processing limits in transactions per time period (seconds, minutes, hours), for example, 100 transactions per 10 seconds. Rate limiting at the API level is a way to enforce a maximum limit for the total transactions per time period for all of your API consumers. In AMPLIFY Central, we provide rate limiting around the API Proxy activity.
 
 ### AMPLIFY Central API rate limiting
 
-AMPLIFY Central currently provides a variable interval rate limiting implementation with a sliding window bucket algorithm with **minimum of 1 second interval to maximum of 1 day.**
-Intervals should be specified in duration format P[n]Y[n]M[n]DT[n]H[n]M[n]S or P[n]W supported by ISO_8601 standard. For more information duration format, please refer to wiki link  https://en.wikipedia.org/wiki/ISO_8601#Durations
-
-A valid API transaction is an API transaction that has been successfully processed by AMPLIFY Central.
+AMPLIFY Central currently provides a variable interval rate limiting with **minimum of 1 second interval to maximum of 1 day.**
 
 AMPLIFY Central allows for two levels of enforcement for rate limiting. At the proxy level, rate limiting affects all API transactions regardless of the consuming application. At the proxy and application level, rate limiting affects all API transactions originating with a specific application. You can enforce one or both levels with AMPLIFY Central.
 
@@ -247,37 +244,6 @@ proxy:
     team:
         name: 'Default Team'
 ```
-Below is an example of same use case as above, but with variable interval set to 10 seconds.
-
-```
-version: v1 # Version of the file format
-apiVersion: v1 # This version ensures backward compatibility and would not mandate a frequent update from a client side
-proxy:
-    name: 'Musical Instruments Rate Limited' # name of the proxy
-    basePath: /examples/ratelimit/api/v1 # base path of the proxy
-    swagger: 'https://ec062a054a2977120b7e721801edb38ca24dfbb3.cloudapp-enterprise.appcelerator.com/apidoc/swagger.json' # Swagger url of the proxy
-    policies:
-        clientAuth:
-            type: api-key
-        rateLimit:
-            perProxy: # the desired Rate limit for your API - 5 transaction per 10 seconds interval
-                limit: 5
-                interval: PT10S
-            perProxyAndApp: # the default Rate limit for each app consuming the API to 3 transactions per 10 seconds interval
-                limit: 3
-                interval: PT10S
-    tags: ['musical', 'instruments', 'ratelimit']
-    apps:
-    - name: Rate Limited App 1
-    - name: Rate Limited App 2
-    team:
-        name: 'Default Team'
-```
-
-
-
-
-
 
 ### Apply a specific rate limit for an application consuming your API
 
@@ -309,8 +275,24 @@ proxy:
     team:
         name: 'Default Team'
 ```
-Below is an example of same use case as above, but with variable interval set to 10 seconds.
 
+### Apply variable interval rate limit for an application consuming your API
+
+We can rate limit the API calls at variable interval instead of fixed 1 second interval.  
+
+Under `perProxy` or `perProxyAndApp` you can specify two configurations:
+
+* `limit` value defines number of API calls that needs to be rate limited.
+* `interval` value defines at what interval, API calls needs to be rate limited at. 
+  
+ `interval` needs to be specified in duration format ` PT[n]H[n]M[n]S` supported by ISO_8601 standard. 
+
+**Some examples for interval:**
+* PT10S  # 10 seconds interval
+* PT1M45S # 1 minute 45 seconds interval
+* PT15H20M30S # 15 hours 20 minutes thirty seconds interval
+
+In this example, the two applications under `apps` are limited at 1 transaction per 10 seconds interval individually, as defined by the `perProxyAndApp` configuration, but traffic from both apps is also limited to 5 transactions per 10 seconds interval, as defined by the `perProxy` configuration.
 
 ```
 version: v1 # Version of the file format
@@ -326,14 +308,9 @@ proxy:
             perProxy: # the desired rate limit for your API for 10 seconds interval
                 limit: 5
                 interval: PT10S
-            perProxyAndApp: # the default Ratelimit for each app consuming the API to 1 transaction per 10 seconds interval
+            perProxyAndApp: # the default Ratelimit for each app consuming the API at 1 transaction per 10 seconds interval
                 limit: 1
                 interval: PT10S
-            overrides:
-              - appName: Rate Limited App 1
-                perProxyAndApp: # this app can individually do 3 Transactions per 10 seconds interval
-                    limit: 3
-                    interval: PT10S
     tags: ['musical', 'instruments', 'ratelimit']
     apps:
     - name: Rate Limited App 1
