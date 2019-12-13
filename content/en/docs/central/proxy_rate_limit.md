@@ -26,13 +26,18 @@ Learn how to apply a rate limit configuration to your API:
 
 Rate limiting is a way to protect the backend service underlying (or implementing) your API. The use of resources underlying your API are protected from more aggressive consumer activity (or spikes in total API calls) which could overwhelm the backend service capacity.
 
-API providers typically measure processing limits in transactions per time period (seconds, minutes, hours), for example, 100 transactions per 10 seconds. Rate limiting at the API level is a way to enforce a maximum limit for the total transactions per time period for all of your API consumers. In AMPLIFY Central, we provide rate limiting around the API Proxy activity.
+API providers typically measure processing limits in transactions per time period (seconds, minutes, hours), for example, 100 transactions per 10 seconds. Rate limiting at the API level is a way to enforce a maximum limit for the total transactions per time period for all of your API consumers.
 
 ### AMPLIFY Central API rate limiting
 
-AMPLIFY Central currently provides a variable interval rate limiting with **minimum of 1 second interval to maximum of 1 day.**
+AMPLIFY Central provides rate limiting around the API Proxy activity. You can set up the rate limiting from **1 second** to **1 day** interval.
 
-AMPLIFY Central allows for two levels of enforcement for rate limiting. At the proxy level, rate limiting affects all API transactions regardless of the consuming application. At the proxy and application level, rate limiting affects all API transactions originating with a specific application. You can enforce one or both levels with AMPLIFY Central.
+AMPLIFY Central allows for two levels of enforcement for rate limiting:  
+
+* At the proxy level, rate limiting affects all API transactions regardless of the consuming application. 
+* At the proxy and application level, rate limiting affects all API transactions originating with a specific application. 
+
+You can enforce one or both levels together.
 
 ## Use the AMPLIFY Central UI to configure rate limiting
 
@@ -47,7 +52,7 @@ To begin, [register an api proxy](/docs/central/quickstart/#register-an-api).
 
 ![Enter the desired TPS](/Images/central/proxy_rate_limit_box.png)
 
-A new revision with the desired rate limit configuration is created. Deploy the new revision for the configuration to take effect.
+A new revision with the desired rate limit configuration is created. You must deploy the new revision for the configuration to take effect.
 
 ### Test the rate limit configuration
 
@@ -74,9 +79,9 @@ https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/
 
 #### Constant traffic test
 
-[K6](https://docs.k6.io/docs/welcome) is a testing tool that can help replicate a scenario closer to how your API will be used in the real world.
+[K6](https://docs.k6.io/docs/welcome) is a testing tool configured using the JavaScript language, that can help replicate a scenario closer to how your API will be used in the real world.
 
-K6 is configured using the JavaScript language. Save the following script as `rate-limit-test.js`.
+Save the following script as `rate-limit-test.js`.
 
 ```js
 import http from "k6/http";
@@ -102,7 +107,9 @@ export default function() {
 }
 ```
 
-Using the dockerized version of K6, run a test mimicking 20 users sending 20 TPS to your API proxy for 30 seconds. Replace `<your_url_here>` with an endpoint of your proxy.
+Using the dockerized version of K6, run a test mimicking 20 users sending 20 TPS to your API proxy for 30 seconds. 
+
+Replace `<your_url_here>` with an endpoint of your proxy.
 
 ```
 docker run -i loadimpact/k6 run * -e TEST_URL="<your_url_here>" --rps 20 -u 20 -m 20 -d 30s < rate-limit-test.js
@@ -144,9 +151,7 @@ The passed rate closely matches the enforced rate limit.
 3. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section.
 4. Clear the text field and click the checkbox to save the configuration.
 
-![Clear up the textbox](/Images/central/proxy_no_rate_limit_box.png)
-
-A new revision with no rate limit is created. Deploy the new revision for the configuration to take effect.
+A new revision with no rate limit is created. You must deploy the new revision for the configuration to take effect.
 
 ## Use the AMPLIFY CLI to configure rate limiting on your API
 
@@ -154,9 +159,9 @@ Ensure that you are logged in to AMPLIFY CLI using the service account.
 
 ### Create the configuration file and promote your API
 
-The AMPLIFY Central DevOps CLI allows you to define the `rateLimit` configuration under the `policies` section of your API configuration file. For example:
+The AMPLIFY Central DevOps CLI allows you to define the `rateLimit` configuration under the `policies` section of your API configuration file.
 
-Below is the example to create proxy level rate limit per second interval.
+**Example 1** - Create a rate limit of 5 TPS.
 
 ```
 version: v1 # Version of the file format
@@ -169,13 +174,15 @@ proxy:
         clientAuth:
             type: pass-through
         rateLimit:
-            perProxy: 5 # the desired TPS limit for your API
+            perProxy: 5
     tags: ['musical', 'instruments', 'ratelimit']
     team:
         name: 'Default Team'
 ```
 
-Below is an example to create proxy level rate limit with variable interval
+The `perProxy` field specifies the desired Transactions Per Second (TPS) limit for your API.
+
+**Example 2** - Create a rate limit with a variable interval of 5 transactions per 10 seconds
 
 ```
 version: v1 # Version of the file format
@@ -187,7 +194,7 @@ proxy:
     policies:
         clientAuth:
             type: pass-through
-        rateLimit: # the desired rate limit for your API with 5 transactions per 10 seconds variable interval
+        rateLimit:
             perProxy:
                 limit: 5
                 interval: PT10S
@@ -196,8 +203,9 @@ proxy:
         name: 'Default Team'
 ```
 
+To specify a variable interval, you must use the fields `limit` and `interval` in conjunction.
 
-The `perProxy` field specifies the desired TPS limit for your API. In case you want to specify variable interval, you can use new format (as mentioned above having limit and intervals). Intervals should be given in duration format P[n]Y[n]M[n]DT[n]H[n]M[n]S or P[n]W supported by ISO_8601 standard. 
+The field `interval` must follow the format `P[n]Y[n]M[n]DT[n]H[n]M[n]S` or `P[n]W`, supported by the ISO_8601 standard.
 
 Create the API proxy:
 
@@ -278,21 +286,22 @@ proxy:
 
 ### Apply variable interval rate limit for an application consuming your API
 
-We can rate limit the API calls at variable interval instead of fixed 1 second interval.  
+You can rate limit the API calls at variable interval instead of fixed 1 second interval.  
 
 Under `perProxy` or `perProxyAndApp` you can specify two configurations:
 
 * `limit` value defines number of API calls that needs to be rate limited.
 * `interval` value defines at what interval, API calls needs to be rate limited at. 
   
- `interval` needs to be specified in duration format ` PT[n]H[n]M[n]S` supported by ISO_8601 standard. 
+The field `interval` must follow the format `P[n]Y[n]M[n]DT[n]H[n]M[n]S` or `P[n]W`, supported by the ISO_8601 standard.
 
 **Some examples for interval:**
-* PT10S  # 10 seconds interval
-* PT1M45S # 1 minute 45 seconds interval
-* PT15H20M30S # 15 hours 20 minutes thirty seconds interval
 
-In this example, the two applications under `apps` are limited at 1 transaction per 10 seconds interval individually, as defined by the `perProxyAndApp` configuration, but traffic from both apps is also limited to 5 transactions per 10 seconds interval, as defined by the `perProxy` configuration.
+* `PT10S`  # 10 seconds interval
+* `PT1M45S` # 1 minute 45 seconds interval
+* `PT15H20M30S` # 15 hours 20 minutes thirty seconds interval
+
+On the following example, the two applications under `apps` are limited at 1 transaction per 10 seconds interval individually, as defined by the `perProxyAndApp` configuration, but traffic from both apps is also limited to 5 transactions per 10 seconds interval, as defined by the `perProxy` configuration.
 
 ```
 version: v1 # Version of the file format
