@@ -161,7 +161,7 @@ Ensure that you are logged in to AMPLIFY CLI using the service account.
 
 The AMPLIFY Central DevOps CLI allows you to define the `rateLimit` configuration under the `policies` section of your API configuration file.
 
-**Example 1** - Create a rate limit of 5 TPS.
+Create a rate limit of 5 TPS:
 
 ```
 version: v1 # Version of the file format
