@@ -72,7 +72,7 @@ Alternatively, to create a new keyspace for the API Gateway container, follow th
 
 For more details, see the `kpsadmin` section in the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
 
-{{< alert title="Note" color="primary" >}}You can also export your API Manager APIs as an API collection if you require a backup. For details see the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You can also export your API Manager APIs as an API collection if you require a backup.{{< /alert >}}
 
 ### Step 5 – Prepare merge directory
 
