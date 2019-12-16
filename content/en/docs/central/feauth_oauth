@@ -16,13 +16,23 @@ API Proxies can be secured with a client authentication policy; OAuth is one of 
 
 To require an OAuth policy on an API Proxy:
 
-1. Select the API Proxy you want to add the OAuth policy for.
-2. Click the "Policies" tab.
-3. Click the gear next to "Client authentication."
-4. Select "OAuth Token" from the list of options.
-5. Click "Save" to exit the modal.
+- Select the API Proxy you want to add the OAuth policy for.
+- Click the "Policies" tab.
+- Click the gear next to "Client authentication."
+- Select "OAuth Token" from the list of options.
+
+![Select OAuth Token from the list](/Images/central/oauth_client_auth_dropdown.png)
+
+- Click "Save" to exit the modal.
 
 You should now see that "OAuth Token" has been set as the selected Client authentication policy.
+
+![OAuth Token has been selected](/Images/central/oauth_client_auth.png)
+
+- Click on the "Deployments" tab.
+- Deploy (or update) a valid runtime.
+
+![Runtime has been deployed](/Images/central/oauth_deployed_runtime.png)
 
 ## Using An API Proxy Secured With An OAuth Policy
 
@@ -32,9 +42,9 @@ You can test your OAuth proxy within AMPLIFY Central. In order to properly use t
 
 After you have created an application within your 3rd party OAuth server, you will need to provide AMPLIFY Central with some of the information in order to properly use your secured proxy.
 
-1. Visit the Apps section of AMPLIFY Central. You can create a new app or use an existing one.
-2. Click the "Identity Profiles" tab.
-3. Click the "+ OAuth Profile" button on the right side of the screen.
+- Visit the Apps section of AMPLIFY Central. You can create a new app or use an existing one.
+- Click the "Identity Profiles" tab.
+- Click the "+ OAuth Profile" button on the right side of the screen.
 
 This will open a new dialog box for your OAuth information. Choose a helpful name and description. The other fields (Client ID, Issuer, and Metadata Path) should be provided by your 3rd party OAuth server.
 
@@ -42,35 +52,15 @@ This will open a new dialog box for your OAuth information. Choose a helpful nam
 
 ### Making An API Call
 
-1. Inside the API Proxy with an OAuth Client authentication policy, click the "Test Methods" tab.
-2. If you have more than one valid Deployment, choose the one you want to test. If you only have one, it will automatically be selected for you.
-3. If you have more than one valid OAuth Profile, choose the one you want to test. If you only have one, it will automatically be selected for you.
+- Inside the API Proxy with an OAuth Client authentication policy, click the "Test Methods" tab.
+- If you have more than one valid Deployment, choose the one you want to test. If you only have one, it will automatically be selected for you.
+- If you have more than one valid OAuth Profile, choose the one you want to test. If you only have one, it will automatically be selected for you.
 
 When you select a valid OAuth Profile, you will see your Client ID displayed in a read-only field. This will assist you, the provider, in generating an OAuth token from the correct application in your 3rd party OAuth server.
 
 After your 3rd party OAuth server has generated a valid OAuth token, paste that token into the large "OAuth token" field. You may now attempt to make valid API calls with your proxy.
 
-*NOTE:* If your token is invalid, expired, or empty, you will receive a *403: Unauthorized* response.
-
-### What is an API proxy?
-
-In AMPLIFY Central, you create an API proxy to represent your back-end API to your API consumers. Instead of interacting directly with your API, app developers now interact with the API proxy.
-
-![Interactions between app developers - API proxy - back-end API](/Images/central/api_proxy.png)
-
-Managing your API in AMPLIFY Central by way of an API proxy offers the following benefits:
-
-- You can change the implementation of the back-end service without impacting app developers as they continue to call the API proxy.
-- You can apply policies to the API proxy to manage or secure how client apps use your API.
-- You can analyze the usage of your APIs by client apps, and identify and analyze failed transactions, as all traffic that flows through an API proxy is monitored and recorded.
-
-## Roles and teams
-
-AMPLIFY Central has its own set of roles in addition to the AMPLIFY Platform roles. These AMPLIFY Central roles include AMPLIFY Central Admin, Developer, and Consumer type roles to manage and use assets (for example, API proxies, applications, environments, Unified Catalog, and so on).  
-
-An AMPLIFY Central team is a group of users with varying abilities to manage and use assets. For example, a team member can share assets and their promotion to the Unified Catalog.
-
-Users and teams of AMPLIFY Central are managed by the AMPLIFY Platform. For more information, see [Managing Organizations](https://docs.axway.com/bundle/Appcelerator_Dashboard_allOS_en/page/managing_organizations.html).
+**NOTE:** If your token is invalid, expired, or empty, you will receive a **403: Unauthorized** response.
 
 ## Review
 
