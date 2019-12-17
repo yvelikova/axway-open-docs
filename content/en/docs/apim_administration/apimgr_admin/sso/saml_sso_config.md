@@ -19,9 +19,9 @@ The following configuration files are used for API Manager SSO.
 
 ### A trustore (for example `trustStore.jks`)
 
-This file is the truststore containing IdP server certificates and referenced in `service-provider.xml`.
+The truststore containing IdP server certificates and referenced in `service-provider.xml` to download requirement Metadata-Information.
 
-* When specifing the IdP by URL this truststore is used to validate the IdP server certificate to download the Metadata-Information, see [Specify the IdP by URL](##Specify2).
+* When specifing the IdP by URL this truststore is used to validate the IdP server certificate to download the Metadata-Information, see [Specify the IdP by URL](#Specify2).
 * Located in your API Gateway instance folder (for example, `INSTALL_DIR/apigateway/groups/group-2/instance-1/conf`).
 * Add the server certicates into this trustore.
 
