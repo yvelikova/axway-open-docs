@@ -3,7 +3,7 @@ title: OAuth Proxy Policy
 linkTitle: OAuth Proxy Policy
 weight: 2
 date: 2019-07-30
-description: Learn how to setup an OAuth Front End Security policy on a proxy in AMPLIFY Central.
+description: Learn how to setup an OAuth Front End Security policy on an API Proxy in AMPLIFY Central.
 ---
 
 *Estimated reading time: 5 minutes*
