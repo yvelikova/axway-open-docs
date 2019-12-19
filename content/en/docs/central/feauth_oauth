@@ -66,4 +66,4 @@ After your 3rd party OAuth server has generated a valid OAuth token, paste that 
 
 ## Review
 
-You have learned how to setup an OAuth Front End Security policy on a proxy in AMPLIFY Central.
+You have learned how to setup an OAuth Front End Security policy on an API proxy in AMPLIFY Central.
