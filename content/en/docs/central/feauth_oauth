@@ -38,6 +38,8 @@ You should now see that "OAuth Token" has been set as the selected Client authen
 
 You can test your OAuth proxy within AMPLIFY Central. In order to properly use the proxy, the provider will need to setup a 3rd party OAuth server with a valid application. A single application from the 3rd party server's application will directly relate to a single AMPLIFY Central application.
 
+{{< alert title="Caution" color="warning" >}}At this time, Okta is the only supported 3rd party OAuth provider. Additional providers will be included in the future.{{< /alert >}}
+
 ### Creating An AMPLIFY Central Application Profile
 
 After you have created an application within your 3rd party OAuth server, you will need to provide AMPLIFY Central with some of the information in order to properly use your secured proxy.
