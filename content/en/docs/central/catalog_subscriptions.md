@@ -19,12 +19,20 @@ Navigate to the AMPLIFY Catalog by using the AMPLIFY Central side-nav bar, or by
 
 Inside the catalog, you'll see a list of all available endpoints you can subscribe to. Click a catalog item to get a detailed view of the item's description and test methods. Then, click the "subscribe" button in the top right. Select the team you'd like to subscribe with, along with the application. Then, click "subscribe" to apply the settings. The subscription request has been sent.
 
+Watch the animation to learn how to subscribe to a catalog item:
+![Subscribe to a catalog item](/Images/central/catalog_subscribe.gif)
+
 ## View catalog item subscriptions
 In order to view a catalog item's subscriptions, click the "Subscriptions" tab on the catalog item detail page. There, you'll see a table listing the current subscriptions to that catalog item.
 
 ## Unsubscribe from a catalog item
 To unsubscribe from a catlaog item, click the "Subscriptions" tab on the catalog item detail page. Then, click the gear icon next to the catalog subscription you'd like to unsubscribe. Clicking "Unsubscribe" will unsubscribe you from the catalog item.
 
+Watch the animation to learn how to unsubscribe from a catalog item:
+![Unsubscribe from a catalog item](/Images/central/catalog_unsubscribe.gif)
 
 ## Delete a subscription to a catalog item
 A catalog item  subscription can only be deleted if the subscription is in "Unsubscribed" status. After unsubscribing from the catlaog item, click the "Subscriptions" tab on the catalot item detail page. Then, click the gear icon next to the catalog subscription you'd like to delete. Clicking "Delete" will delete the catalog item subscription.
+
+Watch the animation to learn how to delete a catalog item subscription:
+![Delete a catalog item subscription](/Images/central/catalog_delete_subscription.gif)
