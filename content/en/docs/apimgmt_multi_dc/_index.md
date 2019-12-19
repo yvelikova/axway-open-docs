@@ -1,7 +1,7 @@
 {
-"title": "Configure API Management in multiple datacenters",
-"linkTitle": "Configure API Management in multiple datacenters",
-"weight":"2",
+"title": "Configure API Manager in multiple datacenters",
+"linkTitle": "Configure API Manager in multi-DC",
+"weight":"40",
 "no_list": "true",
 "date": "2019-10-02",
 "description": "Recommended multi-datacenter configuration that applies to the various types of API Management data in storage. For each data type, it describes how data is replicated across the datacenter, the recommended configuration, and expected behavior in case of failover."
@@ -9,7 +9,7 @@
 
 ## Multi-datacenter deployment
 
-This section describes the infrastructure required for API Management multi-datacenter deployment, and the various types of API Management data. For example, this includes API catalog, client registry, OAuth tokens, quota, Key Property Store (KPS), and so on. It also describes where the data is stored. For example, this includes files on disk, Apache Cassandra database, Ehcache, or Relational Database Management System (RDBMS). For details on supported database versions, see [System requirements](/docs/apigtw_install/system_requirements).
+This section describes the infrastructure required for API Management multi-datacenter deployment, and the various types of API Management data. For example, this includes API catalog, client registry, OAuth tokens, quota, Key Property Store (KPS), and so on. It also describes where the data is stored. For example, this includes files on disk, Apache Cassandra database, Ehcache, or Relational Database Management System (RDBMS). For details on supported database versions, see [System requirements](/docs/apim_installation/apigtw_install/system_requirements).
 
 ### Multi-datacenter deployment architecture
 

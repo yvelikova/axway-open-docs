@@ -1,11 +1,10 @@
 ---
-title: "API Gateway Apache Cassandra Administrator Guide"
+title: "Administer Apache Cassandra"
 linkTitle: "Administer Apache Cassandra"
-weight: 17
+weight: 53
 date: 2019-06-05
 description: >
-  This guide explains how to configure and manage the Apache Cassandra database
-  for API Gateway and API Manager.
+  Configure and manage the Apache Cassandra database for API Gateway and API Manager.
 ---
 Apache Cassandra is a highly scalable distributed NO-SQL database that
 provides high service availability.

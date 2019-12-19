@@ -41,7 +41,7 @@ The recommended configuration for each data type and its replication between dat
 
 ## Configure Cassandra for multiple datacenters {#cassandra_multiple}
 
-Cassandra is required to store data for API Manager data, and also recommended for API Gateway custom KPS tables. For details on the recommended Cassandra architecture, see [Multi-datacenter deployment architecture](/docs/apigtw_install/multi_datacenter_intro).
+Cassandra is required to store data for API Manager data, and also recommended for API Gateway custom KPS tables. For details on the recommended Cassandra architecture, see [Multi-datacenter deployment architecture](/docs/apim_installation/apigtw_install/multi_datacenter_intro).
 
 {{< alert title="Note" color="primary" >}}You must install and configure Cassandra on each node in both datacenters before installing and configuring API Gateway and API Manager.{{< /alert >}}
 
@@ -49,9 +49,9 @@ Cassandra is required to store data for API Manager data, and also recommended f
 
 The following prerequisites apply to Cassandra in a multi-datacenter production environment:
 
-* Ensure that Cassandra version 2.2.12 is installed. For details, see [Install an Apache Cassandra database](/docs/apigtw_install/cassandra_install/). For details on upgrading Cassandra, see
+* Ensure that Cassandra version 2.2.12 is installed. For details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/). For details on upgrading Cassandra, see
 [Upgrade Apache Cassandra](/csh?context=801&product=prod-api-gateway-77) in the [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5).
-* You must have at least three Cassandra nodes per datacenter. Cassandra must be installed on each node in the cluster, but should not be started until the Cassandra cluster is fully configured. For more details, see [Install an Apache Cassandra database](/docs/apigtw_install/cassandra_install/l).
+* You must have at least three Cassandra nodes per datacenter. Cassandra must be installed on each node in the cluster, but should not be started until the Cassandra cluster is fully configured. For more details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/l).
 * Configure `JAVA_HOME` to a JRE 1.8 installation.
 * Each Cassandra node must have Python 2.7.x installed.
 * Time must be synchronized on all servers.
@@ -213,7 +213,7 @@ When the Cassandra cluster has been set up, you can proceed with installing API 
 
 On the first API Gateway host in DC1, perform the following steps:
 
-1. Install API Gateway and API Manager using the API Gateway installer. Do not select Cassandra, which has already been installed. For more details, see [Install API Manager](/docs/apigtw_install/install_api_mgmt).
+1. Install API Gateway and API Manager using the API Gateway installer. Do not select Cassandra, which has already been installed. For more details, see [Install API Manager](/docs/apim_installation/apigtw_install/install_api_mgmt).
 2. Register the Admin Node Manager using the `managedomain` command in `INSTALL_DIR/apigateway/posix/bin`.
 3. Start the Admin Node Manager using the `nodemanager` command.
 4. Add the API Gateway instance and group using the `managedomain` command.
@@ -242,7 +242,7 @@ On the first API Gateway host in DC1, perform the following steps:
 9. For all KPS collections, update the read and write consistency levels to **LOCAL_QUORUM**. For example, in the Policy Studio tree, select **Environment Configuration > Key Property Stores > API Server > Data Sources > Cassandra Storage**, and click **Edit**.
 10. Repeat this step for each KPS collection using Cassandra (for example, **Key Property Stores > OAuth** and **API Portal** for API Manager). This also applies to any custom KPS collections that you have created.
 11. Click **Deploy** in the toolbar to deploy the updated configuration.
-{{< alert title="Note" color="primary" >}}Policy Studio may need a longer transaction timeout in the Admin Nodemanager server settings than the default time (4 minutes), especially for the first deploy that creates the API Manager Cassandra tables. In this case, it is recommended to increase the timeout to at least 10 minutes. See the [API Gateway Administrator Guide](/docs/apimgr_admin/) for more details. If Policy Studio shows a timeout error, the back-end would still complete and the success status can be verified in the API Manager instance trace file.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Policy Studio may need a longer transaction timeout in the Admin Nodemanager server settings than the default time (4 minutes), especially for the first deploy that creates the API Manager Cassandra tables. In this case, it is recommended to increase the timeout to at least 10 minutes. See the [API Gateway Administrator Guide](/docs/apim_administration/apimgr_admin/) for more details. If Policy Studio shows a timeout error, the back-end would still complete and the success status can be verified in the API Manager instance trace file.{{< /alert >}}
 
 ### Update the Cassandra replication settings for the new API Gateway keyspace
 

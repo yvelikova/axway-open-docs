@@ -9,7 +9,7 @@ description: Configure an API Gateway instance and Node Manager to store metrics
  When API Gateway is configured to store metrics in a relational database, you can configure monitoring in API Gateway Analytics or API Manager to view data stored in the metrics database, or write custom SQL queries to retrieve metrics data as required.
 
 {{< alert title="Note" color="primary" >}}This topic explains how to configure API Gateway with a metrics database. This topic assumes that you have already created your metrics database using the steps described in
-[Install and configure a metrics database](/docs/apigtw_install/metrics_db_install/).{{< /alert >}}
+[Install and configure a metrics database](/docs/apim_installation/apigtw_install/metrics_db_install/).{{< /alert >}}
 
 ## API Gateway metrics data streams
 
@@ -34,7 +34,7 @@ To configure the API Gateway connection to the metrics database, perform the fol
 3. Configure the database connection to point to your metrics database.
 4. Verify that your database connection is configured correctly by clicking the **Test Connection** button on the **Configure Database Connection** dialog.
 
-You can troubleshoot your database connection by viewing the contents of your server `.trc` file in the `INSTALL_DIR/apigateway/trace` directory. For more details, see [Configure API Gateway diagnostic trace](/docs/apigtw_admin/tracing/).
+You can troubleshoot your database connection by viewing the contents of your server `.trc` file in the `INSTALL_DIR/apigateway/trace` directory. For more details, see [Configure API Gateway diagnostic trace](/docs/apim_administration/apigtw_admin/tracing/).
 
 ## Configure transaction audit logging to the metrics database
 
@@ -134,7 +134,7 @@ The `managedomain` metrics options are described as follows:
 
 {{< alert title="Note" color="primary" >}}When the `managedomain` command has finished, you must restart the Node Manager. {{< /alert >}}
 
-For more details on `managedomain`, see the [API Gateway Administrator Guide](/docs/apigtw_admin/).
+For more details on `managedomain`, see the [API Gateway Administrator Guide](/docs/apim_administration/apigtw_admin/).
 
 ## Configure additional options for event log processing in the Node Manager
 
@@ -169,6 +169,6 @@ For example, perform the following steps:
 
 ## Further information
 
-For details on how to view monitoring metrics in API Manager, see the [API Manager User Guide](/docs/apimgr_admin/).
+For details on how to view monitoring metrics in API Manager, see the [API Manager User Guide](/docs/apim_administration/apimgr_admin/).
 
 For details on how to view monitoring metrics in API Gateway Analytics, see [Monitor traffic](/docs/apimanager_analytics/analytics_start/#monitor-traffic).
