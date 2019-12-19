@@ -56,8 +56,8 @@ Perform the following steps to configure a *seed* node:
     ```
 
     Some parameter details:  
-    The `listen_address` is used for the internal Cassandra-Cluster communication using the . You can either use the parameter `listen_address` or the `listen_interface`, but don't activate both parameters. The resulting IP-Adress is used to connect to this node and must be reachable from __ALL__ other nodes in the cluster.  
-    The `rpc_address` is used for Cassandra-Clients to connect to the cluster and might be different in more complex scenarios.
+    The `listen_address` is only used for the internal Cassandra-Cluster communication using the Gossip protocol. You can either use the parameter `listen_address` or the `listen_interface`, but don't activate both parameters. This parameter is important in a distributed cluster setup, as the assigned IP-Address is used to connect to this node and must be reachable/routeable from __ALL__ other nodes in the cluster.  
+    The `rpc_address` is used for Cassandra-Clients like the API-Manager to connect to the node. This address might be a different one than the listen_address is complex deployments.
 
     Using the `setup-cassandra` script:
 
