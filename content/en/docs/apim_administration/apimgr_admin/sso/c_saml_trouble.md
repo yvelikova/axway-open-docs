@@ -232,12 +232,15 @@ The username `G-fb7c839b-a879-4231-bae9-1c05e3ba6f04` does not correspond to a r
 ![Screenshot showing a sample mapping in Keycloak](/Images/docbook/images/api_mgmt/keycloak_sample_mapping.png)
 
 ## Error retrieving metadata
-When using the option to specify the IdP by URL (See [Specify the IdP by URL](saml_sso_config.md#Specify2)) the API-Manager at startup tries to download the required IdP-Metadata information from the given Metadata-URL. This might fail if the server-certificate can't be validated with an error message like that. 
+
+When using the option to [specify the IdP by URL](/docs/apim_administration/apimgr_admin/sso/saml_sso_config/#specify-the-idp-by-url), the API Manager, at startup, tries to download the required IdP-Metadata information from the given Metadata-URL. This might fail if the server-certificate cannot be validated with an error message like:
+
 ```
 Error retrieving metadata from /auth/realms/master/protocol/saml/descriptor
 javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
 ```
-Please make sure to add the complete server-certificate chain of your SamlIdentityProvider:metadataUrl into the trustore referenced in your `service-provider.xml`. 
+
+You must add the complete server-certificate chain of your `SamlIdentityProvider:metadataUrl` into the trustore referenced in your `service-provider.xml` to avoid this error.
 
 ## Enable traces for SSO
 
