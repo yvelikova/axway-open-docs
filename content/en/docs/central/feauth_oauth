@@ -50,6 +50,8 @@ After you have created an application within your 3rd party OAuth server, you wi
 
 This will open a new dialog box for your OAuth information. Choose a helpful name and description. The other fields (Client ID, Issuer, and Metadata Path) should be provided by your 3rd party OAuth server.
 
+![OAuth Token has been selected](/Images/central/oauth_profile.png)
+
 {{< alert title="Caution" color="warning" >}}Never share the Private Key provided by your 3rd party OAuth server.{{< /alert >}}
 
 ### Making An API Call
