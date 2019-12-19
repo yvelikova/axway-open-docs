@@ -7,7 +7,6 @@ enableRobotsTXT = true
 theme = ["docsy"]
 
 # Will give values to .Lastmod etc.
-# Will give values to .Lastmod etc.
 enableGitInfo = true
 
 # Language settings
