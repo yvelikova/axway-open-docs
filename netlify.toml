@@ -15,3 +15,7 @@ HUGO_ENV = "production"
 
 [context.deploy-preview]
 command = "cd themes/docsy && git submodule update -f --init && cd ../.. && hugo -b $DEPLOY_PRIME_URL"
+
+[dev]
+  targetPort = 1313
+  port = 1314

@@ -14,7 +14,15 @@
 {{ end }} <!-- end of subdir lang conds -->
 <a href="{{ $editURL }}" target="_blank"><i class="fa fa-edit fa-fw"></i> {{ T "post_edit_this" }}</a>
 {{ $baseURL := (.Site.BaseURL) }}
-{{ $cmsURL := printf "%s/admin" $baseURL }}
+{{ $dir := (split .File.Dir "/") }}
+{{ $cms_collection := index $dir 0 }}
+{{ with (index $dir 1) }}
+{{ $cms_collection = . }}
+{{ end }}
+{{ with (index $dir 2) }}
+{{ $cms_collection = . }}
+{{ end }}
+{{ $cmsURL := printf "%sadmin/#/edit/%s/%s" $baseURL $cms_collection .File.BaseFileName }}
 <a href="{{ $cmsURL }}" target="_blank"><i class="fas fa-columns fa-fw"></i> {{ T "post_edit_cms" }}</a>
 {{ $issuesURL := printf "%s/issues/new?title=%s" $gh_repo (htmlEscape $.Title )}}
 <a href="{{ $issuesURL }}" target="_blank"><i class="fab fa-github fa-fw"></i> {{ T "post_create_issue" }}</a>
