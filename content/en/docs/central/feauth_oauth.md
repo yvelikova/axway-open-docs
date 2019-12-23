@@ -1,6 +1,6 @@
 ---
-title: Configure an OAuth proxy policy
-linkTitle: Configure and OAuth proxy policy
+title: Secure an API with OAuth
+linkTitle: Secure an API with OAuth
 weight: 4
 date: 2019-07-30
 description: API proxies can be secured with a client authentication policy. Learn how to setup an OAuth front-end security policy on an API Proxy.
@@ -16,7 +16,7 @@ description: API proxies can be secured with a client authentication policy. Lea
 
 Learn how to setup an OAuth front-end security policy on an API Proxy.
 
-### Set up OAuth security on an API proxy
+### Add OAuth security to an API proxy
 
 Follow these steps to require an OAuth policy on an API Proxy:
 
@@ -24,16 +24,11 @@ Follow these steps to require an OAuth policy on an API Proxy:
 2. Click the **Policies** tab.
 3. Click the gear icon next to **Client authentication**.
 4. On the dialog box, select **OAuth Token** from the **Authentication type** list.
-
-    ![Select OAuth Token from the list](/Images/central/oauth_client_auth_dropdown.png)
-
-    You should now see that **OAuth Token** has been set as the selected **Client authentication** policy.
-
-    ![OAuth Token has been selected](/Images/central/oauth_client_auth.png)
-
 5. On the **Deployments** tab, click **Deploy** to deploy or update a runtime group with the OAuth security.
 
-    ![Runtime has been deployed](/Images/central/oauth_deployed_runtime.png)
+Watch the animation to learn how to do this in AMPLIFY Central UI.
+
+![Add OAuth security](/Images/central/OAuthaddproxyauth_animation.gif)
 
 ## Use an API proxy secured with an OAuth policy
 
@@ -48,8 +43,6 @@ After you have created an application within your third-party OAuth server, you 
 1. Select **Apps** in the left navigation bar, and click your API proxy in the list.
 2. On the **Identity Profiles** tab, click **+ OAuth Profile** to add an Oauth profile.
 3. Enter the required information, and click **Save**.
-
-![OAuth Token has been selected](/Images/central/oauth_profile.png)
 
 ### Make an API call
 
