@@ -17,7 +17,7 @@ Apache Cassandra is required to store data for API Manager (for example, API cat
 
 API Gateway supports Apache Cassandra version 2.2.12. For more details on Apache Cassandra, see <http://cassandra.apache.org/>.
 
-For details on upgrading your Cassandra version, see [Upgrade Apache Cassandra](/csh?context=801&product=prod-api-gateway-77) in the [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5).
+For details on upgrading your Cassandra version, see [Upgrade Apache Cassandra](/docs/apim_installation/apigw_upgrade/upgrade_cassandra/).
 
 ### Upgrade from earlier API Gateway versions
 
@@ -25,7 +25,7 @@ API Gateway version 7.5.3 and later include the Datastax Cassandra client, which
 
 In API Gateway version 7.5.1 or later, Cassandra runs externally to the API Gateway process. In earlier API Gateway versions, Cassandra was embedded in the API Gateway process.
 
-For details on upgrading from an earlier API Gateway version, see the [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5).
+For details on upgrading from an earlier API Gateway version, see the [API Gateway Upgrade Guide](/docs/apim_installation/apigw_upgrade/).
 
 ## Cassandra prerequisites
 
@@ -36,12 +36,12 @@ This section describes Cassandra-specific prerequisites in addition to the gener
 API Gateway supports the following in production:
 
 * **Operating systems**:
-    * All supported Linux platforms, see [System requirements](/docs/apim_installation/apigtw_install/system_requirements#linux)
+    * All supported Linux platforms
 * **Cassandra**:
     * Cassandra version 2.2.12
     * 64-bit OpenJDK JRE or Oracle JRE version 8
 
-For details on requirements for high availability, see [Configure a Cassandra HA cluster](/csh?context=1300&product=prod-api-gateway-77) in the [API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/).
+For details on requirements for high availability, see [Configure a Cassandra HA cluster](/docs/cass_admin/cassandra_config/).
 
 ### JRE requirements and recommendations
 
@@ -49,19 +49,19 @@ The default API Gateway installation includes a 64-bit OpenJDK JRE (`apigateway/
 
 ## Install Apache Cassandra
 
-{{< alert title="Note" color="primary" >}}Apache Cassandra 2.2.12 is installed by default in an API Gateway Standard or Complete setup. For more details, see [Installation options](/docs/apim_installation/apigtw_install/installation).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Apache Cassandra 2.2.12 is installed by default in an API Gateway Standard or Complete setup.{{< /alert >}}
 
 ### Install Cassandra in GUI mode
 
-In GUI mode, to install Apache Cassandra only, use the steps described in [Installation options](/docs/apim_installation/apigtw_install/installation) with the following selections:
+In GUI mode, to install Apache Cassandra only, use the steps described in [Installation](/docs/apim_installation/apigtw_install/installation) with the following selections:
 
 * **Setup Type**: Select **Custom**.
 * **Select Components**: Select **Cassandra**.
-* **Cassandra configuration**: Enter your Cassandra **Installation Directory** and your **JRE Location**. For more details, see [Cassandra configuration](/docs/apim_installation/apigtw_install/installation#cassandra-configuration).
+* **Cassandra configuration**: Enter your Cassandra **Installation Directory** and your **JRE Location**.
 
 ## Install Cassandra in unattended mode
 
-To install Apache Cassandra using the API Gateway installer in unattended mode, follow the steps described in [Unattended installation](/docs/apim_installation/apigtw_install/installation_unattended#unattended_mode_options).
+To install Apache Cassandra using the API Gateway installer in unattended mode, follow the steps described in [Unattended installation](/docs/apim_installation/apigtw_install/installation_unattended).
 
 The following command is an example of how to install Apache Cassandra in unattended mode on Linux:
 

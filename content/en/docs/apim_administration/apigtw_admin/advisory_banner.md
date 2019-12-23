@@ -1,7 +1,7 @@
 {
 "title": "Configure an advisory banner",
 "linkTitle": "Configure an advisory banner",
-"weight":"12",
+"weight":"75",
 "date": "2019-10-14",
 "description": "Display an advisory warning message about unauthorized use of API Gateway when establishing a successful user session from Policy Studio or API Gateway Manager."
 }

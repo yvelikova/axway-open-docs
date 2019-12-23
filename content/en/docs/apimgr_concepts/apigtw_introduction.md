@@ -66,7 +66,7 @@ The API administration features include the following:
 
 * Managing JMS-based messaging
 
-For more details, see [API Gateway features](/docs/apigtw_concepts/apigtw_introduction/#api-gateway-features).
+For more details, see [API Gateway features](/docs/apimgr_concepts/apigtw_introduction/#api-gateway-features).
 
 ## API Gateway is core infrastructure
 

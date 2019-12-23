@@ -1,7 +1,7 @@
 {
 "title": "Manage certificates and keys",
 "linkTitle": "Manage certificates and keys",
-"weight":"6",
+"weight":"60",
 "date": "2019-10-18",
 "description": "Import CA certificates, and import and create server certificates and private keys in the certificate store."
 }

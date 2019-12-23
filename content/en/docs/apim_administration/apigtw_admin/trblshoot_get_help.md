@@ -1,7 +1,7 @@
 {
 "title": "Get help with API Gateway",
 "linkTitle": "Get help with API Gateway",
-"weight":"99",
+"weight":"200",
 "date": "2019-10-14",
 "description": "Access help and documentation for API Gateway, find your installed version (including any installed service pack and patches), and what other information you need when contacting Axway Support."
 }

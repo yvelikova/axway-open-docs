@@ -66,7 +66,7 @@ Problem
 : Traffic monitor data and trace logs do not persist when a container stops.
 
 Solution
-: You can redirect the trace and traffic logs to `stdout` instead of to separate files, which allows the logs to be read directly from each container by an external logging service. For more information, see [Redirect logs to stdout](/docs/apim_installation/apigw_containers/container_operations/configure_log_streaming).
+: You can redirect the trace and traffic logs to `stdout` instead of to separate files, which allows the logs to be read directly from each container by an external logging service. For more information, see [Redirect logs to stdout](/docs/apim_installation/apigw_containers/configure_log_streaming/).
 
 ## Use Apache Cassandra as a distributed data store
 
@@ -74,4 +74,4 @@ Problem
 : Distributed Ehcache is not supported in a container deployment.
 
 Solution
-: You can use Apache Cassandra as a distributed data store. This involves using the KPS scripting API, which enables you to perform CRUD operations and interact directly with a KPS. For details, see [Use the KPS scripting API](/csh?context=291&product=prod-api-gateway-77) in the [API Gateway Key Property Store User Guide](/bundle/PIGateway_77_KPSUserGuide_allOS_en_HTML5).
+: You can use Apache Cassandra as a distributed data store. This involves using the KPS scripting API, which enables you to perform CRUD operations and interact directly with a KPS. For details, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).

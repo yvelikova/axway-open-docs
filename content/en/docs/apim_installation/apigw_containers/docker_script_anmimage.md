@@ -178,7 +178,7 @@ This example performs the following:
 * Sets the destination of the log records.
 * Specifies a directory to write log records.
 
-{{< alert title="Note" color="primary" >}} You must specify the API Gateway host identity in [Start the API Gateway Docker container](/docs/apim_installation/apigw_containers/docker_script_gw/#start-the-api-gateway-docker-container) to be able to identify the host of the log records.{{< /alert >}}
+{{< alert title="Note" color="primary" >}} You must specify the API Gateway host identity in [Start the API Gateway Docker container](/docs/apim_installation/apigw_containers/docker_script_gwimage/#start-the-api-gateway-docker-container) to be able to identify the host of the log records.{{< /alert >}}
 
 ### Further information
 

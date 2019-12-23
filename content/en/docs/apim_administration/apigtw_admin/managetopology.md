@@ -1,7 +1,7 @@
 {
 "title": "Manage domain topology in API Gateway Manager",
 "linkTitle": "Manage domain topology in API Gateway Manager",
-"weight":"11",
+"weight":"35",
 "date": "2019-10-14",
 "description": "Use the topology view in API Gateway Manager to manage an existing API Gateway domain."
 }

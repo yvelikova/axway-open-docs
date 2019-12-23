@@ -101,9 +101,8 @@ The following example creates an API Gateway Docker image using an existing API 
 Ensure that your `fed` contains the following:
 
 * API Gateway version 7.8 configuration.
-* You can upgrade existing projects (from version 7.5.1 or later) using `projupgrade`, see [Upgrade an API Gateway project](/csh?context=461&product=prod-api-gateway-77)
-        in the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
-* You can also upgrade existing `fed` files using Policy Studio or `upgradeconfig`, see the [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5).
+* You can upgrade existing projects (from version 7.5.1 or later) using `projupgrade`, see [Upgrade an API Gateway project](/docs/apigtw_devops/deploy_package_tools/#upgrade-an-api-gateway-project).
+* You can also upgrade existing `fed` files using Policy Studio or `upgradeconfig`.
 * Only IP addresses that are accessible at runtime. For example, the `fed` cannot contain IP addresses of container-based Admin Node Managers and API Gateways, as IP addresses are usually dynamically assigned in a Docker network.
 
 Use the `--merge-dir` option to add more files and folders to the `apigateway` directory inside the image:
@@ -127,7 +126,7 @@ This example creates an API Gateway Docker image named `api-gateway-my-group` wi
 * Belongs to the API Gateway group `my-group`. All containers started from this image belong to this group.
 * Uses a specified merge directory that is merged into the API Gateway image.
 
-## Create a FIPS-enabled API Gateway image
+### Create a FIPS-enabled API Gateway image
 
 The following example creates an API Gateway Docker image that runs in FIPS-compliant mode.
 
@@ -161,7 +160,7 @@ To create an API Manager enabled image:
 
 To create an OAuth-enabled image:
 
-* Before running the `build_gw_image.py` script you must first create a project in Policy Studio, configure OAuth in that project, and export the configuration from Policy Studio as a `fed` file (or `pol` and `env` files). For more information, see see [Configure API Manager in Policy Studio](/docs/apim_installation/apigw_containers/container_apimgr_oauth#apimgrps).
+* Before running the `build_gw_image.py` script you must first create a project in Policy Studio, configure OAuth in that project, and export the configuration from Policy Studio as a `fed` file (or `pol` and `env` files). For more information, see see [Configure OAuth in Policy Studio](/docs/apim_installation/apigw_containers/container_apimgr_oauth/#oauthps).
 * You must specify the configuration exported from Policy Studio to the `build_gw_image.py` script when building the API Gateway Docker image.
 
 For example:
@@ -226,7 +225,7 @@ docker run -it -v /tmp/events:/opt/Axway/apigateway/events -v /tmp/trace:/opt/Ax
 
 This example starts the API Gateway container and writes the trace and log files to `/tmp/events` and `/tmp/trace` on your host machine. The trace and log files contain the container ID of the API Gateway container in the file names.
 
-{{< alert title="Note" color="primary" >}}To enable an Admin Node Manager container to process the event logs from API Gateway containers, you must run the Admin Node Manager container with the same volume mounted. For more details, see [Create a metrics-enabled ANM image](/docs/apim_installation/apigw_containers/docker_script_anm/#create-a-metrics-enabled-admin-node-manager-image) and [Start a metrics-enabled Admin Node Manager container](/docs/apim_installation/apigw_containers/docker_script_anm/#start-a-metrics-enabled-admin-node-manager-container).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}To enable an Admin Node Manager container to process the event logs from API Gateway containers, you must run the Admin Node Manager container with the same volume mounted. For more details, see [Create a metrics-enabled ANM image](/docs/apim_installation/apigw_containers/docker_script_anmimage/#create-a-metrics-enabled-admin-node-manager-image) and [Start a metrics-enabled Admin Node Manager container](/docs/apim_installation/apigw_containers/docker_script_anmimage/#start-a-metrics-enabled-admin-node-manager-container).{{< /alert >}}
 
 ### Start a deployment-enabled API Gateway container in a development environment
 

@@ -6,9 +6,7 @@ date: 2019-09-18
 description: Create an API Gateway Analytics Docker image and start an API Gateway Analytics Docker container.
 ---
 
-These steps are optional and only for users who wish to use API Gateway Analytics monitoring and reporting in their environment. In a containerized deployment, API Gateway Analytics runs as a standalone client of the metrics database.
-
-For details on how to deploy API Gateway Analytics in a classic deployment (non-containerized), see the [API Gateway Analytics User Guide](/bundle/APIGateway_77_AnalyticsUserGuide_allOS_en_HTML5/).
+These steps are optional and only for users who wish to use API Gateway Analytics monitoring and reporting in a containerized environment. In a containerized deployment, API Gateway Analytics runs as a standalone client of the metrics database.
 
 ## Create an API Gateway Analytics Docker image
 

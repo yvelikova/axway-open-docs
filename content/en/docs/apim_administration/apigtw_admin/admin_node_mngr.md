@@ -1,7 +1,7 @@
 {
 "title": "Configure Admin Node Manager high availability",
-"linkTitle": "Configure Admin Node Manager high availability",
-"weight":"12",
+"linkTitle": "Configure Admin Node Manager HA",
+"weight":"39",
 "date": "2019-10-15",
 "description": "Use `managedomain` to configure ANM high availability."
 }

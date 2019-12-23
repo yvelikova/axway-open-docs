@@ -1,7 +1,7 @@
 {
 "title": "Monitoring and metrics",
 "linkTitle": "Monitoring and metrics",
-"weight":"18",
+"weight":"100",
 "date": "2019-10-14",
 "description": "Monitor services in API Gateway Manager, and configure an API Gateway and Node Manager to store metrics on historic traffic."
 }

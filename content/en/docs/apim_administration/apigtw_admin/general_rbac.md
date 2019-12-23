@@ -1,7 +1,7 @@
 {
 "title": "Configure Role-Based Access Control (RBAC)",
 "linkTitle": "Configure RBAC",
-"weight":"30",
+"weight":"125",
 "date": "2019-10-14",
 "description": "Restrict system access to authorized users based on their assigned roles."
 }

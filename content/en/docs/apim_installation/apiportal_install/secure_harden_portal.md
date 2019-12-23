@@ -21,7 +21,7 @@ To enable SSL on API Portal, you must configure Apache to use the correct certi
 2. Change `SSLCertificateFile` and `SSLCertificateKeyFile` to point to your CA certificate and key files.
 3. Restart Apache.
 
-For more details on API Portal certificate management, see the [API Management Security Guide](/bundle/APIGateway_77_SecurityGuide_allOS_en_HTML5).
+For more details on API Portal certificate management, see the [API Management Security Guide](/docs/apimgmt_security/).
 
 ## Disable TLS 1.0 and TLS 1.1 on Apache
 
@@ -57,6 +57,7 @@ To counter a session fixation vulnerability in Joomla!, it is recommended that y
 
 1. Open the file `/etc/httpd/conf.d/security.conf`.
 2. Add an access restriction directive for the `/administrator` location. Specify the internal IP address range that is allowed to access JAI. For example:
+
    ```
    ServerTokens ProductOnly
    ServerSignature Off
@@ -66,7 +67,9 @@ To counter a session fixation vulnerability in Joomla!, it is recommended that y
            allow from 10.232.14.
        </Location>
    ```
+
 3. To restart the web server configuration, enter the following:
+
    ```
    # /etc/init.d/apache2 reload
    ```
@@ -289,6 +292,4 @@ The audit logs must be collected for the last 30 days in easily accessible stora
 
 ## Where to go next
 
-For more information on securing the underlying API Manager and API Gateway, see [Manage API Gateway security](/csh?context=109&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
-
-For more information on the security features of API Management products and best practices for strengthening their security, see the [API Management Security Guide](/bundle/APIGateway_77_SecurityGuide_allOS_en_HTML5).
+For more information on the security features of API Management products and best practices for strengthening their security, see the [API Management Security Guide](/docs/apimgmt_security/).

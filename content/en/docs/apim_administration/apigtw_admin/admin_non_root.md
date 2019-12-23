@@ -1,7 +1,7 @@
 {
 "title": "Run API Gateway on privileged ports",
 "linkTitle": "Run API Gateway on privileged ports",
-"weight":"2",
+"weight":"50",
 "date": "2019-10-14",
 "description": "Grant the required privileges to API Gateway processes running as non-root to run with root privileges."
 }

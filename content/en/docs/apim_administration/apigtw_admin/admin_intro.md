@@ -1,7 +1,7 @@
 {
 "title": "Introduction to API Gateway administration",
 "linkTitle": "Introduction to API Gateway administration",
-"weight":"2",
+"weight":"10",
 "date": "2019-10-14",
 "description": "Axway API Gateway is a comprehensive platform for managing, delivering, and securing APIs."
 }

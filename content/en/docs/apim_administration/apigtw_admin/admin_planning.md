@@ -1,7 +1,7 @@
 {
 "title": "Plan an API Gateway system",
 "linkTitle": "Plan an API Gateway system",
-"weight":"4",
+"weight":"20",
 "date": "2019-10-14",
 "description": "Discover the most important factors to look at when architecting an API Gateway deployment."
 }

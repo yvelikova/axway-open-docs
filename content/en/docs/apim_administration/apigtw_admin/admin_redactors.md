@@ -1,7 +1,7 @@
 {
 "title": "Hide sensitive data",
 "linkTitle": "Hide sensitive data",
-"weight":"10",
+"weight":"70",
 "date": "2019-10-14",
 "description": "Redact sensitive content message content types such as HTTP headers, JSON, XML, HTML form, and plain text."
 }

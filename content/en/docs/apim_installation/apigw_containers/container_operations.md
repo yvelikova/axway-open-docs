@@ -55,8 +55,8 @@ You cannot create or delete groups, start or stop API Gateways, or deploy new co
 
 For more information on redirecting logs to stdout, see [Redirect logs to stdout](/docs/apim_installation/apigw_containers/configure_log_streaming/).
 
-For more information on monitoring traffic, see [Monitor services in API Gateway Manager](/csh?context=100&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+For more information on monitoring traffic, see [Monitor services in API Gateway Manager](/docs/apim_administration/apigtw_admin/monitor_service/).
 
-For more information on monitoring topology, see [Manage domain topology in API Gateway Manager](/csh?context=107&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+For more information on monitoring topology, see [Manage domain topology in API Gateway Manager](/docs/apim_administration/apigtw_admin/managetopology/).
 
-For more information on viewing logs and events, and configuring dynamic settings, see [Configure API Gateway logging and events](/csh?context=108&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+For more information on viewing logs and events, and configuring dynamic settings, see [Configure API Gateway logging and events](/docs/apim_administration/apigtw_admin/logging/).

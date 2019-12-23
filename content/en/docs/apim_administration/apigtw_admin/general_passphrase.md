@@ -1,7 +1,7 @@
 {
 "title": "Configure encryption passphrase",
 "linkTitle": "Configure encryption passphrase",
-"weight":"4",
+"weight":"55",
 "date": "2019-10-14",
 "description": "Encrypt API Gateway configuration data using an encryption passphrase."
 }

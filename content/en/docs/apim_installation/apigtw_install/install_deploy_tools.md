@@ -12,15 +12,13 @@ You can install the Package and Deploy tools component on both Linux and Windows
 
 {{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apim_installation/apigtw_install/install_dev_tools). API Gateway and API Manager do not support Windows.{{< /alert >}}
 
-For more details on API Gateway configuration packages, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
-
 ## Prerequisites
 
-Ensure that all of the prerequisites detailed in [Prerequisites](/docs/apim_installation/apigtw_install/system_requirements) are met.
+Ensure that all of the [prerequisites](/docs/apim_installation/apigtw_install/system_requirements) are met.
 
 ## Install the Package and Deploy tools
 
-To install the Package and Deploy tools in GUI mode, perform an installation following the steps described in [Installation options](/docs/apim_installation/apigtw_install/installation#select-setup-type), using the following selections:
+To install the Package and Deploy tools in GUI mode, perform an installation following the steps described in [Installation](/docs/apim_installation/apigtw_install/installation), using the following selections:
 
 * Select the **Custom** setup type.
 * Select to install the **Package and Deploy Tools** component.
@@ -33,5 +31,4 @@ For example, the following command shows how to install the API Gateway Package 
 ./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended --setup_type advanced --enable-components packagedeploytools --disable-components apigateway,qstart,policystudio,analytics,configurationstudio,apitester,apimgmt,cassandra
 ```
 
-For details on using the Package and Deploy tools to automate processes for continuous integration, see [Upgrade an API Gateway project](/csh?context=461&product=prod-api-gateway-77)
-in the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
+For details on using the tools to automate processes for continuous integration, see [Packaging and deployment tools](/docs/apigtw_devops/deploy_package_tools/).

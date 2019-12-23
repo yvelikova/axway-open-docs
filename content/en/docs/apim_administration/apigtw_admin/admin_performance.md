@@ -1,7 +1,7 @@
 {
 "title": "Performance tuning",
 "linkTitle": "Performance tuning",
-"weight":"26",
+"weight":"118",
 "date": "2019-10-14",
 "description": "Optimize API Gateway performance using various configuration options."
 }

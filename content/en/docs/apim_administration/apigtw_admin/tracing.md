@@ -1,7 +1,7 @@
 {
 "title": "Configure diagnostic trace",
 "linkTitle": "Configure diagnostic trace",
-"weight":"24",
+"weight":"117",
 "date": "2019-10-14",
 "description": "Configure and view diagnostic trace and debugging information about API Gateway runtime execution."
 }
