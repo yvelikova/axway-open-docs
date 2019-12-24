@@ -8,7 +8,7 @@ description: Learn how your DevOps service can use AMPLIFY CLI to manage your en
 
 *Estimated reading time*: 5 minutes
 
-{{% alert title="Note" %}}This feature is currently in development and will be available soon.{{% /alert %}}
+{{< alert title="Public beta" color="warning" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
 
 ## Before you start
 
@@ -27,13 +27,13 @@ Learn how to create and manage your distributed cloud and on-premise environment
 
 ## Create an environment
 
-Environments can be created by providing the environment name:
+Create an environment by providing the environment name:
 
 ```
 amplify central create env <name> -o json
 ```
 
-Environments can also be created by supplying the path to a valid .yaml, .yml, or .json file that defines a specific resource:
+Create an environment by providing the path to a valid .yaml, .yml, or .json file that defines a specific resource:
 
 ```
 amplify central create environment <name> -f <filepath>
@@ -41,44 +41,46 @@ amplify central create environment <name> -f <filepath>
 
 Try it out using the following sample .json and .yaml files:
 
-**environments.json**
-```
+### environments.json
+
+```json
 [
-	{
-		"apiVersion": "v1alpha1",
-		"group": "management",
-		"title": "Json env title one",
-		"name": "env1",
-		"kind": "Environment",
-		"attributes": {
-			"createdBy": "json",
-			"randomNum": "1"
-		},
-		"tags": ["cli", "axway"],
-		"spec": {
-			"description": "spec description one"
-		}
-	},
-	{
-		"apiVersion": "v1alpha1",
-		"group": "management",
-		"title": "Json env title two",
-		"name": "env2",
-		"kind": "Environment",
-		"attributes": {
-			"createdBy": "json",
-			"randomNum": "2"
-		},
-		"tags": ["cli", "axway"],
-		"spec": {
-			"description": "spec description two"
-		}
-	}
+  {
+    "apiVersion": "v1alpha1",
+    "group": "management",
+    "title": "Json env title one",
+    "name": "env1",
+    "kind": "Environment",
+    "attributes": {
+        "createdBy": "json",
+        "randomNum": "1"
+    },
+    "tags": ["cli", "axway"],
+    "spec": {
+      "description": "spec description one"
+      }
+    },
+    {
+    "apiVersion": "v1alpha1",
+    "group": "management",
+    "title": "Json env title two",
+    "name": "env2",
+    "kind": "Environment",
+    "attributes": {
+        "createdBy": "json",
+        "randomNum": "2"
+    },
+    "tags": ["cli", "axway"],
+    "spec": {
+        "description": "spec description two"
+    }
+    }
 ]
 ```
 
-**environments.yaml**
-```
+### environments.yaml
+
+```yaml
 ---
 apiVersion: v1alpha1
 title: Title one
@@ -113,11 +115,13 @@ Options:
 
 ```
 -o, --output = yaml | json
--f, --file = (filename.yml, filename.yaml, or filename.json)
+-f, --file = (filename.yml, filename.yaml, filename.json)
 ```
 
 ### Other examples of valid resource types
+
 **API Services**
+
 ```
 [
 	{
@@ -182,7 +186,8 @@ Options:
 ```
 
 
-**API Service Instances**
+**API Service Instances**\
+
 ```
 [
 	{
@@ -275,7 +280,9 @@ Options:
 	}
 ]
 ```
+
 **API Service Revisions**
+
 ```
 [
 	{
@@ -362,7 +369,9 @@ Options:
 	}
 ]
 ```
+
 **Consumer Instances**
+
 ```
 [
 	{
@@ -491,6 +500,7 @@ Options:
 ```
 
 **Consumer Subscription Definitions**
+
 ```
 [
 	{
@@ -591,6 +601,7 @@ Options:
 ```
 
 **Secrets**
+
 ```
 [
 	{
@@ -659,7 +670,9 @@ Options:
 	}
 ]
 ```
+
 **Webhooks**
+
 ```
 [
 	{
@@ -772,12 +785,6 @@ amplify central get environments
 amplify central get envs -o yaml
 ```
 
-Options:
-
-```
--o, --output = yaml | json
-```
-
 ## Get the details of an environment
 
 Examples:
@@ -787,12 +794,6 @@ amplify central get environment <name>
 amplify central get env <name> -o yaml
 ```
 
-Options:
-
-```
--o, --output = yaml | json
-```
-
 ## Update an environment
 
 Examples:
@@ -800,12 +801,6 @@ Examples:
 ```
 amplify central edit environment <name>
 amplify central edit env <name> -o yaml
-```
-
-Options:
-
-```
--o, --output = yaml | json
 ```
 
 ## Delete an environment
