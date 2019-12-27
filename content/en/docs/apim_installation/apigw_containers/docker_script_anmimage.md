@@ -145,7 +145,7 @@ Use the `docker run` command to start the Admin Node Manager container.
 The following example shows how to run a metrics-enabled Admin Node Manager container in the background on a specific port:
 
 ```
-docker run -d -p 8090:8090 --name=anm --network=api-gateway-domain -v /tmp/events:/opt/Axway/apigateway/events -e METRICS_DB_URL=jdbc:mysql://metricsdb:3306/metrics?useSSL=false -e METRICS_DB_USERNAME=db_user1 -e METRICS_DB_PASS=my_db_pwd admin-node-manager:1.0 -e EMT_TRACE_LEVEL=DEBUG
+docker run -d -p 8090:8090 --name=anm --network=api-gateway-domain -v /tmp/events:/opt/Axway/apigateway/events -e METRICS_DB_URL=jdbc:mysql://metricsdb:3306/metrics?useSSL=false -e METRICS_DB_USERNAME=db_user1 -e METRICS_DB_PASS=my_db_pwd -e EMT_TRACE_LEVEL=DEBUG admin-node-manager:1.0
 ```
 
 This example performs the following:
