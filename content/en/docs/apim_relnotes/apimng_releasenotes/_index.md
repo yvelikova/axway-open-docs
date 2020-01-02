@@ -19,9 +19,33 @@ Docker deployment is supported on Linux. For a summary of the system requirement
 
 The following new features and enhancements are available in this release.
 
-### placeholder1
+### Swagger 2 import and export
 
-placeholder
+API Manager now imports, retains and exports all Swagger 2 fields except for the ventor extentions 
+
+### OAS3 import and export
+
+API Manager now imports, retains and exports all OAS3 fields except for the ventor extentions, callbacks, links and examples 
+
+### TryIt/TryMethod improvements
+
+API Managers TryIt and TryMethod now supports the rendering of Enums
+It allows the user to send multi part forms
+The user can now select files as part of the request and the UI allows users to select more than 1 files
+The parameters object types are auto generated in the UI with nested schemes and arrays rendered fully
+The default for parameters are now fully supported
+The allOf and anyOf in the request bodies are also supported
+In OAS3 parameter content types are now supported
+
+### Backend API improvements
+
+The API Manager UI supports now supports OAS3 response.content.schemes
+OAS3 multiple backends are rendered on the screens allows users to select the required URL
+The UI has been extended to include all Response Codes available in OAS3
+Multi-part Request Bodies are rendered in the backend UI
+The UI allows users to define allOf response types for Swagger 2
+The DataTypes in API Manager have been changed to align with the OAS3 datatypes
+Users now have the option to modify all backend APIs without cloning 
 
 ## Limitations of this release
 
@@ -29,7 +53,8 @@ placeholder
 
 ## Deprecated features
 
-placeholder
+API Tester has been removed
+RAML support has also been deprecated
 
 ## Removed features
 
