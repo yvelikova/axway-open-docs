@@ -31,15 +31,15 @@ To start Cassandra in the foreground, run the following command:
 ./cassandra -f
 ```
 
-For more details, see <https://wiki.apache.org/cassandra/RunningCassandra>.
+For more details, see [Running Cassandra in the Apache Cassandra Wiki](https://wiki.apache.org/cassandra/RunningCassandra).
 
 ### Start Cassandra as a service
 
 To install Cassandra as a service, you must install and configure the appropriate startup script for your system. For example, see the following example startup scripts:
 
-- **CentOS**:
+* **CentOS**:
 [https://support.axway.com/kb/178063/language/en](https://support.axway.com/kb/178063/language/en "https://support.axway.com/kb/178063/language/en")
-- **Debian**:
+* **Debian**:
 [https://github.com/apache/cassandra/blob/cassandra-2.2/debian/init](https://github.com/apache/cassandra/blob/cassandra-2.2/debian/init "https://github.com/apache/cassandra/blob/cassandra-2.2/debian/init")
 
 You must have root or sudo permissions to start Cassandra as a service. For example, typically the command to start Cassandra as a service is as follows:
@@ -52,15 +52,15 @@ sudo service cassandra start
 
 1. Find the Cassandra Java process ID (PID):
 
-```
-ps auwx | grep cassandra
-```
+    ```
+    ps auwx | grep cassandra
+    ```
 
 2. Run the following command:
 
-```
-sudo kill *pid*
-```
+    ```
+    sudo kill *pid*
+    ```
 
 ### Stop Cassandra as a service
 
@@ -93,5 +93,5 @@ For more details on configuring **Server Settings** in the Policy Studio client,
 
 For more details on Apache Cassandra, see the following:
 
-- <http://cassandra.apache.org/>
-- [http://docs.datastax.com/en/cassandra/2.2/](http://docs.datastax.com/en/cassandra/2.2/)
+* [Apache Cassandra](http://cassandra.apache.org/) documentation.
+* [Datastax](http://docs.datastax.com/en/cassandra/2.2/) documentation.

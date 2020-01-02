@@ -68,27 +68,27 @@ configuration). Perform the following steps:
 
 You can enable Cassandra debug logging using any of the following approaches:
 
-- **logback.xml**
+* **logback.xml**
   You can specify a `logger` in the `cassandra/conf/logback.xml` configuration file as follows:
   
   ```
   <logger name "org.apache.cassandra.transport" level=DEBUG/>
   ```
 
-- **nodetool**
+* **nodetool**
   You can use the `nodetool setlogginglevel` command as follows:
 
   ```
   nodetool setlogginglevel org.apache.cassandra.transport DEBUG
   ```
 
-- **JConsole**
+* **JConsole**
   The JConsole tool enables you to configure Cassandra logging using JMX. For example, you can invoke `setLoggingLevel` and specify `org.apache.cassandra.db.StorageServiceMBean` and `DEBUG` as parameters. For more details, see the next section.
 
 For more details on enabling logging, see the following, which also applies to Cassandra 2.2:
 
-- [Configuring logging](https://docs.datastax.com/en/cassandra/2.1/cassandra/configuration/configLoggingLevels\_r.html)
-- [Locking Down Apache Cassandra Logging](http://thelastpickle.com/blog/2016/02/10/locking-down-apache-cassandra-logging.html)
+* [Configuring logging](https://docs.datastax.com/en/cassandra/2.1/cassandra/configuration/configLoggingLevels\_r.html)
+* [Locking Down Apache Cassandra Logging](http://thelastpickle.com/blog/2016/02/10/locking-down-apache-cassandra-logging.html)
 
 ## Monitor a Cassandra cluster using JMX
 

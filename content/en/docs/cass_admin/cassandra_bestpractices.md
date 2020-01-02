@@ -16,8 +16,8 @@ The clocks of the system across all Cassandra cluster machines and the clocks of
 
 Failing to synchronize the clocks will result in:
 
-- Faults in data synchronization.
-- Failure to start or configure the machines correctly.
+* Faults in data synchronization.
+* Failure to start or configure the machines correctly.
 
 The clock synchronization requires the use of a time service, such as NTP (Network Time Protocol), to ensure that the time is synchronized across all machines in the cluster.
 
@@ -25,9 +25,9 @@ You must also perform a health check of the clock drift between nodes on a regul
 
 ### User account
 
-- You must create a specific UNIX user account for the Cassandra database.
-- This user account must own all Cassandra related files, and it must be used to run the Cassandra process.
-- This guide refers to this user account as `cassandra_user`.
+* You must create a specific UNIX user account for the Cassandra database.
+* This user account must own all Cassandra related files, and it must be used to run the Cassandra process.
+* This guide refers to this user account as `cassandra_user`.
 
 ### Required system tuning
 
