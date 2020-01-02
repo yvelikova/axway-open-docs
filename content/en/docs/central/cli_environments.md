@@ -119,6 +119,8 @@ Options:
 
 ### Other examples of valid resource types
 
+Use and reference the following examples of valid resource types to practice creating multiple resources.
+
 **API Services**\
 
 ```json
