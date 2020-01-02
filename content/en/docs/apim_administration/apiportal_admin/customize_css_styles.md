@@ -32,21 +32,21 @@ When planning changes to CSS files, you can quickly check which file controls th
 {{< alert title="Warning" color="warning">}}It is not recommended to manually edit the `less/themes/axway/variables-custom.less` file. This file contains the attribute values customized in the ThemeMagic editor. For more details, see [Customize with ThemeMagic](/docs/apim_administration/apiportal_admin/customize_getting_started/#customize-with-thememagic).{{< /alert >}}
 
 1. Log in to the Joomla! Admin Interface (JAI), and click **Extensions > Templates**.
-1. In the Template sidebar, click **Templates**, and select **Purity III_Details and Files**.
+2. In the Template sidebar, click **Templates**, and select **Purity III_Details and Files**.
     ![API Portal customizatoin list of available templates through Purity tool](/Images/APIPortal/customation_puritIII_detailsandfiles.png)
-1. On the **Editor** tab, open the following folder:
+3. On the **Editor** tab, open the following folder:
 
     ```
     local/css/themes/<your theme>
     ```
 
-1. Select the `template.less` file containing the element, and locate the correct line. In this example, the value for `text-transform` is changed from `inherit` to `uppercase`.
+4. Select the `template.less` file containing the element, and locate the correct line. In this example, the value for `text-transform` is changed from `inherit` to `uppercase`.
     ![An example screenshot on editing a style css.](/Images/APIPortal/cssjoomlasamplecodechange.png)
-1. Select **Save > Close File**, and close the editor.
-1. In Templates sidebar, select **Styles**.
-1. Select **Purity III - Default**, and click **</> LESS to CSS** to compile a new css file.
+5. Select **Save > Close File**, and close the editor.
+6. In Templates sidebar, select **Styles**.
+7. Select **Purity III - Default**, and click **</> LESS to CSS** to compile a new css file.
     ![Joomla Purity III styles template manager to compile changes to API Portal css](/Images/APIPortal/csspuriistylesconfig.png)
-1. Refresh the API Portal home page in the browser to see your changes.
+8. Refresh the API Portal home page in the browser to see your changes.
 
 ## Add a custom stylesheet
 

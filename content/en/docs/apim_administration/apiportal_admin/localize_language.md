@@ -18,10 +18,10 @@ User interface strings are stored in language-specific resource files. To add th
 
     ![Install language](/Images/APIPortal/joomla_install_lang.png)
 
-1. Click **Install Languages**.
-1. Find and select the language to install, and click **Install**.
-1. After the installation is finished, click **Extensions > Language(s) > Installed** and ensure that **Site** is selected at the top of the page.
-1. To set the installed language as the default language of your API Portal, click the star button in the row for that language.
+2. Click **Install Languages**.
+3. Find and select the language to install, and click **Install**.
+4. After the installation is finished, click **Extensions > Language(s) > Installed** and ensure that **Site** is selected at the top of the page.
+5. To set the installed language as the default language of your API Portal, click the star button in the row for that language.
 
     {{< alert title="Tip" color="primary" >}}You can change the default language of JAI independently from your API Portal. Select **Administrator** on the **Languages: Installed** page and click the star button in the row for the required language. You can also select any of the installed languages when you log in to JAI.{{< /alert >}}
 
@@ -56,13 +56,13 @@ To install the translated file:
 
     `/opt/axway/apiportal/htdoc/language/en-GB/en-GB.com_apiportal.ini`
 
-1. Go to resource file directory of the language you installed (for example, `/opt/axway/apiportal/htdoc/language/fr-FR/`), and paste the copied file there.
-1. Rename the copied `.ini` file to match the language code of the installed language (for example, `fr-FR.com_apiportal.ini`).
-1. Open both the English `.ini` file and the copied `.ini` file.
-1. In the English `.ini` file, find a UI text you want to change (such as the text `Connect with a community of developers` at the bottom of the API Portal sign in page), and copy the UI string ID (`COM_APIPORTAL_HOME_CONNECT`).
-1. In the copied `.ini` file, find the same UI string, and change the value of the string to the new language translation.
-1. Repeat the last two steps for all the UI strings on all your API Portal pages that you want to change to the new language, and save the file.
-1. Go to your API Portal, refresh the page, and verify that the UI texts have changed to your new language.
+2. Go to resource file directory of the language you installed (for example, `/opt/axway/apiportal/htdoc/language/fr-FR/`), and paste the copied file there.
+3. Rename the copied `.ini` file to match the language code of the installed language (for example, `fr-FR.com_apiportal.ini`).
+4. Open both the English `.ini` file and the copied `.ini` file.
+5. In the English `.ini` file, find a UI text you want to change (such as the text `Connect with a community of developers` at the bottom of the API Portal sign in page), and copy the UI string ID (`COM_APIPORTAL_HOME_CONNECT`).
+6. In the copied `.ini` file, find the same UI string, and change the value of the string to the new language translation.
+7. Repeat the last two steps for all the UI strings on all your API Portal pages that you want to change to the new language, and save the file.
+8. Go to your API Portal, refresh the page, and verify that the UI texts have changed to your new language.
 
 ### Change the text overrides on the sign in page
 
@@ -115,16 +115,16 @@ You must duplicate the API Portal main menu for each language.
 
     ![Joomla Main Menu](/Images/APIPortal/joomla_main_menu.png)
 
-1. To clone all the menu items at once, click the Check All Items check box and click **Batch**.
-1. In **Set Language**, select the correct content language.
-1. In **To Move or Copy**, locate the correct main menu for the language and select **Add to this menu**.
-1. Select **Copy** to make a copy of the menu items.
-1. Click **Process**.
-1. In the JAI top navigation bar, click **Menus** and select the main menu you cloned the menu items to.
-1. To set the default home page, click the star in the row for the **Home** menu item.
-1. To rename the cloned menu items, click each menu item to edit it, and change **Menu Title** to the correct translation (for example, `Home(2)` to `Accueil`).
-1. Click **Save & Close**.
-1. Repeat for each menu item.
+2. To clone all the menu items at once, click the Check All Items check box and click **Batch**.
+3. In **Set Language**, select the correct content language.
+4. In **To Move or Copy**, locate the correct main menu for the language and select **Add to this menu**.
+5. Select **Copy** to make a copy of the menu items.
+6. Click **Process**.
+7. In the JAI top navigation bar, click **Menus** and select the main menu you cloned the menu items to.
+8. To set the default home page, click the star in the row for the **Home** menu item.
+9. To rename the cloned menu items, click each menu item to edit it, and change **Menu Title** to the correct translation (for example, `Home(2)` to `Accueil`).
+10. Click **Save & Close**.
+11. Repeat for each menu item.
 
 ### Duplicate the page template styles
 
@@ -175,9 +175,9 @@ To enable a language switcher, you need to have a main menu for each language yo
 
 After following this process you will have the following main menus:
 
-- Main menu - All
-- Main menu - FR
-- Main menu - EN
+* Main menu - All
+* Main menu - FR
+* Main menu - EN
 
 #### Create a main menu for all languages
 
@@ -236,9 +236,9 @@ To enable a language switcher, you need to have template styles for each languag
 
 By default, API Portal uses the Purity III template style. After following this process you will have the following template styles:
 
-- purity_III - Default - English
-- purity_III - Default - French
-- purity_III - Default - All
+* purity_III - Default - English
+* purity_III - Default - French
+* purity_III - Default - All
 
 #### Duplicate the template style for the new language
 
@@ -246,13 +246,13 @@ By default, API Portal uses the Purity III template style. After following this
 
     ![Joomla Templates Styles](/Images/APIPortal/joomla_templates_styles.png)
 
-1. Click your template style (for example, `purity_III - Default`) to open it.
-1. Click the arrow next to the **Save** button at the top left of the window, and select **Save as Copy**.
-1. Edit the **Style Name** to indicate the language (for example, `purity_III - Default - French`).
-1. Select the respective language as the **Default**. This sets this template as the default for pages using the selected language.
-1. Click the **Navigation** tab, and change the **Menu** to the correct main menu for the language.
-1. Click the **Assignment** tab, and assign the menu items from the correct language to the template. To select or deselect all menu items, click the toggle button next to the main menu title.
-1. Click **Save** and click **Close** to close the template style.
+2. Click your template style (for example, `purity_III - Default`) to open it.
+3. Click the arrow next to the **Save** button at the top left of the window, and select **Save as Copy**.
+4. Edit the **Style Name** to indicate the language (for example, `purity_III - Default - French`).
+5. Select the respective language as the **Default**. This sets this template as the default for pages using the selected language.
+6. Click the **Navigation** tab, and change the **Menu** to the correct main menu for the language.
+7. Click the **Assignment** tab, and assign the menu items from the correct language to the template. To select or deselect all menu items, click the toggle button next to the main menu title.
+8. Click **Save** and click **Close** to close the template style.
 
 #### Duplicate the template style for all languages
 
@@ -296,11 +296,11 @@ By default, API Portal uses the date-month-year (like "10 Mar 2017") format for
 
 The following list provides some examples on formats and their outputs:
 
-- `m.d.y` — 03.10.17
-- `j, n, Y` — 10, 3, 2017
-- `Ymd` — 20170310
-- `F j, Y, g:i a` — March 10, 2017, 5:16 pm
-- `D M j G:i:s T Y` — Fri Mar 10 17:16:18 UCT 2017
-- `g:i a` — 5:16 pm
-- `H:i:s` — 17:16:18
-- `Y-m-d H:i:s` — 2017-03-10 17:16:18 (the MySQL DATETIME format)
+* `m.d.y` — 03.10.17
+* `j, n, Y` — 10, 3, 2017
+* `Ymd` — 20170310
+* `F j, Y, g:i a` — March 10, 2017, 5:16 pm
+* `D M j G:i:s T Y` — Fri Mar 10 17:16:18 UCT 2017
+* `g:i a` — 5:16 pm
+* `H:i:s` — 17:16:18
+* `Y-m-d H:i:s` — 2017-03-10 17:16:18 (the MySQL DATETIME format)
