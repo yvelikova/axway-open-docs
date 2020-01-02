@@ -5,7 +5,8 @@ weight: 6
 date: 2019-07-30T00:00:00.000Z
 description: Learn how your DevOps service can use AMPLIFY CLI to manage your API proxies.
 ---
-_Estimated reading time_: 5 minutes
+
+*Estimated reading time*_*: 5 minutes
 
 ## Before you start
 
