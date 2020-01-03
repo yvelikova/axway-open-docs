@@ -14,10 +14,14 @@ For details on how to configure the look and feel of your API Portal end-user i
 
 To modify the API Portal *Terms & Conditions* content, edit the following file:
 
-`/opt/axway/apiportal/htdoc/components/com_apiportal/views/terms/tmpl/default.php`
+```
+/opt/axway/apiportal/htdoc/components/com_apiportal/views/terms/tmpl/default.php
+```
 
 ## Configure copyright notice
 
 To customize the copyright notice that is displayed at the bottom of the API Portal pages, edit the following file:
 
-`/opt/axway/apiportal/htdoc/templates/purity_iii/tpls/blocks/footer.php`
+```
+/opt/axway/apiportal/htdoc/templates/purity_iii/tpls/blocks/footer.php
+```

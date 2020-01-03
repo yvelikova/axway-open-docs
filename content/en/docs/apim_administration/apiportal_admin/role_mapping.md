@@ -28,15 +28,20 @@ This section describes the user groups mapping table, available from **Component
 
 The table consists of five columns: **Roles**, **Org. Admin**, **Developer**, **Organizations**, **Email Pattern**.
 
-**Roles** - Displays all the Joomla! user groups.
+**Roles**
+: Displays all the Joomla! user groups.
 
-**Org. Admin** - Represents the API Manager **Organization Admin** role. Check this box to map API Manager Organization Admin role to the corresponding Joomla! user group.
+**Org. Admin**
+: Represents the API Manager **Organization Admin** role. Check this box to map API Manager Organization Admin role to the corresponding Joomla! user group.
 
-**Developer** - Represents the API Manager **User** role. Check this box to map the API Manager User role to the corresponding Joomla! user group.
+**Developer**
+: Represents the API Manager **User** role. Check this box to map the API Manager User role to the corresponding Joomla! user group.
 
-**Organizations** - Allows you to map all users from one or more API Manager organizations to a Joomla! user group. You can add, edit, and delete organizations. This field supports `*` and `?` wildcards. For example, `myorg*` will map all users that are part of `myorg`, `myorgs`, `myorganization`, and so on.
+**Organizations**
+: Allows you to map all users from one or more API Manager organizations to a Joomla! user group. You can add, edit, and delete organizations. This field supports `*` and `?` wildcards. For example, `myorg*` will map all users that are part of `myorg`, `myorgs`, `myorganization`, and so on.
 
-**Email Pattern** - Allows you to map all users with a given text in their email domain to a Joomla! user group. You can add, edit, and delete email domains. This field supports `" "` (blank space) and `?` wildcard. For example, `@mail.com` will map all users whose email domain is `mail`.
+**Email Pattern**
+: Allows you to map all users with a given text in their email domain to a Joomla! user group. You can add, edit, and delete email domains. This field supports `" "` (blank space) and `?` wildcard. For example, `@mail.com` will map all users whose email domain is `mail`.
 
 ![User groups mapping table](/Images/APIPortal/role_mapping_expanded.png)
 

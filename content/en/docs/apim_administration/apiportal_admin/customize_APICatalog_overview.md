@@ -94,8 +94,8 @@ The Try-It button is enabled for all requests to an API by default. To enable or
 1. In JAI, click **Components > API Portal > API Manager**.
 2. In **Try-It Settings**, enable or disable the Try-It button for each request type.
 
-    ![](/Images/uploads/api-manager-try-it-settings.png)
-    
+    ![API Manager try-it](/Images/uploads/api-manager-try-it-settings.png)
+
 3. Click **Save**.
 
 {{% alert title="Note" %}}

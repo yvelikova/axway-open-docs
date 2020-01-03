@@ -6,7 +6,7 @@ date: 2019-12-16
 description: Normalize discovery for APIs from multiple gateways, classify your services to support multiple audiences (partners, IT, business), control consumer subscription to access your APIs, and extend your APIs to be reused in other integration ﬂows.
 ---
 
-*Estimated reading time: 5 minutes*
+*Estimated reading time*: 5 minutes
 
 ## AMPLIFY Catalog Overview
 

@@ -1,5 +1,5 @@
 ---
-title: "Configure  a highly available Cassandra cluster"
+title: "Configure a highly available Cassandra cluster"
 linkTitle: "Configure HA"
 weight: 2
 date: 2019-06-05
@@ -10,9 +10,9 @@ description: >
 
 To tolerate the loss of one Cassandra node and to ensure 100% data consistency, API Gateway requires at a minimum the following Cassandra cluster configuration running in a production class environment:
 
-- Three Cassandra nodes (with one seed node)
-- `Replication factor` setting set to `3`, so each node holds 100% of the data.
-- `QUORUM` read/write consistency to ensure that you are reading from a quorum of Cassandra nodes (two) every time.
+* Three Cassandra nodes (with one seed node)
+* `Replication factor` setting set to `3`, so each node holds 100% of the data.
+* `QUORUM` read/write consistency to ensure that you are reading from a quorum of Cassandra nodes (two) every time.
   {{% alert title="Caution" color="warning" %}}
   `Eventual` consistency is not supported in a production environment due to a risk of stale or missing data.
   {{% /alert %}}
@@ -23,13 +23,11 @@ If one Cassandra node fails or needs to be restarted, the cluster continues to o
 
 The following general guidelines apply to configuring a Cassandra HA cluster:
 
-- Decide on the number of Cassandra nodes, and install and configure the Cassandra database on each node.
-- Decide on the number of gateway nodes, and install and configure them (local or remote to Cassandra).
-  - It is recommended that you configure a Cassandra HA cluster with three Cassandra nodes, and at least two API Gateway instances (local or remote). For details, see [Cassandra deployment architectures](/docs/cass_admin/cassandra_architecture/).
-- Create a HA API Gateway environment.
-- Configure the Cassandra client settings in Policy Studio for the API Gateway group.
-
-For details on how to install an Apache Cassandra database or how to create a HA API Gateway environment, see [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+* Decide on the number of Cassandra nodes, and install and configure the Cassandra database on each node.
+* Decide on the number of gateway nodes, and install and configure them (local or remote to Cassandra).
+    * It is recommended that you configure a Cassandra HA cluster with three Cassandra nodes, and at least two API Gateway instances (local or remote). For details, see [Cassandra deployment architectures](/docs/cass_admin/cassandra_architecture/).
+* Create a HA API Gateway environment.
+* Configure the Cassandra client settings in Policy Studio for the API Gateway group.
 
 ## Example of a HA setup using three Cassandra nodes
 
@@ -136,22 +134,24 @@ In Policy Studio, open your gateway group configuration.
 1. Select **Server Settings > Cassandra > Authentication**, and enter your Cassandra user name and password (both default to `cassandra`).
 2. Select **Server Settings > Cassandra > Hosts**, and add an address for each Cassandra node in the cluster (`ipA`, `ipB` and `ipC` in this example).
 
-You can automate these steps by running the `updateCassandraSettings.py` script against a deployment package (`.fed`). 
+You can automate these steps by running the `updateCassandraSettings.py` script against a deployment package (`.fed`).
 
 #### Configure the API Gateway Cassandra consistency levels
 
-1. Ensure that the **API Server** KPS collection has been created under **Environment Configuration > Key Property Stores**. This is required to configure Cassandra consistency levels, and is created automatically if you installed the **Complete** setup type. If you installed the **Custom** or **Standard** setup, you must configure OAuth or API Manager settings in Policy Studio to create the required KPS collections. For more details, see:
+1. For the **Complete** setup type installation, configure Cassandra consistency levels by ensuring that the **API Server** KPS collection has been created under **Environment Configuration > Key Property Stores**.
 
-    - [Deploy OAuth configuration](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/page/Content/OAuthGuideTopics/deploy_oauth_config.htm).
-    - [Configure API Manager Cassandra client settings](#configure-api-manager-cassandra-client-settings)
+    If you installed the **Custom** or **Standard** setup, you must configure OAuth or API Manager settings in Policy Studio to create the required KPS collections. For more details, see:
+
+    * [Deploy OAuth configuration](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/page/Content/OAuthGuideTopics/deploy_oauth_config.htm).
+    * [Configure API Manager Cassandra client settings](#configure-api-manager-cassandra-client-settings)
 
 2. Select **Environment Configuration > Key Property Stores > API Server > Data Sources > Cassandra Storage**, and click **Edit**.
 3. In the **Read Consistency Level** and **Write Consistency Level** fields, select **QUORUM**.
 4. Repeat this step for each KPS collection using Cassandra (for  example, **Key Property Stores > OAuth**, or **API Portal** for API Manager). This also applies to any custom KPS collections that you have created.
 5. If you are using OAuth and Cassandra, you must also configure quorum consistency for all OAuth2 stores under **Libraries > OAuth2 Stores**:
-    - **Access Token Stores > OAuth Access Token Store**
-    - **Authorization Code Stores > Authz Code Store**
-    - **Client Access Token Stores > OAuth Client Access Token Store**
+    * **Access Token Stores > OAuth Access Token Store**
+    * **Authorization Code Stores > Authz Code Store**
+    * **Client Access Token Stores > OAuth Client Access Token Store**
   
     By default, OAuth uses EhCache instead of Cassandra. For more details on OAuth, see the [API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/).
 
@@ -184,13 +184,13 @@ To update the Cassandra client configuration for API Manager, perform the follow
 Do not start this instance, and do not configure API Manager for this instance in Policy Studio.
 {{% /alert %}}
 10. Before starting the second API Manager-enabled instance, ensure that each instance has unique ports in the `envSettings.props` file. For example:
-    - Edit the `envSettings.props` file for the gateway instance in the following directory:
+    * Edit the `envSettings.props` file for the gateway instance in the following directory:
 
       ```
       INSTALL_DIR/apigateway/groups/<group-n>/<instance-m>/conf/envSettings.props
       ```
 
-    - Add the API Manager ports. For example, the defaults are:
+    * Add the API Manager ports. For example, the defaults are:
 
       ```
       #API Manager Port

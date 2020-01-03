@@ -6,7 +6,7 @@ date: 2019-07-30
 description: Learn the fundamental concepts you will encounter in AMPLIFY Central.
 ---
 
-*Estimated reading time: 1 minute*
+*Estimated reading time*: 1 minute
 
 ## API and API proxy
 
@@ -20,9 +20,9 @@ An API is an interface to a service, that enables app developers to interact wit
 
 An API is clearly defined by way of its endpoints, request parameters, and responses. This makes it easy for app developers to use the API, as the API specification (for example, Open API or Swagger) tells them:
 
-- What requests they can send and to what address
-- What the supported request parameters are
-- What responses they can expect
+* What requests they can send and to what address
+* What the supported request parameters are
+* What responses they can expect
 
 An API implies a *contract*, which provides app developers with an assurance that the API will change in a predictable manner over time, meaning that their app will continue to work with future changes to the API.
 
@@ -34,9 +34,9 @@ In AMPLIFY Central, you create an API proxy to represent your back-end API to yo
 
 Managing your API in AMPLIFY Central by way of an API proxy offers the following benefits:
 
-- You can change the implementation of the back-end service without impacting app developers as they continue to call the API proxy.
-- You can apply policies to the API proxy to manage or secure how client apps use your API.
-- You can analyze the usage of your APIs by client apps, and identify and analyze failed transactions, as all traffic that flows through an API proxy is monitored and recorded.
+* You can change the implementation of the back-end service without impacting app developers as they continue to call the API proxy.
+* You can apply policies to the API proxy to manage or secure how client apps use your API.
+* You can analyze the usage of your APIs by client apps, and identify and analyze failed transactions, as all traffic that flows through an API proxy is monitored and recorded.
 
 ## Roles and teams
 

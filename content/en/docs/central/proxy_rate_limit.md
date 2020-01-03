@@ -34,8 +34,8 @@ AMPLIFY Central provides rate limiting around the API Proxy activity. You can se
 
 AMPLIFY Central allows for two levels of enforcement for rate limiting:  
 
-* At the proxy level, rate limiting affects all API transactions regardless of the consuming application. 
-* At the proxy and application level, rate limiting affects all API transactions originating with a specific application. 
+* At the proxy level, rate limiting affects all API transactions regardless of the consuming application.
+* At the proxy and application level, rate limiting affects all API transactions originating with a specific application.
 
 You can enforce one or both levels together.
 
@@ -47,7 +47,7 @@ To begin, [register an api proxy](/docs/central/quickstart/#register-an-api).
 
 1. Navigate to the **API Proxies** tab.
 2. Click the API proxy name to open the API proxy details page.
-3. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section. 
+3. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section.
 4. Enter the desired TPS and click the checkbox to save the configuration.
 
 ![Enter the desired TPS](/Images/central/proxy_rate_limit_box.png)
@@ -56,7 +56,7 @@ A new revision with the desired rate limit configuration is created. You must de
 
 ### Test the rate limit configuration
 
-You can test the rate limit configuration 
+You can test the rate limit configuration.
 
 #### Simple test with docker and curl
 
@@ -69,7 +69,7 @@ docker run curlimages/curl:7.66.0 -s -o /dev/null -w "%{url_effective}:%{http_co
 Example run for the sample API with a rate limit of 2 TPS:
 
 ```
-$ docker run curlimages/curl:7.66.0 -s -o /dev/null -w "%{url_effective}:%{http_code}\n" -Z "https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/v2/instruments#[1-5]"
+docker run curlimages/curl:7.66.0 -s -o /dev/null -w "%{url_effective}:%{http_code}\n" -Z "https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/v2/instruments#[1-5]"
 https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/v2/instruments#1:429
 https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/v2/instruments#3:429
 https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/v2/instruments#2:429
@@ -107,7 +107,7 @@ export default function() {
 }
 ```
 
-Using the dockerized version of K6, run a test mimicking 20 users sending 20 TPS to your API proxy for 30 seconds. 
+Using the dockerized version of K6, run a test mimicking 20 users sending 20 TPS to your API proxy for 30 seconds.
 
 Replace `<your_url_here>` with an endpoint of your proxy.
 
@@ -181,7 +181,6 @@ proxy:
 ```
 
 The `perProxy` field specifies the desired Transactions Per Second (TPS) limit for your API.
-
 
 Create the API proxy:
 
@@ -267,7 +266,7 @@ You can rate limit the API calls at variable interval instead of fixed 1 second 
 Under `perProxy` or `perProxyAndApp` you can specify two configurations:
 
 * `limit` value defines number of API calls that needs to be rate limited.
-* `interval` value defines at what interval, API calls needs to be rate limited at. 
+* `interval` value defines at what interval, API calls needs to be rate limited at.
   
 The field `interval` must follow the format `PT[n]H[n]M[n]S`, supported by the ISO_8601 standard.
 
@@ -303,8 +302,6 @@ proxy:
     team:
         name: 'Default Team'
 ```
-
-
 
 ### Disable the rate limit for an application consuming your API
 

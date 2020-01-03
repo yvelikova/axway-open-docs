@@ -18,21 +18,21 @@ To install PHP 7.x, you can use an additional official RHEL repository. By defau
 
 1. Add an official RHEL repository that contains PHP version 7.x:
 
-```
-$ sudo subscription-manager repos --enable rhel-server-rhscl-7-rpms
-```
+    ```
+    sudo subscription-manager repos --enable rhel-server-rhscl-7-rpms
+    ```
 
-1. Clear the cache:
+2. Clear the cache:
 
-```
-$ sudo yum clean all
-```
+    ```
+    sudo yum clean all
+    ```
 
-1. Run the update:
+3. Run the update:
 
-```
-$ sudo yum update
-```
+    ```
+    sudo yum update
+    ```
 
 ### Install PHP from official RHEL repository
 
@@ -40,15 +40,15 @@ $ sudo yum update
 
 1. To find the latest PHP7 version, enter the following command:
 
-```
-$ sudo yum search php7
-```
+    ```
+    sudo yum search php7
+    ```
 
-1. Install all required packages, for example:
+2. Install all required packages, for example:
 
-```
-$ sudo yum install rh-php71 rh-php71-php rh-php71-php-cli rh-php71-php-common rh-php71-php-gd rh-php71-php-json rh-php71-php-intl rh-php71-php-mbstring rh-php71-php-mysqlnd rh-php71-php-pdo rh-php71-php-xml rh-php71-php-zip
-```
+    ```
+    sudo yum install rh-php71 rh-php71-php rh-php71-php-cli rh-php71-php-common rh-php71-php-gd rh-php71-php-json rh-php71-php-intl rh-php71-php-mbstring rh-php71-php-mysqlnd rh-php71-php-pdo     rh-php71-php-xml rh-php71-php-zip
+    ```
 
 ### Create symbolic link
 
@@ -56,23 +56,23 @@ After installation, create a symbolic link to use PHP directly in a terminal:
 
 1. Check that PHP is located in the directory `/opt/rh/rh-php71/root/usr/bin/php` and execute the following command to verify the PHP version:
 
-```
-$ /opt/rh/rh-php71/root/usr/bin/php -v
-PHP 7.1.8 (cli) (built: Nov 7 2018 18:12:07) (NTS)
-```
+    ```
+    /opt/rh/rh-php71/root/usr/bin/php -v
+    PHP 7.1.8 (cli) (built: Nov 7 2018 18:12:07) (NTS)
+    ```
 
-1. To create a symbolic link, enter the command:
+2. To create a symbolic link, enter the command:
 
-```
-$ ln -s /opt/rh/rh-php71/root/usr/bin/php /usr/bin/php
-```
+    ```
+    ln -s /opt/rh/rh-php71/root/usr/bin/php /usr/bin/php
+    ```
 
-1. Run the following to validate the symbolic link was created successfully:
+3. Run the following to validate the symbolic link was created successfully:
 
-```
-$ php –v
-PHP 7.1.8 (cli) (built: Nov 7 2018 18:12:07) (NTS)
-```
+    ```
+    php –v
+    PHP 7.1.8 (cli) (built: Nov 7 2018 18:12:07) (NTS)
+    ```
 
 ### Upgrade PHP
 
@@ -85,7 +85,7 @@ If Apache is not already installed, skip this section and follow the steps in [I
 Depending on your existing Apache installation, you might need to configure Apache. Use the following command to check your existing Apache package:
 
 ```
-$ rpm -qa | grep httpd
+rpm -qa | grep httpd
 ```
 
 Follow the appropriate steps for your version (`httpd-2.4.*` or `httpd24-httpd-2.4.*`).
@@ -95,13 +95,13 @@ Follow the appropriate steps for your version (`httpd-2.4.*` or `httpd24-httpd-2
 By default, Apache does not use the newly installed PHP, so you must perform some additional configuration steps. The following steps apply to the default Apache 2.4 (for example, `yum install httpd`) only.
 
 1. Open the file `/etc/httpd/conf/httpd.conf`.
-1. Above the line `Include conf.modules.d/*`, remove any existing entry for PHP and add the line:
+2. Above the line `Include conf.modules.d/*`, remove any existing entry for PHP and add the line:
 
-```
-LoadModule php7_module /opt/rh/httpd24/root/usr/lib64/httpd/modules/librh-php71-php7.so
-```
+    ```
+    LoadModule php7_module /opt/rh/httpd24/root/usr/lib64/httpd/modules/librh-php71-php7.so
+    ```
 
-1. Add `index.php` to the `<IfModule dir_module>` directive. For example, change:
+3. Add `index.php` to the `<IfModule dir_module>` directive. For example, change:
 
     ```
     <IfModule dir_module>
@@ -117,44 +117,44 @@ LoadModule php7_module /opt/rh/httpd24/root/usr/lib64/httpd/modules/librh-php71-
     </IfModule>
     ```
 
-1. Add the following after the `<IfModule dir_module>` directive:
+4. Add the following after the `<IfModule dir_module>` directive:
 
-```
-# Allow php to handle Multiviews
-    AddType text/html .php
-    # mod_php options
-    <IfModule  mod_php7.c>
-        # Cause the PHP interpreter to handle files with a .php extension.
-        <FilesMatch \.php$>
-            SetHandler application/x-httpd-php
-        </FilesMatch>
-        # Uncomment the following lines to allow PHP to pretty-print .phps
-        # files as PHP source code:
-        #<FilesMatch \.phps$>
-        #    SetHandler application/x-httpd-php-source
-        #</FilesMatch>
-        # Apache specific PHP configuration options
-        # those can be override in each configured vhost
-        #
-        php_value session.save_handler "files"
-        php_value session.save_path    "/var/opt/rh/rh-php71/lib/php/session"
-        php_value soap.wsdl_cache_dir  "/var/opt/rh/rh-php71/lib/php/wsdlcache"
-        #php_value opcache.file_cache   "/var/opt/rh/rh-php71/lib/php/opcache"
-    </IfModule>
-```
+    ```
+    # Allow php to handle Multiviews
+        AddType text/html .php
+        # mod_php options
+        <IfModule  mod_php7.c>
+            # Cause the PHP interpreter to handle files with a .php extension.
+            <FilesMatch \.php$>
+                SetHandler application/x-httpd-php
+            </FilesMatch>
+            # Uncomment the following lines to allow PHP to pretty-print .phps
+            # files as PHP source code:
+            #<FilesMatch \.phps$>
+            #    SetHandler application/x-httpd-php-source
+            #</FilesMatch>
+            # Apache specific PHP configuration options
+            # those can be override in each configured vhost
+            #
+            php_value session.save_handler "files"
+            php_value session.save_path    "/var/opt/rh/rh-php71/lib/php/session"
+            php_value soap.wsdl_cache_dir  "/var/opt/rh/rh-php71/lib/php/wsdlcache"
+            #php_value opcache.file_cache   "/var/opt/rh/rh-php71/lib/php/opcache"
+        </IfModule>
+    ```
 
-1. Save the file and restart Apache:
+5. Save the file and restart Apache:
 
-```
-$ systemctl restart httpd
-```
+    ```
+    systemctl restart httpd
+    ```
 
 #### Configure existing Apache (httpd24-httpd-2.4.*)
 
 This package does not require any additional configuration for PHP.
 
-- You do not have to perform any additional steps if you have installed `httpd24-httpd` (and `httpd24-mod_ssl`) and want to use `rh-php71`.
-- If you are using the newer Apache (for example, `yum install httpd24-httpd`) its configuration files are usually located in `/opt/rh/httpd24/root/etc/httpd/`.
+* You do not have to perform any additional steps if you have installed `httpd24-httpd` (and `httpd24-mod_ssl`) and want to use `rh-php71`.
+* If you are using the newer Apache (for example, `yum install httpd24-httpd`) its configuration files are usually located in `/opt/rh/httpd24/root/etc/httpd/`.
 
 ### Install Apache and PHP from official RHEL repository
 
@@ -166,39 +166,39 @@ Follow these steps to install Apache and PHP from the Red Hat Software Collectio
 2. If you have Apache already, remove it:
 
     ```
-    $ yum remove httpd
+    yum remove httpd
     ```
 
 3. Install the packages:
 
-```
-$ yum install httpd24-httpd httpd24-httpd-tools httpd24-mod_ssl
-```
+    ```
+    yum install httpd24-httpd httpd24-httpd-tools httpd24-mod_ssl
+    ```
 
-1. Verify you have the package `httpd24-httpd` with the command:
+4. Verify you have the package `httpd24-httpd` with the command:
+
+    ```
+    pm -qa  grep httpd24-httpd
+    ```
+
+5. Create a symbolic link:
+
+    ```
+    ln -sf /opt/rh/httpd24/root/sbin/httpd /usr/bin/httpd
+    ```
+
+6. Restart the terminal to enable the symbolic link.
+7. Verify:
+
+    ```
+    httpd -v
+    ```
+
+8. Perform the steps in [Install PHP from official RHEL repository](#install-php-from-official-rhel-repository).
+9. Restart Apache:
 
 ```
-$ rpm -qa  grep httpd24-httpd
-```
-
-1. Create a symbolic link:
-
-```
-$ ln -sf /opt/rh/httpd24/root/sbin/httpd /usr/bin/httpd 
-```
-
-1. Restart the terminal to enable the symbolic link.
-1. Verify:
-
-```
-$ httpd -v
-```
-
-1. Perform the steps in [Install PHP from official RHEL repository](#install-php-from-official-rhel-repository).
-1. Restart Apache:
-
-```
-$ systemctl restart httpd24-httpd
+systemctl restart httpd24-httpd
 ```
 
 No additional PHP configuration is required.
@@ -211,38 +211,39 @@ EPEL (Extra Packages for Enterprise Linux) is an open source repository which
 
 1. Turn on the EPEL repository and search for PHP:
 
-```
-$ yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-$ yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-$ yum install yum-utils
-$ subscription-manager repos --enable=rhel-7-server-optional-rpms
-$ yum-config-manager --enable remi-php72
-$ yum update
-$ yum search php72
-```
+    ```
+    yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    yum install yum-utils
+    subscription-manager repos --enable=rhel-7-server-optional-rpms
+    yum-config-manager --enable remi-php72
+    yum update
+    yum search php72
+    ```
 
     All available PHP packages are listed.
-1.  Install PHP:
 
-```
-$ yum install php72 php72-php php72-php-cli php72-php-gd php72-php-json php72-php-mbstring php72-php-mysqlnd php72-php-xml php72-php-zip php72-php-pdo php72-php-intl
-```
+2. Install PHP:
 
-1. After PHP is installed, create a symbolic link:
+    ```
+    yum install php72 php72-php php72-php-cli php72-php-gd php72-php-json php72-php-mbstring php72-php-mysqlnd php72-php-xml php72-php-zip php72-php-pdo php72-php-intl
+    ```
 
-```
-$ ln -sf /opt/remi/php72/root/bin/php /usr/bin/php
-```
+3. After PHP is installed, create a symbolic link:
 
-1. Reopen the terminal if you cannot verify with `php -v` and try again.
-1. Configure Apache. Follow the steps in [Configure existing Apache](#configure-existing-Apache).
-1. Because the location of the PHP `.so` file is different, use the following when setting the PHP module in the Apache configuration:
+    ```
+    ln -sf /opt/remi/php72/root/bin/php /usr/bin/php
+    ```
 
-```
-LoadModule php7_module /opt/remi/php72/root/lib64/httpd/modules/libphp7.so.
-```
+4. Reopen the terminal if you cannot verify with `php -v` and try again.
+5. Configure Apache. Follow the steps in [Configure existing Apache](#configure-existing-Apache).
+6. Because the location of the PHP `.so` file is different, use the following when setting the PHP module in the Apache configuration:
 
-1. Follow the steps in [Upgrade PHP](#upgrade-php) to upgrate your PHP.
+    ```
+    LoadModule php7_module /opt/remi/php72/root/lib64/httpd/modules/libphp7.so.
+    ```
+
+7. Follow the steps in [Upgrade PHP](#upgrade-php) to upgrate your PHP.
 
 ## CentOS – Install dependencies from community repository EPEL with Remi
 
@@ -252,77 +253,77 @@ CentOS also does not offer the latest PHP version in the default repositories. T
 
 1. Install the EPEL repository:
 
-```
-$ yum install epel-release
-```
+    ```
+    yum install epel-release
+    ```
 
-1. Install the Remi repository:
+2. Install the Remi repository:
 
-```
-$ yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-```
+    ```
+    yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    ```
 
-1. Install `yum-utils` packages (if not already installed):
+3. Install `yum-utils` packages (if not already installed):
 
-```
-$ yum install yum-utils
-```
+    ```
+    yum install yum-utils
+    ```
 
-1. Enable the Remi repository:
+4. Enable the Remi repository:
 
-```
-$ yum-config-manager --enable remi-php72
-$ yum update
-```
+    ```
+    yum-config-manager --enable remi-php72
+    yum update
+    ```
 
-1. Verify the repository is enabled:
+5. Verify the repository is enabled:
 
-```
-$ yum search php72
-```
+    ```
+    yum search php72
+    ```
 
-1. Install PHP:
+6. Install PHP:
 
-```
-$ yum install php72 php72-php php72-php-cli php72-php-gd php72-php-json php72-php-mbstring php72-php-mysqlnd php72-php-xml php72-php-zip php72-php-pdo php72-php-intl
-```
+    ```
+    yum install php72 php72-php php72-php-cli php72-php-gd php72-php-json php72-php-mbstring php72-php-mysqlnd php72-php-xml php72-php-zip php72-php-pdo php72-php-intl
+    ```
 
-1. Configure Apache.
+7. Configure Apache.
 
-  - Use the steps in [Configure existing Apache (httpd-2.4.\*)](#configure-existing-apache-httpd-2-4) as a reference, but because the location of the PHP `.so` file is different, search for the location of a file similar to `libphp72.so` and use that path when setting the PHP module in the Apache configuration.
+    * Use the steps in [Configure existing Apache (httpd-2.4.\*)](#configure-existing-apache-httpd-2-4) as a reference, but because the location of the PHP `.so` file is different, search for the location of a file similar to `libphp72.so` and use that path when setting the PHP module in the Apache configuration.
 
-  - You do not need to configure Apache if you have already installed it through the package manager.
+    * You do not need to configure Apache if you have already installed it through the package manager.
 
-1. Restart Apache:
+8. Restart Apache:
 
-```
-$ systemctl restart httpd
-```
+    ```
+    systemctl restart httpd
+    ```
 
-1. Verify that the installed version is set:
+9. Verify that the installed version is set:
 
-```
-php -v
-```
+    ```
+    php -v
+    ```
 
-1. If the result is not the newly installed version, modify the PHP symbolic link with the path to the new version:
+10. If the result is not the newly installed version, modify the PHP symbolic link with the path to the new version:
 
-```
-/opt/remi/php72/root/bin/php
-```
+    ```
+    /opt/remi/php72/root/bin/php
+    ```
 
-1. Remove the old version of PHP.
+11. Remove the old version of PHP.
 
 ### Install Apache from community repository EPEL with Remi
 
 1. To install Apache, enter the following command:
 
-```
-$ yum install httpd httpd-tools mod_ssl
-```
+    ```
+    yum install httpd httpd-tools mod_ssl
+    ```
 
-1. To start Apache, enter the following command:
+2. To start Apache, enter the following command:
 
-```
-$ systemctl start httpd
-```
+    ``
+    ystemctl start httpd
+    ``

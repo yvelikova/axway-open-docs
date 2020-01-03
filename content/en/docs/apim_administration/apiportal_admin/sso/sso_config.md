@@ -12,9 +12,9 @@ description: Configure single sign-on (SSO) and enable it for your API Portal us
 * The IdP posts SAML assertions to API Portal. When configuring the IDP for a new API Portal client, you must set the post back addresses to API Portal.
 * You must always use fully qualified domain names (FQDNs) for the host name. Avoid using IP addresses or `localhost` in the configuration.
 * The following prerequisites apply to organizations in API Manager:
-  * Before a user can authenticate successfully using SSO, the API Portal organization associated with the SSO user must exist.
-  * An API Manager administrator user can add the organizations in advance.
-  * When configuring the file `service-provider-apiportal.xml`, ensure that the SSO user only ever belongs to one organization.
+    * Before a user can authenticate successfully using SSO, the API Portal organization associated with the SSO user must exist.
+    * An API Manager administrator user can add the organizations in advance.
+    * When configuring the file `service-provider-apiportal.xml`, ensure that the SSO user only ever belongs to one organization.
 
 ## Configuration files
 

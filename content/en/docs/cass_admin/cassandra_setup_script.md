@@ -23,13 +23,11 @@ The following prerequisites apply for the `setup-cassandra` script:
 
 ### Python
 
-- Cassandra 2.2.5 requires Python 2.7.x *(up to 2.7.10)*
-- Cassandra 2.2.8 requires Python 2.7.x *(up to the latest)*
-- Cassandra 2.2.12 requires Python 2.7.x *(up to the latest)*
+* Cassandra 2.2.5 requires Python 2.7.x *(up to 2.7.10)*
+* Cassandra 2.2.8 requires Python 2.7.x *(up to the latest)*
+* Cassandra 2.2.12 requires Python 2.7.x *(up to the latest)*
 
-{{% alert title="Note" %}}
-API Gateway 7.7 supports Cassandra 2.2.12. API Gateway 7.5.3 supports Cassandra versions 2.2.5 and 2.2.8.
-{{% /alert %}}
+{{% alert title="Note" %}}API Gateway 7.7 supports Cassandra 2.2.12. API Gateway 7.5.3 supports Cassandra versions 2.2.5 and 2.2.8.{{% /alert %}}
 
 ### User name and password authentication
 
@@ -151,15 +149,15 @@ If you are setting up a Cassandra HA cluster, you must replicate the `system_au
 
 To configure TLS v1.2 encryption, you will need:
 
-- A private key and certificate for every Cassandra node in the cluster.
-- A certificate for the Certification Authority (CA) used to generate the node certificate.
+* A private key and certificate for every Cassandra node in the cluster.
+* A certificate for the Certification Authority (CA) used to generate the node certificate.
 
 You can use Policy Studio to create the necessary certificates and keys or any other suitable method for generating certificates.
 
 You must export and save the node certificate and private key as a PKCS12 file, and save the CA certificate as a PEM file as follows:
 
-- For node-to-node: `server.p12` and `server-ca.pem`
-- For client-to-node: `client.p12` and `client-ca.pem`
+* For node-to-node: `server.p12` and `server-ca.pem`
+* For client-to-node: `client.p12` and `client-ca.pem`
 
 You must place these files into the same directory where you run the setup-cassandra script from.
 
@@ -189,9 +187,9 @@ When the Cassandra cluster has been configured to use client-to-node TLS/SSL enc
 
 If client-to-node TLS/SSL encryption has been enabled, the `setup-cassandra` script creates a configuration file (`cqlshrc`) with the necessary configuration to enable TLS/SSL encryption. However, you must provide following files to configure `cqlsh` for TLS/SSL:
 
-- `client-ca.pem`: PEM file containing CA certificate
-- `cqlsh-cert.pem`: PEM file containing client certificate for `cqlsh`
-- `cqlsh-key.pem`: PEM file containing private key of client certificate for `cqlsh`
+* `client-ca.pem`: PEM file containing CA certificate
+* `cqlsh-cert.pem`: PEM file containing client certificate for `cqlsh`
+* `cqlsh-key.pem`: PEM file containing private key of client certificate for `cqlsh`
 
 ## Updated Cassandra configuration
 
@@ -199,41 +197,41 @@ This section shows the updates that the `setup-cassandra` script makes to the `c
 
 ### General settings
 
-- `seed_provider`, `parameters`, `seeds`: <*IP address of seed node*>
-- `start_native_transport`: `true`
-- `native_transport_port`: `9042`
-- `listen_address`: IP address of the node
-- `rpc_address`: IP address of the node
-- `authenticator`: `org.apache.cassandra.auth.PasswordAuthenticator`
-- `authorizer`: `org.apache.cassandra.auth.CassandraAuthorizer`
+* `seed_provider`, `parameters`, `seeds`: <*IP address of seed node*>
+* `start_native_transport`: `true`
+* `native_transport_port`: `9042`
+* `listen_address`: IP address of the node
+* `rpc_address`: IP address of the node
+* `authenticator`: `org.apache.cassandra.auth.PasswordAuthenticator`
+* `authorizer`: `org.apache.cassandra.auth.CassandraAuthorizer`
 
 ### Node-to-node traffic encryption
 
 If node-to-node TLS/SSL traffic encryption is enabled:
 
-- `server_encryption_options`: Specified options
-- `internode_encryption`: all
-- `keystore`: <`server-keystore.jks`>
-- `keystore_password`: Randomly generated password
-- `truststore`: <`server-truststore.jks`>
-- `truststore_password`: Randomly generated password
-- `protocol`: TLS
-- `store_type`: JKS
-- `algorithm`: SunX509
-- `require_client_auth`: true
+* `server_encryption_options`: Specified options
+* `internode_encryption`: all
+* `keystore`: <`server-keystore.jks`>
+* `keystore_password`: Randomly generated password
+* `truststore`: <`server-truststore.jks`>
+* `truststore_password`: Randomly generated password
+* `protocol`: TLS
+* `store_type`: JKS
+* `algorithm`: SunX509
+* `require_client_auth`: true
 
 ### Client-to-node traffic encryption
 
 If client-to-node TLS/SSL traffic encryption is enabled:
 
-- `client_encryption_options`: Specified options
-- `enabled`: true
-- `optional`: false
-- `keystore`: <`client-keystore.jks`>
-- `keystore_password`: Randomly generated password
-- `truststore`: <`client-truststore.jks`>
-- `truststore_password`: Randomly generated password
-- `protocol`: TLS
-- `store_type`: JKS
-- `algorithm`: SunX509
-- `require_client_auth`: true
+* `client_encryption_options`: Specified options
+* `enabled`: true
+* `optional`: false
+* `keystore`: <`client-keystore.jks`>
+* `keystore_password`: Randomly generated password
+* `truststore`: <`client-truststore.jks`>
+* `truststore_password`: Randomly generated password
+* `protocol`: TLS
+* `store_type`: JKS
+* `algorithm`: SunX509
+* `require_client_auth`: true
