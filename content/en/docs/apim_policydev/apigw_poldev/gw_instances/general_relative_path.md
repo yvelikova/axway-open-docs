@@ -400,16 +400,11 @@ Click the browse button to select a web service to resolve to. Defaults to the w
 On the **Policies**
 tab, select the path and the policies to use for the web service. You can specify a single policy or a chain of policies. Policies are called in the order displayed on this tab. The global request policy, the policy automatically generated when the WSDL file is imported, and the global response policy are all selected in a chain by default. Complete the following fields:
 
-* **Matches the paths in the WSDL**:
-* Select this option if you want the resolver to use the paths specified in the WSDL file. This is the default.
-* **Matches this path**:
-* Select this option if you want to specify a different path from the WSDL file, and enter the path.
-* **Global Request Policy**:
-* If a global request policy is configured, when you select this setting, the global request policy is called first in the policy chain.
-* **Path Specific Policy**:
-* To configure a path-specific policy, select this setting, and browse to select a policy from the dialog.
-* **Global Response Policy**:
-* If a global response policy is configured, when you select this setting, the global response policy is called last in the policy chain.
+* **Matches the paths in the WSDL**: Select this option if you want the resolver to use the paths specified in the WSDL file. This is the default.
+* **Matches this path**: Select this option if you want to specify a different path from the WSDL file, and enter the path.
+* **Global Request Policy**: If a global request policy is configured, when you select this setting, the global request policy is called first in the policy chain.
+* **Path Specific Policy**: To configure a path-specific policy, select this setting, and browse to select a policy from the dialog.
+* **Global Response Policy**: If a global response policy is configured, when you select this setting, the global response policy is called last in the policy chain.
 
 Policies are only evaluated when selected, and when the policy can be reached. If any selected policy fails, the chain fails, and no more policies are evaluated.
 
