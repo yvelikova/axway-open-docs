@@ -117,9 +117,9 @@ Options:
 -f, --file = (filename.yml, filename.yaml, filename.json)
 ```
 
-### Other examples of valid resource types
+### Other valid resource types
 
-Use and reference the following examples of valid resource types to practice creating multiple resources.
+Use and reference the following json examples of multiple additional resource types possible to configure for an environment.
 
 **API Services**\
 
@@ -127,27 +127,14 @@ Use and reference the following examples of valid resource types to practice cre
 [
   {
     "apiVersion": "v1alpha1",
-    "group": "management",
     "kind": "APIService",
     "name": "apisvc1",
     "title": "apisvc1 title",
     "metadata": {
-        "audit": {
-            "createTimestamp": "2019-12-04T23:50:43.100+0000",
-            "createUserId": "DOSA_00000000000000000000000000000001",
-            "modifyTimestamp": "2019-12-04T23:50:43.100+0000",
-            "modifyUserId": "DOSA_00000000000000000000000000000001"
-        },
-        "resourceVersion": "846",
         "scope": {
-            "id": "e4e0839f6efb5aa4016efc23f41d0338",
             "kind": "Environment",
             "name": "env1"
-        },
-        "id": "e4e0839f6efb5aa4016efc23f607033d"
-    },
-    "attributes": {
-        "createdBy": "yaml"
+        }
     },
     "tags": ["apisvc", "cli", "axway"],
     "spec": {
@@ -156,27 +143,14 @@ Use and reference the following examples of valid resource types to practice cre
   },
   {
     "apiVersion": "v1alpha1",
-    "group": "management",
     "kind": "APIService",
     "name": "apisvc2",
     "title": "apisvc2 title",
     "metadata": {
-        "audit": {
-            "createTimestamp": "2019-12-04T23:50:43.100+0000",
-            "createUserId": "DOSA_00000000000000000000000000000001",
-            "modifyTimestamp": "2019-12-04T23:50:43.100+0000",
-            "modifyUserId": "DOSA_00000000000000000000000000000001"
-        },
-        "resourceVersion": "845",
         "scope": {
-            "id": "e4e0839f6efb5aa4016efc23f3040333",
             "kind": "Environment",
             "name": "env2"
-        },
-        "id": "e4e0839d6efb5a5c016efc23f51603e8"
-    },
-    "attributes": {
-        "createdBy": "yaml"
+        }
     },
     "tags": ["apisvc", "cli", "axway"],
     "spec": {
@@ -192,35 +166,14 @@ Use and reference the following examples of valid resource types to practice cre
 [
   {
     "apiVersion": "v1alpha1",
-    "group": "management",
     "kind": "APIServiceInstance",
     "name": "apisvcinst1",
     "title": "apisvcinst1 title",
     "metadata": {
-        "references": [
-            {
-                "id": "e4e0839d6efb5a5c016efc23f81703f3",
-                "kind": "APIServiceRevision",
-                "name": "apisvcrev1",
-                "type": "HARD"
-            }
-        ],
-        "audit": {
-            "createTimestamp": "2019-12-12T22:04:06.280+0000",
-            "createUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7",
-            "modifyTimestamp": "2019-12-12T22:04:06.280+0000",
-            "modifyUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7"
-        },
-        "resourceVersion": "849",
         "scope": {
-            "id": "e4e0839f6efb5aa4016efc23f41d0338",
             "kind": "Environment",
             "name": "env1"
-        },
-        "id": "e4e0839d6efb5a5c016efc23f90803f9"
-    },
-    "attributes": {
-        "createdBy": "yaml"
+        }
     },
     "tags": ["cli", "apisvcinst", "axway"],
     "spec": {
@@ -236,35 +189,14 @@ Use and reference the following examples of valid resource types to practice cre
   },
   {
     "apiVersion": "v1alpha1",
-    "group": "management",
     "kind": "APIServiceInstance",
     "name": "apisvcinst2",
     "title": "apisvcinst2 title",
     "metadata": {
-        "references": [
-            {
-                "id": "e4e0839d6efb5a5c016efc23f70d03ed",
-                "kind": "APIServiceRevision",
-                "name": "apisvcrev2",
-                "type": "HARD"
-            }
-        ],
-        "audit": {
-            "createTimestamp": "2019-12-12T22:04:06.581+0000",
-            "createUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7",
-            "modifyTimestamp": "2019-12-12T22:04:06.581+0000",
-            "modifyUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7"
-        },
-        "resourceVersion": "850",
         "scope": {
-            "id": "e4e0839f6efb5aa4016efc23f3040333",
             "kind": "Environment",
             "name": "env2"
         },
-        "id": "e4e0839d6efb5a5c016efc23fa3503ff"
-    },
-    "attributes": {
-        "createdBy": "yaml"
     },
     "tags": ["cli", "apisvcinst", "axway"],
     "spec": {
@@ -287,35 +219,14 @@ Use and reference the following examples of valid resource types to practice cre
 [
     {
         "apiVersion": "v1alpha1",
-        "group": "management",
         "kind": "APIServiceRevision",
         "name": "apisvcrev1",
         "title": "apisvcrev1 title",
         "metadata": {
-            "references": [
-                {
-                    "id": "e4e0839f6efb5aa4016efc23f607033d",
-                    "kind": "APIService",
-                    "name": "apisvc1",
-                    "type": "HARD"
-                }
-            ],
-            "audit": {
-                "createTimestamp": "2019-12-12T22:04:06.040+0000",
-                "createUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7",
-                "modifyTimestamp": "2019-12-12T22:04:06.040+0000",
-                "modifyUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7"
-            },
-            "resourceVersion": "848",
             "scope": {
-                "id": "e4e0839f6efb5aa4016efc23f41d0338",
                 "kind": "Environment",
                 "name": "env1"
-            },
-            "id": "e4e0839d6efb5a5c016efc23f81703f3"
-        },
-        "attributes": {
-            "createdBy": "yaml"
+            }
         },
         "tags": ["apisvcrev", "cli", "axway"],
         "spec": {
@@ -328,35 +239,14 @@ Use and reference the following examples of valid resource types to practice cre
     },
     {
         "apiVersion": "v1alpha1",
-        "group": "management",
         "kind": "APIServiceRevision",
         "name": "apisvcrev2",
         "title": "apisvcrev2 title",
         "metadata": {
-            "references": [
-                {
-                    "id": "e4e0839d6efb5a5c016efc23f51603e8",
-                    "kind": "APIService",
-                    "name": "apisvc2",
-                    "type": "HARD"
-                }
-            ],
-            "audit": {
-                "createTimestamp": "2019-12-12T22:04:05.774+0000",
-                "createUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7",
-                "modifyTimestamp": "2019-12-12T22:04:05.774+0000",
-                "modifyUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7"
-            },
-            "resourceVersion": "847",
             "scope": {
-                "id": "e4e0839f6efb5aa4016efc23f3040333",
                 "kind": "Environment",
                 "name": "env2"
-            },
-            "id": "e4e0839d6efb5a5c016efc23f70d03ed"
-        },
-        "attributes": {
-            "createdBy": "yaml"
+            }
         },
         "tags": ["apisvcrev", "cli", "axway"],
         "spec": {
@@ -376,41 +266,14 @@ Use and reference the following examples of valid resource types to practice cre
 [
     {
         "apiVersion": "v1alpha1",
-        "group": "management",
         "kind": "ConsumerInstance",
         "name": "consumerinst1",
         "title": "consumerinst1 title",
         "metadata": {
-            "references": [
-                {
-                    "id": "e4e0839d6efb5a5c016efc23f90803f9",
-                    "kind": "APIServiceInstance",
-                    "name": "apisvcinst1",
-                    "type": "HARD"
-                },
-                {
-                    "id": "e4e0839f6efb5aa4016efc240001034d",
-                    "kind": "ConsumerSubscriptionDefinition",
-                    "name": "consumersubdef1",
-                    "type": "SOFT"
-                }
-            ],
-            "audit": {
-                "createTimestamp": "2019-12-12T22:04:08.576+0000",
-                "createUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7",
-                "modifyTimestamp": "2019-12-12T22:04:08.576+0000",
-                "modifyUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7"
-            },
-            "resourceVersion": "858",
             "scope": {
-                "id": "e4e0839f6efb5aa4016efc23f41d0338",
                 "kind": "Environment",
                 "name": "env1"
-            },
-            "id": "e4e0839f6efb5aa4016efc2401ff0358"
-        },
-        "attributes": {
-            "createdBy": "yaml"
+            }
         },
         "tags": ["cli", "axway", "consumerinst"],
         "spec": {
@@ -437,41 +300,14 @@ Use and reference the following examples of valid resource types to practice cre
     },
     {
         "apiVersion": "v1alpha1",
-        "group": "management",
         "kind": "ConsumerInstance",
         "name": "consumerinst2",
         "title": "consumerinst1 title",
         "metadata": {
-            "references": [
-                {
-                    "id": "e4e0839d6efb5a5c016efc23fa3503ff",
-                    "kind": "APIServiceInstance",
-                    "name": "apisvcinst2",
-                    "type": "HARD"
-                },
-                {
-                    "id": "e4e0839d6efb5a5c016efc245a4f0423",
-                    "kind": "ConsumerSubscriptionDefinition",
-                    "name": "consumersubdef2",
-                    "type": "SOFT"
-                }
-            ],
-            "audit": {
-                "createTimestamp": "2019-12-12T22:04:31.657+0000",
-                "createUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7",
-                "modifyTimestamp": "2019-12-12T22:04:31.657+0000",
-                "modifyUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7"
-            },
-            "resourceVersion": "873",
             "scope": {
-                "id": "e4e0839f6efb5aa4016efc23f3040333",
                 "kind": "Environment",
                 "name": "env2"
-            },
-            "id": "e4e0839f6efb5aa4016efc245c28038d"
-        },
-        "attributes": {
-            "createdBy": "yaml"
+            }
         },
         "tags": ["cli", "axway", "consumerinst"],
         "spec": {
@@ -505,35 +341,14 @@ Use and reference the following examples of valid resource types to practice cre
 [
     {
         "apiVersion": "v1alpha1",
-        "group": "management",
         "kind": "ConsumerSubscriptionDefinition",
         "name": "consumersubdef1",
         "title": "consumersubdef1 title",
         "metadata": {
-            "references": [
-                {
-                    "id": "e4e0839f6efb5aa4016efc23fe000347",
-                    "kind": "Webhook",
-                    "name": "webhook1",
-                    "type": "SOFT"
-                }
-            ],
-            "audit": {
-                "createTimestamp": "2019-12-12T22:04:08.065+0000",
-                "createUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7",
-                "modifyTimestamp": "2019-12-12T22:04:08.065+0000",
-                "modifyUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7"
-            },
-            "resourceVersion": "856",
             "scope": {
-                "id": "e4e0839f6efb5aa4016efc23f41d0338",
                 "kind": "Environment",
                 "name": "env1"
-            },
-            "id": "e4e0839f6efb5aa4016efc240001034d"
-        },
-        "attributes": {
-            "createdBy": "yaml"
+            }
         },
         "tags": ["cli", "apisvcinst", "axway"],
         "spec": {
@@ -552,35 +367,14 @@ Use and reference the following examples of valid resource types to practice cre
     },
     {
         "apiVersion": "v1alpha1",
-        "group": "management",
         "kind": "ConsumerSubscriptionDefinition",
         "name": "consumersubdef2",
         "title": "consumersubdef2 title",
         "metadata": {
-            "references": [
-                {
-                    "id": "e4e0839f6efb5aa4016efc2458790382",
-                    "kind": "Webhook",
-                    "name": "webhook2",
-                    "type": "SOFT"
-                }
-            ],
-            "audit": {
-                "createTimestamp": "2019-12-12T22:04:31.183+0000",
-                "createUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7",
-                "modifyTimestamp": "2019-12-12T22:04:31.183+0000",
-                "modifyUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7"
-            },
-            "resourceVersion": "871",
             "scope": {
-                "id": "e4e0839f6efb5aa4016efc23f3040333",
                 "kind": "Environment",
                 "name": "env2"
-            },
-            "id": "e4e0839d6efb5a5c016efc245a4f0423"
-        },
-        "attributes": {
-            "createdBy": "yaml"
+            }
         },
         "tags": ["cli", "apisvcinst", "axway"],
         "spec": {
@@ -606,27 +400,14 @@ Use and reference the following examples of valid resource types to practice cre
 [
     {
         "apiVersion": "v1alpha1",
-        "group": "management",
         "kind": "Secret",
         "name": "secret1",
         "title": "secret1 title",
         "metadata": {
-            "audit": {
-                "createTimestamp": "2019-12-12T22:04:07.083+0000",
-                "createUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7",
-                "modifyTimestamp": "2019-12-12T22:04:07.083+0000",
-                "modifyUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7"
-            },
-            "resourceVersion": "852",
             "scope": {
-                "id": "e4e0839f6efb5aa4016efc23f41d0338",
                 "kind": "Environment",
                 "name": "env1"
-            },
-            "id": "e4e0839f6efb5aa4016efc23fc2a0342"
-        },
-        "attributes": {
-            "createdBy": "yaml"
+            }
         },
         "tags": ["secret", "cli", "axway"],
         "spec": {
@@ -638,27 +419,14 @@ Use and reference the following examples of valid resource types to practice cre
     },
     {
         "apiVersion": "v1alpha1",
-        "group": "management",
         "kind": "Secret",
         "name": "secret2",
         "title": "secret2 title",
         "metadata": {
-            "audit": {
-                "createTimestamp": "2019-12-12T22:04:06.837+0000",
-                "createUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7",
-                "modifyTimestamp": "2019-12-12T22:04:06.837+0000",
-                "modifyUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7"
-            },
-            "resourceVersion": "851",
             "scope": {
-                "id": "e4e0839f6efb5aa4016efc23f3040333",
                 "kind": "Environment",
                 "name": "env2"
-            },
-            "id": "e4e0839d6efb5a5c016efc23fb350405"
-        },
-        "attributes": {
-            "createdBy": "yaml"
+            }
         },
         "tags": ["secret", "cli", "axway"],
         "spec": {
@@ -677,35 +445,14 @@ Use and reference the following examples of valid resource types to practice cre
 [
     {
         "apiVersion": "v1alpha1",
-        "group": "management",
         "kind": "Webhook",
         "name": "webhook1",
         "title": "webhook1 title",
         "metadata": {
-            "references": [
-                {
-                    "id": "e4e0839f6efb5aa4016efc23fc2a0342",
-                    "kind": "Secret",
-                    "name": "secret1",
-                    "type": "SOFT"
-                }
-            ],
-            "audit": {
-                "createTimestamp": "2019-12-12T22:04:07.553+0000",
-                "createUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7",
-                "modifyTimestamp": "2019-12-12T22:04:07.553+0000",
-                "modifyUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7"
-            },
-            "resourceVersion": "854",
             "scope": {
-                "id": "e4e0839f6efb5aa4016efc23f41d0338",
                 "kind": "Environment",
                 "name": "env1"
-            },
-            "id": "e4e0839f6efb5aa4016efc23fe000347"
-        },
-        "attributes": {
-            "createdBy": "yaml"
+            }
         },
         "tags": ["webhook", "cli", "axway"],
         "spec": {
@@ -725,32 +472,14 @@ Use and reference the following examples of valid resource types to practice cre
     },
     {
         "apiVersion": "v1alpha1",
-        "group": "management",
         "kind": "Webhook",
         "name": "webhook2",
         "title": "webhook2 title",
         "metadata": {
-            "references": [
-                {
-                    "id": "e4e0839d6efb5a5c016efc23fb350405",
-                    "kind": "Secret",
-                    "name": "secret2",
-                    "type": "SOFT"
-                }
-            ],
-            "audit": {
-                "createTimestamp": "2019-12-12T22:04:30.714+0000",
-                "createUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7",
-                "modifyTimestamp": "2019-12-12T22:04:30.714+0000",
-                "modifyUserId": "DOSA_c6222da2490c46a1a34a1aeeee4bb7e7"
-            },
-            "resourceVersion": "869",
             "scope": {
-                "id": "e4e0839f6efb5aa4016efc23f3040333",
                 "kind": "Environment",
                 "name": "env2"
-            },
-            "id": "e4e0839f6efb5aa4016efc2458790382"
+            }
         },
         "attributes": {
             "createdBy": "yaml"
