@@ -1,7 +1,7 @@
 {
 "title": "Configure API Gateway high availability",
 "linkTitle": "Configure API Gateway HA",
-"weight":"45",
+"weight":"38",
 "date": "2019-10-15",
 "description": "Recommended architecture for an API Gateway HA production environment."
 }

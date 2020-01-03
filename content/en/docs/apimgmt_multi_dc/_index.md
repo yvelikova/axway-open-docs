@@ -21,13 +21,12 @@ This deployment architecture is described as follows:
 
 * Each datacenter includes the same components deployed in active/active mode. Each datacenter can handle all of the traffic load and can scale in the same way. The API Gateway instances and Cassandra nodes in each datacenter are all highly available.
 * API Gateway group configuration is shared across both datacenters. This means that all API Gateway instances in a group are managed as a single unit, and run the same configuration to virtualize the same APIs and execute the same policies.
-* You must have at least two API Gateway instances per datacenter, at least one of which is an Admin Node Manager. However, you can configure mutliple Admin Node Managers per datacenter for high availability. For more details, see the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/)    .
+* You must have at least two API Gateway instances per datacenter, at least one of which is an Admin Node Manager. However, you can configure multiple Admin Node Managers per datacenter for high availability.
 * The API Gateway group in the internal zone is responsible for API management. The Admin Node Manager is the central administration server responsible for all management operations. For example, this enables API Gateway administrators to perform monitoring in the API Gateway Manager web console.
-* The API Gateway group in the internal zone also hosts the API Manager web console used by API administrators. For more details, see the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
+* The API Gateway group in the internal zone also hosts the API Manager web console used by API administrators.
 * The API Gateway group in the outer DMZ is responsible for securing traffic. The Node Manager manages local API Gateways instances on that host only.
 * The Cassandra database cluster is required to store data for API Manager or API Gateway client registry (API key or OAuth). You can use Cassandra as an option to store custom KPS data and OAuth tokens. You can also use an RDBMS to store custom KPS, OAuth tokens, or metrics for API Manager or API Gateway Analytics.
-* Caching is replicated between API Gateway instances using the Ehcache distributed caching system. For more details, see [Global caches](/csh?context=604&product=prod-api-gateway-77)
-    in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+* Caching is replicated between API Gateway instances using the Ehcache distributed caching system. For more details, see [Global distributed cache settings](docs/apim_policydev/apigw_poldev/general_cache/#global-distributed-cache-settings).
 
 ### API Management data storage
 
