@@ -127,6 +127,7 @@ To import an existing back-end REST or SOAP API that is already deployed on an 
     * **Service**: Select the API Gateway service name (for example, **AcmePayment**.
     * **API name**: Enter the API name (for example, **Acme Payment API**).
     * **Organization**: Select the organization (for example **Acme Inc**).
+    
 4. Click **Import** to import the API into the catalog.
 
 ## Manually register a new back-end REST API
@@ -139,10 +140,12 @@ To manually register a new back-end REST API in API Manager, perform the followi
     * **API name**: Enter a required name for the API (for example, **Acme API**).
     * **Service type**: Enter a service type for the API (for example, defaults to **REST**).
     * **Organization**: Select a required organization for the API (for example, **Acme Inc**).
+    * **Backend URL**: If an API has multiple backends then these are listed in this dropdown (OAS3 only).
     * **Base path URL**: Enter a resource path. Defaults to `http://basepath.org`.
     * **Summary**: Enter an optional summary for the API to display in the **API Catalog**.
     * **Resource path**: Enter a resource path for the API. Defaults to `/api`.
     * **API version**: Enter an optional version number for the API. Defaults to `1.0`.
+    
     * **Description**: Click the **Edit** tab, and enter an optional description for the API.
 
 ## Create REST API methods
