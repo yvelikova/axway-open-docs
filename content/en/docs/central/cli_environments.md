@@ -119,7 +119,7 @@ Options:
 
 ### Other valid resource types
 
-Use and reference the following json examples of multiple additional resource types possible to configure for an environment.
+Use and reference the following JSON examples of additional resource types to configure an environment.
 
 **API Services**\
 
