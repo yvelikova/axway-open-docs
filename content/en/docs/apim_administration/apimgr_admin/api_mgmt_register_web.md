@@ -51,10 +51,9 @@ To automatically register an existing back-end REST API in API Manager, perform 
 1. Click the **API Registration** > **Backend API** view in API Manager.
 2. Click **New API** and select one of the following:
     * **Import Swagger API**: Import an API in Swagger format. Only JSON format is supported for Swagger API definition files. For more details on Swagger, see [http://swagger.io](http://swagger.io/).
-    * **Import RAML API**: Import an API in RESTful API Modeling Language (RAML) format. Importing RAML files that include references to external files is not supported. For more details on RAML, see <http://raml.org/>.
     * **Import WADL API**: Import an API in Web Application Description Language (WADL) format. For more details on WADL, see <https://wadl.java.net/>.
 3. In the **Import API** dialog, complete the following:
-    * **Source**: Select the source type from the list (for example, Swagger, RAML, WADL definition file or URL).
+    * **Source**: Select the source type from the list (for example, Swagger, WADL definition file or URL).
     * **File** or **URL**: Click the browse button to select the definition file, or enter the URL.
     * **API Name**: A user-friendly name for the API (for example, `Test API`).
     * **Organization**: Select the organization from the list (for example, **Acme Inc**).
@@ -168,7 +167,7 @@ To add a REST API method to a newly registered API, perform the following steps:
 4. To specify content types that can be produced by the API method, click the plus (+) button in the **PRODUCES CONTENT-TYPE**
     section, and enter the content type. For example, `application/xml`, `text/plain`, and so on. Defaults to `application/json`.
 5. To specify response codes that can be produced by the API method, click the plus (+) button in the **RESPONSE CODES**
-    section, and select the response codes (for example, `Create codes (201, 403, 500)`).
+    section, and select the response codes (for example, `Create codes (201, 403, 500)`). Different **RESPONSE TYPES** are avilable from a the **RESPONSE TYPES** sropdown menu. These are AllOf, Reference, Primitive, Void and Custom. JSON response can also be added       
 6. To add more API methods, click the add button on the top left.
 
 ## Create the REST API data model
@@ -189,6 +188,8 @@ When you have registered the back-end API, you can select it in the list of regi
 * **Export API**: Exports a copy of the selected back-end API (in `.json`
     format). You can then import this into another API Manager environment as required as a back-end API.
 * **Download original API description**: For APIs imported from Swagger or WADL definitions, downloads a copy of the original REST API definition.
+
+{{< alert title="Tip" color="primary" >}}The API Admin can configure all backend APIs to be editable by default using the 'Allow users to modify Backend APIs' option in **API Manager settings** {{< /alert >}} 
 
 ## Next steps
 
