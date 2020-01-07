@@ -152,8 +152,6 @@ To add a REST API method to a newly registered API, perform the following steps:
     * **Method Name**: Enter a required name for the API method (for example, `GetProducts`), and enter an optional **Method summary**.
     * **Verb**: Enter a required HTTP verb for the API method. Defaults to `GET`.
     * **Path**: Enter the path for the method. Defaults to `/`.
-    * **API version**: Enter an optional response type for the API method (for example, a general type like `int`
-        or `string`, or a custom type in the schema model for the API) Defaults to `void`.
     * **Description**: Click the **Edit** tab, and enter an optional description for the API.
 2. To add a parameter exposed by the API method, click the add button in the **PARAMETERS** section, and complete the following details:
     * **NAME**: Enter a required name for the parameter (for example, `customer_name`).
