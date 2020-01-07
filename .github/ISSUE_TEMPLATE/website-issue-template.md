@@ -2,7 +2,7 @@
 name: Website issue template
 about: Report an issue that is not related to documentation content (for example,  issues
   with navigation, search, and non-documentation pages)
-title: "[WEDSITE]"
+title: "[WEBSITE]"
 labels: ''
 assignees: ''
 
