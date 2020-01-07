@@ -13,23 +13,29 @@ const alert = {
     },
     { name: 'content', label: 'Content', widget: 'markdown' },
   ],
-  fromBlock: match =>
-    match && {
-      title: match[1],
-      color: match[2],
-      content: match[3],
-    },
-  toBlock: ({ title = '', color = '', content = '' }) => (
-    `{{< alert title="${title}" color="${color}" >}}${content}{{< /alert >}}`
-  ),
-  // eslint-disable-next-line react/display-name
+  fromBlock: match => {
+    if (!match) {
+      return;
+    }
+    const attrsExp = /([\w]*)="([^"]*)"/g;
+    const attrs = match[1] && [...match[1].matchAll(attrsExp)]
+      .reduce((acc, { 1: key, 2: value }) => ({ ...acc, [key]: value }), {})
+    return { color: 'primary', ...attrs, content: match[2] }
+  },
+  toBlock: ({ title = '', color = '', content = '' }) => {
+    return `{{< alert title="${title}" color="${color}" >}}${content}{{< /alert >}}`
+  },
   toPreview: ({ title = '', color = '', content = '' }) => (
-    <div className={`alert alert-${color}`} role="alert">
-      <h4 className="alert-heading">{title}</h4>
-      {content}
-    </div>
+    <div
+      className={`alert alert-${color}`}
+      role="alert"
+      dangerouslySetInnerHTML={{ __html: `
+        <h4 className="alert-heading">${title}</h4>
+        ${marked(content)}
+      `}}
+    />
   ),
-  pattern: /^{{< alert title="(.*)" color="(.*)" >}}([\s\S]*){{< \/alert >}}$/,
+  pattern: /^{{[<%] *alert +(.*) *[>%]}}([\s\S]*){{[<%] *\/alert *[>%]}}$/,
 };
 
 CMS.registerEditorComponent(alert);
