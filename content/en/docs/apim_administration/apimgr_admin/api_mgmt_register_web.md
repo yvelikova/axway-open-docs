@@ -64,9 +64,7 @@ When the REST API has been imported, it is displayed as read only in API Manager
 
 ![Imported APIs in the web console](/Images/docbook/images/api_mgmt/api_mgmt_backend_api_import.png)
 
-You can click an API name in the list to view its general details, methods, and schema model. The following example shows the details displayed for the **Petstore** Swagger API:
-
-![Imported API details in the web console](/Images/docbook/images/api_mgmt/api_mgmt_backend_api_import_details.png)
+You can click an API name in the list to view its general details, methods, and schema model.
 
 {{< alert title="Note" color="primary" >}}Do not use spaces or the URL encoded `%20` in the base path URL.{{< /alert >}}
 
@@ -139,7 +137,9 @@ To manually register a new back-end REST API in API Manager, perform the followi
     * **API name**: Enter a required name for the API (for example, **Acme API**).
     * **Service type**: Enter a service type for the API (for example, defaults to **REST**).
     * **Organization**: Select a required organization for the API (for example, **Acme Inc**).
+    * **Backend URL**: Select a back-end URL (Available only for OAS3 APIs with multiple backends).
     * **Base path URL**: Enter a resource path. Defaults to `http://basepath.org`.
+        * Do not use spaces or the URL encoded `%20` in the base path URL.
     * **Summary**: Enter an optional summary for the API to display in the **API Catalog**.
     * **Resource path**: Enter a resource path for the API. Defaults to `/api`.
     * **API version**: Enter an optional version number for the API. Defaults to `1.0`.
