@@ -7,6 +7,10 @@
 
 This topic details the steps you must follow to configure API Manager SSO. It also lists the prerequisites for configuring SSO, describes the configuration files used to configure SSO, and provides some usage guidelines.
 
+Watch this video to see how to configure Single-Sign On based on the Keycloak example.
+
+{{< youtube OsN06SowUAg >}}
+
 ## Prerequisites
 
 Before you can start to configure API Manager SSO:
