@@ -97,3 +97,46 @@ Now you can navigate to Integration Builder, and see the connector template defi
 
 ![view ib connector](/Images/central/catalog_export_view_exported.png)
 
+Here is a gif of the entire process:
+
+![export demo](/Images/central/catalog_export.gif)
+
+
+## Authenticate an exported API from Unified Catalog in Integration Builder
+
+
+Before you can use your exported connector you need to configure the authentication settings under your connectors **Setup** section. The following assumes you already have an APIKey or JWT configured for your Catalog Item.
+
+Under **Configurations** click the 'Add Configuration' button to add a blank config. This will allow you to pass in your apikey/JWT when creating a connector instance. You can fill in the config fields as follows:
+
+* Name: Whatever makes sense to your connectors auth. Eg: apikey or jwt
+* Key: this.api.key
+* Type: password
+* Hide UI: Make sure this is unchecked
+* Required: Make sure this is checked
+
+![config ib connector](/Images/central/catalog_export_IB_auth_config.png)
+
+Now under the *Parameters* section you'll want to configure the instances to utilize the configured key (jwt or apikey) from the previous step as a header. Click the 'Add Parameter' button and fill in the config fields as follows:
+
+* Name: this.api.key
+* Type: configuration
+* Name (Vendor): Authorization
+* Type (Vendor): header
+
+![param ib connector](/Images/central/catalog_export_IB_auth_param.png)
+
+Now you can authenticate your Integration Builder instance by navigating to *API Docs* and selecting **Authenticate Instance**
+
+![connector instance](/Images/central/catalog_export_IB_auth_instance.png)
+
+You can name the instance whatever you like. You'll see the configuration field we setup earlier. You can now insert your key/jwt as follows:
+
+* For jwt: *Bearer \<jwt token here\>*
+* For apikey: *Apikey \<apikey here\>*
+
+![connector instance key](/Images/central/catalog_export_IB_auth_instance_key.png)
+
+Here is a gif of the entire process:
+
+![auth demo](/Images/central/catalog_auth.gif)
