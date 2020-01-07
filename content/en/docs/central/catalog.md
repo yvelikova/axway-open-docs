@@ -72,3 +72,28 @@ To delete the subscription of an endpoint:
 * Click the **Subscriptions** tab on the endpoint detail page.
 * Click the **Gear** icon next to the subscription you want to delete.
 * Click **Delete**.
+
+## Promote an API from Unified Catalog to Integration Builder
+
+Customers that are leveraging our iPaaS can now promote an API published in the Unified Catalog to Integration Builder as a custom connector with a button click. 
+
+To promote an API as a connector template, you need to select the API from the Unified Catalog and click on the **Export to Integration Builder** button (see image below):
+
+![export to integration builder](/Images/central/catalog_export_to_integration_builder.png)
+
+You'll be asked to provide the Organization and User secrets for the Integration Builder environment you'd want the connector template to be created in: 
+
+![secrets prompt](/Images/central/catalog_export_secrets_prompt.png)
+
+Those values can be found in Integration Builder, in the bottom left corner of the menu: 
+
+![ib secrets location](/Images/central/catalog_export_ib_secrets.png)
+
+After all required values are filled in, click on Export. If the connector was created successfully, you'll get the message below:
+
+![export success](/Images/central/catalog_export_success.png)
+
+Now you can navigate to Integration Builder, and see the connector template definition: 
+
+![view ib connector](/Images/central/catalog_export_view_exported.png)
+
