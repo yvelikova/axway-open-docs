@@ -21,9 +21,9 @@ The following new features and enhancements are available in this release.
 
 ### Swagger 2.0 enhancements
 
-API Manager now imports, retains, and exports all Open API Specification (OAS) v2.0 fields, except for the ventor extentions. 
+API Manager now imports, retains, and exports all Swagger v2.0 fields, except for the ventor extentions. 
 
-### Swagger 3.0 enhancements
+### Open API Specification (OAS) 3.0 enhancements
 
 * API Manager now imports, retains, and exports all Open API Specification (OAS) v3.0 fields, except for the ventor extentions, callbacks, links and examples.
 * Parameter content types are now supported in OAS3.
