@@ -150,16 +150,16 @@ For more information on API promotion, see [Promote managed APIs](/docs/apim_adm
 ### API Import
 
 **Strict certificate checking**
-: Select weather to validate that the certificate is recognised valid server certificates at import
+: Select whether to validate that the certificate is recognised as a valid server certificate during import.
 
 **Server certificate verification**
-: Select weather to validate that the certificate presented by the server matches the Remote Host being connected to at import 
+: Select whether to validate that the certificate presented by the server matches the Remote Host being connected to during import. 
 
 **Mime validation**
-: Select to perform Mime-Type validation during import. Mime-Type validation is implemented for OAS3 and Swagger 2 APIs. This option is defaulted to 'On' be default
+: Select to perform MIME Type validation during import. MIME Type validation is implemented for OAS3 and Swagger 2 APIs. This setting is enabled by default.
 
 **Import timeout (seconds)**
-: This is the maxium amount of time that will be spend importing an API. This is particularly useful while imported OAS3 files with multiple parts 
+: Maximum amount of time to wait until an API is imported. This is particularly useful while importing OAS3 files with multiple parts. 
 
 **Allow users to modify Backend APIs**
 : Select to ensure that all APIs imported are editable by default. 
