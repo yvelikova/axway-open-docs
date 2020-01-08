@@ -51,10 +51,9 @@ To automatically register an existing back-end REST API in API Manager, perform 
 1. Click the **API Registration** > **Backend API** view in API Manager.
 2. Click **New API** and select one of the following:
     * **Import Swagger API**: Import an API in Swagger format. Only JSON format is supported for Swagger API definition files. For more details on Swagger, see [http://swagger.io](http://swagger.io/).
-    * **Import RAML API**: Import an API in RESTful API Modeling Language (RAML) format. Importing RAML files that include references to external files is not supported. For more details on RAML, see <http://raml.org/>.
     * **Import WADL API**: Import an API in Web Application Description Language (WADL) format. For more details on WADL, see <https://wadl.java.net/>.
 3. In the **Import API** dialog, complete the following:
-    * **Source**: Select the source type from the list (for example, Swagger, RAML, WADL definition file or URL).
+    * **Source**: Select the source type from the list (for example, Swagger, WADL definition file or URL).
     * **File** or **URL**: Click the browse button to select the definition file, or enter the URL.
     * **API Name**: A user-friendly name for the API (for example, `Test API`).
     * **Organization**: Select the organization from the list (for example, **Acme Inc**).
@@ -64,9 +63,7 @@ When the REST API has been imported, it is displayed as read only in API Manager
 
 ![Imported APIs in the web console](/Images/docbook/images/api_mgmt/api_mgmt_backend_api_import.png)
 
-You can click an API name in the list to view its general details, methods, and schema model. The following example shows the details displayed for the **Petstore** Swagger API:
-
-![Imported API details in the web console](/Images/docbook/images/api_mgmt/api_mgmt_backend_api_import_details.png)
+You can click an API name in the list to view its general details, methods, and schema model.
 
 {{< alert title="Note" color="primary" >}}Do not use spaces or the URL encoded `%20` in the base path URL.{{< /alert >}}
 
@@ -139,7 +136,9 @@ To manually register a new back-end REST API in API Manager, perform the followi
     * **API name**: Enter a required name for the API (for example, **Acme API**).
     * **Service type**: Enter a service type for the API (for example, defaults to **REST**).
     * **Organization**: Select a required organization for the API (for example, **Acme Inc**).
+    * **Backend URL**: Select a back-end URL (Available only for OAS3 APIs with multiple backends).
     * **Base path URL**: Enter a resource path. Defaults to `http://basepath.org`.
+        * Do not use spaces or the URL encoded `%20` in the base path URL.
     * **Summary**: Enter an optional summary for the API to display in the **API Catalog**.
     * **Resource path**: Enter a resource path for the API. Defaults to `/api`.
     * **API version**: Enter an optional version number for the API. Defaults to `1.0`.
@@ -153,8 +152,6 @@ To add a REST API method to a newly registered API, perform the following steps:
     * **Method Name**: Enter a required name for the API method (for example, `GetProducts`), and enter an optional **Method summary**.
     * **Verb**: Enter a required HTTP verb for the API method. Defaults to `GET`.
     * **Path**: Enter the path for the method. Defaults to `/`.
-    * **API version**: Enter an optional response type for the API method (for example, a general type like `int`
-        or `string`, or a custom type in the schema model for the API) Defaults to `void`.
     * **Description**: Click the **Edit** tab, and enter an optional description for the API.
 2. To add a parameter exposed by the API method, click the add button in the **PARAMETERS** section, and complete the following details:
     * **NAME**: Enter a required name for the parameter (for example, `customer_name`).
@@ -163,12 +160,12 @@ To add a REST API method to a newly registered API, perform the following steps:
     * **DATA TYPE**: Select the parameter data type (for example, `string`, `int`, `boolean`, and so on). Defaults to `string`.
     * **REQUIRED**: Select whether the parameter is required. Defaults to `No`.
     * **ALLOW MULTIPLE**: Select whether multiple parameters are allowed. Defaults to `No`.
-3. To specify content types that can be consumed by the API method, click the plus (+) button in the **CONSUMES CONTENT-TYPE**
+3. To specify content types that can be consumed by the API method, click the plus (+) button in the **Consumes content-type**
     section, and enter the content type. For example, `application/xml`, `text/plain`, and so on. Defaults to `application/json`.
-4. To specify content types that can be produced by the API method, click the plus (+) button in the **PRODUCES CONTENT-TYPE**
+4. To specify content types that can be produced by the API method, click the plus (+) button in the **Produces content-type**
     section, and enter the content type. For example, `application/xml`, `text/plain`, and so on. Defaults to `application/json`.
-5. To specify response codes that can be produced by the API method, click the plus (+) button in the **RESPONSE CODES**
-    section, and select the response codes (for example, `Create codes (201, 403, 500)`).
+5. To specify response codes that can be produced by the API method, click the plus (+) button in the **Response codes**
+    section, and select the response codes (for example, `Create codes (201, 403, 500)`).       
 6. To add more API methods, click the add button on the top left.
 
 ## Create the REST API data model
@@ -189,6 +186,8 @@ When you have registered the back-end API, you can select it in the list of regi
 * **Export API**: Exports a copy of the selected back-end API (in `.json`
     format). You can then import this into another API Manager environment as required as a back-end API.
 * **Download original API description**: For APIs imported from Swagger or WADL definitions, downloads a copy of the original REST API definition.
+
+{{< alert title="Tip" color="primary" >}}The API Admin can configure all back-end APIs to be editable by default using the **Allow users to modify Backend APIs** option in **API Manager settings** {{< /alert >}} 
 
 ## Next steps
 
