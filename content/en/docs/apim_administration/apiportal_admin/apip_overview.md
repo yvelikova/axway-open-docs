@@ -39,11 +39,11 @@ API Portal supports two rendering tools to customize the visualization of the AP
 
 ### Swagger.io SwaggerUI
 
-This UI shows the commonly known fields of a method, and it is the default option for SOAP APIs. It supports only API Gateway as an OAuth resource server.
+This interface shows the commonly known fields of a method, and it is the default option for SOAP APIs. It supports only API Gateway as an OAuth resource server.
 
 ### AMPLIFY SwaggerUI
 
-This is the default tool used to visualize REST APIs. It supports OpenAPI specifications and is built over the official Swagger.io. In addition to the commonly known fields of a method, the AMPLIFY tool also provides the following:
+This is the default tool used to visualize REST APIs. It supports OpenAPI specifications and it is built over the official Swagger.io. In addition to the commonly known fields of a method, the AMPLIFY SwaggerUI also provides the following:
 
 * **Examples (or, snippets)** - This section displays a line or block of code that you can copy and paste, and run straight away using the relevant tool (curl, Titanium, node.js, web.js).
 * **OAuth Authorization code flow** - Allows you to request a token to authorize access to your requests using an OAuth authorization code, as opposed to the `Client credentials` option where you need a secret key to request the token.
