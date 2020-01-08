@@ -1,5 +1,5 @@
 {
-    "title": "Introduction to KPS",
+    "title": "Introduction to Key Property Store",
     "linkTitle": "Introduction to KPS",
     "weight":"65",
     "date": "2020-01-06",

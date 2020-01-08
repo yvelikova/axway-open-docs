@@ -98,31 +98,14 @@ To define a test policy that accesses the table, perform the following steps:
 
     ```
     ========================
-
     User
-
     ===
-
     Email: ${kps.User[http.querystring.id].email}
-
     First Name: ${kps.User[http.querystring.id].firstName}
-
     Last Name: ${kps.User[http.querystring.id].lastName}
-
     Age: ${kps.User[http.querystring.id].age}
-
     ========================
     ```
-
-    The selector parts are explained as follows:
-    : `${`: Indicates the start of the selector using a `{` bracket.
-    : `kps`: Specifies that selector should query a KPS table.
-    : `.User`: Specifies the alias of the table to query (in this case, `User`).
-    : `[`: Indicates the start of a table property reference using a `[` bracket.
-    : `http.querystring.id`: This is a dynamic query based on an HTTP query string parameter of `id`. The primary key value is retrieved from this parameter. The row with this key value is * : returned from the `User` table if it exists.
-    : `]`: Indicates the end of a table property reference using a `]` bracket.
-    : `.age`: Retrieves the `age` column.
-    : `}`: Indicates the end of the selector using a `}` bracket.
 
     {{< alert title="Note" color="primary" >}}Add a **Reflect Message** filter (**Conversion** category) to return a successful HTTP response status of `200`.{{< /alert >}}
 
