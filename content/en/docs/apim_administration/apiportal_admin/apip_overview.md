@@ -35,22 +35,19 @@ API Portal provides the following capabilities for both internal and external a
 
 ## Additional features – API Catalog view
 
-API Portal offers two rendering options to customize the visualization of the APIs and their methods.
+API Portal supports two rendering tools to customize the visualization of the APIs and their methods.
 
 ### Swagger.io SwaggerUI
 
-This option shows the commonly known fields of a method, and it is the default option for SOAP APIs. It supports only API Gateway as an OAuth resource server.
+This interface shows the commonly known fields of a method, and it is the default option for SOAP APIs. It supports only API Gateway as an OAuth resource server.
 
 ### AMPLIFY SwaggerUI
 
-In addition to the commonly known fields of a method, the AMPLIFY option also provides the following:
+This is the default tool used to visualize REST APIs. It supports OpenAPI specifications and it is built over the official Swagger.io. In addition to the commonly known fields of a method, the AMPLIFY SwaggerUI also provides the following:
 
-* **Body Parameters** - Shows the body of the parameter and its JSON schema.
 * **Examples (or, snippets)** - This section displays a line or block of code that you can copy and paste, and run straight away using the relevant tool (curl, Titanium, node.js, web.js).
 * **OAuth Authorization code flow** - Allows you to request a token to authorize access to your requests using an OAuth authorization code, as opposed to the `Client credentials` option where you need a secret key to request the token.
 * **External OAuth resource servers** - Supports authorization code flow only.
-
-The AMPLIFY option also allows you to customize the method colors (grayscale or colorful). It is the default option for REST APIs.
 
 {{% alert title="Note" %}}
 Clients in external OAuth servers must be created as public, and their redirect URL must be set to `{apiportal-url}/cb`.
