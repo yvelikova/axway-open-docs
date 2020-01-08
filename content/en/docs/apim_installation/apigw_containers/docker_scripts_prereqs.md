@@ -79,7 +79,7 @@ Run the `docker network` command:
 docker network create api-gateway-domain
 ```
 
-This example creates a Docker network called `api-gateway-domain`. For more details on the `docker network` command, see the [Docker user documentation](https://docs.docker.com/ "https\://docs.docker.com/").
+This example creates a Docker network called `api-gateway-domain`. For more details on the `docker network` command, see the [Docker user documentation](https://docs.docker.com).
 
 ### Example API Gateway domain
 
