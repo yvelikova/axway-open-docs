@@ -11,6 +11,7 @@ When APIs have been registered in API Manager, you can promote them directly bet
 The following approaches to promoting managed APIs are also available:
 
 * Use the `apimanager-promote` script to automatically promote APIs between environments with zero downtime for DevOps.
+* Use the `swagger-promote` tool to follow the APIs as Code approach. [Learn more](https://github.com/Axway-API-Management-Plus/apimanager-swagger-promote)
 * Use a promotion policy that you have configured in Policy Studio to automate promotion between environments.
 * When APIs have been developed using Policy Studio, you can also promote them between environments using the API Gateway mechanism for promotion and deployment of standard API Gateway configuration.
 
