@@ -2,10 +2,9 @@
 title: Set up Docker environment
 linkTitle: Set up Docker environment
 weight: 30
-date: 2019-09-18
+date: 2019-09-18T00:00:00.000Z
 description: Prerequisites and steps you must follow to set up your Docker environment.
 ---
-
 ## Before you start
 
 Your system must meet the following prerequisites before you can run the scripts to build and deploy API Gateway in Docker containers.
@@ -27,7 +26,9 @@ For more details on Docker system requirements, see [Docker](https://docs.docker
 You must download the following from [Axway Support](https://support.axway.com).
 
 * API Gateway Linux installer
-* Docker scripts package
+* [APIGateway_7.6.2-8_ScriptsPackageDocker_linux-x86-64_BN27072018.tar.gz](https://support.axway.com/en/downloads/download-details/id/1439671) Docker scripts package.
+
+{{< alert title="Note" color="primary" >}}The scripts in this package applies to any version of API Gateway from 7.6.2 onward.{{< /alert >}}
 
 #### API Gateway licenses
 
@@ -78,7 +79,7 @@ Run the `docker network` command:
 docker network create api-gateway-domain
 ```
 
-This example creates a Docker network called `api-gateway-domain`. For more details on the `docker network` command, see the [Docker user documentation](https://docs.docker.com/ "https://docs.docker.com/").
+This example creates a Docker network called `api-gateway-domain`. For more details on the `docker network` command, see the [Docker user documentation](https://docs.docker.com).
 
 ### Example API Gateway domain
 
@@ -188,6 +189,7 @@ The following example creates a certificate signing request (CSR).
 
 * You must send the generated CSR to a CA for signing.
 * When running the scripts to build Admin Node Manager or API Gateway images, specify the certificate and private key returned from the CA, and not the CSR.
+
 
 ```
 cd emt_containers-<version>
