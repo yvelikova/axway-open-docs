@@ -154,7 +154,7 @@ Description
 
 #### OAuth
 
-Configure the following to enable OAuth authorization:
+Configure the following to enable OAuth authorization for Access-Tokens issued by the API-Manager:
 
 ##### General OAuth settings
 
@@ -211,7 +211,7 @@ Token name
 
 #### OAuth (External)
 
-Configure the following to enable OAuth authorization:
+Configure the following to enable OAuth authorization for Access-Tokens issued by an external Token-Provider:
 
 ##### General OAuth (external) settings
 
