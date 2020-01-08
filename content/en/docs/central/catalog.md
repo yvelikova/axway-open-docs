@@ -104,10 +104,13 @@ Here is a gif of the entire process:
 
 ## Authenticate an exported API from Unified Catalog in Integration Builder
 
+This section describes out to configure authentication for an API exported from Unified Catalog
 
-Before you can use your exported connector you need to configure the authentication settings under your connectors **Setup** section. The following assumes you already have an APIKey or JWT configured for your Catalog Item.
+## Before you start
 
-Under **Configurations** click the 'Add Configuration' button to add a blank config. This will allow you to pass in your apikey/JWT when creating a connector instance. You can fill in the config fields as follows:
+* The following assumes you already have an APIKey or JWT configured for your API as well as a valid subscription. Please refer to 'Subscribe to an endpoint' above.
+
+Before you can use your exported connector you need to configure the authentication settings under your connectors **Setup** section. Under **Configurations** click the 'Add Configuration' button to add a blank config. This will allow you to pass in your apikey/JWT when creating a connector instance. You can fill in the config fields as follows:
 
 * Name: Whatever makes sense to your connectors auth. Eg: apikey or jwt
 * Key: this.api.key
