@@ -11,8 +11,8 @@ description: >
 To tolerate the loss of one Cassandra node and to ensure 100% data consistency, API Gateway requires at a minimum the following Cassandra cluster configuration running in a production class environment:
 
 * Three Cassandra nodes (with one seed node)
-      * A seed node is contacted by other nodes when joining the Cassandra-Cluster to get required Cluster-Information, therefore the seed node must be started first
-      * It is not recommended to make all Cassandra-Nodes a seed, as they are producing traffic overhead
+      * Other nodes contact the seed node when joining the Cassandra cluster to get required cluster information, therefore you must start the seed node first.
+      * It is not recommended to make all Cassandra nodes a seed, as they produce traffic overhead.
 * `Replication factor` setting set to `3`, so each node holds 100% of the data.
 * `QUORUM` read/write consistency to ensure that you are reading from a quorum of Cassandra nodes (two) every time.
   {{% alert title="Caution" color="warning" %}}
@@ -95,11 +95,12 @@ The procedure to configure additional nodes uses the `seed` node that you have p
 
 You must repeat these steps for each additional node.
 
-### Multi-DC Cassandra-Cluster  
+### Multi-DC Cassandra cluster  
 
-For more complex Cassandra-Cluster deployments the following information are important to know.  
-The parameter `listen_address` is used for the internal Cassandra-Cluster communication using the Gossip protocol. You can either use the parameter `listen_address` or the `listen_interface`. You have to make sure, that the assigned IP-Address is reachable from __ALL__ other nodes in the cluster.  
-The `rpc_address` is used for Cassandra-Clients like the API-Manager to connect to the node. This IP-Address might be a different one than the `listen_address` as it must be reachable for local clients only.
+For more complex Cassandra cluster deployments, the following information is important:  
+
+* The parameter `listen_address` is used for the internal Cassandra cluster communication using the Gossip protocol. You can either use the parameter `listen_address` or the `listen_interface`. Ensure that the assigned IP address is reachable from _all_ other nodes in the cluster.  
+* The `rpc_address` is used for Cassandra clients like API Manager to connect to the node. This IP address might be different to the `listen_address` as it must be reachable for local clients only.
 
 ### Create a new Cassandra database user
 
