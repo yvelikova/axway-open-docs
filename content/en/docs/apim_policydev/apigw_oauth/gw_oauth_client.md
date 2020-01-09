@@ -298,8 +298,7 @@ You can configure a OAuth credential profile to set a Bearer token in the author
 
 1. In the Policy Studio tree, click **External Connections > Client Credentials > OAuth2**.
 2. On the OAuth Credentials tab, double-click the credential profile you want to edit.
-3. If you haven't already got a token to access an API then you have to get one.
-To get the token you need to select the [**Get Oauth Token filter**](/docs/apim_policydev/apigw_oauth/oauth_client_filters/#getoauthtoken).
+3. If you do not already have a token to access the API, add a [**Get Oauth Token filter**](/docs/apim_policydev/apigw_oauth/oauth_client_filters/#getoauthtoken) to get a token.
 4. Call the Resource server:
 
     * Select the filter **Connect to URL**.
