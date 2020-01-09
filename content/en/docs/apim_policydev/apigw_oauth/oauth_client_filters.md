@@ -61,7 +61,7 @@ Enter the message attribute to be used as the key to lookup the token. Defaults 
 **Choose profile to be used for token request**:
 Click the browse button to select an OAuth 2.0 client credential profile.
 
-## Get OAuth client access token filter
+## Get OAuth client access token filter {#getoauthtoken}
 
 You can use the **Get OAuth Access Token** filter to request a token. This filter attempts to get the access token from persistent storage, and if a token is not available it sends an outbound token request.
 
