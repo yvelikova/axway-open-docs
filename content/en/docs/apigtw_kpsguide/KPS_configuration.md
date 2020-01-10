@@ -1,5 +1,5 @@
 {
-"title": "Configure KPS in Policy Studio",
+"title": "Configure a KPS",
 "linkTitle": "Configure KPS in Policy Studio",
 "weight":"40",
 "date": "2020-01-06",
@@ -8,9 +8,9 @@
 
 For details on data source-specific configuration, see the following topics:
 
-* [Configure Apache Cassandra KPS storage](Configure_Apache_Cassandra_Storage)
-* [Configure database KPS storage](Configure_database_storage)
-* [Configure file-based KPS storage](Configure_file_based_storage)
+* [Configure Apache Cassandra KPS storage](/docs/apigtw_kpsguide/configure_database_storage/#configure-apache-cassandra-kps-storage)
+* [Configure database KPS storage](/docs/apigtw_kpsguide/configure_database_storage/#configure-database-kps-storage)
+* [Configure file-based KPS storage](/docs/apigtw_kpsguide/configure_database_storage/#configure-file-based-kps-storage)
 
 {{< alert title="Caution" color="warning" >}}Do not edit the default KPS tables in Policy Studio unless under strict supervision from Axway Support. This includes the **API Server**, **OAuth**, or **API Portal** KPS tables available under **Environment Configuration** > **Key Property Stores**.{{< /alert >}}
 
@@ -58,9 +58,11 @@ A KPS collection has one active data source associated with it. All tables in t
 
 When creating a table, you must define the structure of the data that is stored in that table. This consists of property (column) names and types. You can choose from the following types:
 
-`String`, `Boolean`, `Byte`, `Integer`, `Long`, `Double` - Java type.
-`List` - Java List of any one of the above Java types.
-`Map` - Java Map. The key can be any one of the above Java types. The value can be any one of the above Java types.
+| Property  | Type |
+| --- | --- |
+|`String`, `Boolean`, `Byte`, `Integer`, `Long`, `Double` | Java type.|
+|`List` | Java List of any one of the above Java types.|
+|`Map` | Java Map. The key can be any one of the above Java types. The value can be any one of the above Java types.|
 
 {{< alert title="Note" color="primary" >}}Do not use just `key` as the property (column) name, because this causes deployment errors.{{< /alert >}}
 
@@ -108,11 +110,11 @@ You can also use a composite key, for example:
 ${kps.alias[key1][key2].property}
 ```
 
-For an example of accessing KPS data from a selector using a primary key, see [Get started with KPS](Get_started).
+For an example of accessing KPS data from a selector using a primary key, see [Get started with KPS](/docs/apigtw_kpsguide/get_started/).
 
-For examples of selectors that use both primary and composite keys, see [Configure database KPS storage](Configure_database_storage).
+For examples of selectors that use both primary and composite keys, see [Configure database storages](/docs/apigtw_kpsguide/configure_database_storage/).
 
-The following  shows more examples of KPS selectors:
+The following shows more examples of KPS selectors:
 
 ```
 ${kps.User[http.querystring.id].firstName}

@@ -3,7 +3,7 @@
 "linkTitle": "Manage KPS using the kpsadmin tool",
 "weight":"50",
 "date": "2020-01-06",
-"description": "Learn how to use the `kpsadmin` tool in interactive and scriptable command modes."
+"description": "Learn how to use the kpsadmin tool in interactive and scriptable command modes."
 }
 
 The kpsadmin command-line tool provides KPS managment functions, independent of data source. For example, this includes KPS data backup, restore, encryption, and diagnostics.
@@ -20,7 +20,7 @@ From a command prompt, enter kpsadmin. For example:
 INSTALL_DIR/posix/bin/kpsadmin
 ```
 
-If you do not specify a command operation (for example, `kpsadmin backup` or `restore`), `kpsadmin` enters its default interactive menu mode.
+If you do not specify a command operation (for example, `kpsadmin backup` or `restore`), `kpsadmin` enters its default interactive menu mode. For details on available operations in scriptable command mode, see [Run kpsadmin operations in scriptable command mode](#run-kpsadmin-operations-in-scriptable-command-mode).
 
 In default interactive mode, you are first prompted to enter your admin credentials to authenticate to the Admin Node Manager. These are the credentials that you supplied when installing API Gateway.
 
@@ -114,7 +114,7 @@ This example shows how to switch from Cassandra storage to file storage.
 
 #### Step 1: Backup collection data using kpsadmin
 
-To copy the current data in the collection to the new data source, back up the collection data using kpsadmin option 21) Backup All.
+To copy the current data in the collection to the new data source, back up the collection data using kpsadmin option ``21) Backup All``.
 
 The backup UUID is highlighted in the following example:
 
@@ -130,7 +130,7 @@ To create the new data source, perform the following steps:
 
     ![KPS collection Data Sources tab](/Images/APIGatewayKPSUserGuide/0300001A.png)
 4. Enter a file data source **Name** and **Description**.
-5. Enter a **Directory Path** (for example, ${VINSTDIR/kps/samples).
+5. Enter a **Directory Path** (for example, `${VINSTDIR/kps/samples`).
 
     {{< alert title="Tip" color="primary" >}}You can include `${VINSTDIR}` or `${VDISTDIR}` to indicate the gateway instance directory or install directory respectively. Make sure to use `/` on Linux. If the directory does not exist, it is automatically created.{{< /alert >}}
 6. Select the collection **Properties** tab.
@@ -142,9 +142,9 @@ To create the new data source, perform the following steps:
 
 #### Step 4: Restore collection data using kpsadmin
 
-If you have made a backup in [step 1](#step-1-backup-collection-data-using-kpsadmin), to restore the collection data, perform the following steps:
+If you have made a backup in [Backup collection data using kpsadmin](#step-1-backup-collection-data-using-kpsadmin), to restore the collection data, perform the following steps:
 
-1. Using kpsadmin, select option 22) Restore All.
+1. Using kpsadmin, select option `22) Restore All`.
 2. Enter the backup UUID noted in step 1. For example:
 
 ![Restore collection data using kpsadmin](/Images/APIGatewayKPSUserGuide/0300001D.png)

@@ -6,6 +6,18 @@
 "description": "A Key Property Store (KPS) is a table of data that can be referenced from policies running on the API Gateway."
 }
 
+This guide describes how to configure and manage the API Gateway Key Property Store (KPS). The KPS enables you to manage API Gateway data referenced from policies running on the API Gateway.
+
+## Who should read this guide
+
+The intended audience for this guide is KPS administrators and policy developers. For more details on API Gateway user roles, see the API Gateway Concepts Guide. This guide assumes that you are familiar with the following:
+
+* Database concepts such as tables, rows, and keys
+* API Gateway configuration and deployment
+* API Gateway selectors
+* Using command line tools
+* Database configuration where database storage is required
+
 Data in a KPS table is assumed to be read frequently and seldom written, and can be changed without incurring an API Gateway service outage. KPS tables are shared across a gateway group
 
 ## KPS architecture
@@ -24,9 +36,9 @@ KPS tables are organized into *collections*. The tables in a collection typicall
 
 KPS data can be stored in one of the following locations:
 
-* **External Apache Cassandra database**: Data can be distributed across multiple nodes to provide high availability. This is the default data store. See [Configure Apache Cassandra KPS storage](6_Configure_Apache_Cassandra_Storage.htm).
-* **Relational database**: Accessible to all API Gateway instances in the gateway group. See [Configure database KPS storage](7_Configure_database_storage.htm)
-* **JSON files**: On the local file system (deprecated). See [Configure file-based KPS storage](8_Configure_file_based_storage.htm)
+* **External Apache Cassandra database**: Data can be distributed across multiple nodes to provide high availability. This is the default data store. See [Configure Apache Cassandra KPS storage](/docs/apigtw_kpsguide/configure_database_storage/#configure-apache-cassandra-kps-storage).
+* **Relational database**: Accessible to all API Gateway instances in the gateway group. See [Configure database storageS](/docs/apigtw_kpsguide/configure_database_storage/)
+* **JSON files**: On the local file system (deprecated). See [Configure file-based KPS storage](/docs/apigtw_kpsguide/configure_database_storage/#configure-a-file-based-kps-collection)
 
 {{< alert title="Note" color="primary" >}}Custom KPS data defined in Policy Studio supports Cassandra, database, and file data stores. API Manager KPS data (Client Registry and API Catalog) supports Cassandra only. File-based KPS is deprecated and will be removed in a future release.{{< /alert >}}
 
@@ -34,10 +46,10 @@ KPS data can be stored in one of the following locations:
 
 API Gateway provides the following client applications:
 
-* **Policy Studio**: Enables policy developers to create KPS collections and tables, and to configure data sources. See [Configure KPS](3_KPS_configuration.htm).
-* **API Gateway Manager**: Includes a visual web-based interface to enable KPS administrators to view and modify KPS data at runtime. See [Get started with KPS](2_Get_started.htm)
+* **Policy Studio**: Enables policy developers to create KPS collections and tables, and to configure data sources. See [Configure KPS](/docs/apigtw_kpsguide/kps_configuration/).
+* **API Gateway Manager**: Includes a visual web-based interface to enable KPS administrators to view and modify KPS data at runtime. See [Get started with KPS](/docs/apigtw_kpsguide/get_started/)
 * **kpsadmin command**: Supports KPS data entry and other administrative functions. It is designed for use in a development environment. See [Manage a KPS using kpsadmin](5_How_to_use_the_kpsadmin_command.htm)
-* **KPS REST API**: Enables remote programmatic clients to read and write KPS data. See the [API Gateway REST API](https://support.axway.com/htmldoc/1433379)
+* **KPS REST API**: Enables remote programmatic clients to read and write KPS data.
 
 ## When to use a KPS
 

@@ -3,7 +3,7 @@
 "linkTitle": "Get started with KPS",
 "weight":"30",
 "date": "2020-01-06",
-"description": "Develop an example KPS table for managing simple user information. "
+"description": "Develop an example KPS table for managing simple user information."
 }
 
 ## Example KPS table
@@ -70,7 +70,7 @@ To create a table, perform the following steps:
     * lastName
     * age
 
-    `age` has an Integer (numeric) **Type**. All the other columns are String. For more details, see [KPS table structure](/docs/apigtw_kpsguide/KPS_configuration#KPS-table-structure).
+    `age` has an Integer (numeric) **Type**. All the other columns are String. For more details, see [KPS table structure](/docs/apigtw_kpsguide/kps_configuration/#kps-table-structure).
 
 6. When you select the **User** table, you should have the following structure:
 
@@ -121,7 +121,7 @@ When you are finished with your configuration changes, you must deploy them to t
 
 This pushes the configuration to the API Gateway group.
 
-{{< alert title="Tip" color="primary" >}}If you deploy an incorrect configuration (for example, specify an incorrect primary key, property type, or name) you can use the `kpsadmin` command to drop the table in storage. For more details, see [How to use the kpsadmin command](/docs/apigtw_kpsguide/How_to_use_the_kpsadmin_command).{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}If you deploy an incorrect configuration (for example, specify an incorrect primary key, property type, or name) you can use the `kpsadmin` command to drop the table in storage. For more details, see [Manage KPS using the kpsadmin tool](/docs/apigtw_kpsguide/how_to_use_kpsadmin_command/).{{< /alert >}}
 
 ## Add KPS data using API Gateway Manager
 
@@ -142,7 +142,9 @@ For example, the table should look as follows:
 
 To access KPS data from a policy, go to the following URL in your browser:
 
+```
 http://localhost:8080/kpsGetViaSelector?id=patrica.allen@acme.com
+```
 
 This URL specifies the user ID (email) as patrica.allen@acme.com
 

@@ -1,12 +1,14 @@
 {
-"title": "Configure database KPS storage",
-"linkTitle": "Configure database KPS storage",
+"title": "Configure database storages",
+"linkTitle": "Configure database storages",
 "weight":"60",
 "date": "2020-01-06",
-"description": "Store KPS data in relational databases."
+"description": "Store KPS data in relational databases, and configure Apache Cassandra for a highly available (HA) data storage option for KPS."
 }
 
-API Gateway supports the following databases:
+## Configure database KPS storage
+
+KPS data can be stored in a relational database. API Gateway supports the following databases:
 
 * Oracle
 * IBM DB2
@@ -17,22 +19,24 @@ API Gateway supports the following databases:
 
 The options for database storage are as follows:
 
-1. **Shared database storage**:  Data for multiple KPS tables is stored in a single dedicated database table. Data is encoded in JSON before being stored. This approach is very flexible because it allows maps and lists to be stored in tables. It also minimizes administration overhead because only a single database table needs to be created and managed. This is the recommended approach.
-2. **Per-table database storage**  Each KPS table is backed by a single database table. Each property in the KPS table maps to a corresponding column in the database table. This approach allows existing tables to be reused, and allows more precise tuning at database level. However, it also has significant limitations (for example, with supported data types and adding and viewing data).
+* **Shared database storage**:  Data for multiple KPS tables is stored in a single dedicated database table. Data is encoded in JSON before being stored. This approach is very flexible because it allows maps and lists to be stored in tables. It also minimizes administration overhead because only a single database table needs to be created and managed. This is the recommended approach.
+* **Per-table database storage**  Each KPS table is backed by a single database table. Each property in the KPS table maps to a corresponding column in the database table. This approach allows existing tables to be reused, and allows more precise tuning at database level. However, it also has significant limitations (for example, with supported data types and adding and viewing data).
 
 ## Shared database storage
 
 For shared database storage, a single database table is used to store data for multiple KPS tables. This section describes the storage configuration steps.
 
-### Step 1: Create a KPS database table
+### Create a KPS database table
 
 Create a database table called `kps_object` by executing the appropriate SQL script for your database system. SQL scripts are available in the following location:
 
+```
 INSTALL_DIR/system/conf/sql/DB_NAME/kps.sql
+```
 
 {{< alert title="Note" color="primary" >}}For Oracle, ensure that the database is created with the AL32UTF8 character set encoding to support UTF-8. {{< /alert >}}
 
-### Step 2: Set up an external connection to the database
+### Set up an external connection to the database
 
 To access this table from the API Gateway, you must setup an external database connection from the API Gateway.
 
@@ -42,9 +46,11 @@ The following shows example database connection settings in Policy Studio:
 
 {{< alert title="Note" color="primary" >}}For MySQL and MariaDB, the table creation script specifies UTF-8. You must also use the correct JDBC connection URL. Update the connection **URL** field to specify Unicode & UTF-8. For example:{{< /alert >}}
 
+```
 jdbc:mysql://testserver:3306/kps?useUnicode=true&characterEncoding=UTF-8
+```
 
-### Step 3: Use the external connection in a KPS collection
+### Use the external connection in a KPS collection
 
 When creating a KPS collection, you can select database storage in the **Default data source** field. The following example shows an SQL database selected:
 
@@ -52,7 +58,7 @@ When creating a KPS collection, you can select database storage in the **Defaul
 
 Alternatively, you can add a database storage option to the collection later. On the **Data Sources** tab, select **Add** > **Add Database**.
 
-For an example with file storage, see [Configure file-based KPS storage](/docs/apigtw_kpsguide/Configure_file_based_storage).
+For an example with file storage, see [Configure file-based KPS storage](/docs/apigtw_kpsguide/configure_database_storage/#configure-file-based-kps-storage).
 
 #### Database storage information
 
@@ -63,7 +69,7 @@ The following describes how KPS data is stored in a database:
 * KPS rows are JSON encoded
 * Optimistic locking is used and is enforced using a version column
 
-##### Increase row size
+**Increase row size**\
 
 You can increase the maximum KPS row size by changing the `largeValue` column. For example, to support image icons in MySQL or MariaDB, enter the following command:
 
@@ -85,13 +91,9 @@ To enable OpenJPA debug logging:
 
 2. Add the following settings:
 
-    <PLACEHOLDER>
-
-3. Change the level from "error" to "debug" in all the lines shown bellow:
-
     ```
+    Change the level from "error" to "debug" in all the lines shown bellow:
     <Root level="info">
-
     <Logger name="org.apache.openjpa.Tool" level="error" additivity="false">
     <Logger name="org.apache.openjpa.Runtime" level="error" additivity="false">
     <Logger name="org.apache.openjpa.Remote" level="error" additivity="false">
@@ -105,8 +107,8 @@ To enable OpenJPA debug logging:
     <Logger name="org.apache.openjpa.jdbc.Schema" level="error" additivity="false">
     ```
 
-4. Restart the API Gateway.
-5. Verify that debug statements are written to the log.
+3. Restart the API Gateway.
+4. Verify that debug statements are written to the log.
 
 ##### Disable OpenJPA debug logging
 
@@ -150,15 +152,21 @@ CREATE TABLE User (
      );
 ```
 
-insert into User (email, password, firstName, lastName, age) values ("ralph.jones@acme.com", "password", "Ralph", "Jones", 30);
+```
+insert into User (email, password, firstName, lastName, age)
+values ("ralph.jones@acme.com", "password", "Ralph", "Jones", 30);
+```
 
-insert into User (email, password, firstName, lastName, age) values ("kathy.adams@acme.com", "blah", "Kathy", "Adams", 35);
+```
+insert into User (email, password, firstName, lastName, age)
+values ("kathy.adams@acme.com", "blah", "Kathy", "Adams", 35);
+```
 
-#### Step 1: Set up an external connection to the database
+#### Set up external connection to the database
 
-To access a database from the API Gateway, you must set up an external database connection (see [Step 2: Set up an external connection to the database](#Step-2-set-up-an-external-connection-to-the-database)). This example uses the configuration from [Get started with KPS](/docs/apigtw_kpsguide/Get_started).
+To access a database from the API Gateway, you must set up an external database connection (see [Set up an external connection to the database](#set-up-an-external-connection-to-the-database)). This example uses the configuration from [Get started with KPS](/docs/apigtw_kpsguide/get_started/).
 
-#### Step 2: Add the database data source to the KPS collection
+#### Add the database data source to the KPS collection
 
 To add a database data source, perform the following steps:
 
@@ -170,75 +178,89 @@ To add a database data source, perform the following steps:
 
     ![Add Database Datasource dialog](/Images/APIGatewayKPSUserGuide/0300002B.png)
 
-#### Step 3: Map the SQL table to a KPS table
+#### Map the SQL table to a KPS table
 
 From an existing KPS collection, perform the following steps:
 
-1.  Right-click the KPS collection, and select **Map SQL Table**:
-2.  ![Map SQL Table](/Images/APIGatewayKPSUserGuide/0300002C.png)
-3.  Enter an alias in the dialog (for example `mapUser`) :
-4.  ![Map SQL Table options](/Images/APIGatewayKPSUserGuide/0300002D.png)
-5.  Enter a database-specific JDBC SQL query to retrieve the required data. For example:
-6.  select * from User where email = ?
-7.  On the **Properties** tab of the new KPS table, select the new database data source in **Override the default data source with the following**:
-8.  ![](/Images/APIGatewayKPSUserGuide/0300002E.png)
+1. Right-click the KPS collection, and select **Map SQL Table**:
 
-#### Step 4: Define the KPS table structure
+    ![Map SQL Table](/Images/APIGatewayKPSUserGuide/0300002C.png)
+
+2. Enter an alias in the dialog (for example `mapUser`) :
+
+    ![Map SQL Table options](/Images/APIGatewayKPSUserGuide/0300002D.png)
+
+3. Enter a database-specific JDBC SQL query to retrieve the required data. For example:
+
+    ```
+    select * from User where email = ?
+    ```
+
+4. On the **Properties** tab of the new KPS table, select the new database data source in **Override the default data source with the following**:
+
+    ![Override the default data source](/Images/APIGatewayKPSUserGuide/0300002E.png)
+
+#### Define the KPS table structure
 
 You must define a KPS table structure into which data will be read. You must specify the fields that you expect to read with the SQL query. In this example, all fields in the table are read using an asterisk (*) in the SQL query. This lists all fields, so the order does not matter in this case. However, the names and type must match the result returned by the SQL query.
 
 In this SQL query, `email` is the primary key. You specify `email` as the property to use in corresponding selector queries:
 
-![](/Images/APIGatewayKPSUserGuide/0300002F.png)
+![SQL Table Map example](/Images/APIGatewayKPSUserGuide/0300002F.png)
 
 For example, you can use the following selector:
 
+```
 ${kps.mapUser["kathy.adams@acme.com"].age}
+```
+
 {{< alert title="Note" color="primary" >}}This syntax uses ASCII quotation marks (").{{< /alert >}}
 
 This selector generates the following SQL query:
 
+```
 select * from User where email = "kathy.adams@acme.com"
+```
 
-#### Step 5: Define the policy and path
+#### Define the policy and path
 
-You can reuse the policy and path from [*Get started with KPS* on page 1](2_Get_started.htm) with one change—use the `mapUser` KPS alias for this new table. For example:
+You can reuse the policy and path from [Get started with KPS](/docs/apigtw_kpsguide/get_started) with one change—use the `mapUser` KPS alias for this new table. For example:
 
-![](/Images/APIGatewayKPSUserGuide/03000030.png)
+![Set the message](/Images/APIGatewayKPSUserGuide/03000030.png)
 
-#### Step 6: Deploy and run
+#### Deploy and run
 
 Click **Deploy** in the Policy Studio toolbar.
 
-To run the policy in your browser, go to:
-
-<http://localhost:8080/kpsGetViaSelector?id=kathy.adams@acme.com>
+To run the policy in your browser, go to `<http://localhost:8080/kpsGetViaSelector?id=kathy.adams@acme.com>`
 
 This URL specifies the user ID (`email`) as <kathy.adams@acme.com>.
 
-For example, the result is as follows:
-
-![](/Images/APIGatewayKPSUserGuide/03000031.png)
-
 ### How to map a database table using a composite key
 
-This section modifies the example in [*How to map a database table using a single key* on page 1](#How). This section shows how a table with a composite secondary key can be accessed from a selector. In this version, the secondary key is `{firstName, lastName}`.
+This section modifies the example in [map a database table using a single key](#map-a-database-table-using-a-single-key). This section shows how a table with a composite secondary key can be accessed from a selector. In this version, the secondary key is `{firstName, lastName}`.
 
-#### Step 1: Modify the KPS table
+#### Modify the KPS table
 
 You must update the database-specific JDBC SQL query in the KPS table to retrieve the required data.
 
 To modify the KPS table, perform the following steps:
 
-1.  On the **Properties** tab in the **Query** field, enter the following:
-2.  select * from User where firstName = ? and lastName = ?
+1. On the **Properties** tab in the **Query** field, enter the following:
 
-3.  For example:
-4.  ![](/Images/APIGatewayKPSUserGuide/03000032.png)
-5.  On the **Structure** tab, change the selector properties to `firstName,lastName`:
-6.  ![](/Images/APIGatewayKPSUserGuide/03000033.png)
+    ```
+    select * from User where firstName = ? and lastName = ?
+    ```
 
-#### Step 2: Modify the policy
+    For example:
+
+    ![SQL Table Map example](/Images/APIGatewayKPSUserGuide/03000032.png)
+
+2. On the **Structure** tab, change the selector properties to `firstName,lastName`:
+
+    ![SQL Table Map example](/Images/APIGatewayKPSUserGuide/03000033.png)
+
+#### Modify the policy
 
 You must update the **Set Message** filter in your policy to use `firstName` and `lastName` parameters. For example:
 
@@ -246,30 +268,57 @@ You must update the **Set Message** filter in your policy to use `firstName` and
 
 Enter the following in the **Message Body** field, using a single line for each entry (`Email`, `First Name`, `Last Name`, and `Age`):
 
+```
 ========================
-
 User
-
 ===
-
 Email: ${kps.mapUser[http.querystring.firstName][http.querystring.lastName].email}
-
 First Name: ${kps.mapUser[http.querystring.firstName][http.querystring.lastName].firstName}
-
 Last Name: ${kps.mapUser[http.querystring.firstName][http.querystring.lastName].lastName}
-
 Age: ${kps.mapUser[http.querystring.firstName][http.querystring.lastName].age}
-
 ========================
+```
 
-#### Step 3: Deploy and run
+#### Deploy and run the policy
 
 Click **Deploy** in the Policy Studio toolbar.
 
-To run the policy in a browser, go to the following URL:
-
-<http://localhost:8080/kpsGetViaSelector?firstName=Kathy&lastName=Adams>
+To run the policy in a browser, go to the following URL: `<http://localhost:8080/kpsGetViaSelector?firstName=Kathy&lastName=Adams>`
 
 For example, the result is as follows:
 
-![](/Images/APIGatewayKPSUserGuide/03000035.png)
+![Policy in a browser](/Images/APIGatewayKPSUserGuide/03000035.png)
+
+## Configure file-based KPS storage
+
+You can store KPS data in a directory on the file system. Each table is stored in a single JSON file. File-based storage is specified at the KPS collection or KPS table level.
+
+{{< alert title="Note" color="primary" >}} File-based KPS storage is deprecated and will be removed in a future release.{{< /alert >}}
+
+File-based KPS storage is most suited to single API Gateway deployments. In a multi-API Gateway scenario, file replication or a shared disk is required to ensure that all API Gateways use the same data.
+
+KPS data defined in Policy Studio supports Cassandra, database, and file data stores. API Manager. KPS data (Client Registry and API Catalog) supports Cassandra only.
+
+File-based KPS tables are read and cached by API Gateways when they start up. If data is modified, all API Gateways must be restarted to pick up the changes.
+
+## Configure a file-based KPS collection
+
+You can configure a file-based KPS data source when creating a KPS collection, or add one later on the **Data Source** tab. For example, the following settings are available when editing file-based collection:
+
+![Data Source tab](/Images/APIGatewayKPSUserGuide/03000036.png)
+
+These settings are described as follows:
+
+| Name               | Description         |
+|--------------------|----------------------|
+| **Name**           | Collection-unique data source name.   |
+| **Description**    | Optional description.   |
+| **Directory Path** | The directory name where table data for the collection is stored. If the directory does not exist, it is automatically created. If this directory is not specified, the directory path defaults to `${VINSTDIR}/conf/kps`. The path can include `VDISTDIR` or `VINSTDIR` variables. These are resolved to the API Gateway instance and installation directories. For example, `${VDISTDIR}/mydata/samples`. Remember to use the correct path separator (/ on Linux).  |
+
+## Configure Apache Cassandra KPS storage
+
+Apache Cassandra provides a highly available (HA) data storage option for KPS. API Gateway can connect to an external Cassandra database cluster. You must configure three Cassandra nodes to provide a HA data service. A default single Cassandra node, non-HA system typically does not require additional configuration.
+
+{{< alert title="Note" color="primary" >}}Custom KPS data defined in Policy Studio supports Cassandra, database, and file data stores. However, API Manager KPS tables (Client Registry and API Catalog) support Cassandra only. Database and file data stores are not supported for API Manager. Three-node Cassandra HA with full consistency is required for API Manager.{{< /alert >}}
+
+For details on installing and configuring Apache Cassandra HA for API Gateway and API Manager, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).
