@@ -36,7 +36,7 @@ API Portal provides the following capabilities for both internal and external a
 
 API Portal supports two rendering tools to customize the visualization of the APIs and their methods.
 
-### AMPLIFY SwaggerUI
+### SwaggerUI 3.x
 
 This is the UI tool used to visualize REST APIs. It supports OpenAPI specifications and it is built over the official Swagger.io. In addition to the commonly known fields of a method, the AMPLIFY SwaggerUI also provides the following:
 
@@ -48,7 +48,7 @@ This is the UI tool used to visualize REST APIs. It supports OpenAPI specificati
 Clients in external OAuth servers must be created as public, and their redirect URL must be set to `{apiportal-url}/cb`.
 {{% /alert %}}
 
-### Swagger.io SwaggerUI
+### SwaggerUI 1.x
 
 This interface shows the commonly known fields of a method, and it is the UI tool for SOAP APIs. It supports only API Gateway as an OAuth resource server.
 
