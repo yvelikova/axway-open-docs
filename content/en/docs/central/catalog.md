@@ -8,7 +8,7 @@ description: Normalize discovery for APIs from multiple gateways, classify your 
 
 *Estimated reading time*: 5 minutes
 
-## AMPLIFY Catalog Overview
+## Overview
 
 The AMPLIFY Central and Catalog work together to help customers to have a common place to import their APIs from all of their distributed API gateways throughout their enterprise.
 
@@ -17,19 +17,15 @@ Alongside API interfaces, you can find Managed File Transfer (MFT) and B2B conne
 
 AMPLIFY Catalog allows developers to discover and understand the endpoints and protocols that they can use to integrate quickly with your services. It simplifies access and increases the speed of building, integrating, and deploying new services and apps. Platform administrators can limit content access to specific users or teams and manage subscriptions.
 
-## AMPLIFY Catalog Subscriptions
+## Subscriptions
 
 This section describes how to manage AMPLIFY Catalog subscriptions.
 
-## Before you start
+### Before you start
 
-* You will need to create an app in AMPLIFY Central and secure it with an API key. See [Get started with AMPLIFY Central](/docs/central/quickstart).
+* You will need to create an app in AMPLIFY Central and secure it with an API Key. See [Get started with AMPLIFY Central](/docs/central/quickstart).
 
-## Objectives
-
-Learn how to manage subscriptions to an endpoint in the AMPLIFY Catalog
-
-## Subscribe to an endpoint
+### Subscribe to an endpoint
 
 To subscribe to an endpoint:
 
@@ -43,15 +39,13 @@ Watch the animation to learn how to subscribe to an endpoint.
 
 ![Subscribe to a catalog item](/Images/central/catalog_subscribe.gif)
 
-## View the subscriptions of an endpoint
+### View the subscriptions of an endpoint
 
-To view the subscriptions of an endpoint:
-
-* Click the **Subscriptions** tab on the endpoint detail page.
+To view the subscriptions of an endpoint click the **Subscriptions** tab on the endpoint detail page.
 
 The result shows a table with the current subscriptions to the endpoint.
 
-## Unsubscribe from an endpoint
+### Unsubscribe from an endpoint
 
 To unsubscribe from an endpoint:
 
@@ -63,7 +57,7 @@ Watch the animation to learn how to unsubscribe from an endpoint.
 
 ![Unsubscribe from a catalog item](/Images/central/catalog_unsubscribe.gif)
 
-## Delete the subscription of an endpoint
+### Delete the subscription of an endpoint
 
 You can only delete subscriptions which are in `Unsubscribed` status.
 
@@ -75,71 +69,69 @@ To delete the subscription of an endpoint:
 
 ## Promote an API from Unified Catalog to Integration Builder
 
-Customers that are leveraging our iPaaS can now promote an API published in the Unified Catalog to Integration Builder as a custom connector with a button click. 
+You can promote an API published in the Unified Catalog to Integration Builder as a custom connector.
 
-To promote an API as a connector template, you need to select the API from the Unified Catalog and click on the **Export to Integration Builder** button (see image below):
+### Before you start
 
-![export to integration builder](/Images/central/catalog_export_to_integration_builder.png)
+* Ensure that you have access to Integration Builder.
 
-You'll be asked to provide the Organization and User secrets for the Integration Builder environment you'd want the connector template to be created in: 
+To promote an API as a connector template:
 
-![secrets prompt](/Images/central/catalog_export_secrets_prompt.png)
+1. Select the API from the Unified Catalog and click **Export to Integration Builder**:
+2. On the **Export Your API to Integration Builder as a Connector** dialog, enter a **Name** for the template, and the **Organization** and **User** secrets for the Integration Builder environment where you want to created the connector template.
+3. Click **Export**.
 
-Those values can be found in Integration Builder, in the bottom left corner of the menu: 
+{{< alert title="Tip" color="primary" >}}You can find the **Organization** and **User** secrets in Integration Builder, on the bottom left corner of the menu.{{< /alert >}}
 
-![ib secrets location](/Images/central/catalog_export_ib_secrets.png)
+Now you can navigate to Integration Builder and see the connector template definition.
 
-After all required values are filled in, click on Export. If the connector was created successfully, you'll get the message below:
-
-![export success](/Images/central/catalog_export_success.png)
-
-Now you can navigate to Integration Builder, and see the connector template definition: 
-
-![view ib connector](/Images/central/catalog_export_view_exported.png)
-
-Here is a gif of the entire process:
+Watch the animation to learn how to perform this task.
 
 ![export demo](/Images/central/catalog_export.gif)
 
-
 ## Authenticate an exported API from Unified Catalog in Integration Builder
 
-This section describes out to configure authentication for an API exported from Unified Catalog
+This section describes how to configure authentication for an API exported from Unified Catalog.
 
-## Before you start
+### Before you start
 
-* The following assumes you already have an APIKey or JWT configured for your API as well as a valid subscription. Please refer to 'Subscribe to an endpoint' above.
+* The following assumes you already have an `API Key` or `JWT` configured for your API, as well as a valid subscription. For more information see [Subscribe to an endpoint](#subscribe-to-an-endpoint).
 
-Before you can use your exported connector you need to configure the authentication settings under your connectors **Setup** section. Under **Configurations** click the 'Add Configuration' button to add a blank config. This will allow you to pass in your apikey/JWT when creating a connector instance. You can fill in the config fields as follows:
+### Configure the authentication settings
 
-* Name: Whatever makes sense to your connectors auth. Eg: apikey or jwt
-* Key: this.api.key
-* Type: password
-* Hide UI: Make sure this is unchecked
-* Required: Make sure this is checked
+Before you can use your exported connector you must configure the authentication settings under your connectors **Setup** section:
 
-![config ib connector](/Images/central/catalog_export_IB_auth_config.png)
+1. From the **Connectors** menu, click tab **SETUP**, and click **Authentication** on the left side menu.
+2. Under **Configurations** click **Add Configuration** to add a blank config.
+    * This will allow you to pass in your `API Key` or `JWT` when creating a connector instance.
+3. Enter the required fields as follows:
+    * Name: Enter a meaningful name to your connectors authorizaton. For example: `API Key` or `JWT`
+    * Key: Enter your API Key
+    * Type: Enter a password
+    * Hide UI: This is unchecked by default. If selected, this will hide the configuration screen.
+    * Required: This is checked by default. If unselected, this will not require an authentication.
 
-Now under the *Parameters* section you'll want to configure the instances to utilize the configured key (jwt or apikey) from the previous step as a header. Click the 'Add Parameter' button and fill in the config fields as follows:
+### Configure the instances to utilize the configured key
 
-* Name: this.api.key
-* Type: configuration
-* Name (Vendor): Authorization
-* Type (Vendor): header
+Configure the instances to utilize the configured key from the previous section a header.
 
-![param ib connector](/Images/central/catalog_export_IB_auth_param.png)
+1. From the **Connectors** menu, click tab **SETUP**, and click **Parameters** on the left side menu.
+2. Click **Add Parameter** and Enter the required fields as follows:
+    * Name: Enter a meaningful name to your API Key
+    * Type: Select configuration
+    * Name (Vendor): Authorization
+    * Type (Vendor): header
 
-Now you can authenticate your Integration Builder instance by navigating to *API Docs* and selecting **Authenticate Instance**
+### Authenticate your Integration Builder instance
 
-![connector instance](/Images/central/catalog_export_IB_auth_instance.png)
+To authenticate your Integration Builder instance:
 
-You can name the instance whatever you like. You'll see the configuration field we setup earlier. You can now insert your key/jwt as follows:
+1. From the **Connectors** menu, click tab **API Docs** and select **Authenticate Instance**.
+    * The configuration field set up previously is shown.
+2. Enter a name for the instance and insert your `API Key` or `JWT`.
+    * For JWT: `Bearer \<jwt token here\>`
+    * For API Key: `API Key \<apikey here\>`
 
-* For jwt: *Bearer \<jwt token here\>*
-* For apikey: *Apikey \<apikey here\>*
-
-![connector instance key](/Images/central/catalog_export_IB_auth_instance_key.png)
-
-Here is a gif of the entire process:
+Watch the animation to learn how to perform this task.
 
 ![auth demo](/Images/central/catalog_auth.gif)
