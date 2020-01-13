@@ -50,7 +50,7 @@ Clients in external OAuth servers must be created as public, and their redirect 
 
 ### SwaggerUI 1.x
 
-This interface shows the commonly known fields of a method, and it is the UI tool for SOAP APIs. We use it because the API Gateway does not convert SOAP APIs to Swagger APIs higher than Swagger 1.1. It supports only API Gateway as an OAuth resource server.
+This interface shows the commonly known fields of a method, and it supports only API Gateway as an OAuth resource server. This is the UI tool for SOAP APIs because the API Gateway does not convert SOAP APIs to Swagger APIs higher than Swagger 1.1.
 
 ## API Portal users
 
