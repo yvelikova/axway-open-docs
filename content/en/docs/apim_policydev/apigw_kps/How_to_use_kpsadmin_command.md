@@ -1,12 +1,12 @@
 {
-"title": "Manage KPS using the kpsadmin tool",
-"linkTitle": "Manage KPS using the kpsadmin tool",
+"title": "Manage KPS using kpsadmin",
+"linkTitle": "Manage using kpsadmin",
 "weight":"50",
 "date": "2020-01-06",
 "description": "Learn how to use the kpsadmin tool in interactive and scriptable command modes."
 }
 
-The kpsadmin command-line tool provides KPS managment functions, independent of data source. For example, this includes KPS data backup, restore, encryption, and diagnostics.
+The kpsadmin command-line tool provides KPS management functions, independent of data source. For example, this includes KPS data backup, restore, encryption, and diagnostics.
 
 The kpsadmin tool is especially useful in a development environment. In a production environment, you should also use data source-specific tools and administration procedures for data backup, restore, security, optimization, monitoring and so on.
 

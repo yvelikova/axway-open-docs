@@ -1,6 +1,6 @@
 {
-"title": "Configure a KPS",
-"linkTitle": "Configure KPS in Policy Studio",
+"title": "Configure KPS in Policy Studio",
+"linkTitle": "Configure KPS",
 "weight":"40",
 "date": "2020-01-06",
 "description": "Define general KPS configuration in Policy Studio."

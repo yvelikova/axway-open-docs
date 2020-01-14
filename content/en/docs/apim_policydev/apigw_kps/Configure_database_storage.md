@@ -1,12 +1,10 @@
 {
-"title": "Configure database storages",
-"linkTitle": "Configure database storages",
+"title": "Configure database storage",
+"linkTitle": "Configure database storage",
 "weight":"60",
 "date": "2020-01-06",
 "description": "Store KPS data in relational databases, and configure Apache Cassandra for a highly available (HA) data storage option for KPS."
 }
-
-## Configure database KPS storage
 
 KPS data can be stored in a relational database. API Gateway supports the following databases:
 
@@ -289,11 +287,19 @@ For example, the result is as follows:
 
 ![Policy in a browser](/Images/APIGatewayKPSUserGuide/03000035.png)
 
+## Configure Apache Cassandra KPS storage
+
+Apache Cassandra provides a highly available (HA) data storage option for KPS. API Gateway can connect to an external Cassandra database cluster. You must configure three Cassandra nodes to provide a HA data service. A default single Cassandra node, non-HA system typically does not require additional configuration.
+
+{{< alert title="Note" color="primary" >}}Custom KPS data defined in Policy Studio supports Cassandra, database, and file data stores. However, API Manager KPS tables (Client Registry and API Catalog) support Cassandra only. Database and file data stores are not supported for API Manager. Three-node Cassandra HA with full consistency is required for API Manager.{{< /alert >}}
+
+For details on installing and configuring Apache Cassandra HA for API Gateway and API Manager, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).
+
 ## Configure file-based KPS storage
 
 You can store KPS data in a directory on the file system. Each table is stored in a single JSON file. File-based storage is specified at the KPS collection or KPS table level.
 
-{{< alert title="Note" color="primary" >}} File-based KPS storage is deprecated and will be removed in a future release.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}File-based KPS storage is deprecated and will be removed in a future release.{{< /alert >}}
 
 File-based KPS storage is most suited to single API Gateway deployments. In a multi-API Gateway scenario, file replication or a shared disk is required to ensure that all API Gateways use the same data.
 
@@ -301,7 +307,7 @@ KPS data defined in Policy Studio supports Cassandra, database, and file data st
 
 File-based KPS tables are read and cached by API Gateways when they start up. If data is modified, all API Gateways must be restarted to pick up the changes.
 
-## Configure a file-based KPS collection
+### Configure a file-based KPS collection
 
 You can configure a file-based KPS data source when creating a KPS collection, or add one later on the **Data Source** tab. For example, the following settings are available when editing file-based collection:
 
@@ -314,11 +320,3 @@ These settings are described as follows:
 | **Name**           | Collection-unique data source name.   |
 | **Description**    | Optional description.   |
 | **Directory Path** | The directory name where table data for the collection is stored. If the directory does not exist, it is automatically created. If this directory is not specified, the directory path defaults to `${VINSTDIR}/conf/kps`. The path can include `VDISTDIR` or `VINSTDIR` variables. These are resolved to the API Gateway instance and installation directories. For example, `${VDISTDIR}/mydata/samples`. Remember to use the correct path separator (/ on Linux).  |
-
-## Configure Apache Cassandra KPS storage
-
-Apache Cassandra provides a highly available (HA) data storage option for KPS. API Gateway can connect to an external Cassandra database cluster. You must configure three Cassandra nodes to provide a HA data service. A default single Cassandra node, non-HA system typically does not require additional configuration.
-
-{{< alert title="Note" color="primary" >}}Custom KPS data defined in Policy Studio supports Cassandra, database, and file data stores. However, API Manager KPS tables (Client Registry and API Catalog) support Cassandra only. Database and file data stores are not supported for API Manager. Three-node Cassandra HA with full consistency is required for API Manager.{{< /alert >}}
-
-For details on installing and configuring Apache Cassandra HA for API Gateway and API Manager, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).

@@ -1,24 +1,12 @@
 {
-"title": "Introduction to KPS",
-"linkTitle": "Introduction to KPS",
+"title": "KPS overview",
+"linkTitle": "Overview",
 "weight":"20",
 "date": "2020-01-06",
 "description": "A Key Property Store (KPS) is a table of data that can be referenced from policies running on the API Gateway."
 }
 
-This guide describes how to configure and manage the API Gateway Key Property Store (KPS). The KPS enables you to manage API Gateway data referenced from policies running on the API Gateway.
-
-## Who should read this guide
-
-The intended audience for this guide is KPS administrators and policy developers. For more details on API Gateway user roles, see the API Gateway Concepts Guide. This guide assumes that you are familiar with the following:
-
-* Database concepts such as tables, rows, and keys
-* API Gateway configuration and deployment
-* API Gateway selectors
-* Using command line tools
-* Database configuration where database storage is required
-
-Data in a KPS table is assumed to be read frequently and seldom written, and can be changed without incurring an API Gateway service outage. KPS tables are shared across a gateway group
+Data in a KPS table is assumed to be read frequently and seldom written, and can be changed without incurring an API Gateway service outage. KPS tables are shared across an API Gateway group.
 
 ## KPS architecture
 
@@ -26,19 +14,19 @@ The following diagram shows a simple role-based architecture:
 
 ![Overview of Key Property Store](/Images/APIGatewayKPSUserGuide/kps_architecture.png)
 
-A KPS is typically used to store property values that are used in policies running on an API Gateway. KPS data is injected into policies using *selectors* that are first created in Policy Studio by *policy developers*. Selectors are evaluated and expanded dynamically at runtime. For example, a KPS table could contain authorization tokens for different users. A policy could look up the token for the current user and insert it into an HTTP request.
+A KPS is typically used to store property values that are used in policies running on an API Gateway. KPS data is injected into policies using _selectors_ that are first created in Policy Studio by policy developers. Selectors are evaluated and expanded dynamically at runtime. For example, a KPS table could contain authorization tokens for different users. A policy could look up the token for the current user and insert it into an HTTP request.
 
-KPS tables are organized into *collections*. The tables in a collection typically have some sort of relationship to one another. For example, the OAuth collection contains a set of tables that store all OAuth-related data. Every KPS table is assigned an alias so that it can be easily referred to in a policy or a REST request. KPS collections and tables can be created by policy developers using Policy Studio.
+KPS tables are organized into _collections_. The tables in a collection typically have some sort of relationship to one another. For example, the OAuth collection contains a set of tables that store all OAuth-related data. Every KPS table is assigned an alias so that it can be easily referred to in a policy or a REST request. KPS collections and tables can be created by policy developers using Policy Studio.
 
-*KPS administrators* can use the API Gateway Manager web console to view and modify KPS data at runtime. This is a business or operational role that manages dynamic policy configuration data in a KPS (for example, customer details, authorization levels, or quotas). This means that this information does not need to be configured at design time by policy developers.
+KPS administrators can use the API Gateway Manager web console to view and modify KPS data at runtime. This is a business or operational role that manages dynamic policy configuration data in a KPS (for example, customer details, authorization levels, or quotas). This means that this information does not need to be configured at design time by policy developers.
 
 ## KPS data stores
 
 KPS data can be stored in one of the following locations:
 
-* **External Apache Cassandra database**: Data can be distributed across multiple nodes to provide high availability. This is the default data store. See [Configure Apache Cassandra KPS storage](/docs/apigtw_kpsguide/configure_database_storage/#configure-apache-cassandra-kps-storage).
-* **Relational database**: Accessible to all API Gateway instances in the gateway group. See [Configure database storageS](/docs/apigtw_kpsguide/configure_database_storage/)
-* **JSON files**: On the local file system (deprecated). See [Configure file-based KPS storage](/docs/apigtw_kpsguide/configure_database_storage/#configure-a-file-based-kps-collection)
+* **External Apache Cassandra database**: Data can be distributed across multiple nodes to provide high availability. This is the default data store. See [Configure Apache Cassandra KPS storage](/docs/apim_policydev/apigw_kps/configure_database_storage/#configure-apache-cassandra-kps-storage).
+* **Relational database**: Accessible to all API Gateway instances in the gateway group. See [Configure database storage](/docs/apim_policydev/apigw_kps/configure_database_storage/)
+* **JSON files**: On the local file system (deprecated). See [Configure file-based KPS storage](docs/apim_policydev/apigw_kps/configure_database_storage/#configure-file-based-kps-storage)
 
 {{< alert title="Note" color="primary" >}}Custom KPS data defined in Policy Studio supports Cassandra, database, and file data stores. API Manager KPS data (Client Registry and API Catalog) supports Cassandra only. File-based KPS is deprecated and will be removed in a future release.{{< /alert >}}
 
@@ -46,9 +34,9 @@ KPS data can be stored in one of the following locations:
 
 API Gateway provides the following client applications:
 
-* **Policy Studio**: Enables policy developers to create KPS collections and tables, and to configure data sources. See [Configure KPS](/docs/apigtw_kpsguide/kps_configuration/).
-* **API Gateway Manager**: Includes a visual web-based interface to enable KPS administrators to view and modify KPS data at runtime. See [Get started with KPS](/docs/apigtw_kpsguide/get_started/)
-* **kpsadmin command**: Supports KPS data entry and other administrative functions. It is designed for use in a development environment. See [Manage a KPS using kpsadmin](5_How_to_use_the_kpsadmin_command.htm)
+* **Policy Studio**: Enables policy developers to create KPS collections and tables, and to configure data sources. See [Configure KPS in Policy Studio](/docs/apim_policydev/apigw_kps/kps_configuration/).
+* **API Gateway Manager**: Includes a visual web-based interface to enable KPS administrators to view and modify KPS data at runtime. See [Get started with KPS](/docs/apim_policydev/apigw_kps/get_started/)
+* **kpsadmin command**: Supports KPS data entry and other administrative functions. It is designed for use in a development environment. See [Manage KPS using kpsadmin](/docs/apim_policydev/apigw_kps/how_to_use_kpsadmin_command/)
 * **KPS REST API**: Enables remote programmatic clients to read and write KPS data.
 
 ## When to use a KPS
