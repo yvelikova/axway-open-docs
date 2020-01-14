@@ -1,9 +1,9 @@
 {
-    "title": "Customize API Manager",
-    "linkTitle": "Customize API Manager",
-    "weight": "13",
-    "date": "2019-09-17",
-    "description": "Customize API Manager features, such as generated emails and password validation, and customize API Manager data using custom properties."
+"title": "Customize API Manager",
+  "linkTitle": "Customize API Manager",
+  "weight": "13",
+  "date": "2019-09-17",
+  "description": "Customize API Manager features, such as generated emails and password validation, and customize API Manager data using custom properties."
 }
 
 ## Create a custom API portal
@@ -394,7 +394,7 @@ Optional. It is used for validating property values.
 Regex expression example:
 
 ```
-/^[0-9A-F]{8}-[0-9A-F]{4}-[4][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
+^[0-9A-F]{8}-[0-9A-F]{4}-[4][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$
 ```
 
 #### `minValue`
