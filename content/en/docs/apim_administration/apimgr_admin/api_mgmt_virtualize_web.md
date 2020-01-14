@@ -154,7 +154,7 @@ Description
 
 #### OAuth
 
-Configure the following to enable OAuth authorization for access tokens issued by the API Manager.
+Configure the following to enable OAuth authorization for access tokens issued by API Manager.
 
 ##### General OAuth settings
 
