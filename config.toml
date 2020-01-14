@@ -16,7 +16,7 @@ defaultContentLanguageInSubdir = false
 # Useful when translating.
 enableMissingTranslationPlaceholders = true
 
-# if removed the site will not build!
+# if removed the site will not build!!
 disableKinds = ["taxonomy", "taxonomyTerm"]
 
 # Highlighting config
