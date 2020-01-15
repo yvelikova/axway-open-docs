@@ -3,7 +3,7 @@
 "linkTitle": "Configure database storage",
 "weight":"60",
 "date": "2020-01-06",
-"description": "Store KPS data in relational databases, and configure Apache Cassandra for a highly available (HA) data storage option for KPS."
+"description": "Store KPS data in a relational database or an Apache Cassandra database."
 }
 
 KPS data can be stored in a relational database. API Gateway supports the following databases:
@@ -56,7 +56,7 @@ When creating a KPS collection, you can select database storage in the **Defaul
 
 Alternatively, you can add a database storage option to the collection later. On the **Data Sources** tab, select **Add** > **Add Database**.
 
-For an example with file storage, see [Configure file-based KPS storage](/docs/apigtw_kpsguide/configure_database_storage/#configure-file-based-kps-storage).
+For an example with file storage, see [Configure file-based KPS storage](/docs/apim_policydev/apigw_kps/configure_database_storage/#configure-file-based-kps-storage).
 
 #### Database storage information
 
@@ -162,7 +162,7 @@ values ("kathy.adams@acme.com", "blah", "Kathy", "Adams", 35);
 
 #### Set up external connection to the database
 
-To access a database from the API Gateway, you must set up an external database connection (see [Set up an external connection to the database](#set-up-an-external-connection-to-the-database)). This example uses the configuration from [Get started with KPS](/docs/apigtw_kpsguide/get_started/).
+To access a database from the API Gateway, you must set up an external database connection (see [Set up an external connection to the database](#set-up-an-external-connection-to-the-database)). This example uses the configuration from [Get started with KPS](/docs/apim_policydev/apigw_kps/get_started/).
 
 #### Add the database data source to the KPS collection
 
@@ -222,7 +222,7 @@ select * from User where email = "kathy.adams@acme.com"
 
 #### Define the policy and path
 
-You can reuse the policy and path from [Get started with KPS](/docs/apigtw_kpsguide/get_started) with one change—use the `mapUser` KPS alias for this new table. For example:
+You can reuse the policy and path from [Get started with KPS](/docs/apim_policydev/apigw_kps/get_started) with one change—use the `mapUser` KPS alias for this new table. For example:
 
 ![Set the message](/Images/APIGatewayKPSUserGuide/03000030.png)
 
@@ -232,7 +232,7 @@ Click **Deploy** in the Policy Studio toolbar.
 
 To run the policy in your browser, go to `<http://localhost:8080/kpsGetViaSelector?id=kathy.adams@acme.com>`
 
-This URL specifies the user ID (`email`) as <kathy.adams@acme.com>.
+This URL specifies the user ID (`email`) as `kathy.adams@acme.com`.
 
 ### How to map a database table using a composite key
 

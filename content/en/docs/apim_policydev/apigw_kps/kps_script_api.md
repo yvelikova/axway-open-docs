@@ -1,6 +1,6 @@
 {
 "title": "Use the KPS scripting API",
-"linkTitle": "Use the KPS scripting API",
+"linkTitle": "Use the scripting API",
 "weight":"80",
 "date": "2020-01-06",
 "description": "The KPS scripting API facilitates create, read, update, delete (CRUD) operations to KPS tables from your policies."
@@ -12,8 +12,8 @@ You can use this API via a custom **Scripting Language** filter in Policy Studio
 
 This topic assumes that you are already familiar with using a KPS, and that you know how to define KPS tables and read data from KPS tables using selectors. For more information, see the following topics:
 
-* [Configure KPS in Policy Studio](/docs/apigtw_kpsguide/kps_configuration)
-* [Access KPS data using selectors](/docs/apigtw_kpsguide/kps_configuration#selector-access)
+* [Configure KPS in Policy Studio](/docs/apim_policydev/apigw_kps/kps_configuration)
+* [Access KPS data using selectors](/docs/apim_policydev/apigw_kps/kps_configuration#selector-access)
 
 ## Usage guidelines
 
@@ -41,15 +41,15 @@ The API is defined in the java package `com.vordel.kps.Table`. It has the follow
 Map<String, Object> createRecord(String tableAlias, Map<String, Object> record, int ttl) throws ObjectExists, ObjectNotFound
 ```
 
-**Parameters**
+Parameters
 : `tableAlias` – alias of table to use.
 : `record` – record to create, conforms to table definition in KPS (excluding auto-generated fields).
 : `ttl` - record time to live, in seconds. If 0, TTL is ignored.
 
-**Returns**
+Returns
 : Returns the newly created record (with auto-generated fields completed if necessary).
 
-**Throws**
+Throws
 : `ObjectExists` – if a record with the same primary key already exists.
 
 ### Update record in table
@@ -58,15 +58,15 @@ Map<String, Object> createRecord(String tableAlias, Map<String, Object> record, 
 Map<String, Object> updateRecord(String tableAlias, Map<String, Object> record, int ttl) throws ObjectExists, ObjectNotFound
 ```
 
-**Parameters**
+Parameters
 : `tableAlias` – alias of table to use.
 : `record` – record to update, conforms to table definition in KPS (excluding auto-generated fields, primary key field is mandatory).
 : `ttl` – record time to live, in seconds. If 0, TTL is ignored.
 
-**Returns**
+Returns
 : Returns the updated record.
 
-**Throws**
+Throws
 : `ObjectNotFound` – if no record with the given primary key exists.
 
 ### Read record from table
@@ -75,14 +75,14 @@ Map<String, Object> updateRecord(String tableAlias, Map<String, Object> record, 
 Map<String, Object> readRecord(String tableAlias, Object primaryKey) throws ObjectNotFound
 ```
 
-**Parameters**
+Parameters
 : `tableAlias` – alias of table to use.
 : `primaryKey` – primary key of the record to read.
 
-**Returns**
+Returns
 : Returns the record with given primary key.
 
-**Throws**
+Throws
 : `ObjectNotFound` – if no record with the given primary key exists.
 
 ### Delete record from table
@@ -91,14 +91,14 @@ Map<String, Object> readRecord(String tableAlias, Object primaryKey) throws Obje
 deleteRecord(String tableAlias, Object primaryKey) throws ObjectNotFound
 ```
 
-**Parameters**
+Parameters
 : `tableAlias` – alias of table to use.
 : `primaryKey` – primary key of the record to delete.
 
-**Returns**
+Returns
 : Nothing.
 
-**Throws**
+Throws
 : `ObjectNotFound` – if no record with the given primary key exists.
 
 ## Example code

@@ -1,6 +1,6 @@
 {
 "title": "Configure KPS in Policy Studio",
-"linkTitle": "Configure KPS",
+"linkTitle": "Configure in Policy Studio",
 "weight":"40",
 "date": "2020-01-06",
 "description": "Define general KPS configuration in Policy Studio."
@@ -8,9 +8,9 @@
 
 For details on data source-specific configuration, see the following topics:
 
-* [Configure Apache Cassandra KPS storage](/docs/apigtw_kpsguide/configure_database_storage/#configure-apache-cassandra-kps-storage)
-* [Configure database KPS storage](/docs/apigtw_kpsguide/configure_database_storage/#configure-database-kps-storage)
-* [Configure file-based KPS storage](/docs/apigtw_kpsguide/configure_database_storage/#configure-file-based-kps-storage)
+* [Configure Apache Cassandra KPS storage](/docs/apim_policydev/apigw_kps/configure_database_storage/#configure-apache-cassandra-kps-storage)
+* [Configure database KPS storage](/docs/apim_policydev/apigw_kps/configure_database_storage/#configure-database-kps-storage)
+* [Configure file-based KPS storage](/docs/apim_policydev/apigw_kps/configure_database_storage/#configure-file-based-kps-storage)
 
 {{< alert title="Caution" color="warning" >}}Do not edit the default KPS tables in Policy Studio unless under strict supervision from Axway Support. This includes the **API Server**, **OAuth**, or **API Portal** KPS tables available under **Environment Configuration** > **Key Property Stores**.{{< /alert >}}
 
@@ -87,6 +87,8 @@ You can optionally access any record directly using a unique secondary key. The 
 You can access records in a KPS table using an API Gateway selector. If a secondary key is defined for the table, you must specify all secondary key values in the selector. If no secondary key
 is defined, you must specify the primary key value instead. In Policy Studio, you can specify a secondary key or a primary key in the **Use the following property name(s) for looking up a table from a selector** field.
 
+#### Selector syntax
+
 The KPS selector syntax is as follows:
 
 ```
@@ -110,19 +112,23 @@ You can also use a composite key, for example:
 ${kps.alias[key1][key2].property}
 ```
 
-For an example of accessing KPS data from a selector using a primary key, see [Get started with KPS](/docs/apigtw_kpsguide/get_started/).
+#### Selector examples
 
-For examples of selectors that use both primary and composite keys, see [Configure database storages](/docs/apigtw_kpsguide/configure_database_storage/).
+For an example of accessing KPS data from a selector using a primary key, see [Get started with KPS](/docs/apim_policydev/apigw_kps/get_started/).
 
-The following shows more examples of KPS selectors:
+For examples of selectors that use both primary and composite keys, see [Configure database storages](/docs/apim_policydev/apigw_kps/configure_database_storage/).
+
+##### Example 1
 
 ```
 ${kps.User[http.querystring.id].firstName}
 ```
 
-* Get row from KPS table with User alias.
+* Get row from KPS table with `User` alias.
 * Use key supplied in HTTP query string (`id`).
 * Return `firstName` field of row.
+
+##### Example 2
 
 ```
 ${kps.User["kathy.adams@acme.com"].age}
@@ -131,6 +137,8 @@ ${kps.User["kathy.adams@acme.com"].age}
 * Get row from KPS table with `User` alias.
 * Use constant key `"kathy.adams@acme.com"` with quotation marks.
 * Return `age` field of row.
+
+##### Example 3
 
 ```
 ${kps.User[http.querystring.firstName][http.querystring.lastName].email}

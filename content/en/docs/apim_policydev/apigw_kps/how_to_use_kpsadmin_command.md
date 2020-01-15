@@ -6,15 +6,15 @@
 "description": "Learn how to use the kpsadmin tool in interactive and scriptable command modes."
 }
 
-The kpsadmin command-line tool provides KPS management functions, independent of data source. For example, this includes KPS data backup, restore, encryption, and diagnostics.
+The `kpsadmin` command-line tool provides KPS management functions, independent of data source. For example, this includes KPS data backup, restore, encryption, and diagnostics.
 
-The kpsadmin tool is especially useful in a development environment. In a production environment, you should also use data source-specific tools and administration procedures for data backup, restore, security, optimization, monitoring and so on.
+The `kpsadmin` tool is especially useful in a development environment. In a production environment, you should also use data source-specific tools and administration procedures for data backup, restore, security, optimization, monitoring and so on.
 
-{{< alert title="Caution" color="warning" >}}You must use kpsadmin operations with caution. Ensure that you have a verified backup before you run destructive operations such as clear, restore, and re-encrypt. You should always try out these options in a development environment first.{{< /alert >}}
+{{< alert title="Caution" color="warning" >}}You must use `kpsadmin` operations with caution. Ensure that you have a verified backup before you run destructive operations such as clear, restore, and re-encrypt. You should always try out these options in a development environment first.{{< /alert >}}
 
-## Start kpsadmin
+## Start `kpsadmin`
 
-From a command prompt, enter kpsadmin. For example:
+From a command prompt, enter `kpsadmin`. For example:
 
 ```
 INSTALL_DIR/posix/bin/kpsadmin
@@ -26,7 +26,7 @@ In default interactive mode, you are first prompted to enter your admin credenti
 
 ### Start in verbose mode
 
-To run kpsadmin in verbose mode, use the `-v` option. `kpsadmin` will then show all REST messages that are exchanged with API Gateway. This is useful for debugging. For example:
+To run `kpsadmin` in verbose mode, use the `-v` option. `kpsadmin` will then show all REST messages that are exchanged with API Gateway. This is useful for debugging. For example:
 
 ```
 kpsadmin -v
@@ -34,7 +34,7 @@ kpsadmin -v
 
 For details on available options, enter `kpsadmin -h`, or see [kpsadmin command options](#kpsadmin-command-options).
 
-## Select kpsadmin operations in interactive mode
+## Select `kpsadmin` operations in interactive mode
 
 This section describes the `kpsadmin` operations that are available in default interactive mode. When you first select an operation in interactive mode, you must enter the following:
 
@@ -67,15 +67,15 @@ The `kpsadmin` operations for table administration are as follows:
 * **Restore**: Restore table data. The table must be empty before you restore.
 * **Re-encrypt**: Re-encrypt encrypted data in the table. This option should only be used if group-level re-encryption fails.
 * **Recreate**: Recreate a table. This is useful in development if you wish to change the table structure. This procedure involves dropping and recreating the table, so all existing data will be lost. The steps are as follows:
-    1. Back up (optional): Backup the data if necessary using kpsadmin.
+    1. Back up (optional): Backup the data if necessary using `kpsadmin`.
     2. Deploy the correct configuration: First redeploy the correct configuration using Policy Studio. This may result in some KPS deployment errors. The changes you have made may no longer match     the stored data structure.
-    3. Recreate the table with the correct configuration: Select the Recreate option using kpsadmin.
-    4. Restore (optional): Restore the data using kpsadmin. If you have made key or index changes, the data should import directly. If you have made more extensive changes (for example, renaming fields or changing types), you must upgrade the data to match the new table structure.
+    3. Recreate the table with the correct configuration: Select the Recreate option using `kpsadmin`.
+    4. Restore (optional): Restore the data using `kpsadmin`. If you have made key or index changes, the data should import directly. If you have made more extensive changes (for example, renaming fields or changing types), you must upgrade the data to match the new table structure.
 * **Table Details**: Display information about a table and its properties.
 
 ### KPS collection administration operations
 
-The kpsadmin operations for collection administration are as follows:
+The `kpsadmin` operations for collection administration are as follows:
 
 * **Clear All** : Clear all data in all tables in the collection.
 * **Backup All**: Back up all data in all tables in the collection.
@@ -85,23 +85,23 @@ The kpsadmin operations for collection administration are as follows:
 
 ### API Gateway group administration operations
 
-The kpsadmin operations for API Gateway group administration are as follows:
+The `kpsadmin` operations for API Gateway group administration are as follows:
 
-* **Clear All**: Clear all data in all collections in the group.                                                                                                                                  * **Backup All**: Back up all data in all collections in the group.
-* **Restore All**: Restore all data in all collections in the group.                                                                                                                             |
+* **Clear All**: Clear all data in all collections in the group.                                                          * **Backup All**: Back up all data in all collections in the group.
+* **Restore All**: Restore all data in all collections in the group.
 * **Re-encrypt All**: Re-encrypt all data in all collections in the group. Use this option when the encryption passphrase has been changed for the API Gateway group. The tables will be offline after a passphrase change. You must use this option to re-encrypt the data. You must enter the old API Gateway passphrase to proceed. Data is re-encrypted using the current API Gateway passphrase. You must restart the API Gateway instance(s) in the group.
 * **Collection Details**: Display information about all collections in the group.
 
 ### Cassandra administration operations
 
-The kpsadmin operations for Cassandra administration are as follows:
+The `kpsadmin` operations for Cassandra administration are as follows:
 
 * **Show Configuration**: Show the current configuration for the KPS storage service (Apache Cassandra).
 * **Run Diagnostic Checks**: Run diagnostic checks including HA configuration checks. You must specify if this is a single or multi-datacenter configuration.
 
 ### General administration operations
 
-The kpsadmin operations for general administration are as follows:
+The `kpsadmin` operations for general administration are as follows:
 
 * **Change Table**: Change the currently selected table.
 * **Change Collection**: Change the currently selected collection.
@@ -112,9 +112,9 @@ The kpsadmin operations for general administration are as follows:
 
 This example shows how to switch from Cassandra storage to file storage.
 
-#### Step 1: Backup collection data using kpsadmin
+#### Step 1: Backup collection data using `kpsadmin`
 
-To copy the current data in the collection to the new data source, back up the collection data using kpsadmin option ``21) Backup All``.
+To copy the current data in the collection to the new data source, back up the collection data using `kpsadmin` option `21) Backup All`.
 
 The backup UUID is highlighted in the following example:
 
@@ -140,26 +140,26 @@ To create the new data source, perform the following steps:
 
 8. Click the **Deploy** button in the Policy Studio toolbar to deploy the configuration
 
-#### Step 4: Restore collection data using kpsadmin
+#### Step 4: Restore collection data using `kpsadmin`
 
 If you have made a backup in [Backup collection data using kpsadmin](#step-1-backup-collection-data-using-kpsadmin), to restore the collection data, perform the following steps:
 
-1. Using kpsadmin, select option `22) Restore All`.
+1. Using `kpsadmin`, select option `22) Restore All`.
 2. Enter the backup UUID noted in step 1. For example:
 
 ![Restore collection data using kpsadmin](/Images/APIGatewayKPSUserGuide/0300001D.png)
 
-## Run kpsadmin operations in scriptable command mode
+## Run `kpsadmin` operations in scriptable command mode
 
 You can also control `kpsadmin` directly from the command line or from a script by specifying command operations (for example, `kpsadmin backup` or `restore`). If an operation is not specified, `kpsadmin` enters its default interactive menu mode.
 
-You must also specify a username/password, and an API Gateway group, KPS collection, or KPS table. For example:
+You must also specify a user name and password, and an API Gateway group, KPS collection, or KPS table. For example:
 
 ```
 ./kpsadmin --username admin --password changeme --group "myGroup" --name "myGateway" backup
 ```
 
-### kpsadmin command operations
+### `kpsadmin` command operations
 
 The available `kpsadmin` command operations in this mode are:
 
@@ -176,9 +176,9 @@ The available `kpsadmin` command operations in this mode are:
 
 If this kind of `kpsadmin` command invocation succeeds, `0` is returned. If it fails, `1` is returned. This can be captured on Linux bash shell using `$?` (for example, `echo $?` will work on both platforms). On Linux, `0` means success, `1` means error.
 
-You can specify the username and password on the command line or using a secure script. For details on how to script username and password input for API Gateway scripts, see the `managedomain` command reference at [managedomain command reference](/docs/apim_reference/managedomain_ref/)
+You can specify the user name and password on the command line or using a secure script. For details on how to script user name and password input for API Gateway scripts, see the `managedomain` command reference at [managedomain command reference](/docs/apim_reference/managedomain_ref/)
 
-### kpsadmin command options
+### `kpsadmin` command options
 
 The full `kpsadmin` command options are:
 
@@ -195,7 +195,7 @@ The full `kpsadmin` command options are:
 | `--uuid=UUID`                 | Specify the UUID required when backing up or restoring data.                                 |
 | `--mdc`                       | When using the `diagnostics` command, specify that this is a multi-datacenter configuration. |
 
-### Example kpsadmin scriptable commands
+### Example `kpsadmin` scriptable commands
 
 This section shows some example `kpsadmin` operations in scriptable command mode.
 
@@ -271,11 +271,15 @@ The data is decrypted with the old encryption passphrase, which you must supply.
 * The encryption passphrase has been changed for an API Gateway group configuration.
 * This change has been deployed to all API Gateways in the group.
 * You see `INFO` messages in all API Gateway trace logs as follows:
-    * INFO Loading KPS configuration.
-    * INFO Checking for passphrase changes...
-    * INFO Passphrase change has been detected for the following table(s).
-    * INFO Use kpsadmin to re-encrypt data and passphrase test.
-    * INFO Table(s) will remain in admin mode until this is done.
+
+    ```
+    INFO Loading KPS configuration.
+    INFO Checking for passphrase changes...
+    INFO Passphrase change has been detected for the following table(s).
+    INFO Use kpsadmin to re-encrypt data and passphrase test.
+    INFO Table(s) will remain in admin mode until this is done.
+    ```
+
 {{< /alert >}}
 
 You should re-encrypt the data using the group-level `28) Re-encrypt All` interactive option, or the `kpsadmin --group reencrypt` scriptable command. Do not use the table or collection level re-encrypt options. These should only be used if group level encryption fails. You will then need to re-encrypt at collection and/or table level.

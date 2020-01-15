@@ -1,14 +1,12 @@
 {
 "title": "Get started with KPS",
-"linkTitle": "Get started with KPS",
+"linkTitle": "Get started",
 "weight":"30",
 "date": "2020-01-06",
 "description": "Develop an example KPS table for managing simple user information."
 }
 
-## Example KPS table
-
-The final structure of the example table is displayed in Policy Studio as follows:
+The final structure of the example KPS table in Policy Studio is as follows:
 
 ![Getting Started - User table in Policy Studio](/Images/APIGatewayKPSUserGuide/03000002.png)
 
@@ -70,7 +68,7 @@ To create a table, perform the following steps:
     * lastName
     * age
 
-    `age` has an Integer (numeric) **Type**. All the other columns are String. For more details, see [KPS table structure](/docs/apigtw_kpsguide/kps_configuration/#kps-table-structure).
+    `age` has an Integer (numeric) **Type**. All the other columns are String. For more details, see [KPS table structure](/docs/apim_policydev/apigw_kps/kps_configuration/#kps-table-structure).
 
 6. When you select the **User** table, you should have the following structure:
 
@@ -109,7 +107,7 @@ To define a test policy that accesses the table, perform the following steps:
 
     {{< alert title="Note" color="primary" >}}Add a **Reflect Message** filter (**Conversion** category) to return a successful HTTP response status of `200`.{{< /alert >}}
 
-5. Set up a path to this policy. In this example, the path is /kpsGetViaSelector:
+5. Set up a path to this policy. In this example, the path is `/kpsGetViaSelector`:
 
 ![Create a path to the test policy](/Images/APIGatewayKPSUserGuide/03000010.png)
 
@@ -121,7 +119,7 @@ When you are finished with your configuration changes, you must deploy them to t
 
 This pushes the configuration to the API Gateway group.
 
-{{< alert title="Tip" color="primary" >}}If you deploy an incorrect configuration (for example, specify an incorrect primary key, property type, or name) you can use the `kpsadmin` command to drop the table in storage. For more details, see [Manage KPS using the kpsadmin tool](/docs/apigtw_kpsguide/how_to_use_kpsadmin_command/).{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}If you deploy an incorrect configuration (for example, specify an incorrect primary key, property type, or name) you can use the `kpsadmin` command to drop the table in storage. For more details, see [Manage KPS using the kpsadmin tool](/docs/apim_policydev/apigw_kps/how_to_use_kpsadmin_command/).{{< /alert >}}
 
 ## Add KPS data using API Gateway Manager
 
