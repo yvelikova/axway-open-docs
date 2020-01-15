@@ -295,7 +295,7 @@ You can specify the following XML redaction directives:
 * `redactDescendants`: Redacts children and text descendants of the specified node
 * `redactAttributes`:  Removes the specified attributes
 
- The **redactAttributes** directive is the default value if **redactionDisposition** is not specified in the **XMLRedactedElement** configuration node.
+The `redactAttributes` directive is the default value if `redactionDisposition` is not specified in the `XMLRedactedElement` configuration node.
 
 If you need to redact attributes of the specified node, you can configure this using `XMLRedactedAttribute` (child of `XMLRedactedElement`). `XMLRedactedElement` has two mandatory attributes, `localname` and `namespace`, which have the same meaning for `XMLRedactedAttribute`.
 
