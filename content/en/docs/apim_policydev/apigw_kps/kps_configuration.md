@@ -97,14 +97,16 @@ ${kps.alias[key].property}
 
 The parts in the selector are described as follows:
 
-* `${`: Indicates the start of the selector using a `{` bracket.
-* `kps`: Specifies that selector should query a KPS table.
-* `.alias`: Specifies the full alias of the KPS table, including the collection alias prefix if any (for example, `User`).
-* `[`: Indicates the start of a table property reference using a `[` bracket.
-* `key`: The key value to query the table (for example, `http.querystring.id`).
-* `]`: Indicate the end of a table property reference using a `]` bracket.
-* `.property`: The field to retrieve from the returned row (for example, `age`).
-* `}`: Indicate the end of the selector using a `}` bracket.
+| Selector part | Description    |
+|---------------|----------------|
+| `${`          | Indicates the start of the selector using a `{` bracket.|
+| `kps`           | Specifies that selector should query a KPS table.|
+| `.alias`        | Specifies the full alias of the KPS table, including the collection alias prefix if any (for example, `User`). |
+| `[`             | Indicates the start of a table property reference using a `[` bracket. |
+| `key`           | The key value to query the table (for example, `http.querystring.id`).  |
+| `]`           | Indicate the end of a table property reference using a `]` bracket. |
+| `.property`     | The field to retrieve from the returned row (for example, `age`).  |
+| `}`             | Indicate the end of the selector using a `}` bracket. |
 
 You can also use a composite key, for example:
 
