@@ -59,7 +59,7 @@ For example:
    ...
 </XMLRedactor>
 ```
-In the case of an error during the redaction process including **maxBufferSize** or **maxDepth** reached, XML redactor will redact the rest of the XML data being processed to avoid writing sensitive data to the logs.
+If an error occurs during the redaction process, including `maxBufferSize` or `maxDepth` reached, the XML redactor will redact the rest of the XML data being processed to avoid writing sensitive data to the logs.
 
 
 ## Enable redaction for an API Gateway
