@@ -45,6 +45,23 @@ Each redactor defines its supported content types in `RedactMime` child elements
 </JSONRedactor>
 ```
 
+You can specify the following properties in the `XMLRedactor` tag:
+
+| Name       |  Type  |   Default value|    Description|
+|-------------|--------|----------------|-----------------|
+|maxBufferSize| number | 32768| Maximum memory size (in bytes) used by XML redaction.|
+|maxDepth| number | 1024| Maximum depth of XML nested nodes.|
+
+For example:
+```
+<XMLRedactor maxBufferSize="32768" maxDepth="1024">
+   <RedactMime mimeType="application/xml"/>
+   ...
+</XMLRedactor>
+```
+If an error occurs during the redaction process, including `maxBufferSize` or `maxDepth` reached, the XML redactor will redact the rest of the XML data being processed to avoid writing sensitive data to the logs.
+
+
 ## Enable redaction for an API Gateway
 
 To enable redaction for a gateway instance, perform the following steps:
@@ -263,9 +280,7 @@ The JSON message is redacted and stored in the traffic monitoring database as fo
 
 ## Redact XML message content
 
-You can redact specific XML content from a message by configuring XML elements or attributes to be removed. The XML redactor removes sensitive data based on the document location. You can define the locations to be removed using the fully qualified name of the redacted element.
-
-For example, to redact all the children of an element named `axway:sensitive_data`, where `xmlns:axway` is `axway.com/`, you can use the following syntax:
+You can redact specific XML content from a message by configuring XML elements or attributes to be removed. For example, to redact all the children of an element named `axway:sensitive_data`, where `xmlns:axway` is `axway.com/`, you can use the following syntax:
 
 ```
 <XMLRedactedElement localname=”sensitive_data” namespace=”http://axway.com”
@@ -278,6 +293,9 @@ You can specify the following XML redaction directives:
 * `redactElement`: Redacts the specified element and all its descendants
 * `redactText`: Removes all text nodes from the specified element
 * `redactDescendants`: Redacts children and text descendants of the specified node
+* `redactAttributes`:  Removes the specified attributes
+
+The `redactAttributes` directive is the default value if `redactionDisposition` is not specified in the `XMLRedactedElement` configuration node.
 
 If you need to redact attributes of the specified node, you can configure this using `XMLRedactedAttribute` (child of `XMLRedactedElement`). `XMLRedactedElement` has two mandatory attributes, `localname` and `namespace`, which have the same meaning for `XMLRedactedAttribute`.
 
