@@ -45,7 +45,7 @@ Each redactor defines its supported content types in `RedactMime` child elements
 </JSONRedactor>
 ```
 
-Properties below can be specified in the "XMLRedactor" tag:
+You can specify the following properties in the `XMLRedactor` tag:
 
 | Name       |  Type  |   Default value|    Description|
 |-------------|--------|----------------|-----------------|
