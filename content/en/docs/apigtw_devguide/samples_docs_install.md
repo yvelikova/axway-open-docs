@@ -13,7 +13,7 @@ Your installation of API Gateway includes code samples to demonstrate some of th
 Example:
 
 ```
-C:\Axway-7.8\apigateway\samples\developer_guide
+C:\Axway-7.7\apigateway\samples\developer_guide
 ```
 
 Alternatively, the associated code samples are available from [Axway Support](https://support.axway.com/) as a zip file.
@@ -32,7 +32,7 @@ Before you install the code samples:
 If you downloaded the samples from [Axway Support](https://support.axway.com/) as a zip file, the zip file contains the following directory structure:
 
 ```
-developer-guide-7.8\samples\developer_guide
+developer-guide-7.7\samples\developer_guide
 ```
 
 Use your preferred zip utility to unzip the file to a suitable location, for example, `C:\samples`.
@@ -42,7 +42,7 @@ Use your preferred zip utility to unzip the file to a suitable location, for exa
 The location `DEVELOPER_SAMPLES` is used throughout this guide to refer to the location of the code samples:
 
 * If you have installed API Gateway, `DEVELOPER_SAMPLES` refers to the `INSTALL_DIR/apigateway/samples/developer_guide` directory.
-* If you have installed the code samples from a zip file, `DEVELOPER_SAMPLES` refers to the location where you installed the samples (for example, the `C:\samples\developer-guide-7.8\samples\developer_guide` directory).
+* If you have installed the code samples from a zip file, `DEVELOPER_SAMPLES` refers to the location where you installed the samples (for example, the `C:\samples\developer-guide-7.7\samples\developer_guide` directory).
 
 ## Build the code samples
 
@@ -56,11 +56,11 @@ Complete the following steps to build the samples:
 
 1. Set the `VORDEL_HOME` environment variable to point to the root of your Axway API Gateway installation.
 
-    For example, if you installed API Gateway in `C:\Axway7.8\apigateway`, set `VORDEL_HOME` to this directory.
+    For example, if you installed API Gateway in `C:\Axway7.7\apigateway`, set `VORDEL_HOME` to this directory.
 
 2. Set the `POLICYSTUDIO_HOME` environment variable to point to the root of your Policy Studio installation.
 
-    For example, if you installed Policy Studio in `C:\Axway7.8\policystudio`, set `POLICYSTUDIO_HOME` to this directory.
+    For example, if you installed Policy Studio in `C:\Axway7.7\policystudio`, set `POLICYSTUDIO_HOME` to this directory.
 
 3. Set the `JAVA_HOME` environment variable to point to the root of a JDK 1.8 installation.
 

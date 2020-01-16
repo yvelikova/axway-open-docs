@@ -8,8 +8,8 @@
 
 This topic describes how to upgrade an API Portal Docker deployment. The upgrade preserves any API Portal customizations (for example, new menus, new templates, localizations, and so on).
 
-- Upgrade to API Portal 7.8 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to 7.7.
-- API Portal 7.8 is compatible with API Gateway and API Manager 7.8 only.
+- Upgrade to API Portal 7.7 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to 7.7.
+- API Portal 7.7 is compatible with API Gateway and API Manager 7.7 only.
 
 {{< alert title="Caution" color="warning" >}}
 
@@ -126,11 +126,11 @@ To upgrade your database, follow these steps:
 
     `$ show databases;`
 
-### Download and run API Portal 7.8 container
+### Download and run API Portal 7.7 container
 
-To download and run an API Portal 7.8 Docker container with the customizations from your old API Portal version, follow these steps:
+To download and run an API Portal 7.7 Docker container with the customizations from your old API Portal version, follow these steps:
 
-1. Download the sample Docker package for API Portal 7.8 (for example, `APIPortal_7.8_SamplesPackageDocker_linux-x86-64_BN<build number>.zip`) from Axway Support at [https://support.axway.com](https://support.axway.com/).
+1. Download the sample Docker package for API Portal 7.7 (for example, `APIPortal_7.7_SamplesPackageDocker_linux-x86-64_BN<build number>.zip`) from Axway Support at [https://support.axway.com](https://support.axway.com/).
 2. Upload the package to your Docker host machine.
 3. Unzip the package.
 4. Ensure that you are logged in to your Docker host machine as the `root` user.
@@ -140,19 +140,19 @@ To download and run an API Portal 7.8 Docker container with the customizations 
 
     For example:
 
-    `$ docker build -t apiportal:7.8`
+    `$ docker build -t apiportal:7.7`
 
 6. If Public API mode is enabled, specify a volume for it:
 
     `$ docker volume create <encryption key volume>:/apiportal/encryption`
 
-7. Run a container from the new API Portal 7.8 Docker image, and specify the data volumes you created in [Create Docker data volumes for your API Portal customizations](#Create):
+7. Run a container from the new API Portal 7.7 Docker image, and specify the data volumes you created in [Create Docker data volumes for your API Portal customizations](#Create):
 
     ```
     $ docker run -it --name <new API Portal container> -e MYSQL_HOST=<IP of your DB container> -e MYSQL_PORT=<DB port> -e MYSQL_ROOT_PASSWORD=<root password> -e MYSQL_USERNAME=<username> -e MYSQL_PASSWORD=<user password> -e MYSQL_DBNAME=<database name> -p <host machine port>:<API Portal port> -v templates:/opt/axway/apiportal/htdoc/templates -v images:/opt/axway/apiportal/htdoc/images <imagename>:<version>
     ```
 
-8. This command runs an API Portal 7.8 Docker container with all of the customizations from your old API Portal version preserved.
+8. This command runs an API Portal 7.7 Docker container with all of the customizations from your old API Portal version preserved.
 9. If Public API mode is enabled, copy the encryption key file to the container:
 
     `$ docker cp <path on host machine> <API Portal container name>:/apiportal/encryption/encryption.key`
@@ -161,7 +161,7 @@ To download and run an API Portal 7.8 Docker container with the customizations 
 
     `$ docker volume inspect  <volume name > --format "{{ .Mountpoint }}" | ls -lA`
 
-API Portal 7.8 is now running in a Docker container fully configured and ready to use. To go to the API Portal landing page, enter the host address and the host port in a browser.
+API Portal 7.7 is now running in a Docker container fully configured and ready to use. To go to the API Portal landing page, enter the host address and the host port in a browser.
 
 You must access API Portal with the `HOST_MACHINE_ADDRESS` and the `HOST_MACHINE_EXPOSED_PORT` (not the container address and port). For example, `https://<HOST_MACHINE_ADDRESS>:<HOST_MACHINE_EXPOSED_PORT>`.
 
@@ -193,7 +193,7 @@ Any customizations performed using language overrides are now restored.
 
 ### Reconfigure API Portal container to use Redis cache
 
-If you are using Redis cache, you must configure the new API Portal 7.8 container to use the Redis cache. Perform the following steps:
+If you are using Redis cache, you must configure the new API Portal 7.7 container to use the Redis cache. Perform the following steps:
 
 1. Check the IP address of the Redis container:
 

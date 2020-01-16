@@ -1,6 +1,6 @@
 ---
-title: API Portal 7.8 Release Notes
-linkTitle: API Portal 7.8
+title: API Portal 7.7 Release Notes
+linkTitle: API Portal 7.7
 weight: 30
 no_list: true
 date: 2019-08-08
@@ -28,8 +28,8 @@ This release has the following limitations:
 
 * This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
 * The ready-made API Portal Docker image is strictly for development environments only, and is not recommended for use in production environments. You must use the Dockerfile to build and run API Portal containers in production environments.
-* Upgrade to API Portal 7.8 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to 7.7.
-* API Portal 7.8 is compatible with API Gateway and API Manager 7.8 only.
+* Upgrade to API Portal 7.7 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to 7.7.
+* API Portal 7.7 is compatible with API Gateway and API Manager 7.7 only.
 
 ## Fixed issues
 

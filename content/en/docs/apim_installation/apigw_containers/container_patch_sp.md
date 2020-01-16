@@ -28,7 +28,7 @@ To install a patch, follow these steps:
 
 To install a service pack, follow these steps:
 
-1. Download the latest API Gateway 7.8 Linux installer (which includes the service pack) from Axway Support at [https://support.axway.com](https://support.axway.com/).
+1. Download the latest API Gateway 7.7 Linux installer (which includes the service pack) from Axway Support at [https://support.axway.com](https://support.axway.com/).
 2. Create a new base image using the `--installer` option to build the image from the downloaded API Gateway installer.
 
     ```

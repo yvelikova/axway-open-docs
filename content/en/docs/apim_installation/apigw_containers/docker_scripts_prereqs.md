@@ -44,7 +44,7 @@ You must have specific API Gateway licenses to run the following:
 Unzip the Docker scripts package that you downloaded from [Axway Support](https://support.axway.com/)
 
 ```
-unzip APIGateway_7.8-<n>_ScriptsPackageDocker_linux-x86-64_BN<bn>.zip
+unzip APIGateway_7.7-<n>_ScriptsPackageDocker_linux-x86-64_BN<bn>.zip
 ```
 
 The unzipped package includes the following:

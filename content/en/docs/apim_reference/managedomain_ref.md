@@ -25,7 +25,7 @@ For an overview of the `managedomain` command, see [Configure an API Gateway dom
 To run in default command interpreter mode, enter `managedomain`, and press Tab to view and select options. For example:
 
 ```
-Axway-7.8/apigateway/posix/bin>managedomain
+Axway-7.7/apigateway/posix/bin>managedomain
 Running in command interpreter mode. Enter 'quit' to exit.
 Enter 'help' to view help topics. Enter 'help topic' to view help for a topic.
 Press TAB to view and complete commands.
@@ -169,9 +169,9 @@ New API Gateway SSL certificate details:
 The new API Gateway 'APIServer1' in group 'Group1' has been successfully created and installed
 
 Start the new API Gateway by executing the following command:
-Axway-7.8/apigateway/posix/bin/startinstance -g "Group1 " -n "APIServer1"
+Axway-7.7/apigateway/posix/bin/startinstance -g "Group1 " -n "APIServer1"
 
-You can alternatively add Axway-7.8/apigateway/posix/bin/ to your path and use
+You can alternatively add Axway-7.7/apigateway/posix/bin/ to your path and use
 "startinstance -g "Group1" -n "APIServer1"".
 
 You can test the connection by visiting the URL: http://roadrunner:8080/healthcheck

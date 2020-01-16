@@ -115,7 +115,7 @@ Message:Access denied with code 403 (phase 2).
 Pattern match "(?i:(?:\\b(?:(?:s(?:ys\\.(?:user_(?:(?:t(?:ab(?:_column|le)|rigger)
 |object|view)s|c(?:onstraints|atalog))|all_tables|tab)|elect\\b.{0,40}\\b
 (?:substring|users?|ascii))|m(?:sys(?:(?:queri|ac)e|relationship|column|object)
-s|ysql\\.(db|user))|c(?:onstraint ..." at ARGS:q. [file "C:\Axway-7.8\
+s|ysql\\.(db|user))|c(?:onstraint ..." at ARGS:q. [file "C:\Axway-7.7\
 apigateway\system\conf\threat-protection\default\activated_rules\
 modsecurity_crs_41_sql_injection_attacks.conf"] [line "116"] [id "950007"]
 [rev "2"] [msg "Blind SQL Injection Attack"] [data "Matched Data:SELECT *

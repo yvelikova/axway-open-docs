@@ -1,13 +1,13 @@
 ---
-title: "Open source documentation is here for AMPLIFY Central and API Portal 7.8"
-linkTitle: "Open source documentation is here for AMPLIFY Central and API Portal 7.8"
+title: "Open source documentation is here for AMPLIFY Central and API Portal 7.7"
+linkTitle: "Open source documentation is here for AMPLIFY Central and API Portal 7.7"
 date: 2019-09-18
 description: >
-    AMPLIFY Central and API Portal 7.8 documentation are open source now!
+    AMPLIFY Central and API Portal 7.7 documentation are open source now!
 author: Andrea Mussap
 ---
 
-The ReadMeFirst team of technical writers based in Dublin is proud to announce the beta availability of docs-as-code for AMPLIFY Central and API Portal 7.8 documentation. In other words, this documentation is now open source and everyone can collaborate and improve it using what's commonly known as a docs-as-code workflow, where docs are:
+The ReadMeFirst team of technical writers based in Dublin is proud to announce the beta availability of docs-as-code for AMPLIFY Central and API Portal 7.7 documentation. In other words, this documentation is now open source and everyone can collaborate and improve it using what's commonly known as a docs-as-code workflow, where docs are:
 
 - written in a simple Markdown format
 - stored in GitHub
@@ -32,7 +32,7 @@ Please read the [Contribution guidelines](/docs/contribution_guidelines/) to lea
 
 ## Coming soon
 
-ReadMeFirst team is currently working on migrating the API Gateway and API Manager 7.8 content to this workflow, and we will be continually improving the new process based on your feedback.
+ReadMeFirst team is currently working on migrating the API Gateway and API Manager 7.7 content to this workflow, and we will be continually improving the new process based on your feedback.
 
 Thanks a lot!
 

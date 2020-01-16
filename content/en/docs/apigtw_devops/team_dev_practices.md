@@ -33,9 +33,9 @@ The default value is `-Xmx768m`.
 
 This section describes recommended best practices for creating API Gateway team development projects and project dependencies in new or existing API Gateway deployments.
 
-### Upgrade existing deployment to API Gateway version 7.8
+### Upgrade existing deployment to API Gateway version 7.7
 
-If you have an existing deployment from an earlier version of API Gateway, you must upgrade your API Gateway installation to version 7.8. Additionally, after you upgrade your API Gateway installation, you must upgrade the configuration in your development environment to version 7.8.
+If you have an existing deployment from an earlier version of API Gateway, you must upgrade your API Gateway installation to version 7.7. Additionally, after you upgrade your API Gateway installation, you must upgrade the configuration in your development environment to version 7.7.
 
 ### Remove redundant configuration in existing deployment
 

@@ -1,6 +1,6 @@
 {
-    "title": "API Gateway 7.8 Release Notes",
-    "linkTitle": "API Gateway 7.8",
+    "title": "API Gateway 7.7 Release Notes",
+    "linkTitle": "API Gateway 7.7",
     "no_list": "true",
     "weight": "10",
     "date": "2019-09-20",

@@ -34,17 +34,17 @@ The following are the recommended hardware disk space and memory requirements fo
 2. Upload the file to your Docker host machine.
 3. Enter the following command to load the image:
 
-    `$ docker load -i APIPortal_7.8_Docker_Image_linux-x86-64_<build number>.tar.gz`
+    `$ docker load -i APIPortal_7.7_Docker_Image_linux-x86-64_<build number>.tar.gz`
 
 4. Run the API Portal Docker container, for example:
 
     ```
-    $ docker run -it --name apiportal -e MYSQL_HOST=172.19.0.2 -e MYSQL_PORT=3306 -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=joomla -e MYSQL_PASSWORD=XXXXX -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443 apiportal:7.8
+    $ docker run -it --name apiportal -e MYSQL_HOST=172.19.0.2 -e MYSQL_PORT=3306 -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=joomla -e MYSQL_PASSWORD=XXXXX -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443 apiportal:7.7
     ```
 
 This example performs the following:
 
-- Runs an API Portal Docker container from an image named `apiportal`:`7.8`.
+- Runs an API Portal Docker container from an image named `apiportal`:`7.7`.
 - Sets environment variables for connecting to the MySQL container.
 - Sets environment variables for connecting to API Manager.
 - Binds port 443 of the container to port 443 on the host machine.

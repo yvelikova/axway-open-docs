@@ -77,14 +77,14 @@ The `export` command outputs are as follows:
 
 | Output                    | Location                                               |
 |---------------------------|--------------------------------------------------------|
-| `export` log file         | `Axway-7.8/apigateway/upgrade/bin/out/logs/export.log` |
-| `export` output directory | `Axway-7.8/apigateway/upgrade/bin/out/export`          |
+| `export` log file         | `Axway-7.7/apigateway/upgrade/bin/out/logs/export.log` |
+| `export` output directory | `Axway-7.7/apigateway/upgrade/bin/out/export`          |
 
 ## `upgrade` command
 
 You must run the `upgrade` command after `export`, and without errors, before running `apply`.
 
-`upgrade` is an offline command that first performs validation on the exported data. After validation, it upgrades the exported data into a format suitable for import into an API Gateway version 7.8 installation. The upgraded data is written to the `upgrade` output directory (in a different location to the exported data).
+`upgrade` is an offline command that first performs validation on the exported data. After validation, it upgrades the exported data into a format suitable for import into an API Gateway version 7.7 installation. The upgraded data is written to the `upgrade` output directory (in a different location to the exported data).
 
 If any warnings or errors occur during `upgrade`, you are prompted to examine the upgrade log file.
 
@@ -151,18 +151,18 @@ The `upgrade` command outputs are as follows:
 | Output                     | Location                                                 |
 |----------------------------|----------------------------------------------------------|
 | `upgrade`
- log file                    | `Axway-7.8/apigateway/upgrade/bin/out/logs/upgrade.log` |
-| `upgrade` output directory | `Axway-7.8/apigateway/upgrade/bin/out/upgrade`          |
+ log file                    | `Axway-7.7/apigateway/upgrade/bin/out/logs/upgrade.log` |
+| `upgrade` output directory | `Axway-7.7/apigateway/upgrade/bin/out/upgrade`          |
 
 ## `apply` command
 
-The `apply` command first updates any databases used for OAuth or KPS (if an update is required). It then creates and starts the version 7.8 Node Manager on the local machine, followed by any API Gateway instances that run locally. `apply` also imports KPS data into the API Gateway instances if required.
+The `apply` command first updates any databases used for OAuth or KPS (if an update is required). It then creates and starts the version 7.7 Node Manager on the local machine, followed by any API Gateway instances that run locally. `apply` also imports KPS data into the API Gateway instances if required.
 
 In a single-node system, when `apply` runs successfully, `sysupgrade` is complete.
 
 {{< alert title="Note" color="primary" >}}`apply` does not update the metrics database. For more details, see [Upgrade API Gateway Analytics](/docs/apim_installation/apigw_upgrade/upgrade_analytics/) or [Upgrade metrics database for API Manager](/docs/apim_installation/apigw_upgrade/upgrade_metrics/).{{< /alert >}}
 
-In a multi-node system, you must run `apply` on each node. The first node that you run `apply` on must be an Admin Node Manager. When you run `apply` on all subsequent nodes, it registers new Admin Node Managers, Node Managers, and API Gateway instances using the version 7.8 Admin Node Manager running on the first node where the `apply` command ran. The first Admin Node Manager to be upgraded holds the domain CA private key and certificate.
+In a multi-node system, you must run `apply` on each node. The first node that you run `apply` on must be an Admin Node Manager. When you run `apply` on all subsequent nodes, it registers new Admin Node Managers, Node Managers, and API Gateway instances using the version 7.7 Admin Node Manager running on the first node where the `apply` command ran. The first Admin Node Manager to be upgraded holds the domain CA private key and certificate.
 
 {{< alert title="Tip" color="primary" >}}When `apply` runs on a subsequent node, it tries to clean any topology entries relating to itself using the first Admin Node Manager, if any entries exist. This ensures it can always be created successfully, even if `apply` ran previously on that node.{{< /alert >}}
 
@@ -178,7 +178,7 @@ The following rules apply to the `apply` command:
     * The first node that `apply` runs on must be an Admin Node Manager.
     * You must shut down the old API Gateway installation on all nodes before running `apply` on any node.
     * `apply` must complete on the first Admin Node Manager node before you run `apply` on subsequent nodes. You can specify the first Admin Node Manager using `--anm_host`. You must use the same `--anm_host` value on each node. You are only required to specify `--anm_host` in a multi-node system with multiple Admin Node Managers.
-    * Before you can run the `apply` command on all subsequent nodes, you must run the version 7.8 Admin Node Manager on the node you first ran `apply` on. This is the host specified by `--anm_host`. The `apply` command checks that the Admin Node Manager is running and is version 7.8.
+    * Before you can run the `apply` command on all subsequent nodes, you must run the version 7.7 Admin Node Manager on the node you first ran `apply` on. This is the host specified by `--anm_host`. The `apply` command checks that the Admin Node Manager is running and is version 7.7.
 
 ### `apply` command options
 
@@ -243,8 +243,8 @@ The `apply` command outputs are as follows:
 
 | Output                   | Location                                               |
 |--------------------------|--------------------------------------------------------|
-| `apply` log file         | `Axway-7.8/apigateway/upgrade/bin/out/logs/apply.log` |
-| `apply` output directory | `Axway-7.8/apigateway/upgrade/bin/out/apply`          |
+| `apply` log file         | `Axway-7.7/apigateway/upgrade/bin/out/logs/apply.log` |
+| `apply` output directory | `Axway-7.7/apigateway/upgrade/bin/out/apply`          |
 
 ## `status` command
 
@@ -285,12 +285,12 @@ Current status: system upgrade complete
 
 ## `clean` command
 
-The `clean` command enables you to restart the `sysupgrade` process. The command resets the new API Gateway 7.8 installation to factory settings. Any exported data, upgraded data, or recreated topology is moved to a backup directory. You can then rerun all the commands without using the `--force` option.
+The `clean` command enables you to restart the `sysupgrade` process. The command resets the new API Gateway 7.7 installation to factory settings. Any exported data, upgraded data, or recreated topology is moved to a backup directory. You can then rerun all the commands without using the `--force` option.
 
 The `clean` command does the following:
 
-1. Moves the `sysupgrade` output from the `Axway-7.8/apigateway/upgrade/bin/out` directory to a backup directory.
-2. Removes the `Axway-7.8/apigateway/groups` directory from the new API Gateway 7.8 installation.
+1. Moves the `sysupgrade` output from the `Axway-7.7/apigateway/upgrade/bin/out` directory to a backup directory.
+2. Removes the `Axway-7.7/apigateway/groups` directory from the new API Gateway 7.7 installation.
 3. Moves Node Manager directories to a backup directory:
     * `apigateway/conf` is moved to `apigateway/upgrade_backup/old-nm_conf-<date>_<time>`
     * `apigateway/system/conf` is moved to `apigateway/upgrade_backup/old-nm_systemconf-<date>_<time>`

@@ -30,7 +30,7 @@ The following sections describe how to start the installer in GUI mode and the o
 To run the API Gateway installer in the default GUI mode, locate and run the Linux setup file. For example:
 
 ```
-APIGateway_7.8_Install_linux-x86-32_BN<n>.run
+APIGateway_7.7_Install_linux-x86-32_BN<n>.run
 ```
 
 Follow the instructions on each window to complete the installation.
@@ -103,7 +103,7 @@ Click **Next** to continue.
 
 ### Specify installation directory
 
-Enter a location or click the browse button to specify the directory where the gateway components are to be installed, for example: ```/opt/Axway-7.8```, and click **Next** to continue.
+Enter a location or click the browse button to specify the directory where the gateway components are to be installed, for example: ```/opt/Axway-7.7```, and click **Next** to continue.
 
 ### Specify license file
 

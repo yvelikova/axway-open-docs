@@ -69,9 +69,9 @@ To build the Docker image and run the API Portal Docker container, follow these
 
 1. Ensure that you are logged in to your Docker host machine as the `root` user.
 2. Change to the directory where you unzipped the Docker sample package.
-3. Build the API Portal image. For example, enter the following command to build the image and tag it as `apiportal`:`7.8`:
+3. Build the API Portal image. For example, enter the following command to build the image and tag it as `apiportal`:`7.7`:
 
-    `$ docker build -t apiportal:7.8`
+    `$ docker build -t apiportal:7.7`
 
 4. Check the IP address of the database container you started earlier:
 
@@ -88,12 +88,12 @@ To build the Docker image and run the API Portal Docker container, follow these
 6. Run a container from the API Portal Docker image with the same data volumes. For example:
 
     ```
-    $ docker run -it --name apiportal -e MYSQL_HOST=172.19.0.2 -e MYSQL_PORT=3306 -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=joomla -e MYSQL_PASSWORD=XXXXX -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443 -v templates:/opt/axway/apiportal/htdoc/templates -v images:/opt/axway/apiportal/htdoc/images apiportal:7.8
+    $ docker run -it --name apiportal -e MYSQL_HOST=172.19.0.2 -e MYSQL_PORT=3306 -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=joomla -e MYSQL_PASSWORD=XXXXX -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443 -v templates:/opt/axway/apiportal/htdoc/templates -v images:/opt/axway/apiportal/htdoc/images apiportal:7.7
     ```
 
 This example performs the following:
 
-- Runs an API Portal Docker container from an image named `apiportal`:`7.8`
+- Runs an API Portal Docker container from an image named `apiportal`:`7.7`
 - Sets environment variables for connecting to the MySQL container.
 - Sets environment variables for connecting to API Manager.
 - Binds port 443 of the container to port 443 on the host machine.

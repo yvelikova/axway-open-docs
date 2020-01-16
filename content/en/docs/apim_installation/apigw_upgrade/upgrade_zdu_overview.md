@@ -3,17 +3,17 @@
     "linkTitle": "Zero downtime upgrade",
     "weight": 4,
     "date": "2019-10-07",
-    "description": "Perform a zero downtime upgrade (ZDU) to API Gateway 7.8."
+    "description": "Perform a zero downtime upgrade (ZDU) to API Gateway 7.7."
 }
 
-The standard process to upgrade to API Gateway 7.8 involves a short period of downtime during the apply phase. With most `.fed` files, this downtime should not be more than a few minutes. However, with bigger `.fed` files of large and complex configurations, this downtime can be longer. This topic describes an approach you can take, and some sample scripts you can use as a reference, to achieve a zero downtime upgrade (ZDU) to API Gateway 7.8.
+The standard process to upgrade to API Gateway 7.7 involves a short period of downtime during the apply phase. With most `.fed` files, this downtime should not be more than a few minutes. However, with bigger `.fed` files of large and complex configurations, this downtime can be longer. This topic describes an approach you can take, and some sample scripts you can use as a reference, to achieve a zero downtime upgrade (ZDU) to API Gateway 7.7.
 
 This approach involves the use of a load balancer to ensure that available API Gateways can always process traffic, and if you are using a DevOps framework, the ZDU sample scripts provide an example for a basic high availability (HA) deployment and an nginx load balancer, to help you understand the required steps. The ZDU sample scripts provide an example only, and although the scripts are somewhat configurable, you must adapt them for your specific needs.
 
 The ZDU scripts package is available from Axway Support at [https://support.axway.com](https://support.axway.com/). The package includes scripts for Linux.
 
 {{< alert title="Note" color="primary" >}}
-Use the ZDU sample scripts only for upgrading from API Gateway 7.5.2 or later to 7.8 when Cassandra contains all the shared data.
+Use the ZDU sample scripts only for upgrading from API Gateway 7.5.2 or later to 7.7 when Cassandra contains all the shared data.
 
 We recommend that you perform a full upgrade that is completed in a single attempt. Because shared data (in particular quota counts) are involved, it is possible that this data could degrade if an upgraded subset of the domain coexists with a non-upgraded subset for a significant period of time.
 {{< /alert >}}
@@ -32,7 +32,7 @@ The reference configuration is a three-node topology configured as follows:
 
 ## ZDU script package
 
-The ZDU script package (for example, `APIGateway_7.8_Package_ZDUScripts_linux-x86-64_BNYYYYMMDDn.zip`) contains the following folders and files:
+The ZDU script package (for example, `APIGateway_7.7_Package_ZDUScripts_linux-x86-64_BNYYYYMMDDn.zip`) contains the following folders and files:
 
 * `README.md`: This file explains how the ZDU scripts work.
 * `bin`: This folder contains the `zdupgrade` shell script for use on Linux.
@@ -83,7 +83,7 @@ The prerequisites for the node on which you intend to run the `zdupgrade` script
 
 The prerequisites for the remote nodes are as follows:
 
-* You must install API Gateway version 7.8 on each node.
+* You must install API Gateway version 7.7 on each node.
 
     The scripts expect the old installation location to be the same on each node and the new installation location to be the same on each node.
 
@@ -137,7 +137,7 @@ cd opt/zdu/bin
 ```
 
 * `OLDINSTALLDIR` is the location of the old API Gateway installation.
-* `NEWINSTALLDIR` is the location of the new API Gateway 7.8 installation.
+* `NEWINSTALLDIR` is the location of the new API Gateway 7.7 installation.
 
 The scripts expect the old installation location to be the same on each node and the new installation location to be the same on each node.
 

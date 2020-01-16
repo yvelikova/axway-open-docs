@@ -1,6 +1,6 @@
 {
-    "title": "API Manager 7.8 Release Notes",
-    "linkTitle": "API Manager 7.8",
+    "title": "API Manager 7.7 Release Notes",
+    "linkTitle": "API Manager 7.7",
     "no_list": "true",
     "weight": "20",
     "date": "2019-09-20",

@@ -58,7 +58,7 @@ The following shows an example file:
 
 ```
 {
-   "productVersion" :"7.8",
+   "productVersion" :"7.7",
    "version" :1,
    "timestamp" :0,
    "adminUsers" :[ {
