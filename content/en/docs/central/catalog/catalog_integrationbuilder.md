@@ -29,6 +29,7 @@ Watch the animation to learn how to perform this task.
 
 ![export demo](/Images/central/catalog_export.gif)
 
+<!--
 ## Authenticate an exported API from Unified Catalog in Integration Builder
 
 This section describes how to configure authentication for an API exported from Unified Catalog.
@@ -71,3 +72,5 @@ To authenticate your Integration Builder instance:
 Watch the animation to learn how to perform this task.
 
 ![auth demo](/Images/central/catalog_auth.gif)
+
+-->
