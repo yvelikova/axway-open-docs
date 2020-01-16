@@ -1,14 +1,14 @@
 ---
-title: AMPLIFY Catalog
-linkTitle: AMPLIFY Catalog
-weight: 150
+title: Manage subscriptions
+linkTitle: Manage subscriptions
+weight: 10
 date: 2019-12-16
-description: Normalize discovery for APIs from multiple gateways, classify your services to support multiple audiences (partners, IT, business), control consumer subscription to access your APIs, and extend your APIs to be reused in other integration ﬂows.
+description: Manage AMPLIFY Catalog subscriptions.
 ---
 
 *Estimated reading time*: 5 minutes
 
-## AMPLIFY Catalog Overview
+## Overview
 
 The AMPLIFY Central and Catalog work together to help customers to have a common place to import their APIs from all of their distributed API gateways throughout their enterprise.
 
@@ -17,19 +17,15 @@ Alongside API interfaces, you can find Managed File Transfer (MFT) and B2B conne
 
 AMPLIFY Catalog allows developers to discover and understand the endpoints and protocols that they can use to integrate quickly with your services. It simplifies access and increases the speed of building, integrating, and deploying new services and apps. Platform administrators can limit content access to specific users or teams and manage subscriptions.
 
-## AMPLIFY Catalog Subscriptions
+## Subscriptions
 
 This section describes how to manage AMPLIFY Catalog subscriptions.
 
-## Before you start
+### Before you start
 
-* You will need to create an app in AMPLIFY Central and secure it with an API key. See [Get started with AMPLIFY Central](/docs/central/quickstart).
+* You will need to create an app in AMPLIFY Central and secure it with an API Key. See [Get started with AMPLIFY Central](/docs/central/quickstart).
 
-## Objectives
-
-Learn how to manage subscriptions to an endpoint in the AMPLIFY Catalog
-
-## Subscribe to an endpoint
+### Subscribe to an endpoint
 
 To subscribe to an endpoint:
 
@@ -43,15 +39,13 @@ Watch the animation to learn how to subscribe to an endpoint.
 
 ![Subscribe to a catalog item](/Images/central/catalog_subscribe.gif)
 
-## View the subscriptions of an endpoint
+### View the subscriptions of an endpoint
 
-To view the subscriptions of an endpoint:
-
-* Click the **Subscriptions** tab on the endpoint detail page.
+To view the subscriptions of an endpoint click the **Subscriptions** tab on the endpoint detail page.
 
 The result shows a table with the current subscriptions to the endpoint.
 
-## Unsubscribe from an endpoint
+### Unsubscribe from an endpoint
 
 To unsubscribe from an endpoint:
 
@@ -63,7 +57,7 @@ Watch the animation to learn how to unsubscribe from an endpoint.
 
 ![Unsubscribe from a catalog item](/Images/central/catalog_unsubscribe.gif)
 
-## Delete the subscription of an endpoint
+### Delete the subscription of an endpoint
 
 You can only delete subscriptions which are in `Unsubscribed` status.
 
