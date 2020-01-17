@@ -120,6 +120,29 @@ The `source` attribute refers to the attribute supplied by the IdP that you want
 
 The `target` attribute refers to the name of the attribute after it has been renamed.
 
+{{< alert title="Tip" color="primary" >}}When the IdP like Keycloak or Shibboleth is used the [**userNameAttribute**](#refusername) source attribute is used to extract a principal name value.
+In the case of Ldap as the IdP below rename mapping example can be used where a source attribute different from the one specified by **userNameAttribute**.
+
+```
+<LdapIdentityProvider entityId="[https://ldap|https://ldap/]" 
+useSSL="false" 
+userProvider="ldap://ldap.xxxxxxxxx/OU=Employees,DC=axway,DC=int" 
+userFilter="mailNickName=\{USERNAME}" 
+authIdentity="\{USERNAME}@[axway.com|https://axway.com/]" 
+attributes="cn,mailNickName,mail,department" 
+> 
+<Mappings> 
+<FilterMapping> 
+<Filter>(department=xxxxxxxxxxx))</Filter> 
+<OutputAttribute name="role">R&amp;D</OutputAttribute> 
+</FilterMapping> 
+<RenameMapping source="mailNickname" target="name"/> 
+</Mappings> 
+</LdapIdentityProvider> 
+```
+
+{{< /alert >}}
+
 ### Multiple rename mappings example
 
 You can have multiple RenameMapping directives.
@@ -319,7 +342,7 @@ This element specifies an entry point for receiving SAML assertions from the IdP
 
 This element specifies the IdP URL where the logout responses are sent. Only `HTTP-POST` binding is managed.
 
-### `<IdentityProviders>`
+### `<IdentityProviders>`{#refusername}
 
 This element describes the entity that exchanges SAML messages with the SSO filter. This section contains a section called `<SamlIdentityProvider>`, which supports the following attributes:
 
