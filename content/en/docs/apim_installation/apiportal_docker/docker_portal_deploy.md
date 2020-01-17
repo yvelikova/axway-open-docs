@@ -16,7 +16,7 @@ The following components are required on your system before deploying API Porta
 
 * Docker version 1.13.x
 * API Portal Docker samples package available from Axway Support at [https://support.axway.com](https://support.axway.com/)
-* API Gateway and API Manager either installed on-premise or deployed in containers, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/) or the [API Gateway Container Deployment Guide](/bundle/APIGateway_77_ContainerGuide_allOS_en_HTML5/) for more details.
+* API Gateway and API Manager either installed on-premise or deployed in containers, see the [API Gateway Installation Guide](/docs/apim_installation/apigtw_install/) or the [API Gateway Container Deployment Guide](/docs/apim_installation/apigw_containers/) for more details.
 
 The monitoring feature of API Portal, which enables your API consumers to monitor application and API usage, requires a connected API Manager with monitoring metrics enabled.
 

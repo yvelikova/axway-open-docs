@@ -8,7 +8,7 @@
 
 <!-- TODO Update this statement with the versions and SP numbers for 7.7 -->
 
-API Manager 7.7 includes all fixes for 7.7 Service Pack up to and including 7.5.3 SP 10 and 7.6.2 SP 2. For details of all the Service Pack fixes included in 7.7, see the corresponding _SP Readme_ attached to each Service Pack on [Axway Support](https://support.axway.com).
+API Manager 7.7 includes all fixes for 7.5.3, 7.6.2, and 7.7 Service Packs up to and including 7.5.3 SP 10 and 7.6.2 SP 2. For details of all the Service Pack fixes included in 7.7, see the corresponding _SP Readme_ attached to each Service Pack on [Axway Support](https://support.axway.com).
 
 ## Fixed security vulnerabilities
 

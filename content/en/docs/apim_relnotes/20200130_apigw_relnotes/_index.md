@@ -1,6 +1,6 @@
 {
-    "title": "API Gateway 7.7 Release Notes",
-    "linkTitle": "API Gateway 7.7",
+    "title": "API Gateway 7.7.20200130 Release Notes",
+    "linkTitle": "API Gateway 7.7.20200130",
     "no_list": "true",
     "weight": "10",
     "date": "2019-09-20",
@@ -11,9 +11,9 @@
 
 API Gateway is available as a software installation or a virtualized deployment in Docker containers.
 
-The software installation is available on Linux. For more details on supported platforms for software installation, see [System requirements](/csh?context=305&product=prod-api-gateway-77) in the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+The software installation is available on Linux. For more details on supported platforms for software installation, see [System requirements](/docs/apim_installation/apigtw_install/system_requirements/).
 
-Docker deployment is supported on Linux. For a summary of the system requirements for a Docker deployment, see [System requirements](/csh?context=305&product=prod-api-gateway-77) in the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/), and for more details see [What you need before you start](/csh?context=900&product=prod-api-gateway-77) in the [API Gateway Container Deployment Guide](/bundle/APIGateway_77_ContainerGuide_allOS_en_HTML5/).
+Docker deployment is supported on Linux. For a summary of the system requirements for a Docker deployment, see [Set up Docker environment](/docs/apim_installation/apigw_containers/docker_scripts_prereqs/).
 
 ## New features and enhancements
 
@@ -35,6 +35,10 @@ placeholder
 
 placeholder
 
+## Fixed issues
+
+See [Fixed issues](/docs/apim_relnotes/20200130_apigw_relnotes/fixed_issues/) for a complete list.
+
 ## Known issues
 
 The following are known issues for this release of API Manager.
@@ -51,11 +55,16 @@ This section describes documentation enhancements and related documentation.
 
 ### Documentation enhancements
 
-See [What's new in documentation](whats_new_doc.htm) for a summary of the documentation changes in this release.
+placeholder
 
 ### Related documentation
 
-The AMPLIFY API Management solution enables you to create, publish, promote, and manage Application Programming Interfaces (APIs) in a secure and scalable environment. For more information, see the AMPLIFY API Management Getting Started Guide.
+To find all available documents for this product version:
+
+1. Go to <https://docs.axway.com/bundle>.
+2. In the left pane Filters list, select your product or product version.
+
+Customers with active support contracts need to log in to access restricted content.
 
 The following reference documents are also available:
 
@@ -70,4 +79,4 @@ The Axway Global Support team provides worldwide 24 x 7 support for customers wi
 
 Email <support@axway.com> or visit Axway Support at <https://support.axway.com>.
 
-See for the information that you should be prepared to provide when you contact Axway Support.
+See [Get help with API Gateway](/docs/apim_administration/apigtw_admin/trblshoot_get_help/) for the information that you should be prepared to provide when you contact Axway Support.

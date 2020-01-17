@@ -84,7 +84,7 @@ For more details on the `modsecurity.conf` file format and recommended settings,
 
 ## Monitor API firewalling
 
-The gateway administrator or operator can use the **Traffic > HTTP** tab in the API Gateway Manager web console to monitor API firewalling. You can use this tab to show how threat protection affects the HTTP traffic API Gateway serves.
+The API Gateway administrator or operator can use the **Traffic > HTTP** tab in the API Gateway Manager web console to monitor API firewalling. You can use this tab to show how threat protection affects the HTTP traffic API Gateway serves.
 
 ![Monitor threat protection](/Images/APIGateway/admin_waf_monitor.png)
 
@@ -110,7 +110,7 @@ You can filter this tab to display by **Threat Protection** to quickly locate al
 
 For example, the following shows detailed trace output from drilling down a failed transaction:
 
-``` {space="preserve"}
+```
 Message:Access denied with code 403 (phase 2).
 Pattern match "(?i:(?:\\b(?:(?:s(?:ys\\.(?:user_(?:(?:t(?:ab(?:_column|le)|rigger)
 |object|view)s|c(?:onstraints|atalog))|all_tables|tab)|elect\\b.{0,40}\\b
@@ -125,4 +125,4 @@ FROM USERS found within ARGS:q:SELECT * FROM USERS"] [severity "CRITICAL"]
 [tag "OWASP_TOP_10/A1"] [tag "OWASP_AppSensor/CIE1"] [tag "PCI/6.5.2"]
 ```
 
-In addition of being written to trace files, ModSecurity report is also stored in the message attribute `modsec.error.message`. You can configure an alert policy that, for example, uses an Alert filter with a selector for this message attribute in the default message to pass the threat report to third-party monitoring systems.
+In addition to being written to trace files, ModSecurity report is also stored in the message attribute `modsec.error.message`. You can configure an alert policy that, for example, uses an Alert filter with a selector for this message attribute in the default message to pass the threat report to third-party monitoring systems.

@@ -103,7 +103,7 @@ Click **Next** to continue.
 
 ### Specify installation directory
 
-Enter a location or click the browse button to specify the directory where the gateway components are to be installed, for example: ```/opt/Axway-7.7```, and click **Next** to continue.
+Enter a location or click the browse button to specify the directory where the gateway components are to be installed, for example: `/opt/Axway-7.7`, and click **Next** to continue.
 
 ### Specify license file
 

@@ -3,7 +3,7 @@ title: Upgrade a container deployment
 linkTitle: Upgrade a container deployment
 weight: 105
 date: 2019-09-18
-description: Upgrade your API Gateway or API Manager container deployment from 7.6.2 or later to 7.7.
+description: Upgrade your API Gateway or API Manager container deployment from 7.6.2 or later.
 ---
 
 In a container deployment, an upgrade is rolled out using an orchestration tool (for example, Kubernetes or OpenShift) after new Docker images containing the upgrade are pushed to the Docker registry. This enables you to perform a rolling zero downtime update of services.

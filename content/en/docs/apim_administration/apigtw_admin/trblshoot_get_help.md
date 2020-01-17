@@ -123,7 +123,7 @@ This command can also be run in command interpreter mode.
 
 It is important to include as much information as possible when contacting the Axway Support team. This helps to diagnose and solve the problem in a more efficient manner. The following information should be included with any Support query:
 
-* Name and version of the product (for example, AxwayAPI Gateway7.7).
+* Name and version of the product (for example,  API Gateway 7.7).
 * Details of any service pack or patches that were applied to the product, if any.
 * Operating system on which the product is running.
 * A clear (step-by-step) description of the problem or query.

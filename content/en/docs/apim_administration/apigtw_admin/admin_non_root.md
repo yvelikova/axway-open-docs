@@ -10,7 +10,7 @@ API Gateway is run as a non-root user to prevent any potential security issues w
 
 ## Before you begin
 
-The examples in this topic are for a non-root user named `admin` and for a gateway installation at `/opt/Axway-7.7/apigateway`. If you have a different non-root user name or gateway installation, you must modify the examples accordingly.
+The examples in this topic are for a non-root user named `admin` and for an API Gateway installation at `/opt/Axway-7.7/apigateway`. If you have a different non-root user name or installation location, you must modify the examples accordingly.
 
 ## Set API Gateway file ownership to non-root user
 

@@ -1,6 +1,6 @@
 {
-    "title": "API Manager 7.7 Release Notes",
-    "linkTitle": "API Manager 7.7",
+    "title": "API Manager 7.7.20200130 Release Notes",
+    "linkTitle": "API Manager 7.7.20200130",
     "no_list": "true",
     "weight": "20",
     "date": "2019-09-20",
@@ -9,11 +9,11 @@
 
 ## Summary
 
-API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway: software installation, or virtualized deployment in Docker containers. For more information on API Gateway, see the [API Gateway Release Notes](/bundle/APIGateway_77_ReleaseNotes_allOS_en_HTML5/).
+API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway: software installation, or virtualized deployment in Docker containers. For more information on API Gateway, see the [API Gateway 7.7.20200130 Release Notes](/docs/apim_relnotes/20200130_apigw_relnotes/).
 
-The software installation is available on Linux. For more details on supported platforms for software installation, see [System requirements](/csh?context=305&product=prod-api-gateway-77) in the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+The software installation is available on Linux. For more details on supported platforms for software installation, see [System requirements](/docs/apim_installation/apigtw_install/system_requirements/).
 
-Docker deployment is supported on Linux. For a summary of the system requirements for a Docker deployment, see [System requirements](/csh?context=305&product=prod-api-gateway-77) in the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/), and for more details see [What you need before you start](/csh?context=900&product=prod-api-gateway-77) in the [API Gateway Container Deployment Guide](/bundle/APIGateway_77_ContainerGuide_allOS_en_HTML5/).
+Docker deployment is supported on Linux. For a summary of the system requirements for a Docker deployment, see [Set up Docker environment](/docs/apim_installation/apigw_containers/docker_scripts_prereqs/).
 
 ## New features and enhancements
 
@@ -21,16 +21,16 @@ The following new features and enhancements are available in this release.
 
 ### Swagger 2.0 enhancements
 
-API Manager now imports, retains, and exports all Swagger v2.0 fields, except for the ventor extentions.
+API Manager now imports, retains, and exports all Swagger v2.0 fields, except for the vendor extensions.
 
 ### Open API Specification (OAS) 3.0 enhancements
 
-* API Manager now imports, retains, and exports all Open API Specification (OAS) v3.0 fields, except for the ventor extentions, callbacks, links and examples.
+* API Manager now imports, retains, and exports all Open API Specification (OAS) v3.0 fields, except for the vendor extensions, callbacks, links, and examples.
 * Parameter content types are now supported in OAS3.
 
 ### Try It and Try Method improvements
 
-API Manager's TryIt and TryMethod now support the rendering of `enum`, which allows you to send multipart forms
+API Manager's Try It and Try Method now support the rendering of `enum`, which allows you to send multipart forms.
 
 * When trying the method of an API, you can now select files as part of the request
 * The parameters object types are auto generated in the UI with nested schemes and arrays rendered fully
@@ -41,11 +41,11 @@ API Manager's TryIt and TryMethod now support the rendering of `enum`, which all
 
 The API Manager UI now supports OAS3 `response.content.schemes`.
 
-* The OAS3 multiple back ends are rendered on the screen, which allows users to select the required URL
+* The OAS3 multiple back-ends are rendered on the screen, which allows users to select the required URL
 * The UI has been extended to include all response codes available in OAS3
 * Multipart request bodies are rendered in the back-end UI
 * The UI allows users to define `allOf` response types for Swagger 2
-* The `DataTypes` in API Manager have been changed to align with the OAS3 datatypes
+* The `DataTypes` in API Manager have been changed to align with the OAS3 data types
 * Users now have the option to modify all back-end APIs without cloning
 
 ## Limitations of this release
@@ -64,6 +64,10 @@ In our efforts to continually upgrade our products in response to the needs of o
 
 * API Tester
 
+## Fixed issues
+
+See [Fixed issues](/docs/apim_relnotes/20200130_apimgr_relnotes/fixed_issues/) for a complete list.
+
 ## Known issues
 
 The following are known issues for this release of API Manager.
@@ -80,11 +84,16 @@ This section describes documentation enhancements and related documentation.
 
 ### Documentation enhancements
 
-See [What's new in documentation](whats_new_doc.htm) for a summary of the documentation changes in this release.
+placeholder
 
 ### Related documentation
 
-The AMPLIFY API Management solution enables you to create, publish, promote, and manage Application Programming Interfaces (APIs) in a secure and scalable environment. For more information, see the AMPLIFY API Management Getting Started Guide.
+To find all available documents for this product version:
+
+1. Go to <https://docs.axway.com/bundle>.
+2. In the left pane Filters list, select your product or product version.
+
+Customers with active support contracts need to log in to access restricted content.
 
 The following reference documents are also available:
 
@@ -99,4 +108,4 @@ The Axway Global Support team provides worldwide 24 x 7 support for customers wi
 
 Email <support@axway.com> or visit Axway Support at <https://support.axway.com>.
 
-See for the information that you should be prepared to provide when you contact Axway Support.
+See [Get help with API Gateway](/docs/apim_administration/apigtw_admin/trblshoot_get_help/) for the information that you should be prepared to provide when you contact Axway Support.

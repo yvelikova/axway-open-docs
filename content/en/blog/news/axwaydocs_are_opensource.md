@@ -7,7 +7,7 @@ description: >
 author: Andrea Mussap
 ---
 
-The ReadMeFirst team of technical writers based in Dublin is proud to announce the beta availability of docs-as-code for AMPLIFY Central and API Portal 7.7 documentation. In other words, this documentation is now open source and everyone can collaborate and improve it using what's commonly known as a docs-as-code workflow, where docs are:
+The ReadMeFirst team of technical writers based in Dublin is proud to announce the beta availability of docs-as-code for AMPLIFY Central and API Portal documentation. In other words, this documentation is now open source and everyone can collaborate and improve it using what's commonly known as a docs-as-code workflow, where docs are:
 
 * written in a simple Markdown format
 * stored in GitHub
@@ -32,10 +32,8 @@ Please read the [Contribution guidelines](/docs/contribution_guidelines/) to lea
 
 ## Coming soon
 
-ReadMeFirst team is currently working on migrating the API Gateway and API Manager 7.7 content to this workflow, and we will be continually improving the new process based on your feedback.
+ReadMeFirst team is currently working on migrating the API Gateway and API Manager content to this workflow, and we will be continually improving the new process based on your feedback.
 
 Thanks a lot!
 
 Andrea Mussap‌ and Alex Earnshaw‌
-
-ReadMeFirst * API Management and AMPLIFY Central Content Development Team

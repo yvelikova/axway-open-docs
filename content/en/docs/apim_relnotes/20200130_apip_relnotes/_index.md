@@ -1,6 +1,6 @@
 ---
-title: API Portal 7.7 Release Notes
-linkTitle: API Portal 7.7
+title: API Portal 7.7.20200130 Release Notes
+linkTitle: API Portal 7.7.20200130
 weight: 30
 no_list: true
 date: 2019-08-08
@@ -28,12 +28,12 @@ This release has the following limitations:
 
 * This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
 * The ready-made API Portal Docker image is strictly for development environments only, and is not recommended for use in production environments. You must use the Dockerfile to build and run API Portal containers in production environments.
-* Upgrade to API Portal 7.7 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to 7.7.
+* Upgrade to API Portal 7.7 is supported from API Portal 7..6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
 * API Portal 7.7 is compatible with API Gateway and API Manager 7.7 only.
 
 ## Fixed issues
 
-See [Fixed issues](/docs/apim_relnotes/apiportal_releasenotes/fixed_issues/) for a complete list.
+See [Fixed issues](/docs/apim_relnotes/20200130_apip_relnotes/fixed_issues/) for a complete list.
 
 ## Known issues
 
@@ -54,7 +54,11 @@ Related Issue: IAP-308
 
 ## Documentation
 
-This section describes documentation enhancements, known issues, and related documentation.
+This section describes documentation enhancements and related documentation.
+
+### Documentation enhancements
+
+placeholder
 
 ### Related documentation
 
@@ -65,12 +69,10 @@ To find all available documents for this product version:
 
 Customers with active support contracts need to log in to access restricted content.
 
-The AMPLIFY API Management solution enables you to create, publish, promote, and manage Application Programming Interfaces (APIs) in a secure and scalable environment. For more information, see [Get started with API Management](/bundle/APIManagementPlus_GettingStartedGuide_allOS_en_HTML5/).
-
 The following reference documents are also available:
 
-* [Supported Platforms](/bundle/Axway_Products_SupportedPlatforms_allOS_en) - Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
-* [Interoperability Matrix](/bundle/Axway_Products_InteroperabilityMatrix_allOS_en) - Provides product version and interoperability information for Axway products.
+* [Supported Platforms](https://docs.axway.com/bundle/Axway_Products_SupportedPlatforms_allOS_en) - Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
+* [Interoperability Matrix](https://docs.axway.com/bundle/Axway_Products_InteroperabilityMatrix_allOS_en) - Provides product version and interoperability information for Axway products.
 
 ## Support services
 
@@ -78,4 +80,4 @@ The Axway Global Support team provides worldwide 24 x 7 support for customers wi
 
 Email <support@axway.com> or visit <https://support.axway.com/>.
 
-See [Get help with API Gateway](/csh?context=103&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/) for the information that you should be prepared to provide when you contact Axway Support.
+See [Get help with API Gateway](/docs/apim_administration/apigtw_admin/trblshoot_get_help/) for the information that you should be prepared to provide when you contact Axway Support.

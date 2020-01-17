@@ -83,8 +83,8 @@ The following table describes the `upgradeconfig` options:
 
 | Option                 | Description                                          |
 |------------------------|------------------------------------------------------|
-| `-u`                     | The URL of configuration to upgrade (for example, `federated:file:///C:/Axway730/analytics/conf/fed/configs.xml`).  |
-| `-o`                    | The output directory which will contain the upgraded configuration. Typically this is the `fed` folder of the new API Gateway Analytics installation (for example, `C:\Axway-7.7\analytics\conf\fed`). |
+| `-u`                     | The URL of configuration to upgrade (for example, `federated:file:////opt/Axway-7.3.1/analytics/conf/fed/configs.xml`).  |
+| `-o`                    | The output directory which will contain the upgraded configuration. Typically this is the `fed` folder of the new API Gateway Analytics installation (for example, `/opt/Axway-7.7/analytics/conf/fed`). |
 
 ### Use Policy Studio to change API Gateway Analytics configuration
 
