@@ -21,7 +21,7 @@ The following new features and enhancements are available in this release.
 
 ### Swagger 2.0 enhancements
 
-API Manager now imports, retains, and exports all Swagger v2.0 fields, except for the ventor extentions. 
+API Manager now imports, retains, and exports all Swagger v2.0 fields, except for the ventor extentions.
 
 ### Open API Specification (OAS) 3.0 enhancements
 
@@ -39,14 +39,14 @@ API Manager's TryIt and TryMethod now support the rendering of `enum`, which all
 
 ### Back-end API improvements
 
-The API Manager UI now supports OAS3 `response.content.schemes`. 
+The API Manager UI now supports OAS3 `response.content.schemes`.
 
 * The OAS3 multiple back ends are rendered on the screen, which allows users to select the required URL
 * The UI has been extended to include all response codes available in OAS3
 * Multipart request bodies are rendered in the back-end UI
 * The UI allows users to define `allOf` response types for Swagger 2
 * The `DataTypes` in API Manager have been changed to align with the OAS3 datatypes
-* Users now have the option to modify all back-end APIs without cloning 
+* Users now have the option to modify all back-end APIs without cloning
 
 ## Limitations of this release
 

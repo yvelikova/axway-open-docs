@@ -232,9 +232,7 @@ To run `apply` and specify a non-default signing algorithm for the topology SSL 
 To run `apply` and specify non-default subject alternative names and a non-default CN for the Node Manager topology SSL certificate (single-node or multi-node with one Admin Node Manager):
 
 ```
-./sysupgrade apply --subj_alt_name "DNS.0=node1.axway.com" --subj_alt_name "DNS.1=host1.axway.com" 
---subj_alt_name "IP.0=10.4.6.7.3" --subj_alt_name "email.0=user1.axway.com" --subj_alt_name "email.1=user1.axway.com" 
---subj_alt_name "email.2=user1.axway.com" --domain_name MyTestDomain
+./sysupgrade apply --subj_alt_name "DNS.0=node1.axway.com" --subj_alt_name "DNS.1=host1.axway.com" --subj_alt_name "IP.0=10.4.6.7.3" --subj_alt_name "email.0=user1.axway.com" --subj_alt_name "email.1=user1.axway.com" --subj_alt_name "email.2=user1.axway.com" --domain_name MyTestDomain
 ```
 
 ### `apply` command output

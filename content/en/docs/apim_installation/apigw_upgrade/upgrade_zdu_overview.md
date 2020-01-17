@@ -221,7 +221,7 @@ command [
     cd /opt/Axway-7.5.3/apigateway/upgrade/bin
     /opt/Axway-7.5.3/apigateway/upgrade/bin/sysupgrade upgrade --cass_host localhost --cass_port 9160
 ]
-ERROR: This is a multi-node upgrade and a localhost Cassandra server: localhost:9160 has been specified. 
+ERROR: This is a multi-node upgrade and a localhost Cassandra server: localhost:9160 has been specified.
 You must use a network accessible address. Run sysupgrade upgrade -h for details.
 
 ------------- ZDU_EXEC_CMD -------------

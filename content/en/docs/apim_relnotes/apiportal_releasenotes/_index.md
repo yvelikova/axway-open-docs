@@ -44,11 +44,11 @@ The following are known issues in this version of API Portal.
 If you change the API Portal language to Arabic (or any other right to left language) there are issues with page layout and alignment on the API Portal Home and Pricing pages, and some buttons are not visible. As a workaround, you can turn on development mode in JAI. Follow these steps:
 
 1. Log in to Joomla! Admin Interface (JAI).
-1. In the JAI top navigation bar, click **Extensions > Templates**.
-1. Click your template style (for example, `purity_III * Default`) to open it.
-1. Click the **General** tab.
-1. Change **Development Mode** to `ON`.
-1. Click **Save** and click **Close** to close the template style.
+2. In the JAI top navigation bar, click **Extensions > Templates**.
+3. Click your template style (for example, `purity_III * Default`) to open it.
+4. Click the **General** tab.
+5. Change **Development Mode** to `ON`.
+6. Click **Save** and click **Close** to close the template style.
 
 Related Issue: IAP-308
 
@@ -61,7 +61,7 @@ This section describes documentation enhancements, known issues, and related doc
 To find all available documents for this product version:
 
 1. Go to <https://docs.axway.com/bundle>.
-1. In the left pane Filters list, select your product or product version.
+2. In the left pane Filters list, select your product or product version.
 
 Customers with active support contracts need to log in to access restricted content.
 

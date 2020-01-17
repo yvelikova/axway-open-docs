@@ -190,7 +190,6 @@ The following example creates a certificate signing request (CSR).
 * You must send the generated CSR to a CA for signing.
 * When running the scripts to build Admin Node Manager or API Gateway images, specify the certificate and private key returned from the CA, and not the CSR.
 
-
 ```
 cd emt_containers-<version>
 ./gen_domain_cert.py --domain-id=mydomain --pass-file=/tmp/pass.txt --out=csr --O=MyOrg

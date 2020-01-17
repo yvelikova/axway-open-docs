@@ -324,6 +324,6 @@ CentOS also does not offer the latest PHP version in the default repositories. T
 
 2. To start Apache, enter the following command:
 
-    ``
+    ```
     ystemctl start httpd
-    ``
+    ```
