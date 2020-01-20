@@ -118,9 +118,7 @@ Customize the API Portal home page using joomla! and ThemeMagic
 
 API Portal now ships with a new template called "apiportal-homepage". This template has a new layout called "apiportal-homepage" and by default is assigned only on to the home menu item. 
 
-
-
-
+![](/Images/uploads/layout.png)
 
 ## Customize your logo
 
