@@ -120,6 +120,43 @@ API Portal now ships with a new template called "apiportal-homepage". This templ
 
 ![](/Images/uploads/layout.png)
 
+By default the home page consists of the following main sections : 
+
+1. Menu 
+2. Banner
+3. Tiles section
+4. Footer
+
+## Customizing the banner
+
+API Portal ships with new custom developed module called "Home Page Banner". This module is responsible for the banner section of the home page. 
+
+![](/Images/uploads/banner-homepage.png)
+
+
+To customize this banner go to JAI->Extensions->Modules->Home Page Banner
+
+You'll see the following interface: 
+
+![](/Images/uploads/banner-config.png)
+
+
+# Title - free text field for the title of the banner. Defaults to "Enter API Portal"
+# Title colour - colour picker to choose the color of the title
+# Sub-title - free text field for the sub-title of the banner. Defaults to "Explore and test our APIs."
+# Subtitle colour - colour picker to choose the color of the sub-title
+# Explore Button - Show / Hide Explore Button
+# Button text - free text field for the button text. 
+# Button text colour - colour picker to choose the color of the button text
+# Button has background - Yes / No 
+# Link button to a menu item - drop down with all menu items. Choose on which page the user should go when click the button. Defaults to "Sign in" page.
+# Button border colour - colour picker to choose the color of the button border
+# Border radius - Numbers only field for border radius of the button border. Defaults to 500.
+# Background image - change the background image of the banner. You can choose an image from the media manager or upload a new one. 
+# Text alignment - choose one of the three options - left, center, right to position the text and the button on the banner. 
+
+After finishing the customizations just click "Save" or "Save & close"
+
 ## Customize your logo
 
 Change the API Portal site logo using the Joomla! Media Manager.
