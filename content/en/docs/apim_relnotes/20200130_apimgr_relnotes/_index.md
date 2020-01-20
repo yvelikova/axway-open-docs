@@ -63,6 +63,7 @@ As part of our software development life cycle we constantly review the core API
 In our efforts to continually upgrade our products in response to the needs of our customers’ IT environments, Axway occasionally discontinues support for some capabilities. As part of this review, the following capabilities have been removed:
 
 * API Tester
+* A security issue with the 'api/portal/v1.3/users' API means that the behavour has changed. This API will now return all Organizations for the APIAdmin role only. Previously, all organisations were returned for all roles. This was deemed a security issue
 
 ## Fixed issues
 
@@ -71,10 +72,6 @@ See [Fixed issues](/docs/apim_relnotes/20200130_apimgr_relnotes/fixed_issues/) f
 ## Known issues
 
 The following are known issues for this release of API Manager.
-
-### placeholder3
-
-placeholder
 
 ## Documentation
 
