@@ -1,15 +1,15 @@
 {
-    "title": "API Manager 7.7.20200130 Release Notes",
-    "linkTitle": "API Manager 7.7.20200130",
+    "title": "API Gateway and API Manager 7.7.20200130 Release Notes",
+    "linkTitle": "API Gateway and API Manager 7.7.20200130",
     "no_list": "true",
     "weight": "20",
     "date": "2019-09-20",
-    "description": "Learn about the new features and enhancements in this release."
+    "description": "Learn about the new features and enhancements in this release of API Gateway and API Manager."
 }
 
 ## Summary
 
-API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway: software installation, or virtualized deployment in Docker containers. For more information on API Gateway, see the [API Gateway 7.7.20200130 Release Notes](/docs/apim_relnotes/20200130_apigw_relnotes/).
+API Gateway is available as a software installation or a virtualized deployment in Docker containers. API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway.
 
 The software installation is available on Linux. For more details on supported platforms for software installation, see [System requirements](/docs/apim_installation/apigtw_install/system_requirements/).
 
@@ -48,11 +48,17 @@ The API Manager UI now supports OAS3 `response.content.schemes`.
 * The `DataTypes` in API Manager have been changed to align with the OAS3 data types
 * Users now have the option to modify all back-end APIs without cloning
 
+## Important notes and changes in behavior
+
+<!-- Use this section to describe any changes in the behavior of the product (as a result of features or fixes), for example, new Java system properties in the jvm.xml file. This section could also be used to add information that doesn't fit elsewhere.-->
+
 ## Limitations of this release
 
-placeholder
+<!-- Add any limitations here -->
 
 ## Deprecated features
+
+<!-- Add features that are deprecated here-->
 
 As part of our software development life cycle we constantly review the core API Management products and related components. As part of this review, the following capabilities have been deprecated:
 
@@ -60,21 +66,31 @@ As part of our software development life cycle we constantly review the core API
 
 ## Removed features
 
+<!-- Add features that are removed here-->
+
 In our efforts to continually upgrade our products in response to the needs of our customers’ IT environments, Axway occasionally discontinues support for some capabilities. As part of this review, the following capabilities have been removed:
 
 * API Tester
 
 ## Fixed issues
 
+<!-- Fixed issues are maintained in another topic -->
+
 See [Fixed issues](/docs/apim_relnotes/20200130_apimgr_relnotes/fixed_issues/) for a complete list.
 
 ## Known issues
 
-The following are known issues for this release of API Manager.
+The following are known issues for this release.
 
-### placeholder3
+<!-- Add each known issue as a H3 and add a description as paragraph text-->
 
-placeholder
+## Install or upgrade a classic (non-container) deployment
+
+<!--Add install instructions here -->
+
+## Install or upgrade a container deployment
+
+<!--Add install instructions here -->
 
 ## Documentation
 
@@ -84,7 +100,7 @@ This section describes documentation enhancements and related documentation.
 
 ### Documentation enhancements
 
-placeholder
+<!-- Add a summary of doc enhancements here -->
 
 ### Related documentation
 
