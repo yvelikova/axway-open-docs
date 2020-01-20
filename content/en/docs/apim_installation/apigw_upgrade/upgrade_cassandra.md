@@ -6,7 +6,7 @@
     "description": "Upgrade Apache Cassandra from version 2.2.8 to version 2.2.12."
 }
 
-It is recommended that you upgrade your Cassandra version *before* you upgrade your API Gateway installation to version 7.8.
+It is recommended that you upgrade your Cassandra version *before* you upgrade your API Gateway installation to version 7.7.
 
 ## Best practice
 
@@ -38,7 +38,7 @@ Follow these steps to install Apache Cassandra 2.2.12 using the API Gateway inst
 You can also install Cassandra in unattended mode, for example:
 
 ```
-./APIGateway_7.8_Install_linux-x86-64_BN<n>.run --mode unattended --setup_type advanced --enable-components cassandra --disable-components apigateway,qstart,policystudio,analytics,configurationstudio,apitester,apimgmt,packagedeploytools --cassandraInstalldir /opt/db/cassandra-2212 --cassandraJDK /opt/jre --startCassandra 0
+./APIGateway_7.7_Install_linux-x86-64_BN<n>.run --mode unattended --setup_type advanced --enable-components cassandra --disable-components apigateway,qstart,policystudio,analytics,configurationstudio,apitester,apimgmt,packagedeploytools --cassandraInstalldir /opt/db/cassandra-2212 --cassandraJDK /opt/jre --startCassandra 0
 ```
 
 ### Run nodetool drain on Cassandra 2.2.8
@@ -202,7 +202,7 @@ Follow these steps to install Apache Cassandra 2.2.12 using the API Gateway inst
 You can also install Cassandra in unattended mode, for example:
 
 ```
-./APIGateway_7.8_Install_linux-x86-64_BN<n>.run --mode unattended --setup_type advanced --enable-components cassandra --disable-components apigateway,qstart,policystudio,analytics,configurationstudio,apitester,apimgmt,packagedeploytools --cassandraInstalldir /opt/db/cassandra-2212 --cassandraJDK /opt/jre --startCassandra 0
+./APIGateway_7.7_Install_linux-x86-64_BN<n>.run --mode unattended --setup_type advanced --enable-components cassandra --disable-components apigateway,qstart,policystudio,analytics,configurationstudio,apitester,apimgmt,packagedeploytools --cassandraInstalldir /opt/db/cassandra-2212 --cassandraJDK /opt/jre --startCassandra 0
 ```
 
 #### Run nodetool drain on Cassandra 2.2.8 on Node 1

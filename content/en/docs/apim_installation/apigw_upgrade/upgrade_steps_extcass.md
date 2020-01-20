@@ -3,14 +3,14 @@
     "linkTitle": "Upgrade from API Gateway 7.5.x or 7.6.x",
     "weight": 2,
     "date": "2019-10-07",
-    "description": "Upgrade from API Gateway 7.5.1 or later to API Gateway 7.8."
+    "description": "Upgrade from API Gateway 7.5.1 or later to API Gateway 7.7."
 }
 
 In API Gateway 7.5.1 and later versions, the Apache Cassandra database is fully separated from the API Gateway (in earlier versions it was embedded with the API Gateway). This simplifies the upgrade process when upgrading from API Gateway 7.5.1 or later, as the data contained in Apache Cassandra does not need to be exported and imported along with the other configuration data.
 
 In an upgrade from API Gateway 7.5.1 and later versions:
 
-* Your existing Apache Cassandra deployment can remain in place for use with API Gateway 7.8. There is no need to install a new Apache Cassandra deployment.
+* Your existing Apache Cassandra deployment can remain in place for use with API Gateway 7.7. There is no need to install a new Apache Cassandra deployment.
 * No data changes are necessary in the Apache Cassandra database, which means it can remain running throughout the upgrade, serving any upgraded API Gateways when they come online.
 
 {{< alert title="Caution" color="warning" >}}
@@ -22,9 +22,9 @@ In an upgrade from API Gateway 7.5.1 and later versions:
 
 ## Before you upgrade
 
-This section provides a checklist of the tasks that you must perform on your old API Gateway installation, and on your new API Gateway 7.8 installation, before you upgrade.
+This section provides a checklist of the tasks that you must perform on your old API Gateway installation, and on your new API Gateway 7.7 installation, before you upgrade.
 
-{{< alert title="Note" color="primary" >}}API Gateway 7.8 supports Apache Cassandra version 2.2.12. If you are upgrading from API Gateway 7.5.x (which supported Apache Cassandra 2.2.5 and 2.2.8) it is recommended that you upgrade Apache Cassandra to version 2.2.12 *before* you upgrade to API Gateway 7.8. For more information on upgrading Apache Cassandra, see [Upgrade Apache Cassandra](/docs/apim_installation/apigw_upgrade/upgrade_cassandra/).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}API Gateway 7.7 supports Apache Cassandra version 2.2.12. If you are upgrading from API Gateway 7.5.x (which supported Apache Cassandra 2.2.5 and 2.2.8) it is recommended that you upgrade Apache Cassandra to version 2.2.12 *before* you upgrade to API Gateway 7.7. For more information on upgrading Apache Cassandra, see [Upgrade Apache Cassandra](/docs/apim_installation/apigw_upgrade/upgrade_cassandra/).{{< /alert >}}
 
 ### Checklist for the old API Gateway installation
 
@@ -57,9 +57,9 @@ See also [What happens if you change the old API Gateway installation after runn
 #### Check that ext/lib customizations in the old installation are compatible
 
 If you have customizations (for example, third-party JAR files) in the `ext/lib`
-directory of your old API Gateway installation, the `sysupgrade` command copies any third-party JARs to the new installation. However, you must verify that all third-party JARs are compatible with API Gateway 7.8.
+directory of your old API Gateway installation, the `sysupgrade` command copies any third-party JARs to the new installation. However, you must verify that all third-party JARs are compatible with API Gateway 7.7.
 
-Before you upgrade, you should confirm that any third-party JARs are not already present in the new installation under directory `apigateway/system/lib`. You should also test any custom JARs to ensure that they work correctly in API Gateway 7.8.
+Before you upgrade, you should confirm that any third-party JARs are not already present in the new installation under directory `apigateway/system/lib`. You should also test any custom JARs to ensure that they work correctly in API Gateway 7.7.
 
 #### Upgrade API Gateway Analytics version 7.4.0 or later
 
@@ -79,9 +79,9 @@ Check your old installation and identify if you are using any of the following:
 * QuickStart tutorial – For more information on migrating the QuickStart tutorial, see [Migrate the QuickStart tutorial](#migrate-the-quickstart-tutorial).
 * API Gateway services – If you are running API Gateway processes as services on Linux, you must upgrade these manually. See [Upgrade services](#upgrade-services).
 
-### Checklist for the new API Gateway 7.8 installation
+### Checklist for the new API Gateway 7.7 installation
 
-Perform the following in your new API Gateway 7.8 installation.
+Perform the following in your new API Gateway 7.7 installation.
 
 #### Install the latest service pack
 
@@ -93,29 +93,29 @@ Do not create or start any Node Managers, groups, or API Gateways in the new ins
 
 #### Open the new Apache Cassandra client port in the firewall
 
-API Gateway version 7.8 includes the Datastax Cassandra client, which uses a default port of 9042 to communicate with Cassandra over the native protocol. Earlier API Gateway versions included the Hector Cassandra client, which used a default port of 9160 to communicate with Cassandra over the Apache Thrift protocol.
+API Gateway version 7.7 includes the Datastax Cassandra client, which uses a default port of 9042 to communicate with Cassandra over the native protocol. Earlier API Gateway versions included the Hector Cassandra client, which used a default port of 9160 to communicate with Cassandra over the Apache Thrift protocol.
 
-When upgrading from 7.5.1 or later to API Gateway 7.8 all Cassandra hosts are updated to use port 9042 for client communication. You must open the port 9042 on your firewall to enable API Gateway to communicate with Apache Cassandra.
+When upgrading from 7.5.1 or later to API Gateway 7.7 all Cassandra hosts are updated to use port 9042 for client communication. You must open the port 9042 on your firewall to enable API Gateway to communicate with Apache Cassandra.
 
 Alternatively, to continue to use the same port as you used in your old installation, you can perform some manual steps after the upgrade completes. For more information, see [Configure a different Apache Cassandra client port](#configure-a-different-apache-cassandra-client-port).
 
 #### Move third-party JDBC JARs to the new installation
 
-If your old API Gateway installation uses external third-party databases for OAuth and KPS, you must copy the JDBC JAR files to the following location in your new 7.8 installation:
+If your old API Gateway installation uses external third-party databases for OAuth and KPS, you must copy the JDBC JAR files to the following location in your new 7.7 installation:
 
 ```
 /apigateway/upgrade/lib
 ```
 
-For example, if your new installation is at `/opt/Axway/7.8`, copy the JDBC drivers to `/opt/Axway/7.8/apigateway/upgrade/lib`.
+For example, if your new installation is at `/opt/Axway/7.7`, copy the JDBC drivers to `/opt/Axway/7.7/apigateway/upgrade/lib`.
 
 This enables the `sysupgrade apply` step to upgrade the databases.
 
 ## Single-node upgrade example
 
-This section provides an example of a single-node domain upgrade from API Gateway version 7.5.x or 7.6.x (in this case, 7.5.1) to API Gateway 7.8.
+This section provides an example of a single-node domain upgrade from API Gateway version 7.5.x or 7.6.x (in this case, 7.5.1) to API Gateway 7.7.
 
-{{< alert title="Tip" color="primary" >}}You can use the steps in this example as a guide when upgrading a single-node domain from API Gateway 7.5.x or 7.6.x to 7.8. However, you must remember to modify the steps appropriately for your version and topology.{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}You can use the steps in this example as a guide when upgrading a single-node domain from API Gateway 7.5.x or 7.6.x to 7.7. However, you must remember to modify the steps appropriately for your version and topology.{{< /alert >}}
 
 ### Sample single-node upgrade topology
 
@@ -129,7 +129,7 @@ The sample topology is as follows:
 
 Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [Checklist for the old API Gateway installation](#checklist-for-the-old-api-gateway-installation).
 
-### Install API Gateway 7.8
+### Install API Gateway 7.7
 
 1. Select the **Custom** option in the installer and select to install the following components:
 
@@ -143,12 +143,12 @@ Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [C
     * QuickStart tutorial - The QuickStart tutorial creates and starts processes in the new installation. `sysupgrade` requires that no processes are running in the new installation.
     * Cassandra - The external Cassandra configuration is retained when upgrading from 7.5.x or 7.6.x.
 
-2. When prompted for an installation directory, enter a new directory (for example, `/opt/Axway-7.8`). A warning message displays if you try to install 7.8 in the same directory as the old installation.
+2. When prompted for an installation directory, enter a new directory (for example, `/opt/Axway-7.7`). A warning message displays if you try to install 7.7 in the same directory as the old installation.
 3. When prompted to set an administrator user name and password, enter the same Admin Node Manager credentials that you use for the old API Gateway installation.
 
 ### Check the new installation
 
-When the installation is complete, perform the new installation checks detailed in [Checklist for the new API Gateway 7.8 installation](#checklist-for-the-new-api-gateway-7-8-installation).
+When the installation is complete, perform the new installation checks detailed in [Checklist for the new API Gateway 7.7 installation](#checklist-for-the-new-api-gateway-7-8-installation).
 
 ### Run `export` and `upgrade`
 
@@ -157,7 +157,7 @@ Before running `export`, ensure that the old API Gateway processes are running. 
 The following example shows how to run the `export` and `upgrade` commands:
 
 ```
-cd /opt/Axway-7.8/apigateway/upgrade/bin
+cd /opt/Axway-7.7/apigateway/upgrade/bin
 ./sysupgrade export --old_install_dir /opt/Axway-7.5.1/apigateway/
 ./sysupgrade upgrade
 ```
@@ -173,13 +173,13 @@ Before running `apply`, stop the API Gateway processes in the old installation a
 The following example shows how to run the `apply` command:
 
 ```
-cd /opt/Axway-7.8/apigateway/upgrade/bin
+cd /opt/Axway-7.7/apigateway/upgrade/bin
 ./sysupgrade apply
 ```
 
 This upgrades the external OAuth and KPS databases (if necessary), creates a new system that matches the old topology, and imports the upgraded data.
 
-When all steps have completed successfully, the new API Gateway version 7.8 processes should be running.
+When all steps have completed successfully, the new API Gateway version 7.7 processes should be running.
 
 ### Verify the upgrade
 
@@ -191,9 +191,9 @@ To verify that the upgrade has been successful:
 
 ## Multi-node upgrade example
 
-This topic provides an example of a multi-node domain upgrade from API Gateway version 7.5.x or 7.6.x (in this case, 7.5.1) to API Gateway 7.8.
+This topic provides an example of a multi-node domain upgrade from API Gateway version 7.5.x or 7.6.x (in this case, 7.5.1) to API Gateway 7.7.
 
-{{< alert title="Tip" color="primary" >}}You can use the steps in this example as a guide when upgrading a multi-node domain from API Gateway 7.5.x or 7.6.x to 7.8. However, you must remember to modify the steps appropriately for your version and topology.{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}You can use the steps in this example as a guide when upgrading a multi-node domain from API Gateway 7.5.x or 7.6.x to 7.7. However, you must remember to modify the steps appropriately for your version and topology.{{< /alert >}}
 
 The following diagram shows an example flow for a multi-node upgrade.
 
@@ -218,9 +218,9 @@ The sample topology is as follows:
 
 Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [Checklist for the old API Gateway installation](#checklist-for-the-old-api-gateway-installation).
 
-### Install API Gateway 7.8 on each node
+### Install API Gateway 7.7 on each node
 
-Install API Gateway 7.8 on each node in the multi-node topology where your old API Gateway domain is running.
+Install API Gateway 7.7 on each node in the multi-node topology where your old API Gateway domain is running.
 
 1. Select the **Custom** option in the installer and select to install the following components:
 
@@ -234,13 +234,13 @@ Install API Gateway 7.8 on each node in the multi-node topology where your old A
     * QuickStart tutorial - The QuickStart tutorial creates and starts processes in the new installation. `sysupgrade` requires that no processes are running in the new installation.
     * Cassandra - The external Cassandra configuration is retained when upgrading from 7.5.x or 7.6.x.
 
-2. When prompted for an installation directory, enter a new directory (for example, `/opt/Axway-7.8`). A warning message displays if you try to install 7.8 in the same directory as the old installation.
+2. When prompted for an installation directory, enter a new directory (for example, `/opt/Axway-7.7`). A warning message displays if you try to install 7.7 in the same directory as the old installation.
 
 3. When prompted to set an administrator user name and password, enter the same Admin Node Manager credentials that you use for the old API Gateway installation.
 
 ### Check the new installation on each node
 
-When the installation is complete, perform the new installation checks detailed in [Checklist for the new API Gateway 7.8 installation](#checklist-for-the-new-api-gateway-7-8-installation).
+When the installation is complete, perform the new installation checks detailed in [Checklist for the new API Gateway 7.7 installation](#checklist-for-the-new-api-gateway-7-8-installation).
 
 ### Run `export` and `upgrade` on each node
 
@@ -253,7 +253,7 @@ Ensure that the old API Gateway processes are running on all nodes. This include
 The following example shows how to run the `export` and `upgrade` commands on each node:
 
 ```
-cd /opt/Axway-7.8/apigateway/upgrade/bin
+cd /opt/Axway-7.7/apigateway/upgrade/bin
 ./sysupgrade export --old_install_dir /opt/Axway-7.5.1/apigateway/ --anm_host NodeA
 ./sysupgrade upgrade --cass_host NodeA
 ```
@@ -275,11 +275,11 @@ Before running `apply`, stop the API Gateway processes in the old installation o
 The following example shows how to run the `apply` command on NodeA:
 
 ```
-cd /opt/Axway-7.8/apigateway/upgrade/bin
+cd /opt/Axway-7.7/apigateway/upgrade/bin
 ./sysupgrade apply --anm_host NodeA
 ```
 
-The version 7.8 Admin Node Manager and API Gateway are now running on NodeA. You can launch the version 7.8 API Gateway Manager web console on `https://NodeA:8090`.
+The version 7.7 Admin Node Manager and API Gateway are now running on NodeA. You can launch the version 7.7 API Gateway Manager web console on `https://NodeA:8090`.
 
 ### Run `apply` on the other nodes
 
@@ -288,11 +288,11 @@ Run `apply` on the other nodes in turn (NodeB and then NodeC).
 The following example shows how to run the `apply` command on each of the other nodes:
 
 ```
-cd /opt/Axway-7.8/apigateway/upgrade/bin
+cd /opt/Axway-7.7/apigateway/upgrade/bin
 ./sysupgrade apply --anm_host NodeA
 ```
 
-`sysupgrade` is now complete on all nodes. All the API Gateway 7.8 processes are running on all nodes in the topology.
+`sysupgrade` is now complete on all nodes. All the API Gateway 7.7 processes are running on all nodes in the topology.
 
 ### Verify the multi-node upgrade
 
@@ -306,11 +306,11 @@ For the sample topology you can also perform the following checks to verify the 
 
 ## After you upgrade
 
-This section includes post-upgrade steps that you might need to perform after running `sysupgrade` to upgrade from API Gateway 7.5.x or 7.6.x to 7.8.
+This section includes post-upgrade steps that you might need to perform after running `sysupgrade` to upgrade from API Gateway 7.5.x or 7.6.x to 7.7.
 
 ### Configure a different Apache Cassandra client port
 
-If you upgraded from API Gateway 7.5.1 or later to version 7.8 all Cassandra hosts are updated to use port 9042 for client communication. To use a different port (for example, to use the same port as you used in your old installation), follow these steps:
+If you upgraded from API Gateway 7.5.1 or later to version 7.7 all Cassandra hosts are updated to use port 9042 for client communication. To use a different port (for example, to use the same port as you used in your old installation), follow these steps:
 
 1. For each Cassandra host, update the setting `native_transport_port` in the `CASSANDRA_HOME/conf/cassandra.yaml` file. Set the value to the port number to use for client communication.
 2. Update the details for each Cassandra host in Policy Studio. Select **Server Settings > Cassandra > Hosts**, and update the port for each host.
@@ -323,7 +323,7 @@ Each API Gateway group has a configuration that is typically deployed as a `.fed
 
 * In Policy Studio:
     * Choose the **From an API Gateway instance** option to create a new project from the configuration in an already upgraded API Gateway.
-    * Choose the **From existing configuration** option to create a new project from an old configuration. The configuration is upgraded to version 7.8 automatically.
+    * Choose the **From existing configuration** option to create a new project from an old configuration. The configuration is upgraded to version 7.7 automatically.
 
     For more information on creating projects in Policy Studio, see the .
 
@@ -338,15 +338,15 @@ Complete the following steps after running `sysupgrade apply`:
 1. Switch user to `root` to enable you to modify files in `/etc/init.d`. Typically, Axway services file names start with `vshell-`.
 2. Edit the Node Manager script and update the `VDISTDIR` variable to point to the `apigateway` folder in the new installation.
     For example, on a machine called XUbuntu02, edit the file `/etc/init.d/vshell-Node-Manager-on-XUbuntu02`.
-    * Update the `VDISTDIR` variable (for example, change `VDISTDIR="/opt/Axway-7.2.2/apigateway` to `VDISTDIR="/opt/Axway-7.8/apigateway`).
+    * Update the `VDISTDIR` variable (for example, change `VDISTDIR="/opt/Axway-7.2.2/apigateway` to `VDISTDIR="/opt/Axway-7.7/apigateway`).
 3. Edit each of the relevant API Gateway scripts, and update the `VDISTDIR` and the `VINSTDIR` variables to point to the `apigateway` folder in the new installation.
     For example, on a machine called XUbuntu02 with one API Gateway called `Gateway1` that is a member of a group called `Default Group`, edit the file `/etc/init.d/vshell-Default-Group-Gateway1`.
-    * Update the `VDISTDIR` variable (for example, change `VDISTDIR="/opt/Axway-7.2.2/apigateway` to `VDISTDIR="/opt/Axway-7.8/apigateway`).
-    * Update the `VINSTDIR` variable (for example, change `VINSTDIR="/opt/Axway-7.2.2/apigateway/groups/group-2/instance-1` to `VINSTDIR="/opt/Axway-7.8/apigateway/groups/group-2/instance-1`).
+    * Update the `VDISTDIR` variable (for example, change `VDISTDIR="/opt/Axway-7.2.2/apigateway` to `VDISTDIR="/opt/Axway-7.7/apigateway`).
+    * Update the `VINSTDIR` variable (for example, change `VINSTDIR="/opt/Axway-7.2.2/apigateway/groups/group-2/instance-1` to `VINSTDIR="/opt/Axway-7.7/apigateway/groups/group-2/instance-1`).
 4. Save the changes to the files and restart the machine. When the machine restarts the new services are started.
 
 Alternatively, your Linux administrator can remove the old services using the preferred Linux utility and delete the old `init.d` service files, and you can use `managedomain` to recreate the services after running `sysupgrade`.
 
 ### Migrate the QuickStart tutorial
 
-`sysupgrade` does not migrate the Quickstart tutorial from your old installation. To migrate it, copy the `/apigateway/webapps/quickstart` directory from your old installation (for example, `/opt/Axway/7.4.1/apigateway/webapps/quickstart`) to the same location in the new 7.8 installation (for example, `/opt/Axway/7.8/apigateway/webapps/quickstart`).
+`sysupgrade` does not migrate the Quickstart tutorial from your old installation. To migrate it, copy the `/apigateway/webapps/quickstart` directory from your old installation (for example, `/opt/Axway/7.4.1/apigateway/webapps/quickstart`) to the same location in the new 7.7 installation (for example, `/opt/Axway/7.7/apigateway/webapps/quickstart`).

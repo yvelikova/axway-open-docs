@@ -75,8 +75,8 @@ For more information on installing dependencies, see [Install API Portal depende
 
 API Portal requires the following to be installed:
 
-* API Gateway 7.8
-* API Manager 7.8
+* API Gateway 7.7
+* API Manager 7.7
 * Apache 2.4 or later
 * OpenSSL
 

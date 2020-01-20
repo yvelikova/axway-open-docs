@@ -3,10 +3,10 @@
     "linkTitle": "Upgrade API Gateway Analytics",
     "weight": 6,
     "date": "2019-10-07",
-    "description": "Upgrade API Gateway Analytics to version 7.8."
+    "description": "Upgrade API Gateway Analytics to version 7.7."
 }
 
-If you are using an earlier version of API Gateway Analytics, you must follow the steps in this section to upgrade API Gateway Analytics to version 7.8. Data in your old API Gateway Analytics metrics database will be preserved and the upgraded database will be fully compatible with version 7.8.
+If you are using an earlier version of API Gateway Analytics, you must follow the steps in this section to upgrade API Gateway Analytics to version 7.7. Data in your old API Gateway Analytics metrics database will be preserved and the upgraded database will be fully compatible with version 7.7.
 
 {{< alert title="Note" color="primary" >}}For details on upgrading a metrics database for use with API Manager, see [Upgrade your metrics database for API Manager](/docs/apim_installation/apigw_upgrade/upgrade_metrics/) instead.{{< /alert >}}
 
@@ -20,20 +20,20 @@ For frequently asked questions about upgrading API Gateway Analytics, see [API G
 
 The following summarizes the steps to upgrade API Gateway Analytics. Some of the steps are optional, depending on what version you are upgrading from.
 
-1. Install API Gateway Analytics 7.8 to a new directory.
+1. Install API Gateway Analytics 7.7 to a new directory.
 2. Copy any third-party JDBC drivers to the new installation.
 3. Back up the old API Gateway Analytics metrics database.
 4. Run `upgradeconfig` to migrate your old API Gateway Analytics Entity Store customizations to the new installation.
 5. Run `configureserver` to configure your new API Gateway Analytics Entity Store.
 6. Migrate any custom reports.
-7. Stop the old version of the API Gateway Analytics service and start the new 7.8 version.
+7. Stop the old version of the API Gateway Analytics service and start the new 7.7 version.
 8. Run `managedomain` to enable API Gateway Analytics for the Node Managers. You must also run `managedomain` to update the metrics database URL if you created a new database (for example, as part of a rollback strategy).
 
 ## Rollback strategy
 
-If you want to be able to revert back to your old version of API Gateway Analytics and API Gateway, the best approach is to create a new API Gateway Analytics metrics database for version 7.8. The old versions can then be relaunched without changes. Where appropriate, this section details additional tasks that you need to perform to implement this rollback strategy.
+If you want to be able to revert back to your old version of API Gateway Analytics and API Gateway, the best approach is to create a new API Gateway Analytics metrics database for version 7.7. The old versions can then be relaunched without changes. Where appropriate, this section details additional tasks that you need to perform to implement this rollback strategy.
 
-## Step 1 – Install API Gateway Analytics 7.8
+## Step 1 – Install API Gateway Analytics 7.7
 
 You can install API Gateway Analytics on the same machine as your old API Gateway Analytics, or on a different machine. If you install it on the same machine as your old installation, you must install it in a new directory (and not in the same directory as the old installation). You do not need to install API Gateway Analytics on the same machine as any running API Gateways, therefore, you can install it on a dedicated machine if required.
 
@@ -69,12 +69,12 @@ INSTALL_DIR/analytics/posix/bin
 
 To run `upgradeconfig`, perform the following steps:
 
-1. Back up your factory configuration by copying the `conf/fed` directory in the new installation (for example, `/opt/Axway-7.8/analytics/conf/fed`) to a backup directory.
+1. Back up your factory configuration by copying the `conf/fed` directory in the new installation (for example, `/opt/Axway-7.7/analytics/conf/fed`) to a backup directory.
 2. Run `upgradeconfig` with the `-u` and `-o` options. For example:
 
     ```
-    cd /opt/Axway-7.8/analytics/posix/bin
-    ./upgradeconfig -u federated:file:////opt/Axway-7.3.1/analytics/conf/fed/configs.xml -o /opt/Axway-7.8/analytics/conf/fed
+    cd /opt/Axway-7.7/analytics/posix/bin
+    ./upgradeconfig -u federated:file:////opt/Axway-7.3.1/analytics/conf/fed/configs.xml -o /opt/Axway-7.7/analytics/conf/fed
     ```
 
 ### upgradeconfig options
@@ -83,19 +83,19 @@ The following table describes the `upgradeconfig` options:
 
 | Option                 | Description                                          |
 |------------------------|------------------------------------------------------|
-| `-u`                     | The URL of configuration to upgrade (for example, `federated:file:///C:/Axway730/analytics/conf/fed/configs.xml`).  |
-| `-o`                    | The output directory which will contain the upgraded configuration. Typically this is the `fed` folder of the new API Gateway Analytics installation (for example, `C:\Axway-7.8\analytics\conf\fed`). |
+| `-u`                     | The URL of configuration to upgrade (for example, `federated:file:////opt/Axway-7.3.1/analytics/conf/fed/configs.xml`).  |
+| `-o`                    | The output directory which will contain the upgraded configuration. Typically this is the `fed` folder of the new API Gateway Analytics installation (for example, `/opt/Axway-7.7/analytics/conf/fed`). |
 
 ### Use Policy Studio to change API Gateway Analytics configuration
 
 You cannot use Policy Studio instead of `upgradeconfig` to migrate customizations. However, you can use Policy Studio to view the upgraded configuration:
 
 1. In Policy Studio, select **New Project**. Enter a name for the project and make a note of the project location, then select **From existing configuration**.
-2. Browse to the `conf/fed` directory in your new API Gateway Analytics installation (for example, `/opt/Axway-7.8/analytics/conf/fed`). The API Gateway Analytics configuration is displayed in Policy Studio.
+2. Browse to the `conf/fed` directory in your new API Gateway Analytics installation (for example, `/opt/Axway-7.7/analytics/conf/fed`). The API Gateway Analytics configuration is displayed in Policy Studio.
 3. Make any required changes to the configuration and save them (**File > Save**).
 4. Exit Policy Studio and copy the contents of the project directory (the location you noted earlier) to the `conf/fed` directory of the new API Gateway Analytics installation.
 
-{{< alert title="Tip" color="primary" >}}You can also use Policy Studio to view or change any API Gateway Analytics configuration (for example, a 7.8 factory configuration).{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}You can also use Policy Studio to view or change any API Gateway Analytics configuration (for example, a 7.7 factory configuration).{{< /alert >}}
 
 ## Step 5 – Run configureserver to configure your new API Gateway Analytics Entity Store
 
@@ -110,7 +110,7 @@ INSTALL_DIR/analytics/posix/bin
 To run `configureserver`, enter the following commands:
 
 ```
-cd /opt/Axway-7.8/analytics/posix/bin
+cd /opt/Axway-7.7/analytics/posix/bin
 ./configureserver
 ```
 
@@ -133,7 +133,7 @@ Copy all `.json` files from the directory `conf/emc/analytics/reports` in the ol
 Copy the files to the same location in the new installation, for example:
 
 ```
-/opt/Axway-7.8/analytics/conf/emc/analytics/reports
+/opt/Axway-7.7/analytics/conf/emc/analytics/reports
 ```
 
 ### Migrate other files
@@ -149,12 +149,12 @@ Copy the `envSettings.props` file from the `conf` directory in the old installat
 Copy the file to the same location in the new installation, for example:
 
 ```
-/opt/Axway-7.8/analytics/conf
+/opt/Axway-7.7/analytics/conf
 ```
 
 ## Step 7 – Stop the old version of API Gateway Analytics and start the new version
 
-If you have installed API Gateway Analytics 7.8 on the same machine as the old installation, you must stop the old version before starting the new version. You can use the `analytics` script to start and stop API Gateway Analytics.
+If you have installed API Gateway Analytics 7.7 on the same machine as the old installation, you must stop the old version before starting the new version. You can use the `analytics` script to start and stop API Gateway Analytics.
 
 The `analytics` script is located in:
 
@@ -169,10 +169,10 @@ cd /opt/Axway-7.4.1/analytics/posix/bin
 ./analytics -k
 ```
 
-For example, to start API Gateway Analytics in the 7.8 installation, enter the following commands:
+For example, to start API Gateway Analytics in the 7.7 installation, enter the following commands:
 
 ```
-cd /opt/Axway-7.8/analytics/posix/bin
+cd /opt/Axway-7.7/analytics/posix/bin
 ./analytics -d
 ```
 

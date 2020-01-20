@@ -15,7 +15,7 @@ INSTALL_DIR/apigateway/posix/bin
 For example, to run the `projpack --help` command:
 
 ```
-cd /opt/Axway-7.8/apigateway/posix/bin
+cd /opt/Axway-7.7/apigateway/posix/bin
 projpack --help
 ```
 
@@ -175,7 +175,7 @@ For more examples, see `projchangepass --help`.
 
 ## Upgrade an API Gateway project
 
-The `projupgrade` tool enables you to upgrade one or more API Gateway projects from earlier versions (7.5.1 or later) to version 7.8. For example, after using `sysupgrade` to upgrade your API Gateway installation to version 7.8, you must upgrade the configuration projects in your development environment, or you cannot deploy them to your upgraded API Gateways.
+The `projupgrade` tool enables you to upgrade one or more API Gateway projects from earlier versions (7.5.1 or later) to version 7.7. For example, after using `sysupgrade` to upgrade your API Gateway installation to version 7.7, you must upgrade the configuration projects in your development environment, or you cannot deploy them to your upgraded API Gateways.
 
 You can use the `projupgrade` tool to upgrade a number of configuration projects at once. These projects might be independent of one another, or could include shared projects and their dependencies.
 
@@ -183,8 +183,8 @@ You can use the `projupgrade` tool to upgrade a number of configuration projects
 
 After using `projupgrade` to upgrade your projects, you can:
 
-* Open these projects in Policy Studio 7.8 and continue working as before.
-* Deploy them to an API Gateway 7.8 instance.
+* Open these projects in Policy Studio 7.7 and continue working as before.
+* Deploy them to an API Gateway 7.7 instance.
 * Merge the projects to create configuration packages (`.fed` or `.pol`/`.env`) using `projpack`.
 
 ### Example projupgrade use cases

@@ -13,7 +13,7 @@ This section describes example errors and warnings that the `sysupgrade export` 
 Errors and warnings are logged to the following file:
 
 ```
-Axway-7.8/apigateway/export/bin/out/logs/export.log
+Axway-7.7/apigateway/export/bin/out/logs/export.log
 ```
 
 ### Check for customizations to jvm.xml and service.xml
@@ -53,7 +53,7 @@ This section describes example errors and warnings that the `sysupgrade upgrade`
 Errors and warnings are logged to the following file:
 
 ```
-Axway-7.8/apigateway/upgrade/bin/out/logs/upgrade.log
+Axway-7.7/apigateway/upgrade/bin/out/logs/upgrade.log
 ```
 
 ### Admin Node Manager host name is invalid
@@ -72,8 +72,8 @@ The solution in all cases is to retry the `upgrade` command with a valid `--anm_
 If API Manager is installed on the old API Gateway installation you are upgrading, the `upgrade` step checks the new API Gateway installation for a valid API Manager license. If the license does not exist, the `upgrade` step logs a warning message, but continues the upgrade:
 
 ```
-WARN: A LicenseException ('feature "apiportal" not licensed') occurred while checking for a API Manager license in directory '/opt/Axway-7.8/apigateway/conf/licenses'.
-Please contact support to acquire a new license. Place the new license in directory '/opt/Axway-7.8/apigateway/conf/licenses'.
+WARN: A LicenseException ('feature "apiportal" not licensed') occurred while checking for a API Manager license in directory '/opt/Axway-7.7/apigateway/conf/licenses'.
+Please contact support to acquire a new license. Place the new license in directory '/opt/Axway-7.7/apigateway/conf/licenses'.
 ```
 
 ### Check if McAfee license required
@@ -81,7 +81,7 @@ Please contact support to acquire a new license. Place the new license in direct
 If any policy in the old API Gateway installation you are upgrading contains a McAfee Anti-Virus filter, the `upgrade` step checks the new API Gateway installation for a valid McAfee license. If the license does not exist, the `upgrade` step logs a warning message, but continues the upgrade:
 
 ```
-WARN: A LicenseException ('feature "mcafee" not licensed') occurred while checking for a McAfee License '/opt/Axway-7.8/apigateway/'. Please contact support to acquire a new license. Place the new license in directory '/opt/Axway-7.8/apigateway/'.
+WARN: A LicenseException ('feature "mcafee" not licensed') occurred while checking for a McAfee License '/opt/Axway-7.7/apigateway/'. Please contact support to acquire a new license. Place the new license in directory '/opt/Axway-7.7/apigateway/'.
 ```
 
 ### Check if RBAC permissions file has changed
@@ -94,26 +94,26 @@ The `upgrade` step checks for changes in the RBAC permissions file on the old AP
 
 ```
 WARN: RBAC permissions file has been modified on old system.
-WARN: Differences between original file (/opt/Axway-7.8/apigateway/upgrade/scripts/rbac/factory/acl6.json) and active file (/opt/Axway-7.8/apigateway/upgrade/bin/out/export/rbac/conf/acl.json) must be manually merged into apigateway/conf/acl.json on new system.
+WARN: Differences between original file (/opt/Axway-7.7/apigateway/upgrade/scripts/rbac/factory/acl6.json) and active file (/opt/Axway-7.7/apigateway/upgrade/bin/out/export/rbac/conf/acl.json) must be manually merged into apigateway/conf/acl.json on new system.
 ```
 
 If the RBAC changes are required to allow users to log into the Admin Node Manager or the API Gateway Manager UI, you must do this before you run the `apply` step, or `sysupgrade` will not be able to connect to the new Admin Node Manager and the `apply` step will fail.
 
 ### Check for corrupt JARs in ext/lib
 
-If a corrupt JAR file is located in the system-wide or instance-specific `ext/lib` directories in the old API Gateway installation, the `upgrade` step logs a warning. The upgrade does not copy the JAR to the new 7.8 installation.
+If a corrupt JAR file is located in the system-wide or instance-specific `ext/lib` directories in the old API Gateway installation, the `upgrade` step logs a warning. The upgrade does not copy the JAR to the new 7.7 installation.
 
 ### Check for valid API Gateway license
 
 API Gateway requires a valid license. If the license does not exist, or is not valid, the `upgrade` step logs one of the following errors:
 
 ```
-ERROR: A LicenseException ('License not found in /home/axway/Axway-7.5.0/apigateway/conf/licenses') occurred while checking licenses in directory '/home/axway/Axway-7.8/apigateway/conf/licenses'.  
-A license may not exist in this directory, or all licenses in this directory may be invalid. Please contact support to acquire a new license. Place the new license in directory '/home/axway/Axway-7.8/apigateway/conf/licenses'. Run sysupgrade again without the --clean option.
+ERROR: A LicenseException ('License not found in /home/axway/Axway-7.5.0/apigateway/conf/licenses') occurred while checking licenses in directory '/home/axway/Axway-7.7/apigateway/conf/licenses'.  
+A license may not exist in this directory, or all licenses in this directory may be invalid. Please contact support to acquire a new license. Place the new license in directory '/home/axway/Axway-7.7/apigateway/conf/licenses'. Run sysupgrade again without the --clean option.
 ```
 
 ```
-ERROR: A LicenseException ('feature "unrestricted" not licensed') occurred while checking for a server license in directory '/home/axway/Axway-7.8/apigateway/conf/licenses'. Please contact support to acquire a new license. Place the new license in directory '/home/axway/Axway-7.8/apigateway/conf/licenses'. Run sysupgrade again without the --clean option.
+ERROR: A LicenseException ('feature "unrestricted" not licensed') occurred while checking for a server license in directory '/home/axway/Axway-7.7/apigateway/conf/licenses'. Please contact support to acquire a new license. Place the new license in directory '/home/axway/Axway-7.7/apigateway/conf/licenses'. Run sysupgrade again without the --clean option.
 ```
 
 {{< alert title="Note" color="primary" >}}License errors can be generated for a variety of reasons (for example, if it is tampered with, expired, for the wrong product version, or for the wrong host).{{< /alert >}}
@@ -122,7 +122,7 @@ You must resolve these errors before you can continue to the `apply` step. If yo
 
 ### SSL certificates for management traffic regenerated
 
-When upgrading to API Gateway 7.8 the SSL certificates used for management traffic between Node Managers and API Gateways are always regenerated, so that the old installation and new installation Node Managers cannot communicate with each other.
+When upgrading to API Gateway 7.7 the SSL certificates used for management traffic between Node Managers and API Gateways are always regenerated, so that the old installation and new installation Node Managers cannot communicate with each other.
 
 For example:
 
@@ -188,8 +188,8 @@ The `upgrade` step logs the following error message:
 
 ```
 [ERROR] messages from [API Manager] :
-ERROR: Found duplicate 'apiadmin' users in KPS table: /opt/Axway-7.8/apigateway/upgrade/bin/out/upgrade/kps/groups/group-2/instance-1/conf/kps/backup/sysexport_api_portal_portaluserstoreldap_json
-ERROR: Found duplicate 'Community' organizations in KPS table: /opt/Axway-7.8/apigateway/upgrade/bin/out/upgrade/kps/groups/group-2/instance-1/conf/kps/backup/sysexport_api_portal_portalorganizationstoreldap_json
+ERROR: Found duplicate 'apiadmin' users in KPS table: /opt/Axway-7.7/apigateway/upgrade/bin/out/upgrade/kps/groups/group-2/instance-1/conf/kps/backup/sysexport_api_portal_portaluserstoreldap_json
+ERROR: Found duplicate 'Community' organizations in KPS table: /opt/Axway-7.7/apigateway/upgrade/bin/out/upgrade/kps/groups/group-2/instance-1/conf/kps/backup/sysexport_api_portal_portalorganizationstoreldap_json
 ERROR: There is a KPS configuration problem on the old system. This must be resolved before upgrade can proceed. Please contact Axway support for assistance.
 ```
 
@@ -228,7 +228,7 @@ This section describes example errors and warnings that the `sysupgrade apply` c
 Errors and warnings are logged to the following file:
 
 ```
-Axway-7.8/apigateway/apply/bin/out/logs/apply.log
+Axway-7.7/apigateway/apply/bin/out/logs/apply.log
 ```
 
 ### Incorrect Admin Node Manager host

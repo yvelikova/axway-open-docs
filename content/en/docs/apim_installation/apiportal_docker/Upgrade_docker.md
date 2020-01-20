@@ -8,18 +8,18 @@
 
 This topic describes how to upgrade an API Portal Docker deployment. The upgrade preserves any API Portal customizations (for example, new menus, new templates, localizations, and so on).
 
-- Upgrade to API Portal 7.8 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to 7.7.
-- API Portal 7.8 is compatible with API Gateway and API Manager 7.8 only.
+* Upgrade to API Portal 7.7 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
+* API Portal 7.7 is compatible with API Gateway and API Manager 7.7 only.
 
 {{< alert title="Caution" color="warning" >}}
 
-- Before you upgrade you must back up the API Portal container and the database container.
-- Do not modify the content of the following folders, as they will be overwritten during upgrade.
-  - `INSTALL_DIR/templates/purity_iii`
-  - `INSTALL_DIR/language/en-GB`
-  - `INSTALL_DIR/language/overrides`
-  - `INSTALL_DIR/administrator/language/en-GB`
-  - `INSTALL_DIR/language/overrides`
+* Before you upgrade you must back up the API Portal container and the database container.
+* Do not modify the content of the following folders, as they will be overwritten during upgrade.
+    * `INSTALL_DIR/templates/purity_iii`
+    * `INSTALL_DIR/language/en-GB`
+    * `INSTALL_DIR/language/overrides`
+    * `INSTALL_DIR/administrator/language/en-GB`
+    * `INSTALL_DIR/language/overrides`
 {{< /alert >}}
 
 ## Upgrade steps
@@ -30,9 +30,9 @@ Follow the steps in this section to upgrade your API Portal Docker deployment.
 
 In this section you will:
 
-- Use the `docker commit` command to create a new Docker image from your old version API Portal image.
-- Create Docker data volumes to store the customizations from your old version API Portal.
-- Run a new Docker container from the committed image to force Docker to copy the customizations to the Docker data volumes you created.
+* Use the `docker commit` command to create a new Docker image from your old version API Portal image.
+* Create Docker data volumes to store the customizations from your old version API Portal.
+* Run a new Docker container from the committed image to force Docker to copy the customizations to the Docker data volumes you created.
 
 Perform the following steps:
 
@@ -57,7 +57,7 @@ Perform the following steps:
 5. Run the container from the newly committed API Portal Docker image with the created data volumes pointing to the folders with customized files using the following command:
 
     ```
-    $ docker run -d --name <customized old API Portal container> -e container=docker -e answer=y -e mysqlSSLModeAnswer=n -e mysqlHost=<IP of your MySQL container> -e mysqlPort=<MySQL port> -e mysqlUsername=root -e mysqlPassword=<root password> -e mysqlDbName=<MySQL database name> -p <host machine port>:<API Portal port> -v templates:/opt/axway/apiportal/htdoc/templates -v images:/opt/axway/apiportal/htdoc/images <old API Portal image containing customizations>
+    docker run -d --name <customized old API Portal container> -e container=docker -e answer=y -e mysqlSSLModeAnswer=n -e mysqlHost=<IP of your MySQL container> -e mysqlPort=<MySQL port> -e mysqlUsername=root -e mysqlPassword=<root password> -e mysqlDbName=<MySQL database name> -p <host machine port>:<API Portal port> -v templates:/opt/axway/apiportal/htdoc/templates -v images:/opt/axway/apiportal/htdoc/images <old API Portal image containing customizations>
     ```
 
 6. Verify that API Portal is functional and all the customizations are preserved.
@@ -100,16 +100,16 @@ To upgrade your database, follow these steps:
 
 3. Download the required version of the database container from the [official Docker Hub repository](https://hub.docker.com/). For example:
 
-    - To download the latest `MySQL` image, execute the following command:<br>`$ docker pull mysql`
+    * To download the latest `MySQL` image, execute the following command: `$ docker pull mysql`
 
-    - To download the latest `centos/mysql-57-centos7` image, execute the following command:<br>`$ docker pull centos/mysql-57-centos7`
+    * To download the latest `centos/mysql-57-centos7` image, execute the following command: `$ docker pull centos/mysql-57-centos7`
 
-    - To download the latest `MariaDB` image, execute the following command:<br>`$ docker pull mariadb`
+    * To download the latest `MariaDB` image, execute the following command: `$ docker pull mariadb`
 
 4. To start the database container from the downloaded image and specify the data volume from the previous database container, use the following command:
 
     ```
-    $ docker run -d --name <new database container> -e MYSQL_ROOT_PASSWORD=<your root password> -p <host machine port>:<MySQL port> -v <volume name>:<volume destination> <imagename>:<version>`
+    docker run -d --name <new database container> -e MYSQL_ROOT_PASSWORD=<your root password> -p <host machine port>:<MySQL port> -v <volume name>:<volume destination> <imagename>:<version>`
     ```
 
 5. To inspect the new database container and find the IP address of the container, use this command:
@@ -126,11 +126,11 @@ To upgrade your database, follow these steps:
 
     `$ show databases;`
 
-### Download and run API Portal 7.8 container
+### Download and run API Portal 7.7 container
 
-To download and run an API Portal 7.8 Docker container with the customizations from your old API Portal version, follow these steps:
+To download and run an API Portal 7.7 Docker container with the customizations from your old API Portal version, follow these steps:
 
-1. Download the sample Docker package for API Portal 7.8 (for example, `APIPortal_7.8_SamplesPackageDocker_linux-x86-64_BN<build number>.zip`) from Axway Support at [https://support.axway.com](https://support.axway.com/).
+1. Download the sample Docker package for API Portal 7.7 (for example, `APIPortal_7.7_SamplesPackageDocker_linux-x86-64_BN<build number>.zip`) from Axway Support at [https://support.axway.com](https://support.axway.com/).
 2. Upload the package to your Docker host machine.
 3. Unzip the package.
 4. Ensure that you are logged in to your Docker host machine as the `root` user.
@@ -140,28 +140,32 @@ To download and run an API Portal 7.8 Docker container with the customizations 
 
     For example:
 
-    `$ docker build -t apiportal:7.8`
+    `$ docker build -t apiportal:7.7`
 
 6. If Public API mode is enabled, specify a volume for it:
 
     `$ docker volume create <encryption key volume>:/apiportal/encryption`
 
-7. Run a container from the new API Portal 7.8 Docker image, and specify the data volumes you created in [Create Docker data volumes for your API Portal customizations](#Create):
+7. Run a container from the new API Portal 7.7 Docker image, and specify the data volumes you created in [Create Docker data volumes for your API Portal customizations](#Create):
 
     ```
-    $ docker run -it --name <new API Portal container> -e MYSQL_HOST=<IP of your DB container> -e MYSQL_PORT=<DB port> -e MYSQL_ROOT_PASSWORD=<root password> -e MYSQL_USERNAME=<username> -e MYSQL_PASSWORD=<user password> -e MYSQL_DBNAME=<database name> -p <host machine port>:<API Portal port> -v templates:/opt/axway/apiportal/htdoc/templates -v images:/opt/axway/apiportal/htdoc/images <imagename>:<version>
+    docker run -it --name <new API Portal container> -e MYSQL_HOST=<IP of your DB container> -e MYSQL_PORT=<DB port> -e MYSQL_ROOT_PASSWORD=<root password> -e MYSQL_USERNAME=<username> -e MYSQL_PASSWORD=<user password> -e MYSQL_DBNAME=<database name> -p <host machine port>:<API Portal port> -v templates:/opt/axway/apiportal/htdoc/templates -v images:/opt/axway/apiportal/htdoc/images <imagename>:<version>
     ```
 
-8. This command runs an API Portal 7.8 Docker container with all of the customizations from your old API Portal version preserved.
+8. This command runs an API Portal 7.7 Docker container with all of the customizations from your old API Portal version preserved.
 9. If Public API mode is enabled, copy the encryption key file to the container:
 
-    `$ docker cp <path on host machine> <API Portal container name>:/apiportal/encryption/encryption.key`
- 
+    ```
+    docker cp <path on host machine> <API Portal container name>:/apiportal/encryption/encryption.key
+    ```
+
 10. Check that the volumes contain proper data:
 
-    `$ docker volume inspect  <volume name > --format "{{ .Mountpoint }}" | ls -lA`
+    ```
+    docker volume inspect  <volume name > --format "{{ .Mountpoint }}" | ls -lA
+    ```
 
-API Portal 7.8 is now running in a Docker container fully configured and ready to use. To go to the API Portal landing page, enter the host address and the host port in a browser.
+API Portal 7.7 is now running in a Docker container fully configured and ready to use. To go to the API Portal landing page, enter the host address and the host port in a browser.
 
 You must access API Portal with the `HOST_MACHINE_ADDRESS` and the `HOST_MACHINE_EXPOSED_PORT` (not the container address and port). For example, `https://<HOST_MACHINE_ADDRESS>:<HOST_MACHINE_EXPOSED_PORT>`.
 
@@ -193,7 +197,7 @@ Any customizations performed using language overrides are now restored.
 
 ### Reconfigure API Portal container to use Redis cache
 
-If you are using Redis cache, you must configure the new API Portal 7.8 container to use the Redis cache. Perform the following steps:
+If you are using Redis cache, you must configure the new API Portal 7.7 container to use the Redis cache. Perform the following steps:
 
 1. Check the IP address of the Redis container:
 

@@ -348,7 +348,7 @@ Select the Id attribute used to dereference the signed element in the `dsig:Sign
       <soap:Body xmlns:wsu="..." wsu:Id="Id-00000112e2c98df8-0000000000000003">
         <vs:getProductInfo xmlns:vs="http://www.axway.com">
           <vs:Name>API Gateway</vs:Name>
-          <vs:Version>7.8</vs:Version>
+          <vs:Version>7.7</vs:Version>
         </vs:getProductInfo>
       </s:Body>
       </s:Envelope>
@@ -395,7 +395,7 @@ Select the Id attribute used to dereference the signed element in the `dsig:Sign
         </dsig:Signature>
       </soap:Header>
       <soap:Body Id="Id-0000011a101b167c-0000000000000012">
-        <product version="7.8">
+        <product version="7.7">
           <name>API Gateway</name>
           <company>axway</company>
           <description>SOA Security and Management</description>
@@ -436,7 +436,7 @@ Select the Id attribute used to dereference the signed element in the `dsig:Sign
         </dsig:Signature>
       </soap:Header>
       <soap:Body ID="Id-0000011a101b167c-0000000000000012">
-        <product version="7.8">
+        <product version="7.7">
           <name>API Gateway</name>
           <company>Axway</company>
           <description>SOA Security and Management</description>
@@ -480,7 +480,7 @@ Select the Id attribute used to dereference the signed element in the `dsig:Sign
         </dsig:Signature>
       </soap:Header>
       <soap:Body ID="Id-0000011a101b167c-0000000000000012">
-        <product version=7.8>
+        <product version=7.7>
           <name>API Gateway</name>
           <company>Axway</company>
           <description>SOA Security and Management</description>
@@ -530,7 +530,7 @@ Select the Id attribute used to dereference the signed element in the `dsig:Sign
         </wsse:Security>
       </soap:Header>
       <soap:Body>
-        <product version=7.8>
+        <product version=7.7>
           <name>API Gateway</name>
           <company>Axway</company>
           <description>SOA Security and Management</description>
@@ -683,7 +683,7 @@ predicate is selected:
     <s:Body>
     <vs:getProductInfo xmlns:vs="http://www.axway.com">
         <vs:Name>API Gateway</vs:Name>
-        <vs:Version>7.8</vs:Version>
+        <vs:Version>7.7</vs:Version>
     </vs:getProductInfo>
     </s:Body>
 </s:Envelope>
@@ -716,7 +716,7 @@ element itself. The following is the XML Signature produced when this XPath pred
   <s:Body>
     <vs:getProductInfo xmlns:vs="http://www.axway.com">
       <vs:Name>API Gateway</vs:Name>
-      <vs:Version>7.8</vs:Version>
+      <vs:Version>7.7</vs:Version>
     </vs:getProductInfo>
   </s:Body>
 </s:Envelope>

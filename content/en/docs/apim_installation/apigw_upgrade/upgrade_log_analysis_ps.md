@@ -15,10 +15,10 @@ You can also use Policy Studio to resolve configuration issues. If the upgrade p
 
 ## Resolve issues during upgrade
 
-During the upgrade, if the `upgrade` command identifies configuration issues that must be resolved in Policy Studio, open the problematic configuration in Policy Studio. For example, in Policy Studio version 7.8, create a new project using **From .fed file** or **From .pol and .env files**, and select the correct files under the following directory:
+During the upgrade, if the `upgrade` command identifies configuration issues that must be resolved in Policy Studio, open the problematic configuration in Policy Studio. For example, in Policy Studio version 7.7, create a new project using **From .fed file** or **From .pol and .env files**, and select the correct files under the following directory:
 
 ```
-/opt/Axway-7.8/apigateway/upgrade/bin/out/upgrade/esgroups/groups/group-2/
+/opt/Axway-7.7/apigateway/upgrade/bin/out/upgrade/esgroups/groups/group-2/
 ```
 
 Modify the problematic configuration in Policy Studio, and save the project for deployment after sysupgrade completes.
@@ -29,7 +29,7 @@ Modify the problematic configuration in Policy Studio, and save the project for 
 
 Alternatively, you can choose to complete the upgrade first and then resolve the configuration issues in Policy Studio. In this case, load the configuration from the running API Gateway after the upgrade completes. For example:
 
-1. In Policy Studio version 7.8, click **New Project from an API Gateway instance**.
+1. In Policy Studio version 7.7, click **New Project from an API Gateway instance**.
 2. Select the API Gateway group that has the problematic configuration.
 3. Make changes to the configuration in Policy Studio, and deploy them.
 4. Repeat this process for each API Gateway group in the topology that the upgrade step identified as problematic.
