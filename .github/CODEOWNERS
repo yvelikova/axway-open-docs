@@ -5,10 +5,10 @@
 # the repo. Unless a later match takes precedence,
 # @global-owner1 and @global-owner2 will be requested for
 # review when someone opens a pull request.
-*       @global-owner1 @global-owner2
+#*       @global-owner1 @global-owner2
 
 # Global reviewers for this project
-*       @alexearnshaw @andreamussap
+* @alexearnshaw @andreamussap
 
 # Order is important; the last matching pattern takes the most
 # precedence. When someone opens a pull request that only
@@ -38,35 +38,34 @@
 /static/admin/ @alexearnshaw
 
 # Documentation files for AMPCentral
-/content/en/docs/central/ @andreamussap @markbice
+/content/en/docs/central/ @andreamussap @robertengaxway @georgiana-caras @stevenrcfox
 
 # Documentation files for APIM
-/content/en/docs/apigtw_devguide/ @alexearnshaw
-/content/en/docs/apigtw_devops/ @andreamussap
-/content/en/docs/apigtw_kerberos/ @alexearnshaw
-/content/en/docs/apim_administration/apigtw_admin/ @alexearnshaw
-/content/en/docs/apim_administration/apimgr_admin/ @alexearnshaw
-/content/en/docs/apim_administration/apiportal_admin/ @andreamussap
-/content/en/docs/apim_installation/apigtw_install/ @alexearnshaw
-/content/en/docs/apim_installation/apigw_containers/ @alexearnshaw
-/content/en/docs/apim_installation/apigw_upgrade/ @alexearnshaw
-/content/en/docs/apim_installation/apiportal_docker/ @andreamussap
-/content/en/docs/apim_installation/apiportal_install/ @andreamussap
-/content/en/docs/apim_policydev/apigw_kps/ @andreamussap
-/content/en/docs/apim_policydev/apigw_oauth/ @alexearnshaw
-/content/en/docs/apim_policydev/apigw_polref/ @andreamussap
-/content/en/docs/apim_reference/ @andreamussap
-/content/en/docs/apim_relnotes/apigtw_releasenotes/ @alexearnshaw
-/content/en/docs/apim_relnotes/apimng_releasenotes/ @andreamussap
-/content/en/docs/apim_relnotes/apiportal_releasenotes/ @andreamussap
-/content/en/docs/apimanager_analytics/ @andreamussap
-/content/en/docs/apimanager_capacityguide/ @alexearnshaw
-/content/en/docs/apimgmt_multi_dc/ @andreamussap
-/content/en/docs/apimgmt_security/ @alexearnshaw
-/content/en/docs/apimgr_concepts/ @alexearnshaw
-/content/en/docs/apiportal_ha/ @andreamussap
-/content/en/docs/cass_admin/ @andreamussap
-/content/en/docs/glossary/ @andreamussap
+/content/en/docs/apigtw_devguide/ @alexearnshaw @maherb4
+/content/en/docs/apigtw_devops/ @andreamussap @maherb4
+/content/en/docs/apigtw_kerberos/ @alexearnshaw @maherb4
+/content/en/docs/apim_administration/apigtw_admin/ @alexearnshaw @maherb4
+/content/en/docs/apim_administration/apimgr_admin/ @alexearnshaw @maherb4
+/content/en/docs/apim_administration/apiportal_admin/ @andreamussap @jowens-axway
+/content/en/docs/apim_installation/apigtw_install/ @alexearnshaw @maherb4
+/content/en/docs/apim_installation/apigw_containers/ @alexearnshaw @maherb4
+/content/en/docs/apim_installation/apigw_upgrade/ @alexearnshaw @maherb4
+/content/en/docs/apim_installation/apiportal_docker/ @andreamussap @jowens-axway
+/content/en/docs/apim_installation/apiportal_install/ @andreamussap @jowens-axway
+/content/en/docs/apim_policydev/apigw_kps/ @andreamussap @maherb4
+/content/en/docs/apim_policydev/apigw_oauth/ @alexearnshaw @maherb4
+/content/en/docs/apim_policydev/apigw_polref/ @andreamussap @maherb4
+/content/en/docs/apim_policydev/apigw_poldev/ @alexearnshaw @maherb4
+/content/en/docs/apim_reference/ @andreamussap @maherb4
+/content/en/docs/apim_relnotes/ @alexearnshaw @maherb4 @jowens-axway
+/content/en/docs/apimanager_analytics/ @andreamussap @maherb4
+/content/en/docs/apimanager_capacityguide/ @alexearnshaw @maherb4
+/content/en/docs/apimgmt_multi_dc/ @andreamussap @maherb4
+/content/en/docs/apimgmt_security/ @alexearnshaw @maherb4 @jowens-axway
+/content/en/docs/apimgr_concepts/ @alexearnshaw @maherb4
+/content/en/docs/apiportal_ha/ @andreamussap @jowens-axway
+/content/en/docs/cass_admin/ @andreamussap @maherb4
+/content/en/docs/glossary/ @andreamussap @maherb4
 
 # Documentation guidelines and processes
 /content/en/docs/contribution_guidelines/ @alexearnshaw
