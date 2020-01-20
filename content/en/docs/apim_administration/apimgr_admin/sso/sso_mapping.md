@@ -7,11 +7,11 @@
 
 ## Mapping syntax
 
-An IdP sends information about the SSO user to an SP (API Manager) using attributes. These attributes contain information about the user, such as the user's name, department, organization, email address, phone number, and so on. 
+An IdP sends information about the SSO user to an SP (API Manager) using attributes. These attributes contain information about the user, such as the user's name, department, organization, email address, phone number, and so on.
 
 This section describes how to define mappings from an IdP to API Manager. An IdP can name attributes associated with the authenticated user in a variety of different ways (for example, `mail`, `email`, or `e-mail`). API Manager expects attributes with specific names, so you might need to transform the IdP attributes to the API Manager attributes using a rename mapping. In addition, an IdP might not provide some attributes that API Manager requires, so you might need to use a filter mapping to assign required attributes based on a filter.
 
-The mappings are defined in the `Mappings` section of the `SAMLIdentityProvider` section in the `service-provider.xml` file. 
+The mappings are defined in the `Mappings` section of the `SAMLIdentityProvider` section in the `service-provider.xml` file.
 
 Two types of mappings are supported:
 
@@ -120,25 +120,19 @@ The `source` attribute refers to the attribute supplied by the IdP that you want
 
 The `target` attribute refers to the name of the attribute after it has been renamed.
 
-{{< alert title="Tip" color="primary" >}}When the IdP like Keycloak or Shibboleth is used the [**userNameAttribute**](#refusername) source attribute is used to extract a principal name value.
-In the case of Ldap as the IdP below rename mapping example can be used where a source attribute different from the one specified by **userNameAttribute**.
+{{< alert title="Tip" color="primary" >}}
+When using an IdP such as Keycloak or Shibboleth, the `userNameAttribute` source attribute (see [`<Identity Providers>`](#identityproviders) is used to extract a principal name value. When using LDAP as an IdP, use the following rename mapping example where a source attribute different from the one specified by `userNameAttribute`.
 
 ```
-<LdapIdentityProvider entityId="[https://ldap|https://ldap/]" 
-useSSL="false" 
-userProvider="ldap://ldap.xxxxxxxxx/OU=Employees,DC=axway,DC=int" 
-userFilter="mailNickName=\{USERNAME}" 
-authIdentity="\{USERNAME}@[axway.com|https://axway.com/]" 
-attributes="cn,mailNickName,mail,department" 
-> 
-<Mappings> 
-<FilterMapping> 
-<Filter>(department=xxxxxxxxxxx))</Filter> 
-<OutputAttribute name="role">R&amp;D</OutputAttribute> 
-</FilterMapping> 
-<RenameMapping source="mailNickname" target="name"/> 
-</Mappings> 
-</LdapIdentityProvider> 
+<LdapIdentityProvider entityId="[https://ldap|https://ldap/]" useSSL="false" userProvider="ldap://ldap.xxxxxxxxx/OU=Employees,DC=axway,DC=int" userFilter="mailNickName=\{USERNAME}" authIdentity="\{USERNAME}@[axway.com|https://axway.com/]" attributes="cn,mailNickName,mail,department" >
+    <Mappings>
+        <FilterMapping>
+            <Filter>(department=xxxxxxxxxxx))</Filter>
+            <OutputAttribute name="role">R&amp;D</OutputAttribute>
+        </FilterMapping>
+        <RenameMapping source="mailNickname" target="name"/>
+    </Mappings>
+</LdapIdentityProvider>
 ```
 
 {{< /alert >}}
@@ -342,7 +336,7 @@ This element specifies an entry point for receiving SAML assertions from the IdP
 
 This element specifies the IdP URL where the logout responses are sent. Only `HTTP-POST` binding is managed.
 
-### `<IdentityProviders>`{#refusername}
+### `<IdentityProviders>`
 
 This element describes the entity that exchanges SAML messages with the SSO filter. This section contains a section called `<SamlIdentityProvider>`, which supports the following attributes:
 
