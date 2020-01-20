@@ -475,11 +475,11 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}  
-  - name: "apigtw_releasenotes"
-    label: "API Gateway release notes"
-    label_singular: "page in APIG RN section"
-    description: "All pages relating to API Gateway release."
-    folder: "content/en/docs/apim_relnotes/apigtw_releasenotes"
+  - name: "20200130_apigwmgr_relnotes"
+    label: "API Gateway and API Manager release notes"
+    label_singular: "page in API Gateway/Manager RN section"
+    description: "All pages relating to API Gateway and API Manager release."
+    folder: "content/en/docs/apim_relnotes/20200130_apigwmgr_relnotes"
     create: true
     delete: false
     format: "json-frontmatter"
@@ -491,27 +491,11 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "apimng_releasenotes"
-    label: "API Manager release notes"
-    label_singular: "page in APIM RN section"
-    description: "All pages relating to API Manager release."
-    folder: "content/en/docs/apim_relnotes/apimng_releasenotes"
-    create: true
-    delete: false
-    format: "json-frontmatter"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {name: "linkTitle", widget: "hidden", required: false}
-      - {name: "no_list", widget: "hidden", required: false}
-      - {name: "weight", widget: "hidden", required: false}
-      - {name: "date", widget: "hidden", required: false}
-      - {label: "Summary", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}          
-  - name: "apiportal_releasenotes"
+  - name: "20200130_apip_relnotes"
     label: "API Portal release notes"
-    label_singular: "page in APIP RN section"
+    label_singular: "page in API Portal RN section"
     description: "All pages relating to API Portal release."
-    folder: "content/en/docs/apim_relnotes/apiportal_releasenotes"
+    folder: "content/en/docs/apim_relnotes/20200130_apip_relnotes"
     create: true
     delete: false
     format: "frontmatter"
