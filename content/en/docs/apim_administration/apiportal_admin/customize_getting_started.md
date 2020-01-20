@@ -133,29 +133,64 @@ API Portal ships with new custom developed module called "Home Page Banner". Thi
 
 ![](/Images/uploads/banner-homepage.png)
 
-
 To customize this banner go to JAI->Extensions->Modules->Home Page Banner
 
 You'll see the following interface: 
 
 ![](/Images/uploads/banner-config.png)
 
+* Title - free text field for the title of the banner. Defaults to "Enter API Portal"
+* Title colour - colour picker to choose the color of the title
+* Sub-title - free text field for the sub-title of the banner. Defaults to "Explore and test our APIs."
+* Subtitle colour - colour picker to choose the color of the sub-title
+* Explore Button - Show / Hide Explore Button
+* Button text - free text field for the button text. 
+* Button text colour - colour picker to choose the color of the button text
+* Button has background - Yes / No 
+* Link button to a menu item - drop down with all menu items. Choose on which page the user should go when click the button. Defaults to "Sign in" page.
+* Button border colour - colour picker to choose the color of the button border
+* Border radius - Numbers only field for border radius of the button border. Defaults to 500.
+* Background image - change the background image of the banner. You can choose an image from the media manager or upload a new one. 
+* Text alignment - choose one of the three options - left, center, right to position the text and the button on the banner. 
 
-# Title - free text field for the title of the banner. Defaults to "Enter API Portal"
-# Title colour - colour picker to choose the color of the title
-# Sub-title - free text field for the sub-title of the banner. Defaults to "Explore and test our APIs."
-# Subtitle colour - colour picker to choose the color of the sub-title
-# Explore Button - Show / Hide Explore Button
-# Button text - free text field for the button text. 
-# Button text colour - colour picker to choose the color of the button text
-# Button has background - Yes / No 
-# Link button to a menu item - drop down with all menu items. Choose on which page the user should go when click the button. Defaults to "Sign in" page.
-# Button border colour - colour picker to choose the color of the button border
-# Border radius - Numbers only field for border radius of the button border. Defaults to 500.
-# Background image - change the background image of the banner. You can choose an image from the media manager or upload a new one. 
-# Text alignment - choose one of the three options - left, center, right to position the text and the button on the banner. 
+The module is by default assigned to position "api-home-banner". 
+After finishing customizing just click "Save" or "Save & close"
 
-After finishing the customizations just click "Save" or "Save & close"
+## Customizing the tiles section
+
+API Portal now ships with new custom developed module called "Home Tiles". This module is responsible for the Tiles section on the home page. 
+
+![](/Images/uploads/tiles-homepage.png)
+
+
+
+By default there are four instances of this module - one per each tile (Explore&test, Create, Manage & analyze, community). 
+
+To customize this banner go to JAI->Extensions->Modules->Home Tiles 1(or 2,3,4). 
+
+Each of them has the following interface : 
+
+![](/Images/uploads/tiles-homepage.png)
+
+
+* Title - free text field for the title ( defaults to "Explore & Test", "Create" ... )
+* Title Colour - colour picker to choose the colour of the title
+* Description - free text field for the description of the tile (short text under the title)
+* Description colour - colour picker to choose the colour of the descriprion text. 
+* Background image - change the icon of the tile . You can choose an image from the media manager or upload a new one. 
+* Background colour - colour picker to choose the background colour of the whole tile (defaults to white). 
+* Tile has link - this is a triple choice option : 
+    1. Menu item - a drop-down with all the menu items will apear. Choose to which menu item to link the Tile (Deafult chosen option)
+    2. Custom - free text field apears. Put any valid url to link the tile to it. 
+    3. No - No link at all.
+
+
+These module instances are by default assigned to positions - "api-home-tiles-1", "api-home-tiles-2", "api-home-tiles-3", "api-home-tiles-4". 
+The home page layout is designed to have up to six tiles on the home page, so positions "api-home-tiles-5" and "api-home-tiles-6" are available but unused by default. Use them to add new tiles : 
+
+Jai->Extensions->Modules->New->Home Tiles
+
+After finishing customizing just click "Save" or "Save & close"
 
 ## Customize your logo
 
