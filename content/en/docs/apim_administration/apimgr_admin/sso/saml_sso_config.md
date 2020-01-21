@@ -1,10 +1,9 @@
 {
-    "title": "Configure API Manager single sign-on",
-    "linkTitle": "Configure single sign-on",
-    "date": "2019-09-17",
-    "description": "Configure single sign-on for API Manager."
+"title": "Configure API Manager single sign-on",
+  "linkTitle": "Configure single sign-on",
+  "date": "2019-09-17",
+  "description": "Configure single sign-on for API Manager."
 }
-
 This topic details the steps you must follow to configure API Manager SSO. It also lists the prerequisites for configuring SSO, describes the configuration files used to configure SSO, and provides some usage guidelines.
 
 Watch this video to see how to configure single sign-on based on the Keycloak example.
@@ -68,13 +67,13 @@ INSTALL_DIR/apigateway/samples/sso
 The following sample files are included:
 
 * `ShibbolethIDP` folder:
-    * Sample Shibboleth configuration files to help you configure Shibboleth as an IdP. These configuration files are part of the Shibboleth installation and can be found in the respective Shibboleth installation folders. For more information on Shibboleth, see the [Shibboleth documentation](https://wiki.shibboleth.net/confluence/display/IDP30/Home).
-    * Sample `service-provider.xml` where the IdP is specified by file using `idp.xml`.
-    * Sample `idp.xml`.
+  * Sample Shibboleth configuration files to help you configure Shibboleth as an IdP. These configuration files are part of the Shibboleth installation and can be found in the respective Shibboleth installation folders. For more information on Shibboleth, see the [Shibboleth documentation](https://wiki.shibboleth.net/confluence/display/IDP30/Home).
+  * Sample `service-provider.xml` where the IdP is specified by file using `idp.xml`.
+  * Sample `idp.xml`.
 * `keycloak` folder:
-    * Sample `service-provider.xml` file that uses a URL to specify the IdP.
-    * Sample `service-provider-apiportal.xml` for configuring API Portal SSO. For more details, see
-        [Configure API Portal single sign-on](/docs/apim_administration/apiportal_admin/sso/sso_config/).
+  * Sample `service-provider.xml` file that uses a URL to specify the IdP.
+  * Sample `service-provider-apiportal.xml` for configuring API Portal SSO. For more details, see
+      [Configure API Portal single sign-on](/docs/apim_administration/apiportal_admin/sso/sso_config/).
 
 ## Usage guidelines
 
@@ -97,7 +96,7 @@ An SSO user is mapped to one of three SSO roles:
 The SSO role to API Manager role mapping is as follows:
 
 | SSO role        | API Manager role                            | Notes                                                             |
-|-----------------|---------------------------------------------|-------------------------------------------------------------------|
+| --------------- | ------------------------------------------- | ----------------------------------------------------------------- |
 | `Administrator` | API administrator (for example, `apiadmin`) | The API administrator does not belong to a specific organization  |
 | `Operator`      | Organization administrator                  | The organization administrator belongs to a specific organization |
 | `User`          | API consumer                                | The API consumer belongs to a specific organization               |
@@ -117,11 +116,9 @@ The following restrictions apply to SSO users and SSO login:
 
 * SSO authenticated users cannot change their own passwords.
 * To log in using SSO, users cannot use the standard login URL (`https://FQDN:PORT`). Instead, users must use the following SSO login URL:
-
-    ```
-     https://FQDN:PORT/api/portal/v1.3/sso/login/
-    ```
-
+  ```
+   https://FQDN:PORT/api/portal/v1.3/sso/login/
+  ```
 * `FQDN` is the FQDN of the machine where API Gateway is running, and `PORT` is the API Manager listening port (for example, `https://gateway.example.com:8075/api/portal/v1.3/sso/login/`).
 * If a user has already authenticated using SSO (for example, by previously logging in to Decision Insight), they must still use the SSO login URL for API Manager. If they are already authenticated, they are automatically redirected to the API Manager home page at `https://FQDN:PORT/home` and presented with a view appropriate to their API Manager role.
 
@@ -134,10 +131,11 @@ In this step you will create a keystore, export the public key of the keystore y
 First, use the Java `keytool` utility to set up a keystore containing a key pair:
 
 1. Change directory to your API Gateway instance folder (for example, `INSTALL_DIR/apigateway/groups/group-2/instance-1/conf`).
-2. Execute `keytool` to create a keystore. For example, the following command generates a keystore with the alias `ssokey` in the file `sso.jks`:
+2. Execute `keytool` to create a keystore. For example, the following command generates a keystore with the alias `ssokey` in the file `sso.jks` valid for 1 year:
+
 
 ```
-keytool -genkey -alias ssokey -keyalg RSA -keystore sso.jks -keysize 2048
+keytool -genkey -alias ssokey -keyalg RSA -keystore sso.jks -keysize 2048 -validity 365
 ```
 
 {{< alert title="Tip" color="primary" >}}The values `ssokey` and `sso.jks` are used in the sample files included in the API Gateway installation. You can use different values when generating the keystore, but you must update the sample files with the new values.{{< /alert >}}
@@ -165,33 +163,27 @@ Finally, import the public key to your IdP. Consult the documentation for your I
 In this step you will create a `service-provider.xml` file based on a sample file, and update it with the correct values for your keystore, your IdP, and the appropriate mappings for your IdP:
 
 1. Copy either of the `service-provider.xml` sample files included in the `INSTALL_DIR/apigateway/samples/sso` folder of your API Gateway installation to your API Gateway instance folder (for example, `INSTALL_DIR/apigateway/groups/group-2/instance-1/conf`).
-
-    The sample file in the `ShibbolethIDP` folder specifies the IdP by file, and the sample in the `keycloak` folder specifies the IdP by URL.
-
+   The sample file in the `ShibbolethIDP` folder specifies the IdP by file, and the sample in the `keycloak` folder specifies the IdP by URL.
 2. In the `ServiceProvider` section, update the `keystore`, `keystorePassphrase`, and `keyAlias` fields with the correct values for your keystore.
-
-    ```
-       <ServiceProvider
-          ...
-          keystore="conf/KEYSTORE_FILE"
-          keystorePassphrase="KEYSTORE_PASSPHRASE"
-          keyAlias="KEY_ALIAS"
-          ...
-       </ServiceProvider>
-    ```
-
+   ```
+      <ServiceProvider
+         ...
+         keystore="conf/KEYSTORE_FILE"
+         keystorePassphrase="KEYSTORE_PASSPHRASE"
+         keyAlias="KEY_ALIAS"
+         ...
+      </ServiceProvider>
+   ```
 3. For example, if you generated a keystore called `sso.jks` with a passphrase `abc123` and an alias called `ssokey`, the settings in `service-provider.xml` would be as follows:
-
-    ```
-       <ServiceProvider
-          ...
-          keystore="conf/sso.jks"
-          keystorePassphrase="abc123"
-          keyAlias="ssokey"
-          ...
-       </ServiceProvider>
-    ```
-
+   ```
+      <ServiceProvider
+         ...
+         keystore="conf/sso.jks"
+         keystorePassphrase="abc123"
+         keyAlias="ssokey"
+         ...
+      </ServiceProvider>
+   ```
 4. In the `SamlIdentityProvider` section, update the `metadataUrl` field as detailed in [Specify the IdP by file](#specify-the-idp-by-file) or [Specify the IdP by URL](#specify-the-idp-by-url).
 5. In the `SAMLIdentityProvider` section, update the `Mappings` section with the appropriate mapping of IdP attributes to API Manager attributes. For more information on the mapping syntax, see [Mapping syntax](/docs/apim_administration/apimgr_admin/sso/sso_mapping/#mapping-syntax).
 6. Update any other fields as required. For more information on the elements in the `service-provider.xml` configuration file, see [service-provider.xml configuration file reference](/docs/apim_administration/apimgr_admin/sso/sso_mapping/#service-provider-xml-configuration-file-reference).
@@ -202,19 +194,17 @@ To specify the IdP by file, follow these steps:
 
 1. Copy the `idp.xml` sample file included in the `INSTALL_DIR/apigateway/samples/sso/ShibbolethIDP` folder of your API Gateway installation to your API Gateway instance folder (for example, `INSTALL_DIR/apigateway/groups/group-2/instance-1/conf`).
 2. In the `idp.xml` file:
-    * Replace the place holder `CHANGE THIS : Replace this text with your IDP_CERTIFICATE` with the certificate of your IdP that is used for signing SAML tokens.
-    * Replace all instances of the placeholders `<IDP_FQDN>:<IDP_SOAP_PORT>` and `<IDP_FQDN>:<IDP_HTTP_PORT>` with the fully qualified domain name and port of your IdP.
+   * Replace the place holder `CHANGE THIS : Replace this text with your IDP_CERTIFICATE` with the certificate of your IdP that is used for signing SAML tokens.
+   * Replace all instances of the placeholders `<IDP_FQDN>:<IDP_SOAP_PORT>` and `<IDP_FQDN>:<IDP_HTTP_PORT>` with the fully qualified domain name and port of your IdP.
 3. Set the `metadataUrl` field of the `SamlIdentityProvider` section of the `service-provider.xml` file to the value `./idp.xml`.
-
-    For example:
-
-    ```
-       <SamlIdentityProvider
-          entityId="https://axwayidp.localdomain/idp/shibboleth"
-          metadataUrl="./idp.xml"
-          ...
-       </SamlIdentityProvider>
-    ```
+   For example:
+   ```
+      <SamlIdentityProvider
+         entityId="https://axwayidp.localdomain/idp/shibboleth"
+         metadataUrl="./idp.xml"
+         ...
+      </SamlIdentityProvider>
+   ```
 
 ### Specify the IdP by URL
 
@@ -246,26 +236,24 @@ Perform the following steps in Policy Studio:
 5. Ensure that the settings for this relative path match those for the `/login-failed` relative path, the only difference being the path name.
 6. Set **File** to `$VDISTDIR/webapps/apiportal/login.html`.
 7. Enter the following values to the additional headers table, and click **OK**:
-
-    | HTTP Header               | Value                    |
-    |---------------------------|--------------------------|
-    | `Content-Security-Policy` | `frame-ancestors 'none'` |
-    | `X-Frame-Options`         | `DENY`                   |
-
+   \| HTTP Header               | Value                    |
+   |---------------------------|--------------------------|
+   | `Content-Security-Policy` | `frame-ancestors 'none'` |
+   | `X-Frame-Options`         | `DENY`                   |
 8. Edit each of the servlets (`API Portal v1.2 (‘v1.2’)` and `API Portal v1.3 (‘v1.3’)`) as follows:
-    * Edit the property `jersey.config.server.provider.classnames`. In the **Value** field add the class name `com.vordel.common.apiserver.filter.SSOBindingFeature` to the existing comma-separated list of class names.
-    * Add a new property. In the **Name** field enter the name `CsrfProtectionFilterFactory.refererWhitelist` and in the **Value** field enter the URL of the IdP (for example, `https://sample_idp_host:8443`).
+   * Edit the property `jersey.config.server.provider.classnames`. In the **Value** field add the class name `com.vordel.common.apiserver.filter.SSOBindingFeature` to the existing comma-separated list of class names.
+   * Add a new property. In the **Name** field enter the name `CsrfProtectionFilterFactory.refererWhitelist` and in the **Value** field enter the URL of the IdP (for example, `https://sample_idp_host:8443`).
 
-    ![Servlet configuration for SAML SSO](/Images/docbook/images/api_mgmt/saml_sso_config_ps.png)
+![Servlet configuration for SAML SSO](/Images/docbook/images/api_mgmt/saml_sso_config_ps.png)
 
-9. Deploy the configuration to the API Manager-enabled API Gateway instance.
+1. Deploy the configuration to the API Manager-enabled API Gateway instance.
 
 ## Step 4 – Configure SAML endpoint URLs in the IdP
 
 You must configure the SAML endpoints of API Manager in your IdP. Consult the documentation for your IdP for details. The following examples are for Keycloak IdP.
 
 | Keycloak field name                                 | API Manager endpoint URL                                                    |
-|-----------------------------------------------------|-----------------------------------------------------------------------------|
+| --------------------------------------------------- | --------------------------------------------------------------------------- |
 | **Assertion Consumer Service POST Binding URL**     | `https://<your_API Manager_host_FQDN>:8075/api/portal/v1.3/sso/login/post`  |
 | **Assertion Consumer Service Redirect Binding URL** | Leave this field blank                                                      |
 | **Logout Service POST Binding URL**                 | `https://<your_API Manager_host_FQDN>:8075/api/portal/v1.3/sso/logout/post` |
@@ -284,14 +272,12 @@ To change the default domain name to a sample domain name such as `axway.int`:
 
 1. Create a file called `jvm.xml` in the folder `INSTALL_DIR/apigateway/conf` (if it does not already exist).
 2. Add the following setting:
-
-    ```
-    <ConfigurationFragment>
-      <VMArg name="-Dcom.axway.sso.domain.name=axway.int" />
-    </ConfigurationFragment>
-    ```
-
-    {{< alert title="Note" color="primary" >}}Do not prefix the domain name with a period (for example, do not use the value `.axway.int`). {{< /alert >}}
+   ```
+   <ConfigurationFragment>
+     <VMArg name="-Dcom.axway.sso.domain.name=axway.int" />
+   </ConfigurationFragment>
+   ```
+   {{< alert title="Note" color="primary" >}}Do not prefix the domain name with a period (for example, do not use the value `.axway.int`). {{< /alert >}}
 
 ## Step 6 – Restart API Gateway
 
