@@ -106,22 +106,12 @@ Sample RenameMapping if the IdP provides an attribute which should be renamed:
 <RenameMapping source="displayName" target="userfullname"/>
 ```
 
-### Rename mapping example
-
-If the IdP generates a attribute name that is different to the attribute name expected by API Manager (for example, `e-mail` rather than `mail`), you can use a RenameMapping directive to effectively rename the IdP attribute to the API Manager attribute.
-
-For example, to rename the IdP attribute name `e-mail` to the API Manager attribute `mail`, use the following RenameMapping:
-
-```
-<RenameMapping source="e-mail" target="mail"/>
-```
-
-The `source` attribute refers to the attribute supplied by the IdP that you want to rename.
-
-The `target` attribute refers to the name of the attribute after it has been renamed.
-
 {{< alert title="Tip" color="primary" >}}
-When using an IdP such as Keycloak or Shibboleth, the `userNameAttribute` source attribute (see [`<Identity Providers>`](#identityproviders) is used to extract a principal name value. When using LDAP as an IdP, use the following rename mapping example where a source attribute different from the one specified by `userNameAttribute`.
+By default the `userNameAttribute` populates the user name for API Manager from the IdP. If the IdP assertion response contains the user name in an attribute other than `userNameAttribute`, you must remap it to the target `name` for API Manager.
+
+Previously, the account login name and name were both populated with the SAML response value for the `userNameAttribute` or `name` remapping value from the IdP. The `userfullname` target mapping now allows the API Manager account name field to be populated independently of the login name (which still comes from the `userNameAttribute` to `name` remapping).
+
+When using an IdP such as Keycloak or Shibboleth, the `userNameAttribute` source attribute (see [`<Identity Providers>`](#identityproviders) is used to extract a principal name value. When using LDAP as an IdP, you can use the following rename mapping example, which uses a source attribute different from the one specified by `userNameAttribute`.
 
 ```
 <LdapIdentityProvider entityId="[https://ldap|https://ldap/]" useSSL="false" userProvider="ldap://ldap.xxxxxxxxx/OU=Employees,DC=axway,DC=int" userFilter="mailNickName=\{USERNAME}" authIdentity="\{USERNAME}@[axway.com|https://axway.com/]" attributes="cn,mailNickName,mail,department" >
@@ -136,6 +126,20 @@ When using an IdP such as Keycloak or Shibboleth, the `userNameAttribute` source
 ```
 
 {{< /alert >}}
+
+### Rename mapping example
+
+If the IdP generates a attribute name that is different to the attribute name expected by API Manager (for example, `e-mail` rather than `mail`), you can use a RenameMapping directive to effectively rename the IdP attribute to the API Manager attribute.
+
+For example, to rename the IdP attribute name `e-mail` to the API Manager attribute `mail`, use the following RenameMapping:
+
+```
+<RenameMapping source="e-mail" target="mail"/>
+```
+
+The `source` attribute refers to the attribute supplied by the IdP that you want to rename.
+
+The `target` attribute refers to the name of the attribute after it has been renamed.
 
 ### Multiple rename mappings example
 
