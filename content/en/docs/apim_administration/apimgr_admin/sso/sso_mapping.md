@@ -106,7 +106,7 @@ Sample RenameMapping if the IdP provides an attribute which should be renamed:
 <RenameMapping source="displayName" target="userfullname"/>
 ```
 
-{{< alert title="Tip" color="primary" >}}
+{{< alert title="Note" color="primary" >}}
 By default the `userNameAttribute` populates the user name for API Manager from the IdP. If the IdP assertion response contains the user name in an attribute other than `userNameAttribute`, you must remap it to the target `name` for API Manager.
 
 Previously, the account login name and name were both populated with the SAML response value for the `userNameAttribute` or `name` remapping value from the IdP. The `userfullname` target mapping now allows the API Manager account name field to be populated independently of the login name (which still comes from the `userNameAttribute` to `name` remapping).
