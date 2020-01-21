@@ -475,11 +475,11 @@ collections: # A list of collections the CMS should be able to edit
       - {name: "date", widget: "hidden", required: false}
       - {label: "Summary", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}  
-  - name: "20200130_apigwmgr_relnotes"
+  - name: "20200130_apimgr_relnotes"
     label: "API Gateway and API Manager release notes"
     label_singular: "page in API Gateway/Manager RN section"
     description: "All pages relating to API Gateway and API Manager release."
-    folder: "content/en/docs/apim_relnotes/20200130_apigwmgr_relnotes"
+    folder: "content/en/docs/apim_relnotes/20200130_apimgr_relnotes"
     create: true
     delete: false
     format: "json-frontmatter"
