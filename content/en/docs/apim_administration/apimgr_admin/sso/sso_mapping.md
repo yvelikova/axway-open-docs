@@ -7,11 +7,11 @@
 
 ## Mapping syntax
 
-An IdP sends information about the SSO user to an SP (API Manager) using attributes. These attributes contain information about the user, such as the user's name, department, organization, email address, phone number, and so on. 
+An IdP sends information about the SSO user to an SP (API Manager) using attributes. These attributes contain information about the user, such as the user's name, department, organization, email address, phone number, and so on.
 
 This section describes how to define mappings from an IdP to API Manager. An IdP can name attributes associated with the authenticated user in a variety of different ways (for example, `mail`, `email`, or `e-mail`). API Manager expects attributes with specific names, so you might need to transform the IdP attributes to the API Manager attributes using a rename mapping. In addition, an IdP might not provide some attributes that API Manager requires, so you might need to use a filter mapping to assign required attributes based on a filter.
 
-The mappings are defined in the `Mappings` section of the `SAMLIdentityProvider` section in the `service-provider.xml` file. 
+The mappings are defined in the `Mappings` section of the `SAMLIdentityProvider` section in the `service-provider.xml` file.
 
 Two types of mappings are supported:
 
@@ -105,6 +105,27 @@ Sample RenameMapping if the IdP provides an attribute which should be renamed:
 ```
 <RenameMapping source="displayName" target="userfullname"/>
 ```
+
+{{< alert title="Note" color="primary" >}}
+By default the `userNameAttribute` populates the user name for API Manager from the IdP. If the IdP assertion response contains the user name in an attribute other than `userNameAttribute`, you must remap it to the target `name` for API Manager.
+
+Previously, the account login name and name were both populated with the SAML response value for the `userNameAttribute` or `name` remapping value from the IdP. The `userfullname` target mapping now allows the API Manager account name field to be populated independently of the login name (which still comes from the `userNameAttribute` to `name` remapping).
+
+When using an IdP such as Keycloak or Shibboleth, the `userNameAttribute` source attribute (see [`<Identity Providers>`](#identityproviders) is used to extract a principal name value. When using LDAP as an IdP, you can use the following rename mapping example, which uses a source attribute different from the one specified by `userNameAttribute`.
+
+```
+<LdapIdentityProvider entityId="[https://ldap|https://ldap/]" useSSL="false" userProvider="ldap://ldap.xxxxxxxxx/OU=Employees,DC=axway,DC=int" userFilter="mailNickName=\{USERNAME}" authIdentity="\{USERNAME}@[axway.com|https://axway.com/]" attributes="cn,mailNickName,mail,department" >
+    <Mappings>
+        <FilterMapping>
+            <Filter>(department=xxxxxxxxxxx))</Filter>
+            <OutputAttribute name="role">R&amp;D</OutputAttribute>
+        </FilterMapping>
+        <RenameMapping source="mailNickname" target="name"/>
+    </Mappings>
+</LdapIdentityProvider>
+```
+
+{{< /alert >}}
 
 ### Rename mapping example
 
