@@ -54,6 +54,13 @@ The API Manager UI supports OAS3 `response.content.schemes`.
 
 <!-- Use this section to describe any changes in the behavior of the product (as a result of features or fixes), for example, new Java system properties in the jvm.xml file. This section could also be used for any important information that doesn't fit elsewhere. -->
 
+###Increased Validation of WSDLs### 
+In this release we've updated to the 'xerces 2.12.0' library. This library enforces stricter rules when validating malformed schemas compared to the previous versions meaning that some WSDLs that were previously imported by API Manager may not import in this version of the product. To alleviate the risk of this potentially breaking change we've added a new flag called '-DwsdlImport.suppressSchemaValidationErrors' to policystudio.ini file. This is set to false by default however if required, it can be set to false to relax the validation of XML files.
+
+###Filebeat v6.2.2### 
+Filebeat has been updated to use v6.2.2, as a result the official filebeat documentation should be followed when installing  
+https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html
+
 ## Limitations of this release
 
 <!-- Add any limitations here -->
@@ -72,8 +79,11 @@ As part of our software development life cycle we constantly review the core API
 
 In our efforts to continually upgrade our products in response to the needs of our customers’ IT environments, Axway occasionally discontinues support for some capabilities. As part of this review, the following capabilities have been removed:
 
-* API Tester
+* API Tester has been removed from the product as it presented a security risk in certain scenarios. This feature had been marked as deprecated
 * A security issue with the `api/portal/v1.3/users` API means that the behaviour has changed. This API now returns all organizations for the API Admin role only. Previously, all organizations were returned for all roles.
+* The Export Backend API functional currently converts all API formats to Swagger 1. With the introduction of OAS3 API Manager now uses the 'io.swagger.parser.v3.swagger-parser-v3:2.0.16' and 'io.swagger.swagger-parser:1.0.48' librarys during the import process. This means that the export of Backend APIs is not supported for OAS3 or WSDL APIs as this functionality relied on custom code in the old parser that is no longer available. 
+
+
 
 ## Fixed issues
 
