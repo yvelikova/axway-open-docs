@@ -49,6 +49,18 @@ The API Manager UI supports OAS3 `response.content.schemes`.
 * The `DataTypes` in API Manager have been changed to align with the OAS3 data types
 * Users have the option to modify all back-end APIs without cloning
 
+
+
+### Traffic Monitor Externalisation Concept
+
+Leveraging existing capabilities to output Traffic Monitor data using the OpenLogging functionality, we will also provide an example dashboard for ElasticSearch to showcase this capability. 
+
+Easy to integrate with and to setup, ELK enables customers to extend their analytics needs via easy customization options. 
+
+The integrations showcases increased performance, provide the ability to store more data for longer leveraging 1st class database integration options that ELK provides and also provide role base access control capability if used in conjuction with LDAP. 
+
+
+
 ## Important changes
 
 <!-- Use this section to describe any changes in the behavior of the product (as a result of features or fixes), for example, new Java system properties in the jvm.xml file. This section could also be used for any important information that doesn't fit elsewhere. -->
