@@ -127,6 +127,9 @@ By default the home page consists of the following main sections :
 3. Tiles section
 4. Footer
 
+For more details on the T3 layout framework please reffer to this url : 
+http://www.t3-framework.org/documentation/bs3-layout-system#about-layout
+
 ## Customizing the banner
 
 API Portal ships with new custom developed module called "Home Page Banner". This module is responsible for the banner section of the home page. 
