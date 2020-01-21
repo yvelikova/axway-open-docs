@@ -51,13 +51,13 @@ The API Manager UI supports OAS3 `response.content.schemes`.
 
 
 
-### Traffic Monitor Externalisation Concept
+### Traffic Monitor Externalisation Showcase
 
 Leveraging existing capabilities to output Traffic Monitor data using the OpenLogging functionality, we will also provide an example dashboard for ElasticSearch to showcase this capability. 
 
 Easy to integrate with and to setup, ELK enables customers to extend their analytics needs via easy customization options. 
 
-The integrations showcases increased performance, provide the ability to store more data for longer leveraging 1st class database integration options that ELK provides and also provide role base access control capability if used in conjuction with LDAP. 
+The integration showcases increased performance, provide the ability to store more data for longer, leveraging 1st class database integration options that ELK provide and also provides role base access control capability if used in conjuction with LDAP. 
 
 
 
