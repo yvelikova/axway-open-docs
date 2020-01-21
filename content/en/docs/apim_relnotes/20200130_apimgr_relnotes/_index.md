@@ -73,6 +73,7 @@ As part of our software development life cycle we constantly review the core API
 In our efforts to continually upgrade our products in response to the needs of our customers’ IT environments, Axway occasionally discontinues support for some capabilities. As part of this review, the following capabilities have been removed:
 
 * API Tester
+* A security issue with the `api/portal/v1.3/users` API means that the behaviour has changed. This API now returns all organizations for the API Admin role only. Previously, all organizations were returned for all roles.
 
 ## Fixed issues
 
