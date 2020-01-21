@@ -6,9 +6,6 @@
 "description": "Guidance on platforms, components, high availability, and connections to other products when planning your deployment."
 }
 
-This section discusses how to plan your deployment. For more information on planning an API Gateway system, and how API Gateway interacts with existing infrastructure, see the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
-
 ## Platforms
 
 For more information on the exact platforms that Axway supports for API Gateway, see [System requirements](/docs/apim_installation/apigtw_install/system_requirements).
@@ -18,8 +15,6 @@ For more information on the exact platforms that Axway supports for API Gateway,
 ## API Gateway components
 
 Before installing API Gateway you need to consider which components you require. Some components (for example, API Manager or API Gateway Analytics) have additional requirements, such as databases. For more information, see [Specific component requirements](/docs/apim_installation/apigtw_install/system_requirements#specific_component_requirements).
-
-For more information on API Gateway components, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
 
 ## Client components
 
@@ -33,7 +28,7 @@ The following components have specific requirements for high availability (HA):
 
 ### API Gateway HA
 
-For resilient API Gateway and API Manager HA configuration, a minimum of at least two API Gateway instances is required. For details on configuring API Gateway high availability, see the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+For resilient API Gateway and API Manager HA configuration, a minimum of at least two API Gateway instances is required. For details on configuring API Gateway high availability, see the [API Gateway Administrator Guide](/docs/apim_administration/apigtw_admin/).
 
 ### Apache Cassandra HA
 
@@ -42,7 +37,7 @@ In addition, the Apache Cassandra database is required to store data for the API
 
 ### Multiple datacenters
 
-For details on how to configure different types of API Gateway and API Manager data in a multi-datacenter environment, see [Configure API Management in multiple datacenters](/docs/apim_installation/apigtw_install/multi_datacenter_intro).
+For details on how to configure different types of API Gateway and API Manager data in a multi-datacenter environment, see [Configure API Management in multiple datacenters](/docs/apimgmt_multi_dc/).
 
 ## Connection to other products
 
@@ -51,8 +46,8 @@ Axway PassPort) and third-party products (for example, LDAP, JMS, or database pr
 
 For more details on a particular integration, see the appropriate integration or interoperability guide, available in the Axway Documentation portal at <https://docs.axway.com>.
 
-For more details on the versions of Axway products that API Gateway 7.8 interoperates with, see the following:
+For more details on the versions of Axway products that API Gateway 7.7 interoperates with, see the following:
 
-* [API Gateway PassPort Interoperability Guide](/bundle/APIGateway_77_PassPort_InteropGuide_allOS_en_HTML5)
-* [API Gateway Sentinel Interoperability Guide](/bundle/APIGateway_77_Sentinel_InteropGuide_allOS_en_HTML5)
-* [API Gateway Validation Authority Interoperability Guide](/bundle/APIGateway_77_VA_InteropGuide_allOS_en_HTML5)
+* [API Gateway PassPort Interoperability Guide](https://docs.axway.com/bundle/APIGateway_77_PassPort_InteropGuide_allOS_en_HTML5)
+* [API Gateway Sentinel Interoperability Guide](https://docs.axway.com/bundle/APIGateway_77_Sentinel_InteropGuide_allOS_en_HTML5)
+* [API Gateway Validation Authority Interoperability Guide](https://docs.axway.com/bundle/APIGateway_77_VA_InteropGuide_allOS_en_HTML5)

@@ -42,10 +42,7 @@ For more information, see [Development and deployment with API Gateway container
 ### How do you promote APIs through environments
 
 In a container deployment, you can promote APIs registered in API Manager in the same way as in a classic environment. See
-[Promote managed APIs between environments](/csh?context=1027&product=prod-api-manager-77)
-in the
-[API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/)
-.
+[Promote managed APIs between environments](/docs/apim_administration/apimgr_admin/api_mgmt_promote/).
 
 ### What API Gateway Manager functionality is not available
 
@@ -67,12 +64,12 @@ For more information on using volumes to persist data, see the [Use volumes](htt
 
 You must have an appropriate license to run API Gateway or API Manager in a Docker container. For more information, see [Set up Docker environment](/docs/apim_installation/apigw_containers/docker_scripts_prereqs).
 
-### How do you upgrade from 7.5.3 to 7.8
+### How do you upgrade from 7.5.3 to 7.7
 
-To upgrade from API Gateway 7.5.3 (classic deployment) to API Gateway 7.8 (container deployment), you must first upgrade to a 7.8 classic deployment, and then migrate to a 7.8 container deployment.
+To upgrade from API Gateway 7.5.3 (classic deployment) to API Gateway 7.7 (container deployment), you must first upgrade to a 7.7 classic deployment, and then migrate to a 7.7 container deployment.
 
-For information on upgrading to 7.8, see the
-[API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5)
+For information on upgrading to 7.7, see the
+[API Gateway Upgrade Guide](/docs/apim_installation/apigw_upgrade/)
 , and for more details on migrating to a container deployment, see [Migrate to container deployment](/docs/apim_installation/apigw_containers/container_migration).
 
 ### How do you create API Gateway Docker images with customized configuration

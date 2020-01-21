@@ -11,7 +11,7 @@ Deploy API Gateway and API Manager in Docker containers on a cloud platform host
 
 To deploy your API Gateway or API Manager topology in containers, you must have an automated continuous integration (CI) pipeline spanning all your environments from development to production. The CI pipeline moves a Docker image from one environment to another. However, the image is always specific to a single environment, and you use the promoted image as the base image when creating the Docker image. You must update the configuration files to match the configuration of the environment (for example, certificates, ports, and back-end URLs often change between environments). If you are using API Manager, during promotion APIs are exported from the previous environment, environmentalized, and imported into the new environment.
 
-You can download Docker scripts for API Gateway and Admin Node Manager from Axway Support at [https://support.axway.com](https://support.axway.com/), and use these scripts to create the Docker images. You can then include your `.fed` and other configuration files in the API Gateway base image in your development environment to create a customized API Gateway Docker image.
+You can download Docker scripts for API Gateway and Admin Node Manager from [Axway Support](https://support.axway.com/), and use these scripts to create the Docker images. You can then include your `.fed` and other configuration files in the API Gateway base image in your development environment to create a customized API Gateway Docker image.
 
 Because the `.fed` files are not separately deployed but included in the Docker image, after the image is created, it is immutable. However, you can create multiple Docker images with different `.fed` files as needed, and deploy them as required. Containers from each image (containing the same `.fed` file) form a group that scales independently from other groups, and you can use a load balancer to route traffic from one group to another.
 
@@ -53,5 +53,4 @@ A cluster manager such as Docker Swarm or Kubernetes manages the topology and ad
 #### Apache Cassandra
 
 If the deployment includes API Manager, Apache Cassandra is configured for high availability (HA) to store API Manager data and Key Property Store (KPS) tables. For more details, see
-[Configure a Cassandra HA cluster](/csh?context=1300&product=prod-api-gateway-77)
-in the [API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/)
+[Configure a Cassandra HA cluster](/docs/cass_admin/cassandra_config/).

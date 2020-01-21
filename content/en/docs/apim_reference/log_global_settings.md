@@ -353,7 +353,7 @@ The following example shows the JSON format used for `header` events:
    "groupName":"QuickStart Group",
    "serviceId":"instance-1",
    "serviceName":"QuickStart Server",
-   "version":"7.8"
+   "version":"7.7"
 }
 ...
 ```

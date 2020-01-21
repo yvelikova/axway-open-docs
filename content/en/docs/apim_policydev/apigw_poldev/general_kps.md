@@ -6,9 +6,9 @@
 "description": "Use a Key Property Store to store data that can be referenced by policies running on an API Gateway."
 }
 
-A *Key Property Store* (KPS) is a table of data referenced by policies running on an API Gateway. Data in a KPS table is assumed to be read frequently and seldom written, and can be changed without incurring an API Gateway service outage. KPS tables are shared across an API Gateway group. Data can be stored in one of the following locations:
+A Key Property Store (KPS) is a table of data referenced by policies running on an API Gateway. Data in a KPS table is assumed to be read frequently and seldom written, and can be changed without incurring an API Gateway service outage. KPS tables are shared across an API Gateway group.
 
-A KPS is typically used to store property values used in policies on an API Gateway. KPS data is injected into policies using selectors created in Policy Studio. Selectors are evaluated and expanded dynamically at runtime. For example, a KPS table contains authorization tokens for different users. A policy looks up the token for the current user, and inserts it into an HTTP request.
+A KPS is typically used to store property values used in policies on a gateway. KPS data is injected into policies using selectors created in Policy Studio. Selectors are evaluated and expanded dynamically at runtime. For example, a KPS table contains authorization tokens for different users. A policy looks up the token for the current user, and inserts it into an HTTP request.
 
 {{< alert title="Caution" color="warning" >}}Do not edit the default KPS tables in Policy Studio unless under strict supervision from Axway Support. This includes the **API Server**, **OAuth**, or **API Portal** KPS tables available under **Environment Configuration > Key Property Stores**.{{< /alert >}}
 
@@ -58,6 +58,7 @@ ${kps.customers["jbloggs@acme.com"].age}
 A KPS provides a consistent interface to data that can be stored in different data sources. API Gateway supports the following KPS data sources:
 
 **External Apache Cassandra database (default)**: Used across an API Gateway group to provide high availability in a production environment.
+
 **Relational Database**: Enables you to use your existing database (for example, Oracle, Microsoft SQL Server, IBM DB2, or MySQL). The following approaches to data storage are supported:
 
 * Shared storage—data for multiple KPS tables is stored in a single dedicated database table. This is the recommended approach.
@@ -108,7 +109,7 @@ To add an Cassandra database data store to a selected KPS collection, perform th
     * Read Consistency Level: Select the consistency level for Cassandra read operations from the list. Defaults to ONE.
     * Write Consistency Level: Select the consistency level for Cassandra write operations from the list. Defaults to ONE.
 
-    For more details, see <http://docs.datastax.com/en/archived/cassandra/2.2/cassandra/dml/dmlConfigConsistency.html>
+    For more details, see [How is the consistency level configured?](http://docs.datastax.com/en/archived/cassandra/2.2/cassandra/dml/dmlConfigConsistency.html)
 3. Click **OK**.
 
 ### Add a database data store

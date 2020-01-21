@@ -6,14 +6,12 @@ date: 2019-09-18
 description: Create an API Gateway Analytics Docker image and start an API Gateway Analytics Docker container.
 ---
 
-These steps are optional and only for users who wish to use API Gateway Analytics monitoring and reporting in their environment. In a containerized deployment, API Gateway Analytics runs as a standalone client of the metrics database.
-
-For details on how to deploy API Gateway Analytics in a classic deployment (non-containerized), see the [API Gateway Analytics User Guide](/bundle/APIGateway_77_AnalyticsUserGuide_allOS_en_HTML5/).
+These steps are optional and only for users who wish to use API Gateway Analytics monitoring and reporting in a containerized environment. In a containerized deployment, API Gateway Analytics runs as a standalone client of the metrics database.
 
 ## Create an API Gateway Analytics Docker image
 
 To create an API Gateway Analytics Docker image, use the `build_aga_image.py`
-script. This script builds an API Gateway Analytics Docker image using an API Gateway 7.8 Linux installer and a Docker image based on a standard or custom CentOS7 or RHEL7 operating system image.
+script. This script builds an API Gateway Analytics Docker image using an API Gateway 7.7 Linux installer and a Docker image based on a standard or custom CentOS7 or RHEL7 operating system image.
 
 {{< alert title="Caution" color="warning" >}}Docker automatically downloads the latest CentOS or RHEL7 image, which may potentially contain security vulnerabilities. Axway is not responsible for any third-party base O/S images. You must ensure that all base O/S images are up-to-date and apply any security patches if necessary.{{< /alert >}}
 
@@ -22,7 +20,7 @@ script. This script builds an API Gateway Analytics Docker image using an API Ga
 You must specify the following as options when using the `build_aga_image.py` script:
 
 * API Gateway Analytics license
-* API Gateway 7.8 Linux installer
+* API Gateway 7.7 Linux installer
 * Operating system based on one of the following:
     * Standard CentOS7 Docker image downloaded from the [public Docker registry](https://store.docker.com/)
     * Standard RHEL7 Docker image downloaded from the [Red Hat Docker registry](https://access.redhat.com/containers)

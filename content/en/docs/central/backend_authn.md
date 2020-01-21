@@ -10,8 +10,8 @@ description: Learn how to configure back-end authentication for an API.
 
 ## Before you start
 
-- You will need a user account for {{< variables/central_prod_name >}}
-- You will need an API which supports back-end authentication
+* You will need a user account for {{< variables/central_prod_name >}}
+* You will need an API which supports back-end authentication
 
 ## Objectives
 
@@ -35,8 +35,8 @@ On the **Policies** tab, change the back-end authentication policy to `HTTP Basi
 
 The credentials for the sample musical instruments API are:
 
-- user name/password: `admin`/`changeme`
-- user name/no password: `EtHJ0DUYiqv1l5hV1Ztg2XW7HfLlBZKk`
+* user name/password: `admin`/`changeme`
+* user name/no password: `EtHJ0DUYiqv1l5hV1Ztg2XW7HfLlBZKk`
 
 Watch the animation to learn how to do this in AMPLIFY Central UI.
 
@@ -48,7 +48,7 @@ Changing the back-end authentication policy (for example, from no authentication
 
 On the **Deployments** tab, deploy or update a runtime group with this revision of your API proxy.
 
-On the **Test Methods** tab, execute a method. It should return a `200 OK` result. This indicates a successful call of the API using HTTP basic as the back-end authentication. 
+On the **Test Methods** tab, execute a method. It should return a `200 OK` result. This indicates a successful call of the API using HTTP basic as the back-end authentication.
 
 If you execute a method and it returns a `401 Unauthorized` result, this indicates an unsuccessful call of the API (for example, due to invalid authentication credentials).
 

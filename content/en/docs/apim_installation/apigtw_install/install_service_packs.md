@@ -1,5 +1,5 @@
 {
-"title": "Update API Gateway",
+"title": "Update API Gateway with a service pack or patch",
 "linkTitle": "Update API Gateway",
 "weight":"36",
 "date": "2019-10-07",
@@ -11,18 +11,16 @@
 To install a service pack or patch on an existing installation of API Gateway, follow these general guidelines:
 
 1. Stop any Node Managers and API Gateway servers.
-2. Back up your existing installation. For more information on backing up, see [API Gateway backup and disaster recovery](/csh?context=101&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+2. Back up your existing installation. For more information on backing up, see [API Gateway backup and disaster recovery](/docs/apim_administration/apigtw_admin/manage_operations/#api-gateway-backup-and-disaster-recovery).
 3. Download the service pack or patch and the associated *Readme* from <https://support.axway.com>.
 4. Review the *Readme* for any specific installation instructions (for example, backing up any customized files used by API Manager or third-party tools).
 5. Unzip and extract the service pack or patch. A service pack or patch contains new API Gateway binaries and does not overwrite the existing API Gateway configuration.
 6. Restart the Node Managers and API Gateway servers.
 7. To verify that the service pack or patch have been installed correctly, run the `managedomain --version` command.
 
-For more information on running the `managedomain --version` command, see [Get help with API Gateway](/csh?context=103&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
-
 ## Resolve patch validation issues
 
-You can use the `managedomain --version` command to list and validate the patches installed. This command uses the information in the in the `META-INF/<patch>.id` file to validate the patch. For more information on running the `managedomain --version` command, see [Get help with API Gateway](/csh?context=103&product=prod-api-gateway-77) in the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+You can use the `managedomain --version` command to list and validate the patches installed. This command uses the information in the in the `META-INF/<patch>.id` file to validate the patch. For more information on running the `managedomain --version` command, see [Find your installed version and list patches using managedomain](/docs/apim_administration/apigtw_admin/trblshoot_get_help/#find-install-version).
 
 A patch that validates successfully is listed with no messages. If patch validation fails, a status message is displayed for each patch entry that failed to validate in the following format:
 
@@ -80,4 +78,4 @@ If the `<patch_entry>` does not indicate a configuration file that you have cust
 
 In a multi-host environment, service packs and patches are installed on a host-by-host basis. In this scenario, you can use the API Gateway Manager web console to verify exactly which hosts have service packs or patches installed.
 
-For example, you could upgrade host 1 to version 7.8 SP1, while host 2 remains at 7.8 for a period of testing. However, a system should run the same version across all hosts. You can use the API Gateway Manager topology and grid views to verify that all hosts in the system are running the same version and service pack. If a version mismatch is identified, you should ensure that the required service pack is installed on hosts that are running older versions.
+For example, you could upgrade host 1 to version 7.7 SP1, while host 2 remains at 7.7 for a period of testing. However, a system should run the same version across all hosts. You can use the API Gateway Manager topology and grid views to verify that all hosts in the system are running the same version and service pack. If a version mismatch is identified, you should ensure that the required service pack is installed on hosts that are running older versions.

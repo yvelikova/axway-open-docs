@@ -1,7 +1,7 @@
 {
 "title": "Manage API Gateway deployments",
 "linkTitle": "Manage deployments",
-"weight":"16",
+"weight":"90",
 "date": "2019-10-18",
 "description": "Use Policy Studio or API Gateway Manager to deploy API Gateway configuration, and perform a zero downtime policy deployment in a multi-node API Gateway environment with a load balancer."
 }

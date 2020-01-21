@@ -12,11 +12,11 @@ You can install Policy Studio on both Linux and Windows.
 
 ## Prerequisites
 
-Ensure that all of the prerequisites detailed in [Prerequisites](/docs/apim_installation/apigtw_install/system_requirements) are met.
+Ensure that all of the prerequisites detailed in [prerequisites](/docs/apim_installation/apigtw_install/system_requirements) are met.
 
 ## Install Policy Studio
 
-To install Policy Studio in GUI mode, perform an installation following the steps described in [Installation options](/docs/apim_installation/apigtw_install/installation#select-setup-type), using the following selections:
+To install Policy Studio in GUI mode, perform an installation following the steps described in [Installation](/docs/apim_installation/apigtw_install/installation), using the following selections:
 
 * Select the **Custom** setup type. This screen is omitted on Windows.
 * Select to install the Policy Studio component.
@@ -26,7 +26,7 @@ To install Policy Studio in unattended mode, follow the steps described in [Unat
 The following example shows how to install the Policy Studio component in unattended mode on Linux:
 
 ```
-./APIGateway_7.8_Install_linux-x86-32-BN<n>.run --mode unattended --setup_type advanced  
+./APIGateway_7.7_Install_linux-x86-32-BN<n>.run --mode unattended --setup_type advanced  
 --enable-components policystudio --disable-components nodemanager,apigateway,qstart,apitester,analytics,configurationstudio,apimgmt,cassandra,packagedeploytools
 ```
 
@@ -45,6 +45,3 @@ If you did not select to launch Policy Studio after installation, perform the fo
 7. In the Open Connection dialog, select the Admin Node Manager session to connect to, enter the administrator user name and password you specified when you installed API Gateway, and click **OK**.
 8. In the Download Options dialog, select a group and an API Gateway instance to download its configuration.
 9. If a passphrase has been set, enter it in the **Passphrase** field, and click **Finish**. Alternatively, if no passphrase has been set, click **Finish**.
-
-{{< alert title="Tip" color="primary" >}}You can also create configuration projects from `.fed` files or from existing configurations. For more information, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).{{< /alert >}}

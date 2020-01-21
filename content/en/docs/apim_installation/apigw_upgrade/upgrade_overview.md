@@ -10,13 +10,13 @@ Before you proceed with an upgrade, note the following:
 
 * Upgrading or installing API Gateway or API Manager on Windows is not supported.
 * Upgrading or migrating from any previous version of API Gateway requires a new Axway license key.
-* Throughout this guide the term *old installation* is used to refer to the earlier version of API Gateway (the version being upgraded), while the term *new installation* is used to refer to the 7.8 version of API Gateway.
+* Throughout this guide the term *old installation* is used to refer to the earlier version of API Gateway (the version being upgraded), while the term *new installation* is used to refer to the 7.7 version of API Gateway.
 
 ## Upgrade and migration process
 
 The upgrade and migration process involves exporting data from your old installation, upgrading the data, and applying the upgraded data to your new installation. Each step must complete successfully before you can proceed to the next step.
 
-{{< alert title="Note" color="primary" >}}After you have installed API Gateway 7.8, ensure you have installed the latest available service pack before starting the upgrade. {{< /alert >}}
+{{< alert title="Note" color="primary" >}}After you have installed API Gateway 7.7, ensure you have installed the latest available service pack before starting the upgrade. {{< /alert >}}
 
 ![Overview of upgrade process](/Images/UpgradeGuide/APIgw_ETLUpgrade.png)
 
@@ -26,11 +26,11 @@ API Gateway provides the `sysupgrade` command to upgrade your API Gateway system
 
 An upgrade always requires the following steps:
 
-1. Install API Gateway 7.8 in a new directory.
-2. Install the latest available service pack for API Gateway 7.8.
+1. Install API Gateway 7.7 in a new directory.
+2. Install the latest available service pack for API Gateway 7.7.
 3. Export the data from the old installation.
 4. Validate and upgrade the data. Resolve any issues identified by the upgrade process before you proceed to the next step.
-5. Apply the upgraded data to the 7.8 installation.
+5. Apply the upgraded data to the 7.7 installation.
 6. Verify that the upgrade completed successfully.
 
 ### Upgrade commands
@@ -40,8 +40,8 @@ To perform an upgrade, you must always run the following `sysupgrade` commands i
 | Step | Command   | Description                                                                                                                                                                                                                |
 |------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1    | `export`  | Export data from the old API Gateway installation on the local node.                                                                                                                                                       |
-| 2    | `upgrade` | Validate data exported from the old installation, and upgrade it to version 7.8. You can keep your old installation running during this step, so you can fix any issues reported in the logs without service interruption. |
-| 3    | `apply`   | Create the new API Gateway processes on the local node, and import the upgraded data into the 7.8 installation.                                                                                                            |
+| 2    | `upgrade` | Validate data exported from the old installation, and upgrade it to version 7.7. You can keep your old installation running during this step, so you can fix any issues reported in the logs without service interruption. |
+| 3    | `apply`   | Create the new API Gateway processes on the local node, and import the upgraded data into the 7.7 installation.                                                                                                            |
 
 {{< alert title="Tip" color="primary" >}}You can also use the `status` command at any stage to see which commands have run, and which command will run next (see [Utility commands](#utility-commands)).{{< /alert >}}
 
@@ -70,7 +70,7 @@ To perform a test upgrade, run the `export` and `upgrade` commands on all nodes 
 
     As long as `apply` has not been run on any node, you can rerun `export` and `upgrade` as many times as necessary without affecting other nodes. Rerunning `export` and `upgrade` on a node does not mean they must be rerun on other nodes in the system.
 
-    When you are happy with the results of the test upgrade on all nodes, you can shut down the old installation and apply the upgraded data to the new 7.8 installation. For example:
+    When you are happy with the results of the test upgrade on all nodes, you can shut down the old installation and apply the upgraded data to the new 7.7 installation. For example:
 
 5. Run the `apply` command on Node1, Node2, and so on, until the upgrade is complete.
 

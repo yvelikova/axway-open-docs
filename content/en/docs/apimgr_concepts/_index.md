@@ -46,7 +46,7 @@ APIs developed using the REST API development wizard are then registered (by imp
 
 Registered APIs are virtualized by API Gateway, which protects the back-end services, and makes the APIs available for management and consumption in API Manager, and for consumption in the self-service API Portal.
 
-For more details on creating APIs using the REST API development wizard, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+For more details on creating APIs using the REST API development wizard, see [Develop REST APIs in Policy Studio](/docs/apim_policydev/apigw_poldev/web_services/register_rest_apis/).
 
 ## API management lifecycle
 
@@ -66,8 +66,6 @@ For more details, see the following:
 * [Virtualize REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_virtualize_web/)
 
 If the existing back-end API is not a REST API, or if custom policies are required, a policy developer uses Policy Studio to create a new API (for example, for SOAP to REST, or cloud-based applications). APIs developed in Policy Studio are then imported as back-end APIs in API Manager.
-
-For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
 ### 2 - API promotion
 
@@ -121,7 +119,7 @@ Policy Studio includes API Management filters that provide read-only access to t
 
 ### REST API development wizard
 
-This wizard in Policy Studio enables you to create new REST APIs that route to policies developed in Policy Studio. This enables you to develop REST APIs from non-REST back-end applications and services, integrating with them at the application and security levels. For more details on creating APIs using the REST API development wizard, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+This wizard in Policy Studio enables you to create new REST APIs that route to policies developed in Policy Studio. This enables you to develop REST APIs from non-REST back-end applications and services, integrating with them at the application and security levels.
 
 ### API Portal
 

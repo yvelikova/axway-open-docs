@@ -2,10 +2,9 @@
 title: Set up Docker environment
 linkTitle: Set up Docker environment
 weight: 30
-date: 2019-09-18
+date: 2019-09-18T00:00:00.000Z
 description: Prerequisites and steps you must follow to set up your Docker environment.
 ---
-
 ## Before you start
 
 Your system must meet the following prerequisites before you can run the scripts to build and deploy API Gateway in Docker containers.
@@ -14,26 +13,22 @@ Your system must meet the following prerequisites before you can run the scripts
 
 You must have the following installed on your local system:
 
-* Docker
+* Docker CE version 18.06 or later on CentOS 7
 * Python version 2.7.x
 * OpenSSL version 1.1 or later
 
-#### Docker requirements
-
-The following versions of Docker are supported:
-
-* Docker CE version 18.06 or later on CentOS 7
-
 {{< alert title="Note" color="primary" >}}Axway supports Red Hat Enterprise Linux 7 and CentOS Linux version 7 as the base image for Docker containers. Axway supports deployment on any host operating system, cloud provider, or container orchestration system supported by your Docker version. {{< /alert >}}
 
-For more details on Docker system requirements, see the [Docker documentation](https://docs.docker.com/engine/installation/).
+For more details on Docker system requirements, see [Docker](https://docs.docker.com/engine/installation/) documentation.
 
 ### Set up API Gateway Docker scripts
 
-You must download the following from Axway Support at [https://support.axway.com](https://support.axway.com/).
+You must download the following from [Axway Support](https://support.axway.com).
 
 * API Gateway Linux installer
-* Docker scripts package
+* [APIGateway_7.6.2-8_ScriptsPackageDocker_linux-x86-64_BN27072018.tar.gz](https://support.axway.com/en/downloads/download-details/id/1439671) Docker scripts package.
+
+{{< alert title="Note" color="primary" >}}The scripts in this package applies to any version of API Gateway from 7.6.2 onward.{{< /alert >}}
 
 #### API Gateway licenses
 
@@ -46,10 +41,10 @@ You must have specific API Gateway licenses to run the following:
 
 #### Unzip and install the Docker scripts
 
-Unzip the Docker scripts package that you downloaded from Axway Support at [https://support.axway.com](https://support.axway.com/)
+Unzip the Docker scripts package that you downloaded from [Axway Support](https://support.axway.com/)
 
 ```
-unzip APIGateway_7.8-<n>_ScriptsPackageDocker_linux-x86-64_BN<bn>.zip
+unzip APIGateway_7.7-<n>_ScriptsPackageDocker_linux-x86-64_BN<bn>.zip
 ```
 
 The unzipped package includes the following:
@@ -84,7 +79,7 @@ Run the `docker network` command:
 docker network create api-gateway-domain
 ```
 
-This example creates a Docker network called `api-gateway-domain`. For more details on the `docker network` command, see the [Docker user documentation](https://docs.docker.com/ "https://docs.docker.com/").
+This example creates a Docker network called `api-gateway-domain`. For more details on the `docker network` command, see the [Docker user documentation](https://docs.docker.com).
 
 ### Example API Gateway domain
 
@@ -109,9 +104,9 @@ If you are using any external data stores, such as Apache Cassandra for API Mana
 ### Start Apache Cassandra
 
 Deploying a Cassandra container is only recommended for development environments. In a production environment, you must configure Cassandra for high availability (HA) as detailed in
-[Configure a Cassandra HA cluster](/csh?context=1300&product=prod-api-gateway-77) in the [API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/).
+[Configure a Cassandra HA cluster](/docs/cass_admin/cassandra_config/).
 
-For details on starting Apache Cassandra in a Docker container, see <https://hub.docker.com/_/cassandra>.
+For details on starting Apache Cassandra in a Docker container, see [Docker](https://hub.docker.com/_/cassandra) documentation.
 
 ### Start the metrics database
 

@@ -17,15 +17,15 @@ You must first register a back-end REST API before you can virtualize a front-en
 
 When you virtualize a REST API, you can configure it with security devices, which provide prebuilt authentication and authorization mechanisms for the REST API. The following security devices are supported:
 
-* API Key
-* AWS Signing: Authorization Header
-* AWS Signing: Query String
-* HTTP Basic Authentication
-* Invoke Policy (custom authentication)
-* OAuth
-* OAuth (External)
-* Pass Through
-* Two-way SSL
+* [API Key](#api-key)
+* [AWS Signing: Authorization Header](#aws-signing-authorization-header)
+* [AWS Signing: Query String](#aws-signing-query-string)
+* [HTTP Basic Authentication](#http-basic)
+* [Invoke Policy (custom authentication)](#invoke-policy)
+* [OAuth](#oauth)
+* [OAuth (External)](#oauth-external)
+* [Pass Through](#pass-through)
+* [Two-way SSL](#two-way-ssl)
 
 This enables you to control the authentication and authorization mechanisms that are supported for the API. For example, an API with higher security requirements can be more restrictive in the authentication mechanism that it supports. You can also configure custom profiles to suit your requirements. You can also configure virtualized REST APIs and API methods with custom policies if required (for example, for request, routing, and response processing).
 
@@ -154,7 +154,7 @@ Description
 
 #### OAuth
 
-Configure the following to enable OAuth authorization:
+Configure the following to enable OAuth authorization for access tokens issued by API Manager.
 
 ##### General OAuth settings
 
@@ -211,7 +211,7 @@ Token name
 
 #### OAuth (External)
 
-Configure the following to enable OAuth authorization:
+Configure the following to enable OAuth authorization for access tokens issued by an external token provider.
 
 ##### General OAuth (external) settings
 

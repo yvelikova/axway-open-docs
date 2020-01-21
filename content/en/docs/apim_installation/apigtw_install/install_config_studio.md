@@ -8,17 +8,15 @@
 
 You can install Configuration Studio on both Linux and Windows.
 
-For more details on using Configuration Studio, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
-
 {{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apim_installation/apigtw_install/install_dev_tools). API Gateway and API Manager do not support Windows.{{< /alert >}}
 
 ## Prerequisites
 
-Ensure that all of the prerequisites detailed in [Prerequisites](/docs/apim_installation/apigtw_install/system_requirements) are met.
+Ensure that all of the [prerequisites](/docs/apim_installation/apigtw_install/system_requirements) are met.
 
 ## Install Configuration Studio
 
-To install Configuration Studio in GUI mode, perform an installation following the steps described in [Installation options](/docs/apim_installation/apigtw_install/installation#select-setup-type), using the following selections:
+To install Configuration Studio in GUI mode, perform an installation following the steps described in [Installation](/docs/apim_installation/apigtw_install/installation), using the following selections:
 
 * Select the **Custom** setup type. This screen is omitted on Windows.
 * Select to install the Configuration Studio component.
@@ -28,7 +26,7 @@ To install Configuration Studio in unattended mode, follow the steps described i
 The following example shows how to install the Configuration Studio component in unattended mode on Linux:
 
 ```
-./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended --setup_type advanced  
+./APIGateway_7.7_Install_linux-x86-32_BN<n>.run --mode unattended --setup_type advanced  
 --enable-components configurationstudio --disable-components nodemanager,apigateway,qstart,apitester,analytics,policystudio,apimgmt,cassandra,packagedeploytools
 ```
 

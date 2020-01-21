@@ -30,7 +30,7 @@ The following sections describe how to start the installer in GUI mode and the o
 To run the API Gateway installer in the default GUI mode, locate and run the Linux setup file. For example:
 
 ```
-APIGateway_7.8_Install_linux-x86-32_BN<n>.run
+APIGateway_7.7_Install_linux-x86-32_BN<n>.run
 ```
 
 Follow the instructions on each window to complete the installation.
@@ -71,15 +71,15 @@ Select this option to customize which components are installed. You can install 
 * [Install the QuickStart tutorial](/docs/apim_installation/apigtw_install/install_quickstart_tutorial)
 * [Install the Admin Node Manager](/docs/apim_installation/apigtw_install/install_node_manager)
 * [Install Policy Studio](/docs/apim_installation/apigtw_install/install_policy_studio)
-* [Install API Tester](/docs/apim_installation/apigtw_install//docs/apim_installation/apigtw_install/install_api_tester)
+* Install API Tester
 * [Install Configuration Studio](/docs/apim_installation/apigtw_install/install_config_studio)
-* [Install API Manager](/docs/apim_installation/apigtw_install//docs/apim_installation/apigtw_install/install_api_mgmt)
+* [Install API Manager](/docs/apim_installation/apigtw_install/install_api_mgmt)
 * [Install the Package and Deploy tools](/docs/apim_installation/apigtw_install/install_deploy_tools)
 * [Install API Gateway Analytics](/docs/apim_installation/apigtw_install/install_analytics)
 
 {{< alert title="Note" color="primary" >}}The API Tester component is deprecated, and is only installed in a **Custom** setup. {{< /alert >}}
 
-You must select this option if you are upgrading from a previous API Gateway version. For more details, see the [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5).
+You must select this option if you are upgrading from a previous API Gateway version. For more details, see the [API Gateway Upgrade Guide](/docs/apim_installation/apigw_upgrade/).
 
 #### QuickStart tutorial
 
@@ -103,7 +103,7 @@ Click **Next** to continue.
 
 ### Specify installation directory
 
-Enter a location or click the browse button to specify the directory where the gateway components are to be installed, for example: ```/opt/Axway-7.8```, and click **Next** to continue.
+Enter a location or click the browse button to specify the directory where the gateway components are to be installed, for example: `/opt/Axway-7.7`, and click **Next** to continue.
 
 ### Specify license file
 

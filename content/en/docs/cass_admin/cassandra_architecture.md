@@ -7,13 +7,32 @@ description: >
   This section describes the Cassandra deployment architectures supported by API Gateway.
 ---
 
-The following table provides a summary.
+This section provides a summary of the deployment architectures.
 
-|Deployment|Description|Usage|
-|--- |--- |--- |
-|Standalone|One API Gateway instance only. This is the default.|<ul><li>Development environment</li><li>Production environment with one API Gateway instance</li></ul>|
-|High availability with local storage|Multiple API Gateway instances in a group, each API Gateway instance on different hosts, with a Cassandra storage node local to each API Gateway host.|<ul><li>Pre-production environment</li><li>Production environment</li></ul>|
-|High availability with remote storage|Multiple API Gateway instances in a group, each API Gateway instance on different hosts, with Cassandra storage nodes on remote hosts.|<ul><li>Pre-production environment</li><li>Production environment</li></ul>|
+## Standalone
+
+One API Gateway instance only. This is the default.
+
+Usage:
+
+* Development environment
+* Production environment with one API Gateway instance
+
+## High availability with local storage
+
+Multiple API Gateway instances in a group, each API Gateway instance on different hosts, with a Cassandra storage node local to each API Gateway host.
+
+Usage:
+
+* Pre-production environment
+* Production environment
+
+## High availability with remote storage
+
+Multiple API Gateway instances in a group, each API Gateway instance on different hosts, with Cassandra storage nodes on remote hosts.
+
+* Pre-production environment
+* Production environment
 
 You can use one Cassandra cluster to store data from one or multiple API Gateway groups and one or multiple API Gateway domains. Your Cassandra topology does not need to match your API Gateway topology.
 
@@ -24,7 +43,7 @@ Windows is supported only for a limited set of developer tools. API Gateway and 
 on Windows that you have configured with your API Gateway installation.
 {{< /alert>}}
 
-For details on hosting Cassandra in datacenters, see [Configure API Management in multiple datacenters](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/page/Content/InstallGuideTopics/TemplateTopics/post-install/post_multi-datacenter.htm).
+For details on hosting Cassandra in datacenters, see [Configure API Management in multiple datacenters](/docs/apimgmt_multi_dc/).
 
 ## Cassandra in standalone mode
 
@@ -32,18 +51,18 @@ Cassandra is configured in non-HA standalone mode when deployed alongside a sing
 
 To configure Cassandra in standalone mode, perform the following steps:
 
-1. Ensure Cassandra is installed on the local node (along with API Gateway). For details, see [Install an Apache Cassandra database](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/page/Content/InstallGuideTopics/cassandra_install.htm).
-2. Start Cassandra before starting API Gateway. For details, see [Manage Apache Cassandra](/docs/cass_admin/cassandra_manage).
-3. Start API Gateway. For details, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+1. Ensure Cassandra is installed on the local node along with API Gateway.
+2. Start Cassandra before starting API Gateway.
+3. Start API Gateway.
 
 The next steps depend on your installation setup type:
 
-- In a Standard or Complete setup that includes the QuickStart tutorial, the default configuration attempts to connect to Cassandra running on `localhost`.
-- In a Custom setup without the QuickStart tutorial, you must configure the connection in Policy Studio. For more details, see [Connect to API Gateway for the first time](/docs/cass_admin/cassandra_manage/#connect-to-api-gateway-for-the-first-time).
+* In a Standard or Complete setup that includes the QuickStart tutorial, the default configuration attempts to connect to Cassandra running on `localhost`.
+* In a Custom setup without the QuickStart tutorial, you must configure the connection in Policy Studio. For more details, see [Connect to API Gateway for the first time](/docs/cass_admin/cassandra_manage/#connect-to-api-gateway-for-the-first-time).
 
 To use Cassandra with API Manager, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/). This is configured by default when API Manager is installed along with the QuickStart tutorial.
 
-To use Cassandra with OAuth, see [Deploy OAuth configuration](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/page/Content/OAuthGuideTopics/deploy_oauth_config.htm).
+To use Cassandra with OAuth, see [Deploy OAuth configuration](docs/apim_policydev/apigw_oauth/gw_server/#deploy-oauth-services).
 
 The following diagram shows Cassandra in standalone mode with a default standard setup:
 
@@ -67,11 +86,11 @@ The following diagram shows local Cassandra HA mode:
 
 In remote Cassandra HA, Cassandra runs on a different host from API Gateway. The main differences when installing and configuring remote Cassandra are:
 
-- You must provision separate host machines for Cassandra and API Gateway. However, the data can be stored outside the DMZ, and there might be improved performance.
-- You might need to open ports in the firewall to connect to Cassandra outside the DMZ. For more details, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).
-- You do not have to use the Cassandra component supplied by the API Gateway installer.
-- You can configure the remote node using the `setup-cassandra` script supplied by the API Gateway installation. For more details, see [setup-cassandra script reference](/docs/cass_admin/cassandra_setup_script/). Alternatively, you can perform all necessary Cassandra configuration changes manually.
-- You must update the API Gateway Cassandra client settings in Policy Studio to connect to the remote Cassandra host nodes.
+* You must provision separate host machines for Cassandra and API Gateway. However, the data can be stored outside the DMZ, and there might be improved performance.
+* You might need to open ports in the firewall to connect to Cassandra outside the DMZ. For more details, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).
+* You do not have to use the Cassandra component supplied by the API Gateway installer.
+* You can configure the remote node using the `setup-cassandra` script supplied by the API Gateway installation. For more details, see [setup-cassandra script reference](/docs/cass_admin/cassandra_setup_script/). Alternatively, you can perform all necessary Cassandra configuration changes manually.
+* You must update the API Gateway Cassandra client settings in Policy Studio to connect to the remote Cassandra host nodes.
 
 The following diagram shows remote Cassandra HA mode:
 
@@ -81,35 +100,33 @@ The following diagram shows remote Cassandra HA mode:
 
 You can use a local or remote Cassandra HA configuration. The example Cassandra HA configuration in the diagrams consists of the following:
 
-- Three Cassandra nodes in a single cluster.
-- Three host machines with network addresses: `ipA` (seed node), `ipB`, and `ipC`.
-- Replication factor of `3`. Each node holds 100% of the data.
-- Default values in `cassandra.yaml` for:
-  - Server-server communication:
+* Three Cassandra nodes in a single cluster.
+* Three host machines with network addresses: `ipA` (seed node), `ipB`, and `ipC`.
+* Replication factor of `3`. Each node holds 100% of the data.
+* Default values in `cassandra.yaml` for:
+    * Server-server communication:
     `listen_address` set to IP address
     `storage_port` set to `7000`
     `ssl_storage_port`: `7001` (when TLS v1.2 is configured)
-  - Client-server communication: `native_transport_port` of `9042`
-  - JMX monitoring on `localhost:7199`
+    * Client-server communication: `native_transport_port` of `9042`
+    * JMX monitoring on `localhost:7199`
 
 More information:
 
-- `ipA`, `ipB`, and `ipC` are placeholders for real host machines on your network. You can specify IP addresses or host names.
-- You must have at least one designated seed node. Seeds nodes are required at runtime when a node is added to the cluster. You can add more or change designation later.
-- You can change the server-server port, but it must be the same across the cluster.
-- For Cassandra administration, you must gain local access to the host machine (for example, using SSH) to perform administration tasks. This includes using `nodetool` to access the Cassandra cluster over JMX.
+* `ipA`, `ipB`, and `ipC` are placeholders for real host machines on your network. You can specify IP addresses or host names.
+* You must have at least one designated seed node. Seeds nodes are required at runtime when a node is added to the cluster. You can add more or change designation later.
+* You can change the server-server port, but it must be the same across the cluster.
+* For Cassandra administration, you must gain local access to the host machine (for example, using SSH) to perform administration tasks. This includes using `nodetool` to access the Cassandra cluster over JMX.
 
 ### API Gateway configuration
 
 API Gateway acts as a client of the Cassandra cluster as follows:
 
-- Client failover
+* Client failover
+  : API Gateway can fail over to any of the Cassandra nodes for service. Each API Gateway is configured with the connection details of each Cassandra host.
 
-    API Gateway can fail over to any of the Cassandra nodes for service. Each API Gateway is configured with the connection details of each Cassandra host.
-
-- Strong consistency
-
-    Cassandra read and write consistency levels are both set to `QUORUM`. This, along with the replication factor of `3`, enables full availability in the event of one node loss.
+* Strong consistency
+  : Cassandra read and write consistency levels are both set to `QUORUM`. This, along with the replication factor of `3`, enables full availability in the event of one node loss.
 
 You can have any number of gateway instances (all running either locally or remote to Cassandra). However, you must have at least two gateway instances for HA. This also applies to API Manager.
 

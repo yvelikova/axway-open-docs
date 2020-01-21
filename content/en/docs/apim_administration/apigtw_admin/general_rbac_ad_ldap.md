@@ -1,7 +1,7 @@
 {
 "title": "Authentication and RBAC with Active Directory",
 "linkTitle": "Authentication and RBAC with Active Directory",
-"weight":"32",
+"weight":"126",
 "date": "2019-10-14",
 "description": "Use LDAP to authenticate and perform Role-Based Access Control (RBAC) of API Gateway management services, and reconfigure API Gateway to use a Microsoft Active Directory LDAP repository."
 }

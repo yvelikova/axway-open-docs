@@ -14,16 +14,16 @@ MySQL and Redis Docker images are not included with the API Portal Docker sampl
 
 The following components are required on your system before deploying API Portal in a Docker container:
 
-- Docker version 1.13.x
-- API Portal Docker samples package available from Axway Support at [https://support.axway.com](https://support.axway.com/)
-- API Gateway and API Manager either installed on-premise or deployed in containers, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/) or the [API Gateway Container Deployment Guide](/bundle/APIGateway_77_ContainerGuide_allOS_en_HTML5/) for more details.
+* Docker version 1.13.x
+* API Portal Docker samples package available from Axway Support at [https://support.axway.com](https://support.axway.com/)
+* API Gateway and API Manager either installed on-premise or deployed in containers, see the [API Gateway Installation Guide](/docs/apim_installation/apigtw_install/) or the [API Gateway Container Deployment Guide](/docs/apim_installation/apigw_containers/) for more details.
 
 The monitoring feature of API Portal, which enables your API consumers to monitor application and API usage, requires a connected API Manager with monitoring metrics enabled.
 
 The following are the recommended hardware disk space and memory requirements for the Docker host machine for a single node sample architecture:
 
-- 100 GB or more disk space
-- 8 GB or more RAM
+* 100 GB or more disk space
+* 8 GB or more RAM
 
 ## Upload API Portal Docker package
 
@@ -35,12 +35,12 @@ Follow these steps to upload the Docker sample package to your Docker host machi
 
 The package includes:
 
-- `readme.md` – Details the contents of the package and provides brief instructions to build and run API Portal in Docker.
-- `Dockerfile` – Enables you to build an API Portal Docker image using the `docker build` command.
-- Various scripts and files that are used to build the API Portal Docker image (for example, the `.env.demo` file). See the `readme.md` for full details of these files.
-- `docker-compose.yml` sample – Enables you to use Docker Compose to run your entire API Portal Docker deployment using a single `docker-compose up` command.
-  - It provides a sample API Portal topology which you can customize to suit your requirements. For more information, see [Customize your API Portal topology in Docker](/docs/apim_installation/apiportal_docker/docker_config/).
-  - This file requires Docker Compose. Docker Compose is included by default in some Docker installations. For more information, see [Docker Compose documentation](https://docs.docker.com/compose/).
+* `readme.md` – Details the contents of the package and provides brief instructions to build and run API Portal in Docker.
+* `Dockerfile` – Enables you to build an API Portal Docker image using the `docker build` command.
+* Various scripts and files that are used to build the API Portal Docker image (for example, the `.env.demo` file). See the `readme.md` for full details of these files.
+* `docker-compose.yml` sample – Enables you to use Docker Compose to run your entire API Portal Docker deployment using a single `docker-compose up` command.
+    * It provides a sample API Portal topology which you can customize to suit your requirements. For more information, see [Customize your API Portal topology in Docker](/docs/apim_installation/apiportal_docker/docker_config/).
+    * This file requires Docker Compose. Docker Compose is included by default in some Docker installations. For more information, see [Docker Compose documentation](https://docs.docker.com/compose/).
 
 ## Download and run database container
 
@@ -69,9 +69,9 @@ To build the Docker image and run the API Portal Docker container, follow these
 
 1. Ensure that you are logged in to your Docker host machine as the `root` user.
 2. Change to the directory where you unzipped the Docker sample package.
-3. Build the API Portal image. For example, enter the following command to build the image and tag it as `apiportal`:`7.8`:
+3. Build the API Portal image. For example, enter the following command to build the image and tag it as `apiportal`:`7.7`:
 
-    `$ docker build -t apiportal:7.8`
+    `$ docker build -t apiportal:7.7`
 
 4. Check the IP address of the database container you started earlier:
 
@@ -88,23 +88,23 @@ To build the Docker image and run the API Portal Docker container, follow these
 6. Run a container from the API Portal Docker image with the same data volumes. For example:
 
     ```
-    $ docker run -it --name apiportal -e MYSQL_HOST=172.19.0.2 -e MYSQL_PORT=3306 -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=joomla -e MYSQL_PASSWORD=XXXXX -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443 -v templates:/opt/axway/apiportal/htdoc/templates -v images:/opt/axway/apiportal/htdoc/images apiportal:7.8
+    docker run -it --name apiportal -e MYSQL_HOST=172.19.0.2 -e MYSQL_PORT=3306 -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=joomla -e MYSQL_PASSWORD=XXXXX -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443 -v templates:/opt/axway/apiportal/htdoc/templates -v images:/opt/axway/apiportal/htdoc/images apiportal:7.7
     ```
 
 This example performs the following:
 
-- Runs an API Portal Docker container from an image named `apiportal`:`7.8`
-- Sets environment variables for connecting to the MySQL container.
-- Sets environment variables for connecting to API Manager.
-- Binds port 443 of the container to port 443 on the host machine.
-- Mounts volumes for customized data.
+* Runs an API Portal Docker container from an image named `apiportal`:`7.7`
+* Sets environment variables for connecting to the MySQL container.
+* Sets environment variables for connecting to API Manager.
+* Binds port 443 of the container to port 443 on the host machine.
+* Mounts volumes for customized data.
 
 You can safely ignore the following messages, which might be displayed when running this command:
 
 ```
 "ERROR 1060 (42S21) at line 1: Duplicate column name 'termsAndCond'"
 
-"AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using <IP address>. 
+"AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using <IP address>.
 Set the 'ServerName' directive globally to suppress this message"
 ```
 

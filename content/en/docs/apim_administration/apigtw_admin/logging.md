@@ -1,7 +1,7 @@
 {
 "title": "Configure logging and events",
 "linkTitle": "Configure logging and events",
-"weight":"20",
+"weight":"110",
 "date": "2019-10-14",
 "description": "Learn about the different types of logs and events that are displayed in API Gateway Manager, and how to configure them."
 }

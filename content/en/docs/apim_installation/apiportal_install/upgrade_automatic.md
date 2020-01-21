@@ -3,45 +3,47 @@
     "linkTitle":"Upgrade API Portal",
     "weight":"20",
     "date":"2019-08-09",
-    "description":"Upgrade your existing API Portal."
+    "description":"Upgrade your existing API Portal to 7.7."
 }
 
-This section describes how to upgrade your existing API Portal to 7.8.
-
-This section does not describe how to upgrade API Gateway. For information on upgrading API Gateway, see [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5) .
+This section does not describe how to upgrade API Gateway. For information on upgrading API Gateway, see [API Gateway Upgrade Guide](/docs/apim_installation/apigw_upgrade/).
 
 ## Upgrade prerequisites
 
 Before you upgrade, complete the following prerequisites. These prerequisites apply for all installations: software installation and Docker containers.
 
-- If you intend to use the EasyBlog and EasyDiscuss plugins, you must install them before you start the upgrade. For more details, see [Install API Portal](/docs/apim_installation/apiportal_install/) and the specific instructions for your installation type.
-- Stop and back up the existing API Portal files and database. There is no option to roll back after you start the upgrade.
-- To back up an API Portal software installation, perform a file system backup and export the database.
+* If you intend to use the EasyBlog and EasyDiscuss plugins, you must install them before you start the upgrade. For more details, see [Install API Portal](/docs/apim_installation/apiportal_install/install_software/).
+* Stop and back up the existing API Portal files and database. There is no option to roll back after you start the upgrade.
+* To back up an API Portal software installation, perform a file system backup and export the database.
 
 ## Upgrade API Portal
 
 If you have an existing API Portal installation, you can upgrade that installation to a newer version without having to repeat the initial setup.
 
-- Upgrade to API Portal 7.8 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to 7.7.
-- API Portal 7.8 is compatible with API Gateway and API Manager 7.8 only.
+* Upgrade to API Portal 7.7 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
+* API Portal 7.7 is compatible with API Gateway and API Manager 7.7 only.
 
 To upgrade your API Portal software installation, follow these steps:
 
 1. Download the API Portal upgrade package from the Axway Support at [https://support.axway.com](https://support.axway.com/).
-1. Go to the the directory where you saved the upgrade package and extract it:
+2. Go to the the directory where you saved the upgrade package and extract it:
 
     ```
     # tar xpvzf <package_name>.tgz
     ```
 
-1. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal host>/administrator`).
-1. Click **Components > Joomla! Update**, and go to the **Upload & Update** tab.
+3. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal host>/administrator`).
+4. Click **Components > Joomla! Update**, and go to the **Upload & Update** tab.
 
-    - In case **Joomla! Update** is not visible in the menu, connect to your user database and execute the following query for API Portal database: `update s8f7h_menu set menutype='main' where title like 'com_joomlaupdate'`
+    If **Joomla! Update** is not visible in the menu, connect to your user database and execute the following query for API Portal database:
 
-1. Browse to the extracted API Portal upgrade package, and select the included Joomla! upgrade package file (for example, `joomla-update-package-3.8.8-package.zip`).
-1. Click **Upload & Install**, and follow the displayed instructions.
-1. Enter the following to run the upgrade script:
+    ```
+    update s8f7h_menu set menutype='main' where title like 'com_joomlaupdate'
+    ```
+
+5. Browse to the extracted API Portal upgrade package, and select the included Joomla! upgrade package file (for example, `joomla-update-package-3.8.8-package.zip`).
+6. Click **Upload & Install**, and follow the displayed instructions.
+7. Enter the following to run the upgrade script:
 
     ```
     # ./apiportal_upgrade.sh
@@ -77,7 +79,7 @@ After upgrade, you must reinstall Easyblog and EasyDiscuss in JAI to update the 
 2. Click **Components > EasyBlog**, and follow the instructions in the EasyBlog installer.
 3. If prompted to select the installation method, select **Installation via Directory**, select the available package from the drop-down list, and follow the instructions in the installer to the finish.
 
-    - Do not install any of the modules and plugins unless you plan to use them. To prevent installing any modules, click **Modules** and deselect **Select All**, then repeat the same for **Plugins**.
+    Do not install any of the modules and plugins unless you plan to use them. To prevent installing any modules, click **Modules** and deselect **Select All**, then repeat the same for **Plugins**.
 
 4. Click **Components > EasyDiscuss**, and repeat the component installation as described for EasyBlog.
 

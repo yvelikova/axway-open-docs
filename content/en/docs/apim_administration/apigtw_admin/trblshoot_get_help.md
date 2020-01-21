@@ -1,7 +1,7 @@
 {
 "title": "Get help with API Gateway",
 "linkTitle": "Get help with API Gateway",
-"weight":"99",
+"weight":"200",
 "date": "2019-10-14",
 "description": "Access help and documentation for API Gateway, find your installed version (including any installed service pack and patches), and what other information you need when contacting Axway Support."
 }
@@ -30,8 +30,8 @@ You can list the API Gateway processes to view the installed version number, inc
 
 ```
 $ ps -eaf | grep vshell
-user1 13696 13687  0 Nov14 pts/24   00:11:50 APIGateway1 (Group1) (7.8 SP1) (vshell)
-user1 19595 13643  0 Nov14 pts/23   00:06:05 NodeManager on Host1 (Node Manager Group) (7.8 SP1) (vshell)
+user1 13696 13687  0 Nov14 pts/24   00:11:50 APIGateway1 (Group1) (7.7 SP1) (vshell)
+user1 19595 13643  0 Nov14 pts/23   00:06:05 NodeManager on Host1 (Node Manager Group) (7.7 SP1) (vshell)
 ```
 
 ### Trace file
@@ -41,7 +41,7 @@ You can find the installed version number, including any installed service pack,
 For example, the following trace file (for a Node Manager) shows the installed version and service pack:
 
 ```
-# ProductName=nodemanageronhost1.axway.com 7.8 SP1-2016-12-01 rev. 39e69a0 (Linux.x86_64)
+# ProductName=nodemanageronhost1.axway.com 7.7 SP1-2016-12-01 rev. 39e69a0 (Linux.x86_64)
 # CurrentDate=Fri, 02 Dec 2016 09:26:14 +0000
 # CurrentDateUTC=1480670774
 # TZ=GMT
@@ -51,11 +51,11 @@ For example, the following trace file (for a Node Manager) shows the installed v
 
 You can use the `managedomain` command with the `-v` or `--version` options to find the installed version number, including any installed service pack or patches, and build information.
 
-The following example shows the output for a system with API Gateway 7.8 installed, with service pack `SP1` installed, and no patches installed:
+The following example shows the output for a system with API Gateway 7.7 installed, with service pack `SP1` installed, and no patches installed:
 
 ```
 $ ./managedomain --version
-Version:    7.8 SP1
+Version:    7.7 SP1
 Build Date: 2016-11-04 08:34:37 UTC
 Commit Id:  05a6440fc3128d8d2f3dfe105904d04fffae67ea
 Patch:      None
@@ -69,7 +69,7 @@ The following example shows the output for a system with patches installed and n
 
 ```
 $ ./managedomain --version
-Version:    7.8
+Version:    7.7
 Build Date: 2016-12-06 14:56:44 UTC
 Commit Id:  ba35aba7bf84a165dda0df81470f4e9a87d73778
 Patch:      OpenSSL_1_0_2j-fips
@@ -123,7 +123,7 @@ This command can also be run in command interpreter mode.
 
 It is important to include as much information as possible when contacting the Axway Support team. This helps to diagnose and solve the problem in a more efficient manner. The following information should be included with any Support query:
 
-* Name and version of the product (for example, AxwayAPI Gateway7.8).
+* Name and version of the product (for example,  API Gateway 7.7).
 * Details of any service pack or patches that were applied to the product, if any.
 * Operating system on which the product is running.
 * A clear (step-by-step) description of the problem or query.

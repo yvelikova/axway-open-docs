@@ -6,7 +6,7 @@ date: 2019-07-30
 description: Deploy and secure your services in any environment (for example, cloud, on-premise, and so on) and govern your APIs through a central platform that allows you to integrate your services safely and easily with both internal and external consumers.
 ---
 
-*Estimated reading time: 2 minutes*
+*Estimated reading time*: 2 minutes
 
 AMPLIFY Central is a governance platform that enables a self-service centralized API and microservices management across virtualized networks in any cloud platform or in a private datacenter. Its core features provide API security, monitoring, and traffic management independent of the implementation of the API.
 
@@ -46,9 +46,9 @@ You can create API proxies and deploy them to runtime groups using the AMPLIFY C
 
 DevOps can be defined as a combination of people, processes, and technology that increases your organization's ability to quickly deliver quality services to your customers.
 
-- People: Developers, operations, product owners, testers, infrastructure engineers, and so on, all work together collaboratively as a team to build and deliver the service.
-- Process: Continuous improvement of the process to deliver a quality service is key.
-- Technology: Tools that automate the manual processes and integrate with other tools to make it easier and faster to develop, package, test, release, and deploy the service.
+* **People**: Developers, operations, product owners, testers, infrastructure engineers, and so on, all work together collaboratively as a team to build and deliver the service.
+* **Process**: Continuous improvement of the process to deliver a quality service is key.
+* **Technology**: Tools that automate the manual processes and integrate with other tools to make it easier and faster to develop, package, test, release, and deploy the service.
 
 ### AMPLIFY Central DevOps approach
 
@@ -62,11 +62,11 @@ AMPLIFY Central is a CI/CD native solution that you can easily snap in to your e
 
 The AMPLIFY Central DevOps API is a DevOps-friendly REST API that you can use to create, update, deploy, and promote API proxies to AMPLIFY Central runtimes. It provides the following DevOps-friendly features:
 
-- The APIs accept a YAML configuration file which represents the desired state of the API proxy.
-  - YAML format is human-readable, easily diffed, and maintainable.
-  - YAML configuration file can be versioned along with the code for the service in a version control system, such as Git.
-- The APIs are coarse-grained, avoiding the need for complex ordered API invocations to multiple fine-grained APIs.
-- The APIs use an update or insert (*upsert*) strategy. If the API proxy already exists it is updated, otherwise it is created.
+* The APIs accept a YAML configuration file which represents the desired state of the API proxy.
+    * YAML format is human-readable, easily diffed, and maintainable.
+    * YAML configuration file can be versioned along with the code for the service in a version control system, such as Git.
+* The APIs are coarse-grained, avoiding the need for complex ordered API invocations to multiple fine-grained APIs.
+* The APIs use an update or insert (*upsert*) strategy. If the API proxy already exists it is updated, otherwise it is created.
 
 Visit our [API documentation](https://d-api.docs.stoplight.io/).
 
@@ -82,12 +82,12 @@ The following shows an example DevOps flow to create, deploy, and promote an API
 2. Jenkins build triggers and checks out the latest code and YAML from Git.
 3. Jenkins calls AMPLIFY CLI command `amplify auth login` to authenticate to AMPLIFY platform and obtain an access token.
 4. Jenkins calls AMPLIFY CLI command `amplify apic create` to create or update the API proxy for this service.
-    - CLI calls the DevOps API `POST /proxies` to create the API proxy in AMPLIFY Central. See [Create proxy API reference](https://d-api.docs.stoplight.io/new-subpage/devops-api/create-proxy).
+    * CLI calls the DevOps API `POST /proxies` to create the API proxy in AMPLIFY Central. See [Create proxy API reference](https://d-api.docs.stoplight.io/new-subpage/devops-api/create-proxy).
 5. Jenkins calls AMPLIFY CLI command `amplify apic promote` to deploy the API proxy to the test runtime.
-    - CLI calls the DevOps API `POST /promote` to deploy the API proxy on the test runtime. See [Promote proxy API reference](https://d-api.docs.stoplight.io/new-subpage/devops-api/promote-proxy).
+    * CLI calls the DevOps API `POST /promote` to deploy the API proxy on the test runtime. See [Promote proxy API reference](https://d-api.docs.stoplight.io/new-subpage/devops-api/promote-proxy).
 6. Automated tests are run on the AMPLIFY Central test runtime.
 7. Jenkins calls AMPLIFY CLI command `amplify apic promote` to promote the API proxy from the test runtime to the production runtime.
-    - CLI calls the DevOps API `POST /promote` to deploy the API proxy on the production runtime.
+    * CLI calls the DevOps API `POST /promote` to deploy the API proxy on the production runtime.
 
 ## Traffic management
 

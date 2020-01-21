@@ -8,8 +8,6 @@
 
 API Gateway stores and maintains monitoring and transaction data in a JDBC-compliant database, which can be read by API Gateway Analytics, API Manager, and third-party monitoring tools.
 
-For details on configuring a database for API Gateway Analytics, see the [API Gateway Analytics User Guide](/bundle/APIGateway_77_AnalyticsUserGuide_allOS_en_HTML5/).
-
 ## Prerequisites
 
 The prerequisites for setting up the database are as follows.
@@ -31,7 +29,8 @@ For details on supported database versions, see [Databases](/docs/apim_installat
 
 * You must install API Manager to use it to view the monitoring data in the metrics database. For more details, see [Install API Manager](/docs/apim_installation/apigtw_install/install_api_mgmt).
 * You must install API Gateway Analytics to use it to view the monitoring data in the metrics database. For more details, see [Install API Gateway Analytics](/docs/apim_installation/apigtw_install/install_analytics/).
-* You do not need to install API Gateway Analytics to view monitoring data in API Manager only.
+
+You do not need to install API Gateway Analytics to view monitoring data in API Manager only.
 
 ## Add third-party JDBC driver files
 
@@ -97,7 +96,7 @@ When you have created the metrics database, you must update your API Gateway Ana
 
 ## Configure the database connection for API Manager
 
-You must ensure that the API Gateway external connection to the database has been configured in Policy Studio. To configure a connection, select **Environment Configuration > External Connections > Database Connections > Add a Database Connection**. For more details, see the [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
+You must ensure that the API Gateway external connection to the database has been configured in Policy Studio. To configure a connection, select **Environment Configuration > External Connections > Database Connections > Add a Database Connection**.
 
 ## Set up the database tables
 
@@ -205,9 +204,3 @@ Query OK, 0 rows affected, 1 warning (0.00 sec)
 Query OK, 0 rows affected, 1 warning (0.00 sec)
 ...
 ```
-
-## Further information
-
-For details on how to view monitoring metrics in API Manager, see the [API Manager User Guide](/docs/apim_administration/apimgr_admin/).
-
-For details on how to view monitoring metrics in API Gateway Analytics, see the [API Gateway Analytics User Guide](docs/apimanager_analytics/).

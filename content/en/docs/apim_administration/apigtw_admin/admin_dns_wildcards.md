@@ -1,7 +1,7 @@
 {
 "title": "Set up DNS wildcards for virtual hosts",
 "linkTitle": "Set up DNS wildcards",
-"weight":"36",
+"weight":"140",
 "date": "2019-10-14",
 "description": "Configure a DNS service with wildcards for virtual hosting. This is a prerequisite for configuring the API Gateway or API Manager for virtual hosts."
 }

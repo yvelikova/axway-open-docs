@@ -1,7 +1,7 @@
 {
 "title": "Configure an API Gateway domain",
 "linkTitle": "Configure an API Gateway domain",
-"weight":"10",
+"weight":"30",
 "date": "2019-10-14",
 "description": "Use the `managedomain` command to configure a managed API Gateway."
 }

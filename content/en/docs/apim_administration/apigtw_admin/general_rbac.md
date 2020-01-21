@@ -1,7 +1,7 @@
 {
 "title": "Configure Role-Based Access Control (RBAC)",
 "linkTitle": "Configure RBAC",
-"weight":"30",
+"weight":"125",
 "date": "2019-10-14",
 "description": "Restrict system access to authorized users based on their assigned roles."
 }
@@ -35,7 +35,7 @@ The Admin Node Manager exposes a number of REST management services, which are a
 
 ## RBAC user roles
 
-User access to management services is determined by their role(s). Each role has a defined set of management services that it can access. A Management Service is defined by the URI used to access it, for example:
+User access to management services is determined by their roles. Each role has a defined set of management services that it can access. A Management Service is defined by the URI used to access it, for example:
 
 **Role Name**: API Server Operator
 **Service Name**: Topology API
@@ -52,13 +52,13 @@ By default, all the user credentials are stored in a local admin user store in t
 INSTALL_DIR/conf/adminUsers.json
 ```
 
-`INSTALL_DIR` is the directory where the gateway is installed as Admin Node Manager.
+`INSTALL_DIR` is the directory where API Gateway is installed as Admin Node Manager.
 
 The following shows an example file:
 
 ```
 {
-   "productVersion" :"7.8",
+   "productVersion" :"7.7",
    "version" :1,
    "timestamp" :0,
    "adminUsers" :[ {

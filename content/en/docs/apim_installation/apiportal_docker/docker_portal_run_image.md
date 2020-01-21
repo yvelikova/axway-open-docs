@@ -16,38 +16,38 @@ Axway does not provide a ready-made Docker image for MySQL. You must have the My
 
 The following components are required on your system before you can deploy API Portal in Docker containers:
 
-- Docker version 1.13.x
-- MySQL Docker container running
-- API Portal Docker image available from Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink}
-- API Gateway and API Manager either installed on-premise or deployed in containers (see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/) for more details)
+* Docker version 1.13.x
+* MySQL Docker container running
+* API Portal Docker image available from Axway Support at [https://support.axway.com](https://support.axway.com/)
+* API Gateway and API Manager either installed on-premise or deployed in containers (see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/) for more details)
 
 The monitoring feature of API Portal, which enables your API consumers to monitor application and API usage, requires a connected API Manager with monitoring metrics enabled.
 
 The following are the recommended hardware disk space and memory requirements for the Docker host machine for a single node sample architecture:
 
-- 100 GB or more disk space
-- 8 GB or more RAM
+* 100 GB or more disk space
+* 8 GB or more RAM
 
 ## Run a Docker container using the image
 
-1. Download the API Portal Docker image from Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink}.
+1. Download the API Portal Docker image from Axway Support at [https://support.axway.com](https://support.axway.com/).
 2. Upload the file to your Docker host machine.
 3. Enter the following command to load the image:
 
-    `$ docker load -i APIPortal_7.8_Docker_Image_linux-x86-64_<build number>.tar.gz`
+    `$ docker load -i APIPortal_7.7_Docker_Image_linux-x86-64_<build number>.tar.gz`
 
 4. Run the API Portal Docker container, for example:
 
     ```
-    $ docker run -it --name apiportal -e MYSQL_HOST=172.19.0.2 -e MYSQL_PORT=3306 -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=joomla -e MYSQL_PASSWORD=XXXXX -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443 apiportal:7.8
+    docker run -it --name apiportal -e MYSQL_HOST=172.19.0.2 -e MYSQL_PORT=3306 -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=joomla -e MYSQL_PASSWORD=XXXXX -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443 apiportal:7.7
     ```
 
 This example performs the following:
 
-- Runs an API Portal Docker container from an image named `apiportal`:`7.8`.
-- Sets environment variables for connecting to the MySQL container.
-- Sets environment variables for connecting to API Manager.
-- Binds port 443 of the container to port 443 on the host machine.
+* Runs an API Portal Docker container from an image named `apiportal`:`7.7`.
+* Sets environment variables for connecting to the MySQL container.
+* Sets environment variables for connecting to API Manager.
+* Binds port 443 of the container to port 443 on the host machine.
 
 API Portal is now running in a Docker container.
 

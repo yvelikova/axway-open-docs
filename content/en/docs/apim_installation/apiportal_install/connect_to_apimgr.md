@@ -15,13 +15,13 @@ Before you can use API Portal, you must connect it to at least one API Manager.
 To connect API Portal to API Manager:
 
 1. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal_host>/administrator`).
-1. Select **Components > API Portal > API Manager**.
-1. Enter a public name for the API Manager. This name is shown to your API consumers in API Portal when listing the APIs and applications for this API Manager.
-1. Enter your API Manager host and port. The default port is `8075`.
-1. In **TLS Certificate Validation**, select an option to validate HTTPS connections. The default is no validation. You can choose to validate the TLS certificate only, or the TLS certificate and the certificate host name.
-1. If you choose to validate the TLS certificate, in **Certificate**, choose and upload the root API Manager certificate. This certificate is used to validate the API Manager server certificate when API Portal sends a request to API Manager. You can check which certificate API Portal uses in **Current certificate**.
-1. Enter a tag for this API Manager. You can use this tag to filter APIs that come from this particular API Manager instance, for example, to display APIs from different API Managers on different menus in API Portal.
-1. Click **Save**.
+2. Select **Components > API Portal > API Manager**.
+3. Enter a public name for the API Manager. This name is shown to your API consumers in API Portal when listing the APIs and applications for this API Manager.
+4. Enter your API Manager host and port. The default port is `8075`.
+5. In **TLS Certificate Validation**, select an option to validate HTTPS connections. The default is no validation. You can choose to validate the TLS certificate only, or the TLS certificate and the certificate host name.
+6. If you choose to validate the TLS certificate, in **Certificate**, choose and upload the root API Manager certificate. This certificate is used to validate the API Manager server certificate when API Portal sends a request to API Manager. You can check which certificate API Portal uses in **Current certificate**.
+7. Enter a tag for this API Manager. You can use this tag to filter APIs that come from this particular API Manager instance, for example, to display APIs from different API Managers on different menus in API Portal.
+8. Click **Save**.
 
 API Portal is now connected to API Manager.
 
@@ -82,17 +82,17 @@ This means that when API Portal is connected to both API Managers, the user A s
 
 Before you can connect API Portal to multiple API Managers, ensure that:
 
-- All the API Manager instances are configured and running.
-- All the organizations are created on *all* API Managers. Ensure that the name of an organization is identical across all instances.
-- Users are created and assigned to organizations on the *master* API Manager.
+* All the API Manager instances are configured and running.
+* All the organizations are created on *all* API Managers. Ensure that the name of an organization is identical across all instances.
+* Users are created and assigned to organizations on the *master* API Manager.
 
-For more details on installing and configuring API Manager, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/) and the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/) .
+For more details on installing and configuring API Manager, see the [API Gateway Installation Guide](/docs/apim_installation/apigtw_install/) and the [API Manager User Guide](/docs/apim_administration/apimgr_admin/).
 
 ### Configure synchronization policies for API Managers
 
 The slave API Managers communicate with the master API Manager using an external identity provider policy. A sample policy container `AuthoToMasterDynamicOrg.xml` is included in the API Portal installation package available from Axway Support at [https://support.axway.com](https://support.axway.com/).
 
-You must import the policy container to Policy Studio, configure the sample policies to point to your master API Manager, configure your environment settings, and deploy the configuration to your slave API Manager. For more information on working in Policy Studio, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/) .
+You must import the policy container to Policy Studio, configure the sample policies to point to your master API Manager, configure your environment settings, and deploy the configuration to your slave API Manager. For more information on working in Policy Studio, see the [Develop in Policy Studio](/docs/apim_policydev/).
 
 You must create a separate project for each slave API Manager to use separate connections when deploying the configured policy.
 
@@ -109,28 +109,28 @@ You must create a separate project for each slave API Manager to use separate co
 #### Configure environment settings
 
 1. In the Policy Studio node tree, click **Environment Configuration > Listeners > API Gateway > API Portal > Ports**.
-1. Open the configured port, go to the **Mutual Authentication** tab, and check that **Ignore client certificates** is selected.
-1. In the node tree, click **Environment Configuration > Listeners > API Gateway > API Portal > Paths**, and under `/api/portal/`, double-click **API Manager API v1.2**, and click **Add**.
-1. Add a new servlet property:
-    - **Name**: `CsrfProtectionFilterFactory.refererWhitelist`
-    - **Value**: the login URL of the *master* API Manager (for example, `https://10.142.10.4:8075/api/portal/v1.3/login`)
-1. If you already have this servlet property, you can simply edit the value. If you list multiple URLs, separate them with a comma.
-1. Repeat the previous step on **API Manager API v1.3**.
-1. In the node tree, click **Server Settings > General**, and ensure that **Server's SSL cert's name must match name of requested server** is not selected.
-1. Click **Server Settings > API Manager > Identity Provider**, select **Use external identity provider**.
-1. Set **Account authentication policy** to the **AuthenticateToMaster** policy and **Account information policy** to **Get Current Info**, and click **Save**.
-1. Deploy the configuration to API Gateway.
+2. Open the configured port, go to the **Mutual Authentication** tab, and check that **Ignore client certificates** is selected.
+3. In the node tree, click **Environment Configuration > Listeners > API Gateway > API Portal > Paths**, and under `/api/portal/`, double-click **API Manager API v1.2**, and click **Add**.
+4. Add a new servlet property:
+    * **Name**: `CsrfProtectionFilterFactory.refererWhitelist`
+    * **Value**: the login URL of the *master* API Manager (for example, `https://10.142.10.4:8075/api/portal/v1.3/login`)
+5. If you already have this servlet property, you can simply edit the value. If you list multiple URLs, separate them with a comma.
+6. Repeat the previous step on **API Manager API v1.3**.
+7. In the node tree, click **Server Settings > General**, and ensure that **Server's SSL cert's name must match name of requested server** is not selected.
+8. Click **Server Settings > API Manager > Identity Provider**, select **Use external identity provider**.
+9. Set **Account authentication policy** to the **AuthenticateToMaster** policy and **Account information policy** to **Get Current Info**, and click **Save**.
+10. Deploy the configuration to API Gateway.
 
 ### Configure the connection to slave API Managers
 
 1. Log in to JAI.
-1. Connect to your master API Manager, see [Connect API Portal to a single API Manager](#connect-api-portal-to-a-single-api-manager).
-1. Click **Components > API Portal > Additional API Managers**.
-1. Enter the public label (for example, `Environment`) for the API Managers. This label is shown to your API consumers in API Portal when listing the APIs and applications for multiple API Managers.
-1. In **Login Failure Policy**, select how failed logins are handled.
-1. Click **+** to add a slave API Manager, and enter a public name for it (for example, `Production`). This name is shown to your API consumers in API Portal when listing the APIs and applications for this API Manager.
-1. Enter the host IP address and port of the slave API Manager.
-1. Configure the remaining settings and click **Save**.
-1. Repeat to add additional slave API Managers.
+2. Connect to your master API Manager, see [Connect API Portal to a single API Manager](#connect-api-portal-to-a-single-api-manager).
+3. Click **Components > API Portal > Additional API Managers**.
+4. Enter the public label (for example, `Environment`) for the API Managers. This label is shown to your API consumers in API Portal when listing the APIs and applications for multiple API Managers.
+5. In **Login Failure Policy**, select how failed logins are handled.
+6. Click **+** to add a slave API Manager, and enter a public name for it (for example, `Production`). This name is shown to your API consumers in API Portal when listing the APIs and applications for this API Manager.
+7. Enter the host IP address and port of the slave API Manager.
+8. Configure the remaining settings and click **Save**.
+9. Repeat to add additional slave API Managers.
 
 API Portal is now connected to multiple API Managers.

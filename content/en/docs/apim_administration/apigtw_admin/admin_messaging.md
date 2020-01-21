@@ -1,7 +1,7 @@
 {
 "title": "Manage embedded ActiveMQ messaging",
 "linkTitle": "Manage embedded ActiveMQ messaging",
-"weight":"38",
+"weight":"130",
 "date": "2019-10-14",
 "description": "The **Messaging** view in API Gateway Manager enables you to manage the Apache ActiveMQ messaging broker that is embedded in the API Gateway instance."
 }

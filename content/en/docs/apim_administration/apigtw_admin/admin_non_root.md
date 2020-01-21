@@ -1,7 +1,7 @@
 {
 "title": "Run API Gateway on privileged ports",
 "linkTitle": "Run API Gateway on privileged ports",
-"weight":"2",
+"weight":"50",
 "date": "2019-10-14",
 "description": "Grant the required privileges to API Gateway processes running as non-root to run with root privileges."
 }
@@ -10,14 +10,14 @@ API Gateway is run as a non-root user to prevent any potential security issues w
 
 ## Before you begin
 
-The examples in this topic are for a non-root user named `admin` and for a gateway installation at `/opt/Axway-7.8/apigateway`. If you have a different non-root user name or gateway installation, you must modify the examples accordingly.
+The examples in this topic are for a non-root user named `admin` and for an API Gateway installation at `/opt/Axway-7.7/apigateway`. If you have a different non-root user name or installation location, you must modify the examples accordingly.
 
 ## Set API Gateway file ownership to non-root user
 
 The ownership of API Gateway files must be set to the non-root user. You can change the user and group ownership of all files under API Gateway installation directory, for example:
 
 ```
-# chown -R admin:admin /opt/Axway-7.8/apigateway
+# chown -R admin:admin /opt/Axway-7.7/apigateway
 ```
 
 ### SSL accelerators for HSM
@@ -66,7 +66,7 @@ $VDISTDIR/Linux.x86_64/bin/vshell
 The examples use `$VDISTDIR` to refer to the absolute path where API Gateway is installed. You must set `$VDISTDIR` or modify the example before using it on your own environment. For example, to set `VDISTDIR` to your gateway installation directory:
 
 ```
-export VDISTDIR=/opt/Axway-7.8/apigateway
+export VDISTDIR=/opt/Axway-7.7/apigateway
 ```
 
 `patchelf` is a development and administration tool, and is not installed on systems by default. If you do not wish to install extra tools on your production environment, you can patch the `vshell` binary on another non-production system and move it to the production environment.
@@ -109,14 +109,14 @@ Using `setcap` to set this capability is supported from kernel 2.6.24 onwards. I
 To set the capability on the `vshell` binary, run the following command:
 
 ```
-sudo setcap 'cap_net_bind_service=+ep' /opt/Axway-7.8/apigateway/platform/bin/vshell
+sudo setcap 'cap_net_bind_service=+ep' /opt/Axway-7.7/apigateway/platform/bin/vshell
 ```
 
 To verify that the permission has been set, run the following command:
 
 ```
-getcap /opt/Axway-7.8/apigateway/platform/bin/vshell
-/opt/Axway-7.8/apigateway/platform/bin/vshell = cap_net_bind_service+ep
+getcap /opt/Axway-7.7/apigateway/platform/bin/vshell
+/opt/Axway-7.7/apigateway/platform/bin/vshell = cap_net_bind_service+ep
 ```
 
 If you set this capability, you must remove it again before applying a service pack or uninstalling, as it results in the product binaries being locked.
@@ -124,7 +124,7 @@ If you set this capability, you must remove it again before applying a service p
 To remove the capability, run the following command:
 
 ```
-sudo setcap -r /opt/Axway-7.8/apigateway/platform/bin/vshell
+sudo setcap -r /opt/Axway-7.7/apigateway/platform/bin/vshell
 ```
 
 ## Restart API Gateway
