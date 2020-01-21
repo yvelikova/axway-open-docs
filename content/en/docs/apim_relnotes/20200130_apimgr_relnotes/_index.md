@@ -61,9 +61,16 @@ The API Manager UI supports OAS3 `response.content.schemes`.
 
 <!-- Add features that are deprecated here -->
 
-As part of our software development life cycle we constantly review the core API Management products and related components. As part of this review, the following capabilities have been deprecated:
+As part of our software development life cycle we constantly review our API Management offering.
 
-* 
+Please note that the following capabilities have been deprecated: 
+
+* Since the API Gateway already supports the industry standard Internet Content Adaption Protocol (ICAP), we will remove the existing embedded Anti-Virus scanners from the November 2020 release.
+  * McAfee
+  * Sophos
+  * Clam AV
+
+Content scanning is still  supported via the provided ICAP filter which provides out-of-the-box integration with ICAP capable servers provided by Symantec, McAfee, OPSWAT and others, promoting ease of deployment and operational control. 
 
 ## Removed features
 
