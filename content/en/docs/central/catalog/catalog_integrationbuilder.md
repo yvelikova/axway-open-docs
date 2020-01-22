@@ -34,4 +34,4 @@ Watch the animation to learn how to perform this task.
 
 Watch this short video to learn how to configure and authorize an API that has been promoted from Amplify Catalog into Integration Builder.
 
-{{< youtube TBD >}}
+{{< youtube tGNXQo-1frE >}}
