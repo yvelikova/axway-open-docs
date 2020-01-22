@@ -41,15 +41,15 @@ With ThemeMagic, you have an administrative interface for creating or modifying 
 1. Log in to the Joomla! Administrator Interface (JAI), and click **Extensions > Templates**.
 2. In Templates sidebar, select **Styles**, then select the style **Purity III - Default**.
 
-![Joomla user interface with Purity III selecting the styles](/Images/APIPortal/JoomlaThemeMagicStyles.png)
+    ![Joomla user interface with Purity III selecting the styles](/Images/APIPortal/JoomlaThemeMagicStyles.png)
 
-1. Select **ThemeMagic**. ThemeMagic opens your portal home page with theme variables are displayed on the left.
+3. Select **ThemeMagic**. ThemeMagic opens your portal home page with theme variables are displayed on the left.
 
-![Joomla User Interface with Purity III theme magic](/Images/APIPortal/joomlathememagic.png)
+    ![Joomla User Interface with Purity III theme magic](/Images/APIPortal/joomlathememagic.png)
 
-1. In the ThemeMagic window, sign in to API Portal. You are now ready to start customizing your portal.
+4. In the ThemeMagic window, sign in to API Portal. You are now ready to start customizing your portal.
 
-![Screenshot on ThemeMagic](/Images/APIPortal/JoomlaThemeMagiconAPIPortal.png)
+    ![Screenshot on ThemeMagic](/Images/APIPortal/JoomlaThemeMagiconAPIPortal.png)
 
 ### Create a new theme
 
@@ -58,12 +58,12 @@ API Portal includes one theme named **Axway**. Create any additional themes fro
 1. Open the ThemeMagic tool, and ensure that the theme selected is the default **Axway** theme.
 2. Click the drop-down next to the **Preview** button, and select **Save As**:
 
-![API Portal customize color screen](/Images/APIPortal/portal_customize.png)
+    ![API Portal customize color screen](/Images/APIPortal/portal_customize.png)
 
-1. Enter a name for your theme, click **Accept**, and wait until the new theme is ready. A new folder is created for your new theme in `local/less/themes/`.
-2. Ensure that the theme selected is your new theme, and change the theming variables on the left as needed to customize your theme.
-3. To check how your changes look on the page, click **Preview**.
-4. When you are happy with your theme, click the drop-down and select **Save**.
+3. Enter a name for your theme, click **Accept**, and wait until the new theme is ready. A new folder is created for your new theme in `local/less/themes/`.
+4. Ensure that the theme selected is your new theme, and change the theming variables on the left as needed to customize your theme.
+5. To check how your changes look on the page, click **Preview**.
+6. When you are happy with your theme, click the drop-down and select **Save**.
 
 #### Theming variables
 
@@ -83,9 +83,9 @@ In addition, there are some other variables for fine-grain customization of the 
 2. In the Templates sidebar, select **Styles**, then select the style **Purity III - Default**.
 3. Select the **Theme** page, and select your new theme from the **Theme** drop-down menu:
 
-![API Portal sample screen on how to save a new theme in templates](/Images/APIPortal/portal_templates.png)
+    ![API Portal sample screen on how to save a new theme in templates](/Images/APIPortal/portal_templates.png)
 
-1. Click **Save**, then click **</> Less to CSS**. This is the preferred option as it will only compile the theme you want to use.
+4. Click **Save**, then click **</> Less to CSS**. This is the preferred option as it will only compile the theme you want to use.
 
 ### Configuration files
 
@@ -110,90 +110,95 @@ The following list summarizes the replaced Purity III files:
 * `language/en-GB/en-GB.tpl_purity_iii.ini` – Language strings displayed in the ThemeMagic GUI. In order to be utilized by ThemeMagic, this file must be copied to Joomla!'s main language folder, `language/en-GB/en-GB.tpl_purity_iii.ini` when the API Portal plugin is installed.
 * `less/variables.less` – Global variables for the Purity III template. Default values for theming variables must be defined in this file.
 
-## Customize your home page
+## Customize your home page layout
 
-Customize the API Portal home page using joomla! and ThemeMagic
+Customize the API Portal home page using Joomla! and ThemeMagic.
 
-### Home page layout
+`apiportal-homepage` layout is assigned to the home menu item by default. This layout is available from the `apiportal-homepage` template.
 
-API Portal now ships with a new template called "apiportal-homepage". This template has a new layout called "apiportal-homepage" and by default is assigned only on to the home menu item. 
+The home page consists of the following main sections:
 
-![](/Images/uploads/layout.png)
+* Menu
+* Banner
+* Tiles section
+* Footer
 
-By default the home page consists of the following main sections : 
+![Home page layoUt](/Images/APIPortal/layout.png)
 
-1. Menu 
-2. Banner
-3. Tiles section
-4. Footer
+For more details see [T3 Framework Layout](http://www.t3-framework.org/documentation/bs3-layout-system#about-layout) documentation.
 
-For more details on the T3 layout framework please reffer to this url : 
-http://www.t3-framework.org/documentation/bs3-layout-system#about-layout
+### Customize your banner
 
-## Customizing the banner
+Change API Portal banner using the **Home Page Banner** module.
 
-API Portal ships with new custom developed module called "Home Page Banner". This module is responsible for the banner section of the home page. 
+![Customizing the banner](/Images/uploads/banner-homepage.png)
 
-![](/Images/uploads/banner-homepage.png)
+To customize the banner:
 
-To customize this banner go to JAI->Extensions->Modules->Home Page Banner
+1. In JAI, click **Extensions > Modules > Home Page Banner**.
 
-You'll see the following interface: 
+    ![Banner config](/Images/uploads/banner-config.png)
 
-![](/Images/uploads/banner-config.png)
+    You can customize the following fields:
 
-* Title - free text field for the title of the banner. Defaults to "Enter API Portal"
-* Title colour - colour picker to choose the color of the title
-* Sub-title - free text field for the sub-title of the banner. Defaults to "Explore and test our APIs."
-* Subtitle colour - colour picker to choose the color of the sub-title
-* Explore Button - Show / Hide Explore Button
-* Button text - free text field for the button text. 
-* Button text colour - colour picker to choose the color of the button text
-* Button has background - Yes / No 
-* Link button to a menu item - drop down with all menu items. Choose on which page the user should go when click the button. Defaults to "Sign in" page.
-* Button border colour - colour picker to choose the color of the button border
-* Border radius - Numbers only field for border radius of the button border. Defaults to 500.
-* Background image - change the background image of the banner. You can choose an image from the media manager or upload a new one. 
-* Text alignment - choose one of the three options - left, center, right to position the text and the button on the banner. 
+    * Title - Free text field for the title of the banner. Defaults to **Enter API Portal**.
+    * Title colour - Colour picker to choose the color of the title.
+    * Sub-title - Free text field for the subtitle of the banner. Defaults to **Explore and test our APIs**.
+    * Subtitle colour - Colour picker to choose the color of the subtitle.
+    * Explore Button - Show / Hide Explore Button.
+    * Button text - Free text field for the button text.
+    * Button text colour - Colour picker to choose the color of the button text.
+    * Button has background - Yes / No.
+    * Link button to a menu item - Drop-down list with all menu items. Choose a page to link to when click the button. Defaults to **Sign in** page.
+    * Button border colour - Colour picker to choose the color of the button border.
+    * Border radius - Numbers only field for border radius of the button border. Defaults to **500**.
+    * Background image - Change the background image of the banner. You can choose an image from the media manager or upload a new image.
+    * Text alignment - Choose one of the three options (left, center, right) to position the text and the button on the banner.
 
-The module is by default assigned to position "api-home-banner". 
-After finishing customizing just click "Save" or "Save & close"
+    The module position defaults to **api-home-banner**.
 
-## Customizing the tiles section
+2. Click **Save** or **Save & close**.
 
-API Portal now ships with new custom developed module called "Home Tiles". This module is responsible for the Tiles section on the home page. 
+### Customize the tiles
 
-![](/Images/uploads/tiles-homepage.png)
+Modify API Portal tiles in the home page using the **Home Tiles** module.
 
+![Tiles home page](/Images/uploads/tiles-homepage.png)
 
+By default, there are four instances of this module.  one per each tile (Explore & test, Create, Manage & analyze, Community).
 
-By default there are four instances of this module - one per each tile (Explore&test, Create, Manage & analyze, community). 
+To customize this module:
 
-To customize this banner go to JAI->Extensions->Modules->Home Tiles 1(or 2,3,4). 
+1. In JAI, click **Extensions > Modules > Home Tiles 1(or 2,3,4)**.
 
-Each of them has the following interface : 
+    Each instance shows the following interface:
 
-![](/Images/uploads/tiles-homepage.png)
+    ![Instance interface](/Images/uploads/tiles-homepage.png)
 
+    * Title - Free text field for the title. Defaults to **Explore & Test**.
+    * Title Colour - Colour picker to choose the colour of the title.
+    * Description - Free text field for the description of the tile (The short text under the title).
+    * Description colour - Colour picker to choose the colour of the description text.
+    * Background image - Change the icon of the tile. You can choose an image from the media manager or upload a new image.
+    * Background colour - Colour picker to choose the background colour of the whole tile. Defaults to **white**.
+    * Tile has link - Choose an option:
+        1. Menu item - Drop-down list with all menu items. Choose a menu item to link the Tile to (Defaults to the chosen option).
+        2. Custom - Free text field. Enter any valid URL to link the tile to.
+        3. No - No link at all.
 
-* Title - free text field for the title ( defaults to "Explore & Test", "Create" ... )
-* Title Colour - colour picker to choose the colour of the title
-* Description - free text field for the description of the tile (short text under the title)
-* Description colour - colour picker to choose the colour of the descriprion text. 
-* Background image - change the icon of the tile . You can choose an image from the media manager or upload a new one. 
-* Background colour - colour picker to choose the background colour of the whole tile (defaults to white). 
-* Tile has link - this is a triple choice option : 
-    1. Menu item - a drop-down with all the menu items will apear. Choose to which menu item to link the Tile (Deafult chosen option)
-    2. Custom - free text field apears. Put any valid url to link the tile to it. 
-    3. No - No link at all.
+The instances are assigned to the following positions by default:
 
+* **api-home-tiles-1**
+* **api-home-tiles-2**
+* **api-home-tiles-3**
+* **api-home-tiles-4**
 
-These module instances are by default assigned to positions - "api-home-tiles-1", "api-home-tiles-2", "api-home-tiles-3", "api-home-tiles-4". 
-The home page layout is designed to have up to six tiles on the home page, so positions "api-home-tiles-5" and "api-home-tiles-6" are available but unused by default. Use them to add new tiles : 
+The home page layout is designed to have up to six tiles on the home page, so positions **api-home-tiles-5** and **api-home-tiles-6** are available for use.
 
-Jai->Extensions->Modules->New->Home Tiles
+To add a new tile:
 
-After finishing customizing just click "Save" or "Save & close"
+1. In JAI, click **Extensions > Modules > New > Home Tiles**.
+2. After finishing customizing, click **Save** or **Save & close.**
 
 ## Customize your logo
 
