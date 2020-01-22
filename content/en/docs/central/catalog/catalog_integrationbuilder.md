@@ -29,48 +29,9 @@ Watch the animation to learn how to perform this task.
 
 ![export demo](/Images/central/catalog_export.gif)
 
-<!--
+
 ## Authenticate an exported API from Unified Catalog in Integration Builder
 
-This section describes how to configure authentication for an API exported from Unified Catalog.
+Watch this short video to learn how to configure and authorize an API that has been promoted from Amplify Catalog into Integration Builder.
 
-### Configure the authentication settings
-
-Before you can use your exported connector you must configure the authentication settings under your connectors **Setup** section:
-
-1. From the **Connectors** menu, click tab **SETUP**, and click **Authentication** on the left side menu.
-2. Under **Configurations** click **Add Configuration** to add a blank config.
-    * This will allow you to pass in your `API Key` or `JWT` when creating a connector instance.
-3. Enter the required fields as follows:
-    * Name: Enter a meaningful name to your connectors authorizaton. For example: `API Key` or `JWT`
-    * Key: Enter your API Key
-    * Type: Enter a password
-    * Hide UI: This is unchecked by default. If selected, this will hide the configuration screen.
-    * Required: This is checked by default. If unselected, this will not require an authentication.
-
-### Configure the instances to utilize the configured key
-
-Configure the instances to utilize the configured key from the previous section a header.
-
-1. From the **Connectors** menu, click tab **SETUP**, and click **Parameters** on the left side menu.
-2. Click **Add Parameter** and Enter the required fields as follows:
-    * Name: Enter a meaningful name to your API Key
-    * Type: Select configuration
-    * Name (Vendor): Authorization
-    * Type (Vendor): header
-
-### Authenticate your Integration Builder instance
-
-To authenticate your Integration Builder instance:
-
-1. From the **Connectors** menu, click tab **API Docs** and select **Authenticate Instance**.
-    * The configuration field set up previously is shown.
-2. Enter a name for the instance and insert your `API Key` or `JWT`.
-    * For JWT: `Bearer \<jwt token here\>`
-    * For API Key: `API Key \<apikey here\>`
-
-Watch the animation to learn how to perform this task.
-
-![auth demo](/Images/central/catalog_auth.gif)
-
--->
+{{< youtube TBD >}}
