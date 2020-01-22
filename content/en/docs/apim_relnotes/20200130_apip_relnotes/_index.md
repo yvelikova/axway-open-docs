@@ -20,7 +20,9 @@ API Portal is available as a software installation or a virtualized deployment 
 
 The following new features and enhancements are available in this release.
 
-<!-- Add the new features here. -->
+**Custom Install Directory**
+
+The restriction to install API Portal into the `/opt/axway/apiportal/htdoc` default directory has been removed, and you can now perform the installation in a location of your choice.
 
 ## Important changes
 
