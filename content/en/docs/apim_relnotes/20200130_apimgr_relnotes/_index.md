@@ -23,11 +23,11 @@ The following new features and enhancements are available in this release.
 
 ### Swagger 2.0 enhancements
 
-API Manager imports, retains, and exports all Swagger v2.0 fields, except for the vendor extensions.
+API Manager imports, retains, and exports all Swagger v2.0 fields, except for vendor extensions.
 
 ### Open API Specification (OAS) 3.0 enhancements
 
-* API Manager imports, retains, and exports all Open API Specification (OAS) v3.0 fields, except for the vendor extensions, callbacks, links, and examples.
+* API Manager imports, retains, and exports all Open API Specification (OAS) v3.0 fields, except for vendor extensions, callbacks, links, and examples.
 * Parameter content types are now supported in OAS3.
 
 ### Try It and Try Method improvements
@@ -50,15 +50,27 @@ The API Manager UI supports OAS3 `response.content.schemes`.
 * The `DataTypes` in API Manager have been changed to align with the OAS3 data types
 * Users have the option to modify all back-end APIs without cloning
 
+### Traffic monitor externalization showcase
+
+An example dashboard for Elasticsearch leverages existing capabilities to output traffic monitor data using the open logging functionality, and showcases this capability.
+
+Easy to integrate with and to set up, [ELK](https://www.elastic.co/what-is/elk-stack) enables you to extend your analytics needs using easy customization options.
+
+The integration showcases increased performance, provides the ability to store more data for longer, leveraging first class database integration options that ELK provide, and also provides role based access control capabilities if used in conjunction with LDAP.
+
 ## Important changes
 
 <!-- Use this section to describe any changes in the behavior of the product (as a result of features or fixes), for example, new Java system properties in the jvm.xml file. This section could also be used for any important information that doesn't fit elsewhere. -->
 
 ### Increased validation of WSDLs
-In this release the xerces library has been updated to `xerces 2.12.0`. This library enforces stricter rules when validating malformed schemas. This means that some WSDLs that were previously imported successfully by API Manager might not import successfully in this version. To suppress schema validation errors and relax the stricter validation of XML files a new flag `-DwsdlImport.suppressSchemaValidationErrors` is available in the `policystudio.ini` file. Set this flag to `true` if required. The default value `false`.
+
+In this release the xerces library has been updated to `xerces 2.12.0`. This library enforces stricter rules when validating malformed schemas. This means that some WSDLs that were previously imported successfully by API Manager might not import successfully in this version.
+
+To suppress schema validation errors and relax the stricter validation of XML files a new flag `-DwsdlImport.suppressSchemaValidationErrors` is available in the `policystudio.ini` file. Set this flag to `true` if required. The default value is `false`.
 
 ### Filebeat v6.2.2
-Filebeat has been updated to use v6.2.2. When installing Filebeat, follow the [official filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
+
+Filebeat has been updated to use v6.2.2. When installing Filebeat, follow the [official Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
 
 ## Limitations of this release
 
@@ -68,19 +80,29 @@ Filebeat has been updated to use v6.2.2. When installing Filebeat, follow the [o
 
 <!-- Add features that are deprecated here -->
 
-As part of our software development life cycle we constantly review the core API Management products and related components. As part of this review, the following capabilities have been deprecated:
+As part of our software development life cycle we constantly review our API Management offering.
 
-* RAML support
+The following capabilities have been deprecated:
+
+* API Gateway already supports the industry standard Internet Content Adaption Protocol (ICAP), so from the November 2020 release we will remove the existing embedded Anti-Virus scanners:
+    * McAfee
+    * Sophos
+    * Clam AV
+
+    Content scanning is still supported using the ICAP filter, which provides out-of-the-box integration with ICAP-capable servers provided by Symantec, McAfee, OPSWAT and others, promoting ease of deployment and operational control.
 
 ## Removed features
 
 <!-- Add features that are removed here -->
 
-In our efforts to continually upgrade our products in response to the needs of our customers’ IT environments, Axway occasionally discontinues support for some capabilities. As part of this review, the following capabilities have been removed:
+To stay current and align our offerings with customer demand and best practices, Axway might discontinue support for some capabilities.
 
-* API Tester has been removed from the product as it presented a security risk in certain scenarios.
-* A security issue with the `api/portal/v1.3/users` API means that the behaviour has changed. This API now returns all organizations for the API Admin role only. Previously, all organizations were returned for all roles.
-* The export back-end API functionality converts all API formats to Swagger 1. With the introduction of OAS3 API Manager now uses the `io.swagger.parser.v3.swagger-parser-v3:2.0.16` and `io.swagger.swagger-parser:1.0.48` libraries during the import process. This means that the export of back-end APIs is not supported for OAS3 or WSDL APIs, as this functionality relied on custom code in the old parser that is no longer available. 
+As part of this review, the following capabilities have been removed:
+
+* API Tester - For testing APIs, it is recommended to use alternative tools, such as Postman, SoapUI, or API Fortress.
+* RAML support - RESTful API Modeling Language (RAML) support has been removed in favour of widely-adopted standards like Swagger and OpenAPI 3.
+* A security issue with the `api/portal/v1.3/users` API means that the behavior has changed. This API now returns all organizations for the API Admin role only. Previously, all organizations were returned for all roles.
+* The functionality to export back-end APIs converts all API formats to Swagger 1. With the introduction of OAS3, API Manager uses the `io.swagger.parser.v3.swagger-parser-v3:2.0.16` and `io.swagger.swagger-parser:1.0.48` libraries during the import process. This means that the export of back-end APIs is not supported for OAS3 or WSDL APIs, as this functionality relied on custom code in the old parser that is no longer available.
 
 ## Fixed issues
 
@@ -132,6 +154,6 @@ The following reference documents are also available:
 
 The Axway Global Support team provides worldwide 24 x 7 support for customers with active support agreements.
 
-Email <support@axway.com> or visit Axway Support at <https://support.axway.com>.
+Email <mailto:support@axway.com> or visit Axway Support at <https://support.axway.com>.
 
 See [Get help with API Gateway](/docs/apim_administration/apigtw_admin/trblshoot_get_help/) for the information that you should be prepared to provide when you contact Axway Support.
