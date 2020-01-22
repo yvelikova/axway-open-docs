@@ -1,10 +1,10 @@
 {
-"title": "API Gateway and API Manager 7.7.20200130 Release Notes",
-  "linkTitle": "API Gateway and API Manager 7.7.20200130",
-  "no_list": "true",
-  "weight": "20",
-  "date": "2019-09-20",
-  "description": "Learn about the new features and enhancements in this release of API Gateway and API Manager."
+    "title": "API Gateway and API Manager 7.7.20200130 Release Notes",
+    "linkTitle": "API Gateway and API Manager 7.7.20200130",
+    "no_list": "true",
+    "weight": "20",
+    "date": "2019-09-20",
+    "description": "Learn about the new features and enhancements in this release of API Gateway and API Manager."
 }
 ## Summary
 
@@ -49,8 +49,6 @@ The API Manager UI supports OAS3 `response.content.schemes`.
 * The `DataTypes` in API Manager have been changed to align with the OAS3 data types
 * Users have the option to modify all back-end APIs without cloning
 
-
-
 ### Traffic Monitor Externalisation Showcase
 
 Leveraging existing capabilities to output Traffic Monitor data using the OpenLogging functionality, we will also provide an example dashboard for ElasticSearch to showcase this capability. 
@@ -59,11 +57,15 @@ Easy to integrate with and to setup, ELK enables customers to extend their analy
 
 The integration showcases increased performance, provide the ability to store more data for longer, leveraging 1st class database integration options that ELK provide and also provides role base access control capability if used in conjuction with LDAP. 
 
-
-
 ## Important changes
 
 <!-- Use this section to describe any changes in the behavior of the product (as a result of features or fixes), for example, new Java system properties in the jvm.xml file. This section could also be used for any important information that doesn't fit elsewhere. -->
+
+### Increased validation of WSDLs
+In this release the xerces library has been updated to `xerces 2.12.0`. This library enforces stricter rules when validating malformed schemas. This means that some WSDLs that were previously imported successfully by API Manager might not import successfully in this version. To suppress schema validation errors and relax the stricter validation of XML files a new flag `-DwsdlImport.suppressSchemaValidationErrors` is available in the `policystudio.ini` file. Set this flag to `true` if required. The default value `false`.
+
+### Filebeat v6.2.2
+Filebeat has been updated to use v6.2.2. When installing Filebeat, follow the [official filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
 
 ## Limitations of this release
 
@@ -92,6 +94,8 @@ In able to stay current and align our offerings with customer demand and best pr
 
 * API Tester - For testing APIs, it is recommended to use alternative tools, such as Postman, SoapUI, or API Fortress.
 * RAML support - RESTful API Modeling Language (RAML) support has been removed in favour of widely-adopted standards like Swagger and OpenAPI 3. 
+* A security issue with the `api/portal/v1.3/users` API means that the behaviour has changed. This API now returns all organizations for the API Admin role only. Previously, all organizations were returned for all roles.
+* The export back-end API functionality converts all API formats to Swagger 1. With the introduction of OAS3 API Manager now uses the `io.swagger.parser.v3.swagger-parser-v3:2.0.16` and `io.swagger.swagger-parser:1.0.48` libraries during the import process. This means that the export of back-end APIs is not supported for OAS3 or WSDL APIs, as this functionality relied on custom code in the old parser that is no longer available. 
 
 ## Fixed issues
 

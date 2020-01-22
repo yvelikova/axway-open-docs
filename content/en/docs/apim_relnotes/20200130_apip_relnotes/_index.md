@@ -4,7 +4,7 @@ linkTitle: API Portal 7.7.20200130
 weight: 30
 no_list: true
 date: 2019-08-08
-description: Learn about the new features and enhancements in this release.
+description: Learn about the new features and enhancements in this release of API Portal.
 ---
 
 ## Summary
@@ -20,7 +20,11 @@ API Portal is available as a software installation or a virtualized deployment 
 
 The following new features and enhancements are available in this release.
 
-<!-- Add the new features here -->
+<!-- Add the new features here. -->
+
+## Important changes
+
+<!-- Use this section to describe any changes in the behavior of the product (as a result of features or fixes). This section could also be used for any important information that doesn't fit elsewhere.-->
 
 ## Limitations of this release
 
@@ -32,6 +36,8 @@ This release has the following limitations:
 * API Portal 7.7 is compatible with API Gateway and API Manager 7.7 only.
 
 ## Fixed issues
+
+<!-- Fixed issues are maintained in another topic -->
 
 See [Fixed issues](/docs/apim_relnotes/20200130_apip_relnotes/fixed_issues/) for a complete list.
 
@@ -52,13 +58,21 @@ If you change the API Portal language to Arabic (or any other right to left lang
 
 Related Issue: IAP-308
 
+## Install or upgrade a non-container deployment
+
+<!-- Add install instructions here -->
+
+## Install or upgrade a container deployment
+
+<!-- Add install instructions here -->
+
 ## Documentation
 
 This section describes documentation enhancements and related documentation.
 
 ### Documentation enhancements
 
-placeholder
+<!-- Add a summary of doc changes or enhancements here-->
 
 ### Related documentation
 
