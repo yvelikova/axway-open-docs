@@ -113,8 +113,6 @@ The following list summarizes the replaced Purity III files:
 
 ## Customize your home page layout
 
-Customize the API Portal home page using Joomla! and ThemeMagic.
-
 **apiportal-homepage** layout is assigned to the home menu item by default. This layout is available from the `apiportal-homepage` template.
 
 The home page consists of the following main sections:
@@ -124,7 +122,7 @@ The home page consists of the following main sections:
 * Tiles section
 * Footer
 
-### Edit the Home Page layout
+To customize the layout of your portal:
 
 1. In JAI, click **Extensions > Templates**.
 2. In the Templates sidebar, select **Styles**, then select the style **apiportal-homepage**.
@@ -136,7 +134,7 @@ For more details see [T3 Framework Layout](http://www.t3-framework.org/documenta
 
 ### Customize your banner
 
-Change API Portal banner using the **Home Page Banner** module.
+Change the banner of your portal using the **Home Page Banner** module.
 
 To customize the banner:
 
@@ -164,7 +162,7 @@ To customize the banner:
 
 ### Customize the tiles
 
-Modify API Portal tiles in the home page using the **Home Tiles** module.
+Modify the tiles in the home page using the **Home Tiles** module.
 
 ![Tiles home page](/Images/APIPortal/tiles-homepage.png)
 
@@ -175,7 +173,7 @@ By default, there are four instances of this module:
 * **Home Tiles 3** (Manage & analyze)
 * **Home Tiles 4** (Connect with a community of developers)
 
-To customize this module:
+To customize this tiles:
 
 1. In JAI, click **Extensions > Modules > Home Tiles 1**.
 
