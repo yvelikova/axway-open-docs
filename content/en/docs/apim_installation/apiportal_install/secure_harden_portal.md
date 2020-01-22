@@ -1,9 +1,9 @@
 {
 "title": "Secure API Portal",
-"linkTitle": "Secure API Portal",
-"weight": "8",
-"date": "2019-08-09",
-"description": "Secure and harden your API Portal environment after installation."
+  "linkTitle": "Secure API Portal",
+  "weight": "8",
+  "date": "2019-08-09",
+  "description": "Secure and harden your API Portal environment after installation."
 }
 
 Perform the following steps after installation to ensure that your API Portal environment is secure from internal and external threats:
@@ -289,6 +289,18 @@ API Portal logs are located in the `logs` folder in the API Portal root director
 We recommend that you develop a log retention policy to identify storage requirements for device logs, and appropriate archival procedures to ensure that the audit logs are available for a security response in the case of an incident or investigation.
 
 The audit logs must be collected for the last 30 days in easily accessible storage media. Older logs should be archived in a protected storage and should be accessible in the future as required for incidents or investigations.
+
+## Detect and prevent the usage of automated tools or unusual behavior
+
+Detecting abnormal behavior is very complex task and good prevention means a set of actions taken not only on application layer but also firewall, network monitoring, proxy servers etc.
+Here are some general recomendations from us : 
+1. IP throttling - it limits the number of connections from a given IP address within a given time period (what is considered human normal activity). It could be achieved by different ways:
+* Several toolkits like mod_security. For more details, please reffer to the following url :
+https://modsecurity.org/rules.html
+* Firewall configurations. For more details please reffer to the oficial documentation of your firewall.
+2. Google analytics - it has abnormal detection features. Very commonly used and reliable tool.  https://support.google.com/analytics/answer/7507748?hl=en
+
+3. There are plenty of log analysis tools that can be installed to act upon different logs. Example - https://www.loggly.com/docs/anomaly-detection/
 
 ## Where to go next
 
