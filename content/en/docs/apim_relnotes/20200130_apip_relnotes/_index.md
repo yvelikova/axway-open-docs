@@ -1,11 +1,12 @@
 ---
 title: API Portal 7.7.20200130 Release Notes
 linkTitle: API Portal 7.7.20200130
-no_list: true
 weight: 30
-date: 2019-08-08T00:00:00.000Z
+no_list: true
+date: 2019-08-08
 description: Learn about the new features and enhancements in this release of API Portal.
 ---
+
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
@@ -21,7 +22,8 @@ The following new features and enhancements are available in this release.
 
 **Custom Install Directory**
 
-* Up to release 7.7.0, you must install API Portal into a fixed directory which is very restrictive and makes it harder to comply with internal policies and security guidelines 
+* Up to release 7.7.0, you must install API Portal into a fixed directory
+ which is very restrictive and makes it harder to comply with internal policies and security guidelines 
 * This restriction has been removed and you can now install API Portal to a location of your choice
 * The default path can still be used but is no longer mandatory
 * This approach is now consistent with API Manager and Gateway
@@ -96,6 +98,6 @@ The following reference documents are also available:
 
 The Axway Global Support team provides worldwide 24 x 7 support for customers with active support agreements.
 
-Email <mailto:support@axway.com> or visit <https://support.axway.com/>.
+Email <support@axway.com> or visit <https://support.axway.com/>.
 
 See [Get help with API Gateway](/docs/apim_administration/apigtw_admin/trblshoot_get_help/) for the information that you should be prepared to provide when you contact Axway Support.
