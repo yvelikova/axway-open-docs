@@ -47,6 +47,8 @@ const collections = [{
   label_singular: 'page in APIM concepts section',
   description: 'All pages relating to API management concepts',
   folder: 'content/en/docs/apimgr_concepts',
+  media_folder: `../../../../{{media_folder}}/docbook/images/api_mgmt`,
+  public_folder: `{{public_folder}}/docbook/images/api_mgmt`,
 }, {
   ...docsPageDefaults,
   name: 'apigtw_install',
@@ -312,8 +314,8 @@ const config = {
     open_authoring: true,
   },
   publish_mode: 'editorial_workflow',
-  media_folder: 'static/Images/uploads', // Media files will be stored in the repo under static/Images/uploads
-  public_folder: '/Images/uploads', // The src attribute for uploaded media will begin with /Images/uploads
+  media_folder: 'static/Images', // Media files will be stored in the repo under static/Images
+  public_folder: '/Images', // The src attribute for uploaded media will begin with /Images
   site_url: 'https://axway-open-docs.netlify.com/', // for fork testing use https://fork-axway-open-docs.netlify.com/
   collections,
 };
