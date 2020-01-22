@@ -52,9 +52,9 @@ The API Manager UI supports OAS3 `response.content.schemes`.
 
 ### Traffic monitor externalization showcase
 
-An example dashboard for ElasticSearch leverages existing capabilities to output traffic monitor data using the open logging functionality, and showcases this capability.
+An example dashboard for Elasticsearch leverages existing capabilities to output traffic monitor data using the open logging functionality, and showcases this capability.
 
-Easy to integrate with and to setup, ELK enables you to extend your analytics needs using easy customization options.
+Easy to integrate with and to set up, [ELK](https://www.elastic.co/what-is/elk-stack) enables you to extend your analytics needs using easy customization options.
 
 The integration showcases increased performance, provides the ability to store more data for longer, leveraging first class database integration options that ELK provide, and also provides role based access control capabilities if used in conjunction with LDAP.
 
@@ -68,7 +68,7 @@ In this release the xerces library has been updated to `xerces 2.12.0`. This lib
 
 ### Filebeat v6.2.2
 
-Filebeat has been updated to use v6.2.2. When installing Filebeat, follow the [official filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
+Filebeat has been updated to use v6.2.2. When installing Filebeat, follow the [official Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
 
 ## Limitations of this release
 
