@@ -22,11 +22,7 @@ The following new features and enhancements are available in this release.
 
 **Custom Install Directory**
 
-* Up to release 7.7.0, you must install API Portal into a fixed directory
- which is very restrictive and makes it harder to comply with internal policies and security guidelines 
-* This restriction has been removed and you can now install API Portal to a location of your choice
-* The default path can still be used but is no longer mandatory
-* This approach is now consistent with API Manager and Gateway
+The restriction to install API Portal into the `/opt/axway/apiportal/htdoc` default directory has been removed, and you can now perform the installation in a location of your choice.
 
 ## Important changes
 
