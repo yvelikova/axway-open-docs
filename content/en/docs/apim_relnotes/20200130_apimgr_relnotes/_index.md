@@ -52,11 +52,34 @@ The API Manager UI supports OAS3 `response.content.schemes`.
 
 ### Traffic monitor externalization showcase
 
-An example dashboard for Elasticsearch leverages existing capabilities to output traffic monitor data using the open logging functionality, and showcases this capability.
+An example dashboard for Elasticsearch leverages existing capabilities to output traffic monitor data using the open logging functionality and showcases this capability.
 
 Easy to integrate with and to set up, [ELK](https://www.elastic.co/what-is/elk-stack) enables you to extend your analytics needs using easy customization options.
 
-The integration showcases increased performance, provides the ability to store more data for longer, leveraging first class database integration options that ELK provide, and also provides role based access control capabilities if used in conjunction with LDAP.
+The showcase provides a HTML version of the Traffic Monitor dashboard to visualize data, while demonstrating how you can leverage ELK to increase performance and storage capacity.
+
+{{< alert title="Note" color="primary" >}}
+This showcase is not for use in a production environment. It is designed to run locally alongside a running API Gateway for demo purposes. Auto scaling in a multi-node environment requires custom configuration of Elasticsearch indexes.
+{{< /alert >}}
+
+### Multi organization beta
+
+A new beta version (1.4) version of the following APIs are shipped with this release.
+
+* The `user` API facilitates the GET, POST, UPDATE and DELETE of additional organizations and roles.
+* The `currentuser` API is used by API Manager and returns the organizations and role information as part of a validation check.
+* The `apirepo` API encapsulates all of the actions that can be performed to manage a back-end API in API Manager. You can pass in an `organizationId={uuid}` to filter by organization, or specify no `{uuid}` to return all of the back-end APIs for all organizations that the user is a member of.
+* The `discovery` API manages all APIs in the API Catalog and all virtualized front-end APIs. This API also provides the ability to return all APIs associated with a user, or to filter by an `organizationId={uuid}`.
+
+These APIs manage two new variables, the `orgs2Role` and `orgs2Name` maps. The user is still assigned to a primary organization as in earlier versions, however, the new variables store additional organizations and the user's role within each organization.
+
+The beta 1.4 version of the APIs are generated in OAS3 format and published on the [swagger-ui page](http://apidocs.axway.com/swagger-ui/index.html).
+
+To enable the 1.4 beta APIs in Policy Studio, browse to the `API Portal v1.4` Servlet and set the `com.axway.portal.servlet.disabled` flag to false.
+
+{{< alert title="Note" color="primary" >}}
+Do not enable this flag on a production environment. Use these APIs only in test environments. Feedback on the implementation is welcome.
+{{< /alert >}}
 
 ## Important changes
 
@@ -133,6 +156,8 @@ This section describes documentation enhancements and related documentation.
 ### Documentation enhancements
 
 <!-- Add a summary of doc changes or enhancements here-->
+
+All API Manager APIs are represented as both Swagger 2 and OAS3 (previously these APIs were only available in Swagger 2 format). The OAS3 representation of the APIs provides additional information and are better aligned to the <https://editor.swagger.io/> standard.
 
 ### Related documentation
 
