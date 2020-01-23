@@ -39,7 +39,7 @@ New slogan explaining the applications concept, better information messaging and
 
 Previously this setting applied to both the API listing and API details view at the same time. Now it applied to the API listing only. API details view now respects the API Manager configuration for the Description field under the API tab in API Manager . This is useful if you want to only a display a summary of the API on the API listing but want a full description when viewing the API details. 
 
-**Easier catalog management**
+**Easier Catalog Management**
 
 New setting “Do not show APIs with tags” added to the API Catalog menu options . Supports * and ? wildcards. It is very powerful when used with the ”Show APIs with tags” setting.
 
