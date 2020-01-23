@@ -240,16 +240,11 @@ Perform the following steps in Policy Studio:
 5. Ensure that the settings for this relative path match those for the `/login-failed` relative path, the only difference being the path name.
 6. Set **File** to `$VDISTDIR/webapps/apiportal/login.html`.
 7. Enter the following values to the additional headers table, and click **OK**:
-
    * `Content-Security-Policy`: `frame-ancestors 'none'`
    * `X-Frame-Options`: `DENY`
-
 8. Edit each of the servlets (`API Portal v1.2 (‘v1.2’)` and `API Portal v1.3 (‘v1.3’)`) as follows:
    * Edit the property `jersey.config.server.provider.classnames`. In the **Value** field add the class name `com.vordel.common.apiserver.filter.SSOBindingFeature` to the existing comma-separated list of class names.
    * Add a new property. In the **Name** field enter the name `CsrfProtectionFilterFactory.refererWhitelist` and in the **Value** field enter the URL of the IdP (for example, `https://sample_idp_host:8443`).
-
-    ![Servlet configuration for SAML SSO](/Images/docbook/images/api_mgmt/saml_sso_config_ps.png)
-
 9. Deploy the configuration to the API Manager-enabled API Gateway instance.
 
 ## Step 4 – Configure SAML endpoint URLs in the IdP
