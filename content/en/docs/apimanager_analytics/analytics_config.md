@@ -61,8 +61,8 @@ Perform the following steps to run `configureserver` in interactive mode:
 The following command shows some example output in interactive mode:
 
 ```
-/opt/Axway-7.8/analytics/posix/bin> configureserver
-Connecting to configuration at : federated:file:////opt/Axway-7.8/analytics/conf/fed/configs.xml
+/opt/Axway-7.7/analytics/posix/bin> configureserver
+Connecting to configuration at : federated:file:////opt/Axway-7.7/analytics/conf/fed/configs.xml
 Listening port [8040]:
 Configuring Database: Default Database Connection
 Database URL [jdbc:mysql://127.0.0.1:3306/reports]:

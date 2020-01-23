@@ -3,10 +3,10 @@
     "linkTitle": "Upgrade metrics database for API Manager",
     "weight": 5,
     "date": "2019-10-07",
-    "description": "Upgrade your metrics database to version 7.8."
+    "description": "Upgrade your metrics database to version 7.7."
 }
 
-If you are using a metrics database with an earlier version of API Gateway for monitoring in API Manager or third party tools, you must follow the steps in this section to upgrade the database. Data in your old metrics database will be preserved and the upgraded database will be fully compatible with version 7.8.
+If you are using a metrics database with an earlier version of API Gateway for monitoring in API Manager or third party tools, you must follow the steps in this section to upgrade the database. Data in your old metrics database will be preserved and the upgraded database will be fully compatible with version 7.7.
 
 {{< alert title="Note" color="primary" >}}For details on upgrading a metrics database for use with API Gateway Analytics, see [Upgrade API Gateway Analytics](/docs/apim_installation/apigw_upgrade/upgrade_analytics/) instead.{{< /alert >}}
 
@@ -21,7 +21,7 @@ The following summarizes the steps to upgrade your metrics database, depending o
 
 ## Rollback strategy
 
-If you want to be able to revert back to your old version of API Gateway, the best approach is to create a new metrics database for version 7.8. The old versions can then be relaunched without changes. Where appropriate, this topic details additional tasks that you need to perform to implement this rollback strategy.
+If you want to be able to revert back to your old version of API Gateway, the best approach is to create a new metrics database for version 7.7. The old versions can then be relaunched without changes. Where appropriate, this topic details additional tasks that you need to perform to implement this rollback strategy.
 
 ## Back up the metrics database in your old installation
 

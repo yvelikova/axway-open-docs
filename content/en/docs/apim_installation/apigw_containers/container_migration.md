@@ -8,7 +8,7 @@
 
 ## Prerequisites
 
-* Your 7.8 classic deployment must be configured correctly and working as expected. The 7.8 deployment can be a system you upgraded from an earlier version or it can be a new installation.
+* Your 7.7 classic deployment must be configured correctly and working as expected. The 7.7 deployment can be a system you upgraded from an earlier version or it can be a new installation.
 * Apache Cassandra and any relational databases your system uses must be in the same network as your Docker host and accessible to your Docker host.
 * You must have an appropriate license to run API Gateway or API Manager in a Docker container.
 
@@ -16,7 +16,7 @@
 
 The following is a sample topology used to demonstrate the steps you must perform to migrate from a classic deployment to a container deployment. Your own topology might be significantly different and you must adapt the steps appropriately.
 
-In this example, the API Gateway 7.8 classic deployment being migrated has the following topology:
+In this example, the API Gateway 7.7 classic deployment being migrated has the following topology:
 
 * One Admin Node Manager named ANM1
 * API Gateway Group1 contains an API Gateway named GW1

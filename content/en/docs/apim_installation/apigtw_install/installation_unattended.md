@@ -22,7 +22,7 @@ You can run the API Gateway installer in unattended mode on the command line. Pe
 The following example shows how to install all available API Gateway components excluding API Manager in unattended mode:
 
 ```
-./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended --setup_type standard --licenseFilePath my_license.lic --analyticsLicenseFilePath my_analytics_license.lic --prefix /opt/Axway-7.8 --cassandraInstalldir opt/db/cassandra --cassandraJDK opt/jre --startCassandra 1
+./APIGateway_7.7_Install_linux-x86-32_BN<n>.run --mode unattended --setup_type standard --licenseFilePath my_license.lic --analyticsLicenseFilePath my_analytics_license.lic --prefix /opt/Axway-7.7 --cassandraInstalldir opt/db/cassandra --cassandraJDK opt/jre --startCassandra 1
 ```
 
 The components are installed in the background, in the directory specified by the `--prefix` option.
@@ -32,7 +32,7 @@ The components are installed in the background, in the directory specified by th
 The following example shows how to install all API Gateway components, including API Manager, in unattended mode:
 
 ```
-./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --mode unattended --setup_type complete --licenseFilePath my_license.lic --analyticsLicenseFilePath my_analytics_license.lic --apimgmtLicenseFilePath my_mgmt_license.lic --prefix /opt/Axway-7.8 --cassandraInstalldir /opt/db/cassandra --cassandraJDK /opt/jre --startCassandra 1
+./APIGateway_7.7_Install_linux-x86-32_BN<n>.run --mode unattended --setup_type complete --licenseFilePath my_license.lic --analyticsLicenseFilePath my_analytics_license.lic --apimgmtLicenseFilePath my_mgmt_license.lic --prefix /opt/Axway-7.7 --cassandraInstalldir /opt/db/cassandra --cassandraJDK /opt/jre --startCassandra 1
 ```
 
 The components are installed in the background, in the directory specified by the `--prefix` option.
@@ -48,13 +48,13 @@ For a description of all the available command-line options and their default se
 **Linux**:
 
 ```
-./APIGateway_7.8_Install_linux-x86-32_BN<n>.run --help
+./APIGateway_7.7_Install_linux-x86-32_BN<n>.run --help
 ```
 
 **Windows**:
 
 ```
-APIGateway_7.8_Client_Tools_Install_win-x86-32_BN<n>.exe --help
+APIGateway_7.7_Client_Tools_Install_win-x86-32_BN<n>.exe --help
 ```
 
 The following summarizes some of the more common options:

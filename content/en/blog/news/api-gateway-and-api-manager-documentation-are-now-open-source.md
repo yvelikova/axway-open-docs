@@ -6,7 +6,7 @@ description: >-
   API Gateway and API Manager documentation has now been migrated to
   Axway-Open-Docs!
 ---
-We are very excited to announce the availability of the latest version of API Gateway and API Manager documentation in our open source docs-as-code workflow! Following on from [Open source documentation is here for AMPLIFY Central and API Portal](/blog/2019/09/18/open-source-documentation-is-here-for-amplify-central-and-api-portal-7.8/) we have now migrated all of the API Gateway and API Manager content as well (except for a few low priority guides which will follow later).
+We are very excited to announce the availability of the latest version of API Gateway and API Manager documentation in our open source docs-as-code workflow! Following on from [Open source documentation is here for AMPLIFY Central and API Portal](/blog/2019/09/18/open-source-documentation-is-here-for-amplify-central-and-api-portal/) we have now migrated all of the API Gateway and API Manager content as well (except for a few low priority guides which will follow later).
 
 ## What does this mean for you?
 
@@ -18,7 +18,7 @@ Here's a short animation demonstrating how to make and preview a change with Net
 
 ![Animation that shows editing using Netlify CMS](/Images/other/CMSQuickStart.gif "Animation that shows editing using Netlify CMS")
 
-The CMS also allows you to make further updates after sending the changes for review (for example, to clarify something or to add something you forgot). It's also the easiest way to add a new topic within an existing section. 
+The CMS also allows you to make further updates after sending the changes for review (for example, to clarify something or to add something you forgot). It's also the easiest way to add a new topic within an existing section.
 
 For those who have Markdown skills and prefer to use GitHub UI, this option is also provided via an Edit on Github button on each page of the documentation.  Of course, if you are a Git expert you can also use Git CLI to fork the Axway GitHub repo and submit a pull request. The choice is yours :)
 

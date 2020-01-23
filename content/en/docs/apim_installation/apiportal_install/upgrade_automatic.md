@@ -3,10 +3,8 @@
     "linkTitle":"Upgrade API Portal",
     "weight":"20",
     "date":"2019-08-09",
-    "description":"Upgrade your existing API Portal."
+    "description":"Upgrade your existing API Portal to 7.7."
 }
-
-This section describes how to upgrade your existing API Portal to 7.8.
 
 This section does not describe how to upgrade API Gateway. For information on upgrading API Gateway, see [API Gateway Upgrade Guide](/docs/apim_installation/apigw_upgrade/).
 
@@ -22,8 +20,8 @@ Before you upgrade, complete the following prerequisites. These prerequisites ap
 
 If you have an existing API Portal installation, you can upgrade that installation to a newer version without having to repeat the initial setup.
 
-* Upgrade to API Portal 7.8 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to 7.7.
-* API Portal 7.8 is compatible with API Gateway and API Manager 7.8 only.
+* Upgrade to API Portal 7.7 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
+* API Portal 7.7 is compatible with API Gateway and API Manager 7.7 only.
 
 To upgrade your API Portal software installation, follow these steps:
 
