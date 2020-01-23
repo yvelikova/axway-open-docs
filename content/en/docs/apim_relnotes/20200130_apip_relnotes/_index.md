@@ -43,6 +43,10 @@ Previously this setting applied to both the API listing and API details view at 
 
 New setting “Do not show APIs with tags” added to the API Catalog menu options . Supports * and ? wildcards. It is very powerful when used with the ”Show APIs with tags” setting.
 
+**OAS 3 Support**
+
+We have integrated with the swagger.io UI component to bring the standardised look & feel of swagger.io right into the core of API Portal. With additional configurations added on top of the basic integration , there is now more control than ever over your favourite Swagger interface. OAS 3 support is now enabled.
+
 
 
 ## Important changes
