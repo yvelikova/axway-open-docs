@@ -43,7 +43,7 @@ Previously this setting applied to both the API listing and API details view at 
 
 New setting “Do not show APIs with tags” added to the API Catalog menu options . Supports * and ? wildcards. It is very powerful when used with the ”Show APIs with tags” setting.
 
-12345
+
 
 ## Important changes
 
