@@ -20,36 +20,39 @@ API Portal is available as a software installation or a virtualized deployment 
 
 The following new features and enhancements are available in this release.
 
-**Custom Install Directory**
+### Custom install directory
 
-The restriction to install API Portal into the `/opt/axway/apiportal/htdoc` default directory has been removed, and you can now perform the installation in a location of your choice.
+The restriction to install API Portal into the `/opt/axway/apiportal/htdoc` default directory has been removed, and you can now perform the installation in a directory of your choice.
 
+### Unattended mode installation
 
-**Unattended Mode**
+Installing API Portal in unattended mode no longer requires ordering the parameters when running the install script. We now support named parameters, which can be supplied in any order.
 
-The ordering of the parameters when installing using unattended mode no longer matters. We now support named parameters which can be supplied in any order. Comprehensive --help command now available also.
+### Home page customization
 
-**Homepage Customisation**
+The home page has been completely rebuilt using Joomla! modules, which allow for a more extensively customization using the configuration settings in the Joomla! Admin Interface (JAI). No source code changes are required.
 
-The homepage has been completely rebuilt using Joomla modules which allow the homepage to be more extensively customised using configuration settings in the Joomla Admin interface, no source code changes required. Customising in this way is upgrade safe and responsive.
+For more information, see [Customize your home page layout](/docs/apim_administration/apiportal_admin/customize_getting_started/#customize-your-home-page-layout).
 
-**Application Tab Improvements**
+### Application tab improvements
 
 New slogan explaining the applications concept, better information messaging and a consistent message style now applied across info, warning and error messages.
 
-**API Information Source setting**
+### API information source setting
 
-Previously this setting applied to both the API listing and API details view at the same time. Now it applied to the API listing only. API details view now respects the API Manager configuration for the Description field under the API tab in API Manager . This is useful if you want to only a display a summary of the API on the API listing but want a full description when viewing the API details. 
+Previously this setting applied to both the API listing and API details view at the same time. Now it applied to the API listing only. API details view now respects the API Manager configuration for the Description field under the API tab in API Manager . This is useful if you want to only a display a summary of the API on the API listing but want a full description when viewing the API details.
 
-**Easier Catalog Management**
+### Add tags to APIs
 
-New setting “Do not show APIs with tags” added to the API Catalog menu options . Supports * and ? wildcards. It is very powerful when used with the ”Show APIs with tags” setting.
+A new setting, **Do not show APIs with tags**, was added to the API Catalog menu options. This setting supports `*` and `?` wildcards, and it is a powerful option when used in combination with **Show APIs with tags** setting.
 
-**OAS 3 Support**
+For more information, see [Group APIs with tags](/docs/apim_administration/apiportal_admin/customize_apicatalog_overview/#group-apis-with-tags).
 
-We have integrated with the swagger.io UI component to bring 
-the standardised look & feel of swagger.io right into the core of API Portal. With additional configurations added on top of the basic integration, there is now more control than ever over your favourite Swagger interface. OAS 3 support is now enabled.
+### Open API Specification (OAS) 3.0 Support
 
+OAS3 support is now enabled! We have integrated with the Swagger.io UI component to bring the standardized look & feel of Swagger.io right into the core of API Portal. With additional configurations added on top of the basic integration there is now more control than ever over your favorite Swagger interface.
+
+For more information, see [Additional features for API Catalog view](/docs/apim_administration/apiportal_admin/apip_overview/#additional-features-api-catalog-view).
 
 ## Important changes
 
@@ -121,8 +124,6 @@ The following reference documents are also available:
 
 The Axway Global Support team provides worldwide 24 x 7 support for customers with active support agreements.
 
-
 Email <support@axway.com> or visit <https://support.axway.com/>.
-
 
 See [Get help with API Gateway](/docs/apim_administration/apigtw_admin/trblshoot_get_help/) for the information that you should be prepared to provide when you contact Axway Support.
