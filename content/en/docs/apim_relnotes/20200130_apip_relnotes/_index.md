@@ -1,12 +1,11 @@
 ---
 title: API Portal 7.7.20200130 Release Notes
 linkTitle: API Portal 7.7.20200130
-weight: 30
 no_list: true
-date: 2019-08-08
+weight: 30
+date: 2019-08-08T00:00:00.000Z
 description: Learn about the new features and enhancements in this release of API Portal.
 ---
-
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
@@ -42,7 +41,7 @@ New slogan explaining the applications concept, better information messaging and
 
 Previously this setting applied to both the API listing and API details view at the same time. Now it applied to the API listing only. API details view now respects the API Manager configuration for the Description field under the API tab in API Manager . This is useful if you want to only a display a summary of the API on the API listing but want a full description when viewing the API details.
 
-### Add tags to APIs
+### Control the visibility of APIs in the catalog
 
 A new setting, **Do not show APIs with tags**, was added to the API Catalog menu options. This setting supports `*` and `?` wildcards, and it is a powerful option when used in combination with **Show APIs with tags** setting.
 
@@ -124,6 +123,6 @@ The following reference documents are also available:
 
 The Axway Global Support team provides worldwide 24 x 7 support for customers with active support agreements.
 
-Email <support@axway.com> or visit <https://support.axway.com/>.
+Email <mailto:support@axway.com> or visit <https://support.axway.com/>.
 
 See [Get help with API Gateway](/docs/apim_administration/apigtw_admin/trblshoot_get_help/) for the information that you should be prepared to provide when you contact Axway Support.
