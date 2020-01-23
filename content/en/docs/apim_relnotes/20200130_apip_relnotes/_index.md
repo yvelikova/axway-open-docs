@@ -45,6 +45,8 @@ New setting “Do not show APIs with tags” added to the API Catalog menu optio
 
 
 
+XXXXXXX
+
 ## Important changes
 
 <!-- Use this section to describe any changes in the behavior of the product (as a result of features or fixes). This section could also be used for any important information that doesn't fit elsewhere.-->
