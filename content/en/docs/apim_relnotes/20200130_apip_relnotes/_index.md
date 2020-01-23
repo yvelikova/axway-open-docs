@@ -1,11 +1,12 @@
 ---
 title: API Portal 7.7.20200130 Release Notes
 linkTitle: API Portal 7.7.20200130
-no_list: true
 weight: 30
-date: 2019-08-08T00:00:00.000Z
+no_list: true
+date: 2019-08-08
 description: Learn about the new features and enhancements in this release of API Portal.
 ---
+
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
@@ -22,6 +23,7 @@ The following new features and enhancements are available in this release.
 **Custom Install Directory**
 
 The restriction to install API Portal into the `/opt/axway/apiportal/htdoc` default directory has been removed, and you can now perform the installation in a location of your choice.
+
 
 **Unattended Mode**
 
@@ -47,6 +49,7 @@ New setting “Do not show APIs with tags” added to the API Catalog menu optio
 
 We have integrated with the swagger.io UI component to bring 
 the standardised look & feel of swagger.io right into the core of API Portal. With additional configurations added on top of the basic integration, there is now more control than ever over your favourite Swagger interface. OAS 3 support is now enabled.
+
 
 ## Important changes
 
@@ -118,6 +121,8 @@ The following reference documents are also available:
 
 The Axway Global Support team provides worldwide 24 x 7 support for customers with active support agreements.
 
-Email <mailto:support@axway.com> or visit <https://support.axway.com/>.
+
+Email <support@axway.com> or visit <https://support.axway.com/>.
+
 
 See [Get help with API Gateway](/docs/apim_administration/apigtw_admin/trblshoot_get_help/) for the information that you should be prepared to provide when you contact Axway Support.

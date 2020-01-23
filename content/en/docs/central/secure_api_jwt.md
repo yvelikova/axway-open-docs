@@ -6,13 +6,13 @@ date: 2019-07-30
 description: Learn how to secure your API using a JWT token.
 ---
 
-*Estimated reading time: 6 minutes*
+*Estimated reading time*: 6 minutes
 
 ## Before you start
 
-- You will need a basic understanding of JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523))
-- You will need a user account for AMPLIFY Central
-- Import your API as an API proxy in AMPLIFY Central (see [Register an API](/docs/central/quickstart/#register-an-api))
+* You will need a basic understanding of JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523))
+* You will need a user account for AMPLIFY Central
+* Import your API as an API proxy in AMPLIFY Central (see [Register an API](/docs/central/quickstart/#register-an-api))
 
 ## Objectives
 
@@ -38,9 +38,9 @@ To be able to test your API, create an app to manage client access to your API:
 2. On the **Identity Profiles** tab, in the **JWT Keys** section, add a new JWT key.
 3. Enter a name for the key.
 4. Paste your JWT public key into the **JWT Key** field.
-    - You must create your own JWT token to secure an API with JWT.
-    - The JWT token must be signed using the `RS256` algorithm.
-    - There are many services that allow you to create a JWT token. See [Create a JWT token](#create-a-jwt-token) for some examples, however, you can choose whichever service is best suited for your organization. These services provide you with both a public key and a private key. The public key is needed for this step.
+    * You must create your own JWT token to secure an API with JWT.
+    * The JWT token must be signed using the `RS256` algorithm.
+    * There are many services that allow you to create a JWT token. See [Create a JWT token](#create-a-jwt-token) for some examples, however, you can choose whichever service is best suited for your organization. These services provide you with both a public key and a private key. The public key is needed for this step.
 5. On the **APIs** tab, add a new API.
 6. Select your API proxy with JWT authentication, and select the runtime group you deployed it to.
 
@@ -64,9 +64,9 @@ Watch the animation to learn how to do this in AMPLIFY Central UI.
 
 There are many libraries and methods for creating signed JWT tokens. The first step is to generate an RSA key pair. This section demonstrates generating the key pair and provides examples of the following signing methods:
 
-- Bash script using openssl and jq
-- Go binary
-- jwt.io
+* Bash script using openssl and jq
+* Go binary
+* jwt.io
 
 ### Generate a key pair
 
@@ -193,9 +193,9 @@ Copy the sample above to a script called `signPrvtKey.sh` and execute it with:
 
 This example uses [jwt.io](https://jwt.io/) to create a JWT token:
 
-- Use the default public key from jwt.io as the **JWT Key** for your app in AMPLIFY Central or create a public key as detailed in [Generate a key pair](#generate-a-key-pair).
-- To create the JWT token, you need the **Application ID** and **JWT Key ID** from the API proxy in AMPLIFY Central.
-- Use the generated JWT token from jwt.io as the **JWT Token** to test your API in AMPLIFY Central.
+* Use the default public key from jwt.io as the **JWT Key** for your app in AMPLIFY Central or create a public key as detailed in [Generate a key pair](#generate-a-key-pair).
+* To create the JWT token, you need the **Application ID** and **JWT Key ID** from the API proxy in AMPLIFY Central.
+* Use the generated JWT token from jwt.io as the **JWT Token** to test your API in AMPLIFY Central.
 
 {{< alert title="Caution" color="warning" >}} This method is for testing only as it requires you to share your private key with a third party website.{{< /alert >}}
 
@@ -215,8 +215,8 @@ To create a JWT token on jwt.io:
     ```
 
 5. Edit the Payload section.
-    - Copy and paste the **Application ID** from the **Test Methods** tab of the API proxy in AMPLIFY Central as the `sub`, `aud`, and `iss` fields. 
-    - For the `iat` and `exp` fields, enter epoch values for when the token was issued at and when it expires. For example:
+    * Copy and paste the **Application ID** from the **Test Methods** tab of the API proxy in AMPLIFY Central as the `sub`, `aud`, and `iss` fields.
+    * For the `iat` and `exp` fields, enter epoch values for when the token was issued at and when it expires. For example:
 
         ```
         {

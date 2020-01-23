@@ -6,22 +6,22 @@ date: 2019-07-30
 description: Learn how to register your first API in AMPLIFY Central.
 ---
 
-*Estimated reading time: 2 minutes*
+*Estimated reading time*: 2 minutes
 
 ## Before you start
 
-- Read [AMPLIFY Central overview](/docs/central/overview)
-- Read [Understand AMPLIFY Central concepts](/docs/central/fundamental_concepts)
-- Sign up for a free trial of AMPLIFY Central at [AMPLIFY platform](https://platform.axway.com/)
+* Read [AMPLIFY Central overview](/docs/central/overview)
+* Read [Understand AMPLIFY Central concepts](/docs/central/fundamental_concepts)
+* Sign up for a free trial of AMPLIFY Central at [AMPLIFY platform](https://platform.axway.com/)
 
 ## Objectives
 
 Learn how to register your first API in AMPLIFY Central.
 
-- Register an API as an API proxy and deploy it to a runtime group
-- Secure the API with a client authentication policy
-- Monitor the API usage and traffic
-- Publish the API endpoints to AMPLIFY Catalog
+* Register an API as an API proxy and deploy it to a runtime group
+* Secure the API with a client authentication policy
+* Monitor the API usage and traffic
+* Publish the API endpoints to AMPLIFY Catalog
 
 ## Register an API
 
@@ -39,9 +39,9 @@ Watch this video to learn how to secure your API with a client authentication po
 
 To monitor API usage and troubleshoot API traffic in AMPLIFY Central UI, click **API Observer** in the left navigation bar.
 
-- Click **API Usage** to see an aggregated view of the recent usage of your API. This view is useful for monitoring traffic patterns, and successes or failures over time.
+* Click **API Usage** to see an aggregated view of the recent usage of your API. This view is useful for monitoring traffic patterns, and successes or failures over time.
   ![Example of API usage](/Images/central/apiobserver_usage.png)
-- Click **API Traffic** to view the traffic information. This view is useful for finding and troubleshooting any failed transactions.
+* Click **API Traffic** to view the traffic information. This view is useful for finding and troubleshooting any failed transactions.
   ![Example of API traffic](/Images/central/apiobserver_traffic.png)
 
 ## Publish API to AMPLIFY Catalog

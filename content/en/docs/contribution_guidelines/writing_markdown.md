@@ -1,10 +1,10 @@
 ---
-title: "Write with Markdown"
-linkTitle: "Write with Markdown"
+title: "Markdown guidelines for Axway-Open-Docs"
+linkTitle: "Markdown guidelines"
 weight: 1
 date: 2019-07-30
 description: >
-  Tips on writing and editing using Markdown.
+  Markdown guidelines and Markdown extensions available for Axway-Open-Docs.
 ---
 
 This docs-as-code implementation uses the [Hugo](https://gohugo.io/) static site generator and the Google [Docsy theme](https://www.docsy.dev/) to build this website from the Markdown content files. Hugo uses [Blackfriday](https://github.com/russross/blackfriday) to parse Markdown.
