@@ -60,7 +60,7 @@ To upgrade NodeB and NodeC, perform the following steps:
 
     {{< alert title="Tip" color="primary" >}}If you need to bring up the processes in the new installation on NodeA more quickly, you can shut down the processes in the old installation on all nodes after `export` is run on NodeB and NodeC.{{< /alert >}}
 
-8. Start the API Gateway processes on the new 7.8 installation on NodeA.
+8. Start the API Gateway processes on the new 7.7 installation on NodeA.
 9. Run `apply` on NodeB.
 10. Run `apply` on NodeC.
 
@@ -78,7 +78,7 @@ Problem
 : After running `apply` on all nodes, some KPS data appears to be missing.
 
 Solution
-: Use the `import-kps` command. This command is available in your API Gateway installation directory (for example, `/opt/Axway-7.8/apigateway/upgrade/bin`).
+: Use the `import-kps` command. This command is available in your API Gateway installation directory (for example, `/opt/Axway-7.7/apigateway/upgrade/bin`).
 
 The following table summarizes the `import-kps` command options:
 
@@ -109,7 +109,7 @@ If you run `apply` incorrectly as follows:
 * **NodeB**: `sysupgrade apply --anm_host NodeA`
 * **NodeC**: `sysupgrade apply --anm_host NodeC`
 
-Everything appears to upgrade successfully. However, you now have two separate domains in your new 7.8 installation. If you log in to `https://NodeA:8090`, you will see API Gateway1 and API Gateway1A. If you log in to `https://NodeC:8090`, you will see API Gateway2.
+Everything appears to upgrade successfully. However, you now have two separate domains in your new 7.7 installation. If you log in to `https://NodeA:8090`, you will see API Gateway1 and API Gateway1A. If you log in to `https://NodeC:8090`, you will see API Gateway2.
 
 To resolve this issue, follow these steps:
 

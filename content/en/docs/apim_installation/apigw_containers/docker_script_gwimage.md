@@ -100,7 +100,7 @@ The following example creates an API Gateway Docker image using an existing API 
 
 Ensure that your `fed` contains the following:
 
-* API Gateway version 7.8 configuration.
+* API Gateway version 7.7 configuration.
 * You can upgrade existing projects (from version 7.5.1 or later) using `projupgrade`, see [Upgrade an API Gateway project](/docs/apigtw_devops/deploy_package_tools/#upgrade-an-api-gateway-project).
 * You can also upgrade existing `fed` files using Policy Studio or `upgradeconfig`.
 * Only IP addresses that are accessible at runtime. For example, the `fed` cannot contain IP addresses of container-based Admin Node Managers and API Gateways, as IP addresses are usually dynamically assigned in a Docker network.
@@ -122,7 +122,7 @@ This example creates an API Gateway Docker image named `api-gateway-my-group` wi
 
 * Based on the `my-gw-base:1.0` image.
 * Uses a specified certificate and key.
-* Uses a specified `fed` that contains API Gateway 7.8 configuration.
+* Uses a specified `fed` that contains API Gateway 7.7 configuration.
 * Belongs to the API Gateway group `my-group`. All containers started from this image belong to this group.
 * Uses a specified merge directory that is merged into the API Gateway image.
 

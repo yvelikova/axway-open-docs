@@ -46,7 +46,7 @@ APIs developed using the REST API development wizard are then registered (by imp
 
 Registered APIs are virtualized by API Gateway, which protects the back-end services, and makes the APIs available for management and consumption in API Manager, and for consumption in the self-service API Portal.
 
-For more details on creating APIs using the REST API development wizard, see [Develop REST APIs in Policy Studio](https://axway-open-docs.netlify.com/docs/apim_policydev/apigw_poldev/web_services/register_rest_apis/).
+For more details on creating APIs using the REST API development wizard, see [Develop REST APIs in Policy Studio](/docs/apim_policydev/apigw_poldev/web_services/register_rest_apis/).
 
 ## API management lifecycle
 

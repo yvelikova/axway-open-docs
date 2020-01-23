@@ -1,11 +1,12 @@
 ---
-title: Customize API Portal look and feel
+title: "Customize API\_Portal look and feel"
 linkTitle: Customize look and feel
 weight: 2
-date: 2019-07-30
-description: Customize the look and feel of API Portal with your own logos, colors, and so on.
+date: 2019-07-30T00:00:00.000Z
+description: >-
+  Customize the look and feel of API Portal with your own logos, colors, and so
+  on.
 ---
-
 For internally-facing API deployments, you can deploy API Portal "as is" using the out-of-the-box Axway branding. This type of deployment requires no customization.
 
 For external-facing API deployments, you may want to customize API Portal to provide a branded developer portal experience. This type of deployment contains a collection of style settings that can be configured in your account, including logos, colors, fonts or you can perform advanced modification of the layout and structure.
@@ -16,9 +17,7 @@ Customization can be performed at three levels:
 
 * **Customization through configuration**: Use the Joomla! Admin Interface (JAI) (`https://<API Portal host>/administrator`) to change CSS stylesheets, templates, and layouts. These types of customizations are can be upgraded and retained when you move to new version. The customization does not modify the API Portal source code and is supported by Axway.
 * **Customization through code**: API Portal is developed using the PHP scripting language and the source code is provided. This is how Joomla! applications are deployed. You can modify the PHP source code to customize API Portal, such as to change the functionality of pages and to extend by adding new pages. This type of customization is only recommended for customers with Joomla! or PHP experience that need to deploy a highly tailored developer portal.
-
     {{< alert title="Caution" color="warning" >}}These customizations are lost when you upgrade. The source code is subject to frequent changes without notice; therefore, you must reintegrate customizations into the new API Portal code to avoid restoring a deprecated code along with the customizations.{{< /alert >}}
-
 * **Customization through the addition of Joomla! plug-ins**: The Joomla! CMS offers thousands of extensions that are available from their website. Axway is only responsible for the support to extensions that are delivered out of the box (EasyBlog and EasyDiscuss).
 
 {{< alert title="Note" color="primary" >}} If you submit a case to Axway Support and it is suspected that unsupported third-party extensions may be the root cause of the issue, you must reproduce the issue on a non-customized API Portal.{{< /alert >}}
@@ -70,9 +69,10 @@ API Portal includes one theme named **Axway**. Create any additional themes fro
 
 Theming variables are grouped into different levels:
 
-* **Key Colors**: These variables control the base colors for all styles. The default key colors are sea blue and gray.
-* **Basic Colors**: These variables control the colors of the major UI elements, such as buttons and menus. The default values for the basic colors are based on the key colors, but you can overridden these to control the styles of individual UI elements.
-* **Global Fonts** and **Headings**: These variables control the typefaces and sizes of the main text elements
+
+: **Key Colors**: These variables control the base colors for all styles. The default key colors are sea blue and gray.
+: **Basic Colors**: These variables control the colors of the major UI elements, such as buttons and menus. The default values for the basic colors are based on the key colors, but you can overridden these to control the styles of individual UI elements.
+: **Global Fonts** and **Headings**: These variables control the typefaces and sizes of the main text elements
 
 In addition, there are some other variables for fine-grain customization of the UI elements, if needed. Most of these variables are based on Basic Color variables.
 
@@ -110,6 +110,92 @@ The following list summarizes the replaced Purity III files:
 * `thememagic.xml` – Configuration for the ThemeMagic GUI.
 * `language/en-GB/en-GB.tpl_purity_iii.ini` – Language strings displayed in the ThemeMagic GUI. In order to be utilized by ThemeMagic, this file must be copied to Joomla!'s main language folder, `language/en-GB/en-GB.tpl_purity_iii.ini` when the API Portal plugin is installed.
 * `less/variables.less` – Global variables for the Purity III template. Default values for theming variables must be defined in this file.
+
+## Customize your home page layout
+
+**apiportal-homepage** layout is assigned to the home menu item by default. This layout is available from the `apiportal-homepage` template.
+
+The home page consists of the following main sections:
+
+* Menu
+* Banner
+* Tiles section
+* Footer
+
+To customize the layout of your portal:
+
+1. In JAI, click **Extensions > Templates**.
+2. In the Templates sidebar, select **Styles**, then select the style **apiportal-homepage**.
+3. Customize the layout, and click **Save**.
+
+![Home page layout](/Images/APIPortal/layout.png)
+
+For more details see [T3 Framework Layout](http://www.t3-framework.org/documentation/bs3-layout-system#about-layout) documentation.
+
+### Customize your banner
+
+Change the banner of your portal using the **Home Page Banner** module.
+
+To customize the banner:
+
+1. In JAI, click **Extensions > Modules > Home Page Banner**.
+
+    You can customize the following:
+
+    : **Title** - Free text field for the title of the banner. Defaults to **Enter API Portal**.
+    : **Title colour** - Colour picker to choose the color of the title.
+    : **Sub-title** - Free text field for the subtitle of the banner. Defaults to **Explore and test our APIs**.
+    : **Subtitle colour** - Colour picker to choose the color of the subtitle.
+    : **Explore Button** - Show / Hide Explore Button.
+    : **Button text** - Free text field for the button text.
+    : **Button text colour** - Colour picker to choose the color of the button text.
+    : **Button has background** - Yes / No.
+    : **Link button to a menu item** - Drop-down list with all menu items. Choose a page to link to when click the button. Defaults to **Sign in** page.
+    : **Button border colour** - Colour picker to choose the color of the button border.
+    : **Border radius** - Numbers only field for border radius of the button border. Defaults to **500**.
+    : **Background image** - Change the background image of the banner. You can choose an image from the media manager or upload a new image.
+    : **Text alignment** - Choose one of the three options (left, center, right) to position the text and the button on the banner.
+
+    The module position defaults to **api-home-banner**.
+
+2. Click **Save**.
+
+### Customize the tiles
+
+Modify the tiles in the home page using the **Home Tiles** module.
+
+![Tiles home page](/Images/APIPortal/tiles-homepage.png)
+
+By default, there are four instances of this module:
+
+* **Home Tiles 1** (Explore&Test)
+* **Home Tiles 2** (Create)
+* **Home Tiles 3** (Manage & analyze)
+* **Home Tiles 4** (Connect with a community of developers)
+
+To customize this tiles:
+
+1. In JAI, click **Extensions > Modules > Home Tiles 1**.
+
+    You can customize the following:
+
+    : **Title** - Free text field for the title. Defaults to **Explore & Test**.
+    : **Title Colour** - Colour picker to choose the colour of the title.
+    : **Description** - Free text field for the description of the tile (The short text under the title).
+    : **Description colour** - Colour picker to choose the colour of the description text.
+    : **Background image** - Change the icon of the tile. You can choose an image from the media manager or upload a new image.
+    : **Background colour** - Colour picker to choose the background colour of the whole tile. Defaults to **white**.
+    : **Tile has link** -
+        * **Menu item** - Drop-down list with all menu items. Choose a menu item to link the Tile to (Defaults to the chosen option).
+        * **Custom** - Free text field. Enter any valid URL to link the tile to.
+        * **No** - No link at all.
+
+The home page layout is designed to have up to six tiles, so positions **api-home-tiles-5** and **api-home-tiles-6** are available for use.
+
+To add a new tile:
+
+1. In JAI, click **Extensions > Modules > New > Home Tiles**.
+2. After finishing customizing, click **Save** or **Save & close.**
 
 ## Customize your logo
 
@@ -190,4 +276,4 @@ Assign your new template as the default `404` page in API Portal.
 4. Select **Home** in the **Main Menu**.
 5. Save and close the style.
 6. Refresh the API Portal home page in the browser.
-Your customization is available, and is displayed when a user triggers the error page.
+   Your customization is available, and is displayed when a user triggers the error page.

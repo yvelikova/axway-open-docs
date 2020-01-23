@@ -234,7 +234,7 @@ When installing API Gateway, do not install the QuickStart tutorial:
 
 After completing the installation and before starting the services:
 
-1. Create a new temporary directory that has `exec` privileges (for example, `/opt/Axway-7.8/tmp`).
+1. Create a new temporary directory that has `exec` privileges (for example, `/opt/Axway-7.7/tmp`).
 2. If you installed Cassandra during API Gateway installation, edit the file `CASSANDRA_INSTALL_DIR/conf/cassandra-env.sh` and add the following line:
 
     ```
@@ -251,7 +251,7 @@ After completing the installation and before starting the services:
 
 ### Service packs
 
-Service packs for API Gateway are available from <https://support.axway.com/>. If any service packs are available for API Gateway 7.8, download and apply them when the installation completes.
+Service packs for API Gateway are available from <https://support.axway.com/>. If any service packs are available for API Gateway 7.7, download and apply them when the installation completes.
 
 For more information on applying a service pack, see [Update API Gateway](/docs/apim_installation/apigtw_install/install_service_packs).
 

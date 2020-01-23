@@ -76,7 +76,7 @@ After installation, create a symbolic link to use PHP directly in a terminal:
 
 ### Upgrade PHP
 
-If you already have PHP 5.4 or earlier and API Portal 7.8 or earlier installed, you cannot uninstall the old PHP version due to a dependency in API Portal. Perform the steps in [Install PHP from official RHEL repository](#install-php-from-official-rhel-repository) and leave the old PHP version installed. If there is already a symbolic link to the old PHP version, update it with the new location of PHP (for example, using `ln -sf` instead of `ln-s`).
+If you already have PHP 5.4 or earlier and API Portal 7.7 or earlier installed, you cannot uninstall the old PHP version due to a dependency in API Portal. Perform the steps in [Install PHP from official RHEL repository](#install-php-from-official-rhel-repository) and leave the old PHP version installed. If there is already a symbolic link to the old PHP version, update it with the new location of PHP (for example, using `ln -sf` instead of `ln-s`).
 
 ### Configure existing Apache
 
@@ -324,6 +324,6 @@ CentOS also does not offer the latest PHP version in the default repositories. T
 
 2. To start Apache, enter the following command:
 
-    ``
+    ```
     ystemctl start httpd
-    ``
+    ```

@@ -22,9 +22,9 @@ You must rerun `export` if:
 
 ### What happens if you change the old API Gateway installation after running export?
 
-If you make any changes to the old API Gateway installation after running `export` and you do not need these changes to be included in the new 7.8 installation, you do not need to take any action.
+If you make any changes to the old API Gateway installation after running `export` and you do not need these changes to be included in the new 7.7 installation, you do not need to take any action.
 
-If you do want the changes to be included in the new 7.8 installation, you must rerun `export`, possibly on all nodes, depending on the changes made. For example, if you deploy a new configuration to a group of API Gateways, you must rerun `export` on all nodes that run instances in that group.
+If you do want the changes to be included in the new 7.7 installation, you must rerun `export`, possibly on all nodes, depending on the changes made. For example, if you deploy a new configuration to a group of API Gateways, you must rerun `export` on all nodes that run instances in that group.
 
 {{< alert title="Note" color="primary" >}}If you rerun `export`, you must rerun all subsequent steps (`upgrade` and `apply`). If you rerun `export`, and therefore `upgrade` and `apply`, on the first Admin Node Manager, you have cleaned your topology, so you must rerun `apply` on all other nodes.{{< /alert >}}
 
@@ -61,7 +61,7 @@ The following FAQs are specific to single-node upgrades.
 
 In a single-node domain, if you have previously run `export` successfully and try to rerun `export`, you are prompted to rerun with the `--force` option. This cleans the `export`, `upgrade`, and `apply` outputs, and then reruns `export` on the node. You must then rerun `upgrade` and `apply` on the node. The `--force` option is not required for `upgrade` or `apply` as the outputs have already been cleaned.
 
-{{< alert title="Note" color="primary" >}}Before you rerun `export`, you must ensure that any processes in the new 7.8 installation are stopped, and that the processes in the old installation are running.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Before you rerun `export`, you must ensure that any processes in the new 7.7 installation are stopped, and that the processes in the old installation are running.{{< /alert >}}
 
 ### What happens if you rerun upgrade when you have already run apply?
 
@@ -79,7 +79,7 @@ In a single-node domain, if you have previously run `apply` successfully, and tr
 
 If you run `clean` on a single-node domain, you are back to the start of the `sysupgrade` process. To redo the upgrade, you must:
 
-1. Run `export`. Before you run `export`, you must ensure that all processes in the new 7.8 installation are stopped, and that all processes in the old installation are running.
+1. Run `export`. Before you run `export`, you must ensure that all processes in the new 7.7 installation are stopped, and that all processes in the old installation are running.
 2. Run `upgrade`.
 3. Shut down all processes in the old installation.
 4. Run `apply`.
@@ -104,7 +104,7 @@ In the old installation, the first Admin Node Manager is always the first Node M
 
 In a multi-node domain, if you have previously run `export` successfully on the first Admin Node Manager node (for example, NodeA) and try to rerun `export`, you are prompted to rerun with the `--force` option. This cleans the `export`, `upgrade`, and `apply` outputs on NodeA, and then reruns `export` on NodeA. Running `export --force` on the first Admin Node Manager in a multi-node domain also cleans your topology and domain CA private key and certificate.
 
-{{< alert title="Note" color="primary" >}}Before you rerun `export`, you must ensure that all processes in the new 7.8 installation are stopped *on all nodes*, and that all processes in the old installation are running *on all nodes*.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Before you rerun `export`, you must ensure that all processes in the new 7.7 installation are stopped *on all nodes*, and that all processes in the old installation are running *on all nodes*.{{< /alert >}}
 
 After running `export --force` on the first Admin Node Manager (for example, NodeA) in a multi-node domain, you must perform the following steps:
 
@@ -117,13 +117,13 @@ After running `export --force` on the first Admin Node Manager (for example, Nod
 
 In a multi-node domain, if you have previously run `export` successfully on a node that is not the first Admin Node Manager node (for example, NodeC) and try to rerun `export`, you are prompted to rerun with the `--force` option. This cleans the `export`, `upgrade`, and `apply` outputs on NodeC, and then reruns `export` on NodeC. NodeC can be an Admin Node Manager or a Node Manager.
 
-{{< alert title="Note" color="primary" >}}Before you rerun `export`, you must ensure that all processes in the new 7.8 installation are stopped *on all nodes*, and that all processes in the old installation are running *on all nodes*.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Before you rerun `export`, you must ensure that all processes in the new 7.7 installation are stopped *on all nodes*, and that all processes in the old installation are running *on all nodes*.{{< /alert >}}
 
 After running `export --force` on a node that is not the first Admin Node Manager node (for example, NodeC) in a multi-node domain, you must perform the following steps:
 
 1. Rerun `upgrade` on NodeC.
 2. Shut down all processes in the old installation on all nodes.
-3. Start up the processes in the new 7.8 installation on other nodes, especially the Admin Node Manager on NodeA, as this must be running before you can proceed to the next step.
+3. Start up the processes in the new 7.7 installation on other nodes, especially the Admin Node Manager on NodeA, as this must be running before you can proceed to the next step.
 4. Rerun `apply` on NodeC. Because you ran `apply` previously on NodeC, this rerun triggers removal of NodeC entries in the topology on the Admin Node Manager on NodeA, before NodeC is registered.
 
 You do not need to rerun commands on other nodes as a result of running `export --force` on NodeC.
@@ -149,8 +149,8 @@ In a multi-node domain, if you have previously run `upgrade` successfully on a n
 After running `upgrade --force` on a node that is not the first Admin Node Manager node (for example, NodeC) in a multi-node domain, you must perform the following steps:
 
 1. Shut down all processes in the old installation on all nodes.
-2. Shut down all processes in the new 7.8 installation on NodeC (for example, any processes started by a previous `apply`).
-3. Start up the processes in the new 7.8 installation on other nodes, especially the Admin Node Manager on NodeA, as this must be running before you can proceed to the next step.
+2. Shut down all processes in the new 7.7 installation on NodeC (for example, any processes started by a previous `apply`).
+3. Start up the processes in the new 7.7 installation on other nodes, especially the Admin Node Manager on NodeA, as this must be running before you can proceed to the next step.
 4. Rerun `apply` on NodeC. Because you ran `apply` previously on NodeC, this rerun triggers removal of NodeC entries in the topology on the Admin Node Manager on NodeA, before NodeC is registered.
 
 You do not need to rerun commands on other nodes as a result of running `upgrade --force` on NodeC.
@@ -163,8 +163,8 @@ In a multi-node domain, if you have previously run `apply` successfully on the f
 
 After running `apply --force` on the first Admin Node Manager (for example, NodeA) in a multi-node domain, you must perform the following steps:
 
-1. Leave all processes in the new 7.8 installation running on NodeA.
-2. Shut down all processes in the new 7.8 installation on all other nodes (the processes in the old installation should already be down).
+1. Leave all processes in the new 7.7 installation running on NodeA.
+2. Shut down all processes in the new 7.7 installation on all other nodes (the processes in the old installation should already be down).
 3. Rerun `apply` on all other nodes, in any order.
 
 ### What happens if you rerun apply on a node that is not the first Admin Node Manager?
@@ -181,7 +181,7 @@ In a multi-node domain, if you run `clean` successfully on the first Admin Node 
 
 To redo the upgrade on NodeA, you must perform the following:
 
-1. Run `export` on NodeA. Before you run `export`, you must ensure that all processes in the new 7.8 installation are stopped *on all nodes*, and that all processes in the old installation are running *on all nodes*.
+1. Run `export` on NodeA. Before you run `export`, you must ensure that all processes in the new 7.7 installation are stopped *on all nodes*, and that all processes in the old installation are running *on all nodes*.
 2. Run `upgrade` on NodeA. You might also need to rerun `export` and `upgrade` on other nodes. We recommend using the `status` command on all other nodes to ensure that all nodes are at the same stage before proceeding.
 3. Shut down all processes in the old installation on all nodes.
 4. Run `apply` on NodeA.
@@ -193,10 +193,10 @@ In a multi-node domain, if you run `clean` successfully on a node that is not th
 
 To redo the upgrade on the node you have cleaned, you must perform the following steps:
 
-1. Run `export` on NodeC. Before you run `export`, you must ensure that all processes in the new 7.8 installation are stopped *on all nodes*, and that all processes in the old installation are running *on all nodes*.
+1. Run `export` on NodeC. Before you run `export`, you must ensure that all processes in the new 7.7 installation are stopped *on all nodes*, and that all processes in the old installation are running *on all nodes*.
 2. Run `upgrade` on NodeC.
 3. Shut down all processes in the old installation on all nodes.
-4. Start up the processes in the new 7.8 installation on other nodes, especially the Admin Node Manager on NodeA, as this must be running before you can proceed to the next step.
+4. Start up the processes in the new 7.7 installation on other nodes, especially the Admin Node Manager on NodeA, as this must be running before you can proceed to the next step.
 5. Run `apply` on NodeC. If you ran `apply` previously on NodeC, this rerun triggers removal of NodeC entries in the topology on the Admin Node Manager on NodeA, before NodeC is registered.
 
 You do not need to rerun commands on other nodes as a result of running `clean` on NodeC.
