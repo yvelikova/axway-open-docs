@@ -20,10 +20,10 @@ To avoid issues when sending a pull request, you can [delete and recreate](#dele
 
 The easiest way to make sure that your fork is up-to-date with the latest changes of the project is to delete and recreate your fork every time you make a new contribution:
 
-1. Make sure that you are on your fork of the project and click **Settings**
+1. Make sure that you are on your fork of the project, and click **Settings**
 
     ```
-    https://github.com/<your github user name>/axway-open-docs
+    https://github.com/<your GitHub username>/axway-open-docs
     ```
     
     For example: 
