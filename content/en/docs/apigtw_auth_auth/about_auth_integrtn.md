@@ -14,10 +14,10 @@ API Gateway can leverage your existing Identity Management infrastructure, thus 
 
 This guide describes how to configure API Gateway to integrate with the following products:
 
-* LDAP servers — see [LDAP integration](LDAP/ldap_overview).
-* CA SiteMinder — see [CA SiteMinder integration](CA_SiteMinder/ca_siteminder_overview).
-* RSA Access Manager — see [RSA Access Manager integration](RSA/rsa_access_mgr_overview)
-* Oracle Access Manager integration - see [Oracle Access Manager 10g, 11gR1, and 11gR2 integration](../OracleIntegrationTopics/oracle_access_manager_integration)
-* Oracle Entitlements Server integration - see [Oracle Entitlements Server 11g and 11gR2 integration](../OracleIntegrationTopics/oracle_entitlements_server_integration)
+* LDAP servers — see [LDAP integration](/docs/apigtw_auth_auth/ldap_overview/)
+* CA SiteMinder — see [CA SiteMinder integration](C/docs/apigtw_auth_auth/ca_siteminder_overview/)
+* RSA Access Manager — see [RSA Access Manager integration](/docs/apigtw_auth_auth/rsa_access_mgr_overview/)
+* Oracle Access Manager integration - see [Oracle Access Manager integration](/docs/apigtw_auth_auth/oracle_access_manager_integration/)
+* Oracle Entitlements Server integration - see [Oracle Entitlements Server integration](/docs/apigtw_auth_auth/oracle_entitlements_server_integration/)
 
 The intended audience for this guide is personnel in charge of the technical integration of an API Gateway solution.

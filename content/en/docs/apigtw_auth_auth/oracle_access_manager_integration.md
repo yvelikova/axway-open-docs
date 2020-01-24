@@ -1,9 +1,9 @@
 {
 "title": "Oracle Access Manager 11gR2 integration",
-"linkTitle": "Oracle Access Manager 11gR2 integration",
+"linkTitle": "Oracle Access Manager integration",
 "weight":"150",
 "date": "2020-01-21",
-"description": "Configure API Gateway to authenticate and authorize user requests against Oracle Access Manager (OAM) 11gR2. "
+"description": "Configure API Gateway to authenticate and authorize user requests against Oracle Access Manager (OAM) 11gR2."
 }
 
 * API Gateway is configured to authenticate a client against OAM using a user name and password.
@@ -11,7 +11,7 @@
 
 The following overview diagram shows the message flow through API Gateway, which authenticates and authorizes a user for a particular resource against OAM before routing the message on to the web service.
 
-![Overview diagram](/Images/IntegrationGuides/OracleIntegrationGuide/apigw_oam_10g_11gR1_11gR2_ovr.png)
+![Overview diagram](/Images/IntegrationGuides/auth_auth/apigw_oam_10g_11gR1_11gR2_ovr.png)
 
 ## Prerequisites
 
@@ -56,7 +56,7 @@ Create an OAM user called `weblogic` with the password `weblogic` in OAM to test
 
 ### cURL testing utility
 
-To test the integration steps, the cURL testing utility is used to POST requests to API Gateway. This utility is available from [curl / Download](http://curl.haxx.se/download.html).
+To test the integration steps, the cURL testing utility is used to POST requests to API Gateway. This utility is available from [cURL Downloads](http://curl.haxx.se/download.html).
 
 Alternatively, you can use any client capable of sending HTTP POST requests with HTTP basic authentication.
 
@@ -72,7 +72,7 @@ Use the web-based OAM Administration Console to create the new WebGate. The web 
 http://OAM_HOST:7001/oamconsole
 ```
 
-Log in using your WebLogic credentials and complete the following steps.
+Log in using your WebLogic credentials and complete the following steps:
 
 #### Create the 11g WebGate
 
@@ -83,17 +83,17 @@ Log in using your WebLogic credentials and complete the following steps.
     * **Access Client Password**: Enter a suitable password for this WebGate.
     * **Host Identifier**: Enter the host name of the machine on which your API Gateway and ASDK have been installed. In the following screenshot, the host name (that is to say **Host Identifier**) is used as the **Name** of the new WebGate.
 
-    ![Create the 11g WebGate](/Images/IntegrationGuides/OracleIntegrationGuide/oam_10g-11gR1-11gR2_07.png)
+    ![Create the 11g WebGate](/Images/IntegrationGuides/auth_auth/oam_10g-11gR1-11gR2_07.png)
 
 3. Click **Apply** when you have completed the configuration.
 4. Write down the location of the generated artifacts given in the confirmation message:
 
-    ![Confirmation](/Images/IntegrationGuides/OracleIntegrationGuide/oam_10g-11gR1-11gR2_08.png)
+    ![Confirmation](/Images/IntegrationGuides/auth_auth/oam_10g-11gR1-11gR2_08.png)
 
 5. The complete configuration for the new WebGate is now displayed. You must enter a non-null value in the **Logout Target URL** field, for example, `end_url`.
 6. Click **Apply** one more time to save the new **Logout Target URL**. You should see another confirmation message acknowledging the modification:
 
-    ![Example](/Images/IntegrationGuides/OracleIntegrationGuide/oam_10g-11gR1-11gR2_09.png)
+    ![Example](/Images/IntegrationGuides/auth_auth/oam_10g-11gR1-11gR2_09.png)
 
 #### Configure the authentication policy
 
@@ -109,7 +109,7 @@ Update the authentication policy for the new WebGate:
 8. Click **Apply**.
 9. You will see a confirmation message indicating that the update was successful.
 
-### Step 3 - Copy the WebGate artifacts to the API Gateway machine
+#### Copy the WebGate artifacts to the API Gateway machine
 
 Copy the auto-generated WebGate artifacts generated in [Create the 11g WebGate1](#create-the-11g-webgate).
 
@@ -166,7 +166,7 @@ This section describes how to configure API Gateway to work with Oracle Access M
 
 Refer to [Install API Gateway](/docs/apim_installation/apigtw_install/install_gateway/#start-api-gateway) guide for instructions on how to start API Gateway.
 
-Command example:
+Example:
 
 ```
 startinstance -n "APIGateway1" -g "Group1"
@@ -178,7 +178,7 @@ This section explains how to configure API Gateway to delegate authentication an
 
 The resulting policy created will appear as follows:
 
-![Resulting policy](/Images/IntegrationGuides/OracleIntegrationGuide/oam_10g-11gR1-11gR2_13.png)
+![Resulting policy](/Images/IntegrationGuides/auth_auth/oam_10g-11gR1-11gR2_13.png)
 
 #### Configure the OAM authentication repository
 
@@ -210,7 +210,7 @@ Create a new policy in Policy Studio called, for example, `OAM 11gR2 Authenticat
 Create an HTTP Basic Authentication filter and configure it to authenticate users against the OAM authentication repository created in [Configure the OAM authentication repository](#Configure_oam_auth_repo).
 
 1. Open the newly created `OAM 11gR2 Authentication and Authorization` policy.
-2. Drag an **HTTP Basic** filter from the **Authentication** category in the palette and drop it onto the canvas and configure it as follows. 
+2. Drag an **HTTP Basic** filter from the **Authentication** category in the palette and drop it onto the canvas and configure it as follows.
     * **Name**: Name of the filter. For example: `HTTP Basic via OAM 11g R2 Repository`.
     * **Credential Format**: Select **User Name**.
     * **Allow Client Challenge**: Select the **Allow client challenge** check box.
@@ -255,15 +255,11 @@ If OAM fails to authenticate or authorize the user, an appropriate error message
     * **Message Body**: `Access Denied!`
 3. Click **OK**.
 
-The following figure shows the policy you have configured so far:
-
-![Policy](/Images/IntegrationGuides/OracleIntegrationGuide/oam_10g-11gR1-11gR2_19.png)
-
 For completion, it would be useful to connect the Set Blocked Message filter to the HTTP Basic via OAM 11g R2 Repository filter along its failure path to get an appropriate failure message when authentication and authorization fail.
 
 Click the **Failure Path** item at the top of the palette to select it. Then simply click the **HTTP Basic via OAM 11g R2 Repository** filter and then click the **Set Blocked Message** filter to connect the failure path. The final policy is now displayed as follows:
 
-![Final policy](/Images/IntegrationGuides/OracleIntegrationGuide/oam_10g-11gR1-11gR2_13.png)
+![Final policy](/Images/IntegrationGuides/auth_auth/oam_10g-11gR1-11gR2_13.png)
 
 #### Add a relative path for the OAM authentication and authorization policy
 
@@ -273,10 +269,80 @@ To add a **Relative Path** for this policy click **Add Relative Path** in the to
 
 Enter the path on which API Gateway will receive requests for this policy in the field provided in the **Resolve Path to Policies** dialog box:
 
-![](/Images/IntegrationGuides/OracleIntegrationGuide/oam_10g-11gR1-11gR2_21.png)
+![Enter a relative path](/Images/IntegrationGuides/auth_auth/oam_10g-11gR1-11gR2_21.png)
 
 Enter a relative path of `/oam` in the field provided. You can see that this path is automatically mapped to the **OAM 11g Authentication and Authorization** policy created earlier in this section.
 
 #### Deploy the policy
 
 To push the configuration changes to the live API Gateway instance you must deploy the new policy. You can do this by pressing the **F6** button.
+
+### Test the integration
+
+Having completed the integration steps, you can now test the setup using the cURL testing utility. Assuming you are running API Gateway on a machine called `apigateway` on the default port of `8080`, you can send a POST request to the newly created policy on API Gateway using HTTP basic authentication with the following command:
+
+```
+curl --user weblogic:weblogic --data "test=data" http://apiserver:8080/oam
+User 'weblogic' was authenticated and authorized successfully!
+```
+
+You can see that the success message has been returned by API Gateway meaning that the `weblogic` user has been successfully authenticated and authorized by OAM to access the resource. A quick look at the API Gateway's trace output shows that the `weblogic` user has been authenticated and authorized to access the `//oam.example.com/oam` resource.
+
+```
+DEBUG 11/Dec/2012:13:07:44.090 [0794] run circuit "OAM 11g Authentication and Authorization"...
+DEBUG 11/Dec/2012:13:07:44.094 [0794] run filter [HTTP Basic via OAM 11g R2 Repository] {
+DEBUG 11/Dec/2012:13:07:44.094 [0794]   Check user name via Oracle Access Manager
+DEBUG 11/Dec/2012:13:07:44.338 [0794]   Creating ResourceRequest with resType: 'http', resName: '//oam.example.com/oam, operation: 'POST'.
+DEBUG 11/Dec/2012:13:07:44.339 [0794]   Successfully created ResourceRequest
+DEBUG 11/Dec/2012:13:07:44.543 [0794]   Login succeeded to OAM for user weblogic
+DEBUG 11/Dec/2012:13:07:44.544 [0794] } = 1, filter [HTTP Basic via OAM 11g R2 Repository]
+DEBUG 11/Dec/2012:13:07:44.544 [0794] Filter [HTTP Basic via OAM 11g R2 Repository] completes in 450 milliseconds.
+DEBUG 11/Dec/2012:13:07:44.545 [0794] run filter [Authorization via OAM 11gR2] {
+DEBUG 11/Dec/2012:13:07:44.545 [0794]   Creating ResourceRequest with resType: 'http', resName: '//oam.example.com/oam, operation: 'POST'.
+DEBUG 11/Dec/2012:13:07:44.545 [0794]   Successfully created ResourceRequest
+DEBUG 11/Dec/2012:13:07:44.545 [0794]   Authz for resource: oracle.security.am.asdk.ResourceRequest@33aa7b
+DEBUG 11/Dec/2012:13:07:44.638 [0794]   User 'uid=weblogic,ou=people,ou=myrealm,dc=idm_domain' is authorized for resource: //oam.example.com/oam
+DEBUG 11/Dec/2012:13:07:44.638 [0794] } = 1, filter [Authorization via OAM 11g R2]
+DEBUG 11/Dec/2012:13:07:44.639 [0794] Filter [Authorization via OAM 11gR2] completes in 94 milliseconds.
+DEBUG 11/Dec/2012:13:07:44.639 [0794] run filter [Set Success Message] {
+DEBUG 11/Dec/2012:13:07:44.639 [0794]   The content type of the converted message is text/plain
+DEBUG 11/Dec/2012:13:07:44.640 [0794]   handle type text/plain with factory class com.vordel.mime.Body$1
+DEBUG 11/Dec/2012:13:07:44.640 [0794]   Added converted message is added to the whiteboard
+DEBUG 11/Dec/2012:13:07:44.640 [0794] } = 1, filter [Set Success Message]
+DEBUG 11/Dec/2012:13:07:44.640 [0794] Filter [Set Success Message] completes in 1 milliseconds.
+DEBUG 11/Dec/2012:13:07:44.641 [0794] ..."OAM 11g Authentication and Authorization" complete.
+```
+
+Now, check what happens when authenticating with a user that has not been configured in OAM:
+
+```
+curl --user admin:changeme --data "test=data" http://apiserver:8080/oam
+Access Denied!
+```
+
+If you look at the API Gateway's trace output again, you can see that the filter has blocked the authorization request:
+
+```
+DEBUG   11/Dec/2012:14:35:42.331 [0ad4] run circuit "OAM 11g Authentication and Authorization"...
+DEBUG   11/Dec/2012:14:35:42.331 [0ad4] run filter [HTTP Basic via OAM 11g R2 Repository] {
+DEBUG   11/Dec/2012:14:35:42.331 [0ad4] Check user name via Oracle Access Manager
+DEBUG   11/Dec/2012:14:35:42.335 [0ad4] Creating ResourceRequest with resType: 'http',
+resName: '//Tyson3-pc.vordel.com/oam, operation: 'POST'.
+DEBUG   11/Dec/2012:14:35:42.336 [0ad4] Successfully created ResourceRequest
+ERROR   11/Dec/2012:14:35:42.486 [0ad4] Login failed to Oracle Access Manager for user admin
+ERROR   11/Dec/2012:14:35:42.487 [0ad4] java exception:
+com.vordel.circuit.authn.VordelAuthNException: Login failed
+...
+
+DEBUG   11/Dec/2012:14:35:42.533 [0ad4] } = 0, filter [HTTP Basic via OAM 11g R2 Repository]
+DEBUG   11/Dec/2012:14:35:42.534 [0ad4] Filter [HTTP Basic via OAM 11g R2 Repository] completes in 203 milliseconds.
+ERROR   11/Dec/2012:14:35:42.534 [0ad4] The message [Id-71222fbb50c744be03d40000] logged Failure
+at 12.11.2012 14:35:42,534 with log description: HTTP basic authentication failed
+DEBUG   11/Dec/2012:14:35:42.535 [0ad4] run filter [Set Blocked Message] {
+DEBUG   11/Dec/2012:14:35:42.535 [0ad4] The content type of the converted message is text/plain
+DEBUG   11/Dec/2012:14:35:42.535 [0ad4] handle type text/plain with factoryclass com.vordel.mime.Body$1
+DEBUG   11/Dec/2012:14:35:42.536 [0ad4] Added converted message is added to the whiteboard
+DEBUG   11/Dec/2012:14:35:42.536 [0ad4] } = 1, filter [Set Blocked Message]
+DEBUG   11/Dec/2012:14:35:42.536 [0ad4] Filter [Set Blocked Message] completes in 1 milliseconds.
+DEBUG   11/Dec/2012:14:35:42.536 [0ad4] ..."OAM 11g Authentication and Authorization" complete.
+```

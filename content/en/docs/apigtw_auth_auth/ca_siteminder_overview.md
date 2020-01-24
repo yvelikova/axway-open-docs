@@ -39,10 +39,10 @@ The example policy is build in stages, starting with a simple authentication and
 
 The following steps are required to integrate API Gateway with CA SiteMinder:
 
-1. [Configure API Gateway as the SiteMinder agent](configure_agent_sm).
-2. [Configure SiteMinder connection](configure_connection_sm).
-3. [Configure SiteMinder authentication policy](configure_policy_sm).
-4. [Configure single sign-on](configure_sso_sm).
+1. [Configure API Gateway as the SiteMinder agent](#configure-api-gateway-as-the-siteminder-agent)
+2. [Configure SiteMinder connection](#configure-siteminder-connection)
+3. [Configure SiteMinder authentication policy](#configure-siteminder-authentication-policy)
+4. [Configure single sign-on](#configure-single-sign-on)
 
 ### Configure API Gateway as the SiteMinder agent
 
@@ -124,7 +124,7 @@ To obtain this information, contact your SiteMinder administrator.
 
 1. In the node tree, click **Environment Configuration > External Connections > SiteMinder/SOA Security Manager Connections**.
 2. Select **Add a SiteMinder connection**.
-3. Enter your agent name (`apigateway.axway.int`) and agent configuration object name (`V6HostConfObject`) you created in [Register API Gateway as the SiteMinder agent](configure_agent_sm#top).
+3. Enter your agent name (`apigateway.axway.int`) and agent configuration object name (`V6HostConfObject`) you created in [Register API Gateway as the SiteMinder agent](#register-api-gateway-as-the-siteminder-agent).
 4. Click **Browse**, select the `SmHost.conf` file for your agent, and click **OK**.
 
 ### Configure SiteMinder authentication policy
@@ -156,8 +156,8 @@ To start, add a new policy named, for example, `SiteMinder`.
 1. Open the **Authentication** category, and drag a **HTTP Basic** filter onto the policy canvas.
 2. Set the following, and click **Finish**:
 
-    **Credential Format**: `User name`
-    **Repository name**: `<your SiteMinder repository>` (`SiteMinder repository`)
+    * **Credential Format**: `User name`
+    * **Repository name**: `<your SiteMinder repository>` (`SiteMinder repository`)
 
 3. Open the **CA SiteMinder** category, and drag a **Authorization** filter onto the policy canvas.
 4. Enter a name for the filter (for example, `Authorize user with SiteMinder`), and click **Finish**.
@@ -184,7 +184,7 @@ In a production deployment, it is not practical to authenticate and authorize ea
 
 After an end user is successfully authenticated, the gateway can create a custom cookie and place the SiteMinder session cookie validated for that end user as the cookie value. On later request, instead of re-authenticating the user every time, the gateway can check if the request contains a valid session cookie. If a valid session cookie is found, the end user does not have to be authenticate again. The gateway can also insert a SAML authorization assertion for downstream web services to consume.
 
-This section expands the [Configured SiteMinder authentication policy](#configure-the-siteminder-authentication-and-authorization-policy). To start, copy your SiteMinder authentication and authorization policy (`SiteMinder`), and rename it (for example, `SiteMinder Single Sign-On`.
+This section expands the previously configured [SiteMinder authentication policy](#configure-siteminder-authentication-policy). To start, copy your SiteMinder authentication and authorization policy (`SiteMinder`), and rename it (for example, `SiteMinder Single Sign-On`.
 
 #### Configure custom cookie creation
 
@@ -193,7 +193,7 @@ This section expands the [Configured SiteMinder authentication policy](#configur
 
     * **Cookie Name**: `smcookie`
     * **Cookie Value**: `${siteminder.session}`
-    * **Path**: /
+    * **Path**: `/`
 
 3. Set **Max-Age** to how long you want the cookie to remain valid, and click **Finish**.
 4. Connect the **Authorization** filter (`Authorize user with SiteMinder`) to the **Create Cookie** filter with a success path.

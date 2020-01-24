@@ -3,10 +3,8 @@
 "linkTitle": "LDAP identity manager integration",
 "weight":"120",
 "date": "2020-01-20",
-"description": "API Gateway interacts with the following directory servers using the Lightweight Directory Access Protocol (LDAP):"
+"description": "API Gateway interacts with the following directory servers using the Lightweight Directory Access Protocol (LDAP)"
 }
-
-API Gateway interacts with the following directory servers using the Lightweight Directory Access Protocol (LDAP):
 
 * Apache Directory Server 2.0.0-M7
 * IBM Security Directory Server 6.4.0
@@ -35,11 +33,11 @@ Before you start, you must have API Gateway and your chosen directory server ins
 
 The configuration process has the following steps:
 
-1. [Check the details for the directory server](ldap_configure_server)
-2. [Configure an LDAP connection](ldap_configure_connection)
-3. [Configure an LDAP authentication repository](ldap_configure_repository)
-4. [Configure API Gateway policy](ldap_configure_policy)
-5. [Secure the connection to the directory server](ldap_secure_connection)
+1. [Check the details for the directory server](#check-the-details-for-the-directory-server)
+2. [Configure an LDAP connection](#configure-an-ldap-connection)
+3. [Configure an LDAP authentication repository](#configure-an-ldap-authentication-repository)
+4. [Configure API Gateway policy](#configure-api-gateway-policy)
+5. [Secure the connection to the directory server](#secure-the-connection-to-the-directory-server)
 
 ### Check the details for the directory server
 
@@ -166,8 +164,6 @@ You must configure an authentication policy to set the ateway to authenticate ag
 4. For more details on the fields and options in this configuration window, see .
 5. Click on the **Add Relative Path** icon to create a new relative path (for example, `/ldap`) that links to this policy, and deploy the policy to API Gateway.
 
-![Diagram showing the one filter in the initial policy](/Images/IntegrationGuides/auth_auth/ldap_policy_http.png)
-
 #### Test the policy
 
 To test that the policy works and trace the operation in the log files, add a **Reflect** and a **Trace** filter to the policy. These filters are not required in the production environment.
@@ -274,7 +270,7 @@ API Gateway and Policy Studio require the CA certificate of your directory serve
 #### Add the LDAP server certificate to the API Gateway Java keystore
 
 1. In the node tree, click **Environment Configuration > Certificates and Keys > Certificates**.
-2. Click **Keystore**, click the browse button next to the **Keystore** field, and browse to the keystore file:
+2. Click **Keystore**, click the browse button next to the **Keystore** field, and browse to the **keystore** file:
 
     ```
     INSTALL_DIR/apigateway/posix/jre/lib/security/cacerts

@@ -3,7 +3,7 @@
 "linkTitle": "RSA Access Manager integration",
 "weight":"140",
 "date": "2020-01-20",
-"description": "Use RSA Access Manager to provide Identity Management and access control services for web applications."
+"description": "Provide identity management and access control services for web applications with RSA Access Manager."
 }
 
 RSA Access Manager (formerly RSA ClearTrust) provides Identity Management and access control services for web applications. It centrally manages access to web applications, ensuring that only authorized users are allowed access to resources. You can configure API Gateway to act as a client to the RSA Access Manager, and leverage the user information stored in RSA Access Manager for user authentication and authorization.
@@ -45,10 +45,10 @@ This guide provides a simple policy to demonstrate how API Gateway integrates wi
 
 The following steps are required to integrate API Gateway with RSA Access Manager:
 
-1. [Add RSA Access Manager binaries to API Gateway](import_rsa_binaries).
-2. [Configure RSA Access Manager connection](configure_rsa_connection).
-3. [Configure an RSA Access Manager authentication repository](configure_rsa_repository).
-4. [Configure API Gateway policy](configure_rsa_policy).
+1. [Add RSA Access Manager binaries to API Gateway](#add-rsa-access-manager-binaries-to-api-gateway)
+2. [Configure RSA Access Manager connection](#configure-rsa-access-manager-connection)
+3. [Configure an RSA Access Manager authentication repository](#configure-an-rsa-access-manager-authentication-repository)
+4. [Configure API Gateway policy](#configure-api-gateway-policy)
 
 ### Add RSA Access Manager binaries to API Gateway
 
@@ -62,7 +62,7 @@ You must copy RSA Access Manager libraries to API Gateway, so you must have RSA 
     * `jcm-6.1.jar`
 
 2. Add the files to the `INSTALL_DIR/apigateway/ext/lib` directory on API Gateway:
-3. Restart API Gateway.
+3. Restart the gateway.
 
 ### Configure RSA Access Manager connection
 
@@ -78,15 +78,15 @@ The RSA Access Manager connection is configured as a connection set. A connectio
 4. Enter the host name and port the server is listening on.
 5. Select the security type for the server connection.
 
-    {{< alert title="Note" color="primary" >}}The security type (**Clear**, **SSL (Anonymous)**, or **SSL Authentication**) you select must match the security requirement of the server.{{< /alert >}}
+    * The security type (**Clear**, **SSL (Anonymous)**, or **SSL Authentication**) you select must match the security requirement of the server.
 
-6. If you selected **SSL Authentication**, click **Signing Key:**, and select the certificate you want to use, then select **OK**.
+6. If you selected **SSL Authentication**, click **Signing Key**, and select the certificate you want to use, then select **OK**.
 7. To change the priority of a server in the set, select the server, and click **Up** or **Down**.
 8. Repeat for all the servers you want to include in the connection set, and click **OK**.
 
 To later view or edit your connection sets, click **Environment Configuration > External Connections > Connection Sets**, double-click **RSA Access Manager Connection Sets**, and select the connection you want.
 
-For more details on the fields and options in this configuration window, see [Configure connection groups](/docs/apim_policydev/apigw_poldev/external_connections/common_connection_groups/#configure-a-connection-group).
+For more details on the fields and options in this configuration window, see [Configure a connection group](/docs/apim_policydev/apigw_poldev/external_connections/common_connection_groups/#configure-a-connection-group).
 
 ### Configure an RSA Access Manager authentication repository
 
@@ -112,9 +112,9 @@ To start, add a new policy named, for example, `RSA Access Manager`.
 1. Open the **Authentication** category in the palette, and drag a **HTTP Basic** filter onto the policy canvas.
 2. Set the following, and click **Finish**:
 
-    * **Credential Format**: `User Name`.
-    * **Allow client challenge**: Select this.
-    * **Repository Name**: The repository you configured (`RSA Access Manager Repository`).
+    * **Credential Format**: `User Name`
+    * **Allow client challenge**: Select this
+    * **Repository Name**: The repository you configured (`RSA Access Manager Repository`)
 
 3. Right click the filter, and select **Set as Start**.
 4. Open the **Authorization** category in the palette, and drag an **Access Manager** filter onto the policy canvas.
