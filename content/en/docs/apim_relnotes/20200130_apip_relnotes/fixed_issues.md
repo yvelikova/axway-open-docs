@@ -5,30 +5,28 @@ weight: 5
 date: 2019-08-08T00:00:00.000Z
 description: Listing of fixed issues in this release.
 ---
-
 <!-- TODO Update this statement with the versions and SP numbers for 7.7 -->
 
-API Portal 7.7 includes all fixes for 7.5.5, 7.6.2, and 7.7 Service Packs up to and including 7.5.5 SP1, 7.6.2 SP1, and 7.7.1. For details of all the Service Pack fixes included in 7.7, see the corresponding _SP Readme_ attached to each Service Pack on [Axway Support](https://support.axway.com).
+Тhis version of API Portal includes the fixes from all 7.5.5, 7.6.2, and 7.7 service packs or updates released prior to this version. For details of all the service pack fixes included, see the corresponding SP Readme attached to each service pack on [Axway Support](https://support.axway.com).
 
 ## Fixed security vulnerabilities
 
 <!-- TODO copy and paste the list from confluence -->
 
-| ﻿Internal ID | Case ID             | Description                                                                                                                                                                                                         | CVE ID |
-| ------------ | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| IAP-2551     |                     | **Issue**: API Portal was vulnerable to session hijacking.<br>**Resolution**: Session ID is checked against the client IP when the user is logged in, and API Portal is no longer vulnerable to session hijacking.  |        |
-| IAP-1938     |                     | **Issue**: Missing section for accepted HTTP request methods.<br>**Resolution**: Added section "Allow requests from only used HTTP methods" into the documentation.                                                 |        |
-| IAP-1930     |                     | **Issue**: Missing documentation section on how to reject requests containing unexpected or missing content type headers.<br>**Resolution**: New documentation section was added to describe this best practice.    |        |
-| IAP-2556     |                     | **Issue**: swagger-oauth.js does not open encoded URL properly.<br>**Resolution**: swagger-oauth.js file has been deleted as it is not used anywhere.                                                               |        |
-| IAP-2538     |                     | **Issue**: API Portal is using old vulnerable version of jQuery DataTables.<br>**Resolution**: API Portal is using latest version of jQuery DataTables with all security vulnerabilities remediated.                |        |
-| IAP-2539     |                     | **Issue**: Tablesorter library triggerred 4 critical vulnerabilities based on static code scanning.<br>**Resolution**: Tablesorter library is removed and replaced with DataTables.                                 |        |
-| IAP-2048     |                     | **Issue**: Missing section for integrity of the logging system.<br>**Resolution**: Added section "Protect the integrity of the logging system" into the documentation.                                              |        |
-| IAP-2013     | 1045070             | **Issue**: HTML source of Application Details page contained secret keys for both API Key and OAuth authentication methods.<br>**Resolution**: Secrets are sent in a separate request.                              |        |
-| IAP-2541     | 1087799             | **Issue**: Missing information for IP/Network disclosure.<br>**Resolution**: New section with "Recommended settings for Apache" was added.                                                                          |        |
-| IAP-2879     |                     | **Issue**: URL builder library introduced XSS-vulnerable strings.<br>**Resolution**: XSS-introducing characters are escaped in URL builder library.                                                                 |        |
-| IAP-2705     | 01090752, 01090952  | **Issue**: buffer overflow may occur in API Try It page.<br>**Resolution**: unnecessary regex check is removed and concerned query parameters are properly cast.                                                    |        |
+| ﻿Internal ID | Case ID            | Description                                                                                                                                                                                                        | CVE ID |
+| ------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
+| IAP-2551     |                    | **Issue**: API Portal was vulnerable to session hijacking.<br>**Resolution**: Session ID is checked against the client IP when the user is logged in, and API Portal is no longer vulnerable to session hijacking. |        |
+| IAP-1938     |                    | **Issue**: Missing section for accepted HTTP request methods.<br>**Resolution**: Added section "Allow requests from only used HTTP methods" into the documentation.                                                |        |
+| IAP-1930     |                    | **Issue**: Missing documentation section on how to reject requests containing unexpected or missing content type headers.<br>**Resolution**: New documentation section was added to describe this best practice.   |        |
+| IAP-2556     |                    | **Issue**: swagger-oauth.js does not open encoded URL properly.<br>**Resolution**: swagger-oauth.js file has been deleted as it is not used anywhere.                                                              |        |
+| IAP-2538     |                    | **Issue**: API Portal is using old vulnerable version of jQuery DataTables.<br>**Resolution**: API Portal is using latest version of jQuery DataTables with all security vulnerabilities remediated.               |        |
+| IAP-2539     |                    | **Issue**: Tablesorter library triggerred 4 critical vulnerabilities based on static code scanning.<br>**Resolution**: Tablesorter library is removed and replaced with DataTables.                                |        |
+| IAP-2048     |                    | **Issue**: Missing section for integrity of the logging system.<br>**Resolution**: Added section "Protect the integrity of the logging system" into the documentation.                                             |        |
+| IAP-2013     | 1045070            | **Issue**: HTML source of Application Details page contained secret keys for both API Key and OAuth authentication methods.<br>**Resolution**: Secrets are sent in a separate request.                             |        |
+| IAP-2541     | 1087799            | **Issue**: Missing information for IP/Network disclosure.<br>**Resolution**: New section with "Recommended settings for Apache" was added.                                                                         |        |
+| IAP-2879     |                    | **Issue**: URL builder library introduced XSS-vulnerable strings.<br>**Resolution**: XSS-introducing characters are escaped in URL builder library.                                                                |        |
+| IAP-2705     | 01090752, 01090952 | **Issue**: buffer overflow may occur in API Try It page.<br>**Resolution**: unnecessary regex check is removed and concerned query parameters are properly cast.                                                   |        |
 
-  
 ## Other fixed issues
 
 <!-- TODO copy and paste the list from confluence -->
