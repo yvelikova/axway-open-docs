@@ -6,7 +6,7 @@ date: 2019-07-30
 description: Learn the fundamental concepts you will encounter in AMPLIFY Central.
 ---
 
-*Estimated reading time: 1 minute*
+*Estimated reading time*: 1 minute
 
 ## API and API proxy
 
@@ -20,9 +20,9 @@ An API is an interface to a service, that enables app developers to interact wit
 
 An API is clearly defined by way of its endpoints, request parameters, and responses. This makes it easy for app developers to use the API, as the API specification (for example, Open API or Swagger) tells them:
 
-- What requests they can send and to what address
-- What the supported request parameters are
-- What responses they can expect
+* What requests they can send and to what address
+* What the supported request parameters are
+* What responses they can expect
 
 An API implies a *contract*, which provides app developers with an assurance that the API will change in a predictable manner over time, meaning that their app will continue to work with future changes to the API.
 
@@ -34,6 +34,22 @@ In AMPLIFY Central, you create an API proxy to represent your back-end API to yo
 
 Managing your API in AMPLIFY Central by way of an API proxy offers the following benefits:
 
-- You can change the implementation of the back-end service without impacting app developers as they continue to call the API proxy.
-- You can apply policies to the API proxy to manage or secure how client apps use your API.
-- You can analyze the usage of your APIs by client apps, and identify and analyze failed transactions, as all traffic that flows through an API proxy is monitored and recorded.
+* You can change the implementation of the back-end service without impacting app developers as they continue to call the API proxy.
+* You can apply policies to the API proxy to manage or secure how client apps use your API.
+* You can analyze the usage of your APIs by client apps, and identify and analyze failed transactions, as all traffic that flows through an API proxy is monitored and recorded.
+
+## Roles and teams
+
+AMPLIFY Central has its own set of roles in addition to the AMPLIFY Platform roles. These AMPLIFY Central roles include AMPLIFY Central Admin, Developer, and Consumer type roles to manage and use assets (for example, API proxies, applications, environments, Unified Catalog, and so on).  
+
+An AMPLIFY Central team is a group of users with varying abilities to manage and use assets. For example, a team member can share assets and their promotion to the Unified Catalog.
+
+Users and teams of AMPLIFY Central are managed by the AMPLIFY Platform. For more information, see [Managing Organizations](https://docs.axway.com/bundle/Appcelerator_Dashboard_allOS_en/page/managing_organizations.html).
+
+<!-- ### AMPLIFY Central roles -->
+
+<!-- The roles available in AMPLIFY Central and the capabilites of each role are: -->
+
+<!-- TODO Add list of roles and what they can do -->
+
+<!-- TODO Add something explaining a user can have a different role on each of the teams they are a member of. -->

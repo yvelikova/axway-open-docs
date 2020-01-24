@@ -41,7 +41,7 @@ New slogan explaining the applications concept, better information messaging and
 
 Previously this setting applied to both the API listing and API details view at the same time. Now it applied to the API listing only. API details view now respects the API Manager configuration for the Description field under the API tab in API Manager . This is useful if you want to only a display a summary of the API on the API listing but want a full description when viewing the API details.
 
-### Add tags to APIs
+### Control the visibility of APIs in the catalog
 
 A new setting, **Do not show APIs with tags**, was added to the API Catalog menu options. This setting supports `*` and `?` wildcards, and it is a powerful option when used in combination with **Show APIs with tags** setting.
 
@@ -88,6 +88,7 @@ If you change the API Portal language to Arabic (or any other right to left lang
 6. Click **Save** and click **Close** to close the template style.
 
 Related Issue: IAP-308
+
 
 ### Uploading files in API Endpoints with Content-Type application/octer-stream is not possible while using OAS3 
 
