@@ -57,7 +57,8 @@
 /content/en/docs/apim_policydev/apigw_polref/ @andreamussap @maherb4
 /content/en/docs/apim_policydev/apigw_poldev/ @alexearnshaw @maherb4
 /content/en/docs/apim_reference/ @andreamussap @maherb4
-/content/en/docs/apim_relnotes/ @alexearnshaw @maherb4 @jowens-axway
+/content/en/docs/apim_relnotes/*apimgr_relnotes/ @alexearnshaw @maherb4
+/content/en/docs/apim_relnotes/*apip_relnotes/ @andreamussap @jowens-axway
 /content/en/docs/apimanager_analytics/ @andreamussap @maherb4
 /content/en/docs/apimanager_capacityguide/ @alexearnshaw @maherb4
 /content/en/docs/apimgmt_multi_dc/ @andreamussap @maherb4
