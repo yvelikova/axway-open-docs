@@ -63,7 +63,7 @@ This release has the following limitations:
 
 * This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
 * The ready-made API Portal Docker image is strictly for development environments only, and is not recommended for use in production environments. You must use the Dockerfile to build and run API Portal containers in production environments.
-* Upgrade to API Portal 7.7 is supported from API Portal 7..6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
+* Upgrade to API Portal 7.7 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
 * API Portal 7.7 is compatible with API Gateway and API Manager 7.7 only.
 
 ## Fixed issues
@@ -88,6 +88,19 @@ If you change the API Portal language to Arabic (or any other right to left lang
 6. Click **Save** and click **Close** to close the template style.
 
 Related Issue: IAP-308
+
+
+### Uploading files in API endpoints with Content-Type application/octet-stream is not possible while using OAS3 
+
+The execution of an endpoint with Content-Type application/octet-stream is not possible and the request results in an endless loader in the response section.
+
+Related Issue: IAP-2952
+
+### Imported Swagger 2.0 definitions into API Manager are not translated to OAS3, which results in unexpected behavior in API Portal
+
+When a Swagger definition 2.0 is uploaded into API Manager its visualization and behavior in API Portal are unpredictable. This happens because Swagger 2.0 is not correctly translated into OAS3 definition by API Manager. One of the known problems is that the body parameters of POST endpoints are not displayed.
+
+Related Issue: RDAPI-18389
 
 ## Install or upgrade a non-container deployment
 
