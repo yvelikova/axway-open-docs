@@ -90,15 +90,15 @@ If you change the API Portal language to Arabic (or any other right to left lang
 Related Issue: IAP-308
 
 
-### Uploading files in API Endpoints with Content-Type application/octer-stream is not possible while using OAS3 
+### Uploading files in API endpoints with Content-Type application/octet-stream is not possible while using OAS3 
 
-The execution of an endpoint with Content-Type application/octer-stream is not possible and the request results in an infinite loader in the response section.
+The execution of an endpoint with Content-Type application/octet-stream is not possible and the request results in an endless loader in the response section.
 
 Related Issue: IAP-2952
 
-### Imported Swagger 2.0 definitions into API Manager are not translated to OAS3 so their definitions could lead to unexpected behavior in API Portal
+### Imported Swagger 2.0 definitions into API Manager are not translated to OAS3, which results in unexpected behavior in API Portal
 
-If a Swagger definition 2.0 is uploaded into API Manager its visualization and behavior in API Portal are unpredictable. This happens because Swagger 2.0 is not correctly translated into OAS3 definition by API Manager. One of the known problems is that the body parameters of POST endpoints are not displayed.
+When a Swagger definition 2.0 is uploaded into API Manager its visualization and behavior in API Portal are unpredictable. This happens because Swagger 2.0 is not correctly translated into OAS3 definition by API Manager. One of the known problems is that the body parameters of POST endpoints are not displayed.
 
 Related Issue: RDAPI-18389
 
