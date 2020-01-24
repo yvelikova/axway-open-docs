@@ -1,9 +1,9 @@
 {
 "title": "Secure API Portal",
-  "linkTitle": "Secure API Portal",
-  "weight": "8",
-  "date": "2019-08-09",
-  "description": "Secure and harden your API Portal environment after installation."
+"linkTitle": "Secure API Portal",
+"weight": "8",
+"date": "2019-08-09",
+"description": "Secure and harden your API Portal environment after installation."
 }
 
 Perform the following steps after installation to ensure that your API Portal environment is secure from internal and external threats:
@@ -292,15 +292,15 @@ The audit logs must be collected for the last 30 days in easily accessible stora
 
 ## Detect and prevent the usage of automated tools or unusual behavior
 
-Detecting abnormal behavior is very complex task and good prevention means a set of actions taken not only on application layer but also firewall, network monitoring, proxy servers etc.
-Here are some general recommendations from us : 
-1. IP throttling - it limits the number of connections from a given IP address within a given time period (what is considered human normal activity). It could be achieved by different ways:
-* Several toolkits like mod_security. For more details, please refer to the following url :
-https://modsecurity.org/rules.html
-* Firewall configurations. For more details please refer to the official documentation of your firewall.
-2. Google analytics - it has abnormal detection features. Very commonly used and reliable tool.  https://support.google.com/analytics/answer/7507748?hl=en
+Detecting abnormal behavior is very complex task and good prevention requires actions not only on the application layer but also concerns the firewall, network monitoring, proxy servers, and so on.
 
-3. There are plenty of log analysis tools that can be installed to act upon different logs. Example - https://www.loggly.com/docs/anomaly-detection/
+These are some general recommendations:
+
+* IP throttling - limits the number of connections from a given IP address within a given time period (what is considered normal activity). You can achieve this in different ways:
+    * Toolkits like `mod_security`. For more details, see [ModSecurity rules](https://modsecurity.org/rules.html).
+    * Firewall configurations. For more details see the official documentation of your firewall.
+* Google Analytics - has abnormal detection features. Very commonly used and reliable tool. For more information, see [Google Analytics Anomaly Detection](https://support.google.com/analytics/answer/7507748?hl=en).
+* Log analysis tools - can be installed to act upon different logs. For example, see [Loggly Anomoly Detection](https://www.loggly.com/docs/anomaly-detection/).
 
 ## Where to go next
 
