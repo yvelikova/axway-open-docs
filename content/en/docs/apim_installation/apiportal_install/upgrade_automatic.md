@@ -49,17 +49,6 @@ To upgrade your API Portal software installation, follow these steps:
     # ./apiportal_upgrade.sh
     ```
 
-## Unattended upgrade
-
-To upgrade the API Portal software in unattended or silent mode:
-
-1. Download the upgrade package for your OS from Axway Support at [https://support.axway.com](https://support.axway.com/), and upload it to your host machine.
-2. Log in to the host machine as the `root` user.
-3. Extract the upgrade package:
-
-    ```
-    # tar xpvzf <package_name>.tgz
-    ```
 
 4. Run the upgrade script with the appropriate arguments. For example:
 
