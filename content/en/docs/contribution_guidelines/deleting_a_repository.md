@@ -22,6 +22,16 @@ The easiest way to make sure that your fork is up-to-date with the latest change
 
 1. Make sure that you are on your fork of the project and click **Settings**
 
+    ```
+    https://github.com/<your github user name>/axway-open-docs
+    ```
+    
+    For example: 
+    
+    ```
+    https://github.com/amussapvordel/axway-open-docs
+    ```
+
     ![Delete fork Settings](/Images/contributing/deletefork_settings.png)
 
 2. Under Danger Zone, click **Delete this repository**.
