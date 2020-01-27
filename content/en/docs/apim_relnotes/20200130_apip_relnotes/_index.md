@@ -61,10 +61,10 @@ For more information, see [Additional features for API Catalog view](/docs/apim_
 
 This release has the following limitations:
 
-* This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
+* API Portal 7.7.20200130 is compatible with API Gateway and API Manager 7.7.20200130 only.
+* Upgrade to API Portal 7.7.20200130 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to 7.7.
 * The ready-made API Portal Docker image is strictly for development environments only, and is not recommended for use in production environments. You must use the Dockerfile to build and run API Portal containers in production environments.
-* Upgrade to API Portal 7.7 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
-* API Portal 7.7 is compatible with API Gateway and API Manager 7.7 only.
+* This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
 
 ## Fixed issues
 
@@ -89,8 +89,7 @@ If you change the API Portal language to Arabic (or any other right to left lang
 
 Related Issue: IAP-308
 
-
-### Uploading files in API endpoints with Content-Type application/octet-stream is not possible while using OAS3 
+### Uploading files in API endpoints with Content-Type application/octet-stream is not possible while using OAS3
 
 The execution of an endpoint with Content-Type application/octet-stream is not possible and the request results in an endless loader in the response section.
 
