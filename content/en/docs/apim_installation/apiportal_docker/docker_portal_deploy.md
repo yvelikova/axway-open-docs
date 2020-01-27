@@ -45,29 +45,31 @@ The package includes:
 
 ## Create API Portal network
 
-To connect database with API Portal without exposing database for outer world we will create a docker network.
+To connect database with API Portal without exposing database for outer world we will create a docker network. In order to do that complete the following steps:
 
-`$ docker network create apiportal-net`
+1. Ensure that you are logged in to your Docker host machine as the `root` user or as a user in `docker` group.
+2. Run `$ docker network create apiportal-net`
 
 ## Download and run database container
 
 To run a database Docker container, complete the following steps:
 
-1. Download a Docker image for your chosen database from [Docker Hub](https://hub.docker.com/). For example, to download a MySQL image, enter the following command:
+1. Ensure that you are logged in to your Docker host machine as the `root` user or as a user in `docker` group.
+2. Download a Docker image for your chosen database from [Docker Hub](https://hub.docker.com/). For example, to download a MySQL image, enter the following command:
    `$ docker image pull mysql:5.7`
    The database must be supported by API Portal. For more information on supported databases, see [Software requirements](/docs/apim_installation/apiportal_install/install_software_prereqs/).
-2. Run the database container following the instructions on [Docker Hub](https://hub.docker.com/). For example, to run a MySQL Docker container:
+3. Run the database container following the instructions on [Docker Hub](https://hub.docker.com/). For example, to run a MySQL Docker container:
    `$ docker container run -d --name apiportal-db --network apiportal-net --network-alias db -e MYSQL_ROOT_PASSWORD=XXXXX mysql:5.7`\
    With this we created an attached to recently created network database container named `apiportal-db` with alias in `db` in the network.
-3. Verify that the database container is running:
+4. Verify that the database container is running:
    `$ docker container ls -f name=^apiportal-db$ -f status=running`
-   When the database container is started it creates a volume to store the data from the database. This volume is created with a random name which you can identify using `docker inspect`.
+   When the database container is started it creates a volume to store the data from the database. This volume is created with a random name which you can identify using `docker container inspect apiportal-db --format '{{ json .Mounts }}'`.
 
 ## Build and run API Portal Docker container
 
 To build the Docker image and run the API Portal Docker container, follow these steps:
 
-1. Ensure that you are logged in to your Docker host machine as the `root` user.
+1. Ensure that you are logged in to your Docker host machine as the `root` user or as a user in `docker` group.
 2. Change to the directory where you unzipped the Docker sample package.
 3. Build the API Portal image. For example, enter the following command to build the image and tag it as `apiportal`:`7.7`:
    `$ docker build -t apiportal:7.7`
