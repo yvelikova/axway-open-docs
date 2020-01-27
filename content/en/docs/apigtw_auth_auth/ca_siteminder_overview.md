@@ -3,7 +3,7 @@
 "linkTitle": "CA SiteMinder integration",
 "weight":"130",
 "date": "2020-01-21",
-"description": "configure API Gateway to authenticate and authorize end users using CA SiteMinder 12.52."
+"description": "Configure API Gateway to authenticate and authorize end users using CA SiteMinder 12.52."
 }
 
 CA SiteMinder is a centralized web access management system that provides user authentication and single sign-on, policy-based authorization, identity federation, and auditing of access to web applications and portals. This section describes how to configure API Gateway to authenticate and authorize end users using CA SiteMinder 12.52.
@@ -66,7 +66,7 @@ Integration with CA SiteMinder requires CA SiteMinder SDK version 12.52-sp02 or 
     INSTALL_DIR/apigateway/<platform>/lib
     ```
 
-5. Restart API Gateway.
+5. Restart the gateway.
 
 #### Register API Gateway as the SiteMinder agent
 
@@ -126,6 +126,8 @@ To obtain this information, contact your SiteMinder administrator.
 2. Select **Add a SiteMinder connection**.
 3. Enter your agent name (`apigateway.axway.int`) and agent configuration object name (`V6HostConfObject`) you created in [Register API Gateway as the SiteMinder agent](#register-api-gateway-as-the-siteminder-agent).
 4. Click **Browse**, select the `SmHost.conf` file for your agent, and click **OK**.
+
+For more details on the fields and options in this configuration window, see [Configure SiteMinder/SOA Security Manager connections](/docs/apim_policydev/apigw_poldev/external_connections/connector_ca_connection/).
 
 ### Configure SiteMinder authentication policy
 

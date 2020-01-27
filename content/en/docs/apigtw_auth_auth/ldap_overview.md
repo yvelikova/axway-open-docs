@@ -3,7 +3,7 @@
 "linkTitle": "LDAP identity manager integration",
 "weight":"120",
 "date": "2020-01-20",
-"description": "API Gateway interacts with the following directory servers using the Lightweight Directory Access Protocol (LDAP)"
+"description": "API Gateway interacts with the following directory servers using the Lightweight Directory Access Protocol (LDAP)."
 }
 
 * Apache Directory Server 2.0.0-M7
@@ -45,45 +45,57 @@ Before you can configure API Gateway to connect to your directory server, you mu
 
 #### Connection details
 
-**LDAP URL**: The LDAP URL containing the host name and port that your directory server is listening on. For example:
+**LDAP URL**\
+
+The LDAP URL containing the host name and port that your directory server is listening on. For example:
 
 * `ldap://192.168.0.129:10389`
 * `ldaps://192.168.0.129:10636`
 
-**User name**: The distinguished name (DN) of the user that API Gateway uses when connecting to the directory server. The format may vary depending on your directory server. For example:
+**User name**\
+
+The distinguished name (DN) of the user that API Gateway uses when connecting to the directory server. The format may vary depending on your directory server. For example:
 
 * `uid=admin,ou=system`
 * `cn=root`
 * `CN=Administrator,CN=users,DC=axway,DC=com`  
 * `cn=admin,o=Axway,I=Dublin4,st=Dublin,C=IE`
 
-**Password**: The password of the user API Gateway uses. For example:
+**Password**\
+
+The password of the user API Gateway uses. For example:
 
 * `secret`
 
 Ensure you have these details at hand when you start configuring the connection between the gateway and the directory server.
 
-#### User search conditions
+#### Check the user search conditions
 
-API Gateway searches the directory server based on the details you define when configuring the LDAP authentication repository for API Gateway.
+API Gateway searches the directory server based on the details you define when configuring the LDAP authentication repository for the gateway.
 
 1. Connect and log in to the directory server using an LDAP browser.
 2. Decide how you want to search the repository and note down the following details:
 
-**Base Criteria**: The root DN to use when running queries against the directory server. For example:
+**Base Criteria**\
+
+The root DN to use when running queries against the directory server. For example:
 
 * `ou=system`
 * `CN=LOCALHOST`
 * `CN=users,DC=axwayqa,DC=com`
 * `ou=R&D,o=Axway,I=Dublin4,st=Dublin,C=IE`  
 
-**User Class**: The object class searched in the directory server. Each object in an LDAP directory has at least one object class associated with it. For example:
+**User Class**\
+
+The object class searched in the directory server. Each object in an LDAP directory has at least one object class associated with it. For example:
 
 * `inetOrgPerson`
 * `User`
 * `Person`
 
-**User Search Attribute**: The attribute that contains the user name. For example:
+**User Search Attribute**\
+
+The attribute that contains the user name. For example:
 
 * `uid`
 * `cn`
@@ -254,6 +266,8 @@ You can extend the authentication to downstream web services, if required. After
 5. Connect the filters with success paths.
 
     ![Connect the filters with success paths](/Images/IntegrationGuides/auth_auth/ldap_policy_final.png)
+
+For more details on how to configure an insert SAML Authentication Assertion filter, see [Insert SAML authentication assertion filter](/docs/apim_policydev/apigw_polref/authn_common/#insert-saml-authentication-assertion-filter)
 
 ### Secure the connection to the directory server
 

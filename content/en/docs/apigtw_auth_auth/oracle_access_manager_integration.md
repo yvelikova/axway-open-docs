@@ -32,15 +32,15 @@ You should start it by using the following commands on UNIX-based systems (assum
 Start WebLogic using the following command:
 
 ```
-# cd ~/middleware/user_projects/domains/idm_domain/bin
-# ./startWebLogic.sh
+cd ~/middleware/user_projects/domains/idm_domain/bin
+./startWebLogic.sh
 ```
 
 You can then start managed WebLogic using the following:
 
 ```
-# cd ~/middleware/user_projects/domains/idm_domain/bin
-# ./startManagedWebLogic.sh oam_server1 t3://oam_host:7001
+cd ~/middleware/user_projects/domains/idm_domain/bin
+./startManagedWebLogic.sh oam_server1 t3://oam_host:7001
 ```
 
 Enter the user name of your administrator user when prompted:
@@ -107,7 +107,8 @@ Update the authentication policy for the new WebGate:
 6. Click the `Protected Resource Policy` link in the table.
 7. Change the **Authentication Scheme** field from `LDAPScheme` to `BasicScheme`.
 8. Click **Apply**.
-9. You will see a confirmation message indicating that the update was successful.
+
+You will see a confirmation message indicating that the update was successful.
 
 #### Copy the WebGate artifacts to the API Gateway machine
 

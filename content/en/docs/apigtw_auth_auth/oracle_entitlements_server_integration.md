@@ -64,6 +64,184 @@ To test the integration steps, the cURL testing utility is used to POST requests
 
 Alternatively, you can use any client capable of sending HTTP POST requests with HTTP basic authentication.
 
+## Configure Oracle Entitlements Server
+
+This section describes how to configure Oracle Entitlements Server to work with API Gateway.
+
+### Create a resource and authorization policy in OES
+
+The following steps describe how to create a resource and an authorization policy for that resource in Oracle Entitlements Server. For more detailed instructions about each of these steps, refer to the OES documentation.
+
+You can use the OES Authorization Policy Manager web-based administration interface to configure the resource. The web interface is available at the following URL, where `OES_HOST` refers to the IP or host name of the machine on which OES is running:
+
+```
+http://OES_HOST:7001/apm
+```
+
+Log in using your WebLogic credentials and complete the following steps:
+
+#### Create the application
+
+To add a new application in OES, perform these steps:
+
+1. Open the **Authorization Management** tab.
+2. Right-click on the **Applications** node in the tree and select **New**:
+3. Enter a name and a description for the new application, for example, `MyApplication` and `First App`.
+4. Click **Save** at the top right-hand corner of the page.
+
+#### Create the security module
+
+The next step is to create a new security module:
+
+1. Open the **System Configuration** tab.
+2. Double-click the **Security Modules** node in the tree.
+3. Click **New** at the top of the **Security Modules** table.
+4. Enter `MySM` as the name of the new security module.
+5. Click **Add** at the top of the **Bound to Applications** table.
+6. Leave the **Search** field blank and click the search button to the right of the field.
+7. Select `MyApplication` from the search results and click **Add**.
+
+The `MyApplication` should now be displayed in the **Bound to Applications** table as follows:
+
+![MyApplication](/Images/IntegrationGuides/auth_auth/oracle_entitlements_server_11gR2_05.png)
+
+#### Create the resource type
+
+You will now configure the resource type for the resource that users will be authorized for:
+
+1. Open the **Authorization Management** tab again.
+2. Expand the **Applications** node and then expand the newly created **MyApplication** node.
+3. Double-click the **Resource Types** node.
+4. Click **New** above the table showing the existing **Resource Types**.
+5. Enter `MyResourceType` in the **Name** field.
+6. Add an action for this resource by clicking **New** above the **Actions** table.  Add `POST` as an action.
+7. Click **Save** to save the new **Resource Type**
+
+#### Create the resource
+
+The next step is to add the **Resource**:
+
+1. Expand the **Default Policy Domain** and then the **Resource Catalog** nodes.
+2. Double-click the **Resources** node.
+3. Click **New** above the table listing all existing **Resources**.
+4. Select `MyResourceType` as the **Resource Type**.
+5. Enter `MyResource` as the **Resource name**.
+6. Click **Save** to save the **Resource**
+
+#### Configure the authorization policy
+
+Now you must create the authorization policy that will determine whether to permit or deny access to the resource:
+
+1. Double-click the **Authorization Policies** node beneath the **Default Policy Domain** node in the tree.
+2. Click **New** above the table showing the existing **Authorization Policies**.
+3. Enter `MyPolicy` as the name of the new policy.
+4. Chose to "Permit" access to the resource target using the corresponding **Effect** check box.
+5. Configure **Principals** (users, roles, or both) that can access the resource by clicking the "plus" button to the right of the **Principals** table.
+6. Select the **Users** tab in the **Search Principal** window:
+7. Select the default `weblogic` user from the table and click **Add Selected** to add the `weblogic` user to the **Selected Principals** table.
+
+    ![Search Principal window](/Images/IntegrationGuides/auth_auth/oracle_entitlements_server_11gR2_08.png)
+
+8. Click **Add Principals** at the bottom of the window.
+9. Next, you must specify a resource target that this policy will act on. Click the "plus" button to the right of the **Targets** table.
+10. Click the **Resources** tab on the **Search Targets** window.
+11. Select `MyResourceType` in the **Resource Type** drop-down and click **Search**.
+12. Select `MyResource` from the table and click **Add Selected** to add the resource to the **Selected Targets** table.
+13. Click **Add Targets** at the bottom of the page.
+
+### Set up the OES client
+
+The OES client distributes policies to individual security modules that protect applications and services. Policy data is distributed in a controlled manner or in a non-controlled manner. The distribution mode is defined in the `jps-config.xml` configuration file for each security module. The specified distribution mode applies to all application policy objects bound to that security module. Consult with the OES administrator to find out the distribution mode. For the purposes of this section, the _controlled_ distribution mode is used.
+
+#### Controlled mode
+
+Complete the following steps to configure the OES client in controlled mode:
+
+1. Open a command prompt and change directory to your OES client installation directory (this is referred to as `OES_CLIENT_HOME` throughout the remainder of this section).
+2. Set the `JAVA_HOME` environment variable. For example:
+
+    **UNIX/Linux**
+
+    ```
+    export JAVA_HOME=/home/oesuser/Oracle/Middleware/jdk160_29
+    ```
+
+3. Edit the following file:
+
+    ```
+    OES_CLIENT_HOME/oessm/SMConfigTool/smconfig.java.controlled.prp
+    ```
+
+4. Ensure that the following values are set:
+
+    * `oracle.security.jps.runtime.pd.client.policyDistributionMode`: Accept the default value `controlled-push` as the distribution mode.
+    * `oracle.security.jps.runtime.pd.client.RegistrationServerHost`: Enter the address of the Oracle Entitlements Server Administration Server.
+    * `oracle.security.jps.runtime.pd.client.RegistrationServerPort` : Enter the SSL port number of the Oracle Entitlements Server Administration Server. You can find the SSL port number from the WebLogic Administration console. By default, `7002` is used.
+
+5. On UNIX-based systems, run the `config.sh` script located in the  `OES_CLIENT_HOME/oessm/bin` directory.
+
+    **UNIX/Linux**
+
+    ```
+    ./config.sh –smConfigId MySM -prpFileName OES_CLIENT_HOME/oessm/SMConfigTool/smconfig.java.controlled.prp
+    ```
+
+6. When prompted, specify the following:
+    * OES user name (Administration Server's user name)
+    * OES password (Administration Server's password)
+    * New key store password for enrollment
+
+    The following shows some sample output:
+
+    ```
+    ./config.sh -smConfigId MySM -prpFileName
+    /home/oesuser/Oracle/Middleware/oes_client/oessm/SMConfigTool/smconfig.java.controlled.prp
+    Configuring for Controlled Policy Distribution Mode
+    Security Module configuration is created at: /home/oesuser/Oracle/Middleware/oes_client/oes_sm_instances/MySM
+    Enter password for key stores: ******
+    Enter password for key stores again: ******
+    Passwords are saved in credential store.
+    Keystores are initialized successfully.
+    Please enter a value for OES Admin Server User name:weblogic
+    Please enter a value for OES Admin Server Password:
+    Enrollment is proceeded successfully.
+    ```
+
+7. Ensure that the security module has been configured correctly by checking that the `OES_CLIENT_HOME/oes_sm_instances/MySM` directory has been created.
+8. Depending on your OES client setup, the registration process might not have generated a `cwallet.sso` file in your `OES_CLIENT_HOME/oes_sm_instances/MySM/config` directory. If there is no `cwallet.sso` file present in the `config` directory, you can copy the one generated in the `config/enroll` directory to the `config` directory using the following commands:
+
+    ```
+    cd oes_sm_instances/MySM/config
+    [oesuser@oeseval config]$ ls
+    enroll  jps-config.xml  system-jazn-data.xml
+    # cp enroll/cwallet.sso ./
+    # ls
+    cwallet.sso  enroll  jps-config.xml  system-jazn-data.xml
+    ```
+
+### Non-controlled mode
+
+Alternatively, you can use the non-controlled or controlled pull distribution mode. Consult the Oracle documentation for configuring these modes.
+
+### Distribute the OES policy
+
+When the OES client has registered with OES, you can distribute the policy for that application so that clients making authorization requests for this resource will be subject to the policy enforcement rules.
+
+Follow these steps in the OES Authorization Policy Manager web-based administration interface:
+
+1. Double-click the **MyApplication** node in the tree on the **Authorization Management** tab.
+2. Open the **Policy Distribution** tab for the application configuration.
+3. Expand the `MySM` entry in the table.
+
+    You should see an entry representing the recently registered OES client instance, as shown in the following screenshot:
+
+    ![MyApplication](/Images/IntegrationGuides/auth_auth/oracle_entitlements_server_11gR2_09.png)
+
+4. Select the **MySM** application and click **Distribute** to push the authorization policy configured for this application.
+5. Click **Refresh** to update the **Synced** status. You should see a green tick to indicate a successful distribution.
+
+{{< alert title="Note" color="primary" >}}You might have to restart WebLogic for your newly registered security module to be displayed in the list on the **Policy Distribution** tab.{{< /alert >}}
+
 ## Configure API Gateway
 
 This section describes how to configure API Gateway to work with Oracle Entitlements Server.
@@ -126,10 +304,6 @@ Command example:
 startinstance -n "APIGateway1" -g "Group1"
 ```
 
-<!-- Configure Oracle Entitlements Server -->
-
-
-
 ### Configure API Gateway to delegate authorization to OES
 
 This section explains how to configure API Gateway to delegate authorization decisions to Oracle Entitlements Server.
@@ -152,10 +326,6 @@ Configure the authentication filter as follows:
     * **Repository Name**: Select `Local User Store` from the drop-down list.
 3. Click **OK**.
 4. To set this authentication filter to be the starting filter of the policy, right-click the filter in the canvas and select **Set as Start**.
-
-The completed configuration for the filter appears as follows:
-
-![Configuration for the filter](/Images/IntegrationGuides/auth_auth/oracle_entitlements_server_11gR2_11.png)
 
 #### Configure the OES 11g authorization filter
 
@@ -208,7 +378,7 @@ For example, if you enter a relative path of `/oes`, you can see that this path 
 
 To push the configuration changes to the live API Gateway instance you must deploy the new policy. You can do this by pressing the **F6** button.
 
-### Test the integration
+## Test the integration
 
 Having completed the integration steps, you can now test the setup using the cURL testing utility.
 
