@@ -1,11 +1,10 @@
 {
-    "title":"Build and run API Portal using Dockerfile",
-    "linkTitle":"Build and run using Dockerfile",
-    "weight":"1",
-    "date":"2019-08-09",
-    "description":"Build an API Portal Docker image using the `Dockerfile` in the sample package."
+"title": "Build and run API Portal using Dockerfile",
+  "linkTitle": "Build and run using Dockerfile",
+  "weight": "1",
+  "date": "2019-08-09",
+  "description": "Build an API Portal Docker image using the `Dockerfile` in the sample package."
 }
-
 This section describes how to build an API Portal Docker image using the `Dockerfile` in the sample package. It also describes how to download and run MySQL and Redis Docker containers, and how to run API Portal in Docker containers.
 
 MySQL and Redis Docker images are not included with the API Portal Docker sample package. You must download them separately from [Docker Hub](https://hub.docker.com/).
@@ -39,29 +38,22 @@ The package includes:
 * `Dockerfile` – Enables you to build an API Portal Docker image using the `docker build` command.
 * Various scripts and files that are used to build the API Portal Docker image (for example, the `.env.demo` file). See the `readme.md` for full details of these files.
 * `docker-compose.yml` sample – Enables you to use Docker Compose to run your entire API Portal Docker deployment using a single `docker-compose up` command.
-    * It provides a sample API Portal topology which you can customize to suit your requirements. For more information, see [Customize your API Portal topology in Docker](/docs/apim_installation/apiportal_docker/docker_config/).
-    * This file requires Docker Compose. Docker Compose is included by default in some Docker installations. For more information, see [Docker Compose documentation](https://docs.docker.com/compose/).
+  * It provides a sample API Portal topology which you can customize to suit your requirements. For more information, see [Customize your API Portal topology in Docker](/docs/apim_installation/apiportal_docker/docker_config/).
+  * This file requires Docker Compose. Docker Compose is included by default in some Docker installations. For more information, see [Docker Compose documentation](https://docs.docker.com/compose/).
 
 ## Download and run database container
 
 To run a database Docker container, complete the following steps:
 
-1. Ensure that you are logged in to your Docker host machine as the `root` user.
+1. Ensure that you are logged in to your Docker host machine as the `root` user or as a user in `docker` group (see output from `groups` command).
 2. Download a Docker image for your chosen database from [Docker Hub](https://hub.docker.com/). For example, to download a MySQL image, enter the following command:
-
-    `$ docker pull mysql:5.7`
-
-    The database must be supported by API Portal. For more information on supported databases, see [Software requirements](/docs/apim_installation/apiportal_install/install_software_prereqs/).
-
+   `$ docker pull mysql:5.7`
+   The database must be supported by API Portal. For more information on supported databases, see [Software requirements](/docs/apim_installation/apiportal_install/install_software_prereqs/).
 3. Run the database container following the instructions on [Docker Hub](https://hub.docker.com/). For example, to run a MySQL Docker container:
-
-    `$ docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=XXXXX -p 3306:3306 mysql:5.7`
-
+   `$ docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=XXXXX -p 3306:3306 mysql:5.7`
 4. Verify that the database container is running:
-
-    `$ docker ps -a | grep <your database container name>`
-
-    When the database container is started it creates a volume to store the data from the database. This volume is created with a random name which you can identify using `docker inspect`.
+   `$ docker ps -a | grep <your database container name>`
+   When the database container is started it creates a volume to store the data from the database. This volume is created with a random name which you can identify using `docker inspect`.
 
 ## Build and run API Portal Docker container
 
@@ -70,26 +62,17 @@ To build the Docker image and run the API Portal Docker container, follow these
 1. Ensure that you are logged in to your Docker host machine as the `root` user.
 2. Change to the directory where you unzipped the Docker sample package.
 3. Build the API Portal image. For example, enter the following command to build the image and tag it as `apiportal`:`7.7`:
-
-    `$ docker build -t apiportal:7.7`
-
+   `$ docker build -t apiportal:7.7`
 4. Check the IP address of the database container you started earlier:
-
-    `$ docker inspect <your database container name>`
-
+   `$ docker inspect <your database container name>`
 5. Create data volumes for API Portal customized data, for example:
-
-    `$ docker volume create templates`
-
-    `$ docker volume create images`
-
-    For more information about Docker volumes and a complete list of directories which you should preserve, see [Create Docker data volumes for persistence](/docs/apim_installation/apiportal_docker/docker_config/).
-
+   `$ docker volume create templates`
+   `$ docker volume create images`
+   For more information about Docker volumes and a complete list of directories which you should preserve, see [Create Docker data volumes for persistence](/docs/apim_installation/apiportal_docker/docker_config/).
 6. Run a container from the API Portal Docker image with the same data volumes. For example:
-
-    ```
-    docker run -it --name apiportal -e MYSQL_HOST=172.19.0.2 -e MYSQL_PORT=3306 -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=joomla -e MYSQL_PASSWORD=XXXXX -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443 -v templates:/opt/axway/apiportal/htdoc/templates -v images:/opt/axway/apiportal/htdoc/images apiportal:7.7
-    ```
+   ```
+   docker run -it --name apiportal -e MYSQL_HOST=172.19.0.2 -e MYSQL_PORT=3306 -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=joomla -e MYSQL_PASSWORD=XXXXX -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443 -v templates:/opt/axway/apiportal/htdoc/templates -v images:/opt/axway/apiportal/htdoc/images apiportal:7.7
+   ```
 
 This example performs the following:
 
@@ -119,31 +102,18 @@ For better performance and scalability, you can configure API Portal to cache A
 To download and run a Redis Docker container, complete the following steps:
 
 1. Download the Redis Docker image from [Redis on Docker Hub](https://hub.docker.com/_/redis/). For example, enter the following command:
-
-    `$ docker pull redis:latest`
-
+   `$ docker pull redis:latest`
 2. Run the Redis Docker container, for example:
-
-    `$ docker run -d --name redis redis:latest`
-
-    Redis is now running in a Docker container. To configure API Portal to use the Redis cache, follow these steps:
-
+   `$ docker run -d --name redis redis:latest`
+   Redis is now running in a Docker container. To configure API Portal to use the Redis cache, follow these steps:
 3. Check the IP address of the Redis container:
-
-    `$ docker inspect <your Redis container name>`
-
+   `$ docker inspect <your Redis container name>`
 4. Enter the following command to connect to the API Portal container:
-
-    `$ docker exec -it <your API Portal container name> /bin/bash`
-
+   `$ docker exec -it <your API Portal container name> /bin/bash`
 5. Open the following configuration file for editing:
-
-    `/opt/axway/apiportal/htdoc/configuration.php`
-
+   `/opt/axway/apiportal/htdoc/configuration.php`
 6. Locate the following line:
-
-    `redis_server_host = 'localhost';`
-
+   `redis_server_host = 'localhost';`
 7. Change `localhost` to the IP address of the Redis container and save the file.
 
 ## Encrypt the Public API user password (optional)
@@ -153,16 +123,12 @@ To use the Public API mode in API Portal you must first run a script to encrypt 
 Perform the following steps after the API Portal Docker container is started:
 
 1. Access the API Portal Docker container using the following command:
-
-    `docker exec -it <your API Portal container name> bash`
-
+   `docker exec -it <your API Portal container name> bash`
 2. Change to the directory where the `apiportal_encryption.sh` script is located and execute the script. For example:
-
-    ```
-    cd /
-    ./apiportal_encryption.sh
-    ```
-
+   ```
+   cd /
+   ./apiportal_encryption.sh
+   ```
 3. Enter the full path to the file in which to store the encryption key.
 
 The directory is created along with a file. The last segment of the directory is the file name, for example: `/sample/directory/for/encryption/key` creates an empty file named "key" in the desired directory.
