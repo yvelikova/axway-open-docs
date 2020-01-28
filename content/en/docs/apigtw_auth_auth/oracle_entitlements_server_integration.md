@@ -374,7 +374,7 @@ To push the configuration changes to the live API Gateway instance you must depl
 
 Having completed the integration steps, you can now test the setup using the cURL testing utility.
 
-{{< alert title="Note" color="primary" >}}You must have added a `weblogic` user to the API Gateway local user store as outlined in [Prerequisites](#Prerequisites).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You must have added a `weblogic` user to the API Gateway local user store as outlined in [Prerequisites](#prerequisites).{{< /alert >}}
 
 Assuming you are running API Gateway on a machine called `apigateway` on the default port of 8080, you can send a POST request to the authorization policy on API Gateway using HTTP basic authentication with the following command:
 
