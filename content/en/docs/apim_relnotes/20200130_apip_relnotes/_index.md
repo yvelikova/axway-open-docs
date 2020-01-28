@@ -25,7 +25,9 @@ The restriction to install API Portal into the `/opt/axway/apiportal/htdoc` defa
 
 ### Unattended mode installation
 
-Installing API Portal in unattended mode no longer requires ordering the parameters when running the install script. We now support named parameters, which can be supplied in any order.
+Installing API Portal using unattended mode no longer requires you to know the correct positions of the parameters for the install script to work. We now support named parameters, which can be specified by name rather than position.
+
+We've also improved validation and error messaging for command line errors.
 
 ### Home page customization
 
@@ -35,11 +37,17 @@ For more information, see [Customize your home page layout](/docs/apim_administr
 
 ### Application tab improvements
 
-New slogan explaining the applications concept, better information messaging and a consistent message style now applied across info, warning and error messages.
+We have added a description to the **Applications** page header, which can be customized.
 
-### API information source setting
+A new message is shown upon application's creation.
 
-Previously this setting applied to both the API listing and API details view at the same time. Now it applied to the API listing only. API details view now respects the API Manager configuration for the Description field under the API tab in API Manager . This is useful if you want to only a display a summary of the API on the API listing but want a full description when viewing the API details.
+Consistent style now applies across Info, Warning, and Error messages.
+
+### Change of behavior for the API `Information source` setting
+
+Previously, this setting applied to both the list of APIs and the API details view at the same time. Now, it applies to the list of APIs only. This is useful if you want to display only a summary of the API on the API listing, but want a full description when viewing the API details. The API detail's view is now set in API Manager.
+
+For more information, see [Customize source of API descriptions](/docs/apim_administration/apiportal_admin/customize_apicatalog_overview/#customize-source-of-api-descriptions).
 
 ### Control the visibility of APIs in the catalog
 
@@ -49,7 +57,7 @@ For more information, see [Group APIs with tags](/docs/apim_administration/apipo
 
 ### Open API Specification (OAS) 3.0 Support
 
-OAS3 support is now enabled! We have integrated with the Swagger.io UI component to bring the standardized look & feel of Swagger.io right into the core of API Portal. With additional configurations added on top of the basic integration there is now more control than ever over your favorite Swagger interface.
+OAS3 support is now enabled! We have integrated with the Swagger.io UI component to bring the standardized look and feel of Swagger.io right into the core of API Portal. With additional configurations added on top of the basic integration there is now more control than ever over your favorite Swagger interface.
 
 For more information, see [Additional features for API Catalog view](/docs/apim_administration/apiportal_admin/apip_overview/#additional-features-api-catalog-view).
 
@@ -78,7 +86,7 @@ The following are known issues in this version of API Portal.
 
 ### Page layout and alignment for Arabic language
 
-If you change the API Portal language to Arabic (or any other right to left language) there are issues with page layout and alignment on the API Portal Home and Pricing pages, and some buttons are not visible. As a workaround, you can turn on development mode in JAI. Follow these steps:
+Changing the API Portal language to Arabic (or any other right to left language) results in issues with page layout and alignment on the API Portal Home and Pricing pages, and some buttons are not visible. As a workaround, you can turn on the development mode in JAI. Follow these steps:
 
 1. Log in to Joomla! Admin Interface (JAI).
 2. In the JAI top navigation bar, click **Extensions > Templates**.
@@ -115,7 +123,9 @@ This section describes documentation enhancements and related documentation.
 
 ### Documentation enhancements
 
-<!-- Add a summary of doc changes or enhancements here-->
+The latest version of API Gateway, API Manager, and API Portal documentation has been migrated to Markdown format and is available in a public GitHub repository to prepare for future collaboration using an open source model. As part of this migration, the documentation has been restructured to help users navigate the content and find the information they are looking for more easily.
+
+Documentation change history is now stored in GitHub. To see details of changes on any page, click the link in the **Last modified** section at the bottom of the page.
 
 ### Related documentation
 

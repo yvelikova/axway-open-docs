@@ -173,7 +173,7 @@ By default, there are four instances of this module:
 * **Home Tiles 3** (Manage & analyze)
 * **Home Tiles 4** (Connect with a community of developers)
 
-To customize this tiles:
+To customize the tiles:
 
 1. In JAI, click **Extensions > Modules > Home Tiles 1**.
 
