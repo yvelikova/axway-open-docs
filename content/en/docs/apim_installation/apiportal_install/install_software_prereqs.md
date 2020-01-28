@@ -1,9 +1,9 @@
 {
-    "title":"Software installation prerequisites",
-    "linkTitle":"Prerequisites",
-    "weight":"1",
-    "date":"2019-08-09",
-    "description":"Your system must meet these prerequisites before you can install API Portal."
+"title": "Software installation prerequisites",
+  "linkTitle": "Prerequisites",
+  "weight": "1",
+  "date": "2019-08-09",
+  "description": "Your system must meet these prerequisites before you can install API Portal."
 }
 
 ## Internet connection
@@ -77,7 +77,7 @@ API Portal requires the following to be installed:
 
 * API Gateway 7.7
 * API Manager 7.7
-* Apache 2.4 or later
+* Apache 2.4.x
 * OpenSSL
 
 {{< alert title="Note" color="primary" >}}The monitoring feature of API Portal, which enables your API consumers to monitor application and API usage, requires a connected API Manager with monitoring metrics enabled. {{< /alert >}}

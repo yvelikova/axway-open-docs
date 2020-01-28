@@ -1,12 +1,11 @@
 ---
 title: API Portal 7.7.20200130 Release Notes
 linkTitle: API Portal 7.7.20200130
-weight: 30
 no_list: true
-date: 2019-08-08
+weight: 30
+date: 2019-08-08T00:00:00.000Z
 description: Learn about the new features and enhancements in this release of API Portal.
 ---
-
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
@@ -20,7 +19,39 @@ API Portal is available as a software installation or a virtualized deployment 
 
 The following new features and enhancements are available in this release.
 
-<!-- Add the new features here. -->
+### Custom install directory
+
+The restriction to install API Portal into the `/opt/axway/apiportal/htdoc` default directory has been removed, and you can now perform the installation in a directory of your choice.
+
+### Unattended mode installation
+
+Installing API Portal in unattended mode no longer requires ordering the parameters when running the install script. We now support named parameters, which can be supplied in any order.
+
+### Home page customization
+
+The home page has been completely rebuilt using Joomla! modules, which allow for a more extensively customization using the configuration settings in the Joomla! Admin Interface (JAI). No source code changes are required.
+
+For more information, see [Customize your home page layout](/docs/apim_administration/apiportal_admin/customize_getting_started/#customize-your-home-page-layout).
+
+### Application tab improvements
+
+New slogan explaining the applications concept, better information messaging and a consistent message style now applied across info, warning and error messages.
+
+### API information source setting
+
+Previously this setting applied to both the API listing and API details view at the same time. Now it applied to the API listing only. API details view now respects the API Manager configuration for the Description field under the API tab in API Manager . This is useful if you want to only a display a summary of the API on the API listing but want a full description when viewing the API details.
+
+### Control the visibility of APIs in the catalog
+
+A new setting, **Do not show APIs with tags**, was added to the API Catalog menu options. This setting supports `*` and `?` wildcards, and it is a powerful option when used in combination with **Show APIs with tags** setting.
+
+For more information, see [Group APIs with tags](/docs/apim_administration/apiportal_admin/customize_apicatalog_overview/#group-apis-with-tags).
+
+### Open API Specification (OAS) 3.0 Support
+
+OAS3 support is now enabled! We have integrated with the Swagger.io UI component to bring the standardized look & feel of Swagger.io right into the core of API Portal. With additional configurations added on top of the basic integration there is now more control than ever over your favorite Swagger interface.
+
+For more information, see [Additional features for API Catalog view](/docs/apim_administration/apiportal_admin/apip_overview/#additional-features-api-catalog-view).
 
 ## Important changes
 
@@ -30,10 +61,10 @@ The following new features and enhancements are available in this release.
 
 This release has the following limitations:
 
-* This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
+* API Portal 7.7.20200130 is compatible with API Gateway and API Manager 7.7.20200130 only.
+* Upgrade to API Portal 7.7.20200130 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to 7.7.
 * The ready-made API Portal Docker image is strictly for development environments only, and is not recommended for use in production environments. You must use the Dockerfile to build and run API Portal containers in production environments.
-* Upgrade to API Portal 7.7 is supported from API Portal 7..6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
-* API Portal 7.7 is compatible with API Gateway and API Manager 7.7 only.
+* This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
 
 ## Fixed issues
 
@@ -57,6 +88,18 @@ If you change the API Portal language to Arabic (or any other right to left lang
 6. Click **Save** and click **Close** to close the template style.
 
 Related Issue: IAP-308
+
+### Uploading files in API endpoints with Content-Type application/octet-stream is not possible while using OAS3
+
+The execution of an endpoint with Content-Type application/octet-stream is not possible and the request results in an endless loader in the response section.
+
+Related Issue: IAP-2952
+
+### Imported Swagger 2.0 definitions into API Manager are not translated to OAS3, which results in unexpected behavior in API Portal
+
+When a Swagger definition 2.0 is uploaded into API Manager its visualization and behavior in API Portal are unpredictable. This happens because Swagger 2.0 is not correctly translated into OAS3 definition by API Manager. One of the known problems is that the body parameters of POST endpoints are not displayed.
+
+Related Issue: RDAPI-18389
 
 ## Install or upgrade a non-container deployment
 
@@ -92,6 +135,6 @@ The following reference documents are also available:
 
 The Axway Global Support team provides worldwide 24 x 7 support for customers with active support agreements.
 
-Email <support@axway.com> or visit <https://support.axway.com/>.
+Email <mailto:support@axway.com> or visit <https://support.axway.com/>.
 
 See [Get help with API Gateway](/docs/apim_administration/apigtw_admin/trblshoot_get_help/) for the information that you should be prepared to provide when you contact Axway Support.

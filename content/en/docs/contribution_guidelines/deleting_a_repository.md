@@ -20,15 +20,27 @@ To avoid issues when sending a pull request, you can [delete and recreate](#dele
 
 The easiest way to make sure that your fork is up-to-date with the latest changes of the project is to delete and recreate your fork every time you make a new contribution:
 
-1. Make sure that you are on your fork of the project and click **Settings**
+1. You must log off from the [Netlify CMS](https://axway-open-docs.netlify.com/admin).
+
+2. Go to your axway-open-docs fork on GitHub, and click **Settings**
+
+    ```
+    https://github.com/<your GitHub username>/axway-open-docs
+    ```
+    
+    For example: 
+    
+    ```
+    https://github.com/amussapvordel/axway-open-docs
+    ```
 
     ![Delete fork Settings](/Images/contributing/deletefork_settings.png)
 
-2. Under Danger Zone, click **Delete this repository**.
+3. Under Danger Zone, click **Delete this repository**.
 
     ![Delete fork Danger Zone](/Images/contributing/deletefork_dangerzone.png)
 
-3. Follow the [Edit a page on GitHub](/docs/contribution_guidelines/#1-edit-a-page-on-github) procedure to create a new fork and start contributing.
+4. Follow the [Edit a page on GitHub](/docs/contribution_guidelines/#1-edit-a-page-on-github) procedure to create a new fork and start contributing.
 
 To know more about how to delete your fork, see [Deleting a repository](https://help.github.com/en/articles/deleting-a-repository).
 

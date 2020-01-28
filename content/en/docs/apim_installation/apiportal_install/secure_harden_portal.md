@@ -290,6 +290,18 @@ We recommend that you develop a log retention policy to identify storage require
 
 The audit logs must be collected for the last 30 days in easily accessible storage media. Older logs should be archived in a protected storage and should be accessible in the future as required for incidents or investigations.
 
+## Detect and prevent the usage of automated tools or unusual behavior
+
+Detecting abnormal behavior is very complex task and good prevention requires actions not only on the application layer but also concerns the firewall, network monitoring, proxy servers, and so on.
+
+These are some general recommendations:
+
+* IP throttling - limits the number of connections from a given IP address within a given time period (what is considered normal activity). You can achieve this in different ways:
+    * Toolkits like `mod_security`. For more details, see [ModSecurity rules](https://modsecurity.org/rules.html).
+    * Firewall configurations. For more details see the official documentation of your firewall.
+* Google Analytics - has abnormal detection features. Very commonly used and reliable tool. For more information, see [Google Analytics Anomaly Detection](https://support.google.com/analytics/answer/7507748?hl=en).
+* Log analysis tools - can be installed to act upon different logs. For example, see [Loggly Anomoly Detection](https://www.loggly.com/docs/anomaly-detection/).
+
 ## Where to go next
 
 For more information on the security features of API Management products and best practices for strengthening their security, see the [API Management Security Guide](/docs/apimgmt_security/).
