@@ -1,16 +1,16 @@
 {
-"title": "CA SiteMinder integration",
-"linkTitle": "CA SiteMinder integration",
+"title": "Integrate with CA SiteMinder",
+"linkTitle": "Integrate with CA SiteMinder",
 "weight":"130",
 "date": "2020-01-21",
-"description": "Configure API Gateway to authenticate and authorize end users using CA SiteMinder 12.52."
+"description": "Configure API Gateway to authenticate and authorize end users using CA SiteMinder."
 }
 
-CA SiteMinder is a centralized web access management system that provides user authentication and single sign-on, policy-based authorization, identity federation, and auditing of access to web applications and portals. This section describes how to configure API Gateway to authenticate and authorize end users using CA SiteMinder 12.52.
+CA SiteMinder is a centralized web access management system that provides user authentication and single sign-on, policy-based authorization, identity federation, and auditing of access to web applications and portals.
 
 CA SiteMinder authenticates end users and authorizes them to access protected web resources. The gateway can request SiteMinder to authenticate end users using the user profiles stored in the SiteMinder server. SiteMinder decides whether the user should be authenticated, and the gateway then enforces this decision. API Gateway can also request SiteMinder to make authorization decisions on behalf of end users that have successfully authenticated to the gateway.
 
-For more information on CA SiteMinder, go to the [CA Technologies website](http://www.ca.com/usl).
+Integration with CA SiteMinder requires CA SiteMinder version 12.52. For more information on CA SiteMinder, go to the [CA Technologies website](http://www.ca.com/usl).
 
 ## Flow description
 
@@ -31,7 +31,7 @@ Before you start, you must have the following:
 * API Gateway installed
 * CA SiteMinder installed and configured
 
-For more details on the installation and the initial configuration of CA SiteMinder, see the [CA SiteMinder documention](https://support.ca.com/cadocs/0/CA%20SiteMinder%2012%2052-ENU/Bookshelfl). It is recommended you familiarize yourself with this documentation before you start integrating API Gateway with CA SiteMinder.
+For more details on the installation and the initial configuration of CA SiteMinder, see the [CA SiteMinder documentation](https://support.ca.com/cadocs/0/CA%20SiteMinder%2012%2052-ENU/Bookshelfl). It is recommended you familiarize yourself with this documentation before you start integrating API Gateway with CA SiteMinder.
 
 ## Configuration process
 
@@ -55,11 +55,9 @@ Integration with CA SiteMinder requires CA SiteMinder SDK version 12.52-sp02 or 
 1. Ensure that any SiteMinder binaries you may have previously added to API Gateway have been deleted.
 2. Install CA SiteMinder SDK.
 3. Copy the following `jar` files from the `java` directory of the CA SDK:
-
     * `cryptoj.jar`
     * `smagentapi.jar`
     * `smjavasdk2.jar`
-
 4. Add the files to the following directory on API Gateway:
 
     ```
@@ -103,7 +101,7 @@ To obtain this information, contact your SiteMinder administrator.
 
     The hostname must be the fully qualified machine name of the host machine running API Gateway.
 
-4. To enable debug output from the Siteminder agent, add the following to `jvm.xml` if needed:
+4. To enable debug output from the SiteMinder agent, add the following to `jvm.xml` if needed:
 
     ```
     <ConfigurationFragment>
@@ -157,10 +155,8 @@ To start, add a new policy named, for example, `SiteMinder`.
 
 1. Open the **Authentication** category, and drag a **HTTP Basic** filter onto the policy canvas.
 2. Set the following, and click **Finish**:
-
     * **Credential Format**: `User name`
     * **Repository name**: `<your SiteMinder repository>` (`SiteMinder repository`)
-
 3. Open the **CA SiteMinder** category, and drag a **Authorization** filter onto the policy canvas.
 4. Enter a name for the filter (for example, `Authorize user with SiteMinder`), and click **Finish**.
 5. Open the **Utility** category, drag a **Policy Shortcut** filter onto the policy canvas.
@@ -192,11 +188,9 @@ This section expands the previously configured [SiteMinder authentication policy
 
 1. Open the **Conversion** category, and drag a **Create Cookie** filter onto the policy canvas.
 2. Set the following:
-
     * **Cookie Name**: `smcookie`
     * **Cookie Value**: `${siteminder.session}`
     * **Path**: `/`
-
 3. Set **Max-Age** to how long you want the cookie to remain valid, and click **Finish**.
 4. Connect the **Authorization** filter (`Authorize user with SiteMinder`) to the **Create Cookie** filter with a success path.
 

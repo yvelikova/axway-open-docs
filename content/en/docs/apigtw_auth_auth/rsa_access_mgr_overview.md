@@ -1,9 +1,9 @@
 {
-"title": "RSA Access Manager integration",
-"linkTitle": "RSA Access Manager integration",
+"title": "Integrate with RSA Access Manager",
+"linkTitle": "Integrate with RSA Access Manager",
 "weight":"140",
 "date": "2020-01-20",
-"description": "Provide identity management and access control services for web applications with RSA Access Manager."
+"description": "Configure API Gateway to authenticate and authorize end users using RSA Access Manager."
 }
 
 RSA Access Manager (formerly RSA ClearTrust) provides Identity Management and access control services for web applications. It centrally manages access to web applications, ensuring that only authorized users are allowed access to resources. You can configure API Gateway to act as a client to the RSA Access Manager, and leverage the user information stored in RSA Access Manager for user authentication and authorization.
@@ -55,12 +55,10 @@ The following steps are required to integrate API Gateway with RSA Access Manage
 You must copy RSA Access Manager libraries to API Gateway, so you must have RSA Access Manager installed on a server.
 
 1. Copy the following files from the `lib` directory on your RSA Access Manager installation:
-
     * `axm-core-6.2.jar`
     * `cryptojce-6.1.jar`
     * `cryptojcommon-6.1.jar`
     * `jcm-6.1.jar`
-
 2. Add the files to the `INSTALL_DIR/apigateway/ext/lib` directory on API Gateway:
 3. Restart the gateway.
 
@@ -76,10 +74,7 @@ The RSA Access Manager connection is configured as a connection set. A connectio
 2. Select **RSA Access Manager Connection Sets**, and click **Add a Connection Set**.
 3. Enter a name for the connection set (for example, `Authorization` or `Dispatch`), and click **Add** to add a server.
 4. Enter the host name and port the server is listening on.
-5. Select the security type for the server connection.
-
-    * The security type (**Clear**, **SSL (Anonymous)**, or **SSL Authentication**) you select must match the security requirement of the server.
-
+5. Select the security type for the server connection. The security type (**Clear**, **SSL (Anonymous)**, or **SSL Authentication**) you select must match the security requirement of the server.
 6. If you selected **SSL Authentication**, click **Signing Key**, and select the certificate you want to use, then select **OK**.
 7. To change the priority of a server in the set, select the server, and click **Up** or **Down**.
 8. Repeat for all the servers you want to include in the connection set, and click **OK**.
@@ -111,16 +106,14 @@ To start, add a new policy named, for example, `RSA Access Manager`.
 
 1. Open the **Authentication** category in the palette, and drag a **HTTP Basic** filter onto the policy canvas.
 2. Set the following, and click **Finish**:
-
     * **Credential Format**: `User Name`
     * **Allow client challenge**: Select this
     * **Repository Name**: The repository you configured (`RSA Access Manager Repository`)
-
 3. Right click the filter, and select **Set as Start**.
 4. Open the **Authorization** category in the palette, and drag an **Access Manager** filter onto the policy canvas.
 5. Select which server type API Gateway connects to (**Authorization Server** or **Dispatch Server**), and select the connection group.
 6. In **Server**, enter the name of the server that hosts the requested resource. The name entered must correspond to a preconfigured server name in RSA Access Manager.
-7. In **Resource**, enter the name of the requested resource, and click **Finish**. The resource must be preconfigured in RSA Access Manager.\
+7. In **Resource**, enter the name of the requested resource, and click **Finish**. The resource must be preconfigured in RSA Access Manager.
 8. Connect the filters with a success path.
 9. Click on the **Add Relative Path** icon to create a new relative path (for example, `/rsa`) that links to this policy.
 10. Deploy the new configuration to API Gateway.

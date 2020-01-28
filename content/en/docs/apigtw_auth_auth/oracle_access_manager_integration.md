@@ -1,10 +1,12 @@
 {
-"title": "Oracle Access Manager 11gR2 integration",
-"linkTitle": "Oracle Access Manager integration",
+"title": "Integrate with Oracle Access Manager 11gR2",
+"linkTitle": "Integrate with Oracle Access Manager 11gR2",
 "weight":"150",
 "date": "2020-01-21",
 "description": "Configure API Gateway to authenticate and authorize user requests against Oracle Access Manager (OAM) 11gR2."
 }
+
+When integrating with OAM:
 
 * API Gateway is configured to authenticate a client against OAM using a user name and password.
 * Upon successful authentication, API Gateway authorizes the user against OAM.
@@ -17,7 +19,7 @@ The following overview diagram shows the message flow through API Gateway, which
 
 ### API Gateway
 
-You must have installed API Gateway version 7.8 or higher and have received a valid license from Axway.
+You must have installed API Gateway and have received a valid license from Axway.
 
 ### Access Server SDK
 
@@ -78,10 +80,11 @@ Log in using your WebLogic credentials and complete the following steps:
 
 1. On the **Welcome** page, click the **New OAM 11g Webgate** link.
 2. Complete the following fields on the **Create OAM 11g Webgate** page:
-
     * **Name**: Enter a unique name for this OAM 11g WebGate, for example, `oam.example.com`.
     * **Access Client Password**: Enter a suitable password for this WebGate.
-    * **Host Identifier**: Enter the host name of the machine on which your API Gateway and ASDK have been installed. In the following screenshot, the host name (that is to say **Host Identifier**) is used as the **Name** of the new WebGate.
+    * **Host Identifier**: Enter the host name of the machine on which your API Gateway and ASDK have been installed.
+
+    In the following screenshot, the host name (that is to say **Host Identifier**) is used as the **Name** of the new WebGate.
 
     ![Create the 11g WebGate](/Images/IntegrationGuides/auth_auth/oam_10g-11gR1-11gR2_07.png)
 
@@ -199,7 +202,6 @@ To configure the OAM authentication repository, perform the following steps:
     * **Add SSO Token to user attributes**: This option is checked by default in order to store the OAM token for consumption by downstream OAM filters, for example, the OAM Authorization filter.
     * **OAM ASDK Directory**: Enter: `C:\Oracle\AccessServerSDK11\config`
     * **OAM ASDK Compatibility Mode**: Select **OAM 11g**.
-
 5. Click **OK** to complete the configuration.
 
 #### Create a new policy

@@ -1,10 +1,12 @@
 {
-"title": "Oracle Entitlements Server 11g and 11gR2 integration",
-"linkTitle": "Oracle Entitlements Server integration",
+"title": "Integrate with Oracle Entitlements Server 11g and 11gR2",
+"linkTitle": "Integrate with Oracle Entitlements Server 11g and 11gR2",
 "weight":"160",
 "date": "2020-01-24",
-"description": "Configure API Gateway to authorize and authenticate a user against Oracle Entitlements Server (OES) 11g and 11gR2."
+"description": "Configure API Gateway to authorize authenticated users against Oracle Entitlements Server (OES) 11g and 11gR2."
 }
+
+When integrating with OES:
 
 * API Gateway will authenticate a user against its local user repository.
 * API Gateway will then delegate the authorization decision for the specified resource to OES.
@@ -19,9 +21,7 @@ The following diagram shows the sequence of events that occurs when a client sen
 
 ### API Gateway
 
-You must have installed API Gateway version 7.8 or higher and have received a valid license from Axway.
-
-This integration is also valid for the API Gateway Appliance (physical or virtual) version 7.8 or higher.
+You must have installed API Gateway and have received a valid license from Axway.
 
 ### OES user
 
@@ -40,8 +40,6 @@ You must have installed the OES client (security module) on the machine running 
 The OES client installer requires that a JRE is available on the target machine. In the absence of a preferred JVM on the target machine, API Gateway ships with a JRE that can be used.   On UNIX, the JRE is located in `INSTALL_DIR/apigateway/platform/jre`.
 
 Start the OES client installer from the command line and pass the JRE location using the `jreLoc` argument as follows:
-
-**UNIX/Linux**\
 
 ```
 ./runInstaller –jreLoc INSTALL_DIR/apigateway/platform/jre
@@ -160,8 +158,6 @@ Complete the following steps to configure the OES client in controlled mode:
 1. Open a command prompt and change directory to your OES client installation directory (this is referred to as `OES_CLIENT_HOME` throughout the remainder of this section).
 2. Set the `JAVA_HOME` environment variable. For example:
 
-    **UNIX/Linux**
-
     ```
     export JAVA_HOME=/home/oesuser/Oracle/Middleware/jdk160_29
     ```
@@ -173,14 +169,10 @@ Complete the following steps to configure the OES client in controlled mode:
     ```
 
 4. Ensure that the following values are set:
-
     * `oracle.security.jps.runtime.pd.client.policyDistributionMode`: Accept the default value `controlled-push` as the distribution mode.
     * `oracle.security.jps.runtime.pd.client.RegistrationServerHost`: Enter the address of the Oracle Entitlements Server Administration Server.
     * `oracle.security.jps.runtime.pd.client.RegistrationServerPort` : Enter the SSL port number of the Oracle Entitlements Server Administration Server. You can find the SSL port number from the WebLogic Administration console. By default, `7002` is used.
-
 5. On UNIX-based systems, run the `config.sh` script located in the  `OES_CLIENT_HOME/oessm/bin` directory.
-
-    **UNIX/Linux**
 
     ```
     ./config.sh –smConfigId MySM -prpFileName OES_CLIENT_HOME/oessm/SMConfigTool/smconfig.java.controlled.prp
@@ -268,14 +260,14 @@ value="$OES_CLIENT_HOME/oes_sm_instances/$SM_NAME" />
 <!-- Add OES Client JAR to the classpath -->
 <ClassPath name="$OES_CLIENT_HOME/modules/oracle.oes.sm_11.1.1/oes-client.jar" />
 
-<!-- Add OES JARs to the classpath →
-<ClassPath name=”[PATH_TO_OES_JARS]/api.jar”/>
-<ClassPath name=”[PATH_TO_OES_JARS]/asi_classes.jar”/>
+<!-- Add OES JARs to the classpath -->
+<ClassPath name="[PATH_TO_OES_JARS]/api.jar"/>
+<ClassPath name="[PATH_TO_OES_JARS]/asi_classes.jar"/>
 
 <VMArg name="-Doracle.security.jps.config=$INSTANCE_HOME/config/jps-config.
 xml"/>
 <!-- Optional argument to add enhanced logging (via log4j) for the OES Client -->
-<VMArg name=”-Djava.util.logging.config.file=$INSTANCE_HOME/logging.properties”/>
+<VMArg name="-Djava.util.logging.config.file=$INSTANCE_HOME/logging.properties"/>
 </ConfigurationFragment>
 ```
 
@@ -342,7 +334,7 @@ Configure the OES 11g authorization filter as follows:
 
 Display a success message after successfully authorizing the user by adding a **Set Message** filter.
 
-1. Drag a **Set Message** filter from the **Conversion** category onto the canvas and configure it as follows:\
+1. Drag a **Set Message** filter from the **Conversion** category onto the canvas and configure it as follows:
     * **Name**: Enter `Set Success Message` in the text field.
     * **Content-type**: Enter `text/plain` as the content-type of the message to return to the client.
     * **Message Body**: Enter the following message to return to the client: `User '${authentication.subject.id}' was authorized successfully!`

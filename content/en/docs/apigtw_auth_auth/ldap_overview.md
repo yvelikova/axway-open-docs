@@ -1,10 +1,12 @@
 {
-"title": "LDAP identity manager integration",
-"linkTitle": "LDAP identity manager integration",
+"title": "Integrate with LDAP",
+"linkTitle": "Integrate with LDAP",
 "weight":"120",
 "date": "2020-01-20",
-"description": "API Gateway interacts with the following directory servers using the Lightweight Directory Access Protocol (LDAP)."
+"description": "Configure API Gateway to authenticate and authorize end users using an LDAP directory server."
 }
+
+API Gateway interacts with the following directory servers using the Lightweight Directory Access Protocol (LDAP):
 
 * Apache Directory Server 2.0.0-M7
 * IBM Security Directory Server 6.4.0
@@ -45,14 +47,14 @@ Before you can configure API Gateway to connect to your directory server, you mu
 
 #### Connection details
 
-**LDAP URL**\
+**LDAP URL**:
 
 The LDAP URL containing the host name and port that your directory server is listening on. For example:
 
 * `ldap://192.168.0.129:10389`
 * `ldaps://192.168.0.129:10636`
 
-**User name**\
+**User name**:
 
 The distinguished name (DN) of the user that API Gateway uses when connecting to the directory server. The format may vary depending on your directory server. For example:
 
@@ -61,7 +63,7 @@ The distinguished name (DN) of the user that API Gateway uses when connecting to
 * `CN=Administrator,CN=users,DC=axway,DC=com`  
 * `cn=admin,o=Axway,I=Dublin4,st=Dublin,C=IE`
 
-**Password**\
+**Password**:
 
 The password of the user API Gateway uses. For example:
 
@@ -76,7 +78,7 @@ API Gateway searches the directory server based on the details you define when c
 1. Connect and log in to the directory server using an LDAP browser.
 2. Decide how you want to search the repository and note down the following details:
 
-**Base Criteria**\
+**Base Criteria**:
 
 The root DN to use when running queries against the directory server. For example:
 
@@ -85,7 +87,7 @@ The root DN to use when running queries against the directory server. For exampl
 * `CN=users,DC=axwayqa,DC=com`
 * `ou=R&D,o=Axway,I=Dublin4,st=Dublin,C=IE`  
 
-**User Class**\
+**User Class**:
 
 The object class searched in the directory server. Each object in an LDAP directory has at least one object class associated with it. For example:
 
@@ -93,7 +95,7 @@ The object class searched in the directory server. Each object in an LDAP direct
 * `User`
 * `Person`
 
-**User Search Attribute**\
+**User Search Attribute**:
 
 The attribute that contains the user name. For example:
 
@@ -123,7 +125,7 @@ API Gateway binds to the directory server using the returned DN and the password
 
 ### Configure an LDAP connection
 
-API Gateway binds to the directory server using the connection details and user credentials specified in the LDAP connection. Usually, the connection details include the user name and password of an administrator user who has read access to all users in the LDAP server you want to auhtenticate or retrieve attributes for.
+API Gateway binds to the directory server using the connection details and user credentials specified in the LDAP connection. Usually, the connection details include the user name and password of an administrator user who has read access to all users in the LDAP server you want to authenticate or retrieve attributes for.
 
 Follow these steps to configure the connection between the gateway and your directory server in Policy Studio:
 
@@ -148,7 +150,6 @@ Follow these steps to configure integration between the gateway and your directo
 1. In the node tree, click **Environment Configuration > External Connections > Authentication Repositories**.
 2. Right-click **LDAP Repositories**, and click **Add a new Repository**.
 3. Enter a name for your repository (for example, LDAP Repository), and set the following values:
-
     * **LDAP Directory**: The LDAP connection you created (`LDAP Connection`).
     * **Base Criteria**: `<Base Criteria of your directory server>`.
     * **User Class**: `<User Class of your directory server>`.
@@ -164,15 +165,13 @@ This section describes the steps required to configure integration between API G
 
 #### Create an authentication policy
 
-You must configure an authentication policy to set the ateway to authenticate against your directory server. This example uses the **HTTP Basic** authentication filter with a user name and password combination, but you can configure a different authentication mechanism as required.
+You must configure an authentication policy to set the gateway to authenticate against your directory server. This example uses the **HTTP Basic** authentication filter with a user name and password combination, but you can configure a different authentication mechanism as required.
 
 1. Add a new policy named, for example, `LDAP Authentication`.
 2. Open the **Authentication** category in the filter palette, and drag an **HTTP Basic** filter onto the policy canvas.
 3. Set the following, and click **Finish**:
-
     * **Credential Format**: `User Name`
     * **Repository Name**: The LDAP repository you configured (`LDAP Repository`)
-
 4. For more details on the fields and options in this configuration window, see .
 5. Click on the **Add Relative Path** icon to create a new relative path (for example, `/ldap`) that links to this policy, and deploy the policy to API Gateway.
 
@@ -257,7 +256,7 @@ CN=Schema Admins,CN=Users,DC=axway,DC=com, CN=Administrators,CN=Builtin,DC=axway
 
 #### Insert a SAML token
 
-You can extend the authentication to downstream web services, if required. After the end user is successfully authenticated and the attibutes retrieved, API Gateway adds a SAML authentication assertion to the response message for the web services to consume.
+You can extend the authentication to downstream web services, if required. After the end user is successfully authenticated and the attributes retrieved, API Gateway adds a SAML authentication assertion to the response message for the web services to consume.
 
 1. Open the **Authentication** category in the palette, and drag an **Insert SAML Authentication Assertion** filter onto the policy canvas.
 2. On the **Assertion details** tab, select any issuer on the **Issuer Name** list, and set the expiry date for the SAML authentication assertion.
