@@ -123,7 +123,7 @@ This section describes documentation enhancements and related documentation.
 
 ### Documentation enhancements
 
-The latest version of API Gateway, API Manager, and API Portal documentation has been migrated to Markdown format and is available in a public GitHub repository to prepare for future collaboration using an open source model. As part of this migration, the documentation has been restructured to help users navigate the content and find the information they are looking for more easily.
+The latest version of API Gateway, API Manager, and API Portal documentation has been migrated to Markdown format and is available in a [public GitHub repository](https://github.com/Axway/axway-open-docs) to prepare for future collaboration using an open source model. As part of this migration, the documentation has been restructured to help users navigate the content and find the information they are looking for more easily.
 
 Documentation change history is now stored in GitHub. To see details of changes on any page, click the link in the **Last modified** section at the bottom of the page.
 
