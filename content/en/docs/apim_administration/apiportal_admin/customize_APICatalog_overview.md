@@ -27,8 +27,9 @@ To change the API Catalog settings:
 3. Click **APIs**.
 4. Click the **API Catalog** tab.
 
-    ![Customize API catalog](/Images/uploads/apiportal-jai-customize-api-catalog.png)
-5. Change the settings as required and click **Save & Close**.
+![Customize API catalog](/Images/uploads/apiportal-jai-customize-api-catalog.png)
+
+1. Change the settings as required and click **Save & Close**.
 
 ## Customize source of API descriptions
 
@@ -42,13 +43,8 @@ To change the settings:
 
 ## Customize page title or summary
 
-You can customize the API Catalog page title, the summary text, or both.
+You can customize the API Catalog page title, the summary text, or both. For details, see [Additional customizations](apim_administration/apiportal_admin/customize_page_content/#customize-page-title-or-summary).
 
-1. In JAI, click **Menus > Main Menu**.
-2. Select **APIs**, and go to the **Page Display** tab.
-3. In **Masthead Title**, enter the new page title. If you leave this empty, the default title is used.
-4. In **Masthead Slogan**, enter the new summary. If you leave this empty, the default text is used.
-5. Click **Save & Close**.
 
 ## Group APIs with tags
 
