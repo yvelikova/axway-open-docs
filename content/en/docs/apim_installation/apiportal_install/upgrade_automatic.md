@@ -3,7 +3,7 @@
   "linkTitle": "Upgrade API Portal",
   "weight": "20",
   "date": "2019-08-09",
-  "description": "Upgrade your existing API Portal to 7.7.x."
+  "description": "Upgrade your existing API Portal to 7.7."
 }
 This section does not describe how to upgrade API Gateway. For information on upgrading API Gateway, see [API Gateway Upgrade Guide](/docs/apim_installation/apigw_upgrade/).
 
