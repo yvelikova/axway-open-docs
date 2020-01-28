@@ -2,10 +2,11 @@
 title: Additional customizations
 linkTitle: Additional customizations
 weight: 7
-date: 2019-07-30
-description: Customize other features of your API Portal, such as sign up, login, and application settings.
+date: 2019-07-30T00:00:00.000Z
+description: >-
+  Customize other features of your API Portal, such as sign up, login, and
+  application settings.
 ---
-
 ## Add reCaptcha to sign up
 
 You can customize your sign up functionality by enabling reCaptcha
@@ -17,19 +18,19 @@ You must have a Google user name and password to add reCaptcha. For more details
 1. Go to the [reCaptcha admin page](https://www.google.com/recaptcha/admin#list).
 2. Enter a label for your site (such as `API Portal`), enter the API Portal domain (here `localhost.localdomain`) in the **Domains** field, and select **Register**.
 
-    ![Register a new site with label and domains displayed](/Images/APIPortal/reCatchalocalhostlocaldomain.png)
+![Register a new site with label and domains displayed](/Images/APIPortal/reCatchalocalhostlocaldomain.png)
 
-3. Select the domain, and review how to add the reCaptcha:
+1. Select the domain, and review how to add the reCaptcha:
 
-    ![How to add reCaptcha to the API Portal](/Images/APIPortal/recaptchasitekeysteps.png)
+![How to add reCaptcha to the API Portal](/Images/APIPortal/recaptchasitekeysteps.png)
 
-4. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal_host>/administrator`).
-5. Select **Extensions > Plugins**.
-6. Click **Captcha - ReCaptcha**.
-7. Enter the respective reCaptcha keys to the **Site key** and **Secret key** fields.
-8. Set the **Status** of the plugin to `Enabled`, and click **Save & Close**.
-9. Click **System > Global Configuration > Users**.
-10. On the **User Options** tab, set the Captcha field to **Captcha - ReCaptcha**, and click **Save & Close**.
+1. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal_host>/administrator`).
+2. Select **Extensions > Plugins**.
+3. Click **Captcha - ReCaptcha**.
+4. Enter the respective reCaptcha keys to the **Site key** and **Secret key** fields.
+5. Set the **Status** of the plugin to `Enabled`, and click **Save & Close**.
+6. Click **System > Global Configuration > Users**.
+7. On the **User Options** tab, set the Captcha field to **Captcha - ReCaptcha**, and click **Save & Close**.
 
 To verify the change, go to API Portal home page, and click **Sign In > Sign up**. The reCaptcha functionality is displayed on the sign up page.
 
@@ -72,9 +73,7 @@ You can customize API Portal user login to display a ReCaptcha and lock the user
 4. Enter a value for the number of failed login attempts before the user account is locked.
 5. Enter a value in seconds for how long the user account is locked.
 6. Click **Yes** to enable locking by IP address. When this setting is enabled login attempts are blocked from the same IP address for the lock time specified even if correct user credentials are entered.
-
-    You can enable user account locking and IP address locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts, `UserA` will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, `UserB`) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
-
+   You can enable user account locking and IP address locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts, `UserA` will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, `UserB`) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
 7. Click **Save**.
 
 #### Reset locked user accounts
@@ -107,6 +106,16 @@ To disable the **Enable password expiry** and **Days before passwords expire** s
 
 {{< alert title="Note" color="primary" >}} If you disable **Enable password expiry**, which forces users to change password at first login, and a new user logs in after that, then this user will not be asked to change password if you decide to enable this setting again.{{< /alert >}}
 
+## Customize page title or summary
+
+You can customize the title, the summary text, or both for the following API Portal Pages: **Users**, **APIs**, **Applications**, **Monitoring**, **Help Center**, **Pricing**. 
+
+1. In JAI, click **Menus > Main Menu**.
+2. Open the desired page manu item and go to the **Page Display** tab.
+3. In **Masthead Title**, enter the new page title. If you leave this empty, the default title is used.
+4. In **Masthead Slogan**, enter the new summary. If you leave this empty, the default text is used.
+5. Click **Save & Close**.
+
 ## Customize application settings
 
 You can customize what your API consumers can see in the Applications view of API Portal, and you can customize what rights they have on applications and credentials:
@@ -123,9 +132,9 @@ To change the settings:
 2. Click **Applications**.
 3. Click the **Applications** tab.
 
-    ![Customize application settings](/Images/APIPortal/jai_customize_apps.png)
+![Customize application settings](/Images/APIPortal/jai_customize_apps.png)
 
-4. Change the settings as required and click **Save & Close**.
+1. Change the settings as required and click **Save & Close**.
 
 ## Customize application sharing settings
 
