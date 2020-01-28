@@ -113,17 +113,17 @@ To download and run a Redis Docker container, complete the following steps:
 1. Download the Redis Docker image from [Redis on Docker Hub](https://hub.docker.com/_/redis/). For example, enter the following command:
    `$ docker pull redis:latest`
 2. Run the Redis Docker container, for example:
-   `$ docker run -d --name redis redis:latest`
-   Redis is now running in a Docker container. To configure API Portal to use the Redis cache, follow these steps:
-3. Check the IP address of the Redis container:
-   `$ docker inspect <your Redis container name>`
-4. Enter the following command to connect to the API Portal container:
-   `$ docker exec -it <your API Portal container name> /bin/bash`
-5. Open the following configuration file for editing:
-   `/opt/axway/apiportal/htdoc/configuration.php`
-6. Locate the following line:
+   `$ docker container run -d --name apiportal-redis --network apiportal-net --network-alias redis redis:latest`
+
+Redis is now running in a Docker container. To configure API Portal to use the Redis cache, follow these steps:
+
+1. Enter the following command to connect to the API Portal container:
+   `$ docker container exec -it <your API Portal container name> /bin/bash`
+2. Open the following configuration file with `vi` editing:
+   `$ vi /opt/axway/apiportal/htdoc/configuration.php`
+3. Locate the following line:
    `redis_server_host = 'localhost';`
-7. Change `localhost` to the IP address of the Redis container and save the file.
+4. Change `localhost` to the IP address of the Redis container and save the file.
 
 ## Encrypt the Public API user password (optional)
 
