@@ -6,21 +6,21 @@ date: 2019-09-19
 description: Learn how to apply a rate limit configuration to your API.
 ---
 
-*Estimated reading time*: 5 minutes
+_Estimated reading time_: 5 minutes
 
 ## Before you start
 
-* You will need an administrator account for AMPLIFY Central
-* Learn how to import your API as an API proxy in AMPLIFY Central (see [Register an API](/docs/central/quickstart/#register-an-api))
-* Learn how to use the AMPLIFY CLI to manage an API proxy (see [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_proxy_flow))
+-   You will need an administrator account for AMPLIFY Central
+-   Learn how to import your API as an API proxy in AMPLIFY Central (see [Register an API](/docs/central/quickstart/#register-an-api))
+-   Learn how to use the AMPLIFY CLI to manage an API proxy (see [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_proxy_flow))
 
 ## Objectives
 
 Learn how to apply a rate limit configuration to your API:
 
-* Understand what API rate limiting is and how it can be useful
-* Configure and test rate limiting on your API using the AMPLIFY Central UI
-* Configure and test rate limiting on your API using the AMPLIFY CLI
+-   Understand what API rate limiting is and how it can be useful
+-   Configure and test rate limiting on your API using the AMPLIFY Central UI
+-   Configure and test rate limiting on your API using the AMPLIFY CLI
 
 ## What is API rate limiting?
 
@@ -32,10 +32,10 @@ API providers typically measure processing limits in transactions per time perio
 
 AMPLIFY Central provides rate limiting around the API Proxy activity. You can set up the rate limiting from **1 second** to **1 day** interval.
 
-AMPLIFY Central allows for two levels of enforcement for rate limiting:  
+AMPLIFY Central allows for two levels of enforcement for rate limiting:
 
-* At the proxy level, rate limiting affects all API transactions regardless of the consuming application.
-* At the proxy and application level, rate limiting affects all API transactions originating with a specific application.
+-   At the proxy level, rate limiting affects all API transactions regardless of the consuming application.
+-   At the proxy and application level, rate limiting affects all API transactions originating with a specific application.
 
 You can enforce one or both levels together.
 
@@ -47,16 +47,51 @@ To begin, [register an api proxy](/docs/central/quickstart/#register-an-api).
 
 1. Navigate to the **API Proxies** tab.
 2. Click the API proxy name to open the API proxy details page.
-3. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section.
-4. Enter the desired TPS and click the checkbox to save the configuration.
-
-![Enter the desired TPS](/Images/central/proxy_rate_limit_box.png)
+3. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section by clicking the gear icon.
+4. Enter the desired rate limit policy, inputting a transaction amount and selecting an interval using the duration input and dropdowns. 
+5. Click the save button to save the policy.
 
 A new revision with the desired rate limit configuration is created. You must deploy the new revision for the configuration to take effect.
 
+![Enter the desired transactions per interval to apply a proxy rate limit on your API](/Images/central/proxy_rate_limit_modal.png)
+
+### Remove a proxy rate limit from your API
+1. Navigate to the **API Proxies** tab.
+2. Click the API proxy name to open the API proxy details page.
+3. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section by clicking the gear icon.
+4. Click the "Delete" button.  
+5. Click the "Delete rate limit policy" button when asked to confirm whether you want to delete the rate limit policy.
+
+![Confirm whether you want to delete the proxy rate limit policy on your API](/Images/central/delete_rate_limit_modal.png)
+
+
 ### Test the rate limit configuration
 
-You can test the rate limit configuration.
+After deploying a new revision, you can test the rate limit configuration using the "Test Methods" tab. Clicking on the "Test Methods" tab will allow you to try out different methods for your proxy.
+
+### Set an app rate limit on your API
+
+1. Navigate to the **Apps** tab.
+2. Click on your app to open the app details page.
+3. Click on the APIs tab to view your APIs. If you haven't linked your API to your app, you can do so by clicking the "+API" button.
+4. If your API already has either a proxy or app rate limiting policy applied, you will see a "RL"(rate limit) balloon next to your API. Hover over the balloon to view information about the current rate limiting policy applied to that application. Otherwise, if your API does not have a rate limit policy applied, you will see a "+" button.
+
+![Hover over the Rate Limit Balloon to see more information about rate limiting policies for your API](/Images/central/rate_limit_balloon.png)
+
+5. To set an app rate limit on your API, click either the "RL balloon" or the "+" button.
+6. Enter the desired app rate limit policy, inputting a transaction amount and selecting an interval using the duration input and dropdown. 
+7. Click the save button to save the policy. **Note**: This will only affect the app rate limit policy.
+
+![Enter the desired transactions per interval to apply an app rate limit on your API](/Images/central/app_rate_limit_modal.png)
+
+### Remove an app rate limit from your API
+1. Navigate to the **API Proxies** tab.
+2. Click the API proxy name to open the API proxy details page.
+3. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section by clicking the gear icon.
+4. Click the "Delete" button.  
+5. Click the "Delete rate limit policy" button when asked to confirm whether you want to delete the rate limit policy.
+
+![Confirm whether you want to delete the app rate limit policy on your API](/Images/central/delete_rate_limit_modal.png)
 
 #### Simple test with docker and curl
 
@@ -84,26 +119,26 @@ https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/
 Save the following script as `rate-limit-test.js`.
 
 ```js
-import http from "k6/http";
-import { sleep } from "k6";
-import { Counter } from "k6/metrics";
+import http from 'k6/http';
+import { sleep } from 'k6';
+import { Counter } from 'k6/metrics';
 
-var passes = new Counter("passed")
-var ratelimited = new Counter("ratelimited")
+var passes = new Counter('passed');
+var ratelimited = new Counter('ratelimited');
 
 export function setup() {
-    // warm up DNS
-    var res = http.get(`${__ENV.TEST_URL}`)
+	// warm up DNS
+	var res = http.get(`${__ENV.TEST_URL}`);
 }
 
 export default function() {
-    var res = http.get(`${__ENV.TEST_URL}`)
+	var res = http.get(`${__ENV.TEST_URL}`);
 
-    if (res.status === 429) {
-        ratelimited.add(1)
-    } else {
-        passes.add(1)
-    }
+	if (res.status === 429) {
+		ratelimited.add(1);
+	} else {
+		passes.add(1);
+	}
 }
 ```
 
@@ -202,8 +237,8 @@ When your API is protected with an authentication method you can enforce a rate 
 
 Under `rateLimit` you can specify two configurations:
 
-* The `perProxy` value defines a rate limit at the API level, meaning all calls.
-* The `perProxyAndApp` value defines a second level of rate limiting enforced for each application consuming the API.
+-   The `perProxy` value defines a rate limit at the API level, meaning all calls.
+-   The `perProxyAndApp` value defines a second level of rate limiting enforced for each application consuming the API.
 
 In this example, the two applications under `apps` are limited to 3 TPS individually, as defined by the `perProxyAndApp` configuration, but traffic from both apps is also limited to 5 TPS, as defined by the `perProxy` configuration.
 
@@ -232,8 +267,8 @@ proxy:
 
 In some cases you might want to configure some applications to have a dedicated rate limit when consuming your API. The example below shows how to configure this scenario.
 
-* The `overrides` section under `rateLimit` defines a specific rate limit of 3 TPS for the application `Rate Limited App 1`.
-* The application `Rate Limited App 2` inherits the default rate limit of 1 TPS.
+-   The `overrides` section under `rateLimit` defines a specific rate limit of 3 TPS for the application `Rate Limited App 1`.
+-   The application `Rate Limited App 2` inherits the default rate limit of 1 TPS.
 
 ```
 version: v1 # Version of the file format
@@ -261,20 +296,20 @@ proxy:
 
 ### Apply variable interval rate limit for an application consuming your API
 
-You can rate limit the API calls at variable interval instead of fixed 1 second interval.  
+You can rate limit the API calls at variable interval instead of fixed 1 second interval.
 
 Under `perProxy` or `perProxyAndApp` you can specify two configurations:
 
-* `limit` value defines number of API calls that needs to be rate limited.
-* `interval` value defines at what interval, API calls needs to be rate limited at.
-  
+-   `limit` value defines number of API calls that needs to be rate limited.
+-   `interval` value defines at what interval, API calls needs to be rate limited at.
+
 The field `interval` must follow the format `PT[n]H[n]M[n]S`, supported by the ISO_8601 standard.
 
 **Some examples for interval:**
 
-* `PT10S`  # 10 seconds interval
-* `PT1M45S` # 1 minute 45 seconds interval
-* `PT15H20M30S` # 15 hours 20 minutes thirty seconds interval
+-   `PT10S` # 10 seconds interval
+-   `PT1M45S` # 1 minute 45 seconds interval
+-   `PT15H20M30S` # 15 hours 20 minutes thirty seconds interval
 
 On the following example, the two applications under `apps` are limited at 1 transaction per 10 seconds interval individually, as defined by the `perProxyAndApp` configuration, but traffic from both apps is also limited to 5 transactions per 10 seconds interval, as defined by the `perProxy` configuration.
 
@@ -335,8 +370,8 @@ proxy:
 
 The following example shows how to set a rate limit for each individual application. There is no rate limit on the API as a whole.
 
-* The `overrides` section defines a 3 TPS individual rate limit for `Rate Limited App 1`, and a 5 TPS individual rate limit for `Rate Limited App 2`.
-* `Rate Limited App 3` is not rate limited at all.
+-   The `overrides` section defines a 3 TPS individual rate limit for `Rate Limited App 1`, and a 5 TPS individual rate limit for `Rate Limited App 2`.
+-   `Rate Limited App 3` is not rate limited at all.
 
 ```
 version: v1 # Version of the file format
