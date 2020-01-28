@@ -39,6 +39,20 @@ API Manager's Try It and Try Method support the rendering of `enum`, which allow
 * The default for parameters are fully supported
 * The `allOf` and `anyOf` in the request bodies are also supported
 
+### Usage tracking healthchecks no longer counted
+2 new environment variables have been introduced:
+* EMT_HEALTHCHECK_PORT (allowable range 1025 to 65535 inclusive)
+* EMT_HEALTHCHECK_PATH (a path that begins with "/" character and includes 0 or more characters" )
+
+Both of these environment variables are optional and configurable with defaults of 8080 and "/healthcheck". The endpoint configured here will not be billed as part of the Usage tracking. 
+
+API Manager's Try It and Try Method support the rendering of `enum`, which allows you to send multipart forms.
+
+* When trying the method of an API, you can select files as part of the request
+* The parameters object types are auto generated in the UI with nested schemes and arrays rendered fully
+* The default for parameters are fully supported
+* The `allOf` and `anyOf` in the request bodies are also supported
+
 ### Back-end API improvements
 
 The API Manager UI supports OAS3 `response.content.schemes`.
@@ -95,6 +109,17 @@ To suppress schema validation errors and relax the stricter validation of XML fi
 
 Filebeat has been updated to use v6.2.2. When installing Filebeat, follow the [official Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
 
+### /users endpoint increased validation 
+In current versions of the product /users API returns a list of all the users in an org. This endpoint was used to allow user share an application with other users in their organisation. This was identified as a security risk by our internal security team. While it was acceptable for both 'OrgAdmin' and 'APIAdmin' roles to return a list of users it was deemed that giving the 'User' was a security risk. For this reason we have removed the ability for 'Users' to view all other usernames in the org. This change may break some use cases for API Manager and API Portal. To reduce the impact of this change we allow customers to relax this restriction using a configuration flag.
+
+The flag can be set in the 'jvm.xml' file (it does not exists by default) under 'groups/group-x/instance-y/conf' 
+
+'<ConfigurationFragment>
+    <VMArg name="-DAPIGW_TOGGLE_FEATURE_GET_ALL_USERS=true" />
+</ConfigurationFragment>'
+
+Alternatively it can be set as an 
+
 ## Limitations of this release
 
 <!-- Add any limitations here -->
@@ -124,7 +149,6 @@ As part of this review, the following capabilities have been removed:
 
 * API Tester - For testing APIs, it is recommended to use alternative tools, such as Postman, SoapUI, or API Fortress.
 * RAML support - RESTful API Modeling Language (RAML) support has been removed in favour of widely-adopted standards like Swagger and OpenAPI 3.
-* A security issue with the `api/portal/v1.3/users` API means that the behavior has changed. This API now returns all organizations for the API Admin role only. Previously, all organizations were returned for all roles.
 * The functionality to export back-end APIs converts all API formats to Swagger 1. With the introduction of OAS3, API Manager uses the `io.swagger.parser.v3.swagger-parser-v3:2.0.16` and `io.swagger.swagger-parser:1.0.48` libraries during the import process. This means that the export of back-end APIs is not supported for OAS3 or WSDL APIs, as this functionality relied on custom code in the old parser that is no longer available.
 
 ## Fixed issues
