@@ -73,7 +73,7 @@ After you have successfully installed Redis, you need to enable it in the JAI:
 
 1. In the JAI, go to **System > Global Configuration > System**.
 2. Navigate to the **Cache configuration** section and set **Cache Handler** to **Redis**.
-3. Review the other settings, such as host and port, and if they seem correct, click **Save**.
+3. Review the other settings, and if they seem correct, click **Save**.
 
 
 ## Verify Redis installation
