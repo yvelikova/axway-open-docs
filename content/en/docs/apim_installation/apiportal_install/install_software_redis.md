@@ -67,14 +67,14 @@ To install Redis, follow these steps:
     make && make install
     ```
 
-## Enable & Configure Redis
+## Enable and configure Redis
 
-After you have successfully installed Redis, you need to enable it in the JAI:
+After you have successfully installed Redis, you must enable it in JAI:
 
-1. In the JAI, go to **System > Global Configuration > System**.
-2. Navigate to the **Cache configuration** section.
+1. In the Joomla! Administrator Interface (JAI), click **System > Global Configuration > System**.
+2. Click the **Cache configuration** section.
 3. Set **Cache Handler** to **Redis**.
-3. Review the other settings, and make changes there if necessary.
+3. Review and update the other settings if necessary.
 4. Click **Save**.
 
 
