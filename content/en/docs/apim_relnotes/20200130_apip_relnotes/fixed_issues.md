@@ -24,7 +24,7 @@ This version of API Portal includes the fixes from all 7.5.5, 7.6.2, and 7.7 ser
 | IAP-2013     | 1045070            | **Issue**: HTML source of Application Details page contained secret keys for both API Key and OAuth authentication methods. **Resolution**: Secrets are sent in a separate request.                             |
 | IAP-2541     | 1087799            | **Issue**: Missing information for IP/Network disclosure. **Resolution**: New section with "Recommended settings for Apache" was added.                                                                         |
 | IAP-2879     |                    | **Issue**: URL builder library introduced XSS-vulnerable strings. **Resolution**: XSS-introducing characters are escaped in URL builder library.                                                                |
-| IAP-2705     | 01090752, 01090952 | **Issue**: Buffer overflow may occur in API Try It page. **Resolution**: Unnecessary RegEx check is removed and concerned query parameters are properly cast.                                                   |
+| IAP-2705     | 01090752, 01090952 | **Issue**: Buffer overflow may occur in API Try It page. **Resolution**: Unnecessary regular expression check is removed, and concerned query parameters are properly cast.                                                   |
 
 ## Other fixed issues
 
