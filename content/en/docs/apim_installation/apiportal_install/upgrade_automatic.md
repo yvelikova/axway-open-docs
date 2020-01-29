@@ -33,7 +33,7 @@ To upgrade your API Portal software installation, follow these steps:
     tar xpvzf <package_name>.tgz
     ```
 
-3. Extract `joomla-update-package-3.9.14-package.zip` from the API Portal upgrade package to your local file system.
+3. Extract the Joomla! update package (for example, `joomla-update-package-3.9.14-package.zip`) from the API Portal upgrade package to your local file system.
 4. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal host>/administrator`).
 5. Click **Components > Joomla! Update**, and go to the **Upload & Update** tab. If **Joomla! Update** is not visible in the menu, connect to your user database and execute the following query for API Portal database:
 
@@ -41,7 +41,7 @@ To upgrade your API Portal software installation, follow these steps:
     update s8f7h_menu set menutype='main' where title like 'com_joomlaupdate'
     ```
 
-6. Select `joomla-update-package-3.9.14-package.zip` from your file system.
+6. Select the Joomla! update package (for example, `joomla-update-package-3.9.14-package.zip`) from your file system.
 7. Click **Upload & Install**, and follow the displayed instructions.
 8. Enter the following to run the upgrade script:
 
