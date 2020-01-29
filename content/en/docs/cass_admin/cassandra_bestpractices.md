@@ -73,6 +73,13 @@ Apache Cassandra recommends that `swap` is disabled. If your company policies or
 
 2. Delete all swap entries in `/etc/fstab` to ensure that swap is not enabled again when the machine is restarted.
 
+#### Disable Logging to Standard-Out
+Using default configuration logs are also written to standard out which adds extra load to the pipe. In a production requirement we recommended to disable the Standard-Out Logging-Appender. In file `conf/logback.xml` around line 92 disable or remove the following line:
+
+  ```
+  <appender-ref ref="STDOUT" />
+  ```
+
 #### Set limits for user account
 
 Set the minimum limits for the user account.
