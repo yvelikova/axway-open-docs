@@ -13,16 +13,17 @@ You can customize your sign up functionality by enabling reCaptcha
 
 reCaptcha is a free service you can add to the API Portal sign up page to prevent spam and abuse. The reCaptcha plugin is available in Joomla!.
 
+### Register a new site
+
 You must have a Google user name and password to add reCaptcha. For more details, see [reCaptcha documentation](https://www.google.com/recaptcha/intro/index.html).
 
 1. Go to the [reCaptcha admin page](https://www.google.com/recaptcha/admin#list).
 2. Enter a label for your site (such as `API Portal`), enter the API Portal domain (here `localhost.localdomain`) in the **Domains** field, and select **Register**.
-
-![Register a new site with label and domains displayed](/Images/APIPortal/reCatchalocalhostlocaldomain.png)
-
-1. Select the domain, and review how to add the reCaptcha:
+3. Select the domain, and review how to add the reCaptcha:
 
 ![How to add reCaptcha to the API Portal](/Images/APIPortal/recaptchasitekeysteps.png)
+
+### Add reCaptcha plugin
 
 1. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal_host>/administrator`).
 2. Select **Extensions > Plugins**.
@@ -92,7 +93,7 @@ To enable this feature follow these steps:
 4. Enter a title for the message.
 5. Use the text editor to enter the text for the message.
 6. Select **Purity_iii** > **login-message-consent** from the **Position** list.
-7. Click **Save &** **Close**.
+7. Click **Save & Close**.
 8. Go to the API Portal Sign In page, refresh the page, and verify that the banner is shown.
 
 ### Enforce password policies
@@ -106,12 +107,12 @@ To disable the **Enable password expiry** and **Days before passwords expire** s
 
 {{< alert title="Note" color="primary" >}} If you disable **Enable password expiry**, which forces users to change password at first login, and a new user logs in after that, then this user will not be asked to change password if you decide to enable this setting again.{{< /alert >}}
 
-## Customize page title or summary
+## Customize page title and summary
 
-You can customize the title, the summary text, or both for the following API Portal Pages: **Users**, **APIs**, **Applications**, **Monitoring**, **Help Center**, **Pricing**. 
+You can customize the title and summary text for the following API Portal pages: **Users**, **APIs**, **Applications**, **Monitoring**, **Help Center**, and **Pricing**.
 
 1. In JAI, click **Menus > Main Menu**.
-2. Open the desired page manu item and go to the **Page Display** tab.
+2. Open the desired page menu item and click the **Page Display** tab.
 3. In **Masthead Title**, enter the new page title. If you leave this empty, the default title is used.
 4. In **Masthead Slogan**, enter the new summary. If you leave this empty, the default text is used.
 5. Click **Save & Close**.
@@ -132,9 +133,9 @@ To change the settings:
 2. Click **Applications**.
 3. Click the **Applications** tab.
 
-![Customize application settings](/Images/APIPortal/jai_customize_apps.png)
+    ![Customize application settings](/Images/APIPortal/jai_customize_apps.png)
 
-1. Change the settings as required and click **Save & Close**.
+4. Change the settings as required and click **Save & Close**.
 
 ## Customize application sharing settings
 
@@ -189,7 +190,7 @@ You must create your customized privacy policy before enabling it in API Portal.
 1. Click **Content > Articles > New**
 2. Enter a meaningful name for your policy, and the text of the privacy policy.
 3. Select `Privacy Policy` from the **Category** list.
-4. Click **Save and Close.**
+4. Click **Save & Close**.
 
 To meet GDPR compliance regulations, JAI does not allow you to edit a privacy policy. To update a policy you must create a new article on the privacy policy category.
 
