@@ -25,9 +25,9 @@ The restriction to install API Portal into the `/opt/axway/apiportal/htdoc` defa
 
 ### Unattended mode installation
 
-Installing API Portal using unattended mode no longer requires you to know the correct positions of the parameters for the install script to work. We now support named parameters, which can be specified by name rather than position.
+Installing API Portal using unattended mode no longer requires you to know the correct positions of the parameters for the install script to work. Named parameters are now supported, which allows you to specify the parameters by name rather than position.
 
-We've also improved validation and error messaging for command line errors.
+Validation and error messaging for command line errors were improved.
 
 ### Home page customization
 
@@ -37,15 +37,15 @@ For more information, see [Customize your home page layout](/docs/apim_administr
 
 ### Application tab improvements
 
-We have added a description to the **Applications** page header, which can be customized.
+You can customize a description to the **Applications** page header.
 
 A new message is shown upon application's creation.
 
-Consistent style now applies across Info, Warning, and Error messages.
+The style is consistent across all Info, Warning, and Error messages.
 
 ### Change of behavior for the API `Information source` setting
 
-Previously, this setting applied to both the list of APIs and the API details view at the same time. Now, it applies to the list of APIs only. This is useful if you want to display only a summary of the API on the API listing, but want a full description when viewing the API details. The API detail's view is now set in API Manager.
+Previously, this setting applied to both the list of APIs and the API details view at the same time. Now, it applies to the list of APIs only. This is useful if you want to display only a summary of the API on the API listing, but want a full description when viewing the API details. You can set the API detail's view in API Manager.
 
 For more information, see [Customize source of API descriptions](/docs/apim_administration/apiportal_admin/customize_apicatalog_overview/#customize-source-of-api-descriptions).
 
@@ -57,7 +57,7 @@ For more information, see [Group APIs with tags](/docs/apim_administration/apipo
 
 ### Open API Specification (OAS) 3.0 Support
 
-OAS3 support is now enabled! We have integrated with the Swagger.io UI component to bring the standardized look and feel of Swagger.io right into the core of API Portal. With additional configurations added on top of the basic integration there is now more control than ever over your favorite Swagger interface.
+OAS3 support is enabled and integrated with the Swagger.io UI component to bring the standardized look and feel of Swagger.io right into the core of API Portal. The additional configuration added on top of the basic integration allows for more control than ever over your favorite Swagger interface.
 
 For more information, see [Additional features for API Catalog view](/docs/apim_administration/apiportal_admin/apip_overview/#additional-features-api-catalog-view).
 
@@ -74,9 +74,15 @@ This release has the following limitations:
 * The ready-made API Portal Docker image is strictly for development environments only, and is not recommended for use in production environments. You must use the Dockerfile to build and run API Portal containers in production environments.
 * This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
 
-## Fixed issues
+## Deprecated  features
 
-<!-- Fixed issues are maintained in another topic -->
+<!-- Use this section -->
+
+## Removed features
+
+* Documentation is no longer provided in PDF format. You can continue to save individual topics or entire guides in PDF format using the **Save as PDF** icon on the [Axway documentation portal](https://docs.axway.com/).
+
+## Fixed issues
 
 See [Fixed issues](/docs/apim_relnotes/20200130_apip_relnotes/fixed_issues/) for a complete list.
 
@@ -123,7 +129,7 @@ This section describes documentation enhancements and related documentation.
 
 ### Documentation enhancements
 
-The latest version of API Gateway, API Manager, and API Portal documentation has been migrated to Markdown format and is available in a public GitHub repository to prepare for future collaboration using an open source model. As part of this migration, the documentation has been restructured to help users navigate the content and find the information they are looking for more easily.
+The latest version of API Gateway, API Manager, and API Portal documentation has been migrated to Markdown format and is available in a [public GitHub repository](https://github.com/Axway/axway-open-docs) to prepare for future collaboration using an open source model. As part of this migration, the documentation has been restructured to help users navigate the content and find the information they are looking for more easily.
 
 Documentation change history is now stored in GitHub. To see details of changes on any page, click the link in the **Last modified** section at the bottom of the page.
 
