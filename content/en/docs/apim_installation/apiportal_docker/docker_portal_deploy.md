@@ -182,8 +182,12 @@ To use the Public API mode in API Portal you must first run a script to encrypt 
 
 Perform the following steps after the API Portal Docker container is started:
 
-1. Access the API Portal Docker container using the following command:  
-   `$ docker exec -it <your API Portal container name> bash`
+1. Access the API Portal Docker container using the following command:
+
+    ```
+    docker exec -it <your API Portal container name> bash
+    ```
+
 2. Change to the directory where the `apiportal_encryption.sh` script is located and execute the script. For example:
 
     ```
