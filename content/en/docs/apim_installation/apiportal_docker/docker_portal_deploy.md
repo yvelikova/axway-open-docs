@@ -73,9 +73,9 @@ To build the Docker image and run the API Portal Docker container, follow these
 2. Change to the directory where you unzipped the Docker sample package.
 3. Build the API Portal image. For example, enter the following command to build the image and tag it as `apiportal`:`7.7`:
    `$ docker build -t apiportal:7.7 .`
-4. Create data volumes for API Portal customized data, for example:
-   `$ docker volume create apiportal-templates`
-   `$ docker volume create apiportal-images`
+4. Create data volumes for API Portal customized data, for example:  
+   `$ docker volume create apiportal-templates`  
+   `$ docker volume create apiportal-images`  
    For more information about Docker volumes and a complete list of directories which you should preserve, see [Create Docker data volumes for persistence](/docs/apim_installation/apiportal_docker/docker_config/).
 5. Run a container from the API Portal Docker image with the same data volumes. For example:
    ```
