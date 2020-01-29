@@ -80,7 +80,7 @@ To build the Docker image and run the API Portal Docker container, follow these
    For more information about Docker volumes and a complete list of directories which you should preserve, see [Create Docker data volumes for persistence](/docs/apim_installation/apiportal_docker/docker_config/).
 5. Run a container from the API Portal Docker image with the same data volumes. For example:
    ```
-   docker container run -d --network apiportal-net --name apiportal -v apiportal-templates:/opt/axway/apiportal/htdoc/templates -v apiportal-images:/opt/axway/apiportal/htdoc/images -e MYSQL_HOST=db -e MYSQL_PORT=3306 -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=root -e MYSQL_PASSWORD=XXXXX -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443 apiportal:7.7
+   $ docker container run -d --network apiportal-net --name apiportal -v apiportal-templates:/opt/axway/apiportal/htdoc/templates -v apiportal-images:/opt/axway/apiportal/htdoc/images -e MYSQL_HOST=db -e MYSQL_PORT=3306 -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_USERNAME=root -e MYSQL_PASSWORD=XXXXX -e MYSQL_DBNAME=joomla -e APIMANAGER_HOST=XXXXX -e APIMANAGER_PORT=XXXXX -p 443:443 apiportal:7.7
    ```
 
 This example performs the following:
@@ -118,11 +118,11 @@ To download and run a Redis Docker container, complete the following steps:
 
 Redis is now running in a Docker container. To configure API Portal to use the Redis cache, follow these steps:
 
-1. Enter the following command to connect to the API Portal container:
+1. Enter the following command to connect to the API Portal container:  
    `$ docker container exec -it <your API Portal container name> /bin/bash`
 2. Open the following configuration file with `vi` editing:
    `$ vi /opt/axway/apiportal/htdoc/configuration.php`
-3. Locate the following line:
+3. Locate the following line:  
    `redis_server_host = 'localhost';`
 4. Change `localhost` to the IP address of the Redis container and save the file.
 
