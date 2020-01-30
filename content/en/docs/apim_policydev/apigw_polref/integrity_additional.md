@@ -98,6 +98,8 @@ If you selected the symmetric key type, complete the following fields **Symmetri
 
 **Algorithm**: Select the algorithm used to sign.
 
+_Please note_, that the JWT Sign filter supports a fixed JWT-Header including the selected algorythm. If you would like to add additional header information, for instance a KID or anything else, please see this example [here](https://github.com/Axway-API-Management-Plus/scripting-examples/tree/master/sign-custom-jwt)-
+
 ## JWT Verify filter
 
 You can use the **JWT Verify** filter to verify a signed JSON Web Token (JWT) with the token payload. Upon successful verification, the **JWT Verify** filter removes the headers and signature of the incoming signed JWT and outputs the original JWT payload. For example, when you verify the following signed JWT payload input:
