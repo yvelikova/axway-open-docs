@@ -79,7 +79,7 @@ If you selected the asymmetric key type, configure the following fields in the *
 * **Selector expression**: Alternatively, enter a selector expression to get the alias of the private key in the certificate store.
 * **Algorithm**: Select the algorithm used to sign.
 
-If you selected the symmetric key type, complete the following fields **Symmetric** section:
+If you selected the symmetric key type, complete the following fields in the **Symmetric** section:
 
 * **Shared key**: Enter the shared key used to sign the payload. The key should be given as a base64-encoded byte array and must use the following minimum lengths depending on the selected algorithm used to sign:
 
@@ -96,7 +96,7 @@ If you selected the symmetric key type, complete the following fields **Symmetri
 
 * **Algorithm**: Select the algorithm used to sign.
 
-    The JWT Sign filter supports only a fixed JWT-Header, including the selected algorythm. To add more information to the header, for example, a Key-ID parameter, see [Create a signed JWT with custom fields](https://github.com/Axway-API-Management-Plus/scripting-examples/tree/master/sign-custom-jwt).
+    The JWT Sign filter supports only a fixed JWT-Header, including the selected algorithm. To add more information to the header, for example, a Key-ID parameter, see [Create a signed JWT with custom fields](https://github.com/Axway-API-Management-Plus/scripting-examples/tree/master/sign-custom-jwt).
 
 ## JWT Verify filter
 
