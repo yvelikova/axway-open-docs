@@ -30,7 +30,6 @@ Installing API Portal using unattended mode no longer requires you to know the c
 Validation and error messaging for command line errors were improved. 
 For more information, see [Unattended installation](docs/apim_installation/apiportal_install/install_unattended/).
 
-
 ### Home page customization
 
 The home page has been completely rebuilt using Joomla! modules, which allow for a more extensively customization using the configuration settings in the Joomla! Admin Interface (JAI). No source code changes are required.
@@ -63,8 +62,6 @@ OAS3 support is enabled and integrated with the Swagger.io UI component to bring
 
 For more information, see [Additional features for API Catalog view](/docs/apim_administration/apiportal_admin/apip_overview/#additional-features-api-catalog-view).
 
-## Important changes
-
 <!-- Use this section to describe any changes in the behavior of the product (as a result of features or fixes). This section could also be used for any important information that doesn't fit elsewhere.-->
 
 ## Limitations of this release
@@ -75,10 +72,6 @@ This release has the following limitations:
 * Upgrade to API Portal 7.7.20200130 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to 7.7.
 * The ready-made API Portal Docker image is strictly for development environments only, and is not recommended for use in production environments. You must use the Dockerfile to build and run API Portal containers in production environments.
 * This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
-
-## Deprecated  features
-
-<!-- Use this section -->
 
 ## Removed features
 
@@ -116,14 +109,6 @@ Related Issue: IAP-2952
 When a Swagger definition 2.0 is uploaded into API Manager its visualization and behavior in API Portal are unpredictable. This happens because Swagger 2.0 is not correctly translated into OAS3 definition by API Manager. One of the known problems is that the body parameters of POST endpoints are not displayed.
 
 Related Issue: RDAPI-18389
-
-## Install or upgrade a non-container deployment
-
-<!-- Add install instructions here -->
-
-## Install or upgrade a container deployment
-
-<!-- Add install instructions here -->
 
 ## Documentation
 
