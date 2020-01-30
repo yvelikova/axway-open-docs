@@ -170,13 +170,240 @@ The following are known issues for this release.
 
 <!-- Add the known issues here -->
 
-## Install or upgrade a classic (non-container) deployment
+## Update a classic (non-container) deployment
 
-<!-- Add install instructions here -->
+These instructions apply to API Gateway and API Manager classic deployments only. For container deployments, see [Apply a patch or service pack](/docs/apim_installation/apigw_containers/container_patch_sp/).
 
-## Install or upgrade a container deployment
+### Prerequisites
 
-<!-- Add install instructions here -->
+This service pack has the following prerequisites in addition to the [System requirements](/docs/apim_installation/apigtw_install/system_requirements/).
+
+1. Shut down any Node Manager or API Gateway instances on your existing installation.
+2. Back up your existing installation. For details on backing up, see [API Gateway backup and disaster recovery](/docs/apim_administration/apigtw_admin/manage_operations/#api-gateway-backup-and-disaster-recovery).
+
+    Ensure that you back up any customized files. You should merge updated files instead of copying them back directly to avoid any regex matching issues. For example, the following directories might contain customized files:
+
+    ```
+    webapps/apiportal/vordel/apiportal
+    webapps/emc/vordel/manager/app
+    webapps/emc
+    system/conf/apiportal/email
+    system/conf
+    samples/scripts/
+    tools/filebeat-VERSION-PLATFORM
+    ```
+
+3. Remove old third-party libraries by deleting the following directories:
+
+    ```
+    INSTALL_DIR/apigateway/system/lib/modules
+    INSTALL_DIR/analytics/system/lib/modules
+    ```
+
+4. Remove old JRE versions by deleting the following directories:
+
+    ```
+    INSTALL_DIR/apigateway/platform/jre
+    ```
+
+5. If you have an existing Apache Cassandra installation, ensure that you back up your data (Cassandra and `kpsadmin`), and that the `JAVA_HOME` variable is set correctly in `cassandra.in.sh` and `cassandra.in.bat`.
+6. On Linux, remove existing capabilities on product binaries (which might prevent overwriting files):
+
+    ```
+    setcap -r INSTALL_DIR/apigateway/platform/bin/vshell
+    ```
+
+### FIPS mode only
+
+If FIPS mode is enabled, you must also perform the following steps to install the service pack:
+
+1. Run `togglefips --disable` to turn FIPS mode off.
+2. Start the Node Manager to move the JARs.
+3. Stop the Node Manager.
+4. Install the API Gateway service pack.
+5. Start the Node Manager.
+6. Stop the Node Manager.
+7. Run `togglefips --enable` to turn FIPS on again.
+8. Start the Node Manager.
+
+### Installation
+
+This section describes how to install the service pack on existing 7.7 installations of API Gateway or API Manager.
+
+* If you have installed an existing version of API Manager, installing the API Gateway server service pack automatically also installs the updates and fixes for API Manager.
+* If you have installed a licensed version of API Gateway or API Manager 7.7, you do not require a new license to install service packs.
+
+#### Install the API Gateway server service pack
+
+To install the service pack on your existing API Gateway 7.7 server installation, perform the following steps:
+
+1. Ensure that your existing API Gateway instance and Node Manager have been stopped.
+2. Remove any previous patches from your `INSTALL_DIR/ext/lib` and `INSTALL_DIR/META-INF` directories (or the `ext/lib` directory in an API Gateway instance). These patches have already been included in this service pack. You do not need to copy patches from a previous version.
+3. Verify the owners of API Gateway binaries before extracting the service pack.
+
+    ```
+    ls -l INSTALL_DIR/apigateway/posix/bin
+    ```
+
+4. Using the same user who owns the API Gateway binaries, unzip and extract API Gateway 7.7 SP2 server over the `apigateway` directory in your existing installation directory . For example:
+
+    ```
+    tar -xzvf APIGateway_7.7_SP2_Core_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/apigateway/
+    ```
+
+5. Change to the `apigateway` directory in your installation.
+
+    ```
+    cd INSTALL_DIR/apigateway
+    ```
+
+6. Run the post-install script, and ensure that the correct permissions are set:
+
+    ```
+    apigw_sp_post_install.sh
+    ```
+
+#### Install the Policy Studio service pack
+
+To install the service pack on your existing Policy Studio installation, perform the following steps:
+
+1. Shut down Policy Studio.
+2. Back up your existing `INSTALL_DIR/policystudio` directory.
+3. Remove old JRE versions by deleting the following directories:
+
+    ```
+    INSTALL_DIR/policystudio/jre
+    ```
+
+4. Unzip and extract API Gateway 7.7 SP2 Policy Studio over the `policystudio` directory in your existing API Gateway 7.7 installation directory. For example:
+
+    ```
+    tar -xzvf APIGateway_7.7_SP2_PolicyStudio_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/policystudio/
+    ```
+
+5. Start Policy Studio with `policystudio -clean`
+
+#### Install the Configuration Studio service pack
+
+To install the service pack on your existing Configuration Studio installation, perform the following steps:
+
+1. Shut down Configuration Studio.
+2. Back up your existing `INSTALL_DIR/configurationstudio` directory.
+3. Remove old JRE versions by deleting the following directories:
+
+    ```
+    INSTALL_DIR/configurationstudio/jre
+    ```
+
+4. Unzip and extract API Gateway 7.7 SP2 Configuration Studio over the `configurationstudio` directory in your existing API Gateway 7.7 installation directory. For example:
+
+    ```
+    tar -xzvf APIGateway_7.7_SP2_ConfigurationStudio_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/configurationstudio/
+    ```
+
+5. Start Configuration Studio with `configurationstudio  -clean`
+
+#### Install the API Gateway Analytics service pack
+
+To install the service pack on your existing API Gateway Analytics 7.7 installation, perform the following steps:
+
+1. Ensure that your existing API Gateway Analytics instance and Node Manager have been stopped.
+2. Verify the owners of API Gateway binaries before extracting the service pack.
+
+    ```
+    ls -l INSTALL_DIR/analytics/posix/bin
+    ```
+
+3. Using the same user who owns the API Gateway Analytics binaries, unzip and extract API Gateway 7.7 SP2 Analytics over the `analytics` directory in your existing API Gateway 7.7 installation directory. For example:
+
+    ```
+    tar -xzvf APIGateway_7.7_SP2_Analytics_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/analytics/
+    ```
+
+4. Change to the `analytics` directory in your installation:
+
+    ```
+    cd INSTALL_DIR/analytics
+    ```
+
+5. Run the post-install script for API Gateway Analytics.
+
+    ```
+    apigw_analytics_sp_post_install.sh
+    ```
+
+You must also install a service pack for your existing API Gateway 7.7 server.
+
+### After installation
+
+The following steps apply after installing the service pack.
+
+#### API Gateway
+
+To allow an unprivileged user to run the API Gateway on a Linux system, perform the following steps:
+
+1. Add the following line to the `INSTALL_DIR/system/conf/jvm.xml` file:
+
+    ```
+    <VMArg name="-Djava.library.path=$VDISTDIR/$DISTRIBUTION/jre/lib/amd64/server:$VDISTDIR/$DISTRIBUTION/jre/lib/amd64:$VDISTDIR/$DISTRIBUTION/lib/engines:$VDISTDIR/ext/$DISTRIBUTION/lib:$VDISTDIR/ext/lib:$VDISTDIR/$DISTRIBUTION/jre/lib:system/lib:$VDISTDIR/$DISTRIBUTION/lib"/>
+    ```
+
+2. Run the command `setcap 'cap_net_bind_service=+ep cap_sys_rawio=+ep' INSTALL_DIR/platform/bin/vshell` to allow the API Gateway to listen on privileged ports.
+
+##### JRE properties
+
+The JRE included in API Gateway disables undesirable cipher suites when using SSL/TLS by default. Users using RSA Access Manager (formerly known as RSA ClearTrust) with API Gateway might experience SSL/TLS handshake issues where no common cipher suites can be found. In this case, you should reconfigure SSL/TLS of the RSA Access Manager to support stronger cipher suites.
+
+Alternatively, to re-enable the anonymous cipher suites in JRE for successful SSL/TLS connections with the RSA Access Manager, remove `anon`  from the  `jdk.tls.disabledAlgorithms` Java security property in the  `INSTALL_DIR/Linux.x86_64/jre/lib/security/java.security` file.
+
+The JRE included in API Gateway enables endpoint identification algorithms for LDAPS (secure LDAP over TLS) by default to  improve the robustness of the connections. This might cause API Gateway LDAP filters to fail to connect to an LDAPS server. To disable endpoint identification add the  `<VMArg  name="-Dcom.sun.jndi.ldap.object.disableEndpointIdentification=true"/>`  line to the  `INSTALL_DIR/system/conf/jvm.xml` file.
+
+#### API Manager
+
+When API Manager is installed, you must run the `update-apimanager` script after the API Gateway post-install script to ensure that all paths are up-to-date.
+
+{{< alert title="Caution" color="warning" >}}
+Before executing the `update-apimanager` script:
+
+* Apply the service pack to all API Gateways.
+* Ensure that all Node Managers and API Gateway instances are running.
+
+{{< /alert >}}
+
+This script updates the active deployment in the API Manager group. After running the script, you must recreate the API Manager project (common project, containing Server Settings) from the deployment, so that you will not need to revert the changes the next time you perform a project deployment.
+
+As an alternative to recreating the API Manager project, you can deploy only your common project to a development server and run the `update-apimanager` script against it, and then create a new common project from this API Gateway instance. Finally, you must deploy your updated policies to your API Manager group.
+
+You can run this command once at the API Gateway group level, instead of on every API Gateway instance, for example:
+
+```
+/opt/Axway-7.7/apigateway/posix/bin/update-apimanager --username=admin --password=MY_PASSWORD --group=API_MGR_GROUP
+```
+
+If the API Gateway group is protected by a passphrase, you must append the command with `--passphrase=API_MGR_GROUP_PASSPHRASE`.
+
+The following command shows an example of running the `update-apimanager` script when the Client Application Registry is installed:
+
+```
+/opt/Axway-7.7/apigateway/posix/bin/update-apimanager --username=admin --password=MY_PASSWORD --group=API_MGR_GROUP   --productname=clientappreg
+```
+
+If the API Gateway group is protected by a passphrase, you must append the command with `--passphrase=API_MGR_GROUP_PASSPHRASE`.
+
+## Update a container deployment
+
+If a `fed` file is provided as part of building the API Manager container, you must follow these steps to update the `fed` with the Service Pack API Manager configuration:
+
+1. Install the Service Pack on a installation of the API Gateway.
+2. Run the following command:
+
+    ```
+    /opt/Axway-7.7/apigateway/posix/bin/update-apimanager --fed <path to old file>.fed --oa <path to update file>.fed
+    ```
+
+You do not need to run any API Manager instances.
+
+The `fed` now contains the Service Pack updates for the API Manager configuration and can be used to build containers.
 
 ## Documentation
 
