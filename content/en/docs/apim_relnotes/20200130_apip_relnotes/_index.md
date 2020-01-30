@@ -28,7 +28,7 @@ The restriction to install API Portal into the `/opt/axway/apiportal/htdoc` defa
 Installing API Portal using unattended mode no longer requires you to know the correct positions of the parameters for the install script to work. Named parameters are now supported, which allows you to specify the parameters by name rather than position.
 
 Validation and error messaging for command line errors were improved. 
-For more information, see [Unattended installation](docs/apim_installation/apiportal_install/install_unattended/).
+For more information, see [Unattended installation](/docs/apim_installation/apiportal_install/install_unattended/).
 
 ### Home page customization
 
