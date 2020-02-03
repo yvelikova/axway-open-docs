@@ -6,9 +6,9 @@
 "description": "Apply service packs or patches to API Gateway components."
 }
 
-## Install a service pack or patch
+## Apply a service pack or patch
 
-To install a service pack or patch on an existing installation of API Gateway, follow these general guidelines:
+To apply a service pack or patch to an existing installation of API Gateway, follow these general guidelines:
 
 1. Stop any Node Managers and API Gateway servers.
 2. Back up your existing installation. For more information on backing up, see [API Gateway backup and disaster recovery](/docs/apim_administration/apigtw_admin/manage_operations/#api-gateway-backup-and-disaster-recovery).

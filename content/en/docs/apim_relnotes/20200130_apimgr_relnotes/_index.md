@@ -172,11 +172,11 @@ The following are known issues for this release.
 
 ## Update a classic (non-container) deployment
 
-These instructions apply to API Gateway and API Manager classic deployments only. For container deployments, see [Apply a patch or service pack](/docs/apim_installation/apigw_containers/container_patch_sp/).
+These instructions apply to API Gateway and API Manager classic deployments only. For container deployments, see [Update a container deployment](#update-a-container-deployment).
 
 ### Prerequisites
 
-This service pack has the following prerequisites in addition to the [System requirements](/docs/apim_installation/apigtw_install/system_requirements/).
+This update has the following prerequisites in addition to the [System requirements](/docs/apim_installation/apigtw_install/system_requirements/).
 
 1. Shut down any Node Manager or API Gateway instances on your existing installation.
 2. Back up your existing installation. For details on backing up, see [API Gateway backup and disaster recovery](/docs/apim_administration/apigtw_admin/manage_operations/#api-gateway-backup-and-disaster-recovery).
@@ -215,12 +215,12 @@ This service pack has the following prerequisites in addition to the [System req
 
 ### FIPS mode only
 
-If FIPS mode is enabled, you must also perform the following steps to install the service pack:
+If FIPS mode is enabled, you must also perform the following steps to install the update:
 
 1. Run `togglefips --disable` to turn FIPS mode off.
 2. Start the Node Manager to move the JARs.
 3. Stop the Node Manager.
-4. Install the API Gateway service pack.
+4. Install the API Gateway update.
 5. Start the Node Manager.
 6. Stop the Node Manager.
 7. Run `togglefips --enable` to turn FIPS on again.
@@ -228,18 +228,18 @@ If FIPS mode is enabled, you must also perform the following steps to install th
 
 ### Installation
 
-This section describes how to install the service pack on existing 7.7 installations of API Gateway or API Manager.
+This section describes how to install the update on existing 7.7 installations of API Gateway or API Manager.
 
-* If you have installed an existing version of API Manager, installing the API Gateway server service pack automatically also installs the updates and fixes for API Manager.
-* If you have installed a licensed version of API Gateway or API Manager 7.7, you do not require a new license to install service packs.
+* If you have installed an existing version of API Manager, installing the API Gateway server update automatically also installs the updates and fixes for API Manager.
+* If you have installed a licensed version of API Gateway or API Manager 7.7, you do not require a new license to install updates.
 
-#### Install the API Gateway server service pack
+#### Install the API Gateway server update
 
-To install the service pack on your existing API Gateway 7.7 server installation, perform the following steps:
+To install the update on your existing API Gateway 7.7 server installation, perform the following steps:
 
 1. Ensure that your existing API Gateway instance and Node Manager have been stopped.
-2. Remove any previous patches from your `INSTALL_DIR/ext/lib` and `INSTALL_DIR/META-INF` directories (or the `ext/lib` directory in an API Gateway instance). These patches have already been included in this service pack. You do not need to copy patches from a previous version.
-3. Verify the owners of API Gateway binaries before extracting the service pack.
+2. Remove any previous patches from your `INSTALL_DIR/ext/lib` and `INSTALL_DIR/META-INF` directories (or the `ext/lib` directory in an API Gateway instance). These patches have already been included in this update. You do not need to copy patches from a previous version.
+3. Verify the owners of API Gateway binaries before extracting the update.
 
     ```
     ls -l INSTALL_DIR/apigateway/posix/bin
@@ -263,9 +263,9 @@ To install the service pack on your existing API Gateway 7.7 server installation
     apigw_sp_post_install.sh
     ```
 
-#### Install the Policy Studio service pack
+#### Install the Policy Studio update
 
-To install the service pack on your existing Policy Studio installation, perform the following steps:
+To install the update on your existing Policy Studio installation, perform the following steps:
 
 1. Shut down Policy Studio.
 2. Back up your existing `INSTALL_DIR/policystudio` directory.
@@ -283,9 +283,9 @@ To install the service pack on your existing Policy Studio installation, perform
 
 5. Start Policy Studio with `policystudio -clean`
 
-#### Install the Configuration Studio service pack
+#### Install the Configuration Studio update
 
-To install the service pack on your existing Configuration Studio installation, perform the following steps:
+To install the update on your existing Configuration Studio installation, perform the following steps:
 
 1. Shut down Configuration Studio.
 2. Back up your existing `INSTALL_DIR/configurationstudio` directory.
@@ -303,12 +303,12 @@ To install the service pack on your existing Configuration Studio installation, 
 
 5. Start Configuration Studio with `configurationstudio  -clean`
 
-#### Install the API Gateway Analytics service pack
+#### Install the API Gateway Analytics update
 
-To install the service pack on your existing API Gateway Analytics 7.7 installation, perform the following steps:
+To install the update on your existing API Gateway Analytics 7.7 installation, perform the following steps:
 
 1. Ensure that your existing API Gateway Analytics instance and Node Manager have been stopped.
-2. Verify the owners of API Gateway binaries before extracting the service pack.
+2. Verify the owners of API Gateway binaries before extracting the update.
 
     ```
     ls -l INSTALL_DIR/analytics/posix/bin
@@ -332,11 +332,11 @@ To install the service pack on your existing API Gateway Analytics 7.7 installat
     apigw_analytics_sp_post_install.sh
     ```
 
-You must also install a service pack for your existing API Gateway 7.7 server.
+You must also install an update for your existing API Gateway 7.7 server.
 
 ### After installation
 
-The following steps apply after installing the service pack.
+The following steps apply after installing the update.
 
 #### API Gateway
 
@@ -365,7 +365,7 @@ When API Manager is installed, you must run the `update-apimanager` script after
 {{< alert title="Caution" color="warning" >}}
 Before executing the `update-apimanager` script:
 
-* Apply the service pack to all API Gateways.
+* Apply the update to all API Gateways.
 * Ensure that all Node Managers and API Gateway instances are running.
 
 {{< /alert >}}
@@ -392,9 +392,9 @@ If the API Gateway group is protected by a passphrase, you must append the comma
 
 ## Update a container deployment
 
-If a `fed` file is provided as part of building the API Manager container, you must follow these steps to update the `fed` with the Service Pack API Manager configuration:
+If a `fed` file is provided as part of building the API Manager container, you must follow these steps to update the `fed` with the configuration changes:
 
-1. Install the Service Pack on a installation of the API Gateway.
+1. Install the update on a installation of the API Gateway.
 2. Run the following command:
 
     ```
@@ -403,7 +403,7 @@ If a `fed` file is provided as part of building the API Manager container, you m
 
 You do not need to run any API Manager instances.
 
-The `fed` now contains the Service Pack updates for the API Manager configuration and can be used to build containers.
+The `fed` now contains the updates for the API Manager configuration and can be used to build containers.
 
 ## Documentation
 
