@@ -1,9 +1,9 @@
 {
 "title": "Upgrade from API Gateway 7.5.x or 7.6.x",
-  "linkTitle": "Upgrade from API Gateway 7.5.x or 7.6.x",
-  "weight": 2,
-  "date": "2019-10-07",
-  "description": "Upgrade from API Gateway 7.5.1 or later to API Gateway 7.7."
+"linkTitle": "Upgrade from API Gateway 7.5.x or 7.6.x",
+"weight": 2,
+"date": "2019-10-07",
+"description": "Upgrade from API Gateway 7.5.1 or later to API Gateway 7.7."
 }
 In API Gateway 7.5.1 and later versions, the Apache Cassandra database is fully separated from the API Gateway (in earlier versions it was embedded with the API Gateway). This simplifies the upgrade process when upgrading from API Gateway 7.5.1 or later, as the data contained in Apache Cassandra does not need to be exported and imported along with the other configuration data.
 
@@ -339,16 +339,15 @@ Alternatively, your Linux administrator can remove the old services using the pr
 
 `sysupgrade` does not migrate the Quickstart tutorial from your old installation. To migrate it, copy the `/apigateway/webapps/quickstart` directory from your old installation (for example, `/opt/Axway/7.4.1/apigateway/webapps/quickstart`) to the same location in the new 7.7 installation (for example, `/opt/Axway/7.7/apigateway/webapps/quickstart`).
 
-### Migrate Single Sign On configuration files
+### Migrate single sign-on configuration files
 
-`sysupgrade` does not migrate SSO configuration files from your old installation. If you have configured Single Sign On for API Manager and/or API Portal you migrate it by copying the configuration files located in `apigateway/groups/group-x/instance-x/conf`  directory from your old installation (for example, `/opt/Axway/7.5.3/apigateway/groups/group-2/instance-1/conf`) to the same location in the new 7.7 installation (for example, `/opt/Axway/7.7/apigateway/groups/group-2/instance-1/conf`). These configuration files are:
+`sysupgrade` does not migrate SSO configuration files from your old installation. If you have configured single sign-on for API Manager or API Portal, you must migrate it manually. Copy the configuration files located in the `apigateway/groups/group-x/instance-x/conf`  directory in your old installation (for example, `/opt/Axway/7.5.3/apigateway/groups/group-2/instance-1/conf`) to the same location in your new 7.7 installation (for example, `/opt/Axway/7.7/apigateway/groups/group-2/instance-1/conf`). 
 
-service-provider.xml - This is configuration file for API Manager SSO
+The configuration files are:
 
-service-provider-apiportal.xml - This is the configuration file for API Portal SSO
+* `service-provider.xml` - Configuration file for API Manager SSO
+* `service-provider-apiportal.xml` - Configuration file for API Portal SSO
+* `sso.jks` - Keystore for SSO
+* `trustStore.jks` - Truststore for SSO related HTTPS communications
 
-sso.jks - The keystore for SSO
-
-trustStore.jks - The truststore for SSO related https communitcaitons
-
-This needs to be repeated for each instance configured with SSO
+You must repeat this for each instance configured with SSO.
