@@ -180,6 +180,30 @@ This example performs the following:
 
 {{< alert title="Note" color="primary" >}} You must specify the API Gateway host identity in [Start the API Gateway Docker container](/docs/apim_installation/apigw_containers/docker_script_gwimage/#start-the-api-gateway-docker-container) to be able to identify the host of the log records.{{< /alert >}}
 
+### Configure the Edge Agent for subscription based billing
+
+The AMPLIFY Edge Agent allows you to set up, report, and monitor usage data for Axway cloud services and on-premises products that you use under subscription agreements.
+
+For more information on the AMPLIFY Edge Agent, see [AMPLIFY subscription usage and reporting](https://docs.axway.com/bundle/subusage_en/page/amplify_subscription_usage_and_reporting.html).
+
+This section describes how to connect API Gateway (in EMT mode) to AMPLIFY Edge Agent and configuring the agent to upload usage data to the AMPLIFY Platform.
+
+#### Configure the Edge Agent
+
+Perform the following steps on the Edge Agent:
+
+1. Download the `AMPLIFY_Edge_Agent_MFT_<version>_configuration_<BNxxx>.zip` package from the [Axway Support Site](https://support.axway.com/).
+2. Extract the zip locally.
+3. Upload the `MFT-usage.json` file from the package to the `<Edge_Agent_install_dir>/aggregator/usage_tracking/conf/agent/aggregation` directory.
+4. Upload the `MFT.json` file from the package to the `<Edge_Agent_install_dir>/conf/agent/report` directory.
+    * The MFT.json file name is the `configurationName` that you use when querying the Edge Agent.
+5. Restart the Edge Agent.
+
+#### Configure the connection between the agent and API Gateway
+
+1. step 1
+2. step 2
+
 ### Further information
 
 For more details on the `docker run` command, see the [Docker user documentation](https://docs.docker.com/ "https://docs.docker.com/").
