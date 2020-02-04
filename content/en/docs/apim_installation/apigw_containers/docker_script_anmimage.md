@@ -202,7 +202,7 @@ Perform the following steps on the Edge Agent:
 #### Configure the connection between the agent and API Gateway
 
 1. step 1
-2. step 2
+2. step 2.
 
 ### Further information
 
