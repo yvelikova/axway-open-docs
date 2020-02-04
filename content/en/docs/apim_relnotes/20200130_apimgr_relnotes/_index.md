@@ -136,14 +136,23 @@ This release has the following limitations.
 
 As part of our software development life cycle we constantly review our API Management offering.
 
-The following capabilities have been deprecated:
+The following capabilities have been deprecated.
 
-* API Gateway already supports the industry standard Internet Content Adaption Protocol (ICAP), so from the November 2020 release we will remove the existing embedded Anti-Virus scanners:
-    * McAfee
-    * Sophos
-    * Clam AV
+### Antivirus scanners
 
-    Content scanning is still supported using the ICAP filter, which provides out-of-the-box integration with ICAP-capable servers provided by Symantec, McAfee, OPSWAT and others, promoting ease of deployment and operational control.
+API Gateway already supports the industry standard Internet Content Adaption Protocol (ICAP). From the November 2020 release the following embedded antivirus scanners will be removed:
+
+* McAfee
+* Sophos
+* Clam AV
+
+Content scanning is still supported using the ICAP filter, which provides out-of-the-box integration with ICAP-capable servers provided by Symantec, McAfee, OPSWAT and others, promoting ease of deployment and operational control.
+
+### Back-end API exports
+
+Back-end API exports were designed to support the creation and maintenance of APIs using API Manager, and the functionality is based on the Swagger v1 format. API Manager now supports OAS3 and Swagger 2, meaning that this export functionality is outdated. In addition, a majority of customers store APIs in source control tools outside of API Manager. For these reasons, exporting back-end APIs will not be supported from 7.7.20200331 and later.
+
+Back-end API exports will only be available for APIs created in API Manager, and not for imported APIs. Export of API collections and download from the API Catalog will continue to be fully supported.
 
 ## Removed features
 
