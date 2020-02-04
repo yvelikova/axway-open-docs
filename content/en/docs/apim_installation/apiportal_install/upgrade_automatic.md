@@ -19,10 +19,7 @@ Before you upgrade, complete the following prerequisites. These prerequisites ap
 
 If you have an existing API Portal installation, you can upgrade that installation to a newer version without having to repeat the initial setup.
 
-* Upgrade to API Portal 7.7.20200130 is supported from API Portal 7.7.x only. To upgrade from earlier versions, you must first upgrade to 7.7.
-* Upgrade to API Portal 7.7 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
-* API Portal 7.7 GA and API Portal 7.7 SP1 to SP4 is compatible with API Gateway and API Manager 7.7 GA and API Gateway and API Manager 7.7 SP1 to SP2 only.
-* API Portal 7.7.20200130 is compatible with API Gateway and API Manager 7.7.20200130 only.
+Upgrade to API Portal 7.7 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
 
 To upgrade your API Portal software installation, follow these steps:
 
