@@ -140,7 +140,7 @@ The following capabilities have been deprecated.
 
 ### Antivirus scanners
 
-API Gateway already supports the industry standard Internet Content Adaption Protocol (ICAP). From the November 2020 release the following embedded Antivirus scanners will be removed:
+API Gateway already supports the industry standard Internet Content Adaption Protocol (ICAP). From the November 2020 release the following embedded antivirus scanners will be removed:
 
 * McAfee
 * Sophos
