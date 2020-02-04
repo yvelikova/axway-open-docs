@@ -11,7 +11,7 @@ This version of API Gateway and API Manager includes the fixes from all 7.5.3, 7
 
 | Internal ID | Case ID                      | CVE ID | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------- | ---------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| RDAPI-15687 | 1039208                      |        | **Issue**: Security vulnerability due to not checking the filename parameter for downloading original API file. **Resolution**: Filename parameter is checked.                                                                                                                                                                                                                                                                                                 |
+
 
 
 ## Other fixed issues
