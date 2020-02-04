@@ -104,7 +104,7 @@ It is important, especially when upgrading from an earlier version, to be aware 
 
 ### Increased validation of WSDLs
 
-In this release the xerces library has been updated to `xerces 2.12.0`. This library enforces stricter rules when validating malformed schemas. This means that some WSDLs that were previously imported successfully by API Manager might not import successfully in this version.
+The Xerces library has been updated to `xerces 2.12.0`. This library enforces stricter rules when validating malformed schemas. This means that some WSDLs that were previously imported successfully by API Manager might not import successfully in this version.
 
 To suppress schema validation errors and relax the stricter validation of XML files, set the flag `-DwsdlImport.suppressSchemaValidationErrors` to `true` in the `policystudio.ini` file. The default value is `false`.
 
@@ -114,7 +114,7 @@ Filebeat has been updated to use v6.2.2. When installing Filebeat, follow the [o
 
 ### Increased validation of `/users` endpoint
 
-In earlier versions of the product the `/users` API returns a list of all the users in an organization. This endpoint was used to allow a user share an application with other users in their organization. This was identified as a security risk,  as only `OrgAdmin` and `APIAdmin` roles should have access to a list of users, and not `User` roles. For this reason we have removed the ability for `Users` to view all other user names in the organization. This change might break some use cases for API Manager and API Portal.
+In earlier versions of API Manager, the `/users` API returns a list of all the users in an organization. This endpoint allows a user to  share an application with other users in their organization. This was identified as a security risk,  as only `OrgAdmin` and `APIAdmin` roles should have access to a list of users, and not `User` roles. Hence, the ability for `Users` to view all other user names in the organization was removed. This change might break some use cases for API Manager and API Portal.
 
 To reduce the impact of this change, you can relax this restriction using a configuration flag. Set the flag in the `jvm.xml` file (it does not exist by default) under `groups/group-x/instance-y/conf`.
 
