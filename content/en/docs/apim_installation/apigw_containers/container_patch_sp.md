@@ -8,9 +8,9 @@ description: Apply a patch or a service pack (SP) to an API Gateway or API Manag
 
 In a container deployment, a patch or service pack is rolled out using an orchestration tool (for example, Kubernetes or OpenShift) after new Docker images containing the patch or service pack are pushed to the Docker registry. This enables you to perform a rolling zero downtime update of services.
 
-## Install a patch
+## Apply a patch
 
-To install a patch, follow these steps:
+To apply a patch, follow these steps:
 
 1. Download the patch from Axway Support at [https://support.axway.com](https://support.axway.com/).
 2. Create a merge directory to contain the patch files and any custom configuration (for example, `/tmp/apigateway`). The merge directory must be called `apigateway` and must have the same directory structure as the `apigateway` directory of an API Gateway installation.
@@ -24,9 +24,9 @@ To install a patch, follow these steps:
     ./build_gw_image.py --license=/tmp/api_gw.lic --domain-cert=certs/mydomain/mydomain-cert.pem --domain-key=certs/mydomain/mydomain-key.pem --domain-key-pass-file=/tmp/pass.txt --merge-dir=/tmp/apigateway
     ```
 
-## Install a service pack
+## Apply a service pack
 
-To install a service pack, follow these steps:
+To apply a service pack, follow these steps:
 
 1. Download the latest API Gateway 7.7 Linux installer (which includes the service pack) from Axway Support at [https://support.axway.com](https://support.axway.com/).
 2. Create a new base image using the `--installer` option to build the image from the downloaded API Gateway installer.

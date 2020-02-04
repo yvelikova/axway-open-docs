@@ -119,7 +119,7 @@ getcap /opt/Axway-7.7/apigateway/platform/bin/vshell
 /opt/Axway-7.7/apigateway/platform/bin/vshell = cap_net_bind_service+ep
 ```
 
-If you set this capability, you must remove it again before applying a service pack or uninstalling, as it results in the product binaries being locked.
+If you set this capability, you must remove it again before applying a service pack, installing an update, or uninstalling, as it results in the product binaries being locked.
 
 To remove the capability, run the following command:
 

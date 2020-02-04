@@ -44,7 +44,7 @@ The default idle session timeout for the API Gateway Manager web UI is 12 hours.
 
 ## Correct upgrade procedure
 
-In the event of a possible vulnerability discovered in the product, you must be able to apply the patch or new Service Pack as soon as possible. Make sure you have the correct procedure to complete the upgrade. Always use the latest version of the product, if possible, as it contains fixes to known vulnerabilities.
+In the event of a possible vulnerability discovered in the product, you must be able to apply the patch or new service pack as soon as possible. Make sure you have the correct procedure to complete the upgrade. Always use the latest version of the product, if possible, as it contains fixes to known vulnerabilities.
 
 For more information on upgrade procedures, see the following sections:
 
