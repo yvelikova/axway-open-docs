@@ -23,7 +23,7 @@ An API is clearly defined by way of its endpoints, request parameters, and respo
 * What the supported request parameters are
 * What responses they can expect
 
-An API implies a _contract_, which provides app developers with an assurance that the API will change in a predictable manner over time, meaning that their app will continue to work with future changes to the API. AMPLIFY Central support Swagger 2.0 and Open API 3.0 specifications.
+An API implies a _contract_, which provides app developers with an assurance that the API will change in a predictable manner over time, meaning that their app will continue to work with future changes to the API. AMPLIFY Central supports Swagger 2.0 and Open API 3.0 specifications.
 
 ### What is an API proxy?
 
