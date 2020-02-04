@@ -124,6 +124,27 @@ To reduce the impact of this change, you can relax this restriction using a conf
 </ConfigurationFragment>
 ```
 
+### OpenJDK
+
+API Gateway and API Manager 7.7 and later support OpenJDK JRE, and this update includes Zulu OpenJDK 1.8 JRE instead of Oracle JRE 1.8.
+
+### API Manager
+
+* An inbound API request with a trailing slash can match an API path with no trailing slash. To activate this feature set the Java property `com.vordel.apimanager.uri.path.trailingSlash.preserve` to `true`. The default value is `false`.
+* An API method's Content-Type is checked against the API method's defined MIME type when performing path matching. To allow legacy API method matching and disable this check, set the Java property `com.coreapireg.apimethod.contenttype.legacy` to `true`. The default value is `false`.
+* To improve general system performance and speed, enable caching. Set the `com.axway.apimanager.api.data.cache` Java system property to `true`. External clients, API keys, and OAuth credentials cache is optimized so that updates to the cache no longer block API Manager run-time traffic, resulting in performance improvements for corresponding API Manager APIs. As a result of the non-blocking cache updates, API Manager memory consumption will increase, particularly in systems with large numbers of external clients, API keys or OAuth credentials.
+* To configure the status code of an unsuccessful match of an API, when authentication is successful, to 404, set the Java property `com.axway.apimanager.use404AuthSuccessNoMatch`  to `true`. The default value is `false`.
+* To import API Gateway Management API Swagger into API Manager API Catalog, you must add the `application/x-download` MIME type to the default list of the MIME types in API Gateway. Select **Server Settings > General > Mime configuration** in the Policy Studio tree and add `application/x-download` to the MIME list. After the configuration is deployed to API Gateway, yu can import the API Gateway Manager API Swagger into API Manager API Catalog.
+
+### Policy Studio and Configuration Studio
+
+You must remove the Policy Studio and Configuration Studio JRE directory before installing this update.
+
+### Security
+
+* The X-Content-Type-Options HTTP header with value nosniff is not included in a HTTP response serving static content from the API Gateway or API Manager. This static content is served from the API Gateway/API Manager `webapps` directory. No dynamic content is served from the `webapps` directory. This means that there is no risk of the browser making an incorrect assumption of the content type and exposing a security vulnerability. The X-Content-Type-Options response header with the value nosniff is included with HTTP responses serving dynamic content by default.
+* If you are using the API Manager Management APIs, Client Application Registry APIs, and API Gateway APIs you might need to disable the CSRF token check implemented in v7.5.3 SP9 and later. To disable this check, set the Java system property `com.axway.apimanager.csrf`  to  false. The default is `true`. 
+
 ## Limitations of this release
 
 This release has the following limitations.
@@ -169,6 +190,40 @@ See [Fixed issues](/docs/apim_relnotes/20200130_apimgr_relnotes/fixed_issues/) f
 The following are known issues for this release.
 
 <!-- Add the known issues here -->
+
+| Internal ID | Description |
+|-------------|-------------|
+| RDAPI-13653               | API   Portal incorrect Content-Type for SOAP + empty model schema                                                                                                        |
+| RDAPI-14100               | Update tuning recommendations for 'High availability with local storage' config                                                                                              |
+| RDAPI-15607               | Cannot   access NodeManager after submitting external CA signed certs                                                                                                      |
+| RDAPI-15609               | Cannot   access NodeManager after submitting external CA signed certs                                                                                                      |
+| RDAPI-15669               | Stored   XSS in the application's Oauth Redirect URL - Encode OAuth Redirect URLs on   output                                                                             |
+| RDAPI-15671               | Update   trailing slash support in Jython scripts samples                                                                                                                |
+| RDAPI-15760               | Request   headers reflected as response headers                                                                                                                          |
+| RDAPI-15781               | Swagger   Generation Tool - Duplicate paths are not reported                                                                                                             |
+| RDAPI-15981               | Scopes   fields for API Key remain visible even if Application Scopes are disabled                                                                                       |
+| RDAPI-16330               | Maven   'clean' on install/pom.xml does not cleanup install/system/lib                                                                                                   |
+| RDAPI-16486               | Changes   in the mapper always require a reload in the Execute Data Maps filter and   once reloaded then providing values for the required parameters must be   repeated |
+| RDAPI-16576               | Duplicate   headers returned when calling API Gateway Rest API                                                                                                           |
+| RDAPI-16955               | API   Manager event poller unnecessarily locks cache updates from Cassandra                                                                                              |
+| RDAPI-17041               | Policy   called as REST API in Policy Studio, and local fault handler not catching   unhandled false return from policy called by policy shortcut                        |
+| RDAPI-17208               | Test   and document upgrading Gateway and Cassandra (7.5.3->7.7.x /   2.2.8->2.2.12) to new hosts                                                                        |
+| RDAPI-17924               | Error   while upgrading JSON schema from 7.5.3 to 7.7 - Cannot set ESPK for   non-reference type field                                                                   |
+| RDAPI-18082               | Regression:   Policy Shortcut filters no longer automatically renamed in 7.7                                                                                             |
+| RDAPI-18123               | Forgot   password should force password change like first time login                                                                                                     |
+| RDAPI-18198               | CORS   preflight fails for WSDL based API Manager APIs, thus Try-It fails                                                                                                |
+| RDAPI-18294               | KPS   REST API documentation missing info                                                                                                                                |
+| RDAPI-18376               | "you   do not have permission to access this resource" when a user creates an   application                                                                               |
+| RDAPI-18379               | Spurious   "forbidden" error in Manager UI                                                                                                                               |
+| RDAPI-18473               | Get   OAuth Access Token filter is not accepting "aud" JWT claim                                                                                                         |
+| RDAPI-18485               | "Get   OAuth Access Token" expired token then refresh flow, not resetting   message                                                                                       |
+| RDAPI-18639               | Information   needed on "suppressed" CVEs reported against APIG 7.7.2                                                                                                    |
+| RDAPI-18674               | Insufficient   data validation when importing an Application                                                                                                             |
+| RDAPI-18737               | Turning   off "delegate user/application management" causes UI to break                                                                                                  |
+| RDAPI-18774               | Nested   relative path behavior changed, causing customer policies to fail                                                                                               |
+| RDAPI-18776               | regex   for custom property in API Manager                                                                                                                               |
+| RDAPI-18812               | DB   definition with wildcard password fails in Resource Owner Password Credential   filter                                                                              |
+| RDAPI-18876               | Extremely   slow Swagger virtualization when Cassandra is under load                                                                                                     |
 
 ## Update a classic (non-container) deployment
 
