@@ -150,7 +150,7 @@ Content scanning is still supported using the ICAP filter, which provides out-of
 
 ### Back-end API exports
 
-Back-end API exports were designed to support the creation and maintenance of APIs using API Manager, and the functionality is based on the Swagger 1 format. API Manager now supports OAS3 and Swagger 2, meaning that this export functionality is outdated. In addition, a majority of customers store APIs in source control tools outside of API Manager. For these reasons, exporting back-end APIs will not be supported from 7.7.20200331 and later.
+Back-end API exports were designed to support the creation and maintenance of APIs using API Manager, and the functionality is based on the Swagger v1 format. API Manager now supports OAS3 and Swagger 2, meaning that this export functionality is outdated. In addition, a majority of customers store APIs in source control tools outside of API Manager. For these reasons, exporting back-end APIs will not be supported from 7.7.20200331 and later.
 
 Back-end API exports will only be available for APIs created in API Manager, and not for imported APIs. Export of API collections and download from the API Catalog will continue to be fully supported.
 
