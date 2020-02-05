@@ -104,7 +104,7 @@ It is important, especially when upgrading from an earlier version, to be aware 
 
 ### Increased validation of WSDLs
 
-In this release the xerces library has been updated to `xerces 2.12.0`. This library enforces stricter rules when validating malformed schemas. This means that some WSDLs that were previously imported successfully by API Manager might not import successfully in this version.
+The Xerces library has been updated to `xerces 2.12.0`. This library enforces stricter rules when validating malformed schemas. This means that some WSDLs that were previously imported successfully by API Manager might not import successfully in this version.
 
 To suppress schema validation errors and relax the stricter validation of XML files, set the flag `-DwsdlImport.suppressSchemaValidationErrors` to `true` in the `policystudio.ini` file. The default value is `false`.
 
@@ -114,7 +114,7 @@ Filebeat has been updated to use v6.2.2. When installing Filebeat, follow the [o
 
 ### Increased validation of `/users` endpoint
 
-In earlier versions of the product the `/users` API returns a list of all the users in an organization. This endpoint was used to allow a user share an application with other users in their organization. This was identified as a security risk,  as only `OrgAdmin` and `APIAdmin` roles should have access to a list of users, and not `User` roles. For this reason we have removed the ability for `Users` to view all other user names in the organization. This change might break some use cases for API Manager and API Portal.
+In earlier versions of API Manager, the `/users` API returns a list of all the users in an organization. This endpoint allowed a user to share an application with other users in their organization. This was identified as a security risk,  as only organization administrators and API administrators should have access to a list of users, and not user roles. The ability for user roles to view all other user names in the organization has been removed. This change might break some use cases for API Manager and API Portal.
 
 To reduce the impact of this change, you can relax this restriction using a configuration flag. Set the flag in the `jvm.xml` file (it does not exist by default) under `groups/group-x/instance-y/conf`.
 
@@ -123,6 +123,23 @@ To reduce the impact of this change, you can relax this restriction using a conf
     <VMArg name="-DAPIGW_TOGGLE_FEATURE_GET_ALL_USERS=true" />
 </ConfigurationFragment>
 ```
+
+### OpenJDK JRE
+
+API Gateway and API Manager 7.7 and later support OpenJDK JRE, and this update includes Zulu OpenJDK 1.8 JRE instead of Oracle JRE 1.8.
+
+### API Manager changes
+
+* An inbound API request with a trailing slash can match an API path with no trailing slash. To activate this feature set the Java property `com.vordel.apimanager.uri.path.trailingSlash.preserve` to `true`. The default value is `false`.
+* An API method's Content-Type is checked against the API method's defined MIME type when performing path matching. To allow legacy API method matching and disable this check, set the Java property `com.coreapireg.apimethod.contenttype.legacy` to `true`. The default value is `false`.
+* Enable caching to improve general system performance and speed. Set the `com.axway.apimanager.api.data.cache` Java system property to `true`. External clients, API keys, and OAuth credentials cache are optimized so that updates to the cache no longer block API Manager runtime traffic, resulting in performance improvements for corresponding API Manager APIs. As a result of the non-blocking cache updates, API Manager memory consumption will increase, particularly in systems with large numbers of external clients, API keys or OAuth credentials.
+* To configure the status code of an unsuccessful match of an API to 404 when authentication is successful, set the Java property `com.axway.apimanager.use404AuthSuccessNoMatch`  to `true`. The default value is `false`.
+* To import API Gateway Management API Swagger into API Manager API Catalog, you must add the `application/x-download` MIME type to the default list of MIME types in API Gateway. Select **Server Settings > General > Mime configuration** in the Policy Studio tree and add `application/x-download` to the MIME list. After the configuration is deployed to API Gateway, you can import the API Gateway Manager API Swagger into API Manager API Catalog.
+
+### Security changes
+
+* The X-Content-Type-Options HTTP header with value `nosniff` is not included in a HTTP response serving static content from the API Gateway or API Manager. This static content is served from the API Gateway or API Manager `webapps` directory. No dynamic content is served from the `webapps` directory. This means that there is no risk of the browser making an incorrect assumption of the content type and exposing a security vulnerability. The X-Content-Type-Options response header with the value `nosniff` is included with HTTP responses serving dynamic content by default.
+* If you are using the API Manager Management APIs, Client Application Registry APIs, and API Gateway APIs you might need to disable the CSRF token check implemented in v7.5.3 SP9 and later. To disable this check, set the Java system property `com.axway.apimanager.csrf`  to  false. The default is `true`.
 
 ## Limitations of this release
 
@@ -136,14 +153,23 @@ This release has the following limitations.
 
 As part of our software development life cycle we constantly review our API Management offering.
 
-The following capabilities have been deprecated:
+The following capabilities have been deprecated.
 
-* API Gateway already supports the industry standard Internet Content Adaption Protocol (ICAP), so from the November 2020 release we will remove the existing embedded Anti-Virus scanners:
-    * McAfee
-    * Sophos
-    * Clam AV
+### Antivirus scanners
 
-    Content scanning is still supported using the ICAP filter, which provides out-of-the-box integration with ICAP-capable servers provided by Symantec, McAfee, OPSWAT and others, promoting ease of deployment and operational control.
+API Gateway already supports the industry standard Internet Content Adaption Protocol (ICAP). From the November 2020 release the following embedded antivirus scanners will be removed:
+
+* McAfee
+* Sophos
+* Clam AV
+
+Content scanning is still supported using the ICAP filter, which provides out-of-the-box integration with ICAP-capable servers provided by Symantec, McAfee, OPSWAT and others, promoting ease of deployment and operational control.
+
+### Back-end API exports
+
+Back-end API exports were designed to support the creation and maintenance of APIs using API Manager, and the functionality is based on the Swagger v1 format. API Manager now supports OAS3 and Swagger 2, meaning that this export functionality is outdated. In addition, a majority of customers store APIs in source control tools outside of API Manager. For these reasons, exporting back-end APIs will not be supported from 7.7.20200331 and later.
+
+Back-end API exports will only be available for APIs created in API Manager, and not for imported APIs. Export of API collections and download from the API Catalog will continue to be fully supported.
 
 ## Removed features
 
@@ -170,13 +196,47 @@ The following are known issues for this release.
 
 <!-- Add the known issues here -->
 
+| Internal ID | Description |
+|-------------|-------------|
+| RDAPI-13653               | API   Portal incorrect Content-Type for SOAP + empty model schema                                                                                                        |
+| RDAPI-14100               | Update tuning recommendations for 'High availability with local storage' config                                                                                              |
+| RDAPI-15607               | Cannot   access NodeManager after submitting external CA signed certs                                                                                                      |
+| RDAPI-15609               | Cannot   access NodeManager after submitting external CA signed certs                                                                                                      |
+| RDAPI-15669               | Stored   XSS in the application's Oauth Redirect URL - Encode OAuth Redirect URLs on   output                                                                             |
+| RDAPI-15671               | Update   trailing slash support in Jython scripts samples                                                                                                                |
+| RDAPI-15760               | Request   headers reflected as response headers                                                                                                                          |
+| RDAPI-15781               | Swagger   Generation Tool - Duplicate paths are not reported                                                                                                             |
+| RDAPI-15981               | Scopes   fields for API Key remain visible even if Application Scopes are disabled                                                                                       |
+| RDAPI-16330               | Maven   'clean' on install/pom.xml does not cleanup install/system/lib                                                                                                   |
+| RDAPI-16486               | Changes   in the mapper always require a reload in the Execute Data Maps filter and   once reloaded then providing values for the required parameters must be   repeated |
+| RDAPI-16576               | Duplicate   headers returned when calling API Gateway Rest API                                                                                                           |
+| RDAPI-16955               | API   Manager event poller unnecessarily locks cache updates from Cassandra                                                                                              |
+| RDAPI-17041               | Policy   called as REST API in Policy Studio, and local fault handler not catching   unhandled false return from policy called by policy shortcut                        |
+| RDAPI-17208               | Test   and document upgrading Gateway and Cassandra (7.5.3->7.7.x /   2.2.8->2.2.12) to new hosts                                                                        |
+| RDAPI-17924               | Error   while upgrading JSON schema from 7.5.3 to 7.7 - Cannot set ESPK for   non-reference type field                                                                   |
+| RDAPI-18082               | Regression:   Policy Shortcut filters no longer automatically renamed in 7.7                                                                                             |
+| RDAPI-18123               | Forgot   password should force password change like first time login                                                                                                     |
+| RDAPI-18198               | CORS   preflight fails for WSDL based API Manager APIs, thus Try-It fails                                                                                                |
+| RDAPI-18294               | KPS   REST API documentation missing info                                                                                                                                |
+| RDAPI-18376               | "you   do not have permission to access this resource" when a user creates an   application                                                                               |
+| RDAPI-18379               | Spurious   "forbidden" error in Manager UI                                                                                                                               |
+| RDAPI-18473               | Get   OAuth Access Token filter is not accepting "aud" JWT claim                                                                                                         |
+| RDAPI-18485               | "Get   OAuth Access Token" expired token then refresh flow, not resetting   message                                                                                       |
+| RDAPI-18639               | Information   needed on "suppressed" CVEs reported against APIG 7.7.2                                                                                                    |
+| RDAPI-18674               | Insufficient   data validation when importing an Application                                                                                                             |
+| RDAPI-18737               | Turning   off "delegate user/application management" causes UI to break                                                                                                  |
+| RDAPI-18774               | Nested   relative path behavior changed, causing customer policies to fail                                                                                               |
+| RDAPI-18776               | regex   for custom property in API Manager                                                                                                                               |
+| RDAPI-18812               | DB   definition with wildcard password fails in Resource Owner Password Credential   filter                                                                              |
+| RDAPI-18876               | Extremely   slow Swagger virtualization when Cassandra is under load                                                                                                     |
+
 ## Update a classic (non-container) deployment
 
-These instructions apply to API Gateway and API Manager classic deployments only. For container deployments, see [Apply a patch or service pack](/docs/apim_installation/apigw_containers/container_patch_sp/).
+These instructions apply to API Gateway and API Manager classic deployments only. For container deployments, see [Update a container deployment](#update-a-container-deployment).
 
 ### Prerequisites
 
-This service pack has the following prerequisites in addition to the [System requirements](/docs/apim_installation/apigtw_install/system_requirements/).
+This update has the following prerequisites in addition to the [System requirements](/docs/apim_installation/apigtw_install/system_requirements/).
 
 1. Shut down any Node Manager or API Gateway instances on your existing installation.
 2. Back up your existing installation. For details on backing up, see [API Gateway backup and disaster recovery](/docs/apim_administration/apigtw_admin/manage_operations/#api-gateway-backup-and-disaster-recovery).
@@ -215,12 +275,12 @@ This service pack has the following prerequisites in addition to the [System req
 
 ### FIPS mode only
 
-If FIPS mode is enabled, you must also perform the following steps to install the service pack:
+If FIPS mode is enabled, you must also perform the following steps to install the update:
 
 1. Run `togglefips --disable` to turn FIPS mode off.
 2. Start the Node Manager to move the JARs.
 3. Stop the Node Manager.
-4. Install the API Gateway service pack.
+4. Install the API Gateway update.
 5. Start the Node Manager.
 6. Stop the Node Manager.
 7. Run `togglefips --enable` to turn FIPS on again.
@@ -228,18 +288,18 @@ If FIPS mode is enabled, you must also perform the following steps to install th
 
 ### Installation
 
-This section describes how to install the service pack on existing 7.7 installations of API Gateway or API Manager.
+This section describes how to install the update on existing 7.7 installations of API Gateway or API Manager.
 
-* If you have installed an existing version of API Manager, installing the API Gateway server service pack automatically also installs the updates and fixes for API Manager.
-* If you have installed a licensed version of API Gateway or API Manager 7.7, you do not require a new license to install service packs.
+* If you have installed an existing version of API Manager, installing the API Gateway server update automatically also installs the updates and fixes for API Manager.
+* If you have installed a licensed version of API Gateway or API Manager 7.7, you do not require a new license to install updates.
 
-#### Install the API Gateway server service pack
+#### Install the API Gateway server update
 
-To install the service pack on your existing API Gateway 7.7 server installation, perform the following steps:
+To install the update on your existing API Gateway 7.7 server installation, perform the following steps:
 
 1. Ensure that your existing API Gateway instance and Node Manager have been stopped.
-2. Remove any previous patches from your `INSTALL_DIR/ext/lib` and `INSTALL_DIR/META-INF` directories (or the `ext/lib` directory in an API Gateway instance). These patches have already been included in this service pack. You do not need to copy patches from a previous version.
-3. Verify the owners of API Gateway binaries before extracting the service pack.
+2. Remove any previous patches from your `INSTALL_DIR/ext/lib` and `INSTALL_DIR/META-INF` directories (or the `ext/lib` directory in an API Gateway instance). These patches have already been included in this update. You do not need to copy patches from a previous version.
+3. Verify the owners of API Gateway binaries before extracting the update.
 
     ```
     ls -l INSTALL_DIR/apigateway/posix/bin
@@ -263,9 +323,9 @@ To install the service pack on your existing API Gateway 7.7 server installation
     apigw_sp_post_install.sh
     ```
 
-#### Install the Policy Studio service pack
+#### Install the Policy Studio update
 
-To install the service pack on your existing Policy Studio installation, perform the following steps:
+To install the update on your existing Policy Studio installation, perform the following steps:
 
 1. Shut down Policy Studio.
 2. Back up your existing `INSTALL_DIR/policystudio` directory.
@@ -283,9 +343,9 @@ To install the service pack on your existing Policy Studio installation, perform
 
 5. Start Policy Studio with `policystudio -clean`
 
-#### Install the Configuration Studio service pack
+#### Install the Configuration Studio update
 
-To install the service pack on your existing Configuration Studio installation, perform the following steps:
+To install the update on your existing Configuration Studio installation, perform the following steps:
 
 1. Shut down Configuration Studio.
 2. Back up your existing `INSTALL_DIR/configurationstudio` directory.
@@ -303,12 +363,12 @@ To install the service pack on your existing Configuration Studio installation, 
 
 5. Start Configuration Studio with `configurationstudio  -clean`
 
-#### Install the API Gateway Analytics service pack
+#### Install the API Gateway Analytics update
 
-To install the service pack on your existing API Gateway Analytics 7.7 installation, perform the following steps:
+To install the update on your existing API Gateway Analytics 7.7 installation, perform the following steps:
 
 1. Ensure that your existing API Gateway Analytics instance and Node Manager have been stopped.
-2. Verify the owners of API Gateway binaries before extracting the service pack.
+2. Verify the owners of API Gateway binaries before extracting the update.
 
     ```
     ls -l INSTALL_DIR/analytics/posix/bin
@@ -332,11 +392,11 @@ To install the service pack on your existing API Gateway Analytics 7.7 installat
     apigw_analytics_sp_post_install.sh
     ```
 
-You must also install a service pack for your existing API Gateway 7.7 server.
+You must also install an update for your existing API Gateway 7.7 server.
 
 ### After installation
 
-The following steps apply after installing the service pack.
+The following steps apply after installing the update.
 
 #### API Gateway
 
@@ -365,7 +425,7 @@ When API Manager is installed, you must run the `update-apimanager` script after
 {{< alert title="Caution" color="warning" >}}
 Before executing the `update-apimanager` script:
 
-* Apply the service pack to all API Gateways.
+* Apply the update to all API Gateways.
 * Ensure that all Node Managers and API Gateway instances are running.
 
 {{< /alert >}}
@@ -392,9 +452,9 @@ If the API Gateway group is protected by a passphrase, you must append the comma
 
 ## Update a container deployment
 
-If a `fed` file is provided as part of building the API Manager container, you must follow these steps to update the `fed` with the Service Pack API Manager configuration:
+If a `fed` file is provided as part of building the API Manager container, you must follow these steps to update the `fed` with the configuration changes:
 
-1. Install the Service Pack on a installation of the API Gateway.
+1. Install the update on a installation of the API Gateway.
 2. Run the following command:
 
     ```
@@ -403,7 +463,7 @@ If a `fed` file is provided as part of building the API Manager container, you m
 
 You do not need to run any API Manager instances.
 
-The `fed` now contains the Service Pack updates for the API Manager configuration and can be used to build containers.
+The `fed` now contains the updates for the API Manager configuration and can be used to build containers.
 
 ## Documentation
 

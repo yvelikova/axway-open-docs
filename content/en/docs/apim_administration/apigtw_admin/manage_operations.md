@@ -224,11 +224,11 @@ For example, the following directories include API Gateway configuration, and wi
 <install-dir>/apigateway/system/conf/nodemanager.xml
 ```
 
-### Back up before applying a service pack
+### Back up before applying a service pack or installing an update
 
-A service pack requires a full backup of the gateway installation, to enable you to restore the previous installation.
+Updates or service packs require a full backup of the API Gateway installation, to enable you to restore the previous installation.
 
-For example, the following directories should always be backed up before applying a service pack:
+For example, the following directories should always be backed up before applying a service pack or installing an update:
 
 ```
 <install-dir>/apigateway/conf

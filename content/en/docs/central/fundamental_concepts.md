@@ -2,11 +2,10 @@
 title: AMPLIFY Central concepts
 linkTitle: Concepts
 weight: 2
-date: 2019-07-30
+date: 2019-07-30T00:00:00.000Z
 description: Learn the fundamental concepts you will encounter in AMPLIFY Central.
 ---
-
-*Estimated reading time*: 1 minute
+_Estimated reading time_: 1 minute
 
 ## API and API proxy
 
@@ -16,7 +15,7 @@ Watch this short video to learn more about API proxies.
 
 ### What is an API?
 
-An API is an interface to a service, that enables app developers to interact with it or *consume* it. For example, you might have a weather service that app developers can use to show today's weather forecast to the users of their cycling app.
+An API is an interface to a service, that enables app developers to interact with it or _consume_ it. For example, you might have a weather service that app developers can use to show today's weather forecast to the users of their cycling app.
 
 An API is clearly defined by way of its endpoints, request parameters, and responses. This makes it easy for app developers to use the API, as the API specification (for example, Open API or Swagger) tells them:
 
@@ -24,7 +23,7 @@ An API is clearly defined by way of its endpoints, request parameters, and respo
 * What the supported request parameters are
 * What responses they can expect
 
-An API implies a *contract*, which provides app developers with an assurance that the API will change in a predictable manner over time, meaning that their app will continue to work with future changes to the API.
+An API implies a _contract_, which provides app developers with an assurance that the API will change in a predictable manner over time, meaning that their app will continue to work with future changes to the API. AMPLIFY Central supports Swagger 2.0 and Open API 3.0 specifications.
 
 ### What is an API proxy?
 

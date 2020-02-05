@@ -82,9 +82,9 @@ Check your old installation and identify if you are using any of the following:
 
 Perform the following in your new API Gateway 7.7 installation.
 
-#### Install the latest service pack
+#### Apply the latest service pack
 
-Install the latest available service pack for your new installation. Service packs are available from [Axway Support](https://support.axway.com/).
+Apply the latest available service pack for your new installation. Service packs are available from [Axway Support](https://support.axway.com/).
 
 #### Do not start any Node Managers or API Gateways in the new installation
 

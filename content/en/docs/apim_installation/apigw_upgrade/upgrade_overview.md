@@ -16,7 +16,7 @@ Before you proceed with an upgrade, note the following:
 
 The upgrade and migration process involves exporting data from your old installation, upgrading the data, and applying the upgraded data to your new installation. Each step must complete successfully before you can proceed to the next step.
 
-{{< alert title="Note" color="primary" >}}After you have installed API Gateway 7.7, ensure you have installed the latest available service pack before starting the upgrade. {{< /alert >}}
+{{< alert title="Note" color="primary" >}}After you have installed API Gateway 7.7, ensure you have applied the latest available service pack before starting the upgrade. {{< /alert >}}
 
 ![Overview of upgrade process](/Images/UpgradeGuide/APIgw_ETLUpgrade.png)
 
@@ -27,7 +27,7 @@ API Gateway provides the `sysupgrade` command to upgrade your API Gateway system
 An upgrade always requires the following steps:
 
 1. Install API Gateway 7.7 in a new directory.
-2. Install the latest available service pack for API Gateway 7.7.
+2. Apply the latest available service pack for API Gateway 7.7.
 3. Export the data from the old installation.
 4. Validate and upgrade the data. Resolve any issues identified by the upgrade process before you proceed to the next step.
 5. Apply the upgraded data to the 7.7 installation.
