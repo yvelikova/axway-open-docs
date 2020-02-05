@@ -45,8 +45,8 @@ Health checks are no longer counted in usage tracking.
 
 Two new environment variables have been introduced:
 
-* EMT_HEALTHCHECK_PORT (allowable range 1025 to 65535 inclusive)
-* EMT_HEALTHCHECK_PATH (a path that begins with `/` character and includes 0 or more characters)
+* `EMT_HEALTHCHECK_PORT` (allowable range 1025 to 65535 inclusive)
+* `EMT_HEALTHCHECK_PATH` (a path that begins with `/` character and includes 0 or more characters)
 
 Both of these environment variables are optional and configurable with defaults of 8080 and `/healthcheck`. The endpoint configured here is not billed as part of usage tracking.
 
@@ -128,7 +128,7 @@ To reduce the impact of this change, you can relax this restriction using a conf
 
 API Gateway and API Manager 7.7 and later support OpenJDK JRE, and this update includes Zulu OpenJDK 1.8 JRE instead of Oracle JRE 1.8.
 
-### API Manager changes
+### API Manager behavior
 
 * An inbound API request with a trailing slash can match an API path with no trailing slash. To activate this feature set the Java property `com.vordel.apimanager.uri.path.trailingSlash.preserve` to `true`. The default value is `false`.
 * An API method's Content-Type is checked against the API method's defined MIME type when performing path matching. To allow legacy API method matching and disable this check, set the Java property `com.coreapireg.apimethod.contenttype.legacy` to `true`. The default value is `false`.
@@ -136,16 +136,10 @@ API Gateway and API Manager 7.7 and later support OpenJDK JRE, and this update i
 * To configure the status code of an unsuccessful match of an API to 404 when authentication is successful, set the Java property `com.axway.apimanager.use404AuthSuccessNoMatch`  to `true`. The default value is `false`.
 * To import API Gateway Management API Swagger into API Manager API Catalog, you must add the `application/x-download` MIME type to the default list of MIME types in API Gateway. Select **Server Settings > General > Mime configuration** in the Policy Studio tree and add `application/x-download` to the MIME list. After the configuration is deployed to API Gateway, you can import the API Gateway Manager API Swagger into API Manager API Catalog.
 
-### Security changes
+### Security
 
 * The X-Content-Type-Options HTTP header with value `nosniff` is not included in a HTTP response serving static content from the API Gateway or API Manager. This static content is served from the API Gateway or API Manager `webapps` directory. No dynamic content is served from the `webapps` directory. This means that there is no risk of the browser making an incorrect assumption of the content type and exposing a security vulnerability. The X-Content-Type-Options response header with the value `nosniff` is included with HTTP responses serving dynamic content by default.
-* If you are using the API Manager Management APIs, Client Application Registry APIs, and API Gateway APIs you might need to disable the CSRF token check implemented in v7.5.3 SP9 and later. To disable this check, set the Java system property `com.axway.apimanager.csrf`  to  false. The default is `true`.
-
-## Limitations of this release
-
-This release has the following limitations.
-
-<!-- Add any limitations here -->
+* If you are using the API Manager Management APIs, Client Application Registry APIs, and API Gateway APIs you might need to disable the CSRF token check implemented in v7.5.3 SP9 and later. To disable this check, set the Java system property `com.axway.apimanager.csrf`  to  `false`. The default is `true`.
 
 ## Deprecated features
 
@@ -490,10 +484,8 @@ Customers with active support contracts need to log in to access restricted cont
 
 The following reference documents are also available:
 
-* [Supported Platforms](https://docs.axway.com/bundle/Axway_Products_SupportedPlatforms_allOS_en)
-    * Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
-* [Interoperability Matrix](https://docs.axway.com/bundle/Axway_Products_InteroperabilityMatrix_allOS_en)
-    * Provides product version and interoperability information for Axway products.
+* [Supported Platforms](https://docs.axway.com/bundle/Axway_Products_SupportedPlatforms_allOS_en) - Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
+* [Interoperability Matrix](https://docs.axway.com/bundle/Axway_Products_InteroperabilityMatrix_allOS_en) - Provides product version and interoperability information for Axway products.
 
 ## Support services
 
