@@ -158,19 +158,19 @@ http://localhost:8040/
 
 ## Software and license keys
 
-Axway products are delivered electronically from <https://support.axway.com/>. A welcome email notifies you that your products are ready for download.
+Axway products are delivered electronically from [Axway Support](https://support.axway.com/). A welcome email notifies you that your products are ready for download.
 
 When you are ready, perform the following tasks:
 
 1. Check your authorization.
 2. Check the hardware and system requirements.
 3. Obtain license keys.
-4. Download the installation setup file from <https://support.axway.com/>.
+4. Download the installation setup file from [Axway Support](https://support.axway.com/).
 5. Install products.
 
 ### Check your authorization
 
-Verify that you can log in to Axway Support at <https://support.axway.com/>. If you do not have an account, follow the instructions in your welcome email.
+Verify that you can log in to [Axway Support](https://support.axway.com/). If you do not have an account, follow the instructions in your welcome email.
 
 Log in to download or access:
 
@@ -251,7 +251,7 @@ After completing the installation and before starting the services:
 
 ### Service packs
 
-Service packs for API Gateway are available from <https://support.axway.com/>. If any service packs are available for API Gateway 7.7, download and apply them when the installation completes.
+Service packs for API Gateway are available from [Axway Support](https://support.axway.com/). If any service packs are available for API Gateway 7.7, download and apply them when the installation completes.
 
 For more information on applying a service pack, see [Update API Gateway](/docs/apim_installation/apigtw_install/install_service_packs).
 

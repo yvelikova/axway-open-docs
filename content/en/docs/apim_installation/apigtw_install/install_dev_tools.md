@@ -16,7 +16,9 @@ The following tools can be installed on Windows:
 
 You can install the developer tools using the same installer flow as on Linux. To run the installer in the default GUI mode, locate and run the following setup file:
 
-`APIGateway_7.7_Client_Tools_Install_win-x86-32_BN<n>.exe`
+```
+APIGateway_7.7_Client_Tools_Install_win-x86-32_BN<n>.exe
+```
 
 Because some options do not apply on Windows installation, screens relating to these options are omitted. The components available for Windows can be installed without a license.
 
