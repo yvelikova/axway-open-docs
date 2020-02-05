@@ -63,7 +63,7 @@ The API Manager UI supports OAS3 `response.content.schemes`.
 
 ### API documentation enhancements
 
-All API Manager APIs are represented as both Swagger 2 and OAS3 (previously these APIs were only available in Swagger 2 format). The OAS3 representation of the APIs provides additional information and are better aligned to the <https://editor.swagger.io/> standard.
+All API Manager APIs are represented as both Swagger 2 and OAS3 (previously these APIs were only available in Swagger 2 format).
 
 ### Traffic monitor externalization showcase
 
@@ -88,7 +88,7 @@ A new beta version (1.4) version of the following APIs are shipped with this rel
 
 These APIs manage two new variables, the `orgs2Role` and `orgs2Name` maps. The user is still assigned to a primary organization as in earlier versions, however, the new variables store additional organizations and the user's role within each organization.
 
-The beta 1.4 version of the APIs are generated in OAS3 format and published on the [swagger-ui page](http://apidocs.axway.com/swagger-ui/index.html).
+The beta 1.4 version of the APIs are generated in OAS3 format and published on the [Product APIs](https://docs.axway.com/category/api) page on the Axway Documentation portal.
 
 To enable the 1.4 beta APIs in Policy Studio, browse to the `API Portal v1.4` Servlet and set the `com.axway.portal.servlet.disabled` flag to false.
 
