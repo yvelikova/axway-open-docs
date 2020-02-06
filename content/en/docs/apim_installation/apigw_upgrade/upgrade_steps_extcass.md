@@ -130,15 +130,13 @@ Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [C
 
 ### Install API Gateway 7.7
 
-1. Select the **Custom** option in the installer and select to install the following components:
-   * Admin Node Manager.
-   * API Gateway Server.
-   * Policy Studio – Select this only if you want to run Policy Studio on the local machine.
-   * API Manager – Select this only if you are upgrading API Manager.
-     
-   Do not select the following components:
-   * QuickStart tutorial - The QuickStart tutorial creates and starts processes in the new installation. `sysupgrade` requires that no processes are running in the new installation.
-   * Cassandra - The external Cassandra configuration is retained when upgrading from 7.5.x or 7.6.x.
+1. Select the **Custom** option in the installer as follows:
+    * Admin Node Manager - Select this component.
+    * API Gateway Server - Select this component.
+    * Policy Studio – Select this only if you want to run Policy Studio on the local machine.
+    * API Manager – Select this only if you are upgrading API Manager.
+    * QuickStart tutorial - Do not select this component. The QuickStart tutorial creates and starts processes in the new installation. `sysupgrade` requires that no processes are running in the new installation.
+    * Cassandra - Do not select this component. The external Cassandra configuration is retained when upgrading from 7.5.x or 7.6.x.
 2. When prompted for an installation directory, enter a new directory (for example, `/opt/Axway-7.7`). A warning message displays if you try to install 7.7 in the same directory as the old installation.
 3. When prompted to set an administrator user name and password, enter the same Admin Node Manager credentials that you use for the old API Gateway installation.
 
@@ -179,7 +177,7 @@ When all steps have completed successfully, the new API Gateway version 7.7 proc
 
 ### Run `update-apimanager`
 
-If API Manager is installed, follow the steps in [Running update-apimanager](/docs/apim_relnotes/20200130_apimgr_relnotes/#api-manager).
+If API Manager is installed, follow the steps in [Run update-apimanager](/docs/apim_relnotes/20200130_apimgr_relnotes/#api-manager).
 
 ### Verify the upgrade
 
@@ -222,15 +220,13 @@ Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [C
 
 Install API Gateway 7.7 on each node in the multi-node topology where your old API Gateway domain is running.
 
-1. Select the **Custom** option in the installer and select to install the following components:
-   * Admin Node Manager – Select this on NodeA, NodeB and NodeC for the sample topology.
-   * API Gateway Server – Select this on NodeA, NodeB and NodeC for the sample topology. If you are installing on a node that does not run any API Gateways (running an Admin Node Manager only), do not select this.
-   * Policy Studio – Select this on the nodes on which you will run Policy Studio.
-   * API Manager – Select this on NodeC for the sample topology. Select it on other nodes if required.
-     
-     Do not select the following components:
-   * QuickStart tutorial - The QuickStart tutorial creates and starts processes in the new installation. `sysupgrade` requires that no processes are running in the new installation.
-   * Cassandra - The external Cassandra configuration is retained when upgrading from 7.5.x or 7.6.x.
+1. Select the **Custom** option in the installer as follows:
+    * Admin Node Manager – Select this on NodeA, NodeB and NodeC for the sample topology.
+    * API Gateway Server – Select this on NodeA, NodeB and NodeC for the sample topology. If you are installing on a node that does not run any API Gateways (running an Admin Node Manager only), do not select this.
+    * Policy Studio – Select this on the nodes on which you will run Policy Studio.
+    * API Manager – Select this on NodeC for the sample topology. Select it on other nodes if required.
+    * QuickStart tutorial - Do not select this component. The QuickStart tutorial creates and starts processes in the new installation. `sysupgrade` requires that no processes are running in the new installation.
+    * Cassandra - Do not select this component. The external Cassandra configuration is retained when upgrading from 7.5.x or 7.6.x.
 2. When prompted for an installation directory, enter a new directory (for example, `/opt/Axway-7.7`). A warning message displays if you try to install 7.7 in the same directory as the old installation.
 3. When prompted to set an administrator user name and password, enter the same Admin Node Manager credentials that you use for the old API Gateway installation.
 
@@ -290,9 +286,9 @@ cd /opt/Axway-7.7/apigateway/upgrade/bin
 
 `sysupgrade` is now complete on all nodes. All the API Gateway 7.7 processes are running on all nodes in the topology.
 
-### Run `update-apimanager`
+### Run `update-apimanager` on each API Manager node
 
-If API Manager is installed, follow the steps in [Running update-apimanager](/docs/apim_relnotes/20200130_apimgr_relnotes/#api-manager).
+If API Manager is installed, follow the steps in [Run update-apimanager](/docs/apim_relnotes/20200130_apimgr_relnotes/#api-manager).
 
 ### Verify the multi-node upgrade
 
@@ -322,9 +318,8 @@ If you upgraded from API Gateway 7.5.1 or later to version 7.7 all Cassandra hos
 Each API Gateway group has a configuration that is typically deployed as a `.fed` file. When you upgrade from an earlier version of API Gateway, configuration for all API Gateway groups is automatically upgraded during `sysupgrade`. However, you might have configuration files that were originally created in Policy Studio in a development environment that also need to be upgraded. You can upgrade the configuration in your development environment in one of the following ways:
 
 * In Policy Studio:
-  * Choose the **From an API Gateway instance** option to create a new project from the configuration in an already upgraded API Gateway.
-  * Choose the **From existing configuration** option to create a new project from an old configuration. The configuration is upgraded to version 7.7 automatically.
-    For more information on creating projects in Policy Studio, see the .
+    * Choose the **From an API Gateway instance** option to create a new project from the configuration in an already upgraded API Gateway.
+    * Choose the **From existing configuration** option to create a new project from an old configuration. The configuration is upgraded to version 7.7 automatically.
 * If you upgraded from version 7.5.1 or later and you have several projects to upgrade (these projects might be independent of one another, or could include shared projects and their dependencies), you can use the `projupgrade` tool. This tool upgrades several projects at once. For more information, see [Upgrade an API Gateway project](/csh?context=461&product=prod-api-gateway-77) in the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
 
 ### Upgrade services
@@ -351,7 +346,7 @@ Alternatively, your Linux administrator can remove the old services using the pr
 
 ### Migrate single sign-on configuration files
 
-`sysupgrade` does not migrate SSO configuration files from your old installation. If you have configured single sign-on for API Manager or API Portal, you must migrate it manually. Copy the configuration files located in the `apigateway/groups/group-x/instance-x/conf`  directory in your old installation (for example, `/opt/Axway/7.5.3/apigateway/groups/group-2/instance-1/conf`) to the same location in your new 7.7 installation (for example, `/opt/Axway/7.7/apigateway/groups/group-2/instance-1/conf`). 
+`sysupgrade` does not migrate SSO configuration files from your old installation. If you have configured single sign-on for API Manager or API Portal, you must migrate it manually. Copy the configuration files located in the `apigateway/groups/group-x/instance-x/conf`  directory in your old installation (for example, `/opt/Axway/7.5.3/apigateway/groups/group-2/instance-1/conf`) to the same location in your new 7.7 installation (for example, `/opt/Axway/7.7/apigateway/groups/group-2/instance-1/conf`).
 
 The configuration files are:
 
