@@ -1,9 +1,9 @@
 {
 "title": "Upgrade from API Gateway 7.5.x or 7.6.x",
-"linkTitle": "Upgrade from API Gateway 7.5.x or 7.6.x",
-"weight": 2,
-"date": "2019-10-07",
-"description": "Upgrade from API Gateway 7.5.1 or later to API Gateway 7.7."
+  "linkTitle": "Upgrade from API Gateway 7.5.x or 7.6.x",
+  "weight": 2,
+  "date": "2019-10-07",
+  "description": "Upgrade from API Gateway 7.5.1 or later to API Gateway 7.7."
 }
 In API Gateway 7.5.1 and later versions, the Apache Cassandra database is fully separated from the API Gateway (in earlier versions it was embedded with the API Gateway). This simplifies the upgrade process when upgrading from API Gateway 7.5.1 or later, as the data contained in Apache Cassandra does not need to be exported and imported along with the other configuration data.
 
@@ -135,7 +135,7 @@ Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [C
    * API Gateway Server.
    * Policy Studio – Select this only if you want to run Policy Studio on the local machine.
    * API Manager – Select this only if you are upgrading API Manager.
-   Do not select the following components:
+     Do not select the following components:
    * QuickStart tutorial - The QuickStart tutorial creates and starts processes in the new installation. `sysupgrade` requires that no processes are running in the new installation.
    * Cassandra - The external Cassandra configuration is retained when upgrading from 7.5.x or 7.6.x.
 2. When prompted for an installation directory, enter a new directory (for example, `/opt/Axway-7.7`). A warning message displays if you try to install 7.7 in the same directory as the old installation.
@@ -222,7 +222,7 @@ Install API Gateway 7.7 on each node in the multi-node topology where your old A
    * API Gateway Server – Select this on NodeA, NodeB and NodeC for the sample topology. If you are installing on a node that does not run any API Gateways (running an Admin Node Manager only), do not select this.
    * Policy Studio – Select this on the nodes on which you will run Policy Studio.
    * API Manager – Select this on NodeC for the sample topology. Select it on other nodes if required.
-   Do not select the following components:
+     Do not select the following components:
    * QuickStart tutorial - The QuickStart tutorial creates and starts processes in the new installation. `sysupgrade` requires that no processes are running in the new installation.
    * Cassandra - The external Cassandra configuration is retained when upgrading from 7.5.x or 7.6.x.
 2. When prompted for an installation directory, enter a new directory (for example, `/opt/Axway-7.7`). A warning message displays if you try to install 7.7 in the same directory as the old installation.
@@ -283,6 +283,10 @@ cd /opt/Axway-7.7/apigateway/upgrade/bin
 ```
 
 `sysupgrade` is now complete on all nodes. All the API Gateway 7.7 processes are running on all nodes in the topology.
+
+### Run `update-apimanager` if API Manager is installed
+
+\[Running update-apimanager](/docs/apim_relnotes/20200130_apimgr_relnotes/#api-manager)
 
 ### Verify the multi-node upgrade
 
