@@ -10,7 +10,7 @@ Usage tracking is how Axway measures the subscription services you use on a mont
 
 If you have an AMPLIFY account, you can log in to the [AMPLIFY Platform](https://platform.axway.com/) and look up for information about your subscriptions and service entitlements. If you do not have an AMPLIFY account, most likely you are using products under licenses, and you do not have any subscriptions. If you are unsure whether usage tracking applies to you, contact your Axway representative or [Axway support](https://support.axway.com/).
 
-The AMPLIFY Edge Agent allows you to set up, report, and monitor usage data for Axway cloud services and on-premises products that you use under subscription agreements.
+The AMPLIFY Edge Agent allows you to set up, report, and monitor usage data for Axway cloud services and on-premises products that you use under subscription agreements. You must connect your API Gateway to the Edge Agent, so that the gateway can automatically send usage data to the Edge Agent, which will send usage reports to the AMPLIFY platform.
 
 <!-- 
 Ask the product team:
@@ -19,10 +19,18 @@ Ask the product team:
 - can the user use these files as-is or must edit them
 -->
 
-## Configure API Gateway to upload usage data to the AMPLIFY Platform
+## Configure API Gateway to connect with the Edge Agent
 
-This section describes how to configure API Gateway (in EMT mode) to send the usage report directly to the Edge Agent.
+To configure API Gateway (in EMT mode) to send usage data to the Edge Agent, you will need to upload two configuration files to the agent:
 
+* An input configuration file that defines the type of data the agent collects from API Gateway.
+* A report configuration file the agent uses to aggregate the data to upload to the platform.
+
+API Gateway will communicate with the agent over a protocol.
+
+Then, you must refer to [Deploy the agent](https://docs.axway.com/bundle/subusage_en/page/deploy_the_agent.html) for enabling usage report.
+
+<!--
 1. Go to [Axway support](https://support.axway.com/) and download the configuration files for API Gateway:
 
     * file 1: description
@@ -33,6 +41,7 @@ This section describes how to configure API Gateway (in EMT mode) to send the us
 4. Upload the `<placeholder>.json` file from the package to the `<Edge_Agent_install_dir>/conf/agent/report` directory.
 5. Edit the `report configuration` file, and add the environment ID associated with your organization on the AMPLIFY Platform.
 6. Restart the Edge Agent.
+-->
 
 <!-- is the the Lumberjack content in the generic doc is sufficient for your product? https://docs.axway.com/bundle/subusage_en/page/secure_the_connection_with_the_agent.html
 -- >
@@ -41,4 +50,4 @@ This section describes how to configure API Gateway (in EMT mode) to send the us
 
 ## Review subscriptions and usages on the platform
 
-Once you have completed all configuration tasks and have enabled uploads of usage reports, you can log in to the [AMPLIFY Platform](https://platform.axway.com/) and access and review your subscriptions and usage data. For more information, see [Review subscriptions and usages on the platform](https://docs.axway.com/bundle/subusage_en/page/review_subscriptions_and_usages_on_the_platform.html).
+Once you have completed the configuration and have enabled uploads of usage reports, you can log in to the [AMPLIFY Platform](https://platform.axway.com/) and access and review your subscriptions and usage data. For more information, see [Review subscriptions and usages on the platform](https://docs.axway.com/bundle/subusage_en/page/review_subscriptions_and_usages_on_the_platform.html).
