@@ -1,12 +1,11 @@
 {
 "title": "API Gateway and API Manager 7.7.20200130 Release Notes",
-"linkTitle": "API Gateway and API Manager 7.7.20200130",
-"no_list": "true",
-"weight": "20",
-"date": "2019-09-20",
-"description": "Learn about the new features and enhancements in this release of API Gateway and API Manager."
+  "linkTitle": "API Gateway and API Manager 7.7.20200130",
+  "no_list": "true",
+  "weight": "20",
+  "date": "2019-09-20",
+  "description": "Learn about the new features and enhancements in this release of API Gateway and API Manager."
 }
-
 ## Summary
 
 API Gateway is available as a software installation or a virtualized deployment in Docker containers. API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway.
@@ -135,6 +134,15 @@ API Gateway and API Manager 7.7 and later support OpenJDK JRE, and this update i
 * Enable caching to improve general system performance and speed. Set the `com.axway.apimanager.api.data.cache` Java system property to `true`. External clients, API keys, and OAuth credentials cache are optimized so that updates to the cache no longer block API Manager runtime traffic, resulting in performance improvements for corresponding API Manager APIs. As a result of the non-blocking cache updates, API Manager memory consumption will increase, particularly in systems with large numbers of external clients, API keys or OAuth credentials.
 * To configure the status code of an unsuccessful match of an API to 404 when authentication is successful, set the Java property `com.axway.apimanager.use404AuthSuccessNoMatch`  to `true`. The default value is `false`.
 * To import API Gateway Management API Swagger into API Manager API Catalog, you must add the `application/x-download` MIME type to the default list of MIME types in API Gateway. Select **Server Settings > General > Mime configuration** in the Policy Studio tree and add `application/x-download` to the MIME list. After the configuration is deployed to API Gateway, you can import the API Gateway Manager API Swagger into API Manager API Catalog.
+* Fields that contain confidential information are no longer returned in some API calls. For example, a call to `GET /api/portal/v1.3/proxies/` does not return the password in the `AuthenticationProfile.parameters\["password"]` field. For compatibility with earlier versions, you can continue to return confidential fields. Set the system property `com.axway.apimanager.api.model.disable.confidential.fields` to `true` in the `jvm.xml` file (it does not exist by default) under `groups/group-x/instance-y/conf`.
+
+    ```xml
+    <ConfigurationFragment>
+        <VMArg name="-Dcom.axway.apimanager.api.model.disable.confidential.fields=true"/>
+    </ConfigurationFragment>
+    ```
+
+    {{< alert title="Note" color="primary" >}}Setting this property to true is not recommended as it could pose a security risk to your API Gateway installation.{{< /alert >}}
 
 ### Security
 
@@ -190,39 +198,39 @@ The following are known issues for this release.
 
 <!-- Add the known issues here -->
 
-| Internal ID | Description |
-|-------------|-------------|
-| RDAPI-13653               | API   Portal incorrect Content-Type for SOAP + empty model schema                                                                                                        |
-| RDAPI-14100               | Update tuning recommendations for 'High availability with local storage' config                                                                                              |
-| RDAPI-15607               | Cannot   access NodeManager after submitting external CA signed certs                                                                                                      |
-| RDAPI-15609               | Cannot   access NodeManager after submitting external CA signed certs                                                                                                      |
-| RDAPI-15669               | Stored   XSS in the application's Oauth Redirect URL - Encode OAuth Redirect URLs on   output                                                                             |
-| RDAPI-15671               | Update   trailing slash support in Jython scripts samples                                                                                                                |
-| RDAPI-15760               | Request   headers reflected as response headers                                                                                                                          |
-| RDAPI-15781               | Swagger   Generation Tool - Duplicate paths are not reported                                                                                                             |
-| RDAPI-15981               | Scopes   fields for API Key remain visible even if Application Scopes are disabled                                                                                       |
-| RDAPI-16330               | Maven   'clean' on install/pom.xml does not cleanup install/system/lib                                                                                                   |
-| RDAPI-16486               | Changes   in the mapper always require a reload in the Execute Data Maps filter and   once reloaded then providing values for the required parameters must be   repeated |
-| RDAPI-16576               | Duplicate   headers returned when calling API Gateway Rest API                                                                                                           |
-| RDAPI-16955               | API   Manager event poller unnecessarily locks cache updates from Cassandra                                                                                              |
-| RDAPI-17041               | Policy   called as REST API in Policy Studio, and local fault handler not catching   unhandled false return from policy called by policy shortcut                        |
-| RDAPI-17208               | Test   and document upgrading Gateway and Cassandra (7.5.3->7.7.x /   2.2.8->2.2.12) to new hosts                                                                        |
-| RDAPI-17924               | Error   while upgrading JSON schema from 7.5.3 to 7.7 - Cannot set ESPK for   non-reference type field                                                                   |
-| RDAPI-18082               | Regression:   Policy Shortcut filters no longer automatically renamed in 7.7                                                                                             |
-| RDAPI-18123               | Forgot   password should force password change like first time login                                                                                                     |
-| RDAPI-18198               | CORS   preflight fails for WSDL based API Manager APIs, thus Try-It fails                                                                                                |
-| RDAPI-18294               | KPS   REST API documentation missing info                                                                                                                                |
-| RDAPI-18376               | "you   do not have permission to access this resource" when a user creates an   application                                                                               |
-| RDAPI-18379               | Spurious   "forbidden" error in Manager UI                                                                                                                               |
-| RDAPI-18473               | Get   OAuth Access Token filter is not accepting "aud" JWT claim                                                                                                         |
-| RDAPI-18485               | "Get   OAuth Access Token" expired token then refresh flow, not resetting   message                                                                                       |
-| RDAPI-18639               | Information   needed on "suppressed" CVEs reported against APIG 7.7.2                                                                                                    |
-| RDAPI-18674               | Insufficient   data validation when importing an Application                                                                                                             |
-| RDAPI-18737               | Turning   off "delegate user/application management" causes UI to break                                                                                                  |
-| RDAPI-18774               | Nested   relative path behavior changed, causing customer policies to fail                                                                                               |
-| RDAPI-18776               | regex   for custom property in API Manager                                                                                                                               |
-| RDAPI-18812               | DB   definition with wildcard password fails in Resource Owner Password Credential   filter                                                                              |
-| RDAPI-18876               | Extremely   slow Swagger virtualization when Cassandra is under load                                                                                                     |
+| Internal ID | Description                                                                                                                                                              |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| RDAPI-13653 | API   Portal incorrect Content-Type for SOAP + empty model schema                                                                                                        |
+| RDAPI-14100 | Update tuning recommendations for 'High availability with local storage' config                                                                                          |
+| RDAPI-15607 | Cannot   access NodeManager after submitting external CA signed certs                                                                                                    |
+| RDAPI-15609 | Cannot   access NodeManager after submitting external CA signed certs                                                                                                    |
+| RDAPI-15669 | Stored   XSS in the application's Oauth Redirect URL - Encode OAuth Redirect URLs on   output                                                                            |
+| RDAPI-15671 | Update   trailing slash support in Jython scripts samples                                                                                                                |
+| RDAPI-15760 | Request   headers reflected as response headers                                                                                                                          |
+| RDAPI-15781 | Swagger   Generation Tool - Duplicate paths are not reported                                                                                                             |
+| RDAPI-15981 | Scopes   fields for API Key remain visible even if Application Scopes are disabled                                                                                       |
+| RDAPI-16330 | Maven   'clean' on install/pom.xml does not cleanup install/system/lib                                                                                                   |
+| RDAPI-16486 | Changes   in the mapper always require a reload in the Execute Data Maps filter and   once reloaded then providing values for the required parameters must be   repeated |
+| RDAPI-16576 | Duplicate   headers returned when calling API Gateway Rest API                                                                                                           |
+| RDAPI-16955 | API   Manager event poller unnecessarily locks cache updates from Cassandra                                                                                              |
+| RDAPI-17041 | Policy   called as REST API in Policy Studio, and local fault handler not catching   unhandled false return from policy called by policy shortcut                        |
+| RDAPI-17208 | Test   and document upgrading Gateway and Cassandra (7.5.3->7.7.x /   2.2.8->2.2.12) to new hosts                                                                        |
+| RDAPI-17924 | Error   while upgrading JSON schema from 7.5.3 to 7.7 - Cannot set ESPK for   non-reference type field                                                                   |
+| RDAPI-18082 | Regression:   Policy Shortcut filters no longer automatically renamed in 7.7                                                                                             |
+| RDAPI-18123 | Forgot   password should force password change like first time login                                                                                                     |
+| RDAPI-18198 | CORS   preflight fails for WSDL based API Manager APIs, thus Try-It fails                                                                                                |
+| RDAPI-18294 | KPS   REST API documentation missing info                                                                                                                                |
+| RDAPI-18376 | "you   do not have permission to access this resource" when a user creates an   application                                                                              |
+| RDAPI-18379 | Spurious   "forbidden" error in Manager UI                                                                                                                               |
+| RDAPI-18473 | Get   OAuth Access Token filter is not accepting "aud" JWT claim                                                                                                         |
+| RDAPI-18485 | "Get   OAuth Access Token" expired token then refresh flow, not resetting   message                                                                                      |
+| RDAPI-18639 | Information   needed on "suppressed" CVEs reported against APIG 7.7.2                                                                                                    |
+| RDAPI-18674 | Insufficient   data validation when importing an Application                                                                                                             |
+| RDAPI-18737 | Turning   off "delegate user/application management" causes UI to break                                                                                                  |
+| RDAPI-18774 | Nested   relative path behavior changed, causing customer policies to fail                                                                                               |
+| RDAPI-18776 | regex   for custom property in API Manager                                                                                                                               |
+| RDAPI-18812 | DB   definition with wildcard password fails in Resource Owner Password Credential   filter                                                                              |
+| RDAPI-18876 | Extremely   slow Swagger virtualization when Cassandra is under load                                                                                                     |
 
 ## Update a classic (non-container) deployment
 
@@ -234,38 +242,37 @@ This update has the following prerequisites in addition to the [System requireme
 
 1. Shut down any Node Manager or API Gateway instances on your existing installation.
 2. Back up your existing installation. For details on backing up, see [API Gateway backup and disaster recovery](/docs/apim_administration/apigtw_admin/manage_operations/#api-gateway-backup-and-disaster-recovery).
+   Ensure that you back up any customized files. You should merge updated files instead of copying them back directly to avoid any regex matching issues. For example, the following directories might contain customized files:
 
-    Ensure that you back up any customized files. You should merge updated files instead of copying them back directly to avoid any regex matching issues. For example, the following directories might contain customized files:
-
-    ```
-    webapps/apiportal/vordel/apiportal
-    webapps/emc/vordel/manager/app
-    webapps/emc
-    system/conf/apiportal/email
-    system/conf
-    samples/scripts/
-    tools/filebeat-VERSION-PLATFORM
-    ```
+   ```
+   webapps/apiportal/vordel/apiportal
+   webapps/emc/vordel/manager/app
+   webapps/emc
+   system/conf/apiportal/email
+   system/conf
+   samples/scripts/
+   tools/filebeat-VERSION-PLATFORM
+   ```
 
 3. Remove old third-party libraries by deleting the following directories:
 
-    ```
-    INSTALL_DIR/apigateway/system/lib/modules
-    INSTALL_DIR/analytics/system/lib/modules
-    ```
+   ```
+   INSTALL_DIR/apigateway/system/lib/modules
+   INSTALL_DIR/analytics/system/lib/modules
+   ```
 
 4. Remove old JRE versions by deleting the following directories:
 
-    ```
-    INSTALL_DIR/apigateway/platform/jre
-    ```
+   ```
+   INSTALL_DIR/apigateway/platform/jre
+   ```
 
 5. If you have an existing Apache Cassandra installation, ensure that you back up your data (Cassandra and `kpsadmin`), and that the `JAVA_HOME` variable is set correctly in `cassandra.in.sh` and `cassandra.in.bat`.
 6. On Linux, remove existing capabilities on product binaries (which might prevent overwriting files):
 
-    ```
-    setcap -r INSTALL_DIR/apigateway/platform/bin/vshell
-    ```
+   ```
+   setcap -r INSTALL_DIR/apigateway/platform/bin/vshell
+   ```
 
 ### FIPS mode only
 
@@ -295,27 +302,27 @@ To install the update on your existing API Gateway 7.7 server installation, perf
 2. Remove any previous patches from your `INSTALL_DIR/ext/lib` and `INSTALL_DIR/META-INF` directories (or the `ext/lib` directory in an API Gateway instance). These patches have already been included in this update. You do not need to copy patches from a previous version.
 3. Verify the owners of API Gateway binaries before extracting the update.
 
-    ```
-    ls -l INSTALL_DIR/apigateway/posix/bin
-    ```
+   ```
+   ls -l INSTALL_DIR/apigateway/posix/bin
+   ```
 
 4. Using the same user who owns the API Gateway binaries, unzip and extract API Gateway 7.7 SP2 server over the `apigateway` directory in your existing installation directory . For example:
 
-    ```
-    tar -xzvf APIGateway_7.7_SP2_Core_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/apigateway/
-    ```
+   ```
+   tar -xzvf APIGateway_7.7_SP2_Core_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/apigateway/
+   ```
 
 5. Change to the `apigateway` directory in your installation.
 
-    ```
-    cd INSTALL_DIR/apigateway
-    ```
+   ```
+   cd INSTALL_DIR/apigateway
+   ```
 
 6. Run the post-install script, and ensure that the correct permissions are set:
 
-    ```
-    apigw_sp_post_install.sh
-    ```
+   ```
+   apigw_sp_post_install.sh
+   ```
 
 #### Install the Policy Studio update
 
@@ -325,15 +332,15 @@ To install the update on your existing Policy Studio installation, perform the f
 2. Back up your existing `INSTALL_DIR/policystudio` directory.
 3. Remove old JRE versions by deleting the following directories:
 
-    ```
-    INSTALL_DIR/policystudio/jre
-    ```
+   ```
+   INSTALL_DIR/policystudio/jre
+   ```
 
 4. Unzip and extract API Gateway 7.7 SP2 Policy Studio over the `policystudio` directory in your existing API Gateway 7.7 installation directory. For example:
 
-    ```
-    tar -xzvf APIGateway_7.7_SP2_PolicyStudio_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/policystudio/
-    ```
+   ```
+   tar -xzvf APIGateway_7.7_SP2_PolicyStudio_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/policystudio/
+   ```
 
 5. Start Policy Studio with `policystudio -clean`
 
@@ -345,15 +352,15 @@ To install the update on your existing Configuration Studio installation, perfor
 2. Back up your existing `INSTALL_DIR/configurationstudio` directory.
 3. Remove old JRE versions by deleting the following directories:
 
-    ```
-    INSTALL_DIR/configurationstudio/jre
-    ```
+   ```
+   INSTALL_DIR/configurationstudio/jre
+   ```
 
 4. Unzip and extract API Gateway 7.7 SP2 Configuration Studio over the `configurationstudio` directory in your existing API Gateway 7.7 installation directory. For example:
 
-    ```
-    tar -xzvf APIGateway_7.7_SP2_ConfigurationStudio_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/configurationstudio/
-    ```
+   ```
+   tar -xzvf APIGateway_7.7_SP2_ConfigurationStudio_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/configurationstudio/
+   ```
 
 5. Start Configuration Studio with `configurationstudio  -clean`
 
@@ -364,27 +371,27 @@ To install the update on your existing API Gateway Analytics 7.7 installation, p
 1. Ensure that your existing API Gateway Analytics instance and Node Manager have been stopped.
 2. Verify the owners of API Gateway binaries before extracting the update.
 
-    ```
-    ls -l INSTALL_DIR/analytics/posix/bin
-    ```
+   ```
+   ls -l INSTALL_DIR/analytics/posix/bin
+   ```
 
 3. Using the same user who owns the API Gateway Analytics binaries, unzip and extract API Gateway 7.7 SP2 Analytics over the `analytics` directory in your existing API Gateway 7.7 installation directory. For example:
 
-    ```
-    tar -xzvf APIGateway_7.7_SP2_Analytics_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/analytics/
-    ```
+   ```
+   tar -xzvf APIGateway_7.7_SP2_Analytics_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/analytics/
+   ```
 
 4. Change to the `analytics` directory in your installation:
 
-    ```
-    cd INSTALL_DIR/analytics
-    ```
+   ```
+   cd INSTALL_DIR/analytics
+   ```
 
 5. Run the post-install script for API Gateway Analytics.
 
-    ```
-    apigw_analytics_sp_post_install.sh
-    ```
+   ```
+   apigw_analytics_sp_post_install.sh
+   ```
 
 You must also install an update for your existing API Gateway 7.7 server.
 
@@ -398,9 +405,9 @@ To allow an unprivileged user to run the API Gateway on a Linux system, perform 
 
 1. Add the following line to the `INSTALL_DIR/system/conf/jvm.xml` file:
 
-    ```
-    <VMArg name="-Djava.library.path=$VDISTDIR/$DISTRIBUTION/jre/lib/amd64/server:$VDISTDIR/$DISTRIBUTION/jre/lib/amd64:$VDISTDIR/$DISTRIBUTION/lib/engines:$VDISTDIR/ext/$DISTRIBUTION/lib:$VDISTDIR/ext/lib:$VDISTDIR/$DISTRIBUTION/jre/lib:system/lib:$VDISTDIR/$DISTRIBUTION/lib"/>
-    ```
+   ```
+   <VMArg name="-Djava.library.path=$VDISTDIR/$DISTRIBUTION/jre/lib/amd64/server:$VDISTDIR/$DISTRIBUTION/jre/lib/amd64:$VDISTDIR/$DISTRIBUTION/lib/engines:$VDISTDIR/ext/$DISTRIBUTION/lib:$VDISTDIR/ext/lib:$VDISTDIR/$DISTRIBUTION/jre/lib:system/lib:$VDISTDIR/$DISTRIBUTION/lib"/>
+   ```
 
 2. Run the command `setcap 'cap_net_bind_service=+ep cap_sys_rawio=+ep' INSTALL_DIR/platform/bin/vshell` to allow the API Gateway to listen on privileged ports.
 
@@ -451,9 +458,9 @@ If a `fed` file is provided as part of building the API Manager container, you m
 1. Install the update on a installation of the API Gateway.
 2. Run the following command:
 
-    ```
-    /opt/Axway-7.7/apigateway/posix/bin/update-apimanager --fed <path to old file>.fed --oa <path to update file>.fed
-    ```
+   ```
+   /opt/Axway-7.7/apigateway/posix/bin/update-apimanager --fed <path to old file>.fed --oa <path to update file>.fed
+   ```
 
 You do not need to run any API Manager instances.
 
