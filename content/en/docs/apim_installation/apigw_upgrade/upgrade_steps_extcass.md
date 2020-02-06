@@ -227,6 +227,7 @@ Install API Gateway 7.7 on each node in the multi-node topology where your old A
    * API Gateway Server – Select this on NodeA, NodeB and NodeC for the sample topology. If you are installing on a node that does not run any API Gateways (running an Admin Node Manager only), do not select this.
    * Policy Studio – Select this on the nodes on which you will run Policy Studio.
    * API Manager – Select this on NodeC for the sample topology. Select it on other nodes if required.
+     
      Do not select the following components:
    * QuickStart tutorial - The QuickStart tutorial creates and starts processes in the new installation. `sysupgrade` requires that no processes are running in the new installation.
    * Cassandra - The external Cassandra configuration is retained when upgrading from 7.5.x or 7.6.x.
