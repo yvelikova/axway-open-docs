@@ -109,7 +109,7 @@ To suppress schema validation errors and relax the stricter validation of XML fi
 
 ### Filebeat v6.2.2
 
-Filebeat has been updated to use v6.2.2. When installing Filebeat, follow the [official Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
+Filebeat has been updated to use v6.2.2. Prior to installing the update you will need to delete the Filebeat folder  /apigateway/tools/filebeat-5.2.0 and then install the update.  When using Filebeat, follow the [official Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
 
 ### Increased validation of `/users` endpoint
 
@@ -135,13 +135,11 @@ API Gateway and API Manager 7.7 and later support OpenJDK JRE, and this update i
 * To configure the status code of an unsuccessful match of an API to 404 when authentication is successful, set the Java property `com.axway.apimanager.use404AuthSuccessNoMatch`  to `true`. The default value is `false`.
 * To import API Gateway Management API Swagger into API Manager API Catalog, you must add the `application/x-download` MIME type to the default list of MIME types in API Gateway. Select **Server Settings > General > Mime configuration** in the Policy Studio tree and add `application/x-download` to the MIME list. After the configuration is deployed to API Gateway, you can import the API Gateway Manager API Swagger into API Manager API Catalog.
 * Fields that contain confidential information are no longer returned in some API calls. For example, a call to `GET /api/portal/v1.3/proxies/` does not return the password in the `AuthenticationProfile.parameters\["password"]` field. For compatibility with earlier versions, you can continue to return confidential fields. Set the system property `com.axway.apimanager.api.model.disable.confidential.fields` to `true` in the `jvm.xml` file (it does not exist by default) under `groups/group-x/instance-y/conf`.
-
-    ```xml
-    <ConfigurationFragment>
-        <VMArg name="-Dcom.axway.apimanager.api.model.disable.confidential.fields=true"/>
-    </ConfigurationFragment>
-    ```
-
+  ```xml
+  <ConfigurationFragment>
+      <VMArg name="-Dcom.axway.apimanager.api.model.disable.confidential.fields=true"/>
+  </ConfigurationFragment>
+  ```
     {{< alert title="Note" color="primary" >}}Setting this property to true is not recommended as it could pose a security risk to your API Gateway installation.{{< /alert >}}
 
 ### Security
@@ -243,7 +241,6 @@ This update has the following prerequisites in addition to the [System requireme
 1. Shut down any Node Manager or API Gateway instances on your existing installation.
 2. Back up your existing installation. For details on backing up, see [API Gateway backup and disaster recovery](/docs/apim_administration/apigtw_admin/manage_operations/#api-gateway-backup-and-disaster-recovery).
    Ensure that you back up any customized files. You should merge updated files instead of copying them back directly to avoid any regex matching issues. For example, the following directories might contain customized files:
-
    ```
    webapps/apiportal/vordel/apiportal
    webapps/emc/vordel/manager/app
@@ -253,23 +250,18 @@ This update has the following prerequisites in addition to the [System requireme
    samples/scripts/
    tools/filebeat-VERSION-PLATFORM
    ```
-
 3. Remove old third-party libraries by deleting the following directories:
-
    ```
    INSTALL_DIR/apigateway/system/lib/modules
    INSTALL_DIR/analytics/system/lib/modules
    ```
-
 4. Remove old JRE versions by deleting the following directories:
-
    ```
    INSTALL_DIR/apigateway/platform/jre
    ```
-
 5. If you have an existing Apache Cassandra installation, ensure that you back up your data (Cassandra and `kpsadmin`), and that the `JAVA_HOME` variable is set correctly in `cassandra.in.sh` and `cassandra.in.bat`.
-6. On Linux, remove existing capabilities on product binaries (which might prevent overwriting files):
-
+6. As the version of Filebeat is being upgraded, the Filebeat folder /apigateway/tools/filebeat-5.2.0 will need to be removed.  Any customized files will need to be checked to see if they are compatible with the new version.  See Filebeat section for more information. 
+7. On Linux, remove existing capabilities on product binaries (which might prevent overwriting files):
    ```
    setcap -r INSTALL_DIR/apigateway/platform/bin/vshell
    ```
@@ -301,25 +293,18 @@ To install the update on your existing API Gateway 7.7 server installation, perf
 1. Ensure that your existing API Gateway instance and Node Manager have been stopped.
 2. Remove any previous patches from your `INSTALL_DIR/ext/lib` and `INSTALL_DIR/META-INF` directories (or the `ext/lib` directory in an API Gateway instance). These patches have already been included in this update. You do not need to copy patches from a previous version.
 3. Verify the owners of API Gateway binaries before extracting the update.
-
    ```
    ls -l INSTALL_DIR/apigateway/posix/bin
    ```
-
 4. Using the same user who owns the API Gateway binaries, unzip and extract API Gateway 7.7 SP2 server over the `apigateway` directory in your existing installation directory . For example:
-
    ```
    tar -xzvf APIGateway_7.7_SP2_Core_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/apigateway/
    ```
-
 5. Change to the `apigateway` directory in your installation.
-
    ```
    cd INSTALL_DIR/apigateway
    ```
-
 6. Run the post-install script, and ensure that the correct permissions are set:
-
    ```
    apigw_sp_post_install.sh
    ```
@@ -331,17 +316,13 @@ To install the update on your existing Policy Studio installation, perform the f
 1. Shut down Policy Studio.
 2. Back up your existing `INSTALL_DIR/policystudio` directory.
 3. Remove old JRE versions by deleting the following directories:
-
    ```
    INSTALL_DIR/policystudio/jre
    ```
-
 4. Unzip and extract API Gateway 7.7 SP2 Policy Studio over the `policystudio` directory in your existing API Gateway 7.7 installation directory. For example:
-
    ```
    tar -xzvf APIGateway_7.7_SP2_PolicyStudio_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/policystudio/
    ```
-
 5. Start Policy Studio with `policystudio -clean`
 
 #### Install the Configuration Studio update
@@ -351,17 +332,13 @@ To install the update on your existing Configuration Studio installation, perfor
 1. Shut down Configuration Studio.
 2. Back up your existing `INSTALL_DIR/configurationstudio` directory.
 3. Remove old JRE versions by deleting the following directories:
-
    ```
    INSTALL_DIR/configurationstudio/jre
    ```
-
 4. Unzip and extract API Gateway 7.7 SP2 Configuration Studio over the `configurationstudio` directory in your existing API Gateway 7.7 installation directory. For example:
-
    ```
    tar -xzvf APIGateway_7.7_SP2_ConfigurationStudio_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/configurationstudio/
    ```
-
 5. Start Configuration Studio with `configurationstudio  -clean`
 
 #### Install the API Gateway Analytics update
@@ -370,25 +347,18 @@ To install the update on your existing API Gateway Analytics 7.7 installation, p
 
 1. Ensure that your existing API Gateway Analytics instance and Node Manager have been stopped.
 2. Verify the owners of API Gateway binaries before extracting the update.
-
    ```
    ls -l INSTALL_DIR/analytics/posix/bin
    ```
-
 3. Using the same user who owns the API Gateway Analytics binaries, unzip and extract API Gateway 7.7 SP2 Analytics over the `analytics` directory in your existing API Gateway 7.7 installation directory. For example:
-
    ```
    tar -xzvf APIGateway_7.7_SP2_Analytics_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/analytics/
    ```
-
 4. Change to the `analytics` directory in your installation:
-
    ```
    cd INSTALL_DIR/analytics
    ```
-
 5. Run the post-install script for API Gateway Analytics.
-
    ```
    apigw_analytics_sp_post_install.sh
    ```
@@ -404,11 +374,9 @@ The following steps apply after installing the update.
 To allow an unprivileged user to run the API Gateway on a Linux system, perform the following steps:
 
 1. Add the following line to the `INSTALL_DIR/system/conf/jvm.xml` file:
-
    ```
    <VMArg name="-Djava.library.path=$VDISTDIR/$DISTRIBUTION/jre/lib/amd64/server:$VDISTDIR/$DISTRIBUTION/jre/lib/amd64:$VDISTDIR/$DISTRIBUTION/lib/engines:$VDISTDIR/ext/$DISTRIBUTION/lib:$VDISTDIR/ext/lib:$VDISTDIR/$DISTRIBUTION/jre/lib:system/lib:$VDISTDIR/$DISTRIBUTION/lib"/>
    ```
-
 2. Run the command `setcap 'cap_net_bind_service=+ep cap_sys_rawio=+ep' INSTALL_DIR/platform/bin/vshell` to allow the API Gateway to listen on privileged ports.
 
 ##### JRE properties
@@ -457,7 +425,6 @@ If a `fed` file is provided as part of building the API Manager container, you m
 
 1. Install the update on a installation of the API Gateway.
 2. Run the following command:
-
    ```
    /opt/Axway-7.7/apigateway/posix/bin/update-apimanager --fed <path to old file>.fed --oa <path to update file>.fed
    ```
