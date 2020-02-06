@@ -176,6 +176,10 @@ This upgrades the external OAuth and KPS databases (if necessary), creates a new
 
 When all steps have completed successfully, the new API Gateway version 7.7 processes should be running.
 
+### Run `update-apimanager` if API Manager is installed
+
+\[Running update-apimanager](/docs/apim_relnotes/20200130_apimgr_relnotes/#api-manager)
+
 ### Verify the upgrade
 
 To verify that the upgrade has been successful:
