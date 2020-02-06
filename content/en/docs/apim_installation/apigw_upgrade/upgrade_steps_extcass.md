@@ -135,7 +135,8 @@ Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [C
    * API Gateway Server.
    * Policy Studio – Select this only if you want to run Policy Studio on the local machine.
    * API Manager – Select this only if you are upgrading API Manager.
-     Do not select the following components:
+     
+   Do not select the following components:
    * QuickStart tutorial - The QuickStart tutorial creates and starts processes in the new installation. `sysupgrade` requires that no processes are running in the new installation.
    * Cassandra - The external Cassandra configuration is retained when upgrading from 7.5.x or 7.6.x.
 2. When prompted for an installation directory, enter a new directory (for example, `/opt/Axway-7.7`). A warning message displays if you try to install 7.7 in the same directory as the old installation.
@@ -176,9 +177,9 @@ This upgrades the external OAuth and KPS databases (if necessary), creates a new
 
 When all steps have completed successfully, the new API Gateway version 7.7 processes should be running.
 
-### Run `update-apimanager` if API Manager is installed
+### Run `update-apimanager`
 
-\[Running update-apimanager](/docs/apim_relnotes/20200130_apimgr_relnotes/#api-manager)
+If API Manager is installed, follow the steps in [Running update-apimanager](/docs/apim_relnotes/20200130_apimgr_relnotes/#api-manager).
 
 ### Verify the upgrade
 
@@ -288,9 +289,9 @@ cd /opt/Axway-7.7/apigateway/upgrade/bin
 
 `sysupgrade` is now complete on all nodes. All the API Gateway 7.7 processes are running on all nodes in the topology.
 
-### Run `update-apimanager` if API Manager is installed
+### Run `update-apimanager`
 
-\[Running update-apimanager](/docs/apim_relnotes/20200130_apimgr_relnotes/#api-manager)
+If API Manager is installed, follow the steps in [Running update-apimanager](/docs/apim_relnotes/20200130_apimgr_relnotes/#api-manager).
 
 ### Verify the multi-node upgrade
 
