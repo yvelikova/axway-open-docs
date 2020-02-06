@@ -1,9 +1,9 @@
 {
 "title": "Build and run API Portal using Dockerfile",
-"linkTitle": "Build and run using Dockerfile",
-"weight": "1",
-"date": "2019-08-09",
-"description": "Build an API Portal Docker image using the `Dockerfile` in the sample package."
+  "linkTitle": "Build and run using Dockerfile",
+  "weight": "1",
+  "date": "2019-08-09",
+  "description": "Build an API Portal Docker image using the `Dockerfile` in the sample package."
 }
 This section describes how to build an API Portal Docker image using the `Dockerfile` in the sample package. It also describes how to download and run MySQL and Redis Docker containers, and how to run API Portal in Docker containers.
 
@@ -70,7 +70,7 @@ To run a database Docker container, complete the following steps:
 3. Run the database container following the instructions on [Docker Hub](https://hub.docker.com/). For example, to run a MySQL Docker container:  
 
     ```
-    docker container run -d --name apiportal-db --network apiportal-net --network-alias db -e MYSQL_ROOT_PASSWORD=XXXXX mysql:5.7
+    docker container run -d --name apiportal-db --network apiportal-net --network-alias db -e MYSQL_ROOT_PASSWORD=XXXXX -e MYSQL_DATABASE=joomla mysql:5.7
     ```  
 
     This example creates a database container named `apiportal-db` attached to the recently created network `apiportal-net`, with alias `db` in the network.
