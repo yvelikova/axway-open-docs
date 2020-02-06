@@ -241,18 +241,17 @@ These instructions apply to API Gateway and API Manager classic deployments only
 This update has the following prerequisites in addition to the [System requirements](/docs/apim_installation/apigtw_install/system_requirements/).
 
 1. Shut down any Node Manager or API Gateway instances on your existing installation.
-2. Back up your existing installation. For details on backing up, see [API Gateway backup and disaster recovery](/docs/apim_administration/apigtw_admin/manage_operations/#api-gateway-backup-and-disaster-recovery).
-   Ensure that you back up any customized files. You should merge updated files instead of copying them back directly to avoid any regex matching issues. For example, the following directories might contain customized files:
+2. Back up your existing installation. For details on backing up, see [API Gateway backup and disaster recovery](/docs/apim_administration/apigtw_admin/manage_operations/#api-gateway-backup-and-disaster-recovery). Ensure that you back up any customized files. You should merge updated files instead of copying them back directly to avoid any regex matching issues. For example, the following directories might contain customized files:
 
-   ```
-   webapps/apiportal/vordel/apiportal
-   webapps/emc/vordel/manager/app
-   webapps/emc
-   system/conf/apiportal/email
-   system/conf
-   samples/scripts/
-   tools/filebeat-VERSION-PLATFORM
-   ```
+    ```
+    webapps/apiportal/vordel/apiportal
+    webapps/emc/vordel/manager/app
+    webapps/emc
+    system/conf/apiportal/email
+    system/conf
+    samples/scripts/
+    tools/filebeat-VERSION-PLATFORM
+    ```
 
 3. Remove old third-party libraries by deleting the following directories:
 
