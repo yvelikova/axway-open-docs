@@ -92,6 +92,7 @@ The beta 1.4 version of the APIs are generated in OAS3 format and published on t
 To enable the 1.4 beta APIs in Policy Studio, browse to the `API Portal v1.4` Servlet and set the `com.axway.portal.servlet.disabled` flag to false.
 
 {{< alert title="Note" color="primary" >}}
+This feature is only available from a fresh install (it isn't avilable via SysUpgrade or Service Pack upgrades).
 Do not enable this flag on a production environment. Use these APIs only in test environments. Feedback on the implementation is welcome.
 {{< /alert >}}
 
