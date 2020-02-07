@@ -75,15 +75,13 @@ Configure the following fields in the **Signing details** section:
 
 If you selected the asymmetric key type, configure the following fields in the **Asymmetric** section:
 
-**Signing key**: Select the private key from the certificate store that is used to sign the payload.
+* **Signing key**: Select the private key from the certificate store that is used to sign the payload.
+* **Selector expression**: Alternatively, enter a selector expression to get the alias of the private key in the certificate store.
+* **Algorithm**: Select the algorithm used to sign.
 
-**Selector expression**: Alternatively, enter a selector expression to get the alias of the private key in the certificate store.
+If you selected the symmetric key type, complete the following fields in the **Symmetric** section:
 
-**Algorithm**: Select the algorithm used to sign.
-
-If you selected the symmetric key type, complete the following fields **Symmetric** section:
-
-**Shared key**: Enter the shared key used to sign the payload. The key should be given as a base64-encoded byte array and must use the following minimum lengths depending on the selected algorithm used to sign:
+* **Shared key**: Enter the shared key used to sign the payload. The key should be given as a base64-encoded byte array and must use the following minimum lengths depending on the selected algorithm used to sign:
 
 | Algorithm                  | Minimum key length  |
 |----------------------------|---------------------|
@@ -91,12 +89,14 @@ If you selected the symmetric key type, complete the following fields **Symmetri
 | HMAC using SHA-384 (HS384) | 48 bytes (384 bits) |
 | HMAC using SHA-512 (HS512) | 64 bytes (512 bits) |
 
-**Selector expression**: Alternatively, enter a selector expression to obtain the shared key. The value returned from the selector should contain:
+* **Selector expression**: Alternatively, enter a selector expression to obtain the shared key. The value returned from the selector should contain:
 
-* Byte array (possibly produced by a different filter)
-* Base64-encoded byte array
+    * Byte array (possibly produced by a different filter)
+    * Base64-encoded byte array
 
-**Algorithm**: Select the algorithm used to sign.
+* **Algorithm**: Select the algorithm used to sign.
+
+    The JWT Sign filter supports only a fixed JWT-Header, including the selected algorithm. To add more information to the header, for example, a Key-ID parameter, see [Create a signed JWT with custom fields](https://github.com/Axway-API-Management-Plus/scripting-examples/tree/master/sign-custom-jwt).
 
 ## JWT Verify filter
 

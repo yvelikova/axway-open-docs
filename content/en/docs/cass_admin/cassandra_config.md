@@ -13,7 +13,8 @@ To tolerate the loss of one Cassandra node and to ensure 100% data consistency, 
 * Three Cassandra nodes (with one seed node)
       * Other nodes contact the seed node when joining the Cassandra cluster to get required cluster information, therefore you must start the seed node first.
       * It is not recommended to make all Cassandra nodes a seed, as they produce traffic overhead.
-* `Replication factor` setting set to `3`, so each node holds 100% of the data.
+* `Replication factor` setting set to `3` for the system_auth and API Management keyspaces, so each node holds 100% of the data.
+  * Without this configuration, the user permissions are not replicated to other nodes. Therefore, they cannot be checked, and requests to them are rejected. In this scenario, if the node that stores the user permissions goes down, the client (API Manager) cannot login to other nodes, and the cluster becomes unavailable.
 * `QUORUM` read/write consistency to ensure that you are reading from a quorum of Cassandra nodes (two) every time.
   {{% alert title="Caution" color="warning" %}}
   `Eventual` consistency is not supported in a production environment due to a risk of stale or missing data.

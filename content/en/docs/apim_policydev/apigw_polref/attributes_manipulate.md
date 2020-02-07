@@ -276,10 +276,9 @@ message attribute name):
 
 ## Insert SAML attribute assertion filter
 
-A Security Assertion Markup Language (SAML) attribute assertion contains information about a user in the form of a series of attributes. Having collated a certain amount of information about a user, the API Gateway can generate a SAML attribute assertion, and insert it into the downstream message.
+A Security Assertion Markup Language (SAML) attribute assertion contains information about a user in the form of a series of attributes. Having collated a certain amount of information about a user, the API Gateway can generate a SAML attribute assertion, and insert it into the downstream message. A *SAML Attribute* is generated for each entry in the `attribute.lookup.list` attribute. 
 
-A *SAML Attribute* (see example below) is generated for each entry in the `attribute.lookup.list` attribute. Other filters from the Attributes filter group can be used to insert user attributes into the `attribute.lookup.list`
-attribute.
+You can also use other filters from the Attributes filter group to insert user attributes into the `attribute.lookup.list`, or you can use the Javascript filter to dynamically create the `attribute.lookup.list` using custom attributes. For more information, see [Create SAML assertion using the API Gateway](https://github.com/Axway-API-Management-Plus/scripting-examples/blob/master/create-saml-assertion/README.md).
 
 You can refer to the following example of a SAML attribute assertion when configuring this filter:
 

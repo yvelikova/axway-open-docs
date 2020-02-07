@@ -17,16 +17,13 @@ To register a back-end API in API Manager, perform the following steps:
 1. In API Manager, select **API Registration** > **Backend API**.
 2. Click **New API**, and select one of the following:
     * **Import API from Topology**: Import a REST API deployed on an API Gateway.
-    * **Import RAML API**: Import a REST API in RAML format.
     * **Import Swagger API**: Import a REST API in JSON format.
     * **Import WADL API**: Import a REST API in WADL format.
     * **Import WSDL API**: Import a web service in WSDL format.
 3. Specify the API details (for example, location, name, and organization), and click **Import**.
 4. When the API is imported, click **OK**.
 
-For more details, see [Register REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_register_web/). The following example shows imported APIs based on RAML, Swagger, and Web service definitions:
-
-![Imported APIs in the web console](/Images/docbook/images/api_mgmt/api_mgmt_backend_api_import.png)
+For more details, see [Register REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_register_web/).
 
 Alternatively, if you do not have a Swagger or WADL file to import for an existing API, see [Manually register a new back-end REST API](/docs/apim_administration/apimgr_admin/api_mgmt_register_web/#manually-register-a-new-back-end-rest-api).
 
