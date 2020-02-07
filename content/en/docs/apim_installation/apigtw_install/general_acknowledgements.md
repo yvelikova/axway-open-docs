@@ -26,4 +26,4 @@ This product includes cryptographic software written by Eric Young (eay@cryptsof
 This product includes software developed by James Cooper.
 
 **iconmonstr**:
-This product includes graphic icons developed by iconmonstr.
+This product includes graphic icons developed by https://iconmonstr.com/ 
