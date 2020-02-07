@@ -6,6 +6,7 @@
   "date": "2019-09-20",
   "description": "Learn about the new features and enhancements in this release of API Gateway and API Manager."
 }
+
 ## Summary
 
 API Gateway is available as a software installation or a virtualized deployment in Docker containers. API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway.
@@ -110,7 +111,7 @@ To suppress schema validation errors and relax the stricter validation of XML fi
 
 ### Filebeat v6.2.2
 
-Filebeat has been updated to use v6.2.2. When installing Filebeat, follow the [official Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
+Filebeat has been updated to use v6.2.2. Before installing this update, you must delete the Filebeat folder  `/apigateway/tools/filebeat-5.2.0`. When using Filebeat, follow the [official Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
 
 ### Increased validation of `/users` endpoint
 
@@ -128,17 +129,41 @@ To reduce the impact of this change, you can relax this restriction using a conf
 
 API Gateway and API Manager 7.7 and later support OpenJDK JRE, and this update includes Zulu OpenJDK 1.8 JRE instead of Oracle JRE 1.8.
 
+### API Gateway behavior
+
+#### Anonymous cipher suites
+
+The JRE included in API Gateway disables undesirable cipher suites when using SSL/TLS by default. Users using RSA Access Manager (formerly known as RSA ClearTrust) with API Gateway might experience SSL/TLS handshake issues where no common cipher suites can be found. In this case, you should reconfigure SSL/TLS of the RSA Access Manager to support stronger cipher suites.
+
+Alternatively, to re-enable the anonymous cipher suites in JRE for successful SSL/TLS connections with the RSA Access Manager, remove `anon`  from the  `jdk.tls.disabledAlgorithms` Java security property in the  `INSTALL_DIR/Linux.x86_64/jre/lib/security/java.security` file.
+
+#### Endpoint identification property
+
+The JRE included in API Gateway enables endpoint identification algorithms for LDAPS (secure LDAP over TLS) by default to  improve the robustness of the connections. This might cause API Gateway LDAP filters to fail to connect to an LDAPS server. To disable endpoint identification add the  `<VMArg  name="-Dcom.sun.jndi.ldap.object.disableEndpointIdentification=true"/>`  line to the  `INSTALL_DIR/system/conf/jvm.xml` file.
+
 ### API Manager behavior
+
+#### Trailing slash property
 
 An inbound API request with a trailing slash can match an API path with no trailing slash. To activate this feature set the Java property `com.vordel.apimanager.uri.path.trailingSlash.preserve` to `true`. The default value is `false`.
 
+#### Content type property
+
 An API method's Content-Type is checked against the API method's defined MIME type when performing path matching. To allow legacy API method matching and disable this check, set the Java property `com.coreapireg.apimethod.contenttype.legacy` to `true`. The default value is `false`.
+
+#### Caching property
 
 Enable caching to improve general system performance and speed. Set the `com.axway.apimanager.api.data.cache` Java system property to `true`. External clients, API keys, and OAuth credentials cache are optimized so that updates to the cache no longer block API Manager runtime traffic, resulting in performance improvements for corresponding API Manager APIs. As a result of the non-blocking cache updates, API Manager memory consumption will increase, particularly in systems with large numbers of external clients, API keys or OAuth credentials.
 
+#### No match property
+
 To configure the status code of an unsuccessful match of an API to 404 when authentication is successful, set the Java property `com.axway.apimanager.use404AuthSuccessNoMatch`  to `true`. The default value is `false`.
 
+#### MIME types
+
 To import API Gateway Management API Swagger into API Manager API Catalog, you must add the `application/x-download` MIME type to the default list of MIME types in API Gateway. Select **Server Settings > General > Mime configuration** in the Policy Studio tree and add `application/x-download` to the MIME list. After the configuration is deployed to API Gateway, you can import the API Gateway Manager API Swagger into API Manager API Catalog.
+
+#### Confidential fields property
 
 Fields that contain confidential information are no longer returned in some API calls. For example, a call to `GET /api/portal/v1.3/proxies/` does not return the password in the `AuthenticationProfile.parameters\["password"]` field. For compatibility with earlier versions, you can continue to return confidential fields. Set the system property `com.axway.apimanager.api.model.disable.confidential.fields` to `true` in the `jvm.xml` file (it does not exist by default) under `groups/group-x/instance-y/conf`.
 
@@ -152,7 +177,11 @@ Fields that contain confidential information are no longer returned in some API 
 
 ### Security
 
+#### `nosniff` header
+
 The X-Content-Type-Options HTTP header with value `nosniff` is not included in a HTTP response serving static content from the API Gateway or API Manager. This static content is served from the API Gateway or API Manager `webapps` directory. No dynamic content is served from the `webapps` directory. This means that there is no risk of the browser making an incorrect assumption of the content type and exposing a security vulnerability. The X-Content-Type-Options response header with the value `nosniff` is included with HTTP responses serving dynamic content by default.
+
+#### CSRF check property
 
 If you are using the API Manager Management APIs, Client Application Registry APIs, and API Gateway APIs you might need to disable the CSRF token check implemented in v7.5.3 SP9 and later. To disable this check, set the Java system property `com.axway.apimanager.csrf`  to  `false`. The default is `true`.
 
@@ -274,7 +303,8 @@ This update has the following prerequisites in addition to the [System requireme
    ```
 
 5. If you have an existing Apache Cassandra installation, ensure that you back up your data (Cassandra and `kpsadmin`), and that the `JAVA_HOME` variable is set correctly in `cassandra.in.sh` and `cassandra.in.bat`.
-6. On Linux, remove existing capabilities on product binaries (which might prevent overwriting files):
+6. Remove the old Filebeat folder `/apigateway/tools/filebeat-5.2.0`. Check any customized files to see if they are compatible with the new version. See [Filebeat](#filebeat-v6-2-2) for more information.
+7. On Linux, remove existing capabilities on product binaries (which might prevent overwriting files):
 
    ```
    setcap -r INSTALL_DIR/apigateway/platform/bin/vshell
@@ -416,14 +446,6 @@ To allow an unprivileged user to run the API Gateway on a Linux system, perform 
    ```
 
 2. Run the command `setcap 'cap_net_bind_service=+ep cap_sys_rawio=+ep' INSTALL_DIR/platform/bin/vshell` to allow the API Gateway to listen on privileged ports.
-
-##### JRE properties
-
-The JRE included in API Gateway disables undesirable cipher suites when using SSL/TLS by default. Users using RSA Access Manager (formerly known as RSA ClearTrust) with API Gateway might experience SSL/TLS handshake issues where no common cipher suites can be found. In this case, you should reconfigure SSL/TLS of the RSA Access Manager to support stronger cipher suites.
-
-Alternatively, to re-enable the anonymous cipher suites in JRE for successful SSL/TLS connections with the RSA Access Manager, remove `anon`  from the  `jdk.tls.disabledAlgorithms` Java security property in the  `INSTALL_DIR/Linux.x86_64/jre/lib/security/java.security` file.
-
-The JRE included in API Gateway enables endpoint identification algorithms for LDAPS (secure LDAP over TLS) by default to  improve the robustness of the connections. This might cause API Gateway LDAP filters to fail to connect to an LDAPS server. To disable endpoint identification add the  `<VMArg  name="-Dcom.sun.jndi.ldap.object.disableEndpointIdentification=true"/>`  line to the  `INSTALL_DIR/system/conf/jvm.xml` file.
 
 #### API Manager
 
