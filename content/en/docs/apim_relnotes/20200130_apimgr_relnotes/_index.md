@@ -6,6 +6,7 @@
   "date": "2019-09-20",
   "description": "Learn about the new features and enhancements in this release of API Gateway and API Manager."
 }
+
 ## Summary
 
 API Gateway is available as a software installation or a virtualized deployment in Docker containers. API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway.
@@ -109,7 +110,7 @@ To suppress schema validation errors and relax the stricter validation of XML fi
 
 ### Filebeat v6.2.2
 
-Filebeat has been updated to use v6.2.2. Prior to installing the update you will need to delete the Filebeat folder  /apigateway/tools/filebeat-5.2.0 and then install the update.  When using Filebeat, follow the [official Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
+Filebeat has been updated to use v6.2.2. Before installing this update, you must delete the Filebeat folder  `/apigateway/tools/filebeat-5.2.0`. When using Filebeat, follow the [official Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
 
 ### Increased validation of `/users` endpoint
 
@@ -127,17 +128,41 @@ To reduce the impact of this change, you can relax this restriction using a conf
 
 API Gateway and API Manager 7.7 and later support OpenJDK JRE, and this update includes Zulu OpenJDK 1.8 JRE instead of Oracle JRE 1.8.
 
+### API Gateway behavior
+
+#### Anonymous cipher suites
+
+The JRE included in API Gateway disables undesirable cipher suites when using SSL/TLS by default. Users using RSA Access Manager (formerly known as RSA ClearTrust) with API Gateway might experience SSL/TLS handshake issues where no common cipher suites can be found. In this case, you should reconfigure SSL/TLS of the RSA Access Manager to support stronger cipher suites.
+
+Alternatively, to re-enable the anonymous cipher suites in JRE for successful SSL/TLS connections with the RSA Access Manager, remove `anon`  from the  `jdk.tls.disabledAlgorithms` Java security property in the  `INSTALL_DIR/Linux.x86_64/jre/lib/security/java.security` file.
+
+#### Endpoint identification property
+
+The JRE included in API Gateway enables endpoint identification algorithms for LDAPS (secure LDAP over TLS) by default to  improve the robustness of the connections. This might cause API Gateway LDAP filters to fail to connect to an LDAPS server. To disable endpoint identification add the  `<VMArg  name="-Dcom.sun.jndi.ldap.object.disableEndpointIdentification=true"/>`  line to the  `INSTALL_DIR/system/conf/jvm.xml` file.
+
 ### API Manager behavior
+
+#### Trailing slash property
 
 An inbound API request with a trailing slash can match an API path with no trailing slash. To activate this feature set the Java property `com.vordel.apimanager.uri.path.trailingSlash.preserve` to `true`. The default value is `false`.
 
+#### Content type property
+
 An API method's Content-Type is checked against the API method's defined MIME type when performing path matching. To allow legacy API method matching and disable this check, set the Java property `com.coreapireg.apimethod.contenttype.legacy` to `true`. The default value is `false`.
+
+#### Caching property
 
 Enable caching to improve general system performance and speed. Set the `com.axway.apimanager.api.data.cache` Java system property to `true`. External clients, API keys, and OAuth credentials cache are optimized so that updates to the cache no longer block API Manager runtime traffic, resulting in performance improvements for corresponding API Manager APIs. As a result of the non-blocking cache updates, API Manager memory consumption will increase, particularly in systems with large numbers of external clients, API keys or OAuth credentials.
 
+#### No match property
+
 To configure the status code of an unsuccessful match of an API to 404 when authentication is successful, set the Java property `com.axway.apimanager.use404AuthSuccessNoMatch`  to `true`. The default value is `false`.
 
+#### MIME types
+
 To import API Gateway Management API Swagger into API Manager API Catalog, you must add the `application/x-download` MIME type to the default list of MIME types in API Gateway. Select **Server Settings > General > Mime configuration** in the Policy Studio tree and add `application/x-download` to the MIME list. After the configuration is deployed to API Gateway, you can import the API Gateway Manager API Swagger into API Manager API Catalog.
+
+#### Confidential fields property
 
 Fields that contain confidential information are no longer returned in some API calls. For example, a call to `GET /api/portal/v1.3/proxies/` does not return the password in the `AuthenticationProfile.parameters\["password"]` field. For compatibility with earlier versions, you can continue to return confidential fields. Set the system property `com.axway.apimanager.api.model.disable.confidential.fields` to `true` in the `jvm.xml` file (it does not exist by default) under `groups/group-x/instance-y/conf`.
 
@@ -151,7 +176,11 @@ Fields that contain confidential information are no longer returned in some API 
 
 ### Security
 
+#### `nosniff` header
+
 The X-Content-Type-Options HTTP header with value `nosniff` is not included in a HTTP response serving static content from the API Gateway or API Manager. This static content is served from the API Gateway or API Manager `webapps` directory. No dynamic content is served from the `webapps` directory. This means that there is no risk of the browser making an incorrect assumption of the content type and exposing a security vulnerability. The X-Content-Type-Options response header with the value `nosniff` is included with HTTP responses serving dynamic content by default.
+
+#### CSRF check property
 
 If you are using the API Manager Management APIs, Client Application Registry APIs, and API Gateway APIs you might need to disable the CSRF token check implemented in v7.5.3 SP9 and later. To disable this check, set the Java system property `com.axway.apimanager.csrf`  to  `false`. The default is `true`.
 
@@ -260,17 +289,22 @@ This update has the following prerequisites in addition to the [System requireme
     ```
 
 3. Remove old third-party libraries by deleting the following directories:
+
    ```
    INSTALL_DIR/apigateway/system/lib/modules
    INSTALL_DIR/analytics/system/lib/modules
    ```
+
 4. Remove old JRE versions by deleting the following directories:
+
    ```
    INSTALL_DIR/apigateway/platform/jre
    ```
+
 5. If you have an existing Apache Cassandra installation, ensure that you back up your data (Cassandra and `kpsadmin`), and that the `JAVA_HOME` variable is set correctly in `cassandra.in.sh` and `cassandra.in.bat`.
-6. As the version of Filebeat is being upgraded, the Filebeat folder /apigateway/tools/filebeat-5.2.0 will need to be removed.  Any customized files will need to be checked to see if they are compatible with the new version.  See Filebeat section for more information. 
+6. Remove the old Filebeat folder `/apigateway/tools/filebeat-5.2.0`. Check any customized files to see if they are compatible with the new version. See [Filebeat](#filebeat-v6-2-2) for more information.
 7. On Linux, remove existing capabilities on product binaries (which might prevent overwriting files):
+
    ```
    setcap -r INSTALL_DIR/apigateway/platform/bin/vshell
    ```
@@ -302,18 +336,25 @@ To install the update on your existing API Gateway 7.7 server installation, perf
 1. Ensure that your existing API Gateway instance and Node Manager have been stopped.
 2. Remove any previous patches from your `INSTALL_DIR/ext/lib` and `INSTALL_DIR/META-INF` directories (or the `ext/lib` directory in an API Gateway instance). These patches have already been included in this update. You do not need to copy patches from a previous version.
 3. Verify the owners of API Gateway binaries before extracting the update.
+
    ```
    ls -l INSTALL_DIR/apigateway/posix/bin
    ```
+
 4. Using the same user who owns the API Gateway binaries, unzip and extract API Gateway 7.7 SP2 server over the `apigateway` directory in your existing installation directory . For example:
+
    ```
    tar -xzvf APIGateway_7.7_SP2_Core_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/apigateway/
    ```
+
 5. Change to the `apigateway` directory in your installation.
+
    ```
    cd INSTALL_DIR/apigateway
    ```
+
 6. Run the post-install script, and ensure that the correct permissions are set:
+
    ```
    apigw_sp_post_install.sh
    ```
@@ -325,13 +366,17 @@ To install the update on your existing Policy Studio installation, perform the f
 1. Shut down Policy Studio.
 2. Back up your existing `INSTALL_DIR/policystudio` directory.
 3. Remove old JRE versions by deleting the following directories:
+
    ```
    INSTALL_DIR/policystudio/jre
    ```
+
 4. Unzip and extract API Gateway 7.7 SP2 Policy Studio over the `policystudio` directory in your existing API Gateway 7.7 installation directory. For example:
+
    ```
    tar -xzvf APIGateway_7.7_SP2_PolicyStudio_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/policystudio/
    ```
+
 5. Start Policy Studio with `policystudio -clean`
 
 #### Install the Configuration Studio update
@@ -341,13 +386,17 @@ To install the update on your existing Configuration Studio installation, perfor
 1. Shut down Configuration Studio.
 2. Back up your existing `INSTALL_DIR/configurationstudio` directory.
 3. Remove old JRE versions by deleting the following directories:
+
    ```
    INSTALL_DIR/configurationstudio/jre
    ```
+
 4. Unzip and extract API Gateway 7.7 SP2 Configuration Studio over the `configurationstudio` directory in your existing API Gateway 7.7 installation directory. For example:
+
    ```
    tar -xzvf APIGateway_7.7_SP2_ConfigurationStudio_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/configurationstudio/
    ```
+
 5. Start Configuration Studio with `configurationstudio  -clean`
 
 #### Install the API Gateway Analytics update
@@ -356,18 +405,25 @@ To install the update on your existing API Gateway Analytics 7.7 installation, p
 
 1. Ensure that your existing API Gateway Analytics instance and Node Manager have been stopped.
 2. Verify the owners of API Gateway binaries before extracting the update.
+
    ```
    ls -l INSTALL_DIR/analytics/posix/bin
    ```
+
 3. Using the same user who owns the API Gateway Analytics binaries, unzip and extract API Gateway 7.7 SP2 Analytics over the `analytics` directory in your existing API Gateway 7.7 installation directory. For example:
+
    ```
    tar -xzvf APIGateway_7.7_SP2_Analytics_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/analytics/
    ```
+
 4. Change to the `analytics` directory in your installation:
+
    ```
    cd INSTALL_DIR/analytics
    ```
+
 5. Run the post-install script for API Gateway Analytics.
+
    ```
    apigw_analytics_sp_post_install.sh
    ```
@@ -383,18 +439,12 @@ The following steps apply after installing the update.
 To allow an unprivileged user to run the API Gateway on a Linux system, perform the following steps:
 
 1. Add the following line to the `INSTALL_DIR/system/conf/jvm.xml` file:
+
    ```
    <VMArg name="-Djava.library.path=$VDISTDIR/$DISTRIBUTION/jre/lib/amd64/server:$VDISTDIR/$DISTRIBUTION/jre/lib/amd64:$VDISTDIR/$DISTRIBUTION/lib/engines:$VDISTDIR/ext/$DISTRIBUTION/lib:$VDISTDIR/ext/lib:$VDISTDIR/$DISTRIBUTION/jre/lib:system/lib:$VDISTDIR/$DISTRIBUTION/lib"/>
    ```
+
 2. Run the command `setcap 'cap_net_bind_service=+ep cap_sys_rawio=+ep' INSTALL_DIR/platform/bin/vshell` to allow the API Gateway to listen on privileged ports.
-
-##### JRE properties
-
-The JRE included in API Gateway disables undesirable cipher suites when using SSL/TLS by default. Users using RSA Access Manager (formerly known as RSA ClearTrust) with API Gateway might experience SSL/TLS handshake issues where no common cipher suites can be found. In this case, you should reconfigure SSL/TLS of the RSA Access Manager to support stronger cipher suites.
-
-Alternatively, to re-enable the anonymous cipher suites in JRE for successful SSL/TLS connections with the RSA Access Manager, remove `anon`  from the  `jdk.tls.disabledAlgorithms` Java security property in the  `INSTALL_DIR/Linux.x86_64/jre/lib/security/java.security` file.
-
-The JRE included in API Gateway enables endpoint identification algorithms for LDAPS (secure LDAP over TLS) by default to  improve the robustness of the connections. This might cause API Gateway LDAP filters to fail to connect to an LDAPS server. To disable endpoint identification add the  `<VMArg  name="-Dcom.sun.jndi.ldap.object.disableEndpointIdentification=true"/>`  line to the  `INSTALL_DIR/system/conf/jvm.xml` file.
 
 #### API Manager
 
@@ -434,6 +484,7 @@ If a `fed` file is provided as part of building the API Manager container, you m
 
 1. Install the update on a installation of the API Gateway.
 2. Run the following command:
+
    ```
    /opt/Axway-7.7/apigateway/posix/bin/update-apimanager --fed <path to old file>.fed --oa <path to update file>.fed
    ```
