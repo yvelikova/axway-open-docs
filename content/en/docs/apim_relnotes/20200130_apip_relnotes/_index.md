@@ -69,8 +69,8 @@ For more information, see [Additional features for API Catalog view](/docs/apim_
 This release has the following limitations:
 
 * API Portal 7.7.20200130 is compatible with API Gateway and API Manager 7.7.20200130 only.
-* Upgrade to API Portal 7.7.20200130 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to 7.7.
-* The ready-made API Portal Docker image is strictly for development environments only, and is not recommended for use in production environments. You must use the Dockerfile to build and run API Portal containers in production environments. Upgraiding from previos API Portal Docker image is not supported. 
+* Upgrade to API Portal 7.7.20200130 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to API Portal 7.7.
+* The ready-made API Portal Docker image is strictly for development environments only, and it is not recommended for use in production environments. You must use the Dockerfile to build and run API Portal containers in production environments. Upgrading from previous API Portal Docker image is not supported. 
 * This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
 
 ## Removed features
