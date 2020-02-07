@@ -8,16 +8,16 @@
 API Gateway uses several third-party toolkits to perform specific types of processing. In accordance with the Licensing Agreements for these toolkits, the relevant acknowledgments are listed below.
 
 **Open Source Initiative**:
-This product includes software licensed under [ISC License](https://opensource.org/licenses/ISC).
+This product includes software licensed under [ISC license](https://opensource.org/licenses/ISC).
 
 **The World Wide Web Consortium (W3C)**:
-This product includes software licensed under [W3C SOFTWARE AND DOCUMENT NOTICE AND LICENSE](https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document).
+This product includes software licensed under [W3C license](https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document).
 
 **Apache Software Foundation**:
 This product includes software licensed under [Apache license, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 **OpenSSL Project**:
-This product includes software developed by the [OpenSSL Project)[https://www.openssl.org/ for use in the OpenSSL Toolkit].
+This product includes software developed by the [OpenSSL Project](https://www.openssl.org/) for use in the OpenSSL Toolkit.
 
 **Eric Young**:
 This product includes cryptographic software written by Eric Young (eay@cryptsoft.com).
