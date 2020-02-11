@@ -1,16 +1,16 @@
 ---
-title: Configure the Edge agent for usage tracking
-linkTitle: Configure the Edge agent for usage tracking
+title: Configure usage tracking
+linkTitle: Configure usage tracking
 weight: 65
 date: 2020-02-05
-description: Enable usage tracking for on-premise products on a subscription basis with Axway.
+description: Enable usage tracking for on-premise API management products purchased on a subscription basis.
 ---
 
 Usage tracking is how Axway measures the subscription services you use on a monthly basis. Axway measures your usage to make sure it is within the prescribed thresholds specified in your subscription, and to determine whether overages require billing adjustments. For more information, see [About subscription usage tracking](https://docs.axway.com/bundle/subusage_en/page/about_subscription_usage_tracking.html).
 
-If you have an AMPLIFY account, you can log in to the [AMPLIFY Platform](https://platform.axway.com/) and look up for information about your subscriptions and service entitlements. If you do not have an AMPLIFY account, most likely you are using products under licenses, and you do not have any subscriptions. If you are unsure whether usage tracking applies to you, contact your Axway representative or [Axway support](https://support.axway.com/).
+You can log in to the [AMPLIFY Platform](https://platform.axway.com/) and look up for information about your subscriptions and service entitlements. If you are unsure whether usage tracking applies to you, contact your Axway representative or [Axway support](https://support.axway.com/).
 
-The AMPLIFY Edge Agent allows you to set up, report, and monitor usage data for Axway cloud services and on-premises products that you use under subscription agreements. You must connect your API Gateway to the Edge Agent, so that the gateway can automatically send usage data to the Edge Agent, which will send usage reports to the AMPLIFY platform.
+The AMPLIFY Edge Agent collects data from your on-premise API management products and uploads usage reports to the AMPLIFY Platform. You must connect your API Gateway to the Edge Agent to enable automatic upload of usage reports to the AMPLIFY Platform.
 
 <!-- 
 Ask the product team:
@@ -21,12 +21,10 @@ Ask the product team:
 
 ## Configure API Gateway to connect with the Edge Agent
 
-To configure API Gateway (in EMT mode) to send usage data to the Edge Agent, you will need to upload two configuration files to the agent:
+API Gateway communicates with the agent over Lumberjack protocol using Filebeat. To configure API Gateway (in container mode) to send usage data to the Edge Agent, you must upload two configuration files to the agent:
 
 * An input configuration file that defines the type of data the agent collects from API Gateway.
 * A report configuration file the agent uses to aggregate the data to upload to the platform.
-
-API Gateway will communicate with the agent over a protocol.
 
 Then, you must refer to [Deploy the agent](https://docs.axway.com/bundle/subusage_en/page/deploy_the_agent.html) for enabling usage report.
 
@@ -50,4 +48,4 @@ Then, you must refer to [Deploy the agent](https://docs.axway.com/bundle/subusag
 
 ## Review subscriptions and usages on the platform
 
-Once you have completed the configuration and have enabled uploads of usage reports, you can log in to the [AMPLIFY Platform](https://platform.axway.com/) and access and review your subscriptions and usage data. For more information, see [Review subscriptions and usages on the platform](https://docs.axway.com/bundle/subusage_en/page/review_subscriptions_and_usages_on_the_platform.html).
+After you have completed the configuration and have enabled uploads of usage reports, you can log in to the [AMPLIFY Platform](https://platform.axway.com/) and access and review your subscriptions and usage data. For more information, see [Review subscriptions and usages on the platform](https://docs.axway.com/bundle/subusage_en/page/review_subscriptions_and_usages_on_the_platform.html).

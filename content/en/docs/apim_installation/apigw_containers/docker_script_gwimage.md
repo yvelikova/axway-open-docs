@@ -246,4 +246,4 @@ The `EMT_DEPLOYMENT_ENABLED` environment variable is provided as a convenience f
 
 For more information on the environment variables that you can specify at runtime, see [Environment variables reference](/docs/apim_installation/apigw_containers/container_env_variables/#environment-variables-reference).
 
-For more information on usage tracking for on-premise products on a subscription basis, see [Configure the Edge agent for usage tracking](/docs/apim_installation/apigw_containers/configure_edge_agent).
+For more information on usage tracking for on-premise products purchased on a subscription basis, see [Configure the Edge agent for usage tracking](/docs/apim_installation/apigw_containers/configure_edge_agent).
