@@ -21,7 +21,7 @@ Ask the product team:
 
 ## Configure API Gateway to connect with the Edge Agent
 
-See [Deploy the agent](https://docs.axway.com/bundle/subusage_en/page/deploy_the_agent.html).
+Before you start, see [Deploy the agent](https://docs.axway.com/bundle/subusage_en/page/deploy_the_agent.html).
 
 Upload the following two configuration files to the Edge Agent to enable API Gateway (in container mode) to send usage data to the Edge Agent.
 
