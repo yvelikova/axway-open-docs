@@ -21,14 +21,14 @@ Ask the product team:
 
 ## Configure API Gateway to connect with the Edge Agent
 
-To configure API Gateway (in container mode) to send usage data to the Edge Agent, you must upload two configuration files to the agent:
+See [Deploy the agent](https://docs.axway.com/bundle/subusage_en/page/deploy_the_agent.html).
+
+Upload the following two configuration files to the Edge Agent to enable API Gateway (in container mode) to send usage data to the Edge Agent.
 
 * An input configuration file that defines the type of data the agent collects from API Gateway.
 * A report configuration file the agent uses to aggregate the data to upload to the platform.
 
 API Gateway will communicate with the agent over Lumberjack protocol using Filebeat.
-
-Then, you must refer to [Deploy the agent](https://docs.axway.com/bundle/subusage_en/page/deploy_the_agent.html) for enabling usage report.
 
 <!--
 1. Go to [Axway support](https://support.axway.com/) and download the configuration files for API Gateway:
