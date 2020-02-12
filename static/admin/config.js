@@ -44,7 +44,14 @@ const postDefaults = {
  * Add new collections here.
  */
 const collections = [{
-  ...docsDefaults('apimgr_concepts', 'docbook/images/api_mgmt'), // content directory, image directory
+  ...docsDefaults('', 'docbook/images/general'), // content directory, image directory
+  name: 'docs',
+  label: 'Docs',
+  description: 'Top level pages in documentation.',
+  format: 'frontmatter',
+  create: false,
+}, {
+  ...docsDefaults('apimgr_concepts', 'docbook/images/api_mgmt'),
   name: 'apimgr_concepts',
   label: 'API management concepts',
   label_singular: 'page in APIM concepts section',
