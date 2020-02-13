@@ -44,7 +44,7 @@ API Gateway will communicate with the agent over Lumberjack protocol using Fileb
 -->
 
 <!-- is the the Lumberjack content in the generic doc is sufficient for your product? https://docs.axway.com/bundle/subusage_en/page/secure_the_connection_with_the_agent.html
--- >
+-->
 
 <!-- If your product uses QLT, You will have to get the specifics from your team about how to set up communication with the agent over QLT -->
 
