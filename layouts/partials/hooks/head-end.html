@@ -2,3 +2,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 <!-- override the robots meta in head.html to disable google search -->
 <meta name="robots" content="noindex, nofollow" />
+<!-- Output non-fingerprinted, unminified styles for CMS. -->
+{{ $scssCms := "scss/cms.scss"}}
+{{ $css := resources.Get $scssCms | toCSS (dict "enableSourceMap" false) | postCSS }}
+<!-- CSS for CMS output to: {{ $css.RelPermalink }} (Do not remove this line.) -->
