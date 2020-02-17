@@ -20,7 +20,7 @@ By default the HTTPS interface:
 * Blocks unauthenticated ciphers.
 
 For more information on configuring HTTPS interfaces, see the
-[HTTP and HTTPS interfaces](/docs/apim_policydev/apigw_poldev/gw_instances/general_services/#http-and-https-interfaces).
+[HTTP and HTTPS interfaces](/docs/apim_policydev/apigw_gw_instances/general_services/#http-and-https-interfaces).
 
 ## API Portal inbound SSL configuration
 
@@ -109,7 +109,7 @@ For more information, see the
 
 API Gateway supports a large range of authentication mechanisms and protocols, including HTTP basic and digest authentication, HTML form-based authentication, SSL, session-based authentication, SAML, WS-Security UsernameToken, Kerberos, and many more.  For more information on these filters, see [Authentication filters](/docs/apim_policydev/apigw_polref/authn_common/).
 
-API Gateway can also integrate with a number of third party Identity Management products to authenticate users, such as Axway PassPort, Entrust GetAccess, Oracle Entitlements Server, Oracle Access Manager, CA SiteMinder, RADIUS, RSA Access Manager, Sun Access Manager, Tivoli repositories, LDAP, database, Key Property Store (KPS), and the local user store.  For more information on authentication repositories, see [Configure authentication repositories](/docs/apim_policydev/apigw_poldev/external_connections/common_user_store/).
+API Gateway can also integrate with a number of third party Identity Management products to authenticate users, such as Axway PassPort, Entrust GetAccess, Oracle Entitlements Server, Oracle Access Manager, CA SiteMinder, RADIUS, RSA Access Manager, Sun Access Manager, Tivoli repositories, LDAP, database, Key Property Store (KPS), and the local user store.  For more information on authentication repositories, see [Configure authentication repositories](/docs/apim_policydev/apigw_external_connections/common_user_store/).
 
 ## API Portal authentication
 
@@ -121,7 +121,7 @@ API Gateway also integrates with a number of third-party Identity Management pro
 
 It also supports standard authorization schemes, including LDAP RBAC, SAML, SAML PDP, XACML, and X.509 certificate attributes.  OAuth 2.0 and OpenID Connect are also supported, and are discussed in the following section.
 
-For details on how to configure these authorization services, see [Configure external connections](/docs/apim_policydev/apigw_poldev/external_connections/).
+For details on how to configure these authorization services, see [Configure external connections](/docs/apim_policydev/apigw_external_connections/).
 
 ## API Gateway OAuth and OpenID Connect
 

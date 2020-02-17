@@ -265,7 +265,7 @@ correspond with the name of an agent previously configured in the SOA Security M
 To add an agent, right-click the **SiteMinder/SOA Security Manager Connections**
 tree node, and select **Add a SOA Security Manager Connection**. Alternatively, you can add SOA Security Manager connections under the **Environment Configuration** > **External Connections**
 node in the Policy Studio tree. For details on how to configure SOA Security Manager connections, see
-[Configure SiteMinder/SOA Security Manager connections](/docs/apim_policydev/apigw_poldev/external_connections/connector_ca_connection/).
+[Configure SiteMinder/SOA Security Manager connections](/docs/apim_policydev/apigw_external_connections/connector_ca_connection/).
 
 #### Message details settings
 

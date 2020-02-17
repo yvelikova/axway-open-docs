@@ -1,7 +1,7 @@
 {
 "title": "Configure external connections",
 "linkTitle": "Configure external connections",
-"weight": 7,
+"weight": 40,
 "date": "2019-10-17",
 "description": "Configure connections from API Gateway to external systems."
 }

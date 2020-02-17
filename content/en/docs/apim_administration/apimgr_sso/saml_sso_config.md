@@ -73,7 +73,7 @@ The following sample files are included:
     * `keycloak` folder:
     * Sample `service-provider.xml` file that uses a URL to specify the IdP.
     * Sample `service-provider-apiportal.xml` for configuring API Portal SSO. For more details, see
-        [Configure API Portal single sign-on](/docs/apim_administration/apiportal_admin/sso/sso_config/).
+        [Configure API Portal single sign-on](/docs/apim_administration/apiportal_sso/sso_config/).
 
 ## Usage guidelines
 
@@ -85,7 +85,7 @@ Always use fully qualified domain names (FQDNs) for the host name. Avoid using I
 
 ### User role mapping and API Manager organizations
 
-You must manually configure the mapping of user roles between the IdP and API Manager in the file `service-provider.xml`. For more information, see [Mapping syntax](/docs/apim_administration/apimgr_admin/sso/sso_mapping/#mapping-syntax).
+You must manually configure the mapping of user roles between the IdP and API Manager in the file `service-provider.xml`. For more information, see [Mapping syntax](/docs/apim_administration/apimgr_sso/sso_mapping/#mapping-syntax).
 
 An SSO user is mapped to one of three SSO roles:
 
@@ -189,8 +189,8 @@ In this step you will create a `service-provider.xml` file based on a sample fil
    ```
 
 4. In the `SamlIdentityProvider` section, update the `metadataUrl` field as detailed in [Specify the IdP by file](#specify-the-idp-by-file) or [Specify the IdP by URL](#specify-the-idp-by-url).
-5. In the `SAMLIdentityProvider` section, update the `Mappings` section with the appropriate mapping of IdP attributes to API Manager attributes. For more information on the mapping syntax, see [Mapping syntax](/docs/apim_administration/apimgr_admin/sso/sso_mapping/#mapping-syntax).
-6. Update any other fields as required. For more information on the elements in the `service-provider.xml` configuration file, see [service-provider.xml configuration file reference](/docs/apim_administration/apimgr_admin/sso/sso_mapping/#service-provider-xml-configuration-file-reference).
+5. In the `SAMLIdentityProvider` section, update the `Mappings` section with the appropriate mapping of IdP attributes to API Manager attributes. For more information on the mapping syntax, see [Mapping syntax](/docs/apim_administration/apimgr_sso/sso_mapping/#mapping-syntax).
+6. Update any other fields as required. For more information on the elements in the `service-provider.xml` configuration file, see [service-provider.xml configuration file reference](/docs/apim_administration/apimgr_sso/sso_mapping/#service-provider-xml-configuration-file-reference).
 
 ### Specify the IdP by file
 
@@ -259,7 +259,7 @@ You must configure the SAML endpoints of API Manager in your IdP. Consult the do
 | **Logout Service Redirect Binding URL**             | `https://<your_API Manager_host_FQDN>:8075/api/portal/v1.3/sso/logout/post` |
 
 {{< alert title="Note" color="primary" >}}If you are also configuring SSO for API Portal, you must configure the endpoint URLs separately for both API Manager and API Portal. For more details, see
-[Configure API Portal single sign-on](/docs/apim_administration/apiportal_admin/sso/sso_config/).{{< /alert >}}
+[Configure API Portal single sign-on](/docs/apim_administration/apiportal_sso/sso_config/).{{< /alert >}}
 
 ## Step 5 – Configure the SSO cookie domain name (optional)
 

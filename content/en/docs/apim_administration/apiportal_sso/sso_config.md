@@ -72,11 +72,11 @@ Do not change any settings with paths containing `/sso`, unless otherwise instru
     </ServiceProvider>
     ```
 
-3. In the `SamlIdentityProvider` section, update the `Mappings` section with the mapping of IdP attributes to API Manager attributes. For more information on the mapping syntax, see [Mapping syntax](/docs/apim_administration/apiportal_admin/sso/sso_mapping/).
+3. In the `SamlIdentityProvider` section, update the `Mappings` section with the mapping of IdP attributes to API Manager attributes. For more information on the mapping syntax, see [Mapping syntax](/docs/apim_administration/apiportal_sso/sso_mapping/).
 4. In the `SamlIdentityProvider` section, change references to `keycloak.int.acme.com:8443` to the FQDN and port of your IdP.
 5. In the `SamlIdentityProvider` section, set the `metadataUrl` field as detailed in [Specify the IdP by file](#specify-the-idp-by-file) or [Specify the IdP by URL](#specify-the-idp-by-url), and save the configuration file.
 
-For more information on the elements in the `service-provider-apiportal.xml` configuration file, see [configuration file reference](/docs/apim_administration/apiportal_admin/sso/sso_mapping/#service-provider-apiportal-xml-configuration-file-reference).
+For more information on the elements in the `service-provider-apiportal.xml` configuration file, see [configuration file reference](/docs/apim_administration/apiportal_sso/sso_mapping/#service-provider-apiportal-xml-configuration-file-reference).
 
 ### Specify the IdP by file
 
