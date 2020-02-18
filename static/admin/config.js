@@ -46,7 +46,7 @@ const postDefaults = {
 const collections = [{
   ...docsDefaults('', 'docbook/images/general'), // content directory, image directory
   name: 'docs',
-  label: 'Docs',
+  label: 'Documentation',
   description: 'Top level pages in documentation.',
   format: 'frontmatter',
   create: false,
@@ -191,7 +191,7 @@ const collections = [{
 }, {
   ...docsDefaults('apim_policydev/apigw_oauth/oauth_flows', 'OAuth'),
   name: 'oauth_flows',
-  label: 'Configure OAuth (flows)',
+  label: 'OAuth authenticatin flows',
   label_singular: 'page in OAuth config (flows) section',
   description: 'All pages relating to OAuth authentication flows.',
   format: 'frontmatter',
@@ -248,22 +248,22 @@ const collections = [{
 }, {
   ...docsDefaults('apim_relnotes/20200130_apimgr_relnotes', 'docbook/images/release_notes'),
   name: '20200130_apimgr_relnotes',
-  label: 'API Gateway and API Manager release notes',
-  label_singular: 'page in API Gateway/Manager RN section',
-  description: 'All pages relating to API Gateway and API Manager release.',
+  label: 'API Gateway and API Manager 7.7 Jan20 release notes',
+  label_singular: 'page in APIG/APIM 7.7 Jan20 release note section',
+  description: 'Release notes for API Gateway and API Manager 7.7 Jan20 release.',
 }, {
   ...docsDefaults('apim_relnotes/20200130_apip_relnotes', 'docbook/images/release_notes'),
   name: '20200130_apip_relnotes',
-  label: 'API Portal release notes',
-  label_singular: 'page in API Portal RN section',
-  description: 'All pages relating to API Portal release.',
+  label: 'API Portal 7.7 Jan20 release notes',
+  label_singular: 'page in API Portal 7.7 Jan20 release note section',
+  description: 'Release notes for API Portal 7.7 Jan20 release.',
   format: 'frontmatter',
 }, {
   ...docsDefaults('central', 'central'),
   name: 'central',
   label: 'AMPLIFY Central documentation',
   label_singular: 'page in AMPLIFY Central section',
-  description: 'All pages relating to AMPLIFY Central.',
+  description: 'All pages relating to AMPLIFY Central and AMPLIFY Unified Catalog.',
   format: 'frontmatter',
 }, {
   ...docsDefaults('contribution_guidelines', 'contributing'),

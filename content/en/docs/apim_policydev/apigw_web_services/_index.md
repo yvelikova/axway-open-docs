@@ -4,7 +4,7 @@
 "weight": 20,
 "no_list": true,
 "date": "2019-10-17",
-"description": "Policy Studio provides the following features that enable you to register and secure web services:"
+"description": "Import a WSDL file to register and secure a web service, or expose a SOAP web service as a REST API."
 }
 
 Policy Studio provides the following features that enable you to register and secure web services:
