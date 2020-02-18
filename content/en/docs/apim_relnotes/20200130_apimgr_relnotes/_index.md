@@ -185,6 +185,18 @@ The X-Content-Type-Options HTTP header with value `nosniff` is not included in a
 
 If you are using the API Manager Management APIs, Client Application Registry APIs, and API Gateway APIs you might need to disable the CSRF token check implemented in v7.5.3 SP9 and later. To disable this check, set the Java system property `com.axway.apimanager.csrf`  to  `false`. The default is `true`.
 
+### Custom filters
+
+If you have written a custom filter using the extension kit, you might need to update your custom code as a result of changes in the classes.
+
+The following interfaces deprecate `_()` and `__()` in favor of a new `resolve()` method:
+
+* `com.vordel.client.manager.ResourceResolver`
+* `com.vordel.client.manager.attr.ScreenAttribute`
+* `com.vordel.client.manager.wizard.EntityContext`
+
+Both `DefaultGUIFilter` and `VordelWizard` classes do not implement the `ResourceResolver` interface. As a result, any classes extending either of these must replace `_()` and `__()` method calls with `resolve()`.
+
 ## Deprecated features
 
 <!-- Add features that are deprecated here -->
@@ -231,16 +243,6 @@ The functionality to export back-end APIs converts all API formats to Swagger 1.
 ### Documentation PDF format
 
 Documentation is no longer provided in PDF format. You can continue to save individual topics or entire guides in PDF format using the **Save as PDF** icon on the [Axway documentation portal](https://docs.axway.com/).
-
-### Write a custom filter using the extension kit
-
-The following interfaces deprecate `_()` and `__()` in favor of a new `resolve()` method:
-
-* `com.vordel.client.manager.ResourceResolver`
-* `com.vordel.client.manager.attr.ScreenAttribute`
-* `com.vordel.client.manager.wizard.EntityContext`
-
-Both `DefaultGUIFilter` and `VordelWizard` classes missed to implement the `ResourceResolver` interface. As a result, any classes extending either of these need to replace `_()` and `__()` method calls with `resolve()`.
 
 ## Fixed issues
 
