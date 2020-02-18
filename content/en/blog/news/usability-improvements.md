@@ -8,7 +8,7 @@ author: Alex Earnshaw
 
 ## Netlify CMS users no longer need to sync forks
 
-If you use Netlify CMS to contribute, you no longer need to worry about your fork being up to date with the upstream `axway-open-docs` repository, as as Netlify CMS now creates any new branch based on master from the upstream repository. This means you no longer have to manually delete your fork before making a new contribution.
+If you use Netlify CMS to contribute, you no longer need to worry about your fork being up to date with the upstream `axway-open-docs` repository, as Netlify CMS now creates any new branch based on master from the upstream repository. This means you no longer have to manually delete your fork before making a new contribution.
 
 If you use GitHub UI or Git CLI to contribute you should continue to [sync your fork](/docs/contribution_guidelines/deleting_a_repository/) regularly as a best practice.
 
