@@ -753,7 +753,7 @@ You must specify the message attribute to map to the inputs of each schema. Clic
 
 ### Example data map policy
 
-For an example of how to use a data map in a policy, see [Manage data maps](/docs/apim_policydev/apigw_poldev/web_services/resources_data_maps/).
+For an example of how to use a data map in a policy, see [Manage data maps](/docs/apim_policydev/apigw_web_services/resources_data_maps/).
 
 ## Transform with XSLT filter
 

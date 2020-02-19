@@ -121,7 +121,7 @@ A Kerberos client can authenticate to a Kerberos service by sending a Kerberos s
 
 {{< alert title="Note" color="primary" >}}
 You can also configure the API Gateway to authenticate to a Kerberos service by including the relevant Kerberos tokens inside the XML message. For more details, see
-[Configure Kerberos services](/docs/apim_policydev/apigw_poldev/external_connections/kerberos_service/).
+[Configure Kerberos services](/docs/apim_policydev/apigw_external_connections/kerberos_service/).
 
 For more details on different Kerberos setups with API Gateway, see
 [API Gateway Kerberos Integration Guide](/bundle/APIGateway_77_IntegrationKerberos_allOS_en_HTML5).

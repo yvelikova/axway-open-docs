@@ -1,7 +1,7 @@
 ---
 title: Administer API Portal
 linkTitle: Administer API Portal
-weight: 40
+weight: 30
 date: 2019-07-30
 description: Customize and configure API Portal.
 ---

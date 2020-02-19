@@ -1,7 +1,7 @@
 {
 "title": "Configure API Gateway instances and listeners",
-"linkTitle": "Configure API Gateway instances and listeners",
-"weight": 6,
+"linkTitle": "Configure instances and listeners",
+"weight": 30,
 "date": "2019-10-17",
 "description": "Configure API Gateway instances and listeners in Policy Studio."
 }

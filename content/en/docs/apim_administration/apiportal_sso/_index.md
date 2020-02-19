@@ -1,8 +1,8 @@
 ---
 title: API Portal single sign-on
-linkTitle: Single sign-on
+linkTitle: API Portal single sign-on
 no_list: true
-weight: 15
+weight: 35
 date: 2019-07-30
 description: Understand and configure single sign-on (SSO) for API Portal. 
 ---
@@ -66,7 +66,7 @@ The following diagram shows a simplified message flow for SSO using SAML:
     * For non-SSO login, use the default URL (for example, `https://<FQDN>:<port>`).
     * For SSO login, use the SSO URL (for example, `https://<FQDN>:<port>/sso`).
 
-    The `<FQDN>` is the fully qualified domain name of the machine where API Portal is running, and `<port>` is the API Portal listening port. You can change the SSO URL in the Joomla! Admin Interface (JAI). For more details, see [Enable SSO in API Portal](/docs/apim_administration/apiportal_admin/sso/sso_config/#enable-sso-in-api-portal).
+    The `<FQDN>` is the fully qualified domain name of the machine where API Portal is running, and `<port>` is the API Portal listening port. You can change the SSO URL in the Joomla! Admin Interface (JAI). For more details, see [Enable SSO in API Portal](/docs/apim_administration/apiportal_sso/sso_config/#enable-sso-in-api-portal).
 
     The SSO login URL must be used even if the user has already logged in using SSO (for example, if they have already logged in to API Manager or Decision Insight).
 
@@ -78,7 +78,7 @@ The following diagram shows a simplified message flow for SSO using SAML:
     * If a session for the user exists, the IdP sends the session ID to API Portal.
 
 5. API Portal immediately proxies the message to API Manager.
-6. API Manager processes and verifies the response, and maps the user's IdP role to an API Portal-specific role. For more details, see [Mapping syntax](/docs/apim_administration/apiportal_admin/sso/sso_mapping/).
+6. API Manager processes and verifies the response, and maps the user's IdP role to an API Portal-specific role. For more details, see [Mapping syntax](/docs/apim_administration/apiportal_sso/sso_mapping/).
 7. When successful, API Manager generates and returns a session ID to API Portal.
 8. API Portal provides the requested resource to the user.
 

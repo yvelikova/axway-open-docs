@@ -231,7 +231,7 @@ The following attributes are supported:
 
 * `entityId`
     * Sets the unique identifier of the SP. This identifier is sent to the IdP so it can know who is requesting an authentication or logging out.
-    * The default value is `api-portal`. The same value must also be set in the Joomla! Administrator Interface (JAI), see [Enable SSO in API Portal](/docs/apim_administration/apiportal_admin/sso/sso_config/#enable-sso-in-api-portal)
+    * The default value is `api-portal`. The same value must also be set in the Joomla! Administrator Interface (JAI), see [Enable SSO in API Portal](/docs/apim_administration/apiportal_sso/sso_config/#enable-sso-in-api-portal)
 
 * `excludeHostInEndpointURICheck`
     * An endpoint URI check examines the intended destination endpoint as determined by the IdP and the actual receiver endpoint for a message. In other words, where the message was intended and where it was actually delivered.

@@ -125,7 +125,7 @@ To obtain this information, contact your SiteMinder administrator.
 3. Enter your agent name (`apigateway.axway.int`) and agent configuration object name (`V6HostConfObject`) you created in [Register API Gateway as the SiteMinder agent](#register-api-gateway-as-the-siteminder-agent).
 4. Click **Browse**, select the `SmHost.conf` file for your agent, and click **OK**.
 
-For more details on the fields and options in this configuration window, see [Configure SiteMinder/SOA Security Manager connections](/docs/apim_policydev/apigw_poldev/external_connections/connector_ca_connection/).
+For more details on the fields and options in this configuration window, see [Configure SiteMinder/SOA Security Manager connections](/docs/apim_policydev/apigw_external_connections/connector_ca_connection/).
 
 ### Configure SiteMinder authentication policy
 

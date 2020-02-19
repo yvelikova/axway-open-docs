@@ -57,7 +57,7 @@ header).
 Because the API Gateway compresses the requests on the fly, it is prohibitively expensive to calculate the content length before compressing the body. As a result, outbound content encoding is only supported when talking to HTTP/1.1 servers that support chunked transfer encoding.
 
 {{< alert title="Note" color="primary" >}}All HTTP/1.1 servers are required to support chunked transfer encoding, but unfortunately some do not, so you can use **Remote Host**
-settings to configure whether a destination is capable of supporting the chunked encoding in HTTP/1.1, regardless of its advertised HTTP protocol version. For more details, see [Configure remote host settings](/docs/apim_policydev/apigw_poldev/gw_instances/general_remote_hosts).{{< /alert >}}
+settings to configure whether a destination is capable of supporting the chunked encoding in HTTP/1.1, regardless of its advertised HTTP protocol version. For more details, see [Configure remote host settings](/docs/apim_policydev/apigw_gw_instances/general_remote_hosts).{{< /alert >}}
 
 ### HTTP responses
 

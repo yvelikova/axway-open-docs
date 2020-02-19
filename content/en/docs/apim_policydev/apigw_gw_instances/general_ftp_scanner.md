@@ -21,7 +21,7 @@ node, right-click the instance name (for example, `API Gateway`), and select **F
 > **Add**. This topic describes how to configure the fields on the **FTP Poller Settings**
 dialog.
 
-For details on how to configure the API Gateway to act as a file transfer service that listens on a port for remote clients, see [Configure a file transfer service](/docs/apim_policydev/apigw_poldev/gw_instances/general_file_transfer/).
+For details on how to configure the API Gateway to act as a file transfer service that listens on a port for remote clients, see [Configure a file transfer service](/docs/apim_policydev/apigw_gw_instances/general_file_transfer/).
 
 ## General settings
 
@@ -108,7 +108,7 @@ The following general settings apply to FTP and FTPS connections:
 Select this option to prevent problems caused by opening outgoing ports in the firewall relative to the file transfer server (for example, when using *active*
 FTP connections). This is selected by default.
 
-{{< alert title="Note" color="primary" >}}To use passive transfer mode, you must perform the steps described in [Configure passive transfer mode](/docs/apim_policydev/apigw_poldev/gw_instances//general_file_transfer#configure-passive-transfer-mode).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}To use passive transfer mode, you must perform the steps described in [Configure passive transfer mode](/docs/apim_policydev/apigw_gw_instances//general_file_transfer#configure-passive-transfer-mode).{{< /alert >}}
 
 **File Type**:
 Select **ASCII**

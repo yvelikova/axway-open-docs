@@ -18,7 +18,7 @@ When a file transfer service is configured, users are presented with a personal 
 
 Configuring a file transfer service can be useful when integrating with Business-to-Business (B2B) partner destinations or with legacy systems. For example, instead of making drastic changes to either system, the other system can upload files to the API Gateway. The added benefit is that the file transfer can be controlled and secured using API Gateway policies designed to suit system needs.
 
-For details on how to use the API Gateway to poll a remote file server, to query and retrieve files to be processed, see [Configure an FTP poller](/docs/apim_policydev/apigw_poldev/gw_instances/general_ftp_scanner/).
+For details on how to use the API Gateway to poll a remote file server, to query and retrieve files to be processed, see [Configure an FTP poller](/docs/apim_policydev/apigw_gw_instances/general_ftp_scanner/).
 
 ## General settings
 
@@ -232,7 +232,7 @@ Specifies how often the API Gateway checks to see if a directory has expired. De
 ## Logging settings
 
 The **Logging Settings**
-tab enables you to configure the logging level for the file transfer service, and to configure when message payloads are logged. For details see [Relative path logging settings](/docs/apim_policydev/apigw_poldev/gw_instances/general_relative_path/#logging-settings).
+tab enables you to configure the logging level for the file transfer service, and to configure when message payloads are logged. For details see [Relative path logging settings](/docs/apim_policydev/apigw_gw_instances/general_relative_path/#logging-settings).
 
 **Include in real time monitoring**
 Select whether to monitor traffic for the file transfer service. This means that traffic for this service is monitored in the API Gateway Manager and API Gateway Analytics web-based consoles. This setting is selected by default.

@@ -10,7 +10,7 @@
 
 This section describes how to use Policy Studio to configure an API Gateway policy manually. It also applies to cases where a web service definition is not available in a Web Services Description Language (WSDL) file, meaning that the policy used to protect a web service must be configured manually.
 
-However, the recommended way to configure a policy to protect a web service is to import the WSDL file for that service. If your web service has WSDL-based definitions, see [Configure policies from WSDL files](/docs/apim_policydev/apigw_poldev/web_services/general_policy_wsdl/).
+However, the recommended way to configure a policy to protect a web service is to import the WSDL file for that service. If your web service has WSDL-based definitions, see [Configure policies from WSDL files](/docs/apim_policydev/apigw_web_services/general_policy_wsdl/).
 
 The following steps outline how to manually create a policy to protect a web service and then test it.
 
@@ -137,7 +137,7 @@ You can configure a global policy at the service level to run as part of a polic
 
 ![Global Policy Configured on Relative Path](/Images/docbook/images/general/path_global_policy.gif)
 
-For more details, see [Configure relative paths](/docs/apim_policydev/apigw_poldev/gw_instances/general_relative_path/).
+For more details, see [Configure relative paths](/docs/apim_policydev/apigw_gw_instances/general_relative_path/).
 
 ### Show global policies
 

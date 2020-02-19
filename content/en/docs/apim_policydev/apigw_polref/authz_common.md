@@ -585,7 +585,7 @@ tab:
 
 **Connection**:
 Click the button on the right to select your preconfigured LDAP directory server (for example, `openldap.qa.axway.com`). For details on how to configure LDAP servers, see
-[Configure LDAP directories](/docs/apim_policydev/apigw_poldev/external_connections/common_ldap_conf/).
+[Configure LDAP directories](/docs/apim_policydev/apigw_external_connections/common_ldap_conf/).
 
 **Search Base**:
 Enter the Distinguished Name (DN) to use as the base from which the search starts (for example, `o=Axway,l=Dublin 4,st=Dublin,C=IE`).

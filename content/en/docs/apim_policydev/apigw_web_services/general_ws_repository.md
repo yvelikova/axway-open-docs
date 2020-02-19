@@ -18,7 +18,7 @@ Alternatively, to add a new web service group, right-click the default **Web Ser
 
 ## Register a web service
 
-Registering a web service involves importing the WSDL file that contains the definitions for the web service. Policy Studio provides an **Import WSDL** wizard to make registering a web service a simple process that requires minimal manual intervention. For more information on registering a web service by importing a WSDL file, see [Configure policies from WSDL files](/docs/apim_policydev/apigw_poldev/web_services/general_policy_wsdl/).
+Registering a web service involves importing the WSDL file that contains the definitions for the web service. Policy Studio provides an **Import WSDL** wizard to make registering a web service a simple process that requires minimal manual intervention. For more information on registering a web service by importing a WSDL file, see [Configure policies from WSDL files](/docs/apim_policydev/apigw_web_services/general_policy_wsdl/).
 
 The **Import WSDL** wizard auto-generates policies and service handlers for each web service imported. These are automatically configured wherever possible, based on the imported WSDL. This means that only a small number of fields need to be configured manually.
 
@@ -70,7 +70,7 @@ The **Service Handler** is used to control and validate requests to the web serv
 
 ### Security policies
 
-If you configured a WS-policy to enforce security between the client and API Gateway (as described in [Configure a security policy](/docs/apim_policydev/apigw_poldev/web_services/general_policy_wsdl/)), or if the imported WSDL file contained WS-Policy assertions, a number of additional policies are automatically created in a generated policy container named `WSPolicy`. Any recipient policies are created in a container named `Recipient` and any initiator policies are created in a container named `Initiator`. These generated policies include the filters required to generate and validate the relevant security tokens (for example, SAML tokens, WS-Security `UsernameToken` elements, and WS-Addressing headers). These policies perform the necessary cryptographic operations (for example, signing/verifying and encryption/decryption) to meet the security requirements of the specified policies.
+If you configured a WS-policy to enforce security between the client and API Gateway (as described in [Configure a security policy](/docs/apim_policydev/apigw_web_services/general_policy_wsdl/)), or if the imported WSDL file contained WS-Policy assertions, a number of additional policies are automatically created in a generated policy container named `WSPolicy`. Any recipient policies are created in a container named `Recipient` and any initiator policies are created in a container named `Initiator`. These generated policies include the filters required to generate and validate the relevant security tokens (for example, SAML tokens, WS-Security `UsernameToken` elements, and WS-Addressing headers). These policies perform the necessary cryptographic operations (for example, signing/verifying and encryption/decryption) to meet the security requirements of the specified policies.
 
 ## Export a web service
 
@@ -134,7 +134,7 @@ API Gateway regenerates the configuration. The service handler for the web servi
 
 To delete a web service, right-click on the web service node under the **Web Service Repository** and select **Delete**.
 
-{{< alert title="Note" color="primary" >}}To delete the WSDL document or XML schemas associated with a web service, see [Delete cached WSDL or XML schema documents](/docs/apim_policydev/apigw_poldev/web_services/general_schema_cache/#delete-cached-wsdl-or-xml-schema-documents).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}To delete the WSDL document or XML schemas associated with a web service, see [Delete cached WSDL or XML schema documents](/docs/apim_policydev/apigw_web_services/general_schema_cache/#delete-cached-wsdl-or-xml-schema-documents).{{< /alert >}}
 
 ## Use scripts to manage web services
 
@@ -187,4 +187,4 @@ For example, if the policy is deployed under `http://SERVICES:8080/services/getQ
 
 ### Publish to UDDI
 
-For details on how to publish a WSDL file registered in the web service repository to a UDDI registry, see [Publish WSDL files to a UDDI registry](/docs/apim_policydev/apigw_poldev/web_services/general_uddi/#publish-wsdl-files-to-a-uddi-registry).
+For details on how to publish a WSDL file registered in the web service repository to a UDDI registry, see [Publish WSDL files to a UDDI registry](/docs/apim_policydev/apigw_web_services/general_uddi/#publish-wsdl-files-to-a-uddi-registry).
