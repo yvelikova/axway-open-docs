@@ -191,8 +191,8 @@ const collections = [{
 }, {
   ...docsDefaults('apim_policydev/apigw_oauth/oauth_flows', 'OAuth'),
   name: 'oauth_flows',
-  label: 'OAuth authenticatin flows',
-  label_singular: 'page in OAuth config (flows) section',
+  label: 'OAuth authentication flows',
+  label_singular: 'page in OAuth flows section',
   description: 'All pages relating to OAuth authentication flows.',
   format: 'frontmatter',
 }, {
