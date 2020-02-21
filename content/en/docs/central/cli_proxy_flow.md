@@ -46,7 +46,9 @@ proxy:
         name: 'Default Team'
 ```
 
-If you specify a client authentication policy other than `pass-through` (for example, `api-key`, `jwt-token`, or `oauth`), you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created.
+If you specify a client authentication policy other than `pass-through` (for example, `api-key`, `jwt-token`, or `oauth`), you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created. The oauth type has additional oauth specific properties that can also be added. These include flows, authorizationUrl, tokenUrl and scopes. These addtional properties map directly to the Swagger 2.0 OAuth security scheme https://swagger.io/docs/specification/2-0/authentication/
+When scopes are specified they will be applied to the proxy at the base level meaning that any token used to call the proxy methods must contain all the scopes. There are no method level scopes at this time. Theremaining properties are used to inform the swagger produced in the Unified catalog and direct the consumer to where they can request tokens for this proxy.
+
 
 `backendAuth` is an optional field. If it is not specified, no back-end authentication is enabled. If you specify `auth-http-basic` as the back-end authentication policy, the password can be empty.
 
@@ -75,7 +77,7 @@ proxy:
         name: 'Default Team'
 ```
 
-If you specify `oauth` as the client authentication policy, specify `clientId`, `issuer`, and `metadataPath` in the application profile, to allow this application to consume your proxy. The type of client authentication policy specified under `clientApp` must match the type of application profile. For example:
+If you specify `oauth` as the client authentication policy, specify `clientId`, `issuer`, and `metadataPath` in the application profile, to allow this application to consume your proxy. The type of client authentication policy specified under `clientApp` must match the type of application profile. If scopes are specified, as in the example below, any token request for for the client must request all of the scopes. For example:
 
 ```
 version: v1 # Version of the file format
@@ -88,6 +90,15 @@ proxy:
         clientAuth:
             type: oauth
             app: 'Sample App'
+            flows:
+              - 'accessCode'
+            authorizationUrl: 'https://dev-693892.okta.com/oauth2/aus1a4kh7lXPKhjFA357/v1/authorize'
+            tokenUrl: 'https://dev-693892.okta.com/oauth2/aus1a4kh7lXPKhjFA357/v1/token'
+            scopes:
+              - scope: 'read'
+                description: 'The read scope'
+              - scope: 'write'
+                description: 'The write scope'
         backendAuth:
             type: auth-http-basic
             username: Joe
