@@ -48,7 +48,7 @@ If no threat protection profiles have been configured, do the following:
 
     **Configuration file**:
 
-    Enter the threat protection configuration file name. The default value is `modsecurity.conf`. This file contains the engine global settings. For details on the file format and     recommended settings, see [Recommended Base Configuration](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#a-recommended-base-configuration) in the ModSecurity     documentation.
+    Enter the threat protection configuration file name. The default value is `modsecurity.conf`. This file contains the engine global settings. For details on the file format and     recommended settings, see [Recommended Base Configuration](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#A_Recommended_Base_Configuration) in the ModSecurity     documentation.
 
     **Rules directory**:
 
@@ -78,9 +78,9 @@ SecRule REQUEST_HEADERS:Content-Type "application/xml" \
 ```
 
 * To configure ModSecurity to start denying requests with threatening content, in `modsecurity.conf`, change the value of `SecRuleEngine` from `DetectionOnly` to `On`.
-* If you have not included the security action in your security rules, you may need to set `SecDefaultAction` in `modsecurity.conf`. See [Configure API firewalling](#configure-api-firewalling). For more details on the `SecDefaultAction` parameter, see [ModSecurity Reference Manual](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#SecDefaultAction).
+* If you have not included the security action in your security rules, you may need to set `SecDefaultAction` in `modsecurity.conf`. See [Configure API firewalling](#configure-api-firewalling). For more details on the `SecDefaultAction` parameter, see [ModSecurity Reference Manual](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#SecDefaultAction).
 
-For more details on the `modsecurity.conf` file format and recommended settings, see [Recommended Base Configuration](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#a-recommended-base-configuration) in the ModSecurity documentation.
+For more details on the `modsecurity.conf` file format and recommended settings, see [Recommended Base Configuration](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#A_Recommended_Base_Configuration) in the ModSecurity documentation.
 
 ## Monitor API firewalling
 
