@@ -43,13 +43,13 @@ For more details, see [Deploy configuration](/docs/apim_administration/apigtw_ad
 
 When a project is loaded in Policy Studio, you can select **Tasks** > **Add REST API** from the main menu to add an API to the project.
 
-For more details, see [Develop REST APIs in Policy Studio](/docs/apim_policydev/apigw_poldev/web_services/register_rest_apis/).
+For more details, see [Develop REST APIs in Policy Studio](/docs/apim_policydev/apigw_web_services/register_rest_apis/).
 
 ## Virtualize a web service
 
 When a project is loaded in Policy Studio, you can select **Tasks** > **Virtualize a Service** from the main menu to use the API Gateway to virtualize a web service.
 
-For more details, see [Register and secure web services](/docs/apim_policydev/apigw_poldev/web_services/).
+For more details, see [Register and secure web services](/docs/apim_policydev/apigw_web_services/).
 
 ## Change the project passphrase
 
@@ -105,4 +105,4 @@ To unlock a server connection, perform the following steps:
 5. Upload the files back to the server's `conf/fed` directory.
 6. Restart the Admin Node Manager.
 
-For more details on **Management Services**, see [Management services](/docs/apim_policydev/apigw_poldev/gw_instances/general_services/#management-services).
+For more details on **Management Services**, see [Management services](/docs/apim_policydev/apigw_gw_instances/general_services/#management-services).

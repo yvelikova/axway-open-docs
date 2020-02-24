@@ -22,11 +22,11 @@ To view the installed version number in Policy Studio, select **Help > About Pol
 
 ### API Gateway Manager
 
-You can view the installed version number, including any installed service pack, for API Gateway instances in API Gateway Manager. For more information, see [Check the installed version number of API Gateway instances](/docs/apim_administration/apigtw_admin/managetopology#check-installed-version).
+You can view the installed version number, including any installed service packs or updates, for API Gateway instances in API Gateway Manager. For more information, see [Check the installed version number of API Gateway instances](/docs/apim_administration/apigtw_admin/managetopology#check-installed-version).
 
 ### Process listing
 
-You can list the API Gateway processes to view the installed version number, including any installed service pack. For example:
+You can list the API Gateway processes to view the installed version number, including any installed service pack or update. For example:
 
 ```
 $ ps -eaf | grep vshell
@@ -36,7 +36,7 @@ user1 19595 13643  0 Nov14 pts/23   00:06:05 NodeManager on Host1 (Node Manager 
 
 ### Trace file
 
-You can find the installed version number, including any installed service pack, in the header of the trace files for the Node Manager, API Gateway instance, or API Gateway Analytics server. For more information on where to find the trace files, see [Configure API Gateway diagnostic trace](/docs/apim_administration/apigtw_admin/tracing).
+You can find the installed version number, including any installed service pack or update, in the header of the trace files for the Node Manager, API Gateway instance, or API Gateway Analytics server. For more information on where to find the trace files, see [Configure API Gateway diagnostic trace](/docs/apim_administration/apigtw_admin/tracing).
 
 For example, the following trace file (for a Node Manager) shows the installed version and service pack:
 
@@ -49,7 +49,7 @@ For example, the following trace file (for a Node Manager) shows the installed v
 
 ## Find your installed version and list patches using managedomain {#find-install-version}
 
-You can use the `managedomain` command with the `-v` or `--version` options to find the installed version number, including any installed service pack or patches, and build information.
+You can use the `managedomain` command with the `-v` or `--version` options to find the installed version number, including any installed service pack, update, or patches, and build information.
 
 The following example shows the output for a system with API Gateway 7.7 installed, with service pack `SP1` installed, and no patches installed:
 
@@ -61,7 +61,7 @@ Commit Id:  05a6440fc3128d8d2f3dfe105904d04fffae67ea
 Patch:      None
 ```
 
-The `Build Date` and `Commit Id` fields in the output relate to the main product version (or the service pack, if one is installed). These fields are updated when a service pack is installed, but they are not updated when a patch is installed.
+The `Build Date` and `Commit Id` fields in the output relate to the main product version (or the service pack or update, if one is installed). These fields are updated when a service pack or update is installed, but they are not updated when a patch is installed.
 
 When patches are installed, `managedomain --version` displays the names of the patches installed. Patches are named after the internal ticket number and related commit ID (for example, `RDAPI-4563_3y7shb87635bhsaf7864nckzj7r9mp8744n8asa`). It also validates the installed patches and displays messages about any problems with the patch installation.
 
@@ -115,7 +115,7 @@ For more information on the patch validation messages and how to resolve them, s
 
 The `managedomain --version` command checks the version on the local machine only. You do not need to have an Admin Node Manager or API Gateway running to run this command.
 
-This command lists version information relating to what is installed on disk. You must stop your Node Manager and API Gateways before installing service packs and patches, you must restart them after installation, or the output of this command might not reflect what is loaded for the runtime of the Node Manager and API Gateways.
+This command lists version information relating to what is installed on disk. You must stop your Node Manager and API Gateways before installing service packs, updates, and patches, you must restart them after installation, or the output of this command might not reflect what is loaded for the runtime of the Node Manager and API Gateways.
 
 This command can also be run in command interpreter mode.
 
@@ -124,7 +124,7 @@ This command can also be run in command interpreter mode.
 It is important to include as much information as possible when contacting the Axway Support team. This helps to diagnose and solve the problem in a more efficient manner. The following information should be included with any Support query:
 
 * Name and version of the product (for example,  API Gateway 7.7).
-* Details of any service pack or patches that were applied to the product, if any.
+* Details of any service pack, update, or patches that were applied to the product, if any.
 * Operating system on which the product is running.
 * A clear (step-by-step) description of the problem or query.
 * If you have encountered an error, the error message should be included in the email. It is also useful to include any relevant trace files from the `/trace` directory of your product installation, preferably with the trace level set to `DEBUG`.

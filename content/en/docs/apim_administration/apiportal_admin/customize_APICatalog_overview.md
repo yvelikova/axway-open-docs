@@ -26,9 +26,9 @@ To change the API Catalog settings:
 2. Click **Menus > Main Menu**.
 3. Click **APIs**.
 4. Click the **API Catalog** tab.
-
-    ![Customize API catalog](/Images/uploads/apiportal-jai-customize-api-catalog.png)
 5. Change the settings as required and click **Save & Close**.
+
+![Customize API catalog](/Images/uploads/apiportal-jai-customize-api-catalog.png)
 
 ## Customize source of API descriptions
 
@@ -40,21 +40,15 @@ To change the settings:
 2. In the **API Information Source** field, select `Description` or `Summary`.
 3. Click **Save**.
 
-## Customize page title or summary
+## Customize page title and summary
 
-You can customize the API Catalog page title, the summary text, or both.
-
-1. In JAI, click **Menus > Main Menu**.
-2. Select **APIs**, and go to the **Page Display** tab.
-3. In **Masthead Title**, enter the new page title. If you leave this empty, the default title is used.
-4. In **Masthead Slogan**, enter the new summary. If you leave this empty, the default text is used.
-5. Click **Save & Close**.
+You can customize the API Catalog page title and summary text. For details, see [Additional customizations](/docs/apim_administration/apiportal_admin/customize_page_content/#customize-page-title-and-summary).
 
 ## Group APIs with tags
 
 You can add tags to APIs in API Manager and use them to split your API Catalog into smaller subsets. For example, you can create multiple themed API groups based on your developer communities.
 
-For more details on adding tags to APIs, see the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/) .
+For more details on adding tags to APIs, see the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
 
 To create a dedicated API Catalog for a subset of tagged APIs, do the following:
 
@@ -63,11 +57,11 @@ To create a dedicated API Catalog for a subset of tagged APIs, do the following:
 3. Enter a menu title for the new API Catalog.
 4. In **Menu Item Type**, click **Select > API Portal > API Catalog Page**.
 5. Set **Access** to the level you want, and ensure that **Status** is set to `Published`.
-6. In **Ordering**, select where in the main menu the new API Catalog appears. The menu item is placed after the item you select here.
+6. In **Ordering**, select where in the main menu the new API Catalog appears. The menu item is placed after the item you select in here.
    To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.
 7. On the **API Catalog** tab, in the **Show APIs with tags**, enter the tags to include in this API Catalog.
 8. On the **API Catalog** tab, in the **Do not show APIs with tags**, enter the tags to exclude in this API Catalog.
-9. On the **Page Display** tab, you can change the page title and summary text. For more details, see [Customize page title or summary](#customize-page-title-or-summary).
+9. On the **Page Display** tab, you can change the page title and summary text. For more details, see [Customize page title and summary](/docs/apim_administration/apiportal_admin/customize_page_content/#customize-page-title-and-summary).
 10. Click **Save & Close**.
 
 Your themed API Catalog is now ready, and you can see it in your API Portal.

@@ -318,7 +318,7 @@ For more details on the fields and options in this configuration window, see [Ma
 4. Click **X.509 Certificate**, select your SSL certificate, and click **OK**.
 5. Click the **Deploy** icon to deploy the configuration to API Gateway.
 
-For more details on the fields and options in this configuration window, see [Configure HTTP services](/docs/apim_policydev/apigw_poldev/gw_instances/general_services/).
+For more details on the fields and options in this configuration window, see [Configure HTTP services](/docs/apim_policydev/apigw_gw_instances/general_services/).
 
 You must configure your browser to use secure connection as well. For more details, see [Configure your browser to use SSL/TLS connection](#configure-your-browser-to-use-ssl-tls-connection).
 

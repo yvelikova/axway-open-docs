@@ -59,9 +59,9 @@ For example:
 
 ## Check the installed version number of API Gateway instances {#check-installed-version}
 
-The installed product version number and any installed service pack are displayed in the API Gateway Manager topology and grid views.
+The installed product version number and any installed service packs or updates are displayed in the API Gateway Manager topology and grid views.
 
-When no service pack is installed on a system, API Gateway Manager shows the product version (for example, `7.7`). If a service pack is installed API Gateway Manager shows the product version and the service pack number (for example, `7.7 SP1`).
+When no service pack or update is installed on a system, API Gateway Manager shows the product version (for example, `7.7`). If a service pack or update is installed API Gateway Manager shows the product version and the service pack or update number (for example, `7.7 SP1`).
 
 The version information is the same for all processes running on a host as they all use the same physical installation. Version information is shown at the host and gateway level. Version information is not shown at the group level as groups can span multiple hosts.
 

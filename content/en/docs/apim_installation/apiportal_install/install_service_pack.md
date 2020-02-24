@@ -8,11 +8,11 @@
 
 Service packs and patches provide important security updates, fixes for known issues, and improved performance for API Portal and its components.
 
-## Install a service pack or patch on a software installation
+## Apply a service pack or patch on a software installation
 
-You can download the service pack and the associated Readme file from Axway Support at [https://support.axway.com](https://support.axway.com/). Review the Readme for any specific installation instructions before you install the service pack.
+You can download the service pack and the associated Readme file from Axway Support at [https://support.axway.com](https://support.axway.com/). Review the Readme for any specific instructions before you apply the service pack.
 
-## Install a service pack or patch on a container deployment
+## Apply a service pack or patch on a container deployment
 
 To apply a service pack or patch to a container deployment:
 
