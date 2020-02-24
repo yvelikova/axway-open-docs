@@ -16,7 +16,7 @@ For more details on ModSecurity, see [Apache ModSecurity documentation](http://w
 
 ModSecurity provides very little protection on its own. However, you can configure the required protection by configuring The ModSecurity rules engine with a threat protection profile. Protecting against specific threats requires specific rules, and different vendors provide rules for specific threat protection capabilities.
 
-The Open Web Application Security Project (OWASP) [ModSecurity Core Rule Set (CRS) project](https://modsecurity.org/crs/) provides a popular rule set. For more details on OWASP, see [OWASP web page](https://www.owasp.org/).
+The Open Web Application Security Project (OWASP) [ModSecurity Core Rule Set (CRS) project](https://modsecurity.org/crs/) provides a popular rule set. You can use CSR version 2.x and 3.x. For more details on how to configure CSR version 3.x please read more here. For more details on OWASP, see [OWASP web page](https://www.owasp.org/).
 
 For details on how to write security rules yourself, see, for example, [How To Write A WAF Rule - Modsecurity Rule Writing](https://support.kemptechnologies.com/hc/en-us/articles/209635223-How-to-write-a-WAF-rule-Modsecurity-Rule-Writing).
 
@@ -126,3 +126,22 @@ FROM USERS found within ARGS:q:SELECT * FROM USERS"] [severity "CRITICAL"]
 ```
 
 In addition to being written to trace files, ModSecurity report is also stored in the message attribute `modsec.error.message`. You can configure an alert policy that, for example, uses an Alert filter with a selector for this message attribute in the default message to pass the threat report to third-party monitoring systems.
+
+## Use OWASP ModSecurity Core Rule Set (CRS) version 3.x
+Using CRS version 3.x is a bit special, as according to the OWASP documentation the configuration files need to be loaded by the web server in exactly that order:
+1. modsecurity.conf
+2. crs-setup.conf
+3. rules/*.conf 
+As there is actually no way to specify that crs-setup.conf is included before the rule files, just place the crs-setup.conf in the activated_rules directory and rename it to 0crs-setup.conf. That way, the 0crs-setup.conf is loaded before the rules.
+
+You can check that the configuration- and rule-files are loaded correctly in the API Gateway instance trace file at protocol level INFO:
+```
+Configure mod_security with /home/axway/Axway-7.7.20200130/apigateway/system/conf/threat-protection/default/modsecurity.conf
+Processing 0crs-setup.conf
+Processing REQUEST-901-INITIALIZATION.conf
+Processing REQUEST-941-APPLICATION-ATTACK-XSS.conf
+Processing ****.conf
+```
+
+Watch this video to see how to configure Mod-Security with CSR 3.x:
+{{< youtube VrUBucXVGtk >}}
