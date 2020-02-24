@@ -102,7 +102,7 @@ Processing REQUEST-941-APPLICATION-ATTACK-XSS.conf
 Processing ****.conf
 ```
 
-Watch this video to see how to configure ModSecurity with CSR 3.x:
+Watch this video to see how to configure ModSecurity with CRS 3.x:
 
 {{< youtube VrUBucXVGtk >}}
 
