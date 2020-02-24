@@ -82,6 +82,14 @@ SecRule REQUEST_HEADERS:Content-Type "application/xml" \
 
 For more details on the `modsecurity.conf` file format and recommended settings, see [Recommended Base Configuration](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#A_Recommended_Base_Configuration) in the ModSecurity documentation.
 
+## Configure a RuleSet for your needs
+A RuleSet config file contains a number of rules for a certain use-case (e.g. REQUEST-942-APPLICATION-ATTACK-SQLI.conf). But some of the rules might create False-Positive in your environment and needs to be individually disbaled.  
+To disable one or more rules it's not recommended to change the RuleSet configuration file itself, as this file is regulary updated and will be replaced. Instead create your own Rule-File (`activated_rules/disabledRule.conf`) and use for instance the directive:
+```
+SecRuleRemoveById 942101
+```
+to disable one or more rules. [Read more](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#SecRuleRemoveById) about other directives you may use.
+
 ## Monitor API firewalling
 
 The API Gateway administrator or operator can use the **Traffic > HTTP** tab in the API Gateway Manager web console to monitor API firewalling. You can use this tab to show how threat protection affects the HTTP traffic API Gateway serves.
