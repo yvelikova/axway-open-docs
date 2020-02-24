@@ -16,7 +16,7 @@ For more details on ModSecurity, see [Apache ModSecurity documentation](http://w
 
 ModSecurity provides very little protection on its own. However, you can configure the required protection by configuring The ModSecurity rules engine with a threat protection profile. Protecting against specific threats requires specific rules, and different vendors provide rules for specific threat protection capabilities.
 
-The Open Web Application Security Project (OWASP) [ModSecurity Core Rule Set (CRS) project](https://modsecurity.org/crs/) provides a popular rule set. You can use CSR version 2.x and 3.x. For more details on how to configure CSR version 3.x please read more here. For more details on OWASP, see [OWASP web page](https://www.owasp.org/).
+The Open Web Application Security Project (OWASP) [ModSecurity Core Rule Set (CRS) project](https://modsecurity.org/crs/) provides a popular rule set. You can use CSR version 2.x and 3.x. For more details on how to configure CSR version 3.x please read more [here](#use-owasp-modsecurity-core-rule-set-crs-version-3x). For more details on OWASP, see [OWASP web page](https://www.owasp.org/).
 
 For details on how to write security rules yourself, see, for example, [How To Write A WAF Rule - Modsecurity Rule Writing](https://support.kemptechnologies.com/hc/en-us/articles/209635223-How-to-write-a-WAF-rule-Modsecurity-Rule-Writing).
 
