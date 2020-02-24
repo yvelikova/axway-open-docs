@@ -73,19 +73,6 @@ This example uses the following topology logging environment variables:
 
 For information on the other options used in this example, see [Start the API Gateway container](/docs/apim_installation/apigw_containers/docker_script_gwimage/#start-the-api-gateway-docker-container).
 
-<!--
-1. Go to \[Axway support](https://support.axway.com/) and download the configuration files for API Gateway:
-
-    \* file 1: description
-    \* file 2: description
-
-2. Extract the zip locally.
-3. Upload the `<placeholder>.json\` file from the package to the \`<Edge_Agent_install_dir>/aggregator/usage_tracking/conf/agent/aggregation\` directory.
-4. Upload the \`<placeholder>.json\` file from the package to the \`<Edge_Agent_install_dir>/conf/agent/report\` directory.
-5. Edit the \`report configuration` file, and add the environment ID associated with your organization on the AMPLIFY Platform.
-6. Restart the Edge Agent.
--->
-
 ## Review subscriptions and usages on the platform
 
 After you have completed the configuration and have enabled uploads of usage reports, you can log in to the [AMPLIFY Platform](https://platform.axway.com/) and access and review your subscriptions and usage data. For more information, see [Review subscriptions and usages on the platform](https://docs.axway.com/bundle/subusage_en/page/review_subscriptions_and_usages_on_the_platform.html).
