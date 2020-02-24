@@ -128,7 +128,7 @@ FROM USERS found within ARGS:q:SELECT * FROM USERS"] [severity "CRITICAL"]
 In addition to being written to trace files, ModSecurity report is also stored in the message attribute `modsec.error.message`. You can configure an alert policy that, for example, uses an Alert filter with a selector for this message attribute in the default message to pass the threat report to third-party monitoring systems.
 
 ## Use OWASP ModSecurity Core Rule Set (CRS) version 3.x
-Using CRS version 3.x is a bit special, as according to the OWASP documentation the configuration files need to be loaded by the web server in exactly that order:
+Using CRS version 3.x requires some additional configuration. According to the OWASP documentation the configuration files need to be loaded by the web server in exactly that order:
 1. modsecurity.conf
 2. crs-setup.conf
 3. rules/*.conf 
