@@ -72,9 +72,9 @@ For more details on the `modsecurity.conf` file format and recommended settings,
 
 ## Disable specific rules
 
-A RuleSet configuration file contains a number of rules for a certain use case (for example, `REQUEST-942-APPLICATION-ATTACK-SQLI.conf`). However, some of the rules might create a false positive in your environment and need to be individually disabled.
+A rule set configuration file contains a number of rules for a certain use case (for example, `REQUEST-942-APPLICATION-ATTACK-SQLI.conf`). However, some of the rules might create a false positive in your environment and need to be individually disabled.
 
-To disable one or more rules it is not recommended to change the RuleSet configuration file itself, as this file is regularly updated and will be replaced. Instead, create your own rule file (for example, `activated_rules/disabledRule.conf`) and disable one or more rules using a directive:
+To disable one or more rules it is not recommended to change the rule set configuration file itself, as this file is regularly updated and will be replaced. Instead, create your own rule file (for example, `activated_rules/disabledRule.conf`) and disable one or more rules using a directive:
 
 ```
 SecRuleRemoveById 942101
@@ -82,18 +82,19 @@ SecRuleRemoveById 942101
 
 For more information on this and other directives you can use, see [SecRuleRemoveById in the ModSecurity reference](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#SecRuleRemoveById).
 
-## DetectionOnly for specific rules
+## Apply DetectionOnly to specific rules
 
-Once the RuleEngine is configured to On, all activated rules of the provided RuleSet are applied and block traffic. But in some situations, for instance when a RuleSet is updated, it might be desireable not to activate new/changed rules immeditialy as they might create False-Positives.  
-An option is to activate some of the new rules with DetectionOnly and during a defined grace period monitor these new rules, to make sure, they are not creating unwanted False-Positives.  
+When `SecRuleEngine` is set to `On` all activated rules of the provided rule set are applied and block traffic. In some situations, for example, when a rule set is updated, you might not want to activate new or changed rules immediately as they might create false positives.
 
-This can be done with the following directive:  
+In this case, you can override the action of specific rules (to effectively apply `DetectionOnly` to these rules), and during a defined grace period monitor these new rules to ensure that they are not creating unwanted false positives.  
+
+Use the following directive:
+
 ```
 SecRuleUpdateActionById 942101 "pass,log"
 ```
 
 For more information on this directive see [SecRuleUpdateActionById in the ModSecurity reference](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#SecRuleUpdateActionById).
-
 
 ## Use OWASP ModSecurity CRS version 3.x
 
