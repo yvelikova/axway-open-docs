@@ -2,7 +2,7 @@
 title: Apache Cassandra backup and restore
 linkTitle: Backup and restore
 weight: 5
-date: 2019-06-05
+date: 2019-06-05T00:00:00.000Z
 description: |
   Learn how to back up and restore Cassandra.
 ---
@@ -243,7 +243,7 @@ do
   table_names+=(${name})
   table_uuids+=(${uuid})
 done < ${keyspace_tables}
-set +esort -o ${keyspace_tablenames} ${keyspace_tablenames}
+set +e
 sort -o ${keyspace_tablenames} ${keyspace_tablenames}
 diff -a -q ${keyspace_tablenames} ${backup_tablenames}
 if [ $? -ne 0 ]; then
