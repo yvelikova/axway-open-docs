@@ -46,9 +46,9 @@ proxy:
         name: 'Default Team'
 ```
 
-If you specify a client authentication policy other than `pass-through` (for example, `api-key`, `jwt-token`, or `oauth`), you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created. The oauth type has additional oauth specific properties that can also be added. These include flows, authorizationUrl, tokenUrl and scopes. These additional properties map directly to the Swagger 2.0 OAuth security scheme (https://swagger.io/docs/specification/2-0/authentication/).
+If you specify a client authentication policy other than `pass-through` (for example, `api-key`, `jwt-token`, or `oauth`), you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created.
 
-When scopes are specified, they will be applied to the proxy at the base level. This means that any token used to call the proxy methods must contain every scope. There are no method level scopes at this time. The remaining properties are used to inform the swagger produced in the Unified Catalog and direct the consumer to where tokens can be requested.
+The `oauth` type has additional OAuth specific properties that can also be added. These include flows, authorizationUrl, tokenUrl, and scopes. These additional properties map directly to the [Swagger 2.0 OAuth security scheme](https://swagger.io/docs/specification/2-0/authentication/). When scopes are specified, they will be applied to the proxy at the base level. This means that any token used to call the proxy methods must contain every scope. There are no method level scopes at this time. The remaining properties are used to inform the swagger produced in the Unified Catalog and direct the consumer to where tokens can be requested.
 
 `backendAuth` is an optional field. If it is not specified, no back-end authentication is enabled. If you specify `auth-http-basic` as the back-end authentication policy, the password can be empty.
 
@@ -77,7 +77,7 @@ proxy:
         name: 'Default Team'
 ```
 
-If you specify `oauth` as the client authentication policy, specify `clientId`, `issuer`, and `metadataPath` in the application profile, to allow this application to consume your proxy. The type of client authentication policy specified under `clientApp` must match the type of application profile. If scopes are specified (see the example below), any token request for the client must request all of the scopes. For example:
+If you specify `oauth` as the client authentication policy, you must specify `clientId`, `issuer`, and `metadataPath` in the application profile to allow this application to consume your proxy. The type of client authentication policy specified under `clientApp` must match the type of application profile. If scopes are specified, any token request for the client must request all of the scopes. For example:
 
 ```
 version: v1 # Version of the file format
