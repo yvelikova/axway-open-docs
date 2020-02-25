@@ -126,9 +126,11 @@ For more details on installing and configuring an external Cassandra database fo
 
 ## Embedded Apache ActiveMQ
 
-API Gateway provides an embedded Apache ActiveMQ broker in each gateway instance. In a HA production environment, multiple ActiveMQ broker can work together as a network of brokers in a group of gateways. This requires setting up a shared directory that is accessible from all gateway instances—for example, using Storage Area Network (SAN) or Network File System (NFSv4).
+API Gateway provides an embedded Apache ActiveMQ broker in each gateway instance. In a HA production environment, multiple ActiveMQ brokers can work together as a network of brokers in a group of API Gateways. This requires setting up a shared directory that is accessible from all gateway instances—for example, using Storage Area Network (SAN) or Network File System (NFSv4).
 
-In this shared network of ActiveMQ brokers, each gateway can start a local embedded ActiveMQ broker, which listens on a configured TCP port (`61616` by default). This port is accessible from both the local gateway and remote clients using the load balancer.
+When setting up a shared directory, do not use OCFS2, NFSv3, or other software where exclusive file locks do not work reliably. For details, see [Apache ActiveMQ Shared File System Master Slave](http://activemq.apache.org/shared-file-system-master-slave.html).
+
+In this shared network of ActiveMQ brokers, each API Gateway can start a local embedded ActiveMQ broker, which listens on a configured TCP port (`61616` by default). This port is accessible from both the local gateway and remote clients using the load balancer.
 
 For details on how to configure and manage embedded Apache ActiveMQ, see the following:
 
