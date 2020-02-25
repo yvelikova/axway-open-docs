@@ -82,6 +82,19 @@ SecRuleRemoveById 942101
 
 For more information on this and other directives you can use, see [SecRuleRemoveById in the ModSecurity reference](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#SecRuleRemoveById).
 
+## DetectionOnly for specific rules
+
+Once the RuleEngine is configured to On, all activated rules of the provided RuleSet are applied and block traffic. But in some situations, for instance when a RuleSet is updated, it might be desireable not to activate new/changed rules immeditialy as they might create False-Positives.  
+An option is to activate some of the new rules with DetectionOnly and during a defined grace period monitor these new rules, to make sure, they are not creating unwanted False-Positives.  
+
+This can be done with the following directive:  
+```
+SecRuleUpdateActionById 942101 "pass,log"
+```
+
+For more information on this directive see [SecRuleUpdateActionById in the ModSecurity reference](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#SecRuleUpdateActionById).
+
+
 ## Use OWASP ModSecurity CRS version 3.x
 
 To use CRS version 3.x, configuration files must be loaded by the web server in exactly this order:
