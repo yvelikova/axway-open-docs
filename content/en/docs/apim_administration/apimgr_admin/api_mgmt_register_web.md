@@ -92,8 +92,7 @@ API Manager does not support the following features:
 
 {{< alert title="Tip" color="primary" >}}When your web service schemas are loaded in API Manager, they are protected by your chosen front-end API security device. Your client testing tool may be able to reach the WSDL, but not the schema imports without the appropriate key/credentials.{{< /alert >}}
 
-For details on registering web services using Policy Studio, see [Manage web services](/csh?context=638&product=prod-api-gateway-77)
-in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+For details on registering web services using Policy Studio, see [Register and secure web services](/docs/apim_policydev/apigw_web_services/).
 
 ## Import an existing Cloud-based back-end API
 

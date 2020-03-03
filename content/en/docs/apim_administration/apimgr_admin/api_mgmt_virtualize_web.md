@@ -162,7 +162,7 @@ Access token store
 : Select a required OAuth access token store from the list. For details on how to add OAuth access token stores to this list, see [Configure API Manager settings in Policy Studio](/docs/apim_administration/apimgr_admin/api_mgmt_config_ps/).
 
 Scopes must match
-: Select whether the OAuth scopes match `Any` or `All` of the OAuth scopes configured in the next field. OAuth scopes are used to control how access tokens are accepted. For more details on OAuth scopes, see the [API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/).
+: Select whether the OAuth scopes match `Any` or `All` of the OAuth scopes configured in the next field. OAuth scopes are used to control how access tokens are accepted.
 
 Scopes
 : Enter a comma-separated list of scopes used to manage how access tokens are accepted. In addition, these tokens are used as default scopes for applications that use this API and do not send the `scope` parameter in the access token request. You can also configure additional default scopes for an application if enabled in **Settings > API Manager Settings > General settings > Enable application scopes**. For details, see [API Manager settings](/docs/apim_reference/api_mgmt_config_web/#api-manager-settings). Defaults to `resource.WRITE, resource.READ`.
@@ -219,7 +219,7 @@ Token information policy
 : Select a required OAuth token information policy from the list. This is a custom policy used to obtain and extract token information from the external OAuth provider. For details on how to add OAuth token information policies to the list, see [Configure API Manager settings in Policy Studio](/docs/apim_administration/apimgr_admin/api_mgmt_config_ps/).
 
 Scopes must match
-: Select whether the OAuth scopes match Any or All of the OAuth scopes configured in the next field. OAuth scopes are used to control how access tokens are accepted. For more details on OAuth scopes, see the [API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/).
+: Select whether the OAuth scopes match Any or All of the OAuth scopes configured in the next field. OAuth scopes are used to control how access tokens are accepted.
 
 Scopes
 : Enter a comma-separated list of OAuth scopes used to manage how access tokens are accepted. Defaults to `resource.WRITE, resource.READ`.
@@ -492,7 +492,7 @@ You can use the **CORS Profiles** tab to create profiles for Cross Origin Resour
 * **CREDENTIALS SUPPORT**: Select whether the API advertises that it supports user credentials. When selected, the `Access-Control-Allow-Credentials` CORS header is sent in the response, with a value of `true`. This setting is not selected by default.
 * **PREFLIGHT RESULT CACHE**: Enter how long the results of a CORS preflight `OPTIONS` request can be stored in the client preflight result cache. When configured, the `Access-Control-Max-Age` CORS header is sent in the response.
 
-For more details on using CORS, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/). This provides more background information and explains how to configure CORS for specific HTTP services and relative paths in Policy Studio. For example, this may be useful when using a third-party load balancer, and you need to configure a CORS profile for the default **API Portal** HTTP service in Policy Studio.
+For more details on using CORS, see the [API Gateway Policy Developer Guide](/docs/apim_policydev/). This provides more background information and explains how to configure CORS for specific HTTP services and relative paths in Policy Studio. For example, this may be useful when using a third-party load balancer, and you need to configure a CORS profile for the default **API Portal** HTTP service in Policy Studio.
 
 ## Configure trusted certificates
 

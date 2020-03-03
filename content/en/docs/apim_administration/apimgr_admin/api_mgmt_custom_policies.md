@@ -12,8 +12,6 @@ API Manager custom policies are optional policies developed in Policy Studio tha
 
 This topic describes the API Manager HTTP request flow, and explains the different custom policies that you can add at different stages in the flow. It also gives examples of why you would use these custom policies and explains what happens when they are executed at runtime.
 
-For details on how to configure policies in Policy Studio, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
-
 ### HTTP request flow
 
 When custom policies are configured for front-end APIs in API Manager, the request flow is in the following order:
@@ -218,13 +216,11 @@ You can now invoke the API registered in API Manager and view that the API key h
 
 ![Invoke API and view API key in header](/Images/docbook/images/api_mgmt/api_mgmt_custom_policy_monitor_api_key.png)
 
-For more details on the API Gateway Manager web console, see the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
-
 ### Add a custom routing policy with OAuth authentication
 
 This section describes how to use API Manager to invoke an API with outbound OAuth authentication using a custom routing policy. In this scenario, one API Gateway instance acts as an OAuth client and the other API Gateway instance acts as an OAuth server. This section shows how to configure both API Gateway instances appropriately using the Client Credentials OAuth flow.
 
-{{< alert title="Note" color="primary" >}}This section assumes that you are already familiar with the Client Credentials OAuth flow. For more details on configuring OAuth flows, see the [API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}This section assumes that you are already familiar with the Client Credentials OAuth flow.{{< /alert >}}
 
 #### Configure the remote API Gateway as OAuth server in API Manager
 

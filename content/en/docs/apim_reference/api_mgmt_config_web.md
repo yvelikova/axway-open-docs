@@ -1,6 +1,6 @@
 {
-    "title": "API Manager settings reference",
-    "linkTitle": "Settings reference",
+    "title": "API Manager settings",
+    "linkTitle": "API Manager settings",
     "weight": "1",
     "date": "2019-09-17",
     "description": "Reference guide for the **Settings** tab in the API Manager web UI."

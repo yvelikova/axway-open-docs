@@ -48,7 +48,7 @@ To enable monitoring in API Manager, perform the following steps:
 
 5. Restart the API Gateway instance and Admin Node Manager.
 
-For more details on setting up a metrics database, see [Configure the metrics database](/csh?context=302&product=prod-api-gateway-77) in the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+For more details on setting up a metrics database, see [Configure the metrics database](/docs/apim_installation/apigtw_install/metrics_db_install/).
 
 ## Monitor APIs in API Manager
 
