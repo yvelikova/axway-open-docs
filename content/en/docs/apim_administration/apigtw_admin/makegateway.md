@@ -38,7 +38,7 @@ INSTALL_DIR/apigateway/posix/bin
 
 {{< alert title="Note" color="primary" >}}To register an API Gateway instance as a service on Linux, you must run the `managedomain` command as `root`.{{< /alert >}}
 
-For more details on `managedomain` options, see [Managedomain command reference](/docs/apim_administration/apigtw_admin/managedomain_ref).
+For more details on `managedomain` options, see [Managedomain command reference](/docs/apim_reference/managedomain_ref/).
 
 ## Register a host in a domain
 
