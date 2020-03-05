@@ -68,7 +68,7 @@ When API Gateway has authenticated successfully to CA SiteMinder on behalf of an
 
 You can use the **Logout** filter to terminate a previously issued session cookie. After the cookie has been terminated, the client is no longer considered authenticated.
 
-{{< alert title="Note" color="primary" >}}You must have already validated the session before calling the **Logout** filter in your policy. For more details, see [CA SiteMinder session validation](connector_sm_session.htm).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You must have already validated the session before calling the **Logout** filter in your policy. For more details, see [CA SiteMinder session validation](#ca-siteminder-session-validation-filter).{{< /alert >}}
 
 ## CA SiteMinder certificate authentication filter
 
@@ -110,7 +110,7 @@ filter, before inserting the cookie into a SAML attribute statement using the **
 Enter the name of the message attribute where you wish to store the session cookie. By default, the cookie is stored in the `siteminder.session` attribute.
 
 For more details how to integrate API Gateway with SiteMinder, see the
-[API Gateway Authentication and Authorization Integration Guide](/bundle/APIGateway_77_AuthAuthIntegrationGuide_allOS_en_HTML5).
+[API Gateway Authentication and Authorization Integration Guide](/docs/apigtw_auth_auth/).
 
 ## CA SiteMinder authorization filter
 

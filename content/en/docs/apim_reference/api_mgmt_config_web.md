@@ -153,17 +153,16 @@ For more information on API promotion, see [Promote managed APIs](/docs/apim_adm
 : Select whether to validate that the certificate is recognised as a valid server certificate during import.
 
 **Server certificate verification**
-: Select whether to validate that the certificate presented by the server matches the Remote Host being connected to during import. 
+: Select whether to validate that the certificate presented by the server matches the Remote Host being connected to during import.
 
 **Mime validation**
 : Select to perform MIME Type validation during import. MIME Type validation is implemented for OAS3 and Swagger 2 APIs. This setting is enabled by default.
 
 **Import timeout (seconds)**
-: Maximum amount of time to wait until an API is imported. This is particularly useful while importing OAS3 files with multiple parts. 
+: Maximum amount of time to wait until an API is imported. This is particularly useful while importing OAS3 files with multiple parts.
 
 **Allow users to modify Backend APIs**
-: Select to ensure that all APIs imported are editable by default. 
-
+: Select to ensure that all APIs imported are editable by default.
 
 ### Global policies
 
@@ -198,7 +197,7 @@ You can use the alert settings in Policy Studio to select which policies are con
 
 The remote host settings enable you to dynamically configure connection settings to back-end servers that are invoked by front-end APIs. API Administrators can edit all remote hosts in all organizations.
 
-The remote host settings available in API Manager are a subset of the settings available in Policy Studio. For more details on remote hosts, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+The remote host settings available in API Manager are a subset of the settings available in Policy Studio.
 
 ### Required settings
 

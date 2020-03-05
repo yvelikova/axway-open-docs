@@ -44,8 +44,7 @@ To configure the API Gateway instance to write transaction audit log data to the
 2. Select the **Database** tab, and select **Enable logging to database**.
 3. Select the **Default Database Connection** from the drop-down list if appropriate. Alternatively, select a database connection that you have configured. You must ensure that your database connection points to your metrics database.
 
-{{< alert title="Tip" color="primary" >}}To write the content of message transactions to the database, you must also configure the **Log Message Payload** filter in your policies (for example, at the start and end of the policy). For more details, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}To write the content of message transactions to the database, you must also configure the **Log Message Payload** filter in your policies (for example, at the start and end of the policy).{{< /alert >}}
 
 ## Configure the API Gateway to write to the transaction event log
 

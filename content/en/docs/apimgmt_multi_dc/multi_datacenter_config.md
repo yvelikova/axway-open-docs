@@ -41,7 +41,7 @@ The recommended configuration for each data type and its replication between dat
 
 ## Configure Cassandra for multiple datacenters {#cassandra_multiple}
 
-Cassandra is required to store data for API Manager data, and also recommended for API Gateway custom KPS tables. For details on the recommended Cassandra architecture, see [Multi-datacenter deployment architecture](/docs/apim_installation/apigtw_install/multi_datacenter_intro).
+Cassandra is required to store data for API Manager data, and also recommended for API Gateway custom KPS tables. For details on the recommended Cassandra architecture, see [Multi-datacenter deployment architecture](/docs/apimgmt_multi_dc/#multi-datacenter-deployment-architecture).
 
 {{< alert title="Note" color="primary" >}}You must install and configure Cassandra on each node in both datacenters before installing and configuring API Gateway and API Manager.{{< /alert >}}
 
@@ -50,7 +50,7 @@ Cassandra is required to store data for API Manager data, and also recommended f
 The following prerequisites apply to Cassandra in a multi-datacenter production environment:
 
 * Ensure that Cassandra version 2.2.12 is installed. For details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
-* You must have at least three Cassandra nodes per datacenter. Cassandra must be installed on each node in the cluster, but should not be started until the Cassandra cluster is fully configured. For more details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/l).
+* You must have at least three Cassandra nodes per datacenter. Cassandra must be installed on each node in the cluster, but should not be started until the Cassandra cluster is fully configured. For more details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
 * Configure `JAVA_HOME` to a JRE 1.8 installation.
 * Each Cassandra node must have Python 2.7.x installed.
 * Time must be synchronized on all servers.

@@ -60,7 +60,7 @@ ${level} ${timestamp} ${id} ${text} ${filterType} ${filterName}
 
 The available logging properties are described as follows:
     * **`level`**: The log level (`fatal` , `fail`, `success`).
-    * **`timestamp`**: The time that the message was processed in user-readable form. For more details, see **Date format** in [General settings](/docs/apim_administration/apigtw_admin/general_settings).
+    * **`timestamp`**: The time that the message was processed in user-readable form. For more details, see **Date format** in [General settings](/docs/apim_reference/general_settings/#general-settings).
     * **`id`**: The unique transaction ID assigned to the message.
     * **`text`**: The text of the log message that was configured in the filter itself. In the case of the **Log Message Payload** filter, the `${payload}` selector contains the message that was sent by the client.
     * **`filterName`**: The name of the filter that generated the log message.
@@ -111,13 +111,13 @@ To sign the log file, select a **Signing Key** from the Certificates Store that 
 
 Using this option, you can configure the API Gateway to log messages to an Oracle, SQL Server, or MySQL relational database.
 
-* Before configuring the API Gateway to log to a database, you must first create the database tables that the API Gateway writes to. For details on setting up tables for supported databases, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+Before configuring the API Gateway to log to a database, you must first create the database tables that the API Gateway writes to. For details on setting up tables for supported databases, see the [API Gateway Installation Guide](/docs/apim_installation/apigtw_install/).
 
 When you have set up the logging database tables, you can configure the API Gateway to log to the database. Click the **Database** tab, and select **Enable logging to database**. You can configure the following fields on the **Database** tab:
 
 **Connection**:
 
-Select an existing database from the **Connection** drop-down list. To add a database connection, click the **External Connections** button on the left, right-click the **Database connections** tree node, and select **Add a Database Connection**. For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+Select an existing database from the **Connection** drop-down list. To add a database connection, click the **External Connections** button on the left, right-click the **Database connections** tree node, and select **Add a Database Connection**.
 
 **Signing Key**:
 
@@ -141,7 +141,7 @@ To configure the API Gateway to send logging information to a remote syslog, cli
 
 **Syslog Server**:
 
-Select a previously configured **Syslog Server** from the list.For details on how to configure Syslog Server, see the topic on External Connections in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+Select a previously configured **Syslog Server** from the list. For details on how to configure Syslog Server, see [Configure external connections](/docs/apim_policydev/apigw_external_connections/).
 
 **Format**:
 
@@ -263,7 +263,7 @@ For more details, see [Supported log format strings](#supported-log-format-strin
 
 {{< alert title="Note" color="primary" >}}These settings configure the access log at the API Gateway level. You must also configure the access log at the service level on a specific relative path. {{< /alert >}}
 
-For example, in the Policy Studio tree, select the relative path, right-click it in the **Resolvers** pane, and select **Edit**. Then click the **Logging Settings** tab, and select **Include in server access log records**. For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+For example, in the Policy Studio tree, select the relative path, right-click it in the **Resolvers** pane, and select **Edit**. Then click the **Logging Settings** tab, and select **Include in server access log records**.
 
 ### Redact sensitive details from the access log
 

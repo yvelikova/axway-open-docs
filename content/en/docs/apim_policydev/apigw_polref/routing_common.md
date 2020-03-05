@@ -334,7 +334,7 @@ filter in conjunction with a **Rewrite URL**
 filter to specify the path to send the message to on the remote machine.
 
 Depending on how API Gateway is perceived by the client, different combinations of routing filters can be used. For an introduction to routing scenarios and the filters in the **Routing**
-category, see [Get started with routing configuration](/docs/apim_policydev/apigw_polref/connection_general/).
+category, see [Get started with routing configuration](/docs/apim_policydev/apigw_polref/routing_getstarted/).
 
 ### Configure a static router
 

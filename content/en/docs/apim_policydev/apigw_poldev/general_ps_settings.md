@@ -17,8 +17,7 @@ in the toolbar. {{< /alert >}}
 ### Auto-mapping
 
 These settings relate to the auto-mapping feature in Visual Mapper. For more information, see the
-[API Gateway Visual Mapper User Guide](/bundle/API_VisualMapper_78_UserGuide_allOS_en_HTML5)
-.
+[API Gateway Visual Mapper User Guide](https://docs.axway.com/bundle/API_VisualMapper_77_UserGuide_allOS_en_HTML5).
 
 ### Environmentalization
 

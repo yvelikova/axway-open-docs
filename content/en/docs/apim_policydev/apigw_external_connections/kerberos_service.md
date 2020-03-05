@@ -19,8 +19,7 @@ when configuring a Kerberos service.
 Once finished, you can select the configured Kerberos service when configuring other Kerberos-related filters. Ensure the check box **Enabled**
 at the bottom of the window is selected.
 
-For more details on different Kerberos setups with API Gateway, see
-[API Gateway Kerberos Integration Guide](/bundle/APIGateway_77_IntegrationKerberos_allOS_en_HTML5).
+For more details on different Kerberos setups with API Gateway, see the [API Gateway Kerberos Integration Guide](/docs/apigtw_kerberos/).
 
 ## Kerberos endpoint settings
 
@@ -32,9 +31,9 @@ tab:
 Select the name of the Kerberos principal you want to associate with API Gateway. A Kerberos client trying to authenticate to API Gateway *must*
 present a TGT containing a matching Kerberos principal name to API Gateway.
 
-To select which Kerberos principal to use, click the **...** button, and select a previously configured principal from the list. To add a Kerberos principal, right-click **Kerberos Principals**, and select **Add Kerberos Principal**. You can also add Kerberos principals under **Environment Configuration > External Connections** in the node tree. For more details, see [Configure Kerberos principals](/docs/apim_policydev/apigw_poldev/common_client_credentials/#configure-kerberos-principals).
+To select which Kerberos principal to use, click the **...** button, and select a previously configured principal from the list. To add a Kerberos principal, right-click **Kerberos Principals**, and select **Add Kerberos Principal**. You can also add Kerberos principals under **Environment Configuration > External Connections** in the node tree. For more details, see [Configure Kerberos principals](/docs/apim_policydev/apigw_external_connections/common_client_credentials/#configure-kerberos-principals).
 
-### **Secret Key**
+### Secret Key
 
 Select this to specify the location of the Kerberos service's secret key that is used to decrypt TGTs received from Kerberos clients.
 
@@ -57,7 +56,7 @@ When API Gateway starts, it writes the stored keytab contents to the `/conf/plug
 directory in your API Gateway installation. It is recommended to configure directory-based or file-based access control for this directory and its contents.
 
 For more details on configuring the **Keytab Entry**
-dialog, see the [Kerberos Keytab concepts](/docs/apim_policydev/apigw_poldev/common_client_credentials/#kerberos-keytab-concepts).
+dialog, see the [Kerberos Keytab concepts](/docs/apim_policydev/apigw_external_connections/common_client_credentials/#kerberos-keytab-concepts).
 
 **Load via Native GSS Library**:
 If you have configured API Gateway to use Native GSS Library
@@ -91,4 +90,4 @@ on the **Kerberos Authentication**
 tab of the **Connection**
 filter.
 
-For more details, see [Configure Kerberos clients](/docs/apim_policydev/apigw_poldev/common_client_credentials/#configure-kerberos-clients)
+For more details, see [Configure Kerberos clients](/docs/apim_policydev/apigw_external_connections/common_client_credentials/#configure-kerberos-clients)

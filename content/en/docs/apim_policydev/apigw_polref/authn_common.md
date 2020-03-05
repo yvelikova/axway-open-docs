@@ -33,8 +33,7 @@ Enter a suitable name for this filter in your policy.
 
 **KPS Alias**:
 Enter the alias name of the Key Property Store (KPS) used to store the API keys. Defaults to the example `ClientRegistry`
-supplied with the API Gateway. For details on storing API keys in the Client Application Registry, see the
-[API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/).
+supplied with the API Gateway.
 
 **Field Containing Secret**:
 Enter the name of the field in the KPS that contains the secret. Defaults to `secretKey`.
@@ -883,7 +882,7 @@ tab allow for these alternative routing configurations.
 Select this option to route to the specified URL. You can enter the URL in the text box, or specify the URL as a selector so that the URL is built dynamically at runtime from the specified message attributes (for example `${host}:${port}`, or `${http.destination.protocol}://${http.destination.host}:${http.destination.port}`).
 
 You can configure SSL settings, credential profiles for authentication, and other settings for the direct connection using the tabs in the **Connection Details**
-group. For more details, see [Connect to URL filter](/docs/apim_policydev/apigw_polref/connection_to_url/#connect-to-url-filter).
+group. For more details, see [Connect to URL filter](/docs/apim_policydev/apigw_polref/routing_common/#connect-to-url-filter).
 
 **Delegate routing to the following policy**:
 Select this option to use a dedicated routing policy to send messages on to the STS. Click the browse button next to the **Routing policy**

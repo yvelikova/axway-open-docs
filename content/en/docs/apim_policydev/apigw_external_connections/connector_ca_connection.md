@@ -6,8 +6,7 @@
 "description": "Create connections to CA SiteMinder and CA SOA Security Manager."
 }
 
-Before you start, you must register API Gateway as an agent in the CA SiteMinder Policy Server. For more details, see
-[API Gateway Authentication and Authorization Integration Guide](/bundle/APIGateway_77_AuthAuthIntegrationGuide_allOS_en_HTML5).
+Before you start, you must register API Gateway as an agent in the CA SiteMinder Policy Server. For more details, see the [API Gateway Authentication and Authorization Integration Guide](/docs/apigtw_auth_auth/).
 
 ## Prerequisites
 
@@ -86,7 +85,7 @@ The name entered must match the name of the Agent Configuration Object (ACO) con
 **SMHost.conf file created by smreghost**:
 API Gateway host machine must be registered as an agent with SiteMinder or SOA Security Manager. To register the host, you must use the `smreghost`
 tool on API Gateway machine. The tool creates a file called `SmHost.conf`, which you can then upload into API Gateway configuration using Policy Studio. For more details on creating the `SmHost.conf` file, see
-[API Gateway Authentication and Authorization Integration Guide](/bundle/APIGateway_77_AuthAuthIntegrationGuide_allOS_en_HTML5)
+[API Gateway Authentication and Authorization Integration Guide](/docs/apigtw_auth_auth/)
 
 To add the `SmHost.conf` file to API Gateway, ensure the `SmHost.conf` file is copied to the same machine running Policy Studio, click **Browse**, and select the the `SmHost.conf` file. You can select whether to use an `SmHost.conf` or `SmHost.cnf` file in the dialog. You can also enter the file name as an environment variable selector (for example, `${env.SMHOST}`).
 

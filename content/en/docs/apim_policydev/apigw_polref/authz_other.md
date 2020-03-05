@@ -577,7 +577,7 @@ API Gateway can integrate with this product through the **Tivoli** filter. This 
 ### Tivoli prerequisites
 
 Before you can configure the **Tivoli** filter, you must configure API Gateway for integration with TAM. For more details, see the
-[API Gateway Authentication and Authorization Integration Guide](/bundle/APIGateway_77_AuthAuthIntegrationGuide_allOS_en_HTML5).
+[API Gateway Authentication and Authorization Integration Guide](/docs/apigtw_auth_auth/).
 
 ### Configure Tivoli settings
 
@@ -606,4 +606,4 @@ dialog. The new action bits are then available for selection in the table on the
 A Tivoli configuration file that contains all the required connection details is associated with a particular API Gateway instance. Click **Settings** to display the **Tivoli Configuration** dialog.
 
 On the **Tivoli Configuration** dialog, select the API Gateway instance whose connection details you want to configure, then follow the steps as outlined in the
-[API Gateway Authentication and Authorization Integration Guide](/bundle/APIGateway_77_AuthAuthIntegrationGuide_allOS_en_HTML5).
+[API Gateway Authentication and Authorization Integration Guide](/docs/apigtw_auth_auth/).
