@@ -279,6 +279,13 @@ const collections = [{
   description: 'All pages relating to AMPLIFY Central and AMPLIFY Unified Catalog.',
   format: 'frontmatter',
 }, {
+  ...docsDefaults('foundation', 'foundation'),
+  name: 'foundation',
+  label: 'AMPLIFY Foundation documentation',
+  label_singular: 'page in AMPLIFY Foundation section',
+  description: 'All pages relating to AMPLIFY Foundation.',
+  format: 'frontmatter',
+}, {
   ...docsDefaults('contribution_guidelines', 'contributing'),
   name: 'contribution_guidelines',
   label: 'Contribution guidelines',
