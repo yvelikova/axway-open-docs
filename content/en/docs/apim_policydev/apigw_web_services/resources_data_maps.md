@@ -25,7 +25,7 @@ To define a new data map, follow these steps:
 6. When you have completed the fields, click **OK** to open the map for editing in the Data Map Editor Design view. The following example shows a map with two input schemas.
     ![Multiple input data map example](/Images/PolDevGuide/Mapper/visual_mapper_multi_input.png)
 
-For more information on Visual Mapper and the Data Map Editor, see the [API Gateway Visual Mapper User Guide](/bundle/API_VisualMapper_78_UserGuide_allOS_en_HTML5).
+For more information on Visual Mapper and the Data Map Editor, see the [API Gateway Visual Mapper User Guide](https://docs.axway.com/bundle/API_VisualMapper_77_UserGuide_allOS_en_HTML5).
 
 ### Schema settings
 
@@ -49,8 +49,7 @@ The Source Schema Details and the Target Schema Details sections share the follo
 
 ## Data map options
 
-To open a data map for editing in the Data Map Editor, select the data map node under **Resources > Data Maps** in the Policy Studio tree. The Data Map Editor displays the content of the map and you can make changes. Any changes made to the map must be saved and redeployed. For more information on Visual Mapper and the Data Map Editor, see the
-[API Gateway Visual Mapper User Guide](/bundle/API_VisualMapper_78_UserGuide_allOS_en_HTML5).
+To open a data map for editing in the Data Map Editor, select the data map node under **Resources > Data Maps** in the Policy Studio tree. The Data Map Editor displays the content of the map and you can make changes. Any changes made to the map must be saved and redeployed.
 
 {{< alert title="Note" color="primary" >}}The schemas selected for the data map typically cannot change. To use a different schema, you must create a new data map. However, there is one exception to this: you can modify a JSON schema stored in **Resources > JSON Schemas** after you have created an associated data map. For more information, see [Update previously imported JSON schemas](#update-previously-imported-json-schemas).{{< /alert >}}
 

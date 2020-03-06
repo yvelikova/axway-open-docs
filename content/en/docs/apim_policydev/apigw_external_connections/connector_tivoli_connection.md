@@ -14,8 +14,7 @@ Tivoli connections determine how a particular API Gateway instance connects to a
 
 ## Prerequisites
 
-Before you can configure the **Tivoli Authorization** filter, you must configure API Gateway for integration with TAM. For more details, see
-[API Gateway Authentication and Authorization Integration Guide](/bundle/APIGateway_77_AuthAuthIntegrationGuide_allOS_en_HTML5).
+Before you can configure the **Tivoli Authorization** filter, you must configure API Gateway for integration with TAM. For more details, see the [API Gateway Authentication and Authorization Integration Guide](/docs/apigtw_auth_auth/).
 
 ## Configuration
 

@@ -354,7 +354,7 @@ to identify events. Every tracked object contains a unique name, version number,
 
 Every tracked event must specify a tracked object, and this tracked object must already be defined in Sentinel. A tracked event can also contain attributes, and the attributes must already be defined as tracked object attributes in Sentinel.
 
-For more details, see the[API Gateway Sentinel Interoperability Guide](/bundle/APIGateway_77_Sentinel_InteropGuide_allOS_en_HTML5).
+For more details, see the [API Gateway Sentinel Interoperability Guide](https://docs.axway.com/bundle/APIGateway_77_Sentinel_InteropGuide_allOS_en_HTML5).
 
 Configure the following settings on the **Sentinel Event**
 window:

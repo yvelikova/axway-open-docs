@@ -41,11 +41,11 @@ To verify the change, go to API Portal home page, and click **Sign In > Sign up
 
 You can configure API Portal with SMTP to enable sending user registration emails.
 
-To send emails from API Portal (for example, for user registration or email validation), you must configure an SMTP server in API Manager. For more details, see [Configure API Manager settings in Policy Studio](/csh?context=1002&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
+To send emails from API Portal (for example, for user registration or email validation), you must configure an SMTP server in API Manager. For more details, see [Configure API Manager settings in Policy Studio](/docs/apim_administration/apimgr_admin/api_mgmt_config_ps/).
 
 ## Customize user registration emails
 
-You can customize the emails that are sent to API Portal users on sign up. All API Portal user emails are sent from API Manager, so to customize them follow the instructions in [Customize API Manager generated email](/csh?context=1029&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
+You can customize the emails that are sent to API Portal users on sign up. All API Portal user emails are sent from API Manager, so to customize them follow the instructions in [Customize API Manager generated email](/docs/apim_administration/apimgr_admin/api_mgmt_custom/#customize-api-manager-generated-email).
 
 ## Customize API Portal user login
 
@@ -156,7 +156,7 @@ When the setting is set to **Yes** or **No** an organization administrator can s
 
 ## Customize monitoring
 
-To enable your API consumers to view monitoring information for their APIs and application in API Portal, you must ensure that you have enabled monitoring in the connected API Manager. For details, see [Monitor APIs and applications in API Manager](/csh?context=1030&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
+To enable your API consumers to view monitoring information for their APIs and application in API Portal, you must ensure that you have enabled monitoring in the connected API Manager. For details, see [Monitor APIs and applications in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_monitor/).
 
 If monitoring is disabled in the connected API Manager, all monitoring information, including the following UI elements, are hidden in API Portal:
 
@@ -211,7 +211,7 @@ If you create and enable a new policy, for example, because the policy of your c
 
 ## API Manager custom properties support
 
-API Portal offers an interface to the custom properties defined in API Manager. For more details on how to add and manage custom properties in API Manager, see [Customize API Manager data](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/page/Content/APIManagementGuideTopics/api_mgmt_custom.htm#customize_api_manager_data).
+API Portal offers an interface to the custom properties defined in API Manager. For more details on how to add and manage custom properties in API Manager, see [Customize API Manager data](/docs/apim_administration/apimgr_admin/api_mgmt_custom/#customize-api-manager-data).
 
 API Portal supports custom properties for the following entities:
 

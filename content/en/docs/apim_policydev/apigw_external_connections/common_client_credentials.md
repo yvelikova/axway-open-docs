@@ -13,9 +13,6 @@ Client credentials enable you to globally configure client authentication settin
 * Kerberos
 * OAuth 2.0 as a client
 
-For more information on configuring OAuth 2.0 client credentials, see the
-[API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/).
-
 You can configure settings for client credentials under the **Environment Configuration > External Connections > Client Credentials**
 node in the Policy Studio tree, which you can then specify at the filter level, for example, in the **Connection**
 and **Connect To URL**
@@ -122,9 +119,6 @@ A Kerberos client can authenticate to a Kerberos service by sending a Kerberos s
 {{< alert title="Note" color="primary" >}}
 You can also configure the API Gateway to authenticate to a Kerberos service by including the relevant Kerberos tokens inside the XML message. For more details, see
 [Configure Kerberos services](/docs/apim_policydev/apigw_external_connections/kerberos_service/).
-
-For more details on different Kerberos setups with API Gateway, see
-[API Gateway Kerberos Integration Guide](/bundle/APIGateway_77_IntegrationKerberos_allOS_en_HTML5).
 {{< /alert >}}
 
 To add a credential profile for a Kerberos client, click **Kerberos**, and select **Add**
@@ -185,9 +179,6 @@ node in the tree, and select **Add a Kerberos Client**. The following sections d
 
 Once finished, you can select the configured Kerberos client when configuring other Kerberos-related filters. Ensure the check box **Enabled**
 at the bottom of the window is selected.
-
-For more details on different Kerberos setups with API Gateway, see
-[API Gateway Kerberos Integration Guide](/bundle/APIGateway_77_IntegrationKerberos_allOS_en_HTML5).
 
 ### Kerberos endpoint settings
 
@@ -378,9 +369,6 @@ primary/instance@realm
 * *Realm*: This is your Kerberos realm, which is usually a domain name in upper case letters. For example, the `foo.abc.com`machine is in the `ABC.COM`
     Kerberos realm.
 
-For more details on different Kerberos setups with API Gateway, see
-[API Gateway Kerberos Integration Guide](/bundle/APIGateway_77_IntegrationKerberos_allOS_en_HTML5).
-
 ### Configuration
 
 You can configure Kerberos principals globally under the **Environment Configuration** > **External Connections**
@@ -437,9 +425,6 @@ drop-down list when configuring that Kerberos client or service.
 The **Keytab** table in the **Secret Key**
 section of the configuration window for a Kerberos client or Kerberos service is essentially a graphical interface to entries in a Kerberos keytab file. To generate a keytab entry, select **Keytab > Add Principal**. To remove an entry, select the entry and click **Delete Entry**.
 You can configure Kerberos clients and services under **Environment Configuration > External Connections** in the node tree.
-
-For more details on different Kerberos setups with API Gateway, see
-[API Gateway Kerberos Integration Guide](/bundle/APIGateway_77_IntegrationKerberos_allOS_en_HTML5).
 
 ### Keytab configuration
 

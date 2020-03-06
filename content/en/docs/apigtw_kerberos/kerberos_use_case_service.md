@@ -308,7 +308,7 @@ To enable SSL/TLS connection, you must have a valid SSL certificate.
 3. Click **Import Certificate...**, and select the certificate file you want to use.
 4. Enter an alias for the certificate or click **Use Subject**, and click **OK**.
 
-For more details on the fields and options in this configuration window, see [Manage X.509 certificates and keys](/docs/apim_administration/general_certificates/#configure-an-x-509-certificate).
+For more details on the fields and options in this configuration window, see [Manage certificates and keys](/docs/apim_administration/apigtw_admin/general_certificates/).
 
 #### Configure an HTTPS interface
 

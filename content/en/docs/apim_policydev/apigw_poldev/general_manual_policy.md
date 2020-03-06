@@ -120,9 +120,6 @@ Then if you select a different policy as the request policy in the Policy Studio
 
 ![Editing a Policy Shortcut](/Images/docbook/images/general/edit_global_policy_shortcut.gif)
 
-For more details on configuring these windows, see [Policy shortcut chain](/csh?context=512&product=prod-api-gateway-77)
-in the [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
-
 {{< alert title="Note" color="primary" >}}If you remove a label from a policy by deselecting it in the Policy Studio tree, any reference to that labeled policy is not called when evaluating the shortcut in the chain, irrespective of whether **Evaluate this shortcut when executing the chain** is selected (the **Active** status column in the table view). This corresponds with the behavior for a specific policy in the chain. If a link to a policy is not set for a shortcut, the link is not evaluated.{{< /alert >}}
 
 In this example, the table shows that the shortcut is configured to point to the labeled policy, but the label does not resolve to a policy (for example, it is unspecified because there is no policy in the specified role):

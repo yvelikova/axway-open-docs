@@ -48,7 +48,7 @@ You can customize the API Catalog page title and summary text. For details, see 
 
 You can add tags to APIs in API Manager and use them to split your API Catalog into smaller subsets. For example, you can create multiple themed API groups based on your developer communities.
 
-For more details on adding tags to APIs, see the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
+For more details on adding tags to APIs, see the [API Manager User Guide](/docs/apim_administration/apimgr_admin/).
 
 To create a dedicated API Catalog for a subset of tagged APIs, do the following:
 

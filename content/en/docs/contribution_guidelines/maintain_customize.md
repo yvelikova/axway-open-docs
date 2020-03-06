@@ -15,7 +15,7 @@ If you are a maintainer of this documentation site, this topic includes all the 
 
 ## Before you start
 
-* Complete the steps in [Set up and work locally](setup_work_locally)
+* Complete the steps in [Set up and work locally](/docs/contribution_guidelines/setup_work_locally/)
 
 ## Overview of tools
 

@@ -26,7 +26,7 @@ Customization can be performed at three levels:
 
 To get started with customization, you need the following:
 
-* API Portal installed and configured. For more details, see the [API Portal Installation and Upgrade Guide](/bundle/APIPortal_77_InstallationGuide_allOS_en_HTML5) .
+* API Portal installed and configured. For more details, see the [API Portal Installation and Upgrade Guide](/docs/apim_installation/apiportal_install/) .
 * An API Portal user account. When you log in, the default API Portal web page is displayed, so you can check how the changes look to your end users.
 * Basic understanding of Joomla! ThemeMagic. This feature enables you to change CSS stylesheets, templates, and layouts. For more advanced modifications, you can modify the PHP source code to customize API Portal, such as to change the functionality of pages and to extend by adding new pages.
 

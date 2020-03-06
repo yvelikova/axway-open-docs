@@ -104,43 +104,42 @@ In the unlikely event that automatic registration fails, you should check the fo
 
 Ensure the time on the API Gateway is synchronized with the time on the PassPort machine. When PassPort processes the CSR, it sets the **Valid From** date to the current time. If the PassPort time is ahead of the API Gateway time, the API Gateway is unable to use the certificate because it is not yet valid. The error in the trace log is as follows:
 
-    ```
-    java.security.cert.CertificateNotYetValidException:java.security.cert.CertificateNotYetValidException
-    ```
+```
+java.security.cert.CertificateNotYetValidException:java.security.cert.CertificateNotYetValidException
+```
 
-By default, PassPort blocks for up to 2 seconds waiting for the CSR to be processed. You can configure this value in the PassPort administration user interface under **Administration** > **System Properties**
-    (`am.registration.cert.signature.wait.time`). If the signing request takes longer than this, one of the following errors may be logged:
+By default, PassPort blocks for up to 2 seconds waiting for the CSR to be processed. You can configure this value in the PassPort administration user interface under **Administration** > **System Properties** (`am.registration.cert.signature.wait.time`). If the signing request takes longer than this, one of the following errors may be logged:
 
-    ```
-    Authentication exception when authenticating system:
-    com.axway.passport.am.api.v2.service.external.PassportConnectionException:Registration is still in progress.
-    Certificate Signing Request has not yet been validated, please try again later.
-    [Status:Waiting Validation]
-    Authentication exception when authenticating system:
-    com.axway.passport.am.api.v2.service.external.PassportConnectionException:Registration is still in progress.
-    Certificate Signing Request has not yet been signed, please try again later.
-    [Status:Waiting Signing]
-    ```
+```
+Authentication exception when authenticating system:
+com.axway.passport.am.api.v2.service.external.PassportConnectionException:Registration is still in progress.
+Certificate Signing Request has not yet been validated, please try again later.
+[Status:Waiting Validation]
+Authentication exception when authenticating system:
+com.axway.passport.am.api.v2.service.external.PassportConnectionException:Registration is still in progress.
+Certificate Signing Request has not yet been signed, please try again later.
+[Status:Waiting Signing]
+```
 
-    This is generally a transient error that may be generated when the initial registration is in progress. Resubmitting the request should succeed. If the error persists, check in the PassPort administration user interface for the reason why the signing request has been delayed.
+This is generally a transient error that may be generated when the initial registration is in progress. Resubmitting the request should succeed. If the error persists, check in the PassPort administration user interface for the reason why the signing request has been delayed.
 
 If the registration request has been refused by the PassPort administrator, the following error is displayed:
 
-    ```
-    Registration has been refused.
-    Please contact the PassPort Administrator for further information.
-    [Status:Validation Refused]
-    ```
+```
+Registration has been refused.
+Please contact the PassPort Administrator for further information.
+[Status:Validation Refused]
+```
 
 If CSR processing fails for some other reason, the following error is logged:
 
-    ```
-    Registration has failed and API Gateway is unable to communicate with PassPort.
-    Please contact the PassPort Administrator or try manually re-triggering registration.
-    [Status:...]
-    ```
+```
+Registration has failed and API Gateway is unable to communicate with PassPort.
+Please contact the PassPort Administrator or try manually re-triggering registration.
+[Status:...]
+```
 
-    To resolve this, contact the PassPort administrator to see why the signing request failed. To retry registration, you need to manually re-trigger registration, as explained in the next subsection.
+To resolve this, contact the PassPort administrator to see why the signing request failed. To retry registration, you need to manually re-trigger registration, as explained in the next subsection.
 
 #### Retrigger registration manually
 
@@ -191,7 +190,7 @@ Enter a suitable name for this repository.
 
 **Agent Name**:
 Select a previously configured SiteMinder agent name from the list. To register a new agent, see
-[API Gateway Authentication and Authorization Integration Guide](/bundle/APIGateway_77_AuthAuthIntegrationGuide_allOS_en_HTML5).
+[API Gateway Authentication and Authorization Integration Guide](/docs/apigtw_auth_auth/).
 
 **Resource**:
 Enter the name of the protected resource for which the user must be authenticated. Alternatively, you can enter a selector for a message attribute, which is looked up and expanded to a value at runtime. Message attribute selectors have the following format:
@@ -510,4 +509,4 @@ Select one of the following authentication types for the connection:
 API Gateway can integrate with Tivoli Access Manager to authenticate users. To authenticate users against a Tivoli repository, right-click **Tivoli Repositories**, and select **Add a new Repository**.
 
 For more details on how to configure API Gateway to communicate with a Tivoli server, see the
-[API Gateway Authentication and Authorization Integration Guide](/bundle/APIGateway_77_AuthAuthIntegrationGuide_allOS_en_HTML5).
+[API Gateway Authentication and Authorization Integration Guide](/docs/apigtw_auth_auth/).

@@ -145,8 +145,7 @@ The following figure shows the view of API management alerts in Policy Studio.
 
 ![Policy-based API management alerts](/Images/docbook/images/api_mgmt/api_mgmt_alerts_ps.png)
 
-To modify the sample policy associated with an alert, click the sample policy link next to the alert. For more information on configuring policies, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+To modify the sample policy associated with an alert, click the sample policy link next to the alert.
 
 To associate a different policy with an alert, click the row containing the alert, and click the **Edit**
 button. In the dialog, click the browse button to select a new **Alert Policy**
