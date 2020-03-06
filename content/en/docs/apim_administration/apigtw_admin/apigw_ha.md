@@ -12,7 +12,7 @@ This section includes recommendations on topics such as load balancing, commonly
 
 ## HA in production environments
 
-The following diagram shows an overview of a API Gateway platform running in an HA production environment:
+The following diagram shows an overview of an API Gateway platform running in an HA production environment:
 
 ![API Gateway High Availability](/Images/APIGateway/admin_ha_config.png)
 
