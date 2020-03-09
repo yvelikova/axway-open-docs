@@ -47,8 +47,8 @@ Axway makes every effort to add support for new kernels and distributions in a t
 
 The disk space and RAM requirements for Linux platforms are:
 
-* Disk space: minimum 4 GB, 50 GB recommended
-* Physical memory (RAM): minimum 8 GB
+* Disk space: minimum 4 GB, 50 GB recommended
+* Physical memory (RAM): minimum 8 GB
 
 The disk space and RAM requirements for the developer tools on Windows platforms are:
 
