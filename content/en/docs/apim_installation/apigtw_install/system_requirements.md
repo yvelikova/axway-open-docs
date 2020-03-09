@@ -1,9 +1,9 @@
 {
 "title": "System requirements",
-"linkTitle": "System requirements",
-"weight":"4",
-"date": "2019-10-02",
-"description": "Supported platforms and other system requirements for API Gateway, and specific requirements for API Gateway components."
+  "linkTitle": "System requirements",
+  "weight": "4",
+  "date": "2019-10-02",
+  "description": "Supported platforms and other system requirements for API Gateway, and specific requirements for API Gateway components."
 }
 
 {{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apim_installation/apigtw_install/install_dev_tools/). API Gateway and API Manager do not support Windows.{{< /alert >}}
@@ -46,6 +46,9 @@ Axway makes every effort to add support for new kernels and distributions in a t
 ### Disk space and RAM requirements
 
 The disk space and RAM requirements for Linux platforms are:
+
+* Disk space: minimum 4 GB, 50 GB recommended
+* Physical memory (RAM): minimum 8 GB
 
 The disk space and RAM requirements for the developer tools on Windows platforms are:
 
