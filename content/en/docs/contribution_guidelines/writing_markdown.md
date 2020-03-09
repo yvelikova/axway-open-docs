@@ -15,9 +15,9 @@ If you are editing Markdown locally, we recommend using VSCode with the `markdow
 
 ## Basic rules
 
-Follow these basic rules when sending contributions.
+Follow these rules when sending contributions using Markdown.
 
-### Italic and bold
+### Emphasis
 
 Surround a word with single underscores (`_`) to apply _italics_ for emphasis.
 
@@ -27,20 +27,29 @@ Surround a word with double asterisks (`**`) to apply **bold** for emphasis.
 
 Use hash characters (`#`) for headings. The number of hash characters determines the heading level.
 
-The first heading in a file must be a H2 (`##`). Subsequent headings should not skip levels.
-
 For example:
 
 ```md
-## First heading
-some text
-### First subheading
-some text
-## Second heading
-some text
+## This is a H2
+
+This is some text
+
+### This is a H3
+
+This is more text
+
+## This is another H2
+
+This is more text
 ```
 
-Do not use bold for headings.
+The first heading in a file must be a H2 (`##`), as the title of the page becomes the H1.
+
+Separate paragraphs and headings with one or more blank lines.
+
+Do not skip heading levels, that is, do not follow a H2 with a H4.
+
+Do not use bold or other formatting for headings.
 
 ### Tables
 
@@ -63,7 +72,7 @@ The Blackfriday Markdown parser has some known issues with nested lists. To avoi
 
 ### Code samples
 
-Use 3 or more backticks to open and close a code sample block. You can specify a language after the first set of backticks to easily apply syntax highlighting.
+Use 3 or more backticks (`` ``` ``) to open and close a code sample block. You can specify a language after the first set of backticks to easily apply syntax highlighting.
 
 For example:
 
@@ -92,7 +101,7 @@ This is more text
 Use code block styling for single and multiple-line code blocks. Do not use inline code styling for single line code blocks.
 
 {{% alert title="Note" color="primary" %}}
-Do not use indentation for code blocks. Although indentation is supported by Markdown, it causes issues with nesting code blocks inside lists, and with publishing on production.
+Do not use indentation to create code blocks. Markdown syntax allows you to create code blocks by indenting all lines in the code block by four spaces or one tab, however using indentation rather than backticks can cause issues with nesting code blocks inside lists, and with publishing on production.
 {{% /alert %}}
 
 ### Inline code
