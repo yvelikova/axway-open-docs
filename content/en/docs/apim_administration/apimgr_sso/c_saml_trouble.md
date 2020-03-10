@@ -43,8 +43,7 @@ To confirm the cause of the error, check the trace file:
 
 ```
 ERROR   15/sept./2016:14:41:02.018 [3942:dd96da570400a4392aa28808] verifier: io.axway.commons.sso.agent.verifiers.ResponseValidityPeriodVerifier@2edb5d28
-ERROR   15/sept./2016:14:41:02.019 [3942:dd96da570400a4392aa28808] Internal error: 
-io.axway.commons.sso.agent.ServiceProviderValidationException: Received response not valid. See log for details.
+ERROR   15/sept./2016:14:41:02.019 [3942:dd96da570400a4392aa28808] Internal error: io.axway.commons.sso.agent.ServiceProviderValidationException: Received response not valid. See log for details.
 ```
 
 Ensure that the time on the API Gateway server is synchronized with the IdP.
@@ -70,11 +69,8 @@ Invalid user or password
 To confirm the cause of the error, check the trace file:
 
 ```
-ERROR   07/Sep/2016:17:11:32.804 [23b8:343cd0572c036c31ecc3f2f7] SSO - The user's organization could not be located. 
-Check your service-provider.xml file to see if an OutputAttribute of type 'organization' has been setup. 
-Also check the organization has already been setup in API Manager
-ERROR   07/Sep/2016:17:11:32.805 [23b8:343cd0572c036c31ecc3f2f7] SSO - Unexpected exception authenticating :
-javax.ws.rs.WebApplicationException: HTTP 401 Unauthorized
+ERROR   07/Sep/2016:17:11:32.804 [23b8:343cd0572c036c31ecc3f2f7] SSO - The user's organization could not be located. Check your service-provider.xml file to see if an OutputAttribute of type 'organization' has been setup. Also check the organization has already been setup in API Manager
+ERROR   07/Sep/2016:17:11:32.805 [23b8:343cd0572c036c31ecc3f2f7] SSO - Unexpected exception authenticating : javax.ws.rs.WebApplicationException: HTTP 401 Unauthorized
 ```
 
 In this scenario, you have logged in successfully using SSO, but the organization associated with your login is not set up. Either the organization is not configured correctly in the `service-provider.xml` file or the organization does not exist in API Manager.
@@ -106,12 +102,9 @@ Log in to API Manager as the `apiadmin` user (using the non-SSO login URL), and 
 You are using Shibboleth as an IdP and a logout attempt fails with a message similar to the following:
 
 ```
-2016-08-30 12:40:23,678 - INFO [org.opensaml.saml.common.binding.security.impl.SAMLProtocolMessageXMLSignatureSecurityHandler:134] 
-- Message Handler:  Validation of protocol message signature succeeded, message type: {urn:oasis:names:tc:SAML:2.0:protocol}LogoutRequest
-2016-08-30 12:40:23,688 - INFO [net.shibboleth.idp.saml.saml2.profile.impl.ProcessLogoutRequest:315] 
-- Profile Action ProcessLogoutRequest: No active session(s) found matching LogoutRequest
-2016-08-30 12:40:23,689 - WARN [org.opensaml.profile.action.impl.LogEvent:76] 
-- An error event occurred while processing the request: SessionNotFound
+2016-08-30 12:40:23,678 - INFO [org.opensaml.saml.common.binding.security.impl.SAMLProtocolMessageXMLSignatureSecurityHandler:134] - Message Handler:  Validation of protocol message signature succeeded, message type: {urn:oasis:names:tc:SAML:2.0:protocol}LogoutRequest
+2016-08-30 12:40:23,688 - INFO [net.shibboleth.idp.saml.saml2.profile.impl.ProcessLogoutRequest:315] - Profile Action ProcessLogoutRequest: No active session(s) found matching LogoutRequest
+2016-08-30 12:40:23,689 - WARN [org.opensaml.profile.action.impl.LogEvent:76] - An error event occurred while processing the request: SessionNotFound
 ```
 
 Set the following options for your Shibboleth IDP (as detailed in the sample file `INSTALL_DIR/apigateway/samples/sso/ShibbolethIDP/conf/idp.properties.forlogout`):
@@ -148,10 +141,7 @@ You must add the a claim rule to enable SSO logout:
 
     ```
     c:[Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"]
-     => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Issuer = c.Issuer, OriginalIssuer = c.OriginalIssuer, Value = c.Value, 
-    ValueType = c.ValueType, Properties["http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/format"] = "urn:oasis:names:tc:SAML:1.1:nameid-
-    format:emailAddress", Properties["http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/spnamequalifier"] = "<your SAML Relying Party Trust>", 
-    Properties["http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/namequalifier"] = "http://<your Active Directory server host>/adfs/services/trust");
+     => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Issuer = c.Issuer, OriginalIssuer = c.OriginalIssuer, Value = c.Value, ValueType = c.ValueType, Properties["http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/format"] = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress", Properties["http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/spnamequalifier"] = "<your SAML Relying Party Trust>", Properties["http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/namequalifier"] = "http://<your Active Directory server host>/adfs/services/trust");
     ```
 
     Replace `<your SAML Relying Party Trust>` with the name of your SAML Relying Party Trust, and `<your Active Directory server host>` with the value of your Federation Service Identifier. To get the value of your Federation Service Identifier, click **AD FS > Edit Federation Service Properties**.
@@ -162,8 +152,7 @@ The API Gateway trace contains the text:
 
 ```
 ERROR Could not validate signature on provided assertion
-ERROR Assertion identity provider name: '<Identity Provider Name>' format: 'urn:oasis:names:tc:SAML:2.0:nameid-format:entity' 
-does not match any allowed identity provider.
+ERROR Assertion identity provider name: '<Identity Provider Name>' format: 'urn:oasis:names:tc:SAML:2.0:nameid-format:entity' does not match any allowed identity provider.
 ```
 
 Consider adding the `format` attribute (as described in the trace text) to the `SamlIdentityProvider` tag in your `service-provider.xml` file.
@@ -210,8 +199,7 @@ After the user enters the credentials on the Keycloak page, the following error 
 
 ```
 ERROR   14/Feb/2017:15:08:18.850 [22a1:621da358040092586aa13729] Assertion MUST be signed
-ERROR   14/Feb/2017:15:08:18.852 [22a1:621da358040092586aa13729] An error occurred during SSO processing: 
-io.axway.commons.sso.agent.ServiceProviderValidationException: Received response not valid. See log for details.
+ERROR   14/Feb/2017:15:08:18.852 [22a1:621da358040092586aa13729] An error occurred during SSO processing: io.axway.commons.sso.agent.ServiceProviderValidationException: Received response not valid. See log for details.
     at io.axway.commons.sso.agent.builders.AuthenticationResponseBuilder.verifyResponse(AuthenticationResponseBuilder.java:94)
 ```
 
@@ -223,8 +211,7 @@ After the user enters the credentials on the Keycloak page, Keycloak fails to au
 
 ```
 ERROR   13/Feb/2017:17:39:23.346 [6831:4befa158040021d4ae09eee1] SSO - The user's organization could not be located. Check your service-provider.xml file to see if an OutputAttribute of type 'organization' has been setup. Also check the organization has already been setup in API Manager
-ERROR   13/Feb/2017:17:39:23.349 [6831:4befa158040021d4ae09eee1] SSO - Failed to authenticate user : [G-fb7c839b-a879-4231-bae9-1c05e3ba6f04]. Exception: : 
-javax.ws.rs.WebApplicationException: HTTP 401 Unauthorized
+ERROR   13/Feb/2017:17:39:23.349 [6831:4befa158040021d4ae09eee1] SSO - Failed to authenticate user : [G-fb7c839b-a879-4231-bae9-1c05e3ba6f04]. Exception: : javax.ws.rs.WebApplicationException: HTTP 401 Unauthorized
 ```
 
 The username `G-fb7c839b-a879-4231-bae9-1c05e3ba6f04` does not correspond to a real username, because the SAML response is not parsed correctly. This happens because the mappings are not set up in the IdP. Ensure the mappings are set correctly in Keycloak. The following shows shows an example on the mappings in Keycloak:

@@ -53,14 +53,15 @@ You can specify the following properties in the `XMLRedactor` tag:
 |maxDepth| number | 1024| Maximum depth of XML nested nodes.|
 
 For example:
+
 ```
 <XMLRedactor maxBufferSize="32768" maxDepth="1024">
    <RedactMime mimeType="application/xml"/>
    ...
 </XMLRedactor>
 ```
-If an error occurs during the redaction process, including `maxBufferSize` or `maxDepth` reached, the XML redactor will redact the rest of the XML data being processed to avoid writing sensitive data to the logs.
 
+If an error occurs during the redaction process, including `maxBufferSize` or `maxDepth` reached, the XML redactor will redact the rest of the XML data being processed to avoid writing sensitive data to the logs.
 
 ## Enable redaction for an API Gateway
 
