@@ -99,7 +99,7 @@ Complete the following fields:
 * **Attribute Value**:
     Enter the value of the message attribute specified above.
 
-{{< alert title="Note" color="primary" >}}When using a selector expression as the attribute value, the result of evaluating the selector may be converted to a `java.lang.String value`.  For some objects that fall back to `Object.toString()`, this can result in a value like `example.Class@00000000` instead of a copy of the original object.  Use the **Copy/Modify Attributes** filter when copying attributes to avoid this conversion.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}When using a selector expression as the attribute value, the result of evaluating the selector may be converted to a `java.lang.String` value. For some objects that fall back to `Object.toString()`, this can result in a value like `example.Class@00000000` instead of a copy of the original object. Use the **Copy/Modify Attributes** filter when copying attributes to avoid this conversion.{{< /alert >}}
 
 ## Remove attribute filter
 
