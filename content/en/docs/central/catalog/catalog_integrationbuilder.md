@@ -29,7 +29,6 @@ Watch the animation to learn how to perform this task.
 
 ![export demo](/Images/central/catalog_export.gif)
 
-
 ## Authenticate an exported API from Unified Catalog in Integration Builder
 
 Watch this short video to learn how to configure and authorize an API that has been promoted from Amplify Catalog into Integration Builder.

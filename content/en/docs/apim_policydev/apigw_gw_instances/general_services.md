@@ -117,9 +117,9 @@ In addition to the fields configured for an HTTP interface on the **Network** ta
 #### Mutual Authentication settings
 
 * **Client Certificates**: Define how clients can authenticate to API Gateway on the **Mutual Authentication** tab. Choose from the following:
-  * **Ignore Client Certificates**: API Gateway ignores client certificates if they are presented during the SSL handshake.
-  * **Accept Client Certificates**: API Gateway accepts client certificates when presented, but clients that do not present certificates are not rejected.
-  * **Require Client Certificates**: API Gateway only accepts connections from clients that present a certificate during the SSL handshake.
+* **Ignore Client Certificates**: API Gateway ignores client certificates if they are presented during the SSL handshake.
+* **Accept Client Certificates**: API Gateway accepts client certificates when presented, but clients that do not present certificates are not rejected.
+* **Require Client Certificates**: API Gateway only accepts connections from clients that present a certificate during the SSL handshake.
 * **Maximum depth of client certificate chain**: Specify how many CA certificates in a chain of one or more are trusted when validating the client certificate. By default, only one issuing CA certificate is used, and this certificate must be checked in the list of trusted root certificates. If more than one certificate is used, only the top-level CA must be considered trusted, while the intermediate CA certificates are not.
 
     Client certificates are typically issued by a Certificate Authority (CA). In most cases, the CA includes a copy of its certificate in the client certificate so that consumers of the certificate can decide whether or not to trust the client based on the issuer of the certificate.

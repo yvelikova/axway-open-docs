@@ -76,7 +76,6 @@ After you have successfully installed Redis, you must enable it in JAI:
 3. Review and update the other settings if necessary.
 4. Click **Save**.
 
-
 ## Verify Redis installation
 
 For information on how to start the Redis server, check that Redis is working correctly, and secure Redis, see the [Redis Quick Start documentation](https://redis.io/topics/quickstart).

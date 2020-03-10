@@ -164,7 +164,7 @@ To add a REST API method to a newly registered API, perform the following steps:
 4. To specify content types that can be produced by the API method, click the plus (+) button in the **Produces content-type**
     section, and enter the content type. For example, `application/xml`, `text/plain`, and so on. Defaults to `application/json`.
 5. To specify response codes that can be produced by the API method, click the plus (+) button in the **Response codes**
-    section, and select the response codes (for example, `Create codes (201, 403, 500)`).       
+    section, and select the response codes (for example, `Create codes (201, 403, 500)`).
 6. To add more API methods, click the add button on the top left.
 
 ## Create the REST API data model
@@ -186,7 +186,7 @@ When you have registered the back-end API, you can select it in the list of regi
     format). You can then import this into another API Manager environment as required as a back-end API.
 * **Download original API description**: For APIs imported from Swagger or WADL definitions, downloads a copy of the original REST API definition.
 
-{{< alert title="Tip" color="primary" >}}The API Admin can configure all back-end APIs to be editable by default using the **Allow users to modify Backend APIs** option in **API Manager settings** {{< /alert >}} 
+{{< alert title="Tip" color="primary" >}}The API Admin can configure all back-end APIs to be editable by default using the **Allow users to modify Backend APIs** option in **API Manager settings** {{< /alert >}}
 
 ## Next steps
 
