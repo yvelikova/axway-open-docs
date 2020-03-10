@@ -7,7 +7,7 @@ description: >-
   API proxies can be secured with a client authentication policy. Learn how to
   set up an OAuth front-end security policy on an API proxy.
 ---
-_Estimated reading time: 5 minutes_
+_Estimated reading time_: 5 minutes
 
 ## Before you start
 

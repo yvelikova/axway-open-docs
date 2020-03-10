@@ -215,7 +215,7 @@ When the message content is JSON, you can also access fields in the message bod
 {
    "id":"28a384e7-0b13-4679-ae1c-0c63666d3d8e"
    "activities": ["running", "swimming", "cycling"],
-   "subObject": 
+   "subObject":
      "foo": "bar",
      "hello": "world",
      "yetAnotherObject": {

@@ -46,7 +46,7 @@ proxy:
         name: 'Default Team'
 ```
 
-If you specify a client authentication policy other than `pass-through` (for example, `api-key`, `jwt-token`, or `oauth`), you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created. 
+If you specify a client authentication policy other than `pass-through` (for example, `api-key`, `jwt-token`, or `oauth`), you must specify the client `app`. If the app does not already exist in AMPLIFY Central, it is created.
 
 The `oauth` type has additional OAuth specific properties that can also be added. These include flows, authorizationUrl, tokenUrl, and scopes. These additional properties map directly to the [Swagger 2.0 OAuth security scheme](https://swagger.io/docs/specification/2-0/authentication/).
 

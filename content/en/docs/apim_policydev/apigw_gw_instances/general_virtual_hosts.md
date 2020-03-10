@@ -45,22 +45,10 @@ You can configure virtual hosts at the HTTP service level. This means that these
 
 1. In the Policy Studio tree, select an HTTP service (for example, **Environment Configuration** > **Listeners** > **API Gateway** > **Default Services** > **Virtual Hosts**).
 2. Right-click, and select **Add a Virtual Host**.
-3. Configure the following settings in the **Virtual Host**
-    dialog:
-    
-    **Name**:
-
-    Enter a unique name of the virtual host.
-
-    **Enabled**:
-
-    Select whether the virtual host processing is enabled. This is enabled by default.
-
-    **Hosts**:
-
-    Specify the list of domains that you wish to host under this HTTP service. To add a host, click **Add**
-        at the bottom right, and enter the domain name (for example `company1.api.example.com`). You can also specify domain names using wildcards already configured in your DNS (for example `*.example.com:/8080`
-        or `company3.api.example.com.*`).
+3. Configure the following settings in the **Virtual Host** dialog:
+    * **Name**: Enter a unique name of the virtual host.
+    * **Enabled**: Select whether the virtual host processing is enabled. This is enabled by default.
+    * **Hosts**: Specify the list of domains that you wish to host under this HTTP service. To add a host, click **Add** at the bottom right, and enter the domain name (for example `company1.api.example.com`). You can also specify domain names using wildcards already configured in your DNS (for example `*.example.com:/8080` or `company3.api.example.com.*`).
 
 ### Configure child resolvers
 
