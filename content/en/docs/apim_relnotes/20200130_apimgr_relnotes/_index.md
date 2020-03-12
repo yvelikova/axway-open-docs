@@ -417,7 +417,7 @@ To install the update on your existing Configuration Studio installation, perfor
 4. Unzip and extract API Gateway 7.7 Configuration Studio Update over the `configurationstudio` directory in your existing API Gateway 7.7 installation directory. For example:
 
    ```
-   tar -xzvf APIGateway_7.7_SP2_ConfigurationStudio_linux-x86-64_BNYYYYMMDDnn.tar.gz -C /opt/Axway-7.7/configurationstudio/
+   tar -xzvf APIGateway_7.7.YYYYMMDD_ConfigurationStudio_linux-x86-64_BNnn.tar.gz -C /opt/Axway-7.7/configurationstudio/
    ```
 
 5. Start Configuration Studio with `configurationstudio  -clean`
