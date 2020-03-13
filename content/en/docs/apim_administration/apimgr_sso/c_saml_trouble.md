@@ -1,8 +1,8 @@
 {
-    "title": "SSO troubleshooting",
-    "linkTitle": "Troubleshooting",
-    "date": "2019-09-17",
-    "description": "Common problems and solutions that you might encounter when configuring API Manager SSO, and how to enable traces for SSO."
+"title": "SSO troubleshooting",
+  "linkTitle": "Troubleshooting",
+  "date": "2019-09-17",
+  "description": "Common problems and solutions that you might encounter when configuring API Manager SSO, and how to enable traces for SSO."
 }
 
 ## Logging in both as administrator and SSO user
@@ -97,6 +97,15 @@ In this example the organization name is `Research`.
 
 Log in to API Manager as the `apiadmin` user (using the non-SSO login URL), and select **Client Registry > Organizations**. If the organization called `Research` does not exist, you must add it.
 
+## Service Provider has no valid certificate
+
+This internal server error occurs when the alias defined by the `keyAlias` attribute (found in the `ServiceProvider` element within `service-provider.xml` file) could not be found in the `keystore` file.
+
+```
+ERROR 14/Jan/2020:13:48:13.095 [0523:9dc61d5e141fcd2ba54007f1] An error occurred during SSO processing:
+io.axway.commons.sso.agent.ServiceProviderException: Service Provider has no valid certificate. Unable to generate SAML authentication request
+```
+
 ## Shibboleth IdP logout failure
 
 You are using Shibboleth as an IdP and a logout attempt fails with a message similar to the following:
@@ -139,10 +148,10 @@ You must add the a claim rule to enable SSO logout:
 2. Set the **Claim Rule Template Type** to **Send Claims Using a Custom Rule**.
 3. Give the claim rule a name, and add the following rule:
 
-    ```
-    c:[Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"]
-     => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Issuer = c.Issuer, OriginalIssuer = c.OriginalIssuer, Value = c.Value, ValueType = c.ValueType, Properties["http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/format"] = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress", Properties["http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/spnamequalifier"] = "<your SAML Relying Party Trust>", Properties["http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/namequalifier"] = "http://<your Active Directory server host>/adfs/services/trust");
-    ```
+   ```
+   c:[Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"]
+    => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Issuer = c.Issuer, OriginalIssuer = c.OriginalIssuer, Value = c.Value, ValueType = c.ValueType, Properties["http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/format"] = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress", Properties["http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/spnamequalifier"] = "<your SAML Relying Party Trust>", Properties["http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/namequalifier"] = "http://<your Active Directory server host>/adfs/services/trust");
+   ```
 
     Replace `<your SAML Relying Party Trust>` with the name of your SAML Relying Party Trust, and `<your Active Directory server host>` with the value of your Federation Service Identifier. To get the value of your Federation Service Identifier, click **AD FS > Edit Federation Service Properties**.
 
