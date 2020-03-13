@@ -1,6 +1,6 @@
 name: 'Check for merge conflicts'
 on:
-  pull_request:
+  push:
     branches:
       - master
 jobs:
