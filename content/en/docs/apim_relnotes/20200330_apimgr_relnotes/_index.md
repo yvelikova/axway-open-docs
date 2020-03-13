@@ -137,10 +137,10 @@ To install the update on your existing API Gateway 7.7 server installation, perf
    ls -l INSTALL_DIR/apigateway/posix/bin
    ```
 
-4. Using the same user who owns the API Gateway binaries, unzip and extract API Gateway 7.7 SP2 server over the `apigateway` directory in your existing installation directory . For example:
+4. Using the same user who owns the API Gateway binaries, unzip and extract API Gateway 7.7 server Update over the `apigateway` directory in your existing installation directory . For example:
 
    ```
-   tar -xzvf APIGateway_7.7_SP2_Core_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/apigateway/
+   tar -xzvf APIGateway_7.7.YYYYMMDD_Core_linux-x86-64_BNnn.tar.gz -C /opt/Axway-7.7/apigateway/
    ```
 
 5. Change to the `apigateway` directory in your installation.
@@ -167,10 +167,10 @@ To install the update on your existing Policy Studio installation, perform the f
    INSTALL_DIR/policystudio/jre
    ```
 
-4. Unzip and extract API Gateway 7.7 SP2 Policy Studio over the `policystudio` directory in your existing API Gateway 7.7 installation directory. For example:
+4. Unzip and extract API Gateway 7.7 Policy Studio Update over the `policystudio` directory in your existing API Gateway 7.7 installation directory. For example:
 
    ```
-   tar -xzvf APIGateway_7.7_SP2_PolicyStudio_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/policystudio/
+   tar -xzvf APIGateway_7.7.YYYYMMDD_PolicyStudio_linux-x86-64_BNnn.tar.gz -C /opt/Axway-7.7/policystudio/
    ```
 
 5. Start Policy Studio with `policystudio -clean`
@@ -187,10 +187,10 @@ To install the update on your existing Configuration Studio installation, perfor
    INSTALL_DIR/configurationstudio/jre
    ```
 
-4. Unzip and extract API Gateway 7.7 SP2 Configuration Studio over the `configurationstudio` directory in your existing API Gateway 7.7 installation directory. For example:
+4. Unzip and extract API Gateway 7.7 Configuration Studio Update over the `configurationstudio` directory in your existing API Gateway 7.7 installation directory. For example:
 
    ```
-   tar -xzvf APIGateway_7.7_SP2_ConfigurationStudio_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/configurationstudio/
+   tar -xzvf APIGateway_7.7.YYYYMMDD_ConfigurationStudio_linux-x86-64_BNnn.tar.gz -C /opt/Axway-7.7/configurationstudio/
    ```
 
 5. Start Configuration Studio with `configurationstudio  -clean`
@@ -206,10 +206,10 @@ To install the update on your existing API Gateway Analytics 7.7 installation, p
    ls -l INSTALL_DIR/analytics/posix/bin
    ```
 
-3. Using the same user who owns the API Gateway Analytics binaries, unzip and extract API Gateway 7.7 SP2 Analytics over the `analytics` directory in your existing API Gateway 7.7 installation directory. For example:
+3. Using the same user who owns the API Gateway Analytics binaries, unzip and extract API Gateway 7.7 Analytics Update over the `analytics` directory in your existing API Gateway 7.7 installation directory. For example:
 
    ```
-   tar -xzvf APIGateway_7.7_SP2_Analytics_linux-x86-64_BNYYYYMMDDn.tar.gz -C /opt/Axway-7.7/analytics/
+   tar -xzvf APIGateway_7.7.YYYYMMDD_Analytics_linux-x86-64_BNnn.tar.gz -C /opt/Axway-7.7/analytics/
    ```
 
 4. Change to the `analytics` directory in your installation:
