@@ -18,7 +18,9 @@ You can customize the following in the API Catalog view of API Portal:
 * Show only APIs associated with specified tags. For more details on tags, see Group APIs with tags.
 * Hide APIs associated with specified tags. For more details on tags, see Group APIs with tags.
 * Show or hide the button that enables users to try out an API. You can show the button for all users, for authenticated users only, or hide it completely. The default is shown for all users.
+* Set a payload size (in KB). If the response is bigger than the configured value, the response is downloaded as file. The default is blank, which means that downloads are disabled.
 * Show or hide code examples in endpoint details when using AMPLIFY rendering tool. The default is shown.
+* Choose colors for the different methods.
 
 To change the API Catalog settings:
 
@@ -28,7 +30,7 @@ To change the API Catalog settings:
 4. Click the **API Catalog** tab.
 5. Change the settings as required and click **Save & Close**.
 
-![Customize API catalog](/Images/uploads/apiportal-jai-customize-api-catalog.png)
+![Customize API catalog](/Images/APIPortal/apiportal-jai-customize-api-catalog.png)
 
 ## Customize source of API descriptions
 
@@ -57,8 +59,7 @@ To create a dedicated API Catalog for a subset of tagged APIs, do the following:
 3. Enter a menu title for the new API Catalog.
 4. In **Menu Item Type**, click **Select > API Portal > API Catalog Page**.
 5. Set **Access** to the level you want, and ensure that **Status** is set to `Published`.
-6. In **Ordering**, select where in the main menu the new API Catalog appears. The menu item is placed after the item you select in here.
-   To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.
+6. In **Ordering**, select where in the main menu the new API Catalog appears. The menu item is placed after the item you select in here. To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.
 7. On the **API Catalog** tab, in the **Show APIs with tags**, enter the tags to include in this API Catalog.
 8. On the **API Catalog** tab, in the **Do not show APIs with tags**, enter the tags to exclude in this API Catalog.
 9. On the **Page Display** tab, you can change the page title and summary text. For more details, see [Customize page title and summary](/docs/apim_administration/apiportal_admin/customize_page_content/#customize-page-title-and-summary).
