@@ -60,8 +60,7 @@ To create a dedicated API Catalog for a subset of tagged APIs, do the following:
 4. In **Menu Item Type**, click **Select > API Portal > API Catalog Page**.
 5. Set **Access** to the level you want, and ensure that **Status** is set to `Published`.
 6. In **Ordering**, select where in the main menu the new API Catalog appears. The menu item is placed after the item you select in here.
-
-   - To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.
+   * To access all your API Catalogs under the **APIs** menu item rather than additional menu items, set **Parent Item** to **APIs**.
 7. On the **API Catalog** tab, in the **Show APIs with tags**, enter the tags to include in this API Catalog.
 8. On the **API Catalog** tab, in the **Do not show APIs with tags**, enter the tags to exclude in this API Catalog.
 9. On the **Page Display** tab, you can change the page title and summary text. For more details, see [Customize page title and summary](/docs/apim_administration/apiportal_admin/customize_page_content/#customize-page-title-and-summary).
@@ -83,4 +82,4 @@ The Try-It button is enabled for all requests to an API by default. To enable or
 2. In **Try-It Settings**, enable or disable the Try-It button for each request type.
 
    ![API Manager try-it](/Images/APIPortal/api-manager-try-it-settings.png)
-3. Click **Save**
+3. Click **Save**.
