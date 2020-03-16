@@ -1,5 +1,5 @@
 {
-"title": "API Gateway and API Manager 7.7.20200330 Release Notes",
+"title": "API Gateway and API Manager 7.7 Mar20 Release Notes",
   "linkTitle": "API Gateway and API Manager 7.7 Mar20",
   "no_list": "true",
   "weight": "20",
