@@ -6,7 +6,6 @@ weight: 30
 date: 2020-03-11T00:00:00.000Z
 description: Learn about the new features and enhancements in this release of API Portal.
 ---
-
 {{< alert title="Note" color="primary" >}}
 This release note will be continuously updated until the release date.
 {{< /alert >}}
@@ -60,18 +59,6 @@ Changing the API Portal language to Arabic (or any other right to left language)
 
 Related Issue: IAP-308
 
-### Uploading files in API endpoints with Content-Type application/octet-stream is not possible while using OAS3
-
-The execution of an endpoint with Content-Type application/octet-stream is not possible and the request results in an endless loader in the response section.
-
-Related Issue: IAP-2952
-
-### Imported Swagger 2.0 definitions into API Manager are not translated to OAS3, which results in unexpected behavior in API Portal
-
-When a Swagger definition 2.0 is uploaded into API Manager its visualization and behavior in API Portal are unpredictable. This happens because Swagger 2.0 is not correctly translated into OAS3 definition by API Manager. One of the known problems is that the body parameters of POST endpoints are not displayed.
-
-Related Issue: RDAPI-18389
-
 ## Documentation
 
 This section describes documentation enhancements and related documentation.
@@ -100,6 +87,6 @@ The following reference documents are also available:
 
 The Axway Global Support team provides worldwide 24 x 7 support for customers with active support agreements.
 
-Email <mailto:support@axway.com> or visit <https://support.axway.com/>.
+Email [support@axway.com](mailto:support@axway.com) or visit <https://support.axway.com/>.
 
 See [Get help with API Gateway](/docs/apim_administration/apigtw_admin/trblshoot_get_help/) for the information that you should be prepared to provide when you contact Axway Support.
