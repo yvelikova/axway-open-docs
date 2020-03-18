@@ -6,6 +6,7 @@ weight: 30
 date: 2020-03-11T00:00:00.000Z
 description: Learn about the new features and enhancements in this release of API Portal.
 ---
+
 {{< alert title="Note" color="primary" >}}
 This release note will be continuously updated until the release date.
 {{< /alert >}}
@@ -87,6 +88,6 @@ The following reference documents are also available:
 
 The Axway Global Support team provides worldwide 24 x 7 support for customers with active support agreements.
 
-Email [support@axway.com](mailto:support@axway.com) or visit <https://support.axway.com/>.
+Email [support@axway.com](mailto:support@axway.com) or visit [Axway Support](https://support.axway.com/).
 
 See [Get help with API Gateway](/docs/apim_administration/apigtw_admin/trblshoot_get_help/) for the information that you should be prepared to provide when you contact Axway Support.
