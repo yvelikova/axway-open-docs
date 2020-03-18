@@ -6,7 +6,6 @@ weight: 30
 date: 2020-03-11T00:00:00.000Z
 description: Learn about the new features and enhancements in this release of API Portal.
 ---
-
 {{< alert title="Note" color="primary" >}}
 This release note will be continuously updated until the release date.
 {{< /alert >}}
@@ -19,6 +18,8 @@ API Portal is available as a software installation or a virtualized deployment 
 
 * [Install API Portal](/docs/apim_installation/apiportal_install/)
 * [Deploy API Portal in containers](/docs/apim_installation/apiportal_docker/)
+  * [Update API Portal from previews] 7.7.x version (/docs/apim_installation/apiportal_install/)
+ * [Upgradte API Portal to 7.7 ](/docs/apim_installation/apiportal_install/)
 
 ## New features and enhancements
 
