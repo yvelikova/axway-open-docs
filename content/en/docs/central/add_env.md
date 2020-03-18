@@ -12,22 +12,22 @@ _Estimated reading time_: 8 minutes
 
 ## Before you start
 
--   Read [AMPLIFY Central mesh governance overview](/docs/central/hybrid_overview).
--   You will need either an API Gateway V7 environment, or a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](/docs/central/build_hybrid_env).
--   You will need a basic understanding of OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523)).
--   If you are connecting a hybrid environment, you will need to be familiar with Kubernetes and Helm, including running Helm and kubectl commands.
--   You will need an administrator account for AMPLIFY Central.
+* Read [AMPLIFY Central mesh governance overview](/docs/central/hybrid_overview).
+* You will need either an API Gateway V7 environment, or a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](/docs/central/build_hybrid_env).
+* You will need a basic understanding of OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523)).
+* If you are connecting a hybrid environment, you will need to be familiar with Kubernetes and Helm, including running Helm and kubectl commands.
+* You will need an administrator account for AMPLIFY Central.
 
 ## Objectives
 
 Learn how to add your private cloud hybrid environment to AMPLIFY Central, so that you can manage your microservices, and any related APIs they expose, from AMPLIFY Central in AMPLIFY Central public cloud.
 
--   Add your API Gateway V7 or Kubernetes environment to AMPLIFY Central
--   Download the generated hybrid kit for your Kubernetes environment
--   Generate a key pair and secret for the domain edge gateway and deploy it into the Istio namespace
--   Generate key pairs and secrets for the Axway mesh agents and deploy them into the mesh agent namespace
--   Deploy the Axway proprietary service mesh layer into your environment
--   Create and test an API proxy for the API exposed by a demo microservice
+* Add your API Gateway V7 or Kubernetes environment to AMPLIFY Central
+* Download the generated hybrid kit for your Kubernetes environment
+* Generate a key pair and secret for the domain edge gateway and deploy it into the Istio namespace
+* Generate key pairs and secrets for the Axway mesh agents and deploy them into the mesh agent namespace
+* Deploy the Axway proprietary service mesh layer into your environment
+* Create and test an API proxy for the API exposed by a demo microservice
 
 ## Add your environment to AMPLIFY Central
 
@@ -43,12 +43,12 @@ You will see the "Add a New Environment" page. From here, you can create either 
 
 To add an API Gateway V7 Environment, select the "API Gateway V7" tile on the "Add a New Environment" page. Fill out your environment details, including:
 
--A friendly title for your environment
--A short name for your environment, which must be unique across all namespaces
--An optional description for your environment
--An optional set of longitude and latitude coordinates for your environment to allow geographical layout of your environment
--Any tags(key words) that make your environment easier to group and find
--Any additional environment details that relate to your configuration as key:value pair attributes
+* A friendly title for your environment
+* A short name for your environment, which must be unique across all namespaces
+* An optional description for your environment
+* An optional set of longitude and latitude coordinates for your environment to allow geographical layout of your environment
+* Any tags(key words) that make your environment easier to group and find
+* Any additional environment details that relate to your configuration as key:value pair attributes
 
 When your form is complete, click the "Save" button in the top right corner:
 
@@ -62,11 +62,11 @@ After your V7 Environment is successfully created, you will see a success modal 
 
 To add an environment for your private cloud Kubernetes cluster, select the "Kubernetes" tile on the "Add a New Environment" page. Fil out your environment details, including:
 
--A friendly name for your environment
--A short name for your runtime, serving as the logical name of the gateway
--An environment protocol(HTTP or HTTPS). Note: for HTTPS, you must provide a certificate for the domain.
--A service mesh domain name(example: mydomain.com). Note: for HTTPS, you must own or be able to configure a certificate for this domain.
--The port where your gateway will be exposed
+* A friendly name for your environment
+* A short name for your runtime, serving as the logical name of the gateway
+* An environment protocol(HTTP or HTTPS). Note: for HTTPS, you must provide a certificate for the domain.
+* A service mesh domain name(example: mydomain.com). Note: for HTTPS, you must own or be able to configure a certificate for this domain.
+* The port where your gateway will be exposed
 
 When your form is complete, click the "Save" button in the top right corner:
 
