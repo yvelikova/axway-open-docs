@@ -21,7 +21,7 @@ You can view and search the contents of the gateway trace log, domain audit log,
 
 This section explains how to configure the trace log only. For more details, see [Configure logging and events](/docs/apim_administration/apigtw_admin/logging).
 
-For details on how to redact sensitive data from trace files (for example, user passwords or credit card details), see [Hide sensitive data in API Gateway Manager](/docs/apim_administration/admin_redactors). The trace level you set impacts the redaction.
+For details on how to redact sensitive data from trace files (for example, user passwords or credit card details), see [Hide sensitive data in API Gateway Manager](/docs/apim_administration/apigtw_admin/admin_redactors/). The trace level you set impacts the redaction.
 
 ## View API Gateway trace files
 

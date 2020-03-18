@@ -1,5 +1,5 @@
 ---
-title: "Customize API\_Portal look and feel"
+title: Customize API Portal look and feel
 linkTitle: Customize look and feel
 weight: 2
 date: 2019-07-30T00:00:00.000Z
@@ -26,7 +26,7 @@ Customization can be performed at three levels:
 
 To get started with customization, you need the following:
 
-* API Portal installed and configured. For more details, see the [API Portal Installation and Upgrade Guide](/bundle/APIPortal_77_InstallationGuide_allOS_en_HTML5) .
+* API Portal installed and configured. For more details, see the [API Portal Installation and Upgrade Guide](/docs/apim_installation/apiportal_install/).
 * An API Portal user account. When you log in, the default API Portal web page is displayed, so you can check how the changes look to your end users.
 * Basic understanding of Joomla! ThemeMagic. This feature enables you to change CSS stylesheets, templates, and layouts. For more advanced modifications, you can modify the PHP source code to customize API Portal, such as to change the functionality of pages and to extend by adding new pages.
 
@@ -69,10 +69,9 @@ API Portal includes one theme named **Axway**. Create any additional themes fro
 
 Theming variables are grouped into different levels:
 
-
-: **Key Colors**: These variables control the base colors for all styles. The default key colors are sea blue and gray.
-: **Basic Colors**: These variables control the colors of the major UI elements, such as buttons and menus. The default values for the basic colors are based on the key colors, but you can overridden these to control the styles of individual UI elements.
-: **Global Fonts** and **Headings**: These variables control the typefaces and sizes of the main text elements
+* **Key Colors**: These variables control the base colors for all styles. The default key colors are sea blue and gray.
+* **Basic Colors**: These variables control the colors of the major UI elements, such as buttons and menus. The default values for the basic colors are based on the key colors, but you can overridden these to control the styles of individual UI elements.
+* **Global Fonts** and **Headings**: These variables control the typefaces and sizes of the main text elements
 
 In addition, there are some other variables for fine-grain customization of the UI elements, if needed. Most of these variables are based on Basic Color variables.
 
@@ -139,26 +138,23 @@ Change the banner of your portal using the **Home Page Banner** module.
 To customize the banner:
 
 1. In JAI, click **Extensions > Modules > Home Page Banner**.
-
-    You can customize the following:
-
-    : **Title** - Free text field for the title of the banner. Defaults to **Enter API Portal**.
-    : **Title colour** - Colour picker to choose the color of the title.
-    : **Sub-title** - Free text field for the subtitle of the banner. Defaults to **Explore and test our APIs**.
-    : **Subtitle colour** - Colour picker to choose the color of the subtitle.
-    : **Explore Button** - Show / Hide Explore Button.
-    : **Button text** - Free text field for the button text.
-    : **Button text colour** - Colour picker to choose the color of the button text.
-    : **Button has background** - Yes / No.
-    : **Link button to a menu item** - Drop-down list with all menu items. Choose a page to link to when click the button. Defaults to **Sign in** page.
-    : **Button border colour** - Colour picker to choose the color of the button border.
-    : **Border radius** - Numbers only field for border radius of the button border. Defaults to **500**.
-    : **Background image** - Change the background image of the banner. You can choose an image from the media manager or upload a new image.
-    : **Text alignment** - Choose one of the three options (left, center, right) to position the text and the button on the banner.
+2. Customize the following:
+    * **Title** - Free text field for the title of the banner. Defaults to **Enter API Portal**.
+    * **Title colour** - Colour picker to choose the color of the title.
+    * **Sub-title** - Free text field for the subtitle of the banner. Defaults to **Explore and test our APIs**.
+    * **Subtitle colour** - Colour picker to choose the color of the subtitle.
+    * **Explore Button** - Show / Hide Explore Button.
+    * **Button text** - Free text field for the button text.
+    * **Button text colour** - Colour picker to choose the color of the button text.
+    * **Button has background** - Yes / No.
+    * **Link button to a menu item** - Drop-down list with all menu items. Choose a page to link to when click the button. Defaults to **Sign in** page.
+    * **Button border colour** - Colour picker to choose the color of the button border.
+    * **Border radius** - Numbers only field for border radius of the button border. Defaults to **500**.
+    * **Background image** - Change the background image of the banner. You can choose an image from the media manager or upload a new image.
+    * **Text alignment** - Choose one of the three options (left, center, right) to position the text and the button on the banner.
 
     The module position defaults to **api-home-banner**.
-
-2. Click **Save**.
+3. Click **Save**.
 
 ### Customize the tiles
 
@@ -173,19 +169,17 @@ By default, there are four instances of this module:
 * **Home Tiles 3** (Manage & analyze)
 * **Home Tiles 4** (Connect with a community of developers)
 
-To customize this tiles:
+To customize the tiles:
 
 1. In JAI, click **Extensions > Modules > Home Tiles 1**.
-
-    You can customize the following:
-
-    : **Title** - Free text field for the title. Defaults to **Explore & Test**.
-    : **Title Colour** - Colour picker to choose the colour of the title.
-    : **Description** - Free text field for the description of the tile (The short text under the title).
-    : **Description colour** - Colour picker to choose the colour of the description text.
-    : **Background image** - Change the icon of the tile. You can choose an image from the media manager or upload a new image.
-    : **Background colour** - Colour picker to choose the background colour of the whole tile. Defaults to **white**.
-    : **Tile has link** -
+2. Customize the following:
+    * **Title** - Free text field for the title. Defaults to **Explore & Test**.
+    * **Title Colour** - Colour picker to choose the colour of the title.
+    * **Description** - Free text field for the description of the tile (The short text under the title).
+    * **Description colour** - Colour picker to choose the colour of the description text.
+    * **Background image** - Change the icon of the tile. You can choose an image from the media manager or upload a new image.
+    * **Background colour** - Colour picker to choose the background colour of the whole tile. Defaults to **white**.
+    * **Tile has link**:
         * **Menu item** - Drop-down list with all menu items. Choose a menu item to link the Tile to (Defaults to the chosen option).
         * **Custom** - Free text field. Enter any valid URL to link the tile to.
         * **No** - No link at all.

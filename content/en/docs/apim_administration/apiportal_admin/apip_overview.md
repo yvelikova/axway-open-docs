@@ -9,8 +9,6 @@ Axway API Portal is a self-service developer portal layered on both API Manager
 
 With API Portal, you can enable both internal or external client application (app) developers to browse, consume, build, and test APIs for use in their applications on their own. You can use several channels, such as FAQs, articles, forums or blogs, to provide more information for the developers and to encourage developer engagement. The look and feel of the web-based API Portal is fully customizable to match your brand and image.
 
-API Portal is part of the Axway AMPLIFY API Management solution. For more details, see the [AMPLIFY API Management Getting Started Guide](/bundle/APIManagementPlus_GettingStartedGuide_allOS_en_HTML5/) .
-
 ![Diagram illustrating the API Management concepts in API Portal](/Images/APIPortal/API_Portal_cncpt_api_mgmt.png)
 
 ## Key capabilities in API Portal

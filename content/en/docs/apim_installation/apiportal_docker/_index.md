@@ -15,8 +15,8 @@ Because API Gateway and API Manager also support Docker containers, you can run 
 
 For more details on Docker, see the following:
 
-- [Docker overview](https://docs.docker.com/engine/understanding-docker/)
-- [Install Docker on Linux distributions](https://docs.docker.com/engine/installation/linux/)
+* [Docker overview](https://docs.docker.com/engine/understanding-docker/)
+* [Install Docker on Linux distributions](https://docs.docker.com/engine/installation/linux/)
 
 ## Interaction example
 
@@ -38,8 +38,8 @@ On the host machines running the Docker containers, you can expose any port you 
 
 Axway provides the following resources for running API Portal in Docker:
 
-- Package containing a `Dockerfile` and other resources to build an API Portal Docker image that uses CentOS 7. For more information on the contents of the package, see [Build and run API Portal using Dockerfile](/docs/apim_installation/apiportal_docker/docker_portal_deploy).
-- Package containing a ready-made API Portal Docker image.
+* Package containing a `Dockerfile` and other resources to build an API Portal Docker image that uses CentOS 7. For more information on the contents of the package, see [Build and run API Portal using Dockerfile](/docs/apim_installation/apiportal_docker/docker_portal_deploy).
+* Package containing a ready-made API Portal Docker image.
 
 You can get the API Portal packages from Axway Support at [https://support.axway.com](https://support.axway.com/){.hyperlink}.
 
@@ -51,7 +51,7 @@ When you make changes that affect the file system of the API Portal container, 
 
 Data is persistent as long as the Docker container exists:
 
-- If you *stop* the container, all your changes are retained when you run the container again.
-- If you *remove* the container, all your changes are lost, and you must either restore them from your backup, or redo them.
+* If you *stop* the container, all your changes are retained when you run the container again.
+* If you *remove* the container, all your changes are lost, and you must either restore them from your backup, or redo them.
 
 For more details on MySQL in Docker, see the [official MySQL Docker repository](https://hub.docker.com/_/mysql/).

@@ -36,7 +36,7 @@ To disable in Policy Studio, select **Environment Configuration > Server Setting
 
 ![Disable real-time monitoring](/Images/APIGateway/admin_perf_realtime_monitor.png)
 
-For more details, see [Real-time monitoring metrics](/docs/apim_administration/apigtw_admin/realtime_monitoring_setting).
+For more details, see [Real-time monitoring metrics](/docs/apim_reference/monitor_traffic_events_metrics/#real-time-monitoring-metrics).
 
 ### Disable traffic monitoring
 
@@ -64,7 +64,7 @@ You should also ensure that the API Gateway is not sending log messages to the a
 
 ![Disable access logging](/Images/APIGateway/admin_perf_access_log.png)
 
-For more details, see [Transaction access log settings](/docs/apim_reference/log_access_settings#transaction-access-log-settings).
+For more details, see [Transaction access log settings](/docs/apim_reference/log_global_settings/#transaction-access-log-settings).
 
 ## Advanced performance tuning
 

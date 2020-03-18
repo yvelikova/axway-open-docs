@@ -457,7 +457,7 @@ The **Set Message**
 filter replaces the body of the message. The replacement data can be plain text, HTML, XML, or any other text-based markup.
 
 You can also use the **Set Message**
-filter to customize SOAP faults that are returned to clients in the case of a failure or exception in the policy. For a detailed explanation of how to use this filter to customize SOAP faults, see [SOAP fault handling](fault_soap.htm).
+filter to customize SOAP faults that are returned to clients in the case of a failure or exception in the policy. For a detailed explanation of how to use this filter to customize SOAP faults, see [SOAP fault handling](/docs/apim_policydev/apigw_polref/fault_filters/#soap-fault-filter).
 
 Perform the following steps to configure the **Set Message**
 filter:
@@ -749,11 +749,11 @@ You must specify the message attribute to map to the inputs of each schema. Clic
 ![Execute data map source document](/Images/PolDevGuide/Mapper/execute_data_map_filter_src_doc.png)
 
 **External Parameters**: This section is automatically populated when you select a data map. Click **Edit** to edit the expression for each parameter. For more details on parameters, see the
-[API Gateway Visual Mapper User Guide](/bundle/API_VisualMapper_78_UserGuide_allOS_en_HTML5).
+[API Gateway Visual Mapper User Guide](https://docs.axway.com/bundle/API_VisualMapper_77_UserGuide_allOS_en_HTML5).
 
 ### Example data map policy
 
-For an example of how to use a data map in a policy, see [Manage data maps](/docs/apim_policydev/apigw_poldev/web_services/resources_data_maps/).
+For an example of how to use a data map in a policy, see [Manage data maps](/docs/apim_policydev/apigw_web_services/resources_data_maps/).
 
 ## Transform with XSLT filter
 

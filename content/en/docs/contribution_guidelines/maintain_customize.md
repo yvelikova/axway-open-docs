@@ -15,7 +15,7 @@ If you are a maintainer of this documentation site, this topic includes all the 
 
 ## Before you start
 
-* Complete the steps in [Set up and work locally](setup_work_locally)
+* Complete the steps in [Set up and work locally](/docs/contribution_guidelines/setup_work_locally/)
 
 ## Overview of tools
 
@@ -33,7 +33,7 @@ This following configuration files can be found in the site root:
 
 * `config.toml` - Hugo and Docsy theme configuration
 * `netlify.toml` - Netlify deployment configuration
-* `static/admin/config.yml` - Netlify CMS configuration
+* `static/admin/config.js` - Netlify CMS configuration
 
 ## Update the Docsy theme
 
@@ -137,6 +137,36 @@ To create a new buttton in the right nav:
 ### Add Analytics and user feedback tracking
 
 For information on enabling Google Analytics tracking and the user feedback widget, see [Docsy - Analytics and User Feedback](https://www.docsy.dev/docs/adding-content/feedback/).
+
+## Add new documentation to Netlify CMS
+
+Whenever you add a new folder of content under `content/en/docs/`, you must define it as a new folder collection in the Netlify CMS configuration to allow contributors to edit the content using Netlify CMS.
+
+To add a new folder collection you must create a new entry in the `collections` array in the CMS configuration file `static/admin/config.js`. The easiest way to do this is to copy and paste an existing folder collection and modify the `contentDirectory`, `imageDirectory` and other fields as appropriate, for example:
+
+```
+{
+  ...docsDefaults('PATH_TO_DOC_CONTENT', 'PATH_TO_DOC_IMAGES'),
+  name: 'USE_LAST_PART_OF_PATH',
+  label: 'LABEL_USED_FOR_COLLECTION_IN_LEFT_NAV',
+  label_singular: 'LABEL_USED_TO_CREATE_NEW_ITEM_IN_COLLECTION',
+  description: 'DESCRIPTION_FOR_COLLECTION',
+}
+```
+
+For example:
+
+```
+{
+  ...docsDefaults('apim_policydev/apigw_kps', 'APIGatewayKPSUserGuide'),
+  name: 'apigw_kps',
+  label: 'Configure KPS',
+  label_singular: 'page in KPS section',
+  description: 'All pages relating to configuring KPS in Policy Studio.',
+}
+```
+
+For more details on how collections are defined in Netlify CMS, see [Collection types](https://www.netlifycms.org/docs/collection-types) and [Collections reference](https://www.netlifycms.org/docs/configuration-options/#collections) in Netlify CMS documentation.
 
 ## Use variables in content
 

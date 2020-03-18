@@ -19,8 +19,7 @@ For more details, see [Configure API Manager settings in Policy Studio](/docs/ap
 
 API administrators can use the **Clients** > **Default Quotas** tab to manage the maximum message traffic rate sent by applications to APIs using application-default or system-level quotas. Alternatively, API administrators can set application-specific quotas in the **Clients** > **Applications** > **Quota** tab.
 
-API administrators can set system and application-level quotas only in API Manager. Policy developers can create custom throttling policies for user or organization-level quotas in Policy Studio. For details on creating policies, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+API administrators can set system and application-level quotas only in API Manager. Policy developers can create custom throttling policies for user or organization-level quotas in Policy Studio.
 
 ### System and application-default quotas
 
@@ -66,7 +65,7 @@ Both quota rules apply to the same API method.
 
 ### Configure quota storage settings
 
-You can configure how quota information is stored using Policy Studio in **Server Settings** > **API Manager** > **Quota Settings**. For more details, see [Quota Settings.](/docs/apim_administration/apimgr_admin/api_mgmt_config_ps/#quota-settings)
+You can configure how quota information is stored using Policy Studio in **Server Settings** > **API Manager** > **Quota Settings**. For more details, see [Quota Settings](/docs/apim_administration/apimgr_admin/api_mgmt_config_ps/#quota-settings).
 
 ## Manage OAuth authorizations
 
@@ -82,7 +81,7 @@ The following details are displayed:
 * **SCOPES**: The OAuth scopes used to managed access to the protected resource (for example, **resource.Write**, **openid**).
 * **CREATED**: When the authorization was first made.
 
-To revoke a stored authorization, and block further requests from the client application, select the resource owner name under **SUBJECT**, and click **Remove**. For more details, see the [API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/).
+To revoke a stored authorization, and block further requests from the client application, select the resource owner name under **SUBJECT**, and click **Remove**.
 
 ## Manage organizations
 

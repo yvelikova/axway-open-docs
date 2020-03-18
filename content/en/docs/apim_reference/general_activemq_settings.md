@@ -48,6 +48,8 @@ Specifies the TCP port for incoming ActiveMQ connections. Defaults to `${env.BRO
 
 Specifies the location of the shared directory in your environment that is used by multiple embedded ActiveMQ brokers. This setting is required, and must be configured for high availability and failover. Defaults to `INSTALL_DIR/messaging-shared`.
 
+When setting up a shared directory, do not use OCFS2, NFSv3, or other software where exclusive file locks do not work reliably. For details, see [Apache ActiveMQ Shared File System Master Slave](http://activemq.apache.org/shared-file-system-master-slave.html).
+
 ### SSL settings
 
 Configure the following settings to secure the communication with JMS clients, and between multiple embedded ActiveMQ brokers:

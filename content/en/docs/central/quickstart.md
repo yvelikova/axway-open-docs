@@ -27,7 +27,7 @@ Learn how to register your first API in AMPLIFY Central.
 
 Watch this video to learn how to register your first API as an API proxy in AMPLIFY Central, how to deploy it to a runtime group, and how to test the deployed API.
 
-{{< youtube QTpB3e2DZBg >}}
+{{< youtube v2zt-EveOu8 >}}
 
 ## Secure an API
 

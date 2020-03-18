@@ -1,9 +1,9 @@
 {
-    "title":"Install Redis cache",
-    "linkTitle":"Install Redis",
-    "weight":"3",
-    "date":"2019-08-09",
-    "description":"Optionally install a Redis cache for better performance."
+"title": "Install Redis cache",
+  "linkTitle": "Install Redis",
+  "weight": "3",
+  "date": "2019-08-09",
+  "description": "Optionally install a Redis cache for better performance."
 }
 
 For better performance and scalability, you can configure API Portal to cache APIs in a Redis cache. Using a Redis cache is recommended if you plan to expose hundreds of APIs, or you plan to connect API Portal to more than one API Manager.
@@ -67,22 +67,14 @@ To install Redis, follow these steps:
     make && make install
     ```
 
-## Configure Redis
+## Enable and configure Redis
 
-By default Redis runs on the same host machine as API Portal and uses the default port 6379. In this case, no additional configuration is necessary for API Portal to use the Redis cache.
+After you have successfully installed Redis, you must enable it in JAI:
 
-However, if you have installed Redis on a different host machine, or configured Redis to use a different port, you must update the Redis settings in the `configuration.php` file. Follow these steps:
-
-1. Open the following configuration file for editing: `/opt/axway/apiportal/htdoc/configuration.php`
-
-2. Locate the following lines:
-
-    ```
-    redis_server_host = 'localhost';
-    redis_server_port = '6379';
-    ```
-
-3. Change the values for the Redis host and port as required and save the file.
+1. In the Joomla! Administrator Interface (JAI), click **System > Global Configuration > System**.
+2. On the **Cache configuration** section, set **Cache Handler** to **Redis**.
+3. Review and update the other settings if necessary.
+4. Click **Save**.
 
 ## Verify Redis installation
 

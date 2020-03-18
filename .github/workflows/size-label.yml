@@ -1,0 +1,17 @@
+name: size-label
+
+# GitHub action to assign labels based on pull request change sizes.
+# https://github.com/marketplace/actions/assign-size-label
+
+on: pull_request
+jobs:
+  size-label:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: size-label
+        uses: "pascalgn/size-label-action@df7ad4303b35cbeb20937dbb12d5a050520e469e"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

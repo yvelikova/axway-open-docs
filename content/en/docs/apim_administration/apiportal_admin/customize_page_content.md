@@ -2,34 +2,36 @@
 title: Additional customizations
 linkTitle: Additional customizations
 weight: 7
-date: 2019-07-30
-description: Customize other features of your API Portal, such as sign up, login, and application settings.
+date: 2019-07-30T00:00:00.000Z
+description: >-
+  Customize other features of your API Portal, such as sign up, login, and
+  application settings.
 ---
-
 ## Add reCaptcha to sign up
 
 You can customize your sign up functionality by enabling reCaptcha
 
 reCaptcha is a free service you can add to the API Portal sign up page to prevent spam and abuse. The reCaptcha plugin is available in Joomla!.
 
+### Register a new site
+
 You must have a Google user name and password to add reCaptcha. For more details, see [reCaptcha documentation](https://www.google.com/recaptcha/intro/index.html).
 
 1. Go to the [reCaptcha admin page](https://www.google.com/recaptcha/admin#list).
 2. Enter a label for your site (such as `API Portal`), enter the API Portal domain (here `localhost.localdomain`) in the **Domains** field, and select **Register**.
-
-    ![Register a new site with label and domains displayed](/Images/APIPortal/reCatchalocalhostlocaldomain.png)
-
 3. Select the domain, and review how to add the reCaptcha:
 
-    ![How to add reCaptcha to the API Portal](/Images/APIPortal/recaptchasitekeysteps.png)
+![How to add reCaptcha to the API Portal](/Images/APIPortal/recaptchasitekeysteps.png)
 
-4. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal_host>/administrator`).
-5. Select **Extensions > Plugins**.
-6. Click **Captcha - ReCaptcha**.
-7. Enter the respective reCaptcha keys to the **Site key** and **Secret key** fields.
-8. Set the **Status** of the plugin to `Enabled`, and click **Save & Close**.
-9. Click **System > Global Configuration > Users**.
-10. On the **User Options** tab, set the Captcha field to **Captcha - ReCaptcha**, and click **Save & Close**.
+### Add reCaptcha plugin
+
+1. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal_host>/administrator`).
+2. Select **Extensions > Plugins**.
+3. Click **Captcha - ReCaptcha**.
+4. Enter the respective reCaptcha keys to the **Site key** and **Secret key** fields.
+5. Set the **Status** of the plugin to `Enabled`, and click **Save & Close**.
+6. Click **System > Global Configuration > Users**.
+7. On the **User Options** tab, set the Captcha field to **Captcha - ReCaptcha**, and click **Save & Close**.
 
 To verify the change, go to API Portal home page, and click **Sign In > Sign up**. The reCaptcha functionality is displayed on the sign up page.
 
@@ -39,11 +41,11 @@ To verify the change, go to API Portal home page, and click **Sign In > Sign up
 
 You can configure API Portal with SMTP to enable sending user registration emails.
 
-To send emails from API Portal (for example, for user registration or email validation), you must configure an SMTP server in API Manager. For more details, see [Configure API Manager settings in Policy Studio](/csh?context=1002&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
+To send emails from API Portal (for example, for user registration or email validation), you must configure an SMTP server in API Manager. For more details, see [Configure API Manager settings in Policy Studio](/docs/apim_administration/apimgr_admin/api_mgmt_config_ps/).
 
 ## Customize user registration emails
 
-You can customize the emails that are sent to API Portal users on sign up. All API Portal user emails are sent from API Manager, so to customize them follow the instructions in [Customize API Manager generated email](/csh?context=1029&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
+You can customize the emails that are sent to API Portal users on sign up. All API Portal user emails are sent from API Manager, so to customize them follow the instructions in [Customize API Manager generated email](/docs/apim_administration/apimgr_admin/api_mgmt_custom/#customize-api-manager-generated-email).
 
 ## Customize API Portal user login
 
@@ -72,9 +74,7 @@ You can customize API Portal user login to display a ReCaptcha and lock the user
 4. Enter a value for the number of failed login attempts before the user account is locked.
 5. Enter a value in seconds for how long the user account is locked.
 6. Click **Yes** to enable locking by IP address. When this setting is enabled login attempts are blocked from the same IP address for the lock time specified even if correct user credentials are entered.
-
-    You can enable user account locking and IP address locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts, `UserA` will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, `UserB`) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
-
+   You can enable user account locking and IP address locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts, `UserA` will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, `UserB`) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
 7. Click **Save**.
 
 #### Reset locked user accounts
@@ -93,7 +93,7 @@ To enable this feature follow these steps:
 4. Enter a title for the message.
 5. Use the text editor to enter the text for the message.
 6. Select **Purity_iii** > **login-message-consent** from the **Position** list.
-7. Click **Save &** **Close**.
+7. Click **Save & Close**.
 8. Go to the API Portal Sign In page, refresh the page, and verify that the banner is shown.
 
 ### Enforce password policies
@@ -106,6 +106,16 @@ To disable the **Enable password expiry** and **Days before passwords expire** s
 2. Disable **Enable password expiry** and **Days before passwords expire** fields.
 
 {{< alert title="Note" color="primary" >}} If you disable **Enable password expiry**, which forces users to change password at first login, and a new user logs in after that, then this user will not be asked to change password if you decide to enable this setting again.{{< /alert >}}
+
+## Customize page title and summary
+
+You can customize the title and summary text for the following API Portal pages: **Users**, **APIs**, **Applications**, **Monitoring**, **Help Center**, and **Pricing**.
+
+1. In JAI, click **Menus > Main Menu**.
+2. Open the desired page menu item and click the **Page Display** tab.
+3. In **Masthead Title**, enter the new page title. If you leave this empty, the default title is used.
+4. In **Masthead Slogan**, enter the new summary. If you leave this empty, the default text is used.
+5. Click **Save & Close**.
 
 ## Customize application settings
 
@@ -146,7 +156,7 @@ When the setting is set to **Yes** or **No** an organization administrator can s
 
 ## Customize monitoring
 
-To enable your API consumers to view monitoring information for their APIs and application in API Portal, you must ensure that you have enabled monitoring in the connected API Manager. For details, see [Monitor APIs and applications in API Manager](/csh?context=1030&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
+To enable your API consumers to view monitoring information for their APIs and application in API Portal, you must ensure that you have enabled monitoring in the connected API Manager. For details, see [Monitor APIs and applications in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_monitor/).
 
 If monitoring is disabled in the connected API Manager, all monitoring information, including the following UI elements, are hidden in API Portal:
 
@@ -180,7 +190,7 @@ You must create your customized privacy policy before enabling it in API Portal.
 1. Click **Content > Articles > New**
 2. Enter a meaningful name for your policy, and the text of the privacy policy.
 3. Select `Privacy Policy` from the **Category** list.
-4. Click **Save and Close.**
+4. Click **Save & Close**.
 
 To meet GDPR compliance regulations, JAI does not allow you to edit a privacy policy. To update a policy you must create a new article on the privacy policy category.
 
@@ -201,7 +211,7 @@ If you create and enable a new policy, for example, because the policy of your c
 
 ## API Manager custom properties support
 
-API Portal offers an interface to the custom properties defined in API Manager. For more details on how to add and manage custom properties in API Manager, see [Customize API Manager data](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/page/Content/APIManagementGuideTopics/api_mgmt_custom.htm#customize_api_manager_data).
+API Portal offers an interface to the custom properties defined in API Manager. For more details on how to add and manage custom properties in API Manager, see [Customize API Manager data](/docs/apim_administration/apimgr_admin/api_mgmt_custom/#customize-api-manager-data).
 
 API Portal supports custom properties for the following entities:
 

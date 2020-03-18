@@ -8,7 +8,7 @@ description: General troubleshooting steps for API Portal, as well as specific p
 
 ## General troubleshooting steps
 
-1. Check if your issue and a workaround for it is listed as a known issue in the [API Portal Release Notes](/docs/apim_relnotes/apiportal_releasenotes/).
+1. Check if your issue and a workaround for it is listed as a known issue in the [Release Notes](/docs/apim_relnotes/) for your installed API Portal version.
 2. Restart the failing servers or clients.
 3. Collect the log files, screen shots, and any other data related to the issue, and contact Axway Support.
 

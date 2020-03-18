@@ -6,7 +6,7 @@ date: 2019-09-19
 description: Learn how to apply a rate limit configuration to your API.
 ---
 
-*Estimated reading time*: 5 minutes
+_Estimated reading time_: 5 minutes
 
 ## Before you start
 
@@ -32,7 +32,7 @@ API providers typically measure processing limits in transactions per time perio
 
 AMPLIFY Central provides rate limiting around the API Proxy activity. You can set up the rate limiting from **1 second** to **1 day** interval.
 
-AMPLIFY Central allows for two levels of enforcement for rate limiting:  
+AMPLIFY Central allows for two levels of enforcement for rate limiting:
 
 * At the proxy level, rate limiting affects all API transactions regardless of the consuming application.
 * At the proxy and application level, rate limiting affects all API transactions originating with a specific application.
@@ -45,18 +45,49 @@ To begin, [register an api proxy](/docs/central/quickstart/#register-an-api).
 
 ### Set a proxy rate limit on your API
 
-1. Navigate to the **API Proxies** tab.
-2. Click the API proxy name to open the API proxy details page.
-3. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section.
-4. Enter the desired TPS and click the checkbox to save the configuration.
+1. On the **API Proxies** tab, click the API proxy name to open the API proxy details page.
+2. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section by clicking the gear icon.
+3. Enter the number of transactions and use the dropdown duration list to select an interval.
 
-![Enter the desired TPS](/Images/central/proxy_rate_limit_box.png)
+    ![Enter the transactions per interval to apply a proxy rate limit on your API](/Images/central/proxy_rate_limit_modal.png)
 
-A new revision with the desired rate limit configuration is created. You must deploy the new revision for the configuration to take effect.
+4. Click **Save** to save the policy.
+
+A new revision of the policy is created. You must deploy the new revision for the configuration to take effect.
+
+### Remove a proxy rate limit from your API
+
+1. On the **API Proxies** tab, click the API proxy name to open the API proxy details page.
+2. On the **Policies** tab, edit the rate limit policy under the **Request to backend** section by clicking the gear icon.
+3. Click **Delete**.  
+4. Click **Delete rate limit policy** on the dialog box to confirm whether you want to delete the rate limit policy.
 
 ### Test the rate limit configuration
 
-You can test the rate limit configuration.
+After deploying a new revision, you can test the rate limit configuration by clicking on the **Test Methods** tab, which will allow you to try out different methods for your proxy.
+
+### Set an app rate limit on your API
+
+1. On the **Apps** tab, click your app to open the app details page.
+2. Click the **APIs** tab to view your APIs. If you haven't linked your API to your app yet, you can do so by clicking **+API**.
+
+    * If your API has either a proxy or an app rate limiting policy applied, an **RL** (rate limit) button is shown next to your API. Hover over the button to view information about the rate limiting policy applied.
+    * If your API does not have a rate limit policy applied, a **+** button is shown next to your API.
+
+    ![Hover over the Rate Limit Balloon to see more information about rate limiting policies for your API](/Images/central/rate_limit_balloon.png)
+
+3. To set an app rate limit on your API, click either the **RL** or the **+** button.
+4. Enter the number of transactions and use the dropdown duration list to select an interval.
+
+    ![Enter the desired transactions per interval to apply an app rate limit on your API](/Images/central/app_rate_limit_modal.png)
+
+5. Click **Save** to save the policy.
+
+{{< alert title="Note" color="" >}}This will only affect the app rate limit policy.{{< /alert >}}
+
+### Remove an app rate limit from your API
+
+To remove an app rate limit from your API, follow the steps on [Remove a proxy rate limit from your API](#remove-a-proxy-rate-limit-from-your-api).
 
 #### Simple test with docker and curl
 
@@ -84,25 +115,25 @@ https://test-e4f77cd969cdaf3a0169ce16c8320000.apicentral.axwayamplify.com/music/
 Save the following script as `rate-limit-test.js`.
 
 ```js
-import http from "k6/http";
-import { sleep } from "k6";
-import { Counter } from "k6/metrics";
+import http from 'k6/http';
+import { sleep } from 'k6';
+import { Counter } from 'k6/metrics';
 
-var passes = new Counter("passed")
-var ratelimited = new Counter("ratelimited")
+var passes = new Counter('passed');
+var ratelimited = new Counter('ratelimited');
 
 export function setup() {
     // warm up DNS
-    var res = http.get(`${__ENV.TEST_URL}`)
+    var res = http.get(`${__ENV.TEST_URL}`);
 }
 
 export default function() {
-    var res = http.get(`${__ENV.TEST_URL}`)
+    var res = http.get(`${__ENV.TEST_URL}`);
 
     if (res.status === 429) {
-        ratelimited.add(1)
+        ratelimited.add(1);
     } else {
-        passes.add(1)
+        passes.add(1);
     }
 }
 ```
@@ -261,18 +292,18 @@ proxy:
 
 ### Apply variable interval rate limit for an application consuming your API
 
-You can rate limit the API calls at variable interval instead of fixed 1 second interval.  
+You can rate limit the API calls at variable interval instead of fixed 1 second interval.
 
 Under `perProxy` or `perProxyAndApp` you can specify two configurations:
 
 * `limit` value defines number of API calls that needs to be rate limited.
 * `interval` value defines at what interval, API calls needs to be rate limited at.
-  
+
 The field `interval` must follow the format `PT[n]H[n]M[n]S`, supported by the ISO_8601 standard.
 
 **Some examples for interval:**
 
-* `PT10S`  # 10 seconds interval
+* `PT10S` # 10 seconds interval
 * `PT1M45S` # 1 minute 45 seconds interval
 * `PT15H20M30S` # 15 hours 20 minutes thirty seconds interval
 

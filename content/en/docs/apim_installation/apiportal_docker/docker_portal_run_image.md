@@ -19,7 +19,7 @@ The following components are required on your system before you can deploy API 
 * Docker version 1.13.x
 * MySQL Docker container running
 * API Portal Docker image available from Axway Support at [https://support.axway.com](https://support.axway.com/)
-* API Gateway and API Manager either installed on-premise or deployed in containers (see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/) for more details)
+* API Gateway and API Manager either installed on-premise or deployed in containers (see the [API Gateway Installation Guide](/docs/apim_installation/apigtw_install/) for more details)
 
 The monitoring feature of API Portal, which enables your API consumers to monitor application and API usage, requires a connected API Manager with monitoring metrics enabled.
 
@@ -51,6 +51,6 @@ This example performs the following:
 
 API Portal is now running in a Docker container.
 
-Before you can use API Portal, you must link it to your API Manager. For more details, see [Connect API Portal to API Manager](../../../APIPortalInstallGuideTopics/connect_to_apimgr.htm).
+Before you can use API Portal, you must link it to your API Manager. For more details, see [Connect API Portal to API Manager](/docs/apim_installation/apiportal_install/connect_to_apimgr/).
 
 The Docker image contains an encryption script which you can use to encrypt and store the Public API mode user password. For details on running the script in a Docker container, see [Encrypt the Public API user password (optional)](/docs/apim_installation/apiportal_docker/docker_portal_deploy/#encrypt-the-public-api-user-password-optional).

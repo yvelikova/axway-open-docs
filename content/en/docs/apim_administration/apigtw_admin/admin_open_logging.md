@@ -64,7 +64,7 @@ Filebeat is included in your API Gateway installation in the following directory
 INSTALL_DIR/apigateway/tools/
 ```
 
-For more information on configuring Filebeat, see the [Embedded Analytics for AMPLIFY API Management documentation](/bundle/EmbeddedAnalyticsAPIM_allOS_en_HTML5/).
+For more information on configuring Filebeat, see the [Embedded Analytics for AMPLIFY API Management documentation](https://docs.axway.com/bundle/EmbeddedAnalyticsAPIM_allOS_en_HTML5/).
 
 {{< alert title="Note" color="primary" >}}In a future release, Embedded Analytics will use the open traffic event log.{{< /alert >}}
 
@@ -98,7 +98,7 @@ Transaction payloads are stored separately (if payload storage is enabled) and a
 <transaction ID>-<Leg>-<sent|received>
 ```
 
-For more information on transaction and legs, see [Introduction to transactions and legs in API Gateway](/docs/apim_administration/apigtw_admin/admin_transactions).
+For more information on transaction and legs, see [Introduction to transactions and legs in API Gateway](#introduction-to-transactions-and-legs).
 
 The following are some example payload file names:
 
