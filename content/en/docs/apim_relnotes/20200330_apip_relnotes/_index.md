@@ -1,5 +1,5 @@
 ---
-title: API Portal 7.7 Mar20 Release Notes
+title: API Portal 7.7.20200330 Release Notes
 linkTitle: API Portal 7.7 Mar20
 no_list: true
 weight: 30
@@ -18,8 +18,9 @@ API Portal is available as a software installation or a virtualized deployment 
 
 * [Install API Portal](/docs/apim_installation/apiportal_install/)
 * [Deploy API Portal in containers](/docs/apim_installation/apiportal_docker/)
-  * [Update API Portal from previews] 7.7.x version (/docs/apim_installation/apiportal_install/)
- * [Upgradte API Portal to 7.7 ](/docs/apim_installation/apiportal_install/)
+
+  * \[Update API Portal from previews] 7.7.x version (/docs/apim_installation/apiportal_install/)
+* [Upgrade API Portal to 7.7 ](/docs/apim_installation/apiportal_install/)
 
 ## New features and enhancements
 
