@@ -6,7 +6,7 @@ date: 2020-03-18
 description: Learn how to add your environments to AMPLIFY Central, so that you can manage your microservices, and any related APIs they expose.
 ---
 
-_Estimated reading time_: 8 minutes
+*Estimated reading time*: 8 minutes
 
 {{< alert title="Public beta" color="warning" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
 
@@ -96,8 +96,8 @@ hybridOverride.yaml  istioOverride.yaml
 To expose an HTTPS endpoint of a service within your environment to external traffic, you need a public certificate and private key for the domain where your environment is hosted, and a TLS secret based on the key pair.
 
 1. Create an X.509 certificate and key for your domain (for example, using [Let's Encrypt](https://letsencrypt.org/)).
-    - The domain certificate must match the domain (FQDN) of your environment.
-    - The public key certificate must be PEM encoded and match the given private key.
+    * The domain certificate must match the domain (FQDN) of your environment.
+    * The public key certificate must be PEM encoded and match the given private key.
 2. Create the Istio namespace. This is the namespace where Istio will be deployed.
 
     Usage: `kubectl create namespace NAMESPACE_NAME`
@@ -188,10 +188,10 @@ Create Kubernetes secrets to hold the mesh agents' public certificates and priva
 
 Usage: `kubectl create secret generic SECRET_NAME --namespace NAMESPACE_NAME --from-file=publicKey=/PATH/TO/PUBLIC/KEY/FILE --from-file=privateKey=/PATH/TO/PRIVATE/KEY/FILE --from-file=password=PASSWORD_FILE --from-literal=password=PASSWORD -o yaml`
 
--   Each `SECRET_NAME` must match the corresponding SDA or CSA field `keysSecretName` in the `hybridOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit.
--   The SDA default value of `keysSecretName` is `sda-secrets`.
--   The CSA default value of `keysSecretName` is `csa-secrets`.
--   To change the secret store names, edit the `keysSecretName` values in the `hybridOverride.yaml` file before you execute the helm upgrade deployment steps.
+* Each `SECRET_NAME` must match the corresponding SDA or CSA field `keysSecretName` in the `hybridOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit.
+* The SDA default value of `keysSecretName` is `sda-secrets`.
+* The CSA default value of `keysSecretName` is `csa-secrets`.
+* To change the secret store names, edit the `keysSecretName` values in the `hybridOverride.yaml` file before you execute the helm upgrade deployment steps.
 
 Example for SDA:
 
