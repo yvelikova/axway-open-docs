@@ -1,23 +1,20 @@
-{"title":"Build your hybrid environment","linkTitle":"Build your hybrid environment","date":"2019-7-16","description":"*Estimated reading time: 3 minutes* "} ﻿
+{"title":"Build your hybrid environment","linkTitle":"Build your hybrid environment","date":"2019-7-16","description":"_Estimated reading time: 3 minutes_ "}
 
-*Estimated reading time: 3 minutes*
+_Estimated reading time: 3 minutes_
 
 {{&lt; alert title="Note" color="primary" &gt;}}This feature is currently in **public beta** and not yet available for production use.{{&lt; /alert &gt;}}
 
-Before you start
-----------------
+## Before you start
 
 -   Read [AMPLIFY Central hybrid environments overview](hybrid_overview.htm).
 -   You will need a basic knowledge of Amazon Web Services (AWS), Amazon EC2 instances, and associated tools.
 -   You will need to be familiar with Kubernetes and Helm, including running Helm, kubectl, and kops commands.
 
-Objectives
-----------
+## Objectives
 
 Learn how to build a basic Amazon EC2 private cloud hybrid environment and add the required tools to enable you to access and manage it remotely from a client system.
 
-Minimum requirements
---------------------
+## Minimum requirements
 
 -   Amazon EC2 instance with Kubernetes and Helm:
     -   Kubernetes 1.11.7 or later recommended
@@ -33,8 +30,7 @@ Minimum requirements
     -   Helm 2.13 or later recommended
     -   Enables you to install the Axway proprietary service mesh layer later, and to export Helm charts. See the [Helm installation documentation](https://helm.sh/docs/using_helm/#installing-helm).
 
-Build an Amazon EC2 hybrid environment
---------------------------------------
+## Build an Amazon EC2 hybrid environment
 
 Follow these guidelines to build a basic Amazon EC2 hybrid environment manually.
 
@@ -53,13 +49,13 @@ When the cluster is created, use kops to export the configuration from the Amazo
 
 Usage:
 
-``` {space="preserve"}
+```{space="preserve"}
 $ kops export kubecfg --name CLUSTER_NAME --state STATE_STORAGE_LOCATION
 ```
 
 Example:
 
-``` {space="preserve"}
+```{space="preserve"}
 $ kops export kubecfg --name kubernetes-cluster.example.com --state s3://amazonaws.com
 ```
 
@@ -71,25 +67,25 @@ $ kops export kubecfg --name kubernetes-cluster.example.com --state s3://amazona
 Install Helm on your cluster and add the Axway public repository to Helm:
 
 1.  To install the Helm server (Tiller) on the connected cluster:
-2.  ``` {space="preserve"}
+2.  ```{space="preserve"}
     $ helm init
     ```
 
 3.  Verify the Helm version:
-4.  ``` {space="preserve"}
+4.  ```{space="preserve"}
     $ helm version
     Client: &version.Version{SemVer:"v2.13.0", GitCommit:"2e55dbe1fdb5fdb96b75ff144a339489417b146b", GitTreeState:"clean"}
     Server: &version.Version{SemVer:"v2.13.0", GitCommit:"2e55dbe1fdb5fdb96b75ff144a339489417b146b", GitTreeState:"clean"}
     ```
 
 5.  Add the Axway public Helm repository to your installation:
-6.  ``` {space="preserve"}
+6.  ```{space="preserve"}
     $ helm repo add axway https://charts.axway.com/charts
     "axway" has been added to your repositories
     ```
 
 7.  Verify that the Axway public repository has been added:
-8.  ``` {space="preserve"}
+8.  ```{space="preserve"}
     $ helm repo list
     NAME            URL
     stable          https://kubernetes-charts.storage.googleapis.com
@@ -97,8 +93,7 @@ Install Helm on your cluster and add the Axway public repository to Helm:
     axway           https://charts.axway.com/charts
     ```
 
-Validate the Amazon EC2 hybrid environment
-------------------------------------------
+## Validate the Amazon EC2 hybrid environment
 
 Use the following commands to validate your environment using kubectl or kops.
 
@@ -113,14 +108,13 @@ kubectl:
 
 kops:
 
-``` {space="preserve"}
+```{space="preserve"}
 $ kops validate cluster
 Using cluster from kubectl context: kubernetes-cluster.example.com
 ...
 Your cluster kubernetes-cluster.example.com is ready
 ```
 
-Review and next steps
----------------------
+## Review and next steps
 
-You have learned how to build a basic Amazon EC2 hybrid environment and add the required tools to enable you to access and manage it from your client system. Next, read [Add your hybrid environment to AMPLIFY Central](add_hybrid_env.htm) to learn how to add your environment to AMPLIFY Central.
+You have learned how to build a basic Amazon EC2 hybrid environment and add the required tools to enable you to access and manage it from your client system. Next, read [Add your hybrid environment to AMPLIFY Central](add_env.htm) to learn how to add your environment to AMPLIFY Central.
