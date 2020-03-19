@@ -33,7 +33,6 @@ You must have one of the following installed:
 * MySQL 5.6 or later
 
     {{< alert title="Note" color="primary" >}}API Portal does not officially support MySQL 8 as Joomla! does not support it. However, API Portal has been tested to work with MySQL 8 using a workaround. You must apply the workaround described at [Joomla! and MySQL 8](https://docs.joomla.org/Joomla_and_MySQL_8) before you install API Portal.{{< /alert >}}
-
 * MariaDB 5.5.50 or later
 
 For details how to install a database using `yum`, see the following:
@@ -50,7 +49,7 @@ For more details, see following product documentation:
 
 ### PHP
 
-API Portal requires PHP 7.1 or later.
+API Portal requires PHP 7.1 or later. (Support for PHP 7.4 was introduced in version 7.7.20200130.)
 
 In addition you must have the following PHP modules installed:
 
