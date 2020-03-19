@@ -13,9 +13,9 @@ description: Response format for the Get Case method.
 | caseNumber    | string                        |       no | Business identifier assigned to this case. |
 | subject       | string                        |       no | Brief description of this case. |
 | status        | string                        |       no | The current status of this case. |
-| createdDate   | string                        |       no | Date and time of case creation. [Format](../miscellanea#common-date-and-time-format-for-responses). |
-| modifiedDate  | string                        |       no | Date and time of the latest update. [Format](../miscellanea#common-date-and-time-format-for-responses). |
-| closedDate    | string                        |      yes | Date and time of case closure. [Format](../miscellanea#common-date-and-time-format-for-responses). |
+| createdDate   | string                        |       no | Date and time of case creation. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
+| modifiedDate  | string                        |       no | Date and time of the latest update. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
+| closedDate    | string                        |      yes | Date and time of case closure. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
 | severity      | [Severity](../severity)       |       no | The severity level calculated for this case. |
 | impact        | [Impact](../impact)           |      yes | Impact level. |
 | urgency       | [Urgency](../urgency)         |      yes | Urgency level. |
@@ -86,7 +86,7 @@ An open-ended enumeration.
 |---------------|---------------------|----------|-------------|
 | id            | string              |       no | An identifier of this attachment. Attachment download requires this ID.|
 | name          | string              |       no | The name under which this attachment was added. |
-| createdDate   | string              |       no | Date and time of attachment creation. [Format](../miscellanea#common-date-and-time-format-for-responses). |
+| createdDate   | string              |       no | Date and time of attachment creation. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
 | createdBy     | [Contact](#contact) |      yes | Contact that added this attachment. |
 
 ### Account

@@ -1,6 +1,6 @@
 ---
-title: Miscellanea
-linkTitle: Miscellanea
+title: Miscellaneous
+linkTitle: Miscellaneous
 weight: 1000
 date: 2020-03-05
 description: Miscellaneous commonly used formats.

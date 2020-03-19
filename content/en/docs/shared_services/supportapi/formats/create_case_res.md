@@ -14,8 +14,8 @@ description: Response format for the Create Case method.
 | subject       | string                        |       no | Brief description of this case. |
 | severity      | [Severity](../severity)       |       no | The severity level calculated for this case. |
 | status        | string                        |       no | The current status of this case. |
-| createdDate   | string                        |       no | Date and time of case creation. [Format](../miscellanea#common-date-and-time-format-for-responses). |
-| modifiedDate  | string                        |       no | Date and time of the latest update. [Format](../miscellanea#common-date-and-time-format-for-responses). |
+| createdDate   | string                        |       no | Date and time of case creation. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
+| modifiedDate  | string                        |       no | Date and time of the latest update. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
 | contact       | [Contact](#contact)           |       no | Current contact for this case. |
 | owner         | [Contact](#contact)           |      yes | The current owner of this case. |
 | product       | [Product](#product)           |       no | Product for which this case was created. |
@@ -28,7 +28,7 @@ description: Response format for the Create Case method.
 | ccEmails      | [ string ]                    |      yes | E-mail addresses copied in communications regarding this case. |
 | attachments   | [ [Attachment](#attachment) ] |      yes | Summary information about the files attached to this case. |
 | account       | [Account](#account)           |       no | Details of the Axway customer account that case is registered with. |
-| closedDate    | string                        |      yes | Date and time of case closure. [Format](../miscellanea#common-date-and-time-format-for-responses). |
+| closedDate    | string                        |      yes | Date and time of case closure. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
 
 ### Contact
 
@@ -67,7 +67,7 @@ description: Response format for the Create Case method.
 |---------------|-----------|----------|-------------|
 | id            | string    |       no | An identifier of this attachment. Attachment download requires this ID.|
 | name          | string    |       no | The name under which this attachment was added. |
-| createdDate   | string    |       no | Date and time of attachment creation. [Format](../miscellanea#common-date-and-time-format-for-responses). |
+| createdDate   | string    |       no | Date and time of attachment creation. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
 
 ### Account
 

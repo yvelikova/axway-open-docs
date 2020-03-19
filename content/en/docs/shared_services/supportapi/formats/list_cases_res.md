@@ -23,7 +23,7 @@ description: Response format for the List Cases method.
 | subject       | string                   |       no | Brief description of this case. |
 | status        | string                   |       no | The current status of this case. |
 | severity      | [Severity](../severity)  |       no | The severity level calculated for this case. |
-| createdDate   | string                   |       no | Date and time of case creation. [Format](../miscellanea#common-date-and-time-format-for-responses). |
-| modifiedDate  | string                   |       no | Date and time of the latest update. [Format](../miscellanea#common-date-and-time-format-for-responses). |
-| closedDate    | string                   |      yes | Date and time of case closure. [Format](../miscellanea#common-date-and-time-format-for-responses). |
+| createdDate   | string                   |       no | Date and time of case creation. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
+| modifiedDate  | string                   |       no | Date and time of the latest update. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
+| closedDate    | string                   |      yes | Date and time of case closure. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
 | type          | [CaseType](../case_type) |       no | The type of this case. |
