@@ -127,4 +127,4 @@ Your cluster kubernetes-cluster.example.com is ready
 
 ## Review and next steps
 
-You have learned how to build a basic Amazon EC2 hybrid environment and add the required tools to enable you to access and manage it from your client system. Next, read [Add your hybrid environment to AMPLIFY Central](/docs/central/add_env) to learn how to add your environment to AMPLIFY Central.
+You have learned how to build a basic Amazon EC2 hybrid environment and add the required tools to enable you to access and manage it from your client system. Next, read [Add your environment to AMPLIFY Central](/docs/central/add_env) to learn how to add your environment to AMPLIFY Central.

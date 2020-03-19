@@ -3,7 +3,7 @@ title: Add your environment to AMPLIFY Central
 linkTitle: Add your environment to AMPLIFY Central
 weight: 9
 date: 2020-03-18
-description: Learn how to add your environments to AMPLIFY Central, so that you can manage your microservices, and any related APIs they expose.
+description: Learn how to add your environments to AMPLIFY Central so that you can manage your microservices and any related APIs they expose.
 ---
 
 *Estimated reading time*: 8 minutes
@@ -13,9 +13,9 @@ description: Learn how to add your environments to AMPLIFY Central, so that you 
 ## Before you start
 
 * Read [AMPLIFY Central mesh governance overview](/docs/central/hybrid_overview).
-* You will need either an API Gateway V7 environment, or a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](/docs/central/build_hybrid_env).
+* You will need either an API Gateway V7 environment or a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](/docs/central/build_hybrid_env).
 * You will need a basic understanding of OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523)).
-* If you are connecting a hybrid environment, you will need to be familiar with Kubernetes and Helm, including running Helm and kubectl commands.
+* If you are connecting a hybrid environment, you must be familiar with Kubernetes and Helm, including running Helm and kubectl commands.
 * You will need an administrator account for AMPLIFY Central.
 
 ## Objectives
@@ -31,54 +31,49 @@ Learn how to add your private cloud hybrid environment to AMPLIFY Central, so th
 
 ## Add your environment to AMPLIFY Central
 
-Log in to AMPLIFY Central UI as an administrator. Navigate to the Topology section using the side navigation bar. There, you will see a list of your environments being managed in AMPLIFY Central. Click on the "+ Environment" button at the top right in order to begin creating your environment.
+Follow these steps to add your environment to AMPLIFY Central:
+
+1. Log in to AMPLIFY Central UI as an administrator.
+2. Navigate to the **Topology** section using the side navigation bar. (You will see a list of your environments that are managed in AMPLIFY Central.)
+3. Click **+ Environment** at the top right.
 
 ![Environments List Page](/Images/central/environments_list_page.png)
 
-You will see the "Add a New Environment" page. From here, you can create either an API Gateway V7 Environment, or a new environment for your private cloud Kubernetes cluster.
+### Add your API Gateway V7 environment
 
-![Add Environment Page](/Images/central/add_env_page.png)
+To add an API Gateway V7 environment:
 
-### Add your API Gateway V7 Environment
-
-To add an API Gateway V7 Environment, select the "API Gateway V7" tile on the "Add a New Environment" page. Fill out your environment details, including:
-
-* A friendly title for your environment
-* A short name for your environment, which must be unique across all namespaces
-* An optional description for your environment
-* An optional set of longitude and latitude coordinates for your environment to allow geographical layout of your environment
-* Any tags(key words) that make your environment easier to group and find
-* Any additional environment details that relate to your configuration. You can use key::value pairs to detail specific attributes about your environment. An example key::value pair would be the name of an attribute(e.g. "Group") and its respective value(e.g. "Test Environments").
-
-When your form is complete, click the "Save" button in the top right corner:
+1. Click **API Gateway V7** on the **Add a New Environment** page.
+2. Enter your environment details.
+    * The name of your environment must be unique across all namespaces
+    * Longitude and latitude coordinates allow geographical layout of your environment
+    * Tags (key words) make your environment easier to group and find
+    * Attributes (key::value pairs) that are specifically related to your configuration. For example, attribute (key) `Group` and its respective value `Test Environments`.
+3. Click save.
 
 ![Add V7 Environment](/Images/central/completed_v7_form.png)
 
-After your V7 Environment is successfully created, you will see a success modal that allows you to either go to the details page for your newly created environment, or go back to the environments list page:
-
-![Add V7 Environment Success Modal](/Images/central/add_v7_success_modal.png)
+After your V7 environment is created, a dialog box is shown with a successful message and the options to either go to the details page of your newly created environment or go back to the environments list page.
 
 ### Add your Kubernetes Environment
 
-To add an environment for your private cloud Kubernetes cluster, select the "Kubernetes" tile on the "Add a New Environment" page. Fil out your environment details, including:
+To add an environment for your private cloud Kubernetes cluster:
 
-* A friendly name for your environment
-* A short name for your runtime, serving as the logical name of the gateway
-* An environment protocol(HTTP or HTTPS). Note: for HTTPS, you must provide a certificate for the domain.
-* A service mesh domain name(example: mydomain.com). Note: for HTTPS, you must own or be able to configure a certificate for this domain.
-* The port where your gateway will be exposed
+1. Click **Kubernetes** on the **Add a New Environment** page.
+2. Enter your environment details.
+    * The name of your runtime is the logical name of the gateway
+    * An environment protocol (HTTP or HTTPS). For HTTPS, you must provide a certificate for the domain.
+    * A service mesh domain name (for example, `mydomain.com`). For HTTPS, you must own or be able to configure a certificate for this domain.
+    * The port where your gateway will be exposed
+3. Click save.
 
-When your form is complete, click the "Save" button in the top right corner:
+{{< alert title="Note" color="" >}} In the **Host** field you must use the same FQDN as in [Generate a key pair and secret for the domain edge gateway](#generate-key-pairs-and-secrets-for-the-axway-mesh-agents) to define your hybrid environment. {{< /alert >}}
 
 ![Add K8 Environment](/Images/central/completed_k8s_form.png)
 
-After your K8 Environment is successfully created, you will see a success modal that allows you to connect your newly created environment, or go back to the environments list page:
+After your Kubernetes environment is created, a dialog box is shown with a successful message and the options to either connect to your newly created environment or go back to the environments list page.
 
-![Add K8 Environment Success Modal](/Images/central/add_k8s_success_modal.png)
-
-Clicking "Connect environment" takes you to your Kubernetes environment details page. There, you can download an auto-generated hybrid kit specific to your environment. The hybrid kit contains Helm charts that are used later to deploy the Axway proprietary service mesh layer to your environment.
-
-{{< alert title="Note" color="" >}} You must specify the public FQDN of the private cluster (in this case your private cloud Kubernetes cluster) in the **Host** field when defining your hybrid environment in the AMPLIFY Central UI. You must use the same FQDN in [Generate a key pair and secret for the domain edge gateway](#generate-key-pairs-and-secrets-for-the-axway-mesh-agents). {{< /alert >}}
+Clicking **Connect environment** takes you to your Kubernetes environment details page. There, you can download an auto-generated hybrid kit specific to your environment. The hybrid kit contains Helm charts that will be used later to deploy the Axway proprietary service mesh layer to your environment.
 
 Download the hybrid kit to your client system and unzip it to a unique directory. For example:
 
