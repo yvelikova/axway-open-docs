@@ -6,6 +6,7 @@ weight: 30
 date: 2019-08-08T00:00:00.000Z
 description: Learn about the new features and enhancements in this release of API Portal.
 ---
+
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
@@ -27,8 +28,7 @@ The restriction to install API Portal into the `/opt/axway/apiportal/htdoc` defa
 
 Installing API Portal using unattended mode no longer requires you to know the correct positions of the parameters for the install script to work. Named parameters are now supported, which allows you to specify the parameters by name rather than position.
 
-Validation and error messaging for command line errors were improved.
-For more information, see [Unattended installation](/docs/apim_installation/apiportal_install/install_unattended/).
+Validation and error messaging for command line errors were improved. For more information, see [Unattended installation](/docs/apim_installation/apiportal_install/install_unattended/).
 
 ### Home page customization
 
@@ -70,7 +70,7 @@ This release has the following limitations:
 
 * API Portal 7.7.20200130 is compatible with API Gateway and API Manager 7.7.20200130 only.
 * Upgrade to API Portal 7.7.20200130 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to API Portal 7.7.
-* The ready-made API Portal Docker image 7.7.20200130 is strictly for development environments only, and it is not recommended for use in production environments. You must use the Dockerfile to build and run API Portal containers in production environments. Upgrading from previous API Portal Docker image is not supported.
+* The ready-made API Portal Docker image 7.7.20200130 is strictly for development environments only, and it is not recommended for use in production environments. Upgrading from previous API Portal Docker image is not supported.
 * This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
 
 ## Removed features
@@ -138,6 +138,6 @@ The following reference documents are also available:
 
 The Axway Global Support team provides worldwide 24 x 7 support for customers with active support agreements.
 
-Email <mailto:support@axway.com> or visit <https://support.axway.com/>.
+Email [support@axway.com](mailto:support@axway.com) or visit [Axway Support](https://support.axway.com/).
 
 See [Get help with API Gateway](/docs/apim_administration/apigtw_admin/trblshoot_get_help/) for the information that you should be prepared to provide when you contact Axway Support.
