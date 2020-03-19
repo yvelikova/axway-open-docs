@@ -1,5 +1,5 @@
 ---
-title: "AMPLIFY API Management 7.7 , AMPLIFY Central and AMPLIFY Shared Services documentation"
+title: "AMPLIFY API Management 7.7, AMPLIFY Central, and AMPLIFY Shared Services documentation"
 linkTitle: "Documentation"
 weight: 20
 menu:
