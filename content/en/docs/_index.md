@@ -7,4 +7,4 @@ menu:
     weight: 20
 ---
 
-Welcome to the documentation for AMPLIFY API Management 7.7, AMPLIFY Central and AMPLIFY Shared Services.
+Welcome to the documentation for AMPLIFY API Management 7.7, AMPLIFY Central, and AMPLIFY Shared Services.
