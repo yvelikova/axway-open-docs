@@ -43,3 +43,5 @@ Before merging this PR, please make sure:
 * [ ] You have added it to the correct GitHub project
 * [ ] You have added it to the correct Sprint milestone
 * [ ] You have appended a `fixes` line to this description if this PR fixes a specific GitHub issue
+* [ ] You have added a new collection to Netlify CMS config (static/admin/config.js) if required (new doc sections)
+* [ ] You have updated the Zoomin classification file if required (new AMPC topics)
