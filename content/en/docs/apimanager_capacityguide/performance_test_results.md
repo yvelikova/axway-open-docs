@@ -24,7 +24,7 @@ This section defines common terms used in the performance test results:
 
 Download the [test results of all single node scenarios both with and without monitoring from Axway Support](https://support.axway.com/en/documents/document-details/id/1444235).
 
-In the table, the test cases appear in the format `Product_TestScenario_MessageSize_SSL_TrafficMonitoring_RealTimeMonitoring`.
+The test cases in the test results appear in the format `Product_TestScenario_MessageSize_SSL_TrafficMonitoring_RealTimeMonitoring`.
 
 For example, the test case `API_Gateway_Benchmark_HTTPBasic_100KB_SSL_noTrafMon_noRTM` has the following characteristics:
 
@@ -48,7 +48,7 @@ Similarly, the test case `API_Manager_PassThrough_Post_100KB_SSL_TrafMon_RTM` ha
 
 Download the [test results of all multi-node HA scenarios both with local and remote Cassandra from Axway Support](https://support.axway.com/en/documents/document-details/id/1444236).
 
-In the table, the test cases appear in the format `Product_TestScenario_HighAvailability_NumberOfNodes_SSL_TrafficMonitoring_RealTimeMonitoring`. For multi-node tests, the message size is always 1KB, and it is not specified in the test case.
+The test cases in the test results appear in the format `Product_TestScenario_HighAvailability_NumberOfNodes_SSL_TrafficMonitoring_RealTimeMonitoring`. For multi-node tests, the message size is always 1KB, and it is not specified in the test case.
 
 For example, the test case `API_Manager_APIKEY_HAL_MultiNode_6nodes_SSL_TrafMon_RTM` has the following characteristics:
 
