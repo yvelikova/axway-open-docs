@@ -5,6 +5,7 @@
   "date": "2019-08-09",
   "description": "Your system must meet these prerequisites before you can install API Portal."
 }
+
 ## Internet connection
 
 Installing API Portal dependencies requires an Internet connection. Offline installation is not currently supported.
@@ -48,7 +49,7 @@ For more details, see following product documentation:
 
 ### PHP
 
-API Portal requires PHP 7.1 or later. Support of PHP 7.4 is introduced in version 7.7.20200130.
+API Portal requires PHP 7.1 or later. (Support for PHP 7.4 was introduced in version 7.7.20200130.)
 
 In addition you must have the following PHP modules installed:
 
