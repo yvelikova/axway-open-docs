@@ -48,7 +48,7 @@ To add an API Gateway V7 Environment, select the "API Gateway V7" tile on the "A
 * An optional description for your environment
 * An optional set of longitude and latitude coordinates for your environment to allow geographical layout of your environment
 * Any tags(key words) that make your environment easier to group and find
-* Any additional environment details that relate to your configuration. You can use key::value pairs to detail specific attributes about your environment. An example key::value pair would be the name of an attribute(for example: "Group") and its respective value(for example: "Test Environments").
+* Any additional environment details that relate to your configuration. You can use key::value pairs to detail specific attributes about your environment. An example key::value pair would be the name of an attribute(e.g. "Group") and its respective value(e.g. "Test Environments").
 
 When your form is complete, click the "Save" button in the top right corner:
 
