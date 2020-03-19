@@ -27,7 +27,7 @@ The following table shows the path for upgrading API Portal versions:
 | From        | To         |
 | ----------- | -----------|
 | 7.6.2       | 7.7 GA     |
-| 7.7 GA      | 7.7.x (Including all Service Packs) |
+| 7.7 GA      | 7.7.x (Including all Service Packs)|
 | 7.7.x       | 7.7.x+     |
 
 To upgrade your API Portal software installation, follow these steps:
