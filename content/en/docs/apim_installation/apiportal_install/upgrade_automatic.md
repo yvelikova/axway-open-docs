@@ -1,10 +1,11 @@
 {
 "title": "Upgrade API Portal",
-"linkTitle": "Upgrade API Portal",
-"weight": "20",
-"date": "2019-08-09",
-"description": "Upgrade your existing API Portal to 7.7."
+  "linkTitle": "Upgrade API Portal",
+  "weight": "20",
+  "date": "2019-08-09",
+  "description": "Upgrade your existing API Portal to 7.7."
 }
+
 This section does not describe how to upgrade API Gateway. For information on upgrading API Gateway, see [API Gateway Upgrade Guide](/docs/apim_installation/apigw_upgrade/).
 
 ## Upgrade prerequisites
@@ -17,40 +18,48 @@ Before you upgrade, complete the following prerequisites. These prerequisites ap
 
 ## Upgrade API Portal
 
-If you have an existing API Portal installation, you can upgrade that installation to a newer version without having to repeat the initial setup.
+If you have an existing API Portal installation, you can upgrade that installation to a newer version without having to repeat the initial installation setup.
 
-Upgrade to API Portal 7.7 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
+{{< alert title="Note" color="primary" >}}Upgrade to API Portal 7.7 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.{{< /alert >}}
+
+The following table shows the path for upgrading API Portal versions:
+
+| From        | To         |
+| ----------- | -----------|
+| 7.6.2       | 7.7 GA     |
+| 7.7 GA      | 7.7.x (Including all Service Packs)|
+| 7.7.x       | 7.7.x+     |
 
 To upgrade your API Portal software installation, follow these steps:
 
-1. Download the API Portal upgrade package from the Axway Support at [https://support.axway.com](https://support.axway.com/).
+1. Download the API Portal upgrade package from the [Axway Support](https://support.axway.com).
 2. Go to the the directory where you saved the upgrade package and extract it:
 
-    ```
-    tar xpvzf <package_name>.tgz
-    ```
+   ```
+   tar xpvzf <package_name>.tgz
+   ```
 
 3. Extract the Joomla! update package (for example, `joomla-update-package-3.9.14-package.zip`) from the API Portal upgrade package to your local file system.
 4. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal host>/administrator`).
 5. Click **Components > Joomla! Update**, and go to the **Upload & Update** tab. If **Joomla! Update** is not visible in the menu, connect to your user database and execute the following query for API Portal database:
 
-    ```
-    update s8f7h_menu set menutype='main' where title like 'com_joomlaupdate'
-    ```
+   ```
+   update s8f7h_menu set menutype='main' where title like 'com_joomlaupdate'
+   ```
 
 6. Select the Joomla! update package (for example, `joomla-update-package-3.9.14-package.zip`) from your file system.
 7. Click **Upload & Install**, and follow the displayed instructions.
 8. Enter the following to run the upgrade script:
 
-    ```
-    ./apiportal_upgrade.sh
-    ```
+   ```
+   ./apiportal_upgrade.sh
+   ```
 
 9. Run the upgrade script with the appropriate arguments. For example:
 
-    ```
-    ./apiportal_upgrade.sh
-    ```
+   ```
+   ./apiportal_upgrade.sh
+   ```
 
 ## Post-upgrade steps
 
@@ -103,4 +112,4 @@ sh ./apiportal_encryption.sh
 
 The directory is created along with a file. The last segment of the directory is the file name, for example: `/sample/directory/for/encryption/key` creates an empty file named "key" in the desired directory.
 
-After the script is finished, re-enter the password for the Public API mode user in JAI to encrypt and store it correctly. For more details see .
+After the script is finished, re-enter the password for the Public API mode user in JAI to encrypt and store the script correctly. For more details see [Encrypt the Public API user password in unattended mode](/docs/apim_installation/apiportal_install/install_unattended/#encrypt-the-public-api-user-password-in-unattended-mode).
