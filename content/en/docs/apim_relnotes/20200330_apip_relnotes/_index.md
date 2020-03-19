@@ -17,7 +17,6 @@ API Portal provides an API consumer-facing interface that you can customize to 
 API Portal is available as a software installation or a virtualized deployment in Docker containers. For more information, see:
 
 * [Install API Portal](/docs/apim_installation/apiportal_install/)
-* [Update API Portal from previews 7.7.x version ] (/docs/apim_installation/apiportal_install/upgrade_automatic/)
 * [Upgrade API Portal to 7.7 ](/docs/apim_installation/apiportal_install/upgrade_automatic/)
 * [Deploy API Portal in containers](/docs/apim_installation/apiportal_docker/)
 
