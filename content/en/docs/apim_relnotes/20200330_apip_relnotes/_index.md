@@ -18,6 +18,7 @@ API Portal provides an API consumer-facing interface that you can customize to 
 API Portal is available as a software installation or a virtualized deployment in Docker containers. For more information, see:
 
 * [Install API Portal](/docs/apim_installation/apiportal_install/)
+* [Upgrade API Portal to 7.7](/docs/apim_installation/apiportal_install/upgrade_automatic/)
 * [Deploy API Portal in containers](/docs/apim_installation/apiportal_docker/)
 
 ## New features and enhancements
@@ -32,7 +33,7 @@ This release has the following limitations:
 
 * API Portal 7.7.20200330 is compatible with API Gateway and API Manager 7.7.20200330 only.
 * Upgrade to API Portal 7.7.20200330 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to API Portal 7.7.
-* The ready-made API Portal Docker image 7.7.20200330 is strictly for development environments only, and it is not recommended for use in production environments. You must use the Dockerfile to build and run API Portal containers in production environments. Upgrading from previous API Portal Docker image is not supported.
+* The ready-made API Portal Docker image 7.7.20200330 is strictly for development environments only, and it is not recommended for use in production environments.  Upgrading from previous API Portal Docker image is not supported.
 * This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
 
 ## Removed features
