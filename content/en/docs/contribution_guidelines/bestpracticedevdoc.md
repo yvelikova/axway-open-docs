@@ -9,7 +9,7 @@ description: >
 
 ## Organizing your documentation
 
-Present your documentation in a way that it is easy to read, and usable and helpful for customers.
+Present your documentation in a way that it is easy to read and helpful for customers.
 
 ### Navigation menus hierarchical structure
 
@@ -32,11 +32,11 @@ Some recommendations for using search engine optimization (SEO):
 
 * Create short, unique, and accurate page titles
 * The navigation of a website helps search engines to understand what content is important
-* Follow the recommendations on [Using hyperlinks](using-hyperlinks) to create link text for URLs
+* Follow the recommendations on [Use meaningful link text](#use-meaningful-link-text) to create link text for URLs
 
 ## Writing documentation
 
-To provide more in-depth information and help users go beyond in their understanding:
+The following sections help to provide and organize more in-depth information in your documentation.
 
 ### Add a get started
 
@@ -49,7 +49,7 @@ Example:
 
 ### Add a reference
 
-The reference section aims to document some particular parts of the software in more details. It should provide the content to support the performance of a task. Its audience are users who are familiar with the software but need more details or a quick guidance. You can add technical references of the software’s code, functions, APIs, CLI, parameters and so on.
+The reference section aims to document some particular parts of the software in more detail. It should provide the content to support the performance of a task. Its audience are users who are familiar with the software but need more details or a quick guidance. You can add technical references of the software’s code, functions, APIs, CLI, parameters and so on.
 
 Example:
 
@@ -86,6 +86,12 @@ Example:
 * [Tyk Planning for Production](https://tyk.io/docs/deploy-tyk-premise-production/)
 * [kubernetes Assign-memory-resource](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/)
 
+### Add videos
+
+Producing a video is a lengthy and costly task. Videos can get obsolete very quickly, specially when you show screens.
+
+Nevertheless, in Axway, we've been receiving more and more feedback from customers asking for videos to help them to use our products. Hence, it is worth adding videos to complement complex procedures, where they can guide and help the user to progress and be successful when trying to accomplish a task.
+
 ## Code samples and scripts
 
 Code samples and downloadable scripts help the user to get up and running fast. The code must be followed by an explanation on how to use it to achieve a goal.
@@ -101,7 +107,7 @@ Example:
 
 ### Add downloadable scripts
 
-Provide code examples in a way that customers can copy and paste and try out your product. The sample could also be downloadable, which is less error prone than copying and pasting.
+Provide code examples in a way that customers can copy and paste and try out your product. The sample could also be downloadable, which is less error-prone than copying and pasting.
 
 Example:
 
@@ -114,11 +120,11 @@ Quality documentation must be continuously reviewed and improved.
 
 ### Delete dead documentation
 
-Old, outdated, non-used guides can misinform and slow down the user experience on the website. They can show results in the search, which are not relevant or correct anymore.
+Old, outdated, non-used guides can misinform and slow down the user experience with your product. They can show results in the search, which are not relevant or correct anymore.
 
 ### Do not duplicate information
 
-Duplicated content creates inconsistency and frustration, and are very hard to maintain.
+Duplicated content creates inconsistency and frustration, and it is hard to maintain.
 
 * Record the information once where it enhances the work the most
 * Link to information about a common technology or process instead of rewriting it in your own words
@@ -129,21 +135,13 @@ Follow these guidelines to make your content more concise and clearer.
 
 ### Page length
 
-* Determine page length by relevance of information
-* It is ok to have long pages when the informational units are related. Users don't have to scroll down the page, they can use the right-side menu (available on Axway open docs pages) or they can search (Ctrl + F) for what they're looking for
-* Long pages reduce the need to jump back and forth between pages when the information could be all in one place
+To determine the appropriate length for you page consider the following:
 
-### Place the information in the most appropriate place
+* Keep all required information to complete a task in one single page, so users don't need to jump back and forth between pages to achieve their goal
+* Users don't have to scroll all the way up or down the page to find information, they can use a right-side menu (like the one used in Axway open docs pages) to navigate the content
+* Having all related content in one page makes it easier to find information with a `Ctrl+F` search
 
-Assess the best place for chunks of information by the needs of the customer of that information, where are they most likely to need it.
-
-Think about some questions to figure out what is the best place for the content:
-
-* Is a specific requirement best captured as part of a use case, in a business rule specification, or as an executable test?
-* Where will somebody likely want a piece of documentation?
-* In the code, added as note on a diagram, or best placed in an external document?
-
-## Be minimalist
+### Be minimalist
 
 Find a balance between no documentation and excessive documentation.
 
@@ -158,9 +156,9 @@ Find a balance between no documentation and excessive documentation.
 * Use screenshots sparingly
 * Use animated gifs
 
-## Use meaningful link text
+### Use meaningful link text
 
-Readers use links as guideposts when scanning. Effective link text helps readers to understand where each link leads and decide whether they want to click the link or not.
+Effective link text helps the user to understand where each link leads and decide whether they want to click the link or not.
 
 Observe these guidelines to improve user experience and accessibility.
 
@@ -168,18 +166,34 @@ Observe these guidelines to improve user experience and accessibility.
 * Do not use **Click here**, it is bad for SEO and does not describe the target
 * Use meaningful words or phrases in the link text for URLs to better represent the content of the destination
 
-## Do not overuse tables
+### Do not overuse tables
 
 Not all analyses or results warrant a table or image. Some simple results are best stated in a simple and short paragraph.
 
 Tables can be used as quick references and can reveal trends, patterns, or relationships that might otherwise be difficult to grasp in plain-text format. They permit rapid access to and relatively easy comparison of information. Overly complicated tables may be difficult to understand, so strive for simplicity, for example, table cells with single paragraphs. Complex tables can be a challenge for adaptive technology users (users of screen reader software).
 
-Accessible tables are simple, and they have an identified header row, and include a table summary, either as a caption or as alt text. These techniques help screen reader users read the information contained in the table.
-
-## Do not overuse screenshots
+### Do not overuse screenshots
 
 Screenshots are hard to maintain, and if they aren't up to date they can be misleading.
 
 Too many unnecessary screenshots can also clutter the page.
 
 If you can present your results clearly in a few short sentences, or in a list of steps, this means that an image is probably unnecessary.
+
+## Reference articles
+
+* [Core Practices for Agile/Lean Documentation](http://www.agilemodeling.com/essays/agileDocumentationBestPractices.htm)
+* [How to write documentation for users that don't read](https://kevin.burke.dev/slides/documentation/)
+* [Chromium Documentation Best Practices](https://chromium.googlesource.com/chromium/src/+/master/docs/documentation_best_practices.md)
+* [A Guide to Writing Your First Software Documentation](https://www.sitepoint.com/writing-software-documentation/)
+* [Why a format of your technical document matters](https://stepshot.net/reference-guide-or-procedural-manual-why-a-format-of-your-technical-document-matters/)
+* [Why agile teams should care about documentation](https://techbeacon.com/app-dev-testing/why-agile-teams-should-care-about-documentation)
+* [Search Engine Optimization (SEO) Starter Guide](https://support.google.com/webmasters/answer/7451184?hl=en)
+* [I'd Rather Be Writing, API glossary](https://idratherbewriting.com/learnapidoc/docapis_glossary_section.html)
+* [Developers Google, Link text](https://developers.google.com/style/link-text)
+* [Writing effective link text](https://www.webcredible.com/blog/writing-effective-link-text/)
+* [Infinite Scrolling Is Not for Every Website](https://www.nngroup.com/articles/infinite-scrolling/)
+* [Web Style Guide, Page length](https://webstyleguide.com/wsg2/page/length.html)
+* [DITA Reference topics](https://docs.oasis-open.org/dita/v1.2/os/spec/archSpec/dita_reference_topic.html)
+* [Data vs. Layout Tables](https://accessibility.umn.edu/tutorials/data-vs-layout-tables)
+* Read Me First! A Style Guide for the Computer Industry (pdf book)
