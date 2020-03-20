@@ -7,10 +7,6 @@
   "description": "Learn about the new features and enhancements in this release of API Gateway and API Manager."
 }
 
-{{< alert title="Note" color="primary" >}}
-This release note will be continuously updated until the release date.
-{{< /alert >}}
-
 ## Summary
 
 API Gateway is available as a software installation or a virtualized deployment in Docker containers. API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway.
@@ -34,6 +30,14 @@ It is important, especially when upgrading from an earlier version, to be aware 
 ### OpenJDK JRE
 
 API Gateway and API Manager 7.7 and later support OpenJDK JRE, and this update includes Zulu OpenJDK 1.8 JRE instead of Oracle JRE 1.8.
+
+### OpenSSL and FIPS support
+
+In this update OpenSSL has been upgraded to OpenSSL 1.1.1.
+
+As OpenSSL 1.1.1 does not support FIPS, running API Gateway in FIPS mode is not supported in this update. FIPS support will be available in a future update.
+
+References to FIPS in the documentation have not been removed as FIPS support will be available again in the future, however, this does not mean that FIPS is still supported, and the references should be ignored.
 
 ## Deprecated features
 
