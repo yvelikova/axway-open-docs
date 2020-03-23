@@ -7,10 +7,6 @@ date: 2020-03-11T00:00:00.000Z
 description: Learn about the new features and enhancements in this release of API Portal.
 ---
 
-{{< alert title="Note" color="primary" >}}
-This release note will be continuously updated until the release date.
-{{< /alert >}}
-
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
