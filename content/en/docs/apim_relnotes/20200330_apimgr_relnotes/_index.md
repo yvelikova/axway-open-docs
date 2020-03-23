@@ -33,11 +33,11 @@ API Gateway and API Manager 7.7 and later support OpenJDK JRE, and this update i
 
 ### OpenSSL and FIPS support
 
-In this update OpenSSL has been upgraded to OpenSSL 1.1.1.
+In this update OpenSSL has been upgraded to OpenSSL 1.1.1, as OpenSSL 1.0.2 is EOL.
 
-As OpenSSL 1.1.1 does not support FIPS, running API Gateway in FIPS mode is not supported in this update. FIPS support will be available in a future update.
+OpenSSL 1.1.1 does not support FIPS, and running API Gateway in FIPS mode is not supported in this update. OpenSSL 3.0 (when available) will support FIPS, and FIPS support will be available again in a future update.
 
-References to FIPS in the documentation have not been removed as FIPS support will be available again in the future, however, this does not mean that FIPS is still supported, and the references should be ignored.
+References to FIPS in the documentation will not be removed, but this does not mean that FIPS is still supported and the references should be ignored.
 
 ## Deprecated features
 
