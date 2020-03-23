@@ -6,7 +6,7 @@ date: 2019-07-30
 description: Learn how to build a basic Amazon EC2 private cloud hybrid environment and add the required tools to enable you to access and manage it remotely from a client system.
 ---
 
-*Estimated reading time*: 3 minutes
+_Estimated reading time_: 3 minutes
 
 {{< alert title="Public beta" color="warning" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
 
@@ -127,4 +127,4 @@ Your cluster kubernetes-cluster.example.com is ready
 
 ## Review and next steps
 
-You have learned how to build a basic Amazon EC2 hybrid environment and add the required tools to enable you to access and manage it from your client system. Next, read [Add your hybrid environment to AMPLIFY Central](/docs/central/add_hybrid_env) to learn how to add your environment to AMPLIFY Central.
+You have learned how to build a basic Amazon EC2 hybrid environment and add the required tools to enable you to access and manage it from your client system. Next, read [Add your environment to AMPLIFY Central](/docs/central/add_env) to learn how to add your environment to AMPLIFY Central.

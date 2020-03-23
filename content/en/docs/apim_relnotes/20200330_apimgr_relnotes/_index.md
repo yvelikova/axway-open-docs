@@ -1,15 +1,11 @@
 {
-"title": "API Gateway and API Manager 7.7.20200330 Release Notes",
+"title": "API Gateway and API Manager 7.7 Mar20 Release Notes",
   "linkTitle": "API Gateway and API Manager 7.7 Mar20",
   "no_list": "true",
   "weight": "20",
   "date": "2020-03-11",
   "description": "Learn about the new features and enhancements in this release of API Gateway and API Manager."
 }
-
-{{< alert title="Note" color="primary" >}}
-This release note will be continuously updated until the release date.
-{{< /alert >}}
 
 ## Summary
 
@@ -34,6 +30,14 @@ It is important, especially when upgrading from an earlier version, to be aware 
 ### OpenJDK JRE
 
 API Gateway and API Manager 7.7 and later support OpenJDK JRE, and this update includes Zulu OpenJDK 1.8 JRE instead of Oracle JRE 1.8.
+
+### OpenSSL and FIPS support
+
+In this update OpenSSL has been upgraded to OpenSSL 1.1.1, as OpenSSL 1.0.2 is EOL.
+
+OpenSSL 1.1.1 does not support FIPS, and running API Gateway in FIPS mode is not supported in this update. OpenSSL 3.0 (when available) will support FIPS, and FIPS support will be available again in a future update.
+
+References to FIPS in the documentation will not be removed, but this does not mean that FIPS is still supported and the references should be ignored.
 
 ## Deprecated features
 
