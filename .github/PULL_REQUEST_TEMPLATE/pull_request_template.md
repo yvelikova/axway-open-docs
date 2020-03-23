@@ -26,7 +26,7 @@ Before approving this PR, please make sure it:
 * [ ] Is believed to be accurate (technical accuracy to be checked with an SME for PRs originating from outside R&D)
 * [ ] Follows [Axway style](https://techweb.axway.com/confluence/display/RIE/Style+guide)
 * [ ] Follows [Markdown guidelines](https://axway-open-docs.netlify.com/docs/contribution_guidelines/writing_markdown/)
-* [ ] Follows [best practices](https://techweb.axway.com/confluence/display/RDAPI/Best+practices+for+developer+documentation)
+* [ ] Follows [best practices](https://axway-open-docs.netlify.com/docs/contribution_guidelines/bestpracticedevdoc/)
 * [ ] Does not contain typos, grammatical errors, etc.
 * [ ] Passes the Markdown linter rules (automated via CI check)
 * [ ] Does not contain broken links
