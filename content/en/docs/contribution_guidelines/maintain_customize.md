@@ -37,7 +37,7 @@ This following configuration files can be found in the site root:
 
 ## Update the Docsy theme
 
-The Docsy theme is installed in this site's git repo as a git submodule. To update the theme with the latest commits from the [Docsy GitHub repo](https://github.com/google/docsy):
+The Docsy theme is installed in this site's git repo as a git submodule. When new features are added to the Docsy theme, you must update the Docsy submodule in this project to avail of them. To update the theme with the latest commits from the [Docsy GitHub repo](https://github.com/google/docsy):
 
 1. In Git CLI, navigate to the root of the local repo and checkout **master**. For example:
 
@@ -72,6 +72,13 @@ The Docsy theme is installed in this site's git repo as a git submodule. To upda
     git pull
     git submodule update --recursive
     ```
+
+### Update the Hugo version
+
+The version of Hugo is specified in XXX.
+
+### Update the Netlify CMS version
+
 
 ## Create content with the Docsy theme
 
