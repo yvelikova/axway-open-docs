@@ -24,6 +24,7 @@ API Portal has several new configurations related to API Details page:
 
 * Configuration for specifying the payload size that needs to be downloaded once the response exceeds it;
 * Configuration of the colors of the different methods for both SOAP and REST APIs;
+* Configuration for displaying the externalDocs along with the description of the API;
 * Configuration for finer grained controls for Try-It button on specific methods;
 
 ## Limitations of this release
