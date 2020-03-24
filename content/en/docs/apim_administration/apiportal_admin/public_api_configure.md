@@ -41,10 +41,10 @@ For Public API mode access, create a separate organization and user in API Manag
 
    Make a note of the login name and password you configure for the Public API mode user. You will need them later when configuring the Public API mode in JAI.
 
-   {{< alert title="Note" color="info" >}}API Portal will not accept the credentials if the password has expired or has to be changed on first login. In these scenarios, you must first sign into API Manager with latest password and change it. Then, continue with the configuring of Public API in API Portal.{{< /alert >}}
+   {{< alert title="Note">}}API Portal will not accept the credentials if the password has expired or has to be changed on first login. In these scenarios, you must first sign into API Manager with latest password and change it. Then, continue with the configuring of Public API in API Portal.{{< /alert >}}
 4. Select the APIs to expose publicly. Go to **Frontend API**, select the APIs to expose (they must be in **Published** state), click **Managed selected > Grant access**, set **Grant API access** to **The following organizations**, and add and select your Public API mode organization.
 
-   {{< alert title="Tip" color="info" >}} You can import two versions of a back-end API: one that contains only non-business critical information and is exposed in Public API mode, and a full version which is not exposed without a user login. {{< /alert >}}
+   {{< alert title="Tip">}} You can import two versions of a back-end API: one that contains only non-business critical information and is exposed in Public API mode, and a full version which is not exposed without a user login. {{< /alert >}}
 5. Select the applications to expose publicly. Go to **Clients > Applications**, ensure that the organization of the applications is set to your Public API mode organization and the application has access to the required APIs, then share the application with the Public API mode user you created. It is recommended to only provide rights to view the application.
 
 ## Enable Public API mode in API Portal
