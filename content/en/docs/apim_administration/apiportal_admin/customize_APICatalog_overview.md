@@ -20,6 +20,7 @@ You can customize the following in the API Catalog view of API Portal:
 * Show or hide the button that enables users to try out an API. You can show the button for all users, for authenticated users only, or hide it completely. The default is shown for all users.
 * Set a payload size (in KB). If the response is bigger than the configured value, the response is downloaded as file. The default is blank, which means that downloads are disabled.
 * Show or hide code examples in endpoint details when using AMPLIFY rendering tool. The default is shown.
+* Show or hide external docs along to the description.
 * Choose colors for the different methods.
 
 To change the API Catalog settings:
