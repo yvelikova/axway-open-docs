@@ -6,7 +6,6 @@ weight: 30
 date: 2020-03-11T00:00:00.000Z
 description: Learn about the new features and enhancements in this release of API Portal.
 ---
-
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
@@ -21,7 +20,11 @@ API Portal is available as a software installation or a virtualized deployment 
 
 The following new features and enhancements are available in this release.
 
-<!-- Add the new features here -->
+API Portal has several new configurations related to API Details page:
+
+* Configuration for specifying the payload size that needs to be downloaded once the response exceeds it;
+* Configuration of the colors of the different methods for both SOAP and REST APIs;
+* Configuration for finer grained controls for Try-It button on specific methods;
 
 ## Limitations of this release
 
