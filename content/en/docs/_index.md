@@ -10,6 +10,8 @@ menu:
 
 Axway Open Documentation is the new home for Axway product documentation that has been migrated to Markdown format and is available in a [public GitHub repository](https://github.com/Axway/axway-open-docs) to enable collaboration using an open source model.
 
+This website contains the entire documentation set for AMPLIFY API Management 7.7. It also contains documentation for AMPLIFY Central and AMPLIFY Shared Services.
+
 ## AMPLIFY API Management 7.7 documentation
 
 Use the navigation menu on the left to browse all documentation for API Gateway, API Manager, and API Portal. You can also search for specific terms using the search field in the top right corner of any page.
@@ -23,13 +25,18 @@ Here are some suggestions to get started:
 
 ## AMPLIFY Central documentation
 
-Here are some suggestions to get started with AMPLIFY Central:
+Browse all documentation for AMPLIFY Central and AMPLIFY Unified Catalog under the top-level [AMPLIFY Central](/docs/central/) item in the left navigation menu.
 
-* [AMPLIFY Central](https://axway-open-docs.netlify.com/docs/central/)
-* [AMPLIFY Unified Catalog](https://axway-open-docs.netlify.com/docs/central/catalog/)
+Here are some suggestions to get started:
+
+* [Get started with AMPLIFY Central](/docs/central/quickstart/)
+* [Get started with AMPLIFY CLI](/docs/central/cli_getstarted/)
+* [AMPLIFY Unified Catalog](/docs/central/catalog/)
 
 ## AMPLIFY Shared Services documentation
 
-Here are some suggestions to get started with AMPLIFY Shared Services:
+Browse all documentation for AMPLIFY Shared Services under the top-level [AMPLIFY Shared Services](/docs/shared_services/) item in the left navigation menu.
 
-* [Axway Support Portal API documentation](https://axway-open-docs.netlify.com/docs/shared_services/supportapi/)
+Here are some suggestions to get started:
+
+* [Axway Support Portal API documentation](/docs/shared_services/supportapi/)
