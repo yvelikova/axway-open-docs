@@ -11,7 +11,7 @@ This section provides detailed steps for you to create and customize your own do
 
 ## Before you start
 
-You must have completed all of the steps in [Set up and work locally](/docs/contribution_guidelines/setup_work_locally/).
+You must have completed all of the steps in [Set up and work locally](/docs/contribution_guidelines/setup_work_locally/). The following steps assume you have a clone or fork of the Axway-Open-Docs repository available locally.
 
 ## Create a new documentation project
 
@@ -58,29 +58,78 @@ The website is now available locally at `http://localhost:1313/`.
 
 This section shows how to customize the new project with the project-specific settings and with the same look-and-feel and functionality as Axway-Open-Docs.
 
-### Update `config.toml`
+### Copy and update `config.toml`
 
-Open the `config.toml` file in VSCode and edit the following settings.
+The `config.toml` file contains configuration settings for Docsy and Hugo.
+
+To use the custom settings from Axway-Open-Docs, replace the `config.toml` file in your project with the Axway-Open-Docs `config.toml`:
+
+```
+cd ~/open-docs-MYPROJECT/
+cp ~/axway-open-docs/config.toml .
+```
+
+Next, open the `config.toml` file in VSCode and edit the following settings.
 
 `baseURL`
 : Set this to `https://axway-open-docs-MYPROJECT.netlify.com/`
 
-`title`
-: Set this to `Axway-Open-Docs`
-
-`[services.googleAnalytics]`
-: Set the `id` field to a valid Google Analytics ID for your project or comment it out.
-
-`[languages.en]`
-: Copy and replace all the values in this section with the values from [Axway-Open-Docs `config.toml`](https://github.com/Axway/axway-open-docs/blob/master/config.toml).
-
-`[languages.no]`
-: This is an example of language support. Remove this section in `config.toml` and you can also delete the `content/no` directory.
-
 `[params]`
-: Copy and replace all the values in this section with the values from [Axway-Open-Docs `config.toml`](https://github.com/Axway/axway-open-docs/blob/master/config.toml).
-: Set the `github_repo` field to the URL of your new project, for example, `https://github.com/USERNAME/open-docs-MYPROJECT`.
-: Set the `algolia_docsearch` field to `false` for now. You must have Algolia DocSearch set up to use this field.
+: Set the `github_repo` field to the URL of your new GitHub project, for example, `https://github.com/USERNAME/open-docs-MYPROJECT`.
 
-`[params.ui]` and `[params.ui.feedback]` and `[params.links]`
-: Copy and replace all the values in these sections with the values from [Axway-Open-Docs `config.toml`](https://github.com/Axway/axway-open-docs/blob/master/config.toml).
+### Copy layout and CSS customizations
+
+Copy the folders `layouts`, `assets`, and `i18n` from Axway-Open-Docs to your project:
+
+```
+cd ~/open-docs-MYPROJECT/
+cp -r ~/axway-open-docs/layouts/ .
+cp -r ~/axway-open-docs/assets/ .
+cp -r ~/axway-open-docs/i18n/ .
+```
+
+### Copy images and favicon
+
+Copy the home page background image from Axway-Open-Docs to your project, and remove the Docsy background image:
+
+```
+cd ~/open-docs-MYPROJECT/content/en/
+cp ~/axway-open-docs/content/en/big-idea-background.jpg .
+rm featured-background.jpg
+```
+
+Copy the favicon from Axway-Open-Docs to your project:
+
+```
+cd ~/open-docs-MYPROJECT/
+mkdir static
+cd static/
+mkdir favicons
+cd favicons/
+cp ~/axway-open-docs/static/favicons/favicon.ico .
+```
+
+### Install PostCSS for your new project
+
+Enter the following commands to install PostCSS using `npm`:
+
+```
+cd ~/open-docs-MYPROJECT
+sudo npm install -D --save autoprefixer
+sudo npm install -D --save postcss-cli
+```
+
+If these commands report errors first time, trying them again a second time should work for some unknown reason!
+
+### Check how the site looks
+
+At this point, you've customized everything except the content of the site, and it should look a lot like the Axway-Open-Docs now, so run the `hugo server` command in your site root to find out:
+
+```
+cd ~/open-docs-MYPROJECT/
+hugo server
+```
+
+Open `http://localhost:1313/` and you should see something like this:
+
+![Customized Docsy Example Site](/Images/contributing/docsy_example_customized.png)
