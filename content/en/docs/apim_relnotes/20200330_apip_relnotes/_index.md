@@ -6,6 +6,7 @@ weight: 30
 date: 2020-03-11T00:00:00.000Z
 description: Learn about the new features and enhancements in this release of API Portal.
 ---
+
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
@@ -20,12 +21,14 @@ API Portal is available as a software installation or a virtualized deployment 
 
 The following new features and enhancements are available in this release.
 
-API Portal has several new configurations related to API Details page:
+### New configurations for the API Details page
 
-* Configuration for specifying the payload size that needs to be downloaded once the response exceeds it;
-* Configuration of the colors of the different methods for both SOAP and REST APIs;
-* Configuration for displaying the externalDocs along with the description of the API;
-* Configuration for finer grained controls for Try-It button on specific methods;
+* You can specify the payload size that needs to be downloaded once the response exceeds it.
+* You can configure the colors of the different methods for both SOAP and REST APIs.
+* You can configure for displaying the externalDocs along with the description of the API.
+* You can configure for fine-grained controls for the Try-It button on specific methods.
+
+For more information, see [Customize API Catalog](https://axway-open-docs.netlify.com/docs/apim_administration/apiportal_admin/customize_apicatalog_overview/)
 
 ## Limitations of this release
 
