@@ -7,6 +7,7 @@ description: >-
   Expose APIs and applications publicly to users who are not logged in to your
   API Portal.
 ---
+
 Public API mode enables you to expose non-business critical APIs and their methods so that your API consumers can access them without creating a user account or logging in.
 
 When Public API mode is enabled, users can browse any APIs and applications you have specifically exposed for public access in API Manager, without logging in to API Portal. Users can still sign in or sign up to API Portal to use all the features.
@@ -27,7 +28,7 @@ The user experience in public API mode is different than when signed in:
 
 Public API mode affects your APIs and applications. Joomla! articles, blogs, or forums are not included in Public API mode. You can manage how these are exposed by changing their **Access** settings in JAI.
 
-## Prepare API Manager for Public API mode
+## Configure settings for Public API mode in API Manager
 
 For Public API mode access, create a separate organization and user in API Manager, and give that organization access to any APIs and applications that you want to expose publicly.
 
@@ -38,11 +39,11 @@ For Public API mode access, create a separate organization and user in API Manag
    * Set **Organization** to the Public API organization you created (`Public API Org`)
    * Set **Role** to `User`.
 3. Select **Change password**, and set the password for the Public API mode user. 
-4. Make a note of the login name and password you configure for the Public API mode user. You will need them later when configuring the Public API mode in JAI.
+4. Write down the login name and password you configure for the Public API mode user. You will need them later when configuring the Public API mode in JAI.
 5. Disable password expiration. Go to **Settings > API Manager settings > General settings**, and disable **Enable password expiry.**
 6. Select the APIs to expose publicly. Go to **Frontend API**, select the APIs to expose (they must be in **Published** state), click **Managed selected > Grant access**, set **Grant API access** to **The following organizations**, and add and select your Public API mode organization.
 
-   {{< alert title="Tip" color="primary" >}}You can import two versions of a back-end API: one that contains only non-business critical information and is exposed in Public API mode, and a full version which is not exposed without a user login.{{< /alert >}}
+    {{< alert title="Tip" color="primary" >}}You can import two versions of a back-end API: one that contains only non-business critical information and is exposed in Public API mode, and a full version which is not exposed without a user login.{{< /alert >}}
 7. Select the applications to expose publicly. Go to **Clients > Applications**, ensure that the organization of the applications is set to your Public API mode organization and the application has access to the required APIs, then share the application with the Public API mode user you created. It is recommended to only provide rights to view the application.
 
 ## Enable Public API mode in API Portal
@@ -54,7 +55,7 @@ Public API mode is disabled by default. You must enable it in JAI, and add the l
 3. In **Public API Account Login**, enter the login name of the Public API mode user account you created.
 4. In **Public API Account Password**, enter the password of the Public API mode user account you created, and click **Save**.
 
-{{< alert title="" color="primary" >}}API Portal will not accept the password if you have never signed in with the public mode user when `Change password on first login` option is enabled in API Manager. For that scenario, you must first sign in with it to set new password, and then continue with the configuration.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}API Portal will not accept the password if you have never signed in with the public mode user when `Change password on first login` option is enabled in API Manager. In this case, you must first sign in with the public mode user to set a new password, then continue with the configuration.{{< /alert >}}
 
 ## Hide applications in Public API mode
 
