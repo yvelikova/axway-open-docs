@@ -21,9 +21,9 @@ The user experience in public API mode is different than when signed in:
 * On the API Portal landing page, the Sign In button is replaced with an Explore button that goes to API Catalog.
 * The items in the main navigation menu have the following changes:
 
-  * API Catalog displays only the APIs and methods configured to be exposed in Public API mode, but is available normally.
-  * If not disabled, the Applications page is available as read-only. The Usage tab on the Applications page is always disabled.
-  * The Monitoring and Users pages are unavailable.
+    * API Catalog displays only the APIs and methods configured to be exposed in Public API mode, but is available normally.
+    * If not disabled, the Applications page is available as read-only. The Usage tab on the Applications page is always disabled.
+    * The Monitoring and Users pages are unavailable.
 * The user profile information is unavailable.
 
 Public API mode affects your APIs and applications. Joomla! articles, blogs, or forums are not included in Public API mode. You can manage how these are exposed by changing their **Access** settings in JAI.
@@ -38,7 +38,7 @@ For Public API mode access, create a separate organization and user in API Manag
    * Enable the user.
    * Set **Organization** to the Public API organization you created (`Public API Org`)
    * Set **Role** to `User`.
-3. Select **Change password**, and set the password for the Public API mode user. 
+3. Select **Change password**, and set the password for the Public API mode user.
 4. Write down the login name and password you configure for the Public API mode user. You will need them later when configuring the Public API mode in JAI.
 5. Disable password expiration. Go to **Settings > API Manager settings > General settings**, and disable **Enable password expiry.**
 6. Select the APIs to expose publicly. Go to **Frontend API**, select the APIs to expose (they must be in **Published** state), click **Managed selected > Grant access**, set **Grant API access** to **The following organizations**, and add and select your Public API mode organization.
