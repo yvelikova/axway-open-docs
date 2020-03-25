@@ -21,9 +21,9 @@ API Portal is available as a software installation or a virtualized deployment 
 
 The following new features and enhancements are available in this release.
 
-### New configurations for the API Details page
+### API Details page improvements
 
-* You can specify the payload size that needs to be downloaded once the response exceeds it.
+* You can set a payload size to download the response as a file if it exceeds the size you have set.
 * You can configure the colors of the different methods for both SOAP and REST APIs.
 * You can configure for displaying the externalDocs along with the description of the API.
 * You can configure for fine-grained controls for the Try-It button on specific methods.
