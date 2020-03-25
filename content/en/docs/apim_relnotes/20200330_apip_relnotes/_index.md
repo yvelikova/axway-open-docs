@@ -21,7 +21,14 @@ API Portal is available as a software installation or a virtualized deployment 
 
 The following new features and enhancements are available in this release.
 
-<!-- Add the new features here -->
+### API Details page improvements
+
+* You can set a payload size to download the response as a file if it exceeds the size you have set.
+* You can configure the colors of the different methods for both SOAP and REST APIs.
+* You can configure for displaying the externalDocs along with the description of the API.
+* You can configure for fine-grained controls for the Try-It button on specific methods.
+
+For more information, see [Customize API Catalog](https://axway-open-docs.netlify.com/docs/apim_administration/apiportal_admin/customize_apicatalog_overview/)
 
 ## Limitations of this release
 
