@@ -41,9 +41,9 @@ After the API Portal container is started, the Apache daemon is not started and
 
 2. Verify whether the following files exist on the API Portal Docker container. Those files are the certificates used by API Portal when you connect over HTTPS. Apache will not start if these files are missing.
 
-    `/etc/httpd/server.key`
+    `/etc/httpd/conf/server.key`
 
-    `/etc/httpd/server.crt`
+    `/etc/httpd/conf/server.crt`
 
 3. If the files do not exist, either generate them using `/tmp/genssl.sh` script, or provide your own certificates.
 
