@@ -16,7 +16,7 @@ After you have set up your MBean, you must tell the JMX infrastructure about the
 ...
 try {
     MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
-    // Construct the ObjectName for the MBean we will register
+    // Construct the ObjectName for the MBean we will register.
     ObjectName name = new ObjectName(
       "example:type=FilterInterceptorMBean");
     mbs.registerMBean(this, name);
