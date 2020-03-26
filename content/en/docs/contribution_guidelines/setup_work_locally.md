@@ -181,7 +181,7 @@ To make it easier to access Windows files from Ubuntu, you can set up symlinks a
     ln -s /mnt/c/Users/WINDOWS_USERNAME/Documents ~/docs
     ```
 
-    This creates a symbolic link to `/mnt/c/Users/WINDOWS_USERNAME/Documents` from `~/docs`.
+    This creates a symbolic link to `/mnt/c/Users/WINDOWS_USERNAME/Documents` from `~/docs`. The command does not print any output.
 
 3. Now, to change to your Windows `Documents` directory from your home directory in Ubuntu, enter:
 
@@ -199,14 +199,13 @@ To make it easier to access Windows files from Ubuntu, you can set up symlinks a
 
 ### Configure the Ubuntu prompt
 
-1. Download the file [`git-prompt.sh`](https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh) and save it to your `Documents` directory on Windows. Check that the downloaded file contains the shell script and not HTML.
+1. Download the file [`git-prompt.sh`](https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh) and save it to your `Documents` directory on Windows. To download the file, right-click the **Raw** button at the top of the file and select **Save link as...**, and then open the file to check that it contains only the raw text and not HTML.
 2. Open an Ubuntu WSL window.
 3. Copy the `git-prompt.sh` file to the home directory in your Ubuntu file system and rename it as `.git-prompt.sh`:
 
     ```
     cd ~
-    cp /mnt/c/Users/WINDOWS_USERNAME/Documents/git-prompt.sh .
-    mv git-prompt.sh .git-prompt.sh
+    cp /mnt/c/Users/WINDOWS_USERNAME/Documents/git-prompt.sh .git-prompt.sh
     ```
 
 4. Launch Visual Studio Code from Ubuntu:
