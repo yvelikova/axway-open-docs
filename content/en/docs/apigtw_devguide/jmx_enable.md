@@ -38,7 +38,7 @@ Follow these steps:
 
 2. Edit the `jvm.xml` file so that the contents are as follows:
 
-    ```xml
+    ```
     <ConfigurationFragment>
         <VMArg name="-Dcom.sun.management.jmxremote"/>
     </ConfigurationFragment>
