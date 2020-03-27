@@ -2,6 +2,6 @@
 "title": "API Gateway and API Manager 7.7 Apr19 Release Notes",
   "linkTitle": "API Gateway and API Manager 7.7 Apr19",
   "weight": "20",
-  "date": "2019-03-26",
+  "date": "2019-04-20",
   "description": "Learn about the new features and enhancements in this release of API Gateway and API Manager."
 }
