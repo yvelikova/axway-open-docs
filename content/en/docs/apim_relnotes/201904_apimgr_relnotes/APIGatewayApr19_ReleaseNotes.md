@@ -218,26 +218,22 @@ For best performance, we recommend:
 
 You can find the latest information and up-to-date user guides at the [Axway Documentation portal](https://docs.axway.com).
 
-This section describes documentation enhancements and related documentation.
-
-### Documentation enhancements
-
-See What's new in documentation for a summary of the documentation changes in this release.
-
 ### Related documentation
 
 The AMPLIFY API Management solution enables you to create, publish, promote, and manage Application Programming Interfaces (APIs) in a secure and scalable environment. For more information, see the .
 
 The following reference documents are also available:
 
--   -   Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
--   -   Provides product version and interoperability information for Axway products.
+* [Supported Platforms](https://docs.axway.com/bundle/Axway_Products_SupportedPlatforms_allOS_en)
+: Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
 
-Support services
-----------------
+* [Interoperability Matrix](https://docs.axway.com/bundle/Axway_Products_InteroperabilityMatrix_allOS_en)
+: Provides product version and interoperability information for Axway products.
+
+## Support services
 
 The Axway Global Support team provides worldwide 24 x 7 support for customers with active support agreements.
 
-Email <support@axway.com> or visit .
+Email <support@axway.com> or visit [Axway Support](https://support.axway.com).
 
 See for the information that you should be prepared to provide when you contact Axway Support.

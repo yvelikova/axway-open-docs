@@ -8,8 +8,7 @@
 
 API Gateway 7.8 includes all fixes for 7.5.3 and 7.6.2 Service Packs up to and including 7.5.3 SP 10 and 7.6.2 SP 2. For details of all the Service Pack fixes included in 7.8, see the corresponding *SP Readme* attached to each Service Pack on .
 
-Fixed security vulnerabilities
-------------------------------
+## Fixed security vulnerabilities
 
 +-----------------+-----------------+-----------------+-----------------+
 | Internal ID     | Case ID         | CVE Identifier  | Description     |

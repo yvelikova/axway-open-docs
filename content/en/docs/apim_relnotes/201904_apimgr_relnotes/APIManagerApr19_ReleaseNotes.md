@@ -7,52 +7,30 @@
   "description": "Learn about the new features and enhancements in this release of API Manager."
 }
 
-Summary
--------
+## Summary
 
-API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway: software installation, or virtualized deployment in Docker containers. For more information on API Gateway, see the
-[API Gateway Release Notes](/bundle/APIGateway_77_ReleaseNotes_allOS_en_HTML5/)
-.
+API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway: software installation, or virtualized deployment in Docker containers. For more information on API Gateway, see the API Gateway Release Notes.
 
-The software installation is available on Linux. For
-more
-details
-on
-supported
-platforms for software installation,
-see
-[System requirements](/csh?context=305&product=prod-api-gateway-77)
-in the
-[API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/)
-.
+The software installation is available on Linux. For more details on supported platforms for software installation, see *System requirements* in the *API Gateway Installation Guide*.
 
-Docker deployment is supported on Linux. For a summary of the system requirements for a Docker deployment, see
-[System requirements](/csh?context=305&product=prod-api-gateway-77)
-in the
-[API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/)
-, and for more details see
-[What you need before you start](/csh?context=900&product=prod-api-gateway-77)
-in the
-[API Gateway Container Deployment Guide](/bundle/APIGateway_77_ContainerGuide_allOS_en_HTML5/)
-.
+Docker deployment is supported on Linux. For a summary of the system requirements for a Docker deployment, see *System requirements* in the *API Gateway Installation Guide*, and for more details see *What you need before you start* in the API Gateway Container Deployment Guide.
 
-New features and enhancements
------------------------------
+## New features and enhancements
 
 The following new features and enhancements are available in this release.
 
 ### API Manager custom properties
 
--   API Manager provides a new REST API for viewing all existing custom properties and their values (including metadata) for APIs, users, organizations, and apps.
--   Custom properties have default values.
--   Custom properties are validated.
+* API Manager provides a new REST API for viewing all existing custom properties and their values (including metadata) for APIs, users, organizations, and apps.
+* Custom properties have default values.
+* Custom properties are validated.
 
 ### Compliance enhancements
 
--   Enforce password changes at first login to API Manager.
--   API Manager displays the user's last login time.
--   You can configure an advisory banner to be displayed on the login page.
--   Users are redirected to the login page after session timeout.
+* Enforce password changes at first login to API Manager.
+* API Manager displays the user's last login time.
+* You can configure an advisory banner to be displayed on the login page.
+* Users are redirected to the login page after session timeout.
 
 ### Auditing enhancements
 
@@ -60,8 +38,8 @@ Additional audit events are logged in the audit log.
 
 ### Additional search field support for front-end and back-end APIs
 
--   Support to retrieve front-end APIs that are exposed on a particular path.
--   Ability to query for back-end APIs with a particular `basePath`, `resourcePath`, `organizationId`, or `serviceType`.
+* Support to retrieve front-end APIs that are exposed on a particular path.
+* Ability to query for back-end APIs with a particular `basePath`, `resourcePath`, `organizationId`, or `serviceType`.
 
 ### Try It improvements
 
@@ -75,7 +53,7 @@ API Manager now supports Swagger 2.0 documents that are in YAML format, includin
 
 ### Swagger 2.0 enhancements
 
-Swagger 2.0 download from the API Catalog has been enhanced and now includes missing fields. For more information regarding unsupported Swagger 2.0 fields, see [Known issues](#Known).
+Swagger 2.0 download from the API Catalog has been enhanced and now includes missing fields. For more information regarding unsupported Swagger 2.0 fields, see [Known issues](#known-issues).
 
 ### Subscription licensing for API Management
 
@@ -87,9 +65,9 @@ This feature is not available for API Gateway and API Manager when deployed in c
 
 The following abilities have been added:
 
--   Use an environment variable to set the TRACE level in an API Gateway container.
--   Insert files into a container at startup.
--   Use selectors for log file naming to facilitate persistent storage of files in volumes.
+* Use an environment variable to set the TRACE level in an API Gateway container.
+* Insert files into a container at startup.
+* Use selectors for log file naming to facilitate persistent storage of files in volumes.
 
 ### OpenJDK support
 
@@ -101,8 +79,7 @@ You can configure Apache Cassandra to use the API Gateway OpenJDK JRE or you can
 
 OpenJDK replaces Oracle JRE as the Java runtime for API Gateway and API Manager.
 
-Limitations of this release
----------------------------
+## Limitations of this release
 
 This release has the following limitations:
 
@@ -110,9 +87,9 @@ This release has the following limitations:
 
 When using an elastic container deployment:
 
--   Traffic monitor data for a specific API Gateway instance does not persist in the event of that instance container stopping. However, you can redirect the trace and traffic logs to `stdout` instead of to separate files, which allows the logs to be read directly from each container by an external logging service.
--   Distributed Ehcache is not supported. However, you can use Apache Cassandra as a distributed data store.
--   To upgrade from versions earlier than 7.6.2 to version 7.8, you must first upgrade to a 7.8 classic deployment and then migrate to an elastic container deployment.
+* Traffic monitor data for a specific API Gateway instance does not persist in the event of that instance container stopping. However, you can redirect the trace and traffic logs to `stdout` instead of to separate files, which allows the logs to be read directly from each container by an external logging service.
+* Distributed Ehcache is not supported. However, you can use Apache Cassandra as a distributed data store.
+* To upgrade from versions earlier than 7.6.2 to version 7.8, you must first upgrade to a 7.8 classic deployment and then migrate to an elastic container deployment.
 
 For more details, see the .
 
@@ -120,40 +97,37 @@ For more details, see the .
 
 This release is not available as a virtual appliance or as a managed service on Axway Cloud.
 
-Deprecated features
--------------------
+## Deprecated features
 
 As part of our software development life cycle we constantly review the core API Management products and related components. As part of this review, API Tester has been deprecated in this release. This standalone tool is no longer supported and will be removed from the next major release (7.8). It is recommended to use alternative tools, such as Postman or SoapUI.
 
 API Tester is vulnerable to the following security vulnerabilities, and continued usage is at your own risk:
 
--   CVE-2009-1006
--   CVE-2011-3545
--   CVE-2011-3551
--   CVE-2011-3553
--   CVE-2011-3556
--   CVE-2011-3557
--   CVE-2013-2380
--   CVE-2013-2461
--   CVE-2013-5780
--   CVE-2013-5782
--   CVE-2013-5797
--   CVE-2013-5802
--   CVE-2013-5803
--   CVE-2013-5804
--   CVE-2013-5823
--   CVE-2013-5825
--   CVE-2013-5830
+* CVE-2009-1006
+* CVE-2011-3545
+* CVE-2011-3551
+* CVE-2011-3553
+* CVE-2011-3556
+* CVE-2011-3557
+* CVE-2013-2380
+* CVE-2013-2461
+* CVE-2013-5780
+* CVE-2013-5782
+* CVE-2013-5797
+* CVE-2013-5802
+* CVE-2013-5803
+* CVE-2013-5804
+* CVE-2013-5823
+* CVE-2013-5825
+* CVE-2013-5830
 
-Removed features
-----------------
+## Removed features
 
 In our efforts to continually upgrade our products in response to the needs of our customers’ IT environments, Axway occasionally discontinues support for some capabilities. API Gateway 7.6.2 is the last release that includes the following capabilities, which have been removed from the 7.8 release:
 
--   Support for MySQL Server 2005 has been removed.
+* Support for MySQL Server 2005 has been removed.
 
-Known issues
-------------
+## Known issues
 
 The following are known issues for this release of API Manager.
 
@@ -164,17 +138,14 @@ Documentation might contain references to removed features (for example, hardwar
 ### Cassandra synchronization in multi-datacenter environments
 
 In multi-datacenter environments with Cassandra read/write consistency set to local quorum, there is a small risk of configuration corruption if the event triggering API Manager to load a configuration change happens before the configuration replication to the other datacenter is complete. Changing the polling time as described in
-[Configure API Management in multiple datacenters](/csh?context=303&product=prod-api-gateway-77)
-in the
-[API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/)
-reduces this risk, but does not remove it completely.
+*Configure API Management in multiple datacenters* in the *API Gateway Installation Guide* reduces this risk, but does not remove it completely.
 
 This issue results in outdated configuration data being used for the affected API until API Gateway is restarted. For example, as a result of this, valid traffic may be rejected if a new API has been added and not updated, or wrong traffic may be accepted if an API has been deprecated and not updated. The workaround requires a restart of all API Gateway instances in the affected datacenter.
 
 Axway is working on a product change that will avoid restarting API Gateway in such situations, and recommends to:
 
--   Wait for the resolution before going live with multiple datacenters and local quorum consistency.
--   If this is not possible, monitor your production environment closely for this error, and restart API Gateway if the error is encountered.
+* Wait for the resolution before going live with multiple datacenters and local quorum consistency.
+* If this is not possible, monitor your production environment closely for this error, and restart API Gateway if the error is encountered.
 
 ### RAML import does not support references to external files
 
@@ -192,7 +163,9 @@ Related issues: RDAPI-5136, RDAPI-8237
 
 New users that were registered in API Manager 7.3.1 before an upgrade, but who did not complete registration by activating their account with the link provided in email, cannot complete registration after the upgrade. The link in the email references the API Manager API v1.1 that is no longer available. For example:
 
+```
 https://<API Gateway IP address>/api/portal/v1.1/users/validateuser?email=s@s.com&validator=9a5addcb-e10c-499b-bf0a-0c70915f3862
+```
 
 The workaround is that the user copies the link address, pastes it to the address bar, and changes the API version `v1.1` to `v1.2` or `v1.3`. After this, the activation link works, and the user can complete registration.
 
@@ -208,7 +181,9 @@ To preserve the trailing forward slashes, edit the `jvm.xml` file and set the `c
 
 For example:
 
+```
 <VMArg name="-Dcom.vordel.apimanager.uri.path.trailingSlash.preserve=true"/>
+```
 
 The default value of the property is `false`.
 
@@ -218,16 +193,14 @@ Related issues: RDAPI-9243
 
 When registering a back-end API from a Swagger 2.0 definition, API Manager does not support the following elements and does not import them into the API Catalog:
 
--   `title`
--   `securityDefinitions`
+* `title`
+* `securityDefinitions`
 
 For each path/API method:
 
--   `security`
--   For each parameter:
-    -   `allowEmptyValue`
--   For each response code:
-    -   `headers`
+* `security`
+    * For each parameter: `allowEmptyValue`
+    * For each response code: `headers`
 
 {{< alert title="Note" color="primary" >}}Some of these elements are also used in the model definitions section in the Swagger 2.0 specification, and API Manager imports these elements when contained in that section. API Manager supports all elements in the Swagger model definitions section.{{< /alert >}}
 
@@ -235,16 +208,9 @@ For each path/API method:
 
 When importing API collections from earlier versions of API Manager, an error occurs if the APIs are based on back-end APIs that were generated from Swagger version 1.1 or 1.2.
 
-Documentation
--------------
+## Documentation
 
-You can find the latest information and up-to-date user guides at the Axway Documentation portal at <https://docs.axway.com>.
-
-This section describes documentation enhancements and related documentation.
-
-### Documentation enhancements
-
-See [*What's new in documentation* on page 1](whats_new_doc.htm) for a summary of the documentation changes in this release.
+You can find the latest information and up-to-date user guides at the [Axway Documentation portal](https://docs.axway.com).
 
 ### Related documentation
 
@@ -252,14 +218,16 @@ The AMPLIFY API Management solution enables you to create, publish, promote, and
 
 The following reference documents are also available:
 
--   -   Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
--   -   Provides product version and interoperability information for Axway products.
+* [Supported Platforms](https://docs.axway.com/bundle/Axway_Products_SupportedPlatforms_allOS_en)
+: Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
 
-Support services
-----------------
+* [Interoperability Matrix](https://docs.axway.com/bundle/Axway_Products_InteroperabilityMatrix_allOS_en)
+: Provides product version and interoperability information for Axway products.
+
+## Support services
 
 The Axway Global Support team provides worldwide 24 x 7 support for customers with active support agreements.
 
-Email <support@axway.com> or visit .
+Email <support@axway.com> or visit [Axway Support](https://support.axway.com).
 
 See for the information that you should be prepared to provide when you contact Axway Support.
