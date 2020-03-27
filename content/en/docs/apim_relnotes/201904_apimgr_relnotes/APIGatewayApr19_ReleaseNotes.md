@@ -4,12 +4,12 @@
 "no_list": "true",
 "weight": "20",
 "date": "2020-03-26",
-"description": "Learn about the new features and enhancements in the 7.7 GA release of API Gateway"
+"description": "Learn about the new features and enhancements in this release of API Gateway."
 }
 
 ## Summary
 
-API Gateway is available as a software installation or a virtualized deployment in Docker containers. 
+API Gateway is available as a software installation or a virtualized deployment in Docker containers.
 
 The software installation is available on Linux. For more details on supported platforms for software installation, see *API Gateway Installation Guide*.
 
@@ -79,7 +79,7 @@ When using an elastic container deployment:
 * Distributed Ehcache is not supported. However, you can use Apache Cassandra as a distributed data store.
 * To upgrade from versions earlier than 7.6.2 to version 7.8, you must first upgrade to a 7.8 classic deployment and then migrate to an elastic container deployment.
 
-For more details, see the .
+For more details, see the *API Gateway Container Deployment Guide*.
 
 ### Other deployment options
 

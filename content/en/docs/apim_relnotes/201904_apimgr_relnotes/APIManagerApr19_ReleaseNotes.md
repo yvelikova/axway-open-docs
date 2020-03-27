@@ -57,7 +57,7 @@ Swagger 2.0 download from the API Catalog has been enhanced and now includes mis
 
 ### Subscription licensing for API Management
 
-API Gateway and API Manager now support usage based subscription licensing when deployed in container mode. For more information, see the .
+API Gateway and API Manager now support usage based subscription licensing when deployed in container mode. For more information, see the seet
 
 This feature is not available for API Gateway and API Manager when deployed in classic mode.
 
@@ -91,7 +91,7 @@ When using an elastic container deployment:
 * Distributed Ehcache is not supported. However, you can use Apache Cassandra as a distributed data store.
 * To upgrade from versions earlier than 7.6.2 to version 7.8, you must first upgrade to a 7.8 classic deployment and then migrate to an elastic container deployment.
 
-For more details, see the .
+For more details, see the *API Gateway Container Deployment Guide*.
 
 ### Other deployment options
 
@@ -218,11 +218,9 @@ The AMPLIFY API Management solution enables you to create, publish, promote, and
 
 The following reference documents are also available:
 
-* [Supported Platforms](https://docs.axway.com/bundle/Axway_Products_SupportedPlatforms_allOS_en)
-: Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
+* [Supported Platforms](https://docs.axway.com/bundle/Axway_Products_SupportedPlatforms_allOS_en) - Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
 
-* [Interoperability Matrix](https://docs.axway.com/bundle/Axway_Products_InteroperabilityMatrix_allOS_en)
-: Provides product version and interoperability information for Axway products.
+* [Interoperability Matrix](https://docs.axway.com/bundle/Axway_Products_InteroperabilityMatrix_allOS_en) - Provides product version and interoperability information for Axway products.
 
 ## Support services
 
