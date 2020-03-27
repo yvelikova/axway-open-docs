@@ -183,7 +183,9 @@ To make it easier to access Windows files from Ubuntu, you can set up symlinks a
 
     This creates a symbolic link to `/mnt/c/Users/WINDOWS_USERNAME/Documents` from `~/docs`. The command does not print any output.
 
-3. Now, to change to your Windows `Documents` directory from your home directory in Ubuntu, enter:
+3. After the symlink is created, you can change to your Windows `Documents` directory using the `docs` alias.
+
+    From your home directory in Ubuntu, enter:
 
     ```
     cd docs
@@ -214,7 +216,7 @@ To make it easier to access Windows files from Ubuntu, you can set up symlinks a
     code .
     ```
 
-5. Open the file `.bashrc` in VSCode.
+5. Open the file `.bashrc` in VSCode. This file already exists in your Ubuntu home directory and is run each time you open an Ubuntu window to initialize your shell environment.
 6. Paste the following lines at the end of the file:
 
     ```
