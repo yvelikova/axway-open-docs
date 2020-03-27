@@ -75,119 +75,44 @@ This release has the following limitations:
 
 | Internal ID | Case ID | Description    |
 | ----------- | ------- | -------------- |
-  | IAP-1300    |  00987204   | **Issue**: Documentation did not include best practices for securing Joomla! 2018-6376
-**Resolution**: API Management Security Guide is being updated to include best practices for securing Joomla! |
-
-  | IAP-1830    |  01030372   | **Issue**: The description of the API was not escaped when using an external URL.
-                           **Resolution**: External URL description is escaped now.
-
-  | IAP-1846      01029705   | **Issue**: Sensitive information (for example, session headers, csrf token headers, and so on) is stored in curl.log file.
-                           **Resolution**: Sensitive information is masked (the real value is replaced with a fake value) when stored in curl.log file.
-
-  | IAP-1905  | **Issue**: When testing an API, malicious code inserted in some query parameters was executed, making API Portal vulnerable to cross-site scripting (XSS).
-                           **Resolution**: All query parameters are now escaped and malicious code is not executed.
+| IAP-1300    | 00987204 | **Issue**: Documentation did not include best practices for securing Joomla! **Resolution**: API Management Security Guide is being updated to include best practices for securing Joomla!                                                              | 2018-6376 |
+| IAP-1830    | 01030372 | **Issue**: The description of the API was not escaped when using an external URL. **Resolution**: External URL description is escaped now.                                                                                                              |           |
+| IAP-1846    | 01029705 | **Issue**: Sensitive information (for example, session headers, csrf token headers, and so on) is stored in curl.log file. **Resolution**: Sensitive information is masked (the real value is replaced with a fake value) when stored in curl.log file. |           |
+| IAP-1905    |          | **Issue**: When testing an API, malicious code inserted in some query parameters was executed, making API Portal vulnerable to cross-site scripting (XSS). **Resolution**: All query parameters are now escaped and malicious code is not executed.     |           |
 
 ### Other fixed issues
 
 | Internal ID | Case ID | Description     |
 | ----------- | ------- | --------------- |
-
-  | IAP-911       00955815, 00940446   | **Issue**: Documentation stated that PHP 5.4 and later are supported on RHEL7 software installation, but API Portal installation failed with PHP 7 due to missing dependencies.
-                                     **Resolution**: API Portal 7.7 RHEL7 software installation includes improved dependency checking, which resolves this issue.
-
-  | IAP-1421                           | **Issue**: When an anonymous user accesses API Portal, a new API Manager session is created.
-                                     **Resolution**: All anonymous users share a single API Manager session.
-
-  | IAP-1480      00997076             | **Issue**: Enumerations are not displayed for method parameters.
-                                     **Resolution**: Enumeration values are displayed.
-
-  | IAP-1482      00997076             | **Issue**: AMPLIFY Swagger UI does not display API method tags.
-                                     **Resolution**: AMPLIFY Swagger UI now displays API method tags.
-
-  | IAP-1483      00995497             | **Issue**: API Portal users cannot log in to Joomla! if granted Administrator or Super User privileges in JAI.
-                                     **Resolution**: API Portal 7.7 includes a new user role mapping feature which resolves this issue.
-
-  | IAP-1611      01010562             | **Issue**: Unofficial best practice documentation describing how to move API Portal configuration and customizations from one environment to another, leveraging Akeeba Backup, was incorrect and outdated.
-                                     **Resolution**: The documentation was updated.
-
-  | IAP-1652                           | **Issue**: When configuring connections to multiple API Managers in JAI, the value of the 'Public label for API Managers' field is not saved.
-                                     **Resolution**: 'Public label for API Managers' field is saved as expected.
-
-  | IAP-1669      01007453             | **Issue**: Customizing styles for some API Portal elements using ThemeMagic has no effect.
-                                     **Resolution**: It is not possible to customize all elements shown in ThemeMagic. The elements that cannot be customized have been removed from the ThemeMagic customization page:
-                                     - Basic Colors/Footer Text Color (@footer-text-color)
-                                     - Footer Color (Advanced)/Footer Text Color (@t3-footer-text-color)
-                                     - Footer Color (Advanced)/Footer Module Background (@t3-footer-module-background)
-                                     - Footer Color (Advanced)/Footer Module Text Color (@t3-footer-module-text-color)
-                                     - Footer Color (Advanced)/Footer Module Title Color (@t3-footer-module-title-color)
-                                     - Drop Down Color (Advanced)/Disabled background color (@aap-dropdown-disabled-bg-color)
-                                     - Drop Down Color (Advanced)/Disabled text color (@aap-dropdown-disabled-text-color)
-                                     - Table Color (Advanced)/Row disabled background color (@aap-tr-disabled-bg-color)
-                                     - Spotlight Color (Advanced)/Spotlight Background Color (@t3-spotlight-background)
-                                     - Spotlight Color (Advanced)/Spotlight Text Color (@t3-spotlight-text-color)
-
-  | IAP-1699                           | **Issue**: When Public API mode is enabled and an anonymous user tries to open the APIs or Applications pages, the user is redirected to the sign in page.
-                                     **Resolution**: The Public API mode now displays the APIs and Applications pages for anonymous users.
-
-  | IAP-1701                           | **Issue**: When Public API mode is enabled, anonymous users can access internal pages.
-                                     **Resolution**: An error is shown when an anonymous user tries to access internal pages, and the user is redirected to the sign in page.
-
-  | IAP-1742                           | **Issue**: When the Public API mode is enabled, an anonymous user can open the user profile page.
-                                     **Resolution**: A 404 error page is shown when an anonymous user tries to open the user profile page.
-
-  | IAP-1752      01018549             | **Issue**: A very long range for the date parameter returns an extensive number of results, allowing an attacker to consume numerous back-end resources.
-                                     **Resolution**: A back-end restriction was added to limit users to retrieving results for a custom defined time period of two months only.
-
-  | IAP-1760      01019664             | **Issue**: In some cases the API key was not sent to API Manager when trying a method secured with an API key.
-                                     **Resolution**: API key is sent to API Manager in all cases when API key security is selected.
-
-  | IAP-1767                           | **Issue**: API details page does not show the Authentication section if there are no SDKs available for download.
-                                     **Resolution**: The Authentication section is shown even when there is no SDK available for download.
-
-  | IAP-1770                           | **Issue**: API Portal checked for HTTP Headers using Pascal case with hyphens. So, when the headers were all in lowercase the request could not be sent to API Manager.
-                                     **Resolution**: All headers are now modified to the expected format before API Portal reads them.
-
-  | IAP-1789      01026967             | **Issue**: Clicking the "Save application" button multiple times, almost simultaneously, in the application creation form creates several applications.
-                                     **Resolution**: All buttons in the form are locked while the submission is being processed, so the button is not clickable again until the application is created.
-
-  | IAP-1795                           | **Issue**: Error message (API does not belong to a catalog) is shown when trying to open Application page for application with linked APIs and the Application page is not displayed.
-                                     **Resolution**: Application page is displayed as expected.
-
-  | IAP-1807      01015588             | **Issue**: When locked out after consecutive failed login attempts (bad password), the user can reset the password, however, attempts to log in again with the new password fail until the lock time expires.
-                                     **Resolution**: Passwords cannot be reset until the lock time expires.
-
-  | IAP-1823                           | **Issue**: Something went wrong page is shown when generating OAuth credentials with an empty redirect URL field.
-                                     **Resolution**: A meaningful error message is shown when generating OAuth credentials with an empty redirect URL field.
-
-  | IAP-1852      01022998             | **Issue**: Joomla! administrator user gets an invalid certificate error when uploading certificate chain PEM file.
-                                     **Resolution**: You can now upload a certificate chain file successfully, but you must first install and configure the OpenSSL PHP extension.
-
-  | IAP-1857      01024680             | **Issue**: API Details page (Swagger UI) is not rendering under Internet Explorer 11.
-                                     **Resolution**: API Details page is fully functional under Internet Explorer 11.
-
-  | IAP-1894                           | **Issue**: If you enable public API user password encryption, you cannot save the public API user account password when the Linux security module (SELinux) is enabled, because SELinux prevents writing to the encryption key file.
-                                     **Resolution**: Public API user password can be encrypted and saved as expected when SELinux is enabled.
-
-  | IAP-1898      01019882             | **Issue**: A broken hidden error message (small yellow triangle) is shown below the main menu after a new user logs in.
-                                     **Resolution**: The issue was fixed after the correct PHP module was installed.
-
-  | IAP-1901      01024460             | **Issue**: API Portal overwrites Content-Type header with multipart-formdata.
-                                     **Resolution**: API Portal does not change the value of the Content-Type header anymore.
-
-  | IAP-1937      01028187             | **Issue**: When multiple API managers are configured, only metrics from the master API Manager are shown under Monitoring in API Portal.
-                                     **Resolution**: Metrics data is now shown for master and slave API Managers.
-
-  | IAP-1966      01042321             | **Issue**: When using SSO to log in, user is redirected to API Portal home page instead of the page specified in the 'Redirect after login' field.
-                                     **Resolution**: User is redirected to the specified page as expected.
-
-  | IAP-1977      01044495             | **Issue**: When using SSO, the SSO flow is not executed correctly when the IdP uses the 'Location' header for the redirect.
-                                     **Resolution**: The SSO flow executes correctly as expected.
-
-  | IAP-1981      01004660             | **Issue**: When there are two languages installed, and the default one is not English, trying an API method using an expired session reloads the page instead of redirecting to the sign-in page as expected.
-                                     **Resolution**: The user is redirected to the sign-in page correctly.
-
-  | IAP-2052      01022066             | **Issue**: API Portal shows application sharing option for a Community organization which was renamed in Policy Studio. Application sharing should not be enabled for Community organizations.
-                                     **Resolution**: API Portal does not show application sharing for any Community organization.
+| IAP-911     | 00955815, 00940446 | **Issue**: Documentation stated that PHP 5.4 and later are supported on RHEL7 software installation, but API Portal installation failed with PHP 7 due to missing dependencies. **Resolution**: API Portal 7.7 RHEL7 software installation includes improved dependency checking, which resolves this issue.|
+| IAP-1421    |                    | **Issue**: When an anonymous user accesses API Portal, a new API Manager session is created. **Resolution**: All anonymous users share a single API Manager session.|
+| IAP-1480    | 00997076           | **Issue**: Enumerations are not displayed for method parameters. **Resolution**: Enumeration values are displayed.|
+| IAP-1482    | 00997076           | **Issue**: AMPLIFY Swagger UI does not display API method tags. **Resolution**: AMPLIFY Swagger UI now displays API method tags.|
+| IAP-1483    | 00995497           | **Issue**: API Portal users cannot log in to Joomla! if granted Administrator or Super User privileges in JAI. **Resolution**: API Portal 7.7 includes a new user role mapping feature which resolves this issue.|
+| IAP-1611    | 01010562           | **Issue**: Unofficial best practice documentation describing how to move API Portal configuration and customizations from one environment to another, leveraging Akeeba Backup, was incorrect and outdated. **Resolution**: The documentation was updated.|
+| IAP-1652    |                    | **Issue**: When configuring connections to multiple API Managers in JAI, the value of the 'Public label for API Managers' field is not saved. **Resolution**: 'Public label for API Managers' field is saved as expected.|
+| IAP-1669    | 01007453           | **Issue**: Customizing styles for some API Portal elements using ThemeMagic has no effect. **Resolution**: It is not possible to customize all elements shown in ThemeMagic. The elements that cannot be customized have been removed from the ThemeMagic customization page:- Basic Colors/Footer Text Color (@footer-text-color)- Footer Color (Advanced)/Footer Text Color (@t3-footer-text-color)- Footer Color (Advanced)/Footer Module Background (@t3-footer-module-background)- Footer Color (Advanced)/Footer Module Text Color (@t3-footer-module-text-color)- Footer Color (Advanced)/Footer Module Title Color (@t3-footer-module-title-color)- Drop Down Color (Advanced)/Disabled background color (@aap-dropdown-disabled-bg-color)- Drop Down Color (Advanced)/Disabled text color (@aap-dropdown-disabled-text-color)- Table Color (Advanced)/Row disabled background color (@aap-tr-disabled-bg-color)- Spotlight Color (Advanced)/Spotlight Background Color (@t3-spotlight-background)- Spotlight Color (Advanced)/Spotlight Text Color (@t3-spotlight-text-color) |
+| IAP-1699    |                    | **Issue**: When Public API mode is enabled and an anonymous user tries to open the APIs or Applications pages, the user is redirected to the sign in page. **Resolution**: The Public API mode now displays the APIs and Applications pages for anonymous users.|
+| IAP-1701    |                    | **Issue**: When Public API mode is enabled, anonymous users can access internal pages. **Resolution**: An error is shown when an anonymous user tries to access internal pages, and the user is redirected to the sign in page.|
+| IAP-1742    |                    | **Issue**: When the Public API mode is enabled, an anonymous user can open the user profile page. **Resolution**: A 404 error page is shown when an anonymous user tries to open the user profile page.|
+| IAP-1752    | 01018549           | **Issue**: A very long range for the date parameter returns an extensive number of results, allowing an attacker to consume numerous back-end resources. **Resolution**: A back-end restriction was added to limit users to retrieving results for a custom defined time period of two months only.|
+| IAP-1760    | 01019664           | **Issue**: In some cases the API key was not sent to API Manager when trying a method secured with an API key. **Resolution**: API key is sent to API Manager in all cases when API key security is selected.|
+| IAP-1767    |                    | **Issue**: API details page does not show the Authentication section if there are no SDKs available for download. **Resolution**: The Authentication section is shown even when there is no SDK available for download.|
+| IAP-1770    |                    | **Issue**: API Portal checked for HTTP Headers using Pascal case with hyphens. So, when the headers were all in lowercase the request could not be sent to API Manager. **Resolution**: All headers are now modified to the expected format before API Portal reads them.|
+| IAP-1789    | 01026967           | **Issue**: Clicking the "Save application" button multiple times, almost simultaneously, in the application creation form creates several applications. **Resolution**: All buttons in the form are locked while the submission is being processed, so the button is not clickable again until the application is created.|
+| IAP-1795    |                    | **Issue**: Error message (API does not belong to a catalog) is shown when trying to open Application page for application with linked APIs and the Application page is not displayed. **Resolution**: Application page is displayed as expected.|
+| IAP-1807    | 01015588           | **Issue**: When locked out after consecutive failed login attempts (bad password), the user can reset the password, however, attempts to log in again with the new password fail until the lock time expires. **Resolution**: Passwords cannot be reset until the lock time expires.|
+| IAP-1823    |                    | **Issue**: Something went wrong page is shown when generating OAuth credentials with an empty redirect URL field. **Resolution**: A meaningful error message is shown when generating OAuth credentials with an empty redirect URL field.|
+| IAP-1852    | 01022998           | **Issue**: Joomla! administrator user gets an invalid certificate error when uploading certificate chain PEM file. **Resolution**: You can now upload a certificate chain file successfully, but you must first install and configure the OpenSSL PHP extension.|
+| IAP-1857    | 01024680           | **Issue**: API Details page (Swagger UI) is not rendering under Internet Explorer 11. **Resolution**: API Details page is fully functional under Internet Explorer 11.|
+| IAP-1894    |                    | **Issue**: If you enable public API user password encryption, you cannot save the public API user account password when the Linux security module (SELinux) is enabled, because SELinux prevents writing to the encryption key file. **Resolution**: Public API user password can be encrypted and saved as expected when SELinux is enabled.|
+| IAP-1898    | 01019882           | **Issue**: A broken hidden error message (small yellow triangle) is shown below the main menu after a new user logs in. **Resolution**: The issue was fixed after the correct PHP module was installed.|
+| IAP-1901    | 01024460           | **Issue**: API Portal overwrites Content-Type header with multipart-formdata. **Resolution**: API Portal does not change the value of the Content-Type header anymore.|
+| IAP-1937    | 01028187           | **Issue**: When multiple API managers are configured, only metrics from the master API Manager are shown under Monitoring in API Portal. **Resolution**: Metrics data is now shown for master and slave API Managers.|
+| IAP-1966    | 01042321           | **Issue**: When using SSO to log in, user is redirected to API Portal home page instead of the page specified in the 'Redirect after login' field. **Resolution**: User is redirected to the specified page as expected.|
+| IAP-1977    | 01044495           | **Issue**: When using SSO, the SSO flow is not executed correctly when the IdP uses the 'Location' header for the redirect. **Resolution**: The SSO flow executes correctly as expected.|
+| IAP-1981    | 01004660           | **Issue**: When there are two languages installed, and the default one is not English, trying an API method using an expired session reloads the page instead of redirecting to the sign-in page as expected. **Resolution**: The user is redirected to the sign-in page correctly.|
+| IAP-2052    | 01022066           | **Issue**: API Portal shows application sharing option for a Community organization which was renamed in Policy Studio. Application sharing should not be enabled for Community organizations. **Resolution**: API Portal does not show application sharing for any Community organization.|
 
 ## Known issues
 
@@ -204,7 +129,7 @@ If you change the API Portal language to Arabic (or any other right to left lang
 5. Change **Development Mode** to `ON`.
 6. Click **Save** and click **Close** to close the template style.
 
-Related Issue: | IAP-308
+Related **Issue**: | IAP-308
 
 ### Related documentation
 
@@ -219,11 +144,9 @@ The AMPLIFY API Management solution enables you to create, publish, promote, and
 
 The following reference documents are also available:
 
-* [Supported Platforms](https://docs.axway.com/bundle/Axway_Products_SupportedPlatforms_allOS_en)
-: Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
+* [Supported Platforms](https://docs.axway.com/bundle/Axway_Products_SupportedPlatforms_allOS_en) - Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
 
-* [Interoperability Matrix](https://docs.axway.com/bundle/Axway_Products_InteroperabilityMatrix_allOS_en)
-: Provides product version and interoperability information for Axway products.
+* [Interoperability Matrix](https://docs.axway.com/bundle/Axway_Products_InteroperabilityMatrix_allOS_en) - Provides product version and interoperability information for Axway products.
 
 ## Support services
 

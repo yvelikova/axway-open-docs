@@ -224,11 +224,9 @@ The AMPLIFY API Management solution enables you to create, publish, promote, and
 
 The following reference documents are also available:
 
-* [Supported Platforms](https://docs.axway.com/bundle/Axway_Products_SupportedPlatforms_allOS_en)
-: Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
+* [Supported Platforms](https://docs.axway.com/bundle/Axway_Products_SupportedPlatforms_allOS_en) - Lists the different operating systems, databases, browsers, and thick client platforms supported by each Axway product.
 
-* [Interoperability Matrix](https://docs.axway.com/bundle/Axway_Products_InteroperabilityMatrix_allOS_en)
-: Provides product version and interoperability information for Axway products.
+* [Interoperability Matrix](https://docs.axway.com/bundle/Axway_Products_InteroperabilityMatrix_allOS_en) - Provides product version and interoperability information for Axway products.
 
 ## Support services
 
