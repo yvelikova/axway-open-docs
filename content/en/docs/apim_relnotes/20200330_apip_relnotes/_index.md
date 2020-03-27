@@ -1,12 +1,11 @@
 ---
-title: API Portal 7.7 Mar20 Release Notes
+title: API Portal 7.7 March 2020 Release Notes
 linkTitle: API Portal 7.7 Mar20
 no_list: true
 weight: 30
 date: 2020-03-11T00:00:00.000Z
 description: Learn about the new features and enhancements in this release of API Portal.
 ---
-
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
@@ -23,10 +22,10 @@ The following new features and enhancements are available in this release.
 
 ### API Details page improvements
 
-* You can set a payload size to download the response as a file if it exceeds the size you have set.
+* You can now set a payload limit size to download the response as a file if the response exceeds the size you have set.
 * You can configure the colors of the different methods for both SOAP and REST APIs.
-* You can configure for displaying the externalDocs along with the description of the API.
-* You can configure for fine-grained controls for the Try-It button on specific methods.
+* You can now set a flag to include or exclude the value for the "externalDocs" attribute. If the flag is on, the value for the externalDocs attribute is appended to the Description field and rendered as part of that field. By default this toggle is on.
+* You can now configure whether or not to show Try it for groups of http methods per connected API Manager instance. This allows for finer grained control of the Try it functionality. 
 
 For more information, see [Customize API Catalog](https://axway-open-docs.netlify.com/docs/apim_administration/apiportal_admin/customize_apicatalog_overview/)
 
