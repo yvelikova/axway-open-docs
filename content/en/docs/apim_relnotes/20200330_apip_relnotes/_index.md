@@ -10,7 +10,7 @@ description: Learn about the new features and enhancements in this release of AP
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
 
-API Portal is available as a software installation or a virtualized deployment in Docker containers. For more information, see:
+API Portal is available as a software installation or a virtualized deployment in a Docker container. For more information, see:
 
 * [Install API Portal](/docs/apim_installation/apiportal_install/)
 * [Upgrade API Portal to 7.7](/docs/apim_installation/apiportal_install/upgrade_automatic/)
@@ -33,9 +33,11 @@ For more information, see [Customize API Catalog](https://axway-open-docs.netlif
 
 This release has the following limitations:
 
-* API Portal 7.7.20200330 is compatible with API Gateway and API Manager 7.7.20200330 only.
-* Upgrade to API Portal 7.7.20200330 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to API Portal 7.7.
-* The ready-made API Portal Docker image 7.7.20200330 is strictly for development environments only, and it is not recommended for use in production environments.  Upgrading from previous API Portal Docker image is not supported.
+* API Portal 7.7.20200330 has been tested and is compatible with API Gateway and API Manager 7.7.20200330 only.
+* Upgrade to API Portal 7.7.20200330 is supported from API Portal 7.7.0 only. To upgrade from earlier versions (e.g. 7.5.x, 7.6.x) you must first upgrade to API Portal 7.7.
+* The ready-made API Portal Docker image 7.7.20200330 is strictly for development environments only, and it is not recommended for use in production environments. 
+* The reason the image is not fit for production is that the image is built with CentOS as a base OS and our Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issue have been resolved, but until we can ship a hardened image that passes our security concerns, we cannot advise customers that it is ok for a production environment. It is on our 2020 roadmap to create a docker image for production use. Keep an eye on the roadmap [here](https://community.axway.com/s/api-portal).
+* Upgrading from previous API Portal Docker image is not supported.
 * This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
 
 ## Removed features
