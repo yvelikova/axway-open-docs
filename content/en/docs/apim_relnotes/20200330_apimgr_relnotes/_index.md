@@ -72,8 +72,6 @@ See [Fixed issues](/docs/apim_relnotes/20200330_apimgr_relnotes/fixed_issues/) f
 
 The following are known issues for this release.
 
-
-
 | Internal ID | Description                                                                                                                                                        |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | RDAPI-11143 | Discrepancy with API retirements dates                                                                                                                             |
