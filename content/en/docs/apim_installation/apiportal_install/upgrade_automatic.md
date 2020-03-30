@@ -96,7 +96,7 @@ During upgrade, the original `vhost` file is backed up to the following location
 
 A new `vhost` file is deployed at the same location. If you had any customizations in it, and you want to preserve them, you must merge the old and new files together manually.
 
-Similarly, the original `.htaccess` file is backed up to `"${apiportal-install-dir}/.htaccess.old`. However, the two files are merged automatically.
+Similarly, the original `.htaccess` file is backed up to `${apiportal-install-dir}/.htaccess.old`. However, the two files are merged automatically.
 
 ### Encrypt the Public API mode user password (optional)
 
