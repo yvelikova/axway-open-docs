@@ -16,11 +16,9 @@ There are no fixed security vulnerabilities in this version.
 
 ## Other fixed issues
 
-<!-- TODO copy and paste the list from confluence -->
-
-| Internal ID   | Case ID       | Description                                                                  |
-| ---------------- | ------------- | ------------------------------------------------------------------------------ |
-|RDAPI-16631 |01111760  01059684  01134442|**Issue**: Weak validation of Password Lifetime in password policy configuration of API Gateway Manager.</br>**Resolution**: Validation of Password Lifetime is improved in UI and backend as well.
+| Internal ID | Case ID       | Description                                                                    |
+| ----------- | ------------- | ------------------------------------------------------------------------------ |
+|RDAPI-16631|01111760  01059684  01134442|**Issue**: Weak validation of Password Lifetime in password policy configuration of API Gateway Manager.</br>**Resolution**: Validation of Password Lifetime is improved in UI and backend as well.
 |RDAPI-18473|111399|**Issue**: Customers cannot define "aud" JWT claim as an Additional JWT Claim in Get OAuth Access Token filter.</br>**Resolution**: aud JWT claim can be defined in Get OAuth Access Token filter. It will overwrite the default value set by API Gateway.
 |RDAPI-18485|01055643  01137377|**Issue**: Message body is lost in case of OAuth token and refesh token expiry case.</br>**Resolution**: Message body is preserved in case of OAuth token and refresh token expiry.
 |RDAPI-18737|111867|**Issue**: In API Manager, when flags "Delegate user management" and "Delegate application management" are turned off, the email address field of a user profile stays enabled; modifying its value leads to a deadlock forcing the user to refresh the browser.</br>**Resolution**: In API Manager, turning off "Delegate user management" and "Delegate application management" completely disables all fields on a user profile.
