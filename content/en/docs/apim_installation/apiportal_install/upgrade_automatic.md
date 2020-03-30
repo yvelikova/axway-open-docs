@@ -5,7 +5,6 @@
   "date": "2019-08-09",
   "description": "Upgrade your existing API Portal to 7.7."
 }
-
 This section does not describe how to upgrade API Gateway. For information on upgrading API Gateway, see [API Gateway Upgrade Guide](/docs/apim_installation/apigw_upgrade/).
 
 ## Upgrade prerequisites
@@ -24,11 +23,11 @@ If you have an existing API Portal installation, you can upgrade that installati
 
 The following table shows the path for upgrading API Portal versions:
 
-| From        | To         |
-| ----------- | -----------|
-| 7.6.2       | 7.7 GA     |
-| 7.7 GA      | 7.7.x (Including all Service Packs)|
-| 7.7.x       | 7.7.x+     |
+| From   | To                                  |
+| ------ | ----------------------------------- |
+| 7.6.2  | 7.7 GA                              |
+| 7.7 GA | 7.7.x (Including all Service Packs) |
+| 7.7.x  | 7.7.x+                              |
 
 To upgrade your API Portal software installation, follow these steps:
 
@@ -38,7 +37,6 @@ To upgrade your API Portal software installation, follow these steps:
    ```
    tar xpvzf <package_name>.tgz
    ```
-
 3. Extract the Joomla! update package (for example, `joomla-update-package-3.9.14-package.zip`) from the API Portal upgrade package to your local file system.
 4. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal host>/administrator`).
 5. Click **Components > Joomla! Update**, and go to the **Upload & Update** tab. If **Joomla! Update** is not visible in the menu, connect to your user database and execute the following query for API Portal database:
@@ -46,7 +44,6 @@ To upgrade your API Portal software installation, follow these steps:
    ```
    update s8f7h_menu set menutype='main' where title like 'com_joomlaupdate'
    ```
-
 6. Select the Joomla! update package (for example, `joomla-update-package-3.9.14-package.zip`) from your file system.
 7. Click **Upload & Install**, and follow the displayed instructions.
 8. Enter the following to run the upgrade script:
@@ -54,7 +51,6 @@ To upgrade your API Portal software installation, follow these steps:
    ```
    ./apiportal_upgrade.sh
    ```
-
 9. Run the upgrade script with the appropriate arguments. For example:
 
    ```
@@ -98,9 +94,9 @@ After the upgrade, the blog is visible and accessible on the main menu on the AP
 
 During upgrade, the original `vhost` file is backed up to the following location: `/etc/httpd/conf.d/apiportal.conf.old`
 
-A new `vhost` file is deployed at the same location.
+A new `vhost` file is deployed at the same location. If you had any customizations in it, and you want to preserve them, you must merge the old and new files together manually.
 
-If the you had any customizations in your `vhost` file and you want to preserve them, you must merge the old and new files together manually.
+Similarly, the original `.htaccess` file is backed up to `"${apiportal-install-dir}/.htaccess.old`. However, the two files are merged automatically.
 
 ### Encrypt the Public API mode user password (optional)
 
