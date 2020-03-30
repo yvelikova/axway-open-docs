@@ -12,8 +12,6 @@ This version of API Gateway and API Manager includes the fixes from all 7.5.3, 7
 
 There are no fixed security vulnerabilities in this version.
 
-
-
 ## Other fixed issues
 
 | Internal ID | Case ID       | Description                                                                    |
