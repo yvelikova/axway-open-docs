@@ -1,11 +1,12 @@
 {
-"title": "API Gateway and API Manager 7.7 March 2020 Update Notes",
+"title": "API Gateway and API Manager 7.7 March 2020 Release Notes",
   "linkTitle": "API Gateway and API Manager 7.7 March 2020",
   "no_list": "true",
   "weight": "20",
   "date": "2020-03-11",
   "description": "Learn about the new features and enhancements in this update of API Gateway and API Manager."
 }
+
 ## Summary
 
 API Gateway is available as a software installation or a virtualized deployment in Docker containers. API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway.
