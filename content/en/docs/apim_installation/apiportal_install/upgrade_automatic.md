@@ -5,7 +5,6 @@
   "date": "2019-08-09",
   "description": "Upgrade your existing API Portal to 7.7."
 }
-
 This section does not describe how to upgrade API Gateway. For information on upgrading API Gateway, see [API Gateway Upgrade Guide](/docs/apim_installation/apigw_upgrade/).
 
 ## Upgrade prerequisites
@@ -24,11 +23,11 @@ If you have an existing API Portal installation, you can upgrade that installati
 
 The following table shows the path for upgrading API Portal versions:
 
-| From        | To         |
-| ----------- | -----------|
-| 7.6.2       | 7.7 GA     |
-| 7.7 GA      | 7.7.x (Including all Service Packs)|
-| 7.7.x       | 7.7.x+     |
+| From   | To                                  |
+| ------ | ----------------------------------- |
+| 7.6.2  | 7.7 GA                              |
+| 7.7 GA | 7.7.x (Including all Service Packs) |
+| 7.7.x  | 7.7.x+                              |
 
 To upgrade your API Portal software installation, follow these steps:
 
@@ -96,11 +95,11 @@ After the upgrade, the blog is visible and accessible on the main menu on the AP
 
 ### Consolidate vhosts and .htaccess files (optional)
 
-During upgrade, the original `vhost` file is backed up to the following location: `/etc/httpd/conf.d/apiportal.conf.old`
+During upgrade, the original `vhost` file is backed up to the following location: `/etc/httpd/conf.d/apiportal.conf.old`.
 
-A new `vhost` file is deployed at the same location.
+A new `vhost` file is deployed at the same location. If you had any customization, which you want to preserve, you must merge the old and new files together manually.
 
-If the you had any customizations in your `vhost` file and you want to preserve them, you must merge the old and new files together manually.
+Similarly, the original `.htaccess` file is backed up to `${apiportal-install-dir}/.htaccess.old`. However, the two files are merged automatically.
 
 ### Encrypt the Public API mode user password (optional)
 
