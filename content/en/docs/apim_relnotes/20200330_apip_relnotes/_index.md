@@ -1,11 +1,12 @@
 ---
-title: API Portal 7.7 Mar20 Release Notes
-linkTitle: API Portal 7.7 Mar20
+title: API Portal 7.7 March 2020 Release Notes
+linkTitle: API Portal 7.7 March 2020
 no_list: true
 weight: 30
 date: 2020-03-11T00:00:00.000Z
 description: Learn about the new features and enhancements in this release of API Portal.
 ---
+
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
@@ -16,7 +17,7 @@ API Portal is available as a software installation or a virtualized deployment 
 
 * If you are installing API Portal for the first time using this update, see [Install API Portal](https://axway-open-docs.netlify.com/docs/apim_installation/apiportal_install/)
 * If you are already using API Portal (7.5.x, 7.6.x, 7.7.x) and want to install this update, see [Upgrade API Portal](/docs/apim_installation/apiportal_install/upgrade_automatic/)
-* If you want to use the Docker option, see [Deploy API Portal in containers](/docs/apim_installation/apiportal_docker/)
+* If you want to deploy API Portal in Docker containers, see [Deploy API Portal in containers](/docs/apim_installation/apiportal_docker/)
 
 ## New features and enhancements
 
@@ -39,7 +40,7 @@ This release has the following limitations:
 * Upgrade to API Portal 7.7.20200330 is supported from API Portal 7.7.0 only. To upgrade from earlier versions (for example, 7.5.x, 7.6.x) you must first upgrade to API Portal 7.7.
 * The ready-made API Portal Docker image 7.7.20200330 is strictly for development environments only, and it is not recommended for use in production environments.
 
-  * The reason why we recommend using this image in development (i.e. non production) environments only is because the image is built with CentOS as a base OS. Internal Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issues have been resolved, but until we can ship a hardened image that passes our security scans, we cannot advise customers to use this image in a production environment. Delivery of a Docker image for production use is already planned in the [API Portal 2020 roadmap](https://community.axway.com/s/api-portal).
+    * The reason why we recommend using this image in development (i.e. non production) environments only is because the image is built with CentOS as a base OS. Internal Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issues have been resolved, but until we can ship a hardened image that passes our security scans, we cannot advise customers to use this image in a production environment. Delivery of a Docker image for production use is already planned in the [API Portal 2020 roadmap](https://community.axway.com/s/api-portal).
 * Upgrading from previous API Portal Docker image is not supported.
 * This release is not available as a virtual appliance or as a managed service on Axway Cloud.
 
