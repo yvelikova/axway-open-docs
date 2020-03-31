@@ -74,6 +74,8 @@ API Gateway and API Manager support the following relational databases to store 
 * Oracle 11.2, 12.1
 * IBM DB2 10.5
 
+{{< alert title="Note" color="primary" >}}If you are using MariaDB you have to use the MySQL-SQL-Driver with the belonging MySQL-JDBC-Connect string instead of the provided MariaDB version. Also please make sure, you are using a MySQL-JDBC-Driver version up to 5.1.x. (e.g. 5.1.47){{< /alert >}}
+
 For more details, see [Configure the metrics database](/docs/apim_installation/apigtw_install/metrics_db_install).
 
 ### Apache Cassandra
