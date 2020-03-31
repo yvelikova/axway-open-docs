@@ -166,8 +166,6 @@ This update has the following prerequisites in addition to the [System requireme
    setcap -r INSTALL_DIR/apigateway/platform/bin/vshell
    ```
 
-
-
 ### FIPS mode only
 
 If FIPS mode is enabled, you must also perform the following steps to install the service pack:
@@ -182,7 +180,7 @@ In Policy Studio, If FIPS mode is enabled, you must also perform the following s
 
 1. Open Policy Studio Preferences
 2. Select the 'FIPS Mode' setting
-3. Uncheck the 'Enable FIPS Mode in Axway Policy Studio'
+3. Uncheck the 'Enable FIPS Mode in Axway Policy Studio' option
 4. Click 'OK'
 5. Restart Policy Studio with -clean parameter
 
@@ -190,7 +188,7 @@ In Configuration Studio, If FIPS mode is enabled, you must also perform the foll
 
 1. Open Configuration Studio Preferences
 2. Select the 'FIPS Mode' setting
-3. Uncheck the 'Enable FIPS Mode in Axway Configuration Studio'
+3. Uncheck the 'Enable FIPS Mode in Axway Configuration Studio' option
 4. Click 'OK'
 5. Restart Configuration Studio with -clean parameter
 
