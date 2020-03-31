@@ -1,20 +1,23 @@
 ---
-title: API Portal 7.7 March 2020 Update Notes
-linkTitle: API Portal 7.7 Mar20
+title: API Portal 7.7 March 2020 Release Notes
+linkTitle: API Portal 7.7 March 2020
 no_list: true
 weight: 30
 date: 2020-03-11T00:00:00.000Z
 description: Learn about the new features and enhancements in this update of API Portal.
 ---
+
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
 
-API Portal is available as a software installation or a virtualized deployment in a Docker container. For more information, see:
+## Installation
 
-* [Install API Portal](/docs/apim_installation/apiportal_install/)
-* [Upgrade API Portal to 7.7](/docs/apim_installation/apiportal_install/upgrade_automatic/)
-* [Deploy API Portal in containers](/docs/apim_installation/apiportal_docker/)
+API Portal is available as a software installation or a virtualized deployment in a Docker container. For more information, see the following options:
+
+* If you are installing API Portal for the first time using this update, see [Install API Portal](https://axway-open-docs.netlify.com/docs/apim_installation/apiportal_install/)
+* If you are already using API Portal (7.5.x, 7.6.x, 7.7.x) and want to install this update, see [Upgrade API Portal](/docs/apim_installation/apiportal_install/upgrade_automatic/)
+* If you want to deploy API Portal in Docker containers, see [Deploy API Portal in containers](/docs/apim_installation/apiportal_docker/)
 
 ## New features and enhancements
 
