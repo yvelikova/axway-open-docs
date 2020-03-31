@@ -6,6 +6,7 @@
   "date": "2020-03-11",
   "description": "Learn about the new features and enhancements in this release of API Gateway and API Manager."
 }
+
 ## Summary
 
 API Gateway is available as a software installation or a virtualized deployment in Docker containers. API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway.
@@ -25,6 +26,10 @@ The following new features and enhancements are available in this release.
 It is important, especially when upgrading from an earlier version, to be aware of the following changes in the behavior or operation of the product in this release.
 
 <!-- Use this section to describe any changes in the behavior of the product (as a result of features or fixes), for example, new Java system properties in the jvm.xml file. This section could also be used for any important information that doesn't fit elsewhere. -->
+
+### Filebeat v6.2.2
+
+Filebeat has been updated to use v6.2.2. Before installing this update, you must delete the Filebeat folder  `/apigateway/tools/filebeat-5.2.0`. When using Filebeat, follow the [official Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
 
 ### OpenJDK JRE
 
@@ -168,29 +173,27 @@ This update has the following prerequisites in addition to the [System requireme
 
 ### FIPS mode only
 
-If FIPS mode is enabled, you must also perform the following steps to install the service pack:
+If FIPS mode is enabled, you must also perform the following steps to install the update:
 
 1. Run `togglefips --disable` to turn FIPS mode off.
 2. Start the Node Manager to move the JARs.
 3. Stop the Node Manager.
-4. Install the API Gateway service pack as described in the Installation section.
+4. Install the API Gateway update as described in the [Installation](#installation) section.
 5. Start the Node Manager.
 
-In Policy Studio, If FIPS mode is enabled, you must also perform the following steps to install the service pack:
+In Policy Studio, If FIPS mode is enabled, you must also perform the following steps to install the update:
 
-1. Open Policy Studio Preferences
-2. Select the 'FIPS Mode' setting
-3. Uncheck the 'Enable FIPS Mode in Axway Policy Studio' option
-4. Click 'OK'
-5. Restart Policy Studio with -clean parameter
+1. Open Policy Studio and select **Window > Preferences**.
+2. Select the **FIPS Mode** setting.
+3. Deselect the **Enable FIPS Mode in Axway Policy Studio** option and click **OK**.
+4. Restart Policy Studio using the `policystudio -clean` command.
 
-In Configuration Studio, If FIPS mode is enabled, you must also perform the following steps to install the service pack:
+In Configuration Studio, If FIPS mode is enabled, you must also perform the following steps to install the update:
 
-1. Open Configuration Studio Preferences
-2. Select the 'FIPS Mode' setting
-3. Uncheck the 'Enable FIPS Mode in Axway Configuration Studio' option
-4. Click 'OK'
-5. Restart Configuration Studio with -clean parameter
+1. Open Configuration Studio and select **Window > Preferences**.
+2. Select the **FIPS Mode** setting.
+3. Deselect the **Enable FIPS Mode in Axway Configuration Studio** option and click **OK**.
+4. Restart Configuration Studio using the `configurationstudio -clean` command.
 
 ### Installation
 
