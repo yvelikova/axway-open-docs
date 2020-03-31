@@ -37,6 +37,7 @@ To upgrade your API Portal software installation, follow these steps:
    ```
    tar xpvzf <package_name>.tgz
    ```
+
 3. Extract the Joomla! update package (for example, `joomla-update-package-3.9.14-package.zip`) from the API Portal upgrade package to your local file system.
 4. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal host>/administrator`).
 5. Click **Components > Joomla! Update**, and go to the **Upload & Update** tab. If **Joomla! Update** is not visible in the menu, connect to your user database and execute the following query for API Portal database:
@@ -44,6 +45,7 @@ To upgrade your API Portal software installation, follow these steps:
    ```
    update s8f7h_menu set menutype='main' where title like 'com_joomlaupdate'
    ```
+
 6. Select the Joomla! update package (for example, `joomla-update-package-3.9.14-package.zip`) from your file system.
 7. Click **Upload & Install**, and follow the displayed instructions.
 8. Enter the following to run the upgrade script:
@@ -51,6 +53,7 @@ To upgrade your API Portal software installation, follow these steps:
    ```
    ./apiportal_upgrade.sh
    ```
+
 9. Run the upgrade script with the appropriate arguments. For example:
 
    ```
@@ -92,9 +95,9 @@ After the upgrade, the blog is visible and accessible on the main menu on the AP
 
 ### Consolidate vhosts and .htaccess files (optional)
 
-During upgrade, the original `vhost` file is backed up to the following location: `/etc/httpd/conf.d/apiportal.conf.old`
+During upgrade, the original `vhost` file is backed up to the following location: `/etc/httpd/conf.d/apiportal.conf.old`.
 
-A new `vhost` file is deployed at the same location. If you had any customizations in it, and you want to preserve them, you must merge the old and new files together manually.
+A new `vhost` file is deployed at the same location. If you had any customization, which you want to preserve, you must merge the old and new files together manually.
 
 Similarly, the original `.htaccess` file is backed up to `${apiportal-install-dir}/.htaccess.old`. However, the two files are merged automatically.
 
