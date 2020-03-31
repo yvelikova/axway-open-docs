@@ -96,7 +96,7 @@ When you have created the metrics database, you must update your API Gateway Ana
 
 ## Configure the database connection for API Manager
 
-You must ensure that the API Gateway external connection to the database has been configured in Policy Studio. To configure a connection, select **Environment Configuration > External Connections > Database Connections > Add a Database Connection**.
+To configure the API Gateway external connection to the database in Policy Studio, select **Environment Configuration > External Connections > Database Connections > Add a Database Connection**. For details, see [Configure the database connection](/docs/apim_policydev/apigw_external_connections/common_db_conf/#configure-the-database-connection).
 
 ## Set up the database tables
 
