@@ -36,6 +36,8 @@ You do not need to install API Gateway Analytics to view monitoring data in API 
 
 You must add the JDBC driver files for your chosen third-party database to your API Gateway and Policy Studio installations as appropriate.
 
+{{< alert title="Note" color="primary" >}}If you are using MariaDB you must use the MySQL JDBC driver with the MySQL database connection URL (for example, `jdbc:mysql://DB_HOST:3306/reports`) instead of the provided MariaDB version. You must also ensure that you are using a MySQL JDBC driver version 5.1.x or earlier (for example, 5.1.47), as later versions (for example, 6.x, 8.x) are not currently supported.{{< /alert >}}
+
 ### Add JDBC drivers to API Gateway
 
 To add the third-party JDBC driver files for your database to API Gateway, perform the following steps:
