@@ -246,6 +246,12 @@ const collections = [{
   description: 'Glossary for API Management and AMPLIFY Central.',
   folder: 'content/en/docs/glossary',
 }, {
+  ...docsDefaults('apim_relnotes/201904_apimgr_relnotes', 'docbook/images/release_notes'),
+  name: '201904_apimgr_relnotes',
+  label: 'API Gateway and API Manager 7.7 Apr19 release notes',
+  label_singular: 'page in APIG/APIM 7.7 7.7 Apr19 release note section',
+  description: 'Release notes for API Gateway and API Manager 7.7 Apr19 release.',
+}, {
   ...docsDefaults('apim_relnotes/20200130_apimgr_relnotes', 'docbook/images/release_notes'),
   name: '20200130_apimgr_relnotes',
   label: 'API Gateway and API Manager 7.7 Jan20 release notes',
@@ -257,6 +263,13 @@ const collections = [{
   label: 'API Gateway and API Manager 7.7 Mar20 release notes',
   label_singular: 'page in APIG/APIM 7.7 Mar20 release note section',
   description: 'Release notes for API Gateway and API Manager 7.7 Mar20 release.',
+}, {
+  ...docsDefaults('apim_relnotes/201904_apip_relnotes', 'docbook/images/release_notes'),
+  name: '201904_apip_relnotes',
+  label: 'API Portal 7.7 Apr19 release notes',
+  label_singular: 'page in API Portal 7.7 Apr19 release note section',
+  description: 'Release notes for API Portal 7.7 Apr19 release.',
+  format: 'frontmatter',
 }, {
   ...docsDefaults('apim_relnotes/20200130_apip_relnotes', 'docbook/images/release_notes'),
   name: '20200130_apip_relnotes',
