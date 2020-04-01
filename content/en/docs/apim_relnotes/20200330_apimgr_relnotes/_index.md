@@ -65,7 +65,7 @@ Content scanning is still supported using the ICAP filter, which provides out-of
 
 <!-- Add features that are removed here -->
 
-To stay current and align our offerings with customer demand and best practices, Axway might discontinue support for some capabilities. As part of this review, the following capabilities have been removed.
+To stay current and align our offerings with customer demand and best practices, Axway might discontinue support for some capabilities. As part of this review, no capabilities have been removed.
 
 ## Fixed issues
 
