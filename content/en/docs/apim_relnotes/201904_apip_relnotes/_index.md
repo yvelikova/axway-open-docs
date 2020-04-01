@@ -1,6 +1,6 @@
 {
-"title": "API Portal 7.7 Apr19 Release Notes",
-"linkTitle": "API Portal 7.7 Apr19",
+"title": "API Portal 7.7 April 2019 Release Notes",
+"linkTitle": "API Portal 7.7 April 2019",
 "weight":"30",
 "date": "2019-09-07",
 "description": "Learn about the new features and enhancements in this release of API Portal."
