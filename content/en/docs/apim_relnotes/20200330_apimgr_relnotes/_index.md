@@ -4,7 +4,7 @@
   "no_list": "true",
   "weight": "20",
   "date": "2020-03-11",
-  "description": "Learn about the new features and enhancements in this release of API Gateway and API Manager."
+  "description": "Learn about the new features and enhancements in this update of API Gateway and API Manager."
 }
 
 ## Summary
@@ -17,13 +17,13 @@ Docker deployment is supported on Linux. For a summary of the system requirement
 
 ## New features and enhancements
 
-The following new features and enhancements are available in this release.
+The following new features and enhancements are available in this update.
 
 <!-- Add the new features here -->
 
 ## Important changes
 
-It is important, especially when upgrading from an earlier version, to be aware of the following changes in the behavior or operation of the product in this release.
+It is important, especially when upgrading from an earlier version, to be aware of the following changes in the behavior or operation of the product in this update.
 
 <!-- Use this section to describe any changes in the behavior of the product (as a result of features or fixes), for example, new Java system properties in the jvm.xml file. This section could also be used for any important information that doesn't fit elsewhere. -->
 
@@ -53,7 +53,7 @@ The following capabilities have been deprecated.
 
 ### Antivirus scanners
 
-API Gateway already supports the industry standard Internet Content Adaption Protocol (ICAP). From the November 2020 release the following embedded antivirus scanners will be removed:
+API Gateway already supports the industry standard Internet Content Adaption Protocol (ICAP). From the November 2020 update the following embedded antivirus scanners will be removed:
 
 * McAfee
 * Sophos
@@ -75,7 +75,7 @@ See [Fixed issues](/docs/apim_relnotes/20200330_apimgr_relnotes/fixed_issues/) f
 
 ## Known issues
 
-The following are known issues for this release.
+The following are known issues for this update.
 
 | Internal ID | Description                                                                                                                                                        |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
