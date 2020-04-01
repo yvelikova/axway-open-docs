@@ -17,7 +17,7 @@ Docker deployment is supported on Linux. For a summary of the system requirement
 
 ## New features and enhancements
 
-The following new features and enhancements are available in this update.
+No new features and enhancements are available in this update.
 
 <!-- Add the new features here -->
 
