@@ -1,6 +1,6 @@
 {
-"title": "API Manager 7.7 Apr19 Release Notes",
-  "linkTitle": "API Manager 7.7 Apr19",
+"title": "API Manager 7.7 April 2019 Release Notes",
+  "linkTitle": "API Manager 7.7 April 2019",
   "no_list": "true",
   "weight": "60",
   "date": "2020-03-26",
@@ -55,9 +55,7 @@ Swagger 2.0 download from the API Catalog has been enhanced and now includes mis
 
 ### Subscription licensing for API Management
 
-API Gateway and API Manager now support usage based subscription licensing when deployed in container mode. For more information, see the seet
-
-This feature is not available for API Gateway and API Manager when deployed in classic mode.
+API Gateway and API Manager now support usage based subscription licensing when deployed in container mode. This feature is not available for API Gateway and API Manager when deployed in classic mode.
 
 ### Elastic topology container deployment enhancements
 
@@ -88,8 +86,6 @@ When using an elastic container deployment:
 * Traffic monitor data for a specific API Gateway instance does not persist in the event of that instance container stopping. However, you can redirect the trace and traffic logs to `stdout` instead of to separate files, which allows the logs to be read directly from each container by an external logging service.
 * Distributed Ehcache is not supported. However, you can use Apache Cassandra as a distributed data store.
 * To upgrade from versions earlier than 7.6.2, you must first upgrade to a 7.7 classic deployment and then migrate to an elastic container deployment.
-
-For more details, see the *API Gateway Container Deployment Guide*.
 
 ### Other deployment options
 
