@@ -9,11 +9,9 @@
 
 ## Summary
 
-API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway: software installation, or virtualized deployment in Docker containers. For more information on API Gateway, see the API Gateway Release Notes.
+API Gateway is available as a software installation or a virtualized deployment in Docker containers. The software installation is available on Linux. For more details on supported platforms for software installation, see [API Gateway Installation Guide](/docs/apim_installation/apigtw_install/).
 
-The software installation is available on Linux. For more details on supported platforms for software installation, see *System requirements* in the *API Gateway Installation Guide*.
-
-Docker deployment is supported on Linux. For a summary of the system requirements for a Docker deployment, see *System requirements* in the *API Gateway Installation Guide*, and for more details see *What you need before you start* in the API Gateway Container Deployment Guide.
+Docker deployment is supported on Linux. For a summary of the system requirements for a Docker deployment, see [System requirements](/docs/apim_installation/apigtw_install/system_requirements/).
 
 ## New features and enhancements
 
@@ -89,7 +87,7 @@ When using an elastic container deployment:
 
 * Traffic monitor data for a specific API Gateway instance does not persist in the event of that instance container stopping. However, you can redirect the trace and traffic logs to `stdout` instead of to separate files, which allows the logs to be read directly from each container by an external logging service.
 * Distributed Ehcache is not supported. However, you can use Apache Cassandra as a distributed data store.
-* To upgrade from versions earlier than 7.6.2 to version 7.8, you must first upgrade to a 7.8 classic deployment and then migrate to an elastic container deployment.
+* To upgrade from versions earlier than 7.6.2, you must first upgrade to a 7.7 classic deployment and then migrate to an elastic container deployment.
 
 For more details, see the *API Gateway Container Deployment Guide*.
 
@@ -99,7 +97,7 @@ This release is not available as a virtual appliance or as a managed service on 
 
 ## Deprecated features
 
-As part of our software development life cycle we constantly review the core API Management products and related components. As part of this review, API Tester has been deprecated in this release. This standalone tool is no longer supported and will be removed from the next major release (7.8). It is recommended to use alternative tools, such as Postman or SoapUI.
+As part of our software development life cycle we constantly review the core API Management products and related components. As part of this review, API Tester has been deprecated in this release. This standalone tool is no longer supported and will be removed from the next major release. It is recommended to use alternative tools, such as Postman or SoapUI.
 
 API Tester is vulnerable to the following security vulnerabilities, and continued usage is at your own risk:
 
@@ -123,7 +121,7 @@ API Tester is vulnerable to the following security vulnerabilities, and continue
 
 ## Removed features
 
-In our efforts to continually upgrade our products in response to the needs of our customers’ IT environments, Axway occasionally discontinues support for some capabilities. API Gateway 7.6.2 is the last release that includes the following capabilities, which have been removed from the 7.8 release:
+In our efforts to continually upgrade our products in response to the needs of our customers’ IT environments, Axway occasionally discontinues support for some capabilities. API Gateway 7.6.2 is the last release that includes the following capabilities, which have been removed from the 7.7 release:
 
 * Support for MySQL Server 2005 has been removed.
 
@@ -138,7 +136,7 @@ Documentation might contain references to removed features (for example, hardwar
 ### Cassandra synchronization in multi-datacenter environments
 
 In multi-datacenter environments with Cassandra read/write consistency set to local quorum, there is a small risk of configuration corruption if the event triggering API Manager to load a configuration change happens before the configuration replication to the other datacenter is complete. Changing the polling time as described in
-*Configure API Management in multiple datacenters* in the *API Gateway Installation Guide* reduces this risk, but does not remove it completely.
+[Configure API Management in multiple datacenters](/docs/apimgmt_multi_dc/multi_datacenter_config/#configure-api-management-in-multiple-datacenters) reduces this risk, but does not remove it completely.
 
 This issue results in outdated configuration data being used for the affected API until API Gateway is restarted. For example, as a result of this, valid traffic may be rejected if a new API has been added and not updated, or wrong traffic may be accepted if an API has been deprecated and not updated. The workaround requires a restart of all API Gateway instances in the affected datacenter.
 
@@ -155,7 +153,7 @@ Related issues: RDAPI-10356
 
 ### Upgrade from API Manager 7.3.0 not supported
 
-Upgrading API Manager version 7.3.0 to version 7.8 is not supported.
+Upgrading API Manager version 7.3.0 to version 7.7 is not supported.
 
 Related issues: RDAPI-5136, RDAPI-8237
 
@@ -214,7 +212,7 @@ You can find the latest information and up-to-date user guides at the [Axway Doc
 
 ### Related documentation
 
-The AMPLIFY API Management solution enables you to create, publish, promote, and manage Application Programming Interfaces (APIs) in a secure and scalable environment. For more information, see the .
+The AMPLIFY API Management solution enables you to create, publish, promote, and manage Application Programming Interfaces (APIs) in a secure and scalable environment.
 
 The following reference documents are also available:
 

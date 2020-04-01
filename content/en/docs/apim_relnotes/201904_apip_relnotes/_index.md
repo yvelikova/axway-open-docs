@@ -10,7 +10,7 @@
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
 
-API Portal is available as a software installation or a virtualized deployment in Docker containers. For more information, see the *API Portal Installation and Upgrade Guide*.
+API Portal is available as a software installation or a virtualized deployment in Docker containers.
 
 ## New features and enhancements
 
@@ -66,8 +66,8 @@ This release has the following limitations:
 
 * This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
 * The ready-made API Portal Docker image is strictly for development environments only, and is not recommended for use in production environments. You must use the Dockerfile to build and run API Portal containers in production environments.
-* Upgrade to API Portal 7.8 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
-* API Portal 7.8 is compatible with API Gateway and API Manager 7.8 only.
+* Upgrade to API Portal 7.7 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
+* API Portal 7.7 is compatible with API Gateway and API Manager 7.7 only.
 
 ## Fixed issues
 
@@ -140,7 +140,7 @@ To find all available documents for this product version:
 
 {{< alert title="Note" color="primary" >}}Customers with active support contracts need to log in to access restricted content.{{< /alert >}}
 
-The AMPLIFY API Management solution enables you to create, publish, promote, and manage Application Programming Interfaces (APIs) in a secure and scalable environment. For more information, see the .
+The AMPLIFY API Management solution enables you to create, publish, promote, and manage Application Programming Interfaces (APIs) in a secure and scalable environment.
 
 The following reference documents are also available:
 

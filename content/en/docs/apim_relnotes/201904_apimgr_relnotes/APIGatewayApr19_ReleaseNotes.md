@@ -9,11 +9,9 @@
 
 ## Summary
 
-API Gateway is available as a software installation or a virtualized deployment in Docker containers.
+API Gateway is available as a software installation or a virtualized deployment in Docker containers. The software installation is available on Linux. For more details on supported platforms for software installation, see [API Gateway Installation Guide](/docs/apim_installation/apigtw_install/).
 
-The software installation is available on Linux. For more details on supported platforms for software installation, see *API Gateway Installation Guide*.
-
-Docker deployment is supported on Linux. For a summary of the system requirements for a Docker deployment, see *System requirements* in the *API Gateway Installation Guide*, and for more details see *What you need before you start* in the *API Gateway Container Deployment Guide*.
+Docker deployment is supported on Linux. For a summary of the system requirements for a Docker deployment, see [System requirements](/docs/apim_installation/apigtw_install/system_requirements/).
 
 ## New features and enhancements
 
@@ -45,9 +43,7 @@ The **ICAP** filter now supports custom headers.
 
 ### Subscription licensing for API Management
 
-API Gateway and API Manager now support usage based subscription licensing when deployed in container mode. For more information, see the .
-
-This feature is not available for API Gateway and API Manager when deployed in classic mode.
+API Gateway and API Manager now support usage based subscription licensing when deployed in container mode. This feature is not available for API Gateway and API Manager when deployed in classic mode.
 
 ### Elastic topology container deployment enhancements
 
@@ -77,9 +73,7 @@ When using an elastic container deployment:
 
 * Traffic monitor data for a specific API Gateway instance does not persist in the event of that instance container stopping. However, you can redirect the trace and traffic logs to `stdout` instead of to separate files, which allows the logs to be read directly from each container by an external logging service.
 * Distributed Ehcache is not supported. However, you can use Apache Cassandra as a distributed data store.
-* To upgrade from versions earlier than 7.6.2 to version 7.8, you must first upgrade to a 7.8 classic deployment and then migrate to an elastic container deployment.
-
-For more details, see the *API Gateway Container Deployment Guide*.
+* To upgrade from versions earlier than 7.6.2, you must first upgrade to a 7.7 classic deployment and then migrate to an elastic container deployment.
 
 ### Other deployment options
 
@@ -87,7 +81,7 @@ This release is not available as a virtual appliance or as a managed service on 
 
 ## Deprecated features
 
-As part of our software development life cycle we constantly review the core API Management products and related components. As part of this review, API Tester has been deprecated in this release. This standalone tool is no longer supported and will be removed from the next major release (7.8). It is recommended to use alternative tools, such as Postman or SoapUI.
+As part of our software development life cycle we constantly review the core API Management products and related components. As part of this review, API Tester has been deprecated in this release. This standalone tool is no longer supported and will be removed from the next major release. It is recommended to use alternative tools, such as Postman or SoapUI.
 
 API Tester is vulnerable to the following security vulnerabilities, and continued usage is at your own risk:
 
@@ -111,7 +105,7 @@ API Tester is vulnerable to the following security vulnerabilities, and continue
 
 ## Removed features
 
-In our efforts to continually upgrade our products in response to the needs of our customers’ IT environments, Axway occasionally discontinues support for some capabilities. API Gateway 7.6.2 is the last release that includes the following capabilities, which have been removed from the 7.8 release:
+In our efforts to continually upgrade our products in response to the needs of our customers’ IT environments, Axway occasionally discontinues support for some capabilities. API Gateway 7.6.2 is the last release that includes the following capabilities, which have been removed from the 7.7 release:
 
 * Support for MySQL Server 2005 has been removed.
 
@@ -129,7 +123,7 @@ In Policy Studio, if you create a new common project from the Common Project tem
 
 This is due to an issue with the Axway PassPort repositories containing conflicting (randomly generated) password fields in the common and API projects.
 
-As a workaround, use the Entity Explorer tool to set the value of the field `FIELD_KEYSTORE_PASSWORD` to the same value in both the common and API projects. For more information on using the Entity Explorer, see the *API Gateway Developer Guide*.
+As a workaround, use the Entity Explorer tool to set the value of the field `FIELD_KEYSTORE_PASSWORD` to the same value in both the common and API projects.
 
 Related issues: RDAPI-11159
 
@@ -175,8 +169,6 @@ To avoid this, disable the Bouncy Castle Crypto Provider in the /system/conf/jvm
 
 `com.vordel.circuit.jwt.JWTException: com.nimbusds.jose.JOSEException: Unsupported RSASSA algorithm: SHA512withRSAandMGF1 Signature not available`
 
-For more details, see the *API Gateway Policy Developer Guide*.
-
 Related issues: RDAPI-3041
 
 ### Add JSON Node filter displays redacted data in trace
@@ -192,17 +184,11 @@ Related issues: RDAPI-8227
 * If you are upgrading your API Gateway installation, and you are using a **Scripting Language** filter in your old installation with the **Language** field set to `JavaScript (Rhino engine JRE7 and earlier)`, you must change the **Language** of the filter to `JavaScript` and ensure that the JavaScript syntax in the script conforms with Nashorn engine syntax. If you do not make these changes, the script continues to work in your new installation, but with a severe drop in performance. It is recommended to use Nashorn for all new development.
 * After upgrading your API Gateway installation, it is recommended that you clear your browser cache before using any of the web UIs. See the documentation for your browser for information on how to clear the cache.
 
-### High availability
-
-For more information and best practices when setting up a highly available (HA) API Gateway deployment, see the *API Gateway Apache Cassandra Administrator Guide*.
-
 ### Multiple datacenters
 
 * You must add external load balancer hosts to the Node Manager whitelist to ensure that they are accepted in each datacenter.
 * You may need to increase the Node Manager timeout for longer API Gateway startup times in a multi-datacenter environment.
 * You may need to increase the maximum received bytes per transaction to optimize performance in a multi-datacenter environment.
-
-For more details, see *Configure API Management in multiple datacenters* in the *API Gateway Installation Guide*.
 
 ### Performance
 
@@ -220,7 +206,7 @@ You can find the latest information and up-to-date user guides at the [Axway Doc
 
 ### Related documentation
 
-The AMPLIFY API Management solution enables you to create, publish, promote, and manage Application Programming Interfaces (APIs) in a secure and scalable environment. For more information, see the .
+The AMPLIFY API Management solution enables you to create, publish, promote, and manage Application Programming Interfaces (APIs) in a secure and scalable environment.
 
 The following reference documents are also available:
 
