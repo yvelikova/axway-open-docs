@@ -63,6 +63,10 @@ This file contains values for general system settings, such as the server name a
 
 You should specify the passphrase as the value of the `pvalue` attribute as follows:
 
+```
+pvalue = "myPassphrase"
+```
+
 ### Enter the API Gateway passphrase in a configuration file
 
 You can also enter the passphrase for API Gateway instances created using the `managedomain` script. To do this, enter the `pvalue` attribute in the `group.xml` file for your API Gateway instance. For example:
@@ -74,6 +78,10 @@ INSTALL_DIR/apigateway/groups/GROUP/conf/group.xml
 ### Prompt for the passphrase at server startup
 
 If you do not wish to enter the passphrase directly in the Node Manager or API Gateway instance configuration file, and do not need to start as a Linux daemon, you can configure the Node Manager or API Gateway to prompt the administrator for the passphrase on the command line when starting up. To do this, enter the `"(prompt)"` special value for the `pvalue` attribute as follows:
+
+```
+pvalue="(prompt)"
+```
 
 To configure this for the Node Manager, update your `nodemanager.xml` file. To configure for an API Gateway group, update the relevant `group.xml` file.
 
@@ -97,7 +105,11 @@ Alternatively, you can use a script to automatically provide the passphrase when
 3. Create the passphrase script in the specified location.
 
     For example, the contents of the `passwd.sh` script is as follows:
+    ```
+    #!/bin/sh
 
+    echo secret
+    ```
     * The script must be secured by the operating system file permissions so that it is only accessible by, and can only be invoked by the API Gateway. The command should write the    password to standard output.
 
     The following files should also be protected:
