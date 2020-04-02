@@ -57,11 +57,11 @@ You can enter a passphrase directly in the Node Manager configuration file. Open
 
 This file contains values for general system settings, such as the server name and trace level, and also (if required) the passphrase key that the Node Manager uses to decrypt its own configuration data.
 
-You should specify the passphrase as the value of the `secret` attribute as follows:
+You should specify the passphrase as the value of the `pvalue` attribute as follows:
 
 ### Enter the API Gateway passphrase in a configuration file
 
-You can also enter the passphrase for API Gateway instances created using the `managedomain` script. To do this, enter the `secret` attribute in the `group.xml` file for your API Gateway instance. For example:
+You can also enter the passphrase for API Gateway instances created using the `managedomain` script. To do this, enter the `pvalue` attribute in the `group.xml` file for your API Gateway instance. For example:
 
 ```
 INSTALL_DIR/apigateway/groups/GROUP/conf/group.xml
@@ -69,7 +69,7 @@ INSTALL_DIR/apigateway/groups/GROUP/conf/group.xml
 
 ### Prompt for the passphrase at server startup
 
-If you do not wish to enter the passphrase directly in the Node Manager or API Gateway instance configuration file, and do not need to start as a Linux daemon, you can configure the Node Manager or API Gateway to prompt the administrator for the passphrase on the command line when starting up. To do this, enter the `"(prompt)"` special value for the `secret` attribute as follows:
+If you do not wish to enter the passphrase directly in the Node Manager or API Gateway instance configuration file, and do not need to start as a Linux daemon, you can configure the Node Manager or API Gateway to prompt the administrator for the passphrase on the command line when starting up. To do this, enter the `"(prompt)"` special value for the `pvalue` attribute as follows:
 
 To configure this for the Node Manager, update your `nodemanager.xml` file. To configure for an API Gateway group, update the relevant `group.xml` file.
 
@@ -88,7 +88,7 @@ Alternatively, you can use a script to automatically provide the passphrase when
           domainID="${domainID}" title="API Gateway"/>
     ```
 
-    The `passphraseExec` option is only used if it is present and the `secret` option (described in the previous sections) is not used.
+    The `passphraseExec` option is only used if it is present and the `pvalue` option (described in the previous sections) is not used.
 
 3. Create the passphrase script in the specified location.
 
