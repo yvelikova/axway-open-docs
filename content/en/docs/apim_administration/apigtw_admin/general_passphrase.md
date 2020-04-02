@@ -55,6 +55,10 @@ Typically, the passphrase is only entered directly in the file if the server mus
 
 You can enter a passphrase directly in the Node Manager configuration file. Open the following file in your API Gateway installation:
 
+```
+INSTALL_DIR/apigateway/system/conf/nodemanager.xml
+```
+
 This file contains values for general system settings, such as the server name and trace level, and also (if required) the passphrase key that the Node Manager uses to decrypt its own configuration data.
 
 You should specify the passphrase as the value of the `pvalue` attribute as follows:
