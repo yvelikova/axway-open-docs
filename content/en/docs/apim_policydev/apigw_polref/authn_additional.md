@@ -5,6 +5,7 @@
   "date": "2019-10-17",
   "description": "Additional authentication filters, including attribute authentication, SAML PDP,  and CA SOA Security Manager."
 }
+
 ## Attribute authentication filter
 
 In cases when user credentials are passed to the API Gateway in a non-standard way, the credentials can be copied into API Gateway message attributes, and authenticated against a specified authentication repository (for example, API Gateway user store, LDAP directory, or database) using an **Attribute Authentication** filter. For example, assume user credentials are passed to API Gateway in the following XML message:
