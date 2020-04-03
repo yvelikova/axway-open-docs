@@ -116,6 +116,24 @@ Do not use `sudo apt-get install hugo` to install on Linux, as it does not alway
 
 For full installation instructions for other platforms, see [Install Hugo](https://gohugo.io/getting-started/installing/).
 
+#### Upgrade Hugo
+
+To upgrade to a later version of Hugo, for example v0.68.3, enter the following commands:
+
+```
+wget https://github.com/gohugoio/hugo/releases/download/v0.68.3/hugo_extended_0.68.3_Linux-64bit.deb
+sudo dpkg -i hugo_extended_0.68.3_Linux-64bit.deb
+```
+
+To verify what version of Hugo you are running, enter:
+
+```
+$ which hugo
+/usr/local/bin/hugo
+$ hugo version
+Hugo Static Site Generator v0.68.3-157669A0/extended linux/amd64 BuildDate: 2020-03-24T12:13:38Z
+```
+
 ### Install NodeJS and PostCSS
 
 You need a recent version (10.x or later) of [NodeJS](https://nodejs.org/en/) so you can use `npm` to install PostCSS.

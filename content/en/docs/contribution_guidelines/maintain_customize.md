@@ -73,6 +73,17 @@ The Docsy theme is installed in this site's git repo as a git submodule. To upda
     git submodule update --recursive
     ```
 
+## Update Hugo version
+
+To use a later version of Hugo to build the site on Netlify, change the `HUGO_VERSION` environment variable in the `netlify.toml` configuration file:
+
+```
+[build.environment]
+HUGO_VERSION = "0.68.3"
+```
+
+To upgrade Hugo to the same version in your local environment, see [Upgrade Hugo](/docs/contribution_guidelines/setup_work_locally/#upgrade-hugo).
+
 ## Create content with the Docsy theme
 
 To learn more about how the content of a Docsy themed website is structured, and how to add different types of content (including documentation pages, blog posts, landing pages, community pages, and even static content), see [Docsy - Adding Content](https://www.docsy.dev/docs/adding-content/content/).
