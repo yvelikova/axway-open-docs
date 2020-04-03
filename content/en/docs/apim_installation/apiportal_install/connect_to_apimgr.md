@@ -23,7 +23,8 @@ To connect API Portal to API Manager:
 7. Enter a tag for this API Manager. You can use this tag to filter APIs that come from this particular API Manager instance, for example, to display APIs from different API Managers on different menus in API Portal.
 8. Click **Save**.
 
-API Portal is now connected to API Manager.
+API Portal is now connected to API Manager. In order to login into the API-Portal you need to have a user configured in API-Manager. [Learn more](https://docs.axway.com/bundle/axway-open-docs/page/docs/apim_administration/apimgr_admin/api_mgmt_admin/index.html#manage-users) how to manage users in API-Manager.  
+Please note, that by default only users with role: "Organization-Administrator" or "User" are allowed to login into the API-Portal.
 
 ## Connect API Portal to multiple API Managers
 
