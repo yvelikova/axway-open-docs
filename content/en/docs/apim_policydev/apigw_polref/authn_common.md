@@ -24,7 +24,7 @@ The API Gateway supports the following API key types:
 * Simple API keys including a key ID only. The API key ID is included in all requests to authenticate the client.
 * Amazon Web Services style API keys including a key ID and a secret key, which are used together to securely authenticate the client. The API key ID is included in all requests to identify the client. The secret key is known only to the client and the API Gateway.
 
-For more details on authenticating Amazon Web Services API keys, go to <http://s3.amazonaws.com/doc/s3-developer-guide/RESTAuthentication.html>.
+For more details on authenticating Amazon Web Services API keys, see [Authenticating REST Requests](http://s3.amazonaws.com/doc/s3-developer-guide/RESTAuthentication.html).
 
 Configure the following general settings:
 
