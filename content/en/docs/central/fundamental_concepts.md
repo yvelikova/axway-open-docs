@@ -43,6 +43,10 @@ AMPLIFY Central has its own set of roles in addition to the AMPLIFY Platform rol
 
 An AMPLIFY Central team is a group of users with varying abilities to manage and use assets. For example, a team member can share assets and their promotion to the Unified Catalog.
 
+- API Central Admin has full access to manage AMPLIFY Central and the Unified Catalog.
+- AMPLIFY Central Developer role has access to the Unified Catalog, Application management and traffic monitoring  (no Topology or role management)
+- AMPLIFY Central Consumer has access to the Unified Catalog and their Applications.
+
 Users and teams of AMPLIFY Central are managed by the AMPLIFY Platform. For more information, see [Managing Organizations](https://docs.axway.com/bundle/Appcelerator_Dashboard_allOS_en/page/managing_organizations.html).
 
 <!-- ### AMPLIFY Central roles -->
