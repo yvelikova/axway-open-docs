@@ -118,7 +118,7 @@ For full installation instructions for other platforms, see [Install Hugo](https
 
 #### Upgrade Hugo
 
-To upgrade to a later version of Hugo, for example v0.66.0, enter the following commands:
+To upgrade to a later version of Hugo, for example v0.66.0, enter the following commands to install the later version over your existing version:
 
 ```
 wget https://github.com/gohugoio/hugo/releases/download/v0.66.0/hugo_extended_0.66.0_Linux-64bit.deb

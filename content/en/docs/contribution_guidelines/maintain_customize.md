@@ -37,7 +37,9 @@ This following configuration files can be found in the site root:
 
 ## Update the Docsy theme
 
-The Docsy theme is installed in this site's git repo as a git submodule. To update the theme with the latest commits from the [Docsy GitHub repo](https://github.com/google/docsy):
+This site uses the [Docsy theme](https://www.docsy.dev/) for Hugo documentation sites. To avail of new features added to the Docsy theme, you must update the theme submodule in the Axway-Open-Docs Git project.
+
+The Docsy theme is installed in this site's Git repo as a Git submodule. To update the theme with the latest commits from the [Docsy GitHub repo](https://github.com/google/docsy):
 
 1. In Git CLI, navigate to the root of the local repo and checkout **master**. For example:
 
@@ -65,7 +67,7 @@ The Docsy theme is installed in this site's git repo as a git submodule. To upda
     git push
     ```
 
-5. Tell  all project maintainers to run:
+5. Tell all project maintainers to run:
 
     ```
     git checkout master
@@ -73,7 +75,11 @@ The Docsy theme is installed in this site's git repo as a git submodule. To upda
     git submodule update --recursive
     ```
 
-## Update Hugo version
+It is not necessary to update the Netlify configuration file with the Docsy version as Git itself keeps track of the submodule version in the Git repository, and Netlify always checks out the latest commit to the Git repository to build and deploy the site.
+
+## Update Hugo version for building on Netlify
+
+This site uses the [Hugo static site generator](https://gohugo.io/) to generate a HTML website from Markdown source. To avail of new features added to Hugo, you must update the Hugo version that is used to build the site on Netlify.
 
 To use a later version of Hugo to build the site on Netlify, change the `HUGO_VERSION` environment variable in the `netlify.toml` configuration file:
 
@@ -82,13 +88,13 @@ To use a later version of Hugo to build the site on Netlify, change the `HUGO_VE
 HUGO_VERSION = "0.66.0"
 ```
 
-To upgrade Hugo to the same version in your local environment, see [Upgrade Hugo](/docs/contribution_guidelines/setup_work_locally/#upgrade-hugo).
+To ensure that changes you make in your local environment will also work when deployed on Netlify, you must upgrade your local installation of Hugo to the same version as Netlify uses. For details, see [Upgrade Hugo](/docs/contribution_guidelines/setup_work_locally/#upgrade-hugo).
 
 ## Create content with the Docsy theme
 
 To learn more about how the content of a Docsy themed website is structured, and how to add different types of content (including documentation pages, blog posts, landing pages, community pages, and even static content), see [Docsy - Adding Content](https://www.docsy.dev/docs/adding-content/content/).
 
-For more information on how the navigation and search work, see [Docsy - Navigation ansd Search](https://www.docsy.dev/docs/adding-content/navigation/).
+For more information on how the navigation and search work, see [Docsy - Navigation and Search](https://www.docsy.dev/docs/adding-content/navigation/).
 
 ## Customize the Docsy theme
 
