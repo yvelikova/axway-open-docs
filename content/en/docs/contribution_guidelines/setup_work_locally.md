@@ -118,11 +118,11 @@ For full installation instructions for other platforms, see [Install Hugo](https
 
 #### Upgrade Hugo
 
-To upgrade to a later version of Hugo, for example v0.68.3, enter the following commands:
+To upgrade to a later version of Hugo, for example v0.66.0, enter the following commands:
 
 ```
-wget https://github.com/gohugoio/hugo/releases/download/v0.68.3/hugo_extended_0.68.3_Linux-64bit.deb
-sudo dpkg -i hugo_extended_0.68.3_Linux-64bit.deb
+wget https://github.com/gohugoio/hugo/releases/download/v0.66.0/hugo_extended_0.66.0_Linux-64bit.deb
+sudo dpkg -i hugo_extended_0.66.0_Linux-64bit.deb
 ```
 
 To verify what version of Hugo you are running, enter:
@@ -131,7 +131,7 @@ To verify what version of Hugo you are running, enter:
 $ which hugo
 /usr/local/bin/hugo
 $ hugo version
-Hugo Static Site Generator v0.68.3-157669A0/extended linux/amd64 BuildDate: 2020-03-24T12:13:38Z
+Hugo Static Site Generator v0.66.0-78C3C78F/extended linux/amd64 BuildDate: 2020-03-03T15:28:32Z
 ```
 
 ### Install NodeJS and PostCSS

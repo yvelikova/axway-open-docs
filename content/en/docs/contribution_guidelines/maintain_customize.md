@@ -79,7 +79,7 @@ To use a later version of Hugo to build the site on Netlify, change the `HUGO_VE
 
 ```
 [build.environment]
-HUGO_VERSION = "0.68.3"
+HUGO_VERSION = "0.66.0"
 ```
 
 To upgrade Hugo to the same version in your local environment, see [Upgrade Hugo](/docs/contribution_guidelines/setup_work_locally/#upgrade-hugo).
