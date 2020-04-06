@@ -5,6 +5,7 @@
   "date": "2019-10-17",
   "description": "Additional filters for use in conversions, including XML node, create cookie, and load file."
 }
+
 ## Add XML node filter
 
 You can use the **Add XML Node** filter to add an XML element, attribute, text, comment, or CDATA section node to an XML message. The new node is inserted into the location specified by an XPath expression or a SOAP actor/role. XPath is a query language that enables you to select nodes in an XML document. A SOAP actor/role provides a way of identifying a particular WS-Security block in a message.
