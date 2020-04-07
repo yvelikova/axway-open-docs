@@ -5,6 +5,7 @@
   "date": "2019-10-17",
   "description": "Scan the content of a message for viruses."
 }
+
 ## Scan with McAfee anti-virus filter
 
 The **McAfee Anti-Virus** filter scans incoming HTTP requests and their attachments for viruses and exploits. For example, if a virus is detected in a MIME attachment or in the XML message body, the API Gateway can reject the entire message and return a SOAP Fault to the client. In addition, this filter supports cleaning of messages from infections such as viruses and exploits. It also provides scan type presets for different detection levels, and reports overall message status after scanning.
