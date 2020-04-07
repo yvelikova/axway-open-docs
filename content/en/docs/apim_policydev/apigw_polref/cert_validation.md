@@ -36,9 +36,9 @@ This filter also outputs the following message attributes:
 
 * `ocsp.response.certificate.status`: The status of the OCSP responder certificate as an `java.lang.Integer`. The possible values are:
 
-  * `0` (`GOOD`)
-  * `1` (`REVOKED`)
-  * `2` (`UNKNOWN`)
+    * `0` (`GOOD`)
+    * `1` (`REVOKED`)
+    * `2` (`UNKNOWN`)
 
     You can use this attribute if the filter return value is not detailed enough.
 * `ocsp.response.signing.certificate`: The optional certificate included in the OCSP response (`java.security.cert.X509Certificate`) used to sign the response. You can use an additional OCSP filter to verify the status of this certificate.
