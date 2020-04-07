@@ -1,5 +1,5 @@
 ---
-title: Apply a patch or service pack
+title: 'Apply a patch, service pack or a product update'
 linkTitle: Apply a patch or service pack
 weight: 108
 date: 2019-09-18T00:00:00.000Z
