@@ -2,11 +2,14 @@
 title: Apply a patch or service pack
 linkTitle: Apply a patch or service pack
 weight: 108
-date: 2019-09-18
-description: Apply a patch or a service pack (SP) to an API Gateway or API Manager container deployment.
+date: 2019-09-18T00:00:00.000Z
+description: >-
+  Apply a patch or a service pack (SP) to an API Gateway or API Manager
+  container deployment.
 ---
 
 In a container deployment, a patch or service pack is rolled out using an orchestration tool (for example, Kubernetes or OpenShift) after new Docker images containing the patch or service pack are pushed to the Docker registry. This enables you to perform a rolling zero downtime update of services.
+
 
 ## Apply a patch
 
@@ -26,7 +29,9 @@ To apply a patch, follow these steps:
     ./build_gw_image.py --license=/tmp/api_gw.lic --domain-cert=certs/mydomain/mydomain-cert.pem --domain-key=certs/mydomain/mydomain-key.pem --domain-key-pass-file=/tmp/pass.txt --merge-dir=/tmp/apigateway
     ```
 
-## Apply a service pack
+## Apply a service pack and a product update
+
+Below instructions apply to the product updates that are based on version 7.7, released in April 2019.
 
 To apply a service pack, follow these steps:
 
