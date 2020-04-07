@@ -69,6 +69,12 @@ Changing the API Portal language to Arabic (or any other right to left language)
 
 Related Issue: IAP-308
 
+### Sign in button is shown after user logs in to API Portal
+
+After user logs in to API Portal, the **Sign in** button is shown in the banner section instead of the **Explore** button.
+
+Related Issue: IAP-3037
+
 ## Documentation
 
 This section describes documentation enhancements and related documentation.
