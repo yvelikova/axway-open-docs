@@ -10,7 +10,6 @@ description: >-
 
 In a container deployment, a patch or update is rolled out using an orchestration tool (for example, Kubernetes or OpenShift) after new Docker images containing the patch or update are pushed to the Docker registry. This enables you to perform a rolling zero downtime update of services.
 
-
 ## Apply a patch
 
 To apply a patch, follow these steps:
