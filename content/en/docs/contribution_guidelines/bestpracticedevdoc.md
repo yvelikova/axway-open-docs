@@ -19,6 +19,10 @@ Organize similar type of contents under the same menu. For example, you can plac
 
 More than three levels can make the menu confusing to navigate.
 
+{{% alert title="Note" %}}
+Although it is a good practice to have a well-structured menu hierarchy to help users when they are navigating in your documentation website, have in mind that users usually land on a page from a search  result. In this case, the order of the menu is not relevant.
+{{% /alert %}}
+
 Example:
 
 * [Kubernetes Troubleshooting](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/troubleshooting-kubeadm/)
