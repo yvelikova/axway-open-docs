@@ -46,7 +46,7 @@ On the **Advanced** tab, you can customize the generation of a response message 
 * **Delegate to Policy**: Select a policy to generate the response message. For example, the policy could use a **JSON Error** filter to generate a JSON response.
 * **Response Content**: Set the response body content and headers directly in the respective text areas. You can use the API Gateway selector syntax to evaluate and expand request details at runtime. The values specified on this tab are used in the outbound request to the URL.
 
-  * **Body**: Enter the content of the incoming request message body (body headers and body content). Defaults to `${content.body}`.
+    * **Body**: Enter the content of the incoming request message body (body headers and body content). Defaults to `${content.body}`.
 
       For example, enter the `Content-Type` followed by a return, and then the required message payload:
 
@@ -54,7 +54,7 @@ On the **Advanced** tab, you can customize the generation of a response message 
     Content-Type:text/html
     <!DOCTYPE html><html><body><h1>Hello World</h1></body></html>
     ```
-  * **Headers**: Enter the HTTP headers associated with the incoming request message. Defaults to `${http.headers}`.
+    * **Headers**: Enter the HTTP headers associated with the incoming request message. Defaults to `${http.headers}`.
 
 ### Create customized generic error using the Set Message filter
 
