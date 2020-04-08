@@ -1,6 +1,7 @@
 ---
 title: "Create and customize a new documentation project"
 linkTitle: "Create and customize a new project"
+draft: true
 weight: 6
 date: 2020-03-24
 description: >
