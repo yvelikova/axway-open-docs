@@ -5,6 +5,7 @@
   "date": "2019-10-17",
   "description": "Handle faults and errors in your policies."
 }
+
 ## Generic error filter
 
 In cases where a transaction fails, API Gateway can use a generic error to convey error information to the client based on the message type (SOAP or JSON). By default, API Gateway returns a very basic error when a message filter fails. You can add the **Generic Error** filter to a policy to return more meaningful error information based on the message type.
