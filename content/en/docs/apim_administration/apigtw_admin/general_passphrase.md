@@ -24,11 +24,24 @@ projchangepass --proj=/home/user1/apiprojects/proj1 --oldpass=changeme --newpass
 
 ## Configure the group passphrase using managedomain
 
-You can use the `managedomain` command to change the encryption passphrase for an API Gateway group. The following example shows this using `managedomain` in command interpreter mode:
+You can use the managedomain command to change the encryption passphrase for an API Gateway group. The following example shows this using managedomain in command interpreter mode:
 
+```
+> change_passphrase group Group1 old_passphrase "" new_passphrase "12345"
+```
 For more details on using `managedomain`, see [Managedomain command reference](/docs/apim_reference/managedomain_ref/).
 
 You must also re-encrypt Key Property Store tables after an encryption passphrase for an API Gateway group has been changed. You can do this using the `kpsadmin` tool.
+
+## Configure the Node Manager passphrase using managedomain
+
+You can use the managedomain command to change the encryption passphrase for a Node Manager. The following example shows this using managedomain in command interpreter mode:
+
+```
+> edit_host old_passphrase "" new_passphrase "12345"
+```
+
+For more details on using `managedomain`, see [Managedomain command reference](/docs/apim_reference/managedomain_ref/).
 
 ## Enter the passphrase when editing configuration in Policy Studio
 
@@ -45,47 +58,35 @@ Used to decrypt sensitive data that has already been encrypted (for example, pri
 
 Used to authenticate to the API Gateway's management interface using HTTP basic authentication when opening a connection to a server. Required by default.
 
-## Provide the passphrase in a configuration file or at startup
+## Prompt for passphrase in a configuration file or via a startup script
 
-For the gateway to read (decrypt) encrypted data from its configuration, it must be primed with the passphrase key. You can enter the passphrase directly in a configuration file, prompt for it at startup, or obtain it automatically with a script.
-
-Typically, the passphrase is only entered directly in the file if the server must be started as a Linux daemon. In this case, the administrator cannot enter the passphrase manually when the server is starting. To avoid this, you must enter the passphrase in the configuration file.
-
-### Enter the Node Manager passphrase in a configuration file
-
-You can enter a passphrase directly in the Node Manager configuration file. Open the following file in your API Gateway installation:
-
-```
-INSTALL_DIR/apigateway/system/conf/nodemanager.xml
-```
-
-This file contains values for general system settings, such as the server name and trace level, and also (if required) the passphrase key that the Node Manager uses to decrypt its own configuration data.
-
-You should specify the passphrase as the value of the `pvalue` attribute as follows:
-
-```
-pvalue = "myPassphrase"
-```
-
-### Enter the API Gateway passphrase in a configuration file
-
-You can also enter the passphrase for API Gateway instances created using the `managedomain` script. To do this, enter the `pvalue` attribute in the `group.xml` file for your API Gateway instance. For example:
-
-```
-INSTALL_DIR/apigateway/groups/GROUP/conf/group.xml
-```
+For the gateway to read (decrypt) encrypted data from its configuration, it must be primed with the passphrase key. You can prompt for it at startup, or obtain it automatically with a script.
 
 ### Prompt for the passphrase at server startup
 
-If you do not wish to enter the passphrase directly in the Node Manager or API Gateway instance configuration file, and do not need to start as a Linux daemon, you can configure the Node Manager or API Gateway to prompt the administrator for the passphrase on the command line when starting up. To do this, enter the `"(prompt)"` special value for the `pvalue` attribute as follows:
+**Note:-** To use this feature you must have set a passphrase for the server using `managedomain` as referenced above.
+
+If you do not need to start as a Linux daemon, you can configure the Node Manager or API Gateway to prompt the administrator for the passphrase on the command line when starting up. To do this, enter the `"(prompt)"` special value for the `pvalue` attribute as follows:
 
 ```
 pvalue="(prompt)"
 ```
 
-To configure this for the Node Manager, update your `nodemanager.xml` file. To configure for an API Gateway group, update the relevant `group.xml` file.
+To configure this for the Node Manager, update your `nodemanager.xml` file. 
+
+```
+INSTALL_DIR/apigateway/system/conf/nodemanager.xml
+```
+
+To configure for an API Gateway group, update the relevant `group.xml` file.
+
+```
+INSTALL_DIR/apigateway/groups/GROUP/conf/group.xml
+```
 
 ### Provide the passphrase automatically at startup using a script
+
+**Note:-** To use this feature you must have set a passphrase for the server using `managedomain` as referenced above.
 
 Alternatively, you can use a script to automatically provide the passphrase when the API Gateway server starts up. Perform the following steps:
 
@@ -108,7 +109,8 @@ Alternatively, you can use a script to automatically provide the passphrase when
     ```
     #!/bin/sh
 
-    echo secret
+    echo "(prompt)" 
+
     ```
     * The script must be secured by the operating system file permissions so that it is only accessible by, and can only be invoked by the API Gateway. The command should write the    password to standard output.
 
