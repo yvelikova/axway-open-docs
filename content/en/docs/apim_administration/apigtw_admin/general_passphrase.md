@@ -58,7 +58,7 @@ Used to decrypt sensitive data that has already been encrypted (for example, pri
 
 Used to authenticate to the API Gateway's management interface using HTTP basic authentication when opening a connection to a server. Required by default.
 
-## Prompt for passphrase in a configuration file or via a startup script
+## Prompt for passphrase at server startup or via a startup script
 
 For the gateway to read (decrypt) encrypted data from its configuration, it must be primed with the passphrase key. You can prompt for it at startup, or obtain it automatically with a script.
 
