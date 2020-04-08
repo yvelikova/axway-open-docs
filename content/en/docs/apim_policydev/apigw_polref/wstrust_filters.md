@@ -5,6 +5,7 @@
   "date": "2019-10-17",
   "description": "Create or consume various types of WS-Trust messages."
 }
+
 ## Create WS-Trust message filter
 
 You can configure the API Gateway to create various types of WS-Trust messages. The API Gateway can act both as a WS-Trust client when generating a`RequestSecurityToken` (RST) message. It can also act as a WS-Trust service, or Security Token Service (STS), when generating the following messages:
