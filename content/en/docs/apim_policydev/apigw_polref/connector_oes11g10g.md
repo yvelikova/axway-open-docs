@@ -5,6 +5,7 @@
   "date": "2019-10-17",
   "description": "Integrate with Oracle Entitlements Server 10g or 11g."
 }
+
 ## Oracle Entitlements Server 11g authorization filter
 
 This filter enables you to authorize an authenticated user for a particular resource against Oracle Entitlements Server (OES) 11g. The user must first have been authenticated to OES 11g (for example, using HTTP basic authentication or HTTP digest authentication).
