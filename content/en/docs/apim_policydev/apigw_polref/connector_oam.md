@@ -5,6 +5,7 @@
   "date": "2019-10-17",
   "description": "Integrate with Oracle Access Manager."
 }
+
 ## Oracle Access Manager certificate authentication filter
 
 The **Log in with certificate** filter enables authentication to Oracle Access Manager (OAM) using an X.509 certificate presented by the client. After successful authentication, OAM issues a Single Sign On (SSO) token, which can then be used by the client for subsequent calls to the virtualized service.
