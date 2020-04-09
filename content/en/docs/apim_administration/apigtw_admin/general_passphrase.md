@@ -6,15 +6,15 @@
 "description": "Encrypt API Gateway configuration data using an encryption passphrase."
 }
 
-By default, the API Gateway configuration data is stored unencrypted. However, you can encrypt sensitive information such as passwords and private keys using an encryption passphrase. When the passphrase has been set (and the data has been encrypted with it), you must then enter the passphrase when connecting to the gateway with Policy Studio, or when the gateway is starting up, so that the encrypted data can be decrypted. You can enter an encryption passphrase at the level of a local Policy Studio project on the local file system, and at the level of a running API Gateway group instance.
+By default, the API Gateway configuration data is stored unencrypted. However, you can encrypt sensitive information such as passwords and private keys using an encryption passphrase. When the passphrase has been set (and the data has been encrypted with it), you must then enter the passphrase when connecting to API Gateway with Policy Studio, or when API Gateway is starting up, so that the encrypted data can be decrypted. You can enter an encryption passphrase at the level of a local Policy Studio project on the local file system, and at the level of a running API Gateway group instance.
 
-All sensitive information in the API Gateway configuration data is encrypted when you set an encryption passphrase. For example, this sensitive information includes passwords that the gateway requires for connecting to external systems (databases, LDAP, and so on), or private keys that are not stored on a Hardware Security Module (HSM). All sensitive information is encrypted using the Password-Based Encryption (PBE) system specified by the Public-Key Cryptography Standard (PKCS#12).
+All sensitive information in the API Gateway configuration data is encrypted when you set an encryption passphrase. For example, this sensitive information includes passwords that API Gateway requires for connecting to external systems (databases, LDAP, and so on), or private keys that are not stored on a Hardware Security Module (HSM). All sensitive information is encrypted using the Password-Based Encryption (PBE) system specified by the Public-Key Cryptography Standard (PKCS#12).
 
-This section describes how to specify an encryption passphrase for a local Policy Studio project or when connecting to a gateway in Policy Studio, in a gateway configuration file, or when the gateway is starting up. It also describes how to change the passphrase when it has been set initially.
+This section describes how to specify an encryption passphrase for a local Policy Studio project or when connecting to an API Gateway in Policy Studio, in an API Gateway configuration file, or when API Gateway is starting up. It also describes how to change the passphrase when it has been set initially.
 
 {{< alert title="Caution" color="warning" >}}It is crucial that you remember the passphrase when you change it. Failure to remember the passphrase results in the loss of encrypted data, and may prevent the API Gateway from functioning correctly.{{< /alert >}}
 
-## Configure the project passphrase using projchangepass
+## Configure the project passphrase using `projchangepass`
 
 You can use the `projchangepass` command to change the encryption passphrase for a Policy Studio project. This example shows how to change the project passphrase on proj1 from `changeme` to `newpassPhrase`:
 
@@ -22,18 +22,19 @@ You can use the `projchangepass` command to change the encryption passphrase for
 projchangepass --proj=/home/user1/apiprojects/proj1 --oldpass=changeme --newpass=newpassPhrase --confirmpass=newpassPhrase
 ```
 
-## Configure the group passphrase using managedomain
+## Configure the group passphrase using `managedomain`
 
 You can use the managedomain command to change the encryption passphrase for an API Gateway group. The following example shows this using managedomain in command interpreter mode:
 
 ```
 > change_passphrase group Group1 old_passphrase "" new_passphrase "12345"
 ```
+
 For more details on using `managedomain`, see [Managedomain command reference](/docs/apim_reference/managedomain_ref/).
 
 You must also re-encrypt Key Property Store tables after an encryption passphrase for an API Gateway group has been changed. You can do this using the `kpsadmin` tool.
 
-## Configure the Node Manager passphrase using managedomain
+## Configure the Node Manager passphrase using `managedomain`
 
 You can use the managedomain command to change the encryption passphrase for a Node Manager. The following example shows this using managedomain in command interpreter mode:
 
@@ -45,26 +46,21 @@ For more details on using `managedomain`, see [Managedomain command reference](/
 
 ## Enter the passphrase when editing configuration in Policy Studio
 
-If you have set an encryption passphrase for the gateway configuration data, you must enter this passphrase every time you open a configuration for editing in Policy Studio. You can specify this in the **Enter Passphrase** dialog, which is displayed before editing an active server configuration.
+If you have set an encryption passphrase for API Gateway configuration data, you must enter this passphrase every time you open a configuration for editing in Policy Studio. You can specify this in the **Enter Passphrase** dialog, which is displayed before editing an active server configuration.
 
-When you first open a connection to a gateway in Policy Studio, you specify a **Password**. The different roles of the **Passphrase**
-and the **Password** fields are as follows:
+When you first open a connection to an API Gateway in Policy Studio, you specify a **Password**. The different roles of the **Passphrase** and the **Password** fields are as follows:
 
-**Passphrase**:
+**Passphrase**: Used to decrypt sensitive data that has already been encrypted (for example, private keys and passwords) . Not required by default, and only needed if you have already set the encryption passphrase in Policy Studio.
 
-Used to decrypt sensitive data that has already been encrypted (for example, private keys and passwords) . Not required by default, and only needed if you have already set the encryption passphrase in Policy Studio.
-
-**Password**:
-
-Used to authenticate to the API Gateway's management interface using HTTP basic authentication when opening a connection to a server. Required by default.
+**Password**: Used to authenticate to the API Gateway's management interface using HTTP basic authentication when opening a connection to a server. Required by default.
 
 ## Prompt for passphrase at server startup or via a startup script
 
-For the gateway to read (decrypt) encrypted data from its configuration, it must be primed with the passphrase key. You can prompt for it at startup, or obtain it automatically with a script.
+For API Gateway to read (decrypt) encrypted data from its configuration, it must be primed with the passphrase key. You can prompt for it at startup, or obtain it automatically with a script.
 
 ### Prompt for the passphrase at server startup
 
-**Note:-** To use this feature you must have set a passphrase for the server using `managedomain` as referenced above.
+{{< alert title="Note" color="primary" >}}To use this feature you must have set a passphrase for the server using `managedomain` as referenced above.{{< /alert >}}
 
 If you do not need to start as a Linux daemon, you can configure the Node Manager or API Gateway to prompt the administrator for the passphrase on the command line when starting up. To do this, enter the `"(prompt)"` special value for the `pvalue` attribute as follows:
 
@@ -72,7 +68,7 @@ If you do not need to start as a Linux daemon, you can configure the Node Manage
 pvalue="(prompt)"
 ```
 
-To configure this for the Node Manager, update your `nodemanager.xml` file. 
+To configure this for the Node Manager, update your `nodemanager.xml` file.
 
 ```
 INSTALL_DIR/apigateway/system/conf/nodemanager.xml
@@ -86,7 +82,7 @@ INSTALL_DIR/apigateway/groups/GROUP/conf/group.xml
 
 ### Provide the passphrase automatically at startup using a script
 
-**Note:-** To use this feature you must have set a passphrase for the server using `managedomain` as referenced above.
+{{< alert title="Note" color="primary" >}}To use this feature you must have set a passphrase for the server using `managedomain` as referenced above.{{< /alert >}}
 
 Alternatively, you can use a script to automatically provide the passphrase when the API Gateway server starts up. Perform the following steps:
 
@@ -109,15 +105,14 @@ Alternatively, you can use a script to automatically provide the passphrase when
     ```
     #!/bin/sh
 
-    echo "(prompt)" 
+    echo "(prompt)"
 
     ```
-    * The script must be secured by the operating system file permissions so that it is only accessible by, and can only be invoked by the API Gateway. The command should write the    password to standard output.
+    The script must be secured by the operating system file permissions so that it is only accessible by, and can only be invoked by, the API Gateway. The command should write the password to standard output.
 
     The following files should also be protected:
-
-    * ../system/conf/nodemanager.xml
-    * ../skel/service.xml
+    * `../system/conf/nodemanager.xml`
+    * `../skel/service.xml`
 
 ## Promotion between environments
 
