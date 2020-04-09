@@ -41,7 +41,7 @@ Setting `alwayOn` flag to `false`, can be useful to enable the publisher to avoi
 }
 ```
 
-> `alwaysOn` flag is optional and will be set to `false` if no value is provided.
+`alwaysOn` flag is optional and will be set to `false` if no value is provided.
 
 ### Publishing payloads
 
@@ -103,4 +103,4 @@ As a result subscribers to the topic will receive a `patch` event:
 }]
 ```
 
-> JSON patch is not the only subscription mode available. See [Subscription modes](../subscribers#subscription-modes) section for more details.
+JSON patch is not the only subscription mode available. See [Subscription modes](../subscribers#subscription-modes) section for more details.

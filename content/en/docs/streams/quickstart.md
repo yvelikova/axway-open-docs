@@ -57,7 +57,7 @@ We will use Streams [SSE Subscriber](../subscribers/subscriber-sse) by simply op
 curl "{baseURL}/subscribers/sse/topics/{topicId}"
 ```
 
-> `{baseURL}` depends on your deployment configuration. `{topicId}` is the unique identifier of the topic automatically assigned on creation.
+`{baseURL}` depends on your deployment configuration. `{topicId}` is the unique identifier of the topic automatically assigned on creation.
 
 If the connection is successfully established, Streams will respond with a `200 OK` and send events through your first Event-Driven API!
 

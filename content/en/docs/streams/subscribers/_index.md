@@ -30,7 +30,7 @@ When creating your topic, you can set it via subscribers config in the topic's c
 }
 ```
 
-> If no subscribers config is provided, [SSE subscriber](../subscribers/subscriber-sse) will be added by default.
+If no subscribers config is provided, [SSE subscriber](../subscribers/subscriber-sse) will be added by default.
 
 ### Subscription modes
 

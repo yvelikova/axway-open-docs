@@ -34,7 +34,7 @@ It contains:
 | category | Category to which the error belongs. Refer to [Error Categories](#error-categories) section.|
 | message | Human readable message describing the error
 
-> For an programmatic error processing, only code and category must be used.
+For programmatic error processing, only the code and category must be used.
 
 ### Error Categories
 
