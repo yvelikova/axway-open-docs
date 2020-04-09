@@ -100,15 +100,11 @@ For more information on how the navigation and search work, see [Docsy - Navigat
 
 This section explains how to customize various elements of the Docsy theme.
 
-### Add code to head and body end of pages
-
-To add code to the `head` and end of the `body` sections of each page (for example if using Netlify Identity with Netlify CMS), create the files `layouts/partials/hooks/head-end.html` and `layouts/partials/hooks/body-end.html` and add the code in those files. For details, see [Docsy - Add code to head or before body end](https://www.docsy.dev/docs/adding-content/lookandfeel/#add-code-to-head-or-before-body-end).
-
 ### Change colors and fonts
 
 To change the theme colors and fonts, modify the file `assets/scss/_variables_project.scss` as detailed in [Docsy - Look and Feel](https://www.docsy.dev/docs/adding-content/lookandfeel/).
 
-### Change the logo and background images
+### Change the logo, background image, and favicon
 
 To change the logo, add a logo file as `assets/icons/logo.svg`. This overrides the theme logo.
 
@@ -120,7 +116,11 @@ For more details, see [Docsy - Logos and Images](https://www.docsy.dev/docs/addi
 
 ### Change icons
 
-To change a specific Font Awesome icon, locate an alternative icon on <https://fontawesome.com/> and replace the icon class in the code. The exact steps differ depending on whether the icon is being used in a content page, a shortcode, a partial layout, and so on.
+To change a specific Font Awesome icon, such as those used on the [Community](/community/) page, locate an alternative icon on <https://fontawesome.com/> and replace the icon class in the code. The exact steps differ depending on whether the icon is being used in a content page, a shortcode, a partial layout, and so on.
+
+### Add code to head and body end of pages
+
+To add code to the `head` and end of the `body` sections of each page (for example if using Algolia DocSearch or Hotjar), create the files `layouts/partials/hooks/head-end.html` and `layouts/partials/hooks/body-end.html` and add the code in those files. For details, see [Docsy - Add code to head or before body end](https://www.docsy.dev/docs/adding-content/lookandfeel/#add-code-to-head-or-before-body-end).
 
 ### Remove the About section
 
@@ -130,7 +130,7 @@ To remove the About section in the main navigation, delete the folder `content\e
 footer_about_disable = true
 ```
 
-### Add or change buttons on right nav
+### Add or change buttons on right navigation
 
 The right nav for each page or post shows **Edit this page** and other buttons.
 
@@ -144,7 +144,7 @@ To change the text of a button:
 other = "Improve this page"
 ```
 
-To create a new buttton in the right nav:
+To create a new button in the right nav:
 
 1. Create a new partial layout `layouts/partials/page-meta-links.html`
 2. Copy the content from `themes/docsy/layouts/partials/page-meta-links.html`
@@ -185,6 +185,8 @@ For example:
 
 For more details on how collections are defined in Netlify CMS, see [Collection types](https://www.netlifycms.org/docs/collection-types) and [Collections reference](https://www.netlifycms.org/docs/configuration-options/#collections) in Netlify CMS documentation.
 
+<!-- Comment variables out as it's not currently used -->
+<!--
 ## Use variables in content
 
 A list of variables can be found in `axway-open-docs/layouts/shortcodes/variables`, stored as HTML files, where the name of the file is the name of the variable. These HTML files just contain the value of the variable.
@@ -222,3 +224,4 @@ You can customize and run the following bash command (using relative paths):
 `echo "Variable value here!" > axway-open-docs/layouts/shortcodes/variables/name_of_variable_file.html`
 
 This will create the HTML file inside of the `shortcodes/variables` directory and add whatever value you want to it.
+-->
