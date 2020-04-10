@@ -7,6 +7,12 @@ description: Understand why you would want a connected / managed environment for
 ---
 <!--StartFragment-->
 
+<!--StartFragment-->
+
+The Axway API Manager connectivity to AMPLIFY Central is currently available in an alpha review mode; current functionality and configuration may change before release. Therefore, this connectivity is available for trial use only and is not supported for production API management or connectivity.
+
+<!--EndFragment-->
+
 ## What is Axway API Manager connected?
 
 Connecting Axway API Manager to AMPLIFY Central enables you to have a connected environment for Axway API Gateway where two agents (Discovery and Traceability) are used with Axway API Gateway to:
