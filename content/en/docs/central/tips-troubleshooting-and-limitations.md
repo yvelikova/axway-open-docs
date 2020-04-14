@@ -1,5 +1,8 @@
 ---
 title: Tips, troubleshooting and limitations
+linkTitle: Tips, troubleshooting and limitations
+draft: true
+weight: 110
 description: This section provides troubleshooting, known limitations and
   restrictions that you may encounter while you are working with the connected /
   managed environment for AMPLIFY Central and Axway API Manager. It also
