@@ -6,4 +6,4 @@
     "description": "Manage the entire API-Lifecycle"
 }
 
-![Entire API-Lifecycle](/Images/docbook/images/overview/api-lifecycle-overview.png)
+![Entire API-Lifecycle](/Images/overview/api-lifecycle-overview.png)
