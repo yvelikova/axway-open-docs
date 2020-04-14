@@ -7,7 +7,6 @@
 "description": "API Gateway tools to develop, deploy, and manage API solutions."
 }
 
-
 ## Policy Studio
 
 Policy Studio is graphical tool that enables you to virtualize APIs and develop policies (for example, to enforce security, compliance, and operational requirements). It includes the following features:
