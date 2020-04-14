@@ -1,5 +1,8 @@
 ---
 title: Connect API Manager overview
+linkTitle: Connect API Manager overview
+draft: true
+weight: 10
 description: Understand why you would want a connected / managed environment for
   AMPLIFY Central and Axway API Manager. Learn how you can govern and monitor
   the creation / deployment / publishing and subscriptions of AMPLIFY Central
@@ -32,7 +35,7 @@ The related APIs are published to AMPLIFY Central in either disconnected mode (c
 
 Although both publication modes are functional, APIs cannot be fully managed from AMPLIFY Central before Q3-2020.
 
-![](../Resources/Images/ServiceDiscovery.png)
+![Image](../Resources/Images/ServiceDiscovery.png)
 
 ### Traceability Agent
 
