@@ -1,5 +1,8 @@
 ---
 title: Traceability Agent variables
+linkTitle: Traceability Agent variables
+draft: true
+weight: 60
 description: Use the following environment variables to create your Traceability
   Agent env_vars file. For additional information, see Traceability Agent.
 ---
