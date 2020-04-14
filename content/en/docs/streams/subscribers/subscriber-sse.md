@@ -99,8 +99,8 @@ The client can select the subscription mode by setting the `Accept` header in it
 
 | Subscription Mode | Accept Header Value |
 |-------------------|---------------------|
-|snapshot-only | application/vnd.axway.streams+snapshot-only |
-|snapshot-patch | application/vnd.axway.streams+snapshot-patch |
-| **default** | \" \" or  \*\/\* or text/event-stream |
+|snapshot-only | `application/vnd.axway.streams+snapshot-only` |
+|snapshot-patch | `application/vnd.axway.streams+snapshot-patch` |
+| **default** | `""` or  `*/*` or `text/event-stream` |
 
 If the client requests a subscription mode not allowed by topic's configuration, a `406 Not Acceptable` will be returned.

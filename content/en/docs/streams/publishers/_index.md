@@ -46,7 +46,7 @@ Setting `alwayOn` flag to `false`, can be useful to enable the publisher to avoi
 ### Publishing payloads
 
 A publisher can publishes updated version of a data set over time.
-Whenever a change is detected compare to the previous payload published, Streams will notify subscribers based on their subscription modes. 
+Whenever a change is detected compare to the previous payload published, Streams will notify subscribers based on their subscription modes.
 
 Let's take a real life example with a subscriber being subscribed using `snapshot-patch` mode.
 A publisher publishes the latest top news (for the sake of simplicity let's say our source publishes only the two latest news):

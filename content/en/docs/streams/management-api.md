@@ -31,7 +31,9 @@ Our API is organized around REST and has predictable, resource-oriented URLs, an
 We use built-in HTTP features, like HTTP verbs, which are understood by off-the-shelf HTTP clients. We support cross-origin resource sharing, allowing you to interact securely with our API from a client-side web application.
 JSON is returned by all API responses, including errors. Finally, we rely on gzip format to compress all API responses via the `Content-Encoding` entity header.
 
-> Streams installation material includes [OpenAPI](https://swagger.io/specification/) specifications and [Postman collections](https://www.postman.com/collection) to help you get started quickly.
+{{< alert title="Note" >}}
+Streams installation material includes [OpenAPI](https://swagger.io/specification/) specifications and [Postman collections](https://www.postman.com/collection) to help you get started quickly.
+{{< /alert >}}
 
 ### Error codes
 

@@ -45,7 +45,7 @@ Below the list of HTTP status codes that can be returned when trying to create a
 
 ## Stopping a webhook subscription
 
-In order to stop the sending of webhook notifications, simply delete the corresponding webhook subscription with following request: 
+In order to stop the sending of webhook notifications, simply delete the corresponding webhook subscription with following request:
 
 `DELETE /subscribers/webhook/topics/{topicId}/subscriptions/{subscriptionId}`
 
