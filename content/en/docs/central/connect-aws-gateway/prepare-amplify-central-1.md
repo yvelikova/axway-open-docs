@@ -1,6 +1,8 @@
 ---
 title: Prepare AMPLIFY Central
 linkTitle: Prepare AMPLIFY Central
+draft: true
+weight: 10
 description: >-
   Learn how to represent AWS API Gateway inside AMPLIFY Central by using an
   environment,
