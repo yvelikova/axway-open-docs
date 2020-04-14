@@ -213,8 +213,6 @@ API Gateway satisfies audit requirements by enabling service transactions to be 
 
 API Gateway is available as software on Linux, or container deployment on Docker. A limited set of developer tools is available on Windows, but the API Gateway server does not support Windows.
 
-
-
 <!-- TODO Resolve duplication between apimgr_concepts topics (e.g. tools) and these topics -->
 
 Axway API Gateway provides powerful easy-to-use tools that enable you to develop, deploy, and manage API solutions.
