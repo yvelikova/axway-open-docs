@@ -8,7 +8,7 @@ description: Use the following parameters [flags] when issuing the
   -h.
 ---
 
-| discovery_agent \[flags] Flags | Description                                                |   |
+| Flags | Description                                                |   |
 |--------------------------------|------------------------------------------------------------|---|
 | path.config                    | String. Configuration path.                                |   |
 | path.data                      | String. Data path.                                         |   |

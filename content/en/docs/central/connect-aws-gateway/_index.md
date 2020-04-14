@@ -3,7 +3,7 @@ title: Connect AWS Gateway
 linkTitle: Connect AWS Gateway
 draft: true
 no_list: true
-weight: 72
+weight: 75
 description: Understand why you would want a connected / managed environment for
   AWS API Gateway within AMPLIFY Central. Learn how you can govern and monitor
   the creation / deployment / publishing and subscriptions of the AWS API
