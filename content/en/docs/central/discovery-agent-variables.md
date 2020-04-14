@@ -1,5 +1,8 @@
 ---
 title: Discovery Agent variables
+linkTitle: Discovery Agent variables
+draft: true
+weight: 40
 description: >-
   
   Use the following environment variables to create your Discovery Agent env_vars file. for additional information, see Deploy your agents.
