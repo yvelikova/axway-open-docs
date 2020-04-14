@@ -1,5 +1,8 @@
 ---
 title: Deploy your agents
+linkTitle: Deploy your agents
+draft: true
+weight: 30
 description: Learn how to deploy your Discovery Agent and Traceability Agent so
   that you can manage  your Axway API Gateway environment within AMPLIFY
   Central.
@@ -9,7 +12,7 @@ The Axway API Gateway connectivity to AMPLIFY Central is currently available in 
 ## Before you start
 
 * Read AMPLIFY Central Version 7 Gateway connected overview
-* Prepare AMPLIFY Central 
+* Prepare AMPLIFY Central
 * You will need a basic knowledge of Axway API Gateway
 
 ## Objectives
@@ -18,12 +21,12 @@ Learn how to create your Discovery Agent and Traceability Agent configuration fi
 
 ## Discovery Agent
 
-The Discovery Agent is used to discover new deployments and stage updates to existing deployments. Once they are discovered, the related APIs are published to AMPLIFY Central, in one of the following publication modes, so that they become available for any consumer. See centralMode. 
+The Discovery Agent is used to discover new deployments and stage updates to existing deployments. Once they are discovered, the related APIs are published to AMPLIFY Central, in one of the following publication modes, so that they become available for any consumer. See centralMode.
 
 * Catalog item publication (disconnected mode): Customers  expose their APIs globally for their consumers but keep the API management at the Gateway level.
 * API Service publication (connected mode): Customers manage their APIs from the AMPLIFY platform. WILL NOT BE FULLY IMPLEMENTED UNTIL Q3-2020.
 
-As soon as an API is published, the identifier of the asset in AMPLIFY Central is kept in a custom field at the api level. The name of the custom field is defined in APIMANAGER_PROXYAPICIDFIELD. 
+As soon as an API is published, the identifier of the asset in AMPLIFY Central is kept in a custom field at the api level. The name of the custom field is defined in APIMANAGER_PROXYAPICIDFIELD.
 
 The Discovery Agent only discovers APIs that have the tag(s) defined in the agent configuration file. See Discovery Agent variables.
 
@@ -31,8 +34,8 @@ The Agent can run in the following modes:
 
 * With a configuration file:
 
-  * Default: located in the same directory as the agent binary. 
-  * Optional: use a dedicated folder where the configuration file is located (use the --pathConfig flag).
+    * Default: located in the same directory as the agent binary.
+    * Optional: use a dedicated folder where the configuration file is located (use the --pathConfig flag).
 
     Configuration file name should be the same as the agent binary.
 
@@ -47,7 +50,7 @@ To create an  an `env_vars` file, see Discovery Agent variables. Download the zi
 curl -L "https://axway.bintray.com/generic-repo/v7-agents/v7_discovery_agent/latest/discovery_agent-latest.zip" -o discovery_agent-latest.zip
 ```
 
- The Discovery Agent config yaml and Discovery Agent executable are included. 
+ The Discovery Agent config yaml and Discovery Agent executable are included.
 
 ### Install / run
 
@@ -57,14 +60,14 @@ curl -L "https://axway.bintray.com/generic-repo/v7-agents/v7_discovery_agent/lat
 
 ## Traceability Agent
 
-The Traceability Agent is used to filter the Axway API Gateway logs that are related to discovered APIs and prepare the transaction events that are sent to AMPLIFY platform. Each time an already discovered API is called by a consumer, an event (summary + detail) is sent to AMPLIFY Central and is visible in API Observer. 
+The Traceability Agent is used to filter the Axway API Gateway logs that are related to discovered APIs and prepare the transaction events that are sent to AMPLIFY platform. Each time an already discovered API is called by a consumer, an event (summary + detail) is sent to AMPLIFY Central and is visible in API Observer.
 
 The Agent can run in the following modes:
 
 * With a configuration file
 
-  * Default: located in the same directory as the agent binary.
-  * Optional: use a dedicated folder where the configuration file is located (use the --path.config flag). See Traceability Agent flags.
+    * Default: located in the same directory as the agent binary.
+    * Optional: use a dedicated folder where the configuration file is located (use the --path.config flag). See Traceability Agent flags.
 
     Configuration file name should be the same as the agent binary.
 
@@ -134,7 +137,7 @@ logging:
   # Send all logging output to stderr
   to_stderr: true
   # Set log level
-  level: ${LOG_LEVEL:info}      
+  level: ${LOG_LEVEL:info} 
 ```
 
 #### Multiple file paths
@@ -158,9 +161,9 @@ traceability_agent:
         - /home/axway/axway/apigateway/events/group-2_instance-*.log
 ```
 
-### Install / run
+### Install and run
 
-1. Move the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment. 
+1. Move the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment.
 2. Download the zip file:
 
    ```
