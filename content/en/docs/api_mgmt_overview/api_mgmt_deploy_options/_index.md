@@ -1,8 +1,8 @@
 {
     "title": "API management deployment options",
-    "linkTitle": "API management deployment options",
+    "linkTitle": "Deployment options",
     "no_list": "true",
-    "weight":"10",
+    "weight":"25",
     "date": "2020-04-14",
     "description": ""
 }
