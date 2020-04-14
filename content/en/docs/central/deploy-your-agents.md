@@ -137,7 +137,7 @@ logging:
   # Send all logging output to stderr
   to_stderr: true
   # Set log level
-  level: ${LOG_LEVEL:info} 
+  level: ${LOG_LEVEL:info}
 ```
 
 #### Multiple file paths
