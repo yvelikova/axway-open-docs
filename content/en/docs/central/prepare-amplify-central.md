@@ -1,5 +1,8 @@
 ---
 title: Prepare AMPLIFY Central
+linkTitle: Prepare AMPLIFY Central
+draft: true
+weight: 20
 description: Learn how to create an environment and Service Account for Axway
   API Gateway within AMPLIFY Central.
 ---
@@ -33,15 +36,14 @@ You can create your environment using either the UI, API or CLI.
 
 Create an environment in **AMPLIFY Central UI > Topology > Environments > create** and give it a relevant name. It is not necessary to have a real environment at this point, but it is important to have an environment name. You can find this environment name in your environment details in the UI.
 
-**Example**: https:/<AMPLIFY Central URL>/topology/environments/apigtw-v77
+**Example**: `https:/<AMPLIFY Central URL>/topology/environments/apigtw-v77`
 
 ### Create environment using the CLI
 
-Examples: 
+Examples:
 
 ```
 amplify central create -f <filename>
-
 amplify central create env <name> -o json
 ```
 
@@ -86,11 +88,11 @@ spec:
 
 For information, see [Manage an environment using AMPLIFY CLI](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/cli_environments/index.html).
 
-## [](<>)Create a Service Account
+## Create a Service Account
 
 Create a Service Account in AMPLIFY Central.
 
-1. Generate a private and public key pair:
+* Generate a private and public key pair:
 
    ```
    openssl genpkey -algorithm RSA -out ./private_key.pem -pkeyopt rsa_keygen_bits:2048
@@ -103,6 +105,6 @@ Create a Service Account in AMPLIFY Central.
 
 {{< alert title="Note" color="primary" >}}The public key can be either of type .der format or of type base64 encoded of the .der format.{{< /alert >}}
 
-2. Create a new Service Account user in API Central using the key pair from above. For additional information, see [Manage an API proxy using AMPLIFY CLI](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/cli_proxy_flow/index.html).
+* Create a new Service Account user in API Central using the key pair from above. For additional information, see [Manage an API proxy using AMPLIFY CLI](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/cli_proxy_flow/index.html).
 
 <!--EndFragment-->
