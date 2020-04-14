@@ -97,6 +97,8 @@ These organizations are for consumption only, as they cannot own APIs. Users bel
 **Grant access**  
 Both organizations types can be used to manage access permissions to APIs. Organization administrators grant access to APIs for one, multiple or all organizations. As a result, a user will only see APIs his organization has access to.
 
+For more details, see [Organizations and user roles in API Manager](/docs/apimgr_concepts/api_mgmt_orgs_roles/index.html).
+
 ### Create an organization
 
 API administrators can use the **Clients** > **Organizations** tab to create and edit organizations.
