@@ -292,7 +292,7 @@ const collections = [{
   description: 'All pages relating to AMPLIFY Central.',
   format: 'frontmatter',
 }, {
-  ...docsDefaults('catalog', 'catalog'),
+  ...docsDefaults('central/catalog', 'central/catalog'),
   name: 'catalog',
   label: 'AMPLIFY Unified Catalog documentation',
   label_singular: 'page in AMPLIFY Unified Catalog',
