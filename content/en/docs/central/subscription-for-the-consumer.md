@@ -1,5 +1,8 @@
 ---
 title: Subscription for the consumer
+linkTitle: Subscription for the consumer
+draft: true
+weight: 100
 description: A subscription provides the consumer, or subscriber, with the
   required security, quota and endpoint materials to correctly consume the API.
 ---
@@ -28,7 +31,7 @@ description: A subscription provides the consumer, or subscriber, with the
               api: {
                   // custom properties...
               }
-          } 
+          }
       ```
      ````
 2. A consumer initiates the subscription in AMPLIFY Central:
