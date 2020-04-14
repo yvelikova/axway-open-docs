@@ -292,6 +292,13 @@ const collections = [{
   description: 'All pages relating to AMPLIFY Central and AMPLIFY Unified Catalog.',
   format: 'frontmatter',
 }, {
+  ...docsDefaults('streams', 'streams'),
+  name: 'streams',
+  label: 'AMPLIFY Streams documentation',
+  label_singular: 'page in AMPLIFY Streams section',
+  description: 'All pages relating to AMPLIFY Streams.',
+  format: 'frontmatter',
+}, {
   ...docsDefaults('shared_services', 'shared_services'),
   name: 'shared_services',
   label: 'AMPLIFY Shared Services documentation',
