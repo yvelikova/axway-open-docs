@@ -87,7 +87,7 @@ To revoke a stored authorization, and block further requests from the client app
 
 ### What is an organization
 
-Organizations are used in API-Manager by different entities, such as Users, Applications and APIs. There two major types of organizations: Development- and Standard-Organizations.
+Organizations are used in API-Manager by different entities to group or manage entities such as Users, Applications and APIs. There two major types of organizations: Development- and Standard-Organizations.
 
 **Development organization**  
 Typically represents an internal unit of an enterprise. You may create a development organization for every business unit. This allows internal users belonging to a development organization and the role Organization-Administrator to register APIs in a self-service fashion up to the Unpublished state. These users are API-Service providers.  
