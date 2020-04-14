@@ -85,9 +85,21 @@ To revoke a stored authorization, and block further requests from the client app
 
 ## Manage organizations
 
-API administrators can use the **Clients** > **Organizations** tab to create and edit organizations.
+### What is an organization
+
+Organizations are used in API-Manager by different entities, such as Users, Applications and APIs. There two major types of organizations: Development- and Standard-Organizations.
+
+**Development organization**  
+Typically represents an internal unit of an enterprise. You may create a development organization for every business unit. This allows internal users belonging to a development organization and the role Organization-Administrator to register APIs in a self-service fashion up to the Unpublished state. These users are API-Service providers.  
+**Standard organizations**  
+These organizations are for consumption only, as they cannot own APIs. Users belonging to standard organizations are typically externally users that should be able to discover and consume APIs. These users are API-Service consumers.
+
+**Grant access**
+Both organizations types can be used to manage access permissions to APIs. Organization administrators grant access to APIs for one, multiple or all organizations. As a result, a user will only see APIs his organization has access to.
 
 ### Create an organization
+
+API administrators can use the **Clients** > **Organizations** tab to create and edit organizations.
 
 To create an organization, perform the following steps:
 
