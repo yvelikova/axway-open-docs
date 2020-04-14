@@ -1,5 +1,8 @@
 ---
 title: SSL / TLS advanced
+linkTitle: SSL / TLS advanced
+draft: true
+weight: 90
 description: By default, the Axway API Manager connection to AMPLIFY Central is
   SSL secured using TLS1.2 and the appropriate secured default Cipher Suite.
   However, you can choose to change the default to use different variable values
@@ -11,15 +14,13 @@ description: By default, the Axway API Manager connection to AMPLIFY Central is
 ## Default Cipher Suites
 
 ECDHE-ECDSA-AES-256-GCM-SHA384 \
-ECDHE-RSA-AES-256-GCM-SHA384 
+ECDHE-RSA-AES-256-GCM-SHA384
 
 ECDHE-ECDSA-CHACHA20-POLY1305\
 ECDHE-RSA-CHACHA20-POLY1305
 
-
 ECDHE-ECDSA-AES-128-GCM-SHA256\
 ECDHE-RSA-AES-128-GCM-SHA256
-
 
 ECDHE-ECDSA-AES-128-CBC-SHA256\
 ECDHE-RSA-AES-128-CBC-SHA256
@@ -48,7 +49,7 @@ RSA-AES-128-CBC-SHA\
 RSA-AES-128-CBC-SHA256\
 RSA-AES-128-GCM-SHA256\
 RSA-AES-256-CBC-SHA\
-RSA-AES-256-GCM-SHA384 
+RSA-AES-256-GCM-SHA384
 
 TLS-AES-128-GCM-SHA256\
 TLS-AES-256-GCM-SHA384\
