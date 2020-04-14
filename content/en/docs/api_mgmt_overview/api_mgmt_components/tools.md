@@ -1,7 +1,7 @@
 {
 "title": "API Gateway tools",
-"linkTitle": "API Gateway tools",
-"weight":"11",
+"linkTitle": "Tools",
+"weight":"35",
 "no_list": "true",
 "date": "2019-11-07",
 "description": "API Gateway tools to develop, deploy, and manage API solutions."

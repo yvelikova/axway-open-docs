@@ -1,7 +1,7 @@
 {
 "title": "Introduction to API Gateway",
-"linkTitle": "Introduction to API Gateway",
-"weight":"10",
+"linkTitle": "API Gateway",
+"weight":"20",
 "date": "2020-04-14",
 "description": "Axway API Gateway manages, delivers, and secures enterprise APIs, applications, and consumers."
 }

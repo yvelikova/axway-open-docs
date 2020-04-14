@@ -1,7 +1,7 @@
 {
 "title": "Introduction to API Portal",
-"linkTitle": "Introduction to API Portal",
-"weight":"10",
+"linkTitle": "API Portal",
+"weight":"25",
 "date": "2020-04-14",
 "description": ""
 }

@@ -1,7 +1,7 @@
 {
 "title": "Introduction to API Manager",
-"linkTitle": "Introduction to API Manager",
-"weight":"10",
+"linkTitle": "API Manager",
+"weight":"15",
 "date": "2020-04-14",
 "description": ""
 }

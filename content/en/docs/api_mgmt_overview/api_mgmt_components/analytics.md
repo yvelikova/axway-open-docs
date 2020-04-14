@@ -1,7 +1,7 @@
 {
 "title": "API Management Analytics",
-"linkTitle": "API Management Analytics",
-"weight":"11",
+"linkTitle": "Analytics",
+"weight":"30",
 "date": "2020-04-14",
 "description": "Analytics"
 }

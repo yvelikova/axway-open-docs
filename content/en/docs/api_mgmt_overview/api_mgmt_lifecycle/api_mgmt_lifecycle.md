@@ -5,4 +5,3 @@
     "date": "2019-09-17",
     "description": "Manage the entire API-Lifecycle"
 }
-

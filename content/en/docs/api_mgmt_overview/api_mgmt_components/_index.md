@@ -1,6 +1,6 @@
 {
     "title": "API management components",
-    "linkTitle": "API management components",
+    "linkTitle": "Components",
     "no_list": "true",
     "weight":"10",
     "date": "2019-09-17",
