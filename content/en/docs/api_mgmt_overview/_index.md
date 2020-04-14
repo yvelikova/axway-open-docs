@@ -1,6 +1,6 @@
 {
-    "title": "API management concepts",
-    "linkTitle": "API management concepts",
+    "title": "API management overview",
+    "linkTitle": "API management overview",
     "no_list": "true",
     "weight":"10",
     "date": "2019-09-17",
@@ -11,7 +11,7 @@ API management is the process of publishing, promoting and managing Application 
 
 A well-executed API strategy helps create more selling channels, better engage with customers, and offer more value to partners. This practice of doing better business through the effective delivery of APIs enables the API economy. API management uses new Web-Oriented Architecture (WOA) technologies such as REST, JSON, and OAuth instead of traditional Service-Oriented Architecture (SOA) technologies.
 
-Axway API Manager and API Gateway provide a comprehensive solution for creating, virtualizing, and managing APIs of varying complexity and capability. This includes the following approaches:
+The Axway AMPLIFY API-Management solution provide a comprehensive solution for creating, virtualizing, and managing APIs of varying complexity and capability. This includes the following approaches:
 
 * API registration — virtualizing existing REST APIs and SOAP web services in API Manager
 * API development — developing new REST APIs in Policy Studio to be exposed in API Manager (for example, virtualizing non-REST APIs)

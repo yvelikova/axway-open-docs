@@ -2,7 +2,7 @@
 "title": "Introduction to API Gateway",
 "linkTitle": "Introduction to API Gateway",
 "weight":"10",
-"date": "2019-11-07",
+"date": "2020-04-14",
 "description": "Axway API Gateway manages, delivers, and secures enterprise APIs, applications, and consumers."
 }
 
@@ -212,3 +212,27 @@ API Gateway satisfies audit requirements by enabling service transactions to be 
 ### Form factors
 
 API Gateway is available as software on Linux, or container deployment on Docker. A limited set of developer tools is available on Windows, but the API Gateway server does not support Windows.
+
+
+
+<!-- TODO Resolve duplication between apimgr_concepts topics (e.g. tools) and these topics -->
+
+Axway API Gateway provides powerful easy-to-use tools that enable you to develop, deploy, and manage API solutions.
+
+![API Gateway tools](/Images/docbook/images/concepts/api_server_tools_rs.png)
+
+## API Gateway
+
+The central API Gateway core component is described as follows:
+
+* Provides the runtime environment for exposing virtualized APIs and executing policies
+* Implemented using combination of native code for performance and Java for extensibility
+* Deployed and managed in a distributed environment of multiple servers providing scalability and availability
+* Available in the following form factors:
+    * Software — Linux
+    * Container deployment in Docker
+    * Axway Cloud
+
+In enterprise organizations, the API Gateway is typically deployed in the DMZ between the public Internet and private intranet.
+
+For more details, see [API Gateway architecture](/docs/apimgr_concepts/apigtw_architecture/).
