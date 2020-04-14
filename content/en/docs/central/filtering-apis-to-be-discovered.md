@@ -1,5 +1,8 @@
 ---
 title: Filtering APIs to be discovered
+linkTitle: Filtering APIs to be discovered
+draft: true
+weight: 80
 description: Learn how to set up tag-based condition expression(s) using the
   APIMANAGER_FILTER environment variable to discover APIs that could be added to
   AMPLIFY Central.
@@ -60,7 +63,7 @@ Logical operators are used for evaluating multiple conditions. These can be comb
 |----------|----------------------------------------------------------------------------|---|
 | &&       | Logical AND operator, returns true if conditions on both sides are true.   |   |
 | ||       | Logical OR operator, returns true if the condition on either side is true. |   |
-        
+      
 ## Comparative operators
 
 Comparative operators are used for comparing two values. These can be combined with logical operators and any of the above expressions.
