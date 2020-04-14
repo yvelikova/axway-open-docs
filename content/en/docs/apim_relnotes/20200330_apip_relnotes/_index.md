@@ -1,40 +1,48 @@
 ---
-title: API Portal 7.7 Mar20 Release Notes
-linkTitle: API Portal 7.7 Mar20
+title: API Portal 7.7 March 2020 Release Notes
+linkTitle: API Portal 7.7 March 2020
 no_list: true
 weight: 30
 date: 2020-03-11T00:00:00.000Z
-description: Learn about the new features and enhancements in this release of API Portal.
+description: Learn about the new features and enhancements in this update of API Portal.
 ---
-
-{{< alert title="Note" color="primary" >}}
-This release note will be continuously updated until the release date.
-{{< /alert >}}
 
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
 
-API Portal is available as a software installation or a virtualized deployment in Docker containers. For more information, see:
+## Installation
 
-* [Install API Portal](/docs/apim_installation/apiportal_install/)
-* [Upgrade API Portal to 7.7](/docs/apim_installation/apiportal_install/upgrade_automatic/)
-* [Deploy API Portal in containers](/docs/apim_installation/apiportal_docker/)
+API Portal is available as a software installation or a virtualized deployment in a Docker container. For more information, see the following options:
+
+* If you are installing API Portal for the first time using this update, see [Install API Portal](https://axway-open-docs.netlify.com/docs/apim_installation/apiportal_install/)
+* If you are already using API Portal (7.5.x, 7.6.x, 7.7.x) and want to install this update, see [Upgrade API Portal](/docs/apim_installation/apiportal_install/upgrade_automatic/)
+* If you want to deploy API Portal in Docker containers, see [Deploy API Portal in containers](/docs/apim_installation/apiportal_docker/)
 
 ## New features and enhancements
 
-The following new features and enhancements are available in this release.
+The following new features and enhancements are available in this update.
 
-<!-- Add the new features here -->
+### API Details page improvements
 
-## Limitations of this release
+* You can set a payload limit size to download the response as a file if the response exceeds the size you have set.
+* You can configure the colors of the different methods for both SOAP and REST APIs.
+* You can set a flag to include or exclude the value for the `externalDocs` attribute. The flag defaults to **On**. When the flag is enabled, the value for the externalDocs attribute is appended to the **Description** field and rendered as part of that field.
+* You can configure whether to show **Try it** for groups of HTTP methods per connected API Manager instance. This allows for finer grained control of the **Try it** functionality.
 
-This release has the following limitations:
+For more information, see [Customize API Catalog](https://axway-open-docs.netlify.com/docs/apim_administration/apiportal_admin/customize_apicatalog_overview/)
+
+## Limitations of this update
+
+This update has the following limitations:
 
 * API Portal 7.7.20200330 is compatible with API Gateway and API Manager 7.7.20200330 only.
-* Upgrade to API Portal 7.7.20200330 is supported from API Portal 7.7 only. To upgrade from earlier versions, you must first upgrade to API Portal 7.7.
-* The ready-made API Portal Docker image 7.7.20200330 is strictly for development environments only, and it is not recommended for use in production environments.  Upgrading from previous API Portal Docker image is not supported.
-* This release is not available as a virtual appliance, or as a managed service on Axway Cloud.
+* Upgrade to API Portal 7.7.20200330 is supported from API Portal 7.7.0 only. To upgrade from earlier versions (for example, 7.5.x, 7.6.x) you must first upgrade to API Portal 7.7.
+* The ready-made API Portal Docker image 7.7.20200330 is strictly for development environments only, and it is not recommended for use in production environments.
+
+    * It is not recommended to use the image in production environments because the image is built with CentOS as a base OS, and our Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issues have been resolved, but until we can ship a hardened image that passes our security concerns, we cannot advise customers to use this image in a production environment. Delivery a Docker image for production use is already planned in the [API Portal 2020 roadmap](https://community.axway.com/s/api-portal).
+* Upgrading from previous API Portal Docker image is not supported.
+* This update is not available as a virtual appliance or as a managed service on Axway Cloud.
 
 ## Removed features
 
@@ -60,6 +68,12 @@ Changing the API Portal language to Arabic (or any other right to left language)
 6. Click **Save** and click **Close** to close the template style.
 
 Related Issue: IAP-308
+
+### Sign in button is shown after user logs in to API Portal
+
+After user logs in to API Portal, the **Sign in** button is shown in the banner section instead of the **Explore** button.
+
+Related Issue: IAP-3037
 
 ## Documentation
 

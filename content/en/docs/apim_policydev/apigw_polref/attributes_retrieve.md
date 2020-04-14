@@ -1,19 +1,17 @@
 {
 "title": "Retrieve attribute filters",
-"linkTitle": "Retrieve attribute filters",
-"weight": 25,
-"date": "2019-10-17",
-"description": "Filters to retrieve message attributes."
+  "linkTitle": "Retrieve attribute filters",
+  "weight": 25,
+  "date": "2019-10-17",
+  "description": "Filters to retrieve message attributes."
 }
 
 <!-- TODO reorder based on usage from GA-->
 
 ## Retrieve attributes with JSON path filter
 
-JSON Path is an XPath like query language for JSON (JavaScript Object Notation) that enables you to select nodes in a JSON document. The **Retrieve Attributes with JSON Path**
+[JSON Path](http://code.google.com/p/jsonpath/) is an XPath like query language for JSON (JavaScript Object Notation) that enables you to select nodes in a JSON document. The **Retrieve Attributes with JSON Path**
 filter enables you to retrieve specified message attributes from a JSON message using JSON Path expressions.
-
-For more details on JSON Path, go to <http://code.google.com/p/jsonpath/>.
 
 ### Configure retrieve attributes with JSON path
 
