@@ -32,7 +32,7 @@ You can use the managedomain command to change the encryption passphrase for an 
 
 For more details on using `managedomain`, see [Managedomain command reference](/docs/apim_reference/managedomain_ref/).
 
-You must also re-encrypt Key Property Store tables after an encryption passphrase for an API Gateway group has been changed. You can do this using the `kpsadmin` tool.
+You must also re-encrypt Key Property Store tables after changing an encryption passphrase for an API Gateway group. You can do this using the [`kpsadmin` tool](/docs/apim_policydev/apigw_kps/how_to_use_kpsadmin_command/).
 
 ## Configure the Node Manager passphrase using `managedomain`
 
@@ -87,6 +87,11 @@ INSTALL_DIR/apigateway/groups/GROUP/conf/group.xml
 Alternatively, you can use a script to automatically provide the passphrase when the API Gateway server starts up. Perform the following steps:
 
 1. Open the following file in your API Gateway installation:
+
+    ```
+    INSTALL_DIR/apigateway/groups/GROUP/INSTANCE/conf/service.xml
+    ```
+
 2. Add the following to your `service.xml` file:
 
     ```
