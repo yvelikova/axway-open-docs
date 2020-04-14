@@ -94,7 +94,7 @@ Typically represents an internal unit of an enterprise. You may create a develop
 **Standard organizations**  
 These organizations are for consumption only, as they cannot own APIs. Users belonging to standard organizations are typically externally users that should be able to discover and consume APIs. These users are API-Service consumers.
 
-**Grant access**
+**Grant access**  
 Both organizations types can be used to manage access permissions to APIs. Organization administrators grant access to APIs for one, multiple or all organizations. As a result, a user will only see APIs his organization has access to.
 
 ### Create an organization
