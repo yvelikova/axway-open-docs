@@ -1,5 +1,6 @@
 ---
 title: Prepare AMPLIFY Central
+linkTitle: Prepare AMPLIFY Central
 description: >-
   Learn how to represent AWS API Gateway inside AMPLIFY Central by using an
   environment,
@@ -8,11 +9,10 @@ description: >-
 ---
 {{< alert title="Note" color="primary" >}}The AWS API Gateway connectivity to AMPLIFY Central is currently available in an alpha review mode; current functionality and configuration may change before release.   Therefore, this connectivity is available for trial use only and is not supported for production API management or connectivity.{{< /alert >}}
 
-## Before you start 
+## Before you start
 
 * Read AMPLIFY Central AWS API Gateway connected overview
 * Verify that @axway/amplify-central-cli version is at minimum 0.1.3
-
 
 ## Objectives
 
@@ -28,9 +28,15 @@ You can create your environment using either the UI or CLI.
 
 ### Create environment using the UI
 
-Create an environment in **AMPLIFY Central UI > Topology > Environments > create** and give it a relevant name. It is not necessary to have a real environment at this point, but it is important to have an environmentID. You can find this ID in your environment details in the UI. 
+Create an environment in **AMPLIFY Central UI > Topology > Environments > create** and give it a relevant name. It is not necessary to have a real environment at this point, but it is important to have an environmentID. You can find this ID in your environment details in the UI.
 
-{{< alert title="Example" color="primary" >}}https:/<AMPLIFY Central URL>/topology/environments/**e4e08e926cb4b22d016cb5f1f0a20019**. **Bold** characters are your environmentID.{{< /alert >}}
+Example:
+
+```
+https:/<AMPLIFY Central URL>/topology/environments/**e4e08e926cb4b22d016cb5f1f0a20019**
+```
+
+**Bold** characters are your environmentID.
 
 ### Create environment using the CLI
 
@@ -50,7 +56,6 @@ Options:
 
 For information, see Manage an environment using AMPLIFY CLI .
 
-
 ## Create a Service Account
 
 In order to secure the connection between agents and AMPLIFY Central, a Service Account is required.
@@ -59,12 +64,12 @@ A Service Account authenticates your agents without requiring any user informati
 
 1. Generate a private and public key pair:
 
-```
-openssl genpkey -algorithm RSA -out ./private_key.pem -pkeyopt rsa_keygen_bits:2048
-openssl rsa -pubout -in ./private_key.pem -out ./public_key.pem
-openssl rsa -pubout -in ./private_key.pem -out ./public_key.der -outform der(optional) base64 ./public_key.der &gt; ./public_key
-```
+    ```
+    openssl genpkey -algorithm RSA -out ./private_key.pem -pkeyopt rsa_keygen_bits:2048
+    openssl rsa -pubout -in ./private_key.pem -out ./public_key.pem
+    openssl rsa -pubout -in ./private_key.pem -out ./public_key.der -outform der(optional) base64 ./public_key.der &gt; ./public_key
+    ```
 
-{{< alert title="Note" color="primary" >}}The public key can be either of type .der format or of type base64 encoded of the .der format.{{< /alert >}}
+    {{< alert title="Note" color="primary" >}}The public key can be either of type .der format or of type base64 encoded of the .der format.{{< /alert >}}
 
 2. Create a new Service Account user in AMPLIFY Central using the key pair from above. For additional information, see Manage an API proxy using AMPLIFY CLI.
