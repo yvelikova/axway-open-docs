@@ -8,7 +8,11 @@
 
 An API management solution must consider both API consumers and API service providers and how they should interact with the platform.
 
-### Self-service is the key to success
+### Self-service is the key
+
+API management is the process of publishing, promoting and managing Application Programming Interfaces (APIs) in a secure, scalable environment. It includes the creation of API consumer support resources that define and document APIs to facilitate easy consumption. API management supports business initiatives to enable easy interaction with customers and partners.
+
+A well-executed API strategy helps create more selling channels, better engage with customers, and offer more value to partners. This practice of doing better business through the effective delivery of APIs enables the API economy. API management uses new Web-Oriented Architecture (WOA) technologies such as REST, JSON, and OAuth instead of traditional Service-Oriented Architecture (SOA) technologies.
 
 The role of central IT with specialists in API security should not be responsible for each API, but should develop global security policies that are utilized by each API.
 
@@ -47,6 +51,16 @@ In order to implement the desired API design, one can orchestrate a series of te
 In addition, a use case in the development area is a kind of integration flow to define, which includes other systems. A good example is to send a notification (teams, slack, mail, push message, etc.) when an order is received.
 
 To learn more about API-Builder click [here](../api_mgmt_components/apibuilder/)
+
+Another approach to developing or integrating into back-end legacy applications is the use of policies. For example, this includes exposing a SOAP Web service as a REST API or implementing an OAuth client. API development based on policies is performed by a policy developer using Policy Studio.
+
+The REST API development wizard is provided in the Policy Studio tool. This enables policy developers to create a REST API, and route it to a pre-built policy (for example, which connects to a back-end SOAP Web service, database, or cloud application).
+
+APIs developed using the REST API development wizard are then registered (by importing) as a back-end APIs in API Manager. This means that there is a single consistent approach for registering APIs, virtualizing as front-end APIs, and managing how APIs are consumed in API Manager, regardless of the back-end API.
+
+Registered APIs are virtualized by API Gateway, which protects the back-end services, and makes the APIs available for management and consumption in API Manager, and for consumption in the self-service API Portal.
+
+For more details on creating APIs using the REST API development wizard, see [Develop REST APIs in Policy Studio](/docs/apim_policydev/apigw_web_services/register_rest_apis/).
 
 ## Configure the API
 

@@ -6,6 +6,26 @@
 "description": "Axway API Gateway manages, delivers, and secures enterprise APIs, applications, and consumers."
 }
 
+## API Gateway is core infrastructure
+
+API Gateway does for APIs what the application server does for applications. This API Gateway role as core application infrastructure is shown as follows:
+
+![API Gateway core application infrastructure](/Images/docbook/images/concepts/api_server_core_app.png)
+
+The API Gateway can be seen as the API runtime environment, which provides core services such as the following:
+
+* Security (for example, authentication and authorization)
+* Connectivity with a range of different protocols
+* Virtualization
+* Scalability and elasticity
+* High availability
+* Manageability (for example, using API Gateway Manager)
+* Development simplicity
+
+Because the API Gateway provides this core API infrastructure, developers can focus on providing the application logic. They no longer need to build these services into their application, and can leverage the core infrastructure provided by the API Gateway.
+
+Previously, the API was not treated as a first class citizen, and in many cases was part of the application interface. However, the API Gateway sees the API as a first class artifact, with its own particular constructs, and its own runtime environment. The API Gateway provides all of the same benefits for the API that the application server provides for the application. In this way, it is important to distinguish between the API and the application as two distinct entities.
+
 The following overview diagram shows the range of transports and protocols supported by API Gateway on the left, and the services that it provides on the right:
 
 ![API Gateway features](/Images/docbook/images/concepts/api_server.png)
@@ -67,26 +87,6 @@ The API administration features include the following:
 * Managing JMS-based messaging
 
 For more details, see [API Gateway features](/docs/apimgr_concepts/apigtw_introduction/#api-gateway-features).
-
-## API Gateway is core infrastructure
-
-API Gateway does for APIs what the application server does for applications. This API Gateway role as core application infrastructure is shown as follows:
-
-![API Gateway core application infrastructure](/Images/docbook/images/concepts/api_server_core_app.png)
-
-The API Gateway can be seen as the API runtime environment, which provides core services such as the following:
-
-* Security (for example, authentication and authorization)
-* Connectivity with a range of different protocols
-* Virtualization
-* Scalability and elasticity
-* High availability
-* Manageability (for example, using API Gateway Manager)
-* Development simplicity
-
-Because the API Gateway provides this core API infrastructure, developers can focus on providing the application logic. They no longer need to build these services into their application, and can leverage the core infrastructure provided by the API Gateway.
-
-Previously, the API was not treated as a first class citizen, and in many cases was part of the application interface. However, the API Gateway sees the API as a first class artifact, with its own particular constructs, and its own runtime environment. The API Gateway provides all of the same benefits for the API that the application server provides for the application. In this way, it is important to distinguish between the API and the application as two distinct entities.
 
 ## API Gateway user roles
 
