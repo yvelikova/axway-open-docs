@@ -1,7 +1,7 @@
 ---
 title: Add your environment to AMPLIFY Central
 linkTitle: Add your environment to AMPLIFY Central
-weight: 9
+weight: 90
 date: 2020-03-18
 description: Learn how to add your environments to AMPLIFY Central so that you can manage your microservices and any related APIs they expose.
 ---

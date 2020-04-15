@@ -289,7 +289,14 @@ const collections = [{
   name: 'central',
   label: 'AMPLIFY Central documentation',
   label_singular: 'page in AMPLIFY Central section',
-  description: 'All pages relating to AMPLIFY Central and AMPLIFY Unified Catalog.',
+  description: 'All pages relating to AMPLIFY Central.',
+  format: 'frontmatter',
+}, {
+  ...docsDefaults('central/catalog', 'central/catalog'),
+  name: 'catalog',
+  label: 'AMPLIFY Unified Catalog documentation',
+  label_singular: 'page in AMPLIFY Unified Catalog',
+  description: 'All pages relating to AMPLIFY Unified Catalog.',
   format: 'frontmatter',
 }, {
   ...docsDefaults('shared_services', 'shared_services'),
