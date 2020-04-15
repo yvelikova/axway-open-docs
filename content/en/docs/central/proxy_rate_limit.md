@@ -1,7 +1,7 @@
 ---
 title: Rate limit an API
 linkTitle: Rate limit an API
-weight: 5
+weight: 80
 date: 2019-09-19
 description: Learn how to apply a rate limit configuration to your API.
 ---

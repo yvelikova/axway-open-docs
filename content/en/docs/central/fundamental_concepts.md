@@ -1,7 +1,7 @@
 ---
 title: AMPLIFY Central concepts
 linkTitle: Concepts
-weight: 2
+weight: 20
 date: 2019-07-30T00:00:00.000Z
 description: Learn the fundamental concepts you will encounter in AMPLIFY Central.
 ---

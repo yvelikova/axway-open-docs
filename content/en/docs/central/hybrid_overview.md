@@ -1,7 +1,7 @@
 ---
 title: AMPLIFY Central mesh governance overview
 linkTitle: Mesh governance overview
-weight: 70
+weight: 120
 date: 2019-07-30
 description: Understand what mesh governance is, what a hybrid environment is, and how you can manage the APIs and microservices in a hybrid environment from AMPLIFY Central.
 ---

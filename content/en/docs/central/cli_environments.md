@@ -1,7 +1,7 @@
 ---
 title: Manage an environment using AMPLIFY CLI
 linkTitle: Manage an environment using AMPLIFY CLI
-weight: 7
+weight: 110
 date: 2019-12-20
 description: Learn how your DevOps service can use AMPLIFY CLI to manage your environments.
 ---

@@ -61,8 +61,8 @@ Logical operators are used for evaluating multiple conditions. These can be comb
 
 | Operator | Description                                                                |   |
 |----------|----------------------------------------------------------------------------|---|
-| &&       | Logical AND operator, returns true if conditions on both sides are true.   |   |
-| ||       | Logical OR operator, returns true if the condition on either side is true. |   |
+| `&&`      | Logical AND operator, returns true if conditions on both sides are true.   |   |
+| `\|\|`       | Logical OR operator, returns true if the condition on either side is true. |   |
 
 ## Comparative operators
 
@@ -70,5 +70,5 @@ Comparative operators are used for comparing two values. These can be combined w
 
 | Operator | Description                                                                                                    |   |
 |----------|----------------------------------------------------------------------------------------------------------------|---|
-| ==       | Equal to operator, returns true if values on both sides are equal.                                             |   |
-| !=       | Not equal to operator, returns true if the value on the left side is not equal to the value on the right side. |   |
+| `==`       | Equal to operator, returns true if values on both sides are equal.                                             |   |
+| `!=`       | Not equal to operator, returns true if the value on the left side is not equal to the value on the right side. |   |
