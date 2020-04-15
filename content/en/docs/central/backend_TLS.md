@@ -1,7 +1,7 @@
 ---
 title: Back-end TLS authentication
 linkTitle: Back-end TLS authentication
-weight: 5
+weight: 70
 date: 2019-10-16
 description: Learn how to configure TLS for requests to your back-end API.
 ---

@@ -2,7 +2,8 @@
 title: Connect API Manager
 linkTitle: Connect API Manager
 draft: true
-weight: 73
+no_list: true
+weight: 130
 description: Understand why you would want a connected / managed environment for
   AMPLIFY Central and Axway API Manager. Learn how you can govern and monitor
   the creation / deployment / publishing and subscriptions of AMPLIFY Central

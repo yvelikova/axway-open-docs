@@ -1,7 +1,7 @@
 ---
 title: Get started with AMPLIFY CLI
 linkTitle: Get started with AMPLIFY CLI
-weight: 6
+weight: 90
 date: 2019-07-30
 
 description: Learn how to install AMPLIFY CLI and authorize your DevOps service to use the AMPLIFY Central DevOps APIs by way of AMPLIFY CLI.

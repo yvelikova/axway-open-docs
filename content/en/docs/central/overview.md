@@ -1,7 +1,7 @@
 ---
 title: AMPLIFY Central overview
 linkTitle: Overview
-weight: 1
+weight: 10
 date: 2019-07-30
 description: Deploy and secure your services in any environment (for example, cloud, on-premise, and so on) and govern your APIs through a central platform that allows you to integrate your services safely and easily with both internal and external consumers.
 ---
