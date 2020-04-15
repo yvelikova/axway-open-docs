@@ -1,7 +1,7 @@
 {
     "title": "API management use cases",
     "linkTitle": "Use cases",
-    "weight": "3",
+    "weight": "20",
     "date": "2019-09-17",
     "description": "Learn about the primary use cases for API management, including use cases for managing cloud-based applications."
 }

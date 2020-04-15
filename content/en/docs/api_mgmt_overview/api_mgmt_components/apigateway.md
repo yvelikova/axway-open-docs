@@ -88,35 +88,6 @@ The API administration features include the following:
 
 For more details, see [API Gateway features](/docs/apimgr_concepts/apigtw_introduction/#api-gateway-features).
 
-## API Gateway user roles
-
-API Gateway provides the following main user roles:
-
-![API Gateway user roles](/Images/docbook/images/concepts/api_server_roles.png)
-
-These user roles are described as follows:
-
-**Policy developer**\
-
-This user role virtualizes APIs and develops policies for APIs. Policies are rules used to govern or manage an API (for example, for security, integration, SLA monitoring, or transformation). This is a technical developer role.
-
-**KPS administrator**\
-
-This is a business or operational role managing dynamic policy configuration data in a Key Property Store (KPS). A KPS is used to store parameters that are passed into policies at runtime (for example, authorization levels, quotas, or customer details). This means that these details do not need to be configured by the policy developer.
-
-**API Gateway administrator**\
-
-This role monitors, manages, and troubleshoots the API Gateway. It has full administrative privileges, including deployment of API Gateway configurations.
-This is the traditional system administration or operational role for the API Gateway. It involves keeping the API Gateway running, monitoring its operation, managing any settings, and performing any troubleshooting. This user typically works in an upstream staging or production environment instead of in a development environment.
-
-**API Gateway operator**\
-
-This role monitors the API Gateway. It has read-only administrative capability. This is typically a production operations role.
-
-**Deployer**\
-
-This role deploys API Gateway configurations using scripts. It has a restricted deployment role, and is typically used in production environments.
-
 ## API Gateway features
 
 API Gateway provides a comprehensive platform for managing, delivering, and securing APIs. It provides integration, acceleration, governance, and security for Web API and SOA-based systems. This section describes the high-level functionality available in API Gateway.

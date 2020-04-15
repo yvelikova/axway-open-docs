@@ -99,6 +99,8 @@ Furthermore, it is possible to extend this pipeline with additional customer-spe
 And last but not least, it increases the acceptance of API service providers as they can focus on developing services instead of registering APIs.
 Typical systems and tools for pipeline based integration are Jenkins, Bamboo, Maven and possibly an artifact repository like Nexus or Artifactory.
 
+To learn more about API-Design with Stoplight click [here](../api_mgmt_components/pipeline/)
+
 ## Govern and monitor
 
 Ist eine API in Produktion wird es wichtig diese zu überwachen.

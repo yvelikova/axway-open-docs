@@ -12,7 +12,7 @@ The API Manager, along with the API Gateway, is the core component of the Axway 
 
 The main API Manager features are:
 
-* API registration - Adding APIs to the API Catalog. For details, see [API Regsitration](#api-regsitration)
+* API registration - Adding APIs to the API Catalog. For details, see [API Registration](#api-registration)
 * Partner organization management - API Manager includes partner-based management of API consumers that browse the API Catalog and client applications that use the APIs. Delegated partner administration enables partner organizations to manage their own API consumers, easing the management of large partners, or a large number of partners. A wide range of client application credentials are supported, including OAuth 2.0 and API keys.
 * Policy management - API Manager enables you to apply authorization and quota policies to APIs at the partner and client application levels. Custom policies can also be developed in Policy Studio, and applied to APIs.
 * API alerting - API Manager enables you to configure API, partner, policy and runtime events to generate alerts that trigger governance processes. For example, this includes sending an email notification or starting application workflows.
@@ -46,30 +46,37 @@ Policy Studio includes API Management filters that provide read-only access to t
 
 This REST-based API provides the underlying capabilities supporting API Manager. This API enables the management of the data in the Client Registry and the browsing of registered APIs, with API documentation returned in Swagger format. The API Manager API enables the development of custom API consumer portals and integration with external partner management systems.
 
-## API registration
+The following diagram shows a simplified API management architecture:
+
+![API management simplified architecture](/Images/docbook/images/api_mgmt/api_mgmt_architecture_simple.png)
+
+## API registration and lifecycle management in API Manager
 
 API management focuses on registering existing REST APIs, and managing their consumption by customers and partners to support their business objectives. REST APIs are registered using the API Manager web console. REST APIs are managed directly by API Manager using authentication, authorization, and quota policies defined in the client registry. API administrators can use API Manager to manage API consumption, and API consumers can consume the virtualized APIs using API Manager, or using a customized self-service API Portal.
+
+API Manager enables you to register APIs and manage their lifecycle from registration through publishing and retirement. Delegated API registration enables different teams of API owners to register and test their own APIs in isolation prior to publishing to other organizations in the API Catalog.
 
 API management is performed by an *API owner* (a technical business or IT operational role). Registration of REST APIs in API Manager, and application of policies to those APIs, is a configuration task rather than a development task. It can be performed on a running API Gateway in a production environment. This approach enables you to manage and promote APIs more dynamically, more rapidly, and with less overhead than typical IT projects.
 
 API Manager provides a web-based interface that enables API owners to register existing back-end REST APIs, apply standard policies, and virtualize them on API Gateway as public front-end APIs. The APIs are immediately available for management in API Manager, and for consumption in API Manager, or in a self-service API Portal.
 
-The following diagram shows a simplified API management architecture:
+In API Manager, the lifecycle of an API includes the following states:
 
-![API management simplified architecture](/Images/docbook/images/api_mgmt/api_mgmt_architecture_simple.png)
+1. Unpublished - The API is registered and tested in isolation in an API owner organization. The API is available to the API administrator and API owners who are members of that organization. The API can be edited, or be moved to the published state, or deleted. These actions can only be performed by the API owner or the API administrator.
 
-The Axway AMPLIFY API-Management solution provide a comprehensive solution for creating, virtualizing, and managing APIs of varying complexity and capability. This includes the following approaches:
+    Unpublished APIs are displayed in the API Catalog view to users in the same organization. The users in this organization are the API owners and developers on the same team working on these APIs. However, an unpublished API is not displayed to users in other organizations. The API must first be published, and then that organization must be authorized to access the API. The API is then displayed in the API Catalog for users in that organization.
 
-* API registration — virtualizing existing REST APIs and SOAP web services in API Manager
-* API development — developing new REST APIs in Policy Studio to be exposed in API Manager (for example, virtualizing non-REST APIs)
+    All APIs (published and unpublished) are displayed in the API Catalog for the API administrator.
 
-## API Lifecycle-Management within the API-Manager
+2. Published - When an API is ready to be consumed by other organizations, it is published in the API Catalog by the API owner. The API administrator must then approve the API as the final step to publish to other organizations in the API Catalog. When the API is published, the API administrator can authorize other organizations to access the API. This displays the API in API Manager and API Portal to API consumers who are members of the authorized organization.
 
-The following diagram summarizes the API lifecycle in API-Manager:
+    When an API is published, only the API administrator can make changes. The published API can only be deprecated or unpublished, and cannot be deleted. Unpublishing an API stops client applications in other organizations using the API. A published API cannot be edited, and must first be unpublished. However, the API administrator can edit the API documentation of a published API. This allows changes in the API documentation without impacting the API availability.
 
-![API management lifecycle](/Images/docbook/images/api_mgmt/api_mgmt_lifecycle.png)
+3. Deprecated - The published API in API Manager is flagged with a date when it will be unpublished in the API Catalog, and is no longer available to client applications in other organizations. The retirement date is displayed to API consumers in API Manager and API Portal. Retiring the API is achieved by unpublishing the API in the API Catalog. Only a published API can be deprecated and unpublished. When the API is unpublished, it is then available for API owners to edit.
 
-The API management lifecycle is described in the diagram as follows:
+    When an API is deprecated, it is still in the published state, and clients can continue to discover and use the API. This gives API consumers time to port their existing applications to adopt a newer version of the API. You can undeprecate an API by selecting the undeprecate option, which removes the retirement date flag in the API Catalog.
+
+The following are the very high livel task to do in API-Manager.
 
 ### 1 - API registration
 
