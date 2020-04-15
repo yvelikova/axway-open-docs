@@ -6,7 +6,7 @@
     "description": "Create or import a back-end REST API in API Manager."
 }
 
-API owners can use the API Manager web interface to register back-end REST APIs. You can manually create a new back-end API, or import a definition for an existing API (for example, in Swagger, OAS3 or WSDL format). Using API Manager to register REST APIs means that you can register APIs in a browser, in multiple formats, without any service outage.
+API owners can use the API Manager web interface to register back-end REST APIs. You can manually create a new back-end API, or import a definition for an existing API (for example, in Swagger, OAS3, or WSDL format). Using API Manager to register REST APIs means that you can register APIs in a browser, in multiple formats, without any service outage.
 
 When a back-end API is registered, you can then virtualize it as a publicly exposed front-end API. Registered and virtualized APIs are governed by the API Gateway using configured policies. API owners and API administrators can use API Manager to manage registered APIs, and API consumers can use API Manager or API Portal to consume virtualized APIs in their applications.
 
