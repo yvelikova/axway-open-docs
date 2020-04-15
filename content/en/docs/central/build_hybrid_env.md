@@ -1,7 +1,7 @@
 ---
 title: Build your hybrid environment
 linkTitle: Build your hybrid environment
-weight: 8
+weight: 80
 date: 2019-07-30
 description: Learn how to build a basic Amazon EC2 private cloud hybrid environment and add the required tools to enable you to access and manage it remotely from a client system.
 ---
