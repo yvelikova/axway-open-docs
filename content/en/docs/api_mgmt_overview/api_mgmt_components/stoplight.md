@@ -13,18 +13,18 @@ Following the API First approach, it is important to have a powerful API design 
 
 ## Stoplight Studio
 
-- Form-Based or Code-Based OpenAPI 3.0 and 2.0 Editor
-- Available as Rich Client (Windows, Mac & Linux) or Web-based
-- Fully based on Git - Easy integration into 
-- API Design, File and Documentation View
-- Integrated Mock Service based on ![Prism](https://stoplight.io/mocking)
+* Form-Based or Code-Based OpenAPI 3.0 and 2.0 Editor
+* Available as Rich Client (Windows, Mac & Linux) or Web-based
+* Fully based on Git - Easy integration into
+* API Design, File and Documentation View
+* Integrated Mock Service based on ![Prism](https://stoplight.io/mocking)
 
 ![Entire API-Lifecycle](/Images/overview/stoplight_studio.png)
 
-To get a full overview about what Stoplight Studio provides please visit: https://stoplight.io/design/
+To get a full overview about what Stoplight Studio provides please visit: ![http://stoplight.io](https://stoplight.io/design)
 
 A video illustrating how to use Stoplight and how to push an API-Design into the platform:
-https://youtu.be/7olnV8rR1xc?t=610
+![https://youtu.be/7olnV8rR1xc?t=610](https://youtu.be/7olnV8rR1xc?t=610)
 
 ## Integrate into the Axway API-Management platform
 
@@ -33,10 +33,10 @@ Besides the possibility of manual transfer, i.e. importing the OpenAPI specifica
 
 Since Stoplight creates standard OpenAPI (Swagger) files under the hood, they can be directly transferred to the API management platform.
 As an API designer you have the option of manual import of the OpenAPI specification via the API Manager Web UI, but direct integration via: swagger-promote is preferable because it makes the process fast, easy and repeatable.
-In addition, Stoplight Studio works on the basis of a checked-out git repository, which allows a fully automatic coupling with CI/CD-System. 
+In addition, Stoplight Studio works on the basis of a checked-out git repository, which allows a fully automatic coupling with CI/CD-System.
 
 The following diagram shows simplified integration between Stoplight and the Axway API management solution:
 ![Entire API-Lifecycle](/Images/overview/stoplight-integration-overview.png)
 
 The following video demonstrates the possible integration and how the process looks like:
-https://youtu.be/ddOhO_BmVeE
+![https://youtu.be/ddOhO_BmVeE](https://youtu.be/ddOhO_BmVeE)
