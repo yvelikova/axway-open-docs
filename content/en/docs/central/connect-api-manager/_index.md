@@ -9,13 +9,8 @@ description: Understand why you would want a connected / managed environment for
   the creation / deployment / publishing and subscriptions of AMPLIFY Central
   and Axway API Manager hosted APIs in one central location.
 ---
-<!--StartFragment-->
 
-<!--StartFragment-->
-
-The Axway API Manager connectivity to AMPLIFY Central is currently available in an alpha review mode; current functionality and configuration may change before release. Therefore, this connectivity is available for trial use only and is not supported for production API management or connectivity.
-
-<!--EndFragment-->
+{{< alert title="Note" color="primary" >}}The Axway API Manager connectivity to AMPLIFY Central is currently available in an alpha review mode; current functionality and configuration may change before release. Therefore, this connectivity is available for trial use only and is not supported for production API management or connectivity.{{< /alert >}}
 
 ## What is Axway API Manager connected?
 
@@ -32,11 +27,11 @@ The Discovery Agent is used to discover new published API. The Discovery Agent p
 
 The Discovery Agent discovers APIs that have PassTrough / API Key / OAuth security.
 
-The related APIs are published to AMPLIFY Central in either disconnected mode (catalog item publication) or connected mode (API Service publication). For additional information, see*Discovery Agent*on page 1.
+The related APIs are published to AMPLIFY Central in either disconnected mode (catalog item publication) or connected mode (API Service publication). For additional information, see [Discovery Agent](/docs/central/connect-api-manager/deploy-your-agents/#discovery-agent).
 
-Although both publication modes are functional, APIs cannot be fully managed from AMPLIFY Central before Q3-2020.
+{{< alert title="Note" color="primary" >}}Although both publication modes are functional, APIs cannot be fully managed from AMPLIFY Central before Q3-2020.{{< /alert >}}
 
-![Image](../Resources/Images/ServiceDiscovery.png)
+![Service Discovery](/Images/central/ServiceDiscoveryAPIM.png)
 
 ### Traceability Agent
 
@@ -44,7 +39,7 @@ The Traceability Agent is used to filter the logs and prepare the transaction ev
 
 ## Minimum requirements
 
-* An AMPLIFY Central Service Account. See <https://docs.axway.com/bundle/axway-open-docs/page/docs/central/cli_proxy_flow/index.html>
+* An AMPLIFY Central Service Account. See [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_proxy_flow/)
 * Axway API Manager / Axway API Gateway versions 7.6.2 SPx, 7.7 SPx or 7.8
 
 ## Connect Axway API Manager to AMPLIFY Central quickstart
@@ -52,7 +47,7 @@ The Traceability Agent is used to filter the logs and prepare the transaction ev
 1. Create an environment object in AMPLIFY Central using either the UI or CLI.
 2. Generate a key pair.
 
-   1. Create a new Service Account user in AMPLIFY Central using the key pair. see [Manage an API proxy using AMPLIFY CLI](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/cli_proxy_flow/index.html).
+   1. Create a new Service Account user in AMPLIFY Central using the key pair. see [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_proxy_flow/).
 3. Create a Discovery Agent environment file.
 
    1. Move key files to a keys directory.
@@ -63,5 +58,3 @@ The Traceability Agent is used to filter the logs and prepare the transaction ev
    1. Move key files to a keys directory.
    2. Log into the Artifactory Repository and pull the latest binary of the Traceability Agent.
    3. Start the Traceability Agent.
-
-<!--EndFragment-->
