@@ -27,7 +27,7 @@ If you want to learn more about good API design, we recommend for example the bo
 These Value-APIs usually start with an API-First approach and not with the implementation of an API. API-First means that the API interface, i.e. the design of the API, is first defined and this design is the starting point for further steps, such as mocking and of course the implementation of the API.
 For API design, Axway works with its partner Stoplight, which offers a form-based API design editor for both OpenAPI 2.0 and 3.0. Enterprise features for tracking and approving changes in larger teams.
 
-To learn more about API-Design with Stoplight click [here](./api_mgmt_components/stoplight/)
+To learn more about API-Design with Stoplight click [here](../api_mgmt_components/stoplight/)
 
 ## Mock
 
