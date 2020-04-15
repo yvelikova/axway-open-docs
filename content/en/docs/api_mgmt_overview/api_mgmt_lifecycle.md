@@ -36,6 +36,8 @@ Mocks help to separate the API service provider from the service consumer side a
 While service providers are still busy implementing a service, they can provide a mock, allowing service consumers to advance the implementation of the client.
 In addition, mocks help to improve the feedback loop, as potential consumers can now provide information about the payload to optimize it for different application purposes.
 
+To learn more about API-Builder click [here](../api_mgmt_components/apibuilder/)
+
 ## Develop & Integrate
 
 The API management platform is not responsible for the actual development of APIs, as these are provided by backend applications.
@@ -43,6 +45,8 @@ Sometimes, however, backend APIs are too technical to provide the desired value,
 Therefore, in this context, the term "develop" is used to describe, for example, the orchestration or optimization of APIs.
 In order to implement the desired API design, one can orchestrate a series of technical APIs or cloud applications. Or optimize the payload depending on the client. Mobile application vs. single page application would be an example.
 In addition, a use case in the development area is a kind of integration flow to define, which includes other systems. A good example is to send a notification (teams, slack, mail, push message, etc.) when an order is received.
+
+To learn more about API-Builder click [here](../api_mgmt_components/apibuilder/)
 
 ## Configure the API
 
@@ -60,18 +64,18 @@ In the back of your mind you should keep in consideration that changes to the AP
 
 ## API-Staging
 
-Kunden trennen Systeme in Zonen für Development, Pre-Produktion, Produktion, usw. auf.
-Auch die API-Management Plattform wird jeweils in jede Zone deployed. Wie jede andere Anwendung werden auch APIs in der niedrigsten Development-Zone entwickelt, getestet und dann in die höhreren Zone deployed.
-Das heißt es braucht ein Deployment Konzept welches nach Möglichkeit automatisiert werden sollte, um die APIs und auch Policies von einer Stage zur nächsten zu promoten.
-Wie der genaue Prozess eingerichtet wird, hängt natürlich von den Anforderungen des Unternehmens ab. Zum Beispiel um Release-Artefakte verwenden werden sollen oder nicht. Oder welche Personenkreise welche Verantwortlichen haben.
-In der AMPLIFY Axway API-Management Lösung gibt es zwei Deployment Artefakte:
+Customers divide systems into zones for development, pre-production, production, etc.
+The API management platform is also deployed in each zone. Like any other application, APIs are developed and tested in the lowest development zone and then deployed to the higher zone.
+This means that a deployment concept is needed which should be automated if possible to promote the APIs and policies from one stage to the next.
+How the exact process is set up depends of course on the requirements of the company. For example, to use release artifacts or not. Or which groups of people have which responsibilities.
+There are two deployment artifacts in the AMPLIFY Axway API management solution:
 **Policies**
-allgemein gültige Policies die von verschiedenen APIs referenziert werden
-Diese Policies bilden Security-, Routing-, Integrations- und weitere Use-Cases ab. Sie werden durch Policy-Developer mit Hilfe des Policy-Studios entwickelt und haben eine eigene Deployment-Pipeline. Sie werden relativ selten deployed.
+generally valid policies that are referenced by different APIs
+These policies map security, routing, integration and other use cases. They are developed by policy developers using the Policy Studio and have their own deployment pipeline. They are deployed relatively rarely.
 **API**
-Die API definiert sich aus der API-Spezifkation und der API-Konfiguration. Wird von Service-Providern entwickelt und jeweils als einzelne Einheit deployed.
+The API is defined by the API specification and the API configuration. It is developed by service providers and deployed as a single unit.
 
-Beide Deployment-Einheiten müssen das Staging Konzept unterstützen, da gewisse Bestandteile (z.B. Passörter, Hostnamen, etc.) pro Stage unterschiedlich sind.
+Both deployment units must support the staging concept, since certain components (for example, passwords, host names, and so on) are different for each stage.
 
 ## Pipeline based integration
 
