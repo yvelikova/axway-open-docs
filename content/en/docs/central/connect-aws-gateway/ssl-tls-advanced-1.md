@@ -1,5 +1,8 @@
 ---
 title: SSL / TLS advanced
+linkTitle: SSL / TLS advanced
+draft: true
+weight: 50
 description: By default, the AWS API Gateway connectivity to AMPLIFY Central is
   SSL secured using TLS1.2 and the appropriate secured default Cipher Suite.
   However, you can choose to change the default to use different variable values
