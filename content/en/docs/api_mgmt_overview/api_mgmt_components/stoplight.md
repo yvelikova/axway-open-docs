@@ -8,7 +8,7 @@
 
 # API-Design and Prototype with Stoplight
 
-For API design, Axway & ![Stoplight](https://stoplight.io) work in partnership. The following page gives an overview of the possibilities Stoplight offers and how it can be integrated into the Axway API management platform.
+For API design, Axway & [Stoplight](https://stoplight.io) work in partnership. The following page gives an overview of the possibilities Stoplight offers and how it can be integrated into the Axway API management platform.
 Following the API First approach, it is important to have a powerful API design tool that can be used by non-technical people to develop OpenAPI 2.0 / 3.0 API definitions.
 
 ## Stoplight Studio
@@ -17,11 +17,11 @@ Following the API First approach, it is important to have a powerful API design 
 * Available as Rich Client (Windows, Mac & Linux) or Web-based
 * Fully based on Git - Easy integration into
 * API Design, File and Documentation View
-* Integrated Mock Service based on ![Prism](https://stoplight.io/mocking)
+* Integrated Mock Service based on [Prism](https://stoplight.io/mocking)
 
 ![Entire API-Lifecycle](/Images/overview/stoplight_studio.png)
 
-To get a full overview about what Stoplight Studio provides please visit: ![http://stoplight.io](https://stoplight.io/design)
+To get a full overview about what Stoplight Studio provides please visit: [https://stoplight.io](https://stoplight.io/design)
 
 A video illustrating how to use Stoplight and how to push an API-Design into the platform:
 ![https://youtu.be/7olnV8rR1xc?t=610](https://youtu.be/7olnV8rR1xc?t=610)
@@ -39,4 +39,4 @@ The following diagram shows simplified integration between Stoplight and the Axw
 ![Entire API-Lifecycle](/Images/overview/stoplight-integration-overview.png)
 
 The following video demonstrates the possible integration and how the process looks like:
-![https://youtu.be/ddOhO_BmVeE](https://youtu.be/ddOhO_BmVeE)
+[https://youtu.be/ddOhO_BmVeE](https://youtu.be/ddOhO_BmVeE)
