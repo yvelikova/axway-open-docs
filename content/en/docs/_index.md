@@ -33,6 +33,14 @@ Here are some suggestions to get started:
 * [Get started with AMPLIFY CLI](/docs/central/cli_getstarted/)
 * [AMPLIFY Unified Catalog](/docs/central/catalog/)
 
+## AMPLIFY Streams documentation
+
+Browse all documentation for AMPLIFY Streams under the top-level [AMPLIFY Streams](/docs/streams/) item in the left navigation menu.
+
+Here are some suggestions to get started:
+
+* [Get started with AMPLIFY Streams](/docs/streams/quickstart/)
+
 ## AMPLIFY Shared Services documentation
 
 Browse all documentation for AMPLIFY Shared Services under the top-level [AMPLIFY Shared Services](/docs/shared_services/) item in the left navigation menu.
