@@ -17,7 +17,7 @@ AMPLIFY API Management provides a number of built-in policies that you can apply
 
 In Policy Studio, a policy is assembled by selecting filters from the filter palette on the right and dragging and dropping them onto the policy canvas to be configured. The configured filters are then connected to a policy using success and failure paths to trace a path through a set of filters and create sophisticated rules. Some filters require configuring additional resources or settings before the filters can be used. You can find these additional resources and settings from the node tree on the left.
 
-To get started with policies please read: (Get started with Policy Studio)[/docs/apim_policydev/apigw_poldev/gs_concepts/index.html]
+To get started with policies please read: [Get started with Policy Studio](/docs/apim_policydev/apigw_poldev/gs_concepts/index.html)
 
 ### Security-Policies
 

@@ -85,7 +85,6 @@ The KPS includes the following features:
 
 Learn more [Get started with Policy Studio](/docs/apim_policydev/apigw_kps/introduction/index.html)
 
-
 ## Embedded Apache ActiveMQ
 
 API Gateway can act as a native Java Message Service (JMS) provider by embedding Apache ActiveMQ. This enables the API Gateway to integrate external facing REST APIs and SOAP Web services with back-end systems and applications using reliable, asynchronous messaging.
