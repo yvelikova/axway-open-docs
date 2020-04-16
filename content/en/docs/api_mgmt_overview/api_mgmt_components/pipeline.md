@@ -17,22 +17,20 @@ In addition to the speed advantage, the integration of the Axway API Management 
 
 To integrate the Axway API Management Platform, two deployment artifacts must be considered and deployed in separate pipelines.
 
-**Policies**
+**Policies**\
 Policies provide security, integration and routing functions and are developed by the policy developer. Policies are developed in a general way and are used by a variety of APIs. Policies are deployed to the corresponding API gateways or the API gateway group.
 Policy changes and the associated deployments are significantly less frequent than individual APIs. Learn more policies.
 
-**APIs**
+**APIs**\
 The APIs deployment unit is defined by the actual API specification and the configuration of how the API is to be managed on the API management system. Both can be described as API packages and are deployed individually. These packages are managed by API developers (also called producers).
 
 Different deployment workflows are required for both approaches. The possible concepts and approaches are explained here.
 
 ## Policy deployment
 
-TODO
-
 ## API deployment
 
-The goal is the automatic management and deployment of its own APIs by the API developer in self-service mode. This means that the developer can work self-sufficiently and is not regularly dependent on other teams or persons, such as the Jenkins admin or API administrator, in the process.
+The goal is the automatic management and deployment of its own APIs by the API developer in self-service mode. This means that the developer can work self-sufficiently and is not regularly dependent on other teams or persons, such as the CI/CD admin or an API administrator, as part of the process.
 The requirements for the process are as follows in principle:
 
 **API-Developer Teams**
@@ -69,9 +67,9 @@ _Please note: Also with that process it might be efficient to use Swagger-Promot
 ### Promoting to all other stages
 
 When the process above is finished, the API-Release-Package is created to be taken over by the next stage, which might be already PROD or previous stages such TEST. But from this point on, the API-Release-Package is not changed anymore and deployed into the different stages with different configurations.  
-The process in all remaining stages is different to the development stage and illustrated in the following picture:   
+The process in all remaining stages is different to the development stage and illustrated in the following picture:
 
 ![Non-Development stages](/Images/overview/prod-process.png)  
 
 You can watch this video to get an overview how the process works:
-{< youtube HGCZ0IQmqd8 >}}
+{{< youtube HGCZ0IQmqd8 >}}
