@@ -17,6 +17,7 @@ The API builder application is flexible and therefore able to connect to differe
 ![API-Builder Orchestration Layer](/Images/api_mgmt_overview/api-builder-orchstration-layer.png)
 
 ## Using API-Builder
+
 The basic principle of API Builder is to expose APIs in the same way as any other application, such as a Node.js or Spring Boot application.
 The advantage of API Builder is the speed of implementing integration usecases faster than implementing them manually. Instead of having to deal with how to integrate into a system, there may be a ready-to-use plugin that can be installed in the API-Builder project.
 The API builder is not an API gateway or security component but an integration and orchestration layer. The APIs exposed by the API builder are typically imported into the API management solution as backend APIs.
@@ -44,7 +45,7 @@ Learn more about API-Builder [Models](https://docs.axway.com/bundle/API_Builder_
 
 ### API First approach
 
-In the API-First approach, a defined API specification (Open-API/Swagger) is imported into the API Builder as the initial step. This steps tells API what endpoint should be exposed, what parameters each endpoint has and so one. The API-Specification might come from the API-Design phase where you have used your perfered API-Design editor. 
+In the API-First approach, a defined API specification (Open-API/Swagger) is imported into the API Builder as the initial step. This steps tells API what endpoint should be exposed, what parameters each endpoint has and so one. The API-Specification might come from the API-Design phase where you have used your perfered API-Design editor.
 Based on the initial step, all endpoints are disabled by default and now you can implement each endpoint with a flow using the plugins, connectors and model you need for your use case.
 
 ![API-First using flows](/Images/api_mgmt_overview/api-builder-api-flows.png)

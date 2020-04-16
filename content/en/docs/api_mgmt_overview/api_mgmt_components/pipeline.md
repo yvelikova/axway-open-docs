@@ -28,6 +28,18 @@ Different deployment workflows are required for both approaches. The possible co
 
 ## Policy deployment
 
+Policies are developed with the help of Policy-Studio by policy developers, for example to realize security or integration usecases.
+The starting point is a checked-out policy configuration project, which is opened and edited with Policy-Studio. Afterwards, the changes are checked back in, for example via Git. This is the starting point for integration into a CI/CD pipeline.
+
+The policy configuration consists of a policy file containing all artifacts that are the same per stage and 1 to n environment files containing the configurations per stage. For deployment, the policy file and the corresponding environment file are merged to form the FED file, which is then deployed to the API gateways.
+
+The Axway API management solution provides pre-deployment scripts that can be used in an integration pipeline.
+
+Instead of deploying policy and environment files directly from the version management system, it is recommended that you build release packages that are stored in a release repository as a starting point.
+This allows auditing, simple rollbacks and the maintenance of dependencies.
+
+A powerful framework for deploying policy configurations based on Maven can be found here: [Amplify APIM Deployment Utilities](https://github.com/Axway-API-Management-Plus/apim-deployment)
+
 ## API deployment
 
 The goal is the automatic management and deployment of its own APIs by the API developer in self-service mode. This means that the developer can work self-sufficiently and is not regularly dependent on other teams or persons, such as the CI/CD admin or an API administrator, as part of the process.

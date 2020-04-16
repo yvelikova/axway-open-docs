@@ -24,11 +24,15 @@ This does not have to be a 1:1 relationship, as the API portal can connect to se
 
 Nevertheless, the API portal is implemented as a standalone CMS-based portal that you can operate or customise and extend using Axway's standard branding and functionality to meet your specific needs and those of your target customers. You can deploy the web-based API portal separately from the API gateway and API manager with a dedicated web interface to limit potential security breaches.
 
+### API-Portal Catalog view
+
 ![API-Portal Catalog view](/Images/api_mgmt_overview/api-portal-catalog-overview.png)
+
+### API-Portal Single API-View
 
 ![API-Portal Catalog view](/Images/api_mgmt_overview/api-portal-catalog-detail.png)
 
-The main API Portal features are as follows:
+### Main API Portal features
 
 **Developer self-registration and profile management**\
 
