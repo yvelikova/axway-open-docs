@@ -21,7 +21,7 @@ The service consumer expects an API Developer Portal, which is the central entry
 
 The following illustration shows the complete API lifecycle, which is passed through by various personas, including of course primarily the API service provider and consumer.
 
-![Entire API-Lifecycle](/Images/overview/api-lifecycle-overview.png)
+![Entire API-Lifecycle](/Images/api_mgmt_overview/api-lifecycle-overview.png)
 
 ## API-Design & Prototype
 
@@ -40,7 +40,7 @@ Mocks help to separate the API service provider from the service consumer side a
 While service providers are still busy implementing a service, they can provide a mock, allowing service consumers to advance the implementation of the client.
 In addition, mocks help to improve the feedback loop, as potential consumers can now provide information about the payload to optimize it for different application purposes.
 
-To learn more about API-Builder click [here](../api_mgmt_components/apibuilder/)
+To learn more about API-Builder click [here](../api_mgmt_components/apibuilder/#mock)
 
 ## Develop & Integrate
 
@@ -83,6 +83,8 @@ The API is defined by the API specification and the API configuration. It is dev
 
 Both deployment units must support the staging concept, since certain components (for example, passwords, host names, and so on) are different for each stage.
 
+To learn more about API-Design with Stoplight click [here](../api_mgmt_components/pipeline#staging)
+
 ## Pipeline based integration
 
 The recommendation is to provide the API management platform, which extends over several stages, with policies and APIs via a CI/CD pipeline.
@@ -95,10 +97,12 @@ To learn more about API-Design with Stoplight click [here](../api_mgmt_component
 
 ## Govern and monitor
 
-Ist eine API in Produktion wird es wichtig diese zu überwachen.
-Zur Überwachung gehören verschiedene Apsekte, wie ein Health-Check, welcher nicht nur prüft, ob eine API existiert sondern eine Durchstich bis zum Backend-System durchführt. Nur damit ist gewährleistet, dass die API auch wirklich Ende zu Ende funktioniert.
-Ein anderer Aspekte ist die Runtime Überwachung von Security-Regeln, SLAs, woher die Konsumenten kommen und natürlich die Performance.
-Hierfür können die Axway API-Management Boardmittel verwendet werden oder es ist möglich die Plattform in vorhandene zentrale Monitoring-Cockpits zu integrieren.
+Once an API is in production it becomes important to monitor it.
+Monitoring includes various aspects, such as a health check, which not only checks whether an API exists but also makes a breakthrough to the backend system. This is the only way to ensure that the API really works from end to end.
+Another aspect is the runtime monitoring of security rules, SLAs, where the consumers come from and of course the performance.
+Axway API Management Board tools can be used for this, or the platform can be integrated into existing central monitoring cockpits.
+
+To learn more about API-Design with Stoplight click [here](../api_mgmt_components/apigateway/)
 
 ## Manage Access and Secure your APIs
 
@@ -107,11 +111,15 @@ There are standard security mechanisms like a simple API-key, OAuth or the conne
 The primary task, apart from OAuth including access tokens, is to determine the consuming application so that it can be checked accordingly. Does the application have a subscription, is the application valid, is it within the configured quota?
 If the application is recognized and the access is valid, further custom policies registered for the API are executed. These examine the API request in more detail, adopt an adapted routing towards the back end or check the final response to the consumer.
 
+To learn more about API-Design with Stoplight click [here](../api_mgmt_components/apimanager/)
+
 ## Consume APIs in the Developer Portal
 
 The API Developer Portal is the central contact point for internal and external API service consumers. It offers self-service interfaces for registration, research, testing and subscribing to APIs.
 In addition to the "pure" API functions, the Developer Portal should be designed in such a way that it also offers support options and general instructions on the own API economy. A good example is certainly the explanation of how to get access tokens or simply an API glossary.
 Furthermore API consumers can monitor the access of their own applications and manage applications.
+
+To learn more about API-Design with Stoplight click [here](../api_mgmt_components/apiportal/)
 
 ## Analytics
 
@@ -119,6 +127,8 @@ Long-term analyses and statistics provide information on how the platform is dev
 How is the performance in the long run, which APIs are working well and which are not, are the error rates stable, etc.
 The Analytics components are not intended to display the operational monitoring with a detailed view of each individual API request, but are used for evaluation and planning for the platform.
 Axway's API management solution provides an out of the box analytics component with Embedded Analytics for API management. With open log formats, such as open logging, the solution can also be connected to existing systems such as Elasticsearch or Splunk.
+
+To learn more about API-Design with Stoplight click [here](../api_mgmt_components/analytics/)
 
 ## API-Versioning
 

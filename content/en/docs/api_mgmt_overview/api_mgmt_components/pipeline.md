@@ -51,7 +51,7 @@ The assumption is that we have a number of API developers working on different o
 They should be able to control the deployment pipeline of their APIs independently. At least in the Development Stage before the API package for higher stages is released.
 
 The following diagram shows the process for the development without staging concept in a simplified way:
-![Jenkins Pipeline overview](/Images/overview/jenkins-workflow.png)
+![Jenkins Pipeline overview](/Images/api_mgmt_overview/jenkins-workflow.png)
 
 ### Staging
 
@@ -60,7 +60,7 @@ We recommend to use the same approach also for promoting and deploying APIs into
 
 It starts with the API-Developer/Service-Provider and of course he expects the flexibility to code/deploy/test frequently until he is satisfied with his code and creates a release package.  
 The process for the API-Developer might looks like this:  
-![Developer process](/Images/overview/dev-to-prod-process.png)  
+![Developer process](/Images/api_mgmt_overview/dev-to-prod-process.png)  
 
 _Please note: Also with that process it might be efficient to use Swagger-Promote as a normal CLI._  
 
@@ -69,7 +69,7 @@ _Please note: Also with that process it might be efficient to use Swagger-Promot
 When the process above is finished, the API-Release-Package is created to be taken over by the next stage, which might be already PROD or previous stages such TEST. But from this point on, the API-Release-Package is not changed anymore and deployed into the different stages with different configurations.  
 The process in all remaining stages is different to the development stage and illustrated in the following picture:
 
-![Non-Development stages](/Images/overview/prod-process.png)  
+![Non-Development stages](/Images/api_mgmt_overview/prod-process.png)  
 
 You can watch this video to get an overview how the process works:
 {{< youtube HGCZ0IQmqd8 >}}

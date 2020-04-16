@@ -11,7 +11,7 @@
 A policy is a network of message filters, and each filter is a modular unit that processes a message. A message can traverse different paths through the policy, depending on which filters succeed or fail. An important aspect of a policy is the context of a policy that the filters can access read or write to. The context that a policy is inscribed depends on the context in which the policy is used. Example: Alert policy vs. request policy.
 A policy can also contain other policies, so you can build modular, reusable policies.
 
-![Sample Policy in Policy-Studio](/Images/overview/sample-policy.png)
+![Sample Policy in Policy-Studio](/Images/api_mgmt_overview/sample-policy.png)
 
 AMPLIFY API Management provides a number of built-in policies that you can apply to APIs. In addition, policy developers can use Policy Studio, a graphical tool, to develop custom policies.
 
@@ -34,7 +34,7 @@ APIs are registered in the API Manager and configured accordingly how they are t
 However, it is sometimes important to use custom policies to enhance processing or to be able to control it. For example, to check special request headers, write them to log files, etc.
 Policies can also be developed for this purpose, which are made available to the API manager as so-called policy callback. This picture illustrates how an API-Request is processed at runtime by the API-Gateway and at which time policies can be used:
 
-![Request processing](/Images/overview/api-manager-request-processing.png)
+![Request processing](/Images/api_mgmt_overview/api-manager-request-processing.png)
 
 The following types are supported:
 
@@ -65,4 +65,4 @@ For example, to expose an internal service API that performs maintenance tasks a
 
 Furthermore, such native policies can also be executed as scheduled policies.
 
-The simplest example of a native policy is the Health-Check API: http://api-host:8080/healthcheck
+The simplest example of a native policy is the Health-Check API: [http://api-host:8080/healthcheck](http://api-host:8080/healthcheck)

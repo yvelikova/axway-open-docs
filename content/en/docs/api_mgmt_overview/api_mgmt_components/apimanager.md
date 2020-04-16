@@ -12,7 +12,7 @@ The API Manager, along with the API Gateway, is the core component of the Axway 
 
 The main API Manager features are:
 
-* API registration - Adding APIs to the API Catalog. For details, see [API Registration](#api-registration)
+* API registration - Adding APIs to the API Catalog. For details, see [API Registration](#api-registration-and-lifecycle-management-in-api-manager)
 * Partner organization management - API Manager includes partner-based management of API consumers that browse the API Catalog and client applications that use the APIs. Delegated partner administration enables partner organizations to manage their own API consumers, easing the management of large partners, or a large number of partners. A wide range of client application credentials are supported, including OAuth 2.0 and API keys.
 * Policy management - API Manager enables you to apply authorization and quota policies to APIs at the partner and client application levels. Custom policies can also be developed in Policy Studio, and applied to APIs.
 * API alerting - API Manager enables you to configure API, partner, policy and runtime events to generate alerts that trigger governance processes. For example, this includes sending an email notification or starting application workflows.

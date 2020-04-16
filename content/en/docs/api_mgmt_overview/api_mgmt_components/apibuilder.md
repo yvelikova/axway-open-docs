@@ -6,14 +6,14 @@
     "description": "Integration, orchestration and mock of APIs as lightweight microservice."
 }
 
-The Axway API builder is based on Node.js, and acts as an integration orchestration layer between existing service providers and the API management system, or governance layer.
+The [Axway API builder](https://docs.axway.com/bundle/API_Builder_4x_allOS_en/page/api_builder_getting_started_guide.html) is based on Node.js, and acts as an integration orchestration layer between existing service providers and the API management system, or governance layer.
 The API builder application is flexible and therefore able to connect to different service providers:
 
 * Databases
 * REST API based on an OpenAPI 2.0 or 3.0 specification
 * Cloud applications
 
-![API-Builder Orchestration Layer](/Images/overview/api-builder-orchstration-layer.png)
+![API-Builder Orchestration Layer](/Images/api_mgmt_overview/api-builder-orchstration-layer.png)
 
 Further connections can be added at any time via a plugins SDK.
 
@@ -23,16 +23,16 @@ Further connections can be added at any time via a plugins SDK.
 
 In the model-based approach, connectors are integrated, which have the task of generating one model per table from data sources such as databases. For this model a simple CRUD-API can be exposed quickly and easily.
 
-![API from Model](/Images/overview/api-builder-model-to-api.png)
+![API from Model](/Images/api_mgmt_overview/api-builder-model-to-api.png)
 
-The following demonstrate how to connect to a database and create a CRUD API based on it:
-[https://youtu.be/i5euq6UCGPo](https://youtu.be/i5euq6UCGPo)
+The following demonstrate how to connect to a database and create a CRUD API based on it:\
+{{< youtube i5euq6UCGPo >}}
 
 ### API First
 
 In the API-First approach, a defined API is imported into the API builder, for example from the API design step. The API can be implemented individually with customizable API builder flows.
 
-![API-First using flows](/Images/overview/api-builder-api-flows.png)
+![API-First using flows](/Images/api_mgmt_overview/api-builder-api-flows.png)
 
 Another video illustrates how to implement an API-Design using flows:
 [https://youtu.be/RGhFMKKgt1I](https://youtu.be/RGhFMKKgt1I)
@@ -41,8 +41,8 @@ Both approaches can also be mixed, for example, to combine the data from a model
 
 ### Mock
 
-To mock an API with API-Builder you basically follow the same steps as for the API-First approach. See this video:
-{< youtube 5paF271XmdM >}}
+To mock an API with API-Builder you basically follow the same steps as for the API-First approach. See this video:\
+{{< youtube 5paF271XmdM >}}
 
 ## Deployment
 
