@@ -52,17 +52,9 @@ In addition, a use case in the development area is a kind of integration flow to
 
 To learn more about API-Builder click [here](../api_mgmt_components/apibuilder/)
 
-Another approach to developing or integrating into back-end legacy applications is the use of policies. For example, this includes exposing a SOAP Web service as a REST API or implementing an OAuth client. API development based on policies is performed by a policy developer using Policy Studio.
+Another approach to developing or integrating into back-end legacy applications is the use of policies. For example, this includes exposing a SOAP Web service as a REST API or implementing an OAuth client. API development based on policies is performed by a policy developer using Policy Studio. For more details on creating APIs using the REST API development wizard, see [Develop REST APIs in Policy Studio](/docs/apim_policydev/apigw_web_services/register_rest_apis/).
 
-The REST API development wizard is provided in the Policy Studio tool. This enables policy developers to create a REST API, and route it to a pre-built policy (for example, which connects to a back-end SOAP Web service, database, or cloud application).
-
-APIs developed using the REST API development wizard are then registered (by importing) as a back-end APIs in API Manager. This means that there is a single consistent approach for registering APIs, virtualizing as front-end APIs, and managing how APIs are consumed in API Manager, regardless of the back-end API.
-
-Registered APIs are virtualized by API Gateway, which protects the back-end services, and makes the APIs available for management and consumption in API Manager, and for consumption in the self-service API Portal.
-
-For more details on creating APIs using the REST API development wizard, see [Develop REST APIs in Policy Studio](/docs/apim_policydev/apigw_web_services/register_rest_apis/).
-
-## Configure the API
+## Configure
 
 In addition to the pure API specification in the form of an OpenAPI (Swagger) definition, the API management system needs to know a number of other information about how the API should be managed.
 Which security, tags, custom policies, certificates, images, custom properties, consumer quotas, access rights, etc. should be managed? All this information must be configured or prepared on the platform.
