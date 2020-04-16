@@ -2,7 +2,7 @@
 title: API Portal 7.7 January 2020 Release Notes
 linkTitle: API Portal 7.7 January 2020
 no_list: true
-weight: 30
+weight: 90
 date: 2019-08-08T00:00:00.000Z
 description: Learn about the new features and enhancements in this release of API Portal.
 ---

@@ -1,8 +1,8 @@
 ---
-title: API Portal 7.7 March 2020 Release Notes
-linkTitle: API Portal 7.7 March 2020
+title: API Portal 7.7 May 2020 Release Notes
+linkTitle: API Portal 7.7 May 2020
 no_list: true
-weight: 80
+weight: 70
 date: 2020-03-11T00:00:00.000Z
 description: Learn about the new features and enhancements in this update of API Portal.
 ---
@@ -21,38 +21,41 @@ API Portal is available as a software installation or a virtualized deployment i
 
 ## New features and enhancements
 
-The following new features and enhancements are available in this update.
+<!-- Add the new features here -->
 
-### API Details page improvements
-
-* You can set a payload limit size to download the response as a file if the response exceeds the size you have set.
-* You can configure the colors of the different methods for both SOAP and REST APIs.
-* You can set a flag to include or exclude the value for the `externalDocs` attribute. The flag defaults to **On**. When the flag is enabled, the value for the externalDocs attribute is appended to the **Description** field and rendered as part of that field.
-* You can configure whether to show **Try it** for groups of HTTP methods per connected API Manager instance. This allows for finer grained control of the **Try it** functionality.
-
-For more information, see [Customize API Catalog](https://axway-open-docs.netlify.com/docs/apim_administration/apiportal_admin/customize_apicatalog_overview/)
+No new features and enhancements are available in this update.
 
 ## Limitations of this update
 
 This update has the following limitations:
 
-* API Portal 7.7.20200330 is compatible with API Gateway and API Manager 7.7.20200330 only.
-* Upgrade to API Portal 7.7.20200330 is supported from API Portal 7.7.0 only. To upgrade from earlier versions (for example, 7.5.x, 7.6.x) you must first upgrade to API Portal 7.7.
-* The ready-made API Portal Docker image 7.7.20200330 is strictly for development environments only, and it is not recommended for use in production environments.
+* API Portal 7.7.20200530 is compatible with API Gateway and API Manager 7.7.20200530 only.
+* Upgrade to API Portal 7.7.20200530 is supported from API Portal 7.7.0 only. To upgrade from earlier versions (for example, 7.5.x, 7.6.x) you must first upgrade to API Portal 7.7.
+* The ready-made API Portal Docker image 7.7.20200530 is strictly for development environments only, and it is not recommended for use in production environments.
 
-    * It is not recommended to use the image in production environments because the image is built with CentOS as a base OS, and our Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issues have been resolved, but until we can ship a hardened image that passes our security concerns, we cannot advise customers to use this image in a production environment. Delivery a Docker image for production use is already planned in the [API Portal 2020 roadmap](https://community.axway.com/s/api-portal).
+    It is not recommended to use the image in production environments because the image is built with CentOS as a base OS, and our Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issues have been resolved, but until we can ship a hardened image that passes our security concerns, we cannot advise customers to use this image in a production environment. Delivery a Docker image for production use is already planned in the [API Portal 2020 roadmap](https://community.axway.com/s/api-portal).
 * Upgrading from previous API Portal Docker image is not supported.
 * This update is not available as a virtual appliance or as a managed service on Axway Cloud.
 
+## Deprecated features
+
+<!-- Add features that are deprecated here -->
+
+As part of our software development life cycle we constantly review our API Management offering. As part of this review, no capabilities have been deprecated.
+
 ## Removed features
 
-* Documentation is no longer provided in PDF format. You can continue to save individual topics or entire guides in PDF format using the **Save as PDF** icon on the [Axway documentation portal](https://docs.axway.com/).
+<!-- Add features that are removed here -->
+
+To stay current and align our offerings with customer demand and best practices, Axway might discontinue support for some capabilities. As part of this review, no capabilities have been removed.
 
 ## Fixed issues
 
-See [Fixed issues](/docs/apim_relnotes/20200330_apip_relnotes/fixed_issues/) for a complete list.
+See [Fixed issues](/docs/apim_relnotes/20200530_apip_relnotes/fixed_issues/) for a complete list.
 
 ## Known issues
+
+<!-- Review and update the known issues here -->
 
 The following are known issues in this version of API Portal.
 

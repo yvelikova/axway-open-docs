@@ -264,6 +264,12 @@ const collections = [{
   label_singular: 'page in APIG/APIM 7.7 March 2020 release note section',
   description: 'Release notes for API Gateway and API Manager 7.7 March 2020 release.',
 }, {
+  ...docsDefaults('apim_relnotes/20200530_apimgr_relnotes', 'docbook/images/release_notes'),
+  name: '20200530_apimgr_relnotes',
+  label: 'API Gateway and API Manager 7.7 May 2020 release notes',
+  label_singular: 'page in APIG/APIM 7.7 May 2020 release note section',
+  description: 'Release notes for API Gateway and API Manager 7.7 May 2020 release.',
+}, {
   ...docsDefaults('apim_relnotes/201904_apip_relnotes', 'docbook/images/release_notes'),
   name: '201904_apip_relnotes',
   label: 'API Portal 7.7 April 2019 release notes',
@@ -283,6 +289,13 @@ const collections = [{
   label: 'API Portal 7.7 March 2020 release notes',
   label_singular: 'page in API Portal 7.7 March 2020 release note section',
   description: 'Release notes for API Portal 7.7 March 2020 release.',
+  format: 'frontmatter',
+}, {
+  ...docsDefaults('apim_relnotes/20200530_apip_relnotes', 'docbook/images/release_notes'),
+  name: '20200530_apip_relnotes',
+  label: 'API Portal 7.7 May 2020 release notes',
+  label_singular: 'page in API Portal 7.7 May 2020 release note section',
+  description: 'Release notes for API Portal 7.7 May 2020 release.',
   format: 'frontmatter',
 }, {
   ...docsDefaults('central', 'central'),
