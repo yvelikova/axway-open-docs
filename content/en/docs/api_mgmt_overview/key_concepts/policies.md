@@ -17,6 +17,8 @@ AMPLIFY API Management provides a number of built-in policies that you can apply
 
 In Policy Studio, a policy is assembled by selecting filters from the filter palette on the right and dragging and dropping them onto the policy canvas to be configured. The configured filters are then connected to a policy using success and failure paths to trace a path through a set of filters and create sophisticated rules. Some filters require configuring additional resources or settings before the filters can be used. You can find these additional resources and settings from the node tree on the left.
 
+To get started with policies please read: (Get started with Policy Studio)[/docs/apim_policydev/apigw_poldev/gs_concepts/index.html]
+
 ### Security-Policies
 
 You can use policies to enhance security. The support for a wide range of security standards enables identity mediation between different identity schemes.
@@ -26,6 +28,13 @@ Data is routed based on sender identity, content, and type. This means that mess
 Data monitoring, redaction, encryption, and signing facilitates privacy compliance support. For example, you can encrypt sensitive information, such as customer names, or strip that information out of message traffic.
 
 For identity management, you can configure different kinds of authentication policies in Policy Studio, and integrate with existing third-party Identity Management (IM) infrastructures for authentication and authorization.
+
+To learn more about security topics we recommend to read:\
+
+* [Integrate with Identity Management servers](/docs/apigtw_auth_auth/index.html)
+* [Integrate with Kerberos](/docs/apigtw_kerberos/index.html)
+* [Security guidance](/docs/apimgmt_security/index.html)
+* [Configure OAuth](/docs/apim_policydev/apigw_oauth/index.html)
 
 ### API-Manager Policies
 
@@ -51,11 +60,13 @@ The following types are supported:
 | Alerts                         | Besides standard notifications via email to API developers and API consumers, there is sometimes the need to integrate the API management solution into existing processes. For example, based on events in the API management system, start workflows in a ticket system that can be used to process a problem. Alert policies that can be configured for a whole range of events are suitable for this. |
 | API-Promotion                  | One way to promote APIs from one stage to the next is the promotion policy, which can be triggered via the API Manager Web UI for a selected API. This policy gets the current API configuration from input as JSON payload, can manipulate it and then pass it on accordingly. Either directly to the higher stage, open a ticket with the API as attachment or send information via email. |
 
+Learn more how to setup [API-Manager Policies](/docs/apim_administration/apimgr_admin/api_mgmt_config_ps/index.html#global-request-policies) and [Alerts](/docs/apim_administration/apimgr_admin/api_mgmt_config_ps/index.html#alerts).
+
 ### Integration policies
 
 In AMPLIFY API Management, API Gateway provides integration across systems and compatibility. REST-SOAP conversion enables you to make enterprise application data and operations available to mobile apps. You can convert a legacy SOAP service, and deploy it as a REST API. API Gateway then can expose the REST API that maps to the SOAP service, dynamically creating a SOAP request based on the REST API call.
 
-For more details, see the API Gateway Concepts Guide and the API Gateway Policy Developer Guide.
+For more details, see [How to configure external systems from the API-Gateway](/docs/apim_policydev/apigw_external_connections/index.html).
 
 ### Native Policies
 
@@ -66,3 +77,5 @@ For example, to expose an internal service API that performs maintenance tasks a
 Furthermore, such native policies can also be executed as scheduled policies.
 
 The simplest example of a native policy is the Health-Check API: [http://api-host:8080/healthcheck](http://api-host:8080/healthcheck)
+
+Learn more how to [configure a policy](/docs/apim_policydev/apigw_poldev/general_manual_policy/index.html) in the API-Gateway.

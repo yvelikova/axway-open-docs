@@ -29,6 +29,8 @@ A policy can also contain other policies, which enables you to build modular reu
 
 Policy Studio is available also on Windows.
 
+Learn more [Get started with Policy Studio](/docs/apim_policydev/apigw_poldev/gs_concepts/index.html)
+
 ## Configuration Studio
 
 Configuration Studio is a graphical tool used to promote API Gateway configuration from development environments to upstream environments (for example, testing or production).
@@ -63,6 +65,11 @@ API Gateway Manager includes the following features:
 * Managing dynamic system settings
 * Managing user roles assigned in the domain
 
+To learn more about the API-Gateway Manager we recommend to read:
+
+* [Monitoring and metrics](/docs/apim_administration/apigtw_admin/monitor_service/index.html)
+* [Manage API Gateway deployments](/docs/apim_administration/apigtw_admin/deploy_get_started/index.html)
+
 ## Key Property Store
 
 The API Gateway Key Property Store (KPS) is used to store configuration parameters that are dynamically passed into policies at runtime. This enables policy configuration data to be managed directly by business or operational users at runtime, and allows dynamic change of policy behavior.
@@ -75,6 +82,9 @@ The KPS includes the following features:
 * Policies developed in the Policy Studio use a selector syntax to specify context-sensitive lookup of policy configuration data at runtime from the KPS (for example, `${kps.CustomerProfiles[JoeBloggs].age}` obtains the age of the specified customer)
 * Provides a cached read-frequently, write occasionally cache with backing stores
 * Policy-specific UIs can be developed for business or operational users to manage the policy configuration data in the KPS
+
+Learn more [Get started with Policy Studio](/docs/apim_policydev/apigw_kps/introduction/index.html)
+
 
 ## Embedded Apache ActiveMQ
 
@@ -89,3 +99,5 @@ Queue and topic management is integrated into the API Gateway Manager web consol
 ![ActiveMQ message](/Images/docbook/images/concepts/admin_messaging_content.png)
 
 The API Gateway installation includes the ActiveMQ Java JMS 1.1 client library, which applications can use to send and receives message to and from the queues and topics hosted on the embedded ActiveMQ broker. In addition, ActiveMQ clients that use the OpenWire protocol (ActiveMQ default transport protocol) can interact with the embedded broker. For more details, see [Apache ActiveMQ OpenWire documentation](http://activemq.apache.org/openwire.html).
+
+Learn more how to setup [ActiveMQ in the API-Gateway](/docs/apim_administration/apigtw_admin/admin_messaging/index.html) and how to read and write with [JMS](/docs/apim_policydev/apigw_polref/routing_jms/index.html)
