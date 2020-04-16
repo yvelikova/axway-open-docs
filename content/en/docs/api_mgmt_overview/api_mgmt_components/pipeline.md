@@ -53,6 +53,8 @@ They should be able to control the deployment pipeline of their APIs independent
 The following diagram shows the process for the development without staging concept in a simplified way:
 ![Jenkins Pipeline overview](/Images/api_mgmt_overview/jenkins-workflow.png)
 
+To learn more you may read [here](https://github.com/Axway-API-Management-Plus/apimanager-swagger-promote/wiki/9.-Jenkins-Integration-with-GitHub-&-Bitbucket)
+
 ### Staging
 
 In many companies, it is best practice to create packages/artifacts, some kind of releases for software projects. These artifacts are managed by repositories, such as Nexus, JFrog-Artifactory and used to share assets between teams and finally these artifacts are deployed to the target system. This provides several benefits, such as version auditing, segregation of concerns, rollbacks to previous version and CI/CD-Gates can be established.  

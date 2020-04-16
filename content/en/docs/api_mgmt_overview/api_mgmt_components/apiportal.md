@@ -6,15 +6,27 @@
 "description": ""
 }
 
-## API Portal features
-
-See [API Portal overview](/docs/apim_administration/apiportal_admin/apip_overview/) for details of API Portal key capabilities and features.
-
 ## API Portal
 
 API Portal is a self-service web-based portal that enables API consumers to consume APIs that you have exposed using API Manager. API consumers can register and manage their user profile, register applications, manage application credentials, browse front-end APIs and supporting documentation, monitor application API usage, and access blogs, forums, and so on.
 
-API Portal is implemented as a stand-alone CMS-based portal, which you can run using the default Axway branding and functionality, or customize and extend to meet your specific requirements and those of your target API consumers. You can deploy the internet-facing API Portal separately from the API Gateway and API Manager, with a dedicated web interface to limit potential security breaches.
+It acts as a view to the API Manager and communicates its REST API. This includes all functionalities related to APIs. In other words, the API manager handles the following operations:
+
+* User Login/Logout/Edit Profiles
+* API Catalog View
+* Application Management
+* Monitoring
+
+Conversely, this means that there is ONE place for API management, the API manager, as the API-Portal automatically reflects all changes.
+For example, if a new API has been registered, it is automatically available in the API portal. If an application was created in the API portal, it is visible in the API manager and you might trigger an [alert](/docs/apim_administration/apimgr_admin/api_mgmt_alerts/index.html) for this event.
+
+This does not have to be a 1:1 relationship, as the API portal can connect to several API managers at the same time. For example, you can connect the API portal to the Development, Pre-Prod and Prod Stage at the same time to get a complete overview of the available APIs. Of course, the visibility can be restricted accordingly.
+
+Nevertheless, the API portal is implemented as a standalone CMS-based portal that you can operate or customise and extend using Axway's standard branding and functionality to meet your specific needs and those of your target customers. You can deploy the web-based API portal separately from the API gateway and API manager with a dedicated web interface to limit potential security breaches.
+
+![API-Portal Catalog view](/Images/api_mgmt_overview/api-portal-catalog-overview.png)
+
+![API-Portal Catalog view](/Images/api_mgmt_overview/api-portal-catalog-detail.png)
 
 The main API Portal features are as follows:
 
@@ -37,3 +49,7 @@ API Portal runs on Joomla!™, an open source CMS platform for developing and d
 **Customizable to provide a branded experience**\
 
 You can deploy API Portal with no customization, using the out-of-the-box Axway branding, which is suitable for internal-facing API deployments. For external-facing API deployments, you can customize API Portal to provide a branded developer portal experience. You can customize API Portal using Joomla configuration screens (upgradeable), or by editing the API Portal PHP source code (not upgradeable).
+
+## API Portal features
+
+See [API Portal overview](/docs/apim_administration/apiportal_admin/apip_overview/) for details of API Portal key capabilities and features.
