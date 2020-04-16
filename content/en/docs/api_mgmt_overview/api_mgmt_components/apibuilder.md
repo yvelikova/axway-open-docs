@@ -41,6 +41,8 @@ Both approaches can also be mixed, for example, to combine the data from a model
 
 ### Mock
 
+To mock an API with API-Builder you basically follow the same steps as for the API-First approach. See this video:
+{< youtube 5paF271XmdM >}}
 
 ## Deployment
 
