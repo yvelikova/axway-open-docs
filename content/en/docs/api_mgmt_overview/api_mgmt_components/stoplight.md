@@ -39,4 +39,4 @@ The following diagram shows simplified integration between Stoplight and the Axw
 The following video demonstrates the possible integration and how the process looks like:
 {{< youtube ddOhO_BmVeE >}}
 
-Read more about how to setup a [pipeline](./pipeline    ).
+Read more about how to setup a [pipeline](./pipeline).
