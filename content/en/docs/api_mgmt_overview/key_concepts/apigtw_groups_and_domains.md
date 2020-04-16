@@ -1,6 +1,6 @@
 {
-"title": "API Gateway architecture",
-"linkTitle": "API Gateway architecture",
+"title": "API Gateway Groups and Domain concept",
+"linkTitle": "API Gateway groups and domains",
 "weight":"12",
 "date": "2019-11-07",
 "description": "API Gateway supports a distributed architecture based on groups of gateways in an administrative domain."

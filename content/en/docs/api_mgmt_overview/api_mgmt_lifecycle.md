@@ -83,7 +83,7 @@ The API is defined by the API specification and the API configuration. It is dev
 
 Both deployment units must support the staging concept, since certain components (for example, passwords, host names, and so on) are different for each stage.
 
-To learn more about API-Design with Stoplight click [here](../api_mgmt_components/pipeline#staging)
+To learn more how to promote APIs and Policies click [here](../api_mgmt_components/pipeline#staging)
 
 ## Pipeline based integration
 
@@ -93,7 +93,7 @@ Furthermore, it is possible to extend this pipeline with additional customer-spe
 And last but not least, it increases the acceptance of API service providers as they can focus on developing services instead of registering APIs.
 Typical systems and tools for pipeline based integration are Jenkins, Bamboo, Maven and possibly an artifact repository like Nexus or Artifactory.
 
-To learn more about API-Design with Stoplight click [here](../api_mgmt_components/pipeline/)
+To learn more how to integrate into a pipeline click [here](../api_mgmt_components/pipeline/)
 
 ## Govern and monitor
 
@@ -102,7 +102,7 @@ Monitoring includes various aspects, such as a health check, which not only chec
 Another aspect is the runtime monitoring of security rules, SLAs, where the consumers come from and of course the performance.
 Axway API Management Board tools can be used for this, or the platform can be integrated into existing central monitoring cockpits.
 
-To learn more about API-Design with Stoplight click [here](../api_mgmt_components/apigateway/)
+To learn more how to govern and monitor click [here](../api_mgmt_components/apigateway/)
 
 ## Manage Access and Secure your APIs
 
@@ -111,7 +111,7 @@ There are standard security mechanisms like a simple API-key, OAuth or the conne
 The primary task, apart from OAuth including access tokens, is to determine the consuming application so that it can be checked accordingly. Does the application have a subscription, is the application valid, is it within the configured quota?
 If the application is recognized and the access is valid, further custom policies registered for the API are executed. These examine the API request in more detail, adopt an adapted routing towards the back end or check the final response to the consumer.
 
-To learn more about API-Design with Stoplight click [here](../api_mgmt_components/apimanager/)
+To learn more about Access-Management and Security click [here](../api_mgmt_components/apimanager/)
 
 ## Consume APIs in the Developer Portal
 
@@ -119,7 +119,7 @@ The API Developer Portal is the central contact point for internal and external 
 In addition to the "pure" API functions, the Developer Portal should be designed in such a way that it also offers support options and general instructions on the own API economy. A good example is certainly the explanation of how to get access tokens or simply an API glossary.
 Furthermore API consumers can monitor the access of their own applications and manage applications.
 
-To learn more about API-Design with Stoplight click [here](../api_mgmt_components/apiportal/)
+To learn more about the API-Developer Portal click [here](../api_mgmt_components/apiportal/)
 
 ## Analytics
 
@@ -128,7 +128,7 @@ How is the performance in the long run, which APIs are working well and which ar
 The Analytics components are not intended to display the operational monitoring with a detailed view of each individual API request, but are used for evaluation and planning for the platform.
 Axway's API management solution provides an out of the box analytics component with Embedded Analytics for API management. With open log formats, such as open logging, the solution can also be connected to existing systems such as Elasticsearch or Splunk.
 
-To learn more about API-Design with Stoplight click [here](../api_mgmt_components/analytics/)
+To learn more about Analytics options click [here](../api_mgmt_components/analytics/)
 
 ## API-Versioning
 
