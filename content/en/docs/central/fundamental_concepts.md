@@ -41,6 +41,10 @@ Managing your API in AMPLIFY Central by way of an API proxy offers the following
 
 AMPLIFY Central has its own set of roles in addition to the AMPLIFY Platform roles. These AMPLIFY Central roles include AMPLIFY Central Admin, Developer, and Consumer type roles to manage and use assets (for example, API proxies, applications, environments, Unified Catalog, and so on).  
 
+* AMPLIFY Central Admin has full access to manage AMPLIFY Central and the Unified Catalog.
+* AMPLIFY Central Developer has access to the Unified Catalog, Application management, and traffic monitoring.
+* AMPLIFY Central Consumer has access to the Unified Catalog and its Applications.
+
 An AMPLIFY Central team is a group of users with varying abilities to manage and use assets. For example, a team member can share assets and their promotion to the Unified Catalog.
 
 Users and teams of AMPLIFY Central are managed by the AMPLIFY Platform. For more information, see [Managing Organizations](https://docs.axway.com/bundle/Appcelerator_Dashboard_allOS_en/page/managing_organizations.html).
