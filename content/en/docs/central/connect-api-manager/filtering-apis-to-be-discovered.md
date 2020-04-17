@@ -1,7 +1,7 @@
 ---
 title: Filtering APIs to be discovered
 linkTitle: Filtering APIs to be discovered
-draft: true
+draft: false
 weight: 80
 description: Learn how to set up tag-based condition expression(s) using the
   APIMANAGER_FILTER environment variable to discover APIs that could be added to
@@ -10,7 +10,7 @@ description: Learn how to set up tag-based condition expression(s) using the
 Conditional expressions statements use logical operators to compare values. This section provides sample syntax for defining expressions.
 
 {{< alert title="Note" color="primary" >}}For tag-based filtering, the conditional expression should have "tag" as the prefix / selector in the symbol name.
-The expression can be a simple condition or a compound condition in which multiple conditions are evaluated using logical operators. See Logical operators and Comparative operators.{{< /alert >}}
+The expression can be a simple condition or a compound condition in which multiple conditions are evaluated using logical operators. See Logical operators and Comparative operators, below.{{< /alert >}}
 
 ```
 tag.<tagName> == <tagValue>
@@ -18,8 +18,8 @@ tag.<tagName> == <tagValue>
 
 ## Before you start
 
-* Familiarize yourself with  the APIMANAGER_FILTER
-* Review Logical operators and Comparative operators
+* Familiarize yourself with  the [APIMANAGER_FILTER] (/docs/central/connect-api-manager/discovery-agent-variables/)
+* Review Logical operators and Comparative operators, below
 
 ## Objectives
 

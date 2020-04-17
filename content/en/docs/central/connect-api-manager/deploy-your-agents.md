@@ -1,7 +1,7 @@
 ---
 title: Deploy your agents
 linkTitle: Deploy your agents
-draft: true
+draft: false
 weight: 30
 description: Learn how to deploy your Discovery Agent and Traceability Agent so
   that you can manage  your Axway API Gateway environment within AMPLIFY
@@ -39,7 +39,7 @@ The Agent can run in the following modes:
 
     Configuration file name should be the same as the agent binary.
 
-    Properties inside the configuration file can reference environment variables. This enables you to set up only one configuration file that addresses different behaviors (depending on the environment variables). See Discovery Agent variables on page 1.
+    Properties inside the configuration file can reference environment variables. This enables you to set up only one configuration file that addresses different behaviors (depending on the environment variables). See [Discovery Agent variables](/docs/central/connect-api-manager/discovery-agent-variables/).
 * With command line arguments. See [Discovery Agent flags](/docs/central/connect-api-manager/discovery-agent-flags/).
 
 ### Create your configuration

@@ -1,7 +1,7 @@
 ---
 title: Connect API Manager
 linkTitle: Connect API Manager
-draft: true
+draft: false
 no_list: true
 weight: 130
 description: Understand why you would want a connected / managed environment for

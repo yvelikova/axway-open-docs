@@ -1,12 +1,12 @@
 ---
 title: Discovery Agent flags
 linkTitle: Discovery Agent flags
-draft: true
+draft: false
 weight: 50
 description: "Use the following parameters [flags] when issuing the
-  discovery_agent command. View these flags with command discovery_agent -h. "
+  discovery_agent command. View these flags with command `discovery_agent -h.` "
 ---
-{{< alert title="Note" color="primary" >}}These parameters are also environment variables referenced in the Create your configuration section, with the exception of help and pathConfig. These parameters are not configuration values.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}These parameters are also environment variables referenced in [Deploy your agents] (/docs/central/connect-api-manager/deploy-your-agents/) with the exception of help and pathConfig. These parameters are not configuration values.{{< /alert >}}
 
 | Flags  | Description                                                                                                                                                                                                                                                                                                            |   |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|

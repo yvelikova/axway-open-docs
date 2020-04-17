@@ -1,7 +1,7 @@
 ---
 title: Prepare AMPLIFY Central
 linkTitle: Prepare AMPLIFY Central
-draft: true
+draft: false
 weight: 20
 description: Learn how to create an environment and Service Account for Axway
   API Gateway within AMPLIFY Central.

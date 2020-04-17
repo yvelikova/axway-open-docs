@@ -1,7 +1,7 @@
 ---
 title: Connect AWS Gateway
 linkTitle: Connect AWS Gateway
-draft: true
+draft: false
 no_list: true
 weight: 140
 description: Understand why you would want a connected / managed environment for
@@ -55,7 +55,7 @@ An AMPLIFY Central Service Account. See [Manage an API proxy using AMPLIFY CLI](
 * Amazon CloudWatch Service
 * Amazon Simple Queue Service (AWS SQS)
 * AWS Lambda
-* CloudFormation template. Download from [https://git.ecd.axway.int/apigov/aws_apigw_agent_config](<* https://git.ecd.axway.int/apigov/aws_apigw_agent_config>)
+* CloudFormation template. Download from [https://git.ecd.axway.int/apigov/aws_apigw_agent_config](<https://git.ecd.axway.int/apigov/aws_apigw_agent_config>)
 
 ## Connect AWS API Gateway to AMPLIFY Central quickstart
 
@@ -63,7 +63,7 @@ An AMPLIFY Central Service Account. See [Manage an API proxy using AMPLIFY CLI](
 
    1. Create an environment object in AMPLIFY Central using either the UI, API or CLI.
    2. Set up a Service Account.
-2. Set up AWS CloudFormation using the two templates at [http://swf-artifactory.lab.phx.axway.int/artifactory/phx-generic-beano/](<1. http://swf-artifactory.lab.phx.axway.int/artifactory/phx-generic-beano/>):
+2. Set up AWS CloudFormation using the two templates at [http://swf-artifactory.lab.phx.axway.int/artifactory/phx-generic-beano/](<http://swf-artifactory.lab.phx.axway.int/artifactory/phx-generic-beano/>):
 
    1. apigw_iam_setup
    2. apigw_cloudformation

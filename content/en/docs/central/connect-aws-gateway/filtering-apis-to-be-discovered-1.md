@@ -1,7 +1,7 @@
 ---
 title: Filtering APIs to be discovered
 linkTitle: Filtering APIs to be discovered
-draft: true
+draft: false
 weight: 40
 description: >-
   You can set up tag-based condition expression(s) using the APIMANAGER_FILTER
@@ -12,7 +12,7 @@ description: >-
 ---
 
 
-{{< alert title="Note" color="primary" >}}For tag based filtering, the conditional expression should have "tag" as the prefix / selector in the symbol name:  `tag.<tagName> == <tagValue>`. The expression can be a simple condition or a compound condition in which multiple conditions are evaluated using logical operators. See Logical operators and Comparative operators.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}For tag based filtering, the conditional expression should have "tag" as the prefix / selector in the symbol name:  `tag.<tagName> == <tagValue>`. The expression can be a simple condition or a compound condition in which multiple conditions are evaluated using logical operators. See Logical operators and Comparative operators, below.{{< /alert >}}
 
 ## Filter based on tag name
 
