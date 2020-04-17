@@ -56,7 +56,7 @@ Options:
 -f, --file = (filename.yml, filename.yaml, or filename.json)
 ```
 
-For information, see [Manage an environment using AMPLIFY CLI] (https://docs.axway.com/bundle/axway-open-docs/page/docs/central/cli_environments/index.html).
+For information, see [Manage an environment using AMPLIFY CLI](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/cli_environments/index.html).
 
 ## Create a Service Account
 
@@ -74,4 +74,4 @@ A Service Account authenticates your agents without requiring any user informati
 
     {{< alert title="Note" color="primary" >}}The public key can be either of type .der format or of type base64 encoded of the .der format.{{< /alert >}}
 
-2. Create a new Service Account user in AMPLIFY Central using the key pair from above. For additional information, see [Manage an API proxy using AMPLIFY CLI] (https://docs.axway.com/bundle/axway-open-docs/page/docs/central/cli_getstarted/index.html).
+2. Create a new Service Account user in AMPLIFY Central using the key pair from above. For additional information, see [Manage an API proxy using AMPLIFY CLI](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/cli_getstarted/index.html).

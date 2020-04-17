@@ -14,9 +14,9 @@ description: >-
 
 ## Before you start
 
-* Read [AMPLIFY Central AWS API Gateway connected overview] (/docs/central/connect-aws-gateway/)
-* [Prepare AMPLIFY Central] (/docs/central/connect-aws-gateway/prepare-amplify-central-1/)
-* [Prepare AWS API Gateway] (/docs/central/connect-aws-gateway/prepare-aws-api-gateway/)
+* Read [AMPLIFY Central AWS API Gateway connected overview](/docs/central/connect-aws-gateway/)
+* [Prepare AMPLIFY Central](/docs/central/connect-aws-gateway/prepare-amplify-central-1/)
+* [Prepare AWS API Gateway](/docs/central/connect-aws-gateway/prepare-aws-api-gateway/)
 * Docker must be installed and you will need a basic understanding of Docker commands
 
 ## Objectives

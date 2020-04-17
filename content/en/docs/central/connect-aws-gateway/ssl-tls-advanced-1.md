@@ -7,7 +7,7 @@ description: By default, the AWS API Gateway connectivity to AMPLIFY Central is
   SSL secured using TLS1.2 and the appropriate secured default Cipher Suite.
   However, you can choose to change the default to use different variable values
   for protocols and supported Cipher Suites that meet your own requirements. See
-  the variable tables in [Deploy your agents] (/docs/central/connect-aws-gateway/deploy-your-agents-1/).
+  the variable tables in [Deploy your agents](/docs/central/connect-aws-gateway/deploy-your-agents-1/).
 ---
 {{< alert title="Note" color="primary" >}}TLS 1.3 is not yet supported by AMPLIFY Central.{{< /alert >}}
 

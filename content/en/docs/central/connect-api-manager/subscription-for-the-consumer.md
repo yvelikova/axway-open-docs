@@ -10,7 +10,7 @@ description: A subscription provides the consumer, or subscriber, with the
 
 1. An administrator creates an application on Axway API Manager that provides the necessary security feature (API key / OAuth...) and quota, if needed:
 
-    * Add a custom field to the application to track the AMPLIFY Central subscription. Refer to `<API_Gateway_install_dir>/apigateway/webapps//apiportal/vordel/apiportal/app/app.config file` in the **customPropertiesConfig** section. For more details, see [Customize API Manager] (https://docs.axway.com/bundle/axway-open-docs/page/docs/apim_administration/apimgr_admin/api_mgmt_custom/index.html).
+    * Add a custom field to the application to track the AMPLIFY Central subscription. Refer to `<API_Gateway_install_dir>/apigateway/webapps//apiportal/vordel/apiportal/app/app.config file` in the **customPropertiesConfig** section. For more details, see [Customize API Manager](https://docs.axway.com/bundle/axway-open-docs/page/docs/apim_administration/apimgr_admin/api_mgmt_custom/index.html).
 
         Sample application:
 
@@ -39,7 +39,7 @@ description: A subscription provides the consumer, or subscriber, with the
     2. Click **Subscribe**.
     3. Enter the Team and API Manager Application name (created in Step 1). **Warning**: The names must match. Otherwise, the subscription will fail.
 
-    For additional information, see [Manage AMPLIFY Catalog subscriptions] (https://docs.axway.com/bundle/axway-open-docs/page/docs/central/catalog/catalog/index.html).
+    For additional information, see [Manage AMPLIFY Catalog subscriptions](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/catalog/catalog/index.html).
 3. The Discovery Agent receives the subscription event:
 
     Subscription status: **Subscribing...**
@@ -70,7 +70,7 @@ description: A subscription provides the consumer, or subscriber, with the
     1. Open the AMPLIFY Catalog and navigate to the **Subscription** tab.
     2. Delete the subscription.
 
-    For additional information, see [Manage AMPLIFY Catalog subscriptions] (https://docs.axway.com/bundle/axway-open-docs/page/docs/central/catalog/catalog/index.html).
+    For additional information, see [Manage AMPLIFY Catalog subscriptions](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/catalog/catalog/index.html).
 2. The Discovery Agent receives the Unsubscribe event:
 
     * The subscription ID is removed from the application's Custom field.
