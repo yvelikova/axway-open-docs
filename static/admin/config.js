@@ -305,6 +305,20 @@ const collections = [{
   description: 'All pages relating to AMPLIFY Central.',
   format: 'frontmatter',
 }, {
+  ...docsDefaults('central/connect-api-manager', 'central/connect-api-manager'),
+  name: 'connect-api-manager',
+  label: 'Connect API Manager documentation',
+  label_singular: 'page in Connect API Manager',
+  description: 'All pages relating to Connect API Manager.',
+  format: 'frontmatter',
+}, {
+  ...docsDefaults('central/connect-aws-gateway', 'central/connect-aws-gateway'),
+  name: 'connect-aws-gateway',
+  label: 'Connect AWS Gateway documentation',
+  label_singular: 'page in Connect AWS Gateway',
+  description: 'All pages relating to Connect AWS Gateway.',
+  format: 'frontmatter',
+}, {
   ...docsDefaults('central/catalog', 'central/catalog'),
   name: 'catalog',
   label: 'AMPLIFY Unified Catalog documentation',
