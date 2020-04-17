@@ -1,7 +1,7 @@
 ---
 title: Prepare AWS API Gateway
 linkTitle: Prepare AWS API Gateway
-draft: true
+draft: false
 weight: 20
 description: Learn how to use the provided CoudFormation templates to initialize
   AWS Services, which enables the agents to collect API / traffic data.
@@ -10,7 +10,7 @@ description: Learn how to use the provided CoudFormation templates to initialize
 
 ## Before you start
 
-* Read AMPLIFY Central AWS API Gateway connected overview
+* Read [AMPLIFY Central AWS API Gateway connected overview] (/docs/central/connect-aws-gateway/)
 * You will need a basic knowledge of Amazon Web Services (AWS) and associated tools
 
 ## Objectives
