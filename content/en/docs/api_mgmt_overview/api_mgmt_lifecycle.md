@@ -8,30 +8,33 @@
 
 An API management solution must consider both API consumers and API service providers and how they should interact with the platform.
 
-### Self-service is the key
+## Self-service is the key
 
-API management is the process of publishing, promoting and managing Application Programming Interfaces (APIs) in a secure, scalable environment. It includes the creation of API consumer support resources that define and document APIs to facilitate easy consumption. API management supports business initiatives to enable easy interaction with customers and partners.
+API management is the process of publishing, promoting, and managing Application Programming Interfaces (APIs) in a secure, scalable environment. It includes the creation of API consumer support resources that define and document APIs to facilitate easy consumption. API management supports business initiatives to enable easy interaction with customers and partners.
 
 A well-executed API strategy helps create more selling channels, better engage with customers, and offer more value to partners. This practice of doing better business through the effective delivery of APIs enables the API economy. API management uses new Web-Oriented Architecture (WOA) technologies such as REST, JSON, and OAuth instead of traditional Service-Oriented Architecture (SOA) technologies.
 
 The role of central IT with specialists in API security should not be responsible for each API, but should develop global security policies that are utilized by each API.
 
 It is important for service providers that the integration of their interfaces does not become an additional daily burden, but can be integrated into the existing workflow. This is the only way to ensure that APIs are integrated into the platform early enough. In other words, the API management platform should be integrated via an automatic CI/CD pipeline for APIs.
-The service consumer expects an API Developer Portal, which is the central entry point into the company's API economy. There he will find APIs from various service providers, both enterprise services and integrated cloud services. These should be well documented, divided into categories (business expertise, maturity level) and in a self-service test and, if necessary, consumable.
 
-The following illustration shows the complete API lifecycle, which is passed through by various personas, including of course primarily the API service provider and consumer.
+The service consumer expects an API developer portal, which is the central entry point into the company's API economy. In the API developer portal, the consumer will find APIs from various service providers, both enterprise services and integrated cloud services. These should be well documented, divided into categories (business expertise, maturity level) and in a self-service test and, if necessary, consumable.
+
+The following illustration shows the complete API lifecycle, which is passed through by various personas, including the API service provider and consumer.
 
 ![Entire API-Lifecycle](/Images/api_mgmt_overview/api-lifecycle-overview.png)
 
-## API-Design & Prototype
+## API design and prototype
 
-Only the pure and possibly large number of APIs in an API management platform does not necessarily make it a success. Important are valuable APIs, some call these Value-APIs (VAPI), which are based on a well thought-out API design and always have the consumption of the API and not the existing data structures in mind.
-If you want to learn more about good API design, we recommend for example the book: ![Design of Web API](https://www.manning.com/books/the-design-of-web-apis). Among other things, it explains what the API Design Diamond is all about.
+Only the pure and possibly large number of APIs in an API management platform does not necessarily make it a success. Important are valuable APIs, some call these value APIs (VAPI), which are based on a well considered API design and always have the consumption of the API and not the existing data structures in mind.
 
-These Value-APIs usually start with an API-First approach and not with the implementation of an API. API-First means that the API interface, i.e. the design of the API, is first defined and this design is the starting point for further steps, such as mocking and of course the implementation of the API.
+To learn more about good API design, see ![Design of Web API](https://www.manning.com/books/the-design-of-web-apis).
+
+Value APIs usually start with an API first approach and not with the implementation of an API. API first means that the API interface, that is, the design of the API, is first defined and this design is the starting point for further steps, such as mocking and then implementation of the API.
+
 For API design, Axway works with its partner Stoplight, which offers a form-based API design editor for both OpenAPI 2.0 and 3.0. Enterprise features for tracking and approving changes in larger teams.
 
-To learn more about API-Design with Stoplight click [here](../api_mgmt_components/stoplight/)
+To learn more about API design with Stoplight click [here](../api_mgmt_components/stoplight/)
 
 ## Mock
 
