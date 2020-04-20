@@ -1,9 +1,9 @@
 {
 "title": "Configure WebSocket connections",
-"linkTitle": "Configure WebSocket connections",
-"weight": 3,
-"date": "2019-10-17",
-"description": "Configure API Gateway to act as a WebSocket proxy."
+  "linkTitle": "Configure WebSocket connections",
+  "weight": 3,
+  "date": "2019-10-17",
+  "description": "Configure API Gateway to act as a WebSocket proxy."
 }
 
 ## WebSocket protocol overview
@@ -179,7 +179,8 @@ To add a WebSocket handler, follow these steps:
     to display the **WebSocket configuration**
     dialog.
 3. Configure the WebSocket as follows:
-    ![WebSocket handler example](/Images/docbook/images/general/websocket_handler.png)
+
+![WebSocket handler example](/Images/docbook/images/general/websocket_handler.png)
 
 {{< alert title="Note" color="primary" >}}Ensure that you have not set `gzip` or `deflate` compression, as it is not compatible for WebSocket connections.{{< /alert >}}
 
