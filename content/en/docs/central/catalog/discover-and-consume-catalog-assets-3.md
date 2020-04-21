@@ -1,7 +1,7 @@
 ---
 title: Discover and consume Catalog assets
 description: Learn how to discover and share your asset via the AMPLIFY Unified
-  Catalog. The assets can be APIs, MFT Flows, SOAP (WSDL) and unstructured data
+  Catalog. The assets can be APIs, MFT flows, SOAP (WSDL) and unstructured data
   (i.e gRPC, Avro, Thrift)
 ---
 *Estimated reading time*: 10 minutes
@@ -41,6 +41,14 @@ Watch the animation to learn how to subscribe to an API asset.
 TBA
 
 ## Subscribe to an MFT Service
+
+When a partner subscribes to an MFT service in the catalog they are prompted to provide details to realize the file transfer.
+
+Follow these steps to subscribe to an MFT service
+
+* Select **Catalog** in the left navigation bar and this will open up a **Explore Catalog** sub-menu.
+
+  TBA
 
 ## Export to Integration Builder
 
