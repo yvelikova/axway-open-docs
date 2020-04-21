@@ -2,7 +2,7 @@
 title: Discover and consume Catalog assets
 description: Learn how to discover and share your asset via the AMPLIFY Unified
   Catalog. The assets can be APIs, MFT flows, SOAP (WSDL) and unstructured data
-  (i.e gRPC, Avro, Thrift)
+  (eg. gRPC, Avro, Thrift)
 ---
 *Estimated reading time*: 10 minutes
 
