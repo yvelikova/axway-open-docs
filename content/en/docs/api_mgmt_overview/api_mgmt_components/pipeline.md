@@ -1,5 +1,5 @@
 {
-"title": "Integrate your API-Management solution into a CI/CD pipeline",
+"title": "Integrate your API management solution into a CI/CD pipeline",
 "linkTitle": "Pipeline",
 "weight":"40",
 "date": "2020-04-14",

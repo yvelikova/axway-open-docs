@@ -1,5 +1,5 @@
 {
-"title": "API Design & Prototype with Stoplight",
+"title": "API design and prototyping with Stoplight",
 "linkTitle": "Stoplight",
 "weight":"5",
 "date": "2020-04-14",

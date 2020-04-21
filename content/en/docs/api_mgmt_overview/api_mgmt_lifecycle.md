@@ -1,24 +1,24 @@
 {
-    "title": "API Management lifecycle",
-    "linkTitle": "API lifecycle",
+    "title": "API management lifecycle",
+    "linkTitle": "API management lifecycle",
     "weight": "3",
     "date": "2020-04-14",
-    "description": "The entire API life cycle must be considered from both sides: The service provider and service consumer, to get the most value from the platform."
+    "description": "You must consider the entire API lifecycle from both sides, the service provider and service consumer, to get the most value from the platform."
 }
 
-An API management solution must consider both API consumers and API service providers and how they should interact with the platform.
+An API management solution must consider both API consumers and API service providers and how they interact with the platform.
 
 ## Self-service is the key
 
 API management is the process of publishing, promoting, and managing Application Programming Interfaces (APIs) in a secure, scalable environment. It includes the creation of API consumer support resources that define and document APIs to facilitate easy consumption. API management supports business initiatives to enable easy interaction with customers and partners.
 
-A well-executed API strategy helps create more selling channels, better engage with customers, and offer more value to partners. This practice of doing better business through the effective delivery of APIs enables the API economy. API management uses new Web-Oriented Architecture (WOA) technologies such as REST, JSON, and OAuth instead of traditional Service-Oriented Architecture (SOA) technologies.
+A well-executed API strategy helps create more selling channels, better engage with customers, and offer more value to partners. This practice of doing better business through the effective delivery of APIs enables the API economy. API management uses Web-Oriented Architecture (WOA) technologies such as REST, JSON, and OAuth instead of traditional Service-Oriented Architecture (SOA) technologies.
 
 The role of central IT with specialists in API security should not be responsible for each API, but should develop global security policies that are utilized by each API.
 
 It is important for service providers that the integration of their interfaces does not become an additional daily burden, but can be integrated into the existing workflow. This is the only way to ensure that APIs are integrated into the platform early enough. In other words, the API management platform should be integrated via an automatic CI/CD pipeline for APIs.
 
-The service consumer expects an API developer portal, which is the central entry point into the company's API economy. In the API developer portal, the consumer will find APIs from various service providers, both enterprise services and integrated cloud services. These should be well documented, divided into categories (business expertise, maturity level) and in a self-service test and, if necessary, consumable.
+The service consumer expects an API developer portal, which is the central entry point into your API economy. In the API developer portal, the consumer can find APIs from various service providers, both enterprise services and integrated cloud services. These should be well documented, divided into categories (business expertise, maturity level), available for self-service test and, if necessary, consumable.
 
 The following illustration shows the complete API lifecycle, which is passed through by various personas, including the API service provider and consumer.
 
@@ -26,116 +26,110 @@ The following illustration shows the complete API lifecycle, which is passed thr
 
 ## API design and prototype
 
-Only the pure and possibly large number of APIs in an API management platform does not necessarily make it a success. Important are valuable APIs, some call these value APIs (VAPI), which are based on a well considered API design and always have the consumption of the API and not the existing data structures in mind.
+The availability of large numbers of pure APIs in an API management platform does not necessarily make it a success. More important are valuable APIs, often called _value APIs_ (VAPI), which are based on a well considered API design and always have the consumption of the API and not the existing data structures in mind.
 
-To learn more about good API design, see ![Design of Web API](https://www.manning.com/books/the-design-of-web-apis).
+To learn more about good API design, see [The Design of Web APIs](https://www.manning.com/books/the-design-of-web-apis).
 
-Value APIs usually start with an API first approach and not with the implementation of an API. API first means that the API interface, that is, the design of the API, is first defined and this design is the starting point for further steps, such as mocking and then implementation of the API.
+Value APIs usually start with an API-first approach and not with the implementation of an API. API-first means that the API interface, that is, the design of the API, is defined first, and this design is the starting point for further steps, such as mocking and then implementation of the API.
 
-For API design, Axway works with its partner Stoplight, which offers a form-based API design editor for both OpenAPI 2.0 and 3.0. Enterprise features for tracking and approving changes in larger teams.
+For API design, Axway works with Stoplight, which offers a form-based API design editor for both OpenAPI 2.0 and 3.0. Stoplight also offers enterprise features for tracking and approving changes in larger teams.
 
-To learn more about API design with Stoplight click [here](../api_mgmt_components/stoplight/)
+To learn more about API design with Stoplight, see [API design and prototyping with Stoplight](/docs/api_mgmt_overview/api_mgmt_components/stoplight/).
 
 ## Mock
 
-Especially when using the API-First approach it makes sense to think about how to quickly and easily mock new APIs.
-Mocks help to separate the API service provider from the service consumer side and give potentially interested customers a feeling what this new API will deliver.
-While service providers are still busy implementing a service, they can provide a mock, allowing service consumers to advance the implementation of the client.
-In addition, mocks help to improve the feedback loop, as potential consumers can now provide information about the payload to optimize it for different application purposes.
+When using the API-first approach it makes sense to think about how to quickly and easily mock new APIs. Mocks help to separate the API service provider from the service consumer, and give potentially interested customers an understanding of what this new API will deliver.
 
-To learn more about API-Builder click [here](../api_mgmt_components/apibuilder/#mock)
+While service providers are implementing a service, they can provide a mock, allowing service consumers to advance the implementation of the client. In addition, mocks help to improve the feedback loop, as potential consumers can provide information about the payload to optimize it for different application purposes.
 
-## Develop & Integrate
+To learn more about mocking, see [mock an API in API builder](/docs/api_mgmt_overview/api_mgmt_components/apibuilder/#mock).
 
-The API management platform is not responsible for the actual development of APIs, as these are provided by backend applications.
-Sometimes, however, backend APIs are too technical to provide the desired value, i.e. they do not represent a value API.
-Therefore, in this context, the term "develop" is used to describe, for example, the orchestration or optimization of APIs.
-In order to implement the desired API design, one can orchestrate a series of technical APIs or cloud applications. Or optimize the payload depending on the client. Mobile application vs. single page application would be an example.
-In addition, a use case in the development area is a kind of integration flow to define, which includes other systems. A good example is to send a notification (teams, slack, mail, push message, etc.) when an order is received.
+## Develop and integrate
 
-To learn more about API-Builder click [here](../api_mgmt_components/apibuilder/)
+The API management platform is not responsible for the actual development of APIs, as these are provided by back-end applications.
+Sometimes, however, back-end APIs are too technical to provide the desired value, that is, they do not represent a value API.
+In this context, the term _develop_ is used to describe, for example, the orchestration or optimization of APIs.
+
+To implement the desired API design, you can orchestrate a series of technical APIs or cloud applications; or optimize the payload depending on the client. For example, mobile application compared with single page application. In addition, a use case in the development area is the kind of integration flow to define, which includes other systems, for example, to send a notification (Teams, Slack, email, push message, and so on) when an order is received.
+
+To learn more about API Builder, see [API builder](/docs/api_mgmt_overview/api_mgmt_components/apibuilder/).
 
 Another approach to developing or integrating into back-end legacy applications is the use of policies. For example, this includes exposing a SOAP Web service as a REST API or implementing an OAuth client. API development based on policies is performed by a policy developer using Policy Studio. For more details on creating APIs using the REST API development wizard, see [Develop REST APIs in Policy Studio](/docs/apim_policydev/apigw_web_services/register_rest_apis/).
 
 ## Configure
 
-In addition to the pure API specification in the form of an OpenAPI (Swagger) definition, the API management system needs to know a number of other information about how the API should be managed.
-Which security, tags, custom policies, certificates, images, custom properties, consumer quotas, access rights, etc. should be managed? All this information must be configured or prepared on the platform.
-Depending on the chosen approach, manual configuration or automatic deployment, different steps/processes have to be considered.
-Here it should be considered that the API service provider, i.e. the developer, should have as little effort as possible to increase the acceptance of the platform. This is the only way to ensure that APIs are registered in the platform in the early API design phase and that the agile approach can be built with feedback loops.
+In addition to the pure API specification in the form of an OpenAPI (Swagger) definition, the API management system needs to know how the API should be managed. Which security, tags, custom policies, certificates, images, custom properties, consumer quotas, access rights, and so on should be managed? All this information must be configured or prepared on the platform.
+
+Depending on the chosen approach, manual configuration or automatic deployment, you must consider different steps or processes. Keep in mind that the API service provider, that is, the developer, should have as little effort as possible to increase the acceptance of the platform. This is the only way to ensure that APIs are registered in the platform in the early API design phase and that the Agile approach can be built with feedback loops.
 
 ## Test
 
-That an API should be tested goes without saying and is certainly done by every API developer.
-However, a general recommendation is to build an appropriate test suite to ensure that the endpoints work according to the specification. These are integration tests that check each API endpoint to see if it responds with the correct response (code + response) depending on various input parameters.
-This test suite is essential for a proper lifecycle management / version management, as it allows to detect whether changes lead to a breaking change for consuming applications or not.
-In the back of your mind you should keep in consideration that changes to the APIs may be implemented after 6 months or 1 year. Another developer is responsible and he does not know every detail. To give this developer security, this test suite is needed for each API.
+API developers must test every API, however, a general recommendation is to build an appropriate test suite to ensure that the endpoints work according to the specification. These are integration tests that check each API endpoint to see if it responds with the correct response (code and response) depending on various input parameters.
 
-## API-Staging
+This test suite is essential for lifecycle management and version management, as it allows you to detect whether changes lead to a breaking change for consuming applications or not. Consider also that changes to the APIs might be implemented after six months or one year, at which time another developer is responsible who does not know every detail. To give this developer security, this test suite is needed for each API.
 
-Customers divide systems into zones for development, pre-production, production, etc.
-The API management platform is also deployed in each zone. Like any other application, APIs are developed and tested in the lowest development zone and then deployed to the higher zone.
-This means that a deployment concept is needed which should be automated if possible to promote the APIs and policies from one stage to the next.
-How the exact process is set up depends of course on the requirements of the company. For example, to use release artifacts or not. Or which groups of people have which responsibilities.
-There are two deployment artifacts in the AMPLIFY Axway API management solution:
-**Policies**
-generally valid policies that are referenced by different APIs
-These policies map security, routing, integration and other use cases. They are developed by policy developers using the Policy Studio and have their own deployment pipeline. They are deployed relatively rarely.
-**API**
-The API is defined by the API specification and the API configuration. It is developed by service providers and deployed as a single unit.
+## API staging
+
+Customers divide systems into zones for development, pre-production, production, and so on. The API management platform is also deployed in each zone. APIs are developed and tested in the development zone and then deployed to the next zone, and so on. This means that a deployment concept is needed, which should be automated if possible to promote the APIs and policies from one stage to the next.
+How the exact process is set up depends on the requirements of your company, for example, to use release artifacts or not, and which groups of people have which responsibilities.
+
+There are two deployment artifacts in the AMPLIFY API Management solution:
+
+* **Policies**: Generally valid policies that are referenced by different APIs. These policies map security, routing, integration, and other use cases. They are developed by policy developers using Policy Studio and have their own deployment pipeline. They are deployed relatively rarely.
+* **API**: The API is defined by the API specification and the API configuration. It is developed by service providers and deployed as a single unit.
 
 Both deployment units must support the staging concept, since certain components (for example, passwords, host names, and so on) are different for each stage.
 
-To learn more how to promote APIs and Policies click [here](../api_mgmt_components/pipeline#staging)
+To learn more about how to promote APIs and policies, see [Staging](/docs/api_mgmt_overview/api_mgmt_components/pipeline/#staging).
 
-## Pipeline based integration
+## Pipeline-based integration
 
-The recommendation is to provide the API management platform, which extends over several stages, with policies and APIs via a CI/CD pipeline.
-This enables an agile approach and allows APIs to be deployed quickly, receive feedback and feed it back into the API.
-Furthermore, it is possible to extend this pipeline with additional customer-specific requirements, for example to establish governance steps, plausibility checks, etc.
-And last but not least, it increases the acceptance of API service providers as they can focus on developing services instead of registering APIs.
-Typical systems and tools for pipeline based integration are Jenkins, Bamboo, Maven and possibly an artifact repository like Nexus or Artifactory.
+It is best to provide the API management platform, which extends over several stages, with policies and APIs using a CI/CD pipeline.
+This enables an Agile approach and allows APIs to be deployed quickly, receive feedback, and feed it back into the API.
+Additionally, you can extend this pipeline with additional customer-specific requirements, for example to establish governance steps, plausibility checks, and so on. Lastly, it increases the acceptance of API service providers as they can focus on developing services instead of registering APIs.
 
-To learn more how to integrate into a pipeline click [here](../api_mgmt_components/pipeline/)
+Typical systems and tools for pipeline-based integration are Jenkins, Bamboo, Maven, and possibly an artifact repository like Nexus or Artifactory.
+
+To learn more, see [Integrate your API management solution into a CI/CD pipeline](/docs/api_mgmt_overview/api_mgmt_components/pipeline/).
 
 ## Govern and monitor
 
-Once an API is in production it becomes important to monitor it.
-Monitoring includes various aspects, such as a health check, which not only checks whether an API exists but also makes a breakthrough to the backend system. This is the only way to ensure that the API really works from end to end.
-Another aspect is the runtime monitoring of security rules, SLAs, where the consumers come from and of course the performance.
-Axway API Management Board tools can be used for this, or the platform can be integrated into existing central monitoring cockpits.
+When an API is in production it is important to monitor it. Monitoring includes various aspects, such as a health check, which not only checks whether an API exists but also makes a call through to the back-end system. This is the only way to ensure that the API  works from end to end.
 
-To learn more how to govern and monitor click [here](../api_mgmt_components/apigateway/)
+Another aspect is the runtime monitoring of security rules, SLAs, where the consumers come from, and the performance. You can use AMPLIFY API Management dashboard tools for this, or you can integrate the platform into existing central monitoring cockpits.
 
-## Manage Access and Secure your APIs
+To learn more about how to govern and monitor, see [Introduction to API Gateway](/docs/api_mgmt_overview/api_mgmt_components/apigateway/).
 
-Once an API is registered in the API management platform, it is exposed to consumers through the API gateway. Now the API gateway acts like a reverse proxy and is able to apply different security mechanisms to the exposed API.
-There are standard security mechanisms like a simple API-key, OAuth or the connection to existing access token providers.
-The primary task, apart from OAuth including access tokens, is to determine the consuming application so that it can be checked accordingly. Does the application have a subscription, is the application valid, is it within the configured quota?
-If the application is recognized and the access is valid, further custom policies registered for the API are executed. These examine the API request in more detail, adopt an adapted routing towards the back end or check the final response to the consumer.
+## Manage access and secure your APIs
 
-To learn more about Access-Management and Security click [here](../api_mgmt_components/apimanager/)
+When an API is registered in the API management platform, it is exposed to consumers through the API Gateway. The API Gateway acts like a reverse proxy and is able to apply different security mechanisms to the exposed API. There are standard security mechanisms such as API key, OAuth, or the connection to existing access token providers.
 
-## Consume APIs in the Developer Portal
+In addition to applying security mechanisms, the primary task is to determine the consuming application so that it can be checked accordingly. Does the application have a subscription, is the application valid, is it within the configured quota? If the application is recognized and the access is valid, further custom policies registered for the API are executed. These examine the API request in more detail, adopt an adapted routing towards the back-end, or check the final response to the consumer.
 
-The API Developer Portal is the central contact point for internal and external API service consumers. It offers self-service interfaces for registration, research, testing and subscribing to APIs.
-In addition to the "pure" API functions, the Developer Portal should be designed in such a way that it also offers support options and general instructions on the own API economy. A good example is certainly the explanation of how to get access tokens or simply an API glossary.
-Furthermore API consumers can monitor the access of their own applications and manage applications.
+To learn more about access management and security, see [Introduction to API Manager](/docs/api_mgmt_overview/api_mgmt_components/apimanager/).
 
-To learn more about the API-Developer Portal click [here](../api_mgmt_components/apiportal/)
+## Consume APIs in the developer portal
+
+The API developer portal is the central contact point for internal and external API service consumers. It offers self-service interfaces for registration, research, testing, and subscribing to APIs.
+
+In addition to the pure API functions, the developer portal should be designed to offer support options and general instructions on the API economy. For example, an explanation of how to get access tokens or an API glossary.
+
+API consumers can also monitor the access of their own applications and manage applications.
+
+To learn more, see [Introduction to API Portal](http://localhost:1313/docs/api_mgmt_overview/api_mgmt_components/apiportal/).
 
 ## Analytics
 
-Long-term analyses and statistics provide information on how the platform is developing.
-How is the performance in the long run, which APIs are working well and which are not, are the error rates stable, etc.
-The Analytics components are not intended to display the operational monitoring with a detailed view of each individual API request, but are used for evaluation and planning for the platform.
-Axway's API management solution provides an out of the box analytics component with Embedded Analytics for API management. With open log formats, such as open logging, the solution can also be connected to existing systems such as Elasticsearch or Splunk.
+Long-term analyses and statistics provide information on how the platform is developing. How is the performance in the long run, which APIs are working well and which are not, are the error rates stable, and so on.
 
-To learn more about Analytics options click [here](../api_mgmt_components/analytics/)
+The analytics components are not intended to display the operational monitoring with a detailed view of each individual API request, but are used for evaluation and planning for the platform. AMPLIFY API Management provides an out of the box analytics component with Embedded Analytics for API management. With open log formats, such as open logging, the solution can also be connected to existing systems such as Elasticsearch or Splunk.
 
-## API-Versioning
+To learn more about analytics options, see [API management analytics](/docs/api_mgmt_overview/api_mgmt_components/analytics/).
 
-The versioning of APIs, i.e. the associated lifecycle, is an important topic. Basically you should try to stay on a stable API (/api/v1/resource) for as long as possible.
-You should also avoid exposing the same API but with individual versions per consumer. This leads de facto to point-to-point integrations that should be avoided as they are difficult to maintain.
-Lifecycle management should be considered from the beginning and, if possible, new requirements should be integrated into the same API version as a non-breaking change. In other words, the API is subject to a natural evolution with improvements, extensions, fixes, etc. and the process must be designed to support this evolution.
-When version changes occur, Axway's API management solution supports processes to move consumers from one API version (/api/v1/res) to the next (/api/v2/res). However, the client must follow the change, and they do not have the necessary influence over every client.
+## API versioning
+
+The versioning of APIs, that is, the associated lifecycle, is important. You should try to stay on a stable API (`/api/v1/resource`) for as long as possible. You should also avoid exposing the same API but with individual versions per consumer. This leads to point-to-point integrations that should be avoided as they are difficult to maintain.
+
+Lifecycle management should be considered from the beginning and, if possible, new requirements should be integrated into the same API version as a non-breaking change. In other words, the API is subject to a natural evolution with improvements, extensions, fixes, and so on, and the process must be designed to support this evolution.
+
+When version changes occur, AMPLIFY API Management supports processes to move consumers from one API version (`/api/v1/res`) to the next (`/api/v2/res`).
