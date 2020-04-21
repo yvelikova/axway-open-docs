@@ -18,34 +18,45 @@ Follow these steps to find your asset in the Catalog
 
 Watch the animation to learn how to do this in AMPLIFY Central UI.
 
-TBD
+TBA
+
+
 
 ## Subscribe to an API
-
-
 
 ### Before you start
 
 * You will need to create an app in AMPLIFY Central and secure it with an [API Key](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/quickstart/index.html) or [JWT](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/secure_api_jwt/index.html)
 
-
-
 ### Subscribe to an API
 
-Follow these steps to subscribe to an API
+Follow these steps to subscribe to an API asset
 
 * Select **Catalog** in the left navigation bar and this will open up a **Explore Catalog** sub-menu.
-* Click an API asset in the list to see a detailed view of its description and test methods.
+* Click an API asset in the list to see a detailed view of its description, test methods and subscriptions.
 * Click **Subscribe** in the upper-right corner.
 * On the dialog box, select **Team**, enter a **Subscription name** and select **Application**.
 * Click **Subscribe**.
 
 Watch the animation to learn how to subscribe to an API asset.
 
-TBD
+TBA
+
+
 
 ## Subscribe to an MFT Service
 
+
+
 ## Export to Integration Builder
 
+
+
 ## Download a Catalog asset
+
+Follow these steps to download an asset from the Catalog
+
+* Select **Catalog** in the left navigation bar and this will open up a **Explore Catalog** sub-menu.
+* Click on the asset you want to download from the list to see a detailed view of its description.
+* Next to the Catalog name, click the 'Download specification' button (seen when hovered over the icon) from the available buttons.
+* The catalog asset will be downloaded in the format specified in it's specification.
