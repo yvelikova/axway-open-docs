@@ -1,13 +1,14 @@
 {
-    "title": "API Builder",
+    "title": "Introduction to API Builder",
     "linkTitle": "API Builder",
     "weight":"10",
     "date": "2020-04-14",
-    "description": "Integration, orchestration and mock of APIs as lightweight microservice."
+    "description": "Integration, orchestration, and mocking of APIs as a lightweight microservice."
 }
 
-The [Axway API builder](https://docs.axway.com/bundle/API_Builder_4x_allOS_en/page/api_builder_getting_started_guide.html) is based on Node.js, and acts as an integration orchestration layer between existing service providers and the API management system, or governance layer.
-The API builder application is flexible and therefore able to connect to different service providers:
+The [Axway API Builder](https://docs.axway.com/bundle/API_Builder_4x_allOS_en/page/api_builder_getting_started_guide.html) is based on Node.js, and acts as an integration orchestration layer between existing service providers and the API management system, or governance layer.
+
+The API Builder application is flexible and therefore able to connect to different service providers:
 
 * Databases
 * REST API based on an OpenAPI 2.0 or 3.0 specification
@@ -16,7 +17,7 @@ The API builder application is flexible and therefore able to connect to differe
 
 ![API-Builder Orchestration Layer](/Images/api_mgmt_overview/api-builder-orchstration-layer.png)
 
-## Using API-Builder
+## Use API Builder
 
 The basic principle of API Builder is to expose APIs in the same way as any other application, such as a Node.js or Spring Boot application.
 The advantage of API Builder is the speed of implementing integration usecases faster than implementing them manually. Instead of having to deal with how to integrate into a system, there may be a ready-to-use plugin that can be installed in the API-Builder project.
