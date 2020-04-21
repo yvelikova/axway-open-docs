@@ -42,6 +42,8 @@ Follow these steps to subscribe to an API
 
 Watch the animation to learn how to subscribe to an API asset.
 
+TBD
+
 ## Subscribe to an MFT Service
 
 ## Export to Integration Builder
