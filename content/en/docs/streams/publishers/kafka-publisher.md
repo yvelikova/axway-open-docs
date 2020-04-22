@@ -2,7 +2,7 @@
 title: Kafka Publisher
 description: Learn how to configure a topic associated to a Kafka Publisher
 ---
-{{< alert title="Warning" color="warning" >}}Kafka publisher is still experimental and will be enhanced in future releases.{{< /alert >}}
+> {{< alert title="Warning" color="warning" >}}Kafka publisher is still experimental and will be enhanced in future releases.{{< /alert >}}
 
 Streams can act as a consumer of your dedicated Apache Kafka cluster.
 
@@ -12,8 +12,12 @@ It consumes records from one configured topic and then publishes those records i
 
 Configuring an Apache Kafka publisher requires some specific configuration. Configuration is inspired from the official Kafka consumer API.
 
-| Configuration Entry     | Mandatory | Possible Value  | Default value | Description |
-|---------------|:---------:|----------------|------------------------|----------|
-| url           | yes       | none           | Target URL to request  |
-| pollingPeriod | no        | PT5S (5 sec)   | Period at witch the target URL will be requested. Min: PT0.5S Max: PT1H. Visit [ISO-8601 format](https://en.wikipedia.org/wiki/ISO_8601#Durations) for details. |
-| headers       | no        | none           | Map of key/value pairs that will be injected as HTTP headers when requesting the target URL |
+| Configuration Entry | Mandatory | Possible value             | Default value | Description                                                                                                                                                                                                                                                                                                                                       |
+| ------------------- | --------- | -------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bootstrapServers    | yes       | list with comma seperator  | n/a           | A list of brokers host/port pair to establish connection to your Kafka cluster                                                                                                                                                                                                                                                                    |
+| topic               | yes       | a string value             | n/a           | Name of the Kafka topic where to fetch records from                                                                                                                                                                                                                                                                                               |
+| keyValue            | no        | a string value             | string        | Enable filtering on records key value (simple equality is performed).                                                                                                                                                                                                                                                                             |
+| keyDeserializer     | no        | string                     | json          | Deserializer used for record key. Currently only *'string'* is supported                                                                                                                                                                                                                                                                          |
+| valueDeserializers  | no        | json or smile              | latest        | Deserializer used for record value. Supported deserializers are '*json*' and '*smile*'. This means your Kafka topic must contains JSON strings or data encoded into data format  "binary JSON". Specification could be found : <https://github.com/FasterXML/smile-format-specification>.                                                         |
+| readFrom            | no        | earliest or latest or none |               | What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. <ul><li>earliest: automatically reset the offset to the earliest offset</li><li>latest: automatically reset the offset to the latest offset </li><li>none: throw exception to the consumer if no previous offset is found for the consumer's group</li></ul> |
+| consumerProperties  | no        | map                        |               | A map of consumer properties as mentioned in the Kafka consumer API official documentation. <https://kafka.apache.org/documentation/#consumerconfigs>  # Be aware that changing this can alter the way the publisher behaves. Please get in touch with the support team before you do.                                                              |
