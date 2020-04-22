@@ -18,7 +18,7 @@ Follow these steps to find your asset in the Catalog
 
 Watch the animation to learn how to do this in AMPLIFY Central UI.
 
-TBA
+![find demo](/Images/central/catalog/find_demo.gif)
 
 ## Subscribe to an API
 
@@ -38,7 +38,7 @@ Follow these steps to subscribe to an API asset
 
 Watch the animation to learn how to subscribe to an API asset.
 
-TBA
+![subscribe demo](/Images/central/catalog/subscribe_demo.gif)
 
 ## Subscribe to an MFT Service
 
@@ -91,3 +91,7 @@ Follow these steps to download an asset from the Catalog
 * Click on the asset you want to download from the list to see a detailed view of its description.
 * Next to the Catalog name, click the 'Download specification' button (seen when hovered over the icon) from the available buttons.
 * The catalog asset will be downloaded in the format specified in it's specification.
+
+Watch the animation to learn how to download a catalog asset
+
+![download demo](/Images/central/catalog/download_demo.gif)
