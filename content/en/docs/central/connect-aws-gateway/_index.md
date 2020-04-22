@@ -22,7 +22,7 @@ Each AWS Gateway can be represented by an AMPLIFY Central environment allowing y
 
 ### Discovery Agent
 
-The Discovery Agent is used to discover  new deployments and stage updates to existing deployments for publishing related API in AMPLIFY Central (either as  a catalog item or as an API service). As part of the deployment package, use the provided cloud formation scripts  to set up the following agent-dependent AWS Services.
+The Discovery Agent is used to discover  new deployments and stage updates to existing deployments for publishing related APIs in AMPLIFY Central (either as  a catalog item or as an API service). As part of the deployment package, use the provided cloud formation scripts  to set up the following agent-dependent AWS Services.
 
 * AWS Config - Administers, audits and monitors resource configurations. Records and validates configuration changes.
 * AWS CloudWatch - Monitors resources and AWS applications in real time. Receives and routes supported AWS Service events.
