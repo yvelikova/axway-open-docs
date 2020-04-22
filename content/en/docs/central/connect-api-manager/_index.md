@@ -27,7 +27,7 @@ The Discovery Agent is used to discover new published API. The Discovery Agent p
 
 The Discovery Agent discovers APIs that have PassTrough / API Key / OAuth security.
 
-The related APIs are published to AMPLIFY Central in either disconnected mode (catalog item publication) or connected mode (API Service publication). For additional information, see [Discovery Agent](/docs/central/connect-api-manager/deploy-your-agents/#discovery-agent).
+The related APIs are published to AMPLIFY Central in either disconnected mode (catalog item publication) or connected mode (Environment / API Service publication and optionally as Catalog item). For additional information, see [Discovery Agent](/docs/central/connect-api-manager/deploy-your-agents/#discovery-agent).
 
 {{< alert title="Note" color="primary" >}}Although both publication modes are functional, APIs cannot be fully managed from AMPLIFY Central before Q3-2020.{{< /alert >}}
 
