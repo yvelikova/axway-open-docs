@@ -6,7 +6,7 @@ description: Learn how to discover and share your asset via the AMPLIFY Unified
 ---
 *Estimated reading time*: 10 minutes
 
-## Find Catalog asset
+## Find a Catalog asset
 
 Follow these steps to find your asset in the Catalog
 
