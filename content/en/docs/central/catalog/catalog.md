@@ -15,20 +15,6 @@ This section describes how to manage AMPLIFY Catalog subscriptions.
 
 * You will need to create an app in AMPLIFY Central and secure it with an API Key. See [Get started with AMPLIFY Central](/docs/central/quickstart).
 
-### Subscribe to an endpoint
-
-To subscribe to an endpoint:
-
-* Select Catalog in the left navigation bar.
-* Click aN endpoint in the list to see a detailed view of its description and test methods.
-* Click **Subscribe** in the upper-right corner.
-* On the dialog box, select **Team** and **Application**.
-* Click **Subscribe**.
-
-Watch the animation to learn how to subscribe to an endpoint.
-
-![Subscribe to a catalog item](/Images/central/catalog_subscribe.gif)
-
 ### View the subscriptions of an endpoint
 
 To view the subscriptions of an endpoint click the **Subscriptions** tab on the endpoint detail page.
@@ -44,8 +30,6 @@ To unsubscribe from an endpoint:
 * Click **Unsubscribe**.
 
 Watch the animation to learn how to unsubscribe from an endpoint.
-
-![Unsubscribe from a catalog item](/Images/central/catalog_unsubscribe.gif)
 
 ### Delete the subscription of an endpoint
 
