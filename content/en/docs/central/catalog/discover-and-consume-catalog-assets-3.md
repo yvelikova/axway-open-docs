@@ -24,7 +24,7 @@ TBA
 
 ### Before you start
 
-* You will need to create an app in AMPLIFY Central and secure it with an [API Key](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/quickstart/index.html) or [JWT](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/secure_api_jwt/index.html)
+* You will need to create an app in AMPLIFY Central and secure it with an [API Key](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/quickstart/index.html) or [JWT](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/secure_api_jwt/index.html) or [](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/feauth_oauth/index.html)[OAuth](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/feauth_oauth/index.html)
 
 ### Subscribe to an API
 
