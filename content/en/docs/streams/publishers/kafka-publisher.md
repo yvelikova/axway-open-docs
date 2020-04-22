@@ -41,6 +41,7 @@ Here is an example of a configuration of a kafka publisher
     }
 }
 ```
+
 ## AutoCommit and GroupId
 
 Our Kafka publisher acts as a consumer of your Kafka topics. Based on that, you should be aware there are important Kafka consumer properties that are configured for you by default :
