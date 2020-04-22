@@ -38,4 +38,4 @@ The following video demonstrates the possible integration and how the process lo
 
 {{< youtube ddOhO_BmVeE >}}
 
-Read more about how to [integrate API management into a CI/CD pipeline](../pipeline/).
+Read more about how to [integrate API management into a CI/CD pipeline](/docs/api_mgmt_overview/api_mgmt_components/pipeline/).
