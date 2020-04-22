@@ -8,7 +8,7 @@ Streams can act as a consumer of your dedicated Apache Kafka cluster.
 
 It consumes records from one configured topic and then publishes those records into Streams platform in order to broadcast data to subscribers if a change is detected between two records.
 
-# Kafka publisher configuration
+## Kafka publisher configuration
 
 Configuring an Apache Kafka publisher requires some specific configuration. Configuration is inspired from the official Kafka consumer API.
 
@@ -21,6 +21,8 @@ Configuring an Apache Kafka publisher requires some specific configuration. Conf
 | valueDeserializers  | no        | json or smile              | json          | Deserializer used for record value. Supported deserializers are '*json*' and '*smile*'. This means your Kafka topic must contains JSON strings or data encoded into data format  "binary JSON". Specification could be found : <https://github.com/FasterXML/smile-format-specification>.                                                                                        |
 | readFrom            | no        | earliest or latest or none | latest        | What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. <ul><li>earliest: automatically reset the offset to the earliest offset</li><li>latest: automatically reset the offset to the latest offset </li><li>none: throw exception to the consumer if no previous offset is found for the consumer's group</li></ul> |
 | consumerProperties  | no        | map                        |               | A map of consumer properties as mentioned in the Kafka consumer API official documentation. <https://kafka.apache.org/documentation/#consumerconfigs>  # Be aware that changing this can alter the way the publisher behaves. Please get in touch with the support team before you do.                                                                                           |
+
+Here is an example of a configuration of a kafka publisher
 
 ```json
 {
