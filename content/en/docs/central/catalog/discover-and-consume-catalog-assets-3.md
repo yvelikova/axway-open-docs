@@ -48,7 +48,7 @@ Follow these steps to subscribe to an MFT service
 
 * Select **Catalog** in the left navigation bar and this will open up a **Explore Catalog** sub-menu.
 
-  TBA
+  \*\*more info TBA\*\*
 
 ## Export to Integration Builder
 
