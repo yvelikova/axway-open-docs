@@ -58,7 +58,7 @@ Another approach to developing or integrating into back-end legacy applications 
 
 ## Configure
 
-In addition to the pure API specification in the form of an OpenAPI (Swagger) definition, the API management system needs to know how the API should be managed. Which security, tags, custom policies, certificates, images, custom properties, consumer quotas, access rights, and so on should be managed? All this information must be configured or prepared on the platform. An API can be configured manually using the API-Manager Web-UI or using an APIs as Code approach where a CLI or CI/CD-Pipeline deploys the API automatically into the platform.  
+In addition to the pure API specification in the form of an OpenAPI (Swagger) definition, the API management system needs to know how the API should be managed. Which security, tags, custom policies, certificates, images, custom properties, consumer quotas, access rights, and so on should be managed? All this information must be configured or prepared on the platform. An API can be configured manually using the API Manager Web UI or using an APIs as code approach where a CLI or CI/CD-Pipeline deploys the API automatically into the platform.  
 
 Depending on the chosen approach, [manual configuration](/docs/api_mgmt_overview/api_mgmt_components/apimanager/) or [automatic deployment](/docs/api_mgmt_overview/api_mgmt_components/pipeline/), you must consider different steps or processes. Keep in mind that the API service provider, that is, the developer, should have as little effort as possible to increase the acceptance of the platform. This is the only way to ensure that APIs are registered in the platform in the early API design phase and that the Agile approach can be built with feedback loops.
 
