@@ -1,9 +1,9 @@
 {
-"title": "API Management Analytics",
+"title": "Introduction to API management analytics",
 "linkTitle": "Analytics",
 "weight":"30",
 "date": "2020-04-14",
-"description": "Analytics"
+"description": "Introduction to API Gateway Analytics and Embedded Analytics"
 }
 
 ## API Gateway Analytics
