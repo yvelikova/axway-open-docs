@@ -26,7 +26,7 @@ The following should be tested:
 
 * all endpoints
     * all parameters
-    * Provide all return codes (e.g. with wrong parameters) and test
+    * Enforce all defined return codes (e.g. with wrong parameters)
 * the payload should be tested with schema validations
     * for example JSON scheme
     * Get GET check the response
