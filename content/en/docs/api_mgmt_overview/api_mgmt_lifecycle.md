@@ -1,6 +1,6 @@
 {
     "title": "API management lifecycle",
-    "linkTitle": "API management lifecycle",
+    "linkTitle": "API lifecycle",
     "weight": "3",
     "date": "2020-04-14",
     "description": "Provides an overview of the entire API lifecycle and which API management components play a role in it."
@@ -67,6 +67,8 @@ Depending on the chosen approach, [manual configuration](/docs/api_mgmt_overview
 API developers must test every API, however, a general recommendation is to build an appropriate test suite to ensure that the endpoints work according to the specification. These are integration tests that check each API endpoint to see if it responds with the correct response (code and response) depending on various input parameters.
 
 This test suite is essential for lifecycle management and version management, as it allows you to detect whether changes lead to a breaking change for consuming applications or not. Consider also that changes to the APIs might be implemented after six months or one year, at which time another developer is responsible who does not know every detail. To give this developer security, this test suite is needed for each API.
+
+To learn more about testing your API, see [Tests your APIs](/docs/api_mgmt_overview/key_concepts/api_mgmt_tests).
 
 ## API staging
 
