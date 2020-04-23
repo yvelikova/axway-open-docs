@@ -54,13 +54,13 @@ To implement the desired API design, you can orchestrate a series of technical A
 
 To learn more about API Builder, see [API builder](/docs/api_mgmt_overview/api_mgmt_components/apibuilder/).
 
-Another approach to developing or integrating into back-end legacy applications is the use of policies. For example, this includes exposing a SOAP Web service as a REST API or implementing an OAuth client. API development based on policies is performed by a policy developer using Policy Studio. For more details on creating APIs using the REST API development wizard, see [Develop REST APIs in Policy Studio](/docs/apim_policydev/apigw_web_services/register_rest_apis/).
+Another approach to developing or integrating into back-end legacy applications is the use of [policies](/docs/api_mgmt_overview/key_concepts/policies/). For example, this includes exposing a SOAP Web service as a REST API or implementing an OAuth client. API development based on policies is performed by a policy developer using Policy Studio. For more details on creating APIs using the REST API development wizard, see [Develop REST APIs in Policy Studio](/docs/apim_policydev/apigw_web_services/register_rest_apis/).
 
 ## Configure
 
-In addition to the pure API specification in the form of an OpenAPI (Swagger) definition, the API management system needs to know how the API should be managed. Which security, tags, custom policies, certificates, images, custom properties, consumer quotas, access rights, and so on should be managed? All this information must be configured or prepared on the platform.
+In addition to the pure API specification in the form of an OpenAPI (Swagger) definition, the API management system needs to know how the API should be managed. Which security, tags, custom policies, certificates, images, custom properties, consumer quotas, access rights, and so on should be managed? All this information must be configured or prepared on the platform. An API can be configured manually using the API-Manager Web-UI or using an APIs as Code approach where a CLI or CI/CD-Pipeline deploys the API automatically into the platform.  
 
-Depending on the chosen approach, manual configuration or automatic deployment, you must consider different steps or processes. Keep in mind that the API service provider, that is, the developer, should have as little effort as possible to increase the acceptance of the platform. This is the only way to ensure that APIs are registered in the platform in the early API design phase and that the Agile approach can be built with feedback loops.
+Depending on the chosen approach, [manual configuration](/docs/api_mgmt_overview/api_mgmt_components/apimanager/) or [automatic deployment](/docs/api_mgmt_overview/api_mgmt_components/pipeline/), you must consider different steps or processes. Keep in mind that the API service provider, that is, the developer, should have as little effort as possible to increase the acceptance of the platform. This is the only way to ensure that APIs are registered in the platform in the early API design phase and that the Agile approach can be built with feedback loops.
 
 ## Test
 
