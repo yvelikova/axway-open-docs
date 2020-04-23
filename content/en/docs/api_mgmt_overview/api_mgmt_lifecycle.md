@@ -3,10 +3,10 @@
     "linkTitle": "API management lifecycle",
     "weight": "3",
     "date": "2020-04-14",
-    "description": "You must consider the entire API lifecycle from both sides, the service provider and service consumer, to get the most value from the platform."
+    "description": "Provides an overview of the entire API lifecycle and which API management components play a role in it."
 }
 
-An API management solution must consider both API consumers and API service providers and how they interact with the platform.
+You must consider the entire API lifecycle from both sides, the service provider and service consumer, to get the most value from the platform.
 
 ## Self-service is the key
 
