@@ -1,6 +1,6 @@
 {
     "title": "API management lifecycle",
-    "linkTitle": "API management lifecycle",
+    "linkTitle": "API lifecycle",
     "weight": "3",
     "date": "2020-04-14",
     "description": "Provides an overview of the entire API lifecycle and which API management components play a role in it."

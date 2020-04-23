@@ -1,7 +1,7 @@
 {
     "title": "Test your APIs",
     "linkTitle": "Tests your APIs",
-    "weight": "5",
+    "weight": "17",
     "date": "2020-04-23",
     "description": "Learn how to ensure a clean API lifecycle using tests"
 }
