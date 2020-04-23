@@ -15,7 +15,7 @@ There are two types of changes: Breaking and non-breaking changes.
 
 A breaking change forces a consumer to adapt its own implementation, which is not always feasible in practice because you do not have control over all applications. Therefore an API should remain stable as long as possible, i.e. only non-breaking changes should be introduced.
 
-Changes to an API are normal and intended to add more functionality, corrections, etc. to the API. Thus, with each iteration the value of the API increases. 
+Changes to an API are normal and intended to add more functionality, corrections, etc. to the API. Thus, with each iteration the value of the API increases.
 But in order to be able to recognize in the long run whether a change is breaking or non-breaking, tests should be provided for each API from the beginning. For example, if an API is changed 6 months after the last change or introduction by another developer, the developer must be sure that the change is non-breaking. Only tests can help here.
 
 ## What is means to test an API
@@ -23,14 +23,15 @@ But in order to be able to recognize in the long run whether a change is breakin
 An API, we describe the example here using a REST API defines a set of endpoints/methods to be tested.
 
 The following should be tested:
+
 * all endpoints
-  * all parameters
-  * Provide all return codes (e.g. with wrong parameters) and test
+    * all parameters
+    * Provide all return codes (e.g. with wrong parameters) and test
 * the payload should be tested with schema validations
-  * for example JSON scheme
-  * Get GET check the response
-  * send corresponding payload for POST, PUT, etc.
-  * Payload content should not be tested
+    * for example JSON scheme
+    * Get GET check the response
+    * send corresponding payload for POST, PUT, etc.
+    * Payload content should not be tested
 
 These tests are combined in a test suite and can be executed manually if required or as part of the pipeline. The example refers to REST APIs but the principles are also applicable to other interfaces/formats.
 
@@ -42,9 +43,10 @@ Axway itself, as part of the API Management Platform, does not offer dedicated t
 
 ![Postman Logo](/Images/api_mgmt_overview/postman-logo.png)
 
-Postman is an established and popular REST client that allows any form of REST interface to be addressed with various parameters and security formats. 
+Postman is an established and popular REST client that allows any form of REST interface to be addressed with various parameters and security formats.
 
 Besides simple requests Postman can:
+
 * define different tests per endpoint
 * Define assertions, for example to check return codes or payload
 * Run scripts for individual use cases
