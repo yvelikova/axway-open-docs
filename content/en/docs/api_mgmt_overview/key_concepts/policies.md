@@ -45,7 +45,7 @@ Policies can also be developed for this purpose, which are made available to the
 
 ![Request processing](/Images/api_mgmt_overview/api-manager-request-processing.png)
 
-#### Example prioritization of APIs
+#### Example: Prioritization of APIs
 
 Suppose you want to prioritize APIs differently at peak times, that lower prioritized APIs will be processed secondary to ensure that enough capacity is available for the most important requests. You can use API manager policies for this use case.
 
@@ -57,10 +57,10 @@ You can configure a policy in Policy Studio like the following. This policy is e
 
 ![Handle prioritization policy](/Images/api_mgmt_overview/handle-prioritization-policy.png)
 
-This policy starts with a general throttling for each API. If the threshold value is reached, then the API is checked to see if it is a high prio API, if not, then processing is paused for e.g. 200ms. Afterwards, the system checks in the same way whether the API is a medium prio API.
-The pause times can also be flxible and obtained from the context or loaded dynamically from the [KPS](/docs/apim_policydev/apigw_kps/index.html) in order to be able to react flexibly to actual requirements.
+This policy starts with a general throttling for each API. If the threshold value is reached, then the API is checked to see if it is a high prio API, if not, then processing is paused for e.g. 200ms. Afterwards, the system checks in the same way whether the API is a medium prio API.  
+The pause times can also be flexible obtained from the context or loaded dynamically from the [KPS](/docs/apim_policydev/apigw_kps/index.html) in order to be able to react on actual requirements.
 
-The following types are supported:
+#### Supported API-Manager Policies
 
 | Type                           | Description |
 |--------------------------------|-------------|
