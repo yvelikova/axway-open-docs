@@ -68,6 +68,8 @@ API developers must test every API, however, a general recommendation is to buil
 
 This test suite is essential for lifecycle management and version management, as it allows you to detect whether changes lead to a breaking change for consuming applications or not. Consider also that changes to the APIs might be implemented after six months or one year, at which time another developer is responsible who does not know every detail. To give this developer security, this test suite is needed for each API.
 
+To learn more about testing your API, see [Tests your APIs](/docs/api_mgmt_overview/key_concepts/api_mgmt_tests).
+
 ## API staging
 
 Customers divide systems into zones for development, pre-production, production, and so on. The API management platform is also deployed in each zone. APIs are developed and tested in the development zone and then deployed to the next zone, and so on. This means that a deployment concept is needed, which should be automated if possible to promote the APIs and policies from one stage to the next.
