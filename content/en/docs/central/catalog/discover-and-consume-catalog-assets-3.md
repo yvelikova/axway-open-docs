@@ -1,22 +1,21 @@
 ---
 title: Discover and consume Catalog assets
-description: Learn how to discover and share your asset via the AMPLIFY Unified
-  Catalog. The assets can be APIs, MFT flows, SOAP (WSDL) and unstructured data
-  (eg. gRPC, Avro, Thrift)
+description: "Learn how to discover and consume assets in the AMPLIFY Unified
+  Catalog. The assets can be REST APIs, SOAP APIs, other non-REST APIs (i.e
+  gRPC, Avro, graphQL), MFT services and custom catalog assets. "
 ---
 *Estimated reading time*: 10 minutes
 
 ## Find a Catalog asset
 
-Follow these steps to find your asset in the Catalog
+First you will want to start by searching the Unified Catalog to find the asset you want to use. By default, Catalog assets are sorted by the most recently items published or updated first. You can find those assets mark with "NEW" or "Updated" labels at the top of the list.  
 
-* Select **Catalog** in the left navigation bar and this will open up a **Explore Catalog** sub-menu.
-* Find your catalog asset in the list, you have two options
+To find a catalog assets you can: 
 
-  1. Manually and scroll-down, if needed.
-  2. Use the **Filter** menu in the header and search by asset 'name' or 'tags'. Explore the **Filter** menu option by clicking on the chevron for further options to filter by asset type (Eg. API, MFT, CUSTOM). 
+* Search by **"name"** or **"tags"**: Type a keyword in the search bar. The result will return all catalog assets that have the search term either in the name or the tags. 
+* Use the **Filter** menu to filter the results by asset type (i.e API, MFT, CUSTOM) or subtype (i.e swagger2, OAS, WSDL, protobuf). 
 
-Watch the animation to learn how to do this in AMPLIFY Central UI.
+Watch the animation below to learn how to search and filter in the Unified Catalog.  
 
 ![find demo](/Images/central/catalog/find_demo.gif)
 
@@ -25,8 +24,6 @@ Watch the animation to learn how to do this in AMPLIFY Central UI.
 ### Before you start
 
 * You will need to create an app in AMPLIFY Central and secure it with an [API Key](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/quickstart/index.html) or [JWT](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/secure_api_jwt/index.html) or [](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/feauth_oauth/index.html)[OAuth](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/feauth_oauth/index.html)
-
-### Subscribe to an API
 
 Follow these steps to subscribe to an API asset
 
@@ -39,16 +36,6 @@ Follow these steps to subscribe to an API asset
 Watch the animation to learn how to subscribe to an API asset.
 
 ![subscribe demo](/Images/central/catalog/subscribe_demo.gif)
-
-## Subscribe to an MFT Service
-
-When a partner subscribes to an MFT service in the catalog they are prompted to provide details to realize the file transfer.
-
-Follow these steps to subscribe to an MFT service
-
-* Select **Catalog** in the left navigation bar and this will open up a **Explore Catalog** sub-menu.
-
-  \*\*more info TBA\*\*
 
 ## Export to Integration Builder
 
