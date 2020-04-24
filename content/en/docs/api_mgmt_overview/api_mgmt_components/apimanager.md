@@ -51,7 +51,7 @@ This [REST-based API](http://apidocs.axway.com/swagger-ui-NEW/index.html?product
 ### API Manager CLI
 
 Automation, easy integration of applications into existing processes and simple management by users is an important aspect of the API management solution.  
-The [API Manager CLI](/docs/api_mgmt_overview/api_mgmt_components/tools/#api-manager-cli) works on the basis of the REST API and allows the automatic registration of APIs via the command line for example in the development environment and the integration into a CI/CD pipeline. 
+The [API Manager CLI](/docs/api_mgmt_overview/api_mgmt_components/tools/#api-manager-cli) works on the basis of the REST API and allows the automatic registration of APIs via the command line for example in the development environment and the integration into a CI/CD pipeline.
 
 ## API management architecture
 

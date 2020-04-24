@@ -53,11 +53,11 @@ As explained above, each policy gets context injected and can use it to make dec
 
 ![Custom property prioritization](/Images/api_mgmt_overview/api-manager-custom-prop-prio.png)
 
-You can configure a policy in Policy Studio like the following. This policy is either added to an existing corporate request policy using a [policy shortcut](/docs/apim_policydev/apigw_polref/utility_additional/index.html#policy-shortcut-filter) or configured as a dedicated request policy.
+You can configure a policy in Policy Studio like the following. This policy is either added to an existing corporate global request policy using a [policy shortcut](/docs/apim_policydev/apigw_polref/utility_additional/index.html#policy-shortcut-filter) or configured as a dedicated request policy.
 
 ![Handle prioritization policy](/Images/api_mgmt_overview/handle-prioritization-policy.png)
 
-This policy starts with a general throttling for each API. If the threshold value is reached, then the API is checked to see if it is a high prio API, if not, then processing is paused for e.g. 200ms. Afterwards, the system checks in the same way whether the API is a medium prio API.  
+This policy starts with a general [throttling action](/docs/apim_policydev/apigw_polref/content_max_messages/index.html) every API needs to pass. But, if the configured throttling threshold value is reached, the policy will follow the red path and then the API is checked to see if it is a high prio API. If yes, high priority APIs are processed immeditialy. If not, then processing is [paused](/docs/apim_policydev/apigw_polref/utility_additional/index.html#pause-processing-filter) for e.g. 200ms. Afterwards, the system checks in the same way whether the API is a medium prio API.  
 The pause times can also be flexible obtained from the context or loaded dynamically from the [KPS](/docs/apim_policydev/apigw_kps/index.html) in order to be able to react on actual requirements.
 
 #### Supported API-Manager Policies
