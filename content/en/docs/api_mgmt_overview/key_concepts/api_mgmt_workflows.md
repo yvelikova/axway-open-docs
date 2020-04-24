@@ -1,16 +1,12 @@
 {
     "title": "API management workflows",
-    "linkTitle": "API-Management workflows",
+    "linkTitle": "Workflows",
     "weight": "10",
     "date": "2019-04-15",
-    "description": "Learn about the API administrator, organization administrator, and API consumer roles in API management. Understand the concepts and workflows in API management."
+    "description": "Understand the concepts and workflows in API management."
 }
 
-## API management workflows
-
-The following are typical use cases for API management.
-
-### API consumer user registration workflow
+## API consumer user registration workflow
 
 The use cases for the API consumer user registration workflow are:
 

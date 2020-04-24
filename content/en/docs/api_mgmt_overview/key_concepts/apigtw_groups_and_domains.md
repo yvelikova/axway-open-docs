@@ -1,9 +1,9 @@
 {
-"title": "API Gateway Groups and Domain concept",
+"title": "API Gateway groups and domains",
 "linkTitle": "API Gateway groups and domains",
 "weight":"12",
 "date": "2019-11-07",
-"description": "API Gateway supports a distributed architecture based on groups of gateways in an administrative domain."
+"description": "API Gateway supports a distributed architecture based on groups of API Gateways in an administrative domain."
 }
 
 The benefits of API Gateway architecture include the following:
