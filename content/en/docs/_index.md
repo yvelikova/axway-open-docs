@@ -20,7 +20,6 @@ Here are some suggestions to get started:
 
 * [API management overview](/docs/api_mgmt_overview/)
 * [Install API management](/docs/apim_installation/)
-* [Install API management](/docs/apim_installation/)
 * [Administer API management](/docs/apim_administration/)
 * [Develop in Policy Studio](/docs/apim_policydev/)
 * [Release notes](/docs/apim_relnotes/)

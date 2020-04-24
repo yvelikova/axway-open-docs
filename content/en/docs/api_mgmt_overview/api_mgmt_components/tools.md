@@ -70,8 +70,9 @@ To learn more about API Gateway Manager, see:
 * [Monitoring and metrics](/docs/apim_administration/apigtw_admin/monitor_service/)
 * [Manage API Gateway deployments](/docs/apim_administration/apigtw_admin/deploy_get_started/)
 
-## API-Manager CLI
+## API Manager CLI
 
+<!--TODO-->
 The API Manager CLI offers the possibility to integrate APIs fully automatically in the API Manager without adding the API Manager Web UI. This allows APIs to be easily managed via a command-line interface or the CI/CD pipeline.
 
 API Gateway Manager includes the following features:

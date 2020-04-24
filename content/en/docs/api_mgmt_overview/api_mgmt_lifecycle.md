@@ -1,5 +1,5 @@
 {
-    "title": "API management lifecycle",
+    "title": "API lifecycle",
     "linkTitle": "API lifecycle",
     "weight": "3",
     "date": "2020-04-14",
