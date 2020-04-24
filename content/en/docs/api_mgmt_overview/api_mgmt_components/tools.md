@@ -70,6 +70,24 @@ To learn more about API Gateway Manager, see:
 * [Monitoring and metrics](/docs/apim_administration/apigtw_admin/monitor_service/)
 * [Manage API Gateway deployments](/docs/apim_administration/apigtw_admin/deploy_get_started/)
 
+## API-Manager CLI
+
+The API Manager CLI offers the possibility to integrate APIs fully automatically in the API Manager without adding the API Manager Web UI. This allows APIs to be easily managed via a command-line interface or the CI/CD pipeline.
+
+API Gateway Manager includes the following features:
+
+* Import, Export & Update of APIs
+* Management of the entire API lifecycle
+* System and application default quota management
+* API security configuration
+* Documentation, API-Image
+* Organization permissions
+* Application subscriptions
+
+Watch this video to learn how to manage APIs using the CLI:
+
+{{< youtube BI9mPLRlhXI >}}
+
 ## Key Property Store
 
 The API Gateway Key Property Store (KPS) is used to store configuration parameters that are dynamically passed into policies at runtime. This enables policy configuration data to be managed directly by business or operational users at runtime, and allows dynamic change of policy behavior.

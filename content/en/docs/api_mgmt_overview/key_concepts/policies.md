@@ -8,7 +8,7 @@
 
 ## What is a policy?
 
-A policy is a network of message filters, and each filter is a modular unit that processes a message. A message can traverse different paths through the policy, depending on which filters succeed or fail. An important aspect of a policy is the context of a policy that the filters can access read or write to. The context that a policy is inscribed depends on the context in which the policy is used. Example: Alert policy vs. request policy.
+A policy is a network of message filters, and each filter is a modular unit that processes a message. A message can traverse different paths through the policy, depending on which filters succeed or fail. An important aspect of a policy is the context of a policy that the filters can access read or write to. The context that a policy is inscribed depends on the context in which the policy is used. Example: Alert policy vs. API-Manager request policy.
 A policy can also contain other policies, so you can build modular, reusable policies.
 
 ![Sample Policy in Policy-Studio](/Images/api_mgmt_overview/sample-policy.png)
@@ -45,7 +45,22 @@ Policies can also be developed for this purpose, which are made available to the
 
 ![Request processing](/Images/api_mgmt_overview/api-manager-request-processing.png)
 
-The following types are supported:
+#### Example: Prioritization of APIs
+
+Suppose you want to prioritize APIs differently at peak times, that lower prioritized APIs will be processed secondary to ensure that enough capacity is available for the most important requests. You can use API manager policies for this use case.
+
+As explained above, each policy gets context injected and can use it to make decisions, so the context controls the execution of the policy. For this use case we need context information that tells the policy about the priotization of the API, hence it makes sense to configure and use a [custom attribute](/docs/apim_administration/apimgr_admin/api_mgmt_custom/index.html#add-a-custom-property-to-apis): "Prioritization" in API manager. This allows the API-Service providers to define for their APIs whether it is high, medium or low priority. This information becomes available as part of the context to the runtime policies and they can use it to control the execution.
+
+![Custom property prioritization](/Images/api_mgmt_overview/api-manager-custom-prop-prio.png)
+
+You can configure a policy in Policy Studio like the following. This policy is either added to an existing corporate global request policy using a [policy shortcut](/docs/apim_policydev/apigw_polref/utility_additional/index.html#policy-shortcut-filter) or configured as a dedicated request policy.
+
+![Handle prioritization policy](/Images/api_mgmt_overview/handle-prioritization-policy.png)
+
+This policy starts with a general [throttling action](/docs/apim_policydev/apigw_polref/content_max_messages/index.html) every API needs to pass. But, if the configured throttling threshold value is reached, the policy will follow the red path and then the API is checked to see if it is a high prio API. If yes, high priority APIs are processed immeditialy. If not, then processing is [paused](/docs/apim_policydev/apigw_polref/utility_additional/index.html#pause-processing-filter) for e.g. 200ms. Afterwards, the system checks in the same way whether the API is a medium prio API.  
+The pause times can also be flexible obtained from the context or loaded dynamically from the [KPS](/docs/apim_policydev/apigw_kps/index.html) in order to be able to react on actual requirements.
+
+#### Supported API-Manager Policies
 
 | Type                           | Description |
 |--------------------------------|-------------|
