@@ -29,8 +29,6 @@ To unsubscribe from an endpoint:
 * Click the **Gear** icon next to the subscription you want to unsubscribe to.
 * Click **Unsubscribe**.
 
-Watch the animation to learn how to unsubscribe from an endpoint.
-
 ### Delete the subscription of an endpoint
 
 You can only delete subscriptions which are in `Unsubscribed` status.
