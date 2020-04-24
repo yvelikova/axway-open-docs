@@ -67,10 +67,10 @@ The following diagram shows the process for the development without staging conc
 
 To learn more you may read [here](https://github.com/Axway-API-Management-Plus/apimanager-swagger-promote/wiki/9.-Jenkins-Integration-with-GitHub-&-Bitbucket)
 
-### Staging
+## Staging
 
 In many companies, it is best practice to create packages/artifacts, some kind of releases for software projects. These artifacts are managed by repositories, such as Nexus, JFrog-Artifactory and used to share assets between teams and finally these artifacts are deployed to the target system. This provides several benefits, such as version auditing, segregation of concerns, rollbacks to previous version and CI/CD-Gates can be established.  
-We recommend to use the same approach also for promoting and deploying APIs into all different API-Management stages.
+We recommend to use the same approach also for promoting and deploying APIs & Policies into all different API-Management stages.
 
 It starts with the API-Developer/Service-Provider and of course he expects the flexibility to code/deploy/test frequently until he is satisfied with his code and creates a release package.  
 The process for the API-Developer might looks like this:  

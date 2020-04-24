@@ -46,7 +46,12 @@ Policy Studio includes API Management filters that provide read-only access to t
 
 ### API Manager REST API
 
-This REST-based API provides the underlying capabilities supporting API Manager. This API enables the management of the data in the Client Registry and the browsing of registered APIs, with API documentation returned in Swagger format. The API Manager API enables the development of custom API consumer portals and integration with external partner management systems.
+This [REST-based API](http://apidocs.axway.com/swagger-ui-NEW/index.html?productname=apimanager&productversion=7.7.0&filename=api-manager-V_1_3-oas3.json) provides the underlying capabilities supporting API Manager. This API enables the management of the data in the Client Registry and the browsing of registered APIs, with API documentation returned in Swagger format. The API Manager API enables the development of custom API consumer portals and integration with external partner management systems.
+
+### API Manager CLI
+
+Automation, easy integration of applications into existing processes and simple management by users is an important aspect of the API management solution.  
+The [API Manager CLI](/docs/api_mgmt_overview/api_mgmt_components/tools/#api-manager-cli) works on the basis of the REST API and allows the automatic registration of APIs via the command line for example in the development environment and the integration into a CI/CD pipeline. 
 
 ## API management architecture
 
