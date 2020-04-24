@@ -349,7 +349,7 @@ Option `26`: `Submit externally signed certificate`
 
 Specify an SSL certificate signed by an externally signed Certificate Authority (CA) to be used by a Node Manager or API Gateway instance. Use this option after registering a host or creating an API Gateway using a certificate signed by an external CA. Submitting the certificate with this option completes the host registration or API Gateway creation.
 
-Note that API Gateway CSRs define three custom OIDs that they expect the CA to issue in the certificate.  The CA **must** issue the certs with these OIDs, as well as the other key usage and extended key usage bits defined in the CSR, or the gateways will be unable to communicate.  This is the definition of the three custom OIDs:
+Note that API Gateway CSRs define three custom OpenIDs (OID) that they expect the CA to issue in the certificate. The CA *must* issue the certificates with these OIDs, as well as the other key usage and extended key usage bits defined in the CSR, or the gateways will be unable to communicate. The custom OIDs are defined as follows:
 
 ```
 ADMIN_NODE_MANAGER_OID = "1.3.6.1.4.1.17998.10.1.1.2.2"
@@ -358,8 +358,6 @@ GATEWAY_OID = "1.3.6.1.4.1.17998.10.1.1.2.3"
 ```
 
 An Admin Node Manager's topology certificate will have both the `ADMIN_NODE_MANAGER_OID` and the `NODE_MANAGER_OID`, while a local Node Manager's topology certificate will have only the `NODE_MANAGER_OID` and a gateway instance's topology certificate will have only the `GATEWAY_OID` in its certificate.
-
-
 
 ## `managedomain` command mode
 
