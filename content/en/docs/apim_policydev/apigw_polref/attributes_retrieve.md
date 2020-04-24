@@ -314,13 +314,13 @@ Click the **Add** button to add an XPath expression. You can add and remove exis
 
 The API Gateway can retrieve user attributes from a specified database, or write user attributes to a specified database. It can do this by running an SQL query on the database, or by invoking a stored procedure call. The query results are represented as a list of properties. Each element in the list represents a query result row returned from the database for the specified SQL query or stored procedure call. These properties represent pairs of attribute names and values for each column in the row.
 
-
-
 {{< alert title="Note" color="primary" >}} It is important to be aware of the following:
 
 * The user cannot use a selector expression in a retrieve from or write to database filter to select a table name to make the query dynamic. For example, putting "SELECT * FROM ${my_table} WHERE ..." into a retrieve from or write to database filter will fail.
 * All selector expressions, like ${my_table}, are turned into parameters for a prepared statement in order to prevent SQL injection attacks. Using selector expressions in places where SQL syntax does not permit parameters, like table names, will not work and is not supported.
 * The user can use attribute only as parameter to compare with data stored in table. For example,  select FirstName from Persons where LastName=${att1};
+
+   {{< /alert >}}
 
 ### Configure database settings
 
