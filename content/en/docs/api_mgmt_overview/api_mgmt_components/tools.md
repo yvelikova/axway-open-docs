@@ -72,12 +72,11 @@ To learn more about API Gateway Manager, see:
 
 ## API Manager CLI
 
-<!--TODO-->
-The API Manager CLI offers the possibility to integrate APIs fully automatically in the API Manager without adding the API Manager Web UI. This allows APIs to be easily managed via a command-line interface or the CI/CD pipeline.
+You can use the API Manager CLI to integrate APIs automatically in API Manager without the API Manager Web UI. This enables you to easily manage APIs using a command-line interface or CI/CD pipeline.
 
-API Gateway Manager includes the following features:
+API Manager CLI includes the following features:
 
-* Import, Export & Update of APIs
+* Import, export, and update of APIs
 * Management of the entire API lifecycle
 * System and application default quota management
 * API security configuration
