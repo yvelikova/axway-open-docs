@@ -304,9 +304,9 @@ These are some general recommendations:
 
 ## Define a restrictive Content Security Policy
 
-The HTTP Content-Security-Policy [CSP] (https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) response header instructs compliant browsers on how they may interact with external sites while in the current context. This enables the server to control interactive with code and content from third parties, mitigating some client-side code injection attacks. The policy allows the server to specify what connections are permitted for each type of resource - scripts, styles, fonts, etc.
+The HTTP Content Security Policy ([CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)) response header instructs compliant browsers on how they may interact with external sites while in the current context. This enables the server to control interaction with code and content from third-parties, mitigating some client-side code injection attacks. The policy allows the server to specify what connections are permitted for each type of resource (scripts, styles, fonts, and so on).
 
-We recommend you to configure this policy either in your `.htaccess` or virtual host file with least-privilege to allow only those interactions that are explicitly required.
+We recommend you to configure this policy either in your `.htaccess` file or virtual host file with **least privilege** to allow only interactions that are explicitly required.
 
 ## Where to go next
 
