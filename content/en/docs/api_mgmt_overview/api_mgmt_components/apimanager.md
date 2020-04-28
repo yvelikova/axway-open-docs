@@ -40,7 +40,7 @@ This is the catalog of published APIs and their associated documentation that ha
 
 This is the repository of organizations and partners, API consumers, and client applications that consume the REST APIs. The Client Registry also contains the authentication credentials of the client applications, and authorization and quota policies defined at the organization and application level. The Client Registry is persisted in an Apache Cassandra backing store.
 
-Policy Studio includes API Management filters that provide read-only access to the Client Registry. These enable policy developers to develop policies that leverage the information in the Client Registry. Write access to the Client Registry must be performed using the API Portal API because data consistency checks are required.
+Policy Studio includes API management filters that provide read-only access to the Client Registry. These enable policy developers to develop policies that leverage the information in the Client Registry. Write access to the Client Registry must be performed using the API Portal API because data consistency checks are required.
 
 ### API Manager REST API
 

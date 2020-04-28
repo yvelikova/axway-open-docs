@@ -31,7 +31,7 @@ These tests are combined in a test suite and can be executed manually if require
 
 ## Test tools
 
-The AMPLIFY API Management Platform does not offer dedicated testing tools, and this section provides recommendations only.
+AMPLIFY API Management does not offer dedicated testing tools, and this section provides recommendations only.
 
 ### Postman
 

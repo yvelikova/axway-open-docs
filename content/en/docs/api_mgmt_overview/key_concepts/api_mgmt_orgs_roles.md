@@ -54,7 +54,7 @@ The APIs that are displayed for an API owner organization are as follows:
 * APIs that have been registered in that API owner organization.
 * Other APIs that the API owner organization has been given authorization for by the API administrator.
 
-The following diagram shows where the API Management user roles fit into the API management architecture.
+The following diagram shows where the API management user roles fit into the API management architecture.
 
 ![API management user roles](/Images/docbook/images/api_mgmt/api_mgmt_architecture_roles.png)
 

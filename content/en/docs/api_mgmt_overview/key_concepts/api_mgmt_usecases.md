@@ -10,7 +10,7 @@
 
 This topic introduces the primary use cases for the cloud application connectors provided by API Manager.
 
-### API Management for digital transformation
+### API management for digital transformation
 
 Companies are focusing on ways to open up their existing business, deliver new channels, and support new business models using REST APIs. They are adopting API management capabilities such as web service and REST API registration and API catalog. Companies need to deliver new initiatives much faster, reducing cost, and improve overall business performance.
 

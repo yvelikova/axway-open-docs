@@ -32,7 +32,7 @@ The following overview diagram shows the range of transports and protocols suppo
 
 ## API Gateway services
 
-The main services supported by Axway API Gateway are described in this section.
+The main services supported by API Gateway are described in this section.
 
 ### API transformation
 
@@ -180,7 +180,7 @@ API Gateway routes data based on sender identity, content, and type. This enable
 
 #### Audit trail
 
-API Gateway satisfies audit requirements by enabling service transactions to be archived in a tamper-proof store for subsequent audit. Axway also facilitates privacy compliance support by allowing sensitive information, such as customer names, to be encrypted or stripped out of message traffic.
+API Gateway satisfies audit requirements by enabling service transactions to be archived in a tamper-proof store for subsequent audit. It also facilitates privacy compliance support by allowing sensitive information, such as customer names, to be encrypted or stripped out of message traffic.
 
 ### Form factors
 

@@ -16,7 +16,7 @@ A well-executed API strategy helps create more selling channels, better engage w
 
 The role of central IT with specialists in API security should not be responsible for each API, but should develop global security policies that are utilized by each API.
 
-It is important for service providers that the integration of their interfaces does not become an additional daily burden, but can be integrated into the existing workflow. This is the only way to ensure that APIs are integrated into the platform early enough. In other words, the API management platform should be integrated via an automatic CI/CD pipeline for APIs.
+It is important for service providers that the integration of their interfaces does not become an additional daily burden, but can be integrated into the existing workflow. This is the only way to ensure that APIs are integrated into the platform early enough. This means that the API management platform should be integrated by way of an automatic CI/CD pipeline for APIs.
 
 The service consumer expects an API developer portal, which is the central entry point into your API economy. In the API developer portal, the consumer can find APIs from various service providers, both enterprise services and integrated cloud services. These should be well documented, divided into categories (business expertise, maturity level), available for self-service test and, if necessary, consumable.
 
