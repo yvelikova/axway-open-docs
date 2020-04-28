@@ -37,7 +37,7 @@ API Manager generates application alerts for events relating to managing applica
 
 You can use application credential alerts when you want to trigger alerts for any change to the credentials (API keys, OAuth credentials, or external credentials) associated with an application. Application credential alerts are fully configurable:
 
-* Policy developers can write policies that will be invoked when application credentials are created, updated, deleted, enabled, or disabled. For more information, see [Change the alert policy to execute](#change-the-alert-policy-to-execute). For more information on the message attributes available to application credential alert policies, see [Alert message attributes](#alert-message-attributes).
+* Policy developers can write policies that will be invoked when application credentials are created, updated, deleted, enabled, or disabled. For more information, see [Change the alert policy to execute](#change-the-alert-policy-to-execute). For more information on the message attributes available to application credential alert policies, see [Alert message attributes](#application-credential-alerts).
 * API administrators can enable or disable alerts for application credentials so that the configured policies get executed when the specified events are triggered. For more information, see [Enable or disable alerts](#enable-or-disable-alerts).
 
 API Manager generates application credential alerts for events relating to application credentials.
@@ -61,12 +61,11 @@ API Manager generates API registration alerts for events relating to managing AP
 
 | Alert Name                             | Alert Type | Trigger Event                                              |
 |----------------------------------------|------------|------------------------------------------------------------|
-| API Proxy Published                    | Governance | API owner publishes API proxy.                             |
+| API Proxy Published                    | Governance | API owner publishes API proxy. This alert is also fired, when an Organizations-Adminisator requests to publish. The policy attribute: alert.apiproxy.state is then pending          |
+| API Proxy Unpublished                  | Governance | API owner unpublishes API proxy.                           |
 | API Proxy Deprecated                   | Governance | When an API proxy is deprecated.                           |
 | API Proxy Retired                      | Governance | When an API proxy is retired (unpublished).                |
-| API Proxy Promoted                     | Governance | API owner promotes API proxy.                              |
-| API Proxy Authentication Policy Change | Governance | Authentication policy of a published API proxy is changed. |
-| API Deleted                            | Governance | When an API proxy is deleted.                              |
+| API Proxy Promoted                     | Governance | API owner promotes API proxy using the configured [API-Promotion policy](/docs/apim_administration/apimgr_admin/api_mgmt_promote/index.html#promote-registered-apis-using-a-promotion-policy).                              |
 
 ## API catalog alerts and events
 
@@ -158,7 +157,9 @@ This topic describes the message attributes that are available to the configured
 
 The following tables outline the message properties that are generated for each alert. All message property values are in string format. Message properties are only available if a value exists for the entity field in question.
 
-### Application credential alerts
+{{< alert title="Tip" color="primary" >}}A general recommendation to discover available properties is to include a [Trace-Filter](/docs/apim_policydev/apigw_polref/utility_common/index.html#trace-filter) into the triggered alert policy. This gives you a list of all attributes and their values.{{< /alert >}}
+
+### Application credential alert properties
 
 | Message property           | Description                     |
 |----------------------------|---------------------------------|
