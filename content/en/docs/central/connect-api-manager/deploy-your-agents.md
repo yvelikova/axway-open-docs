@@ -63,8 +63,8 @@ apimanager:
 #  filter: tag.API_TYPE == Healthcare 
   pollInterval: 30s
   auth:
-    username: DiscoveryAgent
-    password: DiscoveryAgent
+    username: <API AMANGER ADMIN NAME>
+    password: <API MANAGE ADMIN PASSWORD>
   ssl:
     insecureSkipVerify: true
   subscriptionApplicationField: subscriptions
@@ -72,23 +72,17 @@ apimanager:
 
 central:
   url: https://apicentral.axway.com
-# Griffyn lab config
-  teamID: e4ec6c1a69fd0b8e016a0bb0681e0e8f
-  tenantID: "613867752138776"
-  mode: publishToEnvironmentAndCatalog
-# Robert organistation config
-#  teamID: e4f6dc8c6aeb8471016aec00c6c8011d
-#  tenantID: "671506474222171"
-#  mode: publishToEnvironmentAndCatalog
-  environment: "apigtw-v77"
+  teamID: <THE TEAM ID>
+  tenantID: "<YOUR ORGANISATION ID>"
+  mode: <publishToCatalog | publishToEnvironment | publishToEnvironmentAndCatalog>
+  environment: "<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>"
   apiServerVersion: v1alpha1
   auth:
     url: "https://login.axway.com/auth"
     realm: "Broker"
-    clientid: "DOSA_6c81495138a743d29e9b4ae6704c2d39"
-#    clientid: "DOSA_2b971818e4bf44658e7717b73873388a"
-    privatekey: "/home/api/APIM_agents_prod/SAKeys/private_key.pem"
-    publickey: "/home/api/APIM_agents_prod/SAKeys/public_key"
+    clientid: "<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>"
+    privatekey: "<PATH TO>/private_key.pem"
+    publickey: "<PATH TO>/public_key"
     keyPassword: ""
     timeout: 10s
 
@@ -138,8 +132,7 @@ traceability_agent:
   inputs:
     - type: log
       paths:
-        - /home/api/APIM_v7/apigateway/events/group-2_instance-1.log
-        - /home/api/APIM_v7/apigateway/events/group-2_instance-2.log
+        - <PATH TO>/group-2_instance-1.log
       include_lines: ['.*"type":"transaction".*"type":"http".*']
 
 # Send output to Central Database
@@ -154,19 +147,14 @@ output.traceability:
     central:
       url: "https://apicentral.axway.com"
       deployment: "prod"
-# Griffyn lab config
-      tenantID: "613867752138776"
-      environment: "apigtw-v77"
-# Robert organistation config
-#      tenantID: "671506474222171"
-#      environment: "apigtw-v77"
+      tenantID: "<THE TEAM ID>"
+      environment: "<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>"
       auth:
         url: "https://login.axway.com/auth"
         realm: "Broker"
-        clientId: "DOSA_6c81495138a743d29e9b4ae6704c2d39"
-#        clientId: "DOSA_2b971818e4bf44658e7717b73873388a"
-        privateKey: "/home/api/APIM_agents_prod/SAKeys/private_key.pem"
-        publicKey: "/home/api/APIM_agents_prod/SAKeys/public_key"
+        clientId: "<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>"
+        privateKey: "<PATH TO>/private_key.pem"
+        publicKey: "<PATH TO>/public_key"
         keyPassword: ""
         timeout: 10s
     apigateway:
@@ -174,8 +162,8 @@ output.traceability:
       port: 8090
       pollInterval: 1m
       auth:
-        username: TraceabilityAgent
-        password: TraceabilityAgent
+        username: <APIGATEWAY USER NAME WITH APIGATEWAY OPERATOR ROLE>
+        password: <APIGATEWAY USER PASSWORD>
       ssl:
         insecureSkipVerify: true
     apimanager:
@@ -185,8 +173,8 @@ output.traceability:
       apiVersion: 1.3
       pollInterval: 1m
       auth:
-        username: DiscoveryAgent
-        password: DiscoveryAgent
+        username: <APIMANAGER ADMIN USER>
+        password: <APIMANAGE ADMIN PASSWORD>
       ssl:
         insecureSkipVerify: true
 
@@ -198,7 +186,7 @@ logging:
   # Send all logging output to file
   to_files: false
   files:
-    path: /home/api/APIM_agents_prod/traceability
+    path: ./
     name: logs.txt
     keepfiles: 7
     permissions: 0644
