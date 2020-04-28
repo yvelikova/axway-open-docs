@@ -52,6 +52,55 @@ curl -L "https://axway.bintray.com/generic-repo/v7-agents/v7_discovery_agent/lat
 
 The Discovery Agent config yaml and Discovery Agent executable are included.
 
+#### YAML config file template
+
+```
+apimanager:
+  host: lptxtntperf1.lab.phx.axway.int
+  port: 8075
+  filter: tag.News.Exists() == true || tag.API_TYPE == Loan || tag.API_TYPE == Finance || tag.API_TYPE == Healthcare || tag.Math.Exists() == true || tag.Department == Purchasing
+#  filter: tag.News.Exists() == true 
+#  filter: tag.API_TYPE == Healthcare 
+  pollInterval: 30s
+  auth:
+    username: DiscoveryAgent
+    password: DiscoveryAgent
+  ssl:
+    insecureSkipVerify: true
+  subscriptionApplicationField: subscriptions
+  proxyApicIDField: APIC_ID
+
+central:
+  url: https://apicentral.axway.com
+# Griffyn lab config
+  teamID: e4ec6c1a69fd0b8e016a0bb0681e0e8f
+  tenantID: "613867752138776"
+  mode: publishToEnvironmentAndCatalog
+# Robert organistation config
+#  teamID: e4f6dc8c6aeb8471016aec00c6c8011d
+#  tenantID: "671506474222171"
+#  mode: publishToEnvironmentAndCatalog
+  environment: "apigtw-v77"
+  apiServerVersion: v1alpha1
+  auth:
+    url: "https://login.axway.com/auth"
+    realm: "Broker"
+    clientid: "DOSA_6c81495138a743d29e9b4ae6704c2d39"
+#    clientid: "DOSA_2b971818e4bf44658e7717b73873388a"
+    privatekey: "/home/api/APIM_agents_prod/SAKeys/private_key.pem"
+    publickey: "/home/api/APIM_agents_prod/SAKeys/public_key"
+    keyPassword: ""
+    timeout: 10s
+
+log:
+  level: info
+  format: json
+  output: stdout
+#  output: file
+#    path: logs
+#
+```
+
 ### Install and run Discovery Agent
 
 1. Move the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment. Note that the `public_key` comes from Steps 3 and 4 of [Create a Service Account](/docs/central/connect-api-manager/prepare-amplify-central/#create-a-service-account).
@@ -85,59 +134,76 @@ Most Traceability Agent configurations are overridden by the environment variabl
 #### YAML config file template
 
 ```
-YAML config file template
-      deployment: ${CENTRAL_DEPLOYMENT:preprod}
-      environment: ${CENTRAL_ENVIRONMENT:""}
-      auth:
-        url: ${CENTRAL_AUTH_URL:https://login.axway.com/auth}
-        realm: ${CENTRAL_AUTH_REALM:Broker}
-        clientId: ${CENTRAL_AUTH_CLIENTID:""}
-        privateKey: ${CENTRAL_AUTH_PRIVATEKEY:/keys/private_key.pem}
-        publicKey: ${CENTRAL_AUTH_PUBLICKEY:/keys/public_key}
-        keyPassword: ${CENTRAL_AUTH_KEYPASSWORD:""}
-        timeout: 10s
-      ssl:
-        minVersion: ${CENTRAL_SSL_MINVERSION:""}
-        maxVersion: ${CENTRAL_SSL_MAXVERSION:""}
-        nextProtos: ${CENTRAL_SSL_NEXTPROTOS:""}
-        cipherSuites: ${CENTRAL_SSL_CIPHERSUITES:""}
-        insecureSkipVerify: ${CENTRAL_SSL_INSECURESKIPVERIFY:""}
-    apigateway:
-      getHeaders: ${APIGATEWAY_GETHEADERS:true}
+traceability_agent:
+  inputs:
+    - type: log
+      paths:
+        - /home/api/APIM_v7/apigateway/events/group-2_instance-1.log
+        - /home/api/APIM_v7/apigateway/events/group-2_instance-2.log
+      include_lines: ['.*"type":"transaction".*"type":"http".*']
 
-      host: ${APIGATEWAY_HOST:localhost}
-      port: ${APIGATEWAY_PORT:8090}
-      pollInterval: ${APIGATEWAY_POLLINTERVAL:1m}
+# Send output to Central Database
+output.traceability:
+  pipelines: 0
+  enabled: true
+  hosts: "ingestion-lumberjack.datasearch.axway.com:453"
+  ssl:
+    enabled: true
+    verification_mode: none
+  agent:
+    central:
+      url: "https://apicentral.axway.com"
+      deployment: "prod"
+# Griffyn lab config
+      tenantID: "613867752138776"
+      environment: "apigtw-v77"
+# Robert organistation config
+#      tenantID: "671506474222171"
+#      environment: "apigtw-v77"
       auth:
-        username: ${APIGATEWAY_AUTH_USERNAME:""}
-        password: ${APIGATEWAY_AUTH_PASSWORD:""}
+        url: "https://login.axway.com/auth"
+        realm: "Broker"
+        clientId: "DOSA_6c81495138a743d29e9b4ae6704c2d39"
+#        clientId: "DOSA_2b971818e4bf44658e7717b73873388a"
+        privateKey: "/home/api/APIM_agents_prod/SAKeys/private_key.pem"
+        publicKey: "/home/api/APIM_agents_prod/SAKeys/public_key"
+        keyPassword: ""
+        timeout: 10s
+    apigateway:
+      host: localhost
+      port: 8090
+      pollInterval: 1m
+      auth:
+        username: TraceabilityAgent
+        password: TraceabilityAgent
       ssl:
-        minVersion: ${APIGATEWAY_SSL_MINVERSION:""}
-        maxVersion: ${APIGATEWAY_SSL_MAXVERSION:""}
-        nextProtos: ${APIGATEWAY_SSL_NEXTPROTOS:""}
-        cipherSuites: ${APIGATEWAY_SSL_CIPHERSUITES:""}
-        insecureSkipVerify: ${APIGATEWAY_SSL_INSECURESKIPVERIFY:""}
+        insecureSkipVerify: true
     apimanager:
-      host: ${APIMANAGER_HOST:localhost}
-      port: ${APIMANAGER_PORT:8075}
-      pollInterval: ${APIMANAGER_POLLINTERVAL:1m}
-      apiVersion: ${APIMANAGER_APIVERSION:1.3}
+      proxyApicIDField: APIC_ID
+      host: localhost
+      port: 8075
+      apiVersion: 1.3
+      pollInterval: 1m
       auth:
-        username: ${APIMANAGER_AUTH_USERNAME:""}
-        password: ${APIMANAGER_AUTH_PASSWORD:""}
+        username: DiscoveryAgent
+        password: DiscoveryAgent
       ssl:
-        minVersion: ${APIMANAGER_SSL_MINVERSION:""}
-        maxVersion: ${APIMANAGER_SSL_MAXVERSION:""}
-        nextProtos: ${APIMANAGER_SSL_NEXTPROTOS:""}
-        cipherSuites: ${APIMANAGER_SSL_CIPHERSUITES:""}
-        insecureSkipVerify: ${APIMANAGER_SSL_INSECURESKIPVERIFY:""}
+        insecureSkipVerify: true
+
 logging:
   metrics:
     enabled: false
   # Send all logging output to stderr
   to_stderr: true
+  # Send all logging output to file
+  to_files: false
+  files:
+    path: /home/api/APIM_agents_prod/traceability
+    name: logs.txt
+    keepfiles: 7
+    permissions: 0644
   # Set log level
-  level: ${LOG_LEVEL:info}
+  level: debug
 ```
 
 #### Multiple file paths
@@ -147,8 +213,8 @@ traceability_agent:
   inputs:
     - type: log
       paths:
-        - /home/axway/axway/apigateway/events/group-2_instance-1.log
-        - /home/axway/axway/apigateway/events/group-2_instance-2.log
+        - /home/api/APIM_v7/apigateway/events/group-2_instance-1.log
+        - /home/api/APIM_v7/apigateway/events/group-2_instance-2.log
 ```
 
 #### File path with wildcard
@@ -158,7 +224,7 @@ traceability_agent:
   inputs:
     - type: log
       paths:
-        - /home/axway/axway/apigateway/events/group-2_instance-*.log
+        - /home/api/APIM_v7/apigateway/events/group-2_instance-*.log
 ```
 
 ### Install and run Traceability Agent

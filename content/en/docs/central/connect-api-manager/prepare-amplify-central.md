@@ -12,11 +12,30 @@ description: Learn how to create an environment and Service Account for Axway
 
 * Read [AMPLIFY Central and Axway API Manager connected overview](/docs/central/connect-api-manager/)
 * You will need a basic knowledge of Axway API Manager
-* Verify that @axway/amplify-central-cli version is at minimum 0.1.3
+* Verify that @axway/amplify-central-cli version is at minimum 0.1.3-dev.3
 
 ## Objectives
 
-Learn how to create an environment and Service Account for Axway API Gateway within AMPLIFY Central.
+Learn how to create a Service Account and an environment for Axway API Gateway within AMPLIFY Central.
+
+## Create a Service Account
+
+Create a Service Account in AMPLIFY Central.
+
+1. Generate a private and public key pair:
+
+    ```
+    openssl genpkey -algorithm RSA -out ./private_key.pem -pkeyopt rsa_keygen_bits:2048
+
+    openssl rsa -pubout -in ./private_key.pem -out ./public_key.pem
+
+    openssl rsa -pubout -in ./private_key.pem -out ./public_key.der -outform der
+    (optional) base64 ./public_key.der &gt; ./public_key
+    ```
+
+    {{< alert title="Note" color="primary" >}}The public key can be either of type .der format or of type base64 encoded of the .der format.{{< /alert >}}
+
+2. Create a new Service Account user in API Central using the key pair from above. For additional information, see [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_proxy_flow/).
 
 ## Create an environment
 
@@ -41,6 +60,7 @@ https:/<AMPLIFY Central URL>/topology/environments/apigtw-v77
 Examples:
 
 ```
+amplify central config set --client-id <DOSA account name>
 amplify central create -f <filename>
 amplify central create env <name> -o json
 ```
@@ -85,22 +105,3 @@ spec:
 ```
 
 For information, see [Manage an environment using AMPLIFY CLI](/docs/central/cli_environments/).
-
-## Create a Service Account
-
-Create a Service Account in AMPLIFY Central.
-
-1. Generate a private and public key pair:
-
-    ```
-    openssl genpkey -algorithm RSA -out ./private_key.pem -pkeyopt rsa_keygen_bits:2048
-
-    openssl rsa -pubout -in ./private_key.pem -out ./public_key.pem
-
-    openssl rsa -pubout -in ./private_key.pem -out ./public_key.der -outform der
-    (optional) base64 ./public_key.der &gt; ./public_key
-    ```
-
-    {{< alert title="Note" color="primary" >}}The public key can be either of type .der format or of type base64 encoded of the .der format.{{< /alert >}}
-
-2. Create a new Service Account user in API Central using the key pair from above. For additional information, see [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_proxy_flow/).

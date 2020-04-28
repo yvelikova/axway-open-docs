@@ -28,4 +28,4 @@ In Axway API Manager, you can edit an unpublished API to include an API summary 
 
 ## Limitations
 
-* Web services or APIs including AWS signing / HTTP Basic / Invoke policy / 2-way SSL security cannot be discovered, as these features are not currently supported in AMPLIFY Central.
+A change of front-end image only is not detected. Changing the name of the API will create a new one on Central and not delete the previous one.
