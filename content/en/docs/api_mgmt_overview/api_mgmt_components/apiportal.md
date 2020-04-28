@@ -8,33 +8,31 @@
 
 API consumers can register and manage their user profile, register applications, manage application credentials, browse front-end APIs and supporting documentation, monitor application API usage, and access blogs, forums, and so on.
 
-API Portal acts as a view to API Manager and communicates over its REST API. This includes all functionalities related to APIs. In other words, API manager handles the following operations:
+API Portal acts as a view to API Manager and communicates over its REST API. This includes all functionalities related to APIs. API manager handles the following operations:
 
 * User login, logout, and user profiles
 * API Catalog view
 * Application management
 * Monitoring
 
-Conversely, this means that there is a single place for API management, API manager, as API Portal automatically reflects all changes.
-For example, if a new API is registered, it is automatically available in the API portal. If an application is created in API Portal, it is visible in the API manager and you might trigger an [alert](/docs/apim_administration/apimgr_admin/api_mgmt_alerts/) for this event.
+This means that there is a single place for API management - API manager - and API Portal automatically reflects all changes.
+For example, if a new API is registered, it is automatically available in API Portal. If an application is created in API Portal, it is visible in the API manager and you might trigger an [alert](/docs/apim_administration/apimgr_admin/api_mgmt_alerts/) for this event.
 
-This does not have to be a 1:1 relationship, as the API portal can connect to several API managers at the same time. For example, you can connect the API portal to the Development, Pre-Prod and Prod stage at the same time to get a complete overview of the available APIs. Visibility can be restricted accordingly.
+This does not have to be a 1:1 relationship, as API portal can connect to several API managers at the same time. For example, you can connect API Portal to the development, pre-production, and production stage at the same time to get a complete overview of the available APIs. Visibility can be restricted accordingly.
 
-API portal is implemented as a standalone CMS-based portal that you can operate using Axway standard branding and functionality, or customize and extend to meet your specific needs and those of your target customers. You can deploy the web-based API portal separately from the API Gateway and API Manager with a dedicated web interface to limit potential security breaches.
+API Portal is implemented as a standalone CMS-based portal that you can operate using Axway standard branding and functionality, or customize and extend to meet your specific needs and those of your target customers. You can deploy the web-based API Portal separately from the API Gateway and API Manager with a dedicated web interface to limit potential security breaches.
 
 The following shows an example API Portal Catalog view.
 
 ![API-Portal Catalog view](/Images/api_mgmt_overview/api-portal-catalog-overview.png)
 
-The following shows an example API Portal single API view:
+The following shows an example API Portal single API view.
 
 ![API-Portal API view](/Images/api_mgmt_overview/api-portal-catalog-detail.png)
 
 ## API Portal features
 
-The following are the main features of API Portal.
-
-See [API Portal overview](/docs/apim_administration/apiportal_admin/apip_overview/) for more details of API Portal key capabilities and features.
+The following are the main features of API Portal. See [API Portal overview](/docs/apim_administration/apiportal_admin/apip_overview/) for more details of API Portal key capabilities.
 
 ### Developer self-registration and profile management
 

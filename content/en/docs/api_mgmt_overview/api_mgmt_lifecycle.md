@@ -3,7 +3,7 @@
     "linkTitle": "API lifecycle",
     "weight": "3",
     "date": "2020-04-14",
-    "description": "Provides an overview of the entire API lifecycle and which API management components play a role in it."
+    "description": "An overview of the entire API lifecycle and which API management components play a role in it."
 }
 
 You must consider the entire API lifecycle from both sides, the service provider and service consumer, to get the most value from the platform.
@@ -42,7 +42,7 @@ When using the API-first approach it makes sense to think about how to quickly a
 
 While service providers are implementing a service, they can provide a mock, allowing service consumers to advance the implementation of the client. In addition, mocks help to improve the feedback loop, as potential consumers can provide information about the payload to optimize it for different application purposes.
 
-To learn more about mocking, see [mock an API in API builder](/docs/api_mgmt_overview/api_mgmt_components/apibuilder/#mock).
+To learn more about mocking, see [mock an API in API builder](/docs/api_mgmt_overview/api_mgmt_components/apibuilder/#mock-an-api).
 
 ## Develop and integrate
 
@@ -52,7 +52,7 @@ In this context, the term _develop_ is used to describe, for example, the orches
 
 To implement the desired API design, you can orchestrate a series of technical APIs or cloud applications; or optimize the payload depending on the client. For example, mobile application compared with single page application. In addition, a use case in the development area is the kind of integration flow to define, which includes other systems, for example, to send a notification (Teams, Slack, email, push message, and so on) when an order is received.
 
-To learn more about API Builder, see [API builder](/docs/api_mgmt_overview/api_mgmt_components/apibuilder/).
+To learn more about API Builder, see [Introduction to API Builder](/docs/api_mgmt_overview/api_mgmt_components/apibuilder/).
 
 Another approach to developing or integrating into back-end legacy applications is the use of [policies](/docs/api_mgmt_overview/key_concepts/policies/). For example, this includes exposing a SOAP Web service as a REST API or implementing an OAuth client. API development based on policies is performed by a policy developer using Policy Studio. For more details on creating APIs using the REST API development wizard, see [Develop REST APIs in Policy Studio](/docs/apim_policydev/apigw_web_services/register_rest_apis/).
 
@@ -66,9 +66,9 @@ Depending on the chosen approach, [manual configuration](/docs/api_mgmt_overview
 
 API developers must test every API, however, a general recommendation is to build an appropriate test suite to ensure that the endpoints work according to the specification. These are integration tests that check each API endpoint to see if it responds with the correct response (code and response) depending on various input parameters.
 
-This test suite is essential for lifecycle management and version management, as it allows you to detect whether changes lead to a breaking change for consuming applications or not. Consider also that changes to the APIs might be implemented after six months or one year, at which time another developer is responsible who does not know every detail. To give this developer security, this test suite is needed for each API.
+This test suite is essential for lifecycle management and version management, as it allows you to detect whether changes lead to a breaking change for consuming applications or not. Changes to the APIs might be implemented after six months or one year, at which time another developer is responsible who does not know every detail - to give this developer security, this test suite is needed for each API.
 
-To learn more about testing your API, see [Tests your APIs](/docs/api_mgmt_overview/key_concepts/api_mgmt_tests).
+To learn more about testing your API, see [Test your APIs](/docs/api_mgmt_overview/key_concepts/api_mgmt_tests).
 
 ## API staging
 
@@ -118,7 +118,7 @@ In addition to the pure API functions, the developer portal should be designed t
 
 API consumers can also monitor the access of their own applications and manage applications.
 
-To learn more, see [Introduction to API Portal](http://localhost:1313/docs/api_mgmt_overview/api_mgmt_components/apiportal/).
+To learn more, see [Introduction to API Portal](/docs/api_mgmt_overview/api_mgmt_components/apiportal/).
 
 ## Analytics
 

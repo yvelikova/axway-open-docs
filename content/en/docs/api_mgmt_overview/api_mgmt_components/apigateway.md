@@ -96,7 +96,7 @@ API Gateway provides a comprehensive platform for managing, delivering, and secu
 
 ### Integration
 
-API Gateway provides the following integration features:
+API Gateway provides the following integration features.
 
 #### Identity management
 
@@ -120,7 +120,7 @@ API Gateway includes support for multi-byte message data and a wide range of int
 
 ### Performance
 
-API Gateway accelerates performance as follows:
+API Gateway accelerates performance as follows.
 
 #### Processing offload
 
@@ -136,7 +136,7 @@ API Gateway can automatically populate content in XML and JSON documents from so
 
 ### Governance
 
-API Gateway provides the following governance features:
+API Gateway provides the following governance features.
 
 #### Ease of deployment
 
@@ -164,7 +164,7 @@ API Gateway protects services from unanticipated traffic spikes by smoothing out
 
 ### Security
 
-API Gateway includes the following security features:
+API Gateway includes the following security features.
 
 #### Identity mediation
 
@@ -188,7 +188,7 @@ API Gateway is available as software on Linux, or container deployment on Docker
 
 ## API Gateway tools
 
-Axway API Gateway provides powerful easy-to-use tools that enable you to develop, deploy, and manage API solutions.
+API Gateway provides powerful easy-to-use tools that enable you to develop, deploy, and manage API solutions.
 
 ![API Gateway tools](/Images/docbook/images/concepts/api_server_tools_rs.png)
 

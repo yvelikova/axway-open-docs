@@ -6,7 +6,7 @@
 "description": "API Gateway supports a distributed architecture based on groups of API Gateways in an administrative domain."
 }
 
-The benefits of API Gateway architecture include the following:
+The benefits of the API Gateway architecture include the following:
 
 * Managing a group of API Gateways as a single unit
 * Solution partitioning by group
@@ -17,9 +17,9 @@ The benefits of API Gateway architecture include the following:
 
 ## API Gateway groups
 
-An API Gateway group consists of one or more gateway instances that are managed as a unit and run the same configuration to virtualize the same APIs and execute the same policies. API Gateway groups enable you to organize gateway instances by solution type and manage them as a single entity.
+An API Gateway group consists of one or more API Gateway instances that are managed as a unit and run the same configuration to virtualize the same APIs and execute the same policies. API Gateway groups enable you to organize gateway instances by solution type and manage them as a single entity.
 
-The following diagram shows two API Gateway groups, each consisting of two gateway instances, distributed across two different host machines. Each gateway instance in the same group runs the same configuration to distribute the APIs and policies across both hosts for scalability and availability. Both groups run different configurations to virtualize different APIs, and run different policies that manage different solutions:
+The following diagram shows two API Gateway groups, each consisting of two API Gateway instances, distributed across two different host machines. Each instance in the same group runs the same configuration to distribute the APIs and policies across both hosts for scalability and availability. Both groups run different configurations to virtualize different APIs, and run different policies that manage different solutions:
 
 ![Distributed groups](/Images/docbook/images/concepts/dist_groups.png)
 
@@ -33,17 +33,17 @@ This group-based architecture is described as follows:
     * Aggregating monitoring information from API Gateways in the group
     * Deploying API and policy configurations to all API Gateways in the group
 
-{{< alert title="Note" color="primary" >}}Multiple API Gateways can run on the same host machine. However, each gateway would be in a different group and run a different configuration. There is no benefit to running multiple gateways in the same group on a single host machine.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Multiple API Gateways can run on the same host machine. However, each API Gateway would be in a different group and run a different configuration. There is no benefit to running multiple API Gateways in the same group on a single host machine.{{< /alert >}}
 
 ## API Gateway domains
 
-An API Gateway domain is a distinct administrative entity that consists of multiple groups spanning multiple host machines. Domains are scoped on the boundaries of administrative control, which may be organizational or geographical.
+An API Gateway domain is a distinct administrative entity that consists of multiple groups spanning multiple host machines. Domains are scoped on the boundaries of administrative control, which can be organizational or geographical.
 
 Multiple domains are possible based on different boundaries of administrative control. For example, you might have different domains for development and production environments, or different domains for each business unit.
 
 ### Simple API Gateway domain
 
-The following diagram shows the deployment of the two groups from the previous example in the context of a domain:
+The following diagram shows the deployment of the two groups from the previous example in the context of a domain.
 
 ![API Gateway domain](/Images/docbook/images/concepts/domain.png)
 
@@ -64,25 +64,25 @@ This domain-based architecture is described as follows:
 
 ### Complex API Gateway domain
 
-The following diagram shows a more complex domain with three groups distributed across four host machines:
+The following diagram shows a more complex domain with three groups distributed across four host machines.
 
 ![Complex API Gateway domain](/Images/docbook/images/concepts/domain_complex.png)
 
 ## Solution partitioning
 
-API Gateway groups enable you to partition your APIs and policies by solution type. Partitioned APIs and policies associated with specific solutions are implemented in different gateway configurations, which are deployed to different groups and managed independently.
+API Gateway groups enable you to partition your APIs and policies by solution type. Partitioned APIs and policies associated with specific solutions are implemented in different API Gateway configurations, which are deployed to different groups and managed independently.
 
-The following diagram shows an example API Gateway solution partitioned into groups:
+The following diagram shows an example API Gateway solution partitioned into groups.
 
 ![API Gateway partitioning and virtualization](/Images/docbook/images/concepts/partitioning.png)
 
 ## Virtualization
 
-The API Gateway group and domain-based architecture enables virtualization by separating logical and physical architectures. The APIs and policies that are built and packaged into gateway configurations are decoupled from the physical architecture that they run, which provides flexibility and scalability of infrastructure.
+The API Gateway group and domain-based architecture enables virtualization by separating logical and physical architectures. The APIs and policies that are built and packaged into API Gateway configurations are decoupled from the physical architecture that they run, which provides flexibility and scalability of infrastructure.
 
 ## Environment topology
 
-The following diagram shows a typical environment topology that includes separate domains for each environment:
+The following diagram shows a typical environment topology that includes separate domains for each environment.
 
 ![API Gateway environment topology](/Images/docbook/images/concepts/topology.png)
 
@@ -92,8 +92,8 @@ In this context, *promotion* refers to moving API Gateway configuration between 
 
 Availability and horizontal scalability is achieved by deploying multiple API Gateways on multiple hosts and load balancing across them using a standard load balancer. The API Gateway imposes no special requirements on load balancers. Loads are balanced on a number of characteristics including the response time or system load.
 
-API Gateways being load balanced must run the same configuration to virtualize the same APIs and execute the same policies. If multiple groups are deployed, load balancing should be across groups also. For example, the following diagram shows load balancing across two groups of API Gateways deployed on two hosts:
+API Gateways being load balanced must run the same configuration to virtualize the same APIs and execute the same policies. If multiple groups are deployed, load balancing should be across groups also. For example, the following diagram shows load balancing across two groups of API Gateways deployed on two hosts.
 
 ![Group-based load balancing](/Images/docbook/images/concepts/lb_groups.png)
 
-The execution of policies is stateless, and the route that a message takes has no bearing on its processing. No session data is created, so there is no need to replicate session state across the gateways. If the policies use caches and counters, these should be configured to use the distributed cache shared by all gateways.
+The execution of policies is stateless, and the route that a message takes has no bearing on its processing. No session data is created, so there is no need to replicate session state across the API Gateways. If the policies use caches and counters, these should be configured to use the distributed cache shared by all API Gateways.

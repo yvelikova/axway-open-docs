@@ -15,28 +15,27 @@ In addition to the speed advantage, the integration of AMPLIFY API Management in
 * Better feedback loop leads to a better product (better API)
 * Working collaboratively is made easier
 
-To integrate AMPLIFY API Management, two deployment artifacts must be considered and deployed in separate pipelines.
+To integrate AMPLIFY API Management, two deployment artifacts must be considered and deployed in separate pipelines:
 
-**Policies**: Policies provide security, integration, and routing functions and are developed by the policy developer. Policies are developed in a general way and are used by a variety of APIs. Policies are deployed to the corresponding API Gateways or the API Gateway group. Policy changes and the associated deployments are significantly less frequent than individual APIs.
-
-**APIs**: The APIs deployment unit is defined by the actual API specification and the configuration of how the API is to be managed on the API management system. Both can be described as API packages and are deployed individually. These packages are managed by API developers (also called producers).
+* Policies - Policies provide security, integration, and routing functions and are developed by the policy developer. Policies are developed in a general way and are used by a variety of APIs. Policies are deployed to the corresponding API Gateways or the API Gateway group. Policy changes and the associated deployments are significantly less frequent than individual APIs.
+* APIs - The APIs deployment unit is defined by the actual API specification and the configuration of how the API is to be managed on the API management system. Both can be described as API packages and are deployed individually. These packages are managed by API developers (also called producers).
 
 Different deployment workflows are required for both approaches.
 
 ## Policy deployment
 
-Policy developers develop policies with the help of Policy Studio, for example to realize security or integration use cases. The starting point is a checked-out policy configuration project, which is opened and edited with Policy Studio. Afterwards, the changes are checked back in, for example using Git. This is the starting point for integration into a CI/CD pipeline.
+Policy developers develop policies with the help of Policy Studio, for example to realize security or integration use cases. The starting point is a checked-out policy configuration project, which is opened and edited with Policy Studio. After editing, the changes are checked back in, for example using Git. This enables integration into a CI/CD pipeline.
 
 The policy configuration consists of:
 
-* a policy file containing all artifacts that are the same per stage
-* 1 to n environment files containing the configurations per stage
+* Policy file containing all artifacts that are the same per stage
+* One or more environment files containing the configurations per stage
 
-For deployment, the policy file and the corresponding environment file are merged to form the `FED` file, which is then deployed to the API Gateways.
+For deployment, the policy file and the corresponding environment file are merged to form the `fed` file, which is then deployed to the API Gateways.
 
 The AMPLIFY API Management solution provides predeployment scripts that you can use in an integration pipeline.
 
-Instead of deploying policy and environment files directly from the version management system, it is best to build release packages that are stored in a release repository as a starting point. This allows auditing, simple rollbacks, and the maintenance of dependencies.
+Instead of deploying policy and environment files directly from the version management system, it is best to build release packages that are stored in a release repository. This allows auditing, simple rollbacks, and the maintenance of dependencies.
 
 A powerful framework for deploying policy configurations based on Maven is available at [AMPLIFY API Management Deployment Utilities on GitHub](https://github.com/Axway-API-Management-Plus/apim-deployment).
 
@@ -46,13 +45,10 @@ The goal is for an API developer to be able to automatically manage and deploy t
 
 The requirements for the process are as follows:
 
-**API developer teams**: Developers might work in different teams and not everybody should see everything. This is managed by access groups in Bitbucket or GitHub to control access permissions for each repository.
-
-**No Jenkins admin**: By using an organization folders approach, no centralized Jenkins administration team is required to create jobs or workflows in Jenkins. After a Jenkins administrator has performed an initial setup, API developers can control Jenkins jobs on their own.
-
-**Staging support**: Even if the API developer experience should be simple and automated, in many enterprise companies approval or quality gates must be established. Also it must be possible to trace back to a certain version of an API exposed.
-
-**Segregation of responsibilities**: Developers implementing an API should not be able to see or maintain configuration data for other stages, such as Pre-Production or Production.
+* API developer teams - Developers might work in different teams and not everybody should see everything. This is managed by access groups in Bitbucket or GitHub, which enable you to control access permissions for each repository.
+* No Jenkins admin - By using an organization folders approach, no centralized Jenkins administration team is required to create jobs or workflows in Jenkins. After a Jenkins administrator has performed an initial setup, API developers can control Jenkins jobs on their own.
+* Staging support - Even if the API developer experience should be simple and automated, in many enterprise companies approval or quality gates must be established. It must also be possible to trace back to a certain version of an API exposed.
+* Segregation of responsibilities - Developers implementing an API should not be able to see or maintain configuration data for other stages, such as pre-production or production.
 
 ### Process overview
 
@@ -66,21 +62,19 @@ To learn more, see [Jenkins Integration with GitHub & Bitbucket](https://github.
 
 ### Staging
 
-It is best practice to create packages, artifacts, or some kind of releases for software projects. These artifacts are managed by repositories (for example, Nexus, JFrog Artifactory) and used to share assets between teams, and finally these artifacts are deployed to the target system. This provides several benefits, such as version auditing, segregation of concerns, rollbacks to a previous version, and CI/CD gates can be established.  
+It is best practice to create packages, artifacts, or some kind of releases for software projects. These artifacts are managed by repositories (for example, Nexus, JFrog Artifactory) and used to share assets between teams, and these artifacts are deployed to the target system. This provides several benefits, such as version auditing, segregation of concerns, rollbacks to a previous version, and the ability to establish CI/CD gates. It is best to use the same approach for promoting and deploying APIs and policies into all different API management stages.
 
-It is best to use the same approach for promoting and deploying APIs and policies into all different API management stages.
-
-It starts with the API developer or service provider who expects the flexibility to code, deploy, and test frequently until they are satisfied with their code and create a release package. The process for the API developer might look like this:  
+The API developer or service provider expects the flexibility to code, deploy, and test frequently until they are satisfied with their code and are ready to create a release package. The following diagram shows an example process for the API developer.
 
 ![Developer process](/Images/api_mgmt_overview/dev-to-prod-process.png)  
 
-{{< alert title="Tip" color="primary" >}}With this process it might be efficient to use `swagger-promote` as a normal CLI.{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}In this process it might be more efficient to use `swagger-promote` as a CLI.{{< /alert >}}
 
 ### Promoting to all other stages
 
-When the process above is finished, the API release package is created ready for the next stage, which might be PROD or TEST. From this point on, the API release package is not changed, but deployed into the different stages with different configurations.  
+When the process above is complete, the API release package is created ready for the next stage, which might be production or test. From this point on, the API release package is not changed, but deployed into the different stages with different configurations.  
 
-The process in all remaining stages is different to the development stage and illustrated in the following diagram:
+The process in all remaining stages is different to the development stage and is illustrated as follows.
 
 ![Non-Development stages](/Images/api_mgmt_overview/prod-process.png)  
 

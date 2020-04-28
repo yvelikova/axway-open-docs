@@ -39,7 +39,7 @@ Connectors are the key in the model-based approach. Connectors have the task of 
 
 ![API from Model](/Images/api_mgmt_overview/api-builder-model-to-api.png)
 
-Watch this video to learn how to connect to a database and create a CRUD API based on it:
+Watch this video to learn how to connect to a database and create a CRUD API based on it.
 
 {{< youtube i5euq6UCGPo >}}
 
@@ -51,7 +51,7 @@ In the API-first approach, you import a defined API specification (OpenAPI/Swagg
 
 ![API-first using flows](/Images/api_mgmt_overview/api-builder-api-flows.png)
 
-Watch this vide to learn how to implement an API design using flows:
+Watch this vide to learn how to implement an API design using flows.
 
 {{< youtube RGhFMKKgt1I >}}
 
@@ -63,7 +63,7 @@ Both approaches can also be mixed, for example, to combine the data from a model
 
 To mock an API with API Builder, follow the same steps as for the API-first approach and use the **Create Mock** option after you have imported your API specification.
 
-Watch this video to learn how:
+Watch this video to learn how.
 
 {{< youtube 5paF271XmdM >}}
 

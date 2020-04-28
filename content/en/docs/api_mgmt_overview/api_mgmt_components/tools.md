@@ -15,7 +15,7 @@ Policy Studio is graphical tool that enables you to virtualize APIs and develop 
 * Graphical drag-and-drop user interface that enables you to drag filters (processing rules) on to the policy canvas and configure them
 * Extensive library of filters to build powerful policies
 
-The following example shows the policy canvas at the center and the filter library on the right:
+The following example shows the policy canvas at the center and the filter library on the right.
 
 ![Policy Studio](/Images/docbook/images/concepts/policy_studio.png)
 
@@ -72,7 +72,9 @@ To learn more about API Gateway Manager, see:
 
 ## API Manager CLI
 
-You can use the API Manager CLI to integrate APIs automatically in API Manager without the API Manager Web UI. This enables you to easily manage APIs using a command-line interface or CI/CD pipeline.
+You can use the API Manager CLI (`swagger-promote`) to integrate APIs automatically in API Manager without the API Manager Web UI. This enables you to easily manage APIs using a command-line interface or CI/CD pipeline.
+
+{{< alert title="Note" color="primary" >}}`swagger-promote` is not supported directly by Axway as part of AMPLIFY API Management, but it is the de-facto standard for managing API Manager from the command line. To learn more about `swagger-promote`, see [`swagger-promote` on GitHub](https://github.com/Axway-API-Management-Plus/apimanager-swagger-promote/blob/develop/README.md) and [`swagger-promote` wiki](https://github.com/Axway-API-Management-Plus/apimanager-swagger-promote/wiki).{{< /alert >}}
 
 API Manager CLI includes the following features:
 
@@ -84,7 +86,7 @@ API Manager CLI includes the following features:
 * Organization permissions
 * Application subscriptions
 
-Watch this video to learn how to manage APIs using the CLI:
+Watch this video to learn how to manage APIs using the CLI.
 
 {{< youtube BI9mPLRlhXI >}}
 
@@ -111,7 +113,7 @@ For internal integration and ESB-style projects, API Gateway provides a messagin
 
 An ActiveMQ broker is embedded in each API Gateway instance, with brokers organized by API Gateway groups. An active/active deployment is supported to ensure high availability of the messaging infrastructure, with an external shared file system used for the persistent message store.
 
-Queue and topic management is integrated into the API Gateway Manager web console, which enables the API administrator to view queues and topics, messages on queues, and individual message contents. For example:
+Queue and topic management is integrated into the API Gateway Manager web console, which enables the API administrator to view queues and topics, messages on queues, and individual message contents.
 
 ![ActiveMQ message](/Images/docbook/images/concepts/admin_messaging_content.png)
 

@@ -6,7 +6,7 @@
 "description": "API-first design with AMPLIFY API Management and Stoplight."
 }
 
-For API design, Axway and [Stoplight](https://stoplight.io) work in partnership. The following page gives an overview of the possibilities Stoplight offers and how it can be integrated into your AMPLIFY API Management platform. Following the API-first approach, it is important to have a powerful API design tool that can be used by non-technical people to develop OpenAPI 2.0 / 3.0 API definitions.
+For API design, Axway and [Stoplight](https://stoplight.io) work in partnership. This page gives an overview of the possibilities Stoplight offers and how it can be integrated into your AMPLIFY API Management platform. Following the API-first approach, it is important to have a powerful API design tool that can be used by non-technical people to develop OpenAPI 2.0 / 3.0 API definitions.
 
 ## Stoplight Studio
 
@@ -38,4 +38,4 @@ The following video demonstrates the possible integration and how the process lo
 
 {{< youtube ddOhO_BmVeE >}}
 
-Read more about how to [integrate API management into a CI/CD pipeline](/docs/api_mgmt_overview/api_mgmt_components/pipeline/).
+Learn more about [how to integrate API management into a CI/CD pipeline](/docs/api_mgmt_overview/api_mgmt_components/pipeline/).

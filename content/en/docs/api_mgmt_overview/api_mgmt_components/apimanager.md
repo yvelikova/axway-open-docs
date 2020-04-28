@@ -6,13 +6,11 @@
 "description": "API Manager enables you to register APIs and manage their lifecycle from registration through publishing and retirement."
 }
 
-API Manager, along with API Gateway, is the core component of the AMPLIFY API Management solution and provides the following functionality.
-
 ## API Manager features
 
 The main API Manager features are:
 
-* API registration - Adding APIs to the API Catalog. For details, see [API Registration](#api-registration-and-lifecycle-management-in-api-manager).
+* API registration - Adding APIs to the API Catalog. For details, see [API registration](#api-registration-and-lifecycle-management-in-api-manager).
 * Partner organization management - API Manager includes partner-based management of API consumers that browse the API Catalog and client applications that use the APIs. Delegated partner administration enables partner organizations to manage their own API consumers, easing the management of large partners, or a large number of partners. A wide range of client application credentials are supported, including OAuth 2.0 and API keys.
 * Policy management - API Manager enables you to apply authorization and quota policies to APIs at the partner and client application levels. Custom policies can also be developed in Policy Studio, and applied to APIs.
 * API alerting - API Manager enables you to configure API, partner, policy and runtime events to generate alerts that trigger governance processes. For example, this includes sending an email notification or starting application workflows.
@@ -50,7 +48,7 @@ This [REST-based API](http://apidocs.axway.com/swagger-ui-NEW/index.html?product
 
 ### API Manager CLI
 
-Automation, easy integration of applications into existing processes, and simple management by users is an important aspect of the API management solution. The [API Manager CLI](/docs/api_mgmt_overview/api_mgmt_components/tools/#api-manager-cli) works on the basis of the REST API and allows the automatic registration of APIs by way of the command line, for example in the development environment and the integration into a CI/CD pipeline.
+Automation, easy integration of applications into existing processes, and simple management by users is an important aspect of the API management solution. The [API Manager CLI](/docs/api_mgmt_overview/api_mgmt_components/tools/#api-manager-cli) uses the REST API and allows the automatic registration of APIs by way of the command line, for example in the development environment and in the integration into a CI/CD pipeline.
 
 ## API management architecture
 

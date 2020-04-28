@@ -3,7 +3,7 @@
 "linkTitle": "Analytics",
 "weight":"30",
 "date": "2020-04-14",
-"description": "Introduction to API Gateway Analytics and Embedded Analytics"
+"description": "Introduction to API Gateway Analytics and Embedded Analytics."
 }
 
 ## API Gateway Analytics
@@ -21,15 +21,15 @@ API Gateway Analytics includes the following features:
 
 ## Embedded Analytics
 
-The Embedded Analytics web console enables you to monitor and analyze key metrics in your system. For example:
+The Embedded Analytics web console enables you to monitor and analyze key metrics in your system.
 
 ![Embedded Analytics](/Images/docbook/images/concepts/embedded_analytics.png)
 
 The Embedded Analytics dashboards enable you to monitor key metrics such as the following:
 
-* **API heath**— response time, failure rates, exception rates, and transactions per second
-* **Infrastructure health**— CPU and disk usage, SLA breaches, bytes exchanged, traffic, and latency
-* **API usage**— traffic, active APIs, and active applications
-* **Client application health**— number of methods with high response time, failure rate, exception rate
+* API health — response time, failure rates, exception rates, and transactions per second
+* Infrastructure health — CPU and disk usage, SLA breaches, bytes exchanged, traffic, and latency
+* API usage — traffic, active APIs, and active applications
+* Client application health — number of methods with high response time, failure rate, exception rate
 
 For more details, see the [Embedded Analytics for AMPLIFY API Management documentation](https://docs.axway.com/bundle/EmbeddedAnalyticsAPIM_allOS_en_HTML5/).

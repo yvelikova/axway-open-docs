@@ -8,44 +8,53 @@
 
 ## API Gateway user roles
 
-API Gateway provides the following main user roles:
+API Gateway provides the following main user roles.
 
 ![API Gateway user roles](/Images/docbook/images/concepts/api_server_roles.png)
 
 These user roles are described as follows:
 
-**Policy developer**: This user role virtualizes APIs and develops policies for APIs. Policies are rules used to govern or manage an API (for example, for security, integration, SLA monitoring, or transformation). This is a technical developer role.
+Policy developer
+: This user role virtualizes APIs and develops policies for APIs. Policies are rules used to govern or manage an API (for example, for security, integration, SLA monitoring, or transformation). This is a technical developer role.
 
-**KPS administrator**: This is a business or operational role managing dynamic policy configuration data in a Key Property Store (KPS). A KPS is used to store parameters that are passed into policies at runtime (for example, authorization levels, quotas, or customer details). This means that these details do not need to be configured by the policy developer.
+KPS administrator
+: This is a business or operational role managing dynamic policy configuration data in a Key Property Store (KPS). A KPS is used to store parameters that are passed into policies at runtime (for example, authorization levels, quotas, or customer details). This means that these details do not need to be configured by the policy developer.
 
-**API Gateway administrator**: This role monitors, manages, and troubleshoots the API Gateway. It has full administrative privileges, including deployment of API Gateway configurations.
-This is the traditional system administration or operational role for the API Gateway. It involves keeping the API Gateway running, monitoring its operation, managing any settings, and performing any troubleshooting. This user typically works in an upstream staging or production environment instead of in a development environment.
+API Gateway administrator
+: This role monitors, manages, and troubleshoots the API Gateway. It has full administrative privileges, including deployment of API Gateway configurations.
+: This is the traditional system administration or operational role for the API Gateway. It involves keeping the API Gateway running, monitoring its operation, managing any settings, and performing any troubleshooting. This user typically works in an upstream staging or production environment instead of in a development environment.
 
-**API Gateway operator**: This role monitors the API Gateway. It has read-only administrative capability. This is typically a production operations role.
+API Gateway operator
+: This role monitors the API Gateway. It has read-only administrative capability. This is typically a production operations role.
 
-**Deployer**: This role deploys API Gateway configurations using scripts. It has a restricted deployment role, and is typically used in production environments.
+Deployer
+: This role deploys API Gateway configurations using scripts. It has a restricted deployment role, and is typically used in production environments.
 
 ## Organizations and user roles in API Manager
 
 Organization types in API Manager include the following:
 
-* Named organization - This is an organization that is known, trusted, and preapproved (for example, a business partner of the API provider). This organization is defined in the client registry, and organization-specific access to the APIs can be managed (for example, specifying which API consumers can browse, and which applications can invoke).
-* Community organization - This is the organization of unverified, untrusted API consumers that are not explicitly tied to any specific organization. These are API consumers that register to browse the APIs and develop applications. The Community organization is intended to be a mechanism to recruit API consumers to build client applications.
+Named organization
+: This is an organization that is known, trusted, and preapproved (for example, a business partner of the API provider). This organization is defined in the client registry, and organization-specific access to the APIs can be managed (for example, specifying which API consumers can browse, and which applications can invoke).
 
-    Community API consumers can subsequently be associated with a named organization and become trusted. It is not intended that production-level client applications run in the Community organization, but that these users and their applications move into trusted named organizations before the application goes into production.
-* API owner organization - This is an organization that is enabled in API Manager for registration of APIs. It supports all the capabilities of organizations for consuming APIs with the additional capability of supporting the registration of APIs.
+Community organization
+: This is the organization of unverified, untrusted API consumers that are not explicitly tied to any specific organization. These are API consumers that register to browse the APIs and develop applications. The Community organization is intended to be a mechanism to recruit API consumers to build client applications.
+: Community API consumers can subsequently be associated with a named organization and become trusted. It is not intended that production-level client applications run in the Community organization, but that these users and their applications move into trusted named organizations before the application goes into production.
 
-    In API Manager, each organization includes an option to enable it as an API owner organization:
+API owner organization
+: This is an organization that is enabled in API Manager for registration of APIs. It supports all the capabilities of organizations for consuming APIs with the additional capability of supporting the registration of APIs.
 
-    * If this is not selected, the organization only supports the consumption of APIs (the default).
-    * If this is selected, APIs can be registered in the organization
+In API Manager, each organization includes an option to enable it as an API owner organization:
 
-    The APIs that are displayed for an API owner organization are as follows:
+* If this is not selected, the organization only supports the consumption of APIs (the default).
+* If this is selected, APIs can be registered in the organization
 
-    * APIs that have been registered in that API owner organization.
-    * Other APIs that the API owner organization has been given authorization for by the API administrator.
+The APIs that are displayed for an API owner organization are as follows:
 
-The following diagram shows where the API Management user roles fit into the API management architecture:
+* APIs that have been registered in that API owner organization.
+* Other APIs that the API owner organization has been given authorization for by the API administrator.
+
+The following diagram shows where the API Management user roles fit into the API management architecture.
 
 ![API management user roles](/Images/docbook/images/api_mgmt/api_mgmt_architecture_roles.png)
 
@@ -57,7 +66,7 @@ The API provider user roles in the diagram are described as follows:
 
 * API owner - The API owner uses API Manager to virtualize managed APIs and apply standard policies. This role has the privileges of the client-side API consumer role but with the additional privileges of API registration in the API owner organization that they are assigned to. This is a non-technical role, and is typically more of a business or operational user who has knowledge of what the APIs do, and why clients need to access them. However, in some organizations this role will be performed by an API developer.
 * API administrator - This is the administrator role responsible for managing the consumption of APIs by registered API clients. This role manages and monitors the virtualized APIs and the client applications that use those APIs. The tasks include managing organization and user registration, application authentication credentials, authorization and quota entitlement policies, and monitoring API use. These tasks are performed using API Manager. This administrator role is typically more of a business or operational user who has knowledge of what the APIs do, and why clients need to access them.
-* API Gateway administrator - This administrator role monitors, manages, and troubleshoots API Gateway using the API Gateway Manager web console. They have full administrative privileges, including deployment of API Gateway configurations. This is the system administration or operational role for API Gateway. It involves keeping API Gateway running, monitoring its operation, managing any settings, and performing any troubleshooting. For more details, see the *API Gateway Administrator Guide*.
+* API Gateway administrator - This administrator role monitors, manages, and troubleshoots API Gateway using the API Gateway Manager web console. They have full administrative privileges, including deployment of API Gateway configurations. This is the system administration or operational role for API Gateway. It involves keeping API Gateway running, monitoring its operation, managing any settings, and performing any troubleshooting.
 * Policy developer - This is the API Gateway developer who uses the REST API development wizard in Policy Studio to virtualize APIs and create API Gateway policies. Policies are rules used to govern or manage an API (for example, for security, integration, SLA monitoring, or transformation). This is a technical developer role.
 
 The API client user roles in the diagram are described as follows:
@@ -73,11 +82,15 @@ The API client user roles in the diagram are described as follows:
 
 The API Manager user roles have the following access rights:
 
-* **API administrator**: The API administrator has full access to API Manager, and can create, read, update, and delete organizations, users, and applications. The API administrator has management responsibility for applications and users. When users are being registered, the API administrator can approve or reject new users.
+API administrator
+: The API administrator has full access to API Manager, and can create, read, update, and delete organizations, users, and applications. The API administrator has management responsibility for applications and users. When users are being registered, the API administrator can approve or reject new users.
+: Users can create applications, but they must first be approved by the API administrator. If users want to request access to another API for an approved application, the API access must also be approved. User and application management can be automatically approved. In addition, the API administrator can delegate the user and application management responsibility to organization administrators. But only the API administrator can edit quotas.
 
-    Users can create applications, but they must first be approved by the API administrator. If users want to request access to another API for an approved application, the API access must also be approved. User and application management can be automatically approved. In addition, the API administrator can delegate the user and application management responsibility to organization administrators. But only the API administrator can edit quotas.
-* **Organization administrator**: The organization administrator has full read access to users and applications in their organization. If application management is delegated, they can also create, update, and delete. The organization administrator can monitor all applications in their organization. They also have the same permissions as API consumers or application developer users.
-* **API consumer**: The API consumer can create, read, update, and delete their applications. They can also give shared access to other users, granting permissions to view and monitor, or full access. If auto-approval is disabled, the user must wait for approval for new applications from the API administrator, or organization administrator if they have been delegated management responsibility. A user has full read access to all other users in the organization.
+Organization administrator
+: The organization administrator has full read access to users and applications in their organization. If application management is delegated, they can also create, update, and delete. The organization administrator can monitor all applications in their organization. They also have the same permissions as API consumers or application developer users.
+
+API consumer
+: The API consumer can create, read, update, and delete their applications. They can also give shared access to other users, granting permissions to view and monitor, or full access. If auto-approval is disabled, the user must wait for approval for new applications from the API administrator, or organization administrator if they have been delegated management responsibility. A user has full read access to all other users in the organization.
 
 ## API administrators
 
@@ -108,11 +121,11 @@ The API administrator has full management privileges over all applications. The 
 
 The API administrator can manage the maximum message traffic rate that can be sent by applications to APIs using the following types of quotas:
 
-* *System quota*: The maximum message rate that can be sent to APIs and their methods, aggregated across all client applications, regardless of organization. This controls the amount of incoming traffic that can be sent to any API and its methods, regardless of the client application.
+* System quota - The maximum message rate that can be sent to APIs and their methods, aggregated across all client applications, regardless of organization. This controls the amount of incoming traffic that can be sent to any API and its methods, regardless of the client application.
 
     For example, if a system quota is configured for API A and method B, and the API is called by two different applications, both calls have the same effect on the system-wide quota. The system quota is a global setting designed to protect back-end systems (for example, if the system can only process 100 messages per second).
-* *Application-default quota*: The default quota that applies on a per-application basis to all applications unless an application-specific quota is configured. This quota specifies the default maximum message rate that any application can send to APIs and methods (for example, 25 messages per second).
-* *Application-specific quota*: This overrides the application-default quota. This quota specifies the maximum message rate that the specific application can send to APIs and methods (for example, 15 messages per second).
+* Application-default quota - The default quota that applies on a per-application basis to all applications unless an application-specific quota is configured. This quota specifies the default maximum message rate that any application can send to APIs and methods (for example, 25 messages per second).
+* Application-specific quota - This overrides the application-default quota. This quota specifies the maximum message rate that the specific application can send to APIs and methods (for example, 15 messages per second).
 
 API administrators can specify all quotas at the API and at API method level. For more details, see [Manage quotas](/docs/apim_administration/apimgr_admin/api_mgmt_admin/#manage-quotas).
 
@@ -120,9 +133,9 @@ API administrators can specify all quotas at the API and at API method level. F
 
 The API administrator can manage the APIs that organizations and applications can access using the following:
 
-* *Organization authorization*: the API administrator can define the APIs that the organization is allowed to access. For example, a named hotel organization can only access the reservation and payment APIs.
-* *Application authorization*: the API administrator can define the APIs that the application is allowed to access. For example, a specific client application in the hotel organization can only access the reservation API.
-* *User management*: the API administrator can assign users a specific organization (Community or named) and user role (API consumer user, organization administrator, or API administrator).
+* Organization authorization - The API administrator can define the APIs that the organization is allowed to access. For example, a named hotel organization can only access the reservation and payment APIs.
+* Application authorization - The API administrator can define the APIs that the application is allowed to access. For example, a specific client application in the hotel organization can only access the reservation API.
+* User management - the API administrator can assign users a specific organization (Community or named) and user role (API consumer user, organization administrator, or API administrator).
 
 {{< alert title="Note" color="primary" >}}The API administrator must first specify the APIs that an organization is allowed to access before any of its client applications can have access to them. In API Manager, you can only add APIs to an application when you have first added them to the organization. {{< /alert >}}
 
@@ -132,7 +145,7 @@ You can define the authentication mechanisms required by the API (for example, T
 
 ## API administrator view
 
-When an API administrator logs on to API Manager, it displays a specific view for the API administrator. This includes the following:
+When an API administrator logs on to API Manager, it displays a specific view for the API administrator, which includes the following capabilities.
 
 ### API
 
@@ -159,7 +172,7 @@ Manage the following settings:
 
 ## Organization administrator view
 
-The view displayed for organization administrator is a subset of the view displayed for the API administrator. For example, the organization administrator cannot view **OAuth Authorizations**, **Default Quotas**, **API Manager Settings**, or **Alerts**. The following shows an example view:
+The view displayed for organization administrator is a subset of the view displayed for the API administrator. For example, the organization administrator cannot view **OAuth Authorizations**, **Default Quotas**, **API Manager Settings**, or **Alerts**.
 
 ![Organization Administrator View](/Images/docbook/images/api_mgmt/api_mgmt_org_admin.png)
 
@@ -198,5 +211,4 @@ When an API consumer user logs in to API Manager, this displays a specific view 
 * **API Catalog**: Browse all virtualized APIs available to the organization.
 * **Clients**: Create, manage, or delete client applications that invoke APIs.
 * **Monitoring**: View historical reports and statistics on all client applications created by the API consumer.
-* **Settings**: Manage user **Account Settings**
-    (for example, change password or user details).
+* **Settings**: Manage user **Account Settings** (for example, change password or user details).
