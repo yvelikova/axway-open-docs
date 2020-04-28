@@ -22,9 +22,7 @@ You can configure the following settings on the **General** tab:
 
 **Host alias** : The human readable alias name for the remote host (for example, `StockQuote Host`). This setting is required.
 
-**Host name** : The host name or IP address of the remote host to connect to (for example `stockquote.com`). If the host name entered in a **Static Router** filter matches this host name, the connection-specific settings configured on the **Remote Host** dialog are used when connecting to this host. This also includes any IP addresses listed on the **Addresses and Load Balancing** tab, which override the default network DNS server mappings, if configured.   This setting is required.
-
-{{< alert title="Note" color="primary" >}}The host name filled out in this field is passed as the HTTP Host header value to the back-end even when using the Load Balancing feature. There is however an advanced option in the Connect To URL filter to pass the incoming host header from the client.{{< /alert >}}
+**Host name** : The host name or IP address of the remote host to connect to (for example `stockquote.com`). The host name is passed as the HTTP Host header value to the back-end even when using the Load Balancing feature. To pass the incoming host header from the client, see [Connect To URL filter](/docs/apim_policydev/apigw_polref/routing_common/#connect-to-url-filter). If the host name entered in a **Static Router** filter matches this host name, the connection-specific settings configured on the **Remote Host** dialog are used when connecting to this host. This also includes any IP addresses listed on the **Addresses and Load Balancing** tab, which override the default network DNS server mappings, if configured.   This setting is required.
 
 **Port** : The TCP port on the remote host to connect to. Defaults to `80`.
 
