@@ -73,7 +73,7 @@ The Discovery Agent only discovers published APIs where the stage has a  tag(s) 
 
 ### Create your Discovery Agent environment file
 
-Create an env_vars file using the above variables. For additional information, see <https://git.ecd.axway.int/apigov/aws_apigw_discovery_agent>.
+Create a configuration file using the above variables. See the variable descriptions for their values. Below is a sample of what the configuration file will look like.
 
 For example:  
 
@@ -100,9 +100,6 @@ CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
 CENTRAL_MODE=<publishToCatalog | publishToEnvironment | publishToEnvironmentAndCatalog>
 CENTRAL_AUTH_URL=https://login.axway.com/auth
 CENTRAL_AUTH_REALM=Broker
-# not needed qs given in the docker cmdline
-#CENTRAL_AUTH_PRIVATEKEY=/keys/private_key.pem
-#CENTRAL_AUTH_PUBLICKEY=/keys/public_key
 CENTRAL_AUTH_KEYPASSWORD=
 
 #CENTRAL_SSL_MINVERSION=
@@ -171,7 +168,7 @@ The Traceability Agent is used to filter the AWS CloudWatch logs that are relate
 
 ### Create your Traceability Agent environment file
 
-Create an `env_vars` file using the above variables.  
+Create a configuration file using the above variables. See the variable descriptions for their values. Below is a sample of what the configuration file will look like.  
 
 For example:
 
@@ -191,9 +188,6 @@ CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
 CENTRAL_DEPLOYMENT=prod
 CENTRAL_AUTH_URL=https://login.axway.com/auth
 CENTRAL_AUTH_REALM=Broker
-# not needed as given in the docker cmdline
-#CENTRAL_AUTH_PRIVATEKEY=/keys/private_key.pem
-#CENTRAL_AUTH_PUBLICKEY=/keys/public_key
 
 #CENTRAL_SSL_MINVERSION=
 #CENTRAL_SSL_MAXVERSION=
