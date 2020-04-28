@@ -9,7 +9,7 @@ To begin read through the Postman documentation on OAuth. Then, navigate to the 
 
 ![Download specification from catalog](/Images/central/catalog/catalog-details.png)
 
-Click the Download button from the catalog details page to download the specification file. Once the file is downloaded open up Postman and click the button that says "Import".
+Click the Download button from the catalog details page to download the specification file. Once the file is downloaded open Postman and click the button that says "Import".
 
 ![Postman import specification](/Images/central/catalog/postman-import.png)
 
@@ -19,7 +19,7 @@ This will allow you to select a file from your computer. Upload the file downloa
 
 ![Postman generate a collection](/Images/central/catalog/postman-generate-collection.png)
 
-After the Postman Collection has been created from the catalog item specification file click the three dots that appear at the bottom right when hovering over the collection. After clicking the  three dots click the "Edit" button.
+After the Postman Collection has been created from the catalog item specification  click the three dots that appear at the bottom right when hovering over the collection. After clicking the  three dots click the "Edit" button.
 
 ![Postman edit button](/Images/central/catalog/postman-edit-dots.png)
 
@@ -31,7 +31,7 @@ After selecting OAuth 2.0 click the button that appeared to the right that says 
 
 ![Postman get token button](/Images/central/catalog/postman-get-token-button.png)
 
-This will open another modal with authorization details to retrieve the OAuth token. The details displayed here will depend on the API you have downloaded, and will not reflect every OAuth use case. Set the Callback URL to "https://www.postman.com/oauth2/callback". This value will need to be listed as an acceptable callback url defined within the application you are using to perform the OAuth login. Values like Client ID and Client Secret will be defined in the OAuth 2.0 application you have with the provider of the catalog item. These values also may or may not be needed depending on the Grant Type of the token.  Please check with the provider of the catalog item if you have questions on how to authenticate using OAuth 2.0 After filling out the details for the token click the "Request Token" button.
+This will open another modal with authorization details to retrieve the OAuth token. The details displayed here will depend on the API you have downloaded, and will not reflect every OAuth use case. Set the Callback URL to "https://www.postman.com/oauth2/callback". This value will need to be listed as an acceptable callback url defined within the application you are using to perform the OAuth login. Values like Client ID and Client Secret will be defined in the OAuth 2.0 application you have with the provider of the catalog item. These values also may or may not be needed depending on the Grant Type of the token.  Please check with the provider of the catalog item if you have questions on how to authenticate using OAuth 2.0. After filling out the details for the token click the "Request Token" button.
 
 ![Postman add token details](/Images/central/catalog/postman-token-details.png)
 
