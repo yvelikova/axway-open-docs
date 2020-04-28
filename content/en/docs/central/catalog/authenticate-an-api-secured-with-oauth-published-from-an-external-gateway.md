@@ -40,7 +40,6 @@ You will then be taken through the applications OAuth login flow. Sign in with y
 ![Postman use new token](/Images/central/catalog/AuthenticateOAuthExternalGateway/postman-use-token.png)
 ![Postman update collection authentication](/Images/central/catalog/AuthenticateOAuthExternalGateway/postman-update-collection-auth.png)
 
-
 After authenticating and setting the OAuth token expand the collection and select a method. Once you select a method click on the "Authorization" tab and then click the dropdown labeled "Type". Select "Inherit auth from parent" to use the new OAuth token.
 
 ![Postman select method](/Images/central/catalog/AuthenticateOAuthExternalGateway/postman-select-method.png)
