@@ -1,7 +1,7 @@
 {
     "title": "API management use cases",
     "linkTitle": "Use cases",
-    "weight": "3",
+    "weight": "20",
     "date": "2019-09-17",
     "description": "Learn about the primary use cases for API management, including use cases for managing cloud-based applications."
 }
@@ -10,7 +10,7 @@
 
 This topic introduces the primary use cases for the cloud application connectors provided by API Manager.
 
-### API Management for digital transformation
+### API management for digital transformation
 
 Companies are focusing on ways to open up their existing business, deliver new channels, and support new business models using REST APIs. They are adopting API management capabilities such as web service and REST API registration and API catalog. Companies need to deliver new initiatives much faster, reducing cost, and improve overall business performance.
 

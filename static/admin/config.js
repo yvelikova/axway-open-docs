@@ -51,8 +51,20 @@ const collections = [{
   format: 'frontmatter',
   create: false,
 }, {
-  ...docsDefaults('apimgr_concepts', 'docbook/images/api_mgmt'),
-  name: 'apimgr_concepts',
+  ...docsDefaults('api_mgmt_overview', 'api_mgmt_overview'),
+  name: 'api_mgmt_overview',
+  label: 'API management overview',
+  label_singular: 'page in APIM overview section',
+  description: 'All pages relating to API management overview',
+}, {
+  ...docsDefaults('api_mgmt_components', 'api_mgmt_overview'),
+  name: 'api_mgmt_components',
+  label: 'API management components',
+  label_singular: 'page in APIM components section',
+  description: 'All pages relating to API management components',
+}, {
+  ...docsDefaults('key_concepts', 'api_mgmt_overview'),
+  name: 'key_concepts',
   label: 'API management concepts',
   label_singular: 'page in APIM concepts section',
   description: 'All pages relating to API management concepts',
