@@ -1,11 +1,12 @@
 ---
-title: Authenticate an API secured with OAuth and published from an external gateway
+title: Authenticate an external API secured with OAuth
 linkTitle: Authenticate an API secured with OAuth
 weight: 30
-date: 2020-04-28
-description: Learn how to authenticate an API secured with OAuth credentials, which was published from an external gateway and .
+date: 2020-04-28T00:00:00.000Z
+description: Learn how to authenticate an API secured with OAuth credentials,
+  which was published from an external gateway and .
 ---
-The Unified Catalog has the ability to test API methods for OAS2 and OAS3 APIs. The current support for testing APIs published from an external gateway from the browser includes APIs secured with an API key, JWT authentication, and no authentication at all. At this time, there is no support for OAuth from the catalog in the browser. You may still publish your APIs to the Unified Catalog if your API is secured with OAuth. We recommend you use a tool like Postman for testing your APIs. To learn more, see [Authorizing requests](https://learning.postman.com/docs/postman/sending-api-requests/authorization/#oauth-20).
+The Unified Catalog has the ability to test API methods for OAS2 and OAS3 APIs. The current support for testing APIs published from an external gateway from the browser includes APIs secured with an API key, JWT authentication, and no authentication at all. At this time, there is no support for testing OAuth methods from the catalog in the browser. You may still publish your APIs to the Unified Catalog if your API is secured with OAuth. We recommend you use a tool like Postman for testing your APIs. To learn more, see [Authorizing requests](https://learning.postman.com/docs/postman/sending-api-requests/authorization/#oauth-20).
 
 To authenticate your API, in AMPLIFY Central navigate to the Unified Catalog, click the **Explore catalog** side menu, and click an API from the list of APIs to go to the details page of the API secured with OAuth that is published from an external gateway.
 
