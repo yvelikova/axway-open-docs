@@ -2,7 +2,7 @@
 title: Webhook Subscriber
 linkTitle: Webhook Subscriber
 weight: 150
-date: 2019-04-02
+date: 2019-04-02T00:00:00.000Z
 description: Learn how to configure and use the Streams Webhook Subscriber.
 ---
 
@@ -29,7 +29,6 @@ The body must contain a JSON webhook subscription configuration as follow:
 |---------------------|-----------|---------------|-------------|
 | webhookUrl | yes | n/a | URL which will be called by Streams in order to inform the subscriber that a new event/message has been published in the topic identified by {topicId}. |
 | subscriptionMode | no | Default subscription mode defined in the topic's configuration | Refer to [subscription modes](../subscribers#subscription-modes) section |
-| headers | no | no | Map of key/value pairs that will be injected as HTTP headers when requesting the target URL |
 
 Once the webhook subscription is successfully created, Streams will start notifying the subscriber at the specified `webhookUrl`.
 
