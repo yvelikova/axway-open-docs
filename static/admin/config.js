@@ -57,13 +57,13 @@ const collections = [{
   label_singular: 'page in APIM overview section',
   description: 'All pages relating to API management overview',
 }, {
-  ...docsDefaults('api_mgmt_components', 'api_mgmt_overview'),
+  ...docsDefaults('api_mgmt_overview/api_mgmt_components', 'api_mgmt_overview'),
   name: 'api_mgmt_components',
   label: 'API management components',
   label_singular: 'page in APIM components section',
   description: 'All pages relating to API management components',
 }, {
-  ...docsDefaults('key_concepts', 'api_mgmt_overview'),
+  ...docsDefaults('api_mgmt_overview/key_concepts', 'api_mgmt_overview'),
   name: 'key_concepts',
   label: 'API management concepts',
   label_singular: 'page in APIM concepts section',
