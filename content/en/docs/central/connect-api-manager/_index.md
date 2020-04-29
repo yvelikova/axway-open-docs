@@ -25,7 +25,7 @@ Connecting Axway API Manager to AMPLIFY Central enables you to have a connected 
 
 The Discovery Agent is used to discover new published API. The Discovery Agent pushes either an OAS3 or Swagger2 spec to AMPLIFY Central (depending on which was used to create the backend proxy in API Manager).
 
-The Discovery Agent discovers APIs that have PassTrough / API Key / OAuth security / AWS signing / HTTP Basic / Invoke policy / 2-way SSL security.
+The Discovery Agent discovers APIs that have PassThrough / API Key / OAuth security / AWS signing / HTTP Basic / Invoke policy / 2-way SSL security.
 
 The related APIs are published to AMPLIFY Central in either disconnected mode (catalog item publication) or connected mode (Environment / API Service publication and optionally as Catalog item). For additional information, see [Discovery Agent](/docs/central/connect-api-manager/deploy-your-agents/#discovery-agent).
 
