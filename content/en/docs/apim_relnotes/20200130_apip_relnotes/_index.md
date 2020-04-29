@@ -77,35 +77,6 @@ This release has the following limitations:
 
 * Documentation is no longer provided in PDF format. You can continue to save individual topics or entire guides in PDF format using the **Save as PDF** icon on the [Axway documentation portal](https://docs.axway.com/).
 
-## Known issues
-
-The following are known issues in this version of API Portal.
-
-### Page layout and alignment for Arabic language
-
-Changing the API Portal language to Arabic (or any other right to left language) results in issues with page layout and alignment on the API Portal Home and Pricing pages, and some buttons are not visible. As a workaround, you can turn on the development mode in JAI. Follow these steps:
-
-1. Log in to Joomla! Admin Interface (JAI).
-2. In the JAI top navigation bar, click **Extensions > Templates**.
-3. Click your template style (for example, `purity_III * Default`) to open it.
-4. Click the **General** tab.
-5. Change **Development Mode** to `ON`.
-6. Click **Save** and click **Close** to close the template style.
-
-Related Issue: IAP-308
-
-### Uploading files in API endpoints with Content-Type application/octet-stream is not possible while using OAS3
-
-The execution of an endpoint with Content-Type application/octet-stream is not possible and the request results in an endless loader in the response section.
-
-Related Issue: IAP-2952
-
-### Imported Swagger 2.0 definitions into API Manager are not translated to OAS3, which results in unexpected behavior in API Portal
-
-When a Swagger definition 2.0 is uploaded into API Manager its visualization and behavior in API Portal are unpredictable. This happens because Swagger 2.0 is not correctly translated into OAS3 definition by API Manager. One of the known problems is that the body parameters of POST endpoints are not displayed.
-
-Related Issue: RDAPI-18389
-
 ## Fixed issues
 
 This version of API Portal includes the fixes from all 7.5.5, 7.6.2, and 7.7 service packs or updates released prior to this version. For details of all the service pack fixes included, see the corresponding SP Readme attached to each service pack on [Axway Support](https://support.axway.com).
@@ -169,6 +140,35 @@ This version of API Portal includes the fixes from all 7.5.5, 7.6.2, and 7.7 ser
 | IAP-2874     | 1113649            | **Issue**: Results string in API Catalog couldn't be translated. **Resolution**: Result string is now translatable.                                                                                                                                                                                                                                                                                          |
 | IAP-2916     |                    | **Issue**: when there are 2 API Catalogs and APIs are restricted by "Show only APIs with tags" with non-existing tags for only one of catalogs, error 302 appears on API Catalog page. **Resolution**: with 2 API Catalogs and APIs restricted by "Show only APIs with tags" with non existing tags API Catalog lists all APIs                                                                               |
 | IAP-2935     |                    | **Issue**: Edit Profile menu item is unpublished on fresh install. **Resolution**: Edit Profile menu item is published on fresh install.                                                                                                                                                                                                                                                                     |
+
+## Known issues
+
+The following are known issues in this version of API Portal.
+
+### Page layout and alignment for Arabic language
+
+Changing the API Portal language to Arabic (or any other right to left language) results in issues with page layout and alignment on the API Portal Home and Pricing pages, and some buttons are not visible. As a workaround, you can turn on the development mode in JAI. Follow these steps:
+
+1. Log in to Joomla! Admin Interface (JAI).
+2. In the JAI top navigation bar, click **Extensions > Templates**.
+3. Click your template style (for example, `purity_III * Default`) to open it.
+4. Click the **General** tab.
+5. Change **Development Mode** to `ON`.
+6. Click **Save** and click **Close** to close the template style.
+
+Related Issue: IAP-308
+
+### Uploading files in API endpoints with Content-Type application/octet-stream is not possible while using OAS3
+
+The execution of an endpoint with Content-Type application/octet-stream is not possible and the request results in an endless loader in the response section.
+
+Related Issue: IAP-2952
+
+### Imported Swagger 2.0 definitions into API Manager are not translated to OAS3, which results in unexpected behavior in API Portal
+
+When a Swagger definition 2.0 is uploaded into API Manager its visualization and behavior in API Portal are unpredictable. This happens because Swagger 2.0 is not correctly translated into OAS3 definition by API Manager. One of the known problems is that the body parameters of POST endpoints are not displayed.
+
+Related Issue: RDAPI-18389
 
 ## Documentation
 

@@ -48,29 +48,6 @@ This update has the following limitations:
 
 * Documentation is no longer provided in PDF format. You can continue to save individual topics or entire guides in PDF format using the **Save as PDF** icon on the [Axway documentation portal](https://docs.axway.com/).
 
-## Known issues
-
-The following are known issues in this version of API Portal.
-
-### Page layout and alignment for Arabic language
-
-Changing the API Portal language to Arabic (or any other right to left language) results in issues with page layout and alignment on the API Portal Home and Pricing pages, and some buttons are not visible. As a workaround, you can turn on the development mode in JAI. Follow these steps:
-
-1. Log in to Joomla! Admin Interface (JAI).
-2. In the JAI top navigation bar, click **Extensions > Templates**.
-3. Click your template style (for example, `purity_III * Default`) to open it.
-4. Click the **General** tab.
-5. Change **Development Mode** to `ON`.
-6. Click **Save** and click **Close** to close the template style.
-
-Related Issue: IAP-308
-
-### Sign in button is shown after user logs in to API Portal
-
-After user logs in to API Portal, the **Sign in** button is shown in the banner section instead of the **Explore** button.
-
-Related Issue: IAP-3037
-
 ## Fixed issues
 
 This version of API Portal includes the fixes from all 7.5.5, 7.6.2, and 7.7 service packs or updates released prior to this version. For details of all the service pack fixes included, see the corresponding SP Readme attached to each service pack on [Axway Support](https://support.axway.com).
@@ -95,6 +72,29 @@ This version of API Portal includes the fixes from all 7.5.5, 7.6.2, and 7.7 ser
 | IAP-3121    |          | **Issue**: SwaggerUI cannot render when OAS 3.0 definitions have missing *component* key. **Resolution**: The *component* key is first checked for existence, and then used.                                                                     |
 | IAP-3132 | | **Issue:** PHP version requirements are not specific. **Resolution:** Added clarification to the documentation that PHP 7.4 is supported after Jan20 version and in API Portal 7.6.2 the supported versions for PHP are from 7.1 to 7.3. |
 | IAP-3139    | 01140234 | **Issue**: There was a blank space between site navigation and page title when system messages were closed. **Resolution**: Container of system messages is removed when all of messages are closed. |
+
+## Known issues
+
+The following are known issues in this version of API Portal.
+
+### Page layout and alignment for Arabic language
+
+Changing the API Portal language to Arabic (or any other right to left language) results in issues with page layout and alignment on the API Portal Home and Pricing pages, and some buttons are not visible. As a workaround, you can turn on the development mode in JAI. Follow these steps:
+
+1. Log in to Joomla! Admin Interface (JAI).
+2. In the JAI top navigation bar, click **Extensions > Templates**.
+3. Click your template style (for example, `purity_III * Default`) to open it.
+4. Click the **General** tab.
+5. Change **Development Mode** to `ON`.
+6. Click **Save** and click **Close** to close the template style.
+
+Related Issue: IAP-308
+
+### Sign in button is shown after user logs in to API Portal
+
+After user logs in to API Portal, the **Sign in** button is shown in the banner section instead of the **Explore** button.
+
+Related Issue: IAP-3037
 
 ## Documentation
 
