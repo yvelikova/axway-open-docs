@@ -75,11 +75,11 @@ The following fields on the **Network** tab are common to both HTTP and HTTPS in
 * **Protocol**: Select the Internet Protocol version (IPv) that this interface uses. You can select `IPv4`, `IPv6`, or both of these protocol versions. The default is `IPv4`.
 * **Trace level**: The level of trace output. The possible values in order of least verbose to most verbose output are:
 
-  * `FATAL`
-  * `ERROR`
-  * `INFO`
-  * `DEBUG`
-  * `DATA`
+    * `FATAL`
+    * `ERROR`
+    * `INFO`
+    * `DEBUG`
+    * `DATA`
 
     The default trace level is read from the system settings.
 * **Enable interface**: This setting is enabled by default. If you want to disable the HTTP interface, deselect this setting.
@@ -139,10 +139,10 @@ You can configure the followingon the **Advanced (SSL)** tab:
     To specify an SNI, click **Add**, specify the server host name in **Client requests server name**, click **Server assumes identity** to import a Certificate Authority certificate into the Certificate Store, and click **OK**.
 * **Ciphers**: Specify the ciphers that the server supports in the **Ciphers** field. The server selects the highest-strength cipher that is also supported by the client from this list as part of the SSL handshake. The default cipher string of `FIPS:!SSLv3:!aNULL` performs the following:
 
-  * Enables FIPS-compatible cipher suites only
-  * Explicitly blocks cipher suites that require SSLv3 or lower
-  * Forces the use of TLSv1.2 only
-  * Forbids unauthenticated cipher suites
+    * Enables FIPS-compatible cipher suites only
+    * Explicitly blocks cipher suites that require SSLv3 or lower
+    * Forces the use of TLSv1.2 only
+    * Forbids unauthenticated cipher suites
 
     For more information on the syntax of this setting, see the [OpenSSL documentation](https://www.openssl.org/docs/man1.0.2/apps/ciphers.html).
 * **SSL session cache size**: Specify the number of idle SSL sessions that can be kept in memory. The default is `32`. If there are more simultaneous SSL sessions, new SSL connections can still be established, but no more SSL sessions are cached. If you set cache size to `0`, there is no cache. No outbound SSL connections are cached.
@@ -165,8 +165,8 @@ You can configure the followingon the **Advanced (SSL)** tab:
 
     There are two options when setting DH key parameters:
 
-  * Enter a number (for example, `512`), and the server automatically generates DH parameters with a prime number of the correct size.
-  * Paste the Base64 encoding of an existing serialized DH parameters file. You can use standard DH parameters based on known good prime numbers. OpenSSL ships with the `dh512.pem` and `dh1024.pem` files. For example, you can set the DH parameters to the following Base64-encoded string in `pdh512.pem`:
+    * Enter a number (for example, `512`), and the server automatically generates DH parameters with a prime number of the correct size.
+    * Paste the Base64 encoding of an existing serialized DH parameters file. You can use standard DH parameters based on known good prime numbers. OpenSSL ships with the `dh512.pem` and `dh1024.pem` files. For example, you can set the DH parameters to the following Base64-encoded string in `pdh512.pem`:
 
   ```
   -----BEGIN DH PARAMETERS-----
@@ -180,12 +180,12 @@ You can configure the followingon the **Advanced (SSL)** tab:
     {{< alert title="Note" color="primary" >}}The EDH key is always used once only to guarantee forward secrecy. This ensures that if the key is compromised, previous keys is not compromised.{{< /alert >}}
 * **SSL Protocol Options**: You can configure the following SSL protocol options:
 
-  * **Do not use the SSL v2 protocol**: SSL v2 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
-  * **Do not use the SSL v3 protocol**: SSL v3 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
-  * **Do not use the TLS v1 protocol**: TLS v1.0 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
-  * **Do not use the TLS v1.1 protocol**: TLS v1.1 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
-  * **Do not use the TLS v1.2 protocol**: TLS v1.2 is not use for incoming connections to avoid any weaknesses in this protocol. This is *not* selected by default.
-  * **Prefer local cipher preferences over client's proposal**: When choosing a cipher during the SSL/TLS handshake, the client's preferences are selected by default from the list of ciphers supported by the client and the server. When this option is selected, the server's preferences are used instead. This option is *not* selected by default. For more details on ciphers, see the [OpenSSL documentation](https://www.openssl.org/docs/man1.0.2/apps/ciphers.html).
+    * **Do not use the SSL v2 protocol**: SSL v2 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
+    * **Do not use the SSL v3 protocol**: SSL v3 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
+    * **Do not use the TLS v1 protocol**: TLS v1.0 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
+    * **Do not use the TLS v1.1 protocol**: TLS v1.1 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
+    * **Do not use the TLS v1.2 protocol**: TLS v1.2 is not use for incoming connections to avoid any weaknesses in this protocol. This is *not* selected by default.
+    * **Prefer local cipher preferences over client's proposal**: When choosing a cipher during the SSL/TLS handshake, the client's preferences are selected by default from the list of ciphers supported by the client and the server. When this option is selected, the server's preferences are used instead. This option is *not* selected by default. For more details on ciphers, see the [OpenSSL documentation](https://www.openssl.org/docs/man1.0.2/apps/ciphers.html).
 
 ### Configure conditions for an HTTP Interface
 
