@@ -45,16 +45,18 @@ Watch the animation to learn how to subscribe to an API asset.
 
 ![subscribe demo](/Images/central/catalog/subscribe_demo.gif)
 
-## Export to Integration Builder
+### Promote an API to Integration Builder
 
-Promote and authenticate APIs using Integration Builder.
+If you are leveraging the AMPLIFY iPaaS to create integrations between different applications, you can promote an API from the Unified Catalog to Integration Builder as a custom connector with a click of a button. This saves you the hassle of exporting the swagger file and then manually import it in Integration Builder. 
+
+#### See also:
+
+* [AMPLIFY Integration Builder](https://docs.axway.com/bundle/AMPLIFY_Integration_Builder_allOS_en/page/amplify_integration_builder.html) 
 
 ### Before you start
 
 * Ensure that you have access to Integration Builder.
 * You must have your API secured, as well as a valid subscription. For details, see [Subscribe to an API](#subscribe-to-an-api).
-
-### Promote an API from Unified Catalog to Integration Builder
 
 You can promote an API published in the Unified Catalog to Integration Builder as a custom connector.
 
