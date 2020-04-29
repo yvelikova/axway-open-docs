@@ -6,7 +6,9 @@ date: 2020-04-28T00:00:00.000Z
 description: Learn how to authenticate an API secured with OAuth credentials,
   which was published from an external gateway and .
 ---
-The Unified Catalog has the ability to test API methods for OAS2 and OAS3 APIs. The current support for testing APIs published from an external gateway from the browser includes APIs secured with an API key, JWT authentication, and no authentication at all. At this time, there is no support for testing OAuth methods from the catalog in the browser. You may still publish your APIs to the Unified Catalog if your API is secured with OAuth. We recommend you use a tool like Postman for testing your APIs. To learn more, see [Authorizing requests](https://learning.postman.com/docs/postman/sending-api-requests/authorization/#oauth-20).
+The Unified Catalog has the ability to test API methods from the browser for OAS2 and OAS3 APIs. The current support for testing APIs published from an external gateway from the browser includes APIs secured with an API key, JWT authentication, and no authentication at all. At this time, there is no support for testing OAuth methods from the catalog in the browser. You may still publish your APIs to the Unified Catalog if your API is secured with OAuth. We recommend you use a tool like Postman for testing your APIs. To learn more, see [Authorizing requests](https://learning.postman.com/docs/postman/sending-api-requests/authorization/#oauth-20).
+
+In the example below, we have chosen to use the Axway Support API. The OAS2 specification for the API can be downloaded [here](https://apis-developer.axway.com/index.php?option=com_apiportal&view=apitester&usage=api&tab=tests&apiId=da355fc4-484e-44a3-b436-965ffc377031&menuId=152&managerId=1&renderTool=2&type=rest&apiVersion=1.1.7).
 
 To authenticate your API, in AMPLIFY Central navigate to the Unified Catalog, click the **Explore catalog** side menu, and click an API from the list of APIs to go to the details page of the API secured with OAuth that is published from an external gateway.
 
