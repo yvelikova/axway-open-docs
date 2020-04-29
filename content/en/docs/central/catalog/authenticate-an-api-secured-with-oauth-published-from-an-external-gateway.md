@@ -10,7 +10,7 @@ The Unified Catalog has the ability to test API methods from the browser for OAS
 
 In the example below, we have chosen to use the Axway Support API. The OAS2 specification for the API can be downloaded [here](https://apis-developer.axway.com/index.php?option=com_apiportal&view=apitester&usage=api&tab=tests&apiId=da355fc4-484e-44a3-b436-965ffc377031&menuId=152&managerId=1&renderTool=2&type=rest&apiVersion=1.1.7). After opening this page click the button that says **Swagger 2.0** and the download will begin.
 
-![](/Images/central/catalog/support-spec.png)
+![download axway support api](/Images/central/catalog/support-spec.png)
 
 To authenticate your API, in AMPLIFY Central navigate to the Unified Catalog, click the **Explore catalog** side menu, and click an API from the list of APIs to go to the details page of the API secured with OAuth that is published from an external gateway.
 
