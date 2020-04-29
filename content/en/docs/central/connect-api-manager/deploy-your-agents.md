@@ -250,5 +250,5 @@ traceability_agent:
 5. Open a shell and run the following health check command to verify if the agent is up and running: 
 
     ```
-    ./traceability_agent --status
+    ./traceability_agent status
     ```
