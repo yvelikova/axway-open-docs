@@ -21,17 +21,25 @@ Watch the animation to learn how to search and filter in Unified Catalog.
 
 ## Subscribe to an API
 
+In order to use an API, you must subscribe to request access. APIs that are protected with a client authentication policy in AMPLIFY Central will require an app with valid credentials to subscribe. When the request is approved, either automatically or manually by the provider of the API, a link is created between the API and the application. 
+
+{{< alert title="" color="info" >}}The  **Subscribe** button will not be displayed for APIs that are not protected with an API Key. In addition, a provider of the API asset can configure when a subscription is required and the metadata to be provided when you subscribe.{{< /alert >}}
+
 Before you start:
 
 * You will need to create an app in AMPLIFY Central and secure it with an [API Key](/docs/central/quickstart/) or [JWT](/docs/central/secure_api_jwt/) or [OAuth](/docs/central/feauth_oauth/)
 
 Follow these steps to subscribe to an API asset
 
-* Select **Catalog** in the left navigation bar to open the **Explore Catalog** submenu.
+* Select **Catalog** in the left navigation bar to open the **Explore Catalog** sub-menu.
 * Click an API asset in the list to see a detailed view of its description, test methods, and subscriptions.
 * Click **Subscribe** in the top right corner.
-* On the dialog box, select **Team**, enter a **Subscription name** and select **Application**.
-* Click **Subscribe**.
+* On the dialog box enter a **Subscription name** and select **Application**.
+
+  AMPLIFY Central administrators can subscribe an application on behalf of API consumers. In this case, they will be required to select the **Team** the API consumer belongs to. 
+* Click **Subscribe.** 
+
+  When subscription requests to an API are set to be manually approved by the API provider, you will see a **Request access** button. After you click to request access, you will get a message that informs you the subscription request has been submitted and is awaiting approval. 
 
 Watch the animation to learn how to subscribe to an API asset.
 
