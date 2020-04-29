@@ -101,7 +101,7 @@ log:
 1. Move the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment. Note that the `public_key` comes from Steps 3 and 4 of [Create a Service Account](/docs/central/connect-api-manager/prepare-amplify-central/#create-a-service-account).
 2. Download the zip file from [https://axway.bintray.com/generic-repo/v7-agents/v7_discovery_agent/latest/discovery_agent-latest.zip]( https://axway.bintray.com/generic-repo/v7-agents/v7_discovery_agent/latest/discovery_agent-latest.zip). The zip contains the Discovery Agent config yaml and the Discovery Agent executable.
 3. Unzip the file and install the binary on a machine that can access the APIM Manager environment.  
-4. Open a shell and run the following to start up your agent: 
+4. Open a shell and run the following command to start up your agent: 
 
     ```
     ./discovery_agent
@@ -241,7 +241,7 @@ traceability_agent:
 
     The zip contains the Traceability Agent config yaml and the Traceability Agent executable.
 3. Unzip the file and install the binary on a machine that can access the APIM Manager environment.
-4. Open a shell and run the following to start up your agent: 
+4. Open a shell and run the following command to start up your agent: 
 
     ```
     ./traceability_agent
