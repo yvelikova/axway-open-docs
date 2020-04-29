@@ -57,6 +57,7 @@ The Discovery Agent config yaml and Discovery Agent executable are included.
 ```
 apimanager:
   host: lptxtntperf1.lab.phx.axway.int
+  status:
   port: 8075
   filter: tag.News.Exists() == true || tag.API_TYPE == Loan || tag.API_TYPE == Finance || tag.API_TYPE == Healthcare || tag.Math.Exists() == true || tag.Department == Purchasing
 #  filter: tag.News.Exists() == true 
@@ -100,6 +101,12 @@ log:
 1. Move the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment. Note that the `public_key` comes from Steps 3 and 4 of [Create a Service Account](/docs/central/connect-api-manager/prepare-amplify-central/#create-a-service-account).
 2. Download the zip file from [https://axway.bintray.com/generic-repo/v7-agents/v7_discovery_agent/latest/discovery_agent-latest.zip]( https://axway.bintray.com/generic-repo/v7-agents/v7_discovery_agent/latest/discovery_agent-latest.zip). The zip contains the Discovery Agent config yaml and the Discovery Agent executable.
 3. Unzip the file and install the binary on a machine that can access the APIM Manager environment.  
+4. Open a shell and run the following health check command, using the same config.yaml file that started the agent, to make sure the agent is up and running: 
+
+    ```
+    ./discovery_agent --status
+    ```
+
 
 ## Traceability Agent
 
@@ -159,6 +166,7 @@ output.traceability:
         timeout: 10s
     apigateway:
       host: localhost
+      status:
       port: 8090
       pollInterval: 1m
       auth:
@@ -169,6 +177,7 @@ output.traceability:
     apimanager:
       proxyApicIDField: APIC_ID
       host: localhost
+      status:
       port: 8075
       apiVersion: 1.3
       pollInterval: 1m
@@ -226,3 +235,8 @@ traceability_agent:
 
     The zip contains the Traceability Agent config yaml and the Traceability Agent executable.
 3. Unzip the file and install the binary on a machine that can access the APIM Manager environment.
+4. Open a shell and run the following health check command, using the same config.yaml file that started the agent, to make sure the agent is up and running: 
+
+    ```
+    ./traceability_agent status
+    ```

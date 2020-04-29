@@ -129,6 +129,11 @@ LOG_PATH=logs
 
 {{< alert title="Note" color="primary" >}}`pwd` relates to the local directory where the docker command is run. For Windows, the absolute path is preferred.{{< /alert >}}
 
+4. Run the following health check command to ensure the agent is up and running:
+
+    ```
+    docker inspect --format='{{json .State.Health}}' <container>
+    ```
 ## Traceability Agent
 
 The Traceability Agent is used to filter the AWS CloudWatch logs that are related to discovered APIs and prepare the transaction events that are sent to AMPLIFY platform. Each time an API is called by a consumer, an event (summary + detail) is sent to AMPLIFY Central and is visible in API Observer.
@@ -219,3 +224,9 @@ LOG_PATH=logs
     ```
 
 {{< alert title="Note" color="primary" >}}`pwd` relates to the local directory where the docker command is run. For Windows, the absolute path is preferred.{{< /alert >}}
+
+4. Run the following health check command to ensure the agent is up and running:
+
+    ```
+    docker inspect --format='{{json .State.Health}}' <container>
+    ```
