@@ -39,6 +39,14 @@
 
 # Documentation files for AMPCentral
 /content/en/docs/central/ @andreamussap @robertengaxway @georgiana-caras @stevenrcfox
+/content/en/docs/central/connect-api-manager/ @lbadenhop
+/content/en/docs/central/connect-aws-gateway/ @lbadenhop
+
+# Documentation files for Streams
+/content/en/docs/streams/ @andreamussap @allandenis38
+
+# Documentation files for Shared services
+# /content/en/docs/shared_services/ @alexearnshaw @<placeholder>>
 
 # Documentation files for APIM
 /content/en/docs/apigtw_devguide/ @alexearnshaw @maherb4
