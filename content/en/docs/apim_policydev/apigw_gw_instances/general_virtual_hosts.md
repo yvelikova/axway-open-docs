@@ -1,9 +1,9 @@
 {
 "title": "Configure virtual hosts",
-"linkTitle": "Configure virtual hosts",
-"weight": 2,
-"date": "2019-10-17",
-"description": "Configure virtual hosts for HTTP services or REST APIs."
+  "linkTitle": "Configure virtual hosts",
+  "weight": 2,
+  "date": "2019-10-17",
+  "description": "Configure virtual hosts for HTTP services or REST APIs."
 }
 
 A virtual host is a server, or pool of servers, that can host multiple domain names (for example, `company1.api.example.com`
@@ -78,8 +78,7 @@ policy for the HTTP service is executed (in this case, **Default Services**).
 
 When API Manager has been installed, you can also configure virtual hosts for specific REST APIs. By default, the HTTP service-level profile is used, but you can override the virtual host at the REST API level.
 
-For example, when adding a new REST API in the **New Rest API**
-dialog, you can specify virtual hosts on the **Exposure**
+For example, when adding a new REST API in the **New Rest API** dialog, you can specify virtual hosts on the **Exposure**
 tab. In the **Virtual Host**
 field, click the browse button to select a virtual host in the dialog.
 
