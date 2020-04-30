@@ -1,6 +1,6 @@
 {
 "title": "API Gateway and API Manager 7.7 January 2020 Release Notes",
-  "linkTitle": "API Gateway and API Manager 7.7 January 2020",
+  "linkTitle": "API Gateway and API Manager January 2020",
   "no_list": "true",
   "weight": "90",
   "date": "2019-09-20",
