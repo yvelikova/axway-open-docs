@@ -2,7 +2,7 @@
 title: API Portal 7.7 March 2020 Release Notes
 linkTitle: API Portal 7.7 March 2020
 no_list: true
-weight: 30
+weight: 80
 date: 2020-03-11T00:00:00.000Z
 description: Learn about the new features and enhancements in this update of API Portal.
 ---

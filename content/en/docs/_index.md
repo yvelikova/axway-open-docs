@@ -18,6 +18,7 @@ Use the navigation menu on the left to browse all documentation for API Gateway,
 
 Here are some suggestions to get started:
 
+* [API management overview](/docs/api_mgmt_overview/)
 * [Install API management](/docs/apim_installation/)
 * [Administer API management](/docs/apim_administration/)
 * [Develop in Policy Studio](/docs/apim_policydev/)
@@ -32,6 +33,14 @@ Here are some suggestions to get started:
 * [Get started with AMPLIFY Central](/docs/central/quickstart/)
 * [Get started with AMPLIFY CLI](/docs/central/cli_getstarted/)
 * [AMPLIFY Unified Catalog](/docs/central/catalog/)
+
+## AMPLIFY Streams documentation
+
+Browse all documentation for AMPLIFY Streams under the top-level [AMPLIFY Streams](/docs/streams/) item in the left navigation menu.
+
+Here are some suggestions to get started:
+
+* [Get started with AMPLIFY Streams](/docs/streams/quickstart/)
 
 ## AMPLIFY Shared Services documentation
 

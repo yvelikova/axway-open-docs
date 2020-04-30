@@ -1,12 +1,12 @@
 ---
 title: Discovery Agent flags
 linkTitle: Discovery Agent flags
-draft: true
+draft: false
 weight: 50
 description: "Use the following parameters [flags] when issuing the
-  discovery_agent command. View these flags with command discovery_agent -h. "
+  discovery_agent command. View these flags with command `discovery_agent -h.` "
 ---
-{{< alert title="Note" color="primary" >}}These parameters are also environment variables referenced in the Create your configuration section, with the exception of help and pathConfig. These parameters are not configuration values.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}These parameters are also environment variables referenced in [Deploy your agents] (/docs/central/connect-api-manager/deploy-your-agents/) with the exception of help and pathConfig. These parameters are not configuration values.{{< /alert >}}
 
 | Flags  | Description                                                                                                                                                                                                                                                                                                            |   |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
@@ -31,7 +31,7 @@ description: "Use the following parameters [flags] when issuing the
 | authRealm                       | String. AMPLIFY Central authentication Realm (default "Broker").                                                                                                                                                                                                                                                       |   |
 | authTimeout                     | Duration. Timeout waiting for AxwayID response (default 10s).                                                                                                                                                                                                                                                          |   |
 | authUrl                         | String. AMPLIFY Central authentication URL (default <https://login-preprod.axway.com/auth>).                                                                                                                                                                                                                           |   |
-| centralMode                     | String. Agent Mode (default "disconnected").                                                                                                                                                                                                                                                                           |   |
+| centralMode                     | String. Agent Mode (default "publishToCatalog").                                                                                                                                                                                                                                                                           |   |
 | centralPollInterval             | Duration. The time interval at which the central will be polled for subscription processing (default 1m0s).                                                                                                                                                                                                            |   |
 | centralSSLCipherSuites          | Strings. List of supported cipher suites, comma separated (default \[ECDHE-ECDSA-AES-256-GCM-SHA384,ECDHE-RSA-AES-256-GCM-SHA384,ECDHE-ECDSA-CHACHA20-POLY1305,ECDHE-RSA-CHACHA20-POLY1305,ECDHE-ECDSA-AES-128-GCM-SHA256,ECDHE-RSA-AES-128-GCM-SHA256,ECDHE-ECDSA-AES-128-CBC-SHA256,ECDHE-RSA-AES-128-CBC-SHA256]).  |   |
 | centralSSLInsecureSkipVerify    | Controls whether a client verifies the server's certificate chain and host name.                                                                                                                                                                                                                                       |   |

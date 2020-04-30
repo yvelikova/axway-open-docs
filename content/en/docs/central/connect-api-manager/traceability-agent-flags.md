@@ -1,7 +1,7 @@
 ---
 title: Traceability Agent flags
 linkTitle: Traceability Agent flags
-draft: true
+draft: false
 weight: 70
 description: Use the following parameters [flags] when issuing the
   traceability_agent command. View these flags with command traceability_agent

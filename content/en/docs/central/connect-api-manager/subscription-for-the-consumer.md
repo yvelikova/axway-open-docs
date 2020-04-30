@@ -1,7 +1,7 @@
 ---
 title: Subscription for the consumer
 linkTitle: Subscription for the consumer
-draft: true
+draft: false
 weight: 100
 description: A subscription provides the consumer, or subscriber, with the
   required security, quota and endpoint materials to correctly consume the API.
@@ -10,52 +10,50 @@ description: A subscription provides the consumer, or subscriber, with the
 
 1. An administrator creates an application on Axway API Manager that provides the necessary security feature (API key / OAuth...) and quota, if needed:
 
-   * Add a custom field to the application to track the AMPLIFY Central subscription. Refer to `<API_Gateway_install_dir>/apigateway/webapps//apiportal/vordel/apiportal/app/app.config file` in the **customPropertiesConfig** section. For more details, see Customize API Manager.
+    * Add a custom field to the application to track the AMPLIFY Central subscription. Refer to `<API_Gateway_install_dir>/apigateway/webapps//apiportal/vordel/apiportal/app/app.config file` in the **customPropertiesConfig** section. For more details, see [Customize API Manager](https://docs.axway.com/bundle/axway-open-docs/page/docs/apim_administration/apimgr_admin/api_mgmt_custom/index.html).
 
-     ````
-      Sample application:
+        Sample application:
 
-      ```
-      customPropertiesConfig: {
-              user: {
-                  // custom properties...
-              },
-              organization: {
-                  // custom properties...
-              },
-              application: {
-                  subscriptions: {
-                     label: 'Subscriptions'
-                  },
-              },
-              api: {
-                  // custom properties...
-              }
-          }
-      ```
-     ````
+        ```
+        customPropertiesConfig: {
+                user: {
+                    // custom properties...
+                },
+                organization: {
+                    // custom properties...
+                },
+                application: {
+                    subscriptions: {
+                        label: 'Subscriptions'
+                    },
+                },
+                api: {
+                    // custom properties...
+                }
+            }
+        ```
+
 2. A consumer initiates the subscription in AMPLIFY Central:
 
-   * Open an AMPLIFY Catalog item.
-   * Click **Subscribe**.
-   * Enter the Team and API Manager Application name (created in Step 1). \
-     **Warning**: The names must match. Otherwise, the subscription will fail.
+    1. Open an AMPLIFY Catalog item.
+    2. Click **Subscribe**.
+    3. Enter the Team and API Manager Application name (created in Step 1). **Warning**: The names must match. Otherwise, the subscription will fail.
 
-   For additional information, see Manage AMPLIFY Catalog subscriptions.
+    For additional information, see [Manage AMPLIFY Catalog subscriptions](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/catalog/catalog/index.html).
 3. The Discovery Agent receives the subscription event:
 
-   Subscription status: **Subscribing...**
+    Subscription status: **Subscribing...**
 
-   * Associate the API to the selected application.
-   * Send back the subscription status.
+    1. Associate the API to the selected application.
+    2. Send back the subscription status.
 
-   Subscription status: **Active**
+    Subscription status: **Active**
 
-   * Subscription ID is automatically added to the **Custom** field of the application.
-   * If failure, subscription status: **Subscription failed**. Refer to the Discovery Agent log for more information. You can delete the subscription and start again from Step 2.
+    * Subscription ID is automatically added to the **Custom** field of the application.
+    * If failure, subscription status: **Subscription failed**. Refer to the Discovery Agent log for more information. You can delete the subscription and start again from Step 2.
 4. The subscriber consumes the API:
 
-   * The API can be consumed once the subscription details are received.
+    * The API can be consumed once the subscription details are received.
 
 {{< alert title="Note" color="primary" >}}The API Manager application and the API must be in the same organization. Otherwise,  an error message is displayed in the Discovery Agent log.{{< /alert >}}
 
@@ -69,10 +67,10 @@ description: A subscription provides the consumer, or subscriber, with the
 
 1. A consumer initiates unsubscribe:
 
-   * Open the AMPLIFY Catalog and navigate to the **Subscription** tab.
-   * Delete the subscription.
+    1. Open the AMPLIFY Catalog and navigate to the **Subscription** tab.
+    2. Delete the subscription.
 
-   For additional information, see Manage AMPLIFY Catalog subscriptions.
+    For additional information, see [Manage AMPLIFY Catalog subscriptions](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/catalog/catalog/index.html).
 2. The Discovery Agent receives the Unsubscribe event:
 
-   * The subscription ID is removed from the application's Custom field.
+    * The subscription ID is removed from the application's Custom field.

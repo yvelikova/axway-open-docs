@@ -1,9 +1,9 @@
 ---
 title: Connect AWS Gateway
 linkTitle: Connect AWS Gateway
-draft: true
+draft: false
 no_list: true
-weight: 75
+weight: 140
 description: Understand why you would want a connected / managed environment for
   AWS API Gateway within AMPLIFY Central. Learn how you can govern and monitor
   the creation / deployment / publishing and subscriptions of the AWS API
@@ -22,15 +22,17 @@ Each AWS Gateway can be represented by an AMPLIFY Central environment allowing y
 
 ### Discovery Agent
 
-The Discovery Agent is used to discover  new deployments and stage updates to existing deployments for publishing related API in AMPLIFY Central (either as  a catalog item or as an API service). As part of the deployment package, use the provided cloud formation scripts  to set up the following agent-dependent AWS Services.
+The Discovery Agent is used to discover  new deployments and stage updates to existing deployments for publishing related APIs in AMPLIFY Central (either as  a catalog item or as an API service). As part of the deployment package, use the provided cloud formation scripts  to set up the following agent-dependent AWS Services.
 
 * AWS Config - Administers, audits and monitors resource configurations. Records and validates configuration changes.
 * AWS CloudWatch - Monitors resources and AWS applications in real time. Receives and routes supported AWS Service events.
 * AWS SQS - Decouples and scales microservices, distributed systems and serverless applications.
 
+![Service Discovery](/Images/central/ServiceDiscovery.png)
+
 ### Traceability Agent
 
-The Traceability Agent is used to filter the AWS CloudWatch logs and prepare the transaction events that are sent to AMPLIFY Central and visible in the API observer. Viewing your traffic helps you to identify the bootleneck and errors. The traffic can be filtered by environment in case multiples are involved in your topography. As part of the deployment package, you can use cloud formation scripts to set up the following agent-dependent AWS Services.
+The Traceability Agent is used to filter the AWS CloudWatch logs and prepare the transaction events that are sent to AMPLIFY Central and visible in the API observer. Viewing your traffic helps you to identify the bottleneck and errors. The traffic can be filtered by environment in case multiples are involved in your topography. As part of the deployment package, you can use cloud formation scripts to set up the following agent-dependent AWS Services.
 
 * AWS CloudWatch - Monitors resources and AWS applications in real time. Receives and routes supported AWS Service events.
 * AWS Lamda - Runs code in response to events and automatically manages the computing resources required by that code.
@@ -43,15 +45,17 @@ The types of logging you can do with API Gateway to CloudWatch.
 
 For additional logging information, see <https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html>.
 
+![Service Discovery](/Images/central/Traceabilityagent.png)
+
 ## Minimum requirements
 
-An AMPLIFY Central Service Account. See <https://docs.axway.com/bundle/axway-open-docs/page/docs/central/cli_proxy_flow/index.html>.
+An AMPLIFY Central Service Account. See [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_proxy_flow/).
 
 * API Key credentials on AWS. Allow for CLI access
 * Amazon CloudWatch Service
 * Amazon Simple Queue Service (AWS SQS)
 * AWS Lambda
-* CloudFormation template. Download from [https://git.ecd.axway.int/apigov/aws_apigw_agent_config](<* https://git.ecd.axway.int/apigov/aws_apigw_agent_config>)
+* CloudFormation template. Download from [https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/](<https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/>)
 
 ## Connect AWS API Gateway to AMPLIFY Central quickstart
 
@@ -59,7 +63,7 @@ An AMPLIFY Central Service Account. See <https://docs.axway.com/bundle/axway-ope
 
    1. Create an environment object in AMPLIFY Central using either the UI, API or CLI.
    2. Set up a Service Account.
-2. Set up AWS CloudFormation using the two templates at [http://swf-artifactory.lab.phx.axway.int/artifactory/phx-generic-beano/](<1. http://swf-artifactory.lab.phx.axway.int/artifactory/phx-generic-beano/>):
+2. Set up AWS CloudFormation using the two templates at [https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/](<https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/>):
 
    1. apigw_iam_setup
    2. apigw_cloudformation
