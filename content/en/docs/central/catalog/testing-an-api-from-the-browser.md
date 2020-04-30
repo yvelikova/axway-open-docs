@@ -9,7 +9,7 @@ The Unified Catalog has an inbuilt testing tool that allows you to explore the l
 {{< alert title="Note" color="info" >}}Unified Catalog can contain APIs that have been registered in AMPLIFY Central as an API proxy or APIs that have been published from external gateways. How you authenticate to make an API call from the browser depends on how the API has been published. 
 {{< /alert >}}
 
-## Test an API secured with OAuth
+## Authenticate an API with OAuth
 
 The AMPLIFY Central OAuth proxy support is RFC 7662 compliant and it should work with any standard OAuth 2.0 authorization server. At this time, Okta is the only verified supported third-party OAuth provider. See more detailed configuration examples showing Okta as an integrated (external) authorization server in [Okta documentation](https://developer.okta.com/docs/guides/customize-authz-server/overview/).
 
@@ -30,7 +30,7 @@ To test your API that has been registered in AMPLIFY Central as proxy and it is 
 
 {{< alert title="Note" color="info" >}}If your token is invalid, expired, or empty, the API call will result in a`403: Unauthorized`response.{{< /alert >}}
 
-## Test an API with JWT authentication
+## Authenticate an API with JWT token
 
 Before you start: 
 
