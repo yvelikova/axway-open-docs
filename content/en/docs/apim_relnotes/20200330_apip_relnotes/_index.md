@@ -1,5 +1,5 @@
 ---
-title: API Portal March 2020 Release Notes
+title: API Portal 7.7 March 2020 Release Notes
 linkTitle: API Portal March 2020
 no_list: true
 weight: 80
