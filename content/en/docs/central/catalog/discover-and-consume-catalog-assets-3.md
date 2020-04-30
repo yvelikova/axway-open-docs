@@ -23,11 +23,11 @@ Watch the animation to learn how to search and filter in Unified Catalog.
 
 In order to use an API, you must subscribe to request access. APIs that are protected with a client authentication policy in AMPLIFY Central will require an app with valid credentials to subscribe. When the request is approved, either automatically or manually by the provider of the API, a link is created between the API and the application. 
 
-{{< alert title="" color="info" >}}The  **Subscribe** button will not be displayed for APIs that are not protected with an API Key. In addition, a provider of the API asset can configure when a subscription is required and the metadata to be provided when you subscribe.{{< /alert >}}
+{{< alert title="Note" color="info" >}}The  **Subscribe** button will not be displayed for APIs that are not protected with an API Key. In addition, a provider of the API asset can configure when a subscription is required and the metadata to be provided when you subscribe.{{< /alert >}}
 
 Before you start:
 
-* You will need to create an app in AMPLIFY Central and secure it with an [API Key](/docs/central/quickstart/) or [JWT](/docs/central/secure_api_jwt/) or [OAuth](/docs/central/feauth_oauth/)
+* You will need to create an application and secure it with an [API Key](/docs/central/quickstart/) or [JWT](/docs/central/secure_api_jwt/) or [OAuth](/docs/central/feauth_oauth/)
 
 Follow these steps to subscribe to an API asset
 
@@ -63,7 +63,7 @@ You can promote an API published in the Unified Catalog to Integration Builder a
 To promote an API as a connector template:
 
 1. Select the API from the Unified Catalog and click **Export to Integration Builder**.
-2. Enter a **Name** for the template, and the **Organization** and **User** secrets for the Integration Builder environment where you want to created the connector template.
+2. Enter a **Name** for the template, and the **Organization** and **User** secrets for the Integration Builder environment where you want to create the connector template.
 3. Click **Export**.
 
 {{< alert title="Tip" color="primary" >}}You can find the **Organization** and **User** secrets in Integration Builder, on the bottom left corner of the menu.{{< /alert >}}
