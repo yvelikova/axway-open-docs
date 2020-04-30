@@ -65,7 +65,7 @@ This version of API Portal includes the fixes from all 7.5.5, 7.6.2, and 7.7 ser
 
 | Internal ID | Case ID  | Description                                                                                                                                                                                                                                      |
 | ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| IAP-XXXX    |         | **Issue:** Issue description. **Resolution:** Resolution description. 
+| IAP-XXXX    |         | **Issue:** Issue description. **Resolution:** Resolution description.
 
 ## Known issues
 
