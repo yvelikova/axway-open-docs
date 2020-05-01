@@ -11,6 +11,7 @@ Before submitting this PR, please make sure:
 * [ ] You have read the [contribution guidelines](https://axway-open-docs.netlify.com/docs/contribution_guidelines/)
 * [ ] You have signed the [Axway CLA](https://cla.axway.com/)
 * [ ] You have verified the technical accuracy of your change
+* [ ] You have verified that your change does not expose any sensitive information (passwords, keys, etc.)
 * [ ] You have followed the [Markdown guidelines](https://axway-open-docs.netlify.com/docs/contribution_guidelines/writing_markdown/)  (unless this is is a Netlify CMS contribution)
 
 _Put an x in the boxes that apply. If you're unsure about any of them, don't hesitate to ask. We're here to help! This is simply a reminder of what we are going to look for before merging your change._
@@ -28,6 +29,7 @@ Before approving this PR, please make sure it:
 * [ ] Follows [Markdown guidelines](https://axway-open-docs.netlify.com/docs/contribution_guidelines/writing_markdown/)
 * [ ] Follows [best practices](https://axway-open-docs.netlify.com/docs/contribution_guidelines/bestpracticedevdoc/)
 * [ ] Does not contain typos, grammatical errors, etc.
+* [ ] Does not expose any sensitive information
 * [ ] Passes the Markdown linter rules (automated via CI check)
 * [ ] Does not contain broken links
 * [ ] Is discoverable and navigable
