@@ -39,8 +39,8 @@
 
 # Documentation files for AMPCentral
 /content/en/docs/central/ @andreamussap
-/content/en/docs/central/connect-api-manager/ @lbadenhop
-/content/en/docs/central/connect-aws-gateway/ @lbadenhop
+/content/en/docs/central/connect-api-manager/ @lbadenhop @cbordier
+/content/en/docs/central/connect-aws-gateway/ @lbadenhop @cbordier
 
 # Documentation files for Streams
 /content/en/docs/streams/ @andreamussap @allandenis38
