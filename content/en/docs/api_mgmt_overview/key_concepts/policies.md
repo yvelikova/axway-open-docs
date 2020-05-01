@@ -72,7 +72,7 @@ This policy starts with a general [throttling action](/docs/apim_policydev/apigw
 | Alerts                         | Besides standard notifications via email to API developers and API consumers, there is sometimes the need to integrate the API management solution into existing processes. For example, based on events in the API management system, start workflows in a ticket system that can be used to process a problem. Alert policies that can be configured for a whole range of events are suitable for this. |
 | API-Promotion                  | One way to promote APIs from one stage to the next is the promotion policy, which can be triggered via the API Manager Web UI for a selected API. This policy gets the current API configuration from input as JSON payload, can manipulate it and then pass it on accordingly. Either directly to the higher stage, open a ticket with the API as attachment or send information via email. |
 
-Learn more about [how to set up API Manager policies](/docs/apim_administration/apimgr_admin/api_mgmt_config_ps/#global-request-policies) and [how to set up alerts](/docs/apim_administration/apimgr_admin/api_mgmt_config_ps/#alerts).
+Learn more about [how to set up API Manager policies](/docs/apim_administration/apimgr_admin/api_mgmt_config_ps/#global-request-policies) and [how to set up alerts](/docs/apim_administration/apimgr_admin/api_mgmt_alerts/).
 
 ### Integration policies
 
