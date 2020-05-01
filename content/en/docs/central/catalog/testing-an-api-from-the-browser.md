@@ -66,3 +66,9 @@ To test your API that has been registered in AMPLIFY Central as a proxy:
 Watch the animation to learn how to do authenticate with a JWT token. 
 
 ![](/Images/central/catalog/test_catalog_jwt_key.gif)
+
+
+
+#### See also
+
+*  [Authenticate an external API secured with OAuth](https://deploy-preview-672--axway-open-docs.netlify.app/docs/central/catalog/authenticate-an-api-secured-with-oauth-published-from-an-external-gateway/)
