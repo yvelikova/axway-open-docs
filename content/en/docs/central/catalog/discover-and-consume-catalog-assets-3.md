@@ -1,9 +1,13 @@
 ---
 title: Discover and consume catalog assets
+linkTitle: Discover and consume catalog assets
+weight: 20
+date: 2019-12-16T00:00:00.000Z
 description: "Learn how to discover and consume assets in AMPLIFY Unified
   Catalog. Assets can be REST APIs, SOAP APIs, other non-REST APIs (for example,
   gRPC, Avro, graphQL), MFT services, and custom catalog assets. "
 ---
+
 *Estimated reading time*: 10 minutes
 
 ## Find a catalog asset
@@ -21,40 +25,34 @@ Watch the animation to learn how to search and filter in Unified Catalog.
 
 ## Subscribe to an API
 
-In order to use an API, you must subscribe to request access. APIs that are protected with a client authentication policy in AMPLIFY Central will require an app with valid credentials to subscribe. When the request is approved, either automatically or manually by the provider of the API, a link is created between the API and the application. 
+Before using an API, you must first subscribe to request access to the API. When the request is approved by the provider of the API, a link is created between the API and the application. APIs that are protected with a client authentication policy in AMPLIFY Central will require an app with valid credentials to subscribe.
 
-{{< alert title="Note" color="info" >}}The  **Subscribe** button will not be displayed for APIs that are not protected with an API Key. In addition, a provider of the API asset can configure when a subscription is required and the metadata to be provided when you subscribe.{{< /alert >}}
+{{< alert title="Note" >}}The **Subscribe** button is not displayed for APIs that are not protected with an API Key. In addition, the provider of the API asset can configure when a subscription is required, and the metadata to be provided when you subscribe.{{< /alert >}}
 
-Before you start:
+Before you start, you will need to create an application and secure it with an [API Key](/docs/central/quickstart/), or [JWT](/docs/central/secure_api_jwt/), or [OAuth](/docs/central/feauth_oauth/).
 
-* You will need to create an application and secure it with an [API Key](/docs/central/quickstart/) or [JWT](/docs/central/secure_api_jwt/) or [OAuth](/docs/central/feauth_oauth/)
+Follow these steps to subscribe to an API asset:
 
-Follow these steps to subscribe to an API asset
+1. Select **Catalog** in the left navigation bar to open the **Explore Catalog** submenu.
+2. Click an API asset in the list to see a detailed view of its description, test methods, and subscriptions.
+3. Click **Subscribe** in the top right corner.
+4. On the dialog box enter a name for the subscription and select an option from the **Application** list.
+  
+    AMPLIFY Central administrators can subscribe an application on behalf of API consumers. In this case, they will be required to select the **Team** the API consumer belongs to.
 
-* Select **Catalog** in the left navigation bar to open the **Explore Catalog** sub-menu.
-* Click an API asset in the list to see a detailed view of its description, test methods, and subscriptions.
-* Click **Subscribe** in the top right corner.
-* On the dialog box enter a **Subscription name** and select **Application**.
-
-  AMPLIFY Central administrators can subscribe an application on behalf of API consumers. In this case, they will be required to select the **Team** the API consumer belongs to. 
-* Click **Subscribe.** 
-
-  When subscription requests to an API are set to be manually approved by the API provider, you will see a **Request access** button. After you click to request access, you will get a message that informs you the subscription request has been submitted and is awaiting approval. 
+5. Click **Subscribe**.
 
 Watch the animation to learn how to subscribe to an API asset.
 
 ![subscribe demo](/Images/central/catalog/subscribe_demo.gif)
 
+When subscription requests to an API are set to be manually approved by the API provider, a **Request access** button is shown. After you click to request access, a message is displayed to inform that the subscription request has been submitted and is awaiting approval.
+
 ### Promote an API to Integration Builder
 
-If you are leveraging the AMPLIFY iPaaS to create integrations between different applications, you can promote an API from the Unified Catalog to Integration Builder as a custom connector with a click of a button. This saves you the hassle of exporting the swagger file and then manually import it in Integration Builder.  To lean more, see [AMPLIFY Integration Builder](https://docs.axway.com/bundle/AMPLIFY_Integration_Builder_allOS_en/page/amplify_integration_builder.html).
+If you are leveraging the AMPLIFY iPaaS to create integrations between different applications, you can promote an API from the Unified Catalog to Integration Builder as a custom connector with a click of a button. This saves you the trouble of exporting the swagger file and manually import it in Integration Builder. To lean more, see [AMPLIFY Integration Builder](https://docs.axway.com/bundle/AMPLIFY_Integration_Builder_allOS_en/page/amplify_integration_builder.html).
 
-### Before you start
-
-* Ensure that you have access to Integration Builder.
-* You must have your API secured, as well as a valid subscription. For details, see [Subscribe to an API](#subscribe-to-an-api).
-
-You can promote an API published in the Unified Catalog to Integration Builder as a custom connector.
+You can promote an API published in the Unified Catalog to Integration Builder as a custom connector. Before you start, ensure that you have access to Integration Builder, and that have your API secured, as well as a valid subscription. For details, see [Subscribe to an API](#subscribe-to-an-api).
 
 To promote an API as a connector template:
 
@@ -80,10 +78,10 @@ Watch this short video to learn how to configure and authorize an API that has b
 
 Follow these steps to download an asset from the catalog:
 
-* Select **Catalog** in the left navigation bar to open the **Explore Catalog** submenu.
-* Click on the asset to download from the list to see a detailed view of its description.
-* Next to the catalog name, click the **Download specification** button (hover over the icon to see it) from the available buttons.
-* The catalog asset is downloaded in the format specified in its specification.
+1. Select **Catalog** in the left navigation bar to open the **Explore Catalog** submenu.
+2. Click on the asset to download from the list to see a detailed view of its description.
+3. Next to the catalog name, click the **Download specification** button (hover over the icon to see it) from the available buttons.
+4. The catalog asset is downloaded in the format specified in its specification.
 
 Watch the animation to learn how to download a catalog asset.
 
