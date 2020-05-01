@@ -9,11 +9,9 @@ description: >
 
 This documentation is open source, and we welcome your interest in contributing to improve the quality of our docs.
 
-Please read this guide thoroughly before you start.
-
 ## Before you start
 
-Before you can contribute to Axway-open-docs you must sign the [Axway Contributor License Agreement (CLA)](https://cla.axway.com/) using your GitHub account.
+Before you can contribute to Axway-open-docs you must create a GitHub account and you must sign the [Axway Contributor License Agreement (CLA)](https://cla.axway.com/) using your GitHub account.
 
 This is required just once and it should only take a few minutes.
 
@@ -28,15 +26,13 @@ We support the following contribution flows:
 
 For experienced users, we also support pull requests via Git CLI (ideal for bigger changes or regular updates). See [Set up and work locally](/docs/contribution_guidelines/setup_work_locally).
 
-{{< alert title="Note" >}}
-All flows require a GitHub account.
-{{< /alert >}}
-
 Finally, if you cannot make a direct contribution, but want to report an issue with this documentation, you can do so using GitHub. See [Create an issue on GitHub](#create-an-issue-on-github).
 
 ### Option 1 - Edit on GitHub
 
 {{< alert title="Note" color="primary">}}If you have previously contributed to this project, your fork might be out of sync (behind) the `axway-open-docs` repository. It is best practice to [sync or delete an outdated fork](/docs/contribution_guidelines/deleting_a_repository/) before making a new contribution.{{< /alert >}}
+
+To edit an existing page:
 
 1. Click **Edit on GitHub** on the upper right corner of the page.
 2. Click **Fork this repository** to create a copy (fork) of the `axway-open-docs` repository in your GitHub account. This allows you to propose changes to a repository that you don't have write access to.
@@ -53,6 +49,8 @@ Finally, if you cannot make a direct contribution, but want to report an issue w
 
 6. Enter a title (and optionally a description) for the pull request, and click **Create pull request** again. Leave **Allow edits from maintainers** selected, to enable us to make editorial updates to your PR if necessary.
 
+    When you submit a pull request, this triggers a CI flow that runs some checks and builds a preview site containing your changes on Netlify. If your changes fail these checks, you will receive an [email notification](#pr-run-failed-email-notification) from GitHub.
+
 7. To preview your changes exactly as they will appear on the live website, click the deploy preview link:
 
     ![Preview your PR](/Images/contributing/netlify_preview_PR.png)
@@ -62,10 +60,6 @@ Finally, if you cannot make a direct contribution, but want to report an issue w
 ### Option 2 - Edit on Netlify CMS
 
 Use the Netlify CMS user interface to easily edit or create pages in a WYSIWYG editor with a real-time preview.
-
-* [Edit an existing page](#edit-an-existing-page)
-* [Make further changes after sending for review](#make-further-changes-after-sending-for-review)
-* [Create a new page](#create-a-new-page)
 
 #### Edit an existing page
 
@@ -82,6 +76,8 @@ To edit an existing page:
     ![Set status to Review](/Images/contributing/netlify_setstatustoreview.png)
 
     This creates a [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) in the background and triggers an email notification to you and to the writers who will review your changes.
+
+    When you submit a pull request, this triggers a CI flow that runs some checks and builds a preview site containing your changes on Netlify. If your changes fail these checks, you will receive an [email notification](#pr-run-failed-email-notification) from GitHub.
 
 6. To preview your changes exactly as they will appear on the live website, reload the page in the browser and click the new link **Check for Preview**. When the preview is ready, this link changes to **View Preview**.
 
@@ -117,6 +113,30 @@ To create a new page:
 5. **Save** the page, and set its status to **In Review**.
 6. Refresh the page and click **Check for Preview/View Preview** to see your changes on the preview website.
 7. To ensure that we have all the information we need to review your changes and to help to speed up the reviewing process, go to GitHub and add a comment to the pull request to tell us what you changed and why.
+
+## Troubleshooting
+
+The following are some common issues you might encounter when contributing.
+
+### PR Run failed email notification
+
+If you receive this email notification after sending a pull request:
+
+* GitHub UI or Git CLI users: You should try and address any failures yourself. You can see details of the failures on the **Checks** tab of your pull request.
+
+    ![Failed markdown lint checks](/Images/contributing/failed_checks.png)
+
+* Netlify CMS users: You do not need to worry about these failures, and you are not expected to fix them as it usually requires knowledge of Markdown. The project maintainers will fix these errors when we review your contribution.
+
+## What you agree to when you contribute?
+
+When you contribute, you agree that:
+
+* You have read the contribution guidelines
+* You have signed the Axway CLA
+* You have verified the technical accuracy of your change
+* You have followed the Markdown guidelines (unless this is is a Netlify CMS contribution)
+* You have verified that your change does not contain any sensitive information
 
 ## What to expect when you contribute
 
