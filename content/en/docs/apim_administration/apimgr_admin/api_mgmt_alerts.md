@@ -10,7 +10,7 @@ API Manager can generate alerts when specific events occur. For example, it can 
 
 You can enable or disable alerts in the API Manager web interface. You can change the policy that is executed when an alert is generated in Policy Studio.  
 
-There are many different use cases for which you can use alerts. For example, to send an e-mail to an interested party, or to forward the alert to an external notification system. The following video shows how you can integrate with JIRA, for example, to generate issues there. Then, you can set up the necessary workflows in JIRA that you need for your use case.  
+You can use alerts for many different use cases. For example, to send an e-mail to an interested party, or to forward the alert to an external notification system. The following video shows how you can integrate with JIRA, for example, to generate issues there. You can then set up the necessary workflows in JIRA for your use case.  
 
 {{< youtube C6qw0uUsmSM >}}
 
