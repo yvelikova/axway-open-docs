@@ -13,9 +13,7 @@ The Unified Catalog has an inbuilt testing tool that allows you to explore the l
 Before you start: 
 
 * You will need to create an application with an API key
-* You will need to subscribe to an API with your application
-
-
+* You will need to subscribe to an API with your application. See [Subscribe to an API](https://deploy-preview-672--axway-open-docs.netlify.app/docs/central/catalog/discover-and-consume-catalog-assets-3/#subscribe-to-an-api)
 
 To test your API that has been registered in AMPLIFY Central as proxy and it is secured with an API key:
 
@@ -26,13 +24,17 @@ To test your API that has been registered in AMPLIFY Central as proxy and it is 
 * Select you **API Key** from the list of existing API keys. If you don't have an API Key, you can create one by clicking "**+",**  that is displayed next to the API Key list. 
 * Execute an API method. It should be successful and return a`200 OK`response.
 
+Watch the animation to learn how to authenticate with an API Key. 
+
+![](/Images/central/catalog/test_catalog_api_key.gif)
+
 ## Authenticate an API with OAuth
 
 Before you start: 
 
 * You will need to create an application within your third-party OAuth server.
 * You must create an OAuth profile in your app. 
-* You will need to subscribe to the API with your created app. 
+* You will need to subscribe to the API with your created app. See [Subscribe to an API](https://deploy-preview-672--axway-open-docs.netlify.app/docs/central/catalog/discover-and-consume-catalog-assets-3/#subscribe-to-an-api)
 
 To test your API that has been registered in AMPLIFY Central as proxy and it is secured with OAuth:
 
@@ -60,3 +62,7 @@ To test your API that has been registered in AMPLIFY Central as a proxy:
 * Use the **Application ID** and **JWT Key ID** to create the JWT token.
 * Paste your JWT token in the **JWT Token** field.
 * Execute an API method. It should be successful and return a`200 OK`response.
+
+Watch the animation to learn how to do authenticate with a JWT token. 
+
+![](/Images/central/catalog/test_catalog_jwt_key.gif)
