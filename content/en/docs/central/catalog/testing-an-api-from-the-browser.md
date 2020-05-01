@@ -43,10 +43,12 @@ To test an API that has been registered in AMPLIFY Central and secured with OAut
 3. Click the **Test Methods** tab.
 4. If you have more than one valid **OAuth profile**, choose the one to test. If you only have one, it is automatically selected for you.
 
-    When you select a valid OAuth profile, your Client ID is displayed in a read-only field. This will assist you in generating an OAuth token from the correct application in your third-party OAuth server.
+   When you select a valid OAuth profile, your Client ID is displayed in a read-only field. This will assist you in generating an OAuth token from the correct application in your third-party OAuth server.
 5. After your third-party OAuth server has generated a valid OAuth token, paste that token into the **OAuth token** field. You can now attempt to make valid API calls with your API.
 
 {{< alert title="Note" color="primary" >}}The AMPLIFY Central OAuth proxy support is RFC 7662 compliant and it should work with any standard OAuth 2.0 authorization server. At this time, Okta is the only verified supported third-party OAuth provider. See more detailed configuration examples showing Okta as an integrated (external) authorization server in [Okta documentation](https://developer.okta.com/docs/guides/customize-authz-server/overview/).{{< /alert >}}
+
+![](/Images/central/catalog/test_catalog_oauth.gif)
 
 ## Authenticate an API with a JWT token
 
