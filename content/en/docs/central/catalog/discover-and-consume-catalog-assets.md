@@ -12,7 +12,7 @@ description: "Learn how to discover and consume assets in AMPLIFY Unified
 
 ## Find a catalog asset
 
-Start by searching the Unified Catalog to find the asset to use. By default, catalog assets are sorted by the most recently items published or updated first. Those assets are marked with **NEW** or **Updated** labels at the top of the list.  
+Start by searching the Unified Catalog to find the asset to use. By default, catalog assets are sorted by the most recently items published or updated first. Those assets are marked with **New** or **Updated** labels at the top of the list.  
 
 To find a catalog assets you can:
 
@@ -25,9 +25,7 @@ Watch the animation to learn how to search and filter in Unified Catalog.
 
 ## Subscribe to an API
 
-Before using an API, you must first subscribe to request access to the API. When the request is approved by the provider of the API, a link is created between the API and the application. APIs that are protected with a client authentication policy in AMPLIFY Central will require an app with valid credentials to subscribe.
-
-{{< alert title="Note" >}}The **Subscribe** button is not displayed for APIs that are not protected with an API Key. In addition, the provider of the API asset can configure when a subscription is required, and the metadata to be provided when you subscribe.{{< /alert >}}
+The provider of the API asset can configure when a subscription is required, and the metadata to be provided for the subscription. In this case, before using the API, you must subscribe to request access to use it. APIs that are protected with a client authentication policy in AMPLIFY Central will require an app with valid credentials to subscribe. The **Subscribe** button is not displayed for APIs that are not protected with an API Key.
 
 Before you start, you will need to create an application and secure it with an [API Key](/docs/central/quickstart/), or [JWT](/docs/central/secure_api_jwt/), or [OAuth](/docs/central/feauth_oauth/).
 
