@@ -127,8 +127,7 @@ LOG_PATH=logs
     docker run --env-file ./env_vars -v <pwd>/keys:/keys  axway-docker-public-registry.bintray.io/agent/aws-apigw-discovery-agent:latest
     ```
 
-{{< alert title="Note" color="primary" >}}`pwd` relates to the local directory where the docker command is run. For Windows, the absolute path is preferred.{{< /alert >}}
-
+    `pwd` relates to the local directory where the docker command is run. For Windows, the absolute path is preferred.
 4. Run the following health check command to ensure the agent is up and running:
 
     ```
@@ -223,8 +222,7 @@ LOG_PATH=logs
     docker run --env-file ./env_vars -v <pwd>/keys:/keys  axway-docker-public-registry.bintray.io/agent/aws-apigw-traceability-agent:latest
     ```
 
-{{< alert title="Note" color="primary" >}}`pwd` relates to the local directory where the docker command is run. For Windows, the absolute path is preferred.{{< /alert >}}
-
+    `pwd` relates to the local directory where the docker command is run. For Windows, the absolute path is preferred.
 4. Run the following health check command to ensure the agent is up and running:
 
     ```
