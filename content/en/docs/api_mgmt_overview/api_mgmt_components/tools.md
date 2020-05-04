@@ -1,10 +1,10 @@
 {
-"title": "API Gateway tools",
+"title": "API Management tools",
 "linkTitle": "Tools",
 "weight":"35",
 "no_list": "true",
 "date": "2019-11-07",
-"description": "API Gateway tools to develop, deploy, and manage API solutions."
+"description": "API Management tools to develop, deploy, and manage API solutions."
 }
 
 ## Policy Studio
@@ -88,7 +88,7 @@ API Manager CLI includes the following features:
 
 Watch this video to learn how to manage APIs using the CLI.
 
-{{< youtube BI9mPLRlhXI >}}
+{{< youtube GWAm1VxKUgo >}}
 
 ## Key Property Store
 
