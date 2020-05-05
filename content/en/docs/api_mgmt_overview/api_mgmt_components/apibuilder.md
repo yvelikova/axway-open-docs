@@ -65,7 +65,7 @@ To mock an API with API Builder, follow the same steps as for the API-first appr
 
 Watch this video to learn how.
 
-{{< youtube 5paF271XmdM >}}
+{{< youtube 6WaozyqyM-k >}}
 
 ## Deployment
 
