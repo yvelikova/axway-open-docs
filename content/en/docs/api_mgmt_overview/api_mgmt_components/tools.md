@@ -1,10 +1,10 @@
 {
-"title": "API Management tools",
+"title": "AMPLIFY API Management tools",
 "linkTitle": "Tools",
 "weight":"35",
 "no_list": "true",
 "date": "2019-11-07",
-"description": "API Management tools to develop, deploy, and manage API solutions."
+"description": "AMPLIFY API Management tools to develop, deploy, and manage API solutions."
 }
 
 ## Policy Studio
