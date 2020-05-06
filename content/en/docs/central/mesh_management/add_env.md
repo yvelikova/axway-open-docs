@@ -12,8 +12,8 @@ description: Learn how to add your environments to AMPLIFY Central so that you c
 
 ## Before you start
 
-* Read [AMPLIFY Central mesh governance overview](/docs/central/hybrid_overview).
-* You will need either an API Gateway V7 environment or a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](/docs/central/build_hybrid_env).
+* Read [AMPLIFY Central mesh governance overview](/docs/central/mesh_management).
+* You will need either an API Gateway V7 environment or a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](/docs/central/mesh_management/build_hybrid_env).
 * You will need a basic understanding of OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523)).
 * If you are connecting a hybrid environment, you must be familiar with Kubernetes and Helm, including running Helm and kubectl commands.
 * You will need an administrator account for AMPLIFY Central.
@@ -125,7 +125,7 @@ To expose an HTTPS endpoint of a service within your environment to external tra
 
 #### Generate key pairs and secrets for the Axway mesh agents
 
-Before you can deploy the Axway mesh agents in your environment, you must generate key pairs and make those keys available to Kubernetes in the namespace where the agents will be deployed. For more information on Axway mesh agents, see [Axway mesh agents](/docs/central/hybrid_overview/#axway-mesh-agents).
+Before you can deploy the Axway mesh agents in your environment, you must generate key pairs and make those keys available to Kubernetes in the namespace where the agents will be deployed. For more information on Axway mesh agents, see [Axway mesh agents](/docs/central/mesh_management/#axway-mesh-agents).
 
 ##### What are these keys used for?
 

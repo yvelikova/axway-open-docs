@@ -103,7 +103,7 @@ CENTRAL_MODE=publishToEnvironment
 
 ### Install and run Discovery Agent
 
-1. Copy the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment. Note that the `public_key` comes from Steps 3 and 4 of [Prepare AWS Gateway to deploy the Discovery Agent AWS config setup] (/docs/central/connect-aws-gateway/prepare-aws-api-gateway/).
+1. Copy the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment. Note that the `public_key` comes from Steps 3 and 4 of [Prepare AWS Gateway to deploy the Discovery Agent AWS config setup](/docs/central/connect-aws-gateway/prepare-aws-api-gateway/).
 2. Pull the latest image of the Discovery Agent:
 
     ```
@@ -132,7 +132,7 @@ The Traceability Agent is used to filter the AWS CloudWatch logs that are relate
 | AWS_AUTH_SECRETKEY             | The secret access key of the AWS account where APIs are stored.                                                                                                                                                                                                        |
 | AWS_REGION                     | The region where AWS APIs are stored.                                                                                                                                                                                                                                  |
 | AWS_POLLINTERVAL               | How often SQS queue is polled.                                                                                                                                                                                                                                         |
-| AWS_QUEUNAME                   | The name of the queue (TraceabilityQueueName) from Step 5. This is used for logging custom access log entries. See [Prepare AWS Gateway to deploy the Discovery Agent AWS config setup] ( (/docs/central/connect-aws-gateway/prepare-aws-api-gateway/)).                                                                                 |
+| AWS_QUEUNAME                   | The name of the queue (TraceabilityQueueName) from Step 5. This is used for logging custom access log entries. See [Prepare AWS Gateway to deploy the Discovery Agent AWS config setup](/docs/central/connect-aws-gateway/prepare-aws-api-gateway/).                                                                                 |
 | Amplify Central variables      |                                                                                                                                                                                                                                                                        |
 | LOG_LEVEL                      | The log level for the agent.                                                                                                                                                                                                                                           |
 | LOG_FORMAT                     | The format to print log messages (json, line, package).                                                                                                                                                                                                                |

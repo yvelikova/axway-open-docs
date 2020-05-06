@@ -28,7 +28,7 @@ The body must contain a JSON webhook subscription configuration as follow:
 | Configuration Entry | Mandatory | Default value | Description |
 |---------------------|-----------|---------------|-------------|
 | webhookUrl | yes | n/a | URL which will be called by Streams in order to inform the subscriber that a new event/message has been published in the topic identified by {topicId}. |
-| subscriptionMode | no | Default subscription mode defined in the topic's configuration | Refer to [subscription modes](../subscribers#subscription-modes) section |
+| subscriptionMode | no | Default subscription mode defined in the topic's configuration | Refer to [subscription modes](/docs/streams/subscribers/#subscription-modes) section |
 
 Once the webhook subscription is successfully created, Streams will start notifying the subscriber at the specified `webhookUrl`.
 
