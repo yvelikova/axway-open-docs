@@ -6,6 +6,7 @@
   "description": "Configure API Gateway to act as a WebSocket proxy."
 }
 
+
 ## WebSocket protocol overview
 
 The WebSocket protocol provides an extension to the HTTP 1.1 protocol to establish persistent, bidirectional communication between a client and a server.
