@@ -2,11 +2,10 @@
 title: Get started with AMPLIFY CLI
 linkTitle: Get started with AMPLIFY CLI
 weight: 90
-date: 2019-07-30
-
-description: Learn how to install AMPLIFY CLI and authorize your DevOps service to use the AMPLIFY Central DevOps APIs by way of AMPLIFY CLI.
+date: 2019-07-30T00:00:00.000Z
+description: Learn how to install AMPLIFY CLI and authorize your DevOps service
+  to use the AMPLIFY Central DevOps APIs by way of AMPLIFY CLI.
 ---
-
 *Estimated reading time*: 3 minutes
 
 ## Before you start
@@ -20,27 +19,25 @@ description: Learn how to install AMPLIFY CLI and authorize your DevOps service 
 1. Install Node.js 8 LTS or later (Node.js 11 and later is not supported)
 2. Run the following command to install AMPLIFY CLI:
 
-    ```
-    [sudo] npm install -g @axway/amplify-cli
-    ```
+   ```
+   [sudo] npm install -g @axway/amplify-cli
+   ```
 
-    {{% alert title="Note" %}}Use `sudo` on Mac OS X or Linux if you do not own the directory that npm installs packages to. On Windows, you do not need to run as Administrator as npm installs packages into your AppData directory.{{% /alert %}}
-
+   {{< alert title="Note" color="primary" >}}Use `sudo` on Mac OS X or Linux if you do not own the directory that npm installs packages to. On Windows, you do not need to run as Administrator as npm installs packages into your AppData directory.{{< /alert >}}
 3. Run AMPLIFY package manager to install AMPLIFY Central CLI:
 
-    ```
-    amplify pm install @axway/amplify-central-cli
-    ```
-
+   ```
+   amplify pm install @axway/amplify-central-cli
+   ```
 4. Run AMPLIFY package manager list command to view available packages.
 
-    ```
-    amplify pm list
-    AMPLIFY CLI, version 1.2.1
-    Copyright (c) 2018, Axway, Inc. All Rights Reserved.
-    NAME                           | INSTALLED VERSIONS | ACTIVE VERSION
-    @axway/amplify-central-cli     | 0.1.3              | 0.1.3
-    ```
+   ```
+   amplify pm list
+   AMPLIFY CLI, version 1.2.1
+   Copyright (c) 2018, Axway, Inc. All Rights Reserved.
+   NAME                           | INSTALLED VERSIONS | ACTIVE VERSION
+   @axway/amplify-central-cli     | 0.1.3              | 0.1.3
+   ```
 
 ## Objectives
 
@@ -77,6 +74,15 @@ writing RSA key
 user@test123 ~/test
 $ ls
 private_key.pem  public_key.pem
+```
+
+Alternatively, you can create this key pair using openssh and the PKCS8 format as follows:
+
+```
+# private key generation
+ssh-keygen -t rsa -b 2048 -m PEM
+# public key generation
+ssh-keygen -f <public_key_name> -e -m PKCS8
 ```
 
 ## Create a service account
