@@ -50,7 +50,7 @@ To test an API that has been registered in AMPLIFY Central and secured with OAut
 
 Watch the animation to learn how to authenticate with an OAuth token.
 
-![](/Images/central/catalog/test_catalog_oauth.gif)
+![Authenticate with OAuth](/Images/central/catalog/test_catalog_oauth.gif)
 
 ## Authenticate an API with a JWT token
 
@@ -74,4 +74,4 @@ Watch the animation to learn how to authenticate with a JWT token.
 
 ## Further information
 
-* [Authenticate an external API secured with OAuth](/docs/central/catalog/authenticate-an-api-secured-with-oauth-published-from-an-external-gateway/)
+* [Authenticate an external API secured with OAuth](/docs/central/catalog/authenticate-an-external-gateway-api/)
