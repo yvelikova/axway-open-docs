@@ -1,5 +1,7 @@
 ---
 title: Test an API from the browser
+linkTitle: Test an API from the browser
+weight: 30
 description: >
   Learn how to explore the API documentation and test an API from the browser
   using the built-in test capability.
@@ -70,4 +72,4 @@ Watch the animation to learn how to authenticate with a JWT token.
 
 ## Further information
 
-* [Authenticate an external API secured with OAuth](/docs/central/catalog/authenticate-an-api-secured-with-oauth-published-from-an-external-gateway/)
+* [Authenticate an external API secured with OAuth](/docs/central/catalog/authenticate-an-external-gateway-api/)

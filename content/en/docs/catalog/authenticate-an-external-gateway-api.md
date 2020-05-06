@@ -1,7 +1,7 @@
 ---
 title: Authenticate an external API secured with OAuth
 linkTitle: Authenticate an API secured with OAuth
-weight: 30
+weight: 40
 date: 2020-04-28T00:00:00.000Z
 description: Learn how to authenticate an API secured with OAuth credentials,
   which was published from an external gateway.
