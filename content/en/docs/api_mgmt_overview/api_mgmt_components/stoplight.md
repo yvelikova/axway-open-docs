@@ -36,6 +36,6 @@ The following diagram shows simplified integration between Stoplight and the AMP
 
 The following video demonstrates the possible integration and how the process looks like:
 
-{{< youtube ddOhO_BmVeE >}}
+{{< youtube jKfpCE64vHc >}}
 
 Learn more about [how to integrate API management into a CI/CD pipeline](/docs/api_mgmt_overview/api_mgmt_components/pipeline/).
