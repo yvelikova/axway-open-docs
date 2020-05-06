@@ -1,6 +1,6 @@
 {
 "title": "API Gateway and API Manager 7.7 May 2020 Release Notes",
-  "linkTitle": "API Gateway and API Manager 7.7 May 2020",
+  "linkTitle": "API Gateway and API Manager May 2020",
   "no_list": "true",
   "weight": "70",
   "date": "2020-03-11",
@@ -69,9 +69,17 @@ To stay current and align our offerings with customer demand and best practices,
 
 ## Fixed issues
 
-<!-- Fixed issues are maintained in another topic -->
+This version of API Gateway and API Manager includes the fixes from all 7.5.3, 7.6.2, and 7.7 service packs or updates released prior to this version. For details of all the service pack fixes included, see corresponding _SP Readme_ attached to each service pack on [Axway Support](https://support.axway.com).
 
-See [Fixed issues](/docs/apim_relnotes/20200330_apimgr_relnotes/fixed_issues/) for a complete list.
+### Fixed security vulnerabilities
+
+There are no fixed security vulnerabilities in this version.
+
+### Other fixed issues
+
+| Internal ID | Case ID       | Description                                                                    |
+| ----------- | ------------- | ------------------------------------------------------------------------------ |
+|RDAPI-XXXXX|XXXXXX|**Issue**: Description of issue. **Resolution**: Description of resolution.|
 
 ## Known issues
 
