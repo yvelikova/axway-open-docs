@@ -41,7 +41,7 @@ Connectors are the key in the model-based approach. Connectors have the task of 
 
 Watch this video to learn how to connect to a database and create a CRUD API based on it.
 
-{{< youtube i5euq6UCGPo >}}
+{{< youtube h9YXLwEYrVw >}}
 
 Learn more about [API Builder Models](https://docs.axway.com/bundle/API_Builder_4x_allOS_en/page/api_builder_models.html).
 
@@ -53,7 +53,7 @@ In the API-first approach, you import a defined API specification (OpenAPI/Swagg
 
 Watch this vide to learn how to implement an API design using flows.
 
-{{< youtube RGhFMKKgt1I >}}
+{{< youtube Rnb9OAtyjNE >}}
 
 Learn more about [API Builder Flows](https://docs.axway.com/bundle/API_Builder_4x_allOS_en/page/api_builder_flows.html).
 
@@ -65,7 +65,7 @@ To mock an API with API Builder, follow the same steps as for the API-first appr
 
 Watch this video to learn how.
 
-{{< youtube 5paF271XmdM >}}
+{{< youtube 6WaozyqyM-k >}}
 
 ## Deployment
 
