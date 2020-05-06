@@ -103,7 +103,7 @@ CENTRAL_MODE=publishToEnvironment
 
 ### Install and run Discovery Agent
 
-1. Copy the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment. Note that the `public_key` comes from Steps 3 and 4 of [Prepare AWS Gateway to deploy the Discovery Agent AWS config setup] (/docs/central/connect-aws-gateway/prepare-aws-api-gateway/).
+1. Copy the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment. Note that the `public_key` comes from Steps 3 and 4 of [Prepare AWS Gateway to deploy the Discovery Agent AWS config setup](/docs/central/connect-aws-gateway/prepare-aws-api-gateway/).
 2. Pull the latest image of the Discovery Agent:
 
     ```

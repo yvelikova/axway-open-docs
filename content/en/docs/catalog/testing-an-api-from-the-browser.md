@@ -15,7 +15,7 @@ Unified Catalog has an built-in testing tool that allows you to explore the list
 Before you start:
 
 * You will need to create an application with an API key
-* You will need to subscribe to an API with your application. See [Subscribe to an API](/docs/central/catalog/discover-and-consume-catalog-assets-3/#subscribe-to-an-api).
+* You will need to subscribe to an API with your application. See [Subscribe to an API](/docs/central/catalog/discover-and-consume-catalog-assets/#subscribe-to-an-api).
 
 To test an API that has been registered in AMPLIFY Central and secured with an API key:
 
@@ -36,7 +36,7 @@ Before you start:
 
 * You will need to create an application within your third-party OAuth server.
 * You must create an OAuth profile in your app.
-* You will need to subscribe to the API with your created app. See [Subscribe to an API](/docs/central/catalog/discover-and-consume-catalog-assets-3/#subscribe-to-an-api).
+* You will need to subscribe to the API with your created app. See [Subscribe to an API](/docs/central/catalog/discover-and-consume-catalog-assets/#subscribe-to-an-api).
 
 To test an API that has been registered in AMPLIFY Central and secured with OAuth:
 
@@ -55,7 +55,7 @@ To test an API that has been registered in AMPLIFY Central and secured with OAut
 Before you start:
 
 * You will need to create an application with a JWT token.  See [Create a JWT token](/docs/central/secure_api_jwt/#create-a-jwt-token).
-* You will need to subscribe to an API with your application. See [Subscribe to an API](/docs/central/catalog/discover-and-consume-catalog-assets-3/#subscribe-to-an-api).
+* You will need to subscribe to an API with your application. See [Subscribe to an API](/docs/central/catalog/discover-and-consume-catalog-assets/#subscribe-to-an-api).
 
 To test your API that has been registered in AMPLIFY Central and secured with a JWT token:
 

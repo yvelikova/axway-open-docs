@@ -98,7 +98,7 @@ Organizations are used in API Manager by different entities to group or manage e
 
 Both organization types can be used to manage access to APIs. Organization administrators grant access to APIs for one, multiple, or all organizations. As a result, a user sees only the APIs that their organization has access to.
 
-For more details, see [Organizations and user roles in API Manager](/docs/apimgr_concepts/api_mgmt_orgs_roles/#organizations-and-user-roles-in-api-manager).
+For more details, see [Organizations and user roles in API Manager](/docs/api_mgmt_overview/key_concepts/api_mgmt_orgs_roles/#organizations-and-user-roles-in-api-manager).
 
 ### Create an organization
 
