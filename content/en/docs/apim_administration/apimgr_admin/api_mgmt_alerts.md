@@ -12,7 +12,7 @@ You can enable or disable alerts in the API Manager web interface. You can chang
 
 You can use alerts for many different use cases. For example, to send an e-mail to an interested party, or to forward the alert to an external notification system. The following video shows how you can integrate with JIRA, for example, to generate issues there. You can then set up the necessary workflows in JIRA for your use case.  
 
-{{< youtube C6qw0uUsmSM >}}
+{{< youtube c1gyahVoBG0 >}}
 
 ## Alert descriptions
 
