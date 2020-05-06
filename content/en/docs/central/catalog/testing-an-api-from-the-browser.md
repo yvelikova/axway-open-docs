@@ -48,6 +48,10 @@ To test an API that has been registered in AMPLIFY Central and secured with OAut
 
 {{< alert title="Note" color="primary" >}}The AMPLIFY Central OAuth proxy support is RFC 7662 compliant and it should work with any standard OAuth 2.0 authorization server. At this time, Okta is the only verified supported third-party OAuth provider. See more detailed configuration examples showing Okta as an integrated (external) authorization server in [Okta documentation](https://developer.okta.com/docs/guides/customize-authz-server/overview/).{{< /alert >}}
 
+Watch the animation to learn how to authenticate with an OAuth token.
+
+![Authenticate with OAuth](/Images/central/catalog/test_catalog_oauth.gif)
+
 ## Authenticate an API with a JWT token
 
 Before you start:
@@ -70,4 +74,4 @@ Watch the animation to learn how to authenticate with a JWT token.
 
 ## Further information
 
-* [Authenticate an external API secured with OAuth](/docs/central/catalog/authenticate-an-api-secured-with-oauth-published-from-an-external-gateway/)
+* [Authenticate an external API secured with OAuth](/docs/central/catalog/authenticate-an-external-gateway-api/)
