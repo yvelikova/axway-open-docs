@@ -317,6 +317,13 @@ const collections = [{
   description: 'All pages relating to AMPLIFY Central.',
   format: 'frontmatter',
 }, {
+  ...docsDefaults('central/mesh_management', 'central/mesh_management'),
+  name: 'mesh_management',
+  label: 'Mesh management documentation',
+  label_singular: 'page in Mesh management',
+  description: 'All pages relating to Mesh management.',
+  format: 'frontmatter',
+}, {
   ...docsDefaults('central/connect-api-manager', 'central/connect-api-manager'),
   name: 'connect-api-manager',
   label: 'Connect API Manager documentation',
@@ -331,7 +338,7 @@ const collections = [{
   description: 'All pages relating to Connect AWS Gateway.',
   format: 'frontmatter',
 }, {
-  ...docsDefaults('central/catalog', 'central/catalog'),
+  ...docsDefaults('catalog', 'catalog'),
   name: 'catalog',
   label: 'AMPLIFY Unified Catalog documentation',
   label_singular: 'page in AMPLIFY Unified Catalog',
