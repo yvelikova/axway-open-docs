@@ -72,4 +72,4 @@ Watch the animation to learn how to authenticate with a JWT token.
 
 ## Further information
 
-* [Authenticate an external API secured with OAuth](/docs/central/catalog/authenticate-an-external-gateway-api/)
+* [Authenticate an external API secured with OAuth](/docs/catalog/authenticate-an-external-gateway-api/)
