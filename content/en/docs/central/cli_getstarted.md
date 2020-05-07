@@ -76,7 +76,7 @@ $ ls
 private_key.pem  public_key.pem
 ```
 
-Alternatively, you can create this key pair using openssh and the **PKCS8** format as follows:
+Alternatively, you can create this key pair using `openssh` and the _PKCS8_ format as follows:
 
 ```
 # private key generation
