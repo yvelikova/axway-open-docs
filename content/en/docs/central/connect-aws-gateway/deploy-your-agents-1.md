@@ -53,7 +53,7 @@ The Discovery Agent only discovers published APIs where the stage has a  tag(s) 
 | AMPLIFY Central variables                                                                                                                                                    |                                                                                                                                                                                                                                                                        |
 | CENTRAL_URL                                                                                                                                                                  | The URL to the AMPLIFY Central instance being used for this Discovery Agent.                                                                                                                                                                                           |
 | CENTRAL_TENANTID                                                                                                                                                             | The Organization ID from AMPLIFY Central. Locate this at Platform > User > Organization.                                                                                                                                                                               |
-| CENTRAL_TEAMID                                                                                                                                                               | The Team ID in AMPLIFY Central that all AWS APIs will be linked. Locate this at AMPLIFY Central > Access > Teams.                                                                                                                                                      |
+| CENTRAL_TEAMID                                                                                                                                                               | The Team ID in AMPLIFY Central that all APIs will be linked. Locate this at AMPLIFY Central > Access > Teams. Open the teams details. The team identifier is the last part of the url (AMPLIFY URL/access/teams/detail/`e4ec6c1a69fd0b8e016a0bb0681e0e8f`).                                                                                                                                                     |
 | CENTRAL_MODE                                                                                                                                                                 | Method to send endpoints back to Central. (publishToEnvironment = API Server, publishToCatalog = Catalog, publishToEnvironmentAndCatalog = API Service and as Consumer instance).                                                                                                                                                                            |
 | CENTRAL_AUTH_URL                                                                                                                                                             | The AMPLIFY login URL: <https://login.axway.com/auth>                                                                                                                                                                                                                    |
 | CENTRAL_AUTH_REALM                                                                                                                                                           | The Realm used to authenticate for AMPLIFY Central.                                                                                                                                                                                                                    |
@@ -73,32 +73,44 @@ The Discovery Agent only discovers published APIs where the stage has a  tag(s) 
 
 ### Create your Discovery Agent environment file
 
-Create an env_vars file using the above variables. For additional information, see <https://git.ecd.axway.int/apigov/aws_apigw_discovery_agent>.
+Create a configuration file using the above variables. See the variable descriptions for their values. Below is a sample of what the configuration file will look like.
 
 For example:  
 
 ```
-LOG_LEVEL=INFO
-AWS_POLLINTERVAL=20
+# AWS connectivity
+AWS_REGION=us-east-2
+AWS_QUEUENAME=aws-apigw-discovery-us-east-2
+AWS_AUTH_ACCESSKEY=<YOUR AWS ACCESS KEY HERE>
+AWS_AUTH_SECRETKEY=<YOUR AWS SECRET KEY HERE>
+AWS_LOGGROUPARN=<YOUR LOG GROUP ARN>
+AWS_FILTER=tag.PushToAmplify == true
+AWS_PUSHTAGS=true
 
-AWS_REGION=eu-west-2
-AWS_QUEUENAME=aws-apigw-config-eu-west-2
-AWS_AUTH_ACCESSKEY=XXXXXXXXXXXXXXXXXXX
-AWS_AUTH_SECRETKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-AWS_LOGGROUPARN=arn:aws:logs:eu-west-2:934549265897:log-group:APIGW_Access_Logs
+# AMPLIFY connectivity
+CENTRAL_URL=https://apicentral.axway.com
 
-CENTRAL_AUTH_URL=https://login-preprod.axway.com/auth
+#AMPLIFY Central connectivity
+# organisation config:
+CENTRAL_TENANTID=<YOUR ORGANISATION ID>
+CENTRAL_TEAMID=<THE TEAM ID>
+CENTRAL_ENVIRONMENT=<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>
+CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
+
+CENTRAL_MODE=<publishToCatalog | publishToEnvironment | publishToEnvironmentAndCatalog>
+CENTRAL_AUTH_URL=https://login.axway.com/auth
 CENTRAL_AUTH_REALM=Broker
-CENTRAL_AUTH_CLIENTID=DOSA_XXXXXXXXXXXXXXXXXXX
-CENTRAL_AUTH_PRIVATEKEY=/keys/private_key.pem
-CENTRAL_AUTH_PUBLICKEY=/keys/public_key
+CENTRAL_AUTH_KEYPASSWORD=
 
-AWS_FILTER=tag.PublishToAmplify==true
-CENTRAL_URL=https://alpha.beano.apicentral-k8s.axwaytest.net
-CENTRAL_TEAMID=e4e082f96d8cfXXXXXXXXXXXXXXXXXXX
-CENTRAL_TENANTID=XXXXXXXXXXXXXXXXXXX
+#CENTRAL_SSL_MINVERSION=
+#CENTRAL_SSL_MAXVERSION=
+#CENTRAL_SSL_CIPHERSUITES=
+#CENTRAL_SSL_NEXTPROTOS=
+#CENTRAL_SSL_INSECURESKIPVERIFY=
 
-CENTRAL_MODE=publishToEnvironment
+LOG_LEVEL=info
+LOG_OUTPUT=stdout
+LOG_PATH=logs
 ```
 
 ### Install and run Discovery Agent
@@ -115,7 +127,12 @@ CENTRAL_MODE=publishToEnvironment
     docker run --env-file ./env_vars -v <pwd>/keys:/keys  axway-docker-public-registry.bintray.io/agent/aws-apigw-discovery-agent:latest
     ```
 
-{{< alert title="Note" color="primary" >}}`pwd` relates to the local directory where the docker command is run. For Windows, the absolute path is preferred.{{< /alert >}}
+    `pwd` relates to the local directory where the docker command is run. For Windows, the absolute path is preferred.
+4. Run the following health check command to ensure the agent is up and running:
+
+    ```
+    docker inspect --format='{{json .State.Health}}' <container>
+    ```
 
 ## Traceability Agent
 
@@ -156,30 +173,40 @@ The Traceability Agent is used to filter the AWS CloudWatch logs that are relate
 
 ### Create your Traceability Agent environment file
 
-Create an `env_vars` file using the above variables.  
+Create a configuration file using the above variables. See the variable descriptions for their values. Below is a sample of what the configuration file will look like.  
 
 For example:
 
 ```
-LOG_LEVEL=debug
 # AWS connectivity
 AWS_REGION=us-east-2
-AWS_QUEUENAME=aws-apigw-traceability-cb-us-east-2
-AWS_AUTH_ACCESSKEY=XXXXXXXXXXXXXXXXXXXX
-AWS_AUTH_SECRETKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+AWS_QUEUENAME=aws-apigw-traceability-us-east-2
+AWS_AUTH_ACCESSKEY=<YOUR AWS ACCESS KEY HERE>
+AWS_AUTH_SECRETKEY=<YOUR AWS SECRET KEY HERE>
 
 #AMPLIFY Central connectivity
-CENTRAL_TENANTID=XXXXXXXXXXXXXXX
-CENTRAL_DEPLOYMENT=beano
-CENTRAL_ENVIRONMENTID=XXXXXXXXXXXXXXXXXXXXXX
-CENTRAL_AUTH_URL=https://login-preprod.axway.com/auth
+# organisation config:
+CENTRAL_TENANTID=<YOUR ORGANISATION ID>
+CENTRAL_ENVIRONMENT=<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>
+CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
+
+CENTRAL_DEPLOYMENT=prod
+CENTRAL_AUTH_URL=https://login.axway.com/auth
 CENTRAL_AUTH_REALM=Broker
-CENTRAL_AUTH_CLIENTID=DOSA_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-CENTRAL_AUTH_PRIVATEKEY=/keys/private_key.pem
-CENTRAL_AUTH_PUBLICKEY=/keys/public_key
+
+#CENTRAL_SSL_MINVERSION=
+#CENTRAL_SSL_MAXVERSION=
+#CENTRAL_SSL_CIPHERSUITES=
+#CENTRAL_SSL_NEXTPROTOS=
+#CENTRAL_SSL_INSECURESKIPVERIFY=
+
 
 #Condor url
-LOGSTASH_URL=ingestion-lumberjack.beta.trcblt.com:453
+LOGSTASH_URL=ingestion-lumberjack.datasearch.axway.com:453
+
+LOG_LEVEL=debug
+LOG_OUTPUT=stdout
+LOG_PATH=logs
 ```
 
 ### Install and run Traceability Agent
@@ -196,4 +223,9 @@ LOGSTASH_URL=ingestion-lumberjack.beta.trcblt.com:453
     docker run --env-file ./env_vars -v <pwd>/keys:/keys  axway-docker-public-registry.bintray.io/agent/aws-apigw-traceability-agent:latest
     ```
 
-{{< alert title="Note" color="primary" >}}`pwd` relates to the local directory where the docker command is run. For Windows, the absolute path is preferred.{{< /alert >}}
+    `pwd` relates to the local directory where the docker command is run. For Windows, the absolute path is preferred.
+4. Run the following health check command to ensure the agent is up and running:
+
+    ```
+    docker inspect --format='{{json .State.Health}}' <container>
+    ```

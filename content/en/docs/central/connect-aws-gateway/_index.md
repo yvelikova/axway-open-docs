@@ -61,8 +61,8 @@ An AMPLIFY Central Service Account. See [Manage an API proxy using AMPLIFY CLI](
 
 1. Set up AMPLIFY Central:
 
-   1. Create an environment object in AMPLIFY Central using either the UI, API or CLI.
-   2. Set up a Service Account.
+   1. Set up a Service Account.
+   2. Create an environment object in AMPLIFY Central using either the UI, API or CLI.  
 2. Set up AWS CloudFormation using the two templates at [https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/](<https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/>):
 
    1. apigw_iam_setup

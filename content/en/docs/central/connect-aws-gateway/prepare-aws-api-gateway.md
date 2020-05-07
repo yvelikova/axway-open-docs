@@ -33,11 +33,11 @@ The second template `apigw_cloudformation` will help you to configure the AWS Se
     curl -L "https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/latest/aws_apigw_agent_config-latest.zip" -o aws_apigw_agent_config-latest.zip
     ```
 
-    This zip contains the AWS IAM CloudFormation YAML, the AWS CloudFormation YAML and the Traceability Lambda Zip.
-2. Upload the Traceability Lambda in an AWS S3 bucket located on the same region the agent will run.
-3. Configure the required roles using the IAM CloudFormation  template.
+    This zip contains three files: the AWS CloudFormation IAM configuration (apigw_iam_setup.yaml), the AWS CloudFormation Service configuration (apigw_cloudformation.yaml) and the Traceability Lambda (traceability_lambda.zip).
+2. Upload the Traceability Lambda zip file in an AWS S3 bucket located on the same region the agent will run.
+3. Configure the required roles using the IAM CloudFormation template.
 
-    1. Create a new stack using the provided template and configure the parameters:
+    1. Create a new stack using the provided template (apigw_iam_setup.yaml) and configure the parameters:
 
         Set the **ConfigBucketExists** value to **true** to create a S3 bucket to store the AWS logs. If set to false, you must manually create the S3 bucket.
 
@@ -55,11 +55,11 @@ The second template `apigw_cloudformation` will help you to configure the AWS Se
         The output of the stack contains all required information for the next cloud formation template (**ConfigServiceRoleArn / APICAgentAccessKey / APICAgentSecretKey / TraceabilityAPIGWCWRoleArn / TraceabilityLambdaRoleArn**).
 4. Configure the required AWS Services using the Resource CloudFormation template.
 
-    1. Create a new stack using the provided template and configure the parameters:
+    1. Create a new stack using the provided template (apigw_cloudformation.yaml) and configure the parameters:
 
         Set the **ConfigBucketExists** default value to **true** to create a S3 bucket to store the AWS logs. If set to false, you must manually create the S3 bucket.
 
-        Accept the C**onfigBucketName** default value of `apigw-config-bucket` to store AWS Config logs. You can re-use the same bucket name as the one used in `apigw_iam_setup`. The accountID and AWS region is appended to the value.
+        Accept the **ConfigBucketName** default value of `apigw-config-bucket` to store AWS Config logs. You can reuse the same bucket name as the one used in `apigw_iam_setup`. The accountID and AWS region is appended to the value.
 
         Enter the **ConfigServiceRoleArn** value coming from the output of `apigw_iam_setup` in Step 4.
 
