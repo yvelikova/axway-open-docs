@@ -52,7 +52,7 @@ curl -L "https://axway.bintray.com/generic-repo/v7-agents/v7_discovery_agent/lat
 
 The Discovery Agent config yaml and Discovery Agent executable are included.
 
-#### YAML config file template
+#### YAML config file template - Discovery Agent
 
 ```
 apimanager:
@@ -137,7 +137,8 @@ To create an `env_vars file`, see [Traceability Agent variables](/docs/central/c
 
 Most Traceability Agent configurations are overridden by the environment variable, except for the APIGateway event file path(s). Note that the default `traceability_agent.inputs.paths` is set to read multiple files using wildcard.
 
-#### YAML config file template
+#### YAML config file template - Traceability Agent
+
 ```
 traceability_agent:
   inputs:
