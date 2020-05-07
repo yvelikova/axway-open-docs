@@ -8,7 +8,6 @@ description: A subscription provides the consumer, or subscriber, with the
 ---
 ## Subscription workflow
 
-
 1. An administrator creates a usage plan on AWS API Gateway that provides the necessary security feature (API key / authorizer) and quota, if needed.
 2. A consumer initiates the subscription in AMPLIFY Central:
 
@@ -32,7 +31,6 @@ description: A subscription provides the consumer, or subscriber, with the
 
     * The API can be consumed once the subscription details are received.
 
-
 ## Unsubscribe workflow
 
 1. A consumer initiates unsubscribe:
@@ -46,4 +44,3 @@ description: A subscription provides the consumer, or subscriber, with the
     * The `subscriptions-<subscriptionID from AMPLIFY Central>` is removed from the usage plan.
 
     * The API is removed from the usage plan.
-

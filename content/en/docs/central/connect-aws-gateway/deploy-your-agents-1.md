@@ -53,7 +53,7 @@ The Discovery Agent only discovers published APIs where the stage has a  tag(s) 
 | AMPLIFY Central variables                                                                                                                                                    |                                                                                                                                                                                                                                                                        |
 | CENTRAL_URL                                                                                                                                                                  | The URL to the AMPLIFY Central instance being used for this Discovery Agent.                                                                                                                                                                                           |
 | CENTRAL_TENANTID                                                                                                                                                             | The Organization ID from AMPLIFY Central. Locate this at Platform > User > Organization.                                                                                                                                                                               |
-| CENTRAL_TEAMID                                                                                                                                                               | The Team ID in AMPLIFY Central that all APIs will be linked. Locate this at AMPLIFY Central > Access > Teams. Open the teams details. The team identifier is the last part of the url (<AMPLIFY URL>/access/teams/detail/`e4ec6c1a69fd0b8e016a0bb0681e0e8f`).                                                                                                                                                     |
+| CENTRAL_TEAMID                                                                                                                                                               | The Team ID in AMPLIFY Central that all APIs will be linked. Locate this at AMPLIFY Central > Access > Teams. Open the teams details. The team identifier is the last part of the url (AMPLIFY URL/access/teams/detail/`e4ec6c1a69fd0b8e016a0bb0681e0e8f`).                                                                                                                                                     |
 | CENTRAL_MODE                                                                                                                                                                 | Method to send endpoints back to Central. (publishToEnvironment = API Server, publishToCatalog = Catalog, publishToEnvironmentAndCatalog = API Service and as Consumer instance).                                                                                                                                                                            |
 | CENTRAL_AUTH_URL                                                                                                                                                             | The AMPLIFY login URL: <https://login.axway.com/auth>                                                                                                                                                                                                                    |
 | CENTRAL_AUTH_REALM                                                                                                                                                           | The Realm used to authenticate for AMPLIFY Central.                                                                                                                                                                                                                    |
@@ -78,7 +78,7 @@ Create a configuration file using the above variables. See the variable descript
 For example:  
 
 ```
-# AWS connectivity 
+# AWS connectivity
 AWS_REGION=us-east-2
 AWS_QUEUENAME=aws-apigw-discovery-us-east-2
 AWS_AUTH_ACCESSKEY=<YOUR AWS ACCESS KEY HERE>
@@ -133,6 +133,7 @@ LOG_PATH=logs
     ```
     docker inspect --format='{{json .State.Health}}' <container>
     ```
+
 ## Traceability Agent
 
 The Traceability Agent is used to filter the AWS CloudWatch logs that are related to discovered APIs and prepare the transaction events that are sent to AMPLIFY platform. Each time an API is called by a consumer, an event (summary + detail) is sent to AMPLIFY Central and is visible in API Observer.
@@ -177,7 +178,7 @@ Create a configuration file using the above variables. See the variable descript
 For example:
 
 ```
-# AWS connectivity 
+# AWS connectivity
 AWS_REGION=us-east-2
 AWS_QUEUENAME=aws-apigw-traceability-us-east-2
 AWS_AUTH_ACCESSKEY=<YOUR AWS ACCESS KEY HERE>
