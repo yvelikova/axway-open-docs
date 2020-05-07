@@ -187,11 +187,15 @@ To display a YouTube video preview on a page, use the following _Hugo shortcode_
 For example:
 
 ```go-html-template
-{{</* youtube QTpB3e2DZBg */>}}
+{{</* youtube Dq7GwLvRhLg */>}}
 ```
 
 This renders to:
 
-{{< youtube QTpB3e2DZBg >}}
+{{< youtube Dq7GwLvRhLg >}}
 
 See [Hugo YouTube shortcode](https://gohugo.io/content-management/shortcodes/#youtube) for more details.
+
+## Learn more
+
+* [The Markdown Guide](https://www.markdownguide.org/)
