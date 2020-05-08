@@ -188,39 +188,56 @@ To install the update on your existing API Gateway 7.7 server installation, perf
 
 #### Install the Policy Studio update
 
-To install the update on your existing Policy Studio installation, perform the following steps:
+To install the update on your existing Policy Studio installation, please follow the instructions below:
 
-1. Shut down Policy Studio.
-2. Back up your existing `INSTALL_DIR/policystudio` directory.
-3. Remove old JRE versions by deleting the following directories:
+Run the update script found inside the Service Pack tar.gz/zip file with the path to your Axway installation as an argument.
+The expected INSTALL_DIR is the base Axway installation that contains the policystudio directory.
 
+**Linux**
    ```
-   INSTALL_DIR/policystudio/jre
+   ./update_policy_studio.sh /path/to/INSTALL_DIR
    ```
-4. Unzip and extract API Gateway 7.7 Policy Studio Update over the `policystudio` directory in your existing API Gateway 7.7 installation directory. For example:
+**Windows**
+   ```
+   update_policy_studio.bat \path\to\INSTALL_DIR
+   ```
+**Note**:
+The update script must be executed as the same user who installed Policy Studio.
 
-   ```
-   tar -xzvf APIGateway_7.7.YYYYMMDD_PolicyStudio_linux-x86-64_BNnn.tar.gz -C /opt/Axway-7.7/policystudio/
-   ```
-5. Start Policy Studio with `policystudio -clean`
+This script will:  
+1. Back up your existing `INSTALL_DIR/policystudio` directory.
+2. Remove old JRE versions by deleting the following directory: `INSTALL_DIR/policystudio/jre`
+3. Unzip and extract API Gateway 7.7 Policy Studio Update over the `policystudio` directory in your existing API Gateway 7.7 installation directory 
+4. Start Policy Studio with `policystudio -clean`
+
+If the script encounters an error, the user will be prompted to revert to the backup created at the beginning.
+
 
 #### Install the Configuration Studio update
 
-To install the update on your existing Configuration Studio installation, perform the following steps:
+To install the update on your existing Configuration Studio installation, please follow the instructions below:
 
-1. Shut down Configuration Studio.
-2. Back up your existing `INSTALL_DIR/configurationstudio` directory.
-3. Remove old JRE versions by deleting the following directories:
+Run the update script found inside the Service Pack tar.gz/zip file with the path to your Axway installation as an argument.
+The expected INSTALL_DIR is the base Axway installation that contains the configurationstudio directory.
 
+**Linux**
    ```
-   INSTALL_DIR/configurationstudio/jre
+   ./update_configuration_studio.sh /path/to/INSTALL_DIR
    ```
-4. Unzip and extract API Gateway 7.7 Configuration Studio Update over the `configurationstudio` directory in your existing API Gateway 7.7 installation directory. For example:
+**Windows**
+   ```
+   update_configuration_studio.bat \path\to\INSTALL_DIR
+   ```
+**Note**:
+The update script must be executed as the same user who installed Configuration Studio.
 
-   ```
-   tar -xzvf APIGateway_7.7.YYYYMMDD_ConfigurationStudio_linux-x86-64_BNnn.tar.gz -C /opt/Axway-7.7/configurationstudio/
-   ```
-5. Start Configuration Studio with `configurationstudio  -clean`
+This script will:  
+1. Back up your existing `INSTALL_DIR/configurationstudio` directory.
+2. Remove old JRE versions by deleting the following directory: `INSTALL_DIR/configurationstudio/jre`
+3. Unzip and extract API Gateway 7.7 Configuration Studio Update over the `configurationstudio` directory in your existing API Gateway 7.7 installation directory 
+4. Start Configuration Studio with `configurationstudio -clean`
+
+If the script encounters an error, the user will be prompted to revert to the backup created at the beginning.
 
 #### Install the API Gateway Analytics update
 
