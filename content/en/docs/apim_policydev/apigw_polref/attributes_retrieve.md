@@ -25,8 +25,8 @@ To add an attribute to the list, click the **Add** button, and enter the followi
 * **JSON Path Expression**:   Enter the JSON Path expression that you wish to use to extract the message attribute (for example, `$.store.bicycle.price`). Policy Studio prompts if you enter an unsupported JSON Path expression.
 * **Unmarshal as**:   Enter the data type to unmarshal the message attribute value as (defaults to `java.util.List`). For example, typical data types to unmarshal as include the following:
 
-  * `java.lang.String`: Enter this value when using this filter to extract a single value and store it in an API Gateway attribute on the message whiteboard.
-  * `com.fasterxml.jackson.databind.JsonNode`: Enter this value when using this filter to store the content in a message attribute and then place it in a JSON message using a **JSON Add Node** filter.
+    * `java.lang.String`: Enter this value when using this filter to extract a single value and store it in an API Gateway attribute on the message whiteboard.
+    * `com.fasterxml.jackson.databind.JsonNode`: Enter this value when using this filter to store the content in a message attribute and then place it in a JSON message using a **JSON Add Node** filter.
 * **Fail if JSON Path Fails**:   Select whether the filter should fail if the specified JSON Path expression fails. This option is not selected by default.
 
 {{< alert title="Note" color="primary" >}}If no attributes are specified, the API Gateway retrieves all the attributes in the message and sets them to the `attribute.lookup.list`
