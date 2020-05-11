@@ -153,9 +153,46 @@ When the review is finished, the reviewer will merge the pull request and publis
 
 ## Create an issue on GitHub
 
-Create an issue to inform us about a problem in the documentation. Provide as much detail as you can, for example, if information is missing, contains an error, is not clear, contains a broken link, and so on. The more details you provide, the more helpful the issue, and the faster we can prioritize and fix it.
+If you spot an issue in the documentation but you don't know how to fix it, you can create an issue on Axway-Open-Docs GitHub project to inform about the problem, and provide as much detail as you can, for example:
 
-To create an issue just click **Create documentation issue** on the upper right corner of the page, and add the relevant information.
+* Information is missing
+* Contains an error
+* It's not clear
+* Needs and example
+* Contains a broken link, and so on.
+
+The more details you provide the more helpful the issue, and the faster we can prioritize and fix it.
+
+To create an issue from the documentation:
+
+1. Click **Create documentation issue** on the upper right corner of any page.
+
+    You will be redirected to the GitHub sign in page.
+2. Sign in to GitHub.
+3. Add a title to the issue.
+
+    The title of the issue is completed by default with the name of the page where you were in, but you can change or complement it to make it more helpful.
+4. Provide a detailed information about the problem.
+
+    You can use the following template to write the body of the issue:
+    ```
+    ## Issue description
+
+    <!--Describe the problem that you found.-->
+
+    ## Problem location
+
+    <!--Give the URL of the page or section that contains the problem.-->
+
+    ## Suggestions for a fix
+
+    <!--If you have specific ideas about how we can fix this, let us know. -->
+    ```
+5. Click **Submit new issue**.
+
+Once the issue is created, GitHub will send an email notification to you and to the maintainers of the project informing about the new issue. You can also find your issue on the Axway-Open-Docs [list of issues](https://github.com/Axway/axway-open-docs/issues).
+
+The maintainers will review the issue and, either fix it if possible or involve the R&D subject matter experts if it needs further investigation. If the R&D needs to be involved, a Jira ticket will be created to track the issue internally. It is important that you monitor your GitHub email notifications to follow-up with the updates of your issue.
 
 ## Troubleshooting
 
