@@ -37,7 +37,7 @@ The AMPLIFY API Management solution provides predeployment scripts that you can 
 
 Instead of deploying policy and environment files directly from the version management system, it is best to build release packages that are stored in a release repository. This allows auditing, simple rollbacks, and the maintenance of dependencies.
 
-A powerful framework for deploying policy configurations based on Maven is available at [AMPLIFY API Management Deployment Utilities on GitHub](https://github.com/Axway-API-Management-Plus/apim-deployment).
+A powerful framework for deploying policy configurations based on Maven is available at [Maven Plugin for API Gateway Policy Development on GitHub](https://github.com/Axway-API-Management-Plus/apigw-maven-plugin).
 
 ## API deployment
 
