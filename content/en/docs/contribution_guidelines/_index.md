@@ -14,17 +14,19 @@ This documentation is open source, and we welcome your interest in contributing 
 Before you can contribute, you must:
 
 * Create a GitHub account.
-* Sign the [Axway Contributor License Agreement (CLA)](https://cla.axway.com/) your GitHub account email. This is required just once and it should only take a few minutes.
+* Sign the [Axway Contributor License Agreement (CLA)](https://cla.axway.com/) using your GitHub account email. This is required just once and it should only take a few minutes.
 * Read this page in its entirety.
-* Familiarize yourself with the [Markdown guidelines](/docs/contribution_guidelines/writing_markdown/) and [best practices](/docs/contribution_guidelines/bestpracticedevdoc/).
+* Familiarize yourself with the [Markdown guidelines](/docs/contribution_guidelines/writing_markdown/) and [best practices for developer documentation](/docs/contribution_guidelines/bestpracticedevdoc/).
 
-In addition, you must keep in mind that all contributions to this project are public, which means that they are accessible to anyone on the Internet. This includes content in pull requests that are not yet merged or published.
+{{< alert title="Caution" color="warning">}}
+All contributions to this project are public, which means that they are accessible to anyone on the Internet. This includes content in pull requests that are not yet merged or published.
 
 As a result, do not contribute any content containing:
 
 * Information not intended for a public audience, such as proprietary or confidential information.
 * Descriptions of security issues or vulnerabilities. Please report any security issues to [Axway Support](https://support.axway.com/) and not as a public GitHub issue.
 * Sensitive information such as user names, passwords, keys, and so on.
+{{< /alert >}}
 
 ## Different ways you can contribute
 
@@ -56,11 +58,11 @@ To edit an existing page:
     This preview does not show your changes as they will appear on the live website, and is useful only for quickly checking standard Markdown formatting (lists, numbering, and so on). You must use the Netlify deploy preview after creating a pull request to fully verify your changes.
 
 4. At the bottom of the page, add a meaningful message describing your change and click **Propose file change**.
-5. In the Comparing changes page, check that `Axway/axway-open-docs` is shown on the left, and that your fork is shown on the right, and click **Create pull request**. A pull request enables us to review the changes you made on your fork and _pull_ them into the original repository.
+5. In the Comparing changes page, check that `Axway/axway-open-docs` is shown on the left, and that your fork is shown on the right, and click **Create pull request**. A pull request enables project maintainers to review the changes you made on your fork and _pull_ them into the original repository.
 
     ![Compare changes and create pull request](/Images/contributing/compare_changes_pr.png)
 
-6. Enter a title (and optionally a description) for the pull request, and click **Create pull request** again. Leave **Allow edits from maintainers** selected, to enable us to make editorial updates to your changes if necessary.
+6. Enter a title (and optionally a description) for the pull request, and click **Create pull request** again. Leave **Allow edits from maintainers** selected, to enable reviewers to make editorial updates to your changes if necessary.
 
     When you submit a pull request, this triggers a CI flow that runs some checks and builds a preview site containing your changes on Netlify. If your changes fail these checks, you will receive an email notification from GitHub. To get details of the failures and how to fix them, see [PR Run failed email notification](#pr-run-failed-email-notification).
 
@@ -100,20 +102,25 @@ To edit an existing page:
 
     ![Preview on CMS](/Images/contributing/cms_deploy_preview.png)
 
-7. To ensure that we have all the information we need to review your changes and to help to speed up the reviewing process, go to the GitHub pull request (using the link received in your email) and add a comment to the pull request to tell us what you changed and why.
+7. To ensure that reviewers have all the information they need to review your changes and to help to speed up the reviewing process, go to the GitHub pull request (using the link received in your email) and add a comment explaining what you changed and why.
 
 ### Make further edits after sending for review
 
+Use the Netlify CMS **Workflow** view to easily keep track of the pages you have made changes to and the pages you have sent for review.
+
+* The **Drafts** column lists the pages you have changed but not yet sent for review.
+* The **In Review** column lists the pages you have sent for review.
+
+![Workflow](/Images/contributing/netlify_workflowButton.png)
+
 To make further changes to a page, for example, if you forgot to add a detail, or if you noticed a typo:
 
-1. In Netlify CMS, click **Workflow** to see the pages that you have changed. Pages that you have already sent for review are listed in the **In Review** column.
-
-    ![Workflow](/Images/contributing/netlify_workflowButton.png)
+1. If the page was already sent for review, drag it from the **In Review** column to the **Drafts** column. This lets the reviewer know that you are still working on the page.
 
     If the page is not listed in the **In Review** column, then it has been merged already and you will need to create a new PR to make further changes. See [Edit an existing page](#edit-an-existing-page).
 
-2. To make further minor changes, click the page to open it. Alternatively, to make further major changes, drag the page to the **Drafts** column, then click the page to open it.
-3. When you are finished making changes, click **Save** and set the status of the page to **In review**. If it is already in review status, then you don't need to change it.
+2. To make further changes, click the page in the **Drafts** column to open it.
+3. When you are finished making changes, **Save** the page and set its status to **In review**.
 4. Refresh the page and click **Check for Preview/View Preview** to see your changes on the preview website.
 
 {{< alert title="Note" >}}
@@ -134,19 +141,19 @@ To create a new page:
 5. Add the content for the page.
 6. **Save** the page, and set its status to **In Review**.
 7. Refresh the page and click **Check for Preview/View Preview** to see your changes on the preview website.
-8. To ensure that we have all the information we need to review your changes and to help to speed up the reviewing process, go to the GitHub pull request (using the link received in your email) to tell us what you added and why.
+8. To ensure that reviewers have all the information they need to review your changes and to help to speed up the reviewing process, go to the GitHub pull request (using the link received in your email) and add a comment explaining what you added and why.
 
 ## What to expect when you contribute
 
-When you submit a contribution, the appropriate project maintainers are notified and will respond as quickly as possible. We'll review your changes and make additional edits if necessary to ensure that the changes adhere to Axway style and standards.
+When you submit a contribution, the appropriate project maintainers are notified and will respond as quickly as possible. They will review your changes and make additional edits if necessary to ensure that the changes adhere to Axway style and standards.
 
-If we need further information about your changes, we'll add a comment on the GitHub pull request, which you will receive by email, so it is important that you monitor your GitHub email notifications.
+If a reviewer needs further information about your changes, they will add a comment on the GitHub pull request, which you will receive by email, so it is important that you monitor your GitHub email notifications.
 
-When the review is finished, we'll merge the pull request and publish the changes on [Axway-Open-Docs](https://axway-open-docs.netlify.com), and then on the [Axway Documentation portal](https://docs.axway.com).
+When the review is finished, the reviewer will merge the pull request and publish the changes on [Axway-Open-Docs](https://axway-open-docs.netlify.com), and then on the [Axway Documentation portal](https://docs.axway.com).
 
 ## Create an issue on GitHub
 
-Create an issue to inform us about a problem in the documentation. Please provide detailed information, for example, if it's missing information, an error in a procedure, information not clear, a broken link, and so on. The more details you provide, the more helpful the issue, and the faster we can prioritize and fix it.
+Create an issue to inform us about a problem in the documentation. Provide as much detail as you can, for example, if information is missing, contains an error, is not clear, contains a broken link, and so on. The more details you provide, the more helpful the issue, and the faster we can prioritize and fix it.
 
 To create an issue just click **Create documentation issue** on the upper right corner of the page, and add the relevant information.
 
@@ -161,12 +168,12 @@ If you receive this email notification after sending a pull request from GitHub 
 ![Failed markdown lint checks](/Images/contributing/failed_checks.png)
 
 {{< alert title="Note" >}}
-If you are using Netlify CMS, you do not need to worry about these failures, and you are not expected to fix them as it usually requires knowledge of Markdown. The project maintainers will fix these errors when we review your contribution.
+If you are using Netlify CMS, you do not need to worry about these failures, and you are not expected to fix them as it usually requires knowledge of Markdown. The project maintainers will fix these errors when reviewing your contribution.
 {{< /alert >}}
 
 ### Draft pages in Netlify CMS
 
-If you made a contribution using Netlify CMS and it was not merged and published for some reason (for example, if it was a test contribution), the project maintainers will close the underlying pull request. However, the draft version of the page containing your changes will continue to be available in the CMS **Workflow** view.
+If you made a contribution using Netlify CMS and it was not merged and published for some reason (for example, if it was a test contribution), the project maintainers will close the underlying pull request. However, the draft version of the page containing your changes will continue to be available in **Drafts** column of the CMS **Workflow** view.
 
 To abandon the changes permanently, click **Delete changes** to delete the draft:
 
