@@ -153,26 +153,25 @@ When the review is finished, the reviewer will merge the pull request and publis
 
 ## Create an issue on GitHub
 
-If you spot an issue in the documentation but you don't know how to fix it, you can create an issue on Axway-Open-Docs GitHub project to inform about the problem, and provide as much detail as you can, for example:
+If you find an issue or problem in the documentation that you don't know how to fix, create an issue in Axway-Open-Docs GitHub project to report it to us.
 
-* Information is missing
-* Contains an error
-* It's not clear
-* Needs and example
-* Contains a broken link, and so on.
+When creating a documentation issue, provide as much detail as you can. For example:
 
-The more details you provide the more helpful the issue, and the faster we can prioritize and fix it.
+* Is it missing important information?
+* Does it contain errors or inaccuracies?
+* Is it unclear or hard to follow?
+* Is it missing examples?
+* Does it contain a broken link or broken image link?
 
-To create an issue from the documentation:
+The more details you provide, the more helpful the issue, and the faster we can prioritize and fix it.
 
-1. Click **Create documentation issue** on the upper right corner of any page.
+To create a documentation issue:
 
-    You will be redirected to the GitHub sign in page.
-2. Sign in to GitHub.
-3. Add a title to the issue.
+1. Click **Create documentation issue** on the upper right corner of any page. You are redirected to GitHub and asked to sign in with your GitHub account.
+2. Add a title to the issue.
 
-    The title of the issue is completed by default with the name of the page where you were in, but you can change or complement it to make it more helpful.
-4. Provide a detailed information about the problem.
+    The title of the issue is completed by default with the name of the page, but you can edit it to make it more helpful.
+3. Provide detailed information about the problem.
 
     You can use the following template to write the body of the issue:
     ```
@@ -188,11 +187,13 @@ To create an issue from the documentation:
 
     <!--If you have specific ideas about how we can fix this, let us know. -->
     ```
-5. Click **Submit new issue**.
+4. Click **Submit new issue**.
 
-Once the issue is created, GitHub will send an email notification to you and to the maintainers of the project informing about the new issue. You can also find your issue on the Axway-Open-Docs [list of issues](https://github.com/Axway/axway-open-docs/issues).
+When the issue is created, GitHub sends an email notification to you and to the maintainers of the project. You can also find your issue on the Axway-Open-Docs [list of issues](https://github.com/Axway/axway-open-docs/issues).
 
-The maintainers will review the issue and, either fix it if possible or involve the R&D subject matter experts if it needs further investigation. If the R&D needs to be involved, a Jira ticket will be created to track the issue internally. It is important that you monitor your GitHub email notifications to follow-up with the updates of your issue.
+The maintainers will review the issue. If the problem is straightforward the maintainers will fix it as soon as possible. If the issue needs further investigation or clarification from a subject matter expert, an internal JIRA ticket will be created and added to the product backlog.
+
+It is important that you monitor your GitHub email notifications to keep informed of any updates to your issue.
 
 ## Troubleshooting
 
