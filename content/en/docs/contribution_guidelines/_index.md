@@ -153,9 +153,29 @@ When the review is finished, the reviewer will merge the pull request and publis
 
 ## Create an issue on GitHub
 
-Create an issue to inform us about a problem in the documentation. Provide as much detail as you can, for example, if information is missing, contains an error, is not clear, contains a broken link, and so on. The more details you provide, the more helpful the issue, and the faster we can prioritize and fix it.
+If you find an issue or problem in the documentation that you don't know how to fix, create an issue in Axway-Open-Docs GitHub project to report it to us.
 
-To create an issue just click **Create documentation issue** on the upper right corner of the page, and add the relevant information.
+When creating a documentation issue, provide as much detail as you can. For example:
+
+* Is it missing important information?
+* Does it contain errors or inaccuracies?
+* Is it unclear or hard to follow?
+* Is it missing examples?
+* Does it contain a broken link or broken image link?
+
+The more details you provide, the more helpful the issue, and the faster we can prioritize and fix it.
+
+To create a documentation issue:
+
+1. Click **Create documentation issue** on the upper right corner of any page. You are redirected to GitHub and asked to sign in with your GitHub account.
+2. Add a title to the issue. The title of the issue is completed by default with the name of the page, but you can edit it to make it more helpful.
+3. Provide detailed information about the problem. A template is provided.
+
+When the issue is created, GitHub sends an email notification to you and to the maintainers of the project. You can also find your issue on the Axway-Open-Docs [list of issues](https://github.com/Axway/axway-open-docs/issues).
+
+The maintainers will review the issue. If the problem is straightforward the maintainers will fix it as soon as possible. If the issue needs further investigation or clarification from a subject matter expert, an internal JIRA ticket will be created and added to the product backlog.
+
+It is important that you monitor your GitHub email notifications to keep informed of any updates to your issue.
 
 ## Troubleshooting
 
