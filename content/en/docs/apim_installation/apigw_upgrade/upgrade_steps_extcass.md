@@ -142,7 +142,7 @@ Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [C
 
 ### Check the new installation
 
-When the installation is complete, perform the new installation checks detailed in [Checklist for the new API Gateway 7.7 installation](#checklist-for-the-new-api-gateway-7-8-installation).
+When the installation is complete, perform the new installation checks detailed in [Checklist for the new API Gateway 7.7 installation](#checklist-for-the-new-api-gateway-7-7-installation).
 
 ### Run `export` and `upgrade`
 
@@ -177,7 +177,27 @@ When all steps have completed successfully, the new API Gateway version 7.7 proc
 
 ### Run `update-apimanager`
 
-If API Manager is installed, follow the steps in [Run update-apimanager](/docs/apim_relnotes/20200130_apimgr_relnotes/#api-manager).
+If API Manager is installed, you must now run the `update-apimanager` script.
+
+This script updates the active deployment in the API Manager group. After running the script, you must recreate the API Manager project (common project, containing Server Settings) from the deployment, so that you will not need to revert the changes the next time you perform a project deployment.
+
+As an alternative to recreating the API Manager project, you can deploy only your common project to a development server and run the `update-apimanager` script against it, and then create a new common project from this API Gateway instance. Finally, you must deploy your updated policies to your API Manager group.
+
+You can run this command once at the API Gateway group level, instead of on every API Gateway instance, for example:
+
+```
+/opt/Axway-7.7/apigateway/posix/bin/update-apimanager --username=admin --password=MY_PASSWORD --group=API_MGR_GROUP
+```
+
+If the API Gateway group is protected by a passphrase, you must append the command with `--passphrase=API_MGR_GROUP_PASSPHRASE`.
+
+The following command shows an example of running the `update-apimanager` script when the Client Application Registry is installed:
+
+```
+/opt/Axway-7.7/apigateway/posix/bin/update-apimanager --username=admin --password=MY_PASSWORD --group=API_MGR_GROUP   --productname=clientappreg
+```
+
+If the API Gateway group is protected by a passphrase, you must append the command with `--passphrase=API_MGR_GROUP_PASSPHRASE`.
 
 ### Verify the upgrade
 
@@ -288,7 +308,7 @@ cd /opt/Axway-7.7/apigateway/upgrade/bin
 
 ### Run `update-apimanager` on each API Manager node
 
-If API Manager is installed, follow the steps in [Run update-apimanager](/docs/apim_relnotes/20200130_apimgr_relnotes/#api-manager).
+If API Manager is installed, follow the steps in [Run update-apimanager](#run-update-apimanager).
 
 ### Verify the multi-node upgrade
 
