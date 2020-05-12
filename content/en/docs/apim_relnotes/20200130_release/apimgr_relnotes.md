@@ -4,7 +4,7 @@
   "no_list": "true",
   "weight": "90",
   "date": "2019-09-20",
-  "description": "This update adds OAS 3.0 support and includes various other improvements."
+  "description": "This update adds OAS 3.0 support and includes Try It improvements, usage tracking improvements, and API documentation enhancements."
 }
 
 ## Summary

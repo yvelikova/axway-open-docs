@@ -3,7 +3,7 @@
 "linkTitle": "API Portal April 2019",
 "weight":"110",
 "date": "2019-09-07",
-"description": "This release includes GDPR compliance and other improvements."
+"description": "This release includes new capabilities for GDPR compliance, improvements to the API Catalog and Application views, and new customization options."
 }
 
 ## Summary
