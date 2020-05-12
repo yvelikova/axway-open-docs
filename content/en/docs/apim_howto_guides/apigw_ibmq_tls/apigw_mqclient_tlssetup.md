@@ -31,11 +31,11 @@ The basic setup within Policy Studio for IBM MQ server connectivity needs to be 
    Figure shows the JMS service configuration wizard:  
    ![MQ JMS Service](/Images/APIGateway/extconn_jms_service_ibmmq_settings.png)  
 2) In the JMS wizard, with service type *IBM MQ* selected:  
-   Change the cipher-suite name to one of the ciphers supported by your MQ server.   
-   *For our tests we tried TLS_RSA_WITH_AES_128_CBC_SHA256 and TLS_RSA_WITH_AES_256_CBC_SHA256.*   
+   Change the cipher-suite name to one of the ciphers supported by your MQ server.  
+   *For our tests we tried TLS_RSA_WITH_AES_128_CBC_SHA256 and TLS_RSA_WITH_AES_256_CBC_SHA256.*  
    The supported ciphers are subject to the ones available within the JVM API-Gateway is running on.  
    {{< alert title="Note" color="primary" >}}
-   The Cipher spec names are different between different vendors of JVM's. API-Gateway comes with a JVM that uses the Oracle naming conventions. See details on: [SSL/TLS CipherSpecs and CipherSuites in IBM MQ classes for JMS](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_8.0.0/com.ibm.mq.dev.doc/q113220_.htm)   
+   The Cipher spec names are different between different vendors of JVM's. API-Gateway comes with a JVM that uses the Oracle naming conventions. See details on: [SSL/TLS CipherSpecs and CipherSuites in IBM MQ classes for JMS](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_8.0.0/com.ibm.mq.dev.doc/q113220_.htm)  
    An MQ client must signal one specific cipher suite it intents to use. So, the best fitting one of the configured ciphers specs of the IBM MQ channel the client needs to connect to must be provided here.
    {{< /alert >}}  
    Figure shows the TLS configuration (TLS server authentication only):  
@@ -75,7 +75,7 @@ We could install newer client libs as packaged with the product as long as the c
 IBM is providing JMS client libraries for IBM MQ named "".
 
 {{< alert title="Note" color="primary" >}}
-Please note, this information is provided for convenience only. Getting software from IBM requires an IBM ID for logging in and downloading artifacts. The IBM terms and conditions apply. Axway is not responsible for this service. Use of the downloaded components is at the risk of the API-Gateway user.   
+Please note, this information is provided for convenience only. Getting software from IBM requires an IBM ID for logging in and downloading artifacts. The IBM terms and conditions apply. Axway is not responsible for this service. Use of the downloaded components is at the risk of the API-Gateway user.  
 The configuration steps 1-3 still apply!
 {{< /alert >}}
 
