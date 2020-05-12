@@ -168,26 +168,8 @@ The more details you provide, the more helpful the issue, and the faster we can 
 To create a documentation issue:
 
 1. Click **Create documentation issue** on the upper right corner of any page. You are redirected to GitHub and asked to sign in with your GitHub account.
-2. Add a title to the issue.
-
-    The title of the issue is completed by default with the name of the page, but you can edit it to make it more helpful.
-3. Provide detailed information about the problem.
-
-    You can use the following template to write the body of the issue:
-    ```
-    ## Issue description
-
-    <!--Describe the problem that you found.-->
-
-    ## Problem location
-
-    <!--Give the URL of the page or section that contains the problem.-->
-
-    ## Suggestions for a fix
-
-    <!--If you have specific ideas about how we can fix this, let us know. -->
-    ```
-4. Click **Submit new issue**.
+2. Add a title to the issue. The title of the issue is completed by default with the name of the page, but you can edit it to make it more helpful.
+3. Provide detailed information about the problem. A template is provided.
 
 When the issue is created, GitHub sends an email notification to you and to the maintainers of the project. You can also find your issue on the Axway-Open-Docs [list of issues](https://github.com/Axway/axway-open-docs/issues).
 
