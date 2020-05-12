@@ -3,9 +3,8 @@ title: Customize API Portal look and feel
 linkTitle: Customize look and feel
 weight: 2
 date: 2019-07-30T00:00:00.000Z
-description: >-
-  Customize the look and feel of API Portal with your own logos, colors, and so
-  on.
+description: Customize the look and feel of API Portal with your own logos,
+  colors, and so on.
 ---
 For internally-facing API deployments, you can deploy API Portal "as is" using the out-of-the-box Axway branding. This type of deployment requires no customization.
 
@@ -16,8 +15,7 @@ For external-facing API deployments, you may want to customize API Portal to pr
 Customization can be performed at three levels:
 
 * **Customization through configuration**: Use the Joomla! Admin Interface (JAI) (`https://<API Portal host>/administrator`) to change CSS stylesheets, templates, and layouts. These types of customizations are can be upgraded and retained when you move to new version. The customization does not modify the API Portal source code and is supported by Axway.
-* **Customization through code**: API Portal is developed using the PHP scripting language and the source code is provided. This is how Joomla! applications are deployed. You can modify the PHP source code to customize API Portal, such as to change the functionality of pages and to extend by adding new pages. This type of customization is only recommended for customers with Joomla! or PHP experience that need to deploy a highly tailored developer portal.
-    {{< alert title="Caution" color="warning" >}}These customizations are lost when you upgrade. The source code is subject to frequent changes without notice; therefore, you must reintegrate customizations into the new API Portal code to avoid restoring a deprecated code along with the customizations.{{< /alert >}}
+* **Customization through code**: API Portal is developed using the PHP scripting language and the source code is provided. This is how Joomla! applications are deployed. You can modify the PHP source code to customize API Portal, such as to change the functionality of pages and to extend by adding new pages. This type of customization is only recommended for customers with Joomla! or PHP experience that need to deploy a highly tailored developer portal.   {{< alert title="Caution" color="warning" >}}These customizations are lost when you upgrade. The source code is subject to frequent changes without notice; therefore, you must reintegrate customizations into the new API Portal code to avoid restoring a deprecated code along with the customizations.{{< /alert >}}
 * **Customization through the addition of Joomla! plug-ins**: The Joomla! CMS offers thousands of extensions that are available from their website. Axway is only responsible for the support to extensions that are delivered out of the box (EasyBlog and EasyDiscuss).
 
 {{< alert title="Note" color="primary" >}} If you submit a case to Axway Support and it is suspected that unsupported third-party extensions may be the root cause of the issue, you must reproduce the issue on a non-customized API Portal.{{< /alert >}}
@@ -41,15 +39,13 @@ With ThemeMagic, you have an administrative interface for creating or modifying 
 1. Log in to the Joomla! Administrator Interface (JAI), and click **Extensions > Templates**.
 2. In Templates sidebar, select **Styles**, then select the style **Purity III - Default**.
 
-    ![Joomla user interface with Purity III selecting the styles](/Images/APIPortal/JoomlaThemeMagicStyles.png)
-
+   ![Joomla user interface with Purity III selecting the styles](/Images/APIPortal/JoomlaThemeMagicStyles.png)
 3. Select **ThemeMagic**. ThemeMagic opens your portal home page with theme variables are displayed on the left.
 
-    ![Joomla User Interface with Purity III theme magic](/Images/APIPortal/joomlathememagic.png)
-
+   ![Joomla User Interface with Purity III theme magic](/Images/APIPortal/joomlathememagic.png)
 4. In the ThemeMagic window, sign in to API Portal. You are now ready to start customizing your portal.
 
-    ![Screenshot on ThemeMagic](/Images/APIPortal/JoomlaThemeMagiconAPIPortal.png)
+   ![Screenshot on ThemeMagic](/Images/APIPortal/JoomlaThemeMagiconAPIPortal.png)
 
 ### Create a new theme
 
@@ -58,8 +54,7 @@ API Portal includes one theme named **Axway**. Create any additional themes fro
 1. Open the ThemeMagic tool, and ensure that the theme selected is the default **Axway** theme.
 2. Click the drop-down next to the **Preview** button, and select **Save As**:
 
-    ![API Portal customize color screen](/Images/APIPortal/portal_customize.png)
-
+   ![API Portal customize color screen](/Images/APIPortal/portal_customize.png)
 3. Enter a name for your theme, click **Accept**, and wait until the new theme is ready. A new folder is created for your new theme in `local/less/themes/`.
 4. Ensure that the theme selected is your new theme, and change the theming variables on the left as needed to customize your theme.
 5. To check how your changes look on the page, click **Preview**.
@@ -83,8 +78,7 @@ In addition, there are some other variables for fine-grain customization of the 
 2. In the Templates sidebar, select **Styles**, then select the style **Purity III - Default**.
 3. Select the **Theme** page, and select your new theme from the **Theme** drop-down menu:
 
-    ![API Portal sample screen on how to save a new theme in templates](/Images/APIPortal/portal_templates.png)
-
+   ![API Portal sample screen on how to save a new theme in templates](/Images/APIPortal/portal_templates.png)
 4. Click **Save**, then click **</> Less to CSS**. This is the preferred option as it will only compile the theme you want to use.
 
 ### Configuration files
@@ -139,21 +133,22 @@ To customize the banner:
 
 1. In JAI, click **Extensions > Modules > Home Page Banner**.
 2. Customize the following:
-    * **Title** - Free text field for the title of the banner. Defaults to **Enter API Portal**.
-    * **Title colour** - Colour picker to choose the color of the title.
-    * **Sub-title** - Free text field for the subtitle of the banner. Defaults to **Explore and test our APIs**.
-    * **Subtitle colour** - Colour picker to choose the color of the subtitle.
-    * **Explore Button** - Show / Hide Explore Button.
-    * **Button text** - Free text field for the button text.
-    * **Button text colour** - Colour picker to choose the color of the button text.
-    * **Button has background** - Yes / No.
-    * **Link button to a menu item** - Drop-down list with all menu items. Choose a page to link to when click the button. Defaults to **Sign in** page.
-    * **Button border colour** - Colour picker to choose the color of the button border.
-    * **Border radius** - Numbers only field for border radius of the button border. Defaults to **500**.
-    * **Background image** - Change the background image of the banner. You can choose an image from the media manager or upload a new image.
-    * **Text alignment** - Choose one of the three options (left, center, right) to position the text and the button on the banner.
 
-    The module position defaults to **api-home-banner**.
+   * **Title** - Free text field for the title of the banner. Defaults to **Enter API Portal**.
+   * **Title colour** - Colour picker to choose the color of the title.
+   * **Sub-title** - Free text field for the subtitle of the banner. Defaults to **Explore and test our APIs**.
+   * **Subtitle colour** - Colour picker to choose the color of the subtitle.
+   * **Explore Button** - Show / Hide Explore Button.
+   * **Button text** - Free text field for the button text.
+   * **Button text colour** - Colour picker to choose the color of the button text.
+   * **Button has background** - Yes / No.
+   * **Link button to a menu item** - Drop-down list with all menu items. Choose a page to link to when click the button. Defaults to **Sign in** page.
+   * **Button border colour** - Colour picker to choose the color of the button border.
+   * **Border radius** - Numbers only field for border radius of the button border. Defaults to **500**.
+   * **Background image** - Change the background image of the banner. You can choose an image from the media manager or upload a new image.
+   * **Text alignment** - Choose one of the three options (left, center, right) to position the text and the button on the banner.
+
+   The module position defaults to **api-home-banner**.
 3. Click **Save**.
 
 ### Customize the tiles
@@ -173,16 +168,18 @@ To customize the tiles:
 
 1. In JAI, click **Extensions > Modules > Home Tiles 1**.
 2. Customize the following:
-    * **Title** - Free text field for the title. Defaults to **Explore & Test**.
-    * **Title Colour** - Colour picker to choose the colour of the title.
-    * **Description** - Free text field for the description of the tile (The short text under the title).
-    * **Description colour** - Colour picker to choose the colour of the description text.
-    * **Background image** - Change the icon of the tile. You can choose an image from the media manager or upload a new image.
-    * **Background colour** - Colour picker to choose the background colour of the whole tile. Defaults to **white**.
-    * **Tile has link**:
-        * **Menu item** - Drop-down list with all menu items. Choose a menu item to link the Tile to (Defaults to the chosen option).
-        * **Custom** - Free text field. Enter any valid URL to link the tile to.
-        * **No** - No link at all.
+
+   * **Title** - Free text field for the title. Defaults to **Explore & Test**.
+   * **Title Colour** - Colour picker to choose the colour of the title.
+   * **Description** - Free text field for the description of the tile (The short text under the title).
+   * **Description colour** - Colour picker to choose the colour of the description text.
+   * **Background image** - Change the icon of the tile. You can choose an image from the media manager or upload a new image.
+   * **Background colour** - Colour picker to choose the background colour of the whole tile. Defaults to **white**.
+   * **Tile has link**:
+
+     * **Menu item** - Drop-down list with all menu items. Choose a menu item to link the Tile to (Defaults to the chosen option).
+     * **Custom** - Free text field. Enter any valid URL to link the tile to.
+     * **No** - No link at all.
 
 The home page layout is designed to have up to six tiles, so positions **api-home-tiles-5** and **api-home-tiles-6** are available for use.
 
@@ -198,20 +195,24 @@ Change the API Portal site logo using the Joomla! Media Manager.
 ### Upload your image file
 
 1. In Joomla! Administrator Interface (JAI), click **Content > Media**.
-2. Under **Media Folders**, click **com_apiportal > menu**.
+2. Select the place where you want to upload the image. For example: **com_apiportal** folder.
 3. Upload the image file you want to use, and select **Save**.
 
-### Link the logo to your home page
+### Link the logo to your template styles
 
-To configure the main menu to link your logo to the home page:
+To link your logo to template:
 
-1. In JAI, click **Menus > Main Menu**. A list of menu items is displayed.
-2. In the list of menu items, click **Home**. This is the first item where the logo is attached.
-3. Go to the **Link Type** tab, and in **Link Image**, click **Select**.
-4. In **Folder**, select the folder **com_apiportal/menu**.
-5. Select your logo from the list of the available image files, and click **Insert**.
+1. In JAI, click **Extensions > Templates > Styles**. A list of template styles is displayed.
+2. Click on template style. 
+
+   **Note:** Steps from 2 to 6 should be applied to all template styles that are used**.**
+3. Go to the **Theme** tab, and in **Logo Image**, click **Select**.
+4. Navigate to the folder where the image was uploaded.
+5. Select your logo from the list of the available image files and click **Insert**. 
+
+   **Note:** If your logo is in **SVG** format you will not see it in the list. In that case you need to enter the path to that image in **Image URL** field. The path should start with **images/** segment. For example: **images/path-to-logo/logo-filename.svg**
 6. Click **Save**.
-7. Refresh the API Portal home page in the browser. Your selected logo is displayed.
+7. Go to API Portal in the browser. Your selected logo is displayed.
 
 ## Customize standard footer
 
@@ -269,5 +270,4 @@ Assign your new template as the default `404` page in API Portal.
 3. Click the style to open it, and select the **Assignment** tab.
 4. Select **Home** in the **Main Menu**.
 5. Save and close the style.
-6. Refresh the API Portal home page in the browser.
-   Your customization is available, and is displayed when a user triggers the error page.
+6. Refresh the API Portal home page in the browser. Your customization is available, and is displayed when a user triggers the error page.
