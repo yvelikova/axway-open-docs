@@ -11,6 +11,7 @@
 One of the core components of Axway AMPLIFY API Management is the API-Gateway. API-Gateway ships with support of several 3rd party systems for easy integration. It's working as a client which is requesting services from external providers. One of those built-in features is support for the messaging system [IBM MQ](https://www.ibm.com/products/mq). IBM MQ is a widely used enterprise message communication service that often powers complex and mission critical services.
 
 API-Gateway is built on Java and therefore uses JMS for messaging. Connecting to JMS servers needs some general configuration and special settings in case of IBM MQ:
+
 * Connect to JMS server configuration: [Configure messaging services](/docs/apim_policydev/apigw_poldev/general_messaging/index.html)
 * In order to listen on queues or topics for messages to process a JMS service provider (listener) must be configured: [Configure API Gateway instances and listeners](/docs/apim_policydev/apigw_gw_instances/index.html) on section *Configure Messaging System connections*
 * For write processed messages to queues or topics and wait reply messages for backend service communication: [Policy filter reference](https://docs.axway.com/bundle/axway-open-docs/page/docs/apim_policydev/apigw_polref/index.html) - [Route to JMS filters](/docs/apim_policydev/apigw_polref/routing_jms/index.html)
@@ -25,27 +26,20 @@ That means, client programs can use older connectivity libraries to connect newe
 API Gateway is acting as client connecting to an IBM MQ server. Therefore, its installation is bundled with the *IBM MQ JMS and Java redistributable client* (up to API-Gateway v7.7.20200130 its IBM MQ client v7.5.0.8). More current versions of IBM MQ server (like 9.1.5 we tested with) still allow those clients to connect, but have more strict requirements on TLS.
 
 The basic setup within Policy Studio for IBM MQ server connectivity needs to be adopted:
+
 1) follow the instructions on [Configure messaging services](/docs/apim_policydev/apigw_poldev/general_messaging/index.html) for IBM MQ  
-   Figure shows the JMS service configuration wizard:
-
-   ![MQ JMS Service](/Images/APIGateway/extconn_jms_service_ibmmq_settings.png)
-
-2) In the JMS wizard, with service type *IBM MQ* selected:
-
+   Figure shows the JMS service configuration wizard:  
+   ![MQ JMS Service](/Images/APIGateway/extconn_jms_service_ibmmq_settings.png)  
+2) In the JMS wizard, with service type *IBM MQ* selected:  
    Change the cipher-suite name to one of the ciphers supported by your MQ server.   
    *For our tests we tried TLS_RSA_WITH_AES_128_CBC_SHA256 and TLS_RSA_WITH_AES_256_CBC_SHA256.*   
    The supported ciphers are subject to the ones available within the JVM API-Gateway is running on.  
-   
    {{< alert title="Note" color="primary" >}}
    The Cipher spec names are different between different vendors of JVM's. API-Gateway comes with a JVM that uses the Oracle naming conventions. See details on: [SSL/TLS CipherSpecs and CipherSuites in IBM MQ classes for JMS](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_8.0.0/com.ibm.mq.dev.doc/q113220_.htm)   
    An MQ client must signal one specific cipher suite it intents to use. So, the best fitting one of the configured ciphers specs of the IBM MQ channel the client needs to connect to must be provided here.
-   {{< /alert >}}
-
-   Figure shows the TLS configuration (TLS server authentication only):
-
-   ![MQ JMS Advanced](/Images/APIGateway/extconn_jms_service_ibmmq_advanced.png)
-
-
+   {{< /alert >}}  
+   Figure shows the TLS configuration (TLS server authentication only):  
+   ![MQ JMS Advanced](/Images/APIGateway/extconn_jms_service_ibmmq_advanced.png)  
 3) The JVM, more precise the IBM MQ client code, needs to know how to handle the TLS cipher specification string. In order to allow the correct interpretation a Java parameter must be set for the JVM. For API-Gateway parameters are configured within `<installpath>/apigateway/system/conf/jvm.xml`.
 Afterwards the API-Gateway must be stopped and started again for the setting to take effect.
 
@@ -99,8 +93,9 @@ There is no guarantee for this "upgrade in the field" will work as expected. It'
 ### How to test a TLS connectivity to IBM MQ?
 
 Since containers have become popular many products are available as pre-build Docker images from repositories like Docker-Hub. We have used such an IBM provided Docker image to run an IBM MQ server locally for our tests.
-- Docker image: [Docker Hub ibmcom/mq](https://hub.docker.com/r/ibmcom/mq/) [last visited: 12th May 2020]
-- Additional documentation: [Github ibm-messaging/mq-container](https://github.com/ibm-messaging/mq-container/blob/9.1.0/docs/usage.md) [last visited: 12th May 2020]
+
+* Docker image: [Docker Hub ibmcom/mq](https://hub.docker.com/r/ibmcom/mq/) [last visited: 12th May 2020]
+* Additional documentation: [Github ibm-messaging/mq-container](https://github.com/ibm-messaging/mq-container/blob/9.1.0/docs/usage.md) [last visited: 12th May 2020]
 
 **Sample commands for using IBM MQ container with TLS for testing:**
 
@@ -143,7 +138,6 @@ docker run \
 # 7) check if MQ server channel is TLS secured
 openssl s_client -showcerts -connect localhost:1414
 ```
-
 
 ## Conclusion
 
