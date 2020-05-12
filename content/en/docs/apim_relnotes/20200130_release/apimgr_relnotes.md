@@ -4,7 +4,7 @@
   "no_list": "true",
   "weight": "90",
   "date": "2019-09-20",
-  "description": "Learn about the new features and enhancements in this release of API Gateway and API Manager."
+  "description": "This update adds OAS 3.0 support and includes various other improvements."
 }
 
 ## Summary

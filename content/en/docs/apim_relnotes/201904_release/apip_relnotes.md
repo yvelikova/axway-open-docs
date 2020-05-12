@@ -3,7 +3,7 @@
 "linkTitle": "API Portal April 2019",
 "weight":"110",
 "date": "2019-09-07",
-"description": "Learn about the new features and enhancements in this release of API Portal."
+"description": "This release includes GDPR compliance and other improvements."
 }
 
 ## Summary

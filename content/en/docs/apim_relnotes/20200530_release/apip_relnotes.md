@@ -4,7 +4,7 @@ linkTitle: API Portal May 2020
 no_list: true
 weight: 70
 date: 2020-03-11T00:00:00.000Z
-description: Learn about the new features and enhancements in this update of API Portal.
+description: This update includes [add key new features or improvements here].
 ---
 
 ## Summary

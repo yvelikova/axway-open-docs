@@ -4,7 +4,7 @@
   "no_list": "true",
   "weight": "80",
   "date": "2020-03-11",
-  "description": "Learn about the new features and enhancements in this update of API Gateway and API Manager."
+  "description": "In this update OpenSSL has been upgraded to OpenSSL 1.1.1."
 }
 
 ## Summary

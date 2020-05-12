@@ -4,7 +4,7 @@
   "no_list": "true",
   "weight": "70",
   "date": "2020-03-11",
-  "description": "Learn about the new features and enhancements in this update of API Gateway and API Manager."
+  "description": "This update includes [add key new features or improvements here]."
 }
 
 ## Summary

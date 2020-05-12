@@ -4,7 +4,7 @@
   "no_list": "true",
   "weight": "60",
   "date": "2020-03-26",
-  "description": "Learn about the new features and enhancements in this release of API Manager."
+  "description": "In this release OpenJDK replaces Oracle JRE as the Java runtime for API Gateway and API Manager, and it includes various other improvements."
 }
 
 ## Summary
