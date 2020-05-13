@@ -30,7 +30,7 @@ The basic setup within Policy Studio for IBM MQ server connectivity needs to be 
 1) follow the instructions on [Configure messaging services](/docs/apim_policydev/apigw_poldev/general_messaging/index.html) for IBM MQ  
    *Figure shows the JMS service configuration wizard:*  
    ![MQ JMS Service](/Images/APIGateway/extconn_jms_service_ibmmq_settings.png)  
-     
+  
 2) In the JMS wizard, with service type *IBM MQ* selected:  
    Change the cipher suite name to one of the ciphers suites supported by your MQ server.  
    *For our tests we tried TLS_RSA_WITH_AES_128_CBC_SHA256 and TLS_RSA_WITH_AES_256_CBC_SHA256.*  
@@ -41,11 +41,11 @@ The basic setup within Policy Studio for IBM MQ server connectivity needs to be 
    {{< /alert >}}  
    *Figure shows the TLS configuration (TLS server authentication only):*  
    ![MQ JMS Advanced](/Images/APIGateway/extconn_jms_service_ibmmq_advanced.png)  
-     
+  
 3) The JVM, more precise the IBM MQ JMS client code, needs to know how to handle the TLS cipher suite name string. In order to allow the correct interpretation a Java parameter must be set for the JVM. For API-Gateway these parameters are configured within `<installpath>/apigateway/system/conf/jvm.xml`.
 For changes on this config file to take effect API-Gateway must be stopped and started.
 
-*Sample change on jvm.xml:*
+*Sample change on jvm.xml:*  
 ```
 ...
 <JVMSettings classloader="com.vordel.boot.ServiceClassLoader">
