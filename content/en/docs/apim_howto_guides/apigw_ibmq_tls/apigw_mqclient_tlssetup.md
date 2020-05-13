@@ -45,7 +45,8 @@ The basic setup within Policy Studio for IBM MQ server connectivity needs to be 
 3) The JVM, more precise the IBM MQ JMS client code, needs to know how to handle the TLS cipher suite name string. In order to allow the correct interpretation a Java parameter must be set for the JVM. For API-Gateway these parameters are configured within `<installpath>/apigateway/system/conf/jvm.xml`.
 For changes on this config file to take effect API-Gateway must be stopped and started.
 
-*Sample change on jvm.xml:*  
+*Sample change on jvm.xml:*
+
 ```
 ...
 <JVMSettings classloader="com.vordel.boot.ServiceClassLoader">
