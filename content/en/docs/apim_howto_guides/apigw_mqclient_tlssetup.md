@@ -3,7 +3,7 @@
     "linkTitle": "Configure API Gateway for IBM MQ Server TLS",
     "weight": "10",
     "date": "2020-05-11",
-    "description": "How to configure API Gateway to securely connect via TLS to an IBM MQ server and keep up with changes by IBM on the server side. How to configure TLS communication on API Gateway for different IBM MQ server versions."
+    "description": "Describes how to configure API Gateway to securely connect using TLS to an IBM MQ server and keep up with changes by IBM on the server side, including how to configure TLS communication on API Gateway for different IBM MQ server versions."
 }
 
 ## Integration with IBM MQ
@@ -12,9 +12,9 @@ One of the core components of AMPLIFY API Management is the API Gateway. API Gat
 
 API Gateway is built on Java and uses Java message service (JMS) for messaging. Connecting to JMS servers requires some general configuration and special settings:
 
-* Connect to JMS server configuration - see [Configure messaging services](/docs/apim_policydev/apigw_poldev/general_messaging/)
-* To listen on queues or topics for messages to process, configure a JMS service provider (listener) - see [Configure API Gateway instances and listeners](/docs/apim_policydev/apigw_gw_instances/) on section *Configure Messaging System connections*
-* For writing otherwise received and processed messages to queues or topics and waiting for reply messages from back-end services - see [Policy filter reference](https://docs.axway.com/bundle/axway-open-docs/page/docs/apim_policydev/apigw_polref/) - [Route to JMS filters](/docs/apim_policydev/apigw_polref/routing_jms/)
+* To configure the connection to a JMS server, see [Configure messaging services](/docs/apim_policydev/apigw_poldev/general_messaging/).
+* To listen on queues or topics for messages to process, configure a JMS service provider (listener) as detailed in [Configure API Gateway instances and listeners](/docs/apim_policydev/apigw_gw_instances/) on section *Configure Messaging System connections*
+* For writing received and processed messages to queues or topics and waiting for reply messages from back-end services, see [Route to JMS filters](/docs/apim_policydev/apigw_polref/routing_jms/)
 
 Different vendors have different strategies to maintain compatibility between messaging clients and JMS servers. IBM offers backward compatibility for some versions of MQ clients as described in [IBM Support, MQ 7.x, MQ 8.0, MQ 9.0 and MQ 9.1 compatibility with previous versions](https://www.ibm.com/support/pages/mq-7x-mq-80-mq-90-and-mq-91-compatibility-previous-versions-including-usage-ccdt-files-jms-bindings-ssltls).  
 
@@ -62,17 +62,23 @@ Adapt the basic setup within Policy Studio for IBM MQ server connectivity as fol
 
 ## Tools for analyzing and solving TLS issues
 
-From experiences of Axway pre-sales and services consultants, sometimes it can be hard to find out what the right configuration option for TLS might be. Best options is to request  detail from the MQ server owners or operators. Sometimes its not practicable or takes to long to get those details (especially for testing or in POC's). In those situations it can be helpful to find out what TLS cipher specifications are currently provided by the MQ server in order to choose a supported one for proper API-Gateway configuration.
+From experiences of Axway pre-sales and services consultants, sometimes it can be hard to find out what the right configuration option for TLS might be. Best options is to request  detail from the MQ server owners or operators. Sometimes its not practicable or takes too long to get those details (especially for testing or in POCs). In those situations it can be helpful to find out what TLS cipher specifications are currently provided by the MQ server in order to choose a supported one for proper API Gateway configuration.
 
 A Linux bash script as provided in this blog post [How to list TLS cipher suites a particular web-site offers?](https://superuser.com/questions/109213/how-do-i-list-the-ssl-tls-cipher-suites-a-particular-website-offers#answer-224263) *[last visited: 12th May 2020]* can help to get the needed insight.
+
 As mentioned above different vendors or entities name the SSL/TLS cipher suites differently. To get a translation from OpenSSL names to the needed cipher suite names the Oracle JVM is using, a lookup here can help: [Testssl.sh - OpenSSL to IANA name mapping](https://testssl.sh/openssl-iana.mapping.html) *[last visited: 12th May 2020]*.  
-Sample for calling this script: `bash ciphertest.sh localhost:1414 | grep YES`
 
-## Improving IBM MQ Compatibility
+The following example shows calling this script:
 
-Another idea to improve the compatibility of API-Gateway for use with IBM MQ server is to use the extension mechanism provided by API-Gateway. 3rd party Java archives can be added to API-Gateway by applying the needed jar files in directory `<installdir>/apigateway/ext/lib`. These Java files now within the classpath of the API-Gateway. This mechanism is used to add capabilities to the API-Gateway. For example 3rd party vendor clients or custom developed enhancements can be added to API-Gateway this way. See [Adding a custom filter](/docs/apigtw_devguide/custom_filter_add/index.html) for details.
+```
+bash ciphertest.sh localhost:1414 | grep YES
+```
 
-Knowing this, we can install newer client libraries as the ones that come packaged with the product. As long as the client interfaces have not changed significantly upgrades are possible this way. This works because the `<installdir>/apigateway/ext/lib` subdirectory takes precedence over the API-Gateway out-of-the-box libraries. Therefore, we can substitute the originally shipped libraries by those provided ones.
+## Improve IBM MQ compatibility
+
+Another idea to improve the compatibility of API Gateway for use with IBM MQ server is to use the extension mechanism provided by API Gateway. You can add third-party Java archives to API Gateway by copying the necessary JAR files to the directory `<installdir>/apigateway/ext/lib`. These Java files are now included in the classpath of API Gateway. This mechanism is used to add capabilities to the API Gateway. For example, third-party vendor clients or custom developed enhancements can also be added to API Gateway this way. See [Adding a custom filter](/docs/apigtw_devguide/custom_filter_add/) for details.
+
+Knowing this, we can install newer client libraries as the ones that come packaged with the product. As long as the client interfaces have not changed significantly upgrades are possible this way. This works because the `<installdir>/apigateway/ext/lib` subdirectory takes precedence over the API Gateway out-of-the-box libraries. Therefore, we can substitute the originally shipped libraries by those provided ones.
 
 ### Steps to install a new IBM MQ client
 
