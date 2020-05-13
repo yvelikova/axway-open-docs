@@ -1,11 +1,10 @@
 {
 "title": "Configure diagnostic trace",
-"linkTitle": "Configure diagnostic trace",
-"weight":"117",
-"date": "2019-10-14",
-"description": "Configure and view diagnostic trace and debugging information about API Gateway runtime execution."
+  "linkTitle": "Configure diagnostic trace",
+  "weight": "117",
+  "date": "2019-10-14",
+  "description": "Configure and view diagnostic trace and debugging information about API Gateway runtime execution."
 }
-
 By default, API Gateway produces diagnostic trace and debugging information to record details about its runtime execution. For example, this includes services starting or stopping, exceptions, and messages sent through the gateway. This information can then be used by administrators and developers for diagnostics and debugging purposes, and is useful when contacting [Axway Support](https://support.axway.com/).
 
 You can view and search the contents of API Gateway tracing in the following locations:
@@ -13,6 +12,7 @@ You can view and search the contents of API Gateway tracing in the following loc
 * **Logs > Trace** view in API Gateway Manager
 * A console window for the running server
 * Trace files in the following locations:
+
     * Admin Node Manager: `INSTALL_DIR/trace`
     * API Gateway instance: `INSTALL_DIR/groups/<group-id>/<instance-id>/trace`
     * API Gateway Analytics: `INSTALL_DIR/trace`
@@ -48,7 +48,7 @@ For example, the first line in the above extract is described as follows:
 
 `Timestamp`: 15/Jun/2012:09:54:01.047 (day:hours:minutes:seconds:milliseconds)
 
-`Thread-id`: [1b10]
+`Thread-id`: \[1b10]
 
 `TraceMessage`: Realtime monitoring enabled
 
@@ -88,10 +88,7 @@ By default, trace files are named `servername_timestamp.trc` (for example, `serv
 <FileRolloverTrace maxfiles="500" filename="%s_%Y%m%d%H%M%S.trc"/>
 ```
 
-This setting means that API Gateway writes Node Manager trace output to `nodemanager;onhostname_timestamp .trc`
-(for example, `nodemanager;on127.0.0.1_20130118160212.trc`) in the `trace`
-directory of the API Gateway installation. And, the maximum number of files that the `trace`
-directory can contain is `500`.
+This setting means that API Gateway writes Node Manager trace output to `nodemanager;onhostname_timestamp .trc` (for example, `nodemanager;on127.0.0.1_20130118160212.trc`) in the `trace` directory of the API Gateway installation. And, the maximum number of files that the `trace` directory can contain is `500`.
 
 ### Configure rollover settings
 
@@ -126,8 +123,7 @@ The following setting shows example attributes:
     directory="/mydir/log/trace" filename="myserver.trc"/>
 ```
 
-This setting means that API Gateway writes trace output to `myserver.trc`
-in the `/mydir/log/trace` directory, and rolls the trace files over at the start of each day. The maximum number of files that this directory can contain is `5`, and the maximum trace file size is 10 MB.
+This setting means that API Gateway writes trace output to `myserver.trc` in the `/mydir/log/trace` directory, and rolls the trace files over at the start of each day. The maximum number of files that this directory can contain is `5`, and the maximum trace file size is 10 MB.
 
 ### Write output to syslog
 
@@ -326,9 +322,9 @@ All `snd` and `rcv` trace statements start and end with < and > respectively. If
 
 ## Integrate trace output with Apache log4J
 
-Apache log4j is included on API Gateway classpath. This is because some third-party products that API Gateway interoperates with require log4j. The configuration for log4j is found in the gateway `INSTALL_DIR/system/conf` directory in the `log4j2.xml` file.
+Apache log4j is included on API Gateway classpath. This is because some third-party products that API Gateway interoperates with require log4j. The configuration for log4j is found in the gateway `INSTALL_DIR/system/conf` directory in the `log4j2.yaml` file.
 
-For example, to specify that the log4j appender sends output to the gateway trace file, add the following setting to your `log4j2.xml` file:
+For example, to specify that the log4j appender sends output to the gateway trace file, add the following setting to your `log4j2.yaml` file:
 
 ```
 <Root level="debug">
