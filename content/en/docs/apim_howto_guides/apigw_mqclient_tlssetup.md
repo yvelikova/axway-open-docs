@@ -1,65 +1,64 @@
 {
-    "title": "API-Gateway client TLS configuration for IBM MQ",
-    "linkTitle": "TLS config of API Gateway for IBM MQ",
+    "title": "Configure API Gateway for IBM MQ Server TLS",
+    "linkTitle": "Configure API Gateway for IBM MQ Server TLS",
     "weight": "10",
     "date": "2020-05-11",
-    "description": "How to configure TLS communication on API-Gateway for different IBM MQ server versions."
+    "description": "How to configure API Gateway to securely connect via TLS to an IBM MQ server and keep up with changes by IBM on the server side. How to configure TLS communication on API Gateway for different IBM MQ server versions."
 }
 
 ## Integration with IBM MQ
 
-One of the core components of Axway AMPLIFY API Management is the API-Gateway. API-Gateway ships with support of several 3rd party systems for a more easy integration. It's acting as a client which is requesting services from an external provider. One of those built-in features is support for the messaging system [IBM MQ](https://www.ibm.com/products/mq). IBM MQ is a widely used enterprise message communication service that often powers complex and mission critical services for large enterprises.
+One of the core components of AMPLIFY API Management is the API Gateway. API Gateway ships with support for several third-party systems for easier integrations. API Gateway is acting as a client requesting services from an external provider. One of those built-in features is support for the messaging system [IBM MQ](https://www.ibm.com/products/mq). IBM MQ is a widely used enterprise message communication service that often powers complex and mission critical services for large enterprises.
 
-API-Gateway is built on Java and therefore uses JMS for messaging. Connecting to JMS servers needs some general configuration and special settings:
+API Gateway is built on Java and uses Java message service (JMS) for messaging. Connecting to JMS servers requires some general configuration and special settings:
 
-* Connect to JMS server configuration: [Configure messaging services](/docs/apim_policydev/apigw_poldev/general_messaging/index.html)
-* In order to listen on queues or topics for messages to process a JMS service provider (listener) must be configured: [Configure API Gateway instances and listeners](/docs/apim_policydev/apigw_gw_instances/index.html) on section *Configure Messaging System connections*
-* For writing otherwise received and processed messages to queues or topics and waiting for reply messages from backend services: [Policy filter reference](https://docs.axway.com/bundle/axway-open-docs/page/docs/apim_policydev/apigw_polref/index.html) - [Route to JMS filters](/docs/apim_policydev/apigw_polref/routing_jms/index.html)
+* Connect to JMS server configuration - see [Configure messaging services](/docs/apim_policydev/apigw_poldev/general_messaging/)
+* To listen on queues or topics for messages to process, configure a JMS service provider (listener) - see [Configure API Gateway instances and listeners](/docs/apim_policydev/apigw_gw_instances/) on section *Configure Messaging System connections*
+* For writing otherwise received and processed messages to queues or topics and waiting for reply messages from back-end services - see [Policy filter reference](https://docs.axway.com/bundle/axway-open-docs/page/docs/apim_policydev/apigw_polref/) - [Route to JMS filters](/docs/apim_policydev/apigw_polref/routing_jms/)
 
-Different vendors have different strategies how to maintain compatibility between messaging clients and JMS servers. IBM offers backward compatibility for some versions of MQ clients - reference: [IBM Support, MQ 7.x, MQ 8.0, MQ 9.0 and MQ 9.1 compatibility with previous versions](https://www.ibm.com/support/pages/mq-7x-mq-80-mq-90-and-mq-91-compatibility-previous-versions-including-usage-ccdt-files-jms-bindings-ssltls).  
-That means, client programs can use older connectivity libraries to connect to newer versions of the MQ servers. This allows to decouple lifetime/maintenance cycles of client applications from a currently used MQ server. But, for securing the communication via TLS IBM is not compromising on security. Hence, all clients need to support a minimum TLS version and a defined set of TLS ciphers defined by the MQ server. If a MQ client uses a cipher that is not on the list of the supported ones of the IBM MQ server channel, the TLS handshake will fail (error log: `MQRC_UNSUPPORTED_CIPHER_SUITE`).
+Different vendors have different strategies to maintain compatibility between messaging clients and JMS servers. IBM offers backward compatibility for some versions of MQ clients as described in [IBM Support, MQ 7.x, MQ 8.0, MQ 9.0 and MQ 9.1 compatibility with previous versions](https://www.ibm.com/support/pages/mq-7x-mq-80-mq-90-and-mq-91-compatibility-previous-versions-including-usage-ccdt-files-jms-bindings-ssltls).  
 
-*Several API-Management customers had the challenge to connect API-Gateway to an upgraded IBM MQ server and reconfigure the IBM MQ client settings within Policy Studio for this change. The following describes steps and background on how to accomplish this.*
+This means that client programs can use older connectivity libraries to connect to newer versions of the MQ servers. This enables you to decouple lifetime or maintenance cycles of client applications from a currently used MQ server. However, for securing the communication using TLS all clients need to support a minimum TLS version and a defined set of TLS ciphers defined by the MQ server. If a MQ client uses a cipher that is not on the supported list of ciphers for the IBM MQ server channel, the TLS handshake will fail with the error `MQRC_UNSUPPORTED_CIPHER_SUITE`.
 
-## API-Gateway configuration for TLS with IBM MQ Server
+Several AMPLIFY API Management customers were facing the challenge to connect API Gateway to an upgraded IBM MQ server, and reconfigure the IBM MQ client settings within Policy Studio for this change, and the following sections describe the background and steps for how best to accomplish this.
 
-API Gateway is acting as client connecting to an IBM MQ server. Therefore, its installation is bundled with the *IBM MQ JMS and Java redistributable client* (up to API-Gateway v7.7.20200130 its IBM MQ client v7.5.0.8). More current versions of IBM MQ server (like 9.1.5 we tested with) still allow those clients to connect, but have more strict requirements on TLS.
+## Configure API Gateway for TLS with IBM MQ Server
 
-The basic setup within Policy Studio for IBM MQ server connectivity needs to be adopted:
+API Gateway is acting as client connecting to an IBM MQ server and it bundles the `IBM MQ JMS and Java redistributable client` within the API Gateway installation (for example, API Gateway up to v7.7.20200130 bundles IBM MQ client v7.5.0.8).  Later versions of IBM MQ server (for example, 9.1.5 is used here) still allow those clients to connect, but have more strict requirements on TLS.
 
-1) follow the instructions on [Configure messaging services](/docs/apim_policydev/apigw_poldev/general_messaging/index.html) for IBM MQ  
-   *Figure shows the JMS service configuration wizard:*  
-   ![MQ JMS Service](/Images/APIGateway/extconn_jms_service_ibmmq_settings.png)  
+Adapt the basic setup within Policy Studio for IBM MQ server connectivity as follows:
+
+1. Follow the steps in [Configure messaging services](/docs/apim_policydev/apigw_poldev/general_messaging/) for IBM MQ.
+
+    The following shows the JMS service configuration wizard:
+    ![MQ JMS Service](/Images/APIGateway/extconn_jms_service_ibmmq_settings.png)  
   
-2) In the JMS wizard, with service type *IBM MQ* selected:  
-   Change the cipher suite name to one of the ciphers suites supported by your MQ server.  
-   *For our tests we tried TLS_RSA_WITH_AES_128_CBC_SHA256 and TLS_RSA_WITH_AES_256_CBC_SHA256.*  
-   The supported ciphers are subject to the ones available within the JVM API-Gateway is running on.  
-   {{< alert title="Note" color="primary" >}}
-   The cipher suite names differ between different vendors of JVM's. API-Gateway comes with a JVM that uses the Oracle naming conventions. See details on: [SSL/TLS CipherSpecs and CipherSuites in IBM MQ classes for JMS](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_8.0.0/com.ibm.mq.dev.doc/q113220_.htm)  
-   An MQ client must signal *one* specific cipher suite it intents to use to the MQ server. So, the best fitting one of the configured ciphers suites of the IBM MQ channel needs to be selected upfront and configured at the client. And of course, the trusted certificate or trust chain of the server certificate must be determined.
-   {{< /alert >}}  
-   *Figure shows the TLS configuration (TLS server authentication only):*  
-   ![MQ JMS Advanced](/Images/APIGateway/extconn_jms_service_ibmmq_advanced.png)  
+2. In the JMS wizard, for the **Service type** `IBM MQ`, change the cipher suite name to one of the ciphers suites supported by your MQ server. This example uses `TLS_RSA_WITH_AES_128_CBC_SHA256` and `TLS_RSA_WITH_AES_256_CBC_SHA256`. The supported ciphers are subject to the ones available within the JVM that API Gateway is running on.
+
+    The cipher suite names differ between different vendors of JVMs. API Gateway comes with a JVM that uses the Oracle naming conventions. For details, see [SSL/TLS CipherSpecs and CipherSuites in IBM MQ classes for JMS](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_8.0.0/com.ibm.mq.dev.doc/q113220_.htm).
+
+    An MQ client must signal *one* specific cipher suite it intends to use to the MQ server. The best fitting one of the configured ciphers suites of the IBM MQ channel needs to be selected upfront and configured at the client. Additionally, the trusted certificate or trust chain of the server certificate must be determined.
+
+    The following shows the TLS configuration (TLS server authentication only):
+    ![MQ JMS Advanced](/Images/APIGateway/extconn_jms_service_ibmmq_advanced.png)  
   
-3) The JVM, more precise the IBM MQ JMS client code, needs to know how to handle the TLS cipher suite name string. In order to allow the correct interpretation a Java parameter must be set for the JVM. For API-Gateway these parameters are configured within `<installpath>/apigateway/system/conf/jvm.xml`.
-For changes on this config file to take effect API-Gateway must be stopped and started.
+3. The JVM (the IBM MQ JMS client code) needs to know how to handle the TLS cipher suite name string. To allow the correct interpretation you must set a Java parameter for the JVM. For API Gateway these parameters are configured in the file `<installpath>/apigateway/system/conf/jvm.xml`. You must stop and restart API Gateway for changes to this configuration file to take effect.
 
-*Sample change on jvm.xml:*
+    Example change to `jvm.xml`:
 
-```
-...
-<JVMSettings classloader="com.vordel.boot.ServiceClassLoader">
-...
-    <!--
-         Parameter is needed for IBM MQ client to correctly interpret TLS
-         cipher specification names. See: Axway KB #178678
-    -->
-    <VMArg name="-Dcom.ibm.mq.cfg.useIBMCipherMappings=false"/>
+    ```
+    ...
+    <JVMSettings classloader="com.vordel.boot.ServiceClassLoader">
+    ...
+        <!--
+            Parameter is needed for IBM MQ client to correctly interpret TLS
+            cipher specification names. See: Axway KB #178678
+        -->
+        <VMArg name="-Dcom.ibm.mq.cfg.useIBMCipherMappings=false"/>
 
-</JVMSettings>
-</ConfigurationFragment>
-```
+    </JVMSettings>
+    </ConfigurationFragment>
+    ```
 
 ## Tools for analyzing and solving TLS issues
 
