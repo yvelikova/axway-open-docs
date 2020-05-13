@@ -13,9 +13,9 @@ You can view and search the contents of API Gateway tracing in the following loc
 * A console window for the running server
 * Trace files in the following locations:
 
-  * Admin Node Manager: `INSTALL_DIR/trace`
-  * API Gateway instance: `INSTALL_DIR/groups/<group-id>/<instance-id>/trace`
-  * API Gateway Analytics: `INSTALL_DIR/trace`
+    * Admin Node Manager: `INSTALL_DIR/trace`
+    * API Gateway instance: `INSTALL_DIR/groups/<group-id>/<instance-id>/trace`
+    * API Gateway Analytics: `INSTALL_DIR/trace`
 
 You can view and search the contents of the gateway trace log, domain audit log, and transaction logs in the **Logs** view in API Gateway Manager.
 
