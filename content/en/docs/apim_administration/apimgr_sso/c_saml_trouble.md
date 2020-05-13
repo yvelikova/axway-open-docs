@@ -4,6 +4,7 @@
   "date": "2019-09-17",
   "description": "Common problems and solutions that you might encounter when configuring API Manager SSO, and how to enable traces for SSO."
 }
+
 ## Logging in both as administrator and SSO user
 
 API Manager does not work properly when logging in both as administrator and SSO user.
