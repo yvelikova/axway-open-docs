@@ -82,18 +82,18 @@ You can also use this capability to install newer client libraries than the ones
 
 ### Install a new IBM MQ client
 
-IBM provides JMS client libraries for IBM MQ named `IBM MQ JMS and Java redistributable client`.
-
 {{< alert title="Note" color="primary" >}}
 This information is provided for convenience only. Getting software from IBM requires an IBM ID for logging in and downloading artifacts. The IBM terms and conditions apply. Axway is not responsible for this service. Use of the downloaded components is at your own risk.  
 {{< /alert >}}
 
-1) Open the IBM MQ client list from IBM: [IBM MQ V9 Clients](https://www.ibm.com/support/pages/node/586851).  
-2) Click the link for the required client version in the download table, for example, IBM MQ V9.0.0.9 LTS Clients.  
-3) Select the package `IBM MQ JMS and Java redistributable client`, for example, `9.0.0.9-IBM-MQC-Redist-Java`.  
-4) Download the fix pack `9.0.0.9-IBM-MQC-Redist-Java.zip`.  
-5) Unzip the downloaded file and copy the contents of the folder `java/lib` to `<installdir>/apigateway/ext/lib`.
-6) Restart API Gateway.  
+IBM provides JMS client libraries for IBM MQ named `IBM MQ JMS and Java redistributable client`. To install a new client library:
+
+1. Open the IBM MQ client list from IBM: [IBM MQ V9 Clients](https://www.ibm.com/support/pages/node/586851).  
+2. Click the link for the required client version in the download table, for example, IBM MQ V9.0.0.9 LTS Clients.  
+3. Select the package `IBM MQ JMS and Java redistributable client`, for example, `9.0.0.9-IBM-MQC-Redist-Java`.  
+4. Download the fix pack `9.0.0.9-IBM-MQC-Redist-Java.zip`.  
+5. Unzip the downloaded file and copy the contents of the folder `java/lib` to `<installdir>/apigateway/ext/lib`.
+6. Restart API Gateway.  
 
 {{< alert title="Note" color="primary" >}}
 Upgrading the client is only possible in this way as long as IBM do not change the IBM MQ JMS client interface. If IBM introduce a breaking change in the MQ JMS client interface, you will not be able to upgrade the client in this way and you must open a customer enhancement request (CER) with [Axway Support](https://support.axway.com/) to request Axway to update the product.  
