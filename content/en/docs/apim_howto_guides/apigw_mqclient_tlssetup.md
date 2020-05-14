@@ -13,8 +13,8 @@ One of the core components of AMPLIFY API Management is the API Gateway. API Gat
 API Gateway is built on Java and uses Java message service (JMS) for messaging. Connecting to JMS servers requires some general configuration and special settings:
 
 * To configure the connection to a JMS server, see [Configure messaging services](/docs/apim_policydev/apigw_poldev/general_messaging/).
-* To listen on queues or topics for messages to process, configure a JMS service provider (listener) as detailed in [Configure API Gateway instances and listeners](/docs/apim_policydev/apigw_gw_instances/) on section *Configure Messaging System connections*
-* For writing received and processed messages to queues or topics and waiting for reply messages from back-end services, see [Route to JMS filters](/docs/apim_policydev/apigw_polref/routing_jms/)
+* To listen on queues or topics for messages to process, configure a JMS service provider (listener) as detailed in [Configure a JMS session](/docs/apim_policydev/apigw_poldev/general_messaging/#configure-a-jms-session).
+* For writing received and processed messages to queues or topics and waiting for reply messages from back-end services, see [Route to JMS filters](/docs/apim_policydev/apigw_polref/routing_jms/).
 
 Different vendors have different strategies to maintain compatibility between messaging clients and JMS servers. IBM offers backward compatibility for some versions of MQ clients as described in [IBM Support, MQ 7.x, MQ 8.0, MQ 9.0 and MQ 9.1 compatibility with previous versions](https://www.ibm.com/support/pages/mq-7x-mq-80-mq-90-and-mq-91-compatibility-previous-versions-including-usage-ccdt-files-jms-bindings-ssltls).  
 
@@ -62,11 +62,9 @@ Adapt the basic setup within Policy Studio for IBM MQ server connectivity as fol
 
 ## Tools for analyzing and solving TLS issues
 
-From experiences of Axway pre-sales and services consultants, sometimes it can be hard to find out what the right configuration option for TLS might be. Best options is to request  detail from the MQ server owners or operators. Sometimes its not practicable or takes too long to get those details (especially for testing or in POCs). In those situations it can be helpful to find out what TLS cipher specifications are currently provided by the MQ server in order to choose a supported one for proper API Gateway configuration.
+Based on the experience of Axway pre-sales and services consultants, sometimes it can be hard to find out the right configuration options for TLS. You can request  details from the MQ server owners or operators, but sometimes it is not practical or takes too long to get those details (especially for testing or in POCs). In those situations it can be helpful to find out what TLS cipher specifications are currently provided by the MQ server and choose a supported one for API Gateway configuration.
 
-A Linux bash script as provided in this blog post [How to list TLS cipher suites a particular web-site offers?](https://superuser.com/questions/109213/how-do-i-list-the-ssl-tls-cipher-suites-a-particular-website-offers#answer-224263) *[last visited: 12th May 2020]* can help to get the needed insight.
-
-As mentioned above different vendors or entities name the SSL/TLS cipher suites differently. To get a translation from OpenSSL names to the needed cipher suite names the Oracle JVM is using, a lookup here can help: [Testssl.sh - OpenSSL to IANA name mapping](https://testssl.sh/openssl-iana.mapping.html) *[last visited: 12th May 2020]*.  
+This blog post [How to list TLS cipher suites a particular web-site offers?](https://superuser.com/questions/109213/how-do-i-list-the-ssl-tls-cipher-suites-a-particular-website-offers#answer-224263) provides a Linux bash script that can help to get the necessary information.
 
 The following example shows calling this script:
 
@@ -74,42 +72,43 @@ The following example shows calling this script:
 bash ciphertest.sh localhost:1414 | grep YES
 ```
 
+Different vendors or entities name the SSL/TLS cipher suites differently. To get a translation from OpenSSL names to the cipher suite names for Oracle JVM, you can use [Testssl.sh - OpenSSL to IANA name mapping](https://testssl.sh/openssl-iana.mapping.html).  
+
 ## Improve IBM MQ compatibility
 
-Another idea to improve the compatibility of API Gateway for use with IBM MQ server is to use the extension mechanism provided by API Gateway. You can add third-party Java archives to API Gateway by copying the necessary JAR files to the directory `<installdir>/apigateway/ext/lib`. These Java files are now included in the classpath of API Gateway. This mechanism is used to add capabilities to the API Gateway. For example, third-party vendor clients or custom developed enhancements can also be added to API Gateway this way. See [Adding a custom filter](/docs/apigtw_devguide/custom_filter_add/) for details.
+Another idea to improve the compatibility of API Gateway for use with IBM MQ server is to use the extension mechanism provided by API Gateway. You can add third-party Java archives to API Gateway by copying the necessary JAR files to the directory `<installdir>/apigateway/ext/lib`, which includes them in the classpath of API Gateway. This mechanism is used to add capabilities to the API Gateway. For example, you can add third-party vendor clients or custom developed enhancements to API Gateway this way. See [Adding a custom filter](/docs/apigtw_devguide/custom_filter_add/) for more details.
 
-Knowing this, we can install newer client libraries as the ones that come packaged with the product. As long as the client interfaces have not changed significantly upgrades are possible this way. This works because the `<installdir>/apigateway/ext/lib` subdirectory takes precedence over the API Gateway out-of-the-box libraries. Therefore, we can substitute the originally shipped libraries by those provided ones.
+You can also use this capability to install newer client libraries than the ones that come packaged with API Gateway. As long as the client interfaces have not changed significantly upgrades are possible this way. This is because the libraries in the `<installdir>/apigateway/ext/lib` subdirectory take precedence over API Gateway out-of-the-box libraries. This enables you to substitute the originally shipped libraries with newer ones.
 
-### Steps to install a new IBM MQ client
+### Install a new IBM MQ client
 
-IBM is providing JMS client libraries for IBM MQ named *IBM MQ JMS and Java redistributable client*.
-
-{{< alert title="Note" color="primary" >}}
-Please note, this information is provided for convenience only. Getting software from IBM requires an IBM ID for logging in and downloading artifacts. The IBM terms and conditions apply. Axway is not responsible for this service. Use of the downloaded components is at the risk of the API-Gateway user.  
-The configuration steps 1-3 still apply!
-{{< /alert >}}
-
-1) Open the IBM MQ Client list from IBM: [IBM MQ V9 Clients](https://www.ibm.com/support/pages/node/586851) *[last visited: 12th May 2020]*  
-2) Follow the link for the needed client version.  
-3) Chose the package "IBM MQ JMS and Java redistributable client", e.g. *9.0.0.9-IBM-MQC-Redist-Java*  
-4) Download fix pack "9.0.0.9-IBM-MQC-Redist-Java.zip"  
-5) unzip the downloaded file and copy content of folder `java/lib` to `<installdir>/apigateway/ext/lib`  
-6) API-Gateway restart is needed to make the change effective.  
+IBM provides JMS client libraries for IBM MQ named `IBM MQ JMS and Java redistributable client`.
 
 {{< alert title="Note" color="primary" >}}
-There is no guarantee for this "upgrade in the field" will work as expected. It's only possible as long as IBM is not changing the IBM MQ JMS client interface. In case IBM might introduce a breaking change in the MQ JMS client interface a customer enhancement request must be requested from Axway in order to adopt the product to those changes.  
+This information is provided for convenience only. Getting software from IBM requires an IBM ID for logging in and downloading artifacts. The IBM terms and conditions apply. Axway is not responsible for this service. Use of the downloaded components is at your own risk.  
 {{< /alert >}}
 
-### How to test a TLS connectivity to IBM MQ?
+1) Open the IBM MQ client list from IBM: [IBM MQ V9 Clients](https://www.ibm.com/support/pages/node/586851).  
+2) Click the link for the required client version in the download table, for example, IBM MQ V9.0.0.9 LTS Clients.  
+3) Select the package `IBM MQ JMS and Java redistributable client`, for example, `9.0.0.9-IBM-MQC-Redist-Java`.  
+4) Download the fix pack `9.0.0.9-IBM-MQC-Redist-Java.zip`.  
+5) Unzip the downloaded file and copy the contents of the folder `java/lib` to `<installdir>/apigateway/ext/lib`.
+6) Restart API Gateway.  
 
-Since containers have become popular many products are available as pre-build Docker images from repositories like Docker-Hub. We have used such an IBM provided Docker image to run an IBM MQ server locally for our tests.
+{{< alert title="Note" color="primary" >}}
+Upgrading the client is only possible in this way as long as IBM do not change the IBM MQ JMS client interface. If IBM introduce a breaking change in the MQ JMS client interface, you will not be able to upgrade the client in this way and you must open a customer enhancement request (CER) with [Axway Support](https://support.axway.com/) to request Axway to update the product.  
+{{< /alert >}}
 
-* Docker image: [Docker Hub ibmcom/mq](https://hub.docker.com/r/ibmcom/mq/) *[last visited: 12th May 2020]*
-* Additional documentation: [Github ibm-messaging/mq-container](https://github.com/ibm-messaging/mq-container/blob/9.1.0/docs/usage.md) *[last visited: 12th May 2020]*
+### Test TLS connectivity to IBM MQ
 
-**Sample commands for using IBM MQ container with TLS for testing:**
+Many products are available as prebuilt Docker images from repositories like Docker Hub. You can use an IBM provided Docker image to run an IBM MQ server locally for testing.
 
-```Sample Linux CLI commands
+* Docker image: [Docker Hub ibmcom/mq](https://hub.docker.com/r/ibmcom/mq/)
+* Additional documentation: [Github ibm-messaging/mq-container](https://github.com/ibm-messaging/mq-container/blob/9.1.0/docs/usage.md)
+
+#### Sample commands for using IBM MQ container with TLS for testing
+
+```bash
 # 1) create self-signed server certificate (key + cert)
 $JAVA_HOME/jre/bin/keytool -genkey -keyalg RSA -keysize 2048 -dname "CN=localhost, OU=Axway, O=Testing, L=Frankfurt, ST=Hessen, C=DE" -validity 365 -keypass password -alias mq -keystore mykeystore.jks -storepass password
 
@@ -151,11 +150,8 @@ openssl s_client -showcerts -connect localhost:1414
 
 ## Conclusion
 
-API-Gateway is providing out-of-the-box support for IBM MQ server connectivity. In case the delivered IBM MQ client version is not suitable for a new IBM MQ server version it still can be configured to work with this new IBM MQ version. This is based on the IBM MQ server built-in backward compatibility for older clients.  
-What TLS cipher suites are available for API-Gateway as MQ client are depending on the JVM API-Gateway is running with.
-
-For long term support of the IBM MQ connectivity Axway should update the packaged IBM MQ libraries. If needed, please raise an CER with Axway Support.
+API Gateway provides out-of-the-box support for IBM MQ server connectivity. If the delivered IBM MQ client version is not suitable for a new IBM MQ server version you can use this how-to guide to configure API Gateway to work with the new IBM MQ version. This is based on the IBM MQ server built-in backward compatibility for older clients. The TLS cipher suites that are available for API Gateway as an MQ client depend on the JVM API Gateway is running with.
 
 ## Additional Tools for IBM MQ
 
-Useful tool is [IBM MQ Explorer](https://www.ibm.com/support/pages/ms0t-ibm-mq-explorer). Although its intended as MQ administration tool it also becomes handy for testing and verification of IBM MQ interaction. More details can be found at [IBM Knowledge Center - MQ Explorer](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.explorer.doc/help_home_wmq.htm) *[last visited: 12th May 2020]*
+Another useful tool is [IBM MQ Explorer](https://www.ibm.com/support/pages/ms0t-ibm-mq-explorer). Although it is intended as an MQ administration tool it is also useful for testing and verification of IBM MQ interaction. More details can be found at [IBM Knowledge Center - MQ Explorer](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.explorer.doc/help_home_wmq.htm).

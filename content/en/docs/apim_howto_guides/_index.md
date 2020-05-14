@@ -1,6 +1,6 @@
 {
-    "title": "API management how-to guides",
-    "linkTitle": "API management how-tos",
+    "title": "How-to guides for API management",
+    "linkTitle": "How-tos for API management",
     "weight":"85",
     "date": "2020-05-13",
     "description": "Detailed descriptions of how to integrate API Gateway and API Manager with third-party products, and how to best set up and run components of the AMPLIFY API Management solution within different cloud environments or on-premises."
