@@ -9,12 +9,11 @@ description: Understand why you would want a connected / managed environment for
   the creation / deployment / publishing and subscriptions of AMPLIFY Central
   and Axway API Manager hosted APIs in one central location.
 ---
-
 {{< alert title="Note" color="primary" >}}The Axway API Manager connectivity to AMPLIFY Central is currently available in an alpha review mode; current functionality and configuration may change before release. Therefore, this connectivity is available for trial use only and is not supported for production API management or connectivity.{{< /alert >}}
 
 ## What is Axway API Manager connected?
 
-Connecting Axway API Manager to AMPLIFY Central enables you to have a connected environment for Axway API Gateway where two agents (Discovery and Traceability) are used with Axway API Gateway to:
+Connecting Axway API Manager (v7.6.2 or above) to AMPLIFY Central enables you to have a connected environment for Axway API Gateway where two agents (Discovery and Traceability) are used with Axway API Gateway to:
 
 * Create a new API Gateway environment that can generate configurations for agents, allowing them to interact with AMPLIFY Central.
 * Detect changes in API Manager deployments using the Discovery Agent. The Discovery Agent pushes the service configuration as an API service for the environment, which can then be published as a catalog item to be used by consumers to subscribe to the service.
