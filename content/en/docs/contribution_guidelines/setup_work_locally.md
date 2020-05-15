@@ -188,40 +188,30 @@ Install `git-secrets` on your repository to prevent committing secrets and crede
 
 To install `git-secrets`:
 
-1. Open an Ubuntu WSL window and from your home directory clone the awslabs/git-secrets project:
+1. Download the file `git_secrets_setup.sh` and save it to your Documents directory on Windows.
+2. Open an Ubuntu WSL window, and from your home directory run the script. You will be asked for your Ubuntu password:
 
     ```
-    git clone https://github.com/awslabs/git-secrets.git
+    bash git_secrets_setup.sh
     ```
 
-2. Change directory to `git-secrets` and checkout `1.3.0` branch:
+    You should see a result similar to:
 
     ```
-    cd git-secrets
-    git checkout 1.3.0
+    Clone/update the git-secrets
+    Install git-secrets
+    [sudo] password for amussap:
+    Registering git-secrets as a global option
+    You're not done yet! You MUST install the git hooks for every repo that you wish to use with "git secrets --install".
+
+    Here's a quick example of how to ensure a git repository is scanned for secrets on each commit:
+
+    cd /path/to/my/repo
+    git secrets --install
+    git secrets --register-aws
     ```
 
-3. Install `git-secrets`. You will be asked for your Ubuntu password:
-
-    ```
-    sudo make install
-    ```
-
-4. Add a configuration template to add hooks to all repositories you initialize or clone in the future:
-
-    ```
-    git secrets --register-aws --global
-    ```
-
-5. Add hooks to all your local repositories:
-
-    ```
-    mkdir -p ~/.git-templates/git-secrets
-    git secrets --install ~/.git-templates/git-secrets
-    git config --global init.templateDir ~/.git-templates/git-secrets
-    ```
-
-6. Change to `axway-open-docs` directory and from the `master` branch, install the git hooks to use the `git-secrets`:
+3. Change directory to `axway-open-docs` and from the `master` branch, install the git hooks to use the `git-secrets`.
 
     ```
     git secrets --install
@@ -239,14 +229,14 @@ To verify that your `git-secrets` installation is working:
     ```
 
 2. Create or change a file, for example, adding an AWS secret or credential to it.
-3. Try to commit your changes:
+3. Try to commit your change:
 
     ```
     git add .
     git commit -m "add AWS key to my page"
     ```
 
-    You should see an error message similar to:
+    You should see an error similar to:
 
     ```
     content/en/docs/contribution_guidelines/testgitsecrets.md:5:AWS_AUTH_ACCESSKEY = <Your AWS authorization key>
