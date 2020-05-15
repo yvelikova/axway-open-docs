@@ -239,6 +239,12 @@ const collections = [{
   description: 'All pages relating to configuring and using API Gateway Analytics.',
   format: 'frontmatter',
 }, {
+  ...docsDefaults('apim_howto_guides', 'APIGateway'),
+  name: 'apim_howto_guides',
+  label: 'How-to guides',
+  label_singular: 'page in APIM how-to guides section',
+  description: 'All pages relating to APIM how-to guides.',
+}, {
   ...docsDefaults('apigtw_devguide', 'APIGatewayDeveloperGuide'),
   name: 'apigtw_devguide',
   label: 'Extend API Gateway',
