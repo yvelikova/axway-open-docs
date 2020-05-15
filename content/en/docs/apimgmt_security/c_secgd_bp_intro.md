@@ -287,7 +287,7 @@ All other files are modified at runtime and cannot be verified using a monitorin
 
 ## Unusual behavior and automated tools detection
 
-API Gateway, API Manager, and API Portal make available both a web UI and REST APIs, meaning that they are susceptible to attacks on the Internet. Therefore, besides the protection described in this document, we strongly recommend that you also implement additional protection, such as `proxies` and `WAF`, to secure connections. These tools enable you to detect unusual behavior and to identify connections from an automated tool. Make sure to receive alerts when using these tools, and to secure involved users and their addresses.
+The web UI and REST APIs available from the products make them susceptible to attacks on the Internet. Therefore, besides the protection described in this document, we strongly recommend that you also implement additional protection, such as `proxies` and `WAF`, to secure connections. These tools enable you to detect unusual behavior and to identify connections from an automated tool. Make sure to receive alerts when using these tools, and to secure involved users and their addresses.
 
 At a minimum, you should perform a periodic review of the log and audit to deductively detect any issues.
 
