@@ -4,7 +4,6 @@ linkTitle: API Portal January 2020
 no_list: true
 weight: 90
 date: 2019-08-08T00:00:00.000Z
-description: This update adds OAS 3.0 support and includes various installation and customization improvements.
 ---
 
 ## Summary

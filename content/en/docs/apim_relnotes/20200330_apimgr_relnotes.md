@@ -1,10 +1,8 @@
 {
 "title": "API Gateway and API Manager 7.7 March 2020 Release Notes",
-  "linkTitle": "API Gateway and API Manager March 2020",
-  "no_list": "true",
-  "weight": "80",
-  "date": "2020-03-11",
-  "description": "In this update OpenSSL has been upgraded to OpenSSL 1.1.1."
+"linkTitle": "API Gateway and API Manager March 2020",
+"weight": "80",
+"date": "2020-03-11"
 }
 
 ## Summary

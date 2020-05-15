@@ -258,29 +258,17 @@ const collections = [{
   description: 'Glossary for API Management and AMPLIFY Central.',
   folder: 'content/en/docs/glossary',
 }, {
+  ...docsDefaults('apim_relnotes', 'docbook/images/release_notes'),
+  name: 'apim_relnotes',
+  label: 'Release notes',
+  label_singular: 'page in APIM release note section',
+  description: 'Release notes for APIM 7.7 release.',
+}, {
   ...docsDefaults('apim_relnotes/201904_release', 'docbook/images/release_notes'),
   name: '201904_release',
   label: 'API Management 7.7 April 2019 release notes',
   label_singular: 'page in 7.7 April 2019 release note section',
   description: 'Release notes for 7.7 April 2019 release.',
-}, {
-  ...docsDefaults('apim_relnotes/20200130_release', 'docbook/images/release_notes'),
-  name: '20200130_release',
-  label: 'API Management 7.7 January 2020 release notes',
-  label_singular: 'page in 7.7 January 2020 release note section',
-  description: 'Release notes for 7.7 January 2020 release.',
-}, {
-  ...docsDefaults('apim_relnotes/20200330_release', 'docbook/images/release_notes'),
-  name: '20200330_release',
-  label: 'API Management 7.7 March 2020 release notes',
-  label_singular: 'page in 7.7 March 2020 release note section',
-  description: 'Release notes for 7.7 March 2020 release.',
-}, {
-  ...docsDefaults('apim_relnotes/20200530_release', 'docbook/images/release_notes'),
-  name: '20200530_release',
-  label: 'API Management 7.7 May 2020 release notes',
-  label_singular: 'page in 7.7 May 2020 release note section',
-  description: 'Release notes for 7.7 May 2020 release.',
 }, {
   ...docsDefaults('central', 'central'),
   name: 'central',

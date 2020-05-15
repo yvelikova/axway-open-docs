@@ -1,10 +1,9 @@
 {
 "title": "API Manager 7.7 April 2019 Release Notes",
-  "linkTitle": "API Manager 7.7 April 2019",
+  "linkTitle": "API Manager April 2019",
   "no_list": "true",
   "weight": "60",
-  "date": "2020-03-26",
-  "description": "In this release OpenJDK replaces Oracle JRE as the Java runtime for API Gateway and API Manager. It also includes new capabilities for custom properties, compliance enhancements, and improvements to container deployments."
+  "date": "2020-03-26"
 }
 
 ## Summary

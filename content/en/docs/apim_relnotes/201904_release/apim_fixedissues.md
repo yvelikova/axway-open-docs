@@ -1,9 +1,8 @@
 {
 "title": "API Manager 7.7 April 2019 fixed issues",
-"linkTitle": "API Manager fixed issues",
+"linkTitle": "API Manager April 2019 fixed issues",
 "weight": "80",
-"date": "2020-03-26",
-"description": "Detailed listing of all API Manager fixed issues."
+"date": "2020-03-26"
 }
 
 API Gateway 7.7 includes all fixes for 7.5.3 and 7.6.2 Service Packs up to and including 7.5.3 SP 10 and 7.6.2 SP 2. For details of all the Service Pack fixes included in 7.7, see the corresponding *SP Readme* attached to each Service Pack on [Axway Support](https://support.axway.com).
