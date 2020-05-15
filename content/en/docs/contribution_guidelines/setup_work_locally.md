@@ -188,7 +188,7 @@ Install `git-secrets` on your repository to prevent committing secrets and crede
 
 To install `git-secrets`:
 
-1. Download the file `git_secrets_setup.sh` and save it to your Documents directory on Windows.
+1. Download the file [`git_secrets_setup.sh`](https://github.com/Axway/axway-open-docs/.github/scripts/git_secrets_setup.sh) and save it to your Documents directory on Windows. To download the file, right-click the **Raw** button at the top of the file and select **Save link as...**, and then open the file to check that it contains only the raw text and not HTML.
 2. Open an Ubuntu WSL window, and from your home directory run the script. You will be asked for your Ubuntu password:
 
     ```
