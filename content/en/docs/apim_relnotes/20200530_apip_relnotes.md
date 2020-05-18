@@ -1,10 +1,8 @@
 ---
-title: API Portal 7.7 March 2020 Release Notes
-linkTitle: API Portal March 2020
-no_list: true
-weight: 80
+title: API Portal 7.7 May 2020 Release Notes
+linkTitle: API Portal May 2020
+weight: 70
 date: 2020-03-11T00:00:00.000Z
-description: Learn about the new features and enhancements in this update of API Portal.
 ---
 
 ## Summary
@@ -21,36 +19,37 @@ API Portal is available as a software installation or a virtualized deployment i
 
 ## New features and enhancements
 
-The following new features and enhancements are available in this update.
+<!-- Add the new features here -->
 
-### API Details page improvements
-
-* You can set a payload limit size to download the response as a file if the response exceeds the size you have set.
-* You can configure the colors of the different methods for both SOAP and REST APIs.
-* You can set a flag to include or exclude the value for the `externalDocs` attribute. The flag defaults to **On**. When the flag is enabled, the value for the externalDocs attribute is appended to the **Description** field and rendered as part of that field.
-* You can configure whether to show **Try it** for groups of HTTP methods per connected API Manager instance. This allows for finer grained control of the **Try it** functionality.
-
-For more information, see [Customize API Catalog](https://axway-open-docs.netlify.com/docs/apim_administration/apiportal_admin/customize_apicatalog_overview/)
+No new features and enhancements are available in this update.
 
 ## Limitations of this update
 
 This update has the following limitations:
 
-* API Portal 7.7.20200330 is compatible with API Gateway and API Manager 7.7.20200330 only.
-* Upgrade to API Portal 7.7.20200330 is supported from API Portal 7.7.0 only. To upgrade from earlier versions (for example, 7.5.x, 7.6.x) you must first upgrade to API Portal 7.7.
-* The ready-made API Portal Docker image 7.7.20200330 is strictly for development environments only, and it is not recommended for use in production environments.
+* API Portal 7.7.20200530 is compatible with API Gateway and API Manager 7.7.20200530 only.
+* Upgrade to API Portal 7.7.20200530 is supported from API Portal 7.7.0 only. To upgrade from earlier versions (for example, 7.5.x, 7.6.x) you must first upgrade to API Portal 7.7.
+* The ready-made API Portal Docker image 7.7.20200530 is strictly for development environments only, and it is not recommended for use in production environments.
 
-    * It is not recommended to use the image in production environments because the image is built with CentOS as a base OS, and our Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issues have been resolved, but until we can ship a hardened image that passes our security concerns, we cannot advise customers to use this image in a production environment. Delivery a Docker image for production use is already planned in the [API Portal 2020 roadmap](https://community.axway.com/s/api-portal).
+    It is not recommended to use the image in production environments because the image is built with CentOS as a base OS, and our Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issues have been resolved, but until we can ship a hardened image that passes our security concerns, we cannot advise customers to use this image in a production environment. Delivery a Docker image for production use is already planned in the [API Portal 2020 roadmap](https://community.axway.com/s/api-portal).
 * Upgrading from previous API Portal Docker image is not supported.
 * This update is not available as a virtual appliance or as a managed service on Axway Cloud.
 
+## Deprecated features
+
+<!-- Add features that are deprecated here -->
+
+As part of our software development life cycle we constantly review our API Management offering. As part of this review, no capabilities have been deprecated.
+
 ## Removed features
 
-* Documentation is no longer provided in PDF format. You can continue to save individual topics or entire guides in PDF format using the **Save as PDF** icon on the [Axway documentation portal](https://docs.axway.com/).
+<!-- Add features that are removed here -->
+
+To stay current and align our offerings with customer demand and best practices, Axway might discontinue support for some capabilities. As part of this review, no capabilities have been removed.
 
 ## Fixed issues
 
-This version of API Portal includes the fixes from all 7.5.5, 7.6.2, and 7.7 service packs or updates released prior to this version. For details of all the service pack fixes included, see the corresponding SP Readme attached to each service pack on [Axway Support](https://support.axway.com).
+This version of API Portal includes the fixes from all 7.5.5, 7.6.2, and 7.7 service packs or updates released prior to this version. For details of all the service pack fixes included, see the corresponding _SP Readme_ attached to each service pack on [Axway Support](https://support.axway.com).
 
 ### Fixed security vulnerabilities
 
@@ -58,22 +57,17 @@ This version of API Portal includes the fixes from all 7.5.5, 7.6.2, and 7.7 ser
 
 | Internal ID | Case ID | Description                                                                                                                                                                                     |
 | ----------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| IAP-3082    |         | **Issue:** `node-sass` package is vulnerable to uncontrolled recursion. **Resolution:** `node-sass` was moved to development packages.                                                          |
-| IAP-2878    |         | **Issue**: XSS vulnerability because arbitrary (non-existing) URIs can be accepted with `Itemid` query parameter. **Resolution**: *Page Not Found* is shown when non-existing URI is requested. |
+| IAP-XXXX    |         | **Issue:** Issue description. **Resolution:** Resolution description.                                                          |
 
 ### Other fixed issues
 
 | Internal ID | Case ID  | Description                                                                                                                                                                                                                                      |
 | ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| IAP-2741    |          | **Issue**: There were two query parameters with same value on Try It page (itemId and menuId). **Resolution**: `menuId` is removed in favor of `itemId`.                                                                                    |
-| IAP-2871    | 1106851  | **Issue**: Users are unexpectedly logged out and redirected to the Sign In page after password change. **Resolution**: Users are informed that they will be logged out after successful password change, and a result message is displayed. |
-| IAP-2952    |          | **Issue**: While testing endpoints, when the Content-Type is set to application/octet-stream the upload of files is not possible. **Resolution**: Files are always uploaded successfully despite the Content-Type header.                  |
-| IAP-3075    |          | **Issue**: Users are not redirected to login page when they try a request with expired session due to legacy authentication mechanism. **Resolution**: The legacy authentication mechanism is replaced with the newest possible.                 |
-| IAP-3121    |          | **Issue**: SwaggerUI cannot render when OAS 3.0 definitions have missing *component* key. **Resolution**: The *component* key is first checked for existence, and then used.                                                                     |
-| IAP-3132 | | **Issue:** PHP version requirements are not specific. **Resolution:** Added clarification to the documentation that PHP 7.4 is supported after Jan20 version and in API Portal 7.6.2 the supported versions for PHP are from 7.1 to 7.3. |
-| IAP-3139    | 01140234 | **Issue**: There was a blank space between site navigation and page title when system messages were closed. **Resolution**: Container of system messages is removed when all of messages are closed. |
+| IAP-XXXX    |         | **Issue:** Issue description. **Resolution:** Resolution description.
 
 ## Known issues
+
+<!-- Review and update the known issues here -->
 
 The following are known issues in this version of API Portal.
 

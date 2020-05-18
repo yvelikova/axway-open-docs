@@ -1,10 +1,9 @@
 {
 "title": "API Gateway 7.7 April 2019 Release Notes",
-"linkTitle": "API Gateway 7.7 April 2019",
+"linkTitle": "API Gateway April 2019",
 "no_list": "true",
 "weight": "20",
-"date": "2020-03-26",
-"description": "Learn about the new features and enhancements in this release of API Gateway."
+"date": "2020-03-26"
 }
 
 ## Summary
