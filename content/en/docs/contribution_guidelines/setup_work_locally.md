@@ -188,8 +188,13 @@ Install `git-secrets` on your repository to prevent committing secrets and crede
 
 To install `git-secrets`:
 
-1. Download the file [`git_secrets_setup.sh`](https://github.com/Axway/axway-open-docs/.github/scripts/git_secrets_setup.sh) and save it to your Documents directory on Windows. To download the file, right-click the **Raw** button at the top of the file and select **Save link as...**, and then open the file to check that it contains only the raw text and not HTML.
-2. Open an Ubuntu WSL window, and from your home directory run the script. You will be asked for your Ubuntu password:
+1. Open an Ubuntu WSL window, and change the directory to `axway-open-docs`:
+
+    ```
+    cd axway-open-docs
+    ```
+
+2. Run the script. You will be asked for your Ubuntu password:
 
     ```
     bash git_secrets_setup.sh
@@ -207,13 +212,6 @@ To install `git-secrets`:
     Here's a quick example of how to ensure a git repository is scanned for secrets on each commit:
 
     cd /path/to/my/repo
-    git secrets --install
-    git secrets --register-aws
-    ```
-
-3. Change directory to `axway-open-docs` and from the `master` branch, install the git hooks to use the `git-secrets`.
-
-    ```
     git secrets --install
     git secrets --register-aws
     ```

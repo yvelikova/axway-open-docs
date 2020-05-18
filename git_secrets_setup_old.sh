@@ -27,11 +27,14 @@ mkdir -p ~/.git-templates/git-secrets
 git secrets --install -f ~/.git-templates/git-secrets &>/dev/null
 git config --global init.templateDir ~/.git-templates/git-secrets
 
-cd "${cwd}"
+cat <<EOF
+You're not done yet! You MUST install the git hooks for every repo that you wish to use with "git secrets --install".
 
-if [ -d .git ]; then
-  git secrets --register-aws
-  git secrets --install &>/dev/null
-else
-  echo "$(pwd) is not a Git repository. Not applying git-secrets checks here"
-fi
+Here's a quick example of how to ensure a git repository is scanned for secrets on each commit:
+
+cd /path/to/my/repo
+git secrets --install
+git secrets --register-aws
+EOF
+
+cd "${cwd}"
