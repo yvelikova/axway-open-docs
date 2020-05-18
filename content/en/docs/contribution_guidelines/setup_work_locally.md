@@ -182,6 +182,67 @@ When you are ready for your changes to be reviewed:
 1. In your Git CLI client, `add`, `commit`, and `push` your files to the remote Git repo.
 2. Create a pull request to enable a site maintainer to review the changes you made on your feature branch or fork and _pull_ them into the original Axway repository.
 
+## Protect sensitive information
+
+Install `git-secrets` on your repository to prevent committing secrets and credentials. For more information, see [git-secrets](https://github.com/awslabs/git-secrets).
+
+To install `git-secrets`:
+
+1. Open an Ubuntu WSL window, and change the directory to `axway-open-docs`:
+
+    ```
+    cd axway-open-docs
+    ```
+
+2. Run the script. You will be asked for your Ubuntu password:
+
+    ```
+    bash scripts/git_secrets_setup.sh
+    ```
+
+    You should see a result similar to:
+
+    ```
+    Clone/update the git-secrets
+    Install git-secrets
+    [sudo] password for amussap:
+    Registering git-secrets as a global option
+    Install the git hooks to use with git-secrets
+    Success!
+    ```
+
+### Test git-secrets
+
+To verify that your `git-secrets` installation is working:
+
+1. Create a feature branch:
+
+    ```
+    git checkout -b testgitsecrets
+    ```
+
+2. Create or change a file, for example, adding an AWS secret or credential to it.
+3. Try to commit your change:
+
+    ```
+    git add .
+    git commit -m "add AWS key to my page"
+    ```
+
+    You should see an error similar to:
+
+    ```
+    content/en/docs/contribution_guidelines/testgitsecrets.md:5:AWS_AUTH_ACCESSKEY = <Your AWS authorization key>
+    [ERROR] Matched one or more prohibited patterns
+    Possible mitigations:
+    - Mark false positives as allowed using: git config --add secrets.allowed ...
+    - Mark false positives as allowed by adding regular expressions to .gitallowed at repository's root directory
+    - List your configured patterns: git config --get-all secrets.patterns
+    - List your configured allowed patterns: git config --get-all secrets.allowed
+    - List your configured allowed patterns in .gitallowed at repository's root directory
+    - Use --no-verify if this is a one-time false positive
+    ```
+
 ## Tips for configuring Ubuntu WSL
 
 If you are used to working on Windows, Ubuntu WSL can be hard to get used to at first. Follow these tips to make working in Ubuntu easier.
