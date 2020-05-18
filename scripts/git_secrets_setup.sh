@@ -29,9 +29,11 @@ git config --global init.templateDir ~/.git-templates/git-secrets
 
 cd "${cwd}"
 
+echo 'Install the git hooks to use with git-secrets' 
 if [ -d .git ]; then
   git secrets --register-aws
   git secrets --install &>/dev/null
 else
   echo "$(pwd) is not a Git repository. Not applying git-secrets checks here"
 fi
+echo 'Success!' 
