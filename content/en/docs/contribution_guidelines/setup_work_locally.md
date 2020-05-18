@@ -197,7 +197,7 @@ To install `git-secrets`:
 2. Run the script. You will be asked for your Ubuntu password:
 
     ```
-    bash git_secrets_setup.sh
+    bash scripts/git_secrets_setup.sh
     ```
 
     You should see a result similar to:
@@ -207,13 +207,8 @@ To install `git-secrets`:
     Install git-secrets
     [sudo] password for amussap:
     Registering git-secrets as a global option
-    You're not done yet! You MUST install the git hooks for every repo that you wish to use with "git secrets --install".
-
-    Here's a quick example of how to ensure a git repository is scanned for secrets on each commit:
-
-    cd /path/to/my/repo
-    git secrets --install
-    git secrets --register-aws
+    Install the git hooks to use with git-secrets
+    Success!
     ```
 
 ### Test git-secrets
