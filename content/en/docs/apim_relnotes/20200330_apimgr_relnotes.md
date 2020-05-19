@@ -4,6 +4,7 @@
 "weight": "80",
 "date": "2020-03-11"
 }
+
 ## Summary
 
 API Gateway is available as a software installation or a virtualized deployment in Docker containers. API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway.
