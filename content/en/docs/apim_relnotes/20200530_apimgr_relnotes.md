@@ -2,9 +2,8 @@
 title: API Gateway and API Manager 7.7 May 2020 Release Notes
 linkTitle: API Gateway and API Manager May 2020
 weight: 70
-date: 2020-03-11
+date: 2020-03-11T00:00:00.000Z
 ---
-
 ## Summary
 
 API Gateway is available as a software installation or a virtualized deployment in Docker containers. API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway.
@@ -41,6 +40,20 @@ OpenSSL 1.1.1 does not support FIPS, and running API Gateway in FIPS mode is not
 
 References to FIPS in the documentation will not be removed, but this does not mean that FIPS is still supported and the references should be ignored.
 
+### Log4j 2 changes
+
+The Log4j 2 version has been updated from 2.8.2 to 2.13.2. In addition, the Log4j 2 file format has been changed to YAML.
+
+| 7.7 releases prior to May 2020              | 7.7 May 2020 and later                           |
+| ------------------------------------------------------ | ------------------------------------------------------- |
+| `$VDISTIR/system/conf/loggers/eventLog.xml`              | `$VDISTIR/system/conf/loggers/eventLog.yaml`              |
+| `$VDISTIR/system/conf/loggers/openTrafficLog.xml`        | `$VDISTIR/system/conf/loggers/openTrafficLog.yaml`        |
+| `$VDISTDIR/system/conf/loggers/topologyLog.xml`          | `$VDISTDIR/system/conf/loggers/topologyLog.yaml`         |
+| `$VDISTDIR/system/conf/log4j2.xml`                      | `$VDISTDIR/system/conf/log4j2.yaml`                       |
+| `$VDISTDIR/rcplatform/plugin-filter-base/lib/log4j2.xml` | `$VDISTDIR/rcplatform/plugin-filter-base/lib/log4j2.yaml` |
+
+If you have made any customizations to these XML files you must translate them to the equivalent YAML files.
+
 ## Deprecated features
 
 <!-- Add features that are deprecated here -->
@@ -67,7 +80,7 @@ To stay current and align our offerings with customer demand and best practices,
 
 ## Fixed issues
 
-This version of API Gateway and API Manager includes the fixes from all 7.5.3, 7.6.2, and 7.7 service packs or updates released prior to this version. For details of all the service pack fixes included, see corresponding _SP Readme_ attached to each service pack on [Axway Support](https://support.axway.com).
+This version of API Gateway and API Manager includes the fixes from all 7.5.3, 7.6.2, and 7.7 service packs or updates released prior to this version. For details of all the service pack fixes included, see corresponding *SP Readme* attached to each service pack on [Axway Support](https://support.axway.com).
 
 ### Fixed security vulnerabilities
 
@@ -75,17 +88,17 @@ There are no fixed security vulnerabilities in this version.
 
 ### Other fixed issues
 
-| Internal ID | Case ID       | Description                                                                    |
-| ----------- | ------------- | ------------------------------------------------------------------------------ |
-|RDAPI-XXXXX|XXXXXX|**Issue**: Description of issue. **Resolution**: Description of resolution.|
+| Internal ID | Case ID | Description                                                                 |
+| ----------- | ------- | --------------------------------------------------------------------------- |
+| RDAPI-XXXXX | XXXXXX  | **Issue**: Description of issue. **Resolution**: Description of resolution. |
 
 ## Known issues
 
 The following are known issues for this update.
 
-| Internal ID | Description                                                                                                                                                        |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| RDAPI-XXXXX | Description of known issue                                                                                |
+| Internal ID | Description                |
+| ----------- | -------------------------- |
+| RDAPI-XXXXX | Description of known issue |
 
 ## Update a classic (non-container) deployment
 
@@ -202,11 +215,9 @@ For example:
 ./update_policy_studio.sh /opt/Axway-7.7/
 ```
 
-{{< alert title="Note" color="primary" >}}
-You must execute the update script using the same user who installed Policy Studio.
+{{< alert title="Note" color="primary" >}} You must execute the update script using the same user who installed Policy Studio.
 
-An update script is also available for Windows. It is called `update_policy_studio.bat` and it is located in the API Gateway 7.7 Policy Studio Update pack for Windows (`.zip`).
-{{< /alert >}}
+An update script is also available for Windows. It is called `update_policy_studio.bat` and it is located in the API Gateway 7.7 Policy Studio Update pack for Windows (`.zip`). {{< /alert >}}
 
 Running this script performs the following steps:
 
@@ -235,11 +246,9 @@ For example:
 ./update_configuration_studio.sh /opt/Axway-7.7/
 ```
 
-{{< alert title="Note" color="primary" >}}
-You must execute the update script using the same user who installed Configuration Studio.
+{{< alert title="Note" color="primary" >}} You must execute the update script using the same user who installed Configuration Studio.
 
-An update script is also available for Windows. It is called `update_configuration_studio.bat` and it is located in the API Gateway 7.7 Configuration Studio Update pack for Windows (`.zip`).
-{{< /alert >}}
+An update script is also available for Windows. It is called `update_configuration_studio.bat` and it is located in the API Gateway 7.7 Configuration Studio Update pack for Windows (`.zip`). {{< /alert >}}
 
 Running this script performs the following steps:
 
@@ -297,8 +306,7 @@ To allow an unprivileged user to run the API Gateway on a Linux system, perform 
 
 When API Manager is installed, you must run the `update-apimanager` script after the API Gateway post-install script to ensure that all paths are up-to-date. For details, see [Run update-apimanager](/docs/apim_installation/apigw_upgrade/upgrade_steps_extcass/#run-update-apimanager).
 
-{{< alert title="Caution" color="warning" >}}
-Before executing the `update-apimanager` script:
+{{< alert title="Caution" color="warning" >}} Before executing the `update-apimanager` script:
 
 * Apply the update to all API Gateways.
 * Ensure that all Node Managers and API Gateway instances are running.
