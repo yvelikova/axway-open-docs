@@ -17,9 +17,11 @@ const docsDefaults = (contentDirectory, imageDirectory) => ({
     { name: 'title', label: 'Title', widget: 'string' },
     { name: 'linkTitle', widget: 'hidden', required: false },
     { name: 'no_list', widget: 'hidden', required: false },
+    { name: 'simple_list', widget: 'hidden', required: false },
+    { name: 'draft', widget: 'hidden', required: false },
     { name: 'weight', widget: 'hidden', required: false },
     { name: 'date', widget: 'hidden', required: false },
-    { name: 'description', label: 'Summary', widget: 'text' },
+    { name: 'description', label: 'Summary', widget: 'text', required: false },
     { name: 'body', label: 'Body', widget: 'markdown' },
   ],
 })
@@ -269,6 +271,7 @@ const collections = [{
   label: 'Release notes',
   label_singular: 'page in APIM release note section',
   description: 'Release notes for APIM 7.7 release.',
+  format: 'frontmatter',
 }, {
   ...docsDefaults('apim_relnotes/201904_release', 'docbook/images/release_notes'),
   name: '201904_release',

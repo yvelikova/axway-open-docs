@@ -65,8 +65,8 @@
 /content/en/docs/apim_policydev/apigw_polref/ @andreamussap
 /content/en/docs/apim_policydev/apigw_poldev/ @alexearnshaw
 /content/en/docs/apim_reference/ @andreamussap
-/content/en/docs/apim_relnotes/*apimgr_relnotes/ @alexearnshaw
-/content/en/docs/apim_relnotes/*apip_relnotes/ @andreamussap
+/content/en/docs/apim_relnotes/*apimgr_relnotes.md @alexearnshaw
+/content/en/docs/apim_relnotes/*apip_relnotes.md @andreamussap
 /content/en/docs/apimanager_analytics/ @andreamussap
 /content/en/docs/apimanager_capacityguide/ @alexearnshaw
 /content/en/docs/apimgmt_multi_dc/ @andreamussap

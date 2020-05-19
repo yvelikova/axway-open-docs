@@ -1,9 +1,8 @@
 {
 "title": "API Manager 7.7 April 2019 Release Notes",
-  "linkTitle": "API Manager April 2019",
-  "no_list": "true",
-  "weight": "60",
-  "date": "2020-03-26"
+"linkTitle": "API Manager April 2019",
+"weight": "60",
+"date": "2020-03-26"
 }
 
 ## Summary
