@@ -3,7 +3,7 @@
   "linkTitle": "API Gateway and API Manager March 2020",
   "weight": "80",
   "date": "2020-03-11",
-  "description": "corrected case numbers"
+  "description": " "
 }
 ## Summary
 
