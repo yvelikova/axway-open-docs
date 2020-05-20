@@ -2,10 +2,10 @@
 title: Localization of API Portal
 linkTitle: Localization
 weight: 11
-date: 2019-07-30
-description: You can localize the API Portal user interface to use another language, or change time and date formats.
+date: 2019-07-30T00:00:00.000Z
+description: You can localize the API Portal user interface to use another
+  language, or change time and date formats.
 ---
-
 ## Change API Portal language
 
 You can change the API Portal UI texts from the default English to another language.
@@ -14,16 +14,15 @@ You can change the API Portal UI texts from the default English to another lang
 
 User interface strings are stored in language-specific resource files. To add these resource files for a new language, you must install the language.
 
-1. In the Joomla! Admin Interface (JAI), click **Extensions > Language(s)**.
-
-    ![Install language](/Images/APIPortal/joomla_install_lang.png)
-
+1. In the Joomla! Admin Interface (JAI) top navigation bar, click **Extensions > Language(s)**.
 2. Click **Install Languages**.
 3. Find and select the language to install, and click **Install**.
 4. After the installation is finished, click **Extensions > Language(s) > Installed** and ensure that **Site** is selected at the top of the page.
 5. To set the installed language as the default language of your API Portal, click the star button in the row for that language.
 
-    {{< alert title="Tip" color="primary" >}}You can change the default language of JAI independently from your API Portal. Select **Administrator** on the **Languages: Installed** page and click the star button in the row for the required language. You can also select any of the installed languages when you log in to JAI.{{< /alert >}}
+   ![Install language](/Images/APIPortal/joomla_install_lang.png)
+
+   {{< alert title="Tip" color="primary" >}}You can change the default language of JAI independently from your API Portal. Select **Administrator** on the **Languages: Installed** page and click the star button in the row for the required language. You can also select any of the installed languages when you log in to JAI.{{< /alert >}}
 
 ### Add API Portal UI strings to the installed language
 
@@ -39,7 +38,9 @@ You can send the file `en-GB.com_apiportal.ini` file for translation to a profes
 
 To find the `en-GB.com_apiportal.ini` file that must be translated, go to the following directory in your API Portal installation:
 
-`/opt/axway/apiportal/htdoc/language/en-GB/`
+```
+/opt/axway/apiportal/htdoc/language/en-GB/
+```
 
 Before you send the file for translation, it is recommended to rename the file to `en-GB.com_apiportal.ini.txt`. When you receive the translated file, you should remove any `.txt` extension again before proceeding with the following steps.
 
@@ -54,7 +55,9 @@ To install the translated file:
 
 1. Copy the following file from the English resource file directory:
 
-    `/opt/axway/apiportal/htdoc/language/en-GB/en-GB.com_apiportal.ini`
+   ```
+   /opt/axway/apiportal/htdoc/language/en-GB/en-GB.com_apiportal.ini
+   ```
 
 2. Go to resource file directory of the language you installed (for example, `/opt/axway/apiportal/htdoc/language/fr-FR/`), and paste the copied file there.
 3. Rename the copied `.ini` file to match the language code of the installed language (for example, `fr-FR.com_apiportal.ini`).
@@ -68,7 +71,12 @@ To install the translated file:
 
 Some texts on the sign in page are controlled by text overrides, and you have to change them separately in the `.override` file.
 
-1. Go to the language override directory `/opt/axway/apiportal/htdoc/language/overrides/`.
+1. Go to the language override directory:
+
+   ```
+   /opt/axway/apiportal/htdoc/language/overrides/
+   ```
+
 2. Copy the file `en-GB.override`.
 3. Paste the file in the same directory, and rename it to match your new language (for example, `fr-FR.override`).
 4. Open the renamed file, find the UI string with the value `Login Name`, and change the value of the string to the new language translation (for example, `Identifiant`).
@@ -88,20 +96,15 @@ You do not have to install a language to Joomla! before configuring the required
 
 To add a new content language and main menu, follow these steps:
 
-1. In the Joomla! Administrator Interface (JAI) left navigation bar, click **Language(s) > Content Languages**.
-
-    ![Joomla Languages Content Languages](/Images/APIPortal/joomla_lang_contentlang.png)
-
-    {{< alert title="Note" color="primary" >}}If you have already installed the new language, a corresponding content language will already exist for that language and you can skip the following steps 3 to 7, and continue from step 8.{{< /alert >}}
-
+1. In the JAI left navigation bar, click **Language(s) > Content Languages**.
 2. Click **New** to add a new content language.
+
+    {{< alert title="Note" color="primary" >}}If you have already installed a new language, a corresponding content language will already exist for that language and you can skip the following steps 3 to 7, and continue from step 8.{{< /alert >}}
+
 3. On the **Details** tab, enter the **Title** and **Title Native** for the new language. The titles can be the same.
 4. Enter the Joomla! **Language Tag**. Ensure that you enter the tag in the correct format. You must use "`-`" instead of "`_`" (for example, `fr-FR`).
 5. In **URL Language Code**, enter the language identifier to use in the language-specific URL (for example, `fr`). The identifier must be unique for each language.
-6. Set **Status** to **Unpublished**, and click **Save & Close**.
-
-    For more details on the parameters, see the tutorial for [Joomla! Language Switcher](https://docs.joomla.org/Language_Switcher_Tutorial#The_.22Content.22_tab_in_Language_Manager).
-
+6. Set **Status** to **Unpublished**, and click **Save & Close**. For more details on the parameters, see the tutorial for [Joomla! Language Switcher](https://docs.joomla.org/Language_Switcher_Tutorial#The_.22Content.22_tab_in_Language_Manager).
 7. In the JAI top navigation bar, click **Menus > Manage > Add New Menu**.
 8. In **Title**, enter the title to be shown in drop-down lists (for example, `Main menu (fr)`).
 9. On the **Menu Details** tab, in **Menu Type**, enter a system identifier for the new main menu (for example, `mainmenufr`).
@@ -112,9 +115,6 @@ To add a new content language and main menu, follow these steps:
 You must duplicate the API Portal main menu for each language.
 
 1. In the JAI top navigation bar, click **Menus** and select the main menu to clone.
-
-    ![Joomla Main Menu](/Images/APIPortal/joomla_main_menu.png)
-
 2. To clone all the menu items at once, click the Check All Items check box and click **Batch**.
 3. In **Set Language**, select the correct content language.
 4. In **To Move or Copy**, locate the correct main menu for the language and select **Add to this menu**.
@@ -131,16 +131,37 @@ You must duplicate the API Portal main menu for each language.
 You must also duplicate your page template styles for each language. By default, API Portal uses the Purity III template style.
 
 1. In the JAI left navigation bar, click **Templates > Styles**.
-
-    ![Joomla Templates Styles](/Images/APIPortal/joomla_templates_styles.png)
-
 2. Click your template style (for example, `purity_III - Default`) to open it.
 3. Click the arrow next to the **Save** button at the top left of the window, and select **Save as Copy**.
 4. Edit the **Style Name** to indicate the language (for example, `purity_III - fr`).
 5. Select the respective language as the **Default**. This sets this template as the default for pages using the selected language.
-6. Click the **Navigation** tab, and change the **Menu** to the correct main menu for the language.
-7. Click the **Assignment** tab, and assign the menu items from the correct language to the template. To select or deselect all menu items, click the toggle button next to the main menu title.
+6. Click the **Navigation** tab and change the **Menu** to the correct main menu for the language.
+7. Click the **Assignment** tab and assign the menu items from the correct language to the template. To select or deselect all menu items, click the toggle button next to the main menu title.
 8. Click **Save** and click **Close** to close the template style.
+
+### Duplicate the homepage template style
+
+You must also duplicate your homepage template style for each language.
+
+1. In the JAI left navigation bar, click **Templates > Styles**.
+2. Click **apiportal-homepage** template style to open it.
+3. Click the arrow next to the **Save** button at the top left of the window, and select **Save as Copy**.
+4. Edit the **Style Name** to update the name of your new homepage.
+5. Click the **Navigation** tab and change the **Menu** to the correct main menu for the language.
+6. Click the **Assignment** tab and select only **Home** from the **Main menu** of the correct language.
+7. Click **Save** and click **Close** to close the template style.
+
+### Create homepage modules for the new language
+
+On the Home page layout there are available positions where you can add modules. When installing a new language, it is a common practice to duplicate the **Home Page Banner** and the **Home tiles** modules, and translate them for the new language. To create a new module:
+
+1. In the JAI top navigation bar, click **Extensions > Modules** and click **New**.
+2. Select module type (for example, **Home Page Banner**).
+3. Select **Position**  (for example, **api-home-banner**).
+4. For the **Language**, select the new installed language.
+5. On the **Menu assignment** tab, select **Only on the pages selected** from the **Module assignment** list.
+6. Select the Home page of the new language from the **Menu selection** field.
+7. Click **Save**  
 
 ### Publish additional languages
 
@@ -148,7 +169,7 @@ You must also duplicate your page template styles for each language. By default,
 2. In the JAI left navigation bar, click **Language(s) > Content Languages**.
 3. Ensure that the **Status** for all the languages you want to publish is set to **Publish**.
 4. In the JAI top navigation bar, click **Extensions > Plugins**, and ensure the **System - Language Filter** plugin is enabled.
-5. Open your API Portal home page in a browser, and change the language code in the URL to one of the languages you have published. For example, change`https://<your API Portal URL>/en/` to `https://<your API Portal URL>/fr/`. You are redirected to the API Portal home page in that language.
+5. Open your API Portal home page in a browser, and change the language code in the URL to one of the languages you have published. For example, change `https://<your API Portal URL>/en/` to `https://<your API Portal URL>/fr/`. You are redirected to the API Portal home page in that language.
 
 ## Provide a language switcher
 
@@ -160,10 +181,7 @@ To enable a language switcher, you need to have a main menu for each language yo
 
 To install new languages, follow these steps:
 
-1. In the Joomla! Admin Interface (JAI), click **Extensions > Language(s)**.
-
-    ![Install language](/Images/APIPortal/joomla_install_lang.png)
-
+1. In the JAI top navigation bar, click **Extensions > Language(s)**.
 2. Click **Install Languages**.
 3. Find and select the language to install, and click **Install**.
 4. In the JAI left navigation bar, click **Language(s) > Content Languages**.
@@ -188,10 +206,9 @@ First, create a main menu that will be the default main menu for all languages. 
 3. On the **Menu Details** tab, in **Menu Type**, enter a system identifier for the new main menu (for example, `mainmenuall`).
 4. Click **Save & Close**.
 5. To add a menu item to this main menu, click **Menus > Main menu - All > Add New Menu Item**.
+6. Click **Save & Close**.
 
     ![Add menu item for Main menu -All](/Images/APIPortal/jai_mainmenuall_home.png)
-
-6. Click **Save & Close**.
 
 #### Change the language of the original main menu to English
 
@@ -243,9 +260,6 @@ By default, API Portal uses the Purity III template style. After following this
 #### Duplicate the template style for the new language
 
 1. In the JAI left navigation bar, click **Templates > Styles**.
-
-    ![Joomla Templates Styles](/Images/APIPortal/joomla_templates_styles.png)
-
 2. Click your template style (for example, `purity_III - Default`) to open it.
 3. Click the arrow next to the **Save** button at the top left of the window, and select **Save as Copy**.
 4. Edit the **Style Name** to indicate the language (for example, `purity_III - Default - French`).
