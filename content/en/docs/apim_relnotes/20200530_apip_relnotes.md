@@ -4,7 +4,6 @@ linkTitle: API Portal May 2020
 weight: 70
 date: 2020-03-11T00:00:00.000Z
 ---
-
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
@@ -31,7 +30,7 @@ This update has the following limitations:
 * Upgrade to API Portal 7.7.20200530 is supported from API Portal 7.7.0 only. To upgrade from earlier versions (for example, 7.5.x, 7.6.x) you must first upgrade to API Portal 7.7.
 * The ready-made API Portal Docker image 7.7.20200530 is strictly for development environments only, and it is not recommended for use in production environments.
 
-    It is not recommended to use the image in production environments because the image is built with CentOS as a base OS, and our Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issues have been resolved, but until we can ship a hardened image that passes our security concerns, we cannot advise customers to use this image in a production environment. Delivery a Docker image for production use is already planned in the [API Portal 2020 roadmap](https://community.axway.com/s/api-portal).
+  It is not recommended to use the image in production environments because the image is built with CentOS as a base OS, and our Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issues have been resolved, but until we can ship a hardened image that passes our security concerns, we cannot advise customers to use this image in a production environment. Delivery a Docker image for production use is already planned in the [API Portal 2020 roadmap](https://community.axway.com/s/api-portal).
 * Upgrading from previous API Portal Docker image is not supported.
 * This update is not available as a virtual appliance or as a managed service on Axway Cloud.
 
@@ -49,21 +48,21 @@ To stay current and align our offerings with customer demand and best practices,
 
 ## Fixed issues
 
-This version of API Portal includes the fixes from all 7.5.5, 7.6.2, and 7.7 service packs or updates released prior to this version. For details of all the service pack fixes included, see the corresponding _SP Readme_ attached to each service pack on [Axway Support](https://support.axway.com).
+This version of API Portal includes the fixes from all 7.5.5, 7.6.2, and 7.7 service packs or updates released prior to this version. For details of all the service pack fixes included, see the corresponding *SP Readme* attached to each service pack on [Axway Support](https://support.axway.com).
 
 ### Fixed security vulnerabilities
 
 <!-- TODO copy and paste the list from confluence -->
 
-| Internal ID | Case ID | Description                                                                                                                                                                                     |
-| ----------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| IAP-XXXX    |         | **Issue:** Issue description. **Resolution:** Resolution description.                                                          |
+| Internal ID | Case ID | Description                                                           |
+| ----------- | ------- | --------------------------------------------------------------------- |
+| IAP-XXXX    |         | **Issue:** Issue description. **Resolution:** Resolution description. |
 
 ### Other fixed issues
 
-| Internal ID | Case ID  | Description                                                                                                                                                                                                                                      |
-| ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| IAP-XXXX    |         | **Issue:** Issue description. **Resolution:** Resolution description.
+| Internal ID | Case ID | Description                                                           |
+| ----------- | ------- | --------------------------------------------------------------------- |
+| IAP-XXXX    |         | **Issue:** Issue description. **Resolution:** Resolution description. |
 
 ## Known issues
 
@@ -83,12 +82,6 @@ Changing the API Portal language to Arabic (or any other right to left language)
 6. Click **Save** and click **Close** to close the template style.
 
 Related Issue: IAP-308
-
-### Sign in button is shown after user logs in to API Portal
-
-After user logs in to API Portal, the **Sign in** button is shown in the banner section instead of the **Explore** button.
-
-Related Issue: IAP-3037
 
 ## Documentation
 
