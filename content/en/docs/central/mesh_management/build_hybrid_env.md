@@ -2,11 +2,12 @@
 title: Build your hybrid environment
 linkTitle: Build your hybrid environment
 weight: 145
-date: 2019-07-30
-description: Learn how to build a basic Amazon EC2 private cloud hybrid environment and add the required tools to enable you to access and manage it remotely from a client system.
+date: 2019-07-30T00:00:00.000Z
+description: Learn how to build a basic Amazon EC2 private cloud hybrid
+  environment and add the required tools to enable you to access and manage it
+  remotely from a client system.
 ---
-
-_Estimated reading time_: 3 minutes
+*Estimated reading time*: 3 minutes
 
 {{< alert title="Public beta" color="warning" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
 
@@ -25,12 +26,14 @@ Learn how to build a basic Amazon EC2 private cloud hybrid environment and add t
 ## Minimum requirements
 
 * Amazon EC2 instance with Kubernetes and Helm:
-    * Kubernetes 1.11.7 or later recommended
+
+    * Kubernetes 1.14 - 1.16 is required
     * Helm 2.13 or later recommended
 * Public facing fully qualified domain name (FQDN) of the Amazon EC2 cluster
 * Client system (for example, Linux VM) with the following tools installed for accessing and managing your Amazon EC2 environment remotely:
+
     * AWS CLI 1.16 recommended - Enables you to interact with AWS services from the command line. See the [AWS CLI installation documentation](https://docs.aws.amazon.com/cli/latest/userguide/li-chap-install.html).
-    * kubectl 1.13 recommended - Enables you to deploy and manage applications on Kubernetes from the command line. See the [kubectl installation documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+    * kubectl 1.14 recommended - Enables you to deploy and manage applications on Kubernetes from the command line. See the [kubectl installation documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
     * kops 1.11 recommended - Helps you create, destroy, upgrade and maintain Kubernetes clusters from the command line. See the [kops installation documentation](https://github.com/kubernetes/kops/blob/master/docs/install.md).
     * Helm 2.13 or later recommended - Enables you to install the Axway proprietary service mesh layer later, and to export Helm charts. See the [Helm installation documentation](https://helm.sh/docs/using_helm/#installing-helm).
 
@@ -41,7 +44,7 @@ Follow these guidelines to build a basic Amazon EC2 hybrid environment manually.
 ### Set up Amazon EC2
 
 1. To create an Amazon EC2 environment, follow the five steps in the [Amazon EC2 set up documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html).
-2. To launch and connect to an Amazon EC2 instance, follow the first two steps in the [Amazon EC2 get started documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html). When launching the instance, choose a Linux AMI and an instance type of `t2.medium`.
+2. To launch and connect to an Amazon EC2 instance, follow the first two steps in the [Amazon EC2 get started documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html). When launching the instance, choose a Linux AMI and an instance type of `t2.large`.
 
 ### Add Kubernetes to Amazon EC2
 
@@ -72,34 +75,31 @@ Install Helm on your cluster and add the Axway public repository to Helm:
 
 1. To install the Helm server (Tiller) on the connected cluster:
 
-    ```
-    helm init
-    ```
-
+   ```
+   helm init
+   ```
 2. Verify the Helm version:
 
-    ```
-    helm version
-    Client: &version.Version{SemVer:"v2.13.0", GitCommit:"2e55dbe1fdb5fdb96b75ff144a339489417b146b", GitTreeState:"clean"}
-    Server: &version.Version{SemVer:"v2.13.0", GitCommit:"2e55dbe1fdb5fdb96b75ff144a339489417b146b", GitTreeState:"clean"}
-    ```
-
+   ```
+   helm version
+   Client: &version.Version{SemVer:"v2.13.0", GitCommit:"2e55dbe1fdb5fdb96b75ff144a339489417b146b", GitTreeState:"clean"}
+   Server: &version.Version{SemVer:"v2.13.0", GitCommit:"2e55dbe1fdb5fdb96b75ff144a339489417b146b", GitTreeState:"clean"}
+   ```
 3. Add the Axway public Helm repository to your installation:
 
-    ```
-    helm repo add axway https://charts.axway.com/charts
-    "axway" has been added to your repositories
-    ```
-
+   ```
+   helm repo add axway https://charts.axway.com/charts
+   "axway" has been added to your repositories
+   ```
 4. Verify that the Axway public repository has been added:
 
-    ```
-    helm repo list
-    NAME            URL
-    stable          https://kubernetes-charts.storage.googleapis.com
-    local           http://127.0.0.1:8879/charts
-    axway           https://charts.axway.com/charts
-    ```
+   ```
+   helm repo list
+   NAME            URL
+   stable          https://kubernetes-charts.storage.googleapis.com
+   local           http://127.0.0.1:8879/charts
+   axway           https://charts.axway.com/charts
+   ```
 
 ## Validate the Amazon EC2 hybrid environment
 
