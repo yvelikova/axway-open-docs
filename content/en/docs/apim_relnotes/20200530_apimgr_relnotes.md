@@ -109,7 +109,7 @@ These instructions apply to API Gateway and API Manager classic deployments only
 This update has the following prerequisites in addition to the [System requirements](/docs/apim_installation/apigtw_install/system_requirements/).
 
 1. Shut down any Node Manager or API Gateway instances on your existing installation.
-2. Back up your existing installation. For details on backing up, see [API Gateway backup and disaster recovery](/docs/apim_administration/apigtw_admin/manage_operations/#api-gateway-backup-and-disaster-recovery). Ensure that you back up any customized files. You should merge updated files instead of copying them back directly to avoid any regex matching issues. For example, the following directories might contain customized files:
+2. Back up your existing installation. You can use the `update_apigw.sh` script to take a backup of your entire API Gateway installation directory as detailed in the [API Gateway server install steps](#install-the-api-gateway-server-update), or you can manage your own backups as detailed in [API Gateway backup and disaster recovery](/docs/apim_administration/apigtw_admin/manage_operations/#api-gateway-backup-and-disaster-recovery). Ensure that you back up any customized files. You should merge updated files instead of copying them back directly to avoid any regex matching issues, whether you manage your own backups or not. For example, the following directories might contain customized files:
 
    ```
    webapps/apiportal/vordel/apiportal
@@ -120,20 +120,9 @@ This update has the following prerequisites in addition to the [System requireme
    samples/scripts/
    tools/filebeat-VERSION-PLATFORM
    ```
-3. Remove old third-party libraries by deleting the following directories:
-
-   ```
-   INSTALL_DIR/apigateway/system/lib/modules
-   INSTALL_DIR/analytics/system/lib/modules
-   ```
-4. Remove old JRE versions by deleting the following directories:
-
-   ```
-   INSTALL_DIR/apigateway/platform/jre
-   ```
-5. If you have an existing Apache Cassandra installation, ensure that you back up your data (Cassandra and `kpsadmin`), and that the `JAVA_HOME` variable is set correctly in `cassandra.in.sh` and `cassandra.in.bat`.
-6. Remove the old Filebeat folder `/apigateway/tools/filebeat-5.2.0`. Check any customized files to see if they are compatible with the new version. See [Filebeat](#filebeat-v6-2-2) for more information.
-7. On Linux, remove existing capabilities on product binaries (which might prevent overwriting files):
+3. If you have an existing Apache Cassandra installation, ensure that you back up your data (Cassandra and `kpsadmin`), and that the `JAVA_HOME` variable is set correctly in `cassandra.in.sh` and `cassandra.in.bat`.
+4. Remove the old Filebeat folder `/apigateway/tools/filebeat-5.2.0`. Check any customized files to see if they are compatible with the new version. See [Filebeat](#filebeat-v6-2-2) for more information.
+5. On Linux, remove existing capabilities on product binaries (which might prevent overwriting files):
 
    ```
    setcap -r INSTALL_DIR/apigateway/platform/bin/vshell
@@ -176,26 +165,48 @@ To install the update on your existing API Gateway 7.7 server installation, perf
 
 1. Ensure that your existing API Gateway instance and Node Manager have been stopped.
 2. Remove any previous patches from your `INSTALL_DIR/ext/lib` and `INSTALL_DIR/META-INF` directories (or the `ext/lib` directory in an API Gateway instance). These patches have already been included in this update. You do not need to copy patches from a previous version.
-3. Verify the owners of API Gateway binaries before extracting the update.
+3. Download and unpack the API Gateway 7.7 server Update file into a new directory. For example:
 
    ```
-   ls -l INSTALL_DIR/apigateway/posix/bin
+   mkdir 77update
+   tar -xzvf APIGateway_7.7.YYYYMMDD_Core_linux-x86-64_BNnn.tar.gz -C 77update
    ```
-4. Using the same user who owns the API Gateway binaries, unzip and extract API Gateway 7.7 server Update over the `apigateway` directory in your existing installation directory . For example:
 
-   ```
-   tar -xzvf APIGateway_7.7.YYYYMMDD_Core_linux-x86-64_BNnn.tar.gz -C /opt/Axway-7.7/apigateway/
-   ```
-5. Change to the `apigateway` directory in your installation.
+    {{< alert title="Note" color="primary" >}} You must extract the file into a new directory and not into the existing API Gateway installation directory.{{< /alert >}}
 
-   ```
-   cd INSTALL_DIR/apigateway
-   ```
-6. Run the post-install script, and ensure that the correct permissions are set:
+4. Run the `update_apigw.sh` script from the directory into which you extracted the Update file (for example, `77update`) and specify  your API Gateway installation directory using the `--install_dir` option. For example:
 
-   ```
-   apigw_sp_post_install.sh
-   ```
+    ```
+    ./update_apigw.sh --install_dir /opt/Axway-7.7/
+    ```
+
+    For more details on this script, see [`update_apigw.sh` script](#update-apigw-sh-script).
+
+5. Restart your Node Manager and API Gateway instances on the local machine.
+
+##### `update_apigw.sh` script
+
+Run the `update_apigw.sh` script with the `--help` option to see the available options:
+
+```
+./update_apigw.sh --help
+
+```
+
+The script generates a trace file in the `update-output/trace` directory. Use the `--tracelevel` option to change the level of tracing.
+
+The script takes a backup of your entire API Gateway installation directory and places it in a `tar` file in the `update-output/backups` directory. Specify a different directory using the `--backup_dir` option. To manage your own backups, use the `--no_backup` option.
+
+To run the script without user interaction, specify `--mode unattended` option.
+
+Running the `update_apigw.sh` script performs the following steps:
+
+1. Check that the installation directory is valid.
+2. Check that the user who owns the API Gateway binaries is the same user running the `update_apigw.sh` script.
+3. Check that the Node Manager and API Gateway instances that run on the local machine are not running.
+4. Take a backup unless `--no_backup` has been specified.
+5. Install the update content into the API Gateway installation directory.
+6. Perform all of the steps that were performed by a post installation script in earlier updates. This includes JRE cleanup, `system/lib/modules` cleanup, third-party and Axway JAR cleanup, apply `acl.json` fix, apply passphrase obfuscation fix, and apply modifications to Node Manager entity store configuration. Fixes are only applied if they have not previously been applied.
 
 #### Install the Policy Studio update
 
@@ -264,22 +275,33 @@ If the script encounters an error, you are prompted to revert to the backup.
 To install the update on your existing API Gateway Analytics 7.7 installation, perform the following steps:
 
 1. Ensure that your existing API Gateway Analytics instance and Node Manager have been stopped.
-2. Verify the owners of API Gateway binaries before extracting the update.
+2. Remove old third-party libraries by deleting the following directories:
 
    ```
-   ls -l INSTALL_DIR/analytics/posix/bin
+   INSTALL_DIR/analytics/system/lib/modules
    ```
-3. Using the same user who owns the API Gateway Analytics binaries, unzip and extract API Gateway 7.7 Analytics Update over the `analytics` directory in your existing API Gateway 7.7 installation directory. For example:
+3. Remove old JRE versions by deleting the following directories:
+
+   ```
+   INSTALL_DIR/apigateway/platform/jre
+   ```
+4. Verify the owners of API Gateway binaries before extracting the update.
+
+    ```
+    ls -l INSTALL_DIR/analytics/posix/bin
+    ```
+
+5. Using the same user who owns the API Gateway Analytics binaries, unzip and extract API Gateway 7.7 Analytics Update over the `analytics` directory in your existing API Gateway 7.7 installation directory. For example:
 
    ```
    tar -xzvf APIGateway_7.7.YYYYMMDD_Analytics_linux-x86-64_BNnn.tar.gz -C /opt/Axway-7.7/analytics/
    ```
-4. Change to the `analytics` directory in your installation:
+6. Change to the `analytics` directory in your installation:
 
    ```
    cd INSTALL_DIR/analytics
    ```
-5. Run the post-install script for API Gateway Analytics.
+7. Run the post-install script for API Gateway Analytics.
 
    ```
    apigw_analytics_sp_post_install.sh
