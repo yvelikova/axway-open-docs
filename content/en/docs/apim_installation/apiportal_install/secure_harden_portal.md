@@ -5,7 +5,6 @@
   "date": "2019-08-09",
   "description": "Secure and harden your API Portal environment after installation."
 }
-
 Perform the following steps after installation to ensure that your API Portal environment is secure from internal and external threats:
 
 1. Apply the latest service pack (SP) available for this version, as it might contain important security updates. For details, see [Update API Portal](/docs/apim_installation/apiportal_install/install_service_pack/).
@@ -27,27 +26,25 @@ For more details on API Portal certificate management, see the [API Management 
 
 On an API Portal software installation, the Apache web server has TLS versions 1.0 and 1.1 enabled in addition to the TSL 1.2 that API Portal uses. Because TLS 1.0 and 1.1 have security vulnerabilities, it is recommended to disable them.
 
-1. To check which TLS versions are enabled, scan your API Portal port:
+1. To check which TLS versions are enabled, scan your API Portal port. By default, API Portal uses port `443` for secure connections:
 
-    ```
-    sslscan <API Portal IP address>:<your https port>
-    ```
+   ```
+   sslscan <API Portal IP address>:<your https port>
+   ```
 
-    By default, API Portal uses port `443` for secure connections.
 2. To disable TLS 1.0. and 1.1, open the following file: `/etc/httpd/conf.d/apiportal.conf`
 3. Add the following SSL protocol definition for the secure connection:
 
-    ```
-    <VirtualHost *:443>
-       SSLEngine on
-       SSLCertificateFile "/etc/httpd/conf/server.crt"
-       SSLCertificateKeyFile "/etc/httpd/conf/server.key"
-       SSLProtocol TLSv1.2
-       Header always append X-Frame-Options SAMEORIGIN
-        ...
-    </VirtualHost>
-    ```
-
+   ```
+   <VirtualHost *:443>
+      SSLEngine on
+      SSLCertificateFile "/etc/httpd/conf/server.crt"
+      SSLCertificateKeyFile "/etc/httpd/conf/server.key"
+      SSLProtocol TLSv1.2
+      Header always append X-Frame-Options SAMEORIGIN
+       ...
+   </VirtualHost>
+   ```
 4. Restart Apache.
 5. Run the `sslscan` again on your API Portal port to check that TLS 1.0 and 1.1 have been disabled.
 
@@ -67,12 +64,31 @@ To counter a session fixation vulnerability in Joomla!, it is recommended that y
            allow from 10.232.14.
        </Location>
    ```
-
 3. To restart the web server configuration, enter the following:
 
    ```
    # /etc/init.d/apache2 reload
    ```
+
+## Encrypt database password
+
+If you did not choose to encrypt your database password during the installation process, you can use the `apiportal_db_pass_encryption.sh` script, available both from API Portal installation and upgrade packages, to encrypt the password at any time.
+
+1. Make the script executable:
+
+   ```
+   # chmod +x apiportal_db_pass_encryption.sh
+   ```
+2. Execute the script
+
+   ```
+   # sh apiportal_db_pass_encryption.sh
+   ```
+    When you execute the script, you are prompted to enter a passphrase and your database password. The script uses the passphrase to encrypt the database password, which is now stored encrypted in the `<API_Portal_install_path>/configuration.php` file, and to decrypt the database password on each connection request.
+
+    Only the password is decrypted on each connection request, not the whole payload, so no significant performance impact is expected.
+
+{{< alert title="Note" color="primary" >}}This option cannot be used in combination with [database secure connection](#disable-tls-1-0-and-tls-1-1-on-apache).{{< /alert >}}
 
 ## Limit the number of failed login attempts
 
@@ -85,8 +101,7 @@ To protect API Portal and Joomla! from brute force attacks, you can limit the nu
 5. Enter a value in seconds for how long the user account is locked.
 6. Click **Yes** to enable locking by IP address. When this setting is enabled login attempts are blocked from the same IP address for the lock time specified even if correct user credentials are entered.
 
-    You can enable user account locking and IP address locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts, `UserA` will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, `UserB`) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
-
+   You can enable user account locking and IP address locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts, `UserA` will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, `UserB`) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
 7. Click **Save**.
 
 ## Add trusted OAuth hosts
@@ -297,6 +312,7 @@ Detecting abnormal behavior is very complex task and good prevention requires ac
 These are some general recommendations:
 
 * IP throttling - limits the number of connections from a given IP address within a given time period (what is considered normal activity). You can achieve this in different ways:
+
     * Toolkits like `mod_security`. For more details, see [ModSecurity rules](https://modsecurity.org/rules.html).
     * Firewall configurations. For more details see the official documentation of your firewall.
 * Google Analytics - has abnormal detection features. Very commonly used and reliable tool. For more information, see [Google Analytics Anomaly Detection](https://support.google.com/analytics/answer/7507748?hl=en).
