@@ -2,7 +2,7 @@
 title: API Gateway and API Manager 7.7 March 2020 Release Notes
 linkTitle: API Gateway and API Manager March 2020
 weight: 80
-date: 2020-03-11
+date: 2020-03-11T00:00:00.000Z
 ---
 
 ## Summary
@@ -270,12 +270,17 @@ To install the update on your existing Policy Studio installation, perform the f
    ```
    INSTALL_DIR/policystudio/jre
    ```
-4. Unzip and extract API Gateway 7.7 Policy Studio Update over the `policystudio` directory in your existing API Gateway 7.7 installation directory. For example:
+4. Remove files `libeay32.dll` and `ssleay32.dll` from directory:
+
+   ```
+   INSTALL_DIR/policystudio
+   ```
+5. Unzip and extract API Gateway 7.7 Policy Studio Update over the `policystudio` directory in your existing API Gateway 7.7 installation directory. For example:
 
    ```
    tar -xzvf APIGateway_7.7.YYYYMMDD_PolicyStudio_linux-x86-64_BNnn.tar.gz -C /opt/Axway-7.7/policystudio/
    ```
-5. Start Policy Studio with `policystudio -clean`
+6. Start Policy Studio with `policystudio -clean`
 
 #### Install the Configuration Studio update
 
@@ -288,12 +293,17 @@ To install the update on your existing Configuration Studio installation, perfor
    ```
    INSTALL_DIR/configurationstudio/jre
    ```
-4. Unzip and extract API Gateway 7.7 Configuration Studio Update over the `configurationstudio` directory in your existing API Gateway 7.7 installation directory. For example:
+4. Remove files `libeay32.dll` and `ssleay32.dll` from directory:
+
+   ```
+   INSTALL_DIR/configurationstudio
+   ```
+5. Unzip and extract API Gateway 7.7 Configuration Studio Update over the `configurationstudio` directory in your existing API Gateway 7.7 installation directory. For example:
 
    ```
    tar -xzvf APIGateway_7.7.YYYYMMDD_ConfigurationStudio_linux-x86-64_BNnn.tar.gz -C /opt/Axway-7.7/configurationstudio/
    ```
-5. Start Configuration Studio with `configurationstudio  -clean`
+6. Start Configuration Studio with `configurationstudio  -clean`
 
 #### Install the API Gateway Analytics update
 
