@@ -37,7 +37,6 @@ To upgrade your API Portal software installation, follow these steps:
    ```
    tar xpvzf <package_name>.tgz
    ```
-
 3. Extract the Joomla! update package (for example, `joomla-update-package-3.9.14-package.zip`) from the API Portal upgrade package to your local file system.
 4. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal host>/administrator`).
 5. Click **Components > Joomla! Update**, and go to the **Upload & Update** tab. If **Joomla! Update** is not visible in the menu, connect to your user database and execute the following query for API Portal database:
@@ -45,16 +44,9 @@ To upgrade your API Portal software installation, follow these steps:
    ```
    update s8f7h_menu set menutype='main' where title like 'com_joomlaupdate'
    ```
-
 6. Select the Joomla! update package (for example, `joomla-update-package-3.9.14-package.zip`) from your file system.
 7. Click **Upload & Install**, and follow the displayed instructions.
 8. Enter the following to run the upgrade script:
-
-   ```
-   ./apiportal_upgrade.sh
-   ```
-
-9. Run the upgrade script with the appropriate arguments. For example:
 
    ```
    ./apiportal_upgrade.sh
@@ -72,6 +64,7 @@ After upgrade, you must reinstall Easyblog and EasyDiscuss in JAI to update the 
 2. Click **Components > EasyBlog**, and follow the instructions in the EasyBlog installer.
 3. If prompted to select the installation method, select **Installation via Directory**, select the available package from the drop-down list, and follow the instructions in the installer to the finish. Do not install any of the modules and plugins unless you plan to use them. To prevent installing any modules, click **Modules** and deselect **Select All**, then repeat the same for **Plugins**.
 4. Click **Components > EasyDiscuss**, and repeat the component installation as described for EasyBlog.
+5. If a newer version is available for **EasyBlog** or **EasyDiscuss**, click **Update Now** to update the component.
 
 {{< alert title="Note" color="primary" >}} To resolve a known issue (caused by EasyBlog) with broken menu paths when creating new custom menus for your API Portal in JAI, you must rebuild the menu paths. In JAI, select **Menus > Main Menu** and click **Rebuild**. You only need to rebuild the menu paths once after installation or upgrade. {{< /alert >}}
 
