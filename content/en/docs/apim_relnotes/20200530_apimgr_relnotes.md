@@ -80,17 +80,71 @@ To stay current and align our offerings with customer demand and best practices,
 
 ## Fixed issues
 
-This version of API Gateway and API Manager includes the fixes from all 7.5.3, 7.6.2, and 7.7 service packs or updates released prior to this version. For details of all the service pack fixes included, see corresponding *SP Readme* attached to each service pack on [Axway Support](https://support.axway.com).
+This version of API Gateway and API Manager includes:
+
+* Fixes from all 7.5.3, 7.6.2, and 7.7 service packs released prior to this version. For details of all the service pack fixes included, see the corresponding *SP Readme* attached to each service pack on [Axway Support](https://support.axway.com).
+* Fixes from all 7.7 updates released prior to this version. For details of all the update fixes included, see the corresponding [release note](/docs/apim_relnotes/) for each 7.7 update.
 
 ### Fixed security vulnerabilities
 
-There are no fixed security vulnerabilities in this version.
+| Internal ID | Case ID | Cve Identifier | Description                                                                 |
+| ----------- | ------- | ------- |--------------------------------------------------------------------------- |
+|RDAPI-18123|01100683  01094763||**Issue**: Forgot password functionality generates a temporary password, but never forces the user to change it. **Resolution**: Generated passwords are now marked as temporary and users are forced to change the password on first login.|
+|RDAPI-18383|114792|||
+|RDAPI-19028|113204||**Issue**: API Manager reflects the request headers in response on HTTP 429 Too Many Requests error. **Resolution**: API Manager does not reflect request headers in response when the `com.axway.apimanager.fault.resetHeaders.http429` Java property is set to `true`. For example, in `jvm.xml`: `<VMArg name="-Dcom.axway.apimanager.fault.resetHeaders.http429=true"/>`. **Issue**: API Manager reflected the request body in generated responses for 400, 404, 405, and 429 HTTP errors, which were not handled by global fault handlers. **Resolution**: There is new fault handling for these API Manager-specific errors. The fault is routed to the GenericFaultProcessor to generate a new response body. This is controlled by the `com.axway.apimanager.fault.legacy` Java system property, which allows the legacy behavior of the API Manager-specific errors to be used if required and is set to `false` by default. A new Java system property `com.axway.apimanager.fault.removeContentBody` can be used with legacy fault handling behavior to remove the body in the response. To remove the body rather than generating a new response body, set both `com.axway.apimanager.fault.legacy` and `com.axway.apimanager.fault.removeContentBody` Java system properties to `true`.|
+|RDAPI-19126|112935|||
+|RDAPI-19525|111580||**Issue**: In API Gateway, a header with an empty value was incorrectly subjected to RFC 7230 "obs-fold" parsing, concatenating it with the next header. **Resolution**: API Gateway now conforms to RFC 7230 and empty headers are left unchanged.|
+|RDAPI-19895|115507||**Issue**: Proxy authorization appears in product traces. **Resolution**: Authentication information has been removed from traces.|
 
 ### Other fixed issues
 
 | Internal ID | Case ID | Description                                                                 |
 | ----------- | ------- | --------------------------------------------------------------------------- |
-| RDAPI-XXXXX | XXXXXX  | **Issue**: Description of issue. **Resolution**: Description of resolution. |
+|RDAPI-16183|105537||
+|RDAPI-18128|01106018  01107786||
+|RDAPI-18376|01141105  01111969||
+|RDAPI-18379|110550|**Issue**: Editing of application sharing details prevents further editing of other application details. **Resolution**: Editing of application details works as expected.|
+|RDAPI-18519|01108119  01110455|**Issue**: The API Manager UI is slow when using SSO. **Resolution**: The number of requests from the API Manager UI has been reduced to improve UI performance when using SSO.|
+|RDAPI-18649|01103847  01119176||
+|RDAPI-18823|01099988  01104274||
+|RDAPI-18876|104940|**Issue**: API Manager actions requiring many writes are too slow when the Cassandra node CPU usage is too high. **Resolution**: Reduced the number of reads when writing new objects into Cassandra.|
+|RDAPI-19005|113147|**Issue**: Misspelled word in API Manager UI. **Resolution**:  Misspelled word is corrected.|
+|RDAPI-19119|113214|**Issue**: Cannot create a HTTP traffic monitoring transaction leg record from a script filter or the Java layer. **Resolution**: Missing HTTP monitoring fields have been added to the Java layer.|
+|RDAPI-19142|01136068  01134950  01097471|**Issue**: When the **Skip Authorization** checkbox in the Authorization Request filter is used, scopes already authorized and stored in the Authorizations DB for this application and user are accepted in addition to the requested scopes. **Resolution**:  When the **Skip Authorization** checkbox in the Authorization Request filter is used, only requested scopes are accepted.|
+|RDAPI-19190|113610|**Issue**: Running the `update-apimanager` script with the `--fed` option fails for a fed with a missing type. **Resolution**: A flag has been added that checks for the type first before attempting to access it.|
+|RDAPI-19220|111038|**Issue**: `kpsadmin` tool was unable to delete rows. **Resolution**: `kpsadmin` tool is now able to delete rows.|
+|RDAPI-19254|01138607  01139565  01139664| **Issue**: Large number of open socket descriptors on Linux 64-bit can cause API Gateway to crash. **Resolution**: API Gateway can now handle a large number of socket descriptors on Linux 64-bit.|
+|RDAPI-19295|114063|**Issue**: OAuth credentials are always enabled when an application is imported and the original state of the credentials when the application was exported is lost. **Resolution**: OAuth credentials state is preserved when the application is exported.|
+|RDAPI-19319|113992|**Issue**: Connect To URL filter treats 304 requests as redirect and performs the request twice. **Resolution**: 304 status code is no longer treated as a redirect.|
+|RDAPI-19435|113957|**Issue**: The SFTP File Upload filter was not retrieving the correct selector value for the host finger print field. **Resolution**: Updated the filter to retrieve the correct selector value.|
+|RDAPI-19450|01143338  01143298|**Issue**: API Gateway documentation incorrectly states that certificates from Java keystore can also be loaded and trusted by setting the `javax.net.ssl.trustStore` Java system property. **Resolution**: The statement has been removed from the _Import certificates and keys to the API Gateway trusted certificate store_ section of API Gateway documentation.|
+|RDAPI-19459|112052|**Issue**: In Policy Studio, there was a broken link when clicking **Jump to Configuration** on an environmentalized API Manager setting. **Resolution**: Clicking **Jump to Configuration** on an environmentalized API Manager setting correctly redirects to the API Manager settings.|
+|RDAPI-19463|01144528  01137208|**Issue**: Query parameters are not validated correctly by API Manager. **Resolution**: Query parameters are now validated correctly.|
+|RDAPI-19480|112128|**Issue**: Event logging was not writing the required application ID to the service context `client` field when using OAuth. **Resolution**: A new attribute `authentication.application.id` has been added, which you can use to set the client value correctly in the event logs for OAuth. You must also add a Java system property to the `jvm.xml` file in the `conf/` directory of the instance to disable writing username to the service context in the event logs, which is a requirement for Embedded Analytics for API Manager to work correctly. For example: `<ConfigurationFragment>    <VMArg name="-Dcom.axway.coreapi.method.servicecontext.clientattr=true" /></ConfigurationFragment>`.|
+|RDAPI-19491|110254|**Issue**: Running `kpsadmin` with the diagnostic option was outputting a 410 GONE error message when attempting to retrieve data that did not exist. **Resolution**: The `kpsadmin` script has been updated to exit when all data is retrieved.|
+|RDAPI-19499|01151544  01151502  01161250  01142544  01156544|**Issue**: Upgrading a fed file from version 7.6.2 to version 7.7 using Policy Studio is very slow on Windows. **Resolution**: Policy Studio has been updated to reduce upgrade time on Windows.|
+|RDAPI-19526|114217|**Issue**: In Policy Studio, if a field was environmentalized, a database connection test failed to use the environmentalized value. **Resolution**: If a field is environmentalized, a database connection test uses the environmentalized value.|
+|RDAPI-19572|01129719  01128960|**Issue**: Large numbers of Oauth authorizations (oauth_authorizations table) cause API Manager to become unresponsive. **Resolution**: Support for pagination headers has been implemented in the `api/portal/v1.3/authorizations` API and API Manager UI.|
+|RDAPI-19603|114262|**Issue**: When redaction is enabled, the HTTP response stored in Traffic Monitor is truncated after the first "100 Continue" header. **Resolution**: "100 Continue" support has been added to the HTTP redaction layer and fully redacted HTTP responses are stored in Traffic Monitor.|
+|RDAPI-19691|01100006  01130690|**Issue**: API Gateway Analytics throws an error when values greater than the limit for a signed integer are returned by the database. **Resolution**: Analytics now handles database response values as long data types.|
+|RDAPI-19730|104157|**Issue**: User's mobile number is not synchronized when sent in a policy during API Manager master/slave synchronization. **Resolution**: User's mobile number is gathered and saved in slave.|
+|RDAPI-19753|115176|**Issue**: HTTP response stored by Open Traffic Logger is truncated after first "100 Continue" header. **Resolution**: "100 Continue" support has been added to Open Traffic Logger layer and all headers are correctly stored.|
+|RDAPI-19757|01096753  01111767  01094639|**Issue**: In Policy Studio or Configuration Studio, the KPS Table Structure view shows black checkboxes for table rows on Windows. **Resolution**: The KPS Table Structure view correctly shows checkboxes for table rows.|
+|RDAPI-19759|111176|**Issue**: A generic "Invalid Data" error message is displayed upon entering an invalid Security Certificate URL. **Resolution**: A detailed error message is displayed in this scenario.|
+|RDAPI-19774|01152955  01153905  01149611|**Issue**: In API Gateway requests to a virtual host are confined to the virtual host. Matching is not attempted against the parent listener if not found in the virtual host configured handlers. **Resolution**: Requests to a virtual host are now matched against the parent listener if a handler is not found in the virtual host configuration.|
+|RDAPI-19776|115304|**Issue**: `$INSTALL_DIR/apigateway/posix/bin/jython` script is not provided as part of API Gateway Package and Deploy Tools installer. **Resolution**: `jython` script is now part of the Package and Deployment Tools distribution.|
+|RDAPI-19791|109092|**Issue**: Failed login attempts to API Manager are not stored in audit log. **Resolution**: Failed login attempts to API Manager are properly logged in audit log.|
+|RDAPI-19795|01136358  01153566|**Issue**: Incorrect naming in UI of Base path and Base path URL for values that are not Base Path according to swagger 2.0 and later. **Resolution**: Naming in UI is fixed to comply with Swagger 2.0 and later.|
+|RDAPI-19803|113946|**Issue**: When all methods of an API have their inbound security profile overridden, an invocation of an non-exiting method returns 500 Authentication Not Configured. This can allow a malicious user to guess the methods of a secure API. **Resolution**: Invoking a non-existing method of an API uses the default API inbound security profile defined in that API to validate the caller.|
+|RDAPI-19812|115399|**Issue**: The API image was not displaying in API Catalog view. **Resolution**: The API image is correctly displayed.|
+|RDAPI-19813|110315|**Issue**: In API Gateway, using the method `getContent` from a `NodeImpl` object results in a crash when content is null. **Resolution**: The method has been fixed to handle null content.|
+|RDAPI-19855|01145864  01148092|**Issue**: The kps composite key query endpoint was not decoding query parameters. **Resolution**: The kps composite key query endpoint now decodes query parameters.|
+|RDAPI-19899|01114864  01116592|**Issue**: The backend was not validating int query parameters. **Resolution**: The backend now validates int query parameters.|
+|RDAPI-19926|109656|**Issue**: Content-types in API requests cause incorrect path matching for multiple ambiguous API matches. **Resolution**: Path matching now determines the best path by comparing API matches with and without content-type equally.|
+|RDAPI-19939|01102029  01104054|**Issue**: Invocation of Store Message and Restore Message filters might result in an empty message body when the message body content is too large. **Resolution**: The filters correctly process large message body content.|
+|RDAPI-19969|01155966  01151956  01155475  01155982  01146306  01156860  01156316  01141111  01160432|**Issue**: In API Gateway, when using a Connect or Connect to URL Filter in a REST API, if an exception occurs in the backend, the API Gateway overrides any fault handler configured in the policy and overwrites the response body. This does not apply for global fault handlers. **Resolution**: API Gateway respects any fault handler configured in the policy.|
+|RDAPI-19990|01064458  01064765|**Issue**: In a Policy Studio project, when error response codes are added to a REST API method, the method cannot be edited after the project is closed and reopened. **Resolution**: The method can be edited as expected after the project is closed and reopened.|
+|RDAPI-20015|115648|**Issue**: API Manager configuration can only be updated on a live installation. **Resolution**: Additional options have been added to `update-apimanager` so that a project directory, federated files, or policy and environment files can be updated.|
 
 ## Known issues
 
@@ -98,7 +152,43 @@ The following are known issues for this update.
 
 | Internal ID | Description                |
 | ----------- | -------------------------- |
-| RDAPI-XXXXX | Description of known issue |
+|RDAPI-20127|Selector `${content.body.getJSON().get(0)}` not working|
+|RDAPI-20091|In Policy Studio, when importing a policy fragment, deselected items are imported anyway|
+|RDAPI-20055|Sentinel filter - "Use the following tracked object" option not working|
+|RDAPI-20017|Incorrect semantics of negated match types like IS_NOT in Compare Attribute filter|
+|RDAPI-20011|Request body reflected as response|
+|RDAPI-19960|Javadoc links are broken|
+|RDAPI-19838|Manager rejects valid OAS documents that use space characters in the keys of an "examples" object|
+|RDAPI-19833|Okta SSO integration and email mapping|
+|RDAPI-19788|Issue with pagination across multiple sections|
+|RDAPI-19580|Trial option in the Organization does not work|
+|RDAPI-19490|Modifying the email template `$subject` variable does not work|
+|RDAPI-19453|Uploading an invalid image type when creating an application leads to an internal server error|
+|RDAPI-19433|Line breaks in outbound parameter (type header) value not escaped|
+|RDAPI-19418|`api.error.source` not available in APIManager fault handler|
+|RDAPI-19379|Images uploaded to APIs not showing in the Catalog|
+|RDAPI-19334|Access to retired APIs is not removed from other organizations as expected|
+|RDAPI-19293|API Catalog Try It shows only the first security device of a security profile|
+|RDAPI-19292|When an admin user's login name is changed, the user is directed to a blank page|
+|RDAPI-19262|X-Rate-Limit header shows inconsistent values in a multi-node API Manager environment|
+|RDAPI-19258|OAS 3.0: Default parameter serialization data seems redundant and bloats API exports|
+|RDAPI-19240|Users in "pending approval" state are visible in the Sharing tab|
+|RDAPI-19217|Inconsistency between Application Developers and Account Settings pages in API Manager|
+|RDAPI-19216|Applications in pending approval state cannot be exported, but the UI is unclear|
+|RDAPI-19150|Try It in API Manager only shows first 10 API keys|
+|RDAPI-19132|Issue with selection of Retirement date when deprecating API|
+|RDAPI-19006|Delete API "not found" after changing Application Org|
+|RDAPI-18990|"Failed to delete undefined" pop-up pops up unexpectedly when attempting to delete application|
+|RDAPI-18777|Overriding the quota for an application and then removing the setting causes incorrect behavior|
+|RDAPI-18674|Insufficient data validation when importing an Application|
+|RDAPI-18431|HTTP 409 Resource already exists in Applications - External Credentials|
+|RDAPI-18294|KPS REST API documentation missing info|
+|RDAPI-18198|CORS preflight fails for WSDL based API Manager APIs, and Try-It fails|
+|RDAPI-18082|Regression: Policy Shortcut filters no longer automatically renamed in 7.7|
+|RDAPI-17282|Connector for Salesforce APIs in API Manager does not work or is impossible to configure|
+|RDAPI-16486|Changes in the mapper always require a reload in the Execute Data Maps filter and once reloaded then providing values for the required parameters must be repeated|
+|RDAPI-15981|Scopes fields for API Key remain visible even if Application Scopes are disabled|
+|RDAPI-11143|Discrepancy with API retirements dates|
 
 ## Update a classic (non-container) deployment
 
