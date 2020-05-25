@@ -1,9 +1,9 @@
 {
-    "title":"Install API Portal",
-    "linkTitle":"Install API Portal",
-    "weight":"5",
-    "date":"2019-08-09",
-    "description":"Install or uninstall API Portal on Red Hat Enterprise Linux (RHEL) or CentOS."
+"title": "Install API Portal",
+  "linkTitle": "Install API Portal",
+  "weight": "5",
+  "date": "2019-08-09",
+  "description": "Install or uninstall API Portal on Red Hat Enterprise Linux (RHEL) or CentOS."
 }
 
 This section describes the steps to install or uninstall API Portal as software installation on Red Hat Enterprise Linux (RHEL) or CentOS.
@@ -31,6 +31,8 @@ Before you start, check the [Installation prerequisites](/docs/apim_installation
     * Use MySQL in SSL mode (with one way authentication or two way authentication). The certificates generated from MySQL Server must be located in `/etc/mysql/certs/`.
     * Database connection details. The default port is `3306` or you can specify a different one. The database user is the user you created for API Portal. See [Configure the database server](/docs/apim_installation/apiportal_install/install_software_configure_database/).
     * Install API Portal in a high availability cluster setup with database replication.
+    * Do you want to encrypt your database password (Password will be stored encrypted)(Y/N)?
+    * Enter passphrase (It will be used as encryption key for the database password).
     * Locations of `php.ini` and `apiportal.conf` configuration files.
     * Encrypt the Public API mode user password and store the encryption key in a specified directory. The directory is created along with a file. The last segment of the directory is the file name. For example: `/sample/directory/for/encryption/key` creates an empty file named "key" in the desired directory. You can also use a script to encrypt the password later. For more details, see [Encrypt the Public API user password (optional)](/docs/apim_installation/apiportal_install/upgrade_automatic/#encrypt-the-public-api-mode-user-password-optional).
     * Configure API Portal with SSL/TLS. For HTTPS, you can either provide a certificate and private key, or use a self-signed certificate. For more details, see [Configure API Portal to run with HTTP or HTTPS](#configure-api-portal-to-run-with-http-or-https).
