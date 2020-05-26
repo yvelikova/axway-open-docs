@@ -1,10 +1,19 @@
 {
-    "title":"Configure database server",
-    "linkTitle":"Configure database server",
-    "weight":"4",
-    "date":"2019-08-09",
-    "description":"Configure your MySQL or MariaDB database server before you install API Portal."
+"title": "Install and configure database server",
+  "linkTitle": "Configure database server",
+  "weight": "4",
+  "date": "2019-08-09",
+  "description": "Configure your MySQL or MariaDB database server before you install API Portal."
 }
+
+## Installation
+
+For details how to install a database using `yum`, see the following:
+
+* [MySQL installation instructions](http://dev.mysql.com/doc/refman/5.6/en/linux-installation-yum-repo.html)
+* [MariaDB installation instructions](https://mariadb.com/kb/en/mariadb/yum/)
+
+If your database is on a remote host, you must configure a MySQL client or a MariaDB client on the API Portal host.
 
 ## Configure the database server settings
 
@@ -83,12 +92,14 @@ To enable secure connection in the MySQL or MariaDB server-side configuration, d
 After configuring the MySQL or MariaDB database server with certificates, you need to make sure SSL is enabled on the server side.
 
 1. Log in to the database server as the `root` user:
-
-    `MySQL -u root –p <password>`
+    ```bash
+    mysql -u root –p
+    ```
 
 2. Enter the following command:
-
-    `show variables like '%ssl%';`
+    ```
+    show variables like '%ssl%';
+    ```
 
 You should get output similar to the one below:
 
@@ -100,19 +111,21 @@ After you have successfully enabled SSL on the server, you must configure user a
 
 You must create a database for API Portal to store your configuration data on the database server. Log in to the database server and enter the following:
 
-`CREATE DATABASE <database name>;`
+```mysql
+CREATE DATABASE <database name>;
+```
 
 Make a note of your database name and port, as you must provide them when installing API Portal. For more details, see [MySQL documentation](https://dev.mysql.com/doc/refman/5.6/en/) or [MariaDB documentation](https://mariadb.com/kb/en/mariadb/documentation/).
 
 In addition, for API Portal to be able to connect to the MySQL or MariaDB database, you must configure a user account for API Portal on your database.
 
-You must configure a strong password for this user account or the API Portal installation will not succeed. The password requirements are:
+We recommend a strong password for this user account, which:
 
-* At least 10 characters long
-* Contains at least one digit
-* Contains at least one uppercase letter
-* Contains at least one lowercase letter
-* Contains at least one special character `!@#$%^&*`
+* is at least 10 characters long
+* contains at least one digit
+* contains at least one uppercase letter
+* contains at least one lowercase letter
+* contains at least one special character `!@#$%^&*`
 
 ### Configure a user account without authentication
 
@@ -121,9 +134,8 @@ If you do not want to use a secure connection, you can configure API Portal to 
 1. Connect to your database server.
 2. To configure a user account, enter the following:
 
-    ```
+    ```mysql
     CREATE USER '<user name>'@'<your API Portal host IP address>' IDENTIFIED BY '<your password>';
-    GRANT ALL PRIVILEGES ON <database name>.* TO '<user name>'@'<your API Portal host>' IDENTIFIED BY '<your password>' WITH GRANT OPTION;
     GRANT ALL PRIVILEGES ON <database name>.* TO '<user name>'@'<your API Portal host>' IDENTIFIED BY '<your password>' WITH GRANT OPTION;
     FLUSH PRIVILEGES;
     ```
@@ -143,7 +155,7 @@ To enable one-way authentication, create a user with the option `REQUIRE SSL`.
 
 1. Log in to the database server as the `root` user and enter the following:
 
-    ```
+    ```mysql
     CREATE USER '<user name>'@’%’ IDENTIFIED BY '<password>' REQUIRE SSL;
     GRANT ALL PRIVILEGES ON *.* TO '<user name>'@'%' WITH GRANT OPTION;
     FLUSH PRIVILEGES;
@@ -154,7 +166,9 @@ To enable one-way authentication, create a user with the option `REQUIRE SSL`.
 2. Copy the `ca.pem` CA certificate to a folder (for example, `/etc/mysql/certs/`) on the machine where you installed API Portal.
 3. To test the connection between the database client and server, enter the following:
 
-    `MySQL --ssl-ca=/etc/mysql/certs/ca.pem -h xxx.xxx.xxx.xxx --port="3306" -u <user name> --password="<password>"`
+    ```
+    mysql --ssl-ca=/etc/mysql/certs/ca.pem -h xxx.xxx.xxx.xxx --port="3306" -u <user name> --password="<password>"`
+    ```
 
 #### Configure two-way (mutual) authentication
 
@@ -162,7 +176,7 @@ To enable two-way authentication, create a user with the option `REQUIRE X509`.
 
 1. Log in to the database server as the `root` user and enter the following:
 
-    ```
+    ```mysql
     CREATE USER '<user name>'@’%’ IDENTIFIED BY '<password>' REQUIRE X509L;
     GRANT ALL PRIVILEGES ON *.* TO '<user name>'@'%' WITH GRANT OPTION;
     FLUSH PRIVILEGES;
@@ -176,5 +190,6 @@ To enable two-way authentication, create a user with the option `REQUIRE X509`.
     * `ca.pem`
 
 3. To test the connection between the database client and server, enter the following:
-
-    `MySQL --ssl-ca=/etc/mysql/certs/ca.pem --ssl-cert=/etc/mysql/certs/client-cert.pem --ssl-key=/etc/mysql/certs/client-key.pem -h xxx.xxx.xxx.xxx --port="3306" -u <user name> --password="<password>"`
+    ```
+    mysql --ssl-ca=/etc/mysql/certs/ca.pem --ssl-cert=/etc/mysql/certs/client-cert.pem --ssl-key=/etc/mysql/certs/client-key.pem -h xxx.xxx.xxx.xxx --port="3306" -u <user name> --password="<password>"`
+    ```
