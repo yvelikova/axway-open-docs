@@ -17,17 +17,15 @@ Before you upgrade, complete the following prerequisites. These prerequisites ap
 
 ## Upgrade API Portal
 
-If you have an existing API Portal installation, you can upgrade that installation to a newer version without having to repeat the initial installation setup.
-
-{{< alert title="Note" color="primary" >}}Upgrade to API Portal 7.7 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.{{< /alert >}}
+If you have a 7.6.2 API Portal installation, you can upgrade to API Portal 7.7 without having to repeat the initial installation setup.
 
 The following table shows the path for upgrading API Portal versions:
 
 | From   | To                                  |
 | ------ | ----------------------------------- |
-| 7.6.2  | 7.7 GA                              |
-| 7.7 GA | 7.7.x (Including all Service Packs) |
-| 7.7.x  | 7.7.x+                              |
+| Any previous version  | 7.6.2               |
+| 7.6.2  | [7.7 GA](https://axway-open-docs.netlify.app/docs/apim_relnotes/201904_release/apip_relnotes/)                              |
+| 7.7 GA | [7.7.x](https://axway-open-docs.netlify.app/docs/apim_relnotes/20200130_apip_relnotes/) (Including all Service Packs) |
 
 To upgrade your API Portal software installation, follow these steps:
 
@@ -105,3 +103,26 @@ sh ./apiportal_encryption.sh
 The directory is created along with a file. The last segment of the directory is the file name, for example: `/sample/directory/for/encryption/key` creates an empty file named "key" in the desired directory.
 
 After the script is finished, re-enter the password for the Public API mode user in JAI to encrypt and store the script correctly. For more details see [Encrypt the Public API user password in unattended mode](/docs/apim_installation/apiportal_install/install_unattended/#encrypt-the-public-api-user-password-in-unattended-mode).
+
+### Encrypt database password
+
+If you did not choose to encrypt your database password during the installation process, you can use the `apiportal_db_pass_encryption.sh` script, available from both API Portal installation and upgrade packages, to encrypt the password at any time.
+
+{{< alert title="Note" color="primary" >}} Do not run the `apiportal_db_pass_encryption.sh` script before the upgrade.{{< /alert >}}
+
+1. Make the script executable:
+
+   ```
+   # chmod +x apiportal_db_pass_encryption.sh
+   ```
+2. Execute the script:
+
+   ```
+   # sh apiportal_db_pass_encryption.sh
+   ```
+
+   When you execute the script, you are prompted to enter a passphrase and your database password. The script uses the passphrase to encrypt the database password, which is now stored encrypted in the <API_Portal_install_path>/configuration.php file, and to decrypt the database password on each connection request.
+
+   Only the password is decrypted on each connection request, not the whole payload, so no significant performance impact is expected
+
+   This option cannot be used in combination with [database secure connection](https://axway-open-docs.netlify.app/docs/apim_installation/apiportal_install/secure_harden_portal/#disable-tls-1-0-and-tls-1-1-on-apache).
