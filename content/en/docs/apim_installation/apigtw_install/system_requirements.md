@@ -16,10 +16,20 @@ This section describes the operating system requirements for API Gateway.
 
 **Supported versions**:
 
-* CentOS 6.x, 7.x
+* CentOS 6.x, 7.x, 8.x
 * Oracle Linux 6.x, 7.x
 * Red Hat Enterprise Linux 6.x, 7.x
 * SUSE Linux Enterprise Server 11.x, 12.x
+
+**Software prerequisites**:
+
+In CentOS 8 `glibc` no longer includes `libnsl`. This was included in CentOS 6 and 7 and is required by the API Gateway.
+
+To install the library:
+
+```
+sudo yum install libnsl
+```
 
 **Hardware prerequisites**:
 
