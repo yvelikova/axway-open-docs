@@ -86,17 +86,26 @@ You can configure the following settings on the **Advanced (SSL)** tab.
 
 You can configure the following SSL protocol options:
 
-| Option                           | Description                                                                                                                          |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Do not use the SSL v2 protocol   | Specifies not to use SSL v2 for outbound connections to avoid any weaknesses in this protocol. This option is selected by default.   |
-| Do not use the SSL v3 protocol   | Specifies not to use SSL v3 for outbound connections to avoid any weaknesses in this protocol. This option is selected by default.   |
-| Do not use the TLS v1 protocol   | Specifies not to use TLS v1 for outbound connections to avoid any weaknesses in this protocol. This option is selected by default.   |
-| Do not use the TLS v1.1 protocol | Specifies not to use TLS v1.1 for outbound connections to avoid any weaknesses in this protocol. This option is selected by default. |
-| Do not use the TLS v1.2 protocol | Specifies not to use TLS v1.2 for outbound connections. This option is not selected by default.                                      |
+* **Do not use the SSL v3 protocol**: SSL v3 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
+* **Do not use the TLS v1 protocol**: TLS v1.0 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
+* **Do not use the TLS v1.1 protocol**: TLS v1.1 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
+* **Do not use the TLS v1.2 protocol**: TLS v1.2 is not used for incoming connections to avoid any weaknesses in this protocol. This is *not* selected by default.
+* **Do not use the TLS v1.3 protocol**: TLS v1.3 is not used for incoming connections to avoid any weaknesses in this protocol. This is *not* selected by default.
 
 **Ciphers**:
 
-You can specify the ciphers that the server supports in this field. The API Gateway sends this list of supported ciphers to the destination server, which selects the highest strength common cipher as part of the SSL handshake. The selected cipher is used to encrypt the data as it is sent over the secure channel. For more information on the syntax of this setting, see the [OpenSSL documentation](http://www.openssl.org/docs/apps/ciphers.html).
+You can specify the ciphers that the server supports in this field. The API Gateway sends this list of supported ciphers to the destination server, which selects the highest strength common cipher as part of the SSL handshake. The selected cipher is used to encrypt the data as it is sent over the secure channel.
+
+The cipher string allows you to specify a list of TLSv1.2 and below cipher suites (for example, `DEFAULT`) as well as TLSv1.3 cipher suites (for example, `TLS_AES_256_GCM_SHA384`) if they are used standalone. You must use the delimiter `::` before TLSv1.3 cipher suites to allow and configure both TLSv1.2 and TLSv1.3 ciphers.
+
+The following are some examples of cipher strings:
+
+* `FIPS:!SSLv3:!aNULL`: Enables FIPS-compatible TLSv1.2 ciphers and default TLS1.3 cipher suites (`TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_GCM_SHA256`).
+* `FIPS:!SSLv3:!aNULL::TLS_AES_256_GCM_SHA384`: Enables FIPS-compatible TLSv1.2 ciphers and only one TLSv1.3 cipher suite ( `TLS_AES_256_GCM_SHA384`).
+* `FIPS:!SSLv3:!aNULL::`: Disables TLSv1.3 ciphers, and only FIPS-compatible TLSv1.2 ciphers will be available.
+* `ECDHE-ECDSA-AES256-SHA384::TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_CCM_8_SHA256`: Enables specific TLSv1.2 cipher (`ECDHE-ECDSA-AES256-SHA384`) and two specific TLSv1.3 cipher suites (`TLS_CHACHA20_POLY1305_SHA256 and TLS_AES_128_CCM_8_SHA256`).
+
+For more information on the syntax of this setting, see the [OpenSSL documentation](http://www.openssl.org/docs/apps/ciphers.html).
 
 The default cipher string of `FIPS:!SSLv3:!aNULL` performs the following:
 
