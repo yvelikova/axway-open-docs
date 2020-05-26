@@ -137,14 +137,26 @@ You can configure the followingon the **Advanced (SSL)** tab:
     With SNI, the client provides the name of the host (for example, `www.anvils.com`) in the initial SSL exchange, before the server presents its certificate in its distinguished name (for example, `CN=www.anvils.com`). This way, the server can certify itself correctly as providing a service for the client's requested host name.
 
     To specify an SNI, click **Add**, specify the server host name in **Client requests server name**, click **Server assumes identity** to import a Certificate Authority certificate into the Certificate Store, and click **OK**.
-* **Ciphers**: Specify the ciphers that the server supports in the **Ciphers** field. The server selects the highest-strength cipher that is also supported by the client from this list as part of the SSL handshake. The default cipher string of `FIPS:!SSLv3:!aNULL` performs the following:
+* **Ciphers**: Specify the ciphers that the server supports in the **Ciphers** field. The server selects the highest-strength cipher that is also supported by the client from this list as part of the SSL handshake.
 
-    * Enables FIPS-compatible cipher suites only
-    * Explicitly blocks cipher suites that require SSLv3 or lower
-    * Forces the use of TLSv1.2 only
-    * Forbids unauthenticated cipher suites
+    Cipher strings allows you to specify a list of TLSv1.2 and earlier cipher suites (for example, `DEFAULT`), as well as TLSv1.3 cipher suites (for example, `TLS_AES_256_GCM_SHA384`). To configure both TLSv1.2 and TLSv1.3 ciphers, you must use the `::` delimiter before the TLSv1.3 cipher suite.
 
-    For more information on the syntax of this setting, see the [OpenSSL documentation](https://www.openssl.org/docs/man1.0.2/apps/ciphers.html).
+    Following are some examples of cipher strings and their outcome:
+
+    * `FIPS:!SSLv3:!aNULL`: Enables FIPS-compatible TLSv1.2 ciphers and default TLS1.3 ciper suites (`TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256   TLS_AES_128_GCM_SHA256`).
+    * `FIPS:!SSLv3:!aNULL::TLS_AES_256_GCM_SHA384`: Enables FIPS-compatible TLSv1.2 ciphers and only one TLSv1.3 cipher suite (`TLS_AES_256_GCM_SHA384`).
+    * `FIPS:!SSLv3:!aNULL::`: Disables TLSv1.3 ciphers, only FIPS-compatible TLSv1.2 ciphers will be available.
+    * `ECDHE-ECDSA-AES256-SHA384::TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_CCM_8_SHA256`: Enables specific TLSv1.2 cipher (`ECDHE-ECDSA-AES256-SHA384`) and two specific TLSv1.3 cipher suite (`TLS_CHACHA20_POLY1305_SHA256` and `TLS_AES_128_CCM_8_SHA256`.
+
+    The default cipher string of `FIPS:!SSLv3:!aNULL` performs the following:
+
+    * Enables FIPS-compatible cipher suites only.
+    * Explicitly blocks cipher suites that require SSLv3 or lower.
+    * Forces the use of TLSv1.2 and TLSv1.3 protocols.
+    * Forbids unauthenticated cipher suites.
+
+For more information on the syntax of this setting, see the [OpenSSL documentation](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html).
+
 * **SSL session cache size**: Specify the number of idle SSL sessions that can be kept in memory. The default is `32`. If there are more simultaneous SSL sessions, new SSL connections can still be established, but no more SSL sessions are cached. If you set cache size to `0`, there is no cache. No outbound SSL connections are cached.
 * At `DEBUG` level or higher, API Gateway logs a trace when an entry goes into the cache, for example:
 
@@ -178,14 +190,15 @@ You can configure the followingon the **Advanced (SSL)** tab:
     The DH parameters setting is required if the server is using a DSA-keyed certificate, but also has an effect when using RSA-based certificates. DH (or similar) key agreement is required for DSA-based certificates because DSA keys cannot be trivially used to encrypt data like RSA keys can.
 
     {{< alert title="Note" color="primary" >}}The EDH key is always used once only to guarantee forward secrecy. This ensures that if the key is compromised, previous keys is not compromised.{{< /alert >}}
+
 * **SSL Protocol Options**: You can configure the following SSL protocol options:
 
-    * **Do not use the SSL v2 protocol**: SSL v2 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
     * **Do not use the SSL v3 protocol**: SSL v3 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
     * **Do not use the TLS v1 protocol**: TLS v1.0 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
     * **Do not use the TLS v1.1 protocol**: TLS v1.1 is not used for incoming connections to avoid any weaknesses in this protocol. This is selected by default.
     * **Do not use the TLS v1.2 protocol**: TLS v1.2 is not use for incoming connections to avoid any weaknesses in this protocol. This is *not* selected by default.
-    * **Prefer local cipher preferences over client's proposal**: When choosing a cipher during the SSL/TLS handshake, the client's preferences are selected by default from the list of ciphers supported by the client and the server. When this option is selected, the server's preferences are used instead. This option is *not* selected by default. For more details on ciphers, see the [OpenSSL documentation](https://www.openssl.org/docs/man1.0.2/apps/ciphers.html).
+    * **Do not use the TLS v1.3 protocol**: TLS v1.3 is not use for incoming connections to avoid any weaknesses in this protocol. This is *not* selected by default.
+    * **Prefer local cipher preferences over client's proposal**: When choosing a cipher during the SSL/TLS handshake, the client's preferences are selected by default from the list of ciphers supported by the client and the server. When this option is selected, the server's preferences are used instead. This option is *not* selected by default. For more details on ciphers, see the [OpenSSL documentation](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html).
 
 ### Configure conditions for an HTTP Interface
 
@@ -264,8 +277,7 @@ A typical configuration example of transparent proxy mode is shown as follows:
 
 In this example, the remote client’s address is `172.16.0.99`, and it is attempting to connect to the server at `10.0.0.99` on port `80`. The front-facing firewall is configured to route traffic for `10.0.0.99` through the API Gateway at address `192.168.0.9`. The server is configured to use the API Gateway at address `10.0.0.1` as its default IP router.
 
-The API Gateway is multihomed, and sits on both the `192.168.0.0/24` and `10.0.0.0/24` networks. In the Configure HTTP Interface
-dialog, the API Gateway is configured with a listening address of `10.0.0.99` and port of `80` on the **Network** tab, and with transparent proxy mode enabled on the **Advanced** tab. For example:
+The API Gateway is multihomed, and sits on both the `192.168.0.0/24` and `10.0.0.0/24` networks. In the Configure HTTP Interface dialog, the API Gateway is configured with a listening address of `10.0.0.99` and port of `80` on the **Network** tab, and with transparent proxy mode enabled on the **Advanced** tab. For example:
 
 ![Configure HTTP interface](/Images/docbook/images/transparent_proxy/configure_http_interface.png)
 
@@ -307,7 +319,7 @@ The packet sniffer uses the `libpcap` library filter language to achieve this. T
 
 The following table lists a few examples of common filters and explains what they filter:
 
-| Filter expresssion                           | Description                                                                           |
+| Filter expression                           | Description                                                                           |
 | -------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `port 80`                                    | Capture only traffic for the HTTP Port (`80`).                                        |
 | `host 192.168.0.1`                           | Capture traffic to and from IP address `192.168.0.1`.                                 |
