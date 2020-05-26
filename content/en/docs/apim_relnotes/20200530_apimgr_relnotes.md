@@ -177,6 +177,7 @@ The following are known issues for this update.
 |RDAPI-19216|Applications in pending approval state cannot be exported, but the UI is unclear|
 |RDAPI-19150|Try It in API Manager only shows first 10 API keys|
 |RDAPI-19132|Issue with selection of Retirement date when deprecating API|
+|RDAPI-19007| Policy Studio help files not updated in 7.7|
 |RDAPI-19006|Delete API "not found" after changing Application Org|
 |RDAPI-18990|"Failed to delete undefined" pop-up pops up unexpectedly when attempting to delete application|
 |RDAPI-18777|Overriding the quota for an application and then removing the setting causes incorrect behavior|
@@ -189,6 +190,12 @@ The following are known issues for this update.
 |RDAPI-16486|Changes in the mapper always require a reload in the Execute Data Maps filter and once reloaded then providing values for the required parameters must be repeated|
 |RDAPI-15981|Scopes fields for API Key remain visible even if Application Scopes are disabled|
 |RDAPI-11143|Discrepancy with API retirements dates|
+
+### Policy Studio help documentation
+
+This update includes changes to the Policy Studio documentation, but the version of the documentation (Eclipse Help) shipped with Policy Studio is out of sync with the online documentation and does not include these changes.
+
+We are working to rectify this issue in a future update. In the meantime, you can find the up to date documentation online at [Develop in Policy Studio](/docs/apim_policydev/).
 
 ## Update a classic (non-container) deployment
 
@@ -263,15 +270,13 @@ To install the update on your existing API Gateway 7.7 server installation, perf
    ```
 
     {{< alert title="Note" color="primary" >}} You must extract the file into a new directory and not into the existing API Gateway installation directory.{{< /alert >}}
-
 4. Run the `update_apigw.sh` script from the directory into which you extracted the Update file (for example, `77update`) and specify  your API Gateway installation directory using the `--install_dir` option. For example:
 
-    ```
-    ./update_apigw.sh --install_dir /opt/Axway-7.7/
-    ```
+   ```
+   ./update_apigw.sh --install_dir /opt/Axway-7.7/
+   ```
 
-    For more details on this script, see [`update_apigw.sh` script](#update-apigw-sh-script).
-
+   For more details on this script, see [`update_apigw.sh` script](#update-apigw-sh-script).
 5. Restart your Node Manager and API Gateway instances on the local machine.
 
 ##### `update_apigw.sh` script
@@ -280,7 +285,6 @@ Run the `update_apigw.sh` script with the `--help` option to see the available o
 
 ```
 ./update_apigw.sh --help
-
 ```
 
 The script generates a trace file in the `update-output/trace` directory. Use the `--tracelevel` option to change the level of tracing.
@@ -377,10 +381,9 @@ To install the update on your existing API Gateway Analytics 7.7 installation, p
    ```
 4. Verify the owners of API Gateway binaries before extracting the update.
 
-    ```
-    ls -l INSTALL_DIR/analytics/posix/bin
-    ```
-
+   ```
+   ls -l INSTALL_DIR/analytics/posix/bin
+   ```
 5. Using the same user who owns the API Gateway Analytics binaries, unzip and extract API Gateway 7.7 Analytics Update over the `analytics` directory in your existing API Gateway 7.7 installation directory. For example:
 
    ```
