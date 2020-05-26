@@ -240,18 +240,26 @@ You must add the complete server-certificate chain of your `SamlIdentityProvider
 
 ## Enable traces for SSO
 
-To enable the traces for SSO, change the log level for the `org.opensaml` logger and for the `axway.io` logger in the `INSTALL_DIR/apigateway/system/conf/log4j2.xml` file:
+To enable the traces for SSO, change the log level for the `org.opensaml` logger and for the `axway.io` logger in the `INSTALL_DIR/apigateway/system/conf/log4j2.yaml` file:
 
 ```
 # Logging for SSO
-<Logger name="io.axway" level="debug" additivity="false">
-<AppenderRef ref="VordelTrace"/>
-</Logger>
+- AppenderRef:
+    - ref: VordelTrace
+    - ref: STDOUT
+  additivity: "false"
+  level: error
+  name: io.axway
 
-# Logging for OpenSAML library
-<Logger name="org.opensaml" level="debug" additivity="false">
-<AppenderRef ref="VordelTrace"/>
-</Logger>
+  # Logging for OpenSAML library
+- AppenderRef:
+    - ref: VordelTrace
+    - ref: STDOUT
+  additivity: "false"
+  level: info
+  name: org.opensaml
+- level: false
+
 ```
 
 You must also activate the traces in the API Gateway configuration in Policy Studio:
@@ -260,4 +268,4 @@ You must also activate the traces in the API Gateway configuration in Policy Stu
 2. Click **General** and select the `DEBUG` level from the **Tracing level** field.
 3. Deploy the changes.
 
-Finally, you must restart the API Gateway instance to enable the changes in `log4j2.xml` to be applied.
+Finally, you must restart the API Gateway instance to enable the changes in `log4j2.yaml` to be applied.
