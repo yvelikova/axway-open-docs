@@ -269,7 +269,7 @@ To install the update on your existing API Gateway 7.7 server installation, perf
    tar -xzvf APIGateway_7.7.YYYYMMDD_Core_linux-x86-64_BNnn.tar.gz -C 77update
    ```
 
-    {{< alert title="Note" color="primary" >}} You must extract the file into a new directory and not into the existing API Gateway installation directory.{{< /alert >}}
+    {{< alert title="Note" color="primary" >}}You must extract the file into a new directory and not into the existing API Gateway installation directory.{{< /alert >}}
 4. Run the `update_apigw.sh` script from the directory into which you extracted the Update file (for example, `77update`) and specify  your API Gateway installation directory using the `--install_dir` option. For example:
 
    ```
@@ -306,7 +306,16 @@ Running the `update_apigw.sh` script performs the following steps:
 
 To install the update on your existing Policy Studio installation, an update script is provided. The update script is located inside the API Gateway 7.7 Policy Studio Update pack (for example, `APIGateway_7.7.YYYYMMDD_PolicyStudio_linux-x86-64_BNnn.tar.gz`).
 
-Run the script as follows:
+Download and unpack the API Gateway 7.7 Policy Studio Update file into a new directory. For example:
+
+```
+mkdir 77update
+tar -xzvf APIGateway_7.7.YYYYMMDD_PolicyStudio_linux-x86-64_BNnn.tar.gz -C 77update
+```
+
+{{< alert title="Note" color="primary" >}}You must extract the file into a new directory and not into the existing API Gateway installation directory.{{< /alert >}}
+
+Run the `update_policy_studio.sh` script from the directory into which you extracted the Update file (for example, `77update`) and specify your API Gateway installation directory as an argument:
 
 ```
 ./update_policy_studio.sh INSTALL_DIR
@@ -320,9 +329,9 @@ For example:
 ./update_policy_studio.sh /opt/Axway-7.7/
 ```
 
-{{< alert title="Note" color="primary" >}} You must execute the update script using the same user who installed Policy Studio.
+{{< alert title="Note" color="primary" >}}You must execute the update script using the same user who installed Policy Studio.
 
-An update script is also available for Windows. It is called `update_policy_studio.bat` and it is located in the API Gateway 7.7 Policy Studio Update pack for Windows (`.zip`). {{< /alert >}}
+An update script is also available for Windows. It is called `update_policy_studio.bat` and it is located in the API Gateway 7.7 Policy Studio Update pack for Windows (`.zip`).{{< /alert >}}
 
 Running this script performs the following steps:
 
@@ -331,13 +340,22 @@ Running this script performs the following steps:
 3. Unzip and extract API Gateway 7.7 Policy Studio Update over the `policystudio` directory in your existing API Gateway 7.7 installation directory.
 4. Start Policy Studio with `policystudio -clean`.
 
-If the script encounters an error, you are prompted to revert to the backup.
+A backup of the installation is created at `INSTALL_DIR/backups/policystudio/<date_time>`.
 
 #### Install the Configuration Studio update
 
 To install the update on your existing Configuration Studio installation, an update script is provided. The update script is located inside the API Gateway 7.7 Configuration Studio Update pack (for example, `APIGateway_7.7.YYYYMMDD_ConfigurationStudio_linux-x86-64_BNnn.tar.gz`).
 
-Run the script as follows:
+Download and unpack the API Gateway 7.7 Configuration Studio Update file into a new directory. For example:
+
+```
+mkdir 77update
+tar -xzvf APIGateway_7.7.YYYYMMDD_ConfigurationStudio_linux-x86-64_BNnn.tar.gz -C 77update
+```
+
+{{< alert title="Note" color="primary" >}}You must extract the file into a new directory and not into the existing API Gateway installation directory.{{< /alert >}}
+
+Run the `update_configuration_studio.sh` script from the directory into which you extracted the Update file (for example, `77update`) and specify your API Gateway installation directory as an argument:
 
 ```
 ./update_configuration_studio.sh INSTALL_DIR
@@ -351,9 +369,9 @@ For example:
 ./update_configuration_studio.sh /opt/Axway-7.7/
 ```
 
-{{< alert title="Note" color="primary" >}} You must execute the update script using the same user who installed Configuration Studio.
+{{< alert title="Note" color="primary" >}}You must execute the update script using the same user who installed Configuration Studio.
 
-An update script is also available for Windows. It is called `update_configuration_studio.bat` and it is located in the API Gateway 7.7 Configuration Studio Update pack for Windows (`.zip`). {{< /alert >}}
+An update script is also available for Windows. It is called `update_configuration_studio.bat` and it is located in the API Gateway 7.7 Configuration Studio Update pack for Windows (`.zip`).{{< /alert >}}
 
 Running this script performs the following steps:
 
@@ -362,7 +380,7 @@ Running this script performs the following steps:
 3. Unzip and extract API Gateway 7.7 Configuration Studio Update over the `configurationstudio` directory in your existing API Gateway 7.7 installation directory.
 4. Start Configuration Studio with `configurationstudio -clean`
 
-If the script encounters an error, you are prompted to revert to the backup.
+A backup of the installation is created at `INSTALL_DIR/backups/configurationstudio/<date_time>`.
 
 #### Install the API Gateway Analytics update
 
