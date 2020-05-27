@@ -1,6 +1,6 @@
 {
 "title": "Install and configure database server",
-  "linkTitle": "Configure database server",
+  "linkTitle": "Install and configure database",
   "weight": "4",
   "date": "2019-08-09",
   "description": "Configure your MySQL or MariaDB database server before you install API Portal."
@@ -19,10 +19,7 @@ If your database is on a remote host, you must configure a MySQL client or a Mar
 
 Connect to your MySQL or MariaDB database, and configure the database for API Portal in the `/etc/my.cnf` configuration file as follows:
 
-1. To restrict the interfaces the database listens on, under the `[mysqld]` line, add the following:
-
-    `bind-address = 127.0.0.1`
-
+1. To restrict the interfaces the database listens on, add `bind-address = 127.0.0.1` under the `[mysqld]` line.
 2. Set the value for `expire_logs_days`. The default is `0`, no automatic removal.
 3. Set the maximum size of the binary log file in `max_binlog_size`.
 4. Set the maximum number of connections in `max_connections`. The default is `151`.
@@ -60,7 +57,9 @@ You must enter different domain names for the CA and the client-server certifica
 
 2. To verify the generated certificate, enter the following command:
 
-    `openssl verify -CAfile ca.pem server-cert.pem client-cert.pem`
+    ```
+    openssl verify -CAfile ca.pem server-cert.pem client-cert.pem
+    ```
 
 ### Enable secure connection in the database server
 
@@ -85,7 +84,9 @@ To enable secure connection in the MySQL or MariaDB server-side configuration, d
 
 3. Save the file and restart the database:
 
-    `service mysqld restart`
+    ```
+    service mysqld restart
+    ```
 
 ### Verify the configuration
 

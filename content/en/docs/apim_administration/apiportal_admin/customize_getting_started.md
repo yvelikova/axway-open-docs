@@ -203,13 +203,11 @@ To link your logo to template:
 
 1. In JAI, click **Extensions > Templates > Styles**. A list of template styles is displayed.
 2. Click on template style.
-
-   **Note:** Steps from 2 to 6 should be applied to all template styles that are used**.**
-3. Go to the **Theme** tab, and in **Logo Image**, click **Select**.
+3. Go to the **Theme** tab, and click **Select** from **Logo Image**.
 4. Navigate to the folder where the image was uploaded.
-5. Select your logo from the list of the available image files and click **Insert**.
+5. Select your logo from the list of the available image files, and click **Insert**.
 
-   **Note:** If your logo is in **SVG** format you will not see it in the list. In that case you need to enter the path to that image in **Image URL** field. The path should start with **images/** segment. For example: **images/path-to-logo/logo-filename.svg**
+    Files in **SVG** format are not listed. In that case, you must enter the path to that image in **Image URL**. The path must start with the `images/` segment. For example, `images/path-to-logo/logo-filename.svg`.
 6. Click **Save**.
 7. Go to API Portal in the browser. Your selected logo is displayed.
 
