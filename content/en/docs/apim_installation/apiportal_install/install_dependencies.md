@@ -47,8 +47,8 @@ Before installing Apache HTTP server and PHP you must first enable RHSCL:
 3. Make Apache available in any bash session by default:
 
    ```bash
-   sudo echo "source scl_source enable httpd24" >> /etc/profile.d/scl-apiportal.sh
-   source /etc/profile.d/scl-apiportal.sh
+   echo "source scl_source enable httpd24" | sudo tee -a /etc/profile.d/scl-httpd24.sh
+   source /etc/profile.d/scl-httpd24.sh
    sudo ln -s $(which httpd) /usr/bin/httpd
    ```
 
@@ -67,7 +67,7 @@ Before installing Apache HTTP server and PHP you must first enable RHSCL:
 6. Verify that Apache service is active and running:
 
    ```bash
-   sudo systemctl status httpd24-httpd
+   systemctl status httpd24-httpd
    ```
 
 ### Install PHP
@@ -82,8 +82,8 @@ You must install the latest PHP version provided by the RHSCL.
 2. Enable PHP in bash:
 
    ```bash
-   sudo echo "source scl_source enable rh-php73" >> /etc/profile.d/scl-apiportal.sh
-   source /etc/profile.d/scl-apiportal.sh
+   echo "source scl_source enable rh-php73" | sudo tee -a /etc/profile.d/scl-rh-php73.sh
+   source /etc/profile.d/scl-rh-php73.sh
    sudo ln -s $(which php) /usr/bin/php
    ```
 3. Verify that PHP is available:
@@ -100,8 +100,8 @@ You must install the latest PHP version provided by the RHSCL.
 5. Restart Apache and verify it is running:
 
     ```bash
-    systemctl restart httpd24-httpd
-    sytemctl status httpd24-httpd
+    sudo systemctl restart httpd24-httpd
+    systemctl status httpd24-httpd
     ```
 
 ### Upgrade PHP
@@ -115,47 +115,48 @@ CentOS also does not offer the latest PHP version in the default repositories. T
 1. Install and enable EPEL with Remi:
 
     ```bash
-    yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-    yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-    yum install yum-utils
+    sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    sudo yum install yum-utils
 
-    # RHEL only
-    subscription-manager repos --enable=rhel-7-server-optional-rpms
-
-    yum-config-manager --enable remi-php74
-    yum update
+    sudo yum-config-manager --enable remi-php74
     ```
 2. Install Apache HTTP Server and its SSL module:
 
     ```bash
-    yum install httpd httpd-mod_ssl
+    sudo yum install httpd httpd-mod_ssl
     ```
 3. Enable and start the Apache service:
 
     ```bash
-    systemctl enable httpd && systemctl start httpd
+    sudo systemctl enable httpd && systemctl start httpd
     ```
-4. Install PHP:
+4. Verify that Apache service is active and running:
+
+   ```bash
+   systemctl status httpd
+   ```
+
+5. Install PHP:
 
     ```bash
-    yum install php php-gd php-intl php-mbstring php-mysqlnd php-pdo php-xml php-zip
+    sudo yum install php php-gd php-intl php-mbstring php-mysqlnd php-pdo php-xml php-zip
     ```
-5. Verify that PHP was installed:
+6. Verify that PHP was installed:
 
     ```bash
     php -v
     ```
 
     If the command fails, restart the bash session.
-6. Verify that `php7_module` of Apache is enabled:
+7. Verify that `php7_module` of Apache is enabled:
 
     ```bash
     httpd -M | grep php7
     ```
-7. Restart Apache and verify that it is working:
+8. Restart Apache and verify that it is working:
 
     ```bash
-    systemctl restart httpd
+    sudo systemctl restart httpd
     systemctl status httpd
     ```
-8. Follow the steps in [Upgrade PHP](#upgrade-php) to upgrade your PHP.
