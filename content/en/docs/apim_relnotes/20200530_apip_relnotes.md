@@ -19,9 +19,33 @@ API Portal is available as a software installation or a virtualized deployment i
 
 ## New features and enhancements
 
-<!-- Add the new features here -->
+The following new features and enhancements are available in this update:
 
-No new features and enhancements are available in this update.
+### Integration with AMPLIFY Unified Catalog
+
+This integration between API Portal and the Unified Catalog is a proof of concept feature, and it is being released separately in a docker container as it is not general availability (GA) quality approved just yet. We are releasing it early to gather feedback.
+
+This is the first client implementation of the Unified Catalog API.
+
+API Portal connects to the Unified Catalog by way of a DevOps service account from AMPLIFY, and it exposes the APIs published on the catalog, alongside APIs already exposed via any connected API Manager instances.
+
+Target use cases include:
+
+* AMPLIFY customers that want a more customizable and extendable API developer portal.
+* Existing API Portal customers who also have APIs published into the Unified Catalog can now see and interact with those assets in their current API Portal.
+
+A video of this POC is available at [How to show APIs from AMPLIFY Unified Catalog](https://www.youtube.com/watch?v=b3F-WatXxUE&list=PLSlCpG9zsECpo8-JMZ2Cx4REDyUvpwy9v).
+
+### Database password encryption
+
+We have added the ability to encrypt the database password that is stored in a configuration file. You can choose to encrypt the password during the installation, or any time later.
+
+For more information, see [Encrypt database password](https://axway-open-docs.netlify.app/docs/apim_installation/apiportal_install/secure_harden_portal/#encrypt-database-password).
+
+### Other enhancements
+
+* Removal of unused templates (`Beez3` and `Protostar`) from the Joomla! Admin Interface (JAI).
+* Various security fixes, including better validation on input fields to prevent potential attacks.
 
 ## Limitations of this update
 
@@ -32,7 +56,6 @@ This update has the following limitations:
 * The ready-made API Portal Docker image 7.7.20200530 is strictly for development environments only, and it is not recommended for use in production environments.
 
     It is not recommended to use the image in production environments because the image is built with CentOS as a base OS, and our Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issues have been resolved, but until we can ship a hardened image that passes our security concerns, we cannot advise customers to use this image in a production environment. Delivery a Docker image for production use is already planned in the [API Portal 2020 roadmap](https://community.axway.com/s/api-portal).
-
 * Upgrading from previous API Portal Docker image is not supported.
 * This update is not available as a virtual appliance or as a managed service on Axway Cloud.
 
