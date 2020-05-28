@@ -94,23 +94,18 @@ This version of API Gateway and API Manager includes:
 | Internal ID | Case ID | Cve Identifier | Description                                                                 |
 | ----------- | ------- | ------- |--------------------------------------------------------------------------- |
 |RDAPI-18123|01100683  01094763||**Issue**: Forgot password functionality generates a temporary password, but never forces the user to change it. **Resolution**: Generated passwords are now marked as temporary and users are forced to change the password on first login.|
-|RDAPI-18383|114792|||
-|RDAPI-19028|113204||**Issue**: API Manager reflects the request headers in response on HTTP 429 Too Many Requests error. **Resolution**: API Manager does not reflect request headers in response when the `com.axway.apimanager.fault.resetHeaders.http429` Java property is set to `true`. For example, in `jvm.xml`: `<VMArg name="-Dcom.axway.apimanager.fault.resetHeaders.http429=true"/>`. **Issue**: API Manager reflected the request body in generated responses for 400, 404, 405, and 429 HTTP errors, which were not handled by global fault handlers. **Resolution**: There is new fault handling for these API Manager-specific errors. The fault is routed to the GenericFaultProcessor to generate a new response body. This is controlled by the `com.axway.apimanager.fault.legacy` Java system property, which allows the legacy behavior of the API Manager-specific errors to be used if required and is set to `false` by default. A new Java system property `com.axway.apimanager.fault.removeContentBody` can be used with legacy fault handling behavior to remove the body in the response. To remove the body rather than generating a new response body, set both `com.axway.apimanager.fault.legacy` and `com.axway.apimanager.fault.removeContentBody` Java system properties to `true`.|
-|RDAPI-19126|112935|||
+|RDAPI-18383|114792||**Issue**: Session timeout currently configured is absolute timeout of the session, but idle session timeout is also needed for API Gateway Manager. **Resolution**: New environment variable introduced `env.WEBMANAGER.SESSION.IDLE.TIMEOUT` that defines 30 minutes default idle session timeout.|
 |RDAPI-19525|111580||**Issue**: In API Gateway, a header with an empty value was incorrectly subjected to RFC 7230 "obs-fold" parsing, concatenating it with the next header. **Resolution**: API Gateway now conforms to RFC 7230 and empty headers are left unchanged.|
 |RDAPI-19895|115507||**Issue**: Proxy authorization appears in product traces. **Resolution**: Authentication information has been removed from traces.|
+|RDAPI-20011|01159022  01116092  01160978  01033168  01080239||**Issue**: The request body was being reflected in the response. **Resolution**: Added property `com.axway.apimanager.fault.removeContentBody` that removes the body from the response.|
 
 ### Other fixed issues
 
 | Internal ID | Case ID | Description                                                                 |
 | ----------- | ------- | --------------------------------------------------------------------------- |
-|RDAPI-16183|105537||
-|RDAPI-18128|01106018  01107786||
-|RDAPI-18376|01141105  01111969||
+|RDAPI-16183|105537|**Issue**: KPS cache does not include the table name in the cache key, causing collisions for entries with the same column name and value pair. **Resolution**: Include the KPS table name in the cache key.|
+|RDAPI-18376|01141105  01111969|**Issue**: A user with the user role encounters a permission error when creating an application. **Resolution**: A user with the user role no longer encounters unexpected errors when creating an application.|
 |RDAPI-18379|110550|**Issue**: Editing of application sharing details prevents further editing of other application details. **Resolution**: Editing of application details works as expected.|
-|RDAPI-18519|01108119  01110455|**Issue**: The API Manager UI is slow when using SSO. **Resolution**: The number of requests from the API Manager UI has been reduced to improve UI performance when using SSO.|
-|RDAPI-18649|01103847  01119176||
-|RDAPI-18823|01099988  01104274||
 |RDAPI-18876|104940|**Issue**: API Manager actions requiring many writes are too slow when the Cassandra node CPU usage is too high. **Resolution**: Reduced the number of reads when writing new objects into Cassandra.|
 |RDAPI-19005|113147|**Issue**: Misspelled word in API Manager UI. **Resolution**:  Misspelled word is corrected.|
 |RDAPI-19119|113214|**Issue**: Cannot create a HTTP traffic monitoring transaction leg record from a script filter or the Java layer. **Resolution**: Missing HTTP monitoring fields have been added to the Java layer.|
@@ -129,6 +124,7 @@ This version of API Gateway and API Manager includes:
 |RDAPI-19499|01151544  01151502  01161250  01142544  01156544|**Issue**: Upgrading a fed file from version 7.6.2 to version 7.7 using Policy Studio is very slow on Windows. **Resolution**: Policy Studio has been updated to reduce upgrade time on Windows.|
 |RDAPI-19526|114217|**Issue**: In Policy Studio, if a field was environmentalized, a database connection test failed to use the environmentalized value. **Resolution**: If a field is environmentalized, a database connection test uses the environmentalized value.|
 |RDAPI-19572|01129719  01128960|**Issue**: Large numbers of Oauth authorizations (oauth_authorizations table) cause API Manager to become unresponsive. **Resolution**: Support for pagination headers has been implemented in the `api/portal/v1.3/authorizations` API and API Manager UI.|
+|RDAPI-19573|01156521  01143940|**Issue**: Upgrade of Nimbus JWT library to version 8.5 caused the JWT Verify filter to stop working when verifying JWT sets. **Resolution**:  JWT Verify filter is compatible with Nimbus JWT 8.5 and properly verifies JWT sets.|
 |RDAPI-19603|114262|**Issue**: When redaction is enabled, the HTTP response stored in Traffic Monitor is truncated after the first "100 Continue" header. **Resolution**: "100 Continue" support has been added to the HTTP redaction layer and fully redacted HTTP responses are stored in Traffic Monitor.|
 |RDAPI-19691|01100006  01130690|**Issue**: API Gateway Analytics throws an error when values greater than the limit for a signed integer are returned by the database. **Resolution**: Analytics now handles database response values as long data types.|
 |RDAPI-19730|104157|**Issue**: User's mobile number is not synchronized when sent in a policy during API Manager master/slave synchronization. **Resolution**: User's mobile number is gathered and saved in slave.|
@@ -156,22 +152,21 @@ The following are known issues for this update.
 
 | Internal ID | Description                |
 | ----------- | -------------------------- |
+|RDAPI-20292|Special character in API name causes filename issue when saving swagger|
+|RDAPI-20234|`update-apimanager` re-enables the Oauth HTTPS port if disabled|
+|RDAPI-20218|`apimanager-promote` does not remove API Access from application|
 |RDAPI-20127|Selector `${content.body.getJSON().get(0)}` not working|
 |RDAPI-20091|In Policy Studio, when importing a policy fragment, deselected items are imported anyway|
 |RDAPI-20055|Sentinel filter - "Use the following tracked object" option not working|
 |RDAPI-20017|Incorrect semantics of negated match types like IS_NOT in Compare Attribute filter|
-|RDAPI-20011|Request body reflected as response|
-|RDAPI-19960|Javadoc links are broken|
 |RDAPI-19838|Manager rejects valid OAS documents that use space characters in the keys of an "examples" object|
 |RDAPI-19833|Okta SSO integration and email mapping|
 |RDAPI-19788|Issue with pagination across multiple sections|
-|RDAPI-19598|Session resumption is not working for TLS v1.3 protocol when Gateway acts as a client|
 |RDAPI-19580|Trial option in the Organization does not work|
 |RDAPI-19490|Modifying the email template `$subject` variable does not work|
 |RDAPI-19453|Uploading an invalid image type when creating an application leads to an internal server error|
 |RDAPI-19433|Line breaks in outbound parameter (type header) value not escaped|
 |RDAPI-19418|`api.error.source` not available in APIManager fault handler|
-|RDAPI-19379|Images uploaded to APIs not showing in the Catalog|
 |RDAPI-19334|Access to retired APIs is not removed from other organizations as expected|
 |RDAPI-19293|API Catalog Try It shows only the first security device of a security profile|
 |RDAPI-19292|When an admin user's login name is changed, the user is directed to a blank page|
@@ -182,11 +177,12 @@ The following are known issues for this update.
 |RDAPI-19216|Applications in pending approval state cannot be exported, but the UI is unclear|
 |RDAPI-19150|Try It in API Manager only shows first 10 API keys|
 |RDAPI-19132|Issue with selection of Retirement date when deprecating API|
-|RDAPI-19007| Policy Studio help files not updated in 7.7|
+|RDAPI-19126|API Manager echoes request and headers on "404 Not found"|
 |RDAPI-19006|Delete API "not found" after changing Application Org|
 |RDAPI-18990|"Failed to delete undefined" pop-up pops up unexpectedly when attempting to delete application|
 |RDAPI-18777|Overriding the quota for an application and then removing the setting causes incorrect behavior|
 |RDAPI-18674|Insufficient data validation when importing an Application|
+|RDAPI-18649|Updated SSO role does not display properly in dev users view|
 |RDAPI-18431|HTTP 409 Resource already exists in Applications - External Credentials|
 |RDAPI-18294|KPS REST API documentation missing info|
 |RDAPI-18198|CORS preflight fails for WSDL based API Manager APIs, and Try-It fails|
