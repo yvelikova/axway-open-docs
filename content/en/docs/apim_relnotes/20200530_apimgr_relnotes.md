@@ -24,6 +24,10 @@ It is important, especially when upgrading from an earlier version, to be aware 
 
 <!-- Use this section to describe any changes in the behavior of the product (as a result of features or fixes), for example, new Java system properties in the jvm.xml file. This section could also be used for any important information that doesn't fit elsewhere. -->
 
+### TLS v1.3 support
+
+This update supports TLS v1.3 protocol for HTTPS listeners and connection filters. All communication between Node Managers, API Gateways, and other services now uses TLSv1.3 protocol by default.
+
 ### Filebeat v6.2.2
 
 This update uses Filebeat v6.2.2. Before installing this update, you must delete the Filebeat folder  `/apigateway/tools/filebeat-5.2.0`. When using Filebeat, follow the [official Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
@@ -161,6 +165,7 @@ The following are known issues for this update.
 |RDAPI-19838|Manager rejects valid OAS documents that use space characters in the keys of an "examples" object|
 |RDAPI-19833|Okta SSO integration and email mapping|
 |RDAPI-19788|Issue with pagination across multiple sections|
+|RDAPI-19598|Session resumption is not working for TLS v1.3 protocol when Gateway acts as a client|
 |RDAPI-19580|Trial option in the Organization does not work|
 |RDAPI-19490|Modifying the email template `$subject` variable does not work|
 |RDAPI-19453|Uploading an invalid image type when creating an application leads to an internal server error|
@@ -329,6 +334,8 @@ For example:
 ./update_policy_studio.sh /opt/Axway-7.7/
 ```
 
+If you had applied any modifications to the `policystudio.ini` file, you must reapply them after upgrade.
+
 {{< alert title="Note" color="primary" >}}You must execute the update script using the same user who installed Policy Studio.
 
 An update script is also available for Windows. It is called `update_policy_studio.bat` and it is located in the API Gateway 7.7 Policy Studio Update pack for Windows (`.zip`).{{< /alert >}}
@@ -368,6 +375,8 @@ For example:
 ```
 ./update_configuration_studio.sh /opt/Axway-7.7/
 ```
+
+If you had applied any modifications to the `configurationstudio.ini` file, you must reapply them after upgrade.
 
 {{< alert title="Note" color="primary" >}}You must execute the update script using the same user who installed Configuration Studio.
 
