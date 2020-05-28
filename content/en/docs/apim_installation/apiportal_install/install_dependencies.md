@@ -14,37 +14,20 @@ On a Red Hat Enterprise Linux (RHEL7) installation, the default PHP version avai
 
 Before installing Apache HTTP server and PHP you must first enable RHSCL:
 
-1. Enable the repository that provides PHP 7:
-
-   ```bash
-   sudo subscription-manager repos --enable rhel-server-rhscl-7-rpms
-   ```
-2. Clear the cache:
-
-   ```bash
-   sudo yum clean all
-   ```
-3. Run the update:
-
-   ```bash
-   sudo yum update
-   ```
+```bash
+sudo subscription-manager repos --enable rhel-server-rhscl-7-rpms
+sudo yum clean all
+```
 
 ### Install Apache HTTP Server
 
-1. You must stop and uninstall your existing Apache HTTP Server to install the new default Apache server from RHSCL.
-
-   ```bash
-   sudo systemctl stop httpd && systemctl disable httpd
-   sudo yum remove httpd httpd-tools mod_ssl
-   ```
-2. Install Apache from RHSCL:
+1. Install Apache from RHSCL:
 
    ```bash
    sudo yum install httpd24-httpd httpd24-httpd-tools httpd24-mod_ssl
    ```
 
-3. Make Apache available in any bash session by default:
+2. Make Apache available in any bash session by default:
 
    ```bash
    echo "source scl_source enable httpd24" | sudo tee -a /etc/profile.d/scl-httpd24.sh
@@ -52,19 +35,20 @@ Before installing Apache HTTP server and PHP you must first enable RHSCL:
    sudo ln -s $(which httpd) /usr/bin/httpd
    ```
 
-4. Verify Apache is now available:
+3. Verify Apache is now available:
 
    ```bash
    httpd -v
    ```
 
-5. Enable and start Apache service:
+4. Enable and start Apache service:
 
    ```bash
-   sudo systemctl enable httpd24-httpd && systemctl start httpd24-httpd
+   sudo systemctl enable httpd24-httpd
+   sudo systemctl start httpd24-httpd
    ```
 
-6. Verify that Apache service is active and running:
+5. Verify that Apache service is active and running:
 
    ```bash
    systemctl status httpd24-httpd
@@ -129,7 +113,8 @@ CentOS also does not offer the latest PHP version in the default repositories. T
 3. Enable and start the Apache service:
 
     ```bash
-    sudo systemctl enable httpd && systemctl start httpd
+    sudo systemctl enable httpd
+    sudo systemctl start httpd
     ```
 4. Verify that Apache service is active and running:
 
@@ -140,8 +125,9 @@ CentOS also does not offer the latest PHP version in the default repositories. T
 5. Install PHP:
 
     ```bash
-    sudo yum install php php-gd php-intl php-mbstring php-mysqlnd php-pdo php-xml php-zip
+    sudo yum install php php-cli php-common php-gd php-json php-intl php-mbstring php-mysqlnd php-pdo php-xml php-zip
     ```
+
 6. Verify that PHP was installed:
 
     ```bash
