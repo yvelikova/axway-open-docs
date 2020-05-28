@@ -4,6 +4,7 @@ linkTitle: API Portal May 2020
 weight: 70
 date: 2020-03-11T00:00:00.000Z
 ---
+
 ## Summary
 
 API Portal provides an API consumer-facing interface that you can customize to match your corporate brand. API Portal is a layered product linked to API Manager, and requires both API Manager and API Gateway. For more information, see the API Gateway and API Manager documentation.
@@ -30,7 +31,8 @@ This update has the following limitations:
 * Upgrade to API Portal 7.7.20200530 is supported from API Portal 7.7.0 only. To upgrade from earlier versions (for example, 7.5.x, 7.6.x) you must first upgrade to API Portal 7.7.
 * The ready-made API Portal Docker image 7.7.20200530 is strictly for development environments only, and it is not recommended for use in production environments.
 
-  It is not recommended to use the image in production environments because the image is built with CentOS as a base OS, and our Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issues have been resolved, but until we can ship a hardened image that passes our security concerns, we cannot advise customers to use this image in a production environment. Delivery a Docker image for production use is already planned in the [API Portal 2020 roadmap](https://community.axway.com/s/api-portal).
+    It is not recommended to use the image in production environments because the image is built with CentOS as a base OS, and our Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issues have been resolved, but until we can ship a hardened image that passes our security concerns, we cannot advise customers to use this image in a production environment. Delivery a Docker image for production use is already planned in the [API Portal 2020 roadmap](https://community.axway.com/s/api-portal).
+
 * Upgrading from previous API Portal Docker image is not supported.
 * This update is not available as a virtual appliance or as a managed service on Axway Cloud.
 
@@ -52,21 +54,32 @@ This version of API Portal includes the fixes from all 7.5.5, 7.6.2, and 7.7 ser
 
 ### Fixed security vulnerabilities
 
-<!-- TODO copy and paste the list from confluence -->
-
-| Internal ID | Case ID | Description                                                           |
-| ----------- | ------- | --------------------------------------------------------------------- |
-| IAP-XXXX    |         | **Issue:** Issue description. **Resolution:** Resolution description. |
+| Key      | Case Id | Release Note |
+| -------- | ------- | ---  |
+| IAP-3182 |         | **Issue**: Users could create or delete applications even in the cases when this functionality is disabled from JAI. **Resolution**: An additional check verifies whether creating or deleting applications is added when the corresponding form is submitted.                        |
+| IAP-3184 |         | **Issue**: Email field when creating or editing applications was validated only on client side. **Resolution**: Email validation is added on back-end side.                                                                                                                              |
+| IAP-3172 |         | **Issue**: There is no Content-Security-Policy configured. **Resolution**: A new section, [Define a restrictive Content Security Policy](https://axway-open-docs.netlify.app/docs/apim_installation/apiportal_install/secure_harden_portal/#define-a-restrictive-content-security-policy), in the documentation explains why and where to add this policy, which helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. |
+| IAP-3181 |         | **Issue**: Size of application/user images was verified only on client side. **Resolution**: Back-end validation was added.                                                                                                                                                            |
+| IAP-3183 |         | **Issue**: When there are configured custom properties it appears that they are not secured enough. **Resolution**: The custom fields are now properly escaped before outputting.                                                                                                    |
+| IAP-3163 |         | **Issue**: Database password was stored in plain text in configuration file. **Resolution**: We have added the ability to encrypt the database password that is stored in the configuration file.    |
 
 ### Other fixed issues
 
-| Internal ID | Case ID | Description                                                           |
-| ----------- | ------- | --------------------------------------------------------------------- |
-| IAP-XXXX    |         | **Issue:** Issue description. **Resolution:** Resolution description. |
+| Key      | Case Id            | Release Note   |
+| -------- | ------------------ | ----- |
+| IAP-2881 |                    | **Issue**: Joomla administrator is redirected to login page when trying to update a user, which has the same value for `username` and `name`. **Resolution**: User is successfully updated from Joomla! Administrator Interface (JAI).  |
+| IAP-3037 |                    | **Issue**: After user is successfully logged in, the button on the home page is still called 'Sign-in'. **Resolution**: New settings were added to the home page module in JAI to allow to rename this button and set where it redirects to.                                                                                                      |
+| IAP-3121 |                    | **Issue**: SwaggerUI cannot render when OAS 3.0 definitions has missing "component" key. **Resolution**: The "component" key is first checked for existence, and then used. |
+| IAP-3145 |                    | **Issue**: Logged users do not see public APIs in the catalog when Public API Mode is enabled. **Resolution**: You must make sure that all organizations in API Manager are granted to access the Public APIs. To learn more, see [Configure settings for Public API mode in API Manager](/docs/apim_administration/apiportal_admin/public_api_configure/#configure-settings-for-public-api-mode-in-api-manager) in the Axway documentation.   |
+| IAP-3242 |                    | **Issue**: Logo is not configurable from template menu. **Resolution**: Logo could be configured from template menu. On upgrade logo will be migrated from "Home" menu item to template. For more information see, [Customize your logo](/docs/apim_administration/apiportal_admin/customize_getting_started/#customize-your-logo). |
+| IAP-3245 | 01136358, 01138114 | **Issue**: On Swagger 2.0 base path is duplicating the host or it is shown several times. **Resolution**: The base path and the host are displayed separately.             |
+| IAP-3253 |                    | **Issue**: Error message is not clear to indicate that the scope is missing when the user is testing an API, and tries to authorize with OAuth without selecting any scope. **Resolution**: A specific error message is shown if the scope is missing while requesting OAuth token.       |
+| IAP-3256 | 1152557            | **Issue**: The discovery Swagger file from API Manager contains defaults and examples for SOAPAction and SOAPBody, but these are not displayed in API Portal. **Resolution**: SOAPAction and SOAPBody values are correctly imported and displayed in API Portal.             |
+| IAP-3257 | 1155022            | **Issue**: API Portal version downgrades after docker container restart. **Resolution**: Version comparison fixed in docker entry point so that API Portal version doesn't downgrade on container restart.                                                                                                                                    |
+| IAP-3264 |                    | **Issue**: 'Explore' button should replace the 'Sign In' button in Home Page layout when Public API Mode is enabled. **Resolution**: 'Sign In' button is displayed in Home Page layout when Public API Mode is enabled.    |
+| IAP-3269 |                    | **Issue**: Home page is not shown correctly when having multiple languages installed. **Resolution**: All Home page sections are correctly displayed when having multiple languages installed.        |
 
 ## Known issues
-
-<!-- Review and update the known issues here -->
 
 The following are known issues in this version of API Portal.
 
