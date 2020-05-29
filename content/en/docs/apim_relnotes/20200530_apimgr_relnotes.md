@@ -98,6 +98,7 @@ This version of API Gateway and API Manager includes:
 |RDAPI-19525|111580||**Issue**: In API Gateway, a header with an empty value was incorrectly subjected to RFC 7230 "obs-fold" parsing, concatenating it with the next header. **Resolution**: API Gateway now conforms to RFC 7230 and empty headers are left unchanged.|
 |RDAPI-19895|115507||**Issue**: Proxy authorization appears in product traces. **Resolution**: Authentication information has been removed from traces.|
 |RDAPI-20011|01159022  01116092  01160978  01033168  01080239||**Issue**: The request body was being reflected in the response. **Resolution**: Added property `com.axway.apimanager.fault.removeContentBody` that removes the body from the response.|
+|RDAPI-20086|||**Issue**: Token Information Services allow GET request meaning that `access_token` can be sent as a query string parameter in the URL. This is a security issue as sensitive information should never be included in the URL. **Resolution**: Only a POST request with `access_token` sent in the body of the POST request are now accepted.|
 
 ### Other fixed issues
 
@@ -273,13 +274,12 @@ To install the update on your existing API Gateway 7.7 server installation, perf
    ```
 
     {{< alert title="Note" color="primary" >}}You must extract the file into a new directory and not into the existing API Gateway installation directory.{{< /alert >}}
-4. Run the `update_apigw.sh` script from the directory into which you extracted the Update file (for example, `77update`) and specify  your API Gateway installation directory using the `--install_dir` option. For example:
+4. Run the [`update_apigw.sh` script](#update-apigw-sh-script) from the directory into which you extracted the Update file (for example, `77update`) and specify  your API Gateway installation directory using the `--install_dir` option. For example:
 
-   ```
-   ./update_apigw.sh --install_dir /opt/Axway-7.7/
-   ```
+    ```
+    ./update_apigw.sh --install_dir /opt/Axway-7.7/
+    ```
 
-   For more details on this script, see [`update_apigw.sh` script](#update-apigw-sh-script).
 5. Restart your Node Manager and API Gateway instances on the local machine.
 
 ##### `update_apigw.sh` script
@@ -316,7 +316,10 @@ mkdir 77update
 tar -xzvf APIGateway_7.7.YYYYMMDD_PolicyStudio_linux-x86-64_BNnn.tar.gz -C 77update
 ```
 
-{{< alert title="Note" color="primary" >}}You must extract the file into a new directory and not into the existing API Gateway installation directory.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You must extract the file into a new directory and not into the existing API Gateway installation directory.
+
+You must also remove the files `libeay32.dll` and `ssleay32.dll` if they exist in the directory `INSTALL_DIR/policystudio`.
+{{< /alert >}}
 
 Run the `update_policy_studio.sh` script from the directory into which you extracted the Update file (for example, `77update`) and specify your API Gateway installation directory as an argument:
 
@@ -358,7 +361,9 @@ mkdir 77update
 tar -xzvf APIGateway_7.7.YYYYMMDD_ConfigurationStudio_linux-x86-64_BNnn.tar.gz -C 77update
 ```
 
-{{< alert title="Note" color="primary" >}}You must extract the file into a new directory and not into the existing API Gateway installation directory.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You must extract the file into a new directory and not into the existing API Gateway installation directory.
+
+You must also remove the files `libeay32.dll` and `ssleay32.dll` if they exist in the directory `INSTALL_DIR/configurationstudio`.{{< /alert >}}
 
 Run the `update_configuration_studio.sh` script from the directory into which you extracted the Update file (for example, `77update`) and specify your API Gateway installation directory as an argument:
 
