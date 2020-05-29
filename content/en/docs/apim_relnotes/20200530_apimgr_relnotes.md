@@ -152,6 +152,7 @@ The following are known issues for this update.
 
 | Internal ID | Description                |
 | ----------- | -------------------------- |
+|RDAPI-20320|Analytics PDF report generation fails with UnknownContentError on Ansible OS|
 |RDAPI-20292|Special character in API name causes filename issue when saving swagger|
 |RDAPI-20234|`update-apimanager` re-enables the Oauth HTTPS port if disabled|
 |RDAPI-20218|`apimanager-promote` does not remove API Access from application|
@@ -162,6 +163,7 @@ The following are known issues for this update.
 |RDAPI-19838|Manager rejects valid OAS documents that use space characters in the keys of an "examples" object|
 |RDAPI-19833|Okta SSO integration and email mapping|
 |RDAPI-19788|Issue with pagination across multiple sections|
+|RDAPI-19598|Session resumption does not work for TLSv1.3 when API Gateway acts as a client|
 |RDAPI-19580|Trial option in the Organization does not work|
 |RDAPI-19490|Modifying the email template `$subject` variable does not work|
 |RDAPI-19453|Uploading an invalid image type when creating an application leads to an internal server error|
