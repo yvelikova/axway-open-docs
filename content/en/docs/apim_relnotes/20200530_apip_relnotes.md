@@ -34,7 +34,9 @@ Target use cases include:
 * AMPLIFY customers that want a more customizable and extendable API developer portal.
 * Existing API Portal customers who also have APIs published into the Unified Catalog can now see and interact with those assets in their current API Portal.
 
-A video of this POC is available at [How to show APIs from AMPLIFY Unified Catalog](https://www.youtube.com/watch?v=b3F-WatXxUE&list=PLSlCpG9zsECpo8-JMZ2Cx4REDyUvpwy9v).
+For more information on how to integrate API Portal and AMPLIFY Unified Catalog, see [Expose APIs published from the Unified Catalog](/docs/apim_administration/apiportal_admin/expose_apis_published_from_catalog/).
+
+A demo video of this POC is available at [How to show APIs from AMPLIFY Unified Catalog](https://www.youtube.com/watch?v=b3F-WatXxUE&list=PLSlCpG9zsECpo8-JMZ2Cx4REDyUvpwy9v).
 
 ### Database password encryption
 
