@@ -1,8 +1,8 @@
 ---
 title: Connect API Manager
 linkTitle: Connect API Manager
-draft: false
 no_list: true
+draft: false
 weight: 130
 description: Understand why you would want a connected / managed environment for
   AMPLIFY Central and Axway API Manager. Learn how you can govern and monitor
@@ -38,22 +38,26 @@ The Traceability Agent is used to filter the logs and prepare the transaction ev
 
 ## Minimum requirements
 
+* An Axway AMPLIFY Central subscription in the AMPLIFY™ platform. See [Get started with AMPLIFY Central](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/quickstart/index.html).
 * An AMPLIFY Central Service Account. See [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_proxy_flow/)
-* Axway API Manager / Axway API Gateway versions 7.6.2 SPx, 7.7 SPx or 7.8
+* Axway API Manager / Axway API Gateway versions 7.6.2 SPx, 7.7 SPx or 7.8, up and running.
+* The machine where API Manager & API Gateway are running should be accessible and have `sudo` rights to run the Agents.
 
 ## Connect Axway API Manager to AMPLIFY Central quickstart
 
 1. Generate a key pair.
 
-   1. Create a new Service Account user in AMPLIFY Central using the key pair. see [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_proxy_flow/).
-2. Create an environment object in AMPLIFY Central using either the UI or CLI.
-3. Create a Discovery Agent environment file.
+    * Create a new Service Account user in AMPLIFY Central using the key pair. See [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_getstarted/).
+2. Create an environment object in [AMPLIFY Central using the CLI](/docs/central/cli_environments/) or [Add your environment to AMPLIFY Central using the UI] (/docs/central/mesh_management/add_env/#add-your-environment-to-amplify-central).
+3. [Create a Discovery Agent environment file](/docs/central/connect-api-manager/deploy-your-agents/#discovery-agent) *
 
    1. Move key files to a keys directory.
    2. Log into the Artifactory Repository and pull the latest binary of the Discovery Agent.
    3. Start the Discovery Agent.
-4. Create a Traceability Agent environment file.
+4. [Create a Traceability Agent environment file](/docs/central/connect-api-manager/deploy-your-agents/#traceability-agent) *
 
    1. Move key files to a keys directory.
    2. Log into the Artifactory Repository and pull the latest binary of the Traceability Agent.
    3. Start the Traceability Agent.
+
+\* If you need assistance setting up the environment files, please contact your Sales Account Manager, or open a support ticket on support.axway.com.
