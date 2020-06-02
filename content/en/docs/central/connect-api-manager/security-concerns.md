@@ -10,11 +10,11 @@ description: |-
 
 All communications are initiated by the agents. Connections from the agents to the AMPLIFY platform are secured using TLS/SSL. By default, TLS 1.2 is used. See [SSL/TLS advanced](https://docs.axway.com/bundle/axway-open-docs/page/docs/central/connect-api-manager/ssl-tls-advanced/index.html) for more information if you want to change the default settings.
 
-In case a proxy / firewall is in place, the following urls must be accessible from where the agents are installed (typically DMZ):
+In case a proxy is in place, the following urls must be accessible from where the agents are installed (typically DMZ on premise):
 
-* Protocol: TCP - url: <https://platform.axway.com> (Discovery / Traceability Agents)
-* Protocol: TCP - url: <https://login.axway.com> (Discovery / Traceability Agents)
-* Protocol: socks5 - url: ingestion-lumberjack.datasearch.axway.com:453 (Traceability Agent)
+* Protocol: TCP - url: `https://apicentral.axway.com`  (Discovery / Traceability Agents)
+* Protocol: TCP - url: `https://login.axway.com` (Discovery / Traceability Agents)
+* Protocol: socks5 - url: `ingestion-lumberjack.datasearch.axway.com:453` (Traceability Agent)
 
 In order for the agent to communicate correctly with the Axway platform, the agent configuration provides variables to connect through the proxy:
 
@@ -73,7 +73,7 @@ The agent reads the logs written on the file system (\[INSTALL_DIR]/apigateway/e
 In order to submit details of the transaction, the Traceability Agent reads the Gateway system to get transaction details:
 
 * request/response headers from ech API call  
-  
+
 {{< alert title="Note" color="primary" >}}It is possible to disable the headers sending using the following property:  `output.traceability.agent.apigateway.getHeaders: false.` By default, the property is set to true. If the headers collecting is disabled, they will not be visible in the AMPLIFY platform observability module, as the Traceability Agent will send only the transaction summary data (status / url / duration / timestamp / transaction service called) to the platform.{{< /alert >}}
 
 Once the information is extracted it is sent to the Axway platform using the TLS encryption.
