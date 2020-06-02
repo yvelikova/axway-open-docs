@@ -392,9 +392,12 @@ const collections = [{
   folder: 'content/en/blog/friends',
 }];
 
+const cms_branch = window.location.hostname.includes('develop') ? 'develop' : 'master';
+
 const config = {
   backend: {
     name: 'github',
+    branch: cms_branch,
     repo: 'Axway/axway-open-docs', //Path to your GitHub repository. For fork testing use alexearnshaw/axway-open-docs.
     open_authoring: true,
   },
