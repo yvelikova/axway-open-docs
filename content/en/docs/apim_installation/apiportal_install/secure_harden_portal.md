@@ -317,6 +317,18 @@ The HTTP Content Security Policy ([CSP](https://developer.mozilla.org/en-US/docs
 
 We recommend you to configure this policy either in your `.htaccess` file or virtual host file with *least privilege* to allow only interactions that are explicitly required.
 
+## Define retention periods for personal data
+
+For compliance with General Data Protection (GDP), you must define retention periods within the design phase for all data fields taking into account the defined purpose. You must also include retention periods for backups.
+
+If you are a small organization, you may not need a documented retention policy. However, if you do not have a retention policy, you must still regularly review the data you hold and delete or anonymise any data that you no longer need.
+
+You must include your Data Protection Officer (DPO) or Legal department to define the retention periods as other laws may impact the retention requirements.
+
+## Permanently delete unnecessary data
+
+When the retention periods expire you have to ensure that all of the data which is no longer needed has been deleted. This may require automatic identification of the latest activities and a data deletion functionality or manual work.
+
 ## Where to go next
 
 For more information on the security features of API Management products and best practices for strengthening their security, see the [API Management Security Guide](/docs/apimgmt_security/).
