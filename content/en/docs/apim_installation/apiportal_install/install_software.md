@@ -12,7 +12,9 @@ Before you start, check the [Installation prerequisites](/docs/apim_installation
 
 ## Install API Portal software
 
-1. Download the installation package for your OS from Axway Support at [https://support.axway.com](https://support.axway.com/), and upload it to your host machine.
+To install API Portal:
+
+1. Download the installation package for your OS from [Axway Support](https://support.axway.com/), and upload it to your host machine.
 2. Log in to the host machine as the `root` user.
 3. Extract the installation package:
 
@@ -27,7 +29,7 @@ Before you start, check the [Installation prerequisites](/docs/apim_installation
     ```
 
 5. Enter the appropriate values when prompted by the installation script. The options you are prompted for include:
-    * Change the default install path. The default path that API Portal is installed in is `/opt/axway/apiportal/htdoc` or you can specify a custom path. The folders specified in the custom path are created if they do not already exist.
+    * Change the default install path. API Portal is installed at `/opt/axway/apiportal/htdoc` by default, but you can specify a custom path. The folders specified in the custom path are created if they do not already exist.
     * Use MySQL in SSL mode (with one way authentication or two way authentication). The certificates generated from MySQL Server must be located in `/etc/mysql/certs/`.
     * Database connection details. The default port is `3306` or you can specify a different one. The database user is the user you created for API Portal. See [Configure the database server](/docs/apim_installation/apiportal_install/install_software_configure_database/).
     * Install API Portal in a high availability cluster setup with database replication.
@@ -41,19 +43,17 @@ Before you start, check the [Installation prerequisites](/docs/apim_installation
 
     ```
     setsebool -P httpd_read_user_content 1
-
     setsebool -P httpd_can_network_connect 1
-
     setsebool -P httpd_can_network_connect_db 1
-
     setsebool -P httpd_unified 1
-
     chcon -R -t httpd_sys_content_t /opt/axway/apiportal/htdoc/
-
     semanage fcontext -a -t httpd_sys_rw_content_t '/opt/axway/apiportal/htdoc(/.*)?'
-
     restorecon -R -v '/opt/axway/apiportal/htdoc'
     ```
+
+Watch this video to learn how to install API Portal in a custom location:
+
+{{< youtube mOXJBINBfog >}}
 
 ### Configure API Portal to run with HTTP or HTTPS
 
