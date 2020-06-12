@@ -243,6 +243,7 @@ This update has the following prerequisites in addition to the [System requireme
    ```
    setcap -r INSTALL_DIR/apigateway/platform/bin/vshell
    ```
+6. Remove any subdirectories in `INSTALL_DIR/groups/group-id/conf` that do not contain extracted federated entity stores. For example, if a `policy-archives` directory exists, remove it.
 
 ### FIPS mode only
 
