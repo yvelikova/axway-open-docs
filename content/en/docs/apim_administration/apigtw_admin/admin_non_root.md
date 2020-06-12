@@ -1,16 +1,27 @@
 {
 "title": "Run API Gateway on privileged ports",
-"linkTitle": "Run API Gateway on privileged ports",
-"weight":"50",
-"date": "2019-10-14",
-"description": "Grant the required privileges to API Gateway processes running as non-root to run with root privileges."
+  "linkTitle": "Run API Gateway on privileged ports",
+  "weight": "50",
+  "date": "2019-10-14",
+  "description": "Grant the required privileges to API Gateway processes running as non-root to run with root privileges."
 }
-
 API Gateway is run as a non-root user to prevent any potential security issues with running as the `root` user. This topic describes the steps you must perform to grant the required privileges to API Gateway processes running as non-root.
 
 ## Before you begin
 
 The examples in this topic are for a non-root user named `admin` and for an API Gateway installation at `/opt/Axway-7.7/apigateway`. If you have a different non-root user name or installation location, you must modify the examples accordingly.
+
+{{< alert title="Note" color="primary" >}}Before performing an upgrade, applying a service pack, installing an update, or uninstalling the product, you must remove privileges from the product binaries.{{< /alert >}}
+
+## Security considerations
+
+When privileges have been granted to the `vshell` binary, it is best to ensure that it can only be executed by its ownership (or a specific system group).
+
+To remove execution rights from all other users on the system, run this command:
+
+```
+# chmod og-x /opt/Axway-7.7/apigateway/platform/bin/vshell
+```
 
 ## Set API Gateway file ownership to non-root user
 
@@ -78,23 +89,22 @@ You also need to add API Gateway library paths to `jvm.xml`. To modify your `jvm
 1. Open the `system/conf/jvm.xml` file in your gateway installation.
 2. Near the top of the file, insert a new line after the following line:
 
-    ```
-    <JVMSettings classloader="com.vordel.boot.ServiceClassLoader">
-    ```
-
+   ```
+   <JVMSettings classloader="com.vordel.boot.ServiceClassLoader">
+   ```
 3. Enter the following:
 
-    ```
-    <VMArg name="-Djava.library.path=
-    $VDISTDIR/$DISTRIBUTION/jre/lib/amd64/server:
-    $VDISTDIR/$DISTRIBUTION/jre/lib/amd64:
-    $VDISTDIR/$DISTRIBUTION/lib/engines:
-    $VDISTDIR/ext/$DISTRIBUTION/lib:
-    $VDISTDIR/ext/lib:
-    $VDISTDIR/$DISTRIBUTION/jre/lib:
-    system/lib:
-    $VDISTDIR/$DISTRIBUTION/lib"/>
-    ```
+   ```
+   <VMArg name="-Djava.library.path=
+   $VDISTDIR/$DISTRIBUTION/jre/lib/amd64/server:
+   $VDISTDIR/$DISTRIBUTION/jre/lib/amd64:
+   $VDISTDIR/$DISTRIBUTION/lib/engines:
+   $VDISTDIR/ext/$DISTRIBUTION/lib:
+   $VDISTDIR/ext/lib:
+   $VDISTDIR/$DISTRIBUTION/jre/lib:
+   system/lib:
+   $VDISTDIR/$DISTRIBUTION/lib"/>
+   ```
 
 ## Enable API Gateway processes to listen on privileged ports {#enable-processes-to-listen}
 
@@ -118,8 +128,6 @@ To verify that the permission has been set, run the following command:
 getcap /opt/Axway-7.7/apigateway/platform/bin/vshell
 /opt/Axway-7.7/apigateway/platform/bin/vshell = cap_net_bind_service+ep
 ```
-
-If you set this capability, you must remove it again before applying a service pack, installing an update, or uninstalling, as it results in the product binaries being locked.
 
 To remove the capability, run the following command:
 
