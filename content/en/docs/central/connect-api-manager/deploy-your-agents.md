@@ -12,242 +12,618 @@ description: Learn how to deploy your Discovery Agent and Traceability Agent so
 ## Before you start
 
 * Read [AMPLIFY Central and Axway API Manager connected overview](/docs/central/connect-api-manager/)
-* Prepare AMPLIFY Central
-* You will need a basic knowledge of Axway API Gateway
+* Be sure you have [Prepared AMPLIFY Central]
+(/docs/central/connect-api-manager/prepare-amplify-central/index.html)
+* You will need a basic knowledge of Axway API Management solution
+    * where the solution is running (host / port / path to the logs / users)
+    * how to create / publish and API
+    * how to call an API
 
 ## Objectives
 
-Learn how to create your Discovery Agent and Traceability Agent configuration files, then install and run your agents.
+Learn how to install, customize and run your Discovery and Traceability agents.
 
 ## Discovery Agent
 
-The Discovery Agent is used to discover new deployments and stage updates to existing deployments. Once they are discovered, the related APIs are published to AMPLIFY Central, in one of the following publication modes, so that they become available for any consumer. See [centralMode](/docs/central/connect-api-manager/discovery-agent-flags/).
+The Discovery Agent is used to discover new published APIs or any updated APIs. Once they are discovered, the related APIs are published to AMPLIFY Central, in one of the following publication modes, so that they become available for any consumer:
 
-* Catalog item publication (disconnected mode): Customers  expose their APIs globally for their consumers but keep the API management at the Gateway level.
-* Environment / API Service publication (connected mode): Customers manage their APIs from the AMPLIFY platform. WILL NOT BE FULLY IMPLEMENTED UNTIL Q3-2020.
+* Catalog item publication (disconnected mode): Customers expose their APIs globally for their consumers but keep the API management at the Gateway level.
+* Environment / API Service publication (connected mode): Customers manage their APIs from the AMPLIFY platform.
 
-As soon as an API is published, the identifier of the asset in AMPLIFY Central is kept in a custom field at the api level. The name of the custom field is defined in [APIMANAGER_PROXYAPICIDFIELD](/docs/central/connect-api-manager/discovery-agent-variables/).
+The Discovery Agent only discovers APIs that have the tag(s) defined in the agent configuration file. See [filtering apis to be discovered](/docs/central/connect-api-manager/filtering-apis-to-be-discovered/). By default, the filter is empty and thus the agent will discover all published API.
 
-The Discovery Agent only discovers APIs that have the tag(s) defined in the agent configuration file. See [Discovery Agent variables](/docs/central/connect-api-manager/discovery-agent-variables/).
+As soon as an API is published, the identifier of the asset in AMPLIFY Central is kept in a custom field at the API level in API Manager to help the agent remember what is already published.
 
-The Agent can run in the following modes:
+The agent can run in the following modes:
 
-* With a configuration file:
+* With a yaml configuration file having the same name as the agent binary - `discovery_agent.yaml`:
 
     * Default: located in the same directory as the agent binary.
-    * Optional: use a dedicated folder where the configuration file is located (use the --pathConfig flag).
-
-    Configuration file name should be the same as the agent binary.
-
-    Properties inside the configuration file can reference environment variables. This enables you to set up only one configuration file that addresses different behaviors (depending on the environment variables). See [Discovery Agent variables](/docs/central/connect-api-manager/discovery-agent-variables/).
+    * Optional: use a dedicated folder where the configuration file is located (use the --pathConfig flag in the agent command line to access the file path).
+    * Advanced configuration: properties inside the configuration file can reference environment variables. This enables you to set up only one configuration file that addresses different behaviors (depending on the environment variables). See [Discovery Agent variables](/docs/central/connect-api-manager/discovery-agent-variables/).
 * With command line arguments. See [Discovery Agent flags](/docs/central/connect-api-manager/discovery-agent-flags/).
 
-### Create your configuration
+### Installing the Discovery Agent
 
-To create an  an `env_vars` file, see [Discovery Agent variables](/docs/central/connect-api-manager/discovery-agent-variables/). Download the zip file:
+**Step 1**: Download the latest version of the zip file from the Axway public repository using the following command:
 
 ```
 curl -L "https://axway.bintray.com/generic-repo/v7-agents/v7_discovery_agent/latest/discovery_agent-latest.zip" -o discovery_agent-latest.zip
 ```
 
-The Discovery Agent config yaml and Discovery Agent executable are included.
+**Step 2**: Unzip the file discovery_agent-latest.zip to get the agent binary (discovery_agent) and a template configuration file (discovery_agent.yaml).
 
-#### YAML config file template - Discovery Agent
+   ```
+   unzip discovery_agent-latest.zip
+   ```
+
+**Step 3**: Copy those 2 files into a folder (/home/APIC-agents for instance) on the machine where the API Manager environment is located.
+
+**Step 4**: Move the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to the agent directory (APIC-agents). Note that the `public_key` comes from Steps 3 or 4 of [Create a Service Account](/docs/central/connect-api-manager/prepare-amplify-central/#create-a-service-account) depending if you choose to use the `der` format or not.
+
+### Customizing the Discovery Agent configuration file
+
+The `discovery_agent.yaml` configuration file contain 3 sections to personalize: apimanager, central and log.
+
+#### Customizing apimanager section
+
+This section connects the agent to API Manager and determines which APIs should be discovered and published to AMPLIFY Central.
+
+`host`: Machine name where API Manager is running. localhost value can be used as the agent is installed on the same machine as the API Manager.
+
+`port`: API Manager port number (8075 by default).
+
+`discoveryIgnoreTags` (optional): Comma-separated blacklist of tags. If an API has one or several of these blacklist tags, the agent ignores this API and will not publish it to AMPLIFY Central. This property takes precedence over the filter property below. The default value is empty, which means no API is ignored.
+
+`filter` (optional): Expression to filter the API you want the agent to discover. See [Filtering APIs to be discovered](/docs/central/connect-api-manager/filtering-apis-to-be-discovered/). Leaving this field empty tells the agent to discover all published APIs (REST / SOAP).
+
+`proxyApicIDField` (optional): The field name used to store AMPLIFY Central identifier for the front-end proxy in API Manager. Default value is **apicId**. If you do not intend to change it, comment this property. Be aware that the field will not be visible in the API Manager front-end proxy, as it is a specific configuration. If you want to see that field or customize it, refer to Add a custom property to APIs in [Customize API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_custom/index.html#customize-api-manager-data) documentation.
+
+`subscriptionApplicationField` (optional): The field name used to store AMPLIFY Central subscription identifier inside the API Manager application securing the front end proxy. Default value is **subscriptions**. If you do not intend to change it, comment this property. Be aware that the field will not be visible in the API Manager application, as it is a specific configuration. If you want to see that field or customize it, refer to Add a custom property to applications in [Customize API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_custom/index.html#customize-api-manager-data) documentation.
+
+`pollInterval`: The frequency in which API Manager is polled for new endpoints. Default value is 30s.
+
+`auth.username`: An API Manager user the agent will use to connect to the API Manager. This user must have either the “API Manager Administrator” or “Organization administrator” role. Based on the role of this user, the agent is able to:
+
+* discover any API from any organization (“API Manager Administrator”)  
+* discovery any API from a specific organization (“Organization administrator”)
+
+`auth.password`: The password of the API Manager user in clear text.
+
+Once all data is gathered, this section should looks like:
 
 ```
 apimanager:
-  host: lptxtntperf1.lab.phx.axway.int
-  status:
+  host: localhost
   port: 8075
-  filter: tag.News.Exists() == true || tag.API_TYPE == Loan || tag.API_TYPE == Finance || tag.API_TYPE == Healthcare || tag.Math.Exists() == true || tag.Department == Purchasing
-#  filter: tag.News.Exists() == true
-#  filter: tag.API_TYPE == Healthcare
+  discoveryIgnoreTags: tag1, tag2
+  filter:
+#  proxyApicIDField: apicId
+#  subscriptionApplicationField: subscriptions
   pollInterval: 30s
   auth:
-    username: <API AMANGER ADMIN NAME>
-    password: <API MANAGE ADMIN PASSWORD>
-  ssl:
-    insecureSkipVerify: true
-  subscriptionApplicationField: subscriptions
-  proxyApicIDField: APIC_ID
+    username: apiManagerUser
+    password: apiManagerUserPassword
+```
+
+#### Customizing central section
+
+This section connects the agent to AMPLIFY Central and determines how to published the discovered APIs.
+
+`url`: The AMPLIFY Central url. Default value is **<https://apicentral.axway.com>**
+
+`teamID`: The Team identifier in AMPLIFY Central that all APIs will be linked. Locate this at AMPLIFY Central > Access > Teams. Open the teams details. The team identifier is the last part of the url (AMPLIFY URL/access/teams/detail/**e4ec6c1a69fd0b8e016a0bb0681e0e8f**).
+
+`tenantID`: The Organization ID from AMPLIFY Central. Locate this at Platform > User > Organization > ORrg ID field.
+
+`environment`: The environment name you created when [preparing AMPLIFY Central](/docs/central/connect-api-manager/prepare-amplify-central/).
+
+`apiServerVersion`: The version of AMPLIFY Central API the agent is using. Default value is **v1alpha1**
+
+`mode`: The method to send endpoints back to Central. (publishToEnvironment = API Service, publishToCatalog = Catalog, publishToEnvironmentAndCatalog = API Service and as Consumer instance).  
+
+`pollInterval`: The frequency the agent is polling AMPLIFY Central to get some event. Default value is **30s**
+
+`auth.url`: The AMPLIFY login URL. Default value is **<https://login.axway.com/auth>**
+
+`auth.realm`: The Realm used to authenticate for AMPLIFY Central. Default value is **Broker**
+
+`auth.clientId`: The name of the Service Account you created when [preparing AMPLIFY Central](/docs/central/connect-api-manager/prepare-amplify-central/). Locate this at AMPLIFY Central > Access > Service Accounts.
+
+`auth.privateKey`: The location of the private key file you created when [preparing AMPLIFY Central](/docs/central/connect-api-manager/prepare-amplify-central/). Absolute file path is recommended to avoid confusion.
+
+`auth.publicKey`:  The location of the public key file you created when [preparing AMPLIFY Central](/docs/central/connect-api-manager/prepare-amplify-central/). Absolute file path is recommended to avoid confusion.  
+
+`auth.keyPassword`: The key password to open the key. None set up by default.
+
+`auth.timeout`: Timeout for the authentication. Default value is **10s**
+
+Once all data is gathered, this section should look like:
+
+```
+central:
+  url: https://apicentral.axway.com
+  teamID: e4ec6c1a69fd0b8e016a0bb0681e0e8f
+  tenantID: 68794y2
+  environment: my-v7-env
+  apiServerVersion: v1alpha1
+  mode: publishToEnvironmmentAndCatalog
+  pollInterval:
+  auth:
+    url: https://login.axway.com/auth
+    realm: Broker
+    clientId: DOSA_66743...
+    privateKey: /home/APIC-agents/private_key.pem
+    publicKey: /home/APIC-agents/public_key
+    keyPassword:
+    timeout: 10s
+```
+
+#### Customizing log section (log)
+
+The log section defines how the agent is managing its logs.
+
+`level`: The log level for output messages (debug, info, warn, error). Default value is **info**
+
+`format`: The format to print log messages (json, line, package). Default value is **json**
+
+`output`: The output for the log lines (stdout, file, both). Default value is **stdout**
+
+`path`: The path (relative to the agent binary or absolute) to save logs files, if output type file or both. Default value is relative path **logs**
+
+Once all data is gathered, this section should look like:
+
+```
+log:
+  level: info
+  format: json
+  output: stdout
+  path: logs
+```
+
+#### Validating your custom Discovery Agent configuration file
+
+After customizing all the sections, your discovery_agent.yaml file should look like:
+
+```yaml
+apimanager:
+  host: localhost
+  port: 8075
+  discoveryIgnoreTags: tag1, tag2
+  filter:
+#  proxyApicIDField: apicId
+#  subscriptionApplicationField: subscriptions
+  pollInterval: 30s
+  auth:
+    username: apiManagerUser
+    password: apiManagerUserPassword
 
 central:
   url: https://apicentral.axway.com
-  teamID: <THE TEAM ID>
-  tenantID: "<YOUR ORGANISATION ID>"
-  mode: <publishToCatalog | publishToEnvironment | publishToEnvironmentAndCatalog>
-  environment: "<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>"
+  teamID: e4ec6c1a69fd0b8e016a0bb0681e0e8f
+  tenantID: 68794y2
+  environment: my-v7-env
   apiServerVersion: v1alpha1
+  mode: publishToEnvironmmentAndCatalog
+  pollInterval:
   auth:
-    url: "https://login.axway.com/auth"
-    realm: "Broker"
-    clientid: "<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>"
-    privatekey: "<PATH TO>/private_key.pem"
-    publickey: "<PATH TO>/public_key"
-    keyPassword: ""
+    url: https://login.axway.com/auth
+    realm: Broker
+    clientId: DOSA_66743...
+    privateKey: /home/APIC-agents/private_key.pem
+    publicKey: /home/APIC-agents/public_key
+    keyPassword:
     timeout: 10s
 
 log:
   level: info
   format: json
   output: stdout
-#  output: file
-#    path: logs
-#
+  path: logs
 ```
 
-### Install and run Discovery Agent
+### Running the Discovery Agent
 
-1. Move the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment. Note that the `public_key` comes from Steps 3 and 4 of [Create a Service Account](/docs/central/connect-api-manager/prepare-amplify-central/#create-a-service-account).
-2. Download the zip file from [https://axway.bintray.com/generic-repo/v7-agents/v7_discovery_agent/latest/discovery_agent-latest.zip]( https://axway.bintray.com/generic-repo/v7-agents/v7_discovery_agent/latest/discovery_agent-latest.zip). The zip contains the Discovery Agent config yaml and the Discovery Agent executable.
-3. Unzip the file and install the binary on a machine that can access the APIM Manager environment.  
-4. Open a shell and run the following command to start up your agent:
+Open a shell and run the following command to start up your agent:
 
-    ```
-    ./discovery_agent
-    ```
+```shell
+cd /home/APIC-agents
+./discovery_agent
+```
 
-5. Open a shell and run the following health check command to verify if the agent is up and running:
+To verify if the agent is up and running, open another shell command and run:
 
-    ```
-    ./discovery_agent --status
-    ```
+```shell
+cd /home/APIC-agents
+./discovery_agent --status
+```
 
 ## Traceability Agent
 
-The Traceability Agent is used to filter the Axway API Gateway logs that are related to discovered APIs and prepare the transaction events that are sent to AMPLIFY platform. Each time an already discovered API is called by a consumer, an event (summary + detail) is sent to AMPLIFY Central and is visible in API Observer.
+The traceability agent is used to filter the Axway API Gateway logs that are related to discovered APIs and prepare the transaction events that are sent to AMPLIFY platform. Each time an already discovered API is called by a consumer, an event (summary + detail) is sent to AMPLIFY Central and is visible in API Observer.
 
-The Agent can run in the following modes:
+The agent can run in the following modes:
 
-* With a configuration file
+* With a yaml configuration file having the same name as the agent binary - `traceability_agent.yaml`:
 
     * Default: located in the same directory as the agent binary.
-    * Optional: use a dedicated folder where the configuration file is located (use the --path.config flag). See [Traceability Agent flags](/docs/central/connect-api-manager/traceability-agent-flags/).
+    * Optional: use a dedicated folder where the configuration file is located (use the --path.config flag in the agent command line to access the file path).
+    * Advanced configuration: properties inside the configuration file can reference environment variables. This enables you to set up only one configuration file that addresses different behaviors (depending on the environment variables). See [Discovery Agent variables](/docs/central/connect-api-manager/discovery-agent-variables/).
 
-    Configuration file name should be the same as the agent binary.
+* With command line argument. See [Traceability Agent flags](/docs/central/connect-api-manager/traceability-agent-flags/).
 
-    Properties inside the configuration file can reference environment variables. This enables you to set up only one configuration file that addresses different behaviors (depending on the environment variables). See [Traceability Agent variables](/docs/central/connect-api-manager/traceability-agent-variables/).
-* With a YAML configuration file
+### Installing the Traceability Agent
 
-### Create your env_vars file
+**step 1**: Download the latest version of the zip file from the Axway public repository using the following command:
 
-To create an `env_vars file`, see [Traceability Agent variables](/docs/central/connect-api-manager/traceability-agent-variables/).
+```
+curl -L "https://axway.bintray.com/generic-repo/v7-agents/v7_traceability_agent/latest/traceability_agent-latest.zip" -o traceability_agent-latest.zip
+```
 
-### Create your YAML config file
+**step 2**: Unzip the file traceability_agent-latest.zip to get the agent binary (traceability_agent) and a template configuration file (traceability_agent.yaml).
 
-Most Traceability Agent configurations are overridden by the environment variable, except for the APIGateway event file path(s). Note that the default `traceability_agent.inputs.paths` is set to read multiple files using wildcard.
+   ```
+   unzip traceability_agent-latest.zip
+   ```
 
-#### YAML config file template - Traceability Agent
+**step 3**: Copy those 2 files into a folder (/home/APIC-agents for instance) on the machine where the API Manager environment is located.
+
+**step 4**: If not done yet, move the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to the agent directory (APIC-agents). Note that the `public_key` comes from Steps 3 or 4 of [Create a Service Account](/docs/central/connect-api-manager/prepare-amplify-central/#create-a-service-account) depending if you choose to use the `der` format or not.
+
+### Customizing the Traceability Agent configuration file
+
+The `traceability_agent.yaml` configuration file contain 6 sections to customize: the beat, logstash, central, apigateway, apimanager and log.
+
+By default the `traceability_agent.yaml` file contains references to environment variables: ${VARIABLE_NAME: value}. You can remove the ${VARIABLE_NAME} and keep only the value for simplifying the configuration.
+
+#### Customizing beat section (traceability_agent)
+
+This section describes where the API Gateway logs are located on the machine so the beat can read them.
+
+`paths`: List all API Gateway event log files (absolute path) the beat will listen to. It could be a single file if there is only one gateway installed on the machine, or multiple files if several gateways are installed on the same machine.
+
+Single Gateway - explicit file name
 
 ```
 traceability_agent:
   inputs:
     - type: log
       paths:
-        - <PATH TO>/group-2_instance-1.log
+        - <API GATEWAY INSTALL DIRECTORY>/apigateway/events/group-2_instance-1.log
+```
+
+Multiple Gateways on the same machine - explicit file names
+
+```
+traceability_agent:
+  inputs:
+    - type: log
+      paths:
+        - <API GATEWAY INSTALL DIRECTORY>/apigateway/events/group-2_instance-1.log
+        - <API GATEWAY INSTALL DIRECTORY>/apigateway/events/group-2_instance-3.log
+        - <API GATEWAY INSTALL DIRECTORY>/apigateway/events/group-2_instance-7.log
+```
+
+Multiple Gateways on the same machine - file path with wildcard
+
+```
+traceability_agent:
+  inputs:
+    - type: log
+      paths:
+        - <API GATEWAY INSTALL DIRECTORY>/apigateway/events/group-2_instance-?.log
+```
+
+#### Customizing logstash section (output.traceability)
+
+This section describes where the logs should be sent on AMPLIFY Central.
+
+`hosts`: The URL of the logstash to forward the transaction log entries. Default value is **ingestion-lumberjack.datasearch.axway.com:453**
+
+`cipher_suites`: List the cipher suites for the TLS connectivity. See the [SSL / TLS advanced](/docs/central/connect-api-manager/ssl-tls-advanced/) topic for more information
+
+`proxy_url`: The URL for the proxy for logstash (**socks5://username:password@hostname:port**) to use when the API Management eco-system is not allowed to access the internet world where AMPLIFY Central is installed. **username** and **password** are optional and can be omitted if not required by the proxy configuration. Leaving this value empty means that no proxy will be used to connect to AMPLIFY Central logstash.
+
+Once all data is gathered, the section should look like this if you do not use a proxy:
+
+```
+# Send output to Central Database
+output.traceability:
+  enabled: true
+  hosts: ingestion-lumberjack.datasearch.axway.com:453
+  ssl:
+    enabled: true
+    verification_mode: none
+    cipher_suites:
+      - "ECDHE-ECDSA-AES-128-GCM-SHA256"
+      - "ECDHE-ECDSA-AES-256-GCM-SHA384"
+      - "ECDHE-ECDSA-AES-128-CBC-SHA256"
+      - "ECDHE-ECDSA-CHACHA20-POLY1305"
+      - "ECDHE-RSA-AES-128-CBC-SHA256"
+      - "ECDHE-RSA-AES-128-GCM-SHA256"
+      - "ECDHE-RSA-AES-256-GCM-SHA384"
+#  proxy_url: socks5://username:password@hostname:port
+```
+
+#### Customizing central section (output.traceability.agent.central)
+
+This section connects the agent to AMPLIFY Central and determine how to published the discovered APIs.
+
+`url`: The amplify central url. Default value is **<https://apicentral.axway.com>**
+
+`tenantID`: The Organization ID from AMPLIFY Central. Locate this at Platform > User > Organization > ORrg ID field.
+
+`deployment`: The APIC deployment environment. Default value is **prod**
+
+`environment`: The environment name you created when [preparing AMPLIFY Central](/docs/central/connect-api-manager/prepare-amplify-central/).
+
+`auth.url`: The AMPLIFY login URL. Default value is **<https://login.axway.com/auth>**
+
+`auth.realm`: The Realm used to authenticate for AMPLIFY Central. Default value is **Broker**
+
+`auth.clientId`: The name of the Service Account you created when [preparing AMPLIFY Central](/docs/central/connect-api-manager/prepare-amplify-central/). Locate this at AMPLIFY Central > Access > Service Accounts.
+
+`auth.privateKey`: The location of the private key file you created when [preparing AMPLIFY Central](/docs/central/connect-api-manager/prepare-amplify-central/). Absolute file path is recommended to avoid confusion.
+
+`auth.publicKey`:  The location of the public key file you created when [preparing AMPLIFY Central](/docs/central/connect-api-manager/prepare-amplify-central/). Absolute file path is recommended to avoid confusion.  
+
+`auth.keyPassword`: The key password to open the key. None set up by default.
+
+`auth.timeout`: Timeout for the authentication. Default value is **10s**
+
+`proxy_url`: The URL for the proxy for Amplify Central **<http://username:password@hostname:port>**. If empty, no proxy is defined.
+
+`ssl` settings: By default, for connecting to AMPLIFY Central, agent uses TLS 1.2 with a predefined list of cipher suites. Refer to [SSL / TLS advanced](/docs/central/connect-api-manager/ssl-tls-advanced/) section for changing this behavior.
+
+Once all data is gathered, this section should look like:
+
+```
+  agent:
+    central:
+      url: https://apicentral.axway.com
+      tenantID: 68794y2
+      deployment: prod
+      environment: my-v7-env
+      auth:
+        url: https://login.axway.com/auth
+        realm: Broker
+        clientId: "DOSA_68732642t64545..."
+        privateKey: /home/APIC-agents/private_key.pem
+        publicKey: /home/APIC-agents/public_key
+        keyPassword: ""
+        timeout: 10s
+      ssl:
+#        minVersion: {CENTRAL_SSL_MINVERSION:""}
+#        maxVersion: ${CENTRAL_SSL_MAXVERSION:""}
+#        nextProtos: ${CENTRAL_SSL_NEXTPROTOS:[]}
+#        cipherSuites: ${CENTRAL_SSL_CIPHERSUITES:[]}
+#        insecureSkipVerify: ${CENTRAL_SSL_INSECURESKIPVERIFY:false}
+#      proxyUrl: "http://username:password@hostname:port"
+```
+
+#### Customizing apigtaeway section (output.traceability.agent.apigateway)
+
+This section helps the agent to collect the header from request/response from the API Gateway system.
+
+`getHeaders`: Tells the agent to  call the API Gateway API to get additional transaction details (headers). Default value is **true**. If false, API Gateway config does not need to be set and no headers will be send to AMPLIFY Central.
+
+`host`: The host that Axway API Gateway is running on. Default value is **localhost**
+
+`port`: The port that Axway API Gateway is listening on. Default value is **8090**
+
+`pollInterval`: The frequency in which the agent polls the logs in us, ms, s, m, h. Default value is **1m**
+
+`auth.username`: An Axway API Gateway username with the "API Gateway operator" role.
+
+`auth.password`: The Axway API Gateway username password in clear text.
+
+`ssl` settings: By default, for connecting to API Gateway, the agent uses TLS 1.2 with a predefined list of cipher suites. Refer to [SSL / TLS advanced](/docs/central/connect-api-manager/ssl-tls-advanced/) section for changing this behavior.
+
+Once all data is gathered, this section should look like:
+
+```
+    apigateway:
+      getHeaders: true
+      host: localhost
+      port: 8090
+      pollInterval: 1m
+      auth:
+        username: myApiGatewayOperatorUser
+        password: myApiGatewayOperatorUserPassword
+      ssl:
+#        minVersison: ${APIGATEWAY_SSL_MINVERSION:""}
+#        maxVersion: ${APIGATEWAY_SSL_MAXVERSION:""}
+#        nextProtos: ${APIGATEWAY_SSL_NEXTPROTOS:[]}
+#        cipherSuites: ${APIGATEWAY_SSL_CIPHERSUITES:[]}
+#        insecureSkipVerify: ${APIGATEWAY_SSL_INSECURESKIPVERIFY:false}
+#      proxyUrl: ${APIGATEWAY_PROXYURL:""}
+```
+
+#### Customizing apimanager section (output.traceability.agent.apimanager)
+
+This section tells the agent which API needs to be monitor: one that has been discovered by the discovery agent (ie. has a non-empty `apicId` custom field).
+
+`host`: The Machine name where API Manager is running. localhost value can be used, as the agent is installed on the same machine as the API Manager.
+
+`port`: The API Manager port number (**8075** by default).
+
+`pollInterval`: The frequency in which API Manager is polled for new endpoints. Default value is 30s.
+
+`apiVersion`: The API Manager API version to use. Default value is **1.3**
+
+`proxyApicIDField` (optional): The field name used to store the AMPLIFY Central identifier for the front-end proxy in API Manager. Default value is **apicId**. If you do not intend to change it, comment this property. Be aware that the field will not be visible in the API Manager front-end proxy, as it is a specific configuration. If you want to see that field or customize it, refer to Add a custom property to APIs in [Customize API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_custom/index.html#customize-api-manager-data) documentation.
+
+`auth.username`: An API Manager user the agent will use to connect to the API Manager. This user must have either an “API Manager Administrator” or “Organization administrator” role. Based on the role of this user, the agent is able to:
+
+* discover any API from any organization (“API Manager Administrator”)  
+* discovery any API from a specific organization (“Organization administrator”)
+
+For the traceability agent to report correctly the discovered API traffic, it is recommended to use the same user as the one used for discovering APIs.
+
+`auth.password`: The password of the API Manager user in clear text.
+
+`ssl` settings: By default, for connecting to API Manager, the agent uses TLS 1.2 with a predefined list of cipher suites. Refer to [SSL / TLS advanced](/docs/central/connect-api-manager/ssl-tls-advanced/) section for changing this behavior.
+
+Once all data is gathered, this section should look like:
+
+```
+    apimanager:
+      host: localhost
+      port: 8075
+      pollInterval: 1m
+      apiVersion: 1.3
+      proxyApicIDField: "apicId
+      auth:
+        username: myAPIManagerUserName
+        password: myAPIManagerUserPassword
+      ssl:
+#        minVersion: ${APIMANAGER_SSL_MINVERSION:""}
+#        maxVersion: ${APIMANAGER_SSL_MAXVERSION:""}
+#        nextProtos: ${APIMANAGER_SSL_NEXTPROTOS:[]}
+#        cipherSuites: ${APIMANAGER_SSL_CIPHERSUITES:[]}
+#        insecureSkipVerify: ${APIMANAGER_SSL_INSECURESKIPVERIFY:false}
+#      proxyUrl: ${APIMANAGER_PROXYURL:""}
+```
+
+#### Customizing log section (logging)
+
+The log section defines how the agent manages its logs.
+
+`to_stderr`: (default configuration) The output is logged onto the screen.
+
+`to_file`:  (alternate configuration) The output is logged into a file. Requires more configuration (refer to <https://www.elastic.co/guide/en/beats/filebeat/current/configuration-logging.html>).
+
+`level`: The log level for output messages (debug, info, warn, error). Default value is **info**
+
+Once all data is gathered, this section should look like this for standard output logging:
+
+```
+logging:
+  metrics:
+    enabled: false
+  # Send all logging output to stderr
+  to_stderr: true
+  # Set log level
+  level: info
+  # Send all logging output to file - change value to_files: true and to_stderr: false
+  to_files: false
+  files:
+    path: ./logs
+    name: traceability_agent.log
+    keepfiles: 7
+    permissions: 0644
+```
+
+#### Validating your custom Traceability Agent configuration file
+
+After customizing all the sections, your traceability_agent.yaml file should look like:
+
+```yaml
+################### Beat Configuration #########################
+traceability_agent:
+  inputs:
+    - type: log
+      paths:
+        - <PATH TO>/group-X_instance-Y.log
       include_lines: ['.*"type":"transaction".*"type":"http".*']
 
 # Send output to Central Database
 output.traceability:
-  pipelines: 0
   enabled: true
-  hosts: "ingestion-lumberjack.datasearch.axway.com:453"
+  hosts: ${LOGSTASH_URL:ingestion-lumberjack.datasearch.axway.com:453}
   ssl:
     enabled: true
     verification_mode: none
+    cipher_suites:
+      - "ECDHE-ECDSA-AES-128-GCM-SHA256"
+      - "ECDHE-ECDSA-AES-256-GCM-SHA384"
+      - "ECDHE-ECDSA-AES-128-CBC-SHA256"
+      - "ECDHE-ECDSA-CHACHA20-POLY1305"
+      - "ECDHE-RSA-AES-128-CBC-SHA256"
+      - "ECDHE-RSA-AES-128-GCM-SHA256"
+      - "ECDHE-RSA-AES-256-GCM-SHA384"
+  proxy_url: ${LOGSTASH_PROXYURL:""}
   agent:
     central:
-      url: "https://apicentral.axway.com"
-      deployment: "prod"
-      tenantID: "<THE TEAM ID>"
-      environment: "<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>"
+      url: https://apicentral.axway.com
+      tenantID: 68794y2
+      deployment: prod
+      environment: my-v7-env
       auth:
-        url: "https://login.axway.com/auth"
-        realm: "Broker"
-        clientId: "<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>"
-        privateKey: "<PATH TO>/private_key.pem"
-        publicKey: "<PATH TO>/public_key"
+        url: https://login.axway.com/auth
+        realm: Broker
+        clientId: "DOSA_68732642t64545..."
+        privateKey: /home/APIC-agents/private_key.pem
+        publicKey: /home/APIC-agents/public_key
         keyPassword: ""
         timeout: 10s
+      ssl:
+#        minVersion: {CENTRAL_SSL_MINVERSION:""}
+#        maxVersion: ${CENTRAL_SSL_MAXVERSION:""}
+#        nextProtos: ${CENTRAL_SSL_NEXTPROTOS:[]}
+#        cipherSuites: ${CENTRAL_SSL_CIPHERSUITES:[]}
+#        insecureSkipVerify: ${CENTRAL_SSL_INSECURESKIPVERIFY:false}
+#      proxyUrl: "http://username:password@hostname:port"
     apigateway:
+      getHeaders: true
       host: localhost
-      status:
       port: 8090
       pollInterval: 1m
       auth:
-        username: <APIGATEWAY USER NAME WITH APIGATEWAY OPERATOR ROLE>
-        password: <APIGATEWAY USER PASSWORD>
+        username: myApiGatewayOperatorUser
+        password: myApiGatewayOperatorUserPassword
       ssl:
-        insecureSkipVerify: true
+#        minVersison: ${APIGATEWAY_SSL_MINVERSION:""}
+#        maxVersion: ${APIGATEWAY_SSL_MAXVERSION:""}
+#        nextProtos: ${APIGATEWAY_SSL_NEXTPROTOS:[]}
+#        cipherSuites: ${APIGATEWAY_SSL_CIPHERSUITES:[]}
+#        insecureSkipVerify: ${APIGATEWAY_SSL_INSECURESKIPVERIFY:false}
+#      proxyUrl: ${APIGATEWAY_PROXYURL:""}
     apimanager:
-      proxyApicIDField: APIC_ID
       host: localhost
-      status:
       port: 8075
-      apiVersion: 1.3
       pollInterval: 1m
+      apiVersion: 1.3
+      proxyApicIDField: "apicId
       auth:
-        username: <APIMANAGER ADMIN USER>
-        password: <APIMANAGE ADMIN PASSWORD>
+        username: myAPIManagerUserName
+        password: myAPIManagerUserPassword
       ssl:
-        insecureSkipVerify: true
+#        minVersion: ${APIMANAGER_SSL_MINVERSION:""}
+#        maxVersion: ${APIMANAGER_SSL_MAXVERSION:""}
+#        nextProtos: ${APIMANAGER_SSL_NEXTPROTOS:[]}
+#        cipherSuites: ${APIMANAGER_SSL_CIPHERSUITES:[]}
+#        insecureSkipVerify: ${APIMANAGER_SSL_INSECURESKIPVERIFY:false}
+#      proxyUrl: ${APIMANAGER_PROXYURL:""}
 
 logging:
   metrics:
     enabled: false
   # Send all logging output to stderr
   to_stderr: true
-  # Send all logging output to file
+  # Set log level
+  level: info
+  # Send all logging output to file - change value to_files: true and to_stderr: false
   to_files: false
   files:
-    path: ./
-    name: logs.txt
+    path: ./logs
+    name: traceability_agent.log
     keepfiles: 7
     permissions: 0644
-  # Set log level
-  level: debug
 ```
 
-#### Multiple file paths
+### Running the Traceability Agent
 
-```
-traceability_agent:
-  inputs:
-    - type: log
-      paths:
-        - /home/api/APIM_v7/apigateway/events/group-2_instance-1.log
-        - /home/api/APIM_v7/apigateway/events/group-2_instance-2.log
+Open a shell and run the following command to start up your agent:
+
+```shell
+cd /home/APIC-agents
+./traceability_agent
 ```
 
-#### File path with wildcard
+To verify if the agent is up and running, open another shell command and run:
 
+```shell
+cd /home/APIC-agents
+./traceability_agent status
 ```
-traceability_agent:
-  inputs:
-    - type: log
-      paths:
-        - /home/api/APIM_v7/apigateway/events/group-2_instance-*.log
-```
-
-### Install and run Traceability Agent
-
-1. Move the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment.
-2. Download the zip file:
-
-    ```
-    curl -L "https://axway.bintray.com/generic-repo/v7-agents/v7_traceability_agent/latest/traceability_agent-latest.zip" -o traceability_agent-latest.zip
-    ```
-
-    The zip contains the Traceability Agent config yaml and the Traceability Agent executable.
-3. Unzip the file and install the binary on a machine that can access the APIM Manager environment.
-4. Open a shell and run the following command to start up your agent:
-
-    ```
-    ./traceability_agent
-    ```
-
-5. Open a shell and run the following health check command to verify if the agent is up and running:
-
-    ```
-    ./traceability_agent status
-    ```
