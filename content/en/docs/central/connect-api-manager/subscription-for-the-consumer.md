@@ -54,6 +54,8 @@ description: A subscription provides the consumer, or subscriber, with the
 
    * The API can be consumed once the subscription details are received.
 
+{{< alert title="Note" color="primary" >}}If the FrontEnd API on API Manager corresponding to the Catalog item is set to **unpublished** at the time the subscription is initiated, the Discovery Agent will receive the event, but will not allow the subscription to be completed. Instead, it will send back a subscription status of **Subscribe failed**.{{< /alert >}}
+
 {{< alert title="Note" color="primary" >}}The API Manager application and the API must be in the same organization. Otherwise,  an error message is displayed in the Discovery Agent log.{{< /alert >}}
 
 **Workaround**: You can grant the API access to the organization where the application belongs:
