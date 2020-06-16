@@ -125,7 +125,7 @@ CentOS also does not offer the latest PHP version in the default repositories. T
 5. Install PHP:
 
     ```bash
-    sudo yum install php php-cli php-common php-gd php-json php-intl php-mbstring php-mysqlnd php-pdo php-xml php-zip
+    sudo yum install php php-cli php-common php-gd php-json php-intl php-mbstring php-mysqlnd php-pdo php-xml php-pecl-zip
     ```
 
 6. Verify that PHP was installed:
