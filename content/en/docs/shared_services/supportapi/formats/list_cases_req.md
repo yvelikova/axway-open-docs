@@ -19,8 +19,8 @@ description: Request format for the List Cases method.
 
 | Property Name | Data Type | Optional | Description |
 |---------------|-----------|----------|-------------|
-| before        | string    |       no | Starting date/time of the time span. [Format](../miscellaneous#common-date-and-time-format-for-requests). |
-| after         | string    |       no | Ending date/time of the time span. [Format](../miscellaneous#common-date-and-time-format-for-requests). |
+| before        | string    |       no | Starting date/time of the time span. [Format](/docs/shared_services/supportapi/formats/miscellaneous/#common-date-and-time-format-for-requests). |
+| after         | string    |       no | Ending date/time of the time span. [Format](/docs/shared_services/supportapi/formats/miscellaneous/#common-date-and-time-format-for-requests). |
 
 ### IncludeCaseTypes
 

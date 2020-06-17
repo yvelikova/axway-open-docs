@@ -50,7 +50,7 @@ Each error class is accompanied by a specific HTTP status code. The table below 
 
 `SERVER_ERROR`
 
-* A non-atomic method, such as [Create Case](../../methods/create_case) or [Add Note](../../methods/add_note), completed only partially:
+* A non-atomic method, such as [Create Case](/docs/shared_services/supportapi/methods/create_case) or [Add Note](/docs/shared_services/supportapi/methods/add_note), completed only partially:
     * A case is successfully created but the subsequent call to retrieve all the case details fails. The error message will include a reference to (an identifier of) the case created in Support Portal.
 
 ### Examples

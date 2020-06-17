@@ -20,7 +20,7 @@ The affected case is marked closed and not deleted from our systems.
 
 | Name | Type | Data Type                                         | Required | Allow Multiple | Description |
 | -----|------|---------------------------------------------------|----------|----------------|-------------|
-| n/a  | body | [CaseNote](../../formats/close_case_req#casenote) |      yes |             no | Details required for case closure. |
+| n/a  | body | [CaseNote](/docs/shared_services/supportapi/formats/close_case_req/#casenote) |      yes |             no | Details required for case closure. |
 
 **Example**:
 
@@ -40,7 +40,7 @@ The affected case is marked closed and not deleted from our systems.
 
 | Type | Data Type                                     | Description |
 |------|-----------------------------------------------|-------------|
-| body | [ [Case](../../formats/close_case_res#case) ] | Details of the closed case. |
+| body | [ [Case](/docs/shared_services/supportapi/formats/close_case_res/#case) ] | Details of the closed case. |
 
 ### Unsuccessful responses
 
@@ -48,4 +48,4 @@ The affected case is marked closed and not deleted from our systems.
 
 | Type | Data Type                                     | Description |
 |------|-----------------------------------------------|-------------|
-| body | [ErrorResponse](../../formats/error_response) | Details of the error that occurred. |
+| body | [ErrorResponse](/docs/shared_services/supportapi/formats/error_response) | Details of the error that occurred. |

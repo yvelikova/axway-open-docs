@@ -12,7 +12,7 @@ description: Add a note to an existing Axway Support case.
 
 **HTTP verb**: `POST`
 
-Add Note requests come in two forms: [simple](#add-note---simple) and [full](#add-note---full).
+Add Note requests come in two forms: [simple](#add-note-simple) and [full](#add-note-full).
 Simple requests allow you to send just the note information. Full requests allow you to attach files.
 
 ### Add Note - Simple
@@ -25,7 +25,7 @@ Send the note information directly as the HTTP entity-body.
 
 | Name | Type | Data Type                                       | Required | Allow Multiple | Description |
 |------|------|-------------------------------------------------|----------|----------------|-------------|
-| n/a  | body | [CaseNote](../../formats/add_note_req#casenote) |      yes |             no | Details of the note to be added. |
+| n/a  | body | [CaseNote](/docs/shared_services/supportapi/formats/add_note_req/#casenote) |      yes |             no | Details of the note to be added. |
 
 **Example**:
 
@@ -47,7 +47,7 @@ Each part of the request entity must contain a Content-Disposition header field.
 
 | Name        | Type      | Data Type                                        | Required | Allow Multiple | Description |
 |-------------|-----------|--------------------------------------------------|----------|----------------|-------------|
-| initializer | body part | [CaseNote](../../formats/add_note_req#casenote)  |      yes |             no | Details of the case to be created. |
+| initializer | body part | [CaseNote](/docs/shared_services/supportapi/formats/add_note_req/#casenote)  |      yes |             no | Details of the case to be created. |
 | attachment  | body part | file                                             |       no |            yes | File to attach to the case. |
 
 Constraints:
@@ -105,7 +105,7 @@ Add note with attachments example.
 
 | Type | Data Type                                       | Description |
 |------|-------------------------------------------------|-------------|
-| body | [CaseNote](../../formats/add_note_res#casenote) | Details of the added note. |
+| body | [CaseNote](/docs/shared_services/supportapi/formats/add_note_res/#casenote) | Details of the added note. |
 
 ### Unsuccessful responses
 
@@ -113,4 +113,4 @@ Add note with attachments example.
 
 | Type | Data Type                                     | Description |
 |------|-----------------------------------------------|-------------|
-| body | [ErrorResponse](../../formats/error_response) | Details of the error that occurred. |
+| body | [ErrorResponse](/docs/shared_services/supportapi/formats/error_response) | Details of the error that occurred. |

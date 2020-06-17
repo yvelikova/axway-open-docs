@@ -23,7 +23,7 @@ description: List cases, business service requests and customer enhancement requ
 
 #### query
 
-Allows you to retrieve only the desired information. Format: [Filter](../../formats/list_cases_req#filter).
+Allows you to retrieve only the desired information. Format: [Filter](/docs/shared_services/supportapi/formats/list_cases_req/#filter).
 
 To apply filtering, construct a JSON object per the format above, [percent-encode](https://tools.ietf.org/html/rfc3986#section-2.1) it and set the result as the value of the query parameter.
 
@@ -173,7 +173,7 @@ Please note that the default ordering is unspecified and can vary over time.
 
 | Type | Data Type                                   | Description |
 |------|---------------------------------------------|-------------|
-| body | [Cases](../../formats/list_cases_res#cases) | Cases matching the specified filter criteria. |
+| body | [Cases](/docs/shared_services/supportapi/formats/list_cases_res/#cases) | Cases matching the specified filter criteria. |
 
 ### Unsuccessful responses
 
@@ -181,4 +181,4 @@ Please note that the default ordering is unspecified and can vary over time.
 
 | Type | Data Type                                     | Description |
 |------|-----------------------------------------------|-------------|
-| body | [ErrorResponse](../../formats/error_response) | Details of the error that occurred. |
+| body | [ErrorResponse](/docs/shared_services/supportapi/formats/error_response) | Details of the error that occurred. |

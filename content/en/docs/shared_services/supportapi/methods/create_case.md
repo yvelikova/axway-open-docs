@@ -12,7 +12,7 @@ description: Create a new support case or customer enhancement request.
 
 **HTTP verb**: `POST`
 
-Create Case requests come in two forms: [simple](#create-case---simple) and [full](#create-case---full).
+Create Case requests come in two forms: [simple](#create-case-simple) and [full](#create-case-full).
 Simple requests allow you to send just the case information. Full requests allow you to attach files.
 
 ### Create Case - Simple
@@ -25,7 +25,7 @@ Send the case information directly as the HTTP entity-body.
 
 | Name | Type | Data Type                                  | Required | Allow Multiple | Description |
 |------|------|--------------------------------------------|----------|----------------|-------------|
-| n/a  | body | [Case](../../formats/create_case_req#case) |      yes |             no | Details of the case to be created. |
+| n/a  | body | [Case](/docs/shared_services/supportapi/formats/create_case_req/#case) |      yes |             no | Details of the case to be created. |
 
 **Example**:
 
@@ -57,7 +57,7 @@ Send the case information directly as the HTTP entity-body.
 
 Allows for optionally attaching files at the time of case creation.
 {{% alert title="Note" %}}
-Files can be attached to an existing case at any time, by [adding](../add_note#add-note---full) a case note.
+Files can be attached to an existing case at any time, by [adding](/docs/shared_services/supportapi/methods/add_note/#add-note-full) a case note.
 {{% /alert %}}
 
 **Consumes**: multipart/form-data
@@ -68,7 +68,7 @@ Each part of the request entity must contain a Content-Disposition header field.
 
 | Name        | Type      | Data Type                                  | Required | Allow Multiple | Description |
 |-------------|-----------|--------------------------------------------|----------|----------------|-------------|
-| initializer | body part | [Case](../../formats/create_case_req#case) |      yes |             no | Details of the case to be created. |
+| initializer | body part | [Case](/docs/shared_services/supportapi/formats/create_case_req/#case) |      yes |             no | Details of the case to be created. |
 | attachment  | body part | file                                       |       no |            yes | File to attach to the case. |
 
 Constraints:
@@ -142,7 +142,7 @@ Create case with attachments example.
 
 | Type | Data Type                                  | Description |
 |------|--------------------------------------------|-------------|
-| body | [Case](../../formats/create_case_res#case) | Details of the created case. |
+| body | [Case](/docs/shared_services/supportapi/formats/create_case_res/#case) | Details of the created case. |
 
 {{% alert title="Note" %}}
 Some details, such as case severity, are automatically generated in our systems.
@@ -154,4 +154,4 @@ Some details, such as case severity, are automatically generated in our systems.
 
 | Type | Data Type                                     | Description |
 |------|-----------------------------------------------|-------------|
-| body | [ErrorResponse](../../formats/error_response) | Details of the error that occurred. |
+| body | [ErrorResponse](/docs/shared_services/supportapi/formats/error_response) | Details of the error that occurred. |

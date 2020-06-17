@@ -22,8 +22,8 @@ description: Response format for the List Cases method.
 | caseNumber    | string                   |       no | Business identifier assigned to this case. |
 | subject       | string                   |       no | Brief description of this case. |
 | status        | string                   |       no | The current status of this case. |
-| severity      | [Severity](../severity)  |       no | The severity level calculated for this case. |
-| createdDate   | string                   |       no | Date and time of case creation. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
-| modifiedDate  | string                   |       no | Date and time of the latest update. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
-| closedDate    | string                   |      yes | Date and time of case closure. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
-| type          | [CaseType](../case_type) |       no | The type of this case. |
+| severity      | [Severity](/docs/shared_services/supportapi/formats/severity)  |       no | The severity level calculated for this case. |
+| createdDate   | string                   |       no | Date and time of case creation. [Format](/docs/shared_services/supportapi/formats/miscellaneous/#common-date-and-time-format-for-responses). |
+| modifiedDate  | string                   |       no | Date and time of the latest update. [Format](/docs/shared_services/supportapi/formats/miscellaneous/#common-date-and-time-format-for-responses). |
+| closedDate    | string                   |      yes | Date and time of case closure. [Format](/docs/shared_services/supportapi/formats/miscellaneous/#common-date-and-time-format-for-responses). |
+| type          | [CaseType](/docs/shared_services/supportapi/formats/case_type) |       no | The type of this case. |

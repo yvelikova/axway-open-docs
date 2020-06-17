@@ -26,7 +26,7 @@ description: Get the details of an existing Axway Support case.
 
 | Type | Data Type                                   | Description |
 |------|---------------------------------------------|-------------|
-| body | [ [Case](../../formats/get_case_res#case) ] | Detailed case information. |
+| body | [ [Case](/docs/shared_services/supportapi/formats/get_case_res/#case) ] | Detailed case information. |
 
 ### Examples
 
@@ -86,4 +86,4 @@ description: Get the details of an existing Axway Support case.
 
 | Type | Data Type                                     | Description |
 |------|-----------------------------------------------|-------------|
-| body | [ErrorResponse](../../formats/error_response) | Details of the error that occurred. |
+| body | [ErrorResponse](/docs/shared_services/supportapi/formats/error_response) | Details of the error that occurred. |

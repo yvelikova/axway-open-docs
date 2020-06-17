@@ -14,9 +14,9 @@ description: Request format for the Create Case method.
 | subject       | string                        |       no | Brief description of this case. |
 | description   | string                        |       no | Detailed description of this case. |
 | product       | [Product](#product)           |       no | Affected product. |
-| environment   | [Environment](../environment) |       no | Environment for which this case is created. |
+| environment   | [Environment](/docs/shared_services/supportapi/formats/environment) |       no | Environment for which this case is created. |
 | impact        | [Impact](#impact)             |       no | Impact level. |
-| urgency       | [Urgency](../urgency)         |       no | Urgency level. |
+| urgency       | [Urgency](/docs/shared_services/supportapi/formats/urgency)         |       no | Urgency level. |
 | type          | [CaseType](#casetype)         |      yes | The type of this case. Default: `Support Case`. |
 | ccEmails      | [ string ]                    |      yes | E-mail addresses to be copied in communications regarding this case. |
 
@@ -30,7 +30,7 @@ Impact levels supported in Create Case requests to the API, as an open-ended enu
     * 3 - Mediums
     * 4 - Low
 
-For details on the different enumeration elements, please refer to [Impact](../impact).
+For details on the different enumeration elements, please refer to [Impact](/docs/shared_services/supportapi/formats/impact).
 
 ### CaseType
 
@@ -41,12 +41,12 @@ Case types supported in Create Case requests to the API, as an open-ended enumer
     * Support Case
     * Enhancement Request
 
-See also the full classification [here](../case_type).
+See also the full classification [here](/docs/shared_services/supportapi/formats/case_type).
 
 ### Product
 
 {{% alert title="Note" %}}
-Product, product version and product operating system identifiers can be obtained with a call to the [Get Products](../../methods/get_products) method.
+Product, product version and product operating system identifiers can be obtained with a call to the [Get Products](/docs/shared_services/supportapi/methods/get_products) method.
 {{% /alert %}}
 
 | Property Name | Data Type                         | Optional | Description |

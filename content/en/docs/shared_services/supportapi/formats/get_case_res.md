@@ -13,22 +13,22 @@ description: Response format for the Get Case method.
 | caseNumber    | string                        |       no | Business identifier assigned to this case. |
 | subject       | string                        |       no | Brief description of this case. |
 | status        | string                        |       no | The current status of this case. |
-| createdDate   | string                        |       no | Date and time of case creation. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
-| modifiedDate  | string                        |       no | Date and time of the latest update. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
-| closedDate    | string                        |      yes | Date and time of case closure. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
-| severity      | [Severity](../severity)       |       no | The severity level calculated for this case. |
-| impact        | [Impact](../impact)           |      yes | Impact level. |
-| urgency       | [Urgency](../urgency)         |      yes | Urgency level. |
+| createdDate   | string                        |       no | Date and time of case creation. [Format](/docs/shared_services/supportapi/formats/miscellaneous/#common-date-and-time-format-for-responses). |
+| modifiedDate  | string                        |       no | Date and time of the latest update. [Format](/docs/shared_services/supportapi/formats/miscellaneous/#common-date-and-time-format-for-responses). |
+| closedDate    | string                        |      yes | Date and time of case closure. [Format](/docs/shared_services/supportapi/formats/miscellaneous/#common-date-and-time-format-for-responses). |
+| severity      | [Severity](/docs/shared_services/supportapi/formats/severity)       |       no | The severity level calculated for this case. |
+| impact        | [Impact](/docs/shared_services/supportapi/formats/impact)           |      yes | Impact level. |
+| urgency       | [Urgency](/docs/shared_services/supportapi/formats/urgency)         |      yes | Urgency level. |
 | account       | [Account](#account)           |       no | Details of the Axway customer account that case is registered with. |
 | contact       | [Contact](#contact)           |       no | Current contact for this case. |
 | owner         | [Contact](#contact)           |      yes | The current owner of this case. |
 | description   | string                        |       no | Detailed description of this case. |
-| environment   | [Environment](../environment) |       no | Environment for which this case is created. |
+| environment   | [Environment](/docs/shared_services/supportapi/formats/environment) |       no | Environment for which this case is created. |
 | notes         | [ [CaseNote](#casenote) ]     |      yes | List of all case notes attached to this case. |
 | product       | [Product](#product)           |       no | Product for which this case was created. |
 | attachments   | [ [Attachment](#attachment) ] |      yes | Summary information about the files attached to this case. |
 | ccEmails      | [ string ]                    |      yes | E-mail addresses copied in communications regarding this case. |
-| type          | [CaseType](../case_type)      |       no | The type of this case. |
+| type          | [CaseType](/docs/shared_services/supportapi/formats/case_type)      |       no | The type of this case. |
 | customerEnhancementRequest | [CustomerEnhancementRequest](#customerenhancementrequest) | no | Present if and only if this case is an Enhancement Request and any related details are available. |
 
 ### CustomerEnhancementRequest
@@ -86,7 +86,7 @@ An open-ended enumeration.
 |---------------|---------------------|----------|-------------|
 | id            | string              |       no | An identifier of this attachment. Attachment download requires this ID.|
 | name          | string              |       no | The name under which this attachment was added. |
-| createdDate   | string              |       no | Date and time of attachment creation. [Format](../miscellaneous#common-date-and-time-format-for-responses). |
+| createdDate   | string              |       no | Date and time of attachment creation. [Format](/docs/shared_services/supportapi/formats/miscellaneous/#common-date-and-time-format-for-responses). |
 | createdBy     | [Contact](#contact) |      yes | Contact that added this attachment. |
 
 ### Account

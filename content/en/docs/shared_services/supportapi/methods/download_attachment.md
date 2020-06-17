@@ -20,7 +20,7 @@ description: Download files attached to a specific support case or a support cas
 | attachmentId | query | string    |      yes |             no | ID of the attachment to be downloaded. |
 
 {{% alert title="Note" %}}
-Attachment identifiers can be obtained with a call to the [Get Case](../get_case) method. In the latter method's [response](../../formats/get_case_res#case), files that are attached directly to cases are described under `attachments`. Files that are attached to notes are described under  `noteAttachments`, nested within their respective note, nested within `notes`.
+Attachment identifiers can be obtained with a call to the [Get Case](/docs/shared_services/supportapi/methods/get_case) method. In the latter method's [response](/docs/shared_services/supportapi/formats/get_case_res/#case), files that are attached directly to cases are described under `attachments`. Files that are attached to notes are described under  `noteAttachments`, nested within their respective note, nested within `notes`.
 {{% /alert %}}
 
 ## Response
@@ -48,4 +48,4 @@ Example: `Content-Disposition: attachment; filename=EXAMPLE.TXT`.
 
 | Type | Data Type                                     | Description |
 |------|-----------------------------------------------|-------------|
-| body | [ErrorResponse](../../formats/error_response) | Details of the error that occurred. |
+| body | [ErrorResponse](/docs/shared_services/supportapi/formats/error_response) | Details of the error that occurred. |
