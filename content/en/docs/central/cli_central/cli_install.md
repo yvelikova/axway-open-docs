@@ -1,64 +1,67 @@
 ---
-title: Get started with AMPLIFY CLI
-linkTitle: Get started with AMPLIFY CLI
+title: Install AMPLIFY Central CLI
+linkTitle: Install AMPLIFY Central CLI
 weight: 90
-date: 2019-07-30T00:00:00.000Z
+date: 2020-05-29T00:00:00.000Z
 description: Learn how to install AMPLIFY CLI and authorize your DevOps service
-  to use the AMPLIFY Central DevOps APIs by way of AMPLIFY CLI.
+  to use the AMPLIFY Central DevOps APIs by way of AMPLIFY Central CLI.
 ---
-*Estimated reading time*: 3 minutes
+*Estimated reading time*: 10 minutes
 
 ## Before you start
 
 * You will need a basic understanding of OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523))
 * You will need an administrator account for AMPLIFY Central
-* Install AMPLIFY CLI
 
-### Install AMPLIFY CLI
+## Install AMPLIFY CLI and AMPLIFY Central CLI
 
-1. Install Node.js 8 LTS or later (Node.js 11 and later is not supported)
+1. Install `Node.js 8 LTS` or later (`Node.js 11` and later is not supported).
 2. Run the following command to install AMPLIFY CLI:
 
-   ```
-   [sudo] npm install -g @axway/amplify-cli
-   ```
+    ```
+    [sudo] npm install -g @axway/amplify-cli
+    ```
 
-   {{< alert title="Note" color="primary" >}}Use `sudo` on Mac OS X or Linux if you do not own the directory that npm installs packages to. On Windows, you do not need to run as Administrator as npm installs packages into your AppData directory.{{< /alert >}}
+    {{< alert title="Note" color="primary" >}}Use `sudo` on Mac OS X or Linux if you do not own the directory where npm installs packages to. On Windows, you do not need to run as     Administrator as npm installs packages into your AppData directory.{{< /alert >}}
+
 3. Run AMPLIFY package manager to install AMPLIFY Central CLI:
 
-   ```
-   amplify pm install @axway/amplify-central-cli
-   ```
+    ```
+    amplify pm install @axway/amplify-central-cli
+    ```
+
 4. Run AMPLIFY package manager list command to view available packages.
 
-   ```
-   amplify pm list
-   AMPLIFY CLI, version 1.2.1
-   Copyright (c) 2018, Axway, Inc. All Rights Reserved.
-   NAME                           | INSTALLED VERSIONS | ACTIVE VERSION
-   @axway/amplify-central-cli     | 0.1.3              | 0.1.3
-   ```
+    ```
+    amplify pm list
+    AMPLIFY CLI, version 1.2.1
+    Copyright (c) 2018, Axway, Inc. All Rights Reserved.
+    NAME                           | INSTALLED VERSIONS             | ACTIVE VERSION
+    @axway/amplify-central-cli     | 0.1.3,0.1.3-dev.10             | 0.1.3-dev.10
+    ```
 
-## Objectives
+All the development versions of AMPLIFY Central CLI can be found at [NPM install of AMPLIFY Central CLI](https://www.npmjs.com/package/@axway/amplify-central-cli). To install specific develop version, run the following command:
+
+```
+amplify pm install @axway/amplify-central-cli@0.1.3-dev.10
+```
+
+## Authorize your DevOps service to use the AMPLIFY Central DevOps APIs
 
 Learn how to authorize your DevOps service to use the AMPLIFY Central DevOps APIs by way of AMPLIFY CLI.
 
-* Generate an RSA key pair for your DevOps service account
-* Create a DevOps service account in AMPLIFY Central UI
-* Authenticate your service account with AMPLIFY platform
-
-## Service account authentication and authorization
+### Authenticate and authorize your service account
 
 To use the CLI, your DevOps service account must authenticate with AMPLIFY Platform and it must be authorized to use the AMPLIFY Central DevOps APIs.
 
 To support DevOps service interactions, AMPLIFY Central uses the OAuth 2.0 client credentials flow with JWT:
 
-1. Create an RSA public private key pair for your DevOps service account
-2. Use the public key to register the service account with AMPLIFY Platform to obtain a client ID
-3. Use the client ID and private key to authenticate with AMPLIFY Platform to obtain a JWT
-4. Use the JWT to make authorized API calls to AMPLIFY Central
+1. Create an RSA public private key pair for your DevOps service account.
+2. Use the public key to register the service account with AMPLIFY Platform to obtain a client ID.
+3. Use the client ID and private key to authenticate with AMPLIFY Platform to obtain a JWT.
+4. Use the JWT to make authorized API calls to AMPLIFY Central.
 
-## Generate an RSA key pair
+### Generate an RSA key pair
 
 To authorize a DevOps service account with AMPLIFY Platform, you need a public and private key pair in RSA format. To create this key pair, use `openssl` as follows:
 
@@ -85,7 +88,7 @@ ssh-keygen -t rsa -b 2048 -m PEM
 ssh-keygen -f <public_key_name> -e -m PKCS8
 ```
 
-## Create a service account
+### Create a service account
 
 Log in to AMPLIFY Central UI as an administrator, and create a service account for your DevOps service. Add the public key that you created earlier. When the account is created, copy the client identifier from the **Client ID** field.
 
@@ -93,7 +96,7 @@ Watch the animation to learn how to do this in AMPLIFY Central UI.
 
 ![Create service account in AMPLIFY Central UI](/Images/central/service_account_animation.gif)
 
-## Log in to AMPLIFY CLI
+### Authorize the service account with AMPLIFY platform
 
 To authorize the service account with AMPLIFY platform, log in to AMPLIFY CLI using the following command:
 
@@ -118,4 +121,4 @@ amplify central config list
 
 ## Review
 
-You have learned how to authorize your DevOps service to use the AMPLIFY Central DevOps APIs by way of AMPLIFY CLI.
+You have learned how to install AMPLIFY CLI and authorize your DevOps service to use the AMPLIFY Central DevOps APIs by way of AMPLIFY CLI.

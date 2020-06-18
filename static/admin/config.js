@@ -307,6 +307,13 @@ const collections = [{
   description: 'All pages relating to Connect AWS Gateway.',
   format: 'frontmatter',
 }, {
+  ...docsDefaults('central/cli_central', 'central/cli_central'),
+  name: 'cli_central',
+  label: 'Get started with AMPLIFY Central CLI',
+  label_singular: 'page in AMPLIFY Central CLI',
+  description: 'All pages relating to AMPLIFY Central CLI.',
+  format: 'frontmatter',
+}, {
   ...docsDefaults('catalog', 'catalog'),
   name: 'catalog',
   label: 'AMPLIFY Unified Catalog documentation',

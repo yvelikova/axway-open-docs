@@ -72,7 +72,7 @@ Visit our [API documentation](https://d-api.docs.stoplight.io/).
 
 #### DevOps authentication and authorization
 
-To use the AMPLIFY Central DevOps API in your DevOps pipeline, your DevOps service (for example, Jenkins) must be authenticated with AMPLIFY platform and it must be authorized to use the DevOps API. Use AMPLIFY CLI to log in to AMPLIFY platform with a service account and obtain an access token to perform authorized API calls. For detailed steps, see [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_proxy_flow).
+To use the AMPLIFY Central DevOps API in your DevOps pipeline, your DevOps service (for example, Jenkins) must be authenticated with AMPLIFY platform and it must be authorized to use the DevOps API. Use AMPLIFY CLI to log in to AMPLIFY platform with a service account and obtain an access token to perform authorized API calls. For detailed steps, see [Manage an API proxy using AMPLIFY Central CLI](/docs/central/cli_central/cli_proxy_flow).
 
 #### Example DevOps flow
 
