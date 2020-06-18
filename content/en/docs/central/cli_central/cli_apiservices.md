@@ -42,7 +42,7 @@ To automate the creation of an API service in an environment:
     amplify central create -f <filepath>
     ```
 
-Try out this procedure using the [apiservice.json](/resources/central/apiservice.json) or [apiservice.yaml](/resources/central/apiservice.yaml) samples.
+Try out this procedure using the [apiservice.json](/samples/central/apiservice.json) or [apiservice.yaml](/samples/central/apiservice.yaml) samples.
 
 ## Retrieve a list of API services
 
