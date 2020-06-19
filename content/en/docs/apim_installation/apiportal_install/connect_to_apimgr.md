@@ -1,7 +1,7 @@
 {
     "title":"Connect API Portal to API Manager",
     "linkTitle":"Connect API Portal to API Manager",
-    "weight":"7",
+    "weight":"70",
     "date":"2019-08-09",
     "description":"Connect API Portal to API Manager to leverage the user registry and API Catalog stored and managed in API Manager."
 }

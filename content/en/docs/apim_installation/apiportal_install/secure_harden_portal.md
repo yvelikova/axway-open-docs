@@ -1,7 +1,7 @@
 {
 "title": "Secure API Portal",
   "linkTitle": "Secure API Portal",
-  "weight": "8",
+  "weight": "80",
   "date": "2019-08-09",
   "description": "Secure and harden your API Portal environment after installation."
 }

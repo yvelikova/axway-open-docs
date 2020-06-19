@@ -1,7 +1,7 @@
 {
 "title": "Install Apache HTTP server and PHP",
   "linkTitle": "Install Apache HTTP server and PHP",
-  "weight": "2",
+  "weight": "20",
   "date": "2019-08-09",
   "description": "The API Portal installation script does not install specific dependencies (such as Apache HTTP server and PHP) that are required by API Portal, so you must install these dependencies yourself before you install API Portal."
 }

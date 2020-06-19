@@ -1,7 +1,7 @@
 {
     "title":"Unattended installation",
     "linkTitle":"Unattended installation",
-    "weight":"10",
+    "weight":"100",
     "date":"2019-08-09",
     "description":"Install or uninstall API Portal in unattended or silent mode."
 }

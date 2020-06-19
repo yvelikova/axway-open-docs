@@ -1,7 +1,7 @@
 {
 "title": "Install and configure database server",
   "linkTitle": "Install and configure database",
-  "weight": "4",
+  "weight": "30",
   "date": "2019-08-09",
   "description": "Configure your MySQL or MariaDB database server before you install API Portal."
 }

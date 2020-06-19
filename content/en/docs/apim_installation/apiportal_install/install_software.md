@@ -1,7 +1,7 @@
 {
 "title": "Install API Portal",
   "linkTitle": "Install API Portal",
-  "weight": "5",
+  "weight": "40",
   "date": "2019-08-09",
   "description": "Install or uninstall API Portal on Red Hat Enterprise Linux (RHEL) or CentOS."
 }
