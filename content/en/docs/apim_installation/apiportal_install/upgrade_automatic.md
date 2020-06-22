@@ -106,23 +106,4 @@ After the script is finished, re-enter the password for the Public API mode user
 
 ### Encrypt database password
 
-If you did not choose to encrypt your database password during the installation process, you can use the `apiportal_db_pass_encryption.sh` script, available from both API Portal installation and upgrade packages, to encrypt the password at any time.
-
-{{< alert title="Note" color="primary" >}} Do not run the `apiportal_db_pass_encryption.sh` script before the upgrade.{{< /alert >}}
-
-1. Make the script executable:
-
-   ```
-   # chmod +x apiportal_db_pass_encryption.sh
-   ```
-2. Execute the script:
-
-   ```
-   # sh apiportal_db_pass_encryption.sh
-   ```
-
-   When you execute the script, you are prompted to enter a passphrase and your database password. The script uses the passphrase to encrypt the database password, which is now stored encrypted in the <API_Portal_install_path>/configuration.php file, and to decrypt the database password on each connection request.
-
-   Only the password is decrypted on each connection request, not the whole payload, so no significant performance impact is expected
-
-   This option cannot be used in combination with [database secure connection](https://axway-open-docs.netlify.app/docs/apim_installation/apiportal_install/secure_harden_portal/#disable-tls-1-0-and-tls-1-1-on-apache).
+If you did not choose to encrypt your database password during the installation process, you can use the `apiportal_db_pass_encryption.sh` script, available from both API Portal installation and upgrade packages, to encrypt the password at any time. For more details see [Encrypt database password](/docs/apim_installation/apiportal_install/secure_harden_portal/#encrypt-database-password).
