@@ -7,7 +7,7 @@
 }
 For better performance and scalability, you can configure API Portal to cache APIs in a Redis cache. Using a Redis cache is recommended if you plan to expose hundreds of APIs, or you plan to connect API Portal to more than one API Manager.
 
-## Install Red Hat 7 (RHEL 7) using RHSCL
+## Install Redis on Red Hat 7 (RHEL 7) using RHSCL
 
 1. Enable `rhel-server-rhscl-7-rpms` and `rhel-7-server-optional-rpms` repositories from RHSCL:
 
@@ -74,7 +74,7 @@ For better performance and scalability, you can configure API Portal to cache A
     sudo yum remove rh-php73-php-devel rh-php73-php-pear
     ```
 
-## Install CentOS 7 using EPEL/Remi
+## Install Redis on CentOS 7 using EPEL/Remi
 
 1. Install Redis and `redis` PHP module:
 
