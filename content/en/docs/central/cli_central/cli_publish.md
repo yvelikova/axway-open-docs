@@ -38,9 +38,9 @@ The following is an example of how to create an API service revision for `apisvc
 amplify central create -f <filepath>
 ```
 
-Try out this procedure using the [apirevisions1.json](/samples/central/apirevisions1.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a revision to an API Service (`apisvc1`) in an environment (`env1`).
+Try out this procedure using the [apirevisions1.json](https://axway-open-docs.netlify.app/samples/central/apirevisions1.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a revision to an API Service (`apisvc1`) in an environment (`env1`).
 
-In the `apirevisions1.json` file, the API definition of the Musical Instruments API is encoded as Base64 with the `"spec" : "definition" : "value"`. For the decoded JSON format of the OAS2 (Swagger) specification for Musical Instruments, see [apirevisions1_decode.json](/samples/central/apirevisions1_decode.json).
+In the `apirevisions1.json` file, the API definition of the Musical Instruments API is encoded as Base64 with the `"spec" : "definition" : "value"`. For the decoded JSON format of the OAS2 (Swagger) specification for Musical Instruments, see [apirevisions1_decode.json](https://axway-open-docs.netlify.app/samples/central/apirevisions1_decode.json).
 
 To view the API service revision created in the environment `env1`, run this CLI command:
 
@@ -66,7 +66,7 @@ The following is an example of how to create an endpoint URL for `apisvcrev1` of
 amplify central create -f <filepath>
 ```
 
-Try out this procedure using the [apiendpoint.json](/samples/central/apiendpoint.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create an Endpoint URL for a revision of an API service (`apisvc1`) in an environment (`env1`).
+Try out this procedure using the [apiendpoint.json](https://axway-open-docs.netlify.app/samples/central/apiendpoint.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create an Endpoint URL for a revision of an API service (`apisvc1`) in an environment (`env1`).
 
 To view the API service endpoint (API service instance) created in the environment `env1`, run this CLI command:
 
@@ -92,7 +92,7 @@ The following is an example of how to create a secret for an environment by prov
 amplify central create -f <filepath>
 ```
 
-Try out this procedure using the [apisecret.json](/samples/central/apisecret.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a secret in an environment (`env1`).
+Try out this procedure using the [apisecret.json](https://axway-open-docs.netlify.app/samples/central/apisecret.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a secret in an environment (`env1`).
 
 To view the secret created in the environment `env1`, run this CLI command:
 
@@ -118,7 +118,7 @@ The following is an example of how to create a webhook for an environment by pro
 amplify central create -f <filepath>
 ```
 
-Try out this procedure using the [apiwebhook.json](/samples/central/apiwebhook.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a Webhook in an environment (`env1`).
+Try out this procedure using the [apiwebhook.json](https://axway-open-docs.netlify.app/samples/central/apiwebhook.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a Webhook in an environment (`env1`).
 
 To view the webhook created in the environment `env1`, run this CLI command:
 
@@ -144,7 +144,7 @@ The following is an example of how to create a subscription definition for an en
 amplify central create -f <filepath>
 ```
 
-Try out this procedure using the [apisubscription.json](/samples/central/apisubscription.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a subscription definition in an environment (`env1`).
+Try out this procedure using the [apisubscription.json](https://axway-open-docs.netlify.app/samples/central/apisubscription.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a subscription definition in an environment (`env1`).
 
 To view the subscription created in the environment `env1`, run this CLI command:
 
@@ -170,7 +170,7 @@ The following is an example of how to create a Catalog item for an API service a
 amplify central create -f <filepath>
 ```
 
-Try out this procedure using the [apiconsumerinstance.json](/samples/central/apiconsumerinstance.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a Catalog item (ConsumerInstance) for an API service in an environment  `env1`, and publish it to the Unified Catalog.
+Try out this procedure using the [apiconsumerinstance.json](https://axway-open-docs.netlify.app/samples/central/apiconsumerinstance.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a Catalog item (ConsumerInstance) for an API service in an environment  `env1`, and publish it to the Unified Catalog.
 
 On the `apiconsumerinstance.json` file:
 
@@ -201,7 +201,7 @@ You can create an API service within environment `env1` by providing a path to a
 amplify central create -f <filepath>
 ```
 
-Try out this procedure using the [publishAPI.json](/samples/central/publishAPI.json) sample, which combines all of the previous configuration files into one JSON file.
+Try out this procedure using the [publishAPI.json](https://axway-open-docs.netlify.app/samples/central/publishAPI.json) sample, which combines all of the previous configuration files into one JSON file.
 
 The `publishAPI.json` file has the optional flags:
 
@@ -218,7 +218,7 @@ You can create a Catalog item for SDK documentation in a zip file and publish it
 amplify central create -f <filepath>
 ```
 
-Try out this procedure using the [sdkconsumerinstance.json](/samples/central/sdkconsumerinstance.json) sample.
+Try out this procedure using the [sdkconsumerinstance.json](https://axway-open-docs.netlify.app/samples/central/sdkconsumerinstance.json) sample.
 
 On the `sdkconsumerinstance.json` file:
 
