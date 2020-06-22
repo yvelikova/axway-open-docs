@@ -72,9 +72,9 @@ To learn more about API Gateway Manager, see:
 
 ## API Manager CLI
 
-You can use the API Manager CLI (`swagger-promote`) to integrate APIs automatically in API Manager without the API Manager Web UI. This enables you to easily manage APIs using a command-line interface or CI/CD pipeline.
+You can use the API Manager CLI (`apim-cli`) to integrate APIs automatically in API Manager without the API Manager web UI. This enables you to easily manage APIs using a command-line interface or CI/CD pipeline.
 
-{{< alert title="Note" color="primary" >}}`swagger-promote` is not supported directly by Axway as part of AMPLIFY API Management, but it is the de-facto standard for managing API Manager from the command line. To learn more about `swagger-promote`, see [`swagger-promote` on GitHub](https://github.com/Axway-API-Management-Plus/apimanager-swagger-promote/blob/develop/README.md) and [`swagger-promote` wiki](https://github.com/Axway-API-Management-Plus/apimanager-swagger-promote/wiki).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}`apim-cli` is not supported directly by Axway as part of AMPLIFY API Management, but it is the de-facto standard for managing API Manager from the command line. To learn more about `apim-cli`, see [`apim-cli` on GitHub](https://github.com/Axway-API-Management-Plus/apim-cli/blob/develop/README.md) and [`apim-cli` wiki](https://github.com/Axway-API-Management-Plus/apim-cli/wiki).{{< /alert >}}
 
 API Manager CLI includes the following features:
 
@@ -82,7 +82,7 @@ API Manager CLI includes the following features:
 * Management of the entire API lifecycle
 * System and application default quota management
 * API security configuration
-* Documentation, API-Image
+* Documentation, API image
 * Organization permissions
 * Application subscriptions
 
