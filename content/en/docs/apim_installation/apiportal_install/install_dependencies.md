@@ -44,8 +44,7 @@ sudo yum clean all
 4. Enable and start Apache service:
 
    ```bash
-   sudo systemctl enable httpd24-httpd
-   sudo systemctl start httpd24-httpd
+   sudo systemctl enable --now httpd24-httpd
    ```
 
 5. Verify that Apache service is active and running:
@@ -113,8 +112,7 @@ CentOS also does not offer the latest PHP version in the default repositories. T
 3. Enable and start the Apache service:
 
     ```bash
-    sudo systemctl enable httpd
-    sudo systemctl start httpd
+    sudo systemctl enable --now httpd
     ```
 4. Verify that Apache service is active and running:
 
