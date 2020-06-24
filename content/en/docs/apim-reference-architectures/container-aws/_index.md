@@ -1,4 +1,3 @@
-
 {
 "title": "AMPLIFY API Management container reference architecture on AWS",
 "linkTitle": "Container reference architecture on AWS",
