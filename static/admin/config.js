@@ -102,6 +102,18 @@ const collections = [{
   label_singular: 'page in APIG upgrade section',
   description: 'All pages relating to upgrading API Gateway.',
 }, {
+  ...docsDefaults('apim-reference-architectures/container-aws', 'apim-reference-architectures/container-aws'),
+  name: 'container-aws',
+  label: 'API management AWS reference architecture',
+  label_singular: 'page in APIM AWS ref arch section',
+  description: 'All pages relating to AWS reference architecture',
+}, {
+  ...docsDefaults('apim-reference-architectures/container-azure', 'apim-reference-architectures/container-azure'),
+  name: 'container-azure',
+  label: 'API management Azure reference architecture',
+  label_singular: 'page in APIM Azure ref arch section',
+  description: 'All pages relating to Azure reference architecture',
+}, {
   ...docsDefaults('apimgmt_multi_dc', 'APIGateway'),
   name: 'apimgmt_multi_dc',
   label: 'Configure API Manager in multi-DC',
