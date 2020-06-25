@@ -1,6 +1,6 @@
 ---
 title: Get started with AMPLIFY Central CLI
-linkTitle: Get started with AMPLIFY Central CLI
+linkTitle: AMPLIFY Central CLI
 weight: 150
 date: 2020-05-29T00:00:00.000Z
 description: Getting started with the AMPLIFY Central CLI to support a DevOps approach to API Management

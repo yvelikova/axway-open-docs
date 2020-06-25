@@ -7,8 +7,6 @@ description: Learn how your DevOps process can use AMPLIFY Central CLI to build 
 ---
 *Estimated reading time*: 5 minutes
 
-{{< alert title="Public beta" color="warning" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
-
 ## Before you start
 
 * You must [authorize your DevOps service to use the DevOps API](/docs/central/cli_getstarted/)
@@ -24,11 +22,11 @@ Learn how to create and manage your API services to represent your distributed c
 * Update a specific API service
 * Delete a specific API service
 
-## Create an API service in an environment
+## Create an API service in your environment
 
-An API service contains all the information to represent your API, for example, description, environment scope, image encoded in base64.
+An API service represents an API, including all its versions and deployed endpoints, and additional information to represent your API, for example, description, environment scope, image encoded in base64.
 
-To automate the creation of an API service in an environment:
+To automate the creation of an API service in your environment:
 
 1. Create an environment by providing the environment name argument, for example, `env1`:
 
@@ -36,7 +34,7 @@ To automate the creation of an API service in an environment:
     amplify central create env env1
     ```
 
-2. Create an API service within environment `env1` by providing a path to a valid .yaml, .yml, or .json file that defines a specific resource (for example, `apiservice.yaml`).  In this case, only one API service called `apisvc1` will be created from the resource file:
+2. Create an API service within environment `env1` by providing a path to a valid .yaml, .yml, or .json file that defines a specific resource (for example, `apiservice.yaml`).  In this example, only one API service called `apisvc1` is created from the resource file:
 
     ```
     amplify central create -f <filepath>
@@ -98,10 +96,16 @@ amplify central delete -f apiservice.yaml   # Delete an API service using a file
 amplify central delete -f apiservice.json   # Delete an API service using a file in JSON format
 ```
 
-Use the `--wait` option to delete an API service using an YAML file while waiting for resource deletion confirmation. The `--wait` option will check for resource deletion for up to ten seconds.
+Use `--wait` to delete an API service using a YAML file while waiting for resource deletion confirmation. The `--wait` option will check for resource deletion for up to 10 seconds.
 
 ```
 amplify central delete -f apiservice.yaml --wait
+```
+
+Use `--scope` to delete an API service within the scope of and environment named env1.
+
+```
+amplify central delete apiservice apisvc1 -scope env1 --wait
 ```
 
 ## Review

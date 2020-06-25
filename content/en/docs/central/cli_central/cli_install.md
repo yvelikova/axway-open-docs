@@ -52,18 +52,18 @@ Learn how to authorize your DevOps service to use the AMPLIFY Central DevOps API
 
 ### Authenticate and authorize your service account
 
-To use the CLI, your DevOps service account must authenticate with AMPLIFY Platform and it must be authorized to use the AMPLIFY Central DevOps APIs.
+To use Central CLI your DevOps service account must authenticate with AMPLIFY Platform, and it must be authorized to use the AMPLIFY Central DevOps APIs.
 
 To support DevOps service interactions, AMPLIFY Central uses the OAuth 2.0 client credentials flow with JWT:
 
-1. Create an RSA public private key pair for your DevOps service account.
-2. Use the public key to register the service account with AMPLIFY Platform to obtain a client ID.
-3. Use the client ID and private key to authenticate with AMPLIFY Platform to obtain a JWT.
-4. Use the JWT to make authorized API calls to AMPLIFY Central.
+* Create an RSA public private key pair for your DevOps service account.
+* Use the public key to register the service account with AMPLIFY Platform to obtain a client ID.
+* Use the client ID and private key to authenticate with AMPLIFY Platform to obtain a JWT.
+* Use the JWT to make authorized API calls to AMPLIFY Central.
 
 ### Generate an RSA key pair
 
-To authorize a DevOps service account with AMPLIFY Platform, you need a public and private key pair in RSA format. To create this key pair, use `openssl` as follows:
+To authorize a DevOps service account with AMPLIFY Platform, you must have a public and private key pair in RSA format. To create this key pair, use `openssl` as follows:
 
 ```
 $ openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
