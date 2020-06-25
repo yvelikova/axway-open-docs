@@ -37,7 +37,7 @@ description: Learn how to install AMPLIFY CLI and authorize your DevOps service
     AMPLIFY CLI, version 1.2.1
     Copyright (c) 2018, Axway, Inc. All Rights Reserved.
     NAME                           | INSTALLED VERSIONS             | ACTIVE VERSION
-    @axway/amplify-central-cli     | 0.1.3,0.1.3-dev.10             | 0.1.3-dev.10
+    @axway/amplify-central-cli     | 0.1.3,0.1.3-dev.10             | 0.1.3
     ```
 
 All the development versions of AMPLIFY Central CLI can be found at [NPM install of AMPLIFY Central CLI](https://www.npmjs.com/package/@axway/amplify-central-cli). To install specific develop version, run the following command:
