@@ -138,13 +138,15 @@ By default, API Portal saves the Apache log files in the `htdocs` directory. Fo
 
 Add security headers to the `apiportal.conf` file (located in `/etc/httpd/conf.d/`).
 
-In the virtual host directive add the following headers:
+In the virtual host directive add the following:
 
 ```
+Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure;SameSite=Strict
 Header always append X-Frame-Options SAMEORIGIN
 Header set X-XSS-Protection "1; mode=block"
 Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains;"
 Header set X-Content-Type-Options nosniff
+Header set Referrer-Policy "same-origin"
 ```
 
 You should only use the HSTS header if you have configured SSL.
