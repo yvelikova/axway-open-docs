@@ -3,14 +3,14 @@ title: Create and publish other resource types to the Unified Catalog
 linkTitle: Create and publish other resource types to the Unified Catalog
 weight: 110
 date: 2020-06-10T00:00:00.000Z
-description: Learn how your DevOps process can use the AMPLIFY Central CLI to publish an API service to the Unified Catalog. You will also learn how to create other resource types, which can be used by your API service, in your environment. You can use the scripting of CLI commands to automate the process to create multiple resource types in your environment.
+description: Learn how your DevOps process can use the AMPLIFY Central CLI to create other resource types, which are used by your API service, and publish the API service to the Unified Catalog. You can use the scripting of CLI commands to automate the process to create multiple resource types in your environment.
 ---
 
-{{< alert title="Public beta" color="warning" >}}This feature is currently in **public beta** and not yet available for production use.{{< /alert >}}
+After an [API Service representation](/docs/central/cli_central/cli_apiservices/#create-an-api-service-in-your-environment) is created, you can create additional information (resources) related to the API Service. This includes multiple versions of the API, endpoints, secrets, webhooks, subscription definitions, and a Catalog item.
 
 ## Before you start
 
-* You will need to [authorize your DevOps service to use the DevOps API](/docs/central/cli_getstarted/)
+* You will need to [authorize your DevOps service to use the DevOps API](/docs/central/cli_central/cli_install/#authorize-your-devops-service-to-use-the-amplify-central-devops-apis)
 * Verify the @axway/amplify-central-cli version is at minimum 0.1.3.
 * You have already learned how to [create a representation of an environment and API Service using the AMPLIFY Central CLI](/docs/central/cli_central/cli_apiservices/).
 
@@ -18,73 +18,103 @@ description: Learn how your DevOps process can use the AMPLIFY Central CLI to pu
 
 Learn how to publish your API service to Unified Catalog using the AMPLIFY Central CLI. Also learn how to create other resource types, which can be used by your API Service, and how to publish SDK docs to the Unified Catalog. All resources types (API service revision, endpoint URL, and so on) are scoped to an environment.
 
-* Create a revision of an API service.
-* Create an endpoint URL for an API service revision.
+* Create a version of an API service.
+* Create an endpoint for an API service version.
 * Create a secret.
 * Create a webhook.
 * Create a Subscription definition.
-* Create a Catalog item for a published API service.
+* Publish a Catalog item for an API service.
+* Create and publish a Catalog item combining different resources.
 * Create and publish a Catalog item for SDK documentation.
 
-## Create a revision of an API service
+## Create a version of an API service
 
-An API service revision is used to hold the Open API Specification (OAS) file for your API Service, and each API service can have multiple revisions.
+An API service version represents a version of an API. It comprises of the interface (contract), implementation, and instance of the API. An API can have multiple versions. A client can call different versions of an API to realize different behaviors.
 
-The following is an example of how to create an API service revision for `apisvc1` by providing a path to a valid .yaml, .yml, or .json file that defines a specific resource  (APIServiceRevision):
+The following is an example of how to create an API service version for `apisvc1` by providing a path to a valid .yaml, .yml, or .json file that defines a specific resource  (APIServiceRevision in the AMPLIFY data model):
 
 ```
 amplify central create -f <filepath>
 ```
 
-Try out this procedure using the [apirevisions1.json](https://axway-open-docs.netlify.app/samples/central/apirevisions1.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a revision to an API Service (`apisvc1`) in an environment (`env1`).
+Additional versions are created each time you perform the `create` command with the new version of resource defined.
+
+Try out this procedure using the [apirevisions1.json](https://axway-open-docs.netlify.app/samples/central/apirevisions1.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a version (`apisvcrev1`) of an API Service (`apisvc1`) in an environment (`env1`).
 
 In the `apirevisions1.json` file, the API definition of the Musical Instruments API is encoded as Base64 with the `"spec" : "definition" : "value"`. For the decoded JSON format of the OAS2 (Swagger) specification for Musical Instruments, see [apirevisions1_decode.json](https://axway-open-docs.netlify.app/samples/central/apirevisions1_decode.json).
 
-To view the API service revision created in the environment `env1`, run this CLI command:
+To get a list, displayed in a table format (name, age, title), of all the API service versions for the scope of `env1`, run this command:
 
 ```
-amplify central get apisvcrev -s env1            # Get a list (name, age, title) of all the API Service revisions for the scope of env1
-amplify central get apisvcrev -s env1 -o yaml    # Get all the API Service Revisions for the scope of env1 in YAML format
-amplify central get apisvcrev -s env1 -o json    # Get all the API Service Revisions for the scope of env1 in JSON format
+amplify central get apisvcrev -s env1
 ```
 
-You can also modify the `apirevisions1.json` file to make changes to the API service revision with this CLI command:
+To get all the API service versions for the scope of `env1` displayed in YAML format, run this command. (Use `-o json` for JSON format):
 
 ```
-amplify central apply -f <filepath>  # Update the API Service Revision using a JSON or YAML file
+amplify central get apisvcrev -s env1 -o yaml
 ```
 
-## Create an endpoint URL for an API service revision
+You can modify the `apirevisions1.json` file to make changes to the API service version, for example:
 
-An endpoint URL (Service Instance in the AMPLIFY data model) is a network host address and port number where your API service is deployed. An endpoint URL is dependent on a API service revision to exist.
+```
+amplify central apply -f <filepath>  # Update the API Service version using a JSON or YAML file
+```
 
-The following is an example of how to create an endpoint URL for `apisvcrev1` of `apisvc1` by providing a path to a valid .yaml, .yml, or .json file that defines a specific resource (endpoint):
+You can delete a specific API service version or multiple versions in an environment, for example:
+
+```
+amplify central delete -f <filepath>   # Delete an API service version using a JSON or YAML file
+```
+
+Use the `--scope` option to delete an API service version within an environment (The additional `--wait` option is recommended for delete operations).
+
+```
+amplify central delete apisvcrev apisvcrev1 --scope env1 --wait   # Delete API Service version named apisvcrev1 within the scope of environment env1
+```
+
+## Create an endpoint for an API service version
+
+An endpoint (Service Instance in the AMPLIFY data model) represents where an API version is deployed. This endpoint is consumable by target users, and typically represented as a URL with a port number.
+
+The following is an example of how to create an endpoint for `apisvcrev1` of `apisvc1` by providing a path to a valid .yaml, .yml, or .json file that defines a specific resource (endpoint):
 
 ```
 amplify central create -f <filepath>
 ```
 
-Try out this procedure using the [apiendpoint.json](https://axway-open-docs.netlify.app/samples/central/apiendpoint.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create an Endpoint URL for a revision of an API service (`apisvc1`) in an environment (`env1`).
+Try out this procedure using the [apiendpoint.json](https://axway-open-docs.netlify.app/samples/central/apiendpoint.json) sample, and see how to create an endpoint for a version (`apisvcrev1`) of an API service (`apisvc1`) in an environment (`env1`).
 
-To view the API service endpoint (API service instance) created in the environment `env1`, run this CLI command:
-
-```
-amplify central get apisvcinst -s env1            # Get a list (name, age, title) of all the API Service Endpoints for the scope of env1
-amplify central get apisvcinst -s env1 -o yaml    # Get all the API Service Endpoints for the scope of env1 in YAML format
-amplify central get apisvcinst -s env1 -o json    # Get all the API Service Endpoints for the scope of env1 in JSON format
-```
-
-You can also modify the `apiendpoint.json` file to make changes to the API service endpoint with this CLI command:
+To view the API service endpoint (API service instance) created in the environment `env1`, run this command:
 
 ```
-amplify central apply -f <filepath>  # Update the API Service Endpoint using a JSON or YAML file
+amplify central get apisvcinst -s env1            # Get a list displayed in a table format (name, age, title) of all the API Service endpoints for the scope of env1
+amplify central get apisvcinst -s env1 -o yaml    # Get all the API Service endpoints for the scope of env1 displayed in YAML format (use -o json for JSON format)
+```
+
+To modify the `apiendpoint.json` file to make changes to the API service endpoint, run this command:
+
+```
+amplify central apply -f <filepath>  # Update the API Service endpoint using a JSON or YAML file
+```
+
+To delete a specific API service endpoint or multiple endpoints in an environment, run this command:
+
+```
+amplify central delete -f <filepath>   # Delete an API service endpoint using a JSON or YAML file
+```
+
+Use the `--scope` option to delete an API service endpoint within an environment (The additional `--wait` option is recommended for delete operations).
+
+```
+amplify central delete apisvcinst apisvcinst1 --scope env1 --wait   ## Delete API Service endpoint named apisvcinst1 within the scope of environment env1
 ```
 
 ## Create a secret
 
-A secret is a key value pair associated with a webhook to secure your API services. By setting a webhook secret, you can ensure that API requests sent to the webhook are coming from Axway.
+A secret is a key value pair associated with a webhook to secure your API services. By setting a webhook secret, you ensure that API requests sent to the webhook are coming from Axway.
 
-The following is an example of how to create a secret for an environment by providing a path to a valid .yaml, .yml, or .json file that defines a specific resource (Secret).
+The following is an example of how to create a secret for an environment by providing a path to a valid .yaml, .yml, or .json file that defines a specific resource (Secret in the AMPLIFY data model).
 
 ```
 amplify central create -f <filepath>
@@ -92,25 +122,36 @@ amplify central create -f <filepath>
 
 Try out this procedure using the [apisecret.json](https://axway-open-docs.netlify.app/samples/central/apisecret.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a secret in an environment (`env1`).
 
-To view the secret created in the environment `env1`, run this CLI command:
+To view the secret created in the environment `env1`, run this command:
 
 ```
-amplify central get secret -s env1 ## Get a list (name, age, title) of all the Secrets for the scope of env1
-amplify central get secret -s env1 -o yaml    # Get all the Secrets for the scope of env1 in YAML format
-amplify central get secret -s env1 -o json    # Get all the Secrets for the scope of env1 in JSON format
+amplify central get secret -s env1            # Get a list displayed in a table format (name, age, title) of all the Secrets for the scope of env1
+amplify central get secret -s env1 -o yaml    # Get all the Secrets for the scope of env1 displayed in YAML format (use -o json for JSON format)
 ```
 
-You can also modify the `apisecret.json` file to make changes to the secret with this CLI command:
+To modify the `apisecret.json` file to make changes to the secret, run this command:
 
 ```
 amplify central apply -f <filepath>   # Update the Secret using a JSON or YAML file
+```
+
+To delete a specific secret or multiple secrets in an environment, run this command:
+
+```
+amplify central delete -f <filepath>   # Delete a secret using a JSON or YAML file
+```
+
+Use the `--scope` option to delete a secret within an environment (The additional `--wait` option is recommended for delete operations).
+
+```
+amplify central delete secret secret1 --scope env1 --wait   ## Delete secret named secret1 within the scope of environment env1
 ```
 
 ## Create a webhook
 
 A webhook defines a webhook URL to communicate events (for example, subscription or registration changes) back to an API Service. In AMPLIFY Central and Unified Catalog, a webhook can be used in a custom subscription or registration process. A webhook is a combination of a URL and any custom parameters (for example, a secret) needed to subscribe and register to  your API Service.
 
-The following is an example of how to create a webhook for an environment by providing a path to a valid .yaml, .yml, or .json file that defines a specific resource (Webhook).
+The following is an example of how to create a webhook for an environment by providing a path to a valid .yaml, .yml, or .json file that defines a specific resource (Webhook in the AMPLIFY data model).
 
 ```
 amplify central create -f <filepath>
@@ -118,23 +159,39 @@ amplify central create -f <filepath>
 
 Try out this procedure using the [apiwebhook.json](https://axway-open-docs.netlify.app/samples/central/apiwebhook.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a Webhook in an environment (`env1`).
 
-To view the webhook created in the environment `env1`, run this CLI command:
+To get a list, in a table format (name, age, title), of all the Webhooks for the scope of `env1`, run this command:
 
 ```
-amplify central get webhook -s env1 ## Get a list (name, age, title) of all the Webhooks for the scope of env1
-amplify central get webhook -s env1 -o yaml    ## Get all the Webhooks for the scope of env1 in YAML format
-amplify central get webhook -s env1 -o json    ## Get all the Webhooks for the scope of env1 in JSON format
+amplify central get webhook -s env1
 ```
 
-You can also modify the `apiwebhook.json` file to make changes to the Webhook with this CLI command:
+To get all the Webhooks for the scope of `env1` in YAML format, , run this command. (Use `-o json` for JSON format):
+
+```
+amplify central get webhook -s env1 -o yaml
+```
+
+To modify the `apiwebhook.json` file to make changes to the Webhook, run this command:
 
 ```
 amplify central apply -f <filepath>    # Update the webhook using a JSON or YAML file
 ```
 
+To delete a specific webhook or multiple webhooks in an environment, run this command:
+
+```
+amplify central delete -f <filepath>   # Delete a webhook using a JSON or YAML file
+```
+
+Use the `--scope` option to delete a webhook within an environment (The additional `--wait` option is recommended for delete operations).
+
+```
+amplify central delete webhook webhook1 --scope env1 --wait   ## Delete webhook named webhook1 within the scope of environment env1
+```
+
 ## Create a subscription definition
 
-A subscription definition allows the configuration of the data needed from a consumer to subscribe or register to an API service in the Unified Catalog.  In AMPLIFY Central and Unified Catalog, a subscription definition has a reference to a webhook that will be invoked on a subscription or registration event. The subscription definition is referenced in the Catalog item (ConsumerInstance resource).
+A subscription definition allows the configuration of the data needed from a consumer to subscribe or register to an API service in the Unified Catalog.  In AMPLIFY Central and Unified Catalog, a subscription definition has a reference to a webhook that will be invoked on a subscription or registration event. The subscription definition is referenced in the Catalog item (ConsumerInstance resource in the AMPLIFY data model).
 
 The following is an example of how to create a subscription definition for an environment by providing a path to a valid .yaml, .yml, or .json file that defines a specific resource (ConsumerSubscriptionDefinition).
 
@@ -144,31 +201,49 @@ amplify central create -f <filepath>
 
 Try out this procedure using the [apisubscription.json](https://axway-open-docs.netlify.app/samples/central/apisubscription.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a subscription definition in an environment (`env1`).
 
-To view the subscription created in the environment `env1`, run this CLI command:
+To view the subscription created in the environment `env1`, run this command:
+
+To get a list, in a table format (name, age, title), of all the Subscriptions for the scope of `env1`, run this command:
 
 ```
-amplify central get consumersubscriptiondef -s env1            # Get a list (name, age, title) of all the Subscriptions for the scope of env1
-amplify central get consumersubscriptiondef -s env1 -o yaml    # Get all the Subscriptions for the scope of env1 in YAML format
-amplify central get consumersubscriptiondef -s env1 -o json    # Get all the Subscriptions for the scope of env1 in JSON format
+amplify central get consumersubscriptiondef -s env1
 ```
 
-You can also modify the `apisubscription.json` file to make changes to the subscription definition with this CLI command:
+To get all the Subscriptions for the scope of `env1` in YAML format, run this command. (Use `-o json` for JSON format):
+
+```
+amplify central get consumersubscriptiondef -s env1 -o yaml
+```
+
+To modify the `apisubscription.json` file to make changes to the subscription definition, run this command:
 
 ```
 amplify central apply -f <filepath>    # Update the Subscription using a JSON or YAML file
 ```
 
-## Create a Catalog item for a published API service
+To delete a specific subscription definition or multiple subscription definitions in an environment, run this command:
 
-The Catalog item (ConsumerInstance) contains all the details for creating the asset in the Unified Catalog. It also contains a reference to the `ConsumerSubscriptionDefinition` that has the link to the webhook, meaning that a webhook is invoked for each subscription update event generated from Unified Catalog related to the Catalog item created from the `ConsumerInstance`. Before creating a Catalog item, both an endpoint (ServiceInstance) and a subscription definition must exist.
+```
+amplify central delete -f <filepath>   # Delete a subscription definition using a JSON or YAML file
+```
 
-The following is an example of how to create a Catalog item for an API service and publish it to the Unified Catalog by providing a path to a valid .yaml, .yml, or .json file that defines a specific resource (ConsumerInstance):
+Use the `--scope` option to delete a subscription definition within an environment (The additional `--wait` option is recommended for delete operations).
+
+```
+amplify central delete consumersubscriptiondef consumersubdef1 --scope env1 --wait   ## Delete subscriptiondefintion named consumersubdef1 within the scope of environment env1
+```
+
+## Publish a Catalog item for an API service
+
+The Catalog item is a reference to an API service endpoint, and it contains all the details for creating the Catalog item in the Unified Catalog. These details include a reference to the subscription definition created in the previous section (Create a subscription definition) and a link to the webhook.   The webhook is invoked for each subscription update event generated from Unified Catalog.  Before creating a Catalog item, both an endpoint and a subscription definition must exist.
+
+The following is an example of how to create a Catalog item for an API service and publish it to the Unified Catalog by providing a path to a valid .yaml, .yml, or .json file that defines the specific resource:
 
 ```
 amplify central create -f <filepath>
 ```
 
-Try out this procedure using the [apiconsumerinstance.json](https://axway-open-docs.netlify.app/samples/central/apiconsumerinstance.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a Catalog item (ConsumerInstance) for an API service in an environment  `env1`, and publish it to the Unified Catalog.
+Try out this procedure using the [apiconsumerinstance.json](https://axway-open-docs.netlify.app/samples/central/apiconsumerinstance.json) sample, and see how a DevOps user can use the AMPLIFY Central CLI to create a Catalog item (ConsumerInstance in the AMPLIFY data model) for an API service in an environment  `env1`, and publish it to the Unified Catalog.
 
 On the `apiconsumerinstance.json` file:
 
@@ -177,21 +252,37 @@ On the `apiconsumerinstance.json` file:
 * The spec `visibility` set to `RESTRICTED` means only the teams, which shared the Catalog item have access to the item.
 * The spec `visibility` set to `PUBLIC` means all teams in the organization have access to the Catalog item.
 
-To view the Catalog item created in the environment `env1`, run this CLI command:
+To get a list, in a table format (name, age, title), of all the Catalog items for the scope of `env1`, run this command:
 
 ```
-amplify central get consumerinstance -s env1 ## Get a list (name, age, title) of all the Catalog Items for the scope of env1
-amplify central get consumerinstance -s env1 -o yaml   ## Get all the Catalog Items for the scope of env1 in YAML format
-amplify central get consumerinstance -s env1 -o json   ## Get all the Catalog Items for the scope of env1 in JSON format
+amplify central get consumerinstance -s env1
 ```
 
-You can also modify the `apiconsumerinstance.json` file to make changes to the Catalog item with this CLI command:
+To get all the Catalog items for the scope of `env1` in YAML format, run this command. (Use `-o json` for JSON format):
+
+```
+amplify central get consumerinstance -s env1 -o yaml
+```
+
+To modify the `apiconsumerinstance.json` file to make changes to the Catalog item, run this command:
 
 ```
 amplify central apply -f <filepath>   # Update the Catalog Item using a JSON or YAML file
 ```
 
-## Create an API Service combining different resources
+To delete a specific Catalog item or multiple Catalog items in an environment, run this command:
+
+```
+amplify central delete -f <filepath>   # Delete a subscription definition using a JSON or YAML file
+```
+
+Use the `--scope` option to delete a Catalog item within an environment (The additional `--wait` option is recommended for delete operations).
+
+```
+amplify central delete consumerinstance consumerinst1 --scope env1 --wait   ## Delete Catalog item named consumerinst1 within the scope of environment env1
+```
+
+## Create and publish a Catalog item combining different resources
 
 You can create an API service within environment `env1` by providing a path to a valid .yaml, .yml, or .json file that defines a specific resource. In this case, only one API Service called `apisvc1` is created from the resource file and published to the Unified Catalog:
 

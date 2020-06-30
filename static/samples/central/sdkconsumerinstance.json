@@ -1,17 +1,17 @@
 {
     "apiVersion": "v1alpha1",
     "kind": "ConsumerInstance",
-    "name": "sdk",
+	"name": "sdk",
     "title": "zip unstructured",
-    "metadata": {
+	"metadata": {
         "scope": {
             "kind": "Environment",
             "name": "env1"
         },
     },
-    "attributes": {
+	"attributes": {
             "createdBy": "json",
-    "release": "1.0.0"
+			"release": "1.0.0"
         },
     "tags": [
         "prod",
@@ -20,9 +20,9 @@
     "spec": {
         "name": "sdk zip of AMPLIFY Central CLI read.me",
         "description": "Provides documentation on the AMPLIFY Central CLI",
-        "visibility": "PUBLIC",
+        "visibility": "PUBLIC",	# PUBLIC or RESTRICTED
         "version": "1.0.0",
-        "state": "PUBLISHED",
+        "state": "PUBLISHED",	# PUBLISHED or UNPUBLISHED
         "status": "GA",
         "tags": [
             "sample"
@@ -40,8 +40,8 @@
             "autoSubscribe": false
         },
         "icon": {
-            "contentType": "image/jpeg",
-            "data" : "string"
+        	"contentType": "image/jpeg",
+        	"data" : "string"
         }
     }
 }

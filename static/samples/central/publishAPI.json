@@ -187,7 +187,7 @@
         "apiVersion": "v1alpha1",
         "kind": "ConsumerInstance",
         "name": "consumerinst1",
-        "title": "consumerinst1 title",
+        "title": "Catalog Item title",
         "metadata": {
             "scope": {
                 "kind": "Environment",
@@ -202,12 +202,12 @@
             "consumerinst"
         ],
         "spec": {
-            "name": "Consumer Instance Name",
+            "name": "Catalog Item Name",
             "apiServiceInstance": "apisvcinst1",
             "description": "Catalog description",
-            "visibility": "RESTRICTED",
+            "visibility": "PUBLIC",		# PUBLIC or RESTRICTED 
             "version": "1.0",
-            "state": "PUBLISHED",
+            "state": "PUBLISHED",		# PUBLISHED or UNPUBLISHED
             "status": "statusValue",
             "tags": [
                 "instance",
@@ -219,7 +219,7 @@
             },
             "documentation": "documentation string",
             "subscription": {
-                "enabled": false,
+                "enabled": true,
                 "autoSubscribe": true,
                 "subscriptionDefinition": "consumersubdef1"
             }
