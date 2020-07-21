@@ -1,7 +1,7 @@
 {
 "title": "General settings in Policy Studio",
 "linkTitle": "General settings",
-"weight":"06",
+"weight":"70",
 "date": "2019-10-18",
 "description": "Set global configuration settings in Policy Studio to optimize the behavior of API Gateway for your environment."
 }

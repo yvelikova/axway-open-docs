@@ -1,7 +1,7 @@
 {
 "title": "Transaction log settings in Policy Studio",
 "linkTitle": "Transaction log settings",
-"weight":"48",
+"weight":"80",
 "date": "2019-10-14",
 "description": "Configure settings for API Gateway transaction audit, transaction access, and transaction event logging in Policy Studio."
 }
