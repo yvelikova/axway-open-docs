@@ -39,10 +39,8 @@ To generate the SSL-RSA certificates and enable SSL in the MySQL or MariaDB serv
 
 You must first create the database server and the client certificate and key files. During the process, you must respond to several prompts from the Open SSL commands:
 
-* To generate test files, press `Enter` to all prompts except the one for Common Name (CN) of the server certificate. The CN must match the host you will use for connecting.
+* To generate test files, press `Enter` to all prompts except the one for Common Name (CN) of the server certificate (CA). The CN must match the host you will use for connecting, and it must differ from the server and client hosts certificates.
 * To generate files for production use, you must provide (non-empty) responses.
-
-You must enter different domain names for the CA and the client-server certificate.
 
 1. To create the RSA certificates, enter the following commands in the given order, and respond to any prompts you receive:
 
@@ -68,7 +66,7 @@ You must enter different domain names for the CA and the client-server certifica
 To enable secure connection in the MySQL or MariaDB server-side configuration, do the following:
 
 1. To start the database server so that it permits clients to connect securely, use options that identify the certificate and key files the server uses when establishing a secure connection:
-    * `ssl-ca` identifies the Certificate Authority (CA) certificate.
+    * `ssl-ca` identifies the CA certificate.
     * `ssl-cert` identifies the server public key certificate. This can be sent to the client and authenticated against the CA certificate the client has.
     * `ssl-key` identifies the server private key.
 
@@ -106,7 +104,7 @@ You should get output similar to the one below:
 
 ![Example output for the MySQL settings](/Images/APIPortal/mysql_ssl_settings.png)
 
-After you have successfully enabled SSL on the server, you must configure user authentication mode before you can use the secure connection. For more details, see [Configure the database server settings](#configure-the-database-server-settings).
+After you have successfully enabled SSL on the server, you must [configure a user account with TLS authentication](#configure-a-user-account-with-tls-authentication) before you can use the secure connection.
 
 ## Create a database and a user account for API Portal
 
