@@ -15,7 +15,7 @@ When creating your topic, you must define a name, the type of publisher and its 
 {
   "name": "myTopic",
   "publisher": {
-    "type": "http-poller|http-post|kafka",
+    "type": "http-poller|http-post|kafka|sfdc",
     "config": { ... }
   }
   ...
@@ -32,7 +32,7 @@ Setting `alwayOn` flag to `false`, can be useful to enable the publisher to avoi
 {
   "name": "myTopic",
   "publisher": {
-    "type": "http-poller|http-post",
+    "type": "http-poller|http-post|kafka|sfdc",
     "config": { ... },
     "alwaysOn": true|false,
     ...

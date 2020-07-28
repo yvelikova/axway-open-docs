@@ -46,7 +46,7 @@ Below the list of HTTP status codes that can be returned when trying to create a
 
 In order to stop the sending of webhook notifications, simply delete the corresponding webhook subscription with following request:
 
-`DELETE /subscribers/webhook/topics/{topicId}/subscriptions/{subscriptionId}`
+`DELETE /subscribers/webhook/subscriptions/{subscriptionId}`
 
 ### Delete status codes
 
@@ -56,6 +56,34 @@ Below the list of HTTP status codes that can be returned when deleting the webho
 |------|---------|
 | 204 No Content | Indicates that the subscription has been successfully deleted.
 | 404 Not found | Indicates that the provided identifier does not correspond to an existing webhook subscription.
+
+## Getting a webhook subscription
+
+In order to get existing subscription, simply do the following GET request:
+
+`GET /subscribers/webhook/subscriptions/{subscriptionId}`
+
+### Get status codes
+
+Below the list of HTTP status codes that can be returned when trying to get a kafka subscription:
+
+| Code | Comment |
+|------|---------|
+| 200 Ok | Indicates that the subscription requested is valid and has been retrieved. |
+| 404 Not found | Indicates that the requested URL or subscription requested does not exist. |
+
+## Getting webhook subscriptions for a topic
+
+In order to get existing subscriptions, simply do the following GET request on your topic:
+
+`GET /subscribers/webhook/topics/{topicId}/subscriptions`
+
+See [pagination](/docs/streams/management-api/#pagination) to get more information about how pagination and sorting works.
+
+The field names allowed for sorting are :
+
+* subscriptionMode
+* webhookUrl
 
 ## Webhook Event
 

@@ -52,7 +52,7 @@ Below the list of HTTP status codes that can be returned when trying to create a
 
 In order to stop sending record to your kafka cluster, simply delete the corresponding kafka subscription with following request:
 
-`DELETE /subscribers/kafka/topics/{topicId}/subscriptions/{subscriptionId}`
+`DELETE /subscribers/kafka/subscriptions/{subscriptionId}`
 
 ### Delete status codes
 
@@ -62,6 +62,37 @@ Below the list of HTTP status codes that can be returned when deleting the kafka
 |------|---------|
 | 204 No Content | Indicates that the subscription has been successfully deleted.
 | 404 Not found | Indicates that the provided identifier does not correspond to an existing kafka subscription.
+
+## Getting a kafka subscription
+
+In order to get and existing subscription, simply do the following GET request:
+
+`GET /subscribers/kafka/subscriptions/{subscriptionId}`
+
+### Get status codes
+
+List of HTTP status codes that can be returned when trying to get a kafka subscription:
+
+| Code | Comment |
+|------|---------|
+| 200 Ok | Indicates that the subscription requested is valid and has been retrieved. |
+| 404 Not found | Indicates that the requested URL or subscription requested does not exist. |
+
+## Getting kafka subscriptions for a topic
+
+In order to get existing subscriptions, simply do the following GET request on your topic:
+
+`GET /subscribers/kafka/topics/{topicId}/subscriptions`
+
+See [pagination](/docs/streams/management-api/#pagination) to get more information about how pagination and sorting work.
+
+The field names allowed for sorting are :
+
+* subscriptionMode
+* kafkaBootstrapServers
+* kafkaTopic
+* kafkaPartition
+* kafkaRecordKey
 
 ## Kafka Record
 

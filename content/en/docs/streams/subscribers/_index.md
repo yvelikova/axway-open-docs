@@ -11,7 +11,8 @@ description: Learn how to use the different types of Subscribers supported by AM
 AMPLIFY Streams supports different subscriber types. In order for a subscriber to receive messages/events published to a topic, it must subscribe either via:
 
 * **Server-Sent Events** which enables Streams to push data to subscribers (e.g client applications) through a persistent connection.
-* or **Webhook** which enables Streams to notify the subscribers via a HTTP Post request performed against the registered endpoint (webhook receiver).
+* **Webhook** which enables Streams to notify the subscribers via a HTTP Post request performed against the registered endpoint (webhook receiver).
+* **Kafka** which enables Streams to publish data to kafka clusters.
 
 Each topic created on the platform must be associated with at least one type of subscribers.
 When creating your topic, you can set it via subscribers config in the topic's configuration.

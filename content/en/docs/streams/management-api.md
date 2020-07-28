@@ -54,36 +54,16 @@ In general, codes in the `2xx` range indicate success, codes in the `4xx` range 
 
 To start with, it's important to know a few facts about receiving paginated items:
 
-By default, a call to the Streams API provides items in sets of `100`.
+By default, a call to the Streams API provides items in sets of `20`.
 You can specify how many items to receive (up to a maximum of `1000`) via the `pageSize` query parameter.
 All paginated queries start at page `1`.
-Pagination information is provided in the `links` attribute of a response.
+Pagination information is provided by the `Link` header of a response.
 
-For example, let's make a request to the `GET /topics` endpoint with the `pageSize` query param set to `5`.
-The links attribute will contain an array of links pointing to the different pages allowing you to navigate easily.
+For example, let's make a request to the `GET /api/v1/topics` endpoint with the `pageSize` query param set to `5`.
+The `Link` header will contain a list of element separated by comma pointing to the different pages allowing you to navigate easily.
 
-```json
-{
-  ...
-  "links": [
-    {
-      "rel": "self",
-      "href": "/topics?page=0&pageSize=5"
-    },
-    {
-      "rel": "first",
-      "href": "/topics?page=0&pageSize=5"
-    },
-    {
-      "rel": "next",
-      "href": "/topics?page=1&pageSize=5"
-    },
-    {
-      "rel": "last",
-      "href": "/topics?page=3&pageSize=5"
-    }
-  ]
-}
+```
+</api/v1/topics?page=1&pageSize=5>; rel="self"; pageSize="5",</api/v1/topics?page=1&pageSize=5>; rel="first"; pageSize="5",</api/v1/topics?page=2&pageSize=5>; rel="next"; pageSize="5",</api/v1/topics?page=5&pageSize=5>; rel="last"; pageSize="5"
 ```
 
 ##### Navigating through the pages
@@ -92,6 +72,18 @@ Now that you know how many pages there are to receive, you can start navigating 
 
 Changing the number of items received
 By passing the `pageSize` parameter, you can specify how many items you want each page to return, up to `1000` items.
+
+##### Sort items using pagination
+
+When using pagination, you can sort paginated items by specifying the `field` and the `direction` (ASC or DESC) in the query param `sort`. For example, to sort topics by name add the `sort=name,DESC` query param.
+
+The field names allowed for sorting are :
+
+* name
+* createTimestamp
+* modifyTimestamp
+* publisher.type
+* publisher.payload.type
 
 ### Versioning
 
