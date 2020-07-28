@@ -65,7 +65,7 @@ Below the list of HTTP status codes that can be returned when deleting the kafka
 
 ## Getting a kafka subscription
 
-In order to get and existing subscription, simply do the following GET request:
+In order to get an existing subscription, simply do the following GET request:
 
 `GET /subscribers/kafka/subscriptions/{subscriptionId}`
 
