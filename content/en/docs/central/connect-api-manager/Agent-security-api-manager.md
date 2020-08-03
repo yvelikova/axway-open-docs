@@ -1,8 +1,8 @@
 ---
-title: Agent security - API Manager
-linkTitle: Agent security - API Manager
+title: Administer API Manager agent security
+linkTitle: Administer API Manager agent security
 draft: false
-weight: 130
+weight: 110
 description: This section describes the main security features of the API Manager agents.
 ---
 
@@ -82,7 +82,7 @@ TLS_AES_256_GCM_SHA384
 
 TLS_CHACHA20_POLY1305_SHA256
 
-The Traceability Agents also communicate to the AMPLIFY search logs service using the Lumberjack protocol over a TCP connection. The connection URL and port can be configured by changing the LOGSTASH_URL in your configuration file. See [Traceability Agent variables](/docs/central/connect-api-manager/traceability-agent-variables/).
+The Traceability Agents also communicate to the AMPLIFY search logs service using the Lumberjack protocol over a TCP connection. The connection URL and port can be configured by changing the LOGSTASH_URL in your configuration file. See [Traceability Agent variables](/docs/central/connect-api-manager/agent-variables/).
 
 ## Certificate host validation
 
@@ -96,7 +96,7 @@ The agents are configured to use a TLS-encrypted HTTP connection by default. Cus
 
 The agents use HTTPS connections to its API servers for communication between a running agent, the API Manager, AWS API Gateway, or AMPLIFY Central. The Traceability Agents also use the Lumberjack protocol over TCP to communicate to the AMPLIFY search logs service.
 
-Authentication to the servers is enforced through tokens, username/password, or public/private keys, depending upon what is required by the particular server. All JWT tokens and private keys and secrets stay within the environment of the agent. Public keys are registered in AMPLIFY Central. Configuration details for these settings can be found at [Discovery Agent variables](/docs/central/connect-api-manager/discovery-agent-variables/) and [Traceability Agent variables](/docs/central/connect-api-manager/traceability-agent-variables/). For the AWS API Gateway Discovery and Traceability agents, the configuration details are at [Deploy your agents](/docs/central/connect-aws-gateway/deploy-your-agents-1/).
+Authentication to the servers is enforced through tokens, username/password, or public/private keys, depending upon what is required by the particular server. All JWT tokens and private keys and secrets stay within the environment of the agent. Public keys are registered in AMPLIFY Central. Configuration details for these settings can be found at [Discovery Agent variables](/docs/central/connect-api-manager/agent-variables/) and [Traceability Agent variables](/docs/central/connect-api-manager/agent-variables/). For the AWS API Gateway Discovery and Traceability agents, the configuration details are at [Deploy your agents](/docs/central/connect-aws-gateway/deploy-your-agents-1/).
 
 ## Agent configuration file: securing the user passwords
 

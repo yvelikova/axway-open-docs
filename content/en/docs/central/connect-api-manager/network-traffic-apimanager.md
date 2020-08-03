@@ -1,8 +1,8 @@
 ---
-title: Network traffic - API Manager
-linkTitle: Network traffic - API Manager
+title: Administer API Manager network traffic
+linkTitle: Administer API Manager network traffic
 draft: false
-weight: 120
+weight: 100
 description: Traffic is always initiated by the Agent to API Manager, API
   Gateway, and AMPLIFY Central. No sessions are ever initiated back to the
   Agent.
@@ -27,7 +27,7 @@ The destination for:
 
 ### Discovery Agent
 
-Use variable `apimanager.filter` to select which API should be sent to Axway AMPLIFY platform. Only the matching APIs are transferred to Axway AMPLIFY platform. See [Filtering APIs to be discovered](docs/central/connect-api-manager/filtering-apis-to-be-discovered/). The Discovery Agent sends the following information to the Axway AMPLIFY platform:
+Use variable `apimanager.filter` to select which API should be sent to Axway AMPLIFY platform. Only the matching APIs are transferred to Axway AMPLIFY platform. See [Discover APIs](docs/central/connect-api-manager/filtering-apis-to-be-discovered/). The Discovery Agent sends the following information to the Axway AMPLIFY platform:
 
 * API definition using Swagger or WSDL depending on the API type (REST vs SOAP)
 * API documentation
@@ -91,11 +91,11 @@ If your network policy restricts outbound traffic such that outbound traffic mus
 
 ### HTTP/HTTPS Proxy
 
-Use a HTTP/HTTPS Proxy for communication to the AMPLIFY Platform.  This configuration is set for both the [Discovery](/docs/central/connect-api-manager/discovery-agent-variables/) and [Traceability Agents](/docs/central/connect-api-manager/traceability-agent-variables/).
+Use a HTTP/HTTPS Proxy for communication to the AMPLIFY Platform.  This configuration is set for both the [Discovery](/docs/central/connect-api-manager/agent-variables/) and [Traceability Agents](/docs/central/connect-api-manager/agent-variables/).
 
 ### SOCKS5 Proxy
 
-Use a SOCKS5 Proxy for communication to the AMPLIFY Platform when sending API Traffic Events.  This configuration is set only for [Traceability Agents](/docs/central/connect-api-manager/traceability-agent-variables/).
+Use a SOCKS5 Proxy for communication to the AMPLIFY Platform when sending API Traffic Events.  This configuration is set only for [Traceability Agents](/docs/central/connect-api-manager/agent-variables/).
 
 ### Proxy authentication
 

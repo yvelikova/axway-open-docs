@@ -1,19 +1,28 @@
 ---
-title: Discovery Agent flags
-linkTitle: Discovery Agent flags
+title: Agent flags
+linkTitle: Agent flags
 draft: false
-weight: 50
-description: "Use the following parameters [flags] when issuing the
-  discovery_agent command. View these flags with command `discovery_agent -h.` "
+weight: 80
+description: Use the following parameters [flags] when issuing the
+  traceability_agent and discovery_agent commands. View these flags with command traceability_agent
+  -h or discovery_agent -h.
 ---
 
-| Flags                           | Description                                                                                                                                                                                                                                                                                                            |     |
+| Traceability Agent Flags                         | Description                                                |
+|------------------------------------------------|------------------------------------------------------------|
+| path.config                    | String. Configuration path.                                |
+| path.data                      | String. Data path.                                         |
+| path.home                      | String. Home path.                                         |
+| path.logs                      | String. Logs path.                                         |
+| strict.perms                   | Strict permission checking on config files (default true). |
+
+| Discovery Agent Flags                           | Description                                                                                                                                                                                                                                                                                                            |     |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
 | apimanagerHost                  | String. Host of API Manager service (default "localhost").                                                                                                                                                                                                                                                             |     |
 | apimanagerAuthPassword          | String. API Manager password.                                                                                                                                                                                                                                                                                          |     |
 | apimanagerPort                  | Int. Port of API Manager service (default 8075).                                                                                                                                                                                                                                                                       |     |
 | apimanagerDiscoveryIgnoreTags   | String. List of tags on frontend proxy to check for and ignore discovery.                                                                                                                                                                                                                                              |     |
-| apimanagerFilter                | String. Filter condition for discovery                                                                                                                                                                                                                                                                                 |     |
+| apimanagerFilter                | String. Filter condition for discovery.                                                                                                                                                                                                                                                                                 |     |
 | apimanagerPollInterval          | Duration. The time interval at which the published proxies will be checked for publishing as catalog. (default 30s).                                                                                                                                                                                                   |     |
 | apimanagerAuthUsername          | String. API Manager username.                                                                                                                                                                                                                                                                                          |     |
 | apimanagerSslMinVersion         | String. Minimum acceptable SSL/TLS protocol version (default "TLS1.2").                                                                                                                                                                                                                                                |     |

@@ -1,8 +1,8 @@
 ---
-title: Filtering APIs to be discovered
-linkTitle: Filtering APIs to be discovered
+title: Discover APIs
+linkTitle: Discover APIs
 draft: false
-weight: 80
+weight: 40
 description: Learn how to set up tag-based condition expression(s) using the
   APIMANAGER_FILTER environment variable to discover APIs that could be added to
   AMPLIFY Central.
