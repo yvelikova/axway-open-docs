@@ -29,10 +29,9 @@ A Service Account is required to secure the connection between agents and AMPLIF
     ```
     openssl genpkey -algorithm RSA -out ./aws_agent_private_key.pem -pkeyopt rsa_keygen_bits:2048
     openssl rsa -pubout -in ./aws_agent_private_key.pem -out ./aws_agent_public_key.pem
-    openssl rsa -pubout -in ./aws_agent_private_key.pem -out ./aws_agent_public_key.der -outform der
     ```
 
-2. Create a new Service Account user in AMPLIFY Central using the key pair from above. You may name this Service Account (for example, AWS-Agent). For additional information, see [Create a service account](/docs/central/cli_central/cli_install/#create-a-service-account). There is no need to download the Service Account JSON-File.
+2. Create a new Service Account user in AMPLIFY Central using the `aws_agent_public_key.pem` from above. You may name this Service Account (for example, AWS-Agent). For additional information, see [Create a service account](/docs/central/cli_central/cli_install/#create-a-service-account). There is no need to download the Service Account JSON-File.
 
 ## Create an environment
 
