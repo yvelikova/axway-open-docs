@@ -36,7 +36,7 @@ AWS_AUTH_SECRETKEY=<YOUR AWS SECRET KEY HERE>
 AWS_FILTER=tag.publishToAmplify == true
 #
 #AMPLIFY Central connectivity
-CENTRAL_TENANTID=<YOUR ORGANISATION ID>
+CENTRAL_TENANTID=<YOUR ORGANIZATION ID>
 CENTRAL_TEAMID=<THE TEAM ID>
 CENTRAL_ENVIRONMENT=<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>
 CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
@@ -77,7 +77,7 @@ AWS_AUTH_ACCESSKEY=<YOUR AWS ACCESS KEY HERE>
 AWS_AUTH_SECRETKEY=<YOUR AWS SECRET KEY HERE>
 #
 #AMPLIFY Central connectivity
-CENTRAL_TENANTID=<YOUR ORGANISATION ID>
+CENTRAL_TENANTID=<YOUR ORGANIZATION ID>
 CENTRAL_TEAMID=<THE TEAM ID>
 CENTRAL_ENVIRONMENT=<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>
 CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
@@ -88,7 +88,7 @@ LOG_PATH=logs
 ```
 
 The required values are either coming from the output of the CloudFormation template or from AMPLIFY platform configuration.
-Explanation for each variable could be found in the advance section (TO COMPLETE WITH THE LINK)
+Explanation for each variable could be found in the [advance section](/docs/central/connect-aws-gateway/deploy-your-agents-1/)
 
 ### 2. Download Traceability Agent
 
