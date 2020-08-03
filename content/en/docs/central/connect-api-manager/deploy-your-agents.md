@@ -23,11 +23,12 @@ Learn how to install, customize and run your Discovery and Traceability agents a
 
 ## Discovery Agent
 
-The Discovery Agent is used to discover new published APIs or any updated APIs. Once they are discovered, the related APIs are published to AMPLIFY Central, in one of the following publication modes, so that they become available for any consumer:
+The Discovery Agent is used to discover new published APIs or any updated APIs. Once they are discovered, the related APIs are published to AMPLIFY Central, in one of the following publication modes:
 
-* **Catalog item publication** (disconnected mode): Customers expose their APIs globally for their consumers but keep the API management at the Gateway level.
-* **Environment / API Service publication** (connected mode): Customers manage their APIs from the AMPLIFY platform.
-  The Discovery Agent only discovers APIs that have the tag(s) defined in the agent configuration file. See [Discover APIs](/docs/central/connect-api-manager/filtering-apis-to-be-discovered/). By default, the filter is empty and thus the agent will discover all published APIs.
+* **Environment / API Service publication** : Customers publish their APIs to the AMPLIFY platform.
+* **Environment / API Service publication / Catalog item publication** (default mode): Same as previous plus automatically expose the APIs to the consumer via the AMPLIFY Catalog.
+
+The Discovery Agent only discovers APIs that have the tag(s) defined in the agent configuration file. See [Discover APIs](/docs/central/connect-api-manager/filtering-apis-to-be-discovered/). By default, the filter is empty and thus the agent will discover all published APIs.
 
 As soon as an API is published, the identifier of the asset in AMPLIFY Central is kept in a custom field at the API level in API Manager to help the agent remember what is already published.
 

@@ -53,7 +53,7 @@ The Discovery Agent only discovers published APIs where the stage has a  tag(s) 
 | CENTRAL_URL                    | The URL to the AMPLIFY Central instance being used for this Discovery Agent.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | CENTRAL_TENANTID               | The Organization ID from AMPLIFY Central. Locate this at Platform > User > Organization.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | CENTRAL_TEAMID                 | The Team ID in AMPLIFY Central that all APIs will be linked. Locate this at AMPLIFY Central > Access > Teams. Open the teams details. The team identifier is the last part of the url (AMPLIFY URL/access/teams/detail/`e4ec6c1a69fd0b8e016a0bb0681e0e8f`).                                                                                                                                                                                                                                                                                          |
-| CENTRAL_MODE                   | Method to send endpoints back to Central. (publishToEnvironment = API Server, publishToCatalog = Catalog, publishToEnvironmentAndCatalog = API Service and as Consumer instance).                                                                                                                                                                                                                                                                                                                                                                    |
+| CENTRAL_MODE                   | Method to send endpoints back to Central. (`publishToEnvironment` = API Service, `publishToEnvironmentAndCatalog` = API Service and Catalog asset).                                                                                                                                                                                                                                                                                                                                                                    |
 | CENTRAL_AUTH_URL               | The AMPLIFY login URL: <https://login.axway.com/auth>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | CENTRAL_AUTH_REALM             | The Realm used to authenticate for AMPLIFY Central.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | CENTRAL_AUTH_CLIENTID          | The name of the Service Account created in AMPLIFY Central. Locate this at AMPLIFY Central > Access > Service Accounts.                                                                                                                                                                                                                                                                                                                                                                                                                              |
@@ -157,12 +157,12 @@ CENTRAL_URL=https://apicentral.axway.com
 
 #AMPLIFY Central connectivity
 # organisation config:
-CENTRAL_TENANTID=<YOUR ORGANISATION ID>
+CENTRAL_TENANTID=<YOUR ORGANIZATION ID>
 CENTRAL_TEAMID=<THE TEAM ID>
 CENTRAL_ENVIRONMENT=<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>
 CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
 
-CENTRAL_MODE=<publishToCatalog | publishToEnvironment | publishToEnvironmentAndCatalog>
+CENTRAL_MODE=<publishToEnvironment | publishToEnvironmentAndCatalog>
 CENTRAL_AUTH_URL=https://login.axway.com/auth
 CENTRAL_AUTH_REALM=Broker
 CENTRAL_AUTH_KEYPASSWORD=
@@ -251,7 +251,7 @@ AWS_AUTH_SECRETKEY=<YOUR AWS SECRET KEY HERE>
 
 #AMPLIFY Central connectivity
 # organisation config:
-CENTRAL_TENANTID=<YOUR ORGANISATION ID>
+CENTRAL_TENANTID=<YOUR ORGANIZATION ID>
 CENTRAL_ENVIRONMENT=<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>
 CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
 
