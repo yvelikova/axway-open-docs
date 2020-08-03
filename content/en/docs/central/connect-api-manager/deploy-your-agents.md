@@ -91,7 +91,7 @@ The containerized agent can run in the following mode:
      realm: Broker
      clientId: DOSA_66743...
      privateKey: /home/APIC-agents/private_key.pem
-     publicKey: /home/APIC-agents/public_key.der
+     publicKey: /home/APIC-agents/public_key.pem
      keyPassword:
      timeout: 10s
 
@@ -149,7 +149,7 @@ CENTRAL_AUTH_CLIENTID=<CLIENTID, ie. DOSA_12345...>
 
 ##### Run the Dockerized Discovery Agent
 
-1. Copy the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment.
+1. Copy the `private_key.pem` and `public_key.pem` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment.
 
 2. Pull the latest image of the Discovery Agent:
 
@@ -235,7 +235,7 @@ To install the binary Traceability Agent:
         realm: Broker
         clientId: "DOSA_68732642t64545..."
         privateKey: /home/APIC-agents/private_key.pem}
-        publicKey: /home/APIC-agents/public_key}
+        publicKey: /home/APIC-agents/public_key.pem}
         keyPassword: ""
         timeout: 10s
      apigateway:
@@ -302,7 +302,7 @@ CENTRAL_ENVIRONMENT=<Environment>
 
 ##### Install and run Dockerized Traceability Agent
 
-1. Copy the `private_key.pem` and `public_key` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment.
+1. Copy the `private_key.pem` and `public_key.pem` files that were originally created when you set up your Service Account to a keys directory. Make sure the directory is located on the machine being used for deployment.
 2. Pull the latest Docker image of the Traceability Agent:
 
    ```shell
