@@ -1,5 +1,8 @@
 ---
-title: Impact of unpublishing an API
+title: Unpublish an API
+linkTitle: Unpublish an API
+draft: false
+weight: 60
 description: Understand the implications of unpublishing your API in API Manager
   in each of the two centralModes (publishToCatalog or
   publishToEnvironmentAndCatalog), especially as it relates to subscriptions.

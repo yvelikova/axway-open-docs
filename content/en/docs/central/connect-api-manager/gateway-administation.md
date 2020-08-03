@@ -1,8 +1,8 @@
 ---
-title: Gateway administration
-linkTitle: Gateway administration
+title: Administer API Manager Gateway
+linkTitle: Administer API Manager Gateway
 draft: false
-weight: 130
+weight: 120
 description: Learn how to deploy your Discovery Agent and Traceability Agent so
   that you can manage your Axway API Gateway environment within AMPLIFY Central.
 ---
@@ -30,7 +30,7 @@ The Discovery Agent is used to discover new published APIs or any updated APIs. 
 * Catalog item publication (disconnected mode): Customers expose their APIs globally for their consumers but keep the API management at the Gateway level.
 * Environment / API Service publication (connected mode): Customers manage their APIs from the AMPLIFY platform.
 
-The Discovery Agent only discovers APIs that have the tag(s) defined in the agent configuration file. See [filtering apis to be discovered](/docs/central/connect-api-manager/filtering-apis-to-be-discovered/). By default, the filter is empty and thus the agent will discover all published API.
+The Discovery Agent only discovers APIs that have the tag(s) defined in the agent configuration file. See [Discover APIs](/docs/central/connect-api-manager/filtering-apis-to-be-discovered/). By default, the filter is empty and thus the agent will discover all published API.
 
 As soon as an API is published, the identifier of the asset in AMPLIFY Central is kept in a custom field at the API level in API Manager to help the agent remember what is already published.
 
@@ -40,7 +40,7 @@ The binary agent can run in the following modes:
 
     * Default: located in the same directory as the agent binary.
     * Optional: use a dedicated folder where the configuration file is located (use the --pathConfig flag in the agent command line to access the file path).
-    * Advanced configuration: properties inside the configuration file can reference environment variables. This enables you to set up only one configuration file that addresses different behaviors (depending on the environment variables). See [Discovery Agent variables](/docs/central/connect-api-manager/discovery-agent-variables/).
+    * Advanced configuration: properties inside the configuration file can reference environment variables. This enables you to set up only one configuration file that addresses different behaviors (depending on the environment variables). See [Discovery Agent variables](/docs/central/connect-api-manager/agent-variables/).
 
 * With command line arguments. See [Discovery Agent flags](/docs/central/connect-api-manager/discovery-agent-flags/).
 
@@ -70,7 +70,7 @@ unzip discovery_agent-latest.zip
 
 #### To install the Dockerized Discovery Agent
 
-Create your Discovery Agent environment file, `env_vars`. See [Discovery Agent variables](/docs/central/connect-api-manager/discovery-agent-variables/) for a reference to variable descriptions.
+Create your Discovery Agent environment file, `env_vars`. See [Discovery Agent variables](/docs/central/connect-api-manager/agent-variables/) for a reference to variable descriptions.
 After customizing all the sections, your `env_vars` file should look like this example file:
 
 ```shell
@@ -114,7 +114,7 @@ This section connects the agent to API Manager and determines which APIs should 
 
 `discoveryIgnoreTags` (optional): Comma-separated blacklist of tags. If an API has one or several of these blacklist tags, the agent ignores this API and will not publish it to AMPLIFY Central. This property takes precedence over the filter property below. The default value is empty, which means no API is ignored.
 
-`filter` (optional): Expression to filter the API you want the agent to discover. See [Filtering APIs to be discovered](/docs/central/connect-api-manager/filtering-apis-to-be-discovered/). Leaving this field empty tells the agent to discover all published APIs (REST / SOAP).
+`filter` (optional): Expression to filter the API you want the agent to discover. See [Discover APIs](/docs/central/connect-api-manager/filtering-apis-to-be-discovered/). Leaving this field empty tells the agent to discover all published APIs (REST / SOAP).
 
 `proxyApicIDField` (optional): The field name used to store AMPLIFY Central identifier for the front-end proxy in API Manager. Default value is **apicId**. If you do not intend to change it, comment this property. Be aware that the field will not be visible in the API Manager front-end proxy, as it is a specific configuration. If you want to see that field or customize it, refer to Add a custom property to APIs in [Customize API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_custom/index.html#customize-api-manager-data) documentation.
 
@@ -504,9 +504,9 @@ The agent can run in the following modes:
 
     * Default: located in the same directory as the agent binary.
     * Optional: use a dedicated folder where the configuration file is located (use the --path.config flag in the agent command line to access the file path).
-    * Advanced configuration: properties inside the configuration file can reference environment variables. This enables you to set up only one configuration file that addresses different behaviors (depending on the environment variables). See [Discovery Agent variables](/docs/central/connect-api-manager/discovery-agent-variables/).
+    * Advanced configuration: properties inside the configuration file can reference environment variables. This enables you to set up only one configuration file that addresses different behaviors (depending on the environment variables). See [Discovery Agent variables](/docs/central/connect-api-manager/agent-variables/).
 
-* With command line argument. See [Traceability Agent flags](/docs/central/connect-api-manager/traceability-agent-flags/).
+* With command line argument. See [Traceability Agent flags](/docs/central/connect-api-manager/discovery-agent-flags/).
 
 ### Installing the Traceability Agent
 
@@ -530,7 +530,7 @@ unzip traceability_agent-latest.zip
 
 #### To install the Dockerized Traceability Agent
 
-Create your Discovery Agent environment file, `env_vars`. See [Traceability Agent variables](/docs/central/connect-api-manager/traceability-agent-variables/) for a reference to variable descriptions.
+Create your Discovery Agent environment file, `env_vars`. See [Traceability Agent variables](/docs/central/connect-api-manager/agent-variables/) for a reference to variable descriptions.
 After customizing all the sections, your `env_vars` file should look like this example file:
 
 ```shell
@@ -611,7 +611,7 @@ This section describes where the logs should be sent on AMPLIFY Central.
 
 `hosts`: The URL of the logstash to forward the transaction log entries. Default value is **ingestion-lumberjack.datasearch.axway.com:453**.
 
-`cipher_suites`: List the cipher suites for the TLS connectivity. See the [SSL / TLS advanced](/docs/central/connect-api-manager/ssl-tls-advanced/) topic for more information.
+`cipher_suites`: List the cipher suites for the TLS connectivity. See the [Administer API Manager agent security](/docs/central/connect-api-manager/agent-security-api-manager/) topic for more information.
 
 `proxy_url`: The URL for the proxy for logstash (**socks5://username:password@hostname:port**) to use when the API Management eco-system is not allowed to access the internet world where AMPLIFY Central is installed. **username** and **password** are optional and can be omitted if not required by the proxy configuration. Leaving this value empty means that no proxy will be used to connect to AMPLIFY Central logstash.
 
@@ -664,7 +664,7 @@ This section connects the agent to AMPLIFY Central and determine how to publishe
 
 `proxy_url`: The URL for the proxy for Amplify Central `<http://username:password@hostname:port>`. If empty, no proxy is defined.
 
-`ssl` settings: By default, for connecting to AMPLIFY Central, agent uses TLS 1.2 with a predefined list of cipher suites. Refer to [SSL / TLS advanced](/docs/central/connect-api-manager/ssl-tls-advanced/) section for changing this behavior.
+`ssl` settings: By default, for connecting to AMPLIFY Central, agent uses TLS 1.2 with a predefined list of cipher suites. Refer to [Administer API Manager agent security](/docs/central/connect-api-manager/agent-security-api-manager/) section for changing this behavior.
 
 Once all data is gathered, this section should look like:
 
@@ -708,7 +708,7 @@ This section helps the agent to collect the header from request/response from th
 
 `auth.password`: The Axway API Gateway username password in clear text.
 
-`ssl` settings: By default, for connecting to API Gateway, the agent uses TLS 1.2 with a predefined list of cipher suites. Refer to [SSL / TLS advanced](/docs/central/connect-api-manager/ssl-tls-advanced/) section for changing this behavior.
+`ssl` settings: By default, for connecting to API Gateway, the agent uses TLS 1.2 with a predefined list of cipher suites. Refer to [Administer API Manager agent security](/docs/central/connect-api-manager/agent-security-api-manager/) section for changing this behavior.
 
 Once all data is gathered, this section should look like:
 
@@ -753,7 +753,7 @@ For the traceability agent to report correctly the discovered API traffic, it is
 
 `auth.password`: The password of the API Manager user in clear text.
 
-`ssl` settings: By default, for connecting to API Manager, the agent uses TLS 1.2 with a predefined list of cipher suites. Refer to [SSL / TLS advanced](/docs/central/connect-api-manager/ssl-tls-advanced/) section for changing this behavior.
+`ssl` settings: By default, for connecting to API Manager, the agent uses TLS 1.2 with a predefined list of cipher suites. Refer to [Administer API Manager agent security](/docs/central/connect-api-manager/agent-security-api-manager/) section for changing this behavior.
 
 Once all data is gathered, this section should look like:
 

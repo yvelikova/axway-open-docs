@@ -1,6 +1,6 @@
 ---
-title: Deploy your agents
-linkTitle: Deploy your agents
+title: Deploy your agents - advanced functionality
+linkTitle: Deploy your agents - advanced functionality
 draft: false
 weight: 30
 description: Learn how to deploy your Discovery Agent and Traceability Agent so 
@@ -27,7 +27,7 @@ The Discovery Agent is used to discover new published APIs or any updated APIs. 
 
 * **Catalog item publication** (disconnected mode): Customers expose their APIs globally for their consumers but keep the API management at the Gateway level.
 * **Environment / API Service publication** (connected mode): Customers manage their APIs from the AMPLIFY platform.
-  The Discovery Agent only discovers APIs that have the tag(s) defined in the agent configuration file. See [Filtering APIs to be discovered](/docs/central/connect-api-manager/filtering-apis-to-be-discovered/). By default, the filter is empty and thus the agent will discover all published APIs.
+  The Discovery Agent only discovers APIs that have the tag(s) defined in the agent configuration file. See [Discover APIs](/docs/central/connect-api-manager/filtering-apis-to-be-discovered/). By default, the filter is empty and thus the agent will discover all published APIs.
 
 As soon as an API is published, the identifier of the asset in AMPLIFY Central is kept in a custom field at the API level in API Manager to help the agent remember what is already published.
 
@@ -39,7 +39,7 @@ The binary agent can run in the following modes:
     * **Optional**: use a dedicated folder where the configuration file is located (use the –pathConfig flag in the agent command line to access the file path).
     * **Advanced configuration**: properties inside the configuration file can reference environment variables. This enables you to set up only one configuration file that addresses different behaviors (depending on the environment variables). See [Agent variables](/docs/central/connect-api-manager/agent-variables/).
 
-* With command line arguments. See [Discovery Agent flags](/docs/central/connect-api-manager/discovery-agent-flags/).
+* With command line arguments. See [Agent flags](/docs/central/connect-api-manager/discovery-agent-flags/).
 
 The containerized agent can run in the following mode:
 
@@ -107,7 +107,7 @@ The containerized agent can run in the following mode:
    * The value for *clientId* can be found in Service Account. See [Create a service account](/docs/central/cli_central/cli_install/#create-a-service-account).
 5. Run the binary Discovery Agent:
 
-   * Open a shell and run the following commands to start up your agent.  Add necessary [Discovery Agent flags](/docs/central/connect-api-manager/discovery-agent-flags/).
+   * Open a shell and run the following commands to start up your agent.  Add necessary [Agent flags](/docs/central/connect-api-manager/discovery-agent-flags/).
 
      ```shell
      cd /home/APIC-agents
