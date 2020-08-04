@@ -11,9 +11,9 @@ description: Learn how to add your environments to AMPLIFY Central so that you
 ## Before you start
 
 * Read [AMPLIFY Central mesh governance overview](/docs/central/mesh_management).
-* You will need either an API Gateway V7 environment or a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](/docs/central/mesh_management/build_hybrid_env).
+* You will need a private cloud Kubernetes cluster that meets the minimum requirements for an AMPLIFY Central hybrid environment, and a client system from which you can access and manage the cluster remotely. See [Build your hybrid environment](/docs/central/mesh_management/build_hybrid_env).
 * You will need a basic understanding of OAuth authorization ([RFC 6749](https://tools.ietf.org/html/rfc6749)) and JWT ([RFC 7523](https://tools.ietf.org/html/rfc7523)).
-* If you are connecting a hybrid environment, you must be familiar with Kubernetes and Helm, including running Helm and kubectl commands.
+* You must be familiar with Kubernetes and Helm, including running Helm and kubectl commands.
 * You will need an administrator account for AMPLIFY Central.
 
 ## Objectives
@@ -23,7 +23,7 @@ Learn how to add your private cloud hybrid environment to AMPLIFY Central, so th
 * Add your Kubernetes environment to AMPLIFY Central
 * Download the generated hybrid kit for your Kubernetes environment
 * Generate a key pair and secret for the domain edge gateway and deploy it into the Istio namespace
-* Generate key pairs and secrets for the Axway mesh agents and deploy them into the mesh agent namespace
+* Generate a key pair and secret for the Axway mesh agents and deploy them into the mesh agent namespace
 * Deploy the Axway proprietary service mesh layer into your environment
 * Create and test an API proxy for the API exposed by a demo microservice
 
@@ -37,43 +37,27 @@ Follow these steps to add your environment to AMPLIFY Central:
 
 ![Environments List Page](/Images/central/environments_list_page.png)
 
-### Add your API Gateway V7 environment
-
-To add an API Gateway V7 environment:
-
-1. Click **API Gateway V7** on the **Add a New Environment** page.
-2. Enter your environment details.
-    * **Name**: The name of your environment must be unique across all namespaces.
-    * **Location**: Longitude and latitude coordinates allow geographical layout of your environment.
-    * **Tags**: These are keywords that make your environment easier to group and find.
-    * **Attributes**: Key-value pair that are specifically related to your configuration. For example, attribute (key) `Group` and its respective value `Test Environments`.
-3. Click save.
-
-![Add V7 Environment](/Images/central/completed_v7_form.png)
-
-After your V7 environment is created, a dialog box is shown with a successful message and the options to either go to the details page of your newly created environment or go back to the environments list page. To register APIs and observe traffic from this environment, install the [Discovery and the Traceability Agents](/docs/central/connect-api-manager/) in this environment.
-
 ### Add your Kubernetes Environment
 
-To add an environment for your private cloud Kubernetes cluster:
+To add an AMPLIFY Central environment for your private cloud Kubernetes cluster:
 
 1. Click **Kubernetes** on the **Add a New Environment** page.
 2. Enter your environment details.
 
-   * **Name**: Provide a name for your kubernetes service mesh environment.
-   * **Runtime name**: Provide a unique name for the gateway.
-   * **Protocol**: Select the gateway protocol (HTTP or HTTPS) to use for the gateway. For HTTPS, you must provide a certificate for the domain.
+   * **Name**: Provide a friendly name describing your kubernetes service mesh environment.
+   * **Runtime name**: Provide a unique name for the ingress gateway Mesh Governance will add to your Kubernetes cluster.
+   * **Protocol**: Select the gateway protocol (HTTP or HTTPS) to use for the ingress  gateway. For HTTPS, you must provide a certificate for the domain.
    * **Host**: Provide the publicly available domain name for your kubernetes cluster (for example, `mydomain.com`). For HTTPS, you must own or be able to configure a certificate for this domain.
-   * **Port**: Provide the port number to expose your gateway.
-3. Click save.
+   * **Port**: Provide the port number to expose your ingress gateway.
+3. Click **Save**.
 
-{{< alert title="Note" color="" >}} In the **Host** field you must use the same FQDN as in [Generate a key pair and secret for the domain edge gateway](#generate-key-pairs-and-secrets-for-the-axway-mesh-agents) to define your hybrid environment. {{< /alert >}}
+{{< alert title="Note" color="" >}} The value in the **Host** field must use the same FQDN used in the [Generate a key pair and secret for the domain edge gateway](#generate-key-pairs-and-secrets-for-the-axway-mesh-agents) step to define your hybrid environment.{{< /alert >}}
 
 ![Add K8 Environment](/Images/central/completed_k8s_form.png)
 
 After your Kubernetes environment is created, a dialog box is shown with a successful message and the options to either connect to your newly created environment or go back to the environments list page.
 
-Clicking **Connect environment** takes you to your Kubernetes environment details page. There, you can download an auto-generated hybrid kit specific to your environment. The hybrid kit contains Helm charts that will be used later to deploy the Axway proprietary service mesh layer to your environment.
+Clicking **Connect environment** takes you to your Kubernetes environment details page. There, you can download an auto-generated hybrid kit specific to your environment. The hybrid kit contains Helm chart configuration that will be used later to deploy the Axway proprietary service mesh layer to your environment.
 
 Download the hybrid kit to your client system and unzip it to a unique directory. For example:
 
@@ -98,7 +82,7 @@ To expose an HTTPS endpoint of a service within your environment to external tra
 
     Usage: `kubectl create namespace NAMESPACE_NAME`
 
-    The default value of `NAMESPACE_NAME` is `istio-system` and this value is used later when the helm upgrade deployment steps are executed in [Deploy the service mesh and Axway mesh agents] (#deploy-the-service-mesh-and-axway-mesh-agents).
+    The default value of `NAMESPACE_NAME` is `istio-system`, and this value is used later when the helm upgrade deployment steps are executed in [Deploy the service mesh and Axway mesh agents](#deploy-the-service-mesh-and-axway-mesh-agents).
 
     Example:
 
@@ -219,13 +203,13 @@ After you have created the key pairs and secrets, deploy the Axway proprietary s
 
 1. To ensure that you have the latest Axway Helm charts, update your Helm repositories:
 
-   ```
-   helm repo up
-   Hang tight while we grab the latest from your chart repositories...
-   ...Skip local chart repository
-   ...Successfully got an update from the "axway" chart repository
-   Update Complete. ⎈ Happy Helming!⎈
-   ```
+    ```
+    helm repo up
+    Hang tight while we grab the latest from your chart repositories...
+    ...Skip local chart repository
+    ...Successfully got an update from the "axway" chart repository
+    Update Complete. ⎈ Happy Helming!⎈
+    ```
 
 2. Change to the directory where you unzipped the hybrid kit:
 
@@ -289,7 +273,7 @@ After you have created the key pairs and secrets, deploy the Axway proprietary s
     STATUS: DEPLOYED
     ```
 
-    This example uses the `istio` Helm chart from the `axway` Helm repository, with override values from the `istioOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit.
+    This example uses the `istio` Helm chart from the `axway` Helm repository, with override values from the `istioOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part  of the hybrid kit.
 
 4. Verify that Istio is deployed successfully:
 
@@ -314,15 +298,15 @@ After you have created the key pairs and secrets, deploy the Axway proprietary s
     STATUS: DEPLOYED
     ```
 
-    {{< alert title="Note" color="primary" >}}The `observer.enabled` and `observer.filebeat.sslVerification` options are required to enable collection of API usage and API traffic metrics from your environment. {{< /alert >}}
+    {{< alert title="Note" color="primary" >}}The `observer.enabled` and `observer.filebeat.sslVerification` options are required to enable collection of API usage and API traffic metrics  from your environment. {{< /alert >}}
 
 6. Verify that the mesh agents are deployed in the `apic-control` namespace:
 
     ```
      kubectl get services -n apic-control
-   ```
+    ```
 
-    The output of this command should list the mesh agent services.
+     The output of this command should list the mesh agent services.
 
 7. Verify that the list demo service is deployed in the `apic-demo` namespace:
 
@@ -331,7 +315,6 @@ After you have created the key pairs and secrets, deploy the Axway proprietary s
     ```
 
     The output of this command should list the demo list service.
-
 8. Verify that your environment is now connected in AMPLIFY Central UI:
 
     ![Connected environment in AMPLIFY Central](/Images/central/hybrid__env_connected.png)
