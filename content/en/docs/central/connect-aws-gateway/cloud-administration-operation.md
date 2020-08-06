@@ -113,6 +113,83 @@ The outputs from the IAM Setup CloudFormation template; the Role ARN Outputs are
 | TraceabilityLambdaRoleArn  | The ARN for the Traceability Lambda IAM Role.            |
 | TraceabilityAPIGWCWRoleArn | The ARN for the API Gateway push to CloudWatch IAM Role. |
 
+#### Privileges needed via IAM
+
+##### ConfigServiceIAMRole
+
+Assume Role Policies
+
+| Service              | Description                                              |
+| -------------------- | -------------------------------------------------------- |
+| config.amazonaws.com | This assume policy lets the config service use this role. |
+
+Managed Policies
+
+| Managed Policy ARN                                 | Description                                                                                                                    |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| arn:aws:iam::aws:policy/service-role/AWSConfigRole | This policy is needed for the Config Service to be able to read the various configurations to track for changes in API Gateway. |
+
+Policies
+
+| Effect | Action          | Resource          | Description                                                                         |
+| ------ | --------------- | ----------------- | ----------------------------------------------------------------------------------- |
+| Allow  | s3:GetBucketAcl | Config Bucket ARN | This allows the Config Service to get the current configurations from the S3 bucket. |
+| Allow  | s3:PutObject    | Config Bucket ARN | This allows the Config Service to save configurations to the S3 bucket.              |
+| Allow  | config:Put\*    | \*                | This allows access to all config put actions for tracking changes.                   |
+
+##### TraceabilityLambdaIAMRole
+
+Assume Role Policies
+
+| Service              | Description                                                                            |
+|----------------------|----------------------------------------------------------------------------------------|
+| lambda.amazonaws.com | This assume policy lets the lambda service, for the Traceability Lambda, use this role. |
+
+Managed Policies
+
+| Managed Policy ARN                                               | Description                                                                            |
+|------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole | This policy is needed so the Traceability Lambda can execute and write CloudWatch logs. |
+
+Policies
+
+| Effect | Action          | Resource               | Description                                                                         |
+|--------|-----------------|------------------------|-------------------------------------------------------------------------------------|
+| Allow  | sqs:GetQueueUrl | Traceability Queue ARN | This policy in needed so the Traceability Lambda can connect to an SQS Queue.         |
+| Allow  | sqs:SendMessage | Traceability Queue ARN | This policy in needed so the Traceability Lambda can write messages to an SQS Queue. |
+
+##### TraceabilityAPIGWCWIAMRole
+
+Assume Role Policies
+
+| Service                  | Description                                                   |
+|--------------------------|---------------------------------------------------------------|
+| apigateway.amazonaws.com | This assume policy lets the API Gateway service use this role. |
+
+Managed Policies
+
+| Managed Policy ARN                                                        | Description                                                                   |
+|---------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs | This policy is needed so the API Gateway service can write to CloudWatch logs. |
+
+##### APICAgentsGroup
+
+Policies
+
+| Effect | Action                  | Resource                                             | Description                                                                |
+|--------|-------------------------|------------------------------------------------------|----------------------------------------------------------------------------|
+| Allow  | logs:DescribeLogGroups  | All log groups in AWS account and Region             | Used to validate connection to AWS CloudWatch on Agent Startup.             |
+| Allow  | logs:DescribeLogStreams | Log Groups starting with API-Gateway-Execution-Logs_ | Allows the agent to get the streams for API Gateway Execution Logs.          |
+| Allow  | logs:GetLogEvents       | Log Groups starting with API-Gateway-Execution-Logs_ | Allows the agent to get log events for API Gateway Execution Logs.          |
+| Allow  | logs:FilterLogEvents    | Log Groups starting with API-Gateway-Execution-Logs_ | Allows the agent to get log events for specfic transactions in API Gateway. |
+| Allow  | sqs:DeleteMessage       | Traceability and Discovery Queue ARNs                | Allows the agent to read messages from the SQS Queues.                      |
+| Allow  | sqs:GetQueueUrl         | Traceability and Discovery Queue ARNs                | Allows the agent to get the URL of the Queue in order to read messages.     |
+| Allow  | sqs:ReceiveMessage      | Traceability and Discovery Queue ARNs                | Allows the agent to remove messages after processing them.                  |
+| Allow  | apigateway:PUT          | All API Gateway Resources in region                  | Allows the discovery agent to make updates to the API Endpoints.            |
+| Allow  | apigateway:PATCH        | All API Gateway Resources in region                  | Allows the discovery agent to make updates to the API Endpoints.            |
+| Allow  | apigateway:GET          | All API Gateway Resources in region                  | Allows the discovery agent to get the configuration of the API Endpoints.   |
+| Allow  | apigateway:DELETE       | All API Gateway Resources in region                  | Allows the discovery agent remove tags for Unsubscribe events.              |
+
 #### Parameters (Resource CloudFormation template)
 
 The inputs to the Resource CloudFormation template (`apigw_cloudformation.yaml`):
@@ -197,42 +274,42 @@ You can follow your cost using the AWS [Cost management service](https://console
 The following are the costs of the AWS services the Agents rely on:
 
 * AWS [Cloud formation pricing](https://aws.amazon.com/cloudformation/pricing/)</br>
-The two CloudFormation templates do not add additional charges, as they are used only once and create only AWS:: resources.
+  The two CloudFormation templates do not add additional charges, as they are used only once and create only AWS:: resources.
 * AWS [S3 bucket pricing](https://aws.amazon.com/s3/pricing/)</br>
-One bucket is needed at installation time for storing a lambda. The file size is less than 4Mo. This bucket is accessed only once at the installation time.
-It has negligible cost.
+  One bucket is needed at installation time for storing a lambda. The file size is less than 4Mo. This bucket is accessed only once at the installation time.
+  It has negligible cost.
 * AWS [Config pricing](https://aws.amazon.com/config/pricing/)</br>
-You pay $0.003 per configuration item recorded in your AWS account per AWS Region. This is dependant on the number of changes in API / stage you will perform in a month. We don't set up  rules or conformance pack. Here is the list of resources the agent needs to monitor: _ApiGateway:RestAPI_, _ApiGateway:Stage_, _ApiGatewayV2:RestAPI_ and _ApiGateway:Stage_.
+  You pay $0.003 per configuration item recorded in your AWS account per AWS Region. This is dependant on the number of changes in API / stage you will perform in a month. We don't set up  rules or conformance pack. Here is the list of resources the agent needs to monitor: *ApiGateway:RestAPI*, *ApiGateway:Stage*, *ApiGatewayV2:RestAPI* and *ApiGateway:Stage*.
 * AWS [Lambda pricing](https://aws.amazon.com/lambda/pricing/)</br>
-You are charged based on the number of requests for your functions and the duration (the time it takes for your code to execute). Our traceability lambda is called each time one of the discovered APIs is consumed. The amount of allocated memory for the lambda is 128Mo. The lambda runs on average .5 second. You have 1 million requests for free.</br>
-After the free million requests, you have monthly cost charges **( lambda memory * _0.0009765625_ * # lambda call * lambda average time execution * _0.001_ * _0.0000166667_)** + monthly requests charge **(# lambda call * _0.0000002_)**.</br>
-2 million calls: monthly cost ($2.08) + monthly request charge ($0.40) = $2.48</br>
-5 million calls: monthly cost ($5.21) + monthly request charge ($1.00) = $6.21
-* AWS [CloudWatch pricing](<https://aws.amazon.com/cloudwatch/pricing/>)</br>
-You should be able to operate with the free tier, as the agent requires only one monitoring metrics (APIGW_Traceability_Logs).
+  You are charged based on the number of requests for your functions and the duration (the time it takes for your code to execute). Our traceability lambda is called each time one of the discovered APIs is consumed. The amount of allocated memory for the lambda is 128Mo. The lambda runs on average .5 second. You have 1 million requests for free.</br>
+  After the free million requests, you have monthly cost charges **( lambda memory  *0.0009765625*  # lambda call  *lambda average time execution*  *0.001* * *0.0000166667*)** + monthly requests charge **(# lambda call * *0.0000002*)**.</br>
+  2 million calls: monthly cost ($2.08) + monthly request charge ($0.40) = $2.48</br>
+  5 million calls: monthly cost ($5.21) + monthly request charge ($1.00) = $6.21
+* AWS [CloudWatch pricing](https://aws.amazon.com/cloudwatch/pricing/)</br>
+  You should be able to operate with the free tier, as the agent requires only one monitoring metrics (APIGW_Traceability_Logs).
 * AWS [Simple Queue Service pricing](https://aws.amazon.com/sqs/pricing/)</br>
-Two standard queues are set up: one for Discovery Agent and one for Traceability Agent. The Discovery Agent queue will contains every stage deployment. The Traceability Agent queue will contain every call to discovered APIs. One million Amazon SQS requests for free each month. After free tier, it cost $0.40 per million requests.
+  Two standard queues are set up: one for Discovery Agent and one for Traceability Agent. The Discovery Agent queue will contains every stage deployment. The Traceability Agent queue will contain every call to discovered APIs. One million Amazon SQS requests for free each month. After free tier, it cost $0.40 per million requests.
 * AWS [API Gateway pricing](https://aws.amazon.com/api-gateway/pricing/)</br>
-The Amazon API Gateway free tier includes one million API calls received for REST APIs, one million API calls received for HTTP APIs, and one million messages and 750,000 connection minutes for WebSocket APIs per month for up to 12 months. If you exceed this number of calls per month, you will be charged the API Gateway usage rates. There are different rates based on the API type (HTTP / REST / Websocket).
+  The Amazon API Gateway free tier includes one million API calls received for REST APIs, one million API calls received for HTTP APIs, and one million messages and 750,000 connection minutes for WebSocket APIs per month for up to 12 months. If you exceed this number of calls per month, you will be charged the API Gateway usage rates. There are different rates based on the API type (HTTP / REST / Websocket).
 
 Summary:
 
-| AWS Service                | Cost in USD per month                                                                                                          |
-|----------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| Cloud Formation            | 0                                                                                                                              |
-| S3 bucket                  | 0                                                                                                                              |
-| Config                     | 0.003 * (# config)                                                                                                             |
-| Lambda execution           | (lambda memory *0.0009765625* # lambda call *lambda average time execution* 0.001 *0.0000166667) + (# lambda call* 0.0000002)  |
-| CloudWatch                 | 0                                                                                                                              |
-| Simple Queue Service       | One million requests free or $0.40 per million requests thereafter                                                                     |
-| API Gateway                | refer to [API Gateway pricing](https://aws.amazon.com/api-gateway/pricing/) for details                                        |
+| AWS Service          | Cost in USD per month                                                                                                         |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Cloud Formation      | 0                                                                                                                             |
+| S3 bucket            | 0                                                                                                                             |
+| Config               | 0.003 * (# config)                                                                                                            |
+| Lambda execution     | (lambda memory *0.0009765625* # lambda call *lambda average time execution* 0.001 *0.0000166667) + (# lambda call* 0.0000002) |
+| CloudWatch           | 0                                                                                                                             |
+| Simple Queue Service | One million requests free or $0.40 per million requests thereafter                                                            |
+| API Gateway          | refer to [API Gateway pricing](https://aws.amazon.com/api-gateway/pricing/) for details                                       |
 
 ### Troubleshooting
 
-| Question                                        | Answer                                                                                                                                                                                                          |
-| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Question                                        | Answer                                                                                                                                                                                        |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Why isn’t my API discovered?                    | Check that the tag set on the stage has a correct name and value based on the AWS_FILTER variable. See [Discover APIs](/docs/central/connect-aws-gateway/filtering-apis-to-be-discovered-1/). |
-| Why can’t my agents connect to AWS API Gateway? | Go to AWS console / IAM service and make sure that `AWS_REGION`, `AWS_AUTH_ACCESSKEY` and `AWS_AUTH_SECRETKEY` are valid and not inactivated.                                                                   |
-| Why can’t my agents connect to AMPLIFY Central? | Go to **AMPLIFY Central UI > Access > Service Accounts** and make sure that the Service Account is correctly named and valid. Make sure that the tenantID and teamID are correct.                               |
-| Why don’t I see traffic in AMPLIFY Central?     | Make sure that the Condor URL is accessible from the machine where Traceability Agent is installed.                                                                                                             |
-| How to verify that the Agent is running?        | `docker inspect --format='{{json .State.Health}}' <container>`                                                                                                                                                  |
+| Why can’t my agents connect to AWS API Gateway? | Go to AWS console / IAM service and make sure that `AWS_REGION`, `AWS_AUTH_ACCESSKEY` and `AWS_AUTH_SECRETKEY` are valid and not inactivated.                                                 |
+| Why can’t my agents connect to AMPLIFY Central? | Go to **AMPLIFY Central UI > Access > Service Accounts** and make sure that the Service Account is correctly named and valid. Make sure that the tenantID and teamID are correct.             |
+| Why don’t I see traffic in AMPLIFY Central?     | Make sure that the Condor URL is accessible from the machine where Traceability Agent is installed.                                                                                           |
+| How to verify that the Agent is running?        | `docker inspect --format='{{json .State.Health}}' <container>`                                                                                                                                |
