@@ -3,8 +3,9 @@ title: Deploy your agents - quickstart
 linkTitle: Deploy your agents - quickstart
 draft: false
 weight: 25
-description: Learn how to quickly deploy your Discovery Agent and Traceability Agent so 
-  that you can manage your Axway API Gateway environment within AMPLIFY Central.    
+description: Learn how to quickly deploy your Discovery Agent and Traceability
+  Agent so that you can manage your Axway API Gateway environment within AMPLIFY
+  Central.
 ---
 ## Before you start
 
@@ -42,7 +43,7 @@ APIGATEWAY_AUTH_PASSWORD=<apiGatewayOperatorUserPassword>
 #
 #AMPLIFY Central connectivity
 #
-CENTRAL_TENANTID=<YOUR ORGANISATION ID>
+CENTRAL_TENANTID=<YOUR ORGANIZATION ID>
 CENTRAL_TEAMID=<THE TEAM ID>
 CENTRAL_ENVIRONMENT=<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>
 CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
