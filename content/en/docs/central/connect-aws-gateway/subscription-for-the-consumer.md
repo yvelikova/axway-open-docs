@@ -45,4 +45,47 @@ description: A subscription provides the consumer, or subscriber, with the
    * Initiates an unsubscribe to AMPLIFY Central for that Catalog item.
    * The subscription status is set to **Unsubscribed**.
 
+## Impact of subscription approval mode on subscription workflow
+
+The configuration setting for central.subscriptions.approvalmode will affect the flow of getting a subscription approved. Allowed settings are **manual**, **auto**, and **webhook**. Each of these are detailed below.
+
+### Manual approval mode
+
+This is the default setting. In manual approval mode, the subscription approval flow is as follows:
+
+1. A consumer in AMPLIFY Central clicks on **Subscribe**.
+2. The subscription status moves to **Waiting for approval...**.
+3. The subscription remains in this state until a user with appropriate permissions on AMPLIFY Central locates the subscription and clicks **Approve**.
+4. The subscription status moves to  **Subscribing**.
+5. The Discovery Agent receives the event and sets the status to **Active**, or **Subscribe failed** if there is a failure to subscribe.
+
+### Auto approval mode
+
+In auto approval mode, the subscription approval flow is as described at the top of this page:
+
+1. A consumer in AMPLIFY Central clicks on **Subscribe**.
+2. The subscription status moves immediately to **Subscribing...**.
+3. The Discovery Agent receives the event and sets the status to **Active**, or **Subscribe failed** if there is a failure to subscribe.
+
+### Webhook approval mode
+
+In webhook approval mode, the Discovery Agent must be configured with a webhook url, and any webhook headers and authentication secret that the webhook needs. Within the webhook, many things are possible. For example, the webhook could generate an email to notify someone that a subscription is awaiting approval. Or, the webhook could do the subscription approval. Assuming that the webhook is all correctly configured and coded, the subscription approval flow is as follows:
+
+1. A consumer in AMPLIFY Central clicks on **Subscribe**.
+2. The subscription status moves to **Waiting for approval...**.
+3. The webhook is notified of the event.
+4. The subscription remains in this state until the webhook moves the subscription to **Approved**, or a user with appropriate permissions on AMPLIFY Central locates the subscription and clicks **Approve**.
+5. The subscription status moves to  **Subscribing**.
+6. The Discovery Agent receives the event and sets the status to **Active**, or **Subscribe failed** if there is a failure to subscribe.
+
 {{< alert title="Note" color="primary" >}}Depending on the poll interval settings for the Discovery Agent, it will take a little time from when the user unsubscribes an API until AMPLIFY Central shows the subscription state of **Unsubscribed**. This is because of the time it takes to discover the change on API Manager and send events back and forth between API Manager and AMPLIFY Central.{{< /alert >}}
+
+## Subscription failures
+
+The agent might mark a subscription as **Failed to subscribe** or **Failed to unsubscribe** for one of several reasons:
+
+1. The API on API Gateway Manager is unpublished.
+2. No usage plans have been created on AWS API Gateway.
+3. On AWS API Gateway, usage plans have been created but no API stages have been added to the plan for the chosen subscription's API.
+4. On AWS API Gateway, no API keys have been added to the subscription's chosen usage plan.
+5. The agent fails to communicate with AWS API Gateway.
