@@ -54,7 +54,7 @@ The Traceability Agent requires read write access to SQS and read only access to
 
 ![Service Discovery](/Images/central/connect-aws-gateway/aws-traceability-agent_v2.png)
 
-The AWS service usage cost for the agents is explain [here](/docs/central/connect-aws-gateway/cloud-administration-operation/#Agents-AWS-Cost)
+The AWS service usage cost for the agents is explain below.
 
 ### Minimum requirements
 
@@ -281,10 +281,14 @@ The following are the costs of the AWS services the Agents rely on:
 * AWS [Config pricing](https://aws.amazon.com/config/pricing/)</br>
   You pay $0.003 per configuration item recorded in your AWS account per AWS Region. This is dependant on the number of changes in API / stage you will perform in a month. We don't set up  rules or conformance pack. Here is the list of resources the agent needs to monitor: *ApiGateway:RestAPI*, *ApiGateway:Stage*, *ApiGatewayV2:RestAPI* and *ApiGateway:Stage*.
 * AWS [Lambda pricing](https://aws.amazon.com/lambda/pricing/)</br>
-  You are charged based on the number of requests for your functions and the duration (the time it takes for your code to execute). Our traceability lambda is called each time one of the discovered APIs is consumed. The amount of allocated memory for the lambda is 128Mo. The lambda runs on average .5 second. You have 1 million requests for free.</br>
-  After the free million requests, you have monthly cost charges **( lambda memory  *0.0009765625*  # lambda call  *lambda average time execution*  *0.001* * *0.0000166667*)** + monthly requests charge **(# lambda call * *0.0000002*)**.</br>
-  2 million calls: monthly cost ($2.08) + monthly request charge ($0.40) = $2.48</br>
-  5 million calls: monthly cost ($5.21) + monthly request charge ($1.00) = $6.21
+  You are charged based on the number of requests for your functions and the duration (the time it takes for your code to execute). The AWS Lambda free usage tier includes 1M free requests per month and 400,000 GB-seconds of compute time per month. Our traceability lambda is called each time one of the discovered APIs is consumed. The amount of allocated memory for the lambda is set to 128Mo. The lambda runs on average within .5 second.</br>
+  Lambda cost is based on following formulas:
+
+    * Monthly cost charge:  (# lambda call \* lambda execution time \* (lambda memory / 1024) - 400,000freeGB-s) \* **0.0000166667**
+    * Monthly request charge: ((# lambda call - 1M free request) \* **0.0000002**)</br>
+    * Samples:</br>
+        * 2 million calls: monthly cost ($0) + monthly request charge ($0.20) = $0.20</br>
+        * 10 million calls: monthly cost ($10.42) + monthly request charge ($1.80) = $12.22</br>
 * AWS [CloudWatch pricing](https://aws.amazon.com/cloudwatch/pricing/)</br>
   You should be able to operate with the free tier, as the agent requires only one monitoring metrics (APIGW_Traceability_Logs).
 * AWS [Simple Queue Service pricing](https://aws.amazon.com/sqs/pricing/)</br>
@@ -299,7 +303,7 @@ Summary:
 | Cloud Formation      | 0                                                                                                                             |
 | S3 bucket            | 0                                                                                                                             |
 | Config               | 0.003 * (# config)                                                                                                            |
-| Lambda execution     | (lambda memory *0.0009765625* # lambda call *lambda average time execution* 0.001 *0.0000166667) + (# lambda call* 0.0000002) |
+| Lambda execution     | ((# lambda call \* lambda execution time \* (lambda memory / 1024) - 400,000freeGB-s) \* **0.0000166667**) + ((# lambda call - 1M free request) \* **0.0000002**) |
 | CloudWatch           | 0                                                                                                                             |
 | Simple Queue Service | One million requests free or $0.40 per million requests thereafter                                                            |
 | API Gateway          | refer to [API Gateway pricing](https://aws.amazon.com/api-gateway/pricing/) for details                                       |
