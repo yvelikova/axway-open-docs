@@ -91,7 +91,7 @@ After upgrade, you must reinstall Easyblog and EasyDiscuss in JAI to update the 
 
 If you customized the company name in your API Portal footer using a Joomla! language override (**Extensions > Languages > Overrides** in JAI), you must perform the following steps to restore language overrides after upgrade:
 
-1. Locate the backup file `/opt/axway/apiportal/htdoc/Backups/<timestamp>/administrator/language/overrides/en-GB.override.ini` that is created during an upgrade. The timestamp corresponds to the time of the upgrade, for example, `20180613105149`.
+1. Locate the backup file `/opt/axway/apiportal/htdoc/Backups/<timestamp>/language/overrides/en-GB.override.ini` that is created during an upgrade. The timestamp corresponds to the time of the upgrade, for example, `20180613105149`.
 2. Copy the backup file to the path `/opt/axway/apiportal/htdoc/language/overrides/en-GB.override.ini`.
 
 Any customizations performed using language overrides are now restored.
