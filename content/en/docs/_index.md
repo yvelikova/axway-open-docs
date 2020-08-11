@@ -10,7 +10,7 @@ menu:
 
 Axway Open Documentation is the new home for Axway product documentation that has been migrated to Markdown format and is available in a [public GitHub repository](https://github.com/Axway/axway-open-docs) to enable collaboration using an open source model.
 
-This website contains the entire documentation set for AMPLIFY API Management 7.7. It also contains documentation for AMPLIFY Central and AMPLIFY Shared Services.
+This website contains the entire documentation set for AMPLIFY API Management 7.7. It also contains documentation for AMPLIFY Central.
 
 ## AMPLIFY API Management 7.7 documentation
 
@@ -41,11 +41,3 @@ Browse all documentation for AMPLIFY Streams under the top-level [AMPLIFY Stream
 Here are some suggestions to get started:
 
 * [Get started with AMPLIFY Streams](/docs/streams/quickstart/)
-
-## AMPLIFY Shared Services documentation
-
-Browse all documentation for AMPLIFY Shared Services under the top-level [AMPLIFY Shared Services](/docs/shared_services/) item in the left navigation menu.
-
-Here are some suggestions to get started:
-
-* [Axway Support Portal API documentation](/docs/shared_services/supportapi/)

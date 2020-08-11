@@ -22,3 +22,38 @@ command = "cd themes/docsy && git submodule update -f --init && cd ../.. && hugo
 [dev]
   targetPort = 1313
   port = 1314
+
+[[redirects]]
+  from = "/docs/shared_services/*"
+  to = "https://amplifysharedservices-open-docs.netlify.app/docs/shared_services/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/admin/#/edit/shared_services/*"
+  to = "https://amplifysharedservices-open-docs.netlify.app/admin/#/edit/shared_services/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]  
+  from = "/admin/#/edit/supportapi/*"
+  to = "https://amplifysharedservices-open-docs.netlify.app/admin/#/edit/supportapi/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/admin/#/edit/methods/*"
+  to = "https://amplifysharedservices-open-docs.netlify.app/admin/#/edit/methods/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/admin/#/edit/formats/*"
+  to = "https://amplifysharedservices-open-docs.netlify.app/admin/#/edit/formats/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
