@@ -6,7 +6,6 @@ weight: 120
 description: Learn how to deploy your Discovery Agent and Traceability Agent so
   that you can manage your Axway API Gateway environment within AMPLIFY Central.
 ---
-
 ## Before you start
 
 * Read [AMPLIFY Central and Axway API Manager connected overview](/docs/central/connect-api-manager/)
@@ -16,7 +15,6 @@ description: Learn how to deploy your Discovery Agent and Traceability Agent so
     * Where the solution is running (host / port / path to the logs / users)
     * How to create / publish an API
     * How to call an API
-
 * For containerized agents, Docker must be installed and you will need a basic understanding of Docker commands
 
 ## Objectives
@@ -41,7 +39,6 @@ The binary agent can run in the following modes:
     * Default: located in the same directory as the agent binary.
     * Optional: use a dedicated folder where the configuration file is located (use the --pathConfig flag in the agent command line to access the file path).
     * Advanced configuration: properties inside the configuration file can reference environment variables. This enables you to set up only one configuration file that addresses different behaviors (depending on the environment variables). See [Discovery Agent variables](/docs/central/connect-api-manager/agent-variables/).
-
 * With command line arguments. See [Discovery Agent flags](/docs/central/connect-api-manager/discovery-agent-flags/).
 
 The containerized agent can run in the following mode:
@@ -234,6 +231,40 @@ The SMTP Notification section defines how the agent manages email settings for s
 `unsubscribeFailed.subject`: Subject of the email notification for action unsubscribe failed. Default is **Subscription Removal Failed Notification**.
 
 `unsubscribeFailed.body` : Body of the email notification for action unsubscribe failed. Default is **Could not unsubscribe to Catalog Item: {catalogItemURL} {catalogItemName}**.
+
+#### Customizing email servers
+
+The `host`, which represents the email server, can be configured with minimal setup.  This section represents the email servers that have been currently tested. Please note, that all testing has been set up on port 587 signifying TLS support.  
+
+```
+# Google/Gmail server
+host: smtp.gmail.com
+port: 587
+username: your GMAIL account
+password: your GMAIL password
+authtype: PLAIN
+
+# Microsoft office server
+host: smtp.office365.com
+port: 587
+username: your Office Mail account
+password: your Office Mail password
+authtype: LOGIN
+
+# Microsoft outlook server
+host: smtp-mail.outlook.com
+port: 587
+username: your Outlook Mail account
+password: your Office Mail password
+authType: PLAIN
+
+# Yahoo email server
+host: smtp.mail.yahoo.com
+port: 587
+username: your Yahoo Mail account
+password: your Yahoo Mail password
+authtype: PLAIN
+```
 
 ### Customizing Webhook Notification (subscription)
 
@@ -487,7 +518,6 @@ cd /home/APIC-agents
    ```shell
    docker run --env-file ./env_vars -v <pwd>/keys:/keys  axway-docker-public-registry.bintray.io/agent/v7-discovery-agent:latest
    ```
-
 3. Run the following health check command to ensure the agent is up and running:
 
    ```shell
@@ -505,7 +535,6 @@ The agent can run in the following modes:
     * Default: located in the same directory as the agent binary.
     * Optional: use a dedicated folder where the configuration file is located (use the --path.config flag in the agent command line to access the file path).
     * Advanced configuration: properties inside the configuration file can reference environment variables. This enables you to set up only one configuration file that addresses different behaviors (depending on the environment variables). See [Discovery Agent variables](/docs/central/connect-api-manager/agent-variables/).
-
 * With command line argument. See [Traceability Agent flags](/docs/central/connect-api-manager/discovery-agent-flags/).
 
 ### Installing the Traceability Agent
@@ -997,7 +1026,6 @@ cd /home/APIC-agents
    ```
 
    * See [Create and start API Gateway Docker container](/docs/apim_installation/apigw_containers/docker_script_gwimage/index.html#mount-volumes-to-persist-logs-outside-the-api-gateway-container) for more  information regarding the persistent API Gateway trace and event logs to a directory on your host machine.
-
    * Run the following health check command to ensure the agent is up and running:
 
    ```shell
