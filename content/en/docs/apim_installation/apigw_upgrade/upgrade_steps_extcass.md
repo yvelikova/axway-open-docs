@@ -215,10 +215,10 @@ If the API Gateway group is protected by a passphrase, you must append the comma
 The following command shows an example of running the `update-apimanager` script when the Client Application Registry is installed:
 
 ```
-/opt/Axway-7.7/apigateway/posix/bin/update-apimanager --username=admin --password=MY_PASSWORD --group=API_MGR_GROUP   --productname=clientappreg
+   /opt/Axway-7.7/apigateway/posix/bin/update-apimanager --username=admin --password=MY_PASSWORD --group=API_MGR_GROUP --product=clientappreg
 ```
 
-If you do not specify the `--productname` option, the script updates API Manager.
+If you do not specify the `--product` option, the script updates API Manager.
 
 ### Step 6 - Verify the upgrade
 
