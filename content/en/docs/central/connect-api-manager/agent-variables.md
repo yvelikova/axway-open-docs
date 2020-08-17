@@ -1,6 +1,6 @@
 ---
-title: Agent variables
-linkTitle: Agent variables
+title: Set up agent configuration
+linkTitle: Set up agent configuration
 draft: false
 weight: 70
 description: Use the following environment variables to control your Discovery
