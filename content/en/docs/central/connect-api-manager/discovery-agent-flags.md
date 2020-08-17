@@ -1,6 +1,6 @@
 ---
-title: Agent flags
-linkTitle: Agent flags
+title: Run your agents in CLI
+linkTitle: Run your agents in CLI
 draft: false
 weight: 80
 description: Use the following parameters [flags] when issuing the
