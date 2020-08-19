@@ -3,8 +3,8 @@ title: Deploy your agents - advanced functionality
 linkTitle: Deploy your agents - advanced functionality
 draft: false
 weight: 30
-description: Learn how to deploy your Discovery Agent and Traceability Agent so 
-  that you can manage your Axway API Gateway environment within AMPLIFY Central.    
+description: Learn how to deploy your Discovery Agent and Traceability Agent so
+  that you can manage your Axway API Gateway environment within AMPLIFY Central.
 ---
 ## Before you start
 
@@ -81,8 +81,8 @@ The containerized agent can run in the following mode:
    central:
     url: https://apicentral.axway.com
     platformURL: https://platform.axway.com
-    teamID: 6dff3d5c-8f7e-4f77-9061-e7219ee0b063
-    tenantID: 655431797898152
+    team: Dev
+    organizationID: 655431797898152
     environment: my-v7-env
     apiServerVersion: v1alpha1
     mode: publishToEnvironmentAndCatalog
@@ -104,7 +104,7 @@ The containerized agent can run in the following mode:
    ```
 
    * The value for *teamID* can be found in [AMPLIFY Central > Access > Teams](https://apicentral.axway.com/access/teams/).
-   * The value for *tenantID* can be found in AMPLIFY Central Platform > Organization.
+   * The value for *organizationID* can be found in AMPLIFY Central Platform > Organization.
    * The value for *clientId* can be found in Service Account. See [Create a service account](/docs/central/cli_central/cli_install/#create-a-service-account).
 5. Run the binary Discovery Agent:
 
@@ -139,13 +139,13 @@ APIGATEWAY_AUTH_USERNAME=<USER>
 APIGATEWAY_AUTH_PASSWORD=<PASSWORD>
 
 # AMPLIFY connectivity
-CENTRAL_TENANTID=<TENANTID>
-CENTRAL_TEAMID=<TEAMID>
+CENTRAL_ORGANIZATIONID=<ORGANIZATIONID>
+CENTRAL_TEAM=<TEAM>
 CENTRAL_AUTH_CLIENTID=<CLIENTID, ie. DOSA_12345...>
 ```
 
-* The value for *teamID* can be found in [AMPLIFY Central > Access > Teams](https://apicentral.axway.com/access/teams/).
-* The value for *tenantID* can be found in AMPLIFY Central Platform > Organization.
+* The value for *team* can be found in [AMPLIFY Central > Access > Team Assets](https://apicentral.axway.com/access/teams/).
+* The value for *organizationID* can be found in AMPLIFY Central Platform > Organization.
 * The value for *clientId* can be found in Service Account. See [Create a service account](/docs/central/cli_central/cli_install/#create-a-service-account).
 
 ##### Run the Dockerized Discovery Agent
@@ -228,7 +228,7 @@ To install the binary Traceability Agent:
      agent:
       central:
        url: https://apicentral.axway.com
-       tenantID: 68794y2
+       organizationID: 68794y2
        deployment: prod
        environment: my-v7-env
        auth:
@@ -266,7 +266,7 @@ To install the binary Traceability Agent:
     level: ${LOG_LEVEL:info}
    ```
 
-   * The value for *tenantID* can be found in AMPLIFY Central Platform > Organization.
+   * The value for *organizationID* can be found in AMPLIFY Central Platform > Organization.
    * The value for *clientId* can be found in Service Account. See [Create a Service in AMPLIFY Central](/docs/central/connect-api-manager/prepare-amplify-central/).
    * Traceability Agent variables can be found at [Agent variables](/docs/central/connect-api-manager/agent-variables/).
 5. Once the YAML file is updated, start the Traceability Agent. If the YAML file is in the same folder, run `./traceability_agent` script. Otherwise, pass the command-line flags that are documented at [Traceability Agent flags](/docs/central/connect-api-manager/traceability-agent-flags/).
@@ -291,14 +291,14 @@ APIGATEWAY_AUTH_USERNAME=<USER>
 APIGATEWAY_AUTH_PASSWORD=<PASSWORD>
 
 # AMPLIFY connectivity
-CENTRAL_TENANTID=<TENANTID>
+CENTRAL_ORGANIZATIONID=<ORGANIZATIONID>
 CENTRAL_TEAMID=<TEAMID>
 CENTRAL_AUTH_CLIENTID=<CLIENTID, ie. DOSA_12345...>
 CENTRAL_ENVIRONMENT=<Environment>
 ```
 
-* The value for *teamID* can be found in [AMPLIFY Central > Access > Teams](https://apicentral.axway.com/access/teams/).
-* The value for *tenantID* can be found in AMPLIFY Central Platform > Organization.
+* The value for *team* can be found in [AMPLIFY Central > Access > Team Assets](https://apicentral.axway.com/access/teams/).
+* The value for *organizationID* can be found in AMPLIFY Central Platform > Organization.
 * The value for *clientId* can be found in Service Account. See [Create a service account](/docs/central/cli_central/cli_install/#create-a-service-account).
 
 ##### Install and run Dockerized Traceability Agent
