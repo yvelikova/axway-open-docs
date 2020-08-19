@@ -280,34 +280,35 @@ Once all data is gathered, this section should look like this for subscription N
 
 ```yaml
 subscriptions:
-  webhook:
-    url:
-    headers:
-  smtp:
-    host: mail.outlook.com
-    port: 25
-    fromAddress: fromAddress@outlook.com
-    username: outlookuser
-    password:
-    subscribe:
-      subject: Subscription Notification
-      body: |
+  notifications:
+    webhook:
+      url:
+      headers:
+    smtp:
+      host: mail.outlook.com
+      port: 25
+      fromAddress: fromAddress@outlook.com
+      username: outlookuser
+      password:
+      subscribe:
+        subject: Subscription Notification
+        body: |
           Subscription created for Catalog Item:  <a href= ${catalogItemUrl}> ${catalogItemName} </a> <br/>
           ${authtemplate}<br/>
-      oauth: Your API is secured using OAuth token. You can obtain your token using grant_type=client_credentials with the following client_id=<b>${clientID}</b> and client_secret=<b>${clientSecret}</b>
-      apikeys: Your API is secured using an APIKey credential:header:<b>${keyHeaderName}</b>/value:<b>${key}</b>
-    unsubscribe:
-      subject: Subscription Removal Notification
-      body: |
-        Subscription for Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a> has been unsubscribed
-    subscribeFailed:
-      subject: Subscription Failed Notification
-      body: |
-        Could not subscribe to Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a>
-    unsubscribeFailed:
-      subject: Subscription Removal Failed Notification
-      body: |
-        Could not unsubscribe to Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a>
+        oauth: Your API is secured using OAuth token. You can obtain your token using grant_type=client_credentials with the following client_id=<b>${clientID}</b> and client_secret=<b>${clientSecret}</b>
+        apikeys: Your API is secured using an APIKey credential:header:<b>${keyHeaderName}</b>/value:<b>${key}</b>
+      unsubscribe:
+        subject: Subscription Removal Notification
+        body: |
+          Subscription for Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a> has been unsubscribed
+      subscribeFailed:
+        subject: Subscription Failed Notification
+        body: |
+          Could not subscribe to Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a>
+      unsubscribeFailed:
+        subject: Subscription Removal Failed Notification
+        body: |
+          Could not unsubscribe to Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a>
 ```
 
 #### Customizing log section (log)
@@ -368,34 +369,35 @@ central:
     timeout: 10s
 
 subscriptions:
-  webhook:
-    url:
-    headers:
-  smtp:
-    host: mail.outlook.com
-    port: 25
-    fromAddress: fromAddress@outlook.com
-    username: outlookuser
-    password:
-    subscribe:
-      subject: Subscription Notification
-      body: |
-          Subscription created for Catalog Item:  <a href= ${catalogItemUrl}> ${catalogItemName} </a> <br/>
+  notifications:
+    webhook:
+      url:
+      headers:
+    smtp:
+      host: mail.outlook.com
+      port: 25
+      fromAddress: fromAddress@outlook.com
+      username: outlookuser
+      password:
+      subscribe:
+        subject: Subscription Notification
+        body: |
+            Subscription created for Catalog Item:  <a href= ${catalogItemUrl}> ${catalogItemName} </a> <br/>
           ${authtemplate}<br/>
-      oauth: Your API is secured using OAuth token. You can obtain your token using grant_type=client_credentials with the following client_id=<b>${clientID}</b> and client_secret=<b>${clientSecret}</b>
-      apikeys: Your API is secured using an APIKey credential:header:<b>${keyHeaderName}</b>/value:<b>${key}</b>
-    unsubscribe:
-      subject: Subscription Removal Notification
-      body: |
-        Subscription for Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a> has been unsubscribed
-    subscribeFailed:
-      subject: Subscription Failed Notification
-      body: |
-        Could not subscribe to Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a>
-    unsubscribeFailed:
-      subject: Subscription Removal Failed Notification
-      body: |
-        Could not unsubscribe to Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a>
+        oauth: Your API is secured using OAuth token. You can obtain your token using grant_type=client_credentials with the following client_id=<b>${clientID}</b> and client_secret=<b>${clientSecret}</b>
+        apikeys: Your API is secured using an APIKey credential:header:<b>${keyHeaderName}</b>/value:<b>${key}</b>
+      unsubscribe:
+        subject: Subscription Removal Notification
+        body: |
+          Subscription for Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a> has been unsubscribed
+      subscribeFailed:
+        subject: Subscription Failed Notification
+        body: |
+          Could not subscribe to Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a>
+      unsubscribeFailed:
+        subject: Subscription Removal Failed Notification
+        body: |
+          Could not unsubscribe to Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a>
 
 log:
   level: info
