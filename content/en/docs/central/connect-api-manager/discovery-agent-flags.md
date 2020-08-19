@@ -4,8 +4,8 @@ linkTitle: Run your agents in CLI
 draft: false
 weight: 80
 description: Use the following parameters [flags] when issuing the
-  traceability_agent and discovery_agent commands. View these flags with command traceability_agent
-  -h or discovery_agent -h.
+  traceability_agent and discovery_agent commands. View these flags with command
+  traceability_agent -h or discovery_agent -h.
 ---
 
 | Traceability Agent Flags                         | Description                                                |
@@ -46,8 +46,8 @@ description: Use the following parameters [flags] when issuing the
 | centralSslMaxVersion            | String. Maximum acceptable SSL/TLS protocol version (default "0").                                                                                                                                                                                                                                                     |     |
 | centralSslMinVersion            | String. Minimum acceptable SSL/TLS protocol version (default "TLS1.2").                                                                                                                                                                                                                                                |     |
 | centralSslNextProtos            | Strings. List of supported application level protocols, comma separated.                                                                                                                                                                                                                                               |     |
-| centralTeamId                   | String. Team ID for the current default team for creating catalog.                                                                                                                                                                                                                                                     |     |
-| centralTenantId                 | String. Tenant ID for the owner of the environment.                                                                                                                                                                                                                                                                    |     |
+| centralTeam                     | String. Team name for creating catalog.                                                                                                                                                                                                                                                    |     |
+| centralOrganizationId                 | String. Organization ID for the owner of the environment.                                                                                                                                                                                                                                                                    |     |
 | centralUrl                      | String. URL of AMPLIFY Central (default <https://apicentral.preprod.k8s.axwayamplify.com>).                                                                                                                                                                                                                            |     |
 | centralApiServerVersion                      | String. The version of the V7 API. (default "1.3").                                                                                                                                                                                                                                                                    |     |
 | help                            | Help for discovery_agent.                                                                                                                                                                                                                                                                                              |     |
