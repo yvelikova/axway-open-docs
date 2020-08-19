@@ -449,27 +449,28 @@ In API Manager, assume there is a FrontEnd API that is published, has been disco
 
 ```shell
 subscriptions:
-  smtp:
-    host: mail.axway.int
-    port: 25
-    fromAddress: fromaddress@axway.com
-    username: fromaddress@axway.com
-    password:
-    subscribe:
-      subject: Subscription Notification
-      body: |
-        Subscription created for Catalog Item:  <a href= ${catalogItemUrl}> ${catalogItemName} </a> <br/>
-        Subscription key: <b>${key}</b>
-    unsubscribe:
-      subject: Subscription Removal Notification
-      body: |
-        Subscription for Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a> has been unsubscribed
-    subscribeFailed:
-      subject: Subscription Failed Notification
-      body: |
-        Could not subscribe to Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a>
-    unsubscribeFailed:
-      subject: Subscription Removal Failed Notification
-      body: |
-        Could not unsubscribe to Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a>
+  notifications:
+    smtp:
+      host: mail.axway.int
+      port: 25
+      fromAddress: fromaddress@axway.com
+      username: fromaddress@axway.com
+      password:
+      subscribe:
+        subject: Subscription Notification
+        body: |
+          Subscription created for Catalog Item:  <a href= ${catalogItemUrl}> ${catalogItemName} </a> <br/>
+          Subscription key: <b>${key}</b>
+      unsubscribe:
+        subject: Subscription Removal Notification
+        body: |
+          Subscription for Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a> has been unsubscribed
+      subscribeFailed:
+        subject: Subscription Failed Notification
+        body: |
+          Could not subscribe to Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a>
+      unsubscribeFailed:
+        subject: Subscription Removal Failed Notification
+        body: |
+          Could not unsubscribe to Catalog Item: <a href= ${catalogItemUrl}> ${catalogItemName} </a>
 ```
