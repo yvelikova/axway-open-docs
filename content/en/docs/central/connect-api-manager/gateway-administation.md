@@ -82,13 +82,13 @@ APIGATEWAY_AUTH_USERNAME=<USER>
 APIGATEWAY_AUTH_PASSWORD=<PASSWORD>
 
 # AMPLIFY connectivity
-CENTRAL_TENANTID=<TENANTID>
-CENTRAL_TEAMID=<TEAMID>
+CENTRAL_ORGANIZATIONID=<ORGANIZATIONID>
+CENTRAL_TEAM=<TEAM>
 CENTRAL_AUTH_CLIENTID=<CLIENTID, ie. DOSA_12345...>
 ```
 
-* The value for *teamID* can be found in [AMPLIFY Central > Access > Teams](https://apicentral.axway.com/access/teams/).
-* The value for *tenantID* can be found in AMPLIFY Central Platform > Organization.
+* The value for *team* can be found in [AMPLIFY Central > Access > Team Assets](https://apicentral.axway.com/access/teams/).
+* The value for *organizationID* can be found in AMPLIFY Central Platform > Organization.
 * The value for *clientId* can be found in Service Account. See [Create a service account](/docs/central/cli_central/cli_install/#create-a-service-account).
 
 Pull the latest image of the Discovery Agent:
@@ -150,9 +150,9 @@ This section connects the agent to AMPLIFY Central and determines how to publish
 
 `platformURL:` The AMPLIFY platform url. Needed for finding the user email during the subscription process with email notification. Default value is **<https://platform.axway.com>**.
 
-`teamID`: The Team identifier in AMPLIFY Central that all APIs will be linked. Locate this at AMPLIFY Central > Access > Team Assets. Open the teams details. The team identifier is the last part of the url (AMPLIFY URL/access/teams/detail/**e4ec6c1a69fd0b8e016a0bb0681e0e8f**).
+`team`: The Team name in AMPLIFY Central that all APIs will be linked to. Locate this at AMPLIFY Central > Access > Team Assets.).
 
-`tenantID`: The Organization ID from AMPLIFY Central. Locate this at Platform > User > Organization > Org ID field.
+`organizationID`: The Organization ID from AMPLIFY Central. Locate this at Platform > User > Organization > Org ID field.
 
 `environment`: The environment name you created when [preparing AMPLIFY Central](/docs/central/connect-api-manager/prepare-amplify-central/).
 
@@ -182,8 +182,8 @@ Once all data is gathered, this section should look like:
 central:
   url: https://apicentral.axway.com
   platformURL: https://platform.axway.com
-  teamID: e4ec6c1a69fd0b8e016a0bb0681e0e8f
-  tenantID: 68794y2
+  team: Dev
+  organizationID: 68794y2
   environment: my-v7-env
   apiServerVersion: v1alpha1
   mode: publishToEnvironmmentAndCatalog
@@ -352,8 +352,8 @@ apimanager:
 central:
   url: https://apicentral.axway.com
   platformURL: https://platform.axway.com
-  teamID: e4ec6c1a69fd0b8e016a0bb0681e0e8f
-  tenantID: 68794y2
+  team: Dev
+  organizationID: 68794y2
   environment: my-v7-env
   apiServerVersion: v1alpha1
   mode: publishToEnvironmmentAndCatalog
@@ -574,14 +574,14 @@ APIGATEWAY_AUTH_USERNAME=<USER>
 APIGATEWAY_AUTH_PASSWORD=<PASSWORD>
 
 # AMPLIFY connectivity
-CENTRAL_TENANTID=<TENANTID>
-CENTRAL_TEAMID=<TEAMID>
+CENTRAL_ORGANIZATIONID=<ORGANIZATIONID>
+CENTRAL_TEAM=<TEAM>
 CENTRAL_AUTH_CLIENTID=<CLIENTID, ie. DOSA_12345...>
 CENTRAL_ENVIRONMENT=<Environment>
 ```
 
-* The value for *teamID* can be found in [AMPLIFY Central > Access > Teams](https://apicentral.axway.com/access/teams/).
-* The value for *tenantID* can be found in AMPLIFY Central Platform > Organization.
+* The value for *team* can be found in [AMPLIFY Central > Access > Team Assets](https://apicentral.axway.com/access/teams/).
+* The value for *organizationID* can be found in AMPLIFY Central Platform > Organization.
 * The value for *clientId* can be found in Service Account. See [Create a service account](/docs/central/cli_central/cli_install/#create-a-service-account).
 
 Pull the latest Docker image of the Traceability Agent:
@@ -671,7 +671,7 @@ This section connects the agent to AMPLIFY Central and determine how to publishe
 
 `url`: The amplify central url. Default value is **<https://apicentral.axway.com>**.
 
-`tenantID`: The Organization ID from AMPLIFY Central. Locate this at Platform > User > Organization > ORrg ID field.
+`organizationID`: The Organization ID from AMPLIFY Central. Locate this at Platform > User > Organization > ORrg ID field.
 
 `deployment`: The APIC deployment environment. Default value is **prod**.
 
@@ -701,7 +701,7 @@ Once all data is gathered, this section should look like:
   agent:
     central:
       url: https://apicentral.axway.com
-      tenantID: 68794y2
+      organizationID: 68794y2
       deployment: prod
       environment: my-v7-env
       auth:
@@ -866,7 +866,7 @@ output.traceability:
   agent:
     central:
       url: https://apicentral.axway.com
-      tenantID: 68794y2
+      organizationID: 68794y2
       deployment: prod
       environment: my-v7-env
       auth:
