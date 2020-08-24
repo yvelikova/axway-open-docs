@@ -30,6 +30,7 @@ Open the following ports to benefit from all the Agent functionalities:
 | apicentral.axway.com                       | 443                | HTTPS     | API definitions, Subscription info  |
 | login.axway.com                            | 443                | HTTPS     | Authentication                      |
 | ingestion-lumberjack.datasearch.axway.com  | 453                | TCP       | API event data                      |
+| platform.axway.com                        | 443  | HTTPS    | Platform user info                 |
 
 **Inbound**:
 
