@@ -64,7 +64,7 @@ Open the following ports so that agents can communicate to the AMPLIFY platform:
 | apicentral.axway.com                      | 443  | HTTPS    | API definitions, Subscription info |
 | login.axway.com                           | 443  | HTTPS    | Authentication                     |
 | ingestion-lumberjack.datasearch.axway.com | 453  | TCP      | API event data                     |
-| platform.axway.com                        |      | HTTPS    | Platform user info                 |
+| platform.axway.com                        | 443  | HTTPS    | Platform user info                 |
 
 Other ports which may need to be opened so that the Agent may monitor API Gateway / Manager are:
 
