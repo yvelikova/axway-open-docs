@@ -481,6 +481,14 @@ cd /home/APIC-agents
 sudo ./discovery_agent service enable
 ```
 
+To uninstall the service from the machine:
+
+```shell
+cd /home/APIC-agents
+sudo ./discovery_agent service stop   # to ensure it is not running
+sudo ./discovery_agent service remove
+```
+
 #### Verify Discovery Agent is Running
 
 To verify if the agent is up and running, open a shell and run:
@@ -1005,6 +1013,14 @@ To enable the service to start when the machine starts:
 ```shell
 cd /home/APIC-agents
 sudo ./traceability_agent service enable
+```
+
+To uninstall the service from the machine:
+
+```shell
+cd /home/APIC-agents
+sudo ./traceability_agent service stop   # to ensure it is not running
+sudo ./traceability_agent service remove
 ```
 
 #### Verify binary Traceability Agent is Running
