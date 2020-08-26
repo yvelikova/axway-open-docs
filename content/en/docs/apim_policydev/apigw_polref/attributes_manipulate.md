@@ -85,6 +85,9 @@ grant_type=password&username=johndoe&password=A3ddj3w
 
 This means that the `${params.query.grant_type}` message attribute selector contains a value of `password`.
 
+{{< alert title="Note" color="primary" >}}[REST APIs created in Policy Studio](/docs/apim_policydev/apigw_web_services/register_rest_apis/) use a different naming scheme for `x-www-form-urlencoded` parameters.  Body parameters go into message attributes named  `params.form.parameter_name` instead of being merged into `params.query.parameter_name`.
+{{< /alert >}}
+
 ### Configure extract REST request attributes
 
 Configure the following fields on the **Extract REST Request Attributes** window:
@@ -118,6 +121,9 @@ path[1] = "s8koID4%/Ad6AqgADSghC+g=="
 path[2] = "book repo"
 path[3] = "first book.pdf"
 ```
+
+{{< alert title="Note" color="primary" >}}For APIs virtualized in API Manager, any parameters not declared in the API method will be consumed and will not get passed to any API Gateway policies that are invoked. For more information, see [Create REST API methods](/docs/apim_administration/apimgr_admin/api_mgmt_register_web/#create-rest-api-methods).
+{{< /alert >}}
 
 ## Extract WSS header filter
 
