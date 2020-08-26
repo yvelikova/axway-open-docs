@@ -294,12 +294,6 @@ We recommend that you synchronize API Portal server with an internal or external
 
 It is important to use unified and synchronized time source throughout the environment to correlate logs and data from different internal and external systems and preserve forensic quality of the logs. Accurate time is also essential when identifying and analyzing application events, including attacks.
 
-## Develop a log retention policy and archival procedures
-
-We recommend that you develop a log retention policy to identify storage requirements for device logs, and appropriate archival procedures to ensure that the audit logs are available for a security response in the case of an incident or investigation.
-
-The audit logs must be collected for the last 30 days in easily accessible storage media. Older logs should be archived in a protected storage and should be accessible in the future as required for incidents or investigations.
-
 ## Detect and prevent the usage of automated tools or unusual behavior
 
 Detecting abnormal behavior is very complex task and good prevention requires actions not only on the application layer but also concerns the firewall, network monitoring, proxy servers, and so on.
@@ -319,18 +313,7 @@ The HTTP Content Security Policy ([CSP](https://developer.mozilla.org/en-US/docs
 
 We recommend you to configure this policy either in your `.htaccess` file or virtual host file with *least privilege* to allow only interactions that are explicitly required.
 
-## Define retention periods for personal data
-
-For compliance with General Data Protection (GDP), you must define retention periods within the design phase for all data fields taking into account the defined purpose. You must also include retention periods for backups.
-
-If you are a small organization, you may not need a documented retention policy. However, if you do not have a retention policy, you must still regularly review the data you hold and delete or anonymise any data that you no longer need.
-
-You must include your Data Protection Officer (DPO) or Legal department to define the retention periods as other laws may impact the retention requirements.
-
-## Permanently delete unnecessary data
-
-When the retention periods expire you have to ensure that all of the data which is no longer needed has been deleted. This may require automatic identification of the latest activities and a data deletion functionality or manual work.
-
 ## Where to go next
 
-For more information on the security features of API Management products and best practices for strengthening their security, see the [API Management Security Guide](/docs/apimgmt_security/).
+* For more information on the security features of API Management products and best practices for strengthening their security, see the [API Management Security Guide](/docs/apimgmt_security/).
+* For privacy and personal data security recommendations, see [Manage privacy and personal data](/docs/apim_administration/apiportal_admin/manage_privacy_personal_data).

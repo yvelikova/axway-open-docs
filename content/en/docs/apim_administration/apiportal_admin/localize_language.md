@@ -1,7 +1,7 @@
 ---
 title: Localization of API Portal
 linkTitle: Localization
-weight: 11
+weight: 60
 date: 2019-07-30T00:00:00.000Z
 description: You can localize the API Portal user interface to use another
   language, or change time and date formats.
