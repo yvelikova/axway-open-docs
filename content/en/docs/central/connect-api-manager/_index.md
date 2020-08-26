@@ -29,7 +29,7 @@ The Discovery Agent discovers APIs that have PassTrough / API Key / OAuth securi
 
 The related APIs are published to AMPLIFY Central in either disconnected mode (catalog item publication) or connected mode (Environment / API Service publication and optionally as Catalog item). For additional information, see [Discovery Agent](/docs/central/connect-api-manager/deploy-your-agents/#discovery-agent).
 
-![Service Discovery](/Images/central/ServiceDiscoveryAPIM.png)
+![Service Discovery](/Images/central/connect-api-manager/servicediscoveryapim.png)
 
 ### Traceability Agent
 
