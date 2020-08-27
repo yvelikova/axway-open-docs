@@ -3,7 +3,8 @@ title: Build an environment using the AMPLIFY Central CLI
 linkTitle: Build an environment
 weight: 110
 date: 2020-06-10T00:00:00.000Z
-description: Learn how your DevOps process can use AMPLIFY Central CLI to build and manage your environments.
+description: Learn how your DevOps process can use AMPLIFY Central CLI to build
+  and manage your environments.
 ---
 
 ## Before you start
@@ -58,7 +59,7 @@ Optional flags:
 -f, --file = (filename.yml, filename.yaml, filename.json)
 ```
 
-Try out the [`create_environments.json`](https://axway-open-docs.netlify.app/samples/central/create_environments.json) or [`create_environments.yaml`](https://axway-open-docs.netlify.app/samples/central/create_environments.yaml) samples to create an environment.
+Try out the [create_environments.json](https://axway-open-docs.netlify.app/samples/central/create_environments.json) or [create_environments.yaml](https://axway-open-docs.netlify.app/samples/central/create_environments.yaml) samples to create an environment.
 
 ## Retrieve a list of all available environments
 
