@@ -7,7 +7,7 @@
         "scope": {
             "kind": "Environment",
             "name": "env1"
-        },
+        }
     },
 	"attributes": {
             "createdBy": "json",
@@ -20,9 +20,9 @@
     "spec": {
         "name": "sdk zip of AMPLIFY Central CLI read.me",
         "description": "Provides documentation on the AMPLIFY Central CLI",
-        "visibility": "PUBLIC",	# PUBLIC or RESTRICTED
+        "visibility": "PUBLIC",	
         "version": "1.0.0",
-        "state": "PUBLISHED",	# PUBLISHED or UNPUBLISHED
+        "state": "PUBLISHED",	
         "status": "GA",
         "tags": [
             "sample"
@@ -41,7 +41,7 @@
         },
         "icon": {
         	"contentType": "image/jpeg",
-        	"data" : "string"
+        	"data" : ""
         }
     }
 }
