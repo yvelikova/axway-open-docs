@@ -18,7 +18,7 @@ description: Learn how to add your environments to AMPLIFY Central so that you
 
 ## Objectives
 
-Learn how to add your private cloud hybrid environment to AMPLIFY Central, so that you can manage your microservices, and any related APIs they expose, from AMPLIFY Central in AMPLIFY Central public cloud.
+Learn how to add your private cloud hybrid environment to AMPLIFY Central, so that you can manage your microservices and any related APIs they expose, from AMPLIFY Central in AMPLIFY Central public cloud.
 
 * Add your Kubernetes environment to AMPLIFY Central
 * Download the generated hybrid kit for your Kubernetes environment
@@ -37,7 +37,7 @@ Follow these steps to add your environment to AMPLIFY Central:
 
 ![Environments List Page](/Images/central/environments_list_page.png)
 
-### Add your Kubernetes Environment
+## Add your Kubernetes environment
 
 To add an AMPLIFY Central environment for your private cloud Kubernetes cluster:
 
@@ -70,7 +70,7 @@ ls
 hybridOverride.yaml  istioOverride.yaml
 ```
 
-#### Generate a key pair and secret for the domain edge gateway
+### Generate a key pair and secret for the domain edge gateway
 
 To expose an HTTPS endpoint of a service within your environment to external traffic, you need a public certificate and private key for the domain where your environment is hosted, and a TLS secret based on the key pair.
 
@@ -108,17 +108,17 @@ To expose an HTTPS endpoint of a service within your environment to external tra
     default-token-jvw9m                kubernetes.io/service-account-token   3      27m
     ```
 
-#### Generate key pairs and secrets for the Axway mesh agents
+### Generate key pairs and secrets for the Axway mesh agents
 
 Before you can deploy the Axway mesh agents in your environment, you must generate key pairs and make those keys available to Kubernetes in the namespace where the agents will be deployed. For more information on Axway mesh agents, see [Axway mesh agents](/docs/central/mesh_management/#axway-mesh-agents).
 
-##### What are these keys used for?
+#### What are these keys used for?
 
 Mesh agents use service accounts when communicating from your environment to the AMPLIFY Central SaaS control plane. A service account is provisioned in AMPLIFY Central when you create a new environment in the AMPLIFY Central UI. When a mesh agent starts for the first time it uses a one-time credential to authenticate itself to AMPLIFY Central. The agent registers a public key with AMPLIFY Central, and the agent must have access to the associated private key during registration.
 
 AMPLIFY Central uses the public key to authenticate signed JWT tokens from the agent. The agent signs the JWT token with its private key, and the agent private key never leaves your environment. This registration step uses a one-time registration access token (`registrationToken`) that is contained in the `hybridOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part of the hybrid kit.
 
-##### Generate key pair for SDA
+#### Generate key pair for SDA
 
 Use `openssl` to generate a public certificate and private key for the service discovery agent (SDA) . The following example uses the password `changeme`:
 
@@ -132,7 +132,7 @@ openssl rsa -pubout -in  private_key.pem -passin file:password -out public_key.d
 writing RSA key
 ```
 
-##### Generate key pair for CSA
+#### Generate key pair for CSA
 
 Use `openssl` to generate a public certificate and private key for the configuration synchronization agent (CSA):
 
@@ -145,7 +145,7 @@ openssl rsa -pubout -in private_key.pem -out public_key.der -outform der && base
 writing RSA key
 ```
 
-##### Create namespace for mesh agents
+#### Create namespace for mesh agents
 
 Create the namespace where the Axway mesh agents will be deployed.
 
@@ -160,7 +160,7 @@ kubectl create namespace apic-control
 namespace/apic-control created
 ```
 
-##### Create and deploy Kubernetes secrets
+#### Create and deploy Kubernetes secrets
 
 As the mesh agents are running within Kubernetes, you must create Kubernetes secrets for the agents' public certificates and private keys, and store them in the secret store so that the mesh agents can locate them.
 
@@ -197,7 +197,7 @@ default-token-f26bp   kubernetes.io/service-account-token   3      4m
 sda-secrets           Opaque                                3      3m
 ```
 
-#### Deploy the service mesh and Axway mesh agents
+### Deploy the service mesh and Axway mesh agents
 
 After you have created the key pairs and secrets, deploy the Axway proprietary service mesh into your environment:
 
@@ -217,65 +217,35 @@ After you have created the key pairs and secrets, deploy the Axway proprietary s
     cd e4fd7216693f50360169492633ab0122/
     ```
 
-3. Deploy Istio. This step can take several minutes to complete.
-
-    Usage: `helm upgrade --install --namespace NAMESPACE_NAME RELEASE CHART`
-
-    Example 1: Install istio-init
+3. From Istio 1.6+, `Istioctl` is required for installing Istio. Download `Istioctl` using the following command:
 
     ```
-    helm upgrade --install --namespace istio-system istio axway/istio-init
-    Release "istio-init" does not exist. Installing it now.
-    NAME:   istio-init
-    LAST DEPLOYED: Tue Mar  5 08:44:59 2019
-    NAMESPACE: istio-system
-    STATUS: DEPLOYED
-
-    RESOURCES:
-    ==> v1/ClusterRole
-    NAME                     AGE
-    istio-init-istio-system  0s
-
-    ==> v1/ClusterRoleBinding
-    NAME                                        AGE
-    istio-init-admin-role-binding-istio-system  0s
-
-    ==> v1/ConfigMap
-    NAME          DATA  AGE
-    istio-crd-10  1     0s
-    istio-crd-11  1     0s
-
-    ==> v1/Job
-    NAME               COMPLETIONS  DURATION  AGE
-    istio-init-crd-10  0/1          0s        0s
-    istio-init-crd-11  0/1          0s        0s
-
-    ==> v1/Pod(related)
-    NAME                     READY  STATUS             RESTARTS  AGE
-    istio-init-crd-10-bxrv8  0/1    ContainerCreating  0         0s
-    istio-init-crd-11-d49db  0/1    ContainerCreating  0         0s
-
-    ==> v1/ServiceAccount
-    NAME                        SECRETS  AGE
-    istio-init-service-account  1        0s
-    ```
-
-    Usage: `helm upgrade --install --namespace NAMESPACE_NAME RELEASE CHART -f /PATH/TO/OVERRIDE/VALUES`
-
-    Example 2: Install istio
+    curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.6.8 TARGET_ARCH=x86_64 sh -
 
     ```
-    helm upgrade --install --namespace istio-system istio axway/istio -f ./istioOverride.yaml
-    Release "istio" does not exist. Installing it now.
-    NAME:   istio
-    LAST DEPLOYED: Tue Mar  5 08:44:59 2019
-    NAMESPACE: istio-system
-    STATUS: DEPLOYED
+
+4. Export the path to start using `Istioctl`. Note the use of `$PWD` and change it accordingly.
+
+    ```
+    export PATH=$PATH:$PWD/istio-1.6.8/bin
+
     ```
 
-    This example uses the `istio` Helm chart from the `axway` Helm repository, with override values from the `istioOverride.yaml` Helm chart that you downloaded from AMPLIFY Central as part  of the hybrid kit.
+5. Install Istio. This step can take several minutes to complete.
 
-4. Verify that Istio is deployed successfully:
+    ```
+    istioctl install --set profile=demo -f <pathtooverridefile>/istioOverride.yaml
+
+     ✔ Istio core installed
+     ✔ Istiod installed  
+     ✔ Policy installed
+     ✔ Ingress gateways installed
+     ✔ Telemetry installed
+     ✔ Addons installed
+     ✔ Installation complete
+    ```
+
+6. Verify that Istio is deployed successfully:
 
     ```
     kubectl get services -n istio-system
@@ -283,7 +253,7 @@ After you have created the key pairs and secrets, deploy the Axway proprietary s
 
     The output of this command should list an domain edge gateway and a number of Istio services.
 
-5. Deploy the Axway mesh agents. This step can take several minutes to complete.
+7. Deploy the Axway mesh agents. This step can take several minutes to complete.
 
     Usage: `helm upgrade --install --namespace NAMESPACE_NAME RELEASE CHART -f /PATH/TO/OVERRIDE/VALUES [OPTIONS]`
 
@@ -352,7 +322,7 @@ After you have created the key pairs and secrets, deploy the Axway proprietary s
     apic-hybrid-sda   2s
     ```
 
-6. Verify that the mesh agents are deployed in the `apic-control` namespace:
+8. Verify that the mesh agents are deployed in the `apic-control` namespace:
 
     ```
      kubectl get services -n apic-control
@@ -360,18 +330,18 @@ After you have created the key pairs and secrets, deploy the Axway proprietary s
 
      The output of this command should list the mesh agent services.
 
-7. Verify that the list demo service is deployed in the `apic-demo` namespace:
+9. Verify that the list demo service is deployed in the `apic-demo` namespace:
 
     ```
     kubectl get services -n apic-demo
     ```
 
     The output of this command should list the demo list service.
-8. Verify that your environment is now connected in AMPLIFY Central UI:
+10. Verify that your environment is now connected in AMPLIFY Central UI:
 
     ![Connected environment in AMPLIFY Central](/Images/central/hybrid__env_connected.png)
 
-#### Create and test an API proxy for the demo service
+### Create and test an API proxy for the demo service
 
 The list demo service is now deployed in your hybrid environment. You can create an API proxy for the API exposed by the demo service, in much the same way as you would for any other API. Watch the short animation to learn how.
 
