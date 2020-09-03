@@ -69,10 +69,10 @@ The Discovery Agent only discovers published APIs where the stage has a  tag(s) 
 | CENTRAL_SSL_NEXTPROTOS                           | An array of strings. It is a list of supported application level protocols, in order of preference, based on the ALPN protocol list. Allowed values are: h2, htp/1.0, http/1.1, h2c.                                                                                                                                                                                                                                                                                                                                                                                                                       |                                    |                                                                                                    |
 | CENTRAL_SSL_INSECURESKIPVERIFY                   | InsecureSkipVerify controls whether a client verifies the server's certificate chain and host name. If true, TLS accepts any certificate presented by the server and any host name in that certificate. In this mode, TLS is susceptible to man-in-the-middle attacks.                                                                                                                                                                                                                                                                                                                                     |                                    |                                                                                                    |
 | CENTRAL_ADDITIONALTAGS                           | Additional tag names to publish separated by a comma.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| CENTRAL_SUBSCRIPTIONS_APPROVALMODE | The mode for approving subscriptions on AMPLIFY Central (manual, auto, webhook; default = manual). |
-| CENTRAL_SUBSCRIPTIONS_APPROVALWEBHOOK_URL        | The url for a subscription approval webhook (if any). CENTRAL_SUBSCRIPTIONS_APPROVALMODE must be set to "webhook" for webhooks to be invoked.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                    |                                                                                                    |
-| CENTRAL_SUBSCRIPTIONS_APPROVALWEBHOOK_HEADERS    | The headers to pass to the subscription approval webhook (if any). For example, "Header=contentType,Value=application/json".                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |                                    |                                                                                                    |
-| CENTRAL_SUBSCRIPTIONS_APPROVALWEBHOOK_AUTHSECRET | The authentication secret to pass to the subscription approval webhook (if any).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                    |                                                                                                    |
+| CENTRAL_SUBSCRIPTIONS_APPROVAL_MODE | The mode for approving subscriptions on AMPLIFY Central (manual, auto, webhook; default = manual). |
+| CENTRAL_SUBSCRIPTIONS_APPROVAL_WEBHOOK_URL        | The url for a subscription approval webhook (if any). CENTRAL_SUBSCRIPTIONS_APPROVAL_MODE must be set to "webhook" for webhooks to be invoked.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                    |                                                                                                    |
+| CENTRAL_SUBSCRIPTIONS_APPROVAL_WEBHOOK_HEADERS    | The headers to pass to the subscription approval webhook (if any). For example, "Header=contentType,Value=application/json".                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |                                    |                                                                                                    |
+| CENTRAL_SUBSCRIPTIONS_APPROVAL_WEBHOOK_AUTHSECRET | The authentication secret to pass to the subscription approval webhook (if any).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                    |                                                                                                    |
 | Subscription notification variables              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |                                    |                                                                                                    |
 | CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_WEBHOOK_URL                        | The webhook URL that subscription data will be posted to, see                                                                                                                                                                                                                                                                                                                                                                                                                                                                   [Subscription webhook notifications](#subscription-webhook-notifications). |                                    |                                                                                                    |
 | CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_WEBHOOK_HEADERS                    | The headers that will be used when posting data to the webhook url, see [Subscription webhook notifications](#subscription-webhook-notifications).                                                                                                                                                                                                                                                                                                                                                                                                                                                         |                                    |                                                                                                    |
@@ -96,32 +96,32 @@ The `host`, which represents the email server, can be configured with minimal se
 
 ```
 # Google/Gmail server
-SUBSCRIPTIONS_SMTP_HOST=smtp.gmail.com
-SUBSCRIPTIONS_SMTP_PORT=587
-SUBSCRIPTIONS_SMTP_USERNAME=your GMAIL account
-SUBSCRIPTIONS_SMTP_PASSWORD=your GMAIL password
-SUBSCRIPTIONS_SMTP_AUTHTYPE=PLAIN
+CENTRAL_SUBSCRIPTIONS_SMTP_HOST=smtp.gmail.com
+CENTRAL_SUBSCRIPTIONS_SMTP_PORT=587
+CENTRAL_SUBSCRIPTIONS_SMTP_USERNAME=your GMAIL account
+CENTRAL_SUBSCRIPTIONS_SMTP_PASSWORD=your GMAIL password
+CENTRAL_SUBSCRIPTIONS_SMTP_AUTHTYPE=PLAIN
 
-# Microsoft office server
-SUBSCRIPTIONS_SMTP_HOST=smtp.office365.com
-SUBSCRIPTIONS_SMTP_PORT=587
-SUBSCRIPTIONS_SMTP_USERNAME=your Office Mail account
-SUBSCRIPTIONS_SMTP_PASSWORD=your Office Mail password
-SUBSCRIPTIONS_SMTP_AUTHTYPE=LOGIN
+# Microsoft Office 365 server
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_HOST=smtp.office365.com
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PORT=587
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_USERNAME=your Office Mail account
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PASSWORD=your Office Mail password
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_AUTHTYPE=LOGIN
 
-# Microsoft outlook server
-SUBSCRIPTIONS_SMTP_HOST=smtp-mail.outlook.com
-SUBSCRIPTIONS_SMTP_PORT=587
-SUBSCRIPTIONS_SMTP_USERNAME=your Outlook Mail account
-SUBSCRIPTIONS_SMTP_PASSWORD=your Office Mail password
-SUBSCRIPTIONS_SMTP_AUTHTYPE=PLAIN
+# Microsoft Outlook server
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_HOST=smtp-mail.outlook.com
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PORT=587
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_USERNAME=your Outlook Mail account
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PASSWORD=your Office Mail password
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_AUTHTYPE=PLAIN
 
 # Yahoo email server
-SUBSCRIPTIONS_SMTP_HOST=smtp.mail.yahoo.com
-SUBSCRIPTIONS_SMTP_PORT=587
-SUBSCRIPTIONS_SMTP_USERNAME=your Yahoo Mail account
-SUBSCRIPTIONS_SMTP_PASSWORD=your Yahoo Mail password
-SUBSCRIPTIONS_SMTP_AUTHTYPE=PLAIN
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_HOST=smtp.mail.yahoo.com
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PORT=587
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_USERNAME=your Yahoo Mail account
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PASSWORD=your Yahoo Mail password
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_AUTHTYPE=PLAIN
 ```
 
 ### Subscription webhook notifications
