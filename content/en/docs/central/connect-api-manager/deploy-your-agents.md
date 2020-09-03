@@ -114,7 +114,12 @@ The containerized agent can run in the following mode:
      cd /home/APIC-agents
      ./discovery_agent
      ```
+   * To use env_vars file for overriding configuration, create env_vars file with definition of environment variables and run the following command. See [Agent variables](/docs/central/connect-api-manager/agent-variables/) for a reference to variable descriptions.
 
+     ```shell
+     cd /home/APIC-agents
+     ./discovery_agent --envFile ./env_vars
+     ```
    * To verify that the agent is up and running, open another shell command and run:
 
      ```shell
@@ -198,7 +203,7 @@ To install the binary Traceability Agent:
 4. Customize traceability_agent section by setting configuration values to point to the event logs path,  API Gateway, API Manager, and AMPLIFY Central.  There are 2 options to set values:
 
    * `env_vars` file
-   * `discovery_agent.yml`:
+   * `traceability_agent.yml`:
 
    ```yaml
    ################### Beat Configuration #########################
@@ -269,7 +274,20 @@ To install the binary Traceability Agent:
    * The value for *organizationID* can be found in AMPLIFY Central Platform > Organization.
    * The value for *clientId* can be found in Service Account. See [Create a Service in AMPLIFY Central](/docs/central/connect-api-manager/prepare-amplify-central/).
    * Traceability Agent variables can be found at [Agent variables](/docs/central/connect-api-manager/agent-variables/).
-5. Once the YAML file is updated, start the Traceability Agent. If the YAML file is in the same folder, run `./traceability_agent` script. Otherwise, pass the command-line flags that are documented at [Traceability Agent flags](/docs/central/connect-api-manager/discovery-agent-flags/).
+5. Run the binary Traceability Agent:
+
+   * Once the YAML file is updated, start the Traceability Agent. If the YAML file is in the same folder, run the following command. Otherwise, pass the command-line flags that are documented at [Traceability Agent flags](/docs/central/connect-api-manager/discovery-agent-flags/).
+
+     ```shell
+     cd /home/APIC-agents
+     ./traceability_agent
+     ```
+   * To use env_vars file for overriding configuration, create env_vars file with definition of environment variables and run the following command. See [Agent variables](/docs/central/connect-api-manager/agent-variables/) for a reference to variable description.
+
+     ```shell
+     cd /home/APIC-agents
+     ./traceability_agent --envFile ./env_vars
+     ```
 6. The Traceability Agent parses through the files based on the `event-file` path and pattern provided. Depending on the data found, the agent pushes it to AMPLIFY Central.
 7. Go to AMPLIFY Central and open the API Observer tab to verify that the agent is working. You should see the monitoring data for the APIs discovered earlier. If you don’t see any data, then invoke a few different API methods in the exposed API.
 8. Click on any of the transactions to see the details. You will see the lifecycle of an API call, such as time taken / request and response headers / etc.
