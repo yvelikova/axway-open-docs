@@ -38,7 +38,10 @@ The Traceability Agent sends log information about APIs that have been discovere
 ## Pre-requisites
 
 * An Axway AMPLIFY Central subscription in the AMPLIFY™ platform. See [Get started with AMPLIFY Central](/docs/central/quickstart/).
-* An AMPLIFY Central Service Account. See [Manage an API proxy using AMPLIFY CLI](/docs/central/cli_central/cli_proxy_flow/).
+* An AMPLIFY Central Service Account. See [Create a service account](/docs/central/connect-api-manager/#create-a-new-service-account).
+* An AMPLIFY Central environment.
+* An API Manager user having role API Manager Administrator for the discovery/traceability agent to connect to API Manager
+* An API Gateway user having role API Gateway operator for traceability agent to connect to API Gateway
 
 ## System requirements
 
@@ -53,10 +56,17 @@ The following gives you a high-level overview of the required steps to connect a
 ### Create a new Service Account
 
 * The agent will use this service account for the secure communication with the AMPLIFY platform
-* Learn more how to install the CLI and create a service account. See [Install AMPLIFY Central CLI](/docs/central/cli_central/cli_install).
+* Generate a public/private key pair
+    ```
+    openssl genpkey -algorithm RSA -out ./private_key.pem -pkeyopt rsa_keygen_bits:2048
+    openssl rsa -pubout -in ./private_key.pem -out ./public_key.pem
+    ```
+* Create a new Service Account user in AMPLIFY Central using the `public_key.pem` from above. You may name this Service Account (for example, v7-Agent). For additional information, see [Create a service account](/docs/central/cli_central/cli_install/#create-a-service-account).
 
 ### Add your environment to Central
 
+* Create an environment object in AMPLIFY Central that represents the effective Axway API Gateway environment. Depending on your needs, you can create as many environments as required.
+* Each discovered API or Traffic is associated to this environment and eases the filtering.
 * Add your environment to AMPLIFY Central using either the [AMPLIFY Central CLI](/docs/central/cli_central/cli_environments/) or [the UI](/docs/central/mesh_management/add_env/#add-your-environment-to-amplify-central).
 
 ### Install and prepare the Discovery Agent
@@ -74,3 +84,13 @@ The following gives you a high-level overview of the required steps to connect a
 The following demonstrates how to connect an Axway API-Gateway V7 to AMPLIFY-Central.
 
 {{< youtube kugRyYVw5nI >}}
+
+## Role-based documentation
+
+Some of the content in the Connect API Manager documentation is of interest to a wide range of development and administrator professions. The following topics are organized by professional role and common task scenarios:
+
+* [Administer API Manager Gateway](/docs/central/connect-api-manager/gateway-administation/)
+
+* [Administer API Manager agent security](/docs/central/connect-api-manager/agent-security-api-manager/)
+
+* [Administer API Manager network traffic](/docs/central/connect-api-manager/network-traffic-apimanager/)

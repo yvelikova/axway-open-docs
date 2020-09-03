@@ -47,9 +47,9 @@ For additional logging information, see <https://docs.aws.amazon.com/apigateway/
 
 ## Minimum requirements
 
-An AMPLIFY Central Service Account. See [Create Service Account](/docs/central/connect-aws-gateway/prepare-amplify-central-1/#create-a-service-account).
-
-* API Key credentials on AWS. Allow for CLI access
+* An Axway AMPLIFY Central subscription in the AMPLIFY™ platform. See [Get started with AMPLIFY Central](/docs/central/quickstart/).
+* An AMPLIFY Central Service Account. See Create Service Account step below.
+* API Key credentials on AWS. Allow for CLI access.
 * Amazon CloudWatch Service
 * Amazon Simple Queue Service (AWS SQS)
 * AWS Lambda
@@ -57,12 +57,23 @@ An AMPLIFY Central Service Account. See [Create Service Account](/docs/central/c
 
 ## Connect AWS API Gateway to AMPLIFY Central quickstart
 
-### 1. Set up AMPLIFY Central
+### 1. Set up AMPLIFY Central service account
 
-* Set up a [Service Account](/docs/central/connect-aws-gateway/prepare-amplify-central-1/#create-a-service-account).
-* Create an [environment](/docs/central/connect-aws-gateway/prepare-amplify-central-1/#create-an-environment) object in AMPLIFY Central using either the UI, API or CLI.  
+* The agent will use a service account for the secure communication with the AMPLIFY platform
+* Generate a public/private key pair
+    ```
+    openssl genpkey -algorithm RSA -out ./private_key.pem -pkeyopt rsa_keygen_bits:2048
+    openssl rsa -pubout -in ./private_key.pem -out ./public_key.pem
+    ```
+* Create a new Service Account user in AMPLIFY Central using the `public_key.pem` from above. You may name this Service Account (for example, v7-Agent). For additional information, see [Create a service account](/docs/central/cli_central/cli_install/#create-a-service-account).
 
-### 2. Set up using AWS CloudFormation
+### 2. Set up AMPLIFY Central environment
+
+* Create an environment object in AMPLIFY Central that represents the effective AWS Gateway environment. Depending on your needs, you can create as many environments as required.
+* Each discovered API or Traffic is associated to this environment and eases the filtering.
+* Add your environment to AMPLIFY Central using either the [AMPLIFY Central CLI](/docs/central/cli_central/cli_environments/) or [the UI](/docs/central/mesh_management/add_env/#add-your-environment-to-amplify-central).
+
+### 3. Set up using AWS CloudFormation
 
 * Set up using the resources using [AWS CloudFormation](/docs/central/connect-aws-gateway/prepare-aws-api-gateway/#set-up-the-cloudformation)
 * Get the required templates at [https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/](<https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/>)
@@ -70,7 +81,7 @@ An AMPLIFY Central Service Account. See [Create Service Account](/docs/central/c
     * IAM configuration (apigw_iam_setup.yaml)
     * Discovery and Traceability resource configuration (apigw_cloudformation.yaml)  
 
-### 3. Create a Discovery Agent environment file
+### 4. Create a Discovery Agent environment file
 
 * Learn more about the [Discovery Agent](/docs/central/connect-aws-gateway/deploy-your-agents-1/#discovery-agent)
 
@@ -78,7 +89,7 @@ An AMPLIFY Central Service Account. See [Create Service Account](/docs/central/c
     * Pull the latest Docker image of the Discovery Agent
     * Start the Discovery Agent  
 
-### 4. Create a Traceability Agent environment file
+### 5. Create a Traceability Agent environment file
 
 * Learn more about the [Traceability Agent](/docs/central/connect-aws-gateway/deploy-your-agents-1/#traceability-agent)
 
