@@ -13,6 +13,7 @@ Before submitting this PR, please make sure:
 * [ ] You have verified the technical accuracy of your change
 * [ ] You have verified that your change does not expose any sensitive information (passwords, keys, etc.)
 * [ ] You have followed the [Markdown guidelines](https://axway-open-docs.netlify.com/docs/contribution_guidelines/writing_markdown/)  (unless this is is a Netlify CMS contribution)
+* [ ] You have verified that all status checks have passed
 
 _Put an x in the boxes that apply. If you're unsure about any of them, don't hesitate to ask. We're here to help! This is simply a reminder of what we are going to look for before merging your change._
 
@@ -22,6 +23,7 @@ _This section is to be filled out by project maintainers only._
 
 Before approving this PR, please make sure it:
 
+* [ ] Passes all status checks
 * [ ] Does not have conflicts with the base branch
 * [ ] Is clear and complete
 * [ ] Is believed to be accurate (technical accuracy to be checked with an SME for PRs originating from outside R&D)
