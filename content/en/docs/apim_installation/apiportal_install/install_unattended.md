@@ -52,7 +52,7 @@ To install the API Portal software in unattended mode:
    * `--hostname`: The hostname of API Portal. Used when SSL type `1` is selected.
    * `--restart-apache`: Accepts yY/nN. Indicates whether Apache restart is wanted after installation (when the apache service could be correctly detected; otherwise manual restart of Apache is required).
 
-To see the complete list of options that you can use during the installation, run the following command:
+You can also view this complete list of options by running the following command:
 
 ```
 .apiportal_install.sh --help
