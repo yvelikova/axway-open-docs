@@ -47,7 +47,7 @@ To set the number of days after which the logs will be deleted:
 
 The users of API Portal are able to request their data export or removal.
 
-* This feature is enabled by default. You can disable it by going to **Menus > Main menu > Data requests** and make sure the Status is set to **Unpublished**.
+* This feature is enabled by default. You can disable it by going to **Menus > Main menu > Data Request** and make sure the Status is set to **Unpublished**.
 
 The dashboard of privacy requests is located in the Joomla Privacy Component **Users > Privacy**. It provides a summary of the information requests for the website and a status of recommended actions to take. The request count module on the left is a summary of the information requests on a website. The health check module shows if there are any recommended actions to take. For example it will show you if there are any urgent requests (which are older then configurable amount of time under the **Options** button) or if the mail sending is disabled.
 
