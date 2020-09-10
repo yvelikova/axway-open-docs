@@ -46,7 +46,20 @@ Content scanning is still supported using the ICAP filter, which provides out-of
 
 <!-- Add features that are removed here -->
 
-To stay current and align our offerings with customer demand and best practices, Axway might discontinue support for some capabilities. As part of this review, no capabilities have been removed.
+To stay current and align our offerings with customer demand and best practices, Axway might discontinue support for some capabilities. As part of this review, the following features have been removed:
+
+### Run `update-apimanager.py` script to update API Manager
+
+The requirement to run `update-apimanager.py` has been removed from the [Upgrade steps - Single-node upgrade example](/docs/apim_installation/apigw_upgrade/upgrade_steps_extcass/).
+
+Updating API Manager is now carried out through any of the following procedures:
+
+* Applying the latest API Gateway update to an existing installation will update the API Manager `config` script. This running `config` can then be pulled into a Policy Studio project.
+* Policy Studio project upgrades. Importing an existing API Manager Policy Studio project will upgrade API Manager. The upgrade is also applied when creating a new project from an existing `fed` file.
+* API Manager `.fed` files can be upgraded using the [upgradeconfig](/docs/apim_installation/apigw_upgrade/upgrade_analytics#upgradeconfig-options) script.
+* The [projupgrade](/docs/apim_reference/devopstools_ref#projupgrade-command-options) script will apply API Manager updates to any existing projects.
+
+{{< alert title="Note" color="" >}} If deploying an earlier update, prior to September 20, it is still required to use the `update-apimanager.py` script.{{< /alert >}}
 
 ## Fixed issues
 
