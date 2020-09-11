@@ -59,6 +59,7 @@ The configuration of the AWS_QUEUENAME is not used in this mode.
 | LOG_FORMAT                                                         | The format to print log messages (json, line, package).                                                                                                                                                                                                                                                               |
 | LOG_OUTPUT                                                         | The output for the log lines (stdout, file, both).                                                                                                                                                                                                                                                                    |
 | LOG_PATH                                                           | The path (relative or absolute) to save logs files, if output type file or both.                                                                                                                                                                                                                                      |
+| LOG_MASKEDVALUES                                                   | Comma-separated list of keywords to identify within the agent config, which is used to mask its corresponding sensitive data. Keywords are matched by whole words and are case-sensitive.                                                                                                                                                                                                                                      |
 | AMPLIFY Central variables                                          |                                                                                                                                                                                                                                                                                                                       |
 | CENTRAL_URL                                                        | The URL to the AMPLIFY Central instance being used for this Discovery Agent.                                                                                                                                                                                                                                          |
 | CENTRAL_ORGANIZATIONID                                             | The Organization ID from AMPLIFY Central. Locate this at Platform > User > Organization.                                                                                                                                                                                                                              |
@@ -224,7 +225,8 @@ LOG_PATH=logs
    docker pull axway-docker-public-registry.bintray.io/agent/aws-apigw-discovery-agent:latest
    ```
 
-3. Start the Discovery Agent pointing to the `env_vars` file and the keys directory
+3. Start the Discovery Agent pointing to the `env_vars` file and the keys directory
+
     * Continuous Discovery mode
 
         ```
