@@ -60,7 +60,7 @@ command = "cd themes/docsy && git submodule update -f --init && cd ../.. && hugo
 
 [[redirects]]
   from = "/docs/streams/*"
-  to = "https://amplifystreams-open-docs.netlify.app/docs/streams/:splat"
+  to = "https://streams-open-docs.netlify.app/docs/streams/:splat"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
@@ -68,7 +68,7 @@ command = "cd themes/docsy && git submodule update -f --init && cd ../.. && hugo
 # for images
 [[redirects]]
   from = "/Images/streams/*"
-  to = "https://amplifystreams-open-docs.netlify.app/Images/streams/:splat"
+  to = "https://streams-open-docs.netlify.app/Images/streams/:splat"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
@@ -76,7 +76,7 @@ command = "cd themes/docsy && git submodule update -f --init && cd ../.. && hugo
 # for editing on Netlify CMS main page
 [[redirects]]
   from = "/admin/#/edit/streams/*"
-  to = "https://amplifystreams-open-docs.netlify.app/admin/#/edit/amplifystreams/:splat"
+  to = "https://streams-open-docs.netlify.app/admin/#/edit/amplifystreams/:splat"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
@@ -84,14 +84,14 @@ command = "cd themes/docsy && git submodule update -f --init && cd ../.. && hugo
 # for each collection
 [[redirects]]  
   from = "/admin/#/edit/publishers/*"
-  to = "https://amplifystreams-open-docs.netlify.app/admin/#/edit/publishers/:splat"
+  to = "https://streams-open-docs.netlify.app/admin/#/edit/publishers/:splat"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
 
   [[redirects]]  
   from = "/admin/#/edit/subscribers/*"
-  to = "https://amplifystreams-open-docs.netlify.app/admin/#/edit/subscribers/:splat"
+  to = "https://streams-open-docs.netlify.app/admin/#/edit/subscribers/:splat"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
