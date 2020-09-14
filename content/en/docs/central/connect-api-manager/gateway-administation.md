@@ -326,6 +326,8 @@ The log section defines how the agent is managing its logs.
 
 `path`: The path (relative to the agent binary or absolute) to save logs files, if output type file or both. Default value is relative path **logs**.
 
+`maskedValues` : Comma-separated list of keywords to identify within the agent config, which is used to mask its corresponding sensitive data. Keywords are matched by whole words and are case-sensitive. Displaying of agent config to the console requires that the log.level be at debug (level: debug)
+
 Once all data is gathered, this section should look like:
 
 ```yaml
@@ -334,6 +336,7 @@ log:
   format: json
   output: stdout
   path: logs
+  maskedValues: keyword1, keyword2, keyword3
 ```
 
 #### Validating your custom Discovery Agent configuration file
@@ -408,6 +411,7 @@ log:
   format: json
   output: stdout
   path: logs
+  maskedValues: keyword1, keyword2, keyword3
 ```
 
 ### Running the Discovery Agent
