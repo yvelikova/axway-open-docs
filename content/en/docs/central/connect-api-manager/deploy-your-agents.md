@@ -72,8 +72,8 @@ The containerized agent can run in the following mode:
     proxyApicIDField: apicId
     subscriptionApplicationField: subscriptions
     pollInterval: 30s
-    SSL:
-     INSECURESKIPVERIFY: true
+    ssl:
+     insecureSkipVerify: true
     auth:
      username: apiManagerUser
      password: apiManagerUserPassword
