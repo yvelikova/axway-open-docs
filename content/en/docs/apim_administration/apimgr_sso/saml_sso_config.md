@@ -124,6 +124,10 @@ The following restrictions apply to SSO users and SSO login:
 * `FQDN` is the FQDN of the machine where API Gateway is running, and `PORT` is the API Manager listening port (for example, `https://gateway.example.com:8075/api/portal/v1.3/sso/login/`).
 * If a user has already authenticated using SSO (for example, by previously logging in to Decision Insight), they must still use the SSO login URL for API Manager. If they are already authenticated, they are automatically redirected to the API Manager home page at `https://FQDN:PORT/home` and presented with a view appropriate to their API Manager role.
 
+{{% alert title="Note" %}}
+Use API version 1.4 to leverage the ability of a user having membership of multiple API Manager organizations.
+{{% /alert %}}
+
 ## Step 1 – Configure the IdP
 
 API Manager uses a certificate to sign SAML requests. The IdP requires the public key to verify the validity and provenance of the SAML requests from API Manager. To configure the IdP, you must import the public key to the IdP.
@@ -242,10 +246,12 @@ Perform the following steps in Policy Studio:
 7. Enter the following values to the additional headers table, and click **OK**:
    * `Content-Security-Policy`: `frame-ancestors 'none'`
    * `X-Frame-Options`: `DENY`
-8. Edit each of the servlets (`API Portal v1.2 (‘v1.2’)` and `API Portal v1.3 (‘v1.3’)`) as follows:
+8. Update the servlet to `API Portal v1.3 ('v1.3')`.
    * Edit the property `jersey.config.server.provider.classnames`. In the **Value** field add the class name `com.vordel.common.apiserver.filter.SSOBindingFeature` to the existing comma-separated list of class names.
    * Add a new property. In the **Name** field enter the name `CsrfProtectionFilterFactory.refererWhitelist` and in the **Value** field enter the URL of the IdP (for example, `https://sample_idp_host:8443`).
 9. Deploy the configuration to the API Manager-enabled API Gateway instance.
+
+{{% alert title="Note" %}}Update the servlet to `API Portal v1.4 ('v1.4')` to leverage the ability of a user having membership of multiple API Manager organizations.{{< /alert >}}
 
 ## Step 4 – Configure SAML endpoint URLs in the IdP
 
@@ -258,8 +264,9 @@ You must configure the SAML endpoints of API Manager in your IdP. Consult the do
 | **Logout Service POST Binding URL**                 | `https://<your_API Manager_host_FQDN>:8075/api/portal/v1.3/sso/logout/post` |
 | **Logout Service Redirect Binding URL**             | `https://<your_API Manager_host_FQDN>:8075/api/portal/v1.3/sso/logout/post` |
 
-{{< alert title="Note" color="primary" >}}If you are also configuring SSO for API Portal, you must configure the endpoint URLs separately for both API Manager and API Portal. For more details, see
-[Configure API Portal single sign-on](/docs/apim_administration/apiportal_sso/sso_config/).{{< /alert >}}
+* If you are also configuring SSO for API Portal, you must configure the endpoint URLs separately for both API Manager and API Portal. For more details, see
+[Configure API Portal single sign-on](/docs/apim_administration/apiportal_sso/sso_config/).
+* For API Manager endpoint URLs, use the version of the API as specified previously in the servlet properties.
 
 ## Step 5 – Configure the SSO cookie domain name (optional)
 
