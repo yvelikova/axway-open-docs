@@ -101,6 +101,7 @@ The containerized agent can run in the following mode:
     format: json
     output: stdout
     path: logs
+    maskedValues: keyword1, keyword2, keyword3
    ```
 
    * The value for *team* can be found in [AMPLIFY Central > Access > Teams](https://apicentral.axway.com/access/teams/).
