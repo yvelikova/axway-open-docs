@@ -488,7 +488,7 @@ To install the update on your existing API Gateway Analytics 7.7 installation, p
 3. Remove old JRE versions by deleting the following directories:
 
    ```
-   INSTALL_DIR/apigateway/platform/jre
+   INSTALL_DIR/analytics/platform/jre
    ```
 4. Verify the owners of API Gateway binaries before extracting the update.
 
