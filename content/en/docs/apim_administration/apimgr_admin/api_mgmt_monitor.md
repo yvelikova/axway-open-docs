@@ -84,6 +84,9 @@ In both the **API Usage** and **Application Usage** views, you can use the **F
 
 You can select a date interval instead of the default value of **Today** (for example, **Last 7 days**, **Last 30 days**, or a custom date range).
 
+* **Today** and **Specify date/time**: Returns data from the current day up to the last interval processed.
+* All other date intervals: Return full days, but only up to the end of yesterday. It does not include data from today.
+
 You must click **Apply** or **Reset** to update the metrics graph and table on the right.
 
 ### APIs and methods
