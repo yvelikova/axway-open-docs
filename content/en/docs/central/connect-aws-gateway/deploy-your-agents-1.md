@@ -272,6 +272,7 @@ The Traceability Agent is used to filter the AWS CloudWatch logs that are relate
 | LOG_PATH                       | LOG_PATH                                                                                                                                                                                                                                                                                                              |
 | LOGSTASH_URL                   | The URL of the logstash to forward the transaction log entries. Default value is ingestion-lumberjack.beta.trcblt.com:453                                                                                                                                                                                             |
 | CENTRAL_ORGANIZATIONID         | The Organization ID from AMPLIFY Central. Locate this ID in the Platform > Organization > Org ID.                                                                                                                                                                                                                     |
+| CENTRAL_TEAM                                                       | The name of the team in AMPLIFY Central that all API traffic events will be linked to. Locate this at AMPLIFY Central > Access > Team Assets.                                                                                                                                                                                       |
 | CENTRAL_DEPLOYMENT             | The APIC deployment environment.                                                                                                                                                                                                                                                                                      |
 | CENTRAL_ENVIRONMENTID          | The unique character string that identifies your monitoring environment. e4e0810XXXXXXXXX                                                                                                                                                                                                                             |
 | CENTRAL_AUTH_URL               | The AMPLIFY login URL: <https://login.axway.com/auth>                                                                                                                                                                                                                                                                 |
@@ -302,6 +303,7 @@ AWS_AUTH_SECRETKEY=<YOUR AWS SECRET KEY HERE>
 #AMPLIFY Central connectivity
 # organisation config:
 CENTRAL_ORGANIZATIONID=<YOUR ORGANIZATION ID>
+CENTRAL_TEAM=<THE TEAM NAME>
 CENTRAL_ENVIRONMENT=<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>
 CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
 
