@@ -64,8 +64,6 @@ This section describes the options to configure API Portal with HTTP or HTTPS.
 
 If you choose not to configure SSL/TLS, API Portal runs with plain HTTP.
 
-{{< alert title="Caution" color="warning" >}}This option increases the risk of security vulnerabilities. {{< /alert >}}
-
 #### Run API Portal with HTTPS
 
 If you choose to configure SSL/TLS, API Portal runs with HTTPS and you can choose one of the following options:
@@ -75,8 +73,12 @@ If you choose to configure SSL/TLS, API Portal runs with HTTPS and you can choos
    * The installation prompts you for the path to a certificate and private key.
    * It checks whether the private key is generated with a passphrase. If it is, the script prompts you for the passphrase and a path to store it. The last segment of the passphrase path is the file name. For example, if you enter `/home/passphrase`, the passphrase is stored in a file with the name `passphrase` in the `/home` directory.
    * It prompts you for the host name.
-2. API Portal is configured to run with HTTPS using the provided certificate and key.
-3. Self-signed certificate: The installation generates a self-signed certificate and API Portal is configured to run with HTTPS using the self signed certificate.
+   * API Portal is configured to run with HTTPS using the provided certificate and key.
+2. Self-signed certificate:
+
+   * The installation generates a self-signed certificate and API Portal is configured to run with HTTPS using the self signed certificate.
+
+{{< alert title="Caution" color="warning" >}}Both HTTP and HTTPS with self-signed certificate increase the risk of security vulnerabilities, so they should not be used in production environments.  {{< /alert >}}
 
 To complete the HTTP/HTTPS configuration, you must restart Apache. The installation script tries to detect the Apache service and prompts you to restart it. If the script cannot detect Apache you must manually restart Apache.
 
