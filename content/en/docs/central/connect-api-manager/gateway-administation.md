@@ -119,7 +119,7 @@ This section connects the agent to API Manager and determines which APIs should 
 
 `pollInterval`: The frequency in which API Manager is polled for new endpoints. Default value is 30s.
 
-`allowApplicationAutoCreation` (optional): When creating a subscription on AMPLIFY Central, setting this value to true will enable a selection in the App name dropdown for 'Create an application.' This allows the user to either select from an existing API Manager application, or to create a new application in API Manager, with the name as supplied for the subscription name. A value of false will cause 'Create an application' to not be shown in the dropdown. Default value is **false**.
+`allowApplicationAutoCreation` (optional): When creating a subscription on AMPLIFY Central, setting this value to true will enable a selection in the App name dropdown for 'Create an application.' This allows the user to either select from an existing API Manager application, or to create a new application in API Manager. The new application in API Manager will be given the name of the subscription ID from AMPLIFY Central. A value of false will cause 'Create an application' to not be shown in the dropdown. Default value is **false**.
 
 `auth.username`: An API Manager user the agent will use to connect to the API Manager. This user must have either the “API Manager Administrator” or “Organization administrator” role. Based on the role of this user, the agent is able to:
 
