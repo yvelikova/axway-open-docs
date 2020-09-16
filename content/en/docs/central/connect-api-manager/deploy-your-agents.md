@@ -235,6 +235,7 @@ To install the binary Traceability Agent:
       central:
        url: https://apicentral.axway.com
        organizationID: 68794y2
+       team: Dev
        deployment: prod
        environment: my-v7-env
        auth:
