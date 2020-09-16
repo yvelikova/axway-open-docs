@@ -24,6 +24,23 @@ It is important, especially when upgrading from an earlier version, to be aware 
 
 <!-- Use this section to describe any changes in the behavior of the product (as a result of features or fixes), for example, new Java system properties in the jvm.xml file. This section could also be used for any important information that doesn't fit elsewhere. -->
 
+### OpenJDK JRE update to v8u265
+
+API Gateway 7.7 and API Manager 7.7 support OpenJDK JRE, and this release includes Zulu OpenJDK v8u265.
+
+OpenJDK v8u265 searchs for wildcard certificates. If the wildcarded domain is a top-level domain under which names can be registered, then a wildcard is not allowed. Matching approach has not changed for the second-level and lower-level domain names. In case you have certificates with wildcards characters in top-level domain you must recreate them with proper top-level domain names.
+
+Examples of matching domain names:
+
+```javascript
+SubjectAlternativeName [
+ DNSName: *.com     // will match e.g. 'google.com'
+ DNSName: *.*.com   // will match e.g. 'mail.google.com'
+ DNSName: *         // no longer match 'abc'
+ DNSName: abc.*     // no longer match 'abc.com'
+ ]
+```
+
 ## Deprecated features
 
 <!-- Add features that are deprecated here -->
@@ -72,6 +89,10 @@ This version of API Gateway and API Manager includes:
 
 <!-- Add  here -->
 
+| Internal ID | Case ID | Cve Identifier | Description                                                                 |
+| ----------- | ------- | ------- |--------------------------------------------------------------------------- |
+|RDAPI-20951||CVE-2020-14621 CVE-2020-14556 CVE-2019-17359|**Issue**:  API Gateway included Zulu OpenJDK v8u242, which has a number of vulnerabilities including CVE-2020-14621. API Gateway included Bouncy Castle library version 1.60 which contained CVE-2019-17359 vulnerability. **Resolution**: API Gateway now includes Zulu OpenJDK v8u265 and Bouncy Castle library version 1.66 and is no longer vulnerable.|
+
 ### Other fixed issues
 
 <!-- Add  here -->
@@ -82,56 +103,56 @@ The following are known issues for this update.
 
 <!-- Review table below, it's a copy from July 20 release -->
 
-| Internal ID | Description                                                                                                                                                        |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| RDAPI-11143 | Discrepancy with API retirement dates.                                                                                                                             |
-| RDAPI-15981 | Scopes fields for API Key remain visible even if Application Scopes are disabled.                                                                                   |
+| Internal ID | Description                                                                                                                                                    |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| RDAPI-11143 | Discrepancy with API retirement dates.                                                                                                                         |
+| RDAPI-15981 | Scopes fields for API Key remain visible even if Application Scopes are disabled.                                                                              |
 | RDAPI-16486 | Changes in the mapper always require a reload in the Execute Data Maps filter and when reloaded providing values for the required parameters must be repeated. |
-| RDAPI-17282 | Connector for Salesforce APIs in API Manager does not work or is impossible to configure.                                                                            |
-| RDAPI-18198 | CORS preflight fails for WSDL based API Manager APIs, and Try-it fails.                                                                                            |
-| RDAPI-18332 | Try-it for API-Method is not working.                                                                                                                             |
-| RDAPI-18431 | HTTP 409 Resource already exists in Applications - External Credentials.                                                                                            |
-| RDAPI-18523 | Inconsistent application search behavior relating to application sharing.                                                                                          |
-| RDAPI-18674 | Insufficient data validation when importing an Application.                                                                                                         |
-| RDAPI-18777 | Overriding the quota for an application and then removing the setting causes incorrect behavior.                                                                   |
-| RDAPI-18986 | `projpack` is unable to merge projects after `projupgrade`; likely due to default API Manager policies.                                                                  |
-| RDAPI-18990 | `Failed to delete undefined` appears unexpectedly when attempting to delete application.                                                                      |
-| RDAPI-19006 | Delete API `not found` after changing Application Org.                                                                                                              |
-| RDAPI-19132 | Issue with selection of Retirement date when deprecating API.                                                                                                       |
-| RDAPI-19150 | Try-it in API Manager only shows first 10 API keys.                                                                                                                   |
-| RDAPI-19240 | Users in pending approval state are visible in the Sharing tab.                                                                                                   |
-| RDAPI-19262 | X-Rate-Limit header shows inconsistent values in a multi-node Manager environment.                                                                                  |
-| RDAPI-19278 | API access removed from app during org migration.                                                                                                                   |
-| RDAPI-19292 | When an API Manager admin user's login name is changed, the user is directed to a blank page.                                                                              |
-| RDAPI-19293 | API Catalog Try-it shows only the first security device of a security profile.                                                                                      |
-| RDAPI-19354 | Issue with back-end API import regarding Duplicate parameters value.                                                                                                 |
-| RDAPI-19433 | Line breaks in outbound parameter (type header) value not escaped.                                                                                                  |
-| RDAPI-19442 | Saving Mode Stuck for the Application Creation in different session.                                                                                                |
-| RDAPI-19453 | Uploading an invalid image type when creating an Application leads to an internal server error.                                                                     |
-| RDAPI-19580 | Trial option in the Organization does not work.                                                                                                                     |
-| RDAPI-19586 | Retired API appears as published in Catalog.                                                                                                                      |
-| RDAPI-19601 | Sharing section of Application issue when Organization of application changed.                                                                                      |
-| RDAPI-19787 | Custom filter jabber sample missing but mentioned in docs.                                                                                                          |
-| RDAPI-19788 | Issue with pagination across multiple sections.                                                                                                                     |
-| RDAPI-19833 | Okta SSO integration and email mapping.                                                                                                                             |
-| RDAPI-19849 | OAuth2 Client Credential cache not considering the scope or user.                                                                                                      |
-| RDAPI-19915 | Update minimum system requirements in regards to cassandra production use.                                                                                                |
-| RDAPI-19971 | nodemanager pid file is created with permissions that are too restrictive.                                                                                          |
-| RDAPI-20091 | In Policy Studio, when importing a policy fragment, deselected items are imported anyway.                                                                           |
-| RDAPI-20127 | Selector `${content.body.getJSON().get(0)}` not working.                                                                                                              |
-| RDAPI-20255 | Application Quota not promoted by `apimanger-promote`.                                                                                                                |
-| RDAPI-20294 | Authorization code flow with OpenID produces invalid query string as response.                                                                                      |
-| RDAPI-20464 | PolicyStudio deployment errors (WSDL) after applying March 20 release.                                                                                                 |
-| RDAPI-20474 | Swagger file size limit.                                                                                                                                            |
-| RDAPI-20480 | Swagger enum query parameters not validated.                                                                                                                        |
-| RDAPI-20526 | Groovy bug GROOVY-6975.                                                                                                                                             |
-| RDAPI-20594 | When a token is revoked with an incorrect Authorization header, the response is 400 instead of 401.                                                                 |
-| RDAPI-20919 | Add timeout type and origin in trace message.                                                                                                                           |
-| RDAPI-20921 | Incorrect `Bad encoding for integer value` errors reported during sysupgrade.                                                                                       |
-| RDAPI-20923 | API Manager application selection is broken.                                                                                                                        |
-| RDAPI-20925 | Defect OAS3: API Manager lacks free-form parameter support.                                                                                                                |
-| RDAPI-21030 | API Manager ignores `dont.expect.100.continue` flag if the Outbound Security is HTTP Basic.                                                                           |
-| RDAPI-21171 | Minor UI issue affecting pagination in API keys and Oauth client credentials.                                                                                       |
+| RDAPI-17282 | Connector for Salesforce APIs in API Manager does not work or is impossible to configure.                                                                      |
+| RDAPI-18198 | CORS preflight fails for WSDL based API Manager APIs, and Try-it fails.                                                                                        |
+| RDAPI-18332 | Try-it for API-Method is not working.                                                                                                                          |
+| RDAPI-18431 | HTTP 409 Resource already exists in Applications - External Credentials.                                                                                       |
+| RDAPI-18523 | Inconsistent application search behavior relating to application sharing.                                                                                      |
+| RDAPI-18674 | Insufficient data validation when importing an Application.                                                                                                    |
+| RDAPI-18777 | Overriding the quota for an application and then removing the setting causes incorrect behavior.                                                               |
+| RDAPI-18986 | `projpack` is unable to merge projects after `projupgrade`; likely due to default API Manager policies.                                                        |
+| RDAPI-18990 | `Failed to delete undefined` appears unexpectedly when attempting to delete application.                                                                       |
+| RDAPI-19006 | Delete API `not found` after changing Application Org.                                                                                                         |
+| RDAPI-19132 | Issue with selection of Retirement date when deprecating API.                                                                                                  |
+| RDAPI-19150 | Try-it in API Manager only shows first 10 API keys.                                                                                                            |
+| RDAPI-19240 | Users in pending approval state are visible in the Sharing tab.                                                                                                |
+| RDAPI-19262 | X-Rate-Limit header shows inconsistent values in a multi-node Manager environment.                                                                             |
+| RDAPI-19278 | API access removed from app during org migration.                                                                                                              |
+| RDAPI-19292 | When an API Manager admin user's login name is changed, the user is directed to a blank page.                                                                  |
+| RDAPI-19293 | API Catalog Try-it shows only the first security device of a security profile.                                                                                 |
+| RDAPI-19354 | Issue with back-end API import regarding Duplicate parameters value.                                                                                           |
+| RDAPI-19433 | Line breaks in outbound parameter (type header) value not escaped.                                                                                             |
+| RDAPI-19442 | Saving Mode Stuck for the Application Creation in different session.                                                                                           |
+| RDAPI-19453 | Uploading an invalid image type when creating an Application leads to an internal server error.                                                                |
+| RDAPI-19580 | Trial option in the Organization does not work.                                                                                                                |
+| RDAPI-19586 | Retired API appears as published in Catalog.                                                                                                                   |
+| RDAPI-19601 | Sharing section of Application issue when Organization of application changed.                                                                                 |
+| RDAPI-19787 | Custom filter jabber sample missing but mentioned in docs.                                                                                                     |
+| RDAPI-19788 | Issue with pagination across multiple sections.                                                                                                                |
+| RDAPI-19833 | Okta SSO integration and email mapping.                                                                                                                        |
+| RDAPI-19849 | OAuth2 Client Credential cache not considering the scope or user.                                                                                              |
+| RDAPI-19915 | Update minimum system requirements in regards to cassandra production use.                                                                                     |
+| RDAPI-19971 | nodemanager pid file is created with permissions that are too restrictive.                                                                                     |
+| RDAPI-20091 | In Policy Studio, when importing a policy fragment, deselected items are imported anyway.                                                                      |
+| RDAPI-20127 | Selector `${content.body.getJSON().get(0)}` not working.                                                                                                       |
+| RDAPI-20255 | Application Quota not promoted by `apimanger-promote`.                                                                                                         |
+| RDAPI-20294 | Authorization code flow with OpenID produces invalid query string as response.                                                                                 |
+| RDAPI-20464 | PolicyStudio deployment errors (WSDL) after applying March 20 release.                                                                                         |
+| RDAPI-20474 | Swagger file size limit.                                                                                                                                       |
+| RDAPI-20480 | Swagger enum query parameters not validated.                                                                                                                   |
+| RDAPI-20526 | Groovy bug GROOVY-6975.                                                                                                                                        |
+| RDAPI-20594 | When a token is revoked with an incorrect Authorization header, the response is 400 instead of 401.                                                            |
+| RDAPI-20919 | Add timeout type and origin in trace message.                                                                                                                  |
+| RDAPI-20921 | Incorrect `Bad encoding for integer value` errors reported during sysupgrade.                                                                                  |
+| RDAPI-20923 | API Manager application selection is broken.                                                                                                                   |
+| RDAPI-20925 | Defect OAS3: API Manager lacks free-form parameter support.                                                                                                    |
+| RDAPI-21030 | API Manager ignores `dont.expect.100.continue` flag if the Outbound Security is HTTP Basic.                                                                    |
+| RDAPI-21171 | Minor UI issue affecting pagination in API keys and Oauth client credentials.                                                                                  |
 
 ### Policy Studio help documentation
 
