@@ -14,7 +14,13 @@ Docker deployment is supported on Linux. For a summary of the system requirement
 
 ## New features and enhancements
 
-No new features and enhancements are available in this update.
+### Users membership to multiple organizations
+
+API Manager enables user membership to multiple organizations with different roles for each organization the user is a member of. For details on managing users, see [Manage users](/docs/apim_administration/apimgr_admin/api_mgmt_admin/#manage-users).
+
+When you delete an organization, its associated applications are also deleted.
+
+When you delete the primary organization of a user, the user’s account is also deleted; otherwise, only the membership of the user with the deleted organization is removed. For details on managing organizations, see [Manage organizations](/docs/apim_administration/apimgr_admin/api_mgmt_admin/#manage-organizations).
 
 <!-- Add the new features here -->
 
