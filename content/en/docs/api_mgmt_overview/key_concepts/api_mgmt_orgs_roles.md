@@ -1,9 +1,9 @@
 {
-    "title": "API management user roles",
-    "linkTitle": "User roles",
-    "weight": "5",
-    "date": "2019-09-17",
-    "description": "Learn about the API administrator, organization administrator, and API consumer roles in API management."
+"title": "API management user roles",
+  "linkTitle": "User roles",
+  "weight": "5",
+  "date": "2019-09-17",
+  "description": "Learn about the API administrator, organization administrator, and API consumer roles in API management."
 }
 
 ## API Gateway user roles
@@ -86,13 +86,13 @@ API administrator
 : The API administrator has full access to API Manager, and can create, read, update, and delete organizations, users, and applications. The API administrator has management responsibility for applications and users. When users are being registered, the API administrator can approve or reject new users.
 : Users can create applications, but they must first be approved by the API administrator. If users want to request access to another API for an approved application, the API access must also be approved. User and application management can be automatically approved. In addition, the API administrator can delegate the user and application management responsibility to organization administrators. But only the API administrator can edit quotas.
 
-Organization administrator
-: The organization administrator has full read access to users and applications in their organization. If application management is delegated, they can also create, update, and delete. The organization administrator can monitor all applications in their organization. They also have the same permissions as API consumers or application developer users.
-
 API consumer
 : The API consumer can create, read, update, and delete their applications. They can also give shared access to other users, granting permissions to view and monitor, or full access. If auto-approval is disabled, the user must wait for approval for new applications from the API administrator, or organization administrator if they have been delegated management responsibility. A user has full read access to all other users in the organization.
 
-## API administrators
+Organization Administrator
+: The organization administrator has full read access to users and applications in their organization. If application management is delegated, they can also create, update, and delete. The organization administrator can monitor all applications in their organization. They also have the same permissions as API consumers or application developer users.
+
+### API Administrators
 
 API administrators use API Manager to administer the managed APIs that are exposed to API consumers. The API administrator is a business or operational role who understands the business capability of the APIs, which clients want to access them, and for what reasons. The API administrator does not necessarily have deep knowledge of the API Gateway, and is not familiar with the Policy Studio developer tool.
 
@@ -104,7 +104,7 @@ The API administrator role is responsible for API Manager. This role manages and
 * Managing API quotas—system-level and client application-level quotas
 * Monitoring and reporting on API usage
 
-### Applications
+## Applications
 
 Applications invoke the virtualized APIs exposed by the API Gateway. Applications are registered by API consumers or by the API administrator using API Manager. Application authentication credentials are also defined and managed this way. Application entitlements determine which APIs the application is authorized to access and the quota management (throttling rate) for each API. Entitlements are determined by the organization that the application is part of, and any application-specific entitlements. Application entitlements are managed by the API administrator using API Manager.
 
