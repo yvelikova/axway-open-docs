@@ -489,6 +489,13 @@ cd /home/APIC-agents
 sudo ./discovery_agent service enable
 ```
 
+To get the name of the service:
+
+```shell
+cd /home/APIC-agents
+sudo ./discovery_agent service name
+```
+
 To uninstall the service from the machine:
 
 ```shell
@@ -1021,6 +1028,13 @@ To enable the service to start when the machine starts:
 ```shell
 cd /home/APIC-agents
 sudo ./traceability_agent service enable
+```
+
+To get the name of the service:
+
+```shell
+cd /home/APIC-agents
+sudo ./traceability_agent service name
 ```
 
 To uninstall the service from the machine:
