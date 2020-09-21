@@ -243,6 +243,7 @@ Policies
 | ------ | --------------- | ---------------------- | ----------------------------------------------------------------------------------- |
 | Allow  | sqs:GetQueueUrl | Traceability Queue ARN | This policy is needed so the Traceability Lambda can connect to an SQS Queue        |
 | Allow  | sqs:SendMessage | Traceability Queue ARN | This policy is needed so the Traceability Lambda can write messages to an SQS Queue |
+| Allow  | apigateway:GET/usageplans| All Usage Plans| This policy is needed so the Traceability Lambda can find the Usage Plan used in the transaction to add to the message for the agent |
 
 ##### TraceabilityAPIGWCWIAMRole
 
