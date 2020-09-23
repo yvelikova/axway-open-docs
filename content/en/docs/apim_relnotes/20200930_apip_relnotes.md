@@ -25,7 +25,9 @@ API Portal is available as a software installation or a virtualized deployment i
 This update has the following limitations:
 
 * API Portal 7.7.20200930 is compatible with API Gateway and API Manager 7.7.20200930 only.
-* Upgrade to API Portal 7.7.20200930 is supported from API Portal 7.7.x only. You can use the [cumulative upgrade script](/docs/apim_installation/apiportal_install/upgrade_automatic/#upgrade-api-portal-using-the-cumulative-upgrade-script) to upgrade directly from earlier versions (for example, 7.5.5, 7.6.2) to API Portal 7.7 September, or see [API Portal single version upgrade](/docs/apim_installation/apiportal_install/upgrade_automatic/#upgrade-from-api-portal-7-6-2) to upgrade versions incrementally.
+* Upgrade directly to API Portal 7.7.20200930 is supported from [API Portal 7.7](/docs/apim_relnotes/201904_release/apip_relnotes/) only.
+* To upgrade from earlier versions (for example, 7.5.5, 7.6.2) you must first upgrade to API Portal 7.7. For more information see [API Portal single version upgrade](/docs/apim_installation/apiportal_install/upgrade_automatic/#upgrade-from-api-portal-7-6-2) to upgrade versions incrementally.
+* You can use the [cumulative upgrade script](/docs/apim_installation/apiportal_install/upgrade_automatic/#upgrade-api-portal-using-the-cumulative-upgrade-script) to upgrade directly from earlier versions (for example, 7.5.5, 7.6.2) to API Portal [7.7 July](/docs/apim_relnotes/20200730_apip_relnotes/), then apply this upgrade package to update your API Portal to the September release.
 * The ready-made API Portal Docker image 7.7.20200730 is strictly for development environments only, and it is not recommended for use in production environments.
 
     It is not recommended to use the image in production environments because the image is built with CentOS as a base OS, and our Axway security scans have detected multiple security concerns with this OS. We continue to monitor the latest versions of this base OS to determine if these issues have been resolved, but until we can ship a hardened image that passes our security concerns, we cannot advise customers to use this image in a production environment. A Docker image for production use is already planned in the [API Portal 2020 roadmap](https://community.axway.com/s/api-portal).
@@ -53,11 +55,21 @@ This version of API Portal includes:
 
 ### Fixed security vulnerabilities
 
-<!-- Add security vulnerabilities here -->
+| Internal ID | Case ID | CVE Identifier | Description                                                                                                                                                                                                                                                                                                                                                                           |
+| ----------- | ------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| IAP-3188    |         |                | **Issue**: Audit log and its exporting functionality was missing. **Resolution**: API Portal now has rich audit log, which can be exported to a file or email to the requester. |
+| IAP-3171    |         |                | **Issue**: Documentation was not raising the awareness about the risk of using self-signed certificate in production. **Resolution**: Documentation about HTTPS connection with self-signed certificate was updated. For more info see [Configure API Portal to run with HTTP or HTTPS](/docs/apim_installation/apiportal_install/install_software/#configure-api-portal-to-run-with-http-or-https). |
+| IAP-1933    |         |                | **Issue**: API Portal does not officially support 2FA. **Resolution**: Official support of 2FA was added on both admin and site sections.      |
+| IAP-3186    |         |                | **Issue**: A privacy communication channel for requesting export or removal of user data was missing. **Resolution**: A privacy communication channel for requesting export or removal of user data is supported in API Portal. For more information see, [Manage privacy and personal data](/docs/apim_administration/apiportal_admin/manage_privacy_personal_data/).       |
 
 ### Other fixed issues
 
-<!-- Add fixed issues here -->
+| Internal ID | Case ID | Description                                                                                                                                                                                                                                                                                                                                            |
+| ----------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| IAP-3388    | 1173080 | **Issue**: Control buttons for removing array items in Swagger UI were appearing on a new line. **Resolution**: The controls now appear next to the array item.                                                                                                                                                                                        |
+| IAP-3426    | 1152559 | **Issue**: When "Use client registry" is enabled for inbound security Invoke Policy and the download of WSDL is started from API Portal, a `500` error is displayed without any information. **Resolution**: The information is logged to API Portal log file. Further UI and UX improvements will be done once the root cause problem is fixed on API Manager side. |
+| IAP-3517    | 1188465 | **Issue**: In API Portal all header names sent along with Try-It requests are Pascal-Case, but when there is no dash, like in KeyId, the transformation results to Keyid. **Resolution**: Headers are Pascal-Case only if there is a dash.                                                                                         |
+| IAP-3518    |         | **Issue**: Manual password is not set when org admins create users because of invalid password argument passed. **Resolution**: Correct password argument is passed.                                                                                                                                                                                       |
 
 ## Known issues
 
