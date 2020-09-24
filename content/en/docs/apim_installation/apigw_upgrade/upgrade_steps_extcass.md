@@ -300,13 +300,7 @@ cd /opt/Axway-7.7/apigateway/upgrade/bin
 
 `sysupgrade` is now complete on all nodes. All the API Gateway 7.7 processes are running on all nodes in the topology.
 
-### Step 6 - Run `update-apimanager` on each API Manager node
-
-If API Manager is installed, follow the steps in [Run update-apimanager](#run-update-apimanager).
-
-### Step 7 - Verify the multi-node upgrade
-
-Verify the upgrade as detailed in [Verify the upgrade](#verify-the-upgrade).
+### Step 6 - Verify the multi-node upgrade
 
 For the sample topology you can also perform the following checks to verify the API Manager upgrade:
 

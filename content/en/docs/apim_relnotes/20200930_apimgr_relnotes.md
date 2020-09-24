@@ -30,6 +30,16 @@ It is important, especially when upgrading from an earlier version, to be aware 
 
 <!-- Use this section to describe any changes in the behavior of the product (as a result of features or fixes), for example, new Java system properties in the jvm.xml file. This section could also be used for any important information that doesn't fit elsewhere. -->
 
+### Improvements to the update process
+
+This update introduces configuration changes during the application of the update. After applying this update, any configuration fragments and FED files will need to be upgraded to be compatible with the September 20 release. There is a new mechanism in place that checks the compatibility of configuration fragments and FED files, and prevents older versions from being deployed and used in error. For example, after applying this update you will not be able to export a configuration fragment or FED file and deploy it to a gateway running the [July update](/docs/apim_relnotes/20200730_apimgr_relnotes/). Any attempt to do so will produce the following error:
+
+```
+Version mismatch error: API Gateway has version 7.7.20200930, new configuration has version 7.7.0.
+```
+
+Existing configuration fragments, FED files, Policy Studio projects, and configuration stored in SCM can all be [upgraded](/docs/apim_policydev/apigw_poldev/general_import/#upgrade-configuration-from-an-earlier-version) to be compatible with this release. After they are upgraded, configuration and files exported will not be compatible with older updates, so it is recommended to back up these files before upgrade in case you want to use them in an older update.
+
 ### OpenJDK JRE update to v8u265
 
 API Gateway 7.7 and API Manager 7.7 support OpenJDK JRE, and this release includes Zulu OpenJDK v8u265.
@@ -98,8 +108,8 @@ The requirement to run `update-apimanager.py` has been removed from the [Upgrade
 Updating API Manager is now carried out through any of the following procedures:
 
 * Applying the latest API Gateway update to an existing installation will update the API Manager `config` script. This running `config` can then be pulled into a Policy Studio project.
-* Policy Studio project upgrades. Importing an existing API Manager Policy Studio project will upgrade API Manager. The upgrade is also applied when creating a new project from an existing `fed` file.
-* API Manager `.fed` files can be upgraded using the [upgradeconfig](/docs/apim_installation/apigw_upgrade/upgrade_analytics#upgradeconfig-options) script.
+* Policy Studio project upgrades. Importing an existing API Manager Policy Studio project will upgrade API Manager. The upgrade is also applied when creating a new project from an existing FED file.
+* API Manager FED files can be upgraded using the [upgradeconfig](/docs/apim_installation/apigw_upgrade/upgrade_analytics#upgradeconfig-options) script.
 * The [projupgrade](/docs/apim_reference/devopstools_ref#projupgrade-command-options) script will apply API Manager updates to any existing projects.
 
 {{< alert title="Note" color="" >}} If deploying an earlier update, prior to September 20, it is still required to use the `update-apimanager.py` script.{{< /alert >}}
@@ -451,18 +461,18 @@ When API Manager is installed, you must run the `update-apimanager` script after
 
 ## Update a container deployment
 
-If a `fed` file is provided as part of building the API Manager container, you must follow these steps to update the `fed` with the configuration changes:
+If a FED file is provided as part of building the API Manager container, you must follow these steps to update the FED with the configuration changes:
 
 1. Install the update on a installation of the API Gateway.
 2. Run the following command:
 
    ```
-   /opt/Axway-7.7/apigateway/posix/bin/update-apimanager --fed <path to old file>.fed --oa <path to update file>.fed
+   /opt/Axway-7.7/apigateway/posix/bin/update-apimanager --fed <path to old file>FED --oa <path to update file>FED
    ```
 
 You do not need to run any API Manager instances.
 
-The `fed` now contains the updates for the API Manager configuration and can be used to build containers.
+The FED now contains the updates for the API Manager configuration and can be used to build containers.
 
 ## Documentation
 
