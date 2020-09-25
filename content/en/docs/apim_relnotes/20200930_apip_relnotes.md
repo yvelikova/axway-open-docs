@@ -18,7 +18,24 @@ API Portal is available as a software installation or a virtualized deployment i
 
 ## New features and enhancements
 
-<!-- Add the new features here -->
+### Multiple organizations membership
+
+Building on the support now added in API Manager for a user being a member of multiple organizations, the user profile in API Portal will reflect all of their organization memberships, and the user will be able to see all APIs and all applications from all organizations that they are a member of. For more information, see [Users membership to multiple organizations](/docs/apim_relnotes/20200930_apimgr_relnotes/).
+
+### GDPR compliance
+
+Users can request a copy of their API Portal and Joomla! data to be sent to a nominated email address. They can also request that their data is deleted from API Portal and Joomla!, including data recorded in audit logs. For more information, see [Manage privacy and personal data](/docs/apim_administration/apiportal_admin/manage_privacy_personal_data/).
+
+### Security
+
+Users can enable [two-factor authentication](/docs/apim_installation/apiportal_install/secure_harden_portal/#enable-two-factor-authentication) (2FA) for both API Portal website and Joomla! Administrator Interface.
+
+### UI/UX improvements
+
+User interface (UI) and user experience (UX) improvements in this release:
+
+* You can search APIs by **custom properties** in the API catalog.​
+* Date and time are displayed in the users time zone.
 
 ## Limitations of this update
 
