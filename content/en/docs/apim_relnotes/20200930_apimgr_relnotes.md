@@ -105,6 +105,80 @@ The sFTP server currently supports:
 * **Key exchange**: `ecdh-sha2-nistp256`, `ecdh-sha2-nistp384`, `ecdh-sha2-nistp521`, `diffie-hellman-group-exchange-sha256`
 * **Compressions**: `none`, `zlib`, `zlib@openssh.com`
 
+### Groovy v2.5.13
+
+The Groovy version used by the Scripting Filter is updated to 2.5.13.
+
+### Filebeat v6.2.2
+
+This update uses Filebeat v6.2.2. Before installing this update, you must delete the Filebeat folder  `/apigateway/tools/filebeat-5.2.0`. When using Filebeat, follow the [official Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.6/index.html).
+
+### OpenSSL and FIPS support
+
+Running API Gateway in FIPS mode is not supported in API Gateway since the 7.7 March 2020 update, when OpenSSL was upgraded to OpenSSL 1.1.1, as OpenSSL 1.0.2 is EOL. OpenSSL 1.1.1 does not support FIPS. OpenSSL 3.0 (when available) will support FIPS.
+
+### Increased validation of WSDLs
+
+The Xerces library has been updated to `xerces 2.12.0`. This library enforces stricter rules when validating malformed schemas and, in consequence, some WSDLs that were previously imported successfully by API Manager might not import successfully in this version.
+
+To suppress schema validation errors and relax the stricter validation of XML files, set the flag `-DwsdlImport.suppressSchemaValidationErrors` to `true` in the `policystudio.ini` file. The default value is `false`.
+
+### API Gateway behavior
+
+* **Anonymous cipher suites**: The JRE included in API Gateway disables undesirable cipher suites when using SSL/TLS by default. Users using RSA Access Manager (formerly known as RSA ClearTrust) with API Gateway might experience SSL/TLS handshake issues where no common cipher suites can be found. In this case, you should reconfigure SSL/TLS of the RSA Access Manager to support stronger cipher suites.
+
+  Alternatively, to re-enable the anonymous cipher suites in JRE for successful SSL/TLS connections with the RSA Access Manager, remove `anon` from the `jdk.tls.disabledAlgorithms` Java security property in the `INSTALL_DIR/Linux.x86_64/jre/lib/security/java.security` file.
+
+* **Endpoint identification property**: The JRE included in API Gateway enables endpoint identification algorithms for LDAPs (secure LDAP over TLS) by default to improve the robustness of the connections. This might cause API Gateway LDAP filters to fail to connect to an LDAP server. To disable endpoint identification add the `<VMArg  name="-Dcom.sun.jndi.ldap.object.disableEndpointIdentification=true"/>` line to the `INSTALL_DIR/system/conf/jvm.xml` file.
+
+* **Connect to URL Filter**: If the `Request Protocol Headers` field in the **Connect to URL** filter is not configured correctly, a runtime exception (`unexpected IO error`) is thrown when the filter is executed. In earlier versions, this error did not appear in the logs.
+
+### API Manager behavior
+
+* **Increased validation of `/users` endpoint**: In earlier versions of API Manager, the `/users` API returns a list of all the users in an organization. This endpoint allowed a user to share an application with other users in their organization. This was identified as a security risk, as only Organization administrators and API administrators should have access to a list of users, and not user roles. The ability for user roles to view all other user names in the organization has been removed.
+
+  To reduce the impact of this change, you can relax this restriction using a configuration flag. Set the flag in the `jvm.xml` file (it does not exist by default) under `groups/group-x/  instance-y/conf`.
+  
+  ```xml
+  <ConfigurationFragment>
+      <VMArg name="-DAPIGW_TOGGLE_FEATURE_GET_ALL_USERS=true" />
+  </ConfigurationFragment>
+  ```
+
+* **Trailing slash property**: An inbound API request with a trailing slash can match an API path with no trailing slash. To activate this feature set the Java property `com.vordel.apimanager.uri.path.trailingSlash.preserve` to `true`. The default value is `false`.
+
+* **Content type property**: An API method's Content-Type is checked against the API method's defined MIME type when performing path matching. To allow legacy API method matching and disable this check, set the Java property `com.coreapireg.apimethod.contenttype.legacy` to `true`. The default value is `false`.
+
+* **Caching property**: Enable caching to improve general system performance and speed. Set the `com.axway.apimanager.api.data.cache` Java system property to `true`. External clients, API keys, and OAuth credentials cache are optimized so that updates to the cache no longer block API Manager runtime traffic, resulting in performance improvements for corresponding API Manager APIs. As a result of the non-blocking cache updates, API Manager memory consumption will increase, particularly in systems with large numbers of external clients, API keys, or OAuth credentials.
+
+* **No match property**: To configure the status code of an unsuccessful match of an API to `404` when authentication is successful, set the Java property `com.axway.apimanager.use404AuthSuccessNoMatch`  to `true`. The default value is `false`.
+
+* **MIME types**: To import API Gateway Management API Swagger into API Manager API Catalog, you must add the `application/x-download` MIME type to the default list of MIME types in API Gateway. Select **Server Settings > General > Mime configuration** in the Policy Studio tree and add `application/x-download` to the MIME list. After the configuration is deployed to API Gateway, you can import the API Gateway Manager API Swagger into API Manager API Catalog.
+
+* **Confidential fields property**: Fields that contain confidential information are no longer returned in some API calls. For example, a call to `GET /api/portal/v1.3/proxies/` does not return the password in the `AuthenticationProfile.parameters\["password"]` field. For compatibility with earlier versions, you can continue to return confidential fields. Set the system property `com.axway.apimanager.api.model.disable.confidential.fields` to `false` in the `jvm.xml` file (it does not exist by default) under `groups/group-x/instance-y/conf`.
+
+  ```xml
+  <ConfigurationFragment>
+      <VMArg name="-Dcom.axway.apimanager.api.model.disable.confidential.fields=false"/>
+  </ConfigurationFragment>
+  ```
+  
+  {{< alert title="Note" color="primary" >}}Setting this property to `false` is not recommended as it could pose a security risk to your API Gateway installation.{{< /alert >}}
+
+### Security
+
+* **`nosniff` header**: The X-Content-Type-Options HTTP header with value `nosniff` is not included in a HTTP response serving static content from the API Gateway or API Manager.Static contents are served from the API Gateway or API Manager `webapps` directory, which does not serve dynamic contents to avoid the risk of the browser making an incorrect assumption of the content type and exposing a security vulnerability. The X-Content-Type-Options response header with the value `nosniff` is included with HTTP responses serving dynamic content by default.
+
+* **CSRF check property**: If you are using the API Manager Management APIs, Client Application Registry APIs, and API Gateway APIs you might need to disable the CSRF token check implemented in v7.5.3 SP9 and later. To disable this check, set the Java system property `com.axway.apimanager.csrf` to `false`. The default is `true`.
+
+* **Custom filters**: If you have written a custom filter using the extension kit, you might need to update your custom code as a result of changes in the classes. The following interfaces deprecate `_()` and `__()` in favor of a new `resolve()` method:
+
+    * `com.vordel.client.manager.ResourceResolver`
+    * `com.vordel.client.manager.attr.ScreenAttribute`
+    * `com.vordel.client.manager.wizard.EntityContext`
+
+    Both `DefaultGUIFilter` and `VordelWizard` classes do not implement the `ResourceResolver` interface. As a result, any classes extending either of these must replace `_()` and `__()` method calls with `resolve()`.
+
 ## Deprecated features
 
 <!-- Add features that are deprecated here -->
@@ -153,70 +227,113 @@ This version of API Gateway and API Manager includes:
 
 <!-- Add  here -->
 
-| Internal ID | Case ID | Cve Identifier                               | Description                                                                                                                                                                                                                                                                                                                                                  |
-| ----------- | ------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| RDAPI-20951 |         | CVE-2020-14621 CVE-2020-14556 CVE-2019-17359 | **Issue**:  API Gateway included Zulu OpenJDK v8u242, which has a number of vulnerabilities including CVE-2020-14621. API Gateway included Bouncy Castle library version 1.60 which contained CVE-2019-17359 vulnerability. **Resolution**: API Gateway now includes Zulu OpenJDK v8u265 and Bouncy Castle library version 1.66 and is no longer vulnerable. |
+| Internal ID | Case ID                      | Cve Identifier                               | Description                                                                                                                                                                                                                                                                                                                                                  |
+| ----------- | ---------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| RDAPI-20951 |                              | CVE-2020-14621 CVE-2020-14556 CVE-2019-17359 | **Issue**:  API Gateway included Zulu OpenJDK v8u242, which has a number of vulnerabilities including CVE-2020-14621. API Gateway included Bouncy Castle library version 1.60 which contained CVE-2019-17359 vulnerability. **Resolution**: API Gateway now includes Zulu OpenJDK v8u265 and Bouncy Castle library version 1.66 and is no longer vulnerable. |
+| RDAPI-21314 | 01195064, 01187608, 01183015 |                                              | **Issue**: API Manager uses JQuery version 3.4.1, which has a XSS vulnerability. **Resolution**: API Manager now uses JQuery version 3.5.1, which XSS vulnerability is resolved.                                                                                                                                                                             |
+| RDAPI-21699 | 01184311, 01184328           | CVE-2019-17359                               | **Issue**: Aquascan reports security vulnerability CVE-2019-17359 due to bcprov-jdk15on-1.60.jar **Resolution**: bcprov-jdk15on-1.60.jar with security vulnerability CVE-2019-17359 is replaced by bcprov-jdk15on-1.60.jar that does not have the vulnerability.                                                                                             |
 
 ### Other fixed issues
 
-<!-- Add  here -->
+| Internal ID | Case ID                                                                                                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| RDAPI-17431 | 01090329  01092098                                                                                                     | **Issue**: API Gateway Policy Studio and projdeploy script attempt to re-deploy configuration on error response from Admin Node Manager. **Resolution**: Policy Studio and projdeploy script attempt to deploy configuration only once as expected.                                                                                                                                                                                                                     |
+| RDAPI-18128 | 01176343  01106018  01183936  01184266  01182781  01169424  01099988  01107786  01162018  01129468  01168438  01104274 | **Issue**: In API Manager, updates of trusted certs for a virtualized API require restart of API Manager instance in order for changes to take effect **Resolution**: Fixed a race condition in API Manager configuration when APIs are configured with outbound policies.                                                                                                                                                                                              |
+| RDAPI-18431 | 01105091                                                                                                               | **Issue**: In API Manager 7.7, External Client IDs must be different to API Keys and OAuth Client IDs. In 7.5.3 they were allowed to be the same. This causes issues with some customers when migrating from 7.5.3. **Resolution**: External Client IDs can be the same to API Keys and OAuth Client IDs. Root cause that forced the decision to make them different has been solved.                                                                                   |
+| RDAPI-19150 | 01136673                                                                                                               | **Issue**: In API Manager, the Try It Dialog only showed a maximum of 10 API Keys as the store used to retrieve API Keys was a paginated store .Resoution: Updated the store used when retrieving API Keys to be a non paginated store so that all API Keys are retrieved.                                                                                                                                                                                              |
+| RDAPI-19262 | 01138506  01095419                                                                                                     | **Issue**: In API Manager in a multiple gateway environment, when a quota is defined for an API, the X-Rate-Limit header, present in the API responses, shows inconsistent values across the different nodes. **Resolution**: When defining a quota for an API in a multiple gateway environment, the X-Rate-Limit header behaves as expected.                                                                                                                          |
+| RDAPI-20023 | 01156912                                                                                                               | **Issue**: Use of TLS Server Name Indication (SNI) was only enabled when the option "verification of server's certificate name match against server name" was enabled. **Resolution**: SNI and Server Certificate name check are now separated features. This separation also applies to SMTP protocol.                                                                                                                                                                 |
+| RDAPI-20526 | 01164755                                                                                                               | **Issue**: Groovy 2.4.8 provided with API Gateway does not provide an option to deactivate escaping in JSON serialization. See <https://issues.apache.org/jira/browse/GROOVY-6975> for details. **Resolution**: Groovy has been updated to version 2.5.13 that provides such option.                                                                                                                                                                                      |
+| RDAPI-20958 | 01122859  01132092  01133854  01064716                                                                                 | **Issue**: Changes to an Organization Name or Organization that an Application is associated with causes duplication in the API Manager Metrics reports. **Resolution**: API Manager Metrics reports now restrict report totals using the Organization name the Application is associated with.                                                                                                                                                                         |
+| RDAPI-21011 | 01174542  01181811                                                                                                     | **Issue**: API Gateway Manager does not display KPS entries correctly. **Resolution**: Tables with long column names and entries are now rendered correctly in API Gateway Manager.                                                                                                                                                                                                                                                                                     |
+| RDAPI-21060 | 01189348  01194083  01171842                                                                                           | **Issue**: An SQLException occurs for any query against a read-only KPS store backed by an RDBMS. **Resolution**: Fixed the broken query syntax, allowing SQL queries to be run.                                                                                                                                                                                                                                                                                        |
+| RDAPI-21068 | 01169260  01168656                                                                                                     | **Issue**: JSON redaction is slow when configured with a large number of paths to be redacted. **Resolution**: JSON redaction has been refactored to parse inbound document more efficiently and reduce the number of path matching performed.                                                                                                                                                                                                                          |
+| RDAPI-21085 | 01160271  01143897  01153011  01160321  01160146                                                                       | **Issue**: API Manager was creating sessions incorrectly resulting in possible authentication issues during high traffic. **Resolution**: API Manager now only creates a session upon successful login.                                                                                                                                                                                                                                                                 |
+| RDAPI-21184 | 01174950  01172806                                                                                                     | **Issue**: Custom Properties are not shown in the Swagger definition of an API. **Resolution**: Custom Properties are now included in the API Swagger definition.                                                                                                                                                                                                                                                                                                       |
+| RDAPI-21221 | 01185235  01184668  01177860  01192587                                                                                 | **Issue**: LDAP connection test fails when using a node manager configuration in Policy Studio, due to absence of an environmentalisation configuration. **Resolution**:  Updated the connection test to only check for environmentalised fields if environmentalisation is supported. Added a warning dialog when the 'Allow environmentalization of fields' option is tuned on, but currently open configuration does not support it.                                 |
+| RDAPI-21234 | 01179001                                                                                                               | **Issue**: API Manager Metrics Date interval behaviour is unclear. **Resolution**: Added additional information about the [Date interval](/docs/apim_administration/apimgr_admin/api_mgmt_monitor/#date-interval) behavior to the documentation.                                                                                                                                                                                                                        |
+| RDAPI-21291 | 01170263  01182236                                                                                                     | **Issue**: When a CORS Profile is configured in Policy Studio and applied to nested paths, CORS response headers appear duplicated as the gateway processes CORS for each path in the tree. **Resolution**: When a CORS Profile is configured in Policy Studio and applied to nested paths, API Gateway processes CORS only for the relevant path.                                                                                                                      |
+| RDAPI-21300 | 01182381                                                                                                               | **Issue**: Use of "%b" or "%B" in Transaction Access Log format can generate errors that exhaust connection pool. **Resolution**: The use of "%b" or "%B" no longer requires response to be buffered. Enforcement has been made on HTTP transactions to ensure resources are released.                                                                                                                                                                                  |
+| RDAPI-21366 | 01180384                                                                                                               | **Issue**: Incorrect "productname" option documented for the update-apimanager script. **Resolution**: Updated [documentation](/docs/apim_installation/apigw_upgrade/upgrade_steps_extcass/#step-5---run-update-apimanager) to refer to the correct "product" option.                                                                                                                                                                                                   |
+| RDAPI-21403 | 01184844  01182236  01184347  01186338                                                                                 | **Issue**: When a CORS Profile is configured in Policy Studio, CORS request headers (Origin, Access-Control-Request-Method, etc.) are passed to back-end servers, leading to duplication of the CORS response headers. **Resolution**: When a CORS Profile is configured in Policy Studio, CORS request headers are saved in the message attribute ${http.cors.headers}, then removed from the input headers so they don't trigger CORS processing in back-end servers. |
+| RDAPI-21418 | 01183534                                                                                                               | **Issue**: crash occurs when importing PKCS12 (or PFX) file not containing private key. **Resolution**: PKCS12 decryption has been corrected to handle those files.                                                                                                                                                                                                                                                                                                     |
+| RDAPI-21425 | 01193196  01184844  01184845  01185638  01184347  01186338                                                             | **Issue**: OPTIONS requests are automatically processed and returned by API Gateway without executing any policy, even if no CORS profile has been configured, preventing the call to other back-end servers. **Resolution**: If no CORS profile has been configured, OPTIONS requests will not trigger the CORS processing in the Gateway, so requests can be forwarded to back-end servers.                                                                           |
+| RDAPI-21433 | 01189832  01189522  01189274  01189261  01185424  01184347                                                             | **Issue**: API Manager duplicates HTTP outbound headers, which are defined in the Swagger of an API. **Resolution**: API Manager correctly passes HTTP outbound headers to the back-end system.                                                                                                                                                                                                                                                                         |
+| RDAPI-21482 | 01187410                                                                                                               | **Issue**: Empty JSON Body due to JSON Remove Node removing the only node causes Exception. **Resolution**: Successfully parsed JSON body no longer throws Exception when writing content.                                                                                                                                                                                                                                                                              |
+| RDAPI-21483 | 01187661  01187906  01188834                                                                                           | **Issue**: Compare Attribute filter fix RDAPI-20017 causes breaking changes for existing customers **Resolution**: RDAPI-20017 is reverted to remove breaking changes and will be analyzed further.                                                                                                                                                                                                                                                                     |
+| RDAPI-21505 | 01187335                                                                                                               | **Issue**: In a multi-node setup, API Manager does not notify all instances of remote host configuration changes **Resolution**: Remote host configuration changes are now broadcasted across all instances so that configuration changes can take effect.                                                                                                                                                                                                              |
 
 ## Known issues
 
 The following are known issues for this update.
 
-<!-- Review table below, it's a copy from July 20 release -->
-
-| Internal ID | Description                                                                                                                                                    |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| RDAPI-11143 | Discrepancy with API retirement dates.                                                                                                                         |
-| RDAPI-15981 | Scopes fields for API Key remain visible even if Application Scopes are disabled.                                                                              |
-| RDAPI-16486 | Changes in the mapper always require a reload in the Execute Data Maps filter and when reloaded providing values for the required parameters must be repeated. |
-| RDAPI-17282 | Connector for Salesforce APIs in API Manager does not work or is impossible to configure.                                                                      |
-| RDAPI-18198 | CORS preflight fails for WSDL based API Manager APIs, and Try-it fails.                                                                                        |
-| RDAPI-18332 | Try-it for API-Method is not working.                                                                                                                          |
-| RDAPI-18431 | HTTP 409 Resource already exists in Applications - External Credentials.                                                                                       |
-| RDAPI-18523 | Inconsistent application search behavior relating to application sharing.                                                                                      |
-| RDAPI-18674 | Insufficient data validation when importing an Application.                                                                                                    |
-| RDAPI-18777 | Overriding the quota for an application and then removing the setting causes incorrect behavior.                                                               |
-| RDAPI-18986 | `projpack` is unable to merge projects after `projupgrade`; likely due to default API Manager policies.                                                        |
-| RDAPI-18990 | `Failed to delete undefined` appears unexpectedly when attempting to delete application.                                                                       |
-| RDAPI-19006 | Delete API `not found` after changing Application Org.                                                                                                         |
-| RDAPI-19132 | Issue with selection of Retirement date when deprecating API.                                                                                                  |
-| RDAPI-19150 | Try-it in API Manager only shows first 10 API keys.                                                                                                            |
-| RDAPI-19240 | Users in pending approval state are visible in the Sharing tab.                                                                                                |
-| RDAPI-19262 | X-Rate-Limit header shows inconsistent values in a multi-node Manager environment.                                                                             |
-| RDAPI-19278 | API access removed from app during org migration.                                                                                                              |
-| RDAPI-19292 | When an API Manager admin user's login name is changed, the user is directed to a blank page.                                                                  |
-| RDAPI-19293 | API Catalog Try-it shows only the first security device of a security profile.                                                                                 |
-| RDAPI-19354 | Issue with back-end API import regarding Duplicate parameters value.                                                                                           |
-| RDAPI-19433 | Line breaks in outbound parameter (type header) value not escaped.                                                                                             |
-| RDAPI-19442 | Saving Mode Stuck for the Application Creation in different session.                                                                                           |
-| RDAPI-19453 | Uploading an invalid image type when creating an Application leads to an internal server error.                                                                |
-| RDAPI-19580 | Trial option in the Organization does not work.                                                                                                                |
-| RDAPI-19586 | Retired API appears as published in Catalog.                                                                                                                   |
-| RDAPI-19601 | Sharing section of Application issue when Organization of application changed.                                                                                 |
-| RDAPI-19787 | Custom filter jabber sample missing but mentioned in docs.                                                                                                     |
-| RDAPI-19788 | Issue with pagination across multiple sections.                                                                                                                |
-| RDAPI-19833 | Okta SSO integration and email mapping.                                                                                                                        |
-| RDAPI-19849 | OAuth2 Client Credential cache not considering the scope or user.                                                                                              |
-| RDAPI-19915 | Update minimum system requirements in regards to cassandra production use.                                                                                     |
-| RDAPI-19971 | nodemanager pid file is created with permissions that are too restrictive.                                                                                     |
-| RDAPI-20091 | In Policy Studio, when importing a policy fragment, deselected items are imported anyway.                                                                      |
-| RDAPI-20127 | Selector `${content.body.getJSON().get(0)}` not working.                                                                                                       |
-| RDAPI-20255 | Application Quota not promoted by `apimanger-promote`.                                                                                                         |
-| RDAPI-20294 | Authorization code flow with OpenID produces invalid query string as response.                                                                                 |
-| RDAPI-20464 | PolicyStudio deployment errors (WSDL) after applying March 20 release.                                                                                         |
-| RDAPI-20474 | Swagger file size limit.                                                                                                                                       |
-| RDAPI-20480 | Swagger enum query parameters not validated.                                                                                                                   |
-| RDAPI-20526 | Groovy bug GROOVY-6975.                                                                                                                                        |
-| RDAPI-20594 | When a token is revoked with an incorrect Authorization header, the response is 400 instead of 401.                                                            |
-| RDAPI-20919 | Add timeout type and origin in trace message.                                                                                                                  |
-| RDAPI-20921 | Incorrect `Bad encoding for integer value` errors reported during sysupgrade.                                                                                  |
-| RDAPI-20923 | API Manager application selection is broken.                                                                                                                   |
-| RDAPI-20925 | Defect OAS3: API Manager lacks free-form parameter support.                                                                                                    |
-| RDAPI-21030 | API Manager ignores `dont.expect.100.continue` flag if the Outbound Security is HTTP Basic.                                                                    |
-| RDAPI-21171 | Minor UI issue affecting pagination in API keys and Oauth client credentials.                                                                                  |
+| Internal ID | Description                                                                                                                                                        |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| RDAPI-15981 | Scopes fields for API Key remain visible even if Application Scopes are disabled                                                                                   |
+| RDAPI-16486 | Changes in the mapper always require a reload in the Execute Data Maps filter and once reloaded then providing values for the required parameters must be repeated |
+| RDAPI-16778 | Doc update, recommendations for Cassandra storage                                                                                                                 |
+| RDAPI-17282 | Connector for Salesforce APIs in API Manager doesn't work or is impossible to configure                                                                            |
+| RDAPI-18198 | CORS preflight fails for WSDL based API Manager APIs, thus Try-It fails                                                                                           |
+| RDAPI-18332 | "Try-it" for API-Method is not working                                                                                                                             |
+| RDAPI-18523 | Inconsistent application search behaviour relating to application sharing                                                                                          |
+| RDAPI-18674 | Insufficient data validation when importing an Application                                                                                                         |
+| RDAPI-18986 | projpack is unable to merge projects after projupgrade; likely due to Default APIManager policies                                                                 |
+| RDAPI-18990 | Failed to delete undefined" pop-up pops up unexpectedly when attempting to delete application                                                                     |
+| RDAPI-19006 | Delete API "not found" after changing Application Org                                                                                                             |
+| RDAPI-19132 | Issue with selection of Retirement date when deprecating API                                                                                                       |
+| RDAPI-19240 | Users in "pending approval" state are visible in the Sharing tab                                                                                                  |
+| RDAPI-19278 | API access removed from app during org migration                                                                                                                   |
+| RDAPI-19292 | When an APIM admin user's login name is changed, the user is directed to a blank page                                                                             |
+| RDAPI-19293 | API Catalog Try It shows only the first security device of a security profile                                                                                      |
+| RDAPI-19333 | Grant API access removed from API Access list in application when FE unpublished                                                                                   |
+| RDAPI-19354 | Issue with backend API import regarding Duplicate parameters value                                                                                                 |
+| RDAPI-19433 | Line breaks in outbound parameter (type header) value not escaped                                                                                                  |
+| RDAPI-19442 | Saving Mode Stuck for the Application Creation in different session                                                                                                |
+| RDAPI-19453 | Uploading an invalid image type when creating an Application leads to an internal server error                                                                     |
+| RDAPI-19580 | Trial option in the Organization does not work                                                                                                                     |
+| RDAPI-19586 | "Retired API appears as "published" in Catalog                                                                                                                     |
+| RDAPI-19601 | Sharing section of Application issue when Organization of application changed                                                                                      |
+| RDAPI-19788 | Issue with pagination across multiple sections                                                                                                                     |
+| RDAPI-19971 | nodemanager pid file is created with permissions that are too restrictive                                                                                          |
+| RDAPI-20255 | Application Quota not promoted by apimanger promote                                                                                                                |
+| RDAPI-20428 | Adding a routing policy to a Studio-defined API produces an EntityStoreException                                                                                   |
+| RDAPI-20480 | swagger enum query parameters not validated                                                                                                                        |
+| RDAPI-20550 | renaming existing KPS collection in PS breaks ES store                                                                                                             |
+| RDAPI-20594 | When a token is revoked with an incorrect Authorization header, the response is 400 instead of 401                                                                |
+| RDAPI-20726 | How to get attribute value for apimgmt.application.id                                                                                                              |
+| RDAPI-20740 | Unable to environmentalize format in Transaction Access Log                                                                                                        |
+| RDAPI-20793 | Resource Path is duplicated in API Manager for Swagger 1.2                                                                                                         |
+| RDAPI-20829 | API deployment : restrict grant only to specified organizations                                                                                                    |
+| RDAPI-20919 | Add timeout type/origin in trace messages                                                                                                                          |
+| RDAPI-20924 | OAS Defect: APIm doesn't support empty value params                                                                                                                |
+| RDAPI-20928 | Parameter types differ in Backend API and In TryIt                                                                                                                 |
+| RDAPI-21009 | Issue after updating API Manager settings through rest api if lockUserAccount is missing                                                                           |
+| RDAPI-21030 | API Manager ignores dont.expect.100.continue flag if the Outbound Security is HTTP Basic                                                                           |
+| RDAPI-21061 | Updated error message, OAS3 file import without servers section url                                                                                               |
+| RDAPI-21113 | "URLDecoder: Incomplete trailing escape (%) pattern" only when virtualized API uses Outbound authentication                                                        |
+| RDAPI-21171 | Minor UI issue affecting pagination in API keys and Oauth client credentials                                                                                       |
+| RDAPI-21211 | APIM doesn't support SOAP 1.1 Binding for MTOM 1.0                                                                                                                 |
+| RDAPI-21263 | "Import from topology" prefers non-SSL ports of Studio-created APIs                                                                                                |
+| RDAPI-21295 | XSD files are not downloaded when Use client registry is enabled                                                                                                   |
+| RDAPI-21332 | Cassandra 2.2.12 Vulnerabilities from latest scan                                                                                                                  |
+| RDAPI-21384 | Webservice (WSDL-based) responds with 500 instead of 405 when an invalid HTTP method is used                                                                       |
+| RDAPI-21411 | Inconsistent treatment of multiple scopes in Oauth request                                                                                                         |
+| RDAPI-21423 | Quota values getting re-initialized just after clicking quota text box                                                                                             |
+| RDAPI-21434 | "Expect to Retrieve X rows" setting on database query filter                                                                                                       |
+| RDAPI-21436 | long deployment time when lot of APIs are virtualized in API Manager                                                                                               |
+| RDAPI-21444 | Policy Studio can't delete or edit scripts                                                                                                                         |
+| RDAPI-21456 | Application export doesn't include external credential                                                                                                             |
+| RDAPI-21469 | kpsadmin returns inconsistent status codes, making it hard to script                                                                                              |
+| RDAPI-21506 | APIM cannot import Swagger with externalDocs (NPE)                                                                                                                 |
+| RDAPI-21557 | API gateway sends 100 continue when backend fails to respond in time                                                                                               |
+| RDAPI-21619 | API Manager remote hosts not synchronized between instances (issue not fully resolved)                                                                             |
+| RDAPI-21679 | Amazon SQS Poller - visibility setting lacks units in Policy Studio                                                                                                |
+| RDAPI-21681 | Swagger API blob not updated after updated API import                                                                                                              |
+| RDAPI-21689 | [ELI] HTTP 500 when accessing user profile                                                                                                                        |
+| RDAPI-21697 | problems with recent change to multipart form-data RDAPI-20461                                                                                                     |
+| RDAPI-21738 | Issue in sysupgarde apply - Import failed for table                                                                                                                |
+| RDAPI-21784 | Redaction not working when Content-Type is multipart/form-data and form-field is a file                                                                            |
+| RDAPI-21801 | Spaces in query-string parameters which are encoded as '%20' on the inbound request, are changed to be encoded with '+' during the transaction                    |
 
 ### Policy Studio help documentation
 
