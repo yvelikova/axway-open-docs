@@ -17,9 +17,33 @@ Docker deployment is supported on Linux. For a summary of the system requirement
 
 The following new features and enhancements are available in this update.
 
-### Remote Host
+### API Manager Remote host updates
 
-We have added new features to API Manager **Remote host** setting to configure the way in which API Gateway connects to external server or routing destination. To learn more about the new features, see [Remote hosts](/docs/apim_reference/api_mgmt_config_web/#remote-hosts).
+The Remote host capability in API Manager has been enhanced to provide the same powerful configuration options that can be found in Policy Studio. Take advantage of creating aliases for back-ends, and apply specific changes to control a connection without having to deploy the change via Policy Studio. To learn more, see [Remote hosts](/docs/apim_reference/api_mgmt_config_web/#remote-hosts).
+
+### YAML-based configuration store
+
+This work is an initiative born from collaborative customer hackathons to make the API Gateway configuration more CI/CD/DevOps and developer-friendly.​ It involved transforming the federated configuration into YAML fragments, which can be managed using standard DevOps tools, moving away from a propriety TeamDev approach to encourage the use of standard tools, source control, and DevOps tools that could be used to facilitate and encourage a better experience for collaboration.​
+
+This initiative focuses on addressing:​
+
+* Fine-grained configuration for an improved collaborative development experience​.
+* Source code which is developer-friendly​.
+* Designed for improved DevOps capability.
+
+{{% alert title="Note" %}}The XML configuration store is still supported and can be used as normal.{{% /alert %}}
+
+We strongly encourage our customers to take a look and explore the possibilities of the new configuration format, and provide feedback to us on this experience. To learn more, see [Axway API Management: DevOps friendly configuration capability](https://community.axway.com/s/article/Axway-API-Management-Upcoming-DevOps-friendly-capability).
+
+To follow-up on what's to come based on this capability, see [API Management Roadmap](https://community.axway.com/s/api-management).
+
+### Database integration updates
+
+Validated support for the following versions of Oracle Databases:​
+
+* 12c Release 2 (Oracle Database 12c Release 2 (12.2.0.1.0) - Standard Edition 2 and Enterprise Edition)​
+* 18c (18.3)​
+* 19c (19.3)​
 
 ### Users membership to multiple organizations
 
@@ -42,7 +66,6 @@ The following are new changes implemented to facilitate the creation and mainten
 * The ability for the Organization Administrator to manage users within its own organization has changed to avoid privileged escalation concerns. OrgAdmins can only edit or delete multi-orgs users from organizations where they are OrgAdmins. To learn more about these restrictions, see [Organizations and user roles in API Manager](/docs/api_mgmt_overview/key_concepts/api_mgmt_orgs_roles/#organizations-and-user-roles-in-api-manager).
 
 * Integration via SSO has changed to facilitate configuring users from an external IDP to multi-orgs. You can use the new attribute, `orgs2role`, to assign a user to multi-orgs. This attribute can be populated via:
-
     * A direct attribute in the IDP.
     * An LDAP mapping in the service-provider.xml file.
     * A filter configured in Policy Studio, which allows to overwrite the `orgs2role` map value.
@@ -52,6 +75,8 @@ For more information on configuring multi-orgs users, see [Configure API Manager
 #### Account changes
 
 When a user account is configured to be a member of multi-orgs, it is automatically authenticated and associated with its primary organization, the first organization in their membership list. Using the drop-down menu, users can navigate between their organizations and the UI will display the options based on their role, which can be either `orgAdmin` or `User`.
+
+When you delete the primary organization of a user, the user’s account is also deleted. For details, see [Manage users](/docs/apim_administration/apimgr_admin/api_mgmt_admin/#manage-users).
 
 #### Organization administrators can publish APIs
 
@@ -221,6 +246,7 @@ This version of API Gateway and API Manager includes:
 ### Fixed security vulnerabilities
 
 <!-- Add  here -->
+
 | Internal ID | Case ID                      | Cve Identifier                               | Description                                                                                                                                                                                                                                                                                                                                                  |
 | ----------- | ---------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | RDAPI-20951 |                              | CVE-2020-14621 CVE-2020-14556 CVE-2019-17359 | **Issue**:  API Gateway included Zulu OpenJDK v8u242, which has a number of vulnerabilities including CVE-2020-14621. API Gateway included Bouncy Castle library version 1.60 which contained CVE-2019-17359 vulnerability. **Resolution**: API Gateway now includes Zulu OpenJDK v8u265 and Bouncy Castle library version 1.66 and is no longer vulnerable. |
