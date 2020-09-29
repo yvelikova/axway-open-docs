@@ -51,6 +51,18 @@ This update has the following limitations:
 * Upgrading from previous API Portal Docker image is not supported.
 * This update is not available as a virtual appliance or as a managed service on Axway Cloud.
 
+## Important changes
+
+It is important, especially when upgrading from an earlier version, to be aware of the following changes in the behavior or operation of the product in this update.
+
+### API version update
+
+To support [User membership in multiple organizations](/docs/apim_relnotes/20200930_apimgr_relnotes/#user-membership-in-multiple-organizations) (multi-orgs), a new version of the API v1.4 was introduced. The multi-orgs feature is available with the 1.4 version of the API only, meaning that any third-party portals or integrations (for example, SSO) must be updated to use version 1.4. The API Manager UI uses the API 1.4 by default.
+
+This feature is forward compatible, the API 1.4 will work with single-org users, but not backward compatible, you cannot configure multi-orgs in the API 1.4, then revert it to the API 1.3.
+
+The new **API Manager 7.7 API 1.4** is available in OAS3 format on the [Axway Documentation portal](https://docs.axway.com/category/api).
+
 ## Deprecated features
 
 <!-- Add features that are deprecated here -->
