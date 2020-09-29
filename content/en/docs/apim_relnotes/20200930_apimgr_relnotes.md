@@ -92,7 +92,7 @@ It is important, especially when upgrading from an earlier version, to be aware 
 
 API Gateway 7.7 and API Manager 7.7 support OpenJDK JRE, and this release includes Zulu OpenJDK v8u265.
 
-OpenJDK v8u265 searchs for wildcard certificates. If the wildcarded domain is a top-level domain under which names can be registered, then a wildcard is not allowed. Matching approach has not changed for the second-level and lower-level domain names. In case you have certificates with wildcards characters in top-level domain you must recreate them with proper top-level domain names.
+The Zulu OpenJDK v8u265 changes the way API Gateway verifies wildcarded certificates. If the wildcarded domain is a top-level domain under which names can be registered, then a wildcard is not allowed. Matching approach has not changed for the second-level and lower-level domain names. In case you have certificates with wildcards characters in top-level domain you must recreate them with proper top-level domain names.
 
 Examples of matching domain names:
 
