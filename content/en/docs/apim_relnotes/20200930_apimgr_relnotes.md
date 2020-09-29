@@ -45,17 +45,17 @@ Validated support for the following versions of Oracle Databases:​
 * 18c (18.3)​
 * 19c (19.3)​
 
-### Users membership to multiple organizations
+### User membership in multiple organizations
 
-API Manager now enables creating membership to users with multiple organizations (multi-orgs). User accounts can have different roles in each organization the user is a member of. The following are some important changes implemented to enable this new feature.
+API Manager now enables creating user membership in multiple organizations (multi-orgs). User accounts will have different roles in each organization the user is a member of. The following are some important changes implemented to enable this new feature.
 
 #### API version update
 
-The multi-orgs feature is available with the API version 1.4 only, meaning that any third-party portals or integrations (for example, SSO) must be updated to use the API 1.4 to avail of the multi-orgs functionality.
+The multi-orgs feature is available with the 1.4 version of the API only, meaning that any third-party portals or integrations (for example, SSO) must be updated to use version 1.4. The API Manager UI uses the API 1.4 by default now.
 
 This feature is forward compatible, the API 1.4 will work with single-org users, but not backward compatible, you cannot configure multi-orgs in the API 1.4, then revert it to the API 1.3.
 
-The new **API Manager 7.7 API 1.4** is available in OAS3 format on the [Axway Documentation portal](https://docs.axway.com/category/api). API Manager UI uses the API 1.4 by default.
+The new **API Manager 7.7 API 1.4** is available in OAS3 format on the [Axway Documentation portal](https://docs.axway.com/category/api).
 
 #### Managing multi-orgs users
 
@@ -65,10 +65,10 @@ The following are new changes implemented to facilitate the creation and mainten
 
 * The ability for the Organization Administrator to manage users within its own organization has changed to avoid privileged escalation concerns. OrgAdmins can only edit or delete multi-orgs users from organizations where they are OrgAdmins. To learn more about these restrictions, see [Organizations and user roles in API Manager](/docs/api_mgmt_overview/key_concepts/api_mgmt_orgs_roles/#organizations-and-user-roles-in-api-manager).
 
-* Integration via SSO has changed to facilitate configuring users from an external IDP to multi-orgs. You can use the new attribute, `orgs2role`, to assign a user to multi-orgs. This attribute can be populated via:
+* Integration via SSO has changed to facilitate configuring users from an external IDP to multi-orgs. You can use the new setting, `orgs2Role`, to assign a user to multi-orgs. This attribute can be populated via:
     * A direct attribute in the IDP.
     * An LDAP mapping in the service-provider.xml file.
-    * A filter configured in Policy Studio, which allows to overwrite the `orgs2role` map value.
+    * A filter configured in Policy Studio, which allows the `orgs2Role` setting to be overridden.
 
 For more information on configuring multi-orgs users, see [Configure API Manager Single Sign On](/docs/apim_administration/apimgr_sso/saml_sso_config/).
 
