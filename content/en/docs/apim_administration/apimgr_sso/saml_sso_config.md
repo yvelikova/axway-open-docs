@@ -118,15 +118,11 @@ The following restrictions apply to SSO users and SSO login:
 * To log in using SSO, users cannot use the standard login URL (`https://FQDN:PORT`). Instead, users must use the following SSO login URL:
 
   ```
-   https://FQDN:PORT/api/portal/v1.3/sso/login/
+   https://FQDN:PORT/api/portal/v1.4/sso/login/
   ```
 
-* `FQDN` is the FQDN of the machine where API Gateway is running, and `PORT` is the API Manager listening port (for example, `https://gateway.example.com:8075/api/portal/v1.3/sso/login/`).
+* `FQDN` is the FQDN of the machine where API Gateway is running, and `PORT` is the API Manager listening port (for example, `https://gateway.example.com:8075/api/portal/v1.4/sso/login/`).
 * If a user has already authenticated using SSO (for example, by previously logging in to Decision Insight), they must still use the SSO login URL for API Manager. If they are already authenticated, they are automatically redirected to the API Manager home page at `https://FQDN:PORT/home` and presented with a view appropriate to their API Manager role.
-
-{{% alert title="Note" %}}
-Use API version 1.4 to leverage the ability of a user having membership of multiple API Manager organizations.
-{{% /alert %}}
 
 ## Step 1 – Configure the IdP
 
@@ -246,12 +242,10 @@ Perform the following steps in Policy Studio:
 7. Enter the following values to the additional headers table, and click **OK**:
    * `Content-Security-Policy`: `frame-ancestors 'none'`
    * `X-Frame-Options`: `DENY`
-8. Update the servlet to `API Portal v1.3 ('v1.3')`.
+8. Update the servlet to `API Portal v1.4 ('v1.4')`.
    * Edit the property `jersey.config.server.provider.classnames`. In the **Value** field add the class name `com.vordel.common.apiserver.filter.SSOBindingFeature` to the existing comma-separated list of class names.
    * Add a new property. In the **Name** field enter the name `CsrfProtectionFilterFactory.refererWhitelist` and in the **Value** field enter the URL of the IdP (for example, `https://sample_idp_host:8443`).
 9. Deploy the configuration to the API Manager-enabled API Gateway instance.
-
-{{% alert title="Note" %}}Update the servlet to `API Portal v1.4 ('v1.4')` to leverage the ability of a user having membership of multiple API Manager organizations.{{< /alert >}}
 
 ## Step 4 – Configure SAML endpoint URLs in the IdP
 
@@ -259,10 +253,10 @@ You must configure the SAML endpoints of API Manager in your IdP. Consult the do
 
 | Keycloak field name                                 | API Manager endpoint URL                                                    |
 | --------------------------------------------------- | --------------------------------------------------------------------------- |
-| **Assertion Consumer Service POST Binding URL**     | `https://<your_API Manager_host_FQDN>:8075/api/portal/v1.3/sso/login/post`  |
+| **Assertion Consumer Service POST Binding URL**     | `https://<your_API Manager_host_FQDN>:8075/api/portal/v1.4/sso/login/post`  |
 | **Assertion Consumer Service Redirect Binding URL** | Leave this field blank                                                      |
-| **Logout Service POST Binding URL**                 | `https://<your_API Manager_host_FQDN>:8075/api/portal/v1.3/sso/logout/post` |
-| **Logout Service Redirect Binding URL**             | `https://<your_API Manager_host_FQDN>:8075/api/portal/v1.3/sso/logout/post` |
+| **Logout Service POST Binding URL**                 | `https://<your_API Manager_host_FQDN>:8075/api/portal/v1.4/sso/logout/post` |
+| **Logout Service Redirect Binding URL**             | `https://<your_API Manager_host_FQDN>:8075/api/portal/v1.4/sso/logout/post` |
 
 * If you are also configuring SSO for API Portal, you must configure the endpoint URLs separately for both API Manager and API Portal. For more details, see
 [Configure API Portal single sign-on](/docs/apim_administration/apiportal_sso/sso_config/).
@@ -289,15 +283,36 @@ To change the default domain name to a sample domain name such as `axway.int`:
 
 ## Step 6 – Configure the `orgs2Role` header using a policy (optional)
 
-You can assign user membership to multiple API Manager organizations by using the [`orgs2role`](/docs/apim_administration/apimgr_sso/sso_mapping/#orgs2role) attribute or by configuring an API Gateway policy.
+You can use the [`orgs2Role`](/docs/apim_administration/apimgr_sso/sso_mapping/#orgs2role) attribute to assign user membership to multiple API Manager organizations, or you can configure an API Gateway policy.
 
 The policy is invoked at runtime after the SAML response from the identity provider is verified by the service provider (in this case, API Manager). The API Manager runtime will only accept the output of the policy if it is successful and it has the `orgs2Role` value set in the HTTP headers. To set the header, you can use existing API Gateway filters, for example [Add HTTP Header Filter](/docs/apim_policydev/apigw_polref/conversion_common/#add-http-header-filter), or you can set the header programmatically.
+
+The following message attributes are available to aid with the decision making process of setting the `orgs2Role`header:
+
+* `user.email`
+* `user.telephone.number`
+* `user.department`
+* `user.description`
+* `user.userfullname`
+* `orgs2Role`
+* `authentication.subject.role`
+* `authentication.subject.id`
+* `authentication.organization.name`
 
 To configure a policy, perform the following steps in Policy Studio:
 
 1. Open the configuration of your API Manager-enabled API Gateway instance. For example, select **File > New Project from an API Gateway instance**.
 2. Navigate to **Server Settings > API Manager > Identity Provider** in the Policy Studio tree.
 3. Choose the policy you want to invoke in the **Single sign on policy (optional)** field.
+
+### Example policy
+
+1. Use a switch filter to make a decision based on a message attribute.
+
+    ![Single sign on processing policy](/Images/docbook/images/api_mgmt/sso_processing.png)
+2. Assign membership via the **Add HTTP Header** filter.
+
+    ![Add orgs2Role header](/Images/docbook/images/api_mgmt/sso_addheader.png)
 
 {{< alert title="Note" color="primary" >}}Using this policy will take precedence over any existing value you might have for the `orgs2Role` attribute in the identify provider configuration or the `service-provider.xml` file.{{< /alert >}}
 
