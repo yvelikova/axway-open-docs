@@ -21,7 +21,7 @@ The following new features and enhancements are available in this update.
 
 The Remote host capability in API Manager has been enhanced to provide the same powerful configuration options that can be found in Policy Studio. Take advantage of creating aliases for back-ends, and apply specific changes to control a connection without having to deploy the change via Policy Studio. To learn more, see [Remote hosts](/docs/apim_reference/api_mgmt_config_web/#remote-hosts).
 
-### YAML-based configuration store
+### YAML-based configuration store (Technical preview)
 
 This work is an initiative born from collaborative customer hackathons to make the API Gateway configuration more CI/CD/DevOps and developer-friendly.​ It involved transforming the federated configuration into YAML fragments, which can be managed using standard DevOps tools, moving away from a propriety TeamDev approach to encourage the use of standard tools, source control, and DevOps tools that could be used to facilitate and encourage a better experience for collaboration.​
 
@@ -31,7 +31,11 @@ This initiative focuses on addressing:​
 * Source code which is developer-friendly​.
 * Designed for improved DevOps capability.
 
-{{% alert title="Note" %}}The XML configuration store is still supported and can be used as normal.{{% /alert %}}
+{{% alert title="Note" %}}The YAML configuration capability is released as a technical preview version which is still undergoing final testing before its official release. The feature, its software, and all related content are provided on an "as is" and "as available" basis. Axway does not give any warranties, whether express or implied, as to the suitability or usability of the feature, its software, or any of its content.
+
+See [YAML configuration Reference](/docs/apim_yamles/apim_yamles_references/) for known limitations.{{% /alert %}}
+
+The XML configuration store is still supported and is enabled as the primary configuration format.
 
 We strongly encourage our customers to take a look and explore the possibilities of the new configuration format, and provide feedback to us on this experience. To learn more, see [Axway API Management: DevOps friendly configuration capability](https://community.axway.com/s/article/Axway-API-Management-Upcoming-DevOps-friendly-capability).
 
@@ -62,10 +66,9 @@ The new **API Manager 7.7 API 1.4** is available in OAS3 format on the [Axway Do
 The following are new changes implemented to facilitate the creation and maintenance of multi-orgs users in API Manager:
 
 * The API Administrator can now assign a user to more than one organization using the [User API](http://apidocs.axway.com/swagger-ui-NEW/index.html?productname=apimanager&productversion=7.7.0&filename=api-manager-V_1_4-oas3.json#/Users) or the Application Developer's **Create** and **Edit** user interface. For more information, see [Manage users](/docs/apim_administration/apimgr_admin/api_mgmt_admin/#manage-users).
-
 * The ability for the Organization Administrator to manage users within its own organization has changed to avoid privileged escalation concerns. OrgAdmins can only edit or delete multi-orgs users from organizations where they are OrgAdmins. To learn more about these restrictions, see [Organizations and user roles in API Manager](/docs/api_mgmt_overview/key_concepts/api_mgmt_orgs_roles/#organizations-and-user-roles-in-api-manager).
-
 * Integration via SSO has changed to facilitate configuring users from an external IDP to multi-orgs. You can use the new setting, `orgs2Role`, to assign a user to multi-orgs. This attribute can be populated via:
+
     * A direct attribute in the IDP.
     * An LDAP mapping in the service-provider.xml file.
     * A filter configured in Policy Studio, which allows the `orgs2Role` setting to be overridden.
@@ -148,9 +151,7 @@ To suppress schema validation errors and relax the stricter validation of XML fi
 * **Anonymous cipher suites**: The JRE included in API Gateway disables undesirable cipher suites when using SSL/TLS by default. Users using RSA Access Manager (formerly known as RSA ClearTrust) with API Gateway might experience SSL/TLS handshake issues where no common cipher suites can be found. In this case, you should reconfigure SSL/TLS of the RSA Access Manager to support stronger cipher suites.
 
   Alternatively, to re-enable the anonymous cipher suites in JRE for successful SSL/TLS connections with the RSA Access Manager, remove `anon` from the `jdk.tls.disabledAlgorithms` Java security property in the `INSTALL_DIR/Linux.x86_64/jre/lib/security/java.security` file.
-
 * **Endpoint identification property**: The JRE included in API Gateway enables endpoint identification algorithms for LDAPs (secure LDAP over TLS) by default to improve the robustness of the connections. This might cause API Gateway LDAP filters to fail to connect to an LDAP server. To disable endpoint identification add the `<VMArg  name="-Dcom.sun.jndi.ldap.object.disableEndpointIdentification=true"/>` line to the `INSTALL_DIR/system/conf/jvm.xml` file.
-
 * **Connect to URL Filter**: If the `Request Protocol Headers` field in the **Connect to URL** filter is not configured correctly, a runtime exception (`unexpected IO error`) is thrown when the filter is executed. In earlier versions, this error did not appear in the logs.
 
 ### API Manager behavior
@@ -158,23 +159,17 @@ To suppress schema validation errors and relax the stricter validation of XML fi
 * **Increased validation of `/users` endpoint**: In earlier versions of API Manager, the `/users` API returns a list of all the users in an organization. This endpoint allowed a user to share an application with other users in their organization. This was identified as a security risk, as only Organization administrators and API administrators should have access to a list of users, and not user roles. The ability for user roles to view all other user names in the organization has been removed.
 
   To reduce the impact of this change, you can relax this restriction using a configuration flag. Set the flag in the `jvm.xml` file (it does not exist by default) under `groups/group-x/  instance-y/conf`.
-  
+
   ```xml
   <ConfigurationFragment>
       <VMArg name="-DAPIGW_TOGGLE_FEATURE_GET_ALL_USERS=true" />
   </ConfigurationFragment>
   ```
-
 * **Trailing slash property**: An inbound API request with a trailing slash can match an API path with no trailing slash. To activate this feature set the Java property `com.vordel.apimanager.uri.path.trailingSlash.preserve` to `true`. The default value is `false`.
-
 * **Content type property**: An API method's Content-Type is checked against the API method's defined MIME type when performing path matching. To allow legacy API method matching and disable this check, set the Java property `com.coreapireg.apimethod.contenttype.legacy` to `true`. The default value is `false`.
-
 * **Caching property**: Enable caching to improve general system performance and speed. Set the `com.axway.apimanager.api.data.cache` Java system property to `true`. External clients, API keys, and OAuth credentials cache are optimized so that updates to the cache no longer block API Manager runtime traffic, resulting in performance improvements for corresponding API Manager APIs. As a result of the non-blocking cache updates, API Manager memory consumption will increase, particularly in systems with large numbers of external clients, API keys, or OAuth credentials.
-
 * **No match property**: To configure the status code of an unsuccessful match of an API to `404` when authentication is successful, set the Java property `com.axway.apimanager.use404AuthSuccessNoMatch`  to `true`. The default value is `false`.
-
 * **MIME types**: To import API Gateway Management API Swagger into API Manager API Catalog, you must add the `application/x-download` MIME type to the default list of MIME types in API Gateway. Select **Server Settings > General > Mime configuration** in the Policy Studio tree and add `application/x-download` to the MIME list. After the configuration is deployed to API Gateway, you can import the API Gateway Manager API Swagger into API Manager API Catalog.
-
 * **Confidential fields property**: Fields that contain confidential information are no longer returned in some API calls. For example, a call to `GET /api/portal/v1.3/proxies/` does not return the password in the `AuthenticationProfile.parameters\["password"]` field. For compatibility with earlier versions, you can continue to return confidential fields. Set the system property `com.axway.apimanager.api.model.disable.confidential.fields` to `false` in the `jvm.xml` file (it does not exist by default) under `groups/group-x/instance-y/conf`.
 
   ```xml
@@ -182,15 +177,13 @@ To suppress schema validation errors and relax the stricter validation of XML fi
       <VMArg name="-Dcom.axway.apimanager.api.model.disable.confidential.fields=false"/>
   </ConfigurationFragment>
   ```
-  
+
   {{< alert title="Note" color="primary" >}}Setting this property to `false` is not recommended as it could pose a security risk to your API Gateway installation.{{< /alert >}}
 
 ### Security
 
 * **`nosniff` header**: The X-Content-Type-Options HTTP header with value `nosniff` is not included in a HTTP response serving static content from the API Gateway or API Manager.Static contents are served from the API Gateway or API Manager `webapps` directory, which does not serve dynamic contents to avoid the risk of the browser making an incorrect assumption of the content type and exposing a security vulnerability. The X-Content-Type-Options response header with the value `nosniff` is included with HTTP responses serving dynamic content by default.
-
 * **CSRF check property**: If you are using the API Manager Management APIs, Client Application Registry APIs, and API Gateway APIs you might need to disable the CSRF token check implemented in v7.5.3 SP9 and later. To disable this check, set the Java system property `com.axway.apimanager.csrf` to `false`. The default is `true`.
-
 * **Custom filters**: If you have written a custom filter using the extension kit, you might need to update your custom code as a result of changes in the classes. The following interfaces deprecate `_()` and `__()` in favor of a new `resolve()` method:
 
     * `com.vordel.client.manager.ResourceResolver`
@@ -207,15 +200,27 @@ As part of our software development life cycle we constantly review our API Mana
 
 The following capabilities have been deprecated.
 
+### API Manager Rest APIs
+
+API Management REST APIs, namely versions 1.1 and 1.2 are now marked as deprecated.
+
+API Manager REST APIs have been updated to version 1.4, but version 1.3 is still supported.
+
+### Swagger Support
+
+As we are enhancing the capability of API Manager to support the latest versions of Swagger and OpenAPI, we are also deprecating Swagger version 1.1.
+
 ### Antivirus scanners
 
-API Gateway already supports the industry standard Internet Content Adaption Protocol (ICAP). From the November 2020 update the following embedded antivirus scanners will be removed:
+API Gateway already supports the industry standard Internet Content Adaption Protocol (ICAP), and the following embedded antivirus scanners will be removed from the **November 2020** update:
 
 * McAfee
 * Sophos
 * Clam AV
 
 Content scanning is still supported using the ICAP filter, which provides out-of-the-box integration with ICAP-capable servers provided by Symantec, McAfee, OPSWAT and others, promoting ease of deployment and operational control.
+
+Removal of deprecated items are planned for 30 July 2021. These items are still supported until removal, however we recommend to stop using them at your earliest convenience.
 
 ## Removed features
 
@@ -263,7 +268,7 @@ This version of API Gateway and API Manager includes:
 | RDAPI-19150 | 01136673                                                                                                               | **Issue**: In API Manager, the Try It Dialog only showed a maximum of 10 API Keys as the store used to retrieve API Keys was a paginated store .Resoution: Updated the store used when retrieving API Keys to be a non paginated store so that all API Keys are retrieved.                                                                                                                                                                                              |
 | RDAPI-19262 | 01138506  01095419                                                                                                     | **Issue**: In API Manager in a multiple gateway environment, when a quota is defined for an API, the X-Rate-Limit header, present in the API responses, shows inconsistent values across the different nodes. **Resolution**: When defining a quota for an API in a multiple gateway environment, the X-Rate-Limit header behaves as expected.                                                                                                                          |
 | RDAPI-20023 | 01156912                                                                                                               | **Issue**: Use of TLS Server Name Indication (SNI) was only enabled when the option "verification of server's certificate name match against server name" was enabled. **Resolution**: SNI and Server Certificate name check are now separated features. This separation also applies to SMTP protocol.                                                                                                                                                                 |
-| RDAPI-20526 | 01164755                                                                                                               | **Issue**: Groovy 2.4.8 provided with API Gateway does not provide an option to deactivate escaping in JSON serialization. See <https://issues.apache.org/jira/browse/GROOVY-6975> for details. **Resolution**: Groovy has been updated to version 2.5.13 that provides such option.                                                                                                                                                                                      |
+| RDAPI-20526 | 01164755                                                                                                               | **Issue**: Groovy 2.4.8 provided with API Gateway does not provide an option to deactivate escaping in JSON serialization. See <https://issues.apache.org/jira/browse/GROOVY-6975> for details. **Resolution**: Groovy has been updated to version 2.5.13 that provides such option.                                                                                                                                                                                    |
 | RDAPI-20958 | 01122859  01132092  01133854  01064716                                                                                 | **Issue**: Changes to an Organization Name or Organization that an Application is associated with causes duplication in the API Manager Metrics reports. **Resolution**: API Manager Metrics reports now restrict report totals using the Organization name the Application is associated with.                                                                                                                                                                         |
 | RDAPI-21011 | 01174542  01181811                                                                                                     | **Issue**: API Gateway Manager does not display KPS entries correctly. **Resolution**: Tables with long column names and entries are now rendered correctly in API Gateway Manager.                                                                                                                                                                                                                                                                                     |
 | RDAPI-21060 | 01189348  01194083  01171842                                                                                           | **Issue**: An SQLException occurs for any query against a read-only KPS store backed by an RDBMS. **Resolution**: Fixed the broken query syntax, allowing SQL queries to be run.                                                                                                                                                                                                                                                                                        |
@@ -291,19 +296,19 @@ The following are known issues for this update.
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | RDAPI-15981 | Scopes fields for API Key remain visible even if Application Scopes are disabled                                                                                   |
 | RDAPI-16486 | Changes in the mapper always require a reload in the Execute Data Maps filter and once reloaded then providing values for the required parameters must be repeated |
-| RDAPI-16778 | Doc update, recommendations for Cassandra storage                                                                                                                 |
+| RDAPI-16778 | Doc update, recommendations for Cassandra storage                                                                                                                  |
 | RDAPI-17282 | Connector for Salesforce APIs in API Manager doesn't work or is impossible to configure                                                                            |
-| RDAPI-18198 | CORS preflight fails for WSDL based API Manager APIs, thus Try-It fails                                                                                           |
+| RDAPI-18198 | CORS preflight fails for WSDL based API Manager APIs, thus Try-It fails                                                                                            |
 | RDAPI-18332 | "Try-it" for API-Method is not working                                                                                                                             |
 | RDAPI-18523 | Inconsistent application search behaviour relating to application sharing                                                                                          |
 | RDAPI-18674 | Insufficient data validation when importing an Application                                                                                                         |
-| RDAPI-18986 | projpack is unable to merge projects after projupgrade; likely due to Default APIManager policies                                                                 |
-| RDAPI-18990 | Failed to delete undefined" pop-up pops up unexpectedly when attempting to delete application                                                                     |
-| RDAPI-19006 | Delete API "not found" after changing Application Org                                                                                                             |
+| RDAPI-18986 | projpack is unable to merge projects after projupgrade; likely due to Default APIManager policies                                                                  |
+| RDAPI-18990 | Failed to delete undefined" pop-up pops up unexpectedly when attempting to delete application                                                                      |
+| RDAPI-19006 | Delete API "not found" after changing Application Org                                                                                                              |
 | RDAPI-19132 | Issue with selection of Retirement date when deprecating API                                                                                                       |
-| RDAPI-19240 | Users in "pending approval" state are visible in the Sharing tab                                                                                                  |
+| RDAPI-19240 | Users in "pending approval" state are visible in the Sharing tab                                                                                                   |
 | RDAPI-19278 | API access removed from app during org migration                                                                                                                   |
-| RDAPI-19292 | When an APIM admin user's login name is changed, the user is directed to a blank page                                                                             |
+| RDAPI-19292 | When an APIM admin user's login name is changed, the user is directed to a blank page                                                                              |
 | RDAPI-19293 | API Catalog Try It shows only the first security device of a security profile                                                                                      |
 | RDAPI-19333 | Grant API access removed from API Access list in application when FE unpublished                                                                                   |
 | RDAPI-19354 | Issue with backend API import regarding Duplicate parameters value                                                                                                 |
@@ -319,7 +324,7 @@ The following are known issues for this update.
 | RDAPI-20428 | Adding a routing policy to a Studio-defined API produces an EntityStoreException                                                                                   |
 | RDAPI-20480 | swagger enum query parameters not validated                                                                                                                        |
 | RDAPI-20550 | renaming existing KPS collection in PS breaks ES store                                                                                                             |
-| RDAPI-20594 | When a token is revoked with an incorrect Authorization header, the response is 400 instead of 401                                                                |
+| RDAPI-20594 | When a token is revoked with an incorrect Authorization header, the response is 400 instead of 401                                                                 |
 | RDAPI-20726 | How to get attribute value for apimgmt.application.id                                                                                                              |
 | RDAPI-20740 | Unable to environmentalize format in Transaction Access Log                                                                                                        |
 | RDAPI-20793 | Resource Path is duplicated in API Manager for Swagger 1.2                                                                                                         |
@@ -329,7 +334,7 @@ The following are known issues for this update.
 | RDAPI-20928 | Parameter types differ in Backend API and In TryIt                                                                                                                 |
 | RDAPI-21009 | Issue after updating API Manager settings through rest api if lockUserAccount is missing                                                                           |
 | RDAPI-21030 | API Manager ignores dont.expect.100.continue flag if the Outbound Security is HTTP Basic                                                                           |
-| RDAPI-21061 | Updated error message, OAS3 file import without servers section url                                                                                               |
+| RDAPI-21061 | Updated error message, OAS3 file import without servers section url                                                                                                |
 | RDAPI-21113 | "URLDecoder: Incomplete trailing escape (%) pattern" only when virtualized API uses Outbound authentication                                                        |
 | RDAPI-21171 | Minor UI issue affecting pagination in API keys and Oauth client credentials                                                                                       |
 | RDAPI-21211 | APIM doesn't support SOAP 1.1 Binding for MTOM 1.0                                                                                                                 |
@@ -343,17 +348,17 @@ The following are known issues for this update.
 | RDAPI-21436 | long deployment time when lot of APIs are virtualized in API Manager                                                                                               |
 | RDAPI-21444 | Policy Studio can't delete or edit scripts                                                                                                                         |
 | RDAPI-21456 | Application export doesn't include external credential                                                                                                             |
-| RDAPI-21469 | kpsadmin returns inconsistent status codes, making it hard to script                                                                                              |
+| RDAPI-21469 | kpsadmin returns inconsistent status codes, making it hard to script                                                                                               |
 | RDAPI-21506 | APIM cannot import Swagger with externalDocs (NPE)                                                                                                                 |
 | RDAPI-21557 | API gateway sends 100 continue when backend fails to respond in time                                                                                               |
 | RDAPI-21619 | API Manager remote hosts not synchronized between instances (issue not fully resolved)                                                                             |
 | RDAPI-21679 | Amazon SQS Poller - visibility setting lacks units in Policy Studio                                                                                                |
 | RDAPI-21681 | Swagger API blob not updated after updated API import                                                                                                              |
-| RDAPI-21689 | [ELI] HTTP 500 when accessing user profile                                                                                                                        |
+| RDAPI-21689 | \[ELI] HTTP 500 when accessing user profile                                                                                                                        |
 | RDAPI-21697 | problems with recent change to multipart form-data RDAPI-20461                                                                                                     |
 | RDAPI-21738 | Issue in sysupgarde apply - Import failed for table                                                                                                                |
 | RDAPI-21784 | Redaction not working when Content-Type is multipart/form-data and form-field is a file                                                                            |
-| RDAPI-21801 | Spaces in query-string parameters which are encoded as '%20' on the inbound request, are changed to be encoded with '+' during the transaction                    |
+| RDAPI-21801 | Spaces in query-string parameters which are encoded as '%20' on the inbound request, are changed to be encoded with '+' during the transaction                     |
 
 ### Policy Studio help documentation
 
