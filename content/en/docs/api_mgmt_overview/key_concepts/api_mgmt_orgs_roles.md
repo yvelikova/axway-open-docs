@@ -107,6 +107,8 @@ Organization administrators have full read access to users and applications in t
 
 The Organization administrator cannot demote another Organization administrator to a `user` role.
 
+By default, organization administrators require approval from an Administrator to publish APIs owned by users in their organization, and they are not allowed to unpublish APIs. By setting `api.manager.orgadmin.selfservice.enabled` system property to `true`, the Organization administrator will no longer require approval, and will be able to directly publish and unpublish APIs in their own organization.
+
 ### API consumer
 
 The API consumer can create, read, update, and delete their applications. They can also give shared access to other users, granting permissions to view and monitor, or full access. If auto-approval is disabled, the user must wait for approval for new applications from the API administrator, or organization administrator if they have been delegated management responsibility. A user has full read access to all other users in the organization.
