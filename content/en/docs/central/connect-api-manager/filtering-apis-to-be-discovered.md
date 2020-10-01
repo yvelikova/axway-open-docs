@@ -30,8 +30,8 @@ Learn how to set filtering based on tag name, tag value, partial value and Match
 tag.<tagName>.Exists() == true | false
 ```
 
-Sample to discover all APIs having a tag name API_TYPE: ```filter: tag.API_TYPE.Exist() == true```  
-Sample to discover all APIs not having a tag name API_TYPE: ```filter: tag.API_TYPE.Exist() == false```  
+Sample to discover all APIs having a tag name API_TYPE: ```filter: tag.API_TYPE.Exists() == true```  
+Sample to discover all APIs not having a tag name API_TYPE: ```filter: tag.API_TYPE.Exists() == false```  
 
 ## Filter based on tag value
 
