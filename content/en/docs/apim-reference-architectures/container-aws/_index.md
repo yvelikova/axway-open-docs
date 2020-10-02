@@ -9,12 +9,14 @@
 ## Summary
 
 This document provides a reference architecture guide for deploying
-AMPLIFY API Management (APIM) using Externally Managed Topology ([EMT mode](/docs/apim_installation/apigw_containers/container_getstarted/)).
+AMPLIFY API Management (APIM) using Externally Managed Topology ([EMT
+mode](/docs/apim_installation/apigw_containers/container_getstarted/)).
 Deploying APIM using Docker containers orchestrated by Kubernetes brings
-tremendous benefits in installing, developing and operating an API
+tremendous benefits in installing, developing, and operating an API
 management solution.
 
-This document describes all major areas in deploying and maintaining Axway APIM EMT on Amazon AWS cloud, including:
+This document describes all major areas in deploying and maintaining
+Axway APIM EMT on AWS cloud, including:
 
 * Physical and deployment architectures
 * Explanation and consideration for selecting underlying
@@ -26,19 +28,18 @@ infrastructure components
 
 ## Overview
 
-AMPLIFY API Management is a leading API management solution on the
-market. It supports container-based deployment under an option called
-Externally Managed Topology (EMT). The purpose of this document is to
-share Axway reference architecture for the container-based deployment of
-an API management solution on Kubernetes. It will address many
-architectural, development and operational aspects of the proposed
+AMPLIFY API Management is a leading API management solution on
+the market. It supports container-based deployment under an option
+called Externally Managed Topology (EMT). The purpose of this document
+is to share Axway reference architecture for the container-based
+deployment of an API management solution on Kubernetes. It will address
+many architectural, development, and operational aspects of the proposed
 architecture.
 
-Since the technology choices, Docker and Kubernetes, are portable across
-on-premises environments and many cloud providers, most of the
-information in this guide should apply to those environments. But we
-include specific recommendations for AWS as one of the most common
-deployment targets.
+Since the technology choices, Docker and Kubernetes, are portable, most
+of the information in this guide should apply across an on-premise
+environment and many cloud providers. But we include specific
+recommendations for AWS as one of the most common deployment targets.
 
 The target audience for the document is architects, developers, and
 operations personnel. To get the most value from this document, a reader
@@ -64,7 +65,7 @@ The name of the new deployment option _EMT_ gives a good clue that
 with this option, many operational aspects of the architecture are
 externalized to an orchestration component. Existing users of AMPLIFY
 API Management should be aware that with EMT deployment, the role of
-Admin Node Manager becomes more of a monitoring tool, and Node Manager is completely removed from the EMT architecture.
+Admin Node Manager becomes more of a monitoring tool and Node Manager is completely removed from the EMT architecture.
 
 Official testing is taking place in Kubernetes as the orchestration
 component. However, the Docker images are agnostic, so they can be
@@ -81,9 +82,10 @@ layers of different capabilities:
 
 ![Reference architecture layers](/Images/apim-reference-architectures/container-aws/image1.png)
 
-Notice that the packaging of API Management for deployment has changed
-in the EMT mode. Customers need to build a new Docker image for any new
-`FED` or `POL` file that they want to deploy (see
+Notice that the packaging of API Management
+for deployment has changed in the EMT mode. Customers need to build a
+new Docker image for any new `FED` or `POL` file that they want to deploy
+(see
 [Deploy API Gateway in containers](/docs/apim_installation/apigw_containers/)).
 We recommend creating a DevOps pipeline that can be triggered anytime a
 new configuration is ready for deployment.
@@ -94,11 +96,11 @@ required environment, the following table describes the required and
 recommended options.
 
 |Description|Required?|
-|----|----|
-|A DevOps pipeline is strongly recommended for building Docker images                                          |Recommended|
-|A storage system is required with the capacity to store dedicated data and to share data between components   |Required|
-|A bastion is required for administration tasks on API management and Kubernetes                               |Required|
-|Kubernetes must have a container registry to pull Docker images.                                              |Required|
+|---|---|
+|A DevOps pipeline is strongly recommended for building Docker images| Recommended|
+|A storage system with enough capacity to store dedicated data and to share data between components| Required|
+|A bastion for administration tasks on API management and Kubernetes|Required|
+|A container registry to store Docker images | Required|
 
 Besides [Docker](https://www.docker.com/resources/what-container) and
 [Kubernetes](https://kubernetes.io), we use [Helm](https://helm.sh)
@@ -112,9 +114,9 @@ command.
 We review a single deployment option where all API Management components
 are running inside a single Kubernetes cluster. This pattern allows one
 to virtualize back-end apps or APIs hosted inside or outside the
-cluster. It's possible to deploy multiple API gateway groups in the same
-cluster. But keep in mind that every API gateway group configuration
-should be deployed as a separate Docker image.
+cluster. It is possible to deploy multiple API gateway groups in the
+same cluster. But keep in mind that every API gateway group
+configuration should be deployed as a separate Docker image.
 
 In our scenario, we expose several entry points for the external clients
 inside the cluster (see implementation details in the next chapter). All
@@ -132,7 +134,8 @@ A dedicated deployment environment requires:
 * Storage system for shared volume
 * Monitoring system
 * Bastion system for cluster access
-* DevOps pipelines to control Docker image build and deployment to a target environment
+* DevOps pipelines to control Docker image build and deployment to a
+target environment
 
 The following diagram shows a general architecture of a single cluster
 configuration:
@@ -158,10 +161,10 @@ secrets. Besides registry access credentials, you will need to maintain
 additional sensitive data that is described in the following table.
 
 |Description|Required?|
-|----|----|
-|Docker images contain such sensitive data as license key, certificate, and configuration. This data must be protected. |Required|
-|The password is sensitive and must be encrypted in the system.|Required|
-|Operations should define a clear tag strategy for Docker images tagging.|Recommended|
+|---|---|
+|Docker images contain such sensitive data as license key, certificate, and configuration. This data must be protected.| Required|
+|The password is sensitive and must be encrypted in the system.| Required|
+|Operations should define a clear tag strategy for Docker images tagging. | Recommended|
 
 #### Bastion host
 
@@ -184,7 +187,7 @@ of verification tests. Since a Docker container is immutable, any change
 in API gateway configuration requires building a new Docker image.
 
 Axway provides several CLI tools that fit nicely into a DevOps pipeline.
-Later in the document, we will describe:
+Later in the document, we will describe them:
 
 * Docker build scripts
 * API promotion tool (`apimanager-promote`)
@@ -203,54 +206,64 @@ to define a set of performance goals. These will be unique for a
 specific set of APIs, deployment platform, and clients' expectations.
 Later in the document, we show an example of the performance metrics
 that have been achieved in testing a reference architecture by the Axway
-Managed Cloud team.
+team.
 
 ## Implementation details
 
 This chapter details the configuration for each component.
 
+{{% alert title="Note" %}}
+Axway publishes some development assets on GitHub, including [Cloud Automation](https://github.com/Axway/Cloud-Automation).
+You can also interact with the Community, including [Journey to the Cloud](https://community.axway.com/s/group/0F92X000000CtYISA0/journey-to-the-cloud).
+{{% /alert %}}
+
 ### Diagram
 
-![Recommended reference architecture](/Images/apim-reference-architectures/container-aws/image3.png)
+In this section, we show the main diagrams that represent Axway API
+Management architecture deployed on AWS.
 
-This figure shows the recommended reference
-architecture diagram. It is designed with High Availability (HA) in
-mind. An HA deployment requires redundancy and high throughput for all
-infrastructure components and networks. To reach this target, components
-must be deployed in multiple zones. In our configuration, we use three
-availability zones. This configuration is compliant with a minimal
-technical SLA of 99.99 percent. The implementation details of this
-diagram are explained in this chapter.
+#### Technical view
+
+The architecture is designed with High Availability (HA) in mind. An
+HA deployment requires redundancy and high throughput for all
+infrastructure components and networks. To reach this target, the
+architecture uses most of AWS PaaS with an appropriate plan and
+multiple availability zones for VMs. The components must be deployed
+in multiple zones. In our configuration, we use three availability
+zones. This configuration is compliant with a minimal technical SLA of
+99.99 percent. Each component will be described in the next chapters.
+
+![Recommended reference architecture](/Images/apim-reference-architectures/container-aws/image3.png)
 
 ### Choice of runtime infrastructure components
 
 This section provides recommendations for a typical implementation of
-the runtime infrastructure components.
-
-In this configuration, all assets of the Kubernetes cluster are deployed
-in the same data center or a region (in case of a cloud deployment),
-although components are spread out in various racks, rooms or
-availability zones.
+the runtime infrastructure components. In this configuration, all assets
+of the Kubernetes cluster are deployed in the same data center or a
+region (in case of a cloud deployment), although components are spread
+out in various racks, rooms, or availability zones.
 
 The following table lists the number of runtime components in this
 configuration.
 
-|Assets                                 |Spec|
-|----|----|
+|Assets |Spec|
+|--- |---|
 |Master nodes                           |3|
-|Worker nodes                       |3|
-|Cassandra nodes                        |3|
-|RDBMS instance                         |2|
-|Dedicated storage                  |70GB|
-|Shared storage                     |20GB|
-|External IP (public or private)    |1|
-|Load balancer                          |1|
-|External identity access management    |1|
-|Docker registry                        |1|
-|Bastion                                |1|
-|Worker pipeline                        |1|
+|Worker nodes                                    |3|
+|Cassandra nodes                                    |3|
+|RDBMS instance                                     |2|
+|Dedicated storage                              |70GB|
+|Shared storage                                 |20GB|
+|External IP (public or private)                 |1 min|
+|Load balancer                                      |1|
+|External identity access management                |1|
+|Docker registry                                    |1|
+|Bastion                                            |1|
+|Worker pipeline                                    |1|
 
-{{< alert title="Note" color="primary" >}}These values are the minimum recommended starting point. Your actual values will depend on many factors, like the number of APIs, payload size, and so on.{{< /alert >}}
+{{% alert title="Note" %}}
+These values are the minimum recommended starting point. Your actual values will depend on many factors, like the number of APIs, payload size, and so on.
+{{% /alert %}}
 
 #### VM sizes
 
@@ -280,7 +293,8 @@ API gateways generate events. A shared volume is required. The volume is
 limited by a setting inside the deployment package (FED file). By
 default, this value is set to 1GB. Three gateways are deployed in
 the minimal configuration. But autoscaling can increase this number to
-12 replicas. So, storage of 13 GB must be configured.
+12 replicas (or more in your custom configuration), as an example. So,
+storage of 13 GB must be configured.
 
 Follow this method to estimate disk space:
 
@@ -304,7 +318,9 @@ cluster. The data will contain:
 * Containers logs
 * Applications logs
 
-FluentD has been used in our environment to stream logs.
+FluentD_ has been used in our environment to stream logs. A plugin is
+available to stream logs to blob storage. In this case, Blob storage has
+a dynamic sizing with high limitation. See [Logging and tracing](#logging-and-tracing) for more details.
 
 ##### Total storage requirements
 
@@ -364,27 +380,30 @@ diagram (just one availability zone is shown) and table.
 
 This section focuses on additional Kubernetes objects and configuration
 inside the cluster to support Axway components. This is a required
-step before deploying containers.
+step before deploying containers. A [sample Helm chart](https://github.com/Axway/apigw-helm-charts) is available. Use it as a starting
+point for building your Helm chart.
 
 #### Deployment options
 
-Some parameters are available only at the creation of the Kubernetes
-cluster. The first is a network manager for communication between pods
-and the second is a set of strong permissions for Kubernetes.
+There are parameters that you specify at the time of the creation of a
+Kubernetes cluster. One of them is a network manager for communication
+between pods. The second one is a set of strong permissions for
+Kubernetes.
 
-|Description|Type|
-|----|----|
-|Network CNI mode with a specific plugin (CALICO or Cloud provider) to secure pod connections with other applications or resources inside the cluster |Recommended|
-|Secure Kubernetes with RBAC capabilities | Recommended|
+|Description | Type |
+|---|---|
+|Network CNI mode with a specific plugin (CALICO or Cloud provider) to secure pod connections with other applications or resources inside the cluster  | Recommended|
+| Secure Kubernetes with RBAC capabilities  |  Recommended|
 
 ##### Network plugin
 
-By default in Kubernetes, there is no isolation between pods inside the
-cluster. It's not a problem to deploy it on a dedicated cluster; default
-Kubernetes networking will be enough. API management capabilities don't
-require specific rules. But in some cases, API management may be
-deployed with other back end or apps in the same cluster. In this case,
-it's necessary to use a Container Networking Interface (CNI) plugin.
+By default, there is no isolation between pods inside the cluster in
+Kubernetes. It is not a problem to deploy it on a dedicated cluster;
+default Kubernetes networking will be enough. API management
+capabilities do not require specific rules. But in some cases, API
+management may be deployed with other back end or apps in the same
+cluster. In this case, it is necessary to use a Container Networking
+Interface (CNI) plugin.
 
 There are three kinds of policies that can be applied:
 
@@ -395,7 +414,7 @@ There are three kinds of policies that can be applied:
 The Axway team used CALICO without any specific rule. It was simple to
 deploy with a manifest.
 
-##### RBAC permission
+##### RBAC Permission
 
 RBAC permission is a secure mechanism to manage authorization inside
 Kubernetes. It's recommended to set people or application permissions to
@@ -403,12 +422,14 @@ manage resources:
 
 * Allow Helm to manage resources
 * Allow worker nodes autoscaling
-* Allow specific users to view pods, to deploy pods, to access Kubernetes Dashboard
+* Allow specific users to view pods, to deploy pods, to access
+Kubernetes Dashboard
 * Allow cert-manager to pull and encrypt certificate
-* Allow Kubernetes to provide cloud resources, like storage or load balancer
+* Allow Kubernetes to provide cloud resources, like storage or load
+balancer
 
 This is a minimal configuration and you can define more specific
-permissions with cluster roles or binding in the cluster.
+permissions with cluster roles and binding in the cluster.
 
 #### Namespaces
 
@@ -416,26 +437,27 @@ A namespace allows splitting of a Kubernetes cluster into separated
 virtual zones. It's possible to configure multiple namespaces that will
 be logically isolated from each other. Pods from different namespaces
 can communicate with a full DNS pattern
-(`<service-name>.<namespace-name>.svc.cluster.local`). A name is
+`<service-name>.<namespace-name>.svc.cluster.local`. A name is
 unique within a namespace, but not across namespaces.
 
 As mentioned in [Kubernetes
 documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/),
-a typical usage of namespaces is separating projects and configured objects deployed by different teams.
+a typical usage of namespaces is separating projects and configured
+objects deployed by different teams.
 
 Axway recommends deploying all API management components inside the same
 namespace:
 
 * According to Kubernetes best-practice, the deployment is the
 responsibility of API team
-* It's easiest to deploy the solution inside an existing cluster
-* You don't have to specify full DNS to call other components,
+* It is easiest to deploy the solution inside an existing cluster
+* You do not have to specify full DNS to call other components,
 therefore, preventing errors. You just use a service name
 (`<service-name>`).
 
-|Description|Type|
-|----|----|
-|Provide all API management assets in the same namespace   |Recommended|
+|Description | Type |
+|---|---|
+|Provide all API management assets in the same namespace | Recommended|
 
 #### Pod resource limits
 
@@ -446,33 +468,34 @@ cluster. JVM heap size should be limited.
 Kubernetes permits defining a CPU and memory limits for each pod to
 protect the cluster. Setting up the limits is especially important in
 case a cluster is shared with other apps. When scheduling a pod
-deployment, Kubernetes uses these limits to ensure that resources for
-the pod are available on a target node.
+deployment, Kubernetes uses these limits to ensure that resources for a
+pod are available on a target node.
 
-|Description|Type|
-|----|----|
+|Description | Type |
+|---|---|
 |Limit memory and CPU usage to protect the cluster                                  |Recommended|
 |Change Xmx value and resources limitations according to the size of worker nodes   |Recommended|
 
 These are the recommended initial limits for AMPLIFY API Management
 components:
 
-* API Manager pod: 2cpu with 2GB memory and initial request of 0,5cpu with 0,5GB memory
+* API Manager pod: 2cpu with 2GB memory and initial request of 0,5cpu
+with 0,5GB memory
 * Admin Node Manager: memory resource limit of 2GB memory
 
 #### Components healthcheck
 
 Kubernetes provides a very useful feature called probes. There is one
 probe to check if a pod is ready to be used at startup and another
-to periodically check if a container is still operational. These
+one to periodically check if a container is still operational. These
 probes are respectively called _readiness probe_ and _liveness probe_.
 
 These probes are configured on all ports (traffic and UI) and use the
 HTTP/HTTPS protocol.
 
-|Description|Type|
-|----|----|
-|Implement Kubernetes probes to manage container status in real time   |Required|
+|Description | Type |
+|---|---|
+|Implement Kubernetes probes to manage container status in real-time   |Required|
 
 #### Affinity and anti-affinity mode
 
@@ -481,12 +504,11 @@ availability. Potentially, more than one pod replica can be deployed on
 the same node. For an HA deployment, you want to spread your runtime
 components across multiple nodes and availability zones. For this
 reason, we recommend using a Kubernetes option called
-_podAntiAffinity_. You should instruct Kubernetes _not_ to
-schedule the same replicas on the same node if it is possible based on
-the resource availability.
+_podAntiAffinity_. You should instruct Kubernetes _not_ to schedule the same replicas on the same node if it is possible based
+on the resource availability.
 
-|Description|Type|
-|----|----|
+|Description | Type |
+|---|---|
 |Dispatch APIM pods across available nodes (monitoring node can be excluded from this rule)   |Required|
 
 #### Autoscaling
@@ -516,30 +538,31 @@ several options for triggering autoscaling. The average CPU utilization
 can be used. It is set to a high enough value for optimal resource
 usages. When CPU utilization exceeds this threshold, Kubernetes adds
 more pods. You need to test what should be a good CPU utilization based
-on your pod start-up time, traffic pattern and potential impact on the
+on your pod start-up time, traffic pattern, and potential impact on the
 overall performance. An average CPU utilization of 75 percent is a good
 starting point. Keep in mind that to get HPA working, you need to define
 resource limits (notice, that our CPU limit is 2cpu). This is an example of this setting in Helm:
 
 ```
 metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 75
+- type: Resource
+  resource:
+    name: cpu
+    target:
+      type: Utilization
+      averageUtilization: 75
 ```
 
 #### External traffic
 
 We use the ingress controller to expose API management apps and services
 to external clients. It dynamically creates externally reachable URLs
-for desirable endpoints, load balance traffic between pods and terminate
-TLS connections. This mode is available only for HTTP and HTTPS.
+for desirable endpoints, load balance traffic between pods, and
+terminate TLS connections. This mode is available only for HTTP and
+HTTPS.
 
-|Description|Type|
-|----|----|
+|Description | Type |
+|---|---|
 |Terminate TLS before a request reaches pods                                               |Required|
 |Need specific DNS entry to route requests (solution with rewrite path isn't functional)   |Required|
 
@@ -555,8 +578,8 @@ DNS records must match the certificate and ingress host configuration.
 These records must target the external IP used for the Kubernetes entry
 point.
 
-{{% alert title="Caution" color="warning" %}}
-It is not possible to use some rewrite path like `https://FQDN/Components/` to access the web interface
+{{% alert title="Important" color="warning" %}}
+Important: It is not possible to use some rewrite-path like `https://FQDN/Components/` to access the web interface.
 {{% /alert %}}
 
 It is necessary to configure the following annotations for ingress
@@ -568,7 +591,8 @@ configuration:
 * Force usage of TLS protocol v1.2
 * Specify HTTPS protocol for a back end
 * Localization of each certificate
-* A range IP authorization (optional, but recommended only for private access)
+* A range IP authorization (optional, but recommended only for private
+access)
 
 Kubernetes lists [available ingress controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/).
 For the AWS implementation, we used the AWS ALB Ingress Controller. But
@@ -576,16 +600,16 @@ you can pick any Ingress controller option that fits your requirements.
 
 #### Secrets
 
-Without secrets, all passwords are set in clear in Manifest. Kubernetes
+Without secrets, all passwords are set in clear in manifests. Kubernetes
 define _secret_ objects to encode in base64 all sensitive information.
 Using secrets is very useful for variables in containers, Docker
-registry login and technical token for shared storage.
+registry login, and technical token for shared storage.
 
 Here is a table to list all the secrets used by pods:
 
-| |Admin Node Manager   |API Gateway Manager   |API Gateway Traffic   |Ingress controller|
-|----|----|----|----|----|
-|Public certificate      | | | |X|
+| |Admin Node Manager   |API Gateway Manager   |API Gateway Traffic  | Ingress controller|
+|----------------------- |----|----|----|----|
+|Public certificate      | | | |X (one for each ingress)|
 |Docker registry login   |X|X|X| |
 |Cassandra user ID       | |X|X| |
 |Shared storage ID       |X|X|X| |
@@ -611,7 +635,7 @@ Admin Node Manager provides the API Gateway Manager web interface with
 monitoring capabilities. This component requires an RDBMS to store
 analytical data. It is accessed through an ingress controller. We
 recommend that ANM is available from an internal and secure location
-(i.e., through bastion node).
+(for example, through bastion node).
 
 To build an ANM container, you need to provide the following:
 
@@ -619,21 +643,22 @@ To build an ANM container, you need to provide the following:
 so it's possible to use a self-signed certificate. However, we
 recommend reviewing the usage of self-signed certs with your
 security team.
-* A license file with the EMT mode. Notice it is not required to start
-Admin Node Manager, but may be required for optional features such
-as FIPS mode.
+* A license file with the EMT mode. Notice that it is not required to
+start Admin Node Manager but may be required for optional features
+such as FIPS mode.
 * JDBC library for the selected RDBMS.
 * RDBMS connection parameters.
 
 To deploy you need to provide:
 
 * Heap size memory as mentioned before (set the value at 1024)
-* Persistent storage with read/write multiple pods capabilities to store events
+* Persistent storage with read/write multiple pods capabilities to
+store events
 * RDBMS parameters
 * Log format in JSON
 * Trace level setting
 
-The Helm charts contain a precheck mechanism (*initContainers*) to check
+The Helm chart contains a precheck mechanism (`initContainers`) to check
 for required preconditions before this pod can be started. Those checked
 preconditions are:
 
@@ -658,12 +683,18 @@ As of Axway API Management v7.7, we recommend running only one API Manager UI po
 
 To build an API Manager container, you need to provide:
 
-* HTTPS certificate. This certificate will be used inside the cluster. It's possible to use a self-signed certificate. However, we
-recommend reviewing the usage of self-signed certs with your security team.
+* HTTPS certificate. This certificate will be used inside the cluster.
+It's possible to use a self-signed certificate. However, we
+recommend reviewing the usage of self-signed certs with your
+security team.
 * A license file with the EMT mode set.
-* A group name. It's mandatory because Admin Node Manager needs it to manage gateway.
+* A group name. It's mandatory because Admin Node Manager needs it to
+manage gateway.
 * JDBC library for the selected RDBMS.
-* A FED file with server settings and policies. It is also possible to use policy and environment package files. So, you can have one common policy package and several environment packages: one for each deployment environment.
+* A `FED` file with server settings and policies. It is also possible to
+use policy and environment package files. So, you can have one
+common policy package and several environment packages: one for each
+deployment environment.
 
 To deploy you need to provide:
 
@@ -685,7 +716,8 @@ Pod characteristics:
 
 * Healthcheck: LivenessProbe and ReadinessProbe
 * Kind: deployment
-* Exposed port UI 8075 (customers may configure a different port if needed)
+* Exposed port UI 8075 (customers may configure a different port if
+needed)
 * Resources limits: 2cpu & 2GB memory
 * Java heap size: 1024 MB
 * Session affinity: by cookie
@@ -715,7 +747,7 @@ It is important _not to use_ this flag in a production environment.
 Any testing in an upper environment (Test, QA, and so on.) should be done using a Docker image built for that environment.
 {{% /alert %}}
 
-The Helm charts contain a precheck mechanism (`initContainers`) to check
+The Helm chart contains a precheck mechanism (`initContainers`) to check
 for required preconditions before this pod can be started. Those checked
 preconditions are:
 
@@ -728,7 +760,8 @@ Pod characteristics:
 
 * Healthcheck: LivenessProbe and ReadinessProbe
 * Kind: deployment
-* Exposed traffic port 8065 (customers may configure a different port if needed)
+* Exposed traffic port 8065 (customers may configure a different port
+if needed)
 * Resources limits: 2cpu & 2GB memory
 * Java heap size: 1512 MB
 * Automatic scalability: yes
@@ -736,7 +769,7 @@ Pod characteristics:
 
 ### Cassandra considerations
 
-Cassandra must be hosted outside the cluster. Minimum three nodes are
+Cassandra must be hosted outside of the cluster. Minimum three nodes are
 required: one node in each availability zone. See [Administer Apache Cassandra](/docs/cass_admin/).
 
 ### Security considerations
@@ -747,7 +780,7 @@ this document:
 * In layered infrastructure, the network is protected by firewall LVL4
 that filters only specifics ports. Any administrative access to
 infrastructure components is enabled through a subnet called a
-bastion.
+bastion. PaaS services have selected access from AKS or data subnet.
 * All components are deployed in a cluster mode. Kubernetes uses RBAC
 permission to set roles per user or group. CNI plugin protects
 communications inside the cluster. All external connections are
@@ -755,7 +788,7 @@ protected by an ingress controller with a public certificate.
 * In the application layer, sensitive data is protected inside a
 secret. All communications are encrypted in a cluster. API
 Management uses only TLS 1.2.
-* Do not run containers as privileged.
+* Do not run containers in a privileged mode.
 * Only allow communication on required ports.
 
 ### SQL database considerations
@@ -801,12 +834,13 @@ environment.
 
 Policy promotion steps:
 
-1. Policy developer edits configuration and deploys in development
-environment via Policy Studio.
-2. Test the polices in development environment.
+1. Policy developer edits configuration and deploys it in the
+development environment via Policy Studio.
+2. Test the policies in the development environment.
 3. Enable the display of configuration settings that are assigned for
 environmentalization in Policy Studio.
-4. Open **Window > Preferences > Environmentalization** in the main menu, and select **Allow environmentalization of fields**.
+4. Open **Window > Preferences > Environmentalization** in the main
+menu, and select **Allow environmentalization of fields**.
 5. Policy developers environmentalize environment-specific settings. For example:
     * **URL**, **User Name**, and **Password** fields in a Default Database
     Connection
@@ -815,9 +849,8 @@ environmentalization in Policy Studio.
     * **URL**, **User Name**, **Password**, and **Signing Key** fields for an LDAP
     configuration
 6. Check in the code to Git.
-7. CI pipeline checks out the code from git and uses [projpack](/docs/apigtw_devops/deploy_package_tools/)
-CLI to create a pol and env package. This can be done in the Policy
-Studio. When the active configuration is loaded, select **File > Save > Policy Package** to save the pol file and select **File > Save > Environment Package** to save the env file.
+7. CI pipeline checks out the code from git and uses [projpack](/docs/apigtw_devops/deploy_package_tools/) CLI to create a pol and env package. This can be done in the Policy
+Studio. When the active configuration is loaded, select **File > Save > Policy Package** to save the pol file and **Select File > Save > Environment Package** to save the env file.
 8. Policy Developer uses env package to create an environment-specific
 artifact (like `test.env` and `prod.env`).
 9. Create a Docker container using pol and env package. See [Create and start API Gateway Docker container](/docs/apim_installation/apigw_containers/docker_script_gwimage/) for more information.
@@ -829,7 +862,8 @@ artifact (like `test.env` and `prod.env`).
     ```
 
 10. Push Docker image to your Docker registry.
-11. Deploy to test environment by pulling an environment-related tag from the Docker registry.
+11. Deploy to test environment by pulling an environment-related tag
+from the Docker registry.
 
 API Manager promotion:
 
@@ -876,7 +910,8 @@ your installation.
 With a shift to a container-based deployment, the notion of pushing API
 Gateway/Manager configuration updates directly to the running instances
 has changed. Now you need to create a new Docker image that contains the
-latest Gateway/Manager configuration. Using [Kubernetes rolling upgrades](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/),
+latest Gateway/Manager configuration. Using [Kubernetes rolling
+upgrades](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/),
 you deploy a new Docker image to a cluster without interrupting your
 request processing. To learn how to create and
 deploy a new Docker image, see [Development and deployment with API Gateway containers](/docs/apim_installation/apigw_containers/container_development/).
@@ -897,7 +932,7 @@ product.
 container-based deployment, it is not used for pushing new
 configurations to the gateways. It is primarily a monitoring tool.
 * Gateway or API Manager images contain configuration and settings
-(`.pol` and `.evn`, or `.fed`) that are updated frequently. These are
+(`*.pol` and `.evn`, or `*.fed`) that are updated frequently. These are
 the type of images that you would rebuild frequently.
 
 Axway provides sample build scripts as a working example to be modified
@@ -959,17 +994,17 @@ image:
 ![Directories](/Images/apim-reference-architectures/container-aws/image10.png)
 
 The `--merge-dir` points to a directory that contains
-files that will replace specific installation files on a target Docker
-image. A merge directory must be named `apigateway`. For example, if
-you need to update the `envSettings.props` file in a Gateway image, this
-is what you should have in your merge directory.
+the files that will replace specific installation files on a target
+Docker image. A merge directory must be named `apigateway`. For
+example, if you need to update the `envSettings.props` file in a Gateway
+image, this is what you should have in your merge directory:
 
 The `/tmp/apigateway` directory should mirror the file path in your
 target Docker image.
 
 ##### Step-by-step example
 
-Let's look at applying one of the patches for APIM v7.7 - `APIGateway 7.7 SP1 Patch17276`:
+Let's look at applying one of the patches for APIM v7.7 - APIGateway 7.7-SP1 Patch17276:
 
 1. Download a patch from the Axway Support website.
 2. Create a merge directory:
@@ -981,10 +1016,13 @@ Let's look at applying one of the patches for APIM v7.7 - `APIGateway 7.7 SP1 Pa
 3. Extract downloaded file into the merge directory:
 
     ```
-    tar -xvzf APIGateway_7.7-SP1_Patch17276_d16e79fb_allOS_BN20191024.tgz -C /tmp/apigateway/
+    tar -xvzf
+    APIGateway_7.7-SP1_Patch17276_d16e79fb_allOS_BN20191024.tgz -C /tmp/apigateway/
     ```
 
-4. If you look at the merge directory, you will see that two files will be written to a target Docker image during build:
+4. If you look at the merge directory,
+you will see that two files will be written to a target Docker image
+during build:
 
     ![tree](/Images/apim-reference-architectures/container-aws/image11.png)
 
@@ -992,16 +1030,15 @@ Let's look at applying one of the patches for APIM v7.7 - `APIGateway 7.7 SP1 Pa
 that you've created:
 
     ```
-    ./build_gw_image.py
-    --license=/tmp/api_gw.lic
-    --domain-cert=certs/mydomain/mydomain-cert.pem
-    --domain-key=certs/mydomain/mydomain-key.pem
-    --domain-key-pass-file=/tmp/pass.txt
-    --parent-image=my-base:latest
-    --fed=my-group-fed.fed
-    --fed-pass-file=/tmp/my-group-fedpass.txt
-    --group-id=my-group
-    --merge-dir=/tmp/apigateway
+    ./build_gw_image.py  
+    --license=/tmp/api_gw.lic  
+    --domain-cert=certs/mydomain/mydomain-cert.pem  
+    --domain-key=certs/mydomain/mydomain-key.pem  
+    --domain-key-pass-file=/tmp/pass.txt  
+    --parent-image=my-base:latest  
+    --fed=my-group-fed.fed --fed-pass-file=/tmp/my-group-fedpass.txt  
+    --group-id=my-group  
+    --merge-dir=/tmp/apigateway  
     --out-image=my-gtw:7.7-SP1-p17276
     ```
 
@@ -1017,9 +1054,8 @@ product plus a corresponding service pack. As an example, we look at
 AMPLIFY API Management v7.7 and API Management v7.7 with SP1 install
 files:
 
-* API Management v7.7 install is titled: *API Gateway and API Manager 7.7 Install (linux-x86-64)* with the following file - `APIGateway_7.7_Install_linux-x86-64_BN4.run`
-
-* API Management v7.7 with SP1install is titled: *API Gateway 7.7 Install Service Pack 1 (linux-x86-64)* with the following file - `APIGateway_7.7_SP1_linux-x86-64_BN201908271.run`
+* API Management v7.7 install is titled: _API Gateway and API Manager 7.7 Install (linux-x86-64)_ with the following file: `APIGateway_7.7_Install_linux-x86-64_BN4.run`
+* API Management v7.7 with SP1 install is titled: *API Gateway 7.7 Install Service Pack 1 (linux-x86-64)* with the following file: `APIGateway_7.7_SP1_linux-x86-64_BN201908271.run`
 
 The build process will be identical to the one described in [new configurations](#new-configurations).
 
@@ -1052,10 +1088,10 @@ the process of updating running containers with a new Docker image. This
 is an example of an update strategy specification:
 
 ```
-strategy:
+strategy:  
   type: RollingUpdate
-  rollingUpdate:
-    maxUnavailable: 1
+    rollingUpdate:  
+      maxUnavailable: 1
 ```
 
 With the rolling update, Kubernetes will take down a designated number
@@ -1067,7 +1103,7 @@ that will represent a portion of your Deployment pods that can be
 updated at once. With four pods in Deployment set and `maxUnavailable: 25%` (the default value for `maxUnavailable` if it is omitted),
 Kubernetes will update one pod at a time.
 
-There is another optional parameter - `maxSurge`(default value is 25
+There is another optional parameter - `maxSurge` (default value is 25
 percent). For example, if there are four pods in your Deployment, then
 during a rolling update, the maximum number of pods with old and new
 configurations combined cannot be more than 5:
@@ -1076,7 +1112,8 @@ configurations combined cannot be more than 5:
 4 pods (100%) + 1 pod (25% - maxSurge) = 5 pods (125%)
 ```
 
-You can read the [following articles](https://kubernetes.io/blog/2018/04/30/zero-downtime-deployment-kubernetes-jenkins/)
+You can read the [following
+articles](https://kubernetes.io/blog/2018/04/30/zero-downtime-deployment-kubernetes-jenkins/)
 to better understand rolling updates and other techniques for a zero
 downtime deployment.
 
@@ -1092,10 +1129,11 @@ configuration as a Policy Studio folder in a source code management
 system (SCM). GitHub and GitLab are two popular choices. As an
 alternative, you can version control `FED` or `POL`/`ENV` files.
 
-In addition to the source code, you need to maintain deployment
-artifacts in the form of a Docker image, since this is what you deploy
-in the EMT mode. Thus, a Docker registry is required.
+In addition to the source code, you need to maintain:
 
+* Deployment artifacts in the form of a Docker image, since this is
+what you deploy in the EMT mode. Thus, a Docker registry is
+required.
 * RDBMS backup - use the appropriate backup procedure for the selected
 RDBMS.
 * Cassandra - follow recommendations in [Cassandra backup and restore](/docs/cass_admin/cassandra_bur/).
@@ -1123,18 +1161,21 @@ resources in another region. Using backed-up configurations/data and
 Docker registry, you should be able to run a CI/CD pipeline for creating
 a new Kubernetes cluster in another region.
 
+A complete deployment/restoration takes 1 hour.
+
 ## Known constraints and roadmap
 
 As of AMPLIFY API Management v7.7, there are some differences or
 constraints compared to the classic mode deployment:
 
 * API Portal and Embedded Analytics are not yet supported in the EMT
-mode
+mode. They should be deployed outside of a Kubernetes cluster.
 * Distributed Ehcache is not supported. However, you can use Apache
 Cassandra as a distributed data store where CRUD operations are
 supported to directly interact with KPS, using scripts.
 * Running with Embedded ActiveMQ configured in an instance is not
-advised. The recommendation is to use an external JMS provider.
+advised. The recommendation is to use a JMS provider deployed
+outside of the API Management cluster.
 
 The current version does not support all the configurations that
 currently exist for the classic deployment. Axway plans to address these
@@ -1152,11 +1193,18 @@ You can view [roadmaps on Axway Community Portal](https://community.axway.com/s/
 
 ## Glossary of terms
 
-|Reference   |Description|
-|----------- |----------------------------------------------------------------------------------------------|
+|Reference| Description|
+|----| ----|
 |SAML        |Security Assertion Markup Language - based on XML, this protocol permits SSO authentication|
-|SSO         |Single Sign-On -- unique authentication for a user|
+|SSO         |Single Sign-On - unique authentication for a user|
 |K8S         |Short name of Kubernetes product|
 |FED         |The file extension of the federated deployment package (policy + environment packages)|
 |POL         |The file extension of a policy package file|
-|ENV         |File extension of an environment package file|
+|ENV         |A file extension of an environment package file|
+|VM          |Virtual Machine|
+|PaaS        |Platform as a Service|
+|HA          |High Availability|
+|RDBMS       |Relational Database Management System|
+|DBaaS       |Database as a Service|
+|IOPS||
+|NSG         |Network Security Group|
