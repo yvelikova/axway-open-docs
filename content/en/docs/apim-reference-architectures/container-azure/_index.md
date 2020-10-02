@@ -79,6 +79,7 @@ manages many important aspects of runtime, security, and operations:
 
 In generic terms, reference architecture can be built by stacking four
 layers of different capabilities:
+
 ![Reference architecture layers](/Images/apim-reference-architectures/container-azure/image1.png)  
 
 Notice that the packaging of API Management
@@ -626,8 +627,9 @@ therefore, preventing errors. You just use a service name
 
 #### Pod resource limits
 
-Axway API Gateway runs in a Java VM. Set the `Xmx` parameter for a
-Java VM pool to the limited effect of a potential memory leak.
+Axway API Gateway runs in a Java VM. A Java VM pool is limited with
+the `Xmx` parameter: If there is a memory leak, it can affect the entire
+cluster. JVM heap size should be limited.
 
 Kubernetes permits defining a CPU and memory limits for each pod to
 protect the cluster. Setting up the limits is especially important in
@@ -791,7 +793,7 @@ point.
 Important: It is not possible to use some rewrite-path like `https://FQDN/Components/` to access the web interface.
 {{% /alert %}}
 
-It's necessary to configure the following annotations for ingress
+It is necessary to configure the following annotations for ingress
 configuration:
 
 * Disable HTTP/2 if your ingress chooses it by default
@@ -922,6 +924,10 @@ Pod characteristics:
 
 This pod supports an API Manager web interface (port 8075).
 
+{{% alert title="Caution" color="warning" %}}
+As of Axway API Management v7.7, we recommend running only one API Manager UI pod. This pod is not used to process client requests, so using one pod is enough. It also simplifies architecture.
+{{% /alert %}}
+
 To build an API Manager container, you need to provide:
 
 * HTTPS certificate. This certificate will be used inside the cluster.
@@ -994,7 +1000,7 @@ additional ports can be exposed (secure and insecure ports 8443, 8080
 and 8081). This component uses a volume mount point with read/write
 multiple pods capabilities to store events. Other data to persist is
 streamed out by FluentD. With this approach, you can reduce the size
-of persistence data required for log/even data.
+of persistence data required for log/event data.
 
 The API Gateway/Manager docker image is the same as the API Manager UI
 image (one image per API Gateway group configuration).
@@ -1293,7 +1299,7 @@ has changed. Now you need to create a new Docker image that contains the
 latest Gateway/Manager configuration. Using [Kubernetes rolling
 upgrades](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/),
 you deploy a new Docker image to a cluster without interrupting your
-request processing.  To learn how to create and
+request processing. To learn how to create and
 deploy a new Docker image, see [Development and deployment with API Gateway containers](/docs/apim_installation/apigw_containers/container_development/).
 
 In general, the process of building AMPLIFY API Management Docker images
@@ -1303,7 +1309,7 @@ for installation can be depicted as in the picture below.
 
 Description of the images:
 
-* A base image includes a base product installation and doesn't change
+* A base image includes a base product installation and does not change
 frequently. You update a base image only when you need to install an
 update for the underlying operating system, or when you need to
 install a service pack for AMPLIFY API Management or upgrade the
@@ -1360,12 +1366,13 @@ image:
 
 ```
 ./build_gw_image.py
-  --license=/tmp/api_gw.lic  
-  --domain-cert=certs/mydomain/mydomain-cert.pem  
+  --license=/tmp/api_gw.lic
+  --domain-cert=certs/mydomain/mydomain-cert.pem
   --domain-key=certs/mydomain/mydomain-key.pem
   --domain-key-pass-file=/tmp/pass.txt
   --parent-image=my-base:latest
-  --fed=my-group-fed.fed --fed-pass-file=/tmp/my-group-fedpass.txt  
+  --fed=my-group-fed.fed
+  --fed-pass-file=/tmp/my-group-fedpass.txt
   --group-id=my-group
   --merge-dir=/tmp/apigateway
 ```
@@ -1546,7 +1553,7 @@ resources in another region. Using backed-up configurations/data and
 Docker registry, you should be able to run a CI/CD pipeline for creating
 a new Kubernetes cluster in another region.
 
-A complete deployment/restoration takes 1hours.
+A complete deployment/restoration takes 1 hour.
 
 ## Known constraints and roadmap
 
@@ -1554,7 +1561,7 @@ As of AMPLIFY API Management v7.7, there are some differences or
 constraints compared to the classic mode deployment:
 
 * API Portal and Embedded Analytics are not yet supported in the EMT
-mode. They should be deployed outside of a Kubernetes cluster
+mode. They should be deployed outside of a Kubernetes cluster.
 * Distributed Ehcache is not supported. However, you can use Apache
 Cassandra as a distributed data store where CRUD operations are
 supported to directly interact with KPS, using scripts.
