@@ -67,7 +67,7 @@ The following gives you a high-level overview of the required steps to connect a
 
 * Create an environment object in AMPLIFY Central that represents the effective Axway API Gateway environment. Depending on your needs, you can create as many environments as required.
 * Each discovered API or Traffic is associated to this environment and eases the filtering.
-* Add your environment to AMPLIFY Central using either the [AMPLIFY Central CLI](/docs/central/cli_central/cli_environments/) or [the UI](/docs/central/mesh_management/add_env/#add-your-environment-to-amplify-central).
+* Add your environment to AMPLIFY Central using either the [AMPLIFY Central CLI](/docs/central/cli_central/cli_environments/) or [the UI](/docs/central/connect-api-manager/prepare-amplify-central/#create-environment-using-the-UI).
 
 ### Install and prepare the Discovery Agent
 
