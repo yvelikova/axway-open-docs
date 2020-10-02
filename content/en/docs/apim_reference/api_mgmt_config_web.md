@@ -332,7 +332,7 @@ The period of time to cache addressing information after it has been received fr
 **SSL Session Cache Size**:\
 Specifies the size of the SSL session cache for connections to the remote host. This controls the number of idle SSL sessions that can be kept in memory. Defaults to `32`. If there are more than 32 simultaneous SSL sessions, this does not prevent another SSL connection from being established, however no more SSL sessions are cached. A cache size of `0` means no cache, and no outbound SSL connections are cached.
 
-{{% alert title="Tip" %}}You can use this setting to improve performance as it caches the slowest part of establishing the SSL connection. A new connection does not need to go through full authentication if it finds its target in the cache.{{% /alert %}}
+{{< alert title="Tip" color="primary" >}}You can use this setting to improve performance as it caches the slowest part of establishing the SSL connection. A new connection does not need to go through full authentication if it finds its target in the cache.{{< /alert >}}
 
 At `DEBUG` level or higher, the API Gateway outputs trace when an entry goes into the cache, for example:
 
@@ -352,20 +352,6 @@ Click the **Browse** button to specify the HTTP content encodings that API Gatew
 **Include correlation ID in headers**:\
 Specifies whether to insert the correlation ID in outbound messages. This means that an `X-CorrelationID` header is added to the outbound message. This is a transaction ID that is attached to each message transaction that passes through API Gateway, and which is used for traffic monitoring in the API Gateway Manager web console. You can use the correlation ID to search for messages in the web console, and you can also access its value from a policy using the `id` message attribute. This setting is selected by default.
 
-### Configure watchdogs
-
-You can configure an HTTP interface to shut down based on certain conditions. One such condition is dependent on the API Gateway being able to contact a particular back-end web service running on a remote host. To do this, you can configure an **HTTP Watchdog** for a remote host to poll the endpoint. If the endpoint cannot be reached, the HTTP interface is shut down.
-
-To configure the API Gateway to shut down an HTTP interface based on the availability of a remote host, perform the following steps:
-
-1. Configure an **HTTP Watchdog** for the remote host.
-2. Configure a **Requires Endpoint** condition on the HTTP interface.
-3. When configuring this condition, select the remote host configured in step 1 (the host with the associated Watchdog).
-
-When Load Balancing is configured as `Weighted` by response time and remote host watchdogs are configured, the watch dog polling also contributes to the load balancing calculations.
-
-For more information on adding a watchdog to a remote host, see [Configure HTTP watchdog](/docs/apim_policydev/apigw_gw_instances/general_remote_hosts/#configure-http-watchdog). For more information on adding conditions to an HTTP interface, see [Configure conditions for HTTP interfaces](https://docs.axway.com/bundle/APIGateway_762_PolicyDevGuide_allOS_en_HTML5/page/Content/PolicyDevTopics/general_conditions.htm).
-
 ### Configure an incoming remote host
 
 A remote host is normally used to configure specific connection features for the outward connection, that is, for the connection from API Gateway to the back-end service. However, you can also configure a remote host for an incoming connection, that is, for the connection from the client to API Gateway.
@@ -374,7 +360,7 @@ To configure an incoming remote host, configure the following settings on the **
 
 1. Enter `incoming` for the **Port**.
 
-    For an incoming connection, the port is referring to the remote address of the TCP connection. Incoming connections arrive from effectively arbitrary remote ports, so this acts as a wildcard for all incoming connections.
+   For an incoming connection, the port is referring to the remote address of the TCP connection. Incoming connections arrive from effectively arbitrary remote ports, so this acts as a wildcard for all incoming connections.
 2. Enter the IP address of the host for the **Host name**, rather than the DNS name.
 
-    A CIDR style netmask can be specified (for example, `192.168.0.0/24` matches any address in the `192.168.0.x` range). This works on a longest-match basis if more than one network specification matches the client.
+   A CIDR style netmask can be specified (for example, `192.168.0.0/24` matches any address in the `192.168.0.x` range). This works on a longest-match basis if more than one network specification matches the client.
