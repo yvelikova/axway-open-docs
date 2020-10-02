@@ -49,7 +49,7 @@ CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
 ```
 
 The required values represented in `<>` are either coming from the API Management system installation or from AMPLIFY platform configuration.
-An explanation for each variable can be found in the [Agent variables section](/docs/central/connect-api-gateway/agent-variables/).
+An explanation for each variable can be found in the [Agent variables section](/docs/central/connect-api-manager/agent-variables/).
 
 Once all the values are gathered, use the following command `export $(grep -v '^#' env_vars_agents | xargs)` to define the environment variables based on your file definition.
 
