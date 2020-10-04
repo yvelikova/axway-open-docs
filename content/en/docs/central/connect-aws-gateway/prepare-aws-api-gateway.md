@@ -44,7 +44,7 @@ Within this bucket create a path of directories resources\keys:
 * In the keys directory **private_key.pem** which is the private key associated with the AMPLIFY Central service account
 * In the keys directory **public_key.pem** which is the public key associated with the AMPLIFY Central service account
 
-For the values in these **\*\_env_var** files, see [Deploy your agents](/docs/central/connect-aws-gateway/deploy-your-agents-1)
+For the values in these **\*\_env_var** files, see [Deploy agents](/docs/central/connect-aws-gateway/deploy-your-agents-1).
 
 ## Create an EC2 SSH key
 
@@ -77,4 +77,4 @@ Execute the stack creation.
 
 At this point your agents will be deployed in the EC2 instance and start automatically. Once started, go to CloudWatch to see the logs.
 
-Now you are ready to [deploy your agents](/docs/central/connect-aws-gateway/deploy-your-agents-1)
+Now you are ready to [deploy agents](/docs/central/connect-aws-gateway/deploy-your-agents-1).
