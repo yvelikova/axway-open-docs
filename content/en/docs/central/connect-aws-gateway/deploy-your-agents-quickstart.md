@@ -86,7 +86,7 @@ LOG_PATH=logs
 ```
 
 The required values are either coming from the output of the CloudFormation template or from AMPLIFY platform configuration.
-Explanation for each variable could be found in the [advance section](/docs/central/connect-aws-gateway/deploy-your-agents-1/)
+Explanation for each variable could be found in the [advance section](/docs/central/connect-aws-gateway/deploy-your-agents-1/).
 
 ### 2. Download Traceability Agent
 
