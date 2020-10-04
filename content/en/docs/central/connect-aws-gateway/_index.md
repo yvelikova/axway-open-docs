@@ -53,13 +53,13 @@ For additional logging information, see <https://docs.aws.amazon.com/apigateway/
 * Amazon CloudWatch Service
 * Amazon Simple Queue Service (AWS SQS)
 * AWS Lambda
-* CloudFormation template. Download from [https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/](<https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/>)
+* CloudFormation template. Download from [https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/](<https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/>).
 
 ## Connect AWS API Gateway to AMPLIFY Central quickstart
 
 ### 1. Set up AMPLIFY Central service account
 
-* The agent will use a service account for the secure communication with the AMPLIFY platform
+* The agent will use a service account for the secure communication with the AMPLIFY platform.
 * Generate a public/private key pair
     ```
     openssl genpkey -algorithm RSA -out ./private_key.pem -pkeyopt rsa_keygen_bits:2048
@@ -71,11 +71,11 @@ For additional logging information, see <https://docs.aws.amazon.com/apigateway/
 
 * Create an environment object in AMPLIFY Central that represents the effective AWS Gateway environment. Depending on your needs, you can create as many environments as required.
 * Each discovered API or Traffic is associated to this environment and eases the filtering.
-* Add your environment to AMPLIFY Central using either the [AMPLIFY Central CLI](/docs/central/cli_central/cli_environments/) or [the UI](/docs/central/mesh_management/add_env/#add-your-environment-to-amplify-central).
+* Add your environment to AMPLIFY Central using either the [AMPLIFY Central CLI](/docs/central/cli_central/cli_environments/) or [the UI](/docs/central/connect-api-manager/prepare-amplify-central/#create-environment-using-the-ui).
 
 ### 3. Set up using AWS CloudFormation
 
-* Set up using the resources using [AWS CloudFormation](/docs/central/connect-aws-gateway/prepare-aws-api-gateway/#set-up-the-cloudformation)
+* Set up using the resources using [AWS CloudFormation](/docs/central/connect-aws-gateway/prepare-aws-api-gateway/#set-up-the-cloudformation).
 * Get the required templates at [https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/](<https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/>)
 
     * IAM configuration (apigw_iam_setup.yaml)
