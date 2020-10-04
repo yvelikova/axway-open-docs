@@ -93,4 +93,4 @@ spec:
     data: "[optional base64 encoded image]"
 ```
 
-For information, see [Manage an environment using AMPLIFY CLI](/docs/central/cli_central/cli_environments/)
+For information, see [Build an environment using AMPLIFY CLI](/docs/central/cli_central/cli_environments/).
