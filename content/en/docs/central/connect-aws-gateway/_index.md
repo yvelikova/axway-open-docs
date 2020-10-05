@@ -16,11 +16,11 @@ Connecting AWS API Gateway to AMPLIFY Central will provide you with a global cen
 Each AWS Gateway can be represented by an AMPLIFY Central environment allowing you to better filter APIs and their traffic. Supplied with the environment, two agents (Discovery and Traceability) interact with AWS API Gateway and AMPLIFY Central to:
 
 * Detect changes to AWS API Gateway stages and deployments using the Discovery Agent. The Discovery Agent pushes the service configuration as an API service for the environment, which can then be published as a catalog item to be used by consumers to subscribe to the service.
-* Filter the AWS Cloudwatch logs that are related to discovered APIs and prepare the transaction events that are sent to AMPLIFY platform.
+* Filter the AWS Cloudwatch logs that are related to discovered APIs and prepare the transaction events that are sent to AMPLIFY Platform.
 
 ### Discovery Agent
 
-The Discovery Agent is used to discover  new deployments and stage updates to existing deployments for publishing related APIs in AMPLIFY Central (either as  a catalog item or as an API service). As part of the deployment package, use the provided cloud formation scripts  to set up the following agent-dependent AWS Services.
+The Discovery Agent is used to discover new deployments and stage updates to existing deployments for publishing related APIs in AMPLIFY Central (either as a catalog item or as an API service). As part of the deployment package, use the provided cloud formation scripts to set up the following agent-dependent AWS Services:
 
 * AWS Config - Administers, audits and monitors resource configurations. Records and validates configuration changes.
 * AWS CloudWatch - Monitors resources and AWS applications in real time. Receives and routes supported AWS Service events.
@@ -30,13 +30,13 @@ The Discovery Agent is used to discover  new deployments and stage updates to ex
 
 ### Traceability Agent
 
-The Traceability Agent is used to filter the AWS CloudWatch logs and prepare the transaction events that are sent to AMPLIFY Central and visible in the API observer. Viewing your traffic helps you to identify the bottleneck and errors. The traffic can be filtered by environment in case multiples are involved in your topography. As part of the deployment package, you can use cloud formation scripts to set up the following agent-dependent AWS Services.
+The Traceability Agent is used to filter the AWS CloudWatch logs and prepare the transaction events that are sent to AMPLIFY Central and visible in the API Observer. Viewing your traffic helps you to identify the bottleneck and errors. The traffic can be filtered by environment in case multiples are involved in your topography. As part of the deployment package, you can use cloud formation scripts to set up the following agent-dependent AWS Services:
 
 * AWS CloudWatch - Monitors resources and AWS applications in real time. Receives and routes supported AWS Service events.
 * AWS Lamda - Runs code in response to events and automatically manages the computing resources required by that code.
 * AWS SQS - Decouples and scales microservices, distributed systems and serverless applications.
 
-The types of logging you can do with API Gateway to CloudWatch.
+The types of logging you can do with API Gateway to CloudWatch:
 
 * Execution logging - API Gateway manages the CloudWatch logs.
 * Access logging - Developer managed custom logging.
@@ -47,7 +47,7 @@ For additional logging information, see <https://docs.aws.amazon.com/apigateway/
 
 ## Minimum requirements
 
-* An Axway AMPLIFY Central subscription in the AMPLIFY™ platform. See [Get started with AMPLIFY Central](/docs/central/quickstart/).
+* An Axway AMPLIFY Central subscription in the AMPLIFY™ Platform. See [Get started with AMPLIFY Central](/docs/central/quickstart/).
 * An AMPLIFY Central Service Account. See Create Service Account step below.
 * API Key credentials on AWS. Allow for CLI access.
 * Amazon CloudWatch Service
@@ -55,44 +55,6 @@ For additional logging information, see <https://docs.aws.amazon.com/apigateway/
 * AWS Lambda
 * CloudFormation template. Download from [https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/](<https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/>).
 
-## Connect AWS API Gateway to AMPLIFY Central quickstart
+## Quickstart
 
-### 1. Set up AMPLIFY Central service account
-
-* The agent will use a service account for the secure communication with the AMPLIFY platform.
-* Generate a public/private key pair
-    ```
-    openssl genpkey -algorithm RSA -out ./private_key.pem -pkeyopt rsa_keygen_bits:2048
-    openssl rsa -pubout -in ./private_key.pem -out ./public_key.pem
-    ```
-* Create a new Service Account user in AMPLIFY Central using the `public_key.pem` from above. You may name this Service Account (for example, v7-Agent). For additional information, see [Create a service account](/docs/central/cli_central/cli_install/#create-a-service-account).
-
-### 2. Set up AMPLIFY Central environment
-
-* Create an environment object in AMPLIFY Central that represents the effective AWS Gateway environment. Depending on your needs, you can create as many environments as required.
-* Each discovered API or Traffic is associated to this environment and eases the filtering.
-* Add your environment to AMPLIFY Central using either the [AMPLIFY Central CLI](/docs/central/cli_central/cli_environments/) or [the UI](/docs/central/connect-api-manager/prepare-amplify-central/#create-environment-using-the-ui).
-
-### 3. Set up using AWS CloudFormation
-
-* Set up using the resources using [AWS CloudFormation](/docs/central/connect-aws-gateway/prepare-aws-api-gateway/#set-up-the-cloudformation).
-* Get the required templates at [https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/](<https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/>)
-
-    * IAM configuration (apigw_iam_setup.yaml)
-    * Discovery and Traceability resource configuration (apigw_cloudformation.yaml)  
-
-### 4. Create a Discovery Agent environment file
-
-* Learn more about the [Discovery Agent](/docs/central/connect-aws-gateway/deploy-your-agents-1/#discovery-agent)
-
-    * Create the Discovery Agent configuration file
-    * Pull the latest Docker image of the Discovery Agent
-    * Start the Discovery Agent  
-
-### 5. Create a Traceability Agent environment file
-
-* Learn more about the [Traceability Agent](/docs/central/connect-aws-gateway/deploy-your-agents-1/#traceability-agent)
-
-    * Create the Traceability Agent configuration file
-    * Log into the Artifactory Repository and pull the latest image of the Traceability Agent.
-    * Start the Traceability Agent.
+* To get your agents up and running see [Deploy agents - quickstart](/docs/central/connect-aws-gateway/deploy-your-agents-quickstart)
