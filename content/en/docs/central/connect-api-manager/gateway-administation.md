@@ -258,21 +258,28 @@ authtype: LOGIN
 host: smtp-mail.outlook.com
 port: 587
 username: your Outlook Mail account
-password: application generated Yahoo password (see note below)
+password: your Outlook Mail password
 authType: PLAIN
 
 # Yahoo email server
 host: smtp.mail.yahoo.com
 port: 587
 username: your Yahoo Mail account
-password: your Yahoo Mail password
+password: application generated Yahoo password (see note below)
 authtype: PLAIN
+
+# Amazon Simple Email Service
+host: email-smtp.<region>.amazonaws.com
+port: 587
+username: user access key (see note below)
+password: user secret key (see note below)
 ```
 
 **Note**: You will be required to use an application generated password instead of the actual user email password for the following email servers. Follow the links for application generated passwords.
 
 * Gmail - [Application generated gmail password](https://support.google.com/accounts/answer/185833?hl=en). Use this password in place of your actual password in the agent configuration `password:` field.
 * Yahoo - [Application generated yahoo password](https://help.yahoo.com/kb/generate-third-party-passwords-sln15241.html). Use this password in place of your actual password in the agent configuration `password:` field.
+* [AWS  Simple email service](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-smtp.html). Create your [SMTP credentials](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/smtp-credentials.html) and use them in the username (ACCESS KEY) and password (SECRET KEY) of the agent configuration.
 
 ### Customizing Webhook Notification (subscription)
 
