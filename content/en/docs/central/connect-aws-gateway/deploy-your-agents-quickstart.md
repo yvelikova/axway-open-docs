@@ -13,91 +13,68 @@ description: >-
 ## Before you start
 
 * Read [AMPLIFY Central AWS API Gateway connected overview](/docs/central/connect-aws-gateway/)
-* [Prepare AMPLIFY Central](/docs/central/connect-aws-gateway/prepare-amplify-central-1/)
-* [Prepare AWS API Gateway](/docs/central/connect-aws-gateway/prepare-aws-api-gateway/)
-* Docker must be installed and you will need a basic understanding of Docker commands
 
 ## Objectives
 
-Learn the basics to create your Discovery Agent and Traceability Agent configuration files, then install and run your agents.
+Learn the basics to create your Discovery Agent and Traceability Agent configuration files.  Then deploy and run your agents using an EC2 instance.
 
-## Discovery Agent
+## Connect AWS API Gateway to AMPLIFY Central quickstart (With EC2 instance)
 
-### 1. Create configuration file
+### 1. Set up AMPLIFY Central service account
 
-Prepare an `env_vars_discovery` file with the following content:
+* The agent will use a service account for the secure communication with the AMPLIFY Platform.
+* Generate a public/private key pair:
+    ```
+    openssl genpkey -algorithm RSA -out ./private_key.pem -pkeyopt rsa_keygen_bits:2048
+    openssl rsa -pubout -in ./private_key.pem -out ./public_key.pem
+    ```
+* Create a new Service Account user in AMPLIFY Central using the `public_key.pem` from above. You may name this Service Account (for example, v7-Agent). For additional information, see [Create a service account](/docs/central/cli_central/cli_install/#create-a-service-account).
 
-```
-# AWS connectivity
-AWS_REGION=<AWS region where API are located>
-AWS_QUEUENAME=<DiscoveryQueueName>
-AWS_AUTH_ACCESSKEY=<YOUR AWS ACCESS KEY HERE>
-AWS_AUTH_SECRETKEY=<YOUR AWS SECRET KEY HERE>
-AWS_FILTER=tag.publishToAmplify == true
-#
-#AMPLIFY Central connectivity
-CENTRAL_ORGANIZATIONID=<YOUR ORGANIZATION ID>
-CENTRAL_ENVIRONMENT=<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>
-CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
-# Logging
-LOG_LEVEL=info
-LOG_OUTPUT=stdout
-LOG_PATH=logs
-```
+### 2. Set up AMPLIFY Central environment
 
-The required values are either coming from the output of the CloudFormation template or from AMPLIFY platform configuration.
-Explanation for each variable can be found in the [advanced section](/docs/central/connect-aws-gateway/deploy-your-agents-1/).
+* Create an environment object in AMPLIFY Central that represents the effective AWS Gateway environment. Depending on your needs, you can create as many environments as required.
+* Each discovered API or Traffic is associated to this environment and eases the filtering.
+* Add your environment to AMPLIFY Central using either the [AMPLIFY Central CLI](/docs/central/cli_central/cli_environments/) or [the UI](/docs/central/connect-api-manager/prepare-amplify-central/#create-environment-using-the-ui).
 
-### 2. Download Discovery Agent
+### 3. Create the agent environment files
 
-```
-docker pull axway-docker-public-registry.bintray.io/agent/aws-apigw-discovery-agent:latest
-```
+* Create a Discovery Agent environment file
 
-### 3. Start the Discovery Agent
+    * Prepare an `da_env_vars.env` file with the following content:
 
-```
-docker run --env-file ./env_vars_discovery -v <pwd>/keys:/keys  axway-docker-public-registry.bintray.io/agent/aws-apigw-discovery-agent:latest
-```
+    ```
+    # AWS connectivity
+    AWS_REGION=<AWS region where API are located>
+    AWS_QUEUENAME=aws-apigw-discovery-<AWS region where API are located>
+    AWS_LOGGROUP=aws-apigw-traffic-logs
+    AWS_FILTER=tag.publishToAmplify == true
 
-Start the Discovery Agent pointing to the `env_vars_discovery` file and the `keys` directory. Note that `<pwd>` relates to the local directory where the docker command is run. For Windows, the absolute path is preferred. This folder should contain the key pair used for creating the Service Account in AMPLIFY platform.
+    # AMPLIFY Central connectivity
+    CENTRAL_ORGANIZATIONID=<YOUR ORGANIZATION ID>
+    CENTRAL_ENVIRONMENT=<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>
+    CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
+    ```
 
-## Traceability Agent
+    * Learn more about the [Discovery Agent](/docs/central/connect-aws-gateway/deploy-your-agents-1/#discovery-agent).
 
-### 1. Create Traceability Agent environment file
+* Create a Traceability Agent environment file
 
-Prepare an `env_vars_traceability` file with the following content:
+    * Prepare an `ta_env_vars.env` file with the following content:
 
-```
-# AWS connectivity
-AWS_REGION=<AWS region where API are located>
-AWS_QUEUENAME=<TraceabilityQueueName>
-AWS_AUTH_ACCESSKEY=<YOUR AWS ACCESS KEY HERE>
-AWS_AUTH_SECRETKEY=<YOUR AWS SECRET KEY HERE>
-#
-#AMPLIFY Central connectivity
-CENTRAL_ORGANIZATIONID=<YOUR ORGANIZATION ID>
-CENTRAL_ENVIRONMENT=<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>
-CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
-# Logging
-LOG_LEVEL=info
-LOG_OUTPUT=stdout
-LOG_PATH=logs
-```
+    ```
+    # AWS connectivity
+    AWS_REGION=<AWS region where API are located>
+    AWS_QUEUENAME=aws-apigw-traceability-<AWS region where API are located>
 
-The required values are either coming from the output of the CloudFormation template or from AMPLIFY platform configuration.
-Explanation for each variable could be found in the [advance section](/docs/central/connect-aws-gateway/deploy-your-agents-1/).
+    # AMPLIFY Central connectivity
+    CENTRAL_ORGANIZATIONID=<YOUR ORGANIZATION ID>
+    CENTRAL_ENVIRONMENT=<NAME OF THE CENTRAL TOPOLOGY ENVIRONMENT>
+    CENTRAL_AUTH_CLIENTID=<SERVICE ACCOUNT NAME: DOSA_xxxxxxxxx>
+    ```
 
-### 2. Download Traceability Agent
+    * Learn more about the [Traceability Agent](/docs/central/connect-aws-gateway/deploy-your-agents-1/#traceability-agent).
 
-```
-docker pull axway-docker-public-registry.bintray.io/agent/aws-apigw-traceability-agent:latest
-```
+### 4. Setup using AWS CloudFormation
 
-### 3. Start the Traceability Agent
-
-```
-docker run --env-file ./env_vars_traceability -v <pwd>/keys:/keys  axway-docker-public-registry.bintray.io/agent/aws-apigw-traceability-agent:latest
-```
-
-Start the Traceability Agent pointing to the `env_vars_traceability` file and the `keys` directory. Note that `<pwd>` relates to the local directory where the docker command is run. For Windows, the absolute path is preferred. This folder should contain the key pair used for creating the Service Account in AMPLIFY platform.
+* Get the required templates at [https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/](<https://axway.bintray.com/generic-repo/aws-agents/aws_apigw_agent_config/>).
+* Setup and deploy the CloudFormation Stack [AWS CloudFormation](/docs/central/connect-aws-gateway/prepare-aws-api-gateway/#set-up-the-cloudformation).
