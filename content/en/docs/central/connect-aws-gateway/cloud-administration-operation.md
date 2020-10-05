@@ -88,24 +88,29 @@ Upload all of these resources to an S3 bucket, within the target region. Take no
 If deploying the EC2 instance within these templates, additionally create the following file structure that the instance will retrieve for the agents.
 
 ```
-amplify-agents-deploy-all.yaml
-amplify-agents-resources.yaml
-amplify-agents-ec2.yaml
-resources
-|    da_env_vars
-|    ta_env_vars
-|    keys
-|    |    private_key.pem
-|    |    public_key.pem
+[my-bucket-name]
+    amplify-agents-deploy-all.yaml
+    amplify-agents-ec2.yaml
+    amplify-agents-ecs-fargate.yaml
+    amplify-agents-resources.yaml
+    resources
+    |    da_env_vars.env
+    |    ta_env_vars.env
 ```
 
-For the values in these **\*\_env_var** files see [Deploy your agents](/docs/central/connect-aws-gateway/deploy-your-agents-1)
+For the values in these **\*_env_var.env** files see [Deploy your agents](/docs/central/connect-aws-gateway/deploy-your-agents-1).
 
-For the key files see [Prepare AMPLIFY Central](/docs/central/connect-aws-gateway/prepare-amplify-central-1/)
+For the list of minimum access rights for these CloudFormation templates, see [Minimum rights for CloudFormation deployment](#minimum-rights-for-cloudformation-deployment).
 
-As a Cloud Administrator, you may choose to manually create the IAM resources (jump to [CloudFormation (without IAM)](#cloudformation-without-iam)) or allow the CloudFormation the ability to do so. The resources created within IAM are three Roles, a Group, and a User.
+#### CloudFormation deployments and options
 
-For the list of minimum access rights for these CloudFormation templates see [Minimum rights for CloudFormation deployment](#minimum-rights-for-cloudformation-deployment)
+* IAM Resources
+    * Manually create the IAM resources [CloudFormation (without IAM)](#cloudformation-without-iam)
+    * Allow the CloudFormation the ability to do so. The resources created vary depending on the agent deployment type. [Resources (IAM and Resources)](#resources-iam-and-resources)
+* Deployment types
+    * EC2 - optionally creates the entire infrastruture around the EC2 instance or specify the VPC, Subnet, and Security Group for the instance
+    * ECS Fargate - requires an ECS Fargate cluster and EC2 Subnet and Security Group for deployment. [ECS Fargate Cluster](https://docs.aws.amazon.com/AmazonECS/latest/userguide/create_cluster.html)
+    * Other - creates an IAM Group and User, access and secret keys must be generated, for the agents to run with
 
 #### Parameters (IAM and Resources)
 
@@ -113,24 +118,30 @@ The inputs to the IAM Setup CloudFormation Template (`amplify-agents-deploy-all.
 
 | Parameter Name                | Description                                                                                                                               | Default Value                   | Mode       |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ---------- |
-| APIGWCWRoleSetup              | If set to true, the IAM Role for the API Gateway Service to write logs to CloudWatch will be created                                       | true                            | both       |
-| ConfigServiceSetup            | If set to true, the IAM Role for the Config Service will be created                                                                        | true                            | continuous |
+| AgentResourcesBucket          | The S3 Bucket that has the resources needed for deploying this stack, lambda, and nested stack templates                                  |                                 | both       |
+| APIGWCWRoleSetup              | If set to true, the IAM Role for the API Gateway Service to write logs to CloudWatch will be created                                      | true                            | both       |
+| APIGWTrafficLogGroupName      | The name of the CloudWatch Log Group to be created, for AWS API Gateway to log traffic to                                                 | aws-apigw-traffic-logs          | both       |
+| ConfigServiceSetup            | If set to true, the IAM Role for the Config Service will be created                                                                       | true                            | continuous |
 | ConfigBucketName              | The name of the bucket the Config Service, if enabled, will store AWS Config Logs. The account number and region will be appended to this | apigw-config-discovery          | continuous |
-| ConfigBucketExists            | If set to true, the Config Bucket will not be created                                                                                      | false                           | continuous |
+| ConfigBucketExists            | If set to true, the Config Bucket will not be created                                                                                     | false                           | continuous |
 | DiscoveryQueueName            | The name of the Queue that the Discovery Agent will read from                                                                             | aws-apigw-discovery             | continuous |
-| DiscoveryAgentLogGroupName    | The name that the Discovery Agent running on EC2 will log to                                                                              | amplify-discovery-agent-logs    | continuous |
 | TraceabilityQueueName         | The name of the Queue that the Traceability Lambda will be writing to and the Traceability Agent will read from                           | aws-apigw-traceability          | both       |
+| DeploymentType                | How the agents will be deployed for this installation. (EC2, ECS Fargate, Other)                                                          | EC2                             | continuous |
+| EC2InstanceType               | The instance type to use for this EC2 instance                                                                                            | t3.micro                        | continuous |
+| EC2KeyName                    | The SSH Key to deploy inside the EC2 instance                                                                                             |                                 | continuous |
+| EC2VPCID                      | The VPC to deploy the EC2 instance to. Leave blank to deploy all infrastructure                                                           |                                 | continuous |
+| EC2PublicIPAddress            | Assign a Public IP address, the agents needs internet access for AMPLIFY Central communication                                            | true                            | continuous |
+| EC2SSHLocation                | The CIDR range that is allowed to SSH to the instance                                                                                     | 0.0.0.0/0                       | continuous |
+| ECSClusterName                | The name of the ECS Fargate Cluster for the ECS tasks to be deployed to                                                                   |                                 | continuous |
+| ECSCentralOrganizationID      | The AMPLIFY Central Organization ID to add to the ECS tasks                                                                               |                                 | continuous |
+| ECSCentralEnvironmentName     | The AMPLIFY Central Environment that the agents will be associated with                                                                   |                                 | continuous |
+| ECSCentralClientID            | The AMPLIFY Central Client ID (DOSA_xxxxxxx) that the agents will use to communicate to AMPLIFY                                           |                                 | continuous |
+| DiscoveryAgentLogGroupName    | The name that the Discovery Agent running on EC2 will log to                                                                              | amplify-discovery-agent-logs    | continuous |
 | TraceabilityAgentLogGroupName | The name that the Traceability Agent running on EC2 will log to                                                                           | amplify-traceability-agent-logs | continuous |
-| TraceabilityLogGroupName      | The name of the Traceability Log Group to be created                                                                                      | aws-apigw-traffic-logs          | both       |
-| AgentResourcesBucket          | The S3 bucket that has the resources needed for deploying this stack, lambda and nested stack templates                                   |                                 | both       |
-| EC2AgentDeploy                | If set to true, the Instance Role and Profile will be created to give to the EC2 Instance. If false, a User will be created                    | true                            | continuous |
-| EC2StackVPCID                 | The VPC to deploy the EC2 instance to. Leave blank to deploy all infrastructure                                                           |                                 | continuous |
-| EC2StackSecurityGroup         | The Security Group to assign to the EC2 instance. Not needed when deploying all infrastructure. Supply when EC2StackVPCID is not blank                                            |                                 | continuous |
-| EC2StackSubnet                | The Subnet the EC2 instance will be in. Not needed when deploying all infrastructure. Supply when EC2StackVPCID is not blank                                                      |                                 | continuous |
-| EC2StackKeyName               | The SSH Key to deploy inside the EC2 instance                                                                                             |                                 | continuous |
-| EC2StackInstanceType          | The instance type to use for this EC2 instance                                                                                            | t3.micro                        | continuous |
-| EC2StackSSHLocation           | The CIDR range that is allowed to SSH to the instance                                                                                     | 0.0.0.0/0                       | continuous |
-| EC2StackPublicIPAddress       | Assign a Public IP address, the agents needs internet access for AMPLIFY Central communication                                            | true                            | continuous |
+| SSMPrivateKeyParameter        | The key name in SSM Parameter Store holding the AMPLIFY Private Key                                                                       | AmplifyPrivateKey               | continuous |
+| SSMPublicKeyParameter         | The key name in SSM Parameter Store holding the AMPLIFY Public Key                                                                        | AmplifyPublicKey                | continuous |
+| SecurityGroup                 | The Security Group ID to associate with the ECS task or EC2 instance, if not deploying complete infrastructure                             |                                 | continuous |
+| Subnet                        | The Subnet to associate with the ECS task or EC2 instance, if not deploying complete infrastructure                                        |                                 | continuous |
 
 #### Resources (IAM and Resources)
 
@@ -142,13 +153,15 @@ The resources created by the CloudFormation template:
 | AWS::IAM::Role                        | TraceabilityLambdaIAMRole         |                                                          | Creates the IAM Role for the Traceability Lambda Function                                          | both           |
 | AWS::IAM::Role                        | TraceabilityAPIGWCWIAMRole        | APIGWCWRoleSetup = true                                  | Creates the IAM Role for API Gateway to write logs to CloudWatch                                   | both           |
 | AWS::IAM::ManagedPolicy               | APICAgentsPolicy                  |                                                          | Creates the IAM Policy that the agents will utilize                                                | both           |
-| AWS::IAM::Role                        | AgentsInstanceRole                | EC2AgentDeploy = true                                    | Creates the IAM Instance Role to assign to the IAM instance role                                   | continuous     |
-| AWS::IAM::InstanceProfile             | AgentsInstanceProfile             | EC2AgentDeploy = true                                    | Creates the IAM Instance Profile to assign to the EC2 instance                                     | continuous     |
-| AWS::IAM::Group              | APICAgentsGroup                    | EC2AgentDeploy = false                                   | Creates the IAM Group which has the APICAgentsPolicy                                   | both           |
-| AWS::IAM::User              | APICAgentsUser                    | EC2AgentDeploy = false                                   | Creates the IAM User to generate keys for to supply to the agents                                  | both           |
+| AWS::IAM::Role                        | AgentsInstanceRole                | DeploymentType = EC2                                     | Creates the IAM Instance Role to assign to the IAM instance role                                   | continuous     |
+| AWS::IAM::Role                        | AgentsTaskExecutionRole           | DeploymentType = ECS Fargate                             | Creates the IAM Role that is assigned to the ECS tasks for execution rights                        | continuous     |
+| AWS::IAM::InstanceProfile             | AgentsInstanceProfile             | DeploymentType = EC2                                     | Creates the IAM Instance Profile to assign to the EC2 instance                                     | continuous     |
+| AWS::IAM::Group                       | APICAgentsGroup                   | DeploymentType = Other                                   | Creates the IAM Group which has the APICAgentsPolicy                                               | both           |
+| AWS::IAM::User                        | APICAgentsUser                    | DeploymentType = Other                                   | Creates the IAM User to generate keys for to supply to the agents                                  | both           |
 | AWS::CloudFormation::Stack            | ResourcesStack                    |                                                          | Creates the Resources Stack for the APIC Agents                                                    | both           |
-| AWS::CloudFormation::Stack            | EC2Stack                          | EC2AgentDeploy = true                                    | Creates the EC2 Stack for the APIC Agents                                                          | continuous     |
-| **Nested Stack Resources**          |                                   |                                                          |                                                                                                    |                |
+| AWS::CloudFormation::Stack            | EC2Stack                          | DeploymentType = EC2                                     | Creates the EC2 Stack for the APIC Agents                                                          | continuous     |
+| AWS::CloudFormation::Stack            | ECSStack                          | DeploymentType = ECS Fargate                             | Creates the ECS Stack for the APIC Agents                                                          | continuous     |
+| **Nested Stack Resources**            |                                   |                                                          |                                                                                                    |                |
 | amplify-agents-resources.yaml         |                                   |                                                          |                                                                                                    | both           |
 | AWS::Config::ConfigurationRecorder    | DiscoveryConfigRecorder           | ConfigServiceSetup = true                                | The setup needed to have Config start recording changes                                            | continuous     |
 | AWS::Config::DeliveryChannel          | DiscoveryConfigDeliveryChannel    | ConfigServiceSetup = true                                | The delivery channel used by Config to send the configurations to ConfigBucket                     | continuous     |
@@ -168,10 +181,13 @@ The resources created by the CloudFormation template:
 | AWS::EC2::RouteTable                  | AgentsRouteTable                  | VpcID not blank                                          | The route table for defining routes for the VPC                                                    | continuous     |
 | AWS::EC2::SubnetRouteTableAssociation | AgentsRouteTableSubnetAssociation | VpcID not blank                                          | Associates the Subnet with the VPC and Route Table                                                 | continuous     |
 | AWS::EC2::Route                       | AllowInternetTraffic              | VpcID not blank                                          | The route to direct all traffic in the VPC to the internet                                         | continuous     |
-| AWS::EC2::SecurityGroup               | AgentsSecurityGroup               | VpcID not blank                                          | The Security Group assigned to the VPC, allowing SSH only to the host                               | continuous     |
+| AWS::EC2::SecurityGroup               | AgentsSecurityGroup               | VpcID not blank                                          | The Security Group assigned to the VPC, allowing SSH only to the host                              | continuous     |
 | AWS::EC2::InternetGateway             | InternetGW                        | VpcID not blank                                          | The Internet Gateway so the agents can talk to AMPLIFY Central                                     | continuous     |
 | AWS::EC2::VPCGatewayAttachment        | GatewayAttachement                | VpcID not blank                                          | Attaches the Internet Gateway to the VPC                                                           | continuous     |
 | AWS::EC2::Instance                    | AgentsHost                        |                                                          | The EC2 instance that the agents wil run in                                                        | continuous     |
+| amplify-agents-ecs-fargate.yaml       |                                   |                                                          |                                                                                                    | continuous     |
+| AWS::ECS::TaskDefinition              | AmplifyAgentsTask                 |                                                          | The ECS task that defines both of the agents                                                       | continuous     |
+| AWS::ECS::Service                     | AmplifyAgentsService              |                                                          | The ECS service that runs the agents ECS task                                                      | continuous     |
 
 #### Outputs (IAM and Resources)
 
@@ -220,7 +236,7 @@ Policies
 | ------ | --------------- | ----------------- | ------------------------------------------------------------------------------ |
 | Allow  | s3:GetBucketAcl | Config Bucket ARN | This allows the Config Service to get the access control list of the S3 bucket |
 | Allow  | s3:PutObject    | Config Bucket ARN | This allows the Config Service to save configurations to the S3 bucket         |
-| Allow  | config:Put\*    | \*                | This allows access to all config put actions for tracking changes              |
+| Allow  | config:Put*     | \*                | This allows access to all config put actions for tracking changes              |
 
 ##### TraceabilityLambdaIAMRole
 
@@ -240,11 +256,11 @@ Managed Policies
 
 Policies
 
-| Effect | Action          | Resource               | Description                                                                         |
-| ------ | --------------- | ---------------------- | ----------------------------------------------------------------------------------- |
-| Allow  | sqs:GetQueueUrl | Traceability Queue ARN | This policy is needed so the Traceability Lambda can connect to an SQS Queue        |
-| Allow  | sqs:SendMessage | Traceability Queue ARN | This policy is needed so the Traceability Lambda can write messages to an SQS Queue |
-| Allow  | apigateway:GET/usageplans| All Usage Plans| This policy is needed so the Traceability Lambda can find the Usage Plan used in the transaction to add to the message for the agent |
+| Effect | Action                    | Resource               | Description                                                                                                                          |
+| ------ | ------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Allow  | sqs:GetQueueUrl           | Traceability Queue ARN | This policy is needed so the Traceability Lambda can connect to an SQS Queue                                                         |
+| Allow  | sqs:SendMessage           | Traceability Queue ARN | This policy is needed so the Traceability Lambda can write messages to an SQS Queue                                                  |
+| Allow  | apigateway:GET/usageplans | All Usage Plans        | This policy is needed so the Traceability Lambda can find the Usage Plan used in the transaction to add to the message for the agent |
 
 ##### TraceabilityAPIGWCWIAMRole
 
@@ -270,24 +286,26 @@ Policies
 
 | Effect | Action                  | Resource                                                           | Description                                                                                                     |
 | ------ | ----------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
-| Allow  | logs:DescribeLogGroups  | All log groups in AWS account and Region                           | Used to validate the connection to AWS CloudWatch on Agent Startup                                                  |
-| Allow  | logs:DescribeLogStreams | API-Gateway-Execution-Logs\_\* log groups in account and region    | Allows the agent to get the streams for API Gateway Execution Logs                                               |
-| Allow  | logs:GetLogEvents       | API-Gateway-Execution-Logs\_\* log groups in account and region    | Allows the agent to get log events for API Gateway Execution Logs                                               |
-| Allow  | logs:FilterLogEvents    | API-Gateway-Execution-Logs\_\* log groups in account and region    | Allows the agent to get log events for specific transactions in API Gateway                                     |
-| Allow  | logs:PutLogEvents       | Log streams for the discovery and traceability agents log group    | Allows the agent, via docker on the EC2 instance, to log to CloudWatch                                               |
-| Allow  | logs:CreateLogGroup     | Log streams for the discovery and traceability agents log group    | Allows the agent, via docker on the EC2 instance, to create its log group in CloudWatch                              |
-| Allow  | logs:CreateLogStream    | Log streams for the discovery and traceability agents log group    | Allows the agent, via docker on the EC2 instance, to create a log stream in CloudWatch                               |
-| Allow  | logs:DescribeLogStreams | The discovery and traceability agents log group                    | Allows the agent, via docker on the EC2 instance, to determine if it needs to create a log group on CloudWatch       |
+| Allow  | logs:DescribeLogGroups  | All log groups in AWS account and Region                           | Used to validate the connection to AWS CloudWatch on Agent Startup                                              |
+| Allow  | logs:DescribeLogStreams | API-Gateway-Execution-Logs_* log groups in account and region      | Allows the agent to get the streams for API Gateway Execution Logs                                              |
+| Allow  | logs:GetLogEvents       | API-Gateway-Execution-Logs_* log groups in account and region      | Allows the agent to get log events for API Gateway Execution Logs                                               |
+| Allow  | logs:FilterLogEvents    | API-Gateway-Execution-Logs_* log groups in account and region      | Allows the agent to get log events for specific transactions in API Gateway                                     |
+| Allow  | logs:PutLogEvents       | Log streams for the Discovery and Traceability agents log group    | Allows the agent, via docker on the EC2 instance, to log to CloudWatch                                          |
+| Allow  | logs:CreateLogGroup     | Log streams for the Discovery and Traceability agents log group    | Allows the agent, via docker on the EC2 instance, to create its log group in CloudWatch                         |
+| Allow  | logs:CreateLogStream    | Log streams for the Discovery and Traceability agents log group    | Allows the agent, via docker on the EC2 instance, to create a log stream in CloudWatch                          |
+| Allow  | logs:DescribeLogStreams | The Discovery and Traceability agents log group                    | Allows the agent, via docker on the EC2 instance, to determine if it needs to create a log group on CloudWatch  |
 | Allow  | sqs:DeleteMessage       | Traceability and Discovery Queue ARNs                              | Allows the agent to read messages from the SQS Queues                                                           |
 | Allow  | sqs:GetQueueUrl         | Traceability and Discovery Queue ARNs                              | Allows the agent to get the URL of the Queue in order to read messages                                          |
 | Allow  | sqs:ReceiveMessage      | Traceability and Discovery Queue ARNs                              | Allows the agent to remove messages after processing them                                                       |
 | Allow  | apigateway:PUT          | All API Gateway Resources in region                                | Allows the Discovery Agent to make updates to the API Endpoints                                                 |
 | Allow  | apigateway:PATCH        | All API Gateway Resources in region                                | Allows the Discovery Agent to make updates to the API Endpoints                                                 |
 | Allow  | apigateway:GET          | All API Gateway Resources in region                                | Allows the Discovery Agent to get the configuration of the API Endpoints                                        |
-| Allow  | apigateway:DELETE       | All API Gateway Resources in region                                | Allows the Discovery Agent to remove tags for Unsubscribe events                                                   |
+| Allow  | apigateway:DELETE       | All API Gateway Resources in region                                | Allows the Discovery Agent to remove tags for Unsubscribe events                                                |
 | Allow  | s3:ListBucket           | The bucket set as the AgentsResourceBucket when creating the stack | Used by the EC2 instance to list all files in the resources directory of the bucket, for the agent execution    |
 | Allow  | s3:GetObjectAcl         | The bucket set as the AgentsResourceBucket when creating the stack | Used by the EC2 instance to get all the files in the resources directory of the bucket, for the agent execution |
 | Allow  | s3:GetObject            | The bucket set as the AgentsResourceBucket when creating the stack | Used by the EC2 instance to get all the files in the resources directory of the bucket, for the agent execution |
+| Allow  | ssm:GetParameter        | The Parameters for the AMPLIFY keys in the region                  | Used by the EC2 instance or ECS task to get the keys needed to access AMPLIFY Central resources                 |
+| Allow  | ssm:GetParameters       | The Parameters for the AMPLIFY keys in the region                  | Used by the EC2 instance or ECS task to get the keys needed to access AMPLIFY Central resources                 |
 
 ##### AgentsInstanceRole
 
@@ -315,6 +333,22 @@ Role
 | ------------------ | ------------------------ |
 | AgentsInstanceRole | The role described above |
 
+##### AgentsTaskExecutionRole
+
+The role that is assigned to the ECS task so the agents may access the APICAgentsPolicy
+
+Assume Role Policies
+
+| Service                 | Description                                                                                                |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------- |
+| ecs-tasks.amazonaws.com | Allows the ECS task that will run the agents the ability to access the services the agents need to execute |
+
+Managed Policy
+
+| Managed Policy     | Description              |
+| ------------------ | ------------------------ |
+| AgentsInstanceRole | The role described above |
+
 ##### APICAgentsGroup
 
 The group that is assigned the APICAgentsPolicy
@@ -329,19 +363,19 @@ An Access and Secret Key for the user should be created and given to the person 
 
 The inputs to the Resource CloudFormation template (`amplify-agents-resources.yaml`):
 
-| Parameter Name             | Description                                                                                                                                | Default Value           | Operating Mode |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | -------------- |
-| SetupConfigService         | This parameter is used to disable the configuration of AWS Config Service, and all of its dependencies, while building the stack.          | true                    | continuous     |
-| ConfigBucketName           | The name of the bucket the Config Service, if enabled, will store AWS Config Logs. The account number and region will be appended to this. | apigw-config-discovery  | continuous     |
-| ConfigBucketExists         | If set to true, the Config Bucket will not be created.                                                                                      | false                   | continuous     |
-| ConfigServiceRoleArn       | The ARN for the Config Service IAM Role.                                                                                                   |                         | continuous     |
-| DiscoveryQueueName         | The name of the queue that will hold only changes made to API Gateway resources. The region will be appended to this.                      | aws-apigw-discovery     | continuous     |
-| TraceabilityAPIGWCWRoleArn | The ARN for the IAM role that allows API Gateway the permission to write CloudWatch logs. Leave blank if this does not need to be configured.    |                         | both           |
-| TraceabilityLambdaRoleArn  | The Log Group created to track access of APIC tracked API Gateway endpoints.                                                               |                         | both           |
-| TraceabilityLogGroupName   | The CloudWatch Log Group that will store transaction details for AWS API Gateway usage events.                                              | APIGW_Traceability_Logs | both           |
-| TraceabilityFunctionBucket | The S3 bucket that has the executable for the traceability lambda function.                                                                |                         | both           |
-| TraceabilityFunctionKey    | The key of the traceability lambda function in the bucket.                                                                                 |                         | both           |
-| TraceabilityQueueName      | The name of the queue that will hold traceability logs of API Gateway resources. The region will be appended to this.                      | aws-apigw-traceability  | both           |
+| Parameter Name             | Description                                                                                                                                   | Default Value           | Operating Mode |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | -------------- |
+| SetupConfigService         | This parameter is used to disable the configuration of AWS Config Service, and all of its dependencies, while building the stack.             | true                    | continuous     |
+| ConfigBucketName           | The name of the bucket the Config Service, if enabled, will store AWS Config Logs. The account number and region will be appended to this.    | apigw-config-discovery  | continuous     |
+| ConfigBucketExists         | If set to true, the Config Bucket will not be created.                                                                                        | false                   | continuous     |
+| ConfigServiceRoleArn       | The ARN for the Config Service IAM Role.                                                                                                      |                         | continuous     |
+| DiscoveryQueueName         | The name of the queue that will hold only changes made to API Gateway resources. The region will be appended to this.                         | aws-apigw-discovery     | continuous     |
+| TraceabilityAPIGWCWRoleArn | The ARN for the IAM role that allows API Gateway the permission to write CloudWatch logs. Leave blank if this does not need to be configured. |                         | both           |
+| TraceabilityLambdaRoleArn  | The Log Group created to track access of APIC tracked API Gateway endpoints.                                                                  |                         | both           |
+| TraceabilityLogGroupName   | The CloudWatch Log Group that will store transaction details for AWS API Gateway usage events.                                                | APIGW_Traceability_Logs | both           |
+| TraceabilityFunctionBucket | The S3 Bucket that has the executable for the Traceability Lambda function.                                                                   |                         | both           |
+| TraceabilityFunctionKey    | The key of the Traceability Lambda function in the bucket.                                                                                    |                         | both           |
+| TraceabilityQueueName      | The name of the queue that will hold traceability logs of API Gateway resources. The region will be appended to this.                         | aws-apigw-traceability  | both           |
 
 #### Resources (Resources only)
 
@@ -355,7 +389,7 @@ The services that are configured with this CloudFormation template:
 | AWS::Events::Rule                  | DiscoveryConfigCloudWatchRule  |                           | DiscoveryConfigCloudWatchRule.                                                                      | continuous     |
 | AWS::SQS::Queue                    | DiscoveryConfigSqsQueue        |                           | The Queue that all API Gateway configuration changes are pushed to.                                 | continuous     |
 | AWS::SQS::QueuePolicy              | DiscoveryConfigSqsQueuePolicy  |                           | The policy that grants permission to push to the SqsQueue.                                          | continuous     |
-| AWS::Logs::LogGroup                | TraceabilityAccessLogGroup     |                           | Creates the Log Group to track access of APIC tracked API Gateway endpoints.                        | both           |
+| AWS::Logs::LogGroup                | APIGWTrafficLogGroupName       |                           | Creates the Log Group to track access of APIC tracked API Gateway endpoints.                        | both           |
 | AWS::ApiGateway::Account           | TraceabilityAPIGWCWRole        | ShouldSetupAPIGWCWRoleArn | Sets the CloudWatch Role ARN in the API Gateway Settings.                                           | both           |
 | AWS::Lambda::Function              | TraceabilityLambda             |                           | The Lambda function that takes Cloud Watch events in the Log Group and sends them to the SQS Queue. | both           |
 | AWS::Lambda::Permission            | TraceabilityLambdaCWInvoke     |                           | Allows Cloud Watch events to trigger the Lambda Function.                                           | both           |
@@ -388,9 +422,7 @@ These outputs will be used as inputs for running both the Discovery and Traceabi
 
 ### Connecting AWS API Gateway to AMPLIFY Central QuickStart
 
-* [Prepare AWS API Gateway](/docs/central/connect-aws-gateway/prepare-aws-api-gateway/)
-* [Prepare AMPLIFY Central](/docs/central/connect-aws-gateway/prepare-amplify-central-1/)
-* [Deploy agents](/docs/central/connect-aws-gateway/deploy-your-agents-1/)
+* [Deploy agents - quickstart](/docs/central/connect-aws-gateway/deploy-your-agents-quickstart)
 
 ### Agents AWS Cost
 
@@ -404,21 +436,20 @@ The following are the costs of the AWS services the Agents rely on:
   One bucket is needed at installation time for storing a lambda. The file size is less than 4Mo. This bucket is accessed only once at the installation time.
   It has negligible cost.
 * AWS [Config pricing](https://aws.amazon.com/config/pricing/)</br>
-  You pay \$0.003 per configuration item recorded in your AWS account per AWS Region. This is dependant on the number of changes in API / stage you will perform in a month. We don't set up rules or conformance pack. Here is the list of resources the agent needs to monitor: _ApiGateway:RestAPI_, _ApiGateway:Stage_, _ApiGatewayV2:RestAPI_ and _ApiGateway:Stage_.
+  You pay $0.003 per configuration item recorded in your AWS account per AWS Region. This is dependant on the number of changes in API / stage you will perform in a month. We don't set up rules or conformance pack. Here is the list of resources the agent needs to monitor: *ApiGateway:RestAPI*, *ApiGateway:Stage*, *ApiGatewayV2:RestAPI* and *ApiGateway:Stage*.
 * AWS [Lambda pricing](https://aws.amazon.com/lambda/pricing/)</br>
   You are charged based on the number of requests for your functions and the duration (the time it takes for your code to execute). The AWS Lambda free usage tier includes 1M free requests per month and 400,000 GB-seconds of compute time per month. Our traceability lambda is called each time one of the discovered APIs is consumed. The amount of allocated memory for the lambda is set to 128Mo. The lambda runs on average within .5 second.</br>
   Lambda cost is based on following formulas:
 
-    * Monthly cost charge: (# lambda call \* lambda execution time \* (lambda memory / 1024) - 400,000freeGB-s) \* **0.0000166667**
-    * Monthly request charge: ((# lambda call - 1M free request) \* **0.0000002**)</br>
+    * Monthly cost charge: (# lambda call \* lambda execution time \* (lambda memory / 1024) - 400,000freeGB-s) * **0.0000166667**
+    * Monthly request charge: ((# lambda call - 1M free request) * **0.0000002**)</br>
     * Samples:</br>
-        * 2 million calls: monthly cost ($0) + monthly request charge ($0.20) = \$0.20</br>
-        * 10 million calls: monthly cost ($10.42) + monthly request charge ($1.80) = \$12.22</br>
-
+        * 2 million calls: monthly cost ($0) + monthly request charge ($0.20) = $0.20</br>
+        * 10 million calls: monthly cost ($10.42) + monthly request charge ($1.80) = $12.22</br>
 * AWS [CloudWatch pricing](https://aws.amazon.com/cloudwatch/pricing/)</br>
   You should be able to operate with the free tier, as the agent requires only one monitoring metrics (APIGW_Traceability_Logs).
 * AWS [Simple Queue Service pricing](https://aws.amazon.com/sqs/pricing/)</br>
-  Two standard queues are set up: one for Discovery Agent and one for Traceability Agent. The Discovery Agent queue will contain every stage deployment. The Traceability Agent queue will contain every call to discovered APIs. One million Amazon SQS requests for free each month. After free tier, it cost \$0.40 per million requests.
+  Two standard queues are set up: one for Discovery Agent and one for Traceability Agent. The Discovery Agent queue will contain every stage deployment. The Traceability Agent queue will contain every call to discovered APIs. One million Amazon SQS requests for free each month. After free tier, it cost $0.40 per million requests.
 * AWS [API Gateway pricing](https://aws.amazon.com/api-gateway/pricing/)</br>
   The Amazon API Gateway free tier includes one million API calls received for REST APIs, one million API calls received for HTTP APIs, and one million messages and 750,000 connection minutes for WebSocket APIs per month for up to 12 months. If you exceed this number of calls per month, you will be charged the API Gateway usage rates. There are different rates based on the API type (HTTP / REST / Websocket).
 
@@ -428,10 +459,10 @@ Summary:
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Cloud Formation      | 0                                                                                                                                                                 |
 | S3 bucket            | 0                                                                                                                                                                 |
-| Config               | 0.003 \* (# config)                                                                                                                                               |
+| Config               | 0.003 * (# config)                                                                                                                                                |
 | Lambda execution     | ((# lambda call \* lambda execution time \* (lambda memory / 1024) - 400,000freeGB-s) \* **0.0000166667**) + ((# lambda call - 1M free request) \* **0.0000002**) |
 | CloudWatch           | 0                                                                                                                                                                 |
-| Simple Queue Service | One million requests free or \$0.40 per million requests thereafter                                                                                               |
+| Simple Queue Service | One million requests free or $0.40 per million requests thereafter                                                                                                |
 | API Gateway          | refer to [API Gateway pricing](https://aws.amazon.com/api-gateway/pricing/) for details                                                                           |
 
 ### Minimum rights for CloudFormation deployment
@@ -440,71 +471,75 @@ The required privileges to deploy the CloudFormation templates to the AWS platfo
 
 Note that these privileges do not include those necessary for rollback, if the stack fails, or removing the stack if needed.
 
-| Action                                | Resources                                                                                       | Mode       | Template                  | Condition                 |
-| ------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------- | ------------------------- | ------------------------- |
-| cloudformation:ListStackResources     | The stacks being created                                                                        | both       | all                       |                           |
-| cloudformation:ListStacks             | The stacks being created                                                                        | both       | all                       |                           |
-| cloudformation:DescribeStackResource  | The stacks being created                                                                        | both       | all                       |                           |
-| cloudformation:DescribeStackResources | The stacks being created                                                                        | both       | all                       |                           |
-| cloudformation:GetTemplateSummary     | The stacks being created                                                                        | both       | all                       |                           |
-| cloudformation:CreateStack            | The stacks being created                                                                        | both       | all                       |                           |
-| s3:ListBuckets                        | ConfigBucketName, AgentResourcesBucket                                                          | both       | all                       |                           |
-| s3:GetObject                          | traceability_lambda.zip, CloudFormation templates                                               | both       | amplify-agents-resources  |                           |
-| s3:CreateBucket                       | ConfigBucketName-<AWS::AccountID>-<AWS::Region>                                                 | continuous | amplify-agents-resources  | ConfigServiceSetup = true |
-| apigateway:PATCH                      | /account                                                                                        | both       | amplify-agents-resources  | APIGWCWRoleSetup = true   |
-| lambda:GetFunction                    | TraceabilityLambda                                                                              | both       | amplify-agents-resources  |                           |
-| lambda:GetFunctionConfiguration       | TraceabilityLambda                                                                              | both       | amplify-agents-resources  |                           |
-| lambda:CreateFunction                 | TraceabilityLambda                                                                              | both       | amplify-agents-resources  |                           |
-| lambda:AddPermission                  | TraceabilityLambda                                                                              | both       | amplify-agents-resources  |                           |
-| sqs:GetQueueAttributes                | DiscoveryConfigSqsQueue, TraceabilitySqsQueue                                                   | both       | amplify-agents-resources  |                           |
-| sqs:CreateQueue                       | DiscoveryConfigSqsQueue, TraceabilitySqsQueue                                                   | both       | amplify-agents-resources  |                           |
-| sqs:SetQueueAttributes                | DiscoveryConfigSqsQueue, TraceabilitySqsQueue                                                   | both       | amplify-agents-resources  |                           |
-| logs:DescribeLogGroups                | DiscoveryAgentLogGroupName, TraceabilityAgentLogGroupName, TraceabilityLogGroupName             | both       | amplify-agents-deploy-all |                           |
-| logs:CreateLogGroup                   | DiscoveryAgentLogGroupName, TraceabilityAgentLogGroupName, TraceabilityLogGroupName             | both       | amplify-agents-resources  |                           |
-| logs:PutSubscriptionFilter            | TraceabilityLogGroupName                                                                        | both       | amplify-agents-resources  |                           |
-| config:DescribeConfigurationRecorders | \*                                                                                              | continuous | amplify-agents-resources  | ConfigServiceSetup = true |
-| config:DescribeDeliveryChannels       | \*                                                                                              | continuous | amplify-agents-resources  | ConfigServiceSetup = true |
-| config:PutConfigurationRecorders      | \*                                                                                              | continuous | amplify-agents-resources  | ConfigServiceSetup = true |
-| config:PutDeliveryChannel             | \*                                                                                              | continuous | amplify-agents-resources  | ConfigServiceSetup = true |
-| config:StartConfigurationRecorder     | \*                                                                                              | continuous | amplify-agents-resources  | ConfigServiceSetup = true |
-| events:DescribeRule                   | \*                                                                                              | continuous | amplify-agents-resources  | ConfigServiceSetup = true |
-| events:PutRule                        | \*                                                                                              | continuous | amplify-agents-resources  | ConfigServiceSetup = true |
-| events:PutTargets                     | \*                                                                                              | continuous | amplify-agents-resources  | ConfigServiceSetup = true |
-| ec2:DescribeInstances                 | AgentsHost                                                                                      | continuous | amplify-agents-ec2        |                           |
-| ec2:RunInstances                      | AgentsHost                                                                                      | continuous | amplify-agents-ec2        |                           |
-| ec2:AssociateIamInstanceProfile       | AgentsHost                                                                                      | continuous | amplify-agents-ec2        |                           |
-| ec2:DescribeKeyPairs                  | Key(s) that can be added to the Instance                                                        | continuous | amplify-agents-ec2        |                           |
-| ec2:DecsribeVpcs                      | AgentsVPC or parameter VpcId (EC2StackVPCID)                                                    | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:CreateVpc                         | AgentsVPC                                                                                       | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:ModifyVpcAttribute                | AgentsVPC                                                                                       | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:AssociateRouteTable               | AgentsVPC                                                                                       | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:AttachInternetGateway             | AgentsVPC                                                                                       | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:CreateSecurityGroups              | AgentsSecurityGroup                                                                             | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:AuthorizeSecurityGroupIngress     | AgentsSecurityGroup                                                                             | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:DescribeSecurityGroups            | AgentsSecurityGroup or parameter SecurityGroup (EC2StackSecurityGroup)                          | continuous | amplify-agents-ec2        |                           |
-| ec2:CreateSubnet                      | AgentsSubnet                                                                                    | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:DescribeSubnets                   | AgentsSubnet or parameter Subnet (EC2StackSubnet)                                               | continuous | amplify-agents-ec2        |                           |
-| ec2:CreateInternetGateway             | AgentsInternetGW                                                                                | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:DecsribeInternetGateways          | AgentsInternetGW                                                                                | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:DescribeAvailabilityZones         | Availability Zones in Region                                                                    | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:DescribeRouteTables               | AgentsRouteTable                                                                                | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:CreateRouteTable                  | AgentsRouteTable                                                                                | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:CreateRoute                       | AgentAllowInternetTraffic                                                                       | continuous | amplify-agents-ec2        | VpcId = ""                |
-| ec2:DescribeAccountAttributes         | AWS Account                                                                                     | continuous | amplify-agents-ec2        | VpcId = ""                |
-| iam:ListRoles                         | ConfigServiceIAMRole, TraceabilityLambdaIAMRole, TraceabilityAPIGWCWIAMRole, AgentsInstanceRole | both       | amplify-agents-deploy-all |                           |
-| iam:GetRole                           | ConfigServiceIAMRole, TraceabilityLambdaIAMRole, TraceabilityAPIGWCWIAMRole, AgentsInstanceRole | both       | amplify-agents-deploy-all |                           |
-| iam:CreateRole                        | ConfigServiceIAMRole, TraceabilityLambdaIAMRole, TraceabilityAPIGWCWIAMRole, AgentsInstanceRole | both       | amplify-agents-deploy-all |                           |
-| iam:PassRole                          | ConfigServiceIAMRole, TraceabilityLambdaIAMRole, TraceabilityAPIGWCWIAMRole, AgentsInstanceRole | both       | amplify-agents-deploy-all |                           |
-| iam:GetRolePolicy                     | APICAgentsPolicy                                                                                | both       | amplify-agents-deploy-all |                           |
-| iam:GetUserPolicy                     | APICAgentsPolicy                                                                                | both       | amplify-agents-deploy-all | EC2AgentDeploy = false    |
-| iam:CreatePolicy                      | APICAgentsPolicy                                                                                | both       | amplify-agents-deploy-all |                           |
-| iam:PutRolePolicy                     | APICAgentsPolicy                                                                                | both       | amplify-agents-deploy-all |                           |
-| iam:GetUser                           | APICAgentsUser                                                                                  | both       | amplify-agents-deploy-all | EC2AgentDeploy = false    |
-| iam:CreateUser                        | APICAgentsUser                                                                                  | both       | amplify-agents-deploy-all | EC2AgentDeploy = false    |
-| iam:AttachUserPolicy                  | APICAgentsUser                                                                                  | both       | amplify-agents-deploy-all | EC2AgentDeploy = false    |
-| iam:CreateInstanceProfile             | AgentsInstanceProfile                                                                           | continuous | amplify-agents-deploy-all | EC2AgentDeploy = true     |
-| iam:AddRoleToInstanceProfile          | AgentsInstanceRole                                                                              | continuous | amplify-agents-deploy-all | EC2AgentDeploy = true     |
-| iam:AttachRolePolicy                  | AgentsInstanceRole                                                                              | both       | amplify-agents-deploy-all | EC2AgentDeploy = true     |
+| Action                                | Resources                                                                                       | Mode       | Template                   | Condition                    |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------- | -------------------------- | ---------------------------- |
+| cloudformation:ListStackResources     | The stacks being created                                                                        | both       | all                        |                              |
+| cloudformation:ListStacks             | The stacks being created                                                                        | both       | all                        |                              |
+| cloudformation:DescribeStackResource  | The stacks being created                                                                        | both       | all                        |                              |
+| cloudformation:DescribeStackResources | The stacks being created                                                                        | both       | all                        |                              |
+| cloudformation:GetTemplateSummary     | The stacks being created                                                                        | both       | all                        |                              |
+| cloudformation:CreateStack            | The stacks being created                                                                        | both       | all                        |                              |
+| s3:ListBuckets                        | ConfigBucketName, AgentResourcesBucket                                                          | both       | all                        |                              |
+| s3:GetObject                          | traceability_lambda.zip, CloudFormation templates                                               | both       | amplify-agents-resources   |                              |
+| s3:CreateBucket                       | ConfigBucketName-<AWS::AccountID>-<AWS::Region>                                                 | continuous | amplify-agents-resources   | ConfigServiceSetup = true    |
+| apigateway:PATCH                      | /account                                                                                        | both       | amplify-agents-resources   | APIGWCWRoleSetup = true      |
+| lambda:GetFunction                    | TraceabilityLambda                                                                              | both       | amplify-agents-resources   |                              |
+| lambda:GetFunctionConfiguration       | TraceabilityLambda                                                                              | both       | amplify-agents-resources   |                              |
+| lambda:CreateFunction                 | TraceabilityLambda                                                                              | both       | amplify-agents-resources   |                              |
+| lambda:AddPermission                  | TraceabilityLambda                                                                              | both       | amplify-agents-resources   |                              |
+| sqs:GetQueueAttributes                | DiscoveryConfigSqsQueue, TraceabilitySqsQueue                                                   | both       | amplify-agents-resources   |                              |
+| sqs:CreateQueue                       | DiscoveryConfigSqsQueue, TraceabilitySqsQueue                                                   | both       | amplify-agents-resources   |                              |
+| sqs:SetQueueAttributes                | DiscoveryConfigSqsQueue, TraceabilitySqsQueue                                                   | both       | amplify-agents-resources   |                              |
+| logs:DescribeLogGroups                | DiscoveryAgentLogGroupName, TraceabilityAgentLogGroupName, TraceabilityLogGroupName             | both       | amplify-agents-deploy-all  |                              |
+| logs:CreateLogGroup                   | DiscoveryAgentLogGroupName, TraceabilityAgentLogGroupName, TraceabilityLogGroupName             | both       | amplify-agents-resources   |                              |
+| logs:PutSubscriptionFilter            | TraceabilityLogGroupName                                                                        | both       | amplify-agents-resources   |                              |
+| config:DescribeConfigurationRecorders | \*                                                                                              | continuous | amplify-agents-resources   | ConfigServiceSetup = true    |
+| config:DescribeDeliveryChannels       | \*                                                                                              | continuous | amplify-agents-resources   | ConfigServiceSetup = true    |
+| config:PutConfigurationRecorders      | \*                                                                                              | continuous | amplify-agents-resources   | ConfigServiceSetup = true    |
+| config:PutDeliveryChannel             | \*                                                                                              | continuous | amplify-agents-resources   | ConfigServiceSetup = true    |
+| config:StartConfigurationRecorder     | \*                                                                                              | continuous | amplify-agents-resources   | ConfigServiceSetup = true    |
+| events:DescribeRule                   | \*                                                                                              | continuous | amplify-agents-resources   | ConfigServiceSetup = true    |
+| events:PutRule                        | \*                                                                                              | continuous | amplify-agents-resources   | ConfigServiceSetup = true    |
+| events:PutTargets                     | \*                                                                                              | continuous | amplify-agents-resources   | ConfigServiceSetup = true    |
+| ec2:DescribeInstances                 | AgentsHost                                                                                      | continuous | amplify-agents-ec2         |                              |
+| ec2:RunInstances                      | AgentsHost                                                                                      | continuous | amplify-agents-ec2         |                              |
+| ec2:AssociateIamInstanceProfile       | AgentsHost                                                                                      | continuous | amplify-agents-ec2         |                              |
+| ec2:DescribeKeyPairs                  | Key(s) that can be added to the Instance                                                        | continuous | amplify-agents-ec2         |                              |
+| ec2:DecsribeVpcs                      | AgentsVPC or parameter VpcId (EC2StackVPCID)                                                    | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:CreateVpc                         | AgentsVPC                                                                                       | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:ModifyVpcAttribute                | AgentsVPC                                                                                       | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:AssociateRouteTable               | AgentsVPC                                                                                       | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:AttachInternetGateway             | AgentsVPC                                                                                       | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:CreateSecurityGroups              | AgentsSecurityGroup                                                                             | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:AuthorizeSecurityGroupIngress     | AgentsSecurityGroup                                                                             | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:DescribeSecurityGroups            | AgentsSecurityGroup or parameter SecurityGroup (EC2StackSecurityGroup)                          | continuous | amplify-agents-ec2         |                              |
+| ec2:CreateSubnet                      | AgentsSubnet                                                                                    | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:DescribeSubnets                   | AgentsSubnet or parameter Subnet (EC2StackSubnet)                                               | continuous | amplify-agents-ec2         |                              |
+| ec2:CreateInternetGateway             | AgentsInternetGW                                                                                | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:DecsribeInternetGateways          | AgentsInternetGW                                                                                | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:DescribeAvailabilityZones         | Availability Zones in Region                                                                    | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:DescribeRouteTables               | AgentsRouteTable                                                                                | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:CreateRouteTable                  | AgentsRouteTable                                                                                | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:CreateRoute                       | AgentAllowInternetTraffic                                                                       | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ec2:DescribeAccountAttributes         | AWS Account                                                                                     | continuous | amplify-agents-ec2         | VpcId = ""                   |
+| ecs:CreateService                     | AmplifyAgentsService                                                                            | continuous | amplify-agents-ecs-fargate | DeploymentType = ECS Fargate |
+| ecs:DescribeServices                  | AmplifyAgentsService                                                                            | continuous | amplify-agents-ecs-fargate | DeploymentType = ECS Fargate |
+| ecs:RegisterTaskDefinition            | \*                                                                                              | continuous | amplify-agents-ecs-fargate | DeploymentType = ECS Fargate |
+| ecs:DescribeTaskDefinition            | \*                                                                                              | continuous | amplify-agents-ecs-fargate | DeploymentType = ECS Fargate |
+| iam:ListRoles                         | ConfigServiceIAMRole, TraceabilityLambdaIAMRole, TraceabilityAPIGWCWIAMRole, AgentsInstanceRole | both       | amplify-agents-deploy-all  |                              |
+| iam:GetRole                           | ConfigServiceIAMRole, TraceabilityLambdaIAMRole, TraceabilityAPIGWCWIAMRole, AgentsInstanceRole | both       | amplify-agents-deploy-all  |                              |
+| iam:CreateRole                        | ConfigServiceIAMRole, TraceabilityLambdaIAMRole, TraceabilityAPIGWCWIAMRole, AgentsInstanceRole | both       | amplify-agents-deploy-all  |                              |
+| iam:PassRole                          | ConfigServiceIAMRole, TraceabilityLambdaIAMRole, TraceabilityAPIGWCWIAMRole, AgentsInstanceRole | both       | amplify-agents-deploy-all  |                              |
+| iam:GetRolePolicy                     | APICAgentsPolicy                                                                                | both       | amplify-agents-deploy-all  |                              |
+| iam:GetUserPolicy                     | APICAgentsPolicy                                                                                | both       | amplify-agents-deploy-all  | DeploymentType = Other       |
+| iam:CreatePolicy                      | APICAgentsPolicy                                                                                | both       | amplify-agents-deploy-all  |                              |
+| iam:PutRolePolicy                     | APICAgentsPolicy                                                                                | both       | amplify-agents-deploy-all  |                              |
+| iam:GetUser                           | APICAgentsUser                                                                                  | both       | amplify-agents-deploy-all  | DeploymentType = Other       |
+| iam:CreateUser                        | APICAgentsUser                                                                                  | both       | amplify-agents-deploy-all  | DeploymentType = Other       |
+| iam:AttachUserPolicy                  | APICAgentsUser                                                                                  | both       | amplify-agents-deploy-all  | DeploymentType = Other       |
+| iam:CreateInstanceProfile             | AgentsInstanceProfile                                                                           | continuous | amplify-agents-deploy-all  | DeploymentType = EC2         |
+| iam:AddRoleToInstanceProfile          | AgentsInstanceRole                                                                              | continuous | amplify-agents-deploy-all  | DeploymentType = EC2         |
+| iam:AttachRolePolicy                  | AgentsInstanceRole                                                                              | continuous | amplify-agents-deploy-all  | DeploymentType = EC2         |
 
 ### Troubleshooting
 
