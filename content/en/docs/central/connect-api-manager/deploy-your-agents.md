@@ -209,68 +209,71 @@ To install the binary Traceability Agent:
    ```yaml
    ################### Beat Configuration #########################
    traceability_agent:
-    inputs:
-     - type: log
-       paths:
+     inputs:
+       - type: log
+        paths:
          - <PATH_TO>/group-X_instance-Y.log
-      include_lines: ['.*"type":"transaction".*"type":"http".*']
+        include_lines: ['.*"type":"transaction".*"type":"http".*']
+
+     central:
+        url: https://apicentral.axway.com
+        organizationID: 68794y2
+        team: Dev
+        deployment: prod
+        environment: my-v7-env
+        auth:
+          url: https://login.axway.com/auth
+          realm: Broker
+          clientId: "DOSA_68732642t64545..."
+          privateKey: /home/APIC-agents/private_key.pem}
+          publicKey: /home/APIC-agents/public_key.pem}
+          keyPassword: ""
+        timeout: 10s
+     apigateway:
+       getHeaders: true
+       host: localhost
+       port: 8090
+       pollInterval: 1m
+       auth:
+         username: myApiGatewayOperatorUser
+         password: myApiGatewayOperatorUserPassword
+     apimanager:
+       host: localhost
+       port: 8075
+       pollInterval: 1m
+       apiVersion: 1.3
+       proxyApicIDField: apicId
+       auth:
+         username: myApiManagerUserName
+         password: myApiManagerUserPassword
 
    # Send output to Central Database
    output.traceability:
-    enabled: true
-    hosts: ${LOGSTASH_URL:ingestion-lumberjack.datasearch.axway.com:453}
-    ssl:
      enabled: true
-     verification_mode: none
-     cipher_suites:
-      - "ECDHE-ECDSA-AES-128-GCM-SHA256"
-      - "ECDHE-ECDSA-AES-256-GCM-SHA384"
-      - "ECDHE-ECDSA-AES-128-CBC-SHA256"
-      - "ECDHE-ECDSA-CHACHA20-POLY1305"
-      - "ECDHE-RSA-AES-128-CBC-SHA256"
-      - "ECDHE-RSA-AES-128-GCM-SHA256"
-      - "ECDHE-RSA-AES-256-GCM-SHA384"
-     proxy_url: ${LOGSTASH_PROXYURL:""}
-     agent:
-      central:
-       url: https://apicentral.axway.com
-       organizationID: 68794y2
-       team: Dev
-       deployment: prod
-       environment: my-v7-env
-       auth:
-        url: https://login.axway.com/auth
-        realm: Broker
-        clientId: "DOSA_68732642t64545..."
-        privateKey: /home/APIC-agents/private_key.pem}
-        publicKey: /home/APIC-agents/public_key.pem}
-        keyPassword: ""
-        timeout: 10s
-     apigateway:
-      getHeaders: true
-      host: localhost
-      port: 8090
-      pollInterval: 1m
-      auth:
-        username: myApiGatewayOperatorUser
-        password: myApiGatewayOperatorUserPassword
-     apimanager:
-      host: localhost
-      port: 8075
-      pollInterval: 1m
-      apiVersion: 1.3
-      proxyApicIDField: apicId
-      auth:
-        username: myApiManagerUserName
-        password: myApiManagerUserPassword
+     hosts: ${TRACEABILITY_HOST:ingestion-lumberjack.datasearch.axway.com:453}
+     protocol: ${TRACEABILITY_PROTOCOL:"tcp"}
+     compression_level: ${TRACEABILITY_COMPRESSIONLEVEL:3}
+     ssl:
+       enabled: true
+       verification_mode: none
+       cipher_suites:
+         - "ECDHE-ECDSA-AES-128-GCM-SHA256"
+         - "ECDHE-ECDSA-AES-256-GCM-SHA384"
+         - "ECDHE-ECDSA-AES-128-CBC-SHA256"
+         - "ECDHE-ECDSA-CHACHA20-POLY1305"
+         - "ECDHE-RSA-AES-128-CBC-SHA256"
+         - "ECDHE-RSA-AES-128-GCM-SHA256"
+         - "ECDHE-RSA-AES-256-GCM-SHA384"
+     pipelining: 0
+     proxy_url: ${TRACEABILITY_PROXYURL:""}
 
    logging:
-    metrics:
-     enabled: false
-    # Send all logging output to stderr
-    to_stderr: true
-    # Set log level
-    level: ${LOG_LEVEL:info}
+     metrics:
+        enabled: false
+   # Send all logging output to stderr
+     to_stderr: true
+   # Set log level
+     level: ${LOG_LEVEL:info}
    ```
 
    * The value for *organizationID* can be found in AMPLIFY Central Platform > Organization.
