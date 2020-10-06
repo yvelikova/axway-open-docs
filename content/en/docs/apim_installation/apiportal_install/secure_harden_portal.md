@@ -71,22 +71,19 @@ To counter a session fixation vulnerability in Joomla!, it is recommended that y
 
 ## Encrypt database password
 
-If you did not choose to encrypt your database password during the installation process, you can use the `apiportal_db_pass_encryption.sh` script, available both from API Portal installation and upgrade packages, to encrypt the password at any time.
+If you did not choose to encrypt your database password during the installation process, you can use the `apiportal_db_pass_encryption.sh` script to encrypt the password at any time. The script is available both from API Portal installation and upgrade packages.
 
-1. Make the script executable:
-
-   ```
-   # chmod +x apiportal_db_pass_encryption.sh
-   ```
-2. Execute the script
+To encrypt your database password, run:
 
    ```
    # sh apiportal_db_pass_encryption.sh
    ```
 
-    When you execute the script, you are prompted to enter a passphrase and your database password. The script uses the passphrase to encrypt the database password, which is now stored encrypted in the `<API_Portal_install_path>/configuration.php` file, and to decrypt the database password on each connection request.
+You will be prompted to enter a passphrase and your database password.
 
-    Only the password is decrypted on each connection request, not the whole payload, so no significant performance impact is expected.
+The script uses the passphrase to encrypt the database password, which is now stored encrypted in the `<API_Portal_install_path>/configuration.php` file, and to decrypt the database password on each connection request.
+
+Only the password is decrypted on each connection request, not the whole payload, so no significant performance impact is expected.
 
 {{< alert title="Note" color="primary" >}}This option cannot be used in combination with [database secure connection](#disable-tls-1-0-and-tls-1-1-on-apache).{{< /alert >}}
 
@@ -330,11 +327,23 @@ These are some general recommendations:
 * Google Analytics - has abnormal detection features. Very commonly used and reliable tool. For more information, see [Google Analytics Anomaly Detection](https://support.google.com/analytics/answer/7507748?hl=en).
 * Log analysis tools - can be installed to act upon different logs. For example, see [Loggly Anomoly Detection](https://www.loggly.com/docs/anomaly-detection/).
 
-## Define a restrictive Content Security Policy
+## Define a restrictive content security policy
 
 The HTTP Content Security Policy ([CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)) response header instructs compliant browsers on how they may interact with external sites while in the current context. This enables the server to control interaction with code and content from third-parties, mitigating some client-side code injection attacks. The policy allows the server to specify what connections are permitted for each type of resource (scripts, styles, fonts, and so on).
 
 We recommend you to configure this policy either in your `.htaccess` file or virtual host file with *least privilege* to allow only interactions that are explicitly required.
+
+## Define retention periods for personal data
+
+For compliance with General Data Protection (GDP), you must define retention periods within the design phase for all data fields taking into account the defined purpose. You must also include retention periods for backups.
+
+If you are a small organization, you may not need a documented retention policy. However, if you do not have a retention policy, you must still regularly review the data you hold and delete or anonymise any data that you no longer need.
+
+You must include your Data Protection Officer (DPO) or Legal department to define the retention periods as other laws may impact the retention requirements.
+
+## Permanently delete unnecessary data
+
+When the retention periods expire you must ensure that all of the data which is no longer needed is deleted. This may require automatic identification of the latest activities and a data deletion functionality or manual work.
 
 ## Where to go next
 
