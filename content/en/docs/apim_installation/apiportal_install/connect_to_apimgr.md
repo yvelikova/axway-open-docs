@@ -1,11 +1,10 @@
 {
-    "title":"Connect API Portal to API Manager",
-    "linkTitle":"Connect API Portal to API Manager",
-    "weight":"70",
-    "date":"2019-08-09",
-    "description":"Connect API Portal to API Manager to leverage the user registry and API Catalog stored and managed in API Manager."
+"title": "Connect API Portal to API Manager",
+  "linkTitle": "Connect API Portal to API Manager",
+  "weight": "70",
+  "date": "2019-08-09",
+  "description": "Connect API Portal to API Manager to leverage the user registry and API Catalog stored and managed in API Manager."
 }
-
 Before you can use API Portal, you must connect it to at least one API Manager. You can also connect API Portal to multiple API Managers to expose APIs centrally in one place.
 
 ## Connect API Portal to a single API Manager
@@ -25,7 +24,7 @@ To connect API Portal to API Manager:
 
 API Portal is now connected to API Manager.
 
-To log in in to API Portal you must have a user configured in API Manager. For more information, see [Manage users](/docs/apim_administration/apimgr_admin/api_mgmt_admin/index.html#manage-users). Note that, by default, only users with **Organization administrator** or **User** roles are allowed to login to API Portal.
+To log into API Portal you must have a user configured in API Manager. For more information, see [Manage users](/docs/apim_administration/apimgr_admin/api_mgmt_admin/index.html#manage-users). Note that, by default, only users with **Organization administrator** or **User** roles are allowed to login to API Portal.
 
 ## Connect API Portal to multiple API Managers
 
@@ -39,7 +38,7 @@ For example, you can configure API Portal as a centralized catalog presenting A
 
 ![Illustration on how API Portal centralizes APIs from multiple environments](/Images/APIPortal/API_Portal_multiMgr_environment.png)
 
-{{% alert title="Note" %}}This type of portal is recommended only for internal purposes and internal users.{{% /alert %}}
+{{< alert title="Note" color="primary" >}}This type of portal is recommended only for internal purposes and internal users.{{< /alert >}}
 
 Alternatively, API Portal can pull APIs from different deployments. For example, you could host one API Manager with non-business critical APIs in a cloud, and another API Manager containing the APIs on confidential data on-premise. A single API Portal can connect to both deployments, and expose the APIs as configured in each API Manager:
 
@@ -112,14 +111,16 @@ You must create a separate project for each slave API Manager to use separate co
 
 1. In the Policy Studio node tree, click **Environment Configuration > Listeners > API Gateway > API Portal > Ports**.
 2. Open the configured port, go to the **Mutual Authentication** tab, and check that **Ignore client certificates** is selected.
-3. In the node tree, click **Environment Configuration > Listeners > API Gateway > API Portal > Paths**, and under `/api/portal/`, double-click **API Manager API v1.2**, and click **Add**.
-4. Add a new servlet property:
-    * **Name**: `CsrfProtectionFilterFactory.refererWhitelist`
-    * **Value**: the login URL of the *master* API Manager (for example, `https://10.142.10.4:8075/api/portal/v1.3/login`)
-5. If you already have this servlet property, you can simply edit the value. If you list multiple URLs, separate them with a comma.
-6. Repeat the previous step on **API Manager API v1.3**.
+3. In the node tree, click **Environment Configuration > Listeners > API Gateway > API Portal > Paths.**, and under `/api/portal/`, double-click **API Manager API v1.3** or **API Manager API v1.4**, depending on [your API Portal version](/docs/apim_relnotes/20200930_apip_relnotes/#important-changes).
+4. Click **Add**.
+5. Add a new servlet property. The version of the API can be `1.3` or `1.4` depending on [your API Portal version](/docs/apim_relnotes/20200930_apip_relnotes/#important-changes).
+
+   * **Name**: `CsrfProtectionFilterFactory.refererWhitelist`
+   * **Value**: the login URL of the *master* API Manager (for example, `https://10.142.10.4:8075/api/portal/v1.3/login`)
+
+6. If you already have a servlet property, you can simply edit its value. If you list multiple URLs, separate them with a comma.
 7. In the node tree, click **Server Settings > General**, and ensure that **Server's SSL cert's name must match name of requested server** is not selected.
-8. Click **Server Settings > API Manager > Identity Provider**, select **Use external identity provider**.
+8. Click **Server Settings > API Manager > Identity Provider**, and select **Use external identity provider**.
 9. Set **Account authentication policy** to the **AuthenticateToMaster** policy and **Account information policy** to **Get Current Info**, and click **Save**.
 10. Deploy the configuration to API Gateway.
 
