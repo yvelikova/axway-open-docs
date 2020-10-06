@@ -22,14 +22,14 @@ The Discovery Agent has two operating modes, continuous discovery and synchronou
 
 #### Continuous Discovery Overview
 
-To deploy an API In the AWS API Gateway, you create an API deployment and associate it with a stage. The Axway Discovery Agent listens for new deployments and for stage updates to existing deployments. When the agent receives an event it will publish, or update AMPLIFY Central with the API details. It is possible for the agent to publish the API information directly into the Unified Catalog or to be added to the environment associated with the agent in AMPLIFY Central.
+To deploy an API In the AWS API Gateway, you create an API deployment and associate it with a stage. The Axway Discovery Agent listens for new deployments and for stage updates to existing deployments. When the agent receives an event, it will publish or update AMPLIFY Central with the API details. It is possible for the agent to publish the API information directly into the Unified Catalog, or it can be added to the environment associated with the agent in AMPLIFY Central.
 
 In order for the Discovery Agent to receive the API details, the following AWS services are used:
 
 | AWS Service    | Purpose                                                                                                                                                                                                                                                                                                                                   |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | AWS Config     | Set up to monitor any configuration changes on API Gateway resources, specifically REST APIs and stages. When those changes are detected, they are sent to CloudWatch logs, and then they are sent to SQS.                                                                                                                                |
-| AWS SQS        | The queue receives messages available to the Discovery Agent to find and determine what kind of resource that message is, what type of changes were made (update, delete, create), and it will query against API Gateway to get additional information about those changes, if needed, finally that info is sent to the AMPLIFY Platform. |
+| AWS SQS        | The queue receives messages available to the Discovery Agent to find and determine what kind of resource that message is, what type of changes were made (update, delete, create). If needed, it will query against API Gateway to get additional information about those changes. Finally, the information is sent to the AMPLIFY Platform. |
 | AWS CloudWatch | Monitors resources and changes that the Discovery Agent made to the logging.                                                                                                                                                                                                                                                              |
 
 ![Service Discovery](/Images/central/connect-aws-gateway/aws-discovery-agent_v2.png)
@@ -50,13 +50,13 @@ This operating mode does not utilize the AWS Config, SQS, or CloudWatch services
 
 The Traceability Agent sends summaries to AMPLIFY Central of the API traffic that has passed through the AWS API Gateway. The agent only sends a traffic summary for APIs that have been discovered (i.e. tagged with APIC_ID).
 
-The Traceability Agent is used to filter the AWS CloudWatch logs that are related to discovered APIs and prepare the transaction events that are sent to AMPLIFY platform. Each time an API is called by a consumer it will result in an event (summary + detail) being sent to AMPLIFY Central. API Observer provides a view of the traffic and API usage of APIs deployed to the Gateway.
+The Traceability Agent is used to filter the AWS CloudWatch logs that are related to discovered APIs and prepare the transaction events that are sent to AMPLIFY Platform. Each time an API is called by a consumer it will result in an event (summary + detail) being sent to AMPLIFY Central. API Observer provides a view of the traffic and API usage of APIs deployed to the Gateway.
 
 In order for the Traceability Agent to monitor API traffic, the following AWS services are used:
 
 | AWS Service    | Purpose                                                                                                                                                                                                                                                                                                  |
 | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AWS Lambda     | Runs code in response to events and automatically manages the computing resources required by that code. CloudWatch will write whenever a usage of an API invoked, and that is sent to the Lambda function, which parses out some pertinent information in order to track that usage and send it to SQS. |
+| AWS Lambda     | Runs code in response to events and automatically manages the computing resources required by that code. CloudWatch will write whenever a usage of an API is invoked. It is sent to the Lambda function, which parses out some pertinent information in order to track that usage and send it to SQS. |
 | AWS SQS        | SQS messages are read by the Traceability Agent. The REST API ID and the stage ID are then queried back to CloudWatch for the additional transaction details (i.e. headers), in order to fully create a transaction object, which is then sent to the AMPLIFY platform.                                  |
 | AWS CloudWatch | Monitors when an API is consumed, and if the Discovery Agent made changes to the logging. Those events are logged to CloudWatch.                                                                                                                                                                         |
 
@@ -77,15 +77,15 @@ The AWS service usage cost for the agents is explain below.
 
 ### CloudFormation templates
 
-The agent config package contains a Lambda function (`traceability_lambda.zip`), and the CloudFormation templates.
+The agent config package contains a Lambda function (`traceability_lambda.zip`) and CloudFormation templates.
 
 Continuous discovery mode (`amplify-agents-deploy-all.yaml amplify-agents-resources.yaml amplify-agents-ec2.yaml`) which configure the additional AWS services (`CloudWatch, SQS, Lambda, and EC2`) that the agents require to function normally.
 
 Synchronous discovery mode (`amplify-agents-deploy-all.yaml amplify-agents-resources.yaml`) which configure the additional AWS services (`AWS CloudWatch, AWS SQS, and AWS Lambda`) that the agents require to function normally.
 
-Upload all of these resources to an S3 bucket, within the target region. Take note of the bucket name and URL to the `amplify-agents-deploy-all.yaml`.
+Upload all of these resources to an S3 Bucket, within the target region. Take note of the bucket name and URL to the `amplify-agents-deploy-all.yaml`.
 
-If deploying the EC2 instance within these templates, additionally create the following file structure that the instance will retrieve for the agents.
+If deploying the EC2 instance within these templates, additionally create the following file structure that the instance will retrieve for the agents:
 
 ```
 [my-bucket-name]
@@ -98,19 +98,21 @@ If deploying the EC2 instance within these templates, additionally create the fo
     |    ta_env_vars.env
 ```
 
-For the values in these **\*_env_var.env** files see [Deploy your agents](/docs/central/connect-aws-gateway/deploy-your-agents-1).
+For the values in these **\*_env_var.env** files, see [Deploy your agents](/docs/central/connect-aws-gateway/deploy-your-agents-1).
 
 For the list of minimum access rights for these CloudFormation templates, see [Minimum rights for CloudFormation deployment](#minimum-rights-for-cloudformation-deployment).
 
 #### CloudFormation deployments and options
 
-* IAM Resources
+The Cloud formation templates are designed to be as flexible as possible. They provide different options to customize the installation the way that suits your company standard.
+
+* IAM Resources options:
     * Manually create the IAM resources [CloudFormation (without IAM)](#cloudformation-without-iam)
-    * Allow the CloudFormation the ability to do so. The resources created vary depending on the agent deployment type. [Resources (IAM and Resources)](#resources-iam-and-resources)
-* Deployment types
-    * EC2 - optionally creates the entire infrastruture around the EC2 instance or specify the VPC, Subnet, and Security Group for the instance
-    * ECS Fargate - requires an ECS Fargate cluster and EC2 Subnet and Security Group for deployment. [ECS Fargate Cluster](https://docs.aws.amazon.com/AmazonECS/latest/userguide/create_cluster.html)
-    * Other - creates an IAM Group and User, access and secret keys must be generated, for the agents to run with
+    * Allow the CloudFormation the ability to create the resources on your behalf. The resources created vary depending on the agent deployment type. [Resources (IAM and Resources)](#resources-iam-and-resources)
+* Agents deployment options:
+    * **EC2** - optionally creates the entire infrastruture around the EC2 instance or specify the VPC, Subnet, and Security Group for the instance
+    * **ECS Fargate** - requires an ECS Fargate cluster and EC2 Subnet and Security Group for deployment. [ECS Fargate Cluster](https://docs.aws.amazon.com/AmazonECS/latest/userguide/create_cluster.html)
+    * **Other** - creates an IAM Group and User, access and secret keys must be generated, for the agents to run with. The agent must be installed manually in a Docker container.
 
 #### Parameters (IAM and Resources)
 
@@ -130,7 +132,7 @@ The inputs to the IAM Setup CloudFormation Template (`amplify-agents-deploy-all.
 | EC2InstanceType               | The instance type to use for this EC2 instance                                                                                            | t3.micro                        | continuous |
 | EC2KeyName                    | The SSH Key to deploy inside the EC2 instance                                                                                             |                                 | continuous |
 | EC2VPCID                      | The VPC to deploy the EC2 instance to. Leave blank to deploy all infrastructure                                                           |                                 | continuous |
-| EC2PublicIPAddress            | Assign a Public IP address, the agents needs internet access for AMPLIFY Central communication                                            | true                            | continuous |
+| EC2PublicIPAddress            | Assign a Public IP address. The agents needs internet access for AMPLIFY Central communication                                            | true                            | continuous |
 | EC2SSHLocation                | The CIDR range that is allowed to SSH to the instance                                                                                     | 0.0.0.0/0                       | continuous |
 | ECSClusterName                | The name of the ECS Fargate Cluster for the ECS tasks to be deployed to                                                                   |                                 | continuous |
 | ECSCentralOrganizationID      | The AMPLIFY Central Organization ID to add to the ECS tasks                                                                               |                                 | continuous |
@@ -195,10 +197,10 @@ The outputs from the CloudFormation template:
 
 | Output Name           | Description                                                   | Operating Mode |
 | --------------------- | ------------------------------------------------------------- | -------------- |
-| DiscoveryQueueName    | Amazon SQS Queue name containing the changes to API Gateway.  | continuous     |
-| TraceabilityQueueName | Amazon SQS Queue name containing the API Gateway Access Logs. | both           |
+| DiscoveryQueueName    | Amazon SQS Queue name containing the changes to API Gateway  | continuous     |
+| TraceabilityQueueName | Amazon SQS Queue name containing the API Gateway Access Logs | both           |
 
-These outputs will used as inputs for running both the Discovery and Traceability agents.
+These outputs are used as inputs for running both the Discovery and Traceability agents.
 
 #### Access Credentials (optional)
 
@@ -216,7 +218,7 @@ If you prefer to create IAM Resources outside of the CloudFormation script, the 
 
 ##### ConfigServiceIAMRole (Continuous Discovery mode)
 
-This role is used by the Config Service to monitor configuration changes to AWS API gateway Resources. It must have the following policies.
+This role is used by the Config Service to monitor configuration changes to AWS API gateway Resources. It must have the following policies:
 
 Assume Role Policies
 
@@ -234,8 +236,8 @@ Policies
 
 | Effect | Action          | Resource          | Description                                                                    |
 | ------ | --------------- | ----------------- | ------------------------------------------------------------------------------ |
-| Allow  | s3:GetBucketAcl | Config Bucket ARN | This allows the Config Service to get the access control list of the S3 bucket |
-| Allow  | s3:PutObject    | Config Bucket ARN | This allows the Config Service to save configurations to the S3 bucket         |
+| Allow  | s3:GetBucketAcl | Config Bucket ARN | This allows the Config Service to get the access control list of the S3 Bucket |
+| Allow  | s3:PutObject    | Config Bucket ARN | This allows the Config Service to save configurations to the S3 Bucket         |
 | Allow  | config:Put*     | \*                | This allows access to all config put actions for tracking changes              |
 
 ##### TraceabilityLambdaIAMRole
@@ -280,7 +282,8 @@ Managed Policies
 
 ##### APICAgentsPolicy
 
-The policy that has all of the access required by the APICAgentsUser
+The policy has all of the access required by the APICAgentsUser
+.
 
 Policies
 
@@ -310,6 +313,7 @@ Policies
 ##### AgentsInstanceRole
 
 The role that is assigned to the EC2 instance profile so the agents may access the APICAgentsPolicy
+.
 
 Assume Role Policies
 
@@ -326,6 +330,7 @@ Managed Policy
 ##### AgentsInstanceProfile
 
 The instance profile that will be assigned to the EC2 instance
+.
 
 Role
 
@@ -336,6 +341,7 @@ Role
 ##### AgentsTaskExecutionRole
 
 The role that is assigned to the ECS task so the agents may access the APICAgentsPolicy
+.
 
 Assume Role Policies
 
@@ -352,12 +358,15 @@ Managed Policy
 ##### APICAgentsGroup
 
 The group that is assigned the APICAgentsPolicy
+.
 
 ##### APICAgentsUser
 
 The user that the APIC Agents will log in as, added to the APICAgentsGroup
+.
 
 An Access and Secret Key for the user should be created and given to the person deploying the agent, please follow your organizations key rotation policies. See [Managing Access Keys for IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+.
 
 #### Parameters (Resources only)
 
@@ -365,17 +374,17 @@ The inputs to the Resource CloudFormation template (`amplify-agents-resources.ya
 
 | Parameter Name             | Description                                                                                                                                   | Default Value           | Operating Mode |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | -------------- |
-| SetupConfigService         | This parameter is used to disable the configuration of AWS Config Service, and all of its dependencies, while building the stack.             | true                    | continuous     |
-| ConfigBucketName           | The name of the bucket the Config Service, if enabled, will store AWS Config Logs. The account number and region will be appended to this.    | apigw-config-discovery  | continuous     |
-| ConfigBucketExists         | If set to true, the Config Bucket will not be created.                                                                                        | false                   | continuous     |
-| ConfigServiceRoleArn       | The ARN for the Config Service IAM Role.                                                                                                      |                         | continuous     |
-| DiscoveryQueueName         | The name of the queue that will hold only changes made to API Gateway resources. The region will be appended to this.                         | aws-apigw-discovery     | continuous     |
-| TraceabilityAPIGWCWRoleArn | The ARN for the IAM role that allows API Gateway the permission to write CloudWatch logs. Leave blank if this does not need to be configured. |                         | both           |
-| TraceabilityLambdaRoleArn  | The Log Group created to track access of APIC tracked API Gateway endpoints.                                                                  |                         | both           |
-| TraceabilityLogGroupName   | The CloudWatch Log Group that will store transaction details for AWS API Gateway usage events.                                                | APIGW_Traceability_Logs | both           |
-| TraceabilityFunctionBucket | The S3 Bucket that has the executable for the Traceability Lambda function.                                                                   |                         | both           |
-| TraceabilityFunctionKey    | The key of the Traceability Lambda function in the bucket.                                                                                    |                         | both           |
-| TraceabilityQueueName      | The name of the queue that will hold traceability logs of API Gateway resources. The region will be appended to this.                         | aws-apigw-traceability  | both           |
+| SetupConfigService         | This parameter is used to disable the configuration of AWS Config Service, and all of its dependencies, while building the stack             | true                    | continuous     |
+| ConfigBucketName           | The name of the bucket the Config Service, if enabled, will store AWS Config Logs. The account number and region will be appended to this    | apigw-config-discovery  | continuous     |
+| ConfigBucketExists         | If set to true, the Config Bucket will not be created                                                                                        | false                   | continuous     |
+| ConfigServiceRoleArn       | The ARN for the Config Service IAM Role                                                                                                      |                         | continuous     |
+| DiscoveryQueueName         | The name of the queue that will hold only changes made to API Gateway resources. The region will be appended to this                         | aws-apigw-discovery     | continuous     |
+| TraceabilityAPIGWCWRoleArn | The ARN for the IAM role that allows API Gateway the permission to write CloudWatch logs. Leave blank if this does not need to be configured |                         | both           |
+| TraceabilityLambdaRoleArn  | The Log Group created to track access of APIC tracked API Gateway endpoints                                                                  |                         | both           |
+| TraceabilityLogGroupName   | The CloudWatch Log Group that will store transaction details for AWS API Gateway usage events                                                | APIGW_Traceability_Logs | both           |
+| TraceabilityFunctionBucket | The S3 Bucket that has the executable for the Traceability Lambda function                                                                   |                         | both           |
+| TraceabilityFunctionKey    | The key of the Traceability Lambda function in the bucket                                                                                    |                         | both           |
+| TraceabilityQueueName      | The name of the queue that will hold traceability logs of API Gateway resources. The region will be appended to this                         | aws-apigw-traceability  | both           |
 
 #### Resources (Resources only)
 
@@ -383,18 +392,18 @@ The services that are configured with this CloudFormation template:
 
 | Resource Type                      | Resource Name                  | Condition                 | Description                                                                                         | Operating Mode |
 | ---------------------------------- | ------------------------------ | ------------------------- | --------------------------------------------------------------------------------------------------- | -------------- |
-| AWS::Config::ConfigurationRecorder | DiscoveryConfigRecorder        | ShouldSetupConfigService  | The setup needed to have Config start recording changes.                                            | continuous     |
-| AWS::Config::DeliveryChannel       | DiscoveryConfigDeliveryChannel | ShouldSetupConfigService  | The delivery channel used by Config to send the configurations to ConfigBucket.                     | continuous     |
-| AWS::S3::Bucket                    | DiscoveryConfigBucket          | ShouldCreateConfigBucket  | The S3 bucket used to store all current configurations, required for Config.                        | continuous     |
-| AWS::Events::Rule                  | DiscoveryConfigCloudWatchRule  |                           | DiscoveryConfigCloudWatchRule.                                                                      | continuous     |
-| AWS::SQS::Queue                    | DiscoveryConfigSqsQueue        |                           | The Queue that all API Gateway configuration changes are pushed to.                                 | continuous     |
-| AWS::SQS::QueuePolicy              | DiscoveryConfigSqsQueuePolicy  |                           | The policy that grants permission to push to the SqsQueue.                                          | continuous     |
-| AWS::Logs::LogGroup                | APIGWTrafficLogGroupName       |                           | Creates the Log Group to track access of APIC tracked API Gateway endpoints.                        | both           |
-| AWS::ApiGateway::Account           | TraceabilityAPIGWCWRole        | ShouldSetupAPIGWCWRoleArn | Sets the CloudWatch Role ARN in the API Gateway Settings.                                           | both           |
-| AWS::Lambda::Function              | TraceabilityLambda             |                           | The Lambda function that takes Cloud Watch events in the Log Group and sends them to the SQS Queue. | both           |
-| AWS::Lambda::Permission            | TraceabilityLambdaCWInvoke     |                           | Allows Cloud Watch events to trigger the Lambda Function.                                           | both           |
-| AWS::SQS::Queue                    | TraceabilitySqsQueue           |                           | The Queue that all API Gateway access logs are pushed to.                                           | both           |
-| AWS::Logs::SubscriptionFilter      | TraceabilityLogToLambdaFilter  |                           | Filter events from the Traceability Logs to the Lambda Function.                                    | both           |
+| AWS::Config::ConfigurationRecorder | DiscoveryConfigRecorder        | ShouldSetupConfigService  | The setup needed to have Config start recording changes                                            | continuous     |
+| AWS::Config::DeliveryChannel       | DiscoveryConfigDeliveryChannel | ShouldSetupConfigService  | The delivery channel used by Config to send the configurations to ConfigBucket                     | continuous     |
+| AWS::S3::Bucket                    | DiscoveryConfigBucket          | ShouldCreateConfigBucket  | The S3 bucket used to store all current configurations, required for Config                        | continuous     |
+| AWS::Events::Rule                  | DiscoveryConfigCloudWatchRule  |                           | DiscoveryConfigCloudWatchRule                                                                      | continuous     |
+| AWS::SQS::Queue                    | DiscoveryConfigSqsQueue        |                           | The Queue that all API Gateway configuration changes are pushed to                                 | continuous     |
+| AWS::SQS::QueuePolicy              | DiscoveryConfigSqsQueuePolicy  |                           | The policy that grants permission to push to the SqsQueue                                          | continuous     |
+| AWS::Logs::LogGroup                | APIGWTrafficLogGroupName       |                           | Creates the Log Group to track access of APIC tracked API Gateway endpoints                        | both           |
+| AWS::ApiGateway::Account           | TraceabilityAPIGWCWRole        | ShouldSetupAPIGWCWRoleArn | Sets the CloudWatch Role ARN in the API Gateway Settings                                           | both           |
+| AWS::Lambda::Function              | TraceabilityLambda             |                           | The Lambda function that takes Cloud Watch events in the Log Group and sends them to the SQS Queue | both           |
+| AWS::Lambda::Permission            | TraceabilityLambdaCWInvoke     |                           | Allows Cloud Watch events to trigger the Lambda Function                                           | both           |
+| AWS::SQS::Queue                    | TraceabilitySqsQueue           |                           | The Queue that all API Gateway access logs are pushed to                                           | both           |
+| AWS::Logs::SubscriptionFilter      | TraceabilityLogToLambdaFilter  |                           | Filter events from the Traceability Logs to the Lambda Function                                    | both           |
 
 #### Outputs (Resources only)
 
@@ -402,10 +411,10 @@ The outputs from the Resource CloudFormation template:
 
 | Output Name           | Description                                                   | Operating Mode |
 | --------------------- | ------------------------------------------------------------- | -------------- |
-| DiscoveryQueueName    | Amazon SQS Queue name containing the changes to API Gateway.  | continuous     |
-| TraceabilityQueueName | Amazon SQS Queue name containing the API Gateway Access Logs. | both           |
+| DiscoveryQueueName    | Amazon SQS Queue name containing the changes to API Gateway  | continuous     |
+| TraceabilityQueueName | Amazon SQS Queue name containing the API Gateway Access Logs | both           |
 
-These outputs will be used as inputs for running both the Discovery and Traceability agents
+These outputs will be used as inputs for running both the Discovery and Traceability agents.
 
 ### Testing the setup for the AWS Discovery Agent
 
@@ -414,7 +423,7 @@ These outputs will be used as inputs for running both the Discovery and Traceabi
 
 ### Testing the setup for the AWS Traceability Agent
 
-{{< alert title="Note" color="primary" >}}To test the AWS Traceability Agent setup, the AWS Discovery Agent should be running and have discovered an API, this is required as the Stage config is updated to log transactional data.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}To test the AWS Traceability Agent setup, the AWS Discovery Agent should be running and have discovered an API. This is required as the Stage config is updated to log transactional data.{{< /alert >}}
 
 * Send traffic through an API that the DA has discovered
 * Validate messages received in AWS SQS
@@ -549,4 +558,4 @@ Note that these privileges do not include those necessary for rollback, if the s
 | Why can’t my agents connect to AWS API Gateway? | Go to AWS console / IAM service and make sure that `AWS_REGION`, `AWS_AUTH_ACCESSKEY` and `AWS_AUTH_SECRETKEY` are valid and not inactivated.                                                       |
 | Why can’t my agents connect to AMPLIFY Central? | Go to **AMPLIFY Central UI > Access > Service Accounts** and make sure that the Service Account is correctly named and valid. Make sure that the organizationID and team configuration are correct. |
 | Why don’t I see traffic in AMPLIFY Central?     | Make sure that the Condor URL is accessible from the machine where Traceability Agent is installed.                                                                                                 |
-| How to verify that the Agent is running?        | `docker inspect --format='{{json .State.Health}}' <container>`                                                                                                                                      |
+| How do I verify that the Agent is running?        | `docker inspect --format='{{json .State.Health}}' <container>`                                                                                                                                      |
