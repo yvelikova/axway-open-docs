@@ -155,8 +155,9 @@ By default, the Watchdog uses real HTTP requests to the Remote Host to determine
 
 To configure the Watchdog to send poll requests during periods when it is not sending requests to and receiving responses from the Remote Host, select **Poll if up**. In this case, the Watchdog uses real HTTP requests to poll the Remote Host as long as it sends them, but starts sending test poll requests when it is not sending HTTP requests to the Remote Host to test its availability.
 
-{{< alert title="Note" color="primary" >}}When a Remote Host is deemed to be down (an invalid HTTP response code was received) the Watchdog continues to poll it at the configured **Poll Frequency**
-until it comes back up again (until a valid HTTP response code is received).{{< /alert >}}
+As you increase the number of remote hosts configured with HTTP Watchdogs, it can negatively impact Policy Studio deployments time. You can decrease HTTP Watchdog polling frequency to mitigate this problem.
+
+{{< alert title="Note" color="primary" >}}When a Remote Host is deemed to be down (an invalid HTTP response code was received) the Watchdog continues to poll it at the configured **Poll Frequency** until it comes back up again (until a valid HTTP response code is received).{{< /alert >}}
 
 ## Configure an incoming remote host
 
