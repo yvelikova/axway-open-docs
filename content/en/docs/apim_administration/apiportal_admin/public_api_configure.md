@@ -46,6 +46,18 @@ For Public API mode access, create a separate organization and user in API Manag
     {{< alert title="Tip" color="primary" >}}You can import two versions of a back-end API: one that contains only non-business critical information and is exposed in Public API mode, and a full version which is not exposed without a user login.{{< /alert >}}
 7. Select the applications to expose publicly. Go to **Clients > Applications**, ensure that the organization of the applications is set to your Public API mode organization and the application has access to the required APIs, then share the application with the Public API mode user you created. It is recommended to only provide rights to view the application.
 
+## Encrypt the Public API mode user password
+
+If you are using the Public API mode in API Portal you must run a script to encrypt the Public API mode user password and specify a directory to store the encryption key.
+
+```
+sudo sh ./apiportal_encryption.sh
+```
+
+The directory is created along with a file. The last segment of the directory is the file name, for example: `/sample/directory/for/encryption/key` creates an empty file named "key" in the desired directory.
+
+If you have already had a Public API mode user configured, re-enter the user account password in JAI to encrypt and store the script correctly. For more details see [Encrypt the Public API user password in unattended mode](/docs/apim_installation/apiportal_install/install_unattended/#encrypt-the-public-api-user-password-in-unattended-mode).
+
 ## Enable Public API mode in API Portal
 
 Public API mode is disabled by default. You must enable it in JAI, and add the login details of the Public API mode user account you created in API Manager.

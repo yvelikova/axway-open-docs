@@ -113,18 +113,6 @@ A new `vhost` file is deployed at the same location. If you had any customizatio
 
 Similarly, the original `.htaccess` file is backed up to `${apiportal-install-dir}/.htaccess.old`. However, the two files are merged automatically.
 
-### Encrypt the Public API mode user password (optional)
-
-If you are using the Public API mode in API Portal you must run a script to encrypt the Public API mode user password and specify a directory to store the encryption key.
-
-```
-sudo sh ./apiportal_encryption.sh
-```
-
-The directory is created along with a file. The last segment of the directory is the file name, for example: `/sample/directory/for/encryption/key` creates an empty file named "key" in the desired directory.
-
-After the script is finished, re-enter the password for the Public API mode user in JAI to encrypt and store the script correctly. For more details see [Encrypt the Public API user password in unattended mode](/docs/apim_installation/apiportal_install/install_unattended/#encrypt-the-public-api-user-password-in-unattended-mode).
-
 ### Encrypt database password
 
 If you did not choose to encrypt your database password during the installation process, you can use the `apiportal_db_pass_encryption.sh` script, available from both API Portal installation and upgrade packages, to encrypt the password at any time. For more details see [Encrypt database password](/docs/apim_installation/apiportal_install/secure_harden_portal/#encrypt-database-password).
