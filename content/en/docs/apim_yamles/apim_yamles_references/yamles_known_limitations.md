@@ -76,10 +76,62 @@ The YAML format supports API Manager. However, is not possible to run `setup-api
 4. Deploy the `yamlconfig.tar.gz` to the API Manager enabled instance using `managedomain` or `projdeploy`.
 
 {{< alert title="Note">}}
-The format of API Manager data stored in Cassandra is the same regardless of whether a YAML configuration, or an XML federated configuration, is deployed.
+The format of API Manager data stored in Cassandra is the same regardless of whether a YAML configuration or an XML federated configuration is deployed.
 {{< /alert >}}
 
-## Node manager
+## Encrypt or change the passphrase of YAML Configuration that contains API Manager configuration
+
+When the default factory API Manager configuration is included in the YAML configuration it cannot be encrypted or re-encrypted. This issue occurs because some fields in the factory configuration do not adhere to the cardinality defined in the Entity Store model.
+
+This issue occurs when the `encrypt` or `change-passphrase` options are used in the `yamles` CLI tool, or when the group passphrase is changed through the `managedomain --change_passphrase` command.
+
+To workaround this, add values or a `/null` value for the missing fields.
+
+## Encrypt or change the passphrase of YAML Configuration that contains environmentalized settings
+
+When a YAML configuration with environmentalized settings is encrypted or re-encrypted, the resolved values are written into the YAML entity files when encryption completes. For example if my YAML policy file has the following content:
+
+```yaml
+---
+type: FilterCircuit
+fields:
+  name: Test
+  start: ./Trace Filter
+children:
+- type: TraceFilter
+  fields:
+    traceBody: true
+    traceMsg: '{{ env "TRACE_MESSAGE" }}'
+    traceLevel: 2
+    doIndent: true
+    name: Trace Filter
+```
+
+after an encryption the file will get rewritten as follows (assuming the environment variable `TRACE_MESSAGE` is set and has a value `"The trace message"`):
+
+```yaml
+---
+type: FilterCircuit
+fields:
+  name: Test
+  start: ./Trace Filter
+children:
+- type: TraceFilter
+  fields:
+    traceBody: true
+    traceMsg: The trace message
+    traceLevel: 2
+    doIndent: true
+    name: Trace Filter
+```
+
+If the environment variable is not set, the string `"invalid field"` is added to the YAML file.
+
+This issue occurs when the `encrypt` or `change-passphrase` options are used in the `yamles` CLI tool, or when the group passphrase is changed through the `managedomain --change_passphrase` command. The changes to the deployed configuration (using `managedomain`) might not be problematic as long as the configuration is not pulled back from the runtime and used to create a new YAML configuration project.
+
+To workaround this, encrypt the passphrase before applying environmentalization, or reset the environmentalized values after encryption.
+
+## Node Manager
 
 YAML configuration for Node manager is not supported.
 
@@ -94,3 +146,11 @@ A YAML factory configuration is not provided out-of-the-box, but can be created 
 ## Deployment archive
 
 You can update the deployment archive package properties by choosing `option 22` of the `managedomain` script. For more information, see [Updating Deployment Archive Properties](/docs/apim_yamles/yamles_packaging_deployment/#updating-deployment-archive-properties).
+
+## Schema Validation filter
+
+In YAML format, when the XML Schema Validation filter uses multiple XML schemas to validate the message body, an issue will occur when the filter attempts to find the schema. To workaround, select one XML schema per Schema Validation filter.
+
+## Configuration containing `{{` in entity field values
+
+If your original XML federated configuration held the content `{{` in an entity field value, the converted YAML might fail to load in the API Gateway because of a `com.github.jknack.handlebars.HandlebarsException`. This could be the case if the field contains JSON. The error occurs as the YAML engine is interpreting the `{{` as the start of its envrionmentalization syntax. To workaround, edit the entity value by placing a whitespace between the curly brackets.
