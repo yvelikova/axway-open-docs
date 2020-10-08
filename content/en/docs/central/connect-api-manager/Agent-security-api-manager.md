@@ -82,7 +82,7 @@ TLS_AES_256_GCM_SHA384
 
 TLS_CHACHA20_POLY1305_SHA256
 
-The Traceability Agents also communicate to the AMPLIFY search logs service using the Lumberjack protocol over a TCP connection. The connection URL and port can be configured by changing the LOGSTASH_URL in your configuration file. See [Traceability Agent variables](/docs/central/connect-api-manager/agent-variables/#specific-variables-for-traceability-agent).
+The Traceability Agents also communicate to the AMPLIFY search logs service using the Lumberjack protocol over a TCP connection. The connection host and port can be configured by changing the TRACEABILITY_HOST in your configuration file. See [Traceability Agent variables](/docs/central/connect-api-manager/agent-variables/#specific-variables-for-traceability-agent).
 
 ## Certificate host validation
 
