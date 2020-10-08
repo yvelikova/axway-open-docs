@@ -1,9 +1,9 @@
 {
 "title": "Manage certificates and keys",
-"linkTitle": "Manage certificates and keys",
-"weight":"60",
-"date": "2019-10-18",
-"description": "Import CA certificates, and import and create server certificates and private keys in the certificate store."
+  "linkTitle": "Manage certificates and keys",
+  "weight": "60",
+  "date": "2019-10-18",
+  "description": "Import CA certificates, and import and create server certificates and private keys in the certificate store."
 }
 
 For API Gateway to trust X.509 certificates issued by a specific Certificate Authority (CA), you must import that CA's certificate into the API Gateway's trusted certificate store. For example, if API Gateway is to trust secure communications (SSL connections or XML Signature) from an external SAML Policy Decision Point (PDP), you must import the PDP certificate, or the issuing CA certificate into the API Gateway certificate store.
@@ -64,7 +64,7 @@ This read-only field displays the distinguished name of the CA that issued the c
 
 * **Choose Issuer Certificate**:
 
-Select to explicitly specify an issuer certificate for this certificate (for example, to avoid a potential clash or expiry issue with another certificate using the same ntermediary certificate). You can then click the browse button on the right to select an issuer certificate. This setting is not selected by default.
+Select to explicitly specify an issuer certificate for this certificate (for example, to avoid a potential clash or expiry issue with another certificate using the same intermediary certificate). You can then click the browse button on the right to select an issuer certificate. This setting is not selected by default.
 
 * **Not valid before**:
 
@@ -126,7 +126,7 @@ Enter the name of the OpenSSL engine to use to interface to an HSM. All vendor i
 
 * **Key Id**:
 
-Enter the key ID used to uniquely identify a specific private key from all others stored on an HSM. When you complete this dialog, the private key is associated with the ertificate that you are currently editing. Private keys are identified by their key ID by default.
+Enter the key ID used to uniquely identify a specific private key from all others stored on an HSM. When you complete this dialog, the private key is associated with the certificate that you are currently editing. Private keys are identified by their key ID by default.
 
 * **Conversation**:
 
