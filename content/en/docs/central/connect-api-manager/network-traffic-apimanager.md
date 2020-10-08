@@ -47,7 +47,7 @@ In order to submit details of the transaction, the Traceability Agent reads the 
 
 * Request/response headers from each API call  
 
-{{< alert title="Note" color="primary" >}}You can disable sending the headers by using the following property:  `output.traceability.agent.apigateway.getHeaders: false.` By default, the property is set to true. If collecting the headers is disabled, they will not be visible in Axway AMPLIFY platform Observability module, as the Traceability Agent will send only the transaction summary data (status / url / duration / timestamp / transaction service called) to the platform.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You can disable sending the headers by using the following property:  `traceability_agent.apigateway.getHeaders: false.` By default, the property is set to true. If collecting the headers is disabled, they will not be visible in Axway AMPLIFY platform Observability module, as the Traceability Agent will send only the transaction summary data (status / url / duration / timestamp / transaction service called) to the platform.{{< /alert >}}
 
 Once the information is extracted it is sent to the Axway platform using the TLS encryption.
 
