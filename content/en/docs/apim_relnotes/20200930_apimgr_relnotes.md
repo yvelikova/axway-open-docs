@@ -4,7 +4,6 @@ linkTitle: API Gateway and API Manager September 2020
 weight: 60
 date: 2020-08-26T00:00:00.000Z
 ---
-
 ## Summary
 
 API Gateway is available as a software installation or a virtualized deployment in Docker containers. API Manager is a licensed product running on top of API Gateway, and has the same deployment options as API Gateway.
@@ -21,26 +20,6 @@ The following new features and enhancements are available in this update.
 
 The Remote host capability in API Manager has been enhanced to provide the same powerful configuration options that can be found in Policy Studio. Take advantage of creating aliases for back-ends, and apply specific changes to control a connection without having to deploy the change via Policy Studio. To learn more, see [Remote hosts](/docs/apim_reference/api_mgmt_config_web/#remote-hosts).
 
-### YAML-based configuration store (Technical preview)
-
-This work is an initiative born from collaborative customer hackathons to make the API Gateway configuration more CI/CD/DevOps and developer-friendly.​ It involved transforming the federated configuration into YAML fragments, which can be managed using standard DevOps tools, moving away from a propriety TeamDev approach to encourage the use of standard tools, source control, and DevOps tools that could be used to facilitate and encourage a better experience for collaboration.​
-
-This initiative focuses on addressing:​
-
-* Fine-grained configuration for an improved collaborative development experience​.
-* Source code which is developer-friendly​.
-* Designed for improved DevOps capability.
-
-{{% alert title="Note" %}}The YAML configuration capability is released as a technical preview version which is still undergoing final testing before its official release. The feature, its software, and all related content are provided on an "as is" and "as available" basis. Axway does not give any warranties, whether express or implied, as to the suitability or usability of the feature, its software, or any of its content.
-
-See [YAML configuration Reference](/docs/apim_yamles/apim_yamles_references/) for known limitations.{{% /alert %}}
-
-The XML configuration store is still supported and is enabled as the primary configuration format.
-
-We strongly encourage our customers to take a look and explore the possibilities of the new configuration format, and provide feedback to us on this experience. To learn more, see [Axway API Management: DevOps friendly configuration capability](https://community.axway.com/s/article/Axway-API-Management-Upcoming-DevOps-friendly-capability).
-
-To follow-up on what's to come based on this capability, see [API Management Roadmap](https://community.axway.com/s/api-management).
-
 ### Database integration updates
 
 Validated support for the following versions of Oracle Databases:​
@@ -51,7 +30,9 @@ Validated support for the following versions of Oracle Databases:​
 
 ### User membership in multiple organizations
 
-API Manager now enables creating user membership in multiple organizations (multi-orgs). User accounts will have different roles in each organization the user is a member of. The following are some important changes implemented to enable this new feature.
+API Manager now enables creating user membership in multiple organizations (multi-orgs). User accounts will have different roles in each organization the user is a member of.
+
+The following are some important changes implemented to enable this new feature.
 
 #### API version update
 
@@ -84,6 +65,26 @@ When you delete the primary organization of a user, the user’s account is also
 #### Organization administrators can publish APIs
 
 By default, Organization administrators require the approval of an API administrator to publish and unpublish APIs that were created in their organization without approval from an API Administrator. By setting the `api.manager.orgadmin.selfservice.enabled` system property to `true`, the OrgAdmin will no longer require approval, and will be able to directly publish and unpublish APIs.
+
+### Technical preview capability: YAML configuration store
+
+This work is an initiative born from collaborative customer hackathons to make the API Gateway configuration more CI/CD/DevOps and developer-friendly.​ It involved transforming the federated configuration into YAML fragments, which can be managed using standard DevOps tools, moving away from a propriety TeamDev approach to encourage the use of standard tools, source control, and DevOps tools that could be used to facilitate and encourage a better experience for collaboration.​
+
+This initiative focuses on addressing:​
+
+* Fine-grained configuration for an improved collaborative development experience​.
+* Source code which is developer-friendly​.
+* Designed for improved DevOps capability.
+
+{{% alert title="Note" %}}
+The YAML configuration capability is released as a technical preview version which is still undergoing final testing before its official release. The feature, its software and all related content are provided on an “as is” and “as available” basis. Axway does not give any warranties, whether express or implied, as to the suitability or usability of the feature, its software or any of its content.
+{{% /alert%}}
+
+The XML configuration store is still supported and is enabled as the primary configuration format. See [YAML configuration Reference](/docs/apim_yamles/apim_yamles_references/) for known limitations.
+
+We strongly encourage our customers to take a look and explore the possibilities of the new configuration format, and provide feedback to us on this experience. To learn more, see [Axway API Management: DevOps friendly configuration capability](https://community.axway.com/s/article/Axway-API-Management-Upcoming-DevOps-friendly-capability).
+
+To follow-up on what's to come based on this capability, see [API Management Roadmap](https://community.axway.com/s/api-management).
 
 ## Important changes
 
@@ -202,9 +203,7 @@ The following capabilities have been deprecated.
 
 ### API Manager Rest APIs
 
-API Management REST APIs, namely versions 1.1 and 1.2 are now marked as deprecated.
-
-API Manager REST APIs have been updated to version 1.4, but version 1.3 is still supported.
+API Management REST APIs, namely versions 1.1 and 1.2 are now marked as deprecated. API Manager REST APIs have been updated to version 1.4, but version 1.3 is still supported.
 
 ### Swagger Support
 
@@ -212,7 +211,7 @@ As we are enhancing the capability of API Manager to support the latest versions
 
 ### Antivirus scanners
 
-API Gateway already supports the industry standard Internet Content Adaption Protocol (ICAP), and the following embedded antivirus scanners will be removed from the **November 2020** update:
+API Gateway supports the industry standard Internet Content Adaption Protocol (ICAP), but the following embedded antivirus scanners will be removed from the November 2020 update:
 
 * McAfee
 * Sophos
@@ -220,7 +219,7 @@ API Gateway already supports the industry standard Internet Content Adaption Pro
 
 Content scanning is still supported using the ICAP filter, which provides out-of-the-box integration with ICAP-capable servers provided by Symantec, McAfee, OPSWAT and others, promoting ease of deployment and operational control.
 
-Removal of deprecated items are planned for 30 July 2021. These items are still supported until removal, however we recommend to stop using them at your earliest convenience.
+These items are still supported until removal, however we recommend to stop using them at your earliest convenience. Removal of deprecated items are planned for July 30, 2021.
 
 ## Removed features
 
