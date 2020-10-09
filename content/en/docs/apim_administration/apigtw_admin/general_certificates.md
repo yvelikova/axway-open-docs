@@ -291,7 +291,7 @@ To configure an automatic PIN passphrase, perform the following steps:
 
 ## Configure SSH key pairs
 
-To configure public-private key pairs in the certificate store, select **Environment Configuration > Certificates and Keys > Key Pairs**. The **Key Pairs** window enables you to add, edit, or delete OpenSSH public-private key pairs, which are required for the Secure Shell (SSH) File Transfer Protocol (SFTP).
+To configure public-private key pairs in the certificate store, select **Environment Configuration > Certificates and Keys > Key Pairs**. The **Key Pairs** window enables you to add, edit, or delete PEM public-private key pairs, which are required for the Secure Shell (SSH) File Transfer Protocol (SFTP).
 
 ### Add a key pair
 
@@ -309,7 +309,7 @@ Enter the algorithm used to generate the key pair. Defaults to `RSA`.
 
 Click to select the public key or private key files to use. The **Fingerprint** field is auto-populated when you load a public key.
 
-* The keys must be OpenSSH keys. RSA keys are supported, but DSA keys are not supported. The keys must not be passphrase protected.
+* The keys must be OpenSSL compatible PEM keys. RSA keys are supported, but DSA keys are not supported. The keys must not be passphrase protected.
 
 ### Edit a key pair
 
@@ -317,32 +317,29 @@ To edit a public-private key pair, select a key pair alias in the table, and cli
 
 You can delete a selected key pair from the certificate store by clicking **Remove** on the right. Alternatively, click **Remove All**.
 
-### Manage OpenSSH keys
+### Manage SSH keys
 
-You can use the `ssh-keygen` command provided on Linux to manage OpenSSH keys. For example:
+You can use the `ssh-keygen` command provided on Linux to manage SSH keys.
 
-The following command creates an OpenSSH key:
+{{% alert title="Note" %}}
+With the release of OpenSSH 7.8, the default private key format for private keys generated from `ssh-keygen` has changed from OpenSSL compatible PEM files to a custom key format created by the OpenSSH developers.{{% /alert %}}
 
-```
-ssh-keygen -t rsa
-```
-
-The following command converts an `ssh.com` key to an OpenSSH key:
+This OpenSSH format is not supported by API Gateway, so the keys should be created in PEM format before the keys can be used. For example, the following command creates an SSH key in PEM format:
 
 ```
-ssh-keygen -i -f ssh.com.key > open.ssh.key
+ssh-keygen -t rsa -m pem -f my_key
 ```
 
 The following command removes a passphrase (enter the old passphrase, and enter nothing for the new passphrase):
 
 ```
-ssh-keygen -p
+ssh-keygen -p -m pem -f my_key
 ```
 
 The following command outputs the key fingerprint:
 
 ```
- ssh-keygen -lf ssh_host_rsa_key.pub
+ ssh-keygen -lf my_key.pub
 ```
 
 ## Configure PGP key pairs
