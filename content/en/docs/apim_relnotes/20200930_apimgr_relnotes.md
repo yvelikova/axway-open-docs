@@ -227,18 +227,9 @@ These items are still supported until removal, however we recommend to stop usin
 
 To stay current and align our offerings with customer demand and best practices, Axway might discontinue support for some capabilities. As part of this review, the following features have been removed:
 
-### Run `update-apimanager.py` script to update API Manager
+### Run `update-apimanager.py` script to upgrade API Manager
 
-The requirement to run `update-apimanager.py` has been removed from the [Upgrade steps - Single-node upgrade example](/docs/apim_installation/apigw_upgrade/upgrade_steps_extcass/).
-
-Updating API Manager is now carried out through any of the following procedures:
-
-* Applying the latest API Gateway update to an existing installation will update the API Manager `config` script. This running `config` can then be pulled into a Policy Studio project.
-* Policy Studio project upgrades. Importing an existing API Manager Policy Studio project will upgrade API Manager. The upgrade is also applied when creating a new project from an existing `fed` file.
-* API Manager `.fed` files can be upgraded using the [upgradeconfig](/docs/apim_installation/apigw_upgrade/upgrade_analytics#upgradeconfig-options) script.
-* The [projupgrade](/docs/apim_reference/devopstools_ref#projupgrade-command-options) script will apply API Manager updates to any existing projects.
-
-{{< alert title="Note" color="" >}} If deploying an earlier update, prior to September 20, it is still required to use the `update-apimanager.py` script.{{< /alert >}}
+The requirement to run `update-apimanager.py` has been removed. For more information see [Update API Manager](/docs/apim_installation/apigw_upgrade/upgrade_steps_oneversion/#update-api-manager).
 
 ## Fixed issues
 
@@ -607,7 +598,7 @@ You must also install an update for your existing API Gateway 7.7 server.
 
 The following steps apply after installing the update.
 
-#### API Gateway
+#### Allow an unprivileged user to run API Gateway
 
 To allow an unprivileged user to run the API Gateway on a Linux system, perform the following steps:
 
@@ -618,29 +609,13 @@ To allow an unprivileged user to run the API Gateway on a Linux system, perform 
    ```
 2. Run the command `setcap 'cap_net_bind_service=+ep cap_sys_rawio=+ep' INSTALL_DIR/platform/bin/vshell` to allow the API Gateway to listen on privileged ports.
 
-#### API Manager
+#### Update API Manager
 
-When API Manager is installed, you must run the `update-apimanager` script after the API Gateway post-install script to ensure that all paths are up-to-date. For details, see [Run update-apimanager](/docs/apim_installation/apigw_upgrade/upgrade_steps_extcass/#run-update-apimanager).
-
-{{< alert title="Caution" color="warning" >}} Before executing the `update-apimanager` script:
-
-* Apply the update to all API Gateways.
-* Ensure that all Node Managers and API Gateway instances are running.
-
-{{< /alert >}}
+For more information on how to update API Manager, see [Update API Manager](/docs/apim_installation/apigw_upgrade/upgrade_steps_oneversion/#update-api-manager).
 
 ## Update a container deployment
 
-If a `fed` file is provided as part of building the API Manager container, you must follow these steps to update the `fed` with the configuration changes:
-
-1. Install the update on a installation of the API Gateway.
-2. Run the following command:
-
-   ```
-   /opt/Axway-7.7/apigateway/posix/bin/update-apimanager --fed <path to old file>.fed --oa <path to update file>.fed
-   ```
-
-You do not need to run any API Manager instances.
+Any custom `fed` files deployed to a container must be upgraded using [upgradeconfig](/docs/apim_installation/apigw_upgrade/upgrade_analytics#upgradeconfig-options) or [projupgrade](/docs/apim_reference/devopstools_ref#projupgrade-command-options). They must be upgraded the same way, regardless of whether they are API Manager enabled or not.
 
 The `fed` now contains the updates for the API Manager configuration and can be used to build containers.
 
@@ -649,6 +624,12 @@ The `fed` now contains the updates for the API Manager configuration and can be 
 This section describes documentation enhancements and related documentation.
 
 ### Documentation enhancements
+
+The following new instructions and enhancements are available in the documentation.
+
+* [Update from API Gateway One Version](/docs/apim_installation/apigw_upgrade/upgrade_steps_oneversion/).
+
+### API Management open source documentation
 
 The latest version of API Gateway, API Manager, and API Portal documentation has been migrated to Markdown format and is available in a [public GitHub repository](https://github.com/Axway/axway-open-docs) to prepare for future collaboration using an open source model. As part of this migration, the documentation has been restructured to help users navigate the content and find the information they are looking for more easily.
 
