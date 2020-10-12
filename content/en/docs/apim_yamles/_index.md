@@ -1,11 +1,12 @@
 {
-    "title": "YAML configuration",
-    "linkTitle": "YAML configuration",
-    "weight":"87",
-    "date": "2020-09-24",
-    "hide_readingtime": "true",
-    "description": "Learn how to use YAML-based configuration with AMPLIFY API Management solution."
+"title": "YAML configuration",
+  "linkTitle": "YAML configuration",
+  "weight": "87",
+  "date": "2020-09-24",
+  "hide_readingtime": "true",
+  "description": "Learn how to use YAML-based configuration with AMPLIFY API Management solution."
 }
+{{< alert title="Public beta" color="warning" >}}This feature is currently a **technical preview** and not yet supported for production use.{{< /alert >}}
 
 ## Introduction
 
@@ -21,10 +22,10 @@ API Gateway main configuration is created through Policy Studio in XML format. T
 
 ## Glossary
 
-| Term             | Description |
-| ---------------- | ----------- |
-| **Entity Store** | The API Gateway's configuration is also called [Entity Store](/docs/apigtw_devguide/entity_store/). It is a store of all the entities it takes to configure the API Gateway runtime, for example, the policies and filters. There are now two formats available for the Entity Store: the XML federated configuration and the YAML configuration. |
-| **XML federated configuration** | Consists of a small set of XML files. This can be packaged into a `.fed` file, or a set of `.pol` and `.env` files for deployment. |
-| **YAML** | YAML Ain't Markup Language (YAML) is a descriptive language based on JSON, widely used to describe configurations. |
-| **YAML configuration** | The YAML configuration or **YAML Entity Store** consists of a large set of YAML files in an easy-to-navigate directory structure. This can be packaged into a standard `.tar.gz` file for deployment.
-| **yamles** | The CLI client tool for converting, validating, and encrypting YAML configuration. |
+| Term                            | Description                                                                                                                                                                                                                                                                                                                                       |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Entity Store**                | The API Gateway's configuration is also called [Entity Store](/docs/apigtw_devguide/entity_store/). It is a store of all the entities it takes to configure the API Gateway runtime, for example, the policies and filters. There are now two formats available for the Entity Store: the XML federated configuration and the YAML configuration. |
+| **XML federated configuration** | Consists of a small set of XML files. This can be packaged into a `.fed` file, or a set of `.pol` and `.env` files for deployment.                                                                                                                                                                                                                |
+| **YAML**                        | YAML Ain't Markup Language (YAML) is a descriptive language based on JSON, widely used to describe configurations.                                                                                                                                                                                                                                |
+| **YAML configuration**          | The YAML configuration or **YAML Entity Store** consists of a large set of YAML files in an easy-to-navigate directory structure. This can be packaged into a standard `.tar.gz` file for deployment.                                                                                                                                             |
+| **yamles**                      | The CLI client tool for converting, validating, and encrypting YAML configuration.                                                                                                                                                                                                                                                                |
