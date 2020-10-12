@@ -629,11 +629,11 @@ docker pull axway-docker-public-registry.bintray.io/agent/v7-traceability-agent:
 
 ### Customizing the Traceability Agent configuration file
 
-The `traceability_agent.yml` configuration file contain six sections to customize: the beat, logstash, central, apigateway, apimanager and log.
+The `traceability_agent.yml` configuration file contain six sections to customize: the beat input, central, apigateway, apimanager, output ingestion service and log.
 
 By default the `traceability_agent.yml` file contains references to environment variables: ${VARIABLE_NAME: value}. You can remove the ${VARIABLE_NAME} and keep only the value for simplifying the configuration.
 
-#### Customizing beat section (traceability_agent)
+#### Customizing input section (traceability_agent.input)
 
 This section describes where the API Gateway logs are located on the machine so the beat can read them.
 
@@ -671,38 +671,7 @@ traceability_agent:
         - <API GATEWAY INSTALL DIRECTORY>/apigateway/events/group-2_instance-?.log
 ```
 
-#### Customizing logstash section (output.traceability)
-
-This section describes where the logs should be sent on AMPLIFY Central.
-
-`hosts`: The URL of the logstash to forward the transaction log entries. Default value is **ingestion-lumberjack.datasearch.axway.com:453**.
-
-`cipher_suites`: List the cipher suites for the TLS connectivity. See the [Administer API Manager agent security](/docs/central/connect-api-manager/agent-security-api-manager/) topic for more information.
-
-`proxy_url`: The URL for the proxy for logstash (**socks5://username:password@hostname:port**) to use when the API Management eco-system is not allowed to access the internet world where AMPLIFY Central is installed. **username** and **password** are optional and can be omitted if not required by the proxy configuration. Leaving this value empty means that no proxy will be used to connect to AMPLIFY Central logstash.
-
-Once all data is gathered, the section should look like this if you do not use a proxy:
-
-```yaml
-# Send output to Central Database
-output.traceability:
-  enabled: true
-  hosts: ingestion-lumberjack.datasearch.axway.com:453
-  ssl:
-    enabled: true
-    verification_mode: none
-    cipher_suites:
-      - "ECDHE-ECDSA-AES-128-GCM-SHA256"
-      - "ECDHE-ECDSA-AES-256-GCM-SHA384"
-      - "ECDHE-ECDSA-AES-128-CBC-SHA256"
-      - "ECDHE-ECDSA-CHACHA20-POLY1305"
-      - "ECDHE-RSA-AES-128-CBC-SHA256"
-      - "ECDHE-RSA-AES-128-GCM-SHA256"
-      - "ECDHE-RSA-AES-256-GCM-SHA384"
-#  proxy_url: socks5://username:password@hostname:port
-```
-
-#### Customizing central section (output.traceability.agent.central)
+#### Customizing central section (traceability_agent.central)
 
 This section connects the agent to AMPLIFY Central and determine how to published the discovered APIs.
 
@@ -735,30 +704,31 @@ This section connects the agent to AMPLIFY Central and determine how to publishe
 Once all data is gathered, this section should look like:
 
 ```yaml
-  agent:
-    central:
-      url: https://apicentral.axway.com
-      organizationID: 68794y2
-      deployment: prod
-      environment: my-v7-env
-      auth:
-        url: https://login.axway.com/auth
-        realm: Broker
-        clientId: "DOSA_68732642t64545..."
-        privateKey: /home/APIC-agents/private_key.pem
-        publicKey: /home/APIC-agents/public_key.pem
-        keyPassword: ""
-        timeout: 10s
-      ssl:
-#        minVersion: {CENTRAL_SSL_MINVERSION:""}
-#        maxVersion: ${CENTRAL_SSL_MAXVERSION:""}
-#        nextProtos: ${CENTRAL_SSL_NEXTPROTOS:[]}
-#        cipherSuites: ${CENTRAL_SSL_CIPHERSUITES:[]}
-#        insecureSkipVerify: ${CENTRAL_SSL_INSECURESKIPVERIFY:false}
-#      proxyUrl: "http://username:password@hostname:port"
+traceability_agent:
+  ...
+  central:
+    url: https://apicentral.axway.com
+    organizationID: 68794y2
+    deployment: prod
+    environment: my-v7-env
+    auth:
+      url: https://login.axway.com/auth
+       realm: Broker
+      clientId: "DOSA_68732642t64545..."
+      privateKey: /home/APIC-agents/private_key.pem
+      publicKey: /home/APIC-agents/public_key.pem
+      keyPassword: ""
+      timeout: 10s
+    ssl:
+#       minVersion: {CENTRAL_SSL_MINVERSION:""}
+#       maxVersion: ${CENTRAL_SSL_MAXVERSION:""}
+#       nextProtos: ${CENTRAL_SSL_NEXTPROTOS:[]}
+#       cipherSuites: ${CENTRAL_SSL_CIPHERSUITES:[]}
+#       insecureSkipVerify: ${CENTRAL_SSL_INSECURESKIPVERIFY:false}
+#    proxyUrl: "http://username:password@hostname:port"
 ```
 
-#### Customizing apigateway section (output.traceability.agent.apigateway)
+#### Customizing apigateway section (traceability_agent.apigateway)
 
 This section helps the agent to collect the header from request/response from the API Gateway system.
 
@@ -779,24 +749,26 @@ This section helps the agent to collect the header from request/response from th
 Once all data is gathered, this section should look like:
 
 ```yaml
-    apigateway:
-      getHeaders: true
-      host: localhost
-      port: 8090
-      pollInterval: 1m
-      auth:
-        username: myApiGatewayOperatorUser
-        password: myApiGatewayOperatorUserPassword
-      ssl:
-#        minVersison: ${APIGATEWAY_SSL_MINVERSION:""}
-#        maxVersion: ${APIGATEWAY_SSL_MAXVERSION:""}
-#        nextProtos: ${APIGATEWAY_SSL_NEXTPROTOS:[]}
-#        cipherSuites: ${APIGATEWAY_SSL_CIPHERSUITES:[]}
-#        insecureSkipVerify: ${APIGATEWAY_SSL_INSECURESKIPVERIFY:false}
-#      proxyUrl: ${APIGATEWAY_PROXYURL:""}
+traceability_agent:
+  ...
+  apigateway:
+    getHeaders: true
+    host: localhost
+    port: 8090
+    pollInterval: 1m
+    auth:
+      username: myApiGatewayOperatorUser
+      password: myApiGatewayOperatorUserPassword
+    ssl:
+#      minVersison: ${APIGATEWAY_SSL_MINVERSION:""}
+#      maxVersion: ${APIGATEWAY_SSL_MAXVERSION:""}
+#      nextProtos: ${APIGATEWAY_SSL_NEXTPROTOS:[]}
+#      cipherSuites: ${APIGATEWAY_SSL_CIPHERSUITES:[]}
+#      insecureSkipVerify: ${APIGATEWAY_SSL_INSECURESKIPVERIFY:false}
+#    proxyUrl: ${APIGATEWAY_PROXYURL:""}
 ```
 
-#### Customizing apimanager section (output.traceability.agent.apimanager)
+#### Customizing apimanager section (traceability_agent.apimanager)
 
 This section tells the agent which API needs to be monitor: one that has been discovered by the discovery agent (ie. has a non-empty `apicId` custom field).
 
@@ -824,22 +796,62 @@ For the traceability agent to report correctly the discovered API traffic, it is
 Once all data is gathered, this section should look like:
 
 ```yaml
-    apimanager:
-      host: localhost
-      port: 8075
-      pollInterval: 1m
-      apiVersion: 1.3
-      proxyApicIDField: "apicId
-      auth:
-        username: myAPIManagerUserName
-        password: myAPIManagerUserPassword
-      ssl:
-#        minVersion: ${APIMANAGER_SSL_MINVERSION:""}
-#        maxVersion: ${APIMANAGER_SSL_MAXVERSION:""}
-#        nextProtos: ${APIMANAGER_SSL_NEXTPROTOS:[]}
-#        cipherSuites: ${APIMANAGER_SSL_CIPHERSUITES:[]}
-#        insecureSkipVerify: ${APIMANAGER_SSL_INSECURESKIPVERIFY:false}
-#      proxyUrl: ${APIMANAGER_PROXYURL:""}
+traceability_agent:
+  ...
+  apimanager:
+    host: localhost
+    port: 8075
+    pollInterval: 1m
+    apiVersion: 1.3
+    proxyApicIDField: "apicId"
+    auth:
+      username: myAPIManagerUserName
+      password: myAPIManagerUserPassword
+    ssl:
+#      minVersion: ${APIMANAGER_SSL_MINVERSION:""}
+#      maxVersion: ${APIMANAGER_SSL_MAXVERSION:""}
+#      nextProtos: ${APIMANAGER_SSL_NEXTPROTOS:[]}
+#      cipherSuites: ${APIMANAGER_SSL_CIPHERSUITES:[]}
+#      insecureSkipVerify: ${APIMANAGER_SSL_INSECURESKIPVERIFY:false}
+#    proxyUrl: ${APIMANAGER_PROXYURL:""}
+```
+
+#### Customizing output ingestion service section (output.traceability)
+
+This section describes where the logs should be sent on AMPLIFY Central.
+
+`hosts`: The host and port of the ingestion service to forward the transaction log entries. Default value is **ingestion-lumberjack.datasearch.axway.com:453**.
+
+`protocol`: The protocol (https or tcp) to be used for communicating with ingestion service. Default value is **tcp**.
+
+`compression_level`: The gzip compression level for the output event. Default value is **3**.
+
+`ssl.cipher_suites`: List the cipher suites for the TLS connectivity. See the [Administer API Manager agent security](/docs/central/connect-api-manager/agent-security-api-manager/) topic for more information.
+
+`proxy_url`: The socks5 or http URL of the proxy server for ingestion service (**socks5://username:password@hostname:port**) to use when the API Management eco-system is not allowed to access the internet world where AMPLIFY Central is installed. **username** and **password** are optional and can be omitted if not required by the proxy configuration. Leaving this value empty means that no proxy will be used to connect to AMPLIFY Central ingestion service.
+
+Once all data is gathered, the section should look like this if you do not use a proxy:
+
+```yaml
+# Send output to Central Database
+output.traceability:
+  enabled: true
+  hosts: ingestion-lumberjack.datasearch.axway.com:453
+  protocol: tcp
+  compression_level: 3
+  ssl:
+    enabled: true
+    verification_mode: none
+    cipher_suites:
+      - "ECDHE-ECDSA-AES-128-GCM-SHA256"
+      - "ECDHE-ECDSA-AES-256-GCM-SHA384"
+      - "ECDHE-ECDSA-AES-128-CBC-SHA256"
+      - "ECDHE-ECDSA-CHACHA20-POLY1305"
+      - "ECDHE-RSA-AES-128-CBC-SHA256"
+      - "ECDHE-RSA-AES-128-GCM-SHA256"
+      - "ECDHE-RSA-AES-256-GCM-SHA384"
+   pipelining: 0
+#   proxy_url: socks5://username:password@hostname:port
 ```
 
 #### Customizing log section (logging)
@@ -883,11 +895,64 @@ traceability_agent:
       paths:
         - <PATH TO>/group-X_instance-Y.log
       include_lines: ['.*"type":"transaction".*"type":"http".*']
+  central:
+    url: https://apicentral.axway.com
+    organizationID: 68794y2
+    deployment: prod
+    environment: my-v7-env
+    auth:
+      url: https://login.axway.com/auth
+      realm: Broker
+      clientId: "DOSA_68732642t64545..."
+      privateKey: /home/APIC-agents/private_key.pem
+      publicKey: /home/APIC-agents/public_key.pem
+      keyPassword: ""
+      timeout: 10s
+    ssl:
+#      minVersion: {CENTRAL_SSL_MINVERSION:""}
+#      maxVersion: ${CENTRAL_SSL_MAXVERSION:""}
+#      nextProtos: ${CENTRAL_SSL_NEXTPROTOS:[]}
+#      cipherSuites: ${CENTRAL_SSL_CIPHERSUITES:[]}
+#      insecureSkipVerify: ${CENTRAL_SSL_INSECURESKIPVERIFY:false}
+#    proxyUrl: "http://username:password@hostname:port"
+  apigateway:
+    getHeaders: true
+    host: localhost
+    port: 8090
+    pollInterval: 1m
+    auth:
+      username: myApiGatewayOperatorUser
+      password: myApiGatewayOperatorUserPassword
+    ssl:
+#      minVersison: ${APIGATEWAY_SSL_MINVERSION:""}
+#      maxVersion: ${APIGATEWAY_SSL_MAXVERSION:""}
+#      nextProtos: ${APIGATEWAY_SSL_NEXTPROTOS:[]}
+#      cipherSuites: ${APIGATEWAY_SSL_CIPHERSUITES:[]}
+#      insecureSkipVerify: ${APIGATEWAY_SSL_INSECURESKIPVERIFY:false}
+#    proxyUrl: ${APIGATEWAY_PROXYURL:""}
+  apimanager:
+    host: localhost
+    port: 8075
+    pollInterval: 1m
+    apiVersion: 1.3
+    proxyApicIDField: "apicId"
+    auth:
+      username: myAPIManagerUserName
+      password: myAPIManagerUserPassword
+    ssl:
+#      minVersion: ${APIMANAGER_SSL_MINVERSION:""}
+#      maxVersion: ${APIMANAGER_SSL_MAXVERSION:""}
+#      nextProtos: ${APIMANAGER_SSL_NEXTPROTOS:[]}
+#      cipherSuites: ${APIMANAGER_SSL_CIPHERSUITES:[]}
+#      insecureSkipVerify: ${APIMANAGER_SSL_INSECURESKIPVERIFY:false}
+#    proxyUrl: ${APIMANAGER_PROXYURL:""}
 
 # Send output to Central Database
 output.traceability:
   enabled: true
-  hosts: ${LOGSTASH_URL:ingestion-lumberjack.datasearch.axway.com:453}
+  hosts: ${TRACEABILITY_URL:ingestion-lumberjack.datasearch.axway.com:453}
+  protocol: ${TRACEABILITY_PROTOCOL:"tcp"}
+  compression_level: ${TRACEABILITY_COMPRESSIONLEVEL:3}
   ssl:
     enabled: true
     verification_mode: none
@@ -899,59 +964,8 @@ output.traceability:
       - "ECDHE-RSA-AES-128-CBC-SHA256"
       - "ECDHE-RSA-AES-128-GCM-SHA256"
       - "ECDHE-RSA-AES-256-GCM-SHA384"
-  proxy_url: ${LOGSTASH_PROXYURL:""}
-  agent:
-    central:
-      url: https://apicentral.axway.com
-      organizationID: 68794y2
-      deployment: prod
-      environment: my-v7-env
-      auth:
-        url: https://login.axway.com/auth
-        realm: Broker
-        clientId: "DOSA_68732642t64545..."
-        privateKey: /home/APIC-agents/private_key.pem
-        publicKey: /home/APIC-agents/public_key.pem
-        keyPassword: ""
-        timeout: 10s
-      ssl:
-#        minVersion: {CENTRAL_SSL_MINVERSION:""}
-#        maxVersion: ${CENTRAL_SSL_MAXVERSION:""}
-#        nextProtos: ${CENTRAL_SSL_NEXTPROTOS:[]}
-#        cipherSuites: ${CENTRAL_SSL_CIPHERSUITES:[]}
-#        insecureSkipVerify: ${CENTRAL_SSL_INSECURESKIPVERIFY:false}
-#      proxyUrl: "http://username:password@hostname:port"
-    apigateway:
-      getHeaders: true
-      host: localhost
-      port: 8090
-      pollInterval: 1m
-      auth:
-        username: myApiGatewayOperatorUser
-        password: myApiGatewayOperatorUserPassword
-      ssl:
-#        minVersison: ${APIGATEWAY_SSL_MINVERSION:""}
-#        maxVersion: ${APIGATEWAY_SSL_MAXVERSION:""}
-#        nextProtos: ${APIGATEWAY_SSL_NEXTPROTOS:[]}
-#        cipherSuites: ${APIGATEWAY_SSL_CIPHERSUITES:[]}
-#        insecureSkipVerify: ${APIGATEWAY_SSL_INSECURESKIPVERIFY:false}
-#      proxyUrl: ${APIGATEWAY_PROXYURL:""}
-    apimanager:
-      host: localhost
-      port: 8075
-      pollInterval: 1m
-      apiVersion: 1.3
-      proxyApicIDField: "apicId
-      auth:
-        username: myAPIManagerUserName
-        password: myAPIManagerUserPassword
-      ssl:
-#        minVersion: ${APIMANAGER_SSL_MINVERSION:""}
-#        maxVersion: ${APIMANAGER_SSL_MAXVERSION:""}
-#        nextProtos: ${APIMANAGER_SSL_NEXTPROTOS:[]}
-#        cipherSuites: ${APIMANAGER_SSL_CIPHERSUITES:[]}
-#        insecureSkipVerify: ${APIMANAGER_SSL_INSECURESKIPVERIFY:false}
-#      proxyUrl: ${APIMANAGER_PROXYURL:""}
+  pipelining: 0
+  proxy_url: ${TRACEABILITY_PROXYURL:""}
 
 logging:
   metrics:
