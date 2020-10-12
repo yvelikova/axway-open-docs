@@ -215,6 +215,8 @@ The SMTP Notification section defines how the agent manages email settings for s
 
 `password`: Login password for the SMTP server.
 
+`authtype`: The authentication type based on the email server.  You may have to refer to the email server properties and specifications. This value defaults to NONE.
+
 `subscribe.subject`: Subject of the email notification for action subscribe. Default is **Subscription Notification**.
 
 `subscribe.body`: Body of the email notification for action subscribe. Default is **Subscription created for Catalog Item:  {catalogItem} {authtemplate}**.
@@ -273,6 +275,7 @@ host: email-smtp.<region>.amazonaws.com
 port: 587
 username: user access key (see note below)
 password: user secret key (see note below)
+authtype: PLAIN
 ```
 
 **Note**: You will be required to use an application generated password instead of the actual user email password for the following email servers. Follow the links for application generated passwords.
