@@ -92,6 +92,7 @@ The configuration of the AWS_QUEUENAME is not used in this mode.
 | CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_WEBHOOK_HEADERS                | The headers that will be used when posting data to the webhook url, see [Subscription webhook notifications](#subscription-webhook-notifications).                                                                                                                                                                    |
 | CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_HOST                      | The SMTP server that will send email notifications.                                                                                                                                                                                                                                                                   |
 | CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PORT                      | The SMTP port to communicate to the SMTP server over.                                                                                                                                                                                                                                                                 |
+| CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_AUTHTYPE                  | The authentication type based on the email server.  You may have to refer to the email server properties and specifications. This value defaults to NONE. See [Customizing email servers](#customizing-email-servers).                                                                                                                                                                                                                                                                |
 | CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_USERNAME                  | The username used to authenticate to the SMTP server, if necessary.                                                                                                                                                                                                                                                   |
 | CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PASSWORD                  | The password used to authenticate to the SMTP server, if necessary.                                                                                                                                                                                                                                                   |
 | CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_FROMADDRESS               | The email address that will be listed in the from field.                                                                                                                                                                                                                                                              |
@@ -106,7 +107,7 @@ The configuration of the AWS_QUEUENAME is not used in this mode.
 | CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_UNSUBSCRIBEFAILED_SUBJECT | The subject of email sent for Failed to Unsubscribe events.                                                                                                                                                                                                                                                           |
 | CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_UNSUBSCRIBEFAILED_BODY    | The body of the email for Failed to Unsubscribe events, see [SMTP notifications](#smtp-notifications).                                                                                                                                                                                                                |
 
-#### Customizing email servers
+### Customizing email servers
 
 The `host`, which represents the email server, can be configured with minimal setup. This section represents the email servers that have been currently tested. Please note, that all testing has been set up on port 587 signifying TLS support.
 
@@ -115,7 +116,7 @@ The `host`, which represents the email server, can be configured with minimal se
 CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_HOST=smtp.gmail.com
 CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PORT=587
 CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_USERNAME=your GMAIL account
-CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PASSWORD=your GMAIL password
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PASSWORD=your GMAIL password (see note below)
 CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_AUTHTYPE=PLAIN
 
 # Microsoft  Office 365 server
@@ -136,9 +137,22 @@ CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_AUTHTYPE=PLAIN
 CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_HOST=smtp.mail.yahoo.com
 CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PORT=587
 CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_USERNAME=your Yahoo Mail account
-CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PASSWORD=your Yahoo Mail password
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PASSWORD=your Yahoo Mail password (see note below)
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_AUTHTYPE=PLAIN
+
+# Amazon Simple Email Service
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_HOST=email-smtp.<region>.amazonaws.com
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PORT=587
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_USERNAME=user access key (see note below)
+CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_PASSWORD=user secret key (see note below)
 CENTRAL_SUBSCRIPTIONS_NOTIFICATIONS_SMTP_AUTHTYPE=PLAIN
 ```
+
+**Note**: You will be required to use an application generated password instead of the actual user email password for the following email servers. Follow the links for application generated passwords.
+
+* Gmail - [Application generated gmail password](https://support.google.com/accounts/answer/185833?hl=en). Use this password in place of your actual password in the agent configuration `password:` field.
+* Yahoo - [Application generated yahoo password](https://help.yahoo.com/kb/generate-third-party-passwords-sln15241.html). Use this password in place of your actual password in the agent configuration `password:` field.
+* [AWS  Simple email service](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-smtp.html). Create your [SMTP credentials](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/smtp-credentials.html) and use them in the username (ACCESS KEY) and password (SECRET KEY) of the agent configuration. You might also have to verify the email address you will use (at least the sender email address).
 
 ### Subscription webhook notifications
 
