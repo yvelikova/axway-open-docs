@@ -146,11 +146,3 @@ A YAML factory configuration is not provided out-of-the-box, but can be created 
 ## Deployment archive
 
 You can update the deployment archive package properties by choosing `option 22` of the `managedomain` script. For more information, see [Updating Deployment Archive Properties](/docs/apim_yamles/yamles_packaging_deployment/#updating-deployment-archive-properties).
-
-## Schema Validation filter
-
-In YAML format, when the XML Schema Validation filter uses multiple XML schemas to validate the message body, an issue will occur when the filter attempts to find the schema. To workaround, select one XML schema per Schema Validation filter.
-
-## Configuration containing `{{` in entity field values
-
-If your original XML federated configuration held the content `{{` in an entity field value, the converted YAML might fail to load in the API Gateway because of a `com.github.jknack.handlebars.HandlebarsException`. This could be the case if the field contains JSON. The error occurs as the YAML engine is interpreting the `{{` as the start of its envrionmentalization syntax. To workaround, edit the entity value by placing a whitespace between the curly brackets.
